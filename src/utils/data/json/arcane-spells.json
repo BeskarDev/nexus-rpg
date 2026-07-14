@@ -33,6 +33,39 @@
         "heightened": "-"
     },
     {
+        "name": "Acid Splash",
+        "discipline": "Evocation",
+        "rank": "0",
+        "focus": "0",
+        "target": "vs. Dodge",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You conjure a short spray of acid, burning through the target's surface.<br/><strong>Weak.</strong> Deal +2 acid damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +4 acid damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +6 acid damage (ignore 1/2 AV).",
+        "heightened": "-"
+    },
+    {
+        "name": "Air Burst",
+        "discipline": "Evocation",
+        "rank": "0",
+        "focus": "0",
+        "target": "vs. Dodge",
+        "range": "Melee",
+        "properties": "-",
+        "effect": "You clap your hands and a ring of compressed air detonates outward from you. Target each creature in melee range of you.<br/><strong>Weak.</strong> Deal +0 blast damage (ignore 1/2 AV) to each target and push each of them a close distance away from you.<br/><strong>Strong.</strong> Deal +2 blast damage (ignore 1/2 AV) to each target and push each of them a close distance away from you.<br/><strong>Critical.</strong> Deal +4 blast damage (ignore 1/2 AV) to each target and push each of them a short distance away from you.<br/>You can also cast this spell to snuff small open flames or scatter loose light objects around you.",
+        "heightened": "-"
+    },
+    {
+        "name": "Thermal Control",
+        "discipline": "Evocation",
+        "rank": "0",
+        "focus": "0",
+        "target": "Medium (8)",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You force the heat to flow into or out of a small area or a single object no larger than medium Size in range.<br/>On a success, choose one:<br/>- <strong>Warm.</strong> Draw warmth into the target until it is comfortably warm. Dry damp cloth, take the chill off a cold traveler or a cold meal, thaw a thin crust of frost, or coax dying embers back to a flame.<br/>- <strong>Chill.</strong> Draw the warmth out until the target is cool. Take the edge off a fever, cool a hot drink, or make a sweltering patch of air bearable.<br/>- <strong>Insulate.</strong> For a short duration, hold a single object or your own hands steady against the heat or cold around them, so you can grip something otherwise too hot or too cold to touch safely.<br/>The effect is never intense enough to burn, freeze, boil, or otherwise harm a creature or their surroundings.",
+        "heightened": "-"
+    },
+    {
         "name": "Chromatic Orb",
         "discipline": "Evocation",
         "rank": "1",
@@ -132,6 +165,28 @@
         "heightened": "<strong>(Rank 2)</strong> Each beam deals +3/6/9 damage instead.<br/><strong>(Rank 3)</strong> Each beam deals +4/8/12 damage instead."
     },
     {
+        "name": "Concussive Bolt",
+        "discipline": "Evocation",
+        "rank": "1",
+        "focus": "2",
+        "target": "vs. Dodge",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You loose a tight bolt of compressed air that slams into a single target like a hammer blow.<br/><strong>Weak.</strong> Deal +4 blast damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +8 blast damage (ignore 1/2 AV) and push the target a close distance.<br/><strong>Critical.</strong> Deal +12 blast damage (ignore 1/2 AV) and push the target a short distance. If they collide with a solid obstacle, they also fall prone.",
+        "heightened": "<strong>(Rank 2)</strong> Deal +6/12/18 damage instead.<br/><strong>(Rank 3)</strong> Deal +8/16/24 damage instead."
+    },
+    {
+        "name": "Elemental Shaping",
+        "discipline": "Evocation",
+        "rank": "1",
+        "focus": "2",
+        "target": "Medium (8)",
+        "range": "Medium",
+        "properties": "concentrate",
+        "effect": "You reach out and seize command of fire, ice, or moving air that already exists in range, bending it against its nature. You cannot create a new element or increase its size, only reshape and move what is present.<br/>On a success, choose the matter you command:<br/>- <strong>Fire.</strong> Move an existing fire (a campfire, a torch's flames, a burning patch) up to a close distance, split it, or gather it, and set alight any flammable material it now touches. It cannot be made larger than its fuel allows.<br/>- <strong>Ice and frost.</strong> Carve, thicken, or slick existing ice and snow. Shape a low foothold or ledge, open a path through a drift, or spread a patch of ice into a difficult terrain area up to close range.<br/>- <strong>Air.</strong> Gather or part existing smoke, fog, or dust. Clear a lightly obscured area of it, or draw present haze together to make one, up to close range.<br/>While you concentrate, up to a short duration, the element holds the shape you force upon it. When your concentration ends, anything held against its nature (gathered flame, parted haze) resumes its natural behavior. A lasting physical change, such as carved or slicked ice, remains on its own.",
+        "heightened": "-"
+    },
+    {
         "name": "Fireball",
         "discipline": "Evocation",
         "rank": "2",
@@ -196,6 +251,50 @@
         "properties": "-",
         "effect": "You split raw elemental energy through a prism of will and loose a beam that shimmers with two colors at once. When casting the spell, choose two damage types among acid, fire, frost, lightning, and poison. The beam's damage counts as both chosen types. The target only applies resistance against this damage if they are resistant to both chosen types, and applies weakness if they are weak to either.<br/><strong>Weak.</strong> Deal +6 damage of the chosen types.<br/><strong>Strong.</strong> Deal +12 damage of the chosen types.<br/><strong>Critical.</strong> Deal +18 damage of the chosen types. The target also suffers the condition associated with one of the chosen types (acid: ignore 1/2 AV on this damage, fire: burning (2), frost: briefly slowed, lightning: briefly staggered, poison: briefly poisoned).",
         "heightened": "<strong>(Rank 3)</strong> Deal +8/16/24 damage instead.<br/><strong>(Rank 4)</strong> Deal +10/20/30 damage instead.<br/><strong>(Rank 5)</strong> Deal +12/24/36 damage instead."
+    },
+    {
+        "name": "Wildfire",
+        "discipline": "Evocation",
+        "rank": "2",
+        "focus": "4",
+        "target": "Hard (10)",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You seize the flames already devouring a creature and lash them outward with a will of their own. Choose a burning creature in range. On a success, their fire erupts, and the flames leap to each enemy in close range of them. Use your roll's result vs. their Dodge. Each enemy the flames reach begins burning at the same value the chosen creature currently suffers, for a short duration.<br/><strong>Weak.</strong> The chosen creature takes +3 fire damage.<br/><strong>Strong.</strong> The chosen creature takes +6 fire damage.<br/><strong>Critical.</strong> The chosen creature takes +9 fire damage.",
+        "heightened": "<strong>(Rank 3)</strong> The chosen creature takes +4/8/12 fire damage instead."
+    },
+    {
+        "name": "Stoke the Blaze",
+        "discipline": "Evocation",
+        "rank": "2",
+        "focus": "4",
+        "target": "vs. Dodge",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You force the flames already consuming a creature to swell and roar, feeding them past what their fuel should allow. Choose a burning creature in range. On a success, increase their burning value by 2 and refresh it to a short duration.<br/><strong>Weak.</strong> Deal +4 fire damage.<br/><strong>Strong.</strong> Deal +8 fire damage.<br/><strong>Critical.</strong> Deal +12 fire damage.",
+        "heightened": "<strong>(Rank 3)</strong> Deal +6/12/18 fire damage and increase their burning value by 3 instead.<br/><strong>(Rank 4)</strong> Deal +8/16/24 fire damage and increase their burning value by 4 instead.<br/><strong>(Rank 5)</strong> Deal +10/20/30 fire damage and increase their burning value by 5 instead."
+    },
+    {
+        "name": "Gale Force",
+        "discipline": "Evocation",
+        "rank": "2",
+        "focus": "4",
+        "target": "vs. Dodge",
+        "range": "Short",
+        "properties": "blast (line)",
+        "effect": "You wrench the air in front of you into a compressed blade of wind and drive it forward in a line, dragging everything it catches toward its end.<br/><strong>Weak.</strong> Deal +3 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target and push each of them a close distance toward the far end of the line.<br/><strong>Critical.</strong> Deal +9 blast damage (ignore 1/2 AV) to each target and push each of them a short distance toward the far end of the line.",
+        "heightened": "<strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead."
+    },
+    {
+        "name": "Acid Rain",
+        "discipline": "Evocation",
+        "rank": "2",
+        "focus": "4",
+        "target": "Hard (10)",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "A low cloud of stinging vitriol gathers and drizzles caustic rain over the target location. On a success, you create the zone in close range of the target location.<br/>Any creature that ends their turn in the zone takes 2 acid damage (ignore AV), and one piece of their worn equipment of your choice (armor, helmet, or shield) must make a Durability check.<br/>The rain lasts for a short duration.",
+        "heightened": "<strong>(Rank 3)</strong> The zone deals 4 acid damage (ignore AV) instead.<br/><strong>(Rank 4)</strong> The zone deals 6 acid damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> The zone deals 8 acid damage (ignore AV) instead."
     },
     {
         "name": "Black Flame Bolt",
@@ -473,6 +572,39 @@
         "heightened": "-"
     },
     {
+        "name": "Arcane Snare",
+        "discipline": "Conjuration",
+        "rank": "0",
+        "focus": "0",
+        "target": "vs. Dodge",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You lash a loop of conjured force around a creature in range and cinch it tight. On a success, the target is briefly grappled by the snare.<br/><strong>Weak.</strong> Deal +0 force damage.<br/><strong>Strong.</strong> Deal +2 force damage.<br/><strong>Critical.</strong> Deal +4 force damage.",
+        "heightened": "-"
+    },
+    {
+        "name": "Conjure Servant",
+        "discipline": "Conjuration",
+        "rank": "0",
+        "focus": "0",
+        "target": "Medium (8)",
+        "range": "Close",
+        "properties": "-",
+        "effect": "You knot a mote of unseen force into a faint, roughly hand-shaped servant that hovers near you and obeys your spoken word. On a success, the servant appears in range and lasts for a short duration.<br/>The servant can carry, fetch, hold, lift, or set down objects, and perform simple manual tasks a household servant could do by hand, such as opening an unstuck door, carrying a torch, fetching an item, or tidying a space. It has roughly the strength of one human hand and can hold objects of up to 2 load in total. It moves on its own to follow your instructions but stays within close range of you.<br/>The servant cannot attack, cannot make any skill roll, and cannot force a lock, a stuck door, or anything a bare hand could not manage. It has no Defense and simply dissipates if it takes any damage, is targeted by an attack, or leaves close range of you.",
+        "heightened": "-"
+    },
+    {
+        "name": "Far Reach",
+        "discipline": "Conjuration",
+        "rank": "0",
+        "focus": "0",
+        "target": "Medium (8)",
+        "range": "Close",
+        "properties": "-",
+        "effect": "You pinch a fold into space and your reach passes through it to a point you can see in range. On a success, for a short duration you can interact with that point as though touching it with one free hand.<br/>Through the fold you can press, turn, pull, lift, hold, or carry one unattended object of up to 1 load, or work a tool, key, latch, or mechanism you are touching. Any task that would need a skill roll by hand still needs that roll, made as normal.<br/>You cannot exert more force than one hand naturally could, cannot make an attack, and cannot affect a creature or anything a creature wears or carries.",
+        "heightened": "-"
+    },
+    {
         "name": "Alarm",
         "discipline": "Conjuration",
         "rank": "1",
@@ -561,6 +693,17 @@
         "heightened": "<strong>(Rank 2)</strong> You gain +3 AV (armor bonus) instead.<br/><strong>(Rank 3)</strong> You gain +4 AV (armor bonus) instead.<br/><strong>(Rank 4)</strong> You gain +5 AV (armor bonus) instead.<br/><strong>(Rank 5)</strong> You gain +6 AV (armor bonus) instead."
     },
     {
+        "name": "Spatial Echo",
+        "discipline": "Conjuration",
+        "rank": "1",
+        "focus": "2",
+        "target": "Medium (8)",
+        "range": "Self",
+        "properties": "concentrate",
+        "effect": "You attune your senses to the fabric of space around you. On a success, for a medium duration while you concentrate you gain the following effects:<br/>- You gain +1 boon on Perception rolls to notice hidden openings, concealed spaces, secret doors, and false surfaces within short range of you.<br/>- You automatically sense the presence and rough location of the following within short range, even through solid matter: active or recent teleportation magic, extraplanar storage (such as an <em>Extraplanar Pocket</em>), open portals or planar breaches, and conjured or extraplanar creatures. You sense that each is present and roughly where, but not its exact nature or contents.",
+        "heightened": "-"
+    },
+    {
         "name": "Magic Missile Barrage",
         "discipline": "Conjuration",
         "rank": "3",
@@ -581,6 +724,28 @@
         "properties": "-",
         "effect": "You hurl a mote of conjured matter that erupts into a mass of thick, sticky strands, filling the area with layered webbing.<br/>On a success, webs fill an area close to the target location. The webbed area is difficult terrain. When a creature tries to move through the webs for the first time on their turn, or is pushed or pulled into them, they must succeed on a Strength + Athletics roll vs. this spell's target Difficulty or become grappled and restrained by the strands. A grappled creature can repeat the roll as an Action to break free. The webs must be anchored between at least two solid surfaces, such as walls, floor and ceiling, or trees, or they collapse and the spell fails. The webs are flammable. Any fire damage in the area burns them away in an instant, and each creature caught in the webs when they burn takes 4 fire damage (ignore AV). The webs last for a short duration.",
         "heightened": "<strong>(Rank 3)</strong> The webs fill an area within short range of the target location and last for a medium duration instead.<br/><strong>(Rank 4)</strong> The webs fill an area within medium range of the target location and last for a medium duration instead.<br/><strong>(Rank 5)</strong> The webs fill an area within medium range of the target location and last for a long duration instead."
+    },
+    {
+        "name": "Fabricate",
+        "discipline": "Conjuration",
+        "rank": "2",
+        "focus": "4",
+        "target": "Hard (10)",
+        "range": "Touch",
+        "properties": "ritual (minutes)",
+        "effect": "Over minutes of shaping, you compel crafting materials laid out before you to flow into a finished form. On a success, you reshape them into a single mundane object no larger than large Size, or several smaller objects of the same material, of Quality 2 or lower.<br/>You must have crafting materials of a Quality equal to or higher than the object you make, such as <em>Simple Materials</em> for a Quality 2 object. Shaping the object spends those materials: make one Supply check on them for an object up to small Size, two Supply checks for up to medium Size, or three for up to large Size.<br/>This spell only reshapes the materials present. It cannot create matter, change one substance into another, or raise an object above the Quality of the materials used or above Quality 2. Making anything a Crafting profession would normally produce, such as a working tool, a weapon, armor, or a fitted mechanism, requires you to have the matching Crafting training. The spell performs the labor, not the expertise. It cannot produce magical items, food, or living matter.",
+        "heightened": "-"
+    },
+    {
+        "name": "Force Surge",
+        "discipline": "Conjuration",
+        "rank": "2",
+        "focus": "4",
+        "target": "vs. Dodge",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You seize the shape of one force construct within range that you created and still maintain, rousing it to sudden violence. Choose one of the following effects:<br/><br/><strong>Constrict.</strong> Target one creature in melee range of the construct. On a success, they are briefly restrained.<br/><strong>Weak.</strong> Deal +4 force damage.<br/><strong>Strong.</strong> Deal +8 force damage.<br/><strong>Critical.</strong> Deal +12 force damage.<br/><br/><strong>Slam.</strong> Target one creature within range.<br/><strong>Weak.</strong> Deal +6 force damage.<br/><strong>Strong.</strong> Deal +12 force damage and the target is pushed a short distance.<br/><strong>Critical.</strong> Deal +18 force damage and the target is pushed a short distance and falls prone.<br/><br/><strong>Burst.</strong> Target each creature in short range of the construct. The construct dissipates.<br/><strong>Weak.</strong> Deal +3 force damage to each.<br/><strong>Strong.</strong> Deal +6 force damage to each.<br/><strong>Critical.</strong> Deal +9 force damage to each.",
+        "heightened": "<strong>(Rank 3)</strong> Constrict deals +6/12/18 force damage instead. Slam deals +8/16/24 instead. Burst deals +4/8/12 instead.<br/><strong>(Rank 4)</strong> Constrict deals +8/16/24 instead. Slam deals +10/20/30 instead. Burst deals +5/10/15 instead.<br/><strong>(Rank 5)</strong> Constrict deals +10/20/30 instead. Slam deals +12/24/36 instead. Burst deals +6/12/18 instead."
     },
     {
         "name": "Mass Hold",
@@ -1470,7 +1635,7 @@
         "target": "Medium (8)",
         "range": "Medium",
         "properties": "-",
-        "effect": "You flatten your palm and a film of frictionless force spreads across the ground, slick as oil. On a success, an area close to the target location becomes slippery. The area is difficult terrain. When a creature tries to move through the slippery area for the first time on their turn, or is pushed or pulled into it, they must succeed on an Agility + Athletics roll vs. this spell’s target Difficulty or fall prone. A prone creature that tries to stand while in the area must succeed on the same roll or remain prone. The effect lasts for a short duration.",
+        "effect": "You flatten your palm and a film of frictionless force spreads across the ground, slick as oil. On a success, an area close to the target location becomes slippery. The area is difficult terrain. When a creature tries to move through the slippery area for the first time on their turn, or is pushed or pulled into it, they must succeed on an Agility + Athletics roll vs. this spell\u2019s target Difficulty or fall prone. A prone creature that tries to stand while in the area must succeed on the same roll or remain prone. The effect lasts for a short duration.",
         "heightened": "<strong>(Rank 2)</strong> Choose one, the slippery area extends to medium range from the target location, or the effect lasts for a medium duration instead.<br/><strong>(Rank 3)</strong> Both, the slippery area extends to medium range and the effect lasts for a medium duration."
     },
     {

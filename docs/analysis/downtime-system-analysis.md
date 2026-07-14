@@ -286,6 +286,8 @@ Life goes on without incident. Roll d6:
 
 ### 4.2 Faction Agendas
 
+> **Superseded:** this sketch is replaced by the full [Faction Turns system](factions/FACTION_SYSTEM_GDD.md) (per-session faction turns, Might die + tags, goal clocks, collisions). The migration map lives in that GDD's §11. The sketch below is kept for reference until the downtime docs are re-pointed.
+
 A subsystem for tracking faction power moves during downtime, treating factions as "characters" with goals and consequences. Extends the NPC profile model from Social Intrigue to organizations.
 
 #### Faction Profiles

@@ -753,6 +753,8 @@ Renumbering note: current `06-scenes` uses 05 for crafting professions and 07 fo
 
 **Dependencies on the downtime analysis.** This module assumes the downtime analysis proposals ship, specifically: the weekly procedure with settlement events, faction agenda dice timers, Lingering Fatigue, the Complication table pattern, Tend to Relationships, and Commission an Item. If those change, the Domain Turn and the activity formats here follow suit.
 
+**Faction system.** The faction agenda sketch this module references is superseded by the [Faction Turns system](../factions/FACTION_SYSTEM_GDD.md). On publication, re-point this module's faction hooks per that GDD's §11 migration map: Sabotage missions set a faction goal clock back 1, the Listening Post reveals goal stage, hostile patrons and domain events use faction cards with goal clocks, and domain-vs-faction conflicts resolve as collisions with the domain rolling its fitting stat (GDD §9 there).
+
 **Terminology contract.** This module introduces exactly these new terms: Domain, Domain Rank, domain check, Wealth/Influence/Force/Secrecy (domain stats), treasury, emergency levy, windfall investment, strain, liquidation, progress, setback, Disrepair, Domain Turn, Facility, Tier, footprint (compact/standard/sprawling), Add-On, Seat, specialist grade, agent pool, mission, danger tier, Provision, Heat, Exposure check, patron stipend, obligation timer. Spatial language (areas, distance bands, narrative distances) reuses the existing vocabulary from Distances & Movement without change. Everything else reuses existing vocabulary.
 
 ---

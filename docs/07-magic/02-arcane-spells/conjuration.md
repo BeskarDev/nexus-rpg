@@ -28,6 +28,30 @@ sidebar_position: 3
 
 **Effect** <br/> Choose one item taking up 1 load or less and hold it out before you. Cast this spell on your turn.<br/>On a success, your hand reaches into an extraplanar pocket, either storing the item you are holding or withdrawing an item you stored beforehand from it during your turn.<br/><br/>You can only ever store items with a combined load of up to 2 + Arcana in the extraplanar pocket. When storing supply in it, you can‘t store more than a d12 (or 5 units) for any single type of supply in it.<br/><br/>Once you are unconcious, any stored item re-appears before you. 
 
+### Arcane Snare
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
+
+**Effect** <br/> You lash a loop of conjured force around a creature in range and cinch it tight. On a success, the target is briefly grappled by the snare.<br/><strong>Weak.</strong> Deal +0 force damage.<br/><strong>Strong.</strong> Deal +2 force damage.<br/><strong>Critical.</strong> Deal +4 force damage.
+
+### Conjure Servant
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Close | -
+
+**Effect** <br/> You knot a mote of unseen force into a faint, roughly hand-shaped servant that hovers near you and obeys your spoken word. On a success, the servant appears in range and lasts for a short duration.<br/>The servant can carry, fetch, hold, lift, or set down objects, and perform simple manual tasks a household servant could do by hand, such as opening an unstuck door, carrying a torch, fetching an item, or tidying a space. It has roughly the strength of one human hand and can hold objects of up to 2 load in total. It moves on its own to follow your instructions but stays within close range of you.<br/>The servant cannot attack, cannot make any skill roll, and cannot force a lock, a stuck door, or anything a bare hand could not manage. It has no Defense and simply dissipates if it takes any damage, is targeted by an attack, or leaves close range of you.
+
+### Far Reach
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Close | -
+
+**Effect** <br/> You pinch a fold into space and your reach passes through it to a point you can see in range. On a success, for a short duration you can interact with that point as though touching it with one free hand.<br/>Through the fold you can press, turn, pull, lift, hold, or carry one unattended object of up to 1 load, or work a tool, key, latch, or mechanism you are touching. Any task that would need a skill roll by hand still needs that roll, made as normal.<br/>You cannot exert more force than one hand naturally could, cannot make an attack, and cannot affect a creature or anything a creature wears or carries.
+
 ### Alarm
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -101,6 +125,14 @@ sidebar_position: 3
 **Effect** <br/> You weave a lattice of arcane force around your body that hardens into unseen armor.<br/>On a success, you gain +2 AV (armor bonus) for a long duration. This bonus does not stack with other armor bonuses such as worn armor, <em>Bone Armor</em>, or the <em>Mana Shield</em> talent. Use only the highest. The armor holds until the duration ends, even after you take damage. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> You gain +3 AV (armor bonus) instead.<br/><strong>(Rank 3)</strong> You gain +4 AV (armor bonus) instead.<br/><strong>(Rank 4)</strong> You gain +5 AV (armor bonus) instead.<br/><strong>(Rank 5)</strong> You gain +6 AV (armor bonus) instead.
+
+### Spatial Echo
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | concentrate
+
+**Effect** <br/> You attune your senses to the fabric of space around you. On a success, for a medium duration while you concentrate you gain the following effects:<br/>- You gain +1 boon on Perception rolls to notice hidden openings, concealed spaces, secret doors, and false surfaces within short range of you.<br/>- You automatically sense the presence and rough location of the following within short range, even through solid matter: active or recent teleportation magic, extraplanar storage (such as an <em>Extraplanar Pocket</em>), open portals or planar breaches, and conjured or extraplanar creatures. You sense that each is present and roughly where, but not its exact nature or contents.
 
 ### Magic Missile Barrage
 
@@ -179,6 +211,24 @@ sidebar_position: 3
 **Effect** <br/> You hurl a mote of conjured matter that erupts into a mass of thick, sticky strands, filling the area with layered webbing.<br/>On a success, webs fill an area close to the target location. The webbed area is difficult terrain. When a creature tries to move through the webs for the first time on their turn, or is pushed or pulled into them, they must succeed on a Strength + Athletics roll vs. this spell's target Difficulty or become grappled and restrained by the strands. A grappled creature can repeat the roll as an Action to break free. The webs must be anchored between at least two solid surfaces, such as walls, floor and ceiling, or trees, or they collapse and the spell fails. The webs are flammable. Any fire damage in the area burns them away in an instant, and each creature caught in the webs when they burn takes 4 fire damage (ignore AV). The webs last for a short duration. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The webs fill an area within short range of the target location and last for a medium duration instead.<br/><strong>(Rank 4)</strong> The webs fill an area within medium range of the target location and last for a medium duration instead.<br/><strong>(Rank 5)</strong> The webs fill an area within medium range of the target location and last for a long duration instead.
+
+### Fabricate
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Touch | ritual (minutes)
+
+**Effect** <br/> Over minutes of shaping, you compel crafting materials laid out before you to flow into a finished form. On a success, you reshape them into a single mundane object no larger than large Size, or several smaller objects of the same material, of Quality 2 or lower.<br/>You must have crafting materials of a Quality equal to or higher than the object you make, such as <em>Simple Materials</em> for a Quality 2 object. Shaping the object spends those materials: make one Supply check on them for an object up to small Size, two Supply checks for up to medium Size, or three for up to large Size.<br/>This spell only reshapes the materials present. It cannot create matter, change one substance into another, or raise an object above the Quality of the materials used or above Quality 2. Making anything a Crafting profession would normally produce, such as a working tool, a weapon, armor, or a fitted mechanism, requires you to have the matching Crafting training. The spell performs the labor, not the expertise. It cannot produce magical items, food, or living matter.
+
+### Force Surge
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Medium | -
+
+**Effect** <br/> You seize the shape of one force construct within range that you created and still maintain, rousing it to sudden violence. Choose one of the following effects:<br/><br/><strong>Constrict.</strong> Target one creature in melee range of the construct. On a success, they are briefly restrained.<br/><strong>Weak.</strong> Deal +4 force damage.<br/><strong>Strong.</strong> Deal +8 force damage.<br/><strong>Critical.</strong> Deal +12 force damage.<br/><br/><strong>Slam.</strong> Target one creature within range.<br/><strong>Weak.</strong> Deal +6 force damage.<br/><strong>Strong.</strong> Deal +12 force damage and the target is pushed a short distance.<br/><strong>Critical.</strong> Deal +18 force damage and the target is pushed a short distance and falls prone.<br/><br/><strong>Burst.</strong> Target each creature in short range of the construct. The construct dissipates.<br/><strong>Weak.</strong> Deal +3 force damage to each.<br/><strong>Strong.</strong> Deal +6 force damage to each.<br/><strong>Critical.</strong> Deal +9 force damage to each.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Constrict deals +6/12/18 force damage instead. Slam deals +8/16/24 instead. Burst deals +4/8/12 instead.<br/><strong>(Rank 4)</strong> Constrict deals +8/16/24 instead. Slam deals +10/20/30 instead. Burst deals +5/10/15 instead.<br/><strong>(Rank 5)</strong> Constrict deals +10/20/30 instead. Slam deals +12/24/36 instead. Burst deals +6/12/18 instead.
 
 ### Arcane Blast
 

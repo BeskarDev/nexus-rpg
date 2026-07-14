@@ -97,7 +97,7 @@ The Shrouded Court starts at Heat 0 and Secrecy d4. Early expectations:
 
 ## 7. Growth Roadmap
 
-A suggested arc mapping domain ranks to campaign beats. Costs assume the patrons carry upkeep while treasure pays for growth.
+A suggested arc mapping domain ranks to campaign beats. **This roadmap runs about two levels ahead of what an unassisted party affords** (see the [Economy Simulation](economy-simulation.md), §5): it assumes the patrons carry all upkeep and contribute roughly a third of growth capital across the campaign through founding gifts, stipend surplus, and gifted facilities. That dependency is the campaign's spine. If the party breaks with both patrons, the Court's growth stalls at their own treasure's pace, and they will feel exactly what the patronage was worth.
 
 | Stage | Domain | Campaign Beat |
 |-------|--------|---------------|

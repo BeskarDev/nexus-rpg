@@ -28,6 +28,7 @@ The following systems already have dedicated analysis reports:
 | Folk naming conventions (12 folk) | `names/*.md` |
 | Folk traits & ancestry balance | `folk-traits-ancestry-balance-analysis.md` |
 | Domain building (strongholds, organizations, agent missions) | `domain/DOMAIN_SYSTEM_GDD.md` + subfiles |
+| Faction turns (living world, GM faction procedure) | `factions/FACTION_SYSTEM_GDD.md` + catalog |
 
 ---
 

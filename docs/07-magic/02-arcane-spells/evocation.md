@@ -28,6 +28,30 @@ sidebar_position: 1
 
 **Effect** <br/> You generate a small electric discharge from your fingertip against a target.<br/><strong>Weak.</strong> Deal +2 lightning damage.<br/><strong>Strong. </strong>Deal +4 lightning damage to the target and you can deal +2 lightning damage to one other creature in melee range of the target.<br/><strong>Critical. </strong>Deal +6 lightning damage to the target and you can deal +4 lightning damage to one other creature in melee range of the target.<br/>You can also use the flame to ignite flammable materials in range, such as tinder or straw. 
 
+### Acid Splash
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
+
+**Effect** <br/> You conjure a short spray of acid, burning through the target's surface.<br/><strong>Weak.</strong> Deal +2 acid damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +4 acid damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +6 acid damage (ignore 1/2 AV).
+
+### Air Burst
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Melee | -
+
+**Effect** <br/> You clap your hands and a ring of compressed air detonates outward from you. Target each creature in melee range of you.<br/><strong>Weak.</strong> Deal +0 blast damage (ignore 1/2 AV) to each target and push each of them a close distance away from you.<br/><strong>Strong.</strong> Deal +2 blast damage (ignore 1/2 AV) to each target and push each of them a close distance away from you.<br/><strong>Critical.</strong> Deal +4 blast damage (ignore 1/2 AV) to each target and push each of them a short distance away from you.<br/>You can also cast this spell to snuff small open flames or scatter loose light objects around you.
+
+### Thermal Control
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Medium | -
+
+**Effect** <br/> You force the heat to flow into or out of a small area or a single object no larger than medium Size in range.<br/>On a success, choose one:<br/>- <strong>Warm.</strong> Draw warmth into the target until it is comfortably warm. Dry damp cloth, take the chill off a cold traveler or a cold meal, thaw a thin crust of frost, or coax dying embers back to a flame.<br/>- <strong>Chill.</strong> Draw the warmth out until the target is cool. Take the edge off a fever, cool a hot drink, or make a sweltering patch of air bearable.<br/>- <strong>Insulate.</strong> For a short duration, hold a single object or your own hands steady against the heat or cold around them, so you can grip something otherwise too hot or too cold to touch safely.<br/>The effect is never intense enough to burn, freeze, boil, or otherwise harm a creature or their surroundings.
+
 ### Chromatic Orb
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -116,6 +140,24 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Each beam deals +3/6/9 damage instead.<br/><strong>(Rank 3)</strong> Each beam deals +4/8/12 damage instead.
 
+### Concussive Bolt
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect** <br/> You loose a tight bolt of compressed air that slams into a single target like a hammer blow.<br/><strong>Weak.</strong> Deal +4 blast damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +8 blast damage (ignore 1/2 AV) and push the target a close distance.<br/><strong>Critical.</strong> Deal +12 blast damage (ignore 1/2 AV) and push the target a short distance. If they collide with a solid obstacle, they also fall prone.
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +6/12/18 damage instead.<br/><strong>(Rank 3)</strong> Deal +8/16/24 damage instead.
+
+### Elemental Shaping
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Medium | concentrate
+
+**Effect** <br/> You reach out and seize command of fire, ice, or moving air that already exists in range, bending it against its nature. You cannot create a new element or increase its size, only reshape and move what is present.<br/>On a success, choose the matter you command:<br/>- <strong>Fire.</strong> Move an existing fire (a campfire, a torch's flames, a burning patch) up to a close distance, split it, or gather it, and set alight any flammable material it now touches. It cannot be made larger than its fuel allows.<br/>- <strong>Ice and frost.</strong> Carve, thicken, or slick existing ice and snow. Shape a low foothold or ledge, open a path through a drift, or spread a patch of ice into a difficult terrain area up to close range.<br/>- <strong>Air.</strong> Gather or part existing smoke, fog, or dust. Clear a lightly obscured area of it, or draw present haze together to make one, up to close range.<br/>While you concentrate, up to a short duration, the element holds the shape you force upon it. When your concentration ends, anything held against its nature (gathered flame, parted haze) resumes its natural behavior. A lasting physical change, such as carved or slicked ice, remains on its own.
+
 ### Fireball
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -175,6 +217,46 @@ sidebar_position: 1
 **Effect** <br/> You split raw elemental energy through a prism of will and loose a beam that shimmers with two colors at once. When casting the spell, choose two damage types among acid, fire, frost, lightning, and poison. The beam's damage counts as both chosen types. The target only applies resistance against this damage if they are resistant to both chosen types, and applies weakness if they are weak to either.<br/><strong>Weak.</strong> Deal +6 damage of the chosen types.<br/><strong>Strong.</strong> Deal +12 damage of the chosen types.<br/><strong>Critical.</strong> Deal +18 damage of the chosen types. The target also suffers the condition associated with one of the chosen types (acid: ignore 1/2 AV on this damage, fire: burning (2), frost: briefly slowed, lightning: briefly staggered, poison: briefly poisoned). 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +8/16/24 damage instead.<br/><strong>(Rank 4)</strong> Deal +10/20/30 damage instead.<br/><strong>(Rank 5)</strong> Deal +12/24/36 damage instead.
+
+### Acid Rain
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | -
+
+**Effect** <br/> A low cloud of stinging vitriol gathers and drizzles caustic rain over the target location. On a success, you create the zone in close range of the target location.<br/>Any creature that ends their turn in the zone takes 2 acid damage (ignore AV), and one piece of their worn equipment of your choice (armor, helmet, or shield) must make a Durability check.<br/>The rain lasts for a short duration.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The zone deals 4 acid damage (ignore AV) instead.<br/><strong>(Rank 4)</strong> The zone deals 6 acid damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> The zone deals 8 acid damage (ignore AV) instead.
+
+### Gale Force
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Short | blast (line)
+
+**Effect** <br/> You wrench the air in front of you into a compressed blade of wind and drive it forward in a line, dragging everything it catches toward its end.<br/><strong>Weak.</strong> Deal +3 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target and push each of them a close distance toward the far end of the line.<br/><strong>Critical.</strong> Deal +9 blast damage (ignore 1/2 AV) to each target and push each of them a short distance toward the far end of the line.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead.
+
+### Stoke the Blaze
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Medium | -
+
+**Effect** <br/> You force the flames already consuming a creature to swell and roar, feeding them past what their fuel should allow. Choose a burning creature in range. On a success, increase their burning value by 2 and refresh it to a short duration.<br/><strong>Weak.</strong> Deal +4 fire damage.<br/><strong>Strong.</strong> Deal +8 fire damage.<br/><strong>Critical.</strong> Deal +12 fire damage.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/12/18 fire damage and increase their burning value by 3 instead.<br/><strong>(Rank 4)</strong> Deal +8/16/24 fire damage and increase their burning value by 4 instead.<br/><strong>(Rank 5)</strong> Deal +10/20/30 fire damage and increase their burning value by 5 instead.
+
+### Wildfire
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | -
+
+**Effect** <br/> You seize the flames already devouring a creature and lash them outward with a will of their own. Choose a burning creature in range. On a success, their fire erupts, and the flames leap to each enemy in close range of them. Use your roll's result vs. their Dodge. Each enemy the flames reach begins burning at the same value the chosen creature currently suffers, for a short duration.<br/><strong>Weak.</strong> The chosen creature takes +3 fire damage.<br/><strong>Strong.</strong> The chosen creature takes +6 fire damage.<br/><strong>Critical.</strong> The chosen creature takes +9 fire damage.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The chosen creature takes +4/8/12 fire damage instead.
 
 ### Black Flame Bolt
 

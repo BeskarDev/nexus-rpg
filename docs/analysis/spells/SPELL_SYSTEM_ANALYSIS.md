@@ -681,6 +681,52 @@ Once the R5 capstone tier is complete, the remaining gaps are at the bottom of t
 
 Sequence after P5. 7.2 is small and can ship whenever; 7.1 is the long tail and runs as per-school passes.
 
+#### 7.1 Execution Plan — per-school batches (opened 2026-07-14)
+
+**Batching rule (owner directive 2026-07-14):** run **one school per batch** (grouping only the near-complete tiny schools, splitting the 8–9-seed schools by rank tier within their draft). Small batches keep the whole skill's principle set tracked and output quality high — large multi-school batches let the designer lose track of principles and reintroduce mistakes the principles already cover. Each batch: draft under repo-root `.drafts/<school>-r0-r2-batch.md` → owner approval → publish docs → JSON → Notion → tick the school's matrix/checklist and this table.
+
+**Total scope:** ~74 R0–R2 aspect seeds across 14 schools (source: each school file's Proposed New Spells seed table, rank ≤ 2). Nature (2), Necromancy (2), Twilight (1) are near-complete at low rank — light lift, grouped. Note: several "seeds" are cross-list **adoptions** of an already-published spell (e.g. Evocation's Acid Splash = Nature's published text verbatim), not fresh designs.
+
+| Batch | School(s) | R0–R2 seeds | Folds in | Status |
+|---|---|---|---|---|
+| 1 | Evocation | 9 (Acid Splash [adopt], Air Burst, Thermal Control, Concussive Bolt, Elemental Shaping, Acid Rain, Gale Force, Wildfire, Stoke the Blaze [owner-added]) | — | ✅ published 2026-07-14 |
+| 2 | Conjuration | 6 (Conjure Servant, Far Reach, Arcane Snare, Spatial Echo, Fabricate, Force Surge) | — | ✅ published 2026-07-14 |
+| 3 | Illusion | 5 (Sensory Trick, Phantom Feint, Phantasmal Armor, Knife Behind the Mask, Warped Perspective) | — | ✏️ drafted 2026-07-14 (`.drafts/illusion-r0-r2-batch.md`) |
+| 4 | Necromancy + Telekinetics | 2 + 4 (Ghostly Hand, Harvest the Mark; Gravity Shift, Kinetic Deflection, Grinding Weight, Relentless Grip) | — | ✏️ drafted 2026-07-14 (`.drafts/necromancy-telekinetics-r0-r2-batch.md`) |
+| 5 | Telepathy | 6 (Surface Recall, Commanding Thought, Mental Shield, Memory Echo, Mind Fracture, Telepathic Bond) | — | ✏️ drafted 2026-07-14 (`.drafts/telepathy-r0-r2-batch.md`) |
+| 6 | Death | 5 (Miasma, Minor Hex, Commune with Ancestors, Festering Wound, Ancestral Guardian — Grave Chill, Curse of Frailty, Weight of Dooms turned out already published) | — | ✏️ drafted 2026-07-14 (`.drafts/death-r0-r2-batch.md`) |
+| 7 | Peace | 9 (Shared Burden, Wayfinder's Mark, Oathmark, Swift Journey, Peace Bond, Steady Hands, Shield of the Meek, **Binding Oath**, Wayfarer's Shield) | 7.2 **Undying Devotion** (R5) folded in | ✏️ drafted 2026-07-14 (`.drafts/peace-r0-r2-batch.md`) |
+| 8 | Life | 7 (Kindred Bond, Nurturing Touch, Beacon of Hope, Sustaining Grace, Surge of Renewal, Bursting Ward, Blessing of the Harvest) | — | ☐ |
+| 9 | Tempest | 7 (Tremor, Sand Gust, Splash, Weather Prediction, Sandblast, Water Jet, Thunderfall) | — | ☐ |
+| 10 | War | 5 (Righteous Strike, Victor's Shout, Terror's Edge, Avenging Oath, War Banner) | — | ☐ |
+| 11 | Light | 4 (Moment of Clarity, Stern Gaze, Mark of Judgement, Weapon of Revelation) | — | ☐ |
+| 12 | Nature + Twilight | 2 + 1 (Shape Water, Deepening Venom; Thread of Fate) | 7.2 **Everlasting Night** (Twilight R5) | ☐ |
+| 13 | Wrap: 7.3 keyword | — | "unprovoked movement" keyword coined + corpus sweep — do **last**, after all movement-granting spells exist | ☐ |
+
+Seed counts are the honest-gap target per school; a cell may resolve to an intentional empty (principle 3) during design rather than a spell. Fresh sessions: pick the first ☐ batch, read that school's `docs/analysis/spells/schools/<school>.md` + the seed table, design against the current chassis/principles, draft, then get owner approval before publishing.
+
+### Priority 8 — Blast / ignore-½-AV damage re-pricing audit (opened 2026-07-14, P7.1 Batch 1)
+
+**Origin:** owner suspicion during Evocation Batch 1 that blast (and other ignore-½-AV) damage spells are undertaxed — they get full-column damage *and* the armor bypass. Confirmed by simulation.
+
+**Simulation result.** A blast/ignore-½-AV spell dealing the same nominal damage as a plain spell deals exactly **AV/2 more effective damage** (Spell Power cancels; the bypass IS the delta). Creature AV = Tier (light) / 2×Tier (heavy). So the bypass is worth:
+
+| Enemy Tier (≈ caster rank) | Light AV bypass | Heavy AV bypass |
+|---|---|---|
+| 1–2 (R0–R1) | +0.5 to +1 | +1 to +2 |
+| 3–4 (R2) | +1.5 to +2 | +3 to +4 |
+| 5–6 (R3) | +2.5 to +3 | +5 to +6 |
+| 8–10 (R4–R5) | +4 to +5 | +8 to +10 |
+
+The over-value is **negligible at R0–R1** (why Gust at full column is fine) and **significant at R3+** (a free +3 to +5 vs. light, far more vs. heavy, on top of full-column damage). Principle 57 already prescribes the fix (blast/ignore-½ prices one step below plain) — it was just never applied to pure-blast damage spells.
+
+**Proposed rule (pending owner sign-off):**
+1. R0–R1 blast: keep full column (bypass ≈ +1, legacy generosity).
+2. R2+ **damage-primary** blast spells: price one step below plain (the rank's multi column), per principle 57.
+3. Blast spells where damage is **secondary to control** (push/cluster/knockdown primary, e.g. Gale Force): keep the low number as-is; it already pays for the bypass.
+
+**Scope:** corpus-wide pass over every published R2+ spell dealing blast damage (Tempest, Telekinetics, Evocation, Conjuration, and any others), re-pricing the damage-primary ones. Enumerate the affected spells, propose per-spell new values, one owner-approved batch. **Does not touch** P7.1 Batch 1 spells (all R0–R1 or control-primary). Sequence: independent of P7.1; run whenever, but a natural companion to the Evocation/Tempest/Telekinetics low-rank batches.
+
 ### Sequencing Note
 
 Priorities 1–3 are small and unblock the rest. Priorities 4–5 are the bulk design work — run them as per-school batches (a school's P4 and P5 batch can be combined when its seed table is strong, e.g. War, Light, Twilight). Priority 6 items piggyback on whichever batch touches the affected school. When a school's batch lands, update its file's inventory, matrix, chains, and checklist, tick it here, and sync docs → JSON → Notion per the publication pipeline.
