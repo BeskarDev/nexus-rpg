@@ -88,6 +88,7 @@ There exist multiple damage types which describe the various ways of inflicting 
 | Acid | corroding or melting |
 | Blast | booming or shattering |
 | Fire | burning or exploding |
+| Force | pure magical energy |
 | Frost | freezing or petrifying |
 | Lightning | shocking or searing |
 | Necrotic | draining or withering |

@@ -34,7 +34,7 @@ Missions: none yet          Disrepair: 0
 
 **Why these facilities:** Quarters make the estate a working home (Recover and Leisure on site, no settlement needed, which matters three days from anywhere). The Safehouse in Perit, the nearest river town, gives the fledgling Court a bolt-hole and +1 boon on Lay Low from week one.
 
-**First purchases to steer players toward** (all Tier 1, 250 coins each): a **Shrine** or **Hidden Altar** path for the occult identity (Hidden Altar requires Rank 2, so a Shrine in the cellar now, upgraded later), a **Common Hall** to gather the growing circle, an **Herb Garden** for the poisoner-minded. Rank 2 at 2,500 coins should land after the first adventure arc pays out.
+**First purchases to steer players toward** (all Tier 1, 250 coins each): a **Shrine** or **Hidden Altar** path for the occult identity (Hidden Altar requires Rank 2, so a Shrine in the cellar now, rebuilt later as a same-category replacement with half the Shrine's cost credited), a **Common Hall** to gather the growing circle, an **Herb Garden** for the poisoner-minded. Rank 2 at 2,500 coins should land after the first adventure arc pays out.
 
 ---
 

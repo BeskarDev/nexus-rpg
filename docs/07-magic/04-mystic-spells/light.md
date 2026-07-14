@@ -62,13 +62,21 @@ sidebar_position: 1
 
 **Effect** <br/> Touch a small object and imbue it with truth revealing magic. The object must comfortably fit within the palm of your hand and can be no larger.<br/>On a success, you always know the location of the imbued trinket while it is in the same sphere of existence as you. This spell lasts for a long duration. 
 
+### Clear Mind
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Medium | quick
+
+**Effect** <br/> Light flares behind a creature’s eyes and burns the intruding will away. Cast this spell as a Quick Action in reaction to a creature within range being afflicted by a mind-affecting spell or effect, or being hit by psychic damage.<br/>On a success, choose one:<br/>- End the confused and charmed conditions on the target.<br/>- The target gains resistance to psychic damage briefly before the incoming hit.
+
 ### Protect from Influence
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | Medium (8) | Medium | quick,  singular
+ 2 | 4 | Medium (8) | Medium | singular
 
-**Effect** <br/> Channel the light’s protective magic into one creature within range, bolstering their mental defenses. Cast this spell as a Quick Action on your turn.<br/>On a success, the target gains +1 boon on rolls to resist any mental effects and gains resistance to psychic damage. Attempts to influence their mind also suffer +1 bane. This spell lasts for a short duration. 
+**Effect** <br/> You wrap a creature’s mind in steady light, holding it clear against intrusion. On a success, this spell ends the confused and charmed conditions on the target. For a short duration, the target also gains resistance to psychic damage and +1 boon on rolls to resist mind-affecting spells and effects. 
 
 ### Radiant Rebuke
 

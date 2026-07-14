@@ -2,7 +2,7 @@
 
 > **Companion to:** [Build Your Domain — GDD](DOMAIN_SYSTEM_GDD.md). Read §9 there for shared facility rules.
 >
-> **Shared rules recap:** A facility's tier requires domain rank ≥ tier. Tier costs are 250 / 1,000 / 5,000 / 20,000 / 75,000 coins with construction timers d4 / d4 / d6 / d6 / d8. Facilities of Tier 2+ require a specialist of grade ≥ tier (see [Domain NPCs & Staff](domain-npcs.md)). Unstaffed facilities keep passive benefits but provide no activities or Provisions. Upgrading along a chain costs the full price of the new tier and replaces the old facility in the same slot.
+> **Shared rules recap:** A facility's tier requires domain rank ≥ tier. Tier costs are 250 / 1,000 / 5,000 / 20,000 / 75,000 coins with construction timers d4 / d4 / d6 / d6 / d8. Facilities of Tier 2+ require a specialist of grade ≥ tier (see [Domain NPCs & Staff](domain-npcs.md)). Unstaffed facilities keep passive benefits but provide no activities or Provisions. Upgrading and replacing facilities follows the rules in the next section.
 
 ---
 
@@ -55,6 +55,21 @@ Each entry is a facility or an upgrade chain. Chains list one row per tier. "On 
 | Wilds | Kennels & Menagerie → Beastgarden | 2/4 | Companions and beasts |
 | Wilds | Hunting Lodge | 2 | Game, hides, provisioning |
 | Wilds | Herb Garden → Physic Garden | 1/3 | Alchemical materials |
+
+---
+
+## Upgrading & Replacing Facilities
+
+Rising domain ranks unlock higher facility tiers, and the hub-camp loop expects the party to grow what they already own. These rules cover every change to a built facility:
+
+1. **Chain upgrades.** Upgrading a facility along its chain costs the new tier's price **minus half the old facility's cost**, uses the new tier's construction timer, and keeps the same slot. The domain recovers half of what it built, the same principle as liquidation: half back, never more.
+2. **Works through the dust.** The old facility keeps functioning at its current tier while the upgrade builds. It switches to the new tier when the timer completes.
+3. **Staffing rises with tier.** The upgraded facility needs a specialist of grade ≥ its new tier. Plan the person before the stones: a Grand Atelier with an Expert artificer is an unstaffed hall with a very good forge. The Dedicated Quarters add-on (grade +1 for facility function) can bridge one tier, except for the Workshop chain's Quality ceilings.
+4. **Add-ons carry over** to the upgraded facility at no cost.
+5. **Same-category replacement.** Rebuilding a facility into a different facility of the **same category** (a Shrine into a Hidden Altar) works like a chain upgrade: new facility's cost minus half the old one's, same slot, new timer.
+6. **Demolition or cross-category rebuild** refunds nothing. Tear it down, free the slot, build new at full price.
+
+> **Design Note:** Rank-ups never force facility upgrades. A Rank 4 domain full of Tier 1 facilities is legitimate (broad and humble), just as a Rank 3 domain with one Atelier and little else is (narrow and deep). The half-credit makes upgrading the default-attractive path without punishing either extreme, and it keeps the "recover half" arithmetic uniform across the whole module.
 
 ---
 

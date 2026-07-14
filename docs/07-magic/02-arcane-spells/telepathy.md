@@ -26,7 +26,7 @@ sidebar_position: 4
 ---|---|---|---|---
  0 | 0 | vs. Resist | Medium | -
 
-**Effect** <br/> You concentrate to overwhelm a creature‘s mind with mental energy.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly dazed.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignore AV) and the target is dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You concentrate to overwhelm a creature’s mind with mental energy.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly dazed.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignore AV) and the target is briefly dazed. 
 
 ### Attack Thoughts
 

@@ -659,15 +659,15 @@ The old concept lists formerly in this section are superseded by the per-school 
 | 5.4 | Twilight, Death ✅ **DONE (2026-07-14)**; Telepathy + Telekinetics ✅ **DONE 2026-07-13** | ~~Psychic Maelstrom, Absolute Control, Mindwipe; Annihilating Wave~~ published; Dream Realm, Shadowform, Fate's Decree, Phantom World; Inexorable Doom, Pall of the Grave, Ancestral Convergence |
 | 5.5 | ✅ **RESOLVED (2026-07-13)**: Phantom World vs. Mirage Arcane split by scale/axis (landscape rite vs. battlefield mind-control); Annihilating Wave vs. Cataclysmic Eruption split by tempo (instant burst vs. standing field) — see the P5 arcane batch draft for the resolutions | No duplicate identities at the capstone tier |
 
-### Priority 6 — Carried-Over Balance Items (still open)
+### Priority 6 — Carried-Over Balance Items — ✅ DONE (published 2026-07-14)
 
 | # | Action | Status |
 |---|---|---|
-| 6.1 | **Force damage type conversion** (§15): Arcane Missiles/Barrage and 3 others still use blast | Open — not yet implemented in docs |
-| 6.2 | Review **Corpse Explosion** (R2 AoE at full single-target +6/+12/+18; recommended +4/+8/+12) | Open — unchanged in docs |
-| 6.3 | Audit flagged mis-ranked spells: Mind Blast (R0 daze), ~~Elemental Ward~~ (resolved by the P3 realign), Silence, Shadow Stride, Protect from Influence, Solar Flare (§8) | Open |
-| 6.4 | Systematic R2+ AoE damage pass under the half-scaling rule (§6–7) | Open — verify per school during its design batch |
-| 6.5 | Re-validate **Astral Body** (R4, shared Conjuration/Telepathy) against the R5 ceiling during those schools' R5 batches | ✅ Done for Conjuration (P5.1, 2026-07-13): stays R4, tether errata applied. Confirm nothing new arises in the Telepathy R5 batch |
+| 6.1 | **Force damage type conversion** (§15): add Force to damage-type table; convert Arcane Bolt, Arcane Glyph, Arcane Missiles, Arcane Barrage, Hale of Blades from blast (ignore ½ AV) → force. Arcane Barrage also moved R2→R3 (Very Hard 12, Focus 6) per §7.6 Option A. Telekinetics/Tempest blast spells unchanged. | ✅ Published 2026-07-14 |
+| 6.2 | **Corpse Explosion** AoE damage | ✅ Already resolved in docs (+4/+8/+12 — was fixed silently during P2) |
+| 6.3 | Mis-ranked spells audit: **Mind Blast** Critical softened to "briefly dazed" (at-will, no short-duration action-denial); **Protect from Influence** reworked — old R1 proactive buff retired, replaced by R1 reactive *Clear Mind* (Quick Action, break confused/charmed OR brief psychic resist) + R2 sustained *Protect from Influence* (short-duration ward). ~~Elemental Ward~~ ✅ P3. **Silence** → *Silent Night* ✅ published at R2. **Shadow Stride** → *Shadow Step* ✅ R2 conditional blink (darkness-gated, defensible). **Solar Flare** ✅ already moved to R3 before this batch. | ✅ Published 2026-07-14 |
+| 6.4 | Systematic R2+ AoE half-scaling pass | ✅ Already resolved — all R2/R3 AoE spells were at guideline values before this batch; lines already shortened per §6.2 |
+| 6.5 | Re-validate **Astral Body** (R4, shared Conjuration/Telepathy) against R5 ceiling | ✅ Done for Conjuration (P5.1, 2026-07-13) and Telepathy (P5.4, 2026-07-14): stays R4, no new interactions |
 
 ### Priority 7 — Low-Rank Aspect Completion + Deferred Capstones (new, opened 2026-07-13)
 

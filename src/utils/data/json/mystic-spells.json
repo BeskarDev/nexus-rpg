@@ -66,14 +66,25 @@
 		"heightened": "-"
 	},
 	{
-		"name": "Protect from Influence",
+		"name": "Clear Mind",
 		"tradition": "Light",
 		"rank": "1",
 		"focus": "2",
 		"target": "Medium (8)",
 		"range": "Medium",
-		"properties": "quick, singular",
-		"effect": "Channel the light’s protective magic into one creature within range, bolstering their mental defenses. Cast this spell as a Quick Action on your turn.<br/>On a success, the target gains +1 boon on rolls to resist any mental effects and gains resistance to psychic damage. Attempts to influence their mind also suffer +1 bane. This spell lasts for a short duration.",
+		"properties": "quick",
+		"effect": "Light flares behind a creature’s eyes and burns the intruding will away. Cast this spell as a Quick Action in reaction to a creature within range being afflicted by a mind-affecting spell or effect, or being hit by psychic damage.<br/>On a success, choose one:<br/>- End the confused and charmed conditions on the target.<br/>- The target gains resistance to psychic damage briefly before the incoming hit.",
+		"heightened": "-"
+	},
+	{
+		"name": "Protect from Influence",
+		"tradition": "Light",
+		"rank": "2",
+		"focus": "4",
+		"target": "Medium (8)",
+		"range": "Medium",
+		"properties": "singular",
+		"effect": "You wrap a creature’s mind in steady light, holding it clear against intrusion. On a success, this spell ends the confused and charmed conditions on the target. For a short duration, the target also gains resistance to psychic damage and +1 boon on rolls to resist mind-affecting spells and effects.",
 		"heightened": "-"
 	},
 	{

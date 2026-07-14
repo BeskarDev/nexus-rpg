@@ -63,6 +63,7 @@ yarn creature:build   # Creature builder CLI
 - IDs via `crypto.randomUUID()`.
 - Redux state updates via Immer (Redux Toolkit); action pattern `characterSheetActions.verbNoun`.
 - Never commit temporary test scripts or standalone summary docs in the project root.
+- **Never run `git commit` or `git push`.** All version control operations are done manually by the owner. Finish edits, verify docs and JSON agree, then stop — never attempt to stage or commit.
 
 ## Content Pipeline
 

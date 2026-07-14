@@ -10,7 +10,7 @@ sidebar_position: 3
 ---|---|---|---|---
  0 | 0 | vs. Dodge | Medium | -
 
-**Effect** <br/> Produce a small arcane projectile and hurl it against a target.<br/><strong>Weak.</strong> Deals +2 blast damage (ignore 1/2 AV).<br/><strong>Strong. </strong>Deals +4 blast damage (ignore 1/2 AV) and the target is briefly dazed.<br/><strong>Critical. </strong>Deals +6 blast damage (ignore 1/2 AV) and the target is briefly dazed. 
+**Effect** <br/> Produce a small arcane projectile and hurl it against a target.<br/><strong>Weak.</strong> Deals +2 force damage.<br/><strong>Strong. </strong>Deals +4 force damage and the target is briefly dazed.<br/><strong>Critical. </strong>Deals +6 force damage and the target is briefly dazed. 
 
 ### Arcane Glyph
 
@@ -18,7 +18,7 @@ sidebar_position: 3
 ---|---|---|---|---
  0 | 0 | Medium (8) | Touch | ritual (minutes),  singular
 
-**Effect** <br/> Conjure a small arcane glyph that is almost invisible on a stationary object or surface you touch. On a success, choose one of the following effects:<br/><br/><strong>Explosion. </strong>Roll vs. Dodge targeting each creature close to the glyph. On a hit, each target takes +2/4/6 blast damage (ignore 1/2 AV).<br/><br/><strong>Alarm.</strong> A loud continuous sound blasts from the glyph, hearable anywhere within a very long range of it.<br/><br/><strong>Spell Effect. </strong>Choose one of your other non-ritual spells targeting one or multiple creatures in no more than short range.<strong> </strong>Immediately spend the Focus required to cast the spell. Once the glyph activates, cast the chosen spell with random targets within range.<br/><br/>Also determine a condition for when the glyph is supposed to activate, such as somebody touching it, stepping on it, or moving directly past it. The condition has to be met in close range of the glyph.<br/>Once the condition is met, the glyph erupts with the chosen effect. 
+**Effect** <br/> Conjure a small arcane glyph that is almost invisible on a stationary object or surface you touch. On a success, choose one of the following effects:<br/><br/><strong>Explosion. </strong>Roll vs. Dodge targeting each creature close to the glyph. On a hit, each target takes +2/4/6 force damage.<br/><br/><strong>Alarm.</strong> A loud continuous sound blasts from the glyph, hearable anywhere within a very long range of it.<br/><br/><strong>Spell Effect. </strong>Choose one of your other non-ritual spells targeting one or multiple creatures in no more than short range.<strong> </strong>Immediately spend the Focus required to cast the spell. Once the glyph activates, cast the chosen spell with random targets within range.<br/><br/>Also determine a condition for when the glyph is supposed to activate, such as somebody touching it, stepping on it, or moving directly past it. The condition has to be met in close range of the glyph.<br/>Once the condition is met, the glyph erupts with the chosen effect. 
 
 ### Extraplanar Pocket
 
@@ -54,15 +54,15 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The barrier has 8 Parry and Dodge, 6 AV, and 30 HP instead.<br/><strong>(Rank 3)</strong> The barrier has 10 Parry and Dodge, 8 AV, and 40 HP instead.
 
-### Arcane Missiles
+### Magic Missiles
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  1 | 2 | Medium (8) | Medium | -
 
-**Effect** <br/> Conjure one or multiple small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire one missile.<br/><strong>Strong. </strong>You fire two missiles.<br/><strong>Critical. </strong>You fire three missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignore 1/2 AV). 
+**Effect** <br/> Conjure one or multiple small projectiles of pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire one missile.<br/><strong>Strong. </strong>You fire two missiles.<br/><strong>Critical. </strong>You fire three missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 force damage. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Each missile deals +4 blast damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Each missile deals +6 blast damage (ignore 1/2 AV) instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Each missile deals +4 force damage instead.<br/><strong>(Rank 3)</strong> Each missile deals +6 force damage instead.
 
 ### Conjure Familiar
 
@@ -78,9 +78,9 @@ sidebar_position: 3
 ---|---|---|---|---
  1 | 2 | Medium (8) | Medium | -
 
-**Effect** <br/> You conjure a hail of energy-made blades hovering around you. You can send out the blades, whirling and striking at your targets.<br/><strong>Weak.</strong> Deal +2 damage up to three creatures close to each other.<br/><strong>Strong. </strong>Deal +4 damage up to three creatures close to each other.<br/><strong>Critical. </strong>Deal +6 damage up to three creatures close to each other. 
+**Effect** <br/> You conjure a hail of energy-made blades hovering around you. You can send out the blades, whirling and striking at your targets.<br/><strong>Weak.</strong> Deal +2 force damage up to three creatures close to each other.<br/><strong>Strong. </strong>Deal +4 force damage up to three creatures close to each other.<br/><strong>Critical. </strong>Deal +6 force damage up to three creatures close to each other. 
 
-> **Heightened** <br/> <strong>(Rank 2) </strong>Deal +4/8/12 damage to each target instead.<br/><strong>(Rank 3) </strong>Deal +6/12/18 damage to each target instead.
+> **Heightened** <br/> <strong>(Rank 2) </strong>Deal +4/8/12 force damage to each target instead.<br/><strong>(Rank 3) </strong>Deal +6/12/18 force damage to each target instead.
 
 ### Infuse Item
 
@@ -102,15 +102,15 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> You gain +3 AV (armor bonus) instead.<br/><strong>(Rank 3)</strong> You gain +4 AV (armor bonus) instead.<br/><strong>(Rank 4)</strong> You gain +5 AV (armor bonus) instead.<br/><strong>(Rank 5)</strong> You gain +6 AV (armor bonus) instead.
 
-### Arcane Barrage
+### Magic Missile Barrage
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 2 | 4 | Hard (10) | Medium | -
+ 3 | 6 | Very Hard (12) | Medium | -
 
-**Effect** <br/> Conjure a barrage of small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire three missile.<br/><strong>Strong. </strong>You fire four missiles.<br/><strong>Critical. </strong>You fire five missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignore 1/2 AV). 
+**Effect** <br/> Conjure a barrage of small projectiles of pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire three missiles.<br/><strong>Strong. </strong>You fire four missiles.<br/><strong>Critical. </strong>You fire five missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 force damage. 
 
-> **Heightened** <br/> (Rank 3) Each missile deals +4 blast damage (ignore 1/2 AV) instead.
+> **Heightened** <br/> <strong>(Rank 4)</strong> Each missile deals +4 force damage instead.<br/><strong>(Rank 5)</strong> Each missile deals +6 force damage instead.
 
 ### Arcane Circle
 

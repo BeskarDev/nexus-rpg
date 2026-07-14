@@ -5,7 +5,7 @@
 > **Status:** Design draft for playtest. Not yet published to `/docs/`.
 >
 > **Companion files:**
-> [Facility Catalog](facility-catalog.md) | [Missions & Agents](missions-and-agents.md) | [Domain NPCs & Staff](domain-npcs.md) | [Worked Example: Occult Organization](occult-organization-example.md)
+> [Facility Catalog](facility-catalog.md) | [Missions & Agents](missions-and-agents.md) | [Domain NPCs & Staff](domain-npcs.md) | [Economy Simulation](economy-simulation.md) | [Worked Example: Occult Organization](occult-organization-example.md)
 >
 > **References:** [Downtime Overview](../../06-scenes/04-downtime/00-overview.md) | [Downtime System Analysis](../downtime-system-analysis.md) | [Crafting Professions](../../06-scenes/05-crafting-professions.md) | [NPCs and Relationships](../../02-adventurers/05-npc-relations.md) | [Item Quality & Cost](../../04-equipment/01-items.md) | [Magic Item Cost Tables](../../04-equipment/07-magic-items/cost-tables.md)
 
@@ -223,11 +223,13 @@ The Wealth die is not the treasury. It is the scale of everything the domain own
 
 Buying progress costs less than the assets the next step represents because bought progress is seed investment that grows under management, not the assets purchased whole.
 
+The Wealth die counts **working** assets only: coin flows, stock, contracts, credit. The domain's buildings are not Wealth. They are the rank and the facility list, bought once and standing. Spending treasury coins on construction converts money into walls and never lowers the Wealth die.
+
 Three rules connect big money movements to the die:
 
-- **Windfall investment.** When a single sum enters the treasury that equals or exceeds the full remaining progress cost of Wealth's next step (a hoard, a patron's founding gift, a ransom), the party may convert it into that step immediately, bypassing the once-per-week limit on buying progress. The rank cap still applies. What the windfall cannot buy stays in the treasury.
+- **Windfall investment.** When a single sum enters the treasury that equals or exceeds the full remaining progress cost of Wealth's next step (a hoard, a patron's founding gift, a ransom), the party may convert it immediately, bypassing the once-per-week limit on buying progress. A sum large enough for several full steps may buy all of them at once. The rank cap still applies. What the windfall cannot buy stays in the treasury.
 - **Strain.** When the domain must cover a cost it cannot refuse and the treasury and party cannot or will not pay it in coins, the Wealth stat takes 1 setback instead: assets are sold and credit is burned to settle the debt. Strain is a way of paying, not an extra punishment. Effects that already price refusal (blackmail's Heat increase, unpaid upkeep's Disrepair) use their own listed consequence, never strain on top.
-- **Liquidation.** Once per downtime phase, the party may deliberately step Wealth down one die and add coins to the treasury: 100 (d6 to d4), 750 (d8 to d6), 5,000 (d10 to d8), or 25,000 (d12 to d10). A fire sale recovers half of what the step cost to build, and the proceeds are treasury coins, bound by the treasury rules below. This is how a desperate domain funds a ransom, a rebuild, or a war it cannot otherwise afford.
+- **Liquidation.** Once per downtime phase, the party may deliberately step Wealth down one die and add coins to the treasury: 100 (d6 to d4), 750 (d8 to d6), 5,000 (d10 to d8), or 25,000 (d12 to d10). A fire sale recovers half of what the step cost to build. Liquidation proceeds are **earmarked**: they pay only for domain construction, rank upgrades, repairs, wages, ransoms of the domain's own people, and debts the domain cannot refuse. They never pay for goods or services for the party's own use, and the emergency levy cannot touch them. This is how a desperate domain funds a ransom, a rebuild, or a war, and never how it equips its founders. Without the earmark, growing Wealth through activity weeks and selling the growth back would out-earn every income ceiling in §16 as personal gear.
 
 The other stats stay narrative-scaled: **Force** approximates capable people (d4 a dozen, d6 around twenty five, d8 around sixty, d10 around a hundred fifty, d12 several hundred), while Influence and Secrecy describe reach and concealment with no unit at all.
 
@@ -427,7 +429,7 @@ The exception to the shared frame: no weekly roll of its own. You personally pla
 
 ## 9. Facilities (Summary)
 
-Facilities are the menu the party builds from, the roguelike hub-camp upgrades. Each facility has a **tier** (1 to 5, requires domain rank ≥ tier), a **cost**, a **construction timer**, a **staffing requirement**, and a concrete benefit. Many facilities form **upgrade chains** (Training Yard → Drill Grounds → War College).
+Facilities are the menu the party builds from, the roguelike hub-camp upgrades. Each facility has a **tier** (1 to 5, requires domain rank ≥ tier), a **cost**, a **construction timer**, a **staffing requirement**, and a concrete benefit. Many facilities form **upgrade chains** (Training Yard → Drill Grounds → War College). Upgrading along a chain, or rebuilding into another facility of the same category, credits half the old facility's cost against the new price, keeps the slot and any add-ons, and keeps the old facility working until the new timer completes. The full rules live at the top of the catalog.
 
 | Tier | Cost | Construction Timer | Benefit Scale |
 |------|------|--------------------|---------------|
@@ -638,12 +640,15 @@ Used by the upkeep check's blunder and by activity consequences that call for it
 
 Approximate total investment for a "complete" domain at each rank (rank costs + typical facilities + stat progress purchases), against the wealth the treasure economy produces:
 
-| Stage | Party Levels | Domain State | Cumulative Sink | Reference Point |
-|-------|--------------|--------------|-----------------|-----------------|
-| Early | 1–3 | Rank 1, 3–4 Tier 1 facilities | ~1,500–2,500 | A few Q3 items |
-| Mid | 4–6 | Rank 2–3, 6–8 facilities incl. one Tier 3 | ~15,000–25,000 | One Q5 item per PC |
-| Late | 7–8 | Rank 4, 10–12 facilities incl. Tier 4 atelier | ~70,000–100,000 | One Q6 item per PC |
-| Pinnacle | 9–10 | Rank 5, full slots | ~300,000+ | Beyond personal wealth, needs patrons/hoards |
+| Stage | Party Levels | Domain State (unassisted) | Cumulative Sink | Reference Point |
+|-------|--------------|---------------------------|-----------------|-----------------|
+| Early | 3–4 | Found Rank 1, 3–4 Tier 1 facilities | ~1,500–2,500 | A few Q3 items |
+| Mid | 5–6 | Rank 2, 6–8 facilities | ~7,000–9,000 | One Q4 item per PC |
+| Late | 7–8 | Rank 3 incl. Atelier (Q5 crafting) | ~22,000–28,000 | One Q5 item per PC |
+| Pinnacle | 9–10 | Rank 4 incl. Grand Atelier (Q6), at heavy commitment | ~95,000–110,000 | One Q6 item per PC and then some |
+| Beyond | patron or legend | Rank 5 | ~300,000+ | Exceeds total campaign group wealth, by design |
+
+A Generous or Lavish patron shifts every threshold roughly two levels earlier at the price of obligations, which is the intended low-level path (and the playtest campaign's shape). The full derivation, including the assumed group liquid wealth per level from the Random Treasure tables, lives in the **[Economy Simulation](economy-simulation.md)**.
 
 The domain competes with personal magic items for the same coins, which is the intended tension. Groups choose between a stronger sword arm and a stronger home, and the domain pays back in access (Q6+ crafting the world otherwise does not sell), services, missions, and story weight rather than raw power.
 
@@ -677,6 +682,16 @@ The design contract: **coins flow from adventures into the domain, never the rev
 Sum of all ceilings at Rank 5, everything staffed and a PC working Trade Venture every week: roughly 380–420 coins/week against ~590/week running costs. **An engaged domain breaks even. An idle one costs money. Neither ever mints it.**
 
 And even that break-even money is fenced: every stream above pays into the **treasury**, which never converts to personal coins (§6). The party extracts value as crafted goods and services made at the domain, or through the priced emergency levy. There is no path from domain commerce to an adventurer's purse.
+
+**Closed arbitrage loops** (each was checked and blocked, keep them blocked):
+
+| Loop | Block |
+|------|-------|
+| Grow Wealth by activity weeks, liquidate the growth, spend it on party gear | Liquidation earmark (§6): proceeds fund domain works and debts only, never party-use goods |
+| Deposit coins into progress, liquidate back | Liquidation returns half the step's build cost: every round trip loses half |
+| Stack Trade Venture across the whole party | Market saturation: one Profitable week per domain per week |
+| Craft at the domain, sell the items | Materials plus weekly costs exceed the half-value sale price under existing crafting rules |
+| Drain the treasury into pockets | No withdrawals: extraction is goods, services, or the levy (100 × rank per phase, priced in progress and disposition) |
 
 **The adventuring benchmark.** Per the treasure distribution guidelines (magic item design), a party earns 50–500 coins in minor treasure per session plus one permanent item per arc at character-level Quality (750 to 45,000 coins in value). One adventure arc out-earns a year of the domain's best commerce, and the adventurers stake Wounds and lives for it while the merchant stakes a complication roll. That gap is deliberate and must survive every future addition to the module: **any new facility, mission, or activity that would let the domain out-earn its own running costs at scale is mispriced.**
 
@@ -801,8 +816,9 @@ The [worked example](occult-organization-example.md) sets up the playtest campai
 │  d8→d10: 4 / 2,500c d10→d12: 5 / 10,000c                 │
 │  Buying limited to once per stat per week.               │
 │  Wealth die ≈ assets: 500/2.5k/10k/50k/150k+             │
-│  Windfall ≥ next step: convert at once.                  │
-│  Liquidate 1/phase: step down for 100/750/5k/25k.        │
+│  Windfall ≥ next step(s): convert at once.               │
+│  Liquidate 1/phase: step down for 100/750/5k/25k         │
+│  (earmarked: domain works + debts only, never gear).     │
 │                                                          │
 │ MISSIONS  danger 1-5 = TN 8/10/12/14/16                  │
 │  Agent pool by Force: d4-d6: 1, d8-d10: 2, d12: 3        │
