@@ -669,7 +669,7 @@ The old concept lists formerly in this section are superseded by the per-school 
 | 6.4 | Systematic R2+ AoE half-scaling pass | ✅ Already resolved — all R2/R3 AoE spells were at guideline values before this batch; lines already shortened per §6.2 |
 | 6.5 | Re-validate **Astral Body** (R4, shared Conjuration/Telepathy) against R5 ceiling | ✅ Done for Conjuration (P5.1, 2026-07-13) and Telepathy (P5.4, 2026-07-14): stays R4, no new interactions |
 
-### Priority 7 — Low-Rank Aspect Completion + Deferred Capstones (new, opened 2026-07-13)
+### Priority 7 — Low-Rank Aspect Completion + Deferred Capstones (opened 2026-07-13) — ✅ DONE (all batches + keyword sweep published 2026-07-16)
 
 Once the R5 capstone tier is complete, the remaining gaps are at the bottom of the ladder: many trait (aspect) cells at R0–R2 are still seeds, not published spells. This priority sweeps every school's trait × rank matrix for empty R0–R2 aspect cells and designs the missing spells fresh, so each school has real coverage of its own aspects from the ground up (not just at the showy high ranks).
 
@@ -677,7 +677,7 @@ Once the R5 capstone tier is complete, the remaining gaps are at the bottom of t
 |---|---|---|
 | 7.1 | **R0–R2 aspect-seed backfill, all 14 schools** | Per school, work the trait × rank matrix: design every undesigned R0–R2 aspect cell that is an honest gap (not a deliberate empty). Includes the still-unpublished low-rank seeds surfaced during P4–P5 (e.g. War's Terror's Edge / Avenging Oath / War Banner, Peace's Steady Hands / Shield of the Meek / **Binding Oath** / Oathmark, Death's Miasma / Minor Hex, Life's Beacon of Hope / Sustaining Grace, and each school's equivalents). Designing **Binding Oath (R2)** + the Oathmark oathbreaker state unblocks the forward-reference in Sacred Covenant (R5). |
 | 7.2 | **Deferred R5 capstones** | Pick up the two R5 seeds left out of the P5 mystic batch's named scope: Peace's **Undying Devotion** (selflessness R5 payoff) and Twilight's **Everlasting Night** (moon R5, the retired name of the R2 *Darkness* spell, reseeded as enduring region-scale night). Design fresh against the R5 chassis; Everlasting Night must sit distinct from Light's Dawnbreak (its natural counter). |
-| 7.3 | **"Unprovoked movement" keyword** (owner idea, 2026-07-14) | Many effects grant movement that "does not provoke any reaction" (Primal Awakening's Carry, Ancestral Convergence's Bear me, forced-movement riders, various repositioning spells). Coin a defined keyword/area-property-style term for movement that provokes no reactions, define it once in the movement rules (`docs/05-combat/03-distances-movement.md`), then sweep all spells/talents/combat arts to reference it by name (principle 53 — reference keywords, don't re-explain). Shortens recurring wording across the corpus. |
+| 7.3 | **"Unprovoked movement" keyword** (owner idea, 2026-07-14) — ✅ **DONE (2026-07-16)** | Many effects grant movement that "does not provoke any reaction" (Primal Awakening's Carry, Ancestral Convergence's Bear me, forced-movement riders, various repositioning spells). Coined **unprovoked** as a movement keyword, defined once in `docs/05-combat/03-distances-movement.md` (new "Unprovoked Movement" subsection). Swept every published occurrence of "without provoking Opportunity Attacks" / "does not provoke any reaction" across spells (Halflight Cloak, Lightning Step, Ancestral Convergence, Primal Awakening), talents (Escape Artist, Fast Stride, Expert Slinger, Swashbuckler), Combat Arts (Dashing Strike, Death from Above), and folk traits (Goblin Quick Escape, Dogfolk Pack Loyalty) to reference the keyword inline (e.g. "spend 1 unprovoked Movement", "move close unprovoked") instead of re-explaining it, in docs and matching JSON. |
 
 Sequence after P5. 7.2 is small and can ship whenever; 7.1 is the long tail and runs as per-school passes.
 
@@ -701,7 +701,7 @@ Sequence after P5. 7.2 is small and can ship whenever; 7.1 is the long tail and 
 | 10 | War | 5 (Righteous Strike, Victor's Shout, Terror's Edge, Avenging Oath, War Banner) | — | ✏️ drafted 2026-07-15 (`.drafts/p7-low-rank-backfill/10-war-r0-r2-batch.md`) |
 | 11 | Light | 5 (Moment of Clarity, Stern Gaze, Kindle the Mark [owner's mark-sustaining idea], Mark of Judgement, Weapon of Revelation) | — | ✏️ drafted 2026-07-15 (`.drafts/p7-low-rank-backfill/11-light-r0-r2-batch.md`) |
 | 12 | Nature + Twilight | 2 + 1 (Shape Water, Deepening Venom; Thread of Fate) | 7.2 **Everlasting Night** (Twilight R5) folded in | ✏️ drafted 2026-07-15 (`.drafts/p7-low-rank-backfill/12-nature-twilight-r0-r2-batch.md`) |
-| 13 | Wrap: 7.3 keyword | — | "unprovoked movement" keyword coined + corpus sweep — do **last**, after all movement-granting spells exist | ☐ |
+| 13 | Wrap: 7.3 keyword | — | "unprovoked movement" keyword coined + corpus sweep — do **last**, after all movement-granting spells exist | ✅ published 2026-07-16 |
 
 Seed counts are the honest-gap target per school; a cell may resolve to an intentional empty (principle 3) during design rather than a spell. Fresh sessions: pick the first ☐ batch, read that school's `docs/analysis/spells/schools/<school>.md` + the seed table, design against the current chassis/principles, draft, then get owner approval before publishing.
 

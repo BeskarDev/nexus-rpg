@@ -46,6 +46,10 @@ Some areas have the property “difficult terrain” and require 2 Movement to b
 > **Playing on a grid**
 > When measuring how far a creature can move during a turn, think of 1 Movement as moving up to 10 meters or 30 feet. With the conversion of 2x2 meters or 5x5 feet per square described above, this would mean 1 Movement equals 5 squares for meters or 6 squares for feet measurements.
 
+### Unprovoked Movement
+
+Some abilities let a creature slip through danger untouched. Movement described as **unprovoked** doesn't trigger an Opportunity Attack or any other reaction, such as a Reactive Combat Art or ability, from any creature it passes.
+
 ### Moving into melee range
 
 When you are close to another creature, you can choose to move into melee range of them. Similarly, you can choose to move out of melee range. You can do one of both once on your turns without spending any Movement. Doing it multiple times on the same turn costs 1 Movement each time beyond the first.

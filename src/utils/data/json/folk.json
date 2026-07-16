@@ -265,7 +265,7 @@
       },
       {
         "name": "Quick Escape",
-        "description": "When an enemy misses you with a melee attack, you can choose to move close without provoking Opportunity Attacks. You can use this ability once between turns."
+        "description": "When an enemy misses you with a melee attack, you can choose to move close unprovoked. You can use this ability once between turns."
       },
       {
         "name": "Small Stature",
@@ -486,7 +486,7 @@
       },
       {
         "name": "Pack Loyalty",
-        "description": "When an ally within close range is hit by an attack, you can use your Quick Action to move close towards them without provoking Opportunity Attacks. You can use this ability once between turns."
+        "description": "When an ally within close range is hit by an attack, you can use your Quick Action to move close towards them unprovoked. You can use this ability once between turns."
       },
       {
         "name": "Bite",

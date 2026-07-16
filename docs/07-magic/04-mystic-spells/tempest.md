@@ -206,7 +206,7 @@ sidebar_position: 6
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | quick
 
-**Effect** <br/> In a sudden flash of lightning you move at the speed of sound to another place. Cast this spell on your turn.<br/>Choose any point within range you can see, where you would be able to move to by walking, climbing, swimming, or jumping.<br/>On a success, you instantly move to the chosen location (this isn’t teleportation) without provoking Opportunity Attacks. When you arrive, you produce a loud booming sound, dealing +2 blast damage (ignore 1/2 AV) to all creatures in close range of you. Your Movement for the rest of the turn becomes 0. 
+**Effect** <br/> In a sudden flash of lightning you move at the speed of sound to another place. Cast this spell on your turn.<br/>Choose any point within range you can see, where you would be able to move to by walking, climbing, swimming, or jumping.<br/>On a success, you instantly move to the chosen location unprovoked (this isn’t teleportation). When you arrive, you produce a loud booming sound, dealing +2 blast damage (ignore 1/2 AV) to all creatures in close range of you. Your Movement for the rest of the turn becomes 0. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Increase the spell’s range to long and deal +4 blast damage (ignore 1/2 AV) instead.
 

@@ -241,7 +241,7 @@ A cunning and resourceful race of small build, with a knack for trickery and dec
 
 **Night Vision.** You can see one range category further from sources of bright and dim light.
 
-**Quick Escape.** When an enemy misses you with a melee attack, you can choose to move close without provoking Opportunity Attacks. You can use this ability once between turns.
+**Quick Escape.** When an enemy misses you with a melee attack, you can choose to move close unprovoked. You can use this ability once between turns.
 
 **Small Stature.** You are of small size. This grants you the following effects:
 

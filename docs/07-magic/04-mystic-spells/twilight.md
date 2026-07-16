@@ -76,7 +76,7 @@ sidebar_position: 2
 ---|---|---|---|---
  1 | 2 | Medium (8) | Self | quick
 
-**Effect** <br/> You draw the halflight around you like a cloak, and for a heartbeat you are more shadow than flesh. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If you are in dim light or darkness, you can immediately move a close distance without provoking Opportunity Attacks after the attack resolves, melting into the nearest shadow.
+**Effect** <br/> You draw the halflight around you like a cloak, and for a heartbeat you are more shadow than flesh. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If you are in dim light or darkness, you can immediately move a close distance unprovoked after the attack resolves, melting into the nearest shadow.
 
 ### Haunting Shadows
 

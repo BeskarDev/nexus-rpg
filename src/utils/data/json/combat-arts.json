@@ -177,13 +177,13 @@
         "name": "Dashing Strike",
         "category": "Supreme",
         "weapons": "Axe, Blade, Brawling, Mace",
-        "effect": "You can\u2019t use this Combat Art while wearing heavy armor.<br/>Choose any point within short range you can move to. You can target up to three creatures along a line up to that point for this attack.<br/>You move at supernatural speed from your current position to your chosen point (this Movement doesn\u2018t provoke Opportunity Attacks), making an attack against each target along the way. Roll your attack once against all targets. On a hit, subtract your weapon damage once from the total damage you deal against each target."
+        "effect": "You can\u2019t use this Combat Art while wearing heavy armor.<br/>Choose any point within short range you can move to. You can target up to three creatures along a line up to that point for this attack.<br/>You move at supernatural speed from your current position to your chosen point unprovoked, making an attack against each target along the way. Roll your attack once against all targets. On a hit, subtract your weapon damage once from the total damage you deal against each target."
     },
     {
         "name": "Death from Above",
         "category": "Supreme",
         "weapons": "Polearm",
-        "effect": "You leap into the air with your polearm ready to strike toward your enemy. Choose the location of a creature within short range that you can see. You leap to that point (this doesn't provoke Opportunity Attacks), landing with tremendous force. The attack is considered to be from close range. On a hit, add your weapon damage an additional time to the total damage and the target is knocked prone if it isn\u2019t of larger Size than you. After the attack, you can step to a location close to your target without provoking Opportunity Attacks."
+        "effect": "You leap into the air with your polearm ready to strike toward your enemy. Choose the location of a creature within short range that you can see. You leap to that point unprovoked, landing with tremendous force. The attack is considered to be from close range. On a hit, add your weapon damage an additional time to the total damage and the target is knocked prone if it isn\u2019t of larger Size than you. After the attack, you can step to a location close to your target unprovoked."
     },
     {
         "name": "Devastating Piercer",

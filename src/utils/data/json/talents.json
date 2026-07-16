@@ -62,7 +62,7 @@
     {
         "name": "Expert Slinger",
         "skill requirement": "Archery",
-        "description": "(<strong>Rank 1)</strong> When you have to make a Supply check for a bundle of thrown weapons, roll twice and take the higher result.<br/><br/><strong>(Rank 2)</strong> When you hit with a thrown weapon at close or short range, add your Archery to the damage (ability bonus).<br/><br/><strong>(Rank 3)</strong> After attacking with a thrown weapon on your turn, you can choose to immediately spend 1 Movement without provoking Opportunity Attacks. You can use this ability once between your turns."
+        "description": "(<strong>Rank 1)</strong> When you have to make a Supply check for a bundle of thrown weapons, roll twice and take the higher result.<br/><br/><strong>(Rank 2)</strong> When you hit with a thrown weapon at close or short range, add your Archery to the damage (ability bonus).<br/><br/><strong>(Rank 3)</strong> After attacking with a thrown weapon on your turn, you can choose to immediately spend 1 unprovoked Movement. You can use this ability once between your turns."
     },
     {
         "name": "Rapid Shot",
@@ -97,7 +97,7 @@
     {
         "name": "Escape Artist",
         "skill requirement": "Athletics",
-        "description": "You can\u2019t use any of these abilities while wearing heavy armor.<br/><br/><strong>(Rank 1)</strong> When you would be grappled, knocked prone, or pushed, you can use your Quick Action to roll Agility + Athletics vs. the source\u2019s Parry. On a success, you ignore  the effect.<br/><br/><strong>(Rank 2) </strong>Whenever you can roll Athletics with an Action to end the effect that grapples or restrains you, you can use your Quick Action to automatically choose to succeed on the roll.<br/><br/><strong>(Rank 3) </strong>Your Movement doesn\u2019t provoke Opportunity Attacks."
+        "description": "You can\u2019t use any of these abilities while wearing heavy armor.<br/><br/><strong>(Rank 1)</strong> When you would be grappled, knocked prone, or pushed, you can use your Quick Action to roll Agility + Athletics vs. the source\u2019s Parry. On a success, you ignore  the effect.<br/><br/><strong>(Rank 2) </strong>Whenever you can roll Athletics with an Action to end the effect that grapples or restrains you, you can use your Quick Action to automatically choose to succeed on the roll.<br/><br/><strong>(Rank 3) </strong>Your Movement is unprovoked."
     },
     {
         "name": "Evasion",
@@ -107,7 +107,7 @@
     {
         "name": "Fast Stride",
         "skill requirement": "Athletics",
-        "description": "You can\u2019t use any of these abilities while wearing heavy armor.<br/><br/><strong>(Rank 1) </strong>You can also use the Dash Action using a Quick Action on your turn.<br/><br/><strong>(Rank 2)</strong> During your turns, you get +1 Movement.<br/><br/><strong>(Rank 3) </strong>After a successful attack, you can choose to immediately move a close or short distance without provoking Opportunity Attacks."
+        "description": "You can\u2019t use any of these abilities while wearing heavy armor.<br/><br/><strong>(Rank 1) </strong>You can also use the Dash Action using a Quick Action on your turn.<br/><br/><strong>(Rank 2)</strong> During your turns, you get +1 Movement.<br/><br/><strong>(Rank 3) </strong>After a successful attack, you can choose to immediately move a close or short distance unprovoked."
     },
     {
         "name": "Grappler",
@@ -567,7 +567,7 @@
     {
         "name": "Swashbuckler",
         "skill requirement": "Streetwise",
-        "description": "<strong>(Rank 1)</strong> Gain +2 HP. When you hit an enemy with a light melee weapon, this turn that enemy can\u2019t use Quick Actions or other abilities outside of their own turn against you.<br/><br/><strong>(Rank 2) </strong>Gain +2 HP. If you hit a creature with a light melee weapon, you gain +1 boon on the next attack with a light melee weapon against them during the same turn.<br/><br/><strong>(Rank 3)</strong> Gain +2 HP. After you attack a creature with a light melee weapon, you can choose to immediately spend 1 Movement without provoking Opportunity Attacks. You can use this ability once between your turns."
+        "description": "<strong>(Rank 1)</strong> Gain +2 HP. When you hit an enemy with a light melee weapon, this turn that enemy can\u2019t use Quick Actions or other abilities outside of their own turn against you.<br/><br/><strong>(Rank 2) </strong>Gain +2 HP. If you hit a creature with a light melee weapon, you gain +1 boon on the next attack with a light melee weapon against them during the same turn.<br/><br/><strong>(Rank 3)</strong> Gain +2 HP. After you attack a creature with a light melee weapon, you can choose to immediately spend 1 unprovoked Movement. You can use this ability once between your turns."
     },
     {
         "name": "Thug Tactics",
