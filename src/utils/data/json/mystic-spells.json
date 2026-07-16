@@ -778,7 +778,7 @@
 		"range": "Short",
 		"properties": "blast (cone)",
 		"effect": "You conjure a wave of healing energy, restoring the endurance of all allies within it.<br/><strong>Weak.</strong> Restore +3 HP to each ally.<br/><strong>Strong.</strong> Restore +6 HP to each ally.<br/><strong>Critical. </strong>Restore +9 HP to each ally.",
-		"heightened": "<strong>(Rank 3)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 4)</strong> Restore +7/14/21 HP instead.<br/><strong>(Rank 5)</strong> Restore +9/18/27 HP instead."
+		"heightened": "<strong>(Rank 3)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 4)</strong> Restore +5/10/15 HP instead.<br/><strong>(Rank 5)</strong> Restore +6/12/18 HP instead."
 	},
 	{
 		"name": "Abundance of Life",
@@ -1559,7 +1559,7 @@
 		"range": "Short",
 		"properties": "blast (cone)",
 		"effect": "You send shockwaves through the earth, causing the ground to tremble violently. Target all creatures in the spell’s area.<br/><strong>Weak. </strong>Deal +2 damage to each target.<br/><strong>Strong. </strong>Deal +4 damage to each target and they are briefly staggered.<br/><strong>Critical. </strong>Deal +6 damage to each target and they are briefly staggered.",
-		"heightened": "<strong>(Rank 2)</strong> Choose one:<br/>- Deal +4/+8/+12 damage to each target instead.<br/>- Increase the spell‘s range to medium.<br/><strong>(Rank 3) </strong>Choose one:<br/>- Deal +6/+12/+18 damage to each target instead.<br/>- Increase the spell‘s range to long."
+		"heightened": "<strong>(Rank 2)</strong> Choose one:<br/>- Deal +3/+6/+9 damage to each target instead.<br/>- Increase the spell‘s range to medium.<br/><strong>(Rank 3) </strong>Choose one:<br/>- Deal +4/+8/+12 damage to each target instead.<br/>- Increase the spell‘s range to long."
 	},
 	{
 		"name": "Electrified Weapon",
@@ -1712,8 +1712,8 @@
 		"target": "Hard (10)",
 		"range": "Medium",
 		"properties": "concentrate",
-		"effect": "You summon a dark cloud brewing with electricity. On a success, the cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud use your roll’s result vs. their Dodge.<br/><strong>Weak.</strong> Deal +4 lightning damage against each target.<br/><strong>Strong. </strong>Deal +8 lightning damage against each target.<br/><strong>Critical. </strong>Deal +12 lightning damage against each target.<br/>On each of your following turns, you can use your Action to target another one creature with this spell and repeat the roll vs. Dodge. Before or after the roll, you can choose to move the cloud a short distance within range.<br/>The cloud lasts for a short duration.",
-		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 lightning damage to each target instead.<br/>- Target up to five creatures below the cloud instead."
+		"effect": "You summon a dark cloud brewing with electricity. On a success, the cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud use your roll’s result vs. their Dodge.<br/><strong>Weak.</strong> Deal +3 lightning damage against each target.<br/><strong>Strong. </strong>Deal +6 lightning damage against each target.<br/><strong>Critical. </strong>Deal +9 lightning damage against each target.<br/>On each of your following turns, you can use your Action to target another one creature with this spell and repeat the roll vs. Dodge. Before or after the roll, you can choose to move the cloud a short distance within range.<br/>The cloud lasts for a short duration.",
+		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 lightning damage to each target instead.<br/>- Target up to five creatures below the cloud instead."
 	},
 	{
 		"name": "Thunder Clap",
@@ -1723,8 +1723,8 @@
 		"target": "vs. Resist",
 		"range": "Short",
 		"properties": "-",
-		"effect": "You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/><strong>Weak. </strong>Deal +4 blast (ignore 1/2 AV) damage to each target.<br/><strong>Strong. </strong>Deal +8 blast (ignore 1/2 AV) damage to each target and they are knocked prone and briefly deafened.<br/><strong>Critical. </strong>Deal +12 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened.",
-		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell‘s range to medium."
+		"effect": "You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/><strong>Weak. </strong>Deal +2 blast (ignore 1/2 AV) damage to each target.<br/><strong>Strong. </strong>Deal +4 blast (ignore 1/2 AV) damage to each target and they are knocked prone and briefly deafened.<br/><strong>Critical. </strong>Deal +6 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened.",
+		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +3/+6/+9 blast damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell‘s range to medium."
 	},
 	{
 		"name": "Torrent",

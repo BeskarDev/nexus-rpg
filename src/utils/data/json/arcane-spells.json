@@ -96,7 +96,7 @@
     "range": "Close",
     "properties": "blast (cone)",
     "effect": "Holding your open hand out, a wide burst of fire erupts from it.<br/><strong>Weak.</strong><em> </em>Deals +2 fire damage to all targets. <br/><strong>Strong.</strong> Deals +4 fire damage to all targets.<br/><strong>Critical.</strong> Deals +6 fire damage to all targets and each of them suffers burning (2) for a short duration.",
-    "heightened": "<strong>(Rank 2) </strong>Deal +4/8/12 damage against each target instead.<br/><strong>(Rank 3) </strong>Deal +6/12/18 damage against each target instead."
+    "heightened": "<strong>(Rank 2) </strong>Deal +3/6/9 damage against each target instead.<br/><strong>(Rank 3) </strong>Deal +4/8/12 damage against each target instead."
   },
   {
     "name": "Flaming Weapon",
@@ -140,7 +140,7 @@
     "range": "Medium",
     "properties": "-",
     "effect": "Arcs of lightning spring forth from your fingertips, jumping from creature to creature.<br/><strong>Weak.</strong> Deal +2 lightning damage up to three creatures close to each other.<br/><strong>Strong. </strong>Deal +4 lightning damage up to three creatures close to each other.<br/><strong>Critical. </strong>Deal +6 lightning damage up to three creatures close to each other.",
-    "heightened": "<strong>(Rank 2)</strong> Deal +4/8/12 damage to each target instead.<br/><strong>(Rank 3)</strong> Deal +6/12/18 damage to each target instead."
+    "heightened": "<strong>(Rank 2)</strong> Deal +3/6/9 damage to each target instead.<br/><strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead."
   },
   {
     "name": "Lightning Weapon",
@@ -282,8 +282,8 @@
     "target": "vs. Dodge",
     "range": "Short",
     "properties": "blast (line)",
-    "effect": "You wrench the air in front of you into a compressed blade of wind and drive it forward in a line, dragging everything it catches toward its end.<br/><strong>Weak.</strong> Deal +3 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target and push each of them a close distance toward the far end of the line.<br/><strong>Critical.</strong> Deal +9 blast damage (ignore 1/2 AV) to each target and push each of them a short distance toward the far end of the line.",
-    "heightened": "<strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead."
+    "effect": "You wrench the air in front of you into a compressed blade of wind and drive it forward in a line, dragging everything it catches toward its end.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) to each target and push each of them a close distance toward the far end of the line.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target and push each of them a short distance toward the far end of the line.",
+    "heightened": "<strong>(Rank 3)</strong> Deal +3/6/9 damage to each target instead."
   },
   {
     "name": "Acid Rain",
@@ -723,7 +723,7 @@
     "range": "Medium",
     "properties": "-",
     "effect": "You conjure a hail of energy-made blades hovering around you. You can send out the blades, whirling and striking at your targets.<br/><strong>Weak.</strong> Deal +2 force damage up to three creatures close to each other.<br/><strong>Strong. </strong>Deal +4 force damage up to three creatures close to each other.<br/><strong>Critical. </strong>Deal +6 force damage up to three creatures close to each other.",
-    "heightened": "<strong>(Rank 2) </strong>Deal +4/8/12 force damage to each target instead.<br/><strong>(Rank 3) </strong>Deal +6/12/18 force damage to each target instead."
+    "heightened": "<strong>(Rank 2) </strong>Deal +3/6/9 force damage to each target instead.<br/><strong>(Rank 3) </strong>Deal +4/8/12 force damage to each target instead."
   },
   {
     "name": "Infuse Item",
@@ -1273,7 +1273,7 @@
     "range": "Close",
     "properties": "-",
     "effect": "You spread your arms out from you, sending a shockwave of kinetic energy in all directions.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against all creatures and objects in range.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against all creatures and objects in range and push them close away from you.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against all creatures and objects in range, push them close away from you, and they fall prone.",
-    "heightened": "<strong>(Rank 2)</strong> Deal +4/+8/+12 blast damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +6/+12/+18 blast damage (ignore 1/2 AV) instead, and on a strong or critical success targets are pushed a short distance away from you."
+    "heightened": "<strong>(Rank 2)</strong> Deal +2/+4/+6 blast damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +3/+6/+9 blast damage (ignore 1/2 AV) instead, and on a strong or critical success targets are pushed a short distance away from you."
   },
   {
     "name": "Telekinetic Crush",
@@ -1547,8 +1547,8 @@
     "target": "Hard (10)",
     "range": "Medium",
     "properties": "-",
-    "effect": "You cause a corpse to violently explode in a burst of necrotic energy and bone fragments.<br/>Target any mostly intact corpse of at least small Size in range. On a success, the corpse explodes, target all creatures in close range of it. For a corpse with at least large Size, target all creatures in short range instead. Use your roll’s result vs. their Dodge.<br/><strong>Weak. </strong>Deal +4 damage against each target.<br/><strong>Strong.</strong> Deal +8 damage against each target and they are knocked prone.<br/><strong>Critical.</strong> Deal +12 damage against each target and they are knocked prone.<br/>The explosion destroys the corpse completely, making it unusable for any necromantic spells or effects.",
-    "heightened": "<strong>(Rank 3)</strong> The explosion deals +5/+10/+15 damage to all targets instead."
+    "effect": "You cause a corpse to violently explode in a burst of necrotic energy and bone fragments.<br/>Target any mostly intact corpse of at least small Size in range. On a success, the corpse explodes, target all creatures in close range of it. For a corpse with at least large Size, target all creatures in short range instead. Use your roll’s result vs. their Dodge.<br/><strong>Weak. </strong>Deal +3 damage against each target.<br/><strong>Strong.</strong> Deal +6 damage against each target and they are knocked prone.<br/><strong>Critical.</strong> Deal +9 damage against each target and they are knocked prone.<br/>The explosion destroys the corpse completely, making it unusable for any necromantic spells or effects.",
+    "heightened": "<strong>(Rank 3)</strong> The explosion deals +4/+8/+12 damage to all targets instead."
   },
   {
     "name": "Death Mark",
@@ -2185,7 +2185,7 @@
     "target": "vs. Dodge",
     "range": "Long",
     "properties": "blast (cone)",
-    "effect": "You sweep your arm and hurl a wall of pure kinetic force that flattens everything before you.<br/>Target each creature in the cone.<br/><strong>Weak.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +12 blast damage (ignore 1/2 AV) to each target.<br/><strong>Critical.</strong> Deal +18 blast damage (ignore 1/2 AV) to each target.<br/>Each creature hit is pushed a medium distance away from you and falls prone. Mundane structures, cover, and unattended objects in the cone are shattered and blown apart. A conjured barrier or construct of force in the cone takes 40 damage (ignore AV).",
+    "effect": "You sweep your arm and hurl a wall of pure kinetic force that flattens everything before you.<br/>Target each creature in the cone.<br/><strong>Weak.</strong> Deal +5 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +10 blast damage (ignore 1/2 AV) to each target.<br/><strong>Critical.</strong> Deal +15 blast damage (ignore 1/2 AV) to each target.<br/>Each creature hit is pushed a medium distance away from you and falls prone. Mundane structures, cover, and unattended objects in the cone are shattered and blown apart. A conjured barrier or construct of force in the cone takes 40 damage (ignore AV).",
     "heightened": ""
   }
 ]

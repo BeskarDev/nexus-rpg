@@ -705,7 +705,7 @@ Sequence after P5. 7.2 is small and can ship whenever; 7.1 is the long tail and 
 
 Seed counts are the honest-gap target per school; a cell may resolve to an intentional empty (principle 3) during design rather than a spell. Fresh sessions: pick the first ☐ batch, read that school's `docs/analysis/spells/schools/<school>.md` + the seed table, design against the current chassis/principles, draft, then get owner approval before publishing.
 
-### Priority 8 — Blast / ignore-½-AV damage re-pricing audit (opened 2026-07-14, P7.1 Batch 1)
+### Priority 8 — Blast / ignore-½-AV damage re-pricing audit (opened 2026-07-14, P7.1 Batch 1) — ✅ DONE (2026-07-16)
 
 **Origin:** owner suspicion during Evocation Batch 1 that blast (and other ignore-½-AV) damage spells are undertaxed — they get full-column damage *and* the armor bypass. Confirmed by simulation.
 
@@ -720,12 +720,16 @@ Seed counts are the honest-gap target per school; a cell may resolve to an inten
 
 The over-value is **negligible at R0–R1** (why Gust at full column is fine) and **significant at R3+** (a free +3 to +5 vs. light, far more vs. heavy, on top of full-column damage). Principle 57 already prescribes the fix (blast/ignore-½ prices one step below plain) — it was just never applied to pure-blast damage spells.
 
-**Proposed rule (pending owner sign-off):**
-1. R0–R1 blast: keep full column (bypass ≈ +1, legacy generosity).
-2. R2+ **damage-primary** blast spells: price one step below plain (the rank's multi column), per principle 57.
-3. Blast spells where damage is **secondary to control** (push/cluster/knockdown primary, e.g. Gale Force): keep the low number as-is; it already pays for the bypass.
+**Rule, corrected after owner review (2026-07-16) — a full step down to the multi column was too harsh a nerf** (it would make blast strictly worse than plain damage against light armor, not just a smaller edge). The standing rule instead mirrors the existing Rock Throw / Telekinetic Crush precedent (principle 57's own worked examples), which discounts by a flat **1/2/3 off weak/strong/critical (−1×SL)**, not a full column step:
 
-**Scope:** corpus-wide pass over every published R2+ spell dealing blast damage (Tempest, Telekinetics, Evocation, Conjuration, and any others), re-pricing the damage-primary ones. Enumerate the affected spells, propose per-spell new values, one owner-approved batch. **Does not touch** P7.1 Batch 1 spells (all R0–R1 or control-primary). Sequence: independent of P7.1; run whenever, but a natural companion to the Evocation/Tempest/Telekinetics low-rank batches.
+1. R0–R1 blast: keep full column (bypass ≈ +1, legacy generosity). No change.
+2. R2+ **single-target damage-primary** blast spells: price at **single column − 1×SL** (weak −1, strong −2, critical −3). Matches Rock Throw/Water Jet/Telekinetic Crush's existing values exactly at every rank — no new numbers, just applying the established discount everywhere it's missing.
+3. R2+ **multi-target/AoE damage-primary** blast spells: price at **multi column − 1×SL**, which algebraically equals **the previous rank's multi-target column** (multi(R) − SL = multi(R−1)) — reuses an existing table value, and the relative cut shrinks at higher rank (33% at R2 down to 17% at R5), so it doesn't get harsher going up. New sub-finding (2026-07-16): several AoE blast spells (e.g. Tempest's Thunder Clap) currently sit *above* the plain multi column entirely (a distinct bug from the original single-target finding — see Priority 10), so this rule fixes both problems at once for those spells.
+4. Blast spells where damage is **secondary to control** (push/cluster/knockdown primary, e.g. Gale Force) or a **conditional/cold-cast-dead extender bonus** (e.g. Thunderfall's and Grinding Weight's prone/staggered bonus branch, which mirrors the accepted Stoke the Blaze precedent of paying full price for a setup-gated payoff): leave as-is.
+
+**Audit findings (2026-07-16):** full corpus enumeration (every `ignore 1/2 AV` occurrence across Evocation, Conjuration, Telekinetics, Nature, Tempest — the only files using it) against rule 2 found the single-target side already compliant everywhere except the flagged extender pattern in rule 4 (owner call, currently left alone as precedent-consistent). The multi-target side (rule 3) has not yet been fully swept — Thunder Clap (Tempest R2, currently +4/+8/+12, should be +2/+4/+6) is the confirmed first hit; a full AoE-specific pass is Priority 10.
+
+**Scope:** the single-target side of this audit is done (no changes needed). The multi-target side is folded into Priority 10's broader multi-target consistency sweep, since the same underlying issue (multi-target values not consistently applied) shows up beyond just blast-tagged spells — ✅ **DONE (2026-07-16)**, see Priority 10 below (Gale Force, Annihilating Wave, Shockwave, Thunder Clap were this rule's share of that fix).
 
 ### Priority 9 — Pre-scientific naming sweep (opened 2026-07-15, P7.1 Batch 4)
 
@@ -739,6 +743,32 @@ The over-value is **negligible at R0–R1** (why Gust at full column is fine) an
 3. Apply approved renames across all three surfaces (docs, app JSON, Notion) plus every cross-reference (other spells' text, talents, analysis files, draft batches).
 
 **Sequence:** after P7.1 batches land (avoids renaming targets mid-review). Independent of P8.
+
+### Priority 10 — Multi-target damage value consistency sweep (opened 2026-07-16, found during P8) — ✅ DONE (2026-07-16)
+
+**Origin:** while auditing Thunder Clap (Tempest R2) for the P8 blast-pricing rule, found it sits at +4/+8/+12 — above the plain R2 multi-target column (+3/+6/+9), not on it. This means the "newish" multi-target damage table (rank-scaling.md's Multi-Target column, formalized during earlier priorities) was never consistently back-applied to every published AoE spell — some still carry older, ad-hoc values from before the table existed.
+
+**Audit:** full read of all 14 schools' spell files against the canonical multi-target column (and the multi-target healing column for Life). 10 fix candidates confirmed, plus 3 owner rulings on scope (Shockwave and Storm Cloud both count as genuine multi-target despite their "Close"-range/capped-target-count framing; Arcane Glyph's "Explosion" option is an intentional exception — a delayed-trigger ritual trap warrants sitting above the at-will column, no fix needed).
+
+**Fixes applied (docs + JSON, both verified word-for-word matched, JSON validated):**
+
+| Spell | School | Fix |
+|---|---|---|
+| Flame Burst | Evocation | Heighten R2 +4/8/12→+3/6/9; R3 +6/12/18→+4/8/12 |
+| Lightning Arc | Evocation | Same cascade bug, same fix as Flame Burst |
+| Hale of Blades | Conjuration | Same cascade bug, same fix |
+| Gale Force | Evocation | Base R2 +3/6/9→+2/4/6 (ignore 1/2 AV); Heighten R3 +4/8/12→+3/6/9 — Priority 8 blast discount, never applied |
+| Corpse Explosion | Necromancy | Base R2 +4/8/12→+3/6/9; Heighten R3 +5/10/15→+4/8/12 |
+| Annihilating Wave | Telekinetics | R5 +6/12/18→+5/10/15 (ignore 1/2 AV) — Priority 8 blast discount |
+| Shockwave | Telekinetics | Heighten R2 +4/8/12→+2/4/6; R3 +6/12/18→+3/6/9 — owner ruled it counts as multi despite "Close" self-centered range, so it gets the full blast discount (previous rank's multi column) |
+| Healing Burst | Life | Heighten R4 +7/14/21→+5/10/15 HP; R5 +9/18/27→+6/12/18 HP — same cascade bug on the healing chassis |
+| Earthen Tremor | Tempest | Heighten R2 +4/8/12→+3/6/9; R3 +6/12/18→+4/8/12 (plain damage, no blast wording) |
+| Thunder Clap | Tempest | Base R2 +4/8/12→+2/4/6; Heighten R3 +6/12/18→+3/6/9 — blast/ignore-½-AV, gets both the plain-column fix and the Priority 8 discount, compounding |
+| Storm Cloud | Tempest | Base R2 +4/8/12→+3/6/9; Heighten R3 +6/12/18→+4/8/12 — owner ruled the 3-target cap still counts as multi |
+
+**Not fixed (confirmed compliant or intentional exception):** the bulk of the corpus (see the two audit sub-agent reports) was already at or below its column, or correctly deviation-justified (melee-AoE ceiling, control-primary, blast-discount already applied). Arcane Glyph's Explosion option stays above the R0 column by owner ruling (delayed-trigger trap, deliberately more potent than an at-will cantrip). A secondary pattern (Mesh of Vines, Thorn Barrage, Terrors of the Dark, Nightmare Realm sitting exactly at their column while also carrying a real condition rider) was flagged but not touched — none are technically over the column, just a possible future tightening candidate, not pursued now.
+
+**Sequence:** run after Priority 8's remaining multi-target items are folded in (no need to fix Thunder Clap twice). Independent of P9.
 
 ### Sequencing Note
 

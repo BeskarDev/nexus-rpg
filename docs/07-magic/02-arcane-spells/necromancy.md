@@ -156,9 +156,9 @@ sidebar_position: 6
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | -
 
-**Effect** <br/> You cause a corpse to violently explode in a burst of necrotic energy and bone fragments.<br/>Target any mostly intact corpse of at least small Size in range. On a success, the corpse explodes, target all creatures in close range of it. For a corpse with at least large Size, target all creatures in short range instead. Use your roll’s result vs. their Dodge.<br/><strong>Weak. </strong>Deal +4 damage against each target.<br/><strong>Strong.</strong> Deal +8 damage against each target and they are knocked prone.<br/><strong>Critical.</strong> Deal +12 damage against each target and they are knocked prone.<br/>The explosion destroys the corpse completely, making it unusable for any necromantic spells or effects. 
+**Effect** <br/> You cause a corpse to violently explode in a burst of necrotic energy and bone fragments.<br/>Target any mostly intact corpse of at least small Size in range. On a success, the corpse explodes, target all creatures in close range of it. For a corpse with at least large Size, target all creatures in short range instead. Use your roll’s result vs. their Dodge.<br/><strong>Weak. </strong>Deal +3 damage against each target.<br/><strong>Strong.</strong> Deal +6 damage against each target and they are knocked prone.<br/><strong>Critical.</strong> Deal +9 damage against each target and they are knocked prone.<br/>The explosion destroys the corpse completely, making it unusable for any necromantic spells or effects. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> The explosion deals +5/+10/+15 damage to all targets instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> The explosion deals +4/+8/+12 damage to all targets instead.
 
 ### Death Mark
 

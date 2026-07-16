@@ -198,7 +198,7 @@ sidebar_position: 3
 
 **Effect** <br/> You conjure a wave of healing energy, restoring the endurance of all allies within it.<br/><strong>Weak.</strong> Restore +3 HP to each ally.<br/><strong>Strong.</strong> Restore +6 HP to each ally.<br/><strong>Critical. </strong>Restore +9 HP to each ally. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 4)</strong> Restore +7/14/21 HP instead.<br/><strong>(Rank 5)</strong> Restore +9/18/27 HP instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 4)</strong> Restore +5/10/15 HP instead.<br/><strong>(Rank 5)</strong> Restore +6/12/18 HP instead.
 
 ### Abundance of Life
 

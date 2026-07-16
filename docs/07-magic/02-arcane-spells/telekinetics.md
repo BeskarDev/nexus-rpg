@@ -80,7 +80,7 @@ sidebar_position: 5
 
 **Effect** <br/> You spread your arms out from you, sending a shockwave of kinetic energy in all directions.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against all creatures and objects in range.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against all creatures and objects in range and push them close away from you.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against all creatures and objects in range, push them close away from you, and they fall prone. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 blast damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +6/+12/+18 blast damage (ignore 1/2 AV) instead, and on a strong or critical success targets are pushed a short distance away from you.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +2/+4/+6 blast damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +3/+6/+9 blast damage (ignore 1/2 AV) instead, and on a strong or critical success targets are pushed a short distance away from you.
 
 ### Telekinetic Crush
 
@@ -234,4 +234,4 @@ sidebar_position: 5
 ---|---|---|---|---
  5 | 10 | vs. Dodge | Long | blast (cone)
 
-**Effect** <br/> You sweep your arm and hurl a wall of pure kinetic force that flattens everything before you.<br/>Target each creature in the cone.<br/><strong>Weak.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +12 blast damage (ignore 1/2 AV) to each target.<br/><strong>Critical.</strong> Deal +18 blast damage (ignore 1/2 AV) to each target.<br/>Each creature hit is pushed a medium distance away from you and falls prone. Mundane structures, cover, and unattended objects in the cone are shattered and blown apart. A conjured barrier or construct of force in the cone takes 40 damage (ignore AV).
+**Effect** <br/> You sweep your arm and hurl a wall of pure kinetic force that flattens everything before you.<br/>Target each creature in the cone.<br/><strong>Weak.</strong> Deal +5 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +10 blast damage (ignore 1/2 AV) to each target.<br/><strong>Critical.</strong> Deal +15 blast damage (ignore 1/2 AV) to each target.<br/>Each creature hit is pushed a medium distance away from you and falls prone. Mundane structures, cover, and unattended objects in the cone are shattered and blown apart. A conjured barrier or construct of force in the cone takes 40 damage (ignore AV).

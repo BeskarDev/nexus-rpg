@@ -88,7 +88,7 @@ sidebar_position: 6
 
 **Effect** <br/> You send shockwaves through the earth, causing the ground to tremble violently. Target all creatures in the spell’s area.<br/><strong>Weak. </strong>Deal +2 damage to each target.<br/><strong>Strong. </strong>Deal +4 damage to each target and they are briefly staggered.<br/><strong>Critical. </strong>Deal +6 damage to each target and they are briefly staggered. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +4/+8/+12 damage to each target instead.<br/>- Increase the spell‘s range to medium.<br/><strong>(Rank 3) </strong>Choose one:<br/>- Deal +6/+12/+18 damage to each target instead.<br/>- Increase the spell‘s range to long.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +3/+6/+9 damage to each target instead.<br/>- Increase the spell‘s range to medium.<br/><strong>(Rank 3) </strong>Choose one:<br/>- Deal +4/+8/+12 damage to each target instead.<br/>- Increase the spell‘s range to long.
 
 ### Electrified Weapon
 
@@ -236,9 +236,9 @@ sidebar_position: 6
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> You summon a dark cloud brewing with electricity. On a success, the cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud use your roll’s result vs. their Dodge.<br/><strong>Weak.</strong> Deal +4 lightning damage against each target.<br/><strong>Strong. </strong>Deal +8 lightning damage against each target.<br/><strong>Critical. </strong>Deal +12 lightning damage against each target.<br/>On each of your following turns, you can use your Action to target another one creature with this spell and repeat the roll vs. Dodge. Before or after the roll, you can choose to move the cloud a short distance within range.<br/>The cloud lasts for a short duration. 
+**Effect** <br/> You summon a dark cloud brewing with electricity. On a success, the cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud use your roll’s result vs. their Dodge.<br/><strong>Weak.</strong> Deal +3 lightning damage against each target.<br/><strong>Strong. </strong>Deal +6 lightning damage against each target.<br/><strong>Critical. </strong>Deal +9 lightning damage against each target.<br/>On each of your following turns, you can use your Action to target another one creature with this spell and repeat the roll vs. Dodge. Before or after the roll, you can choose to move the cloud a short distance within range.<br/>The cloud lasts for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 lightning damage to each target instead.<br/>- Target up to five creatures below the cloud instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 lightning damage to each target instead.<br/>- Target up to five creatures below the cloud instead.
 
 ### Thunder Clap
 
@@ -246,9 +246,9 @@ sidebar_position: 6
 ---|---|---|---|---
  2 | 4 | vs. Resist | Short | -
 
-**Effect** <br/> You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/><strong>Weak. </strong>Deal +4 blast (ignore 1/2 AV) damage to each target.<br/><strong>Strong. </strong>Deal +8 blast (ignore 1/2 AV) damage to each target and they are knocked prone and briefly deafened.<br/><strong>Critical. </strong>Deal +12 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
+**Effect** <br/> You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/><strong>Weak. </strong>Deal +2 blast (ignore 1/2 AV) damage to each target.<br/><strong>Strong. </strong>Deal +4 blast (ignore 1/2 AV) damage to each target and they are knocked prone and briefly deafened.<br/><strong>Critical. </strong>Deal +6 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell‘s range to medium.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +3/+6/+9 blast damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell‘s range to medium.
 
 ### Torrent
 

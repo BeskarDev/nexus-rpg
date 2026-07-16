@@ -104,7 +104,7 @@ sidebar_position: 3
 
 **Effect** <br/> You conjure a hail of energy-made blades hovering around you. You can send out the blades, whirling and striking at your targets.<br/><strong>Weak.</strong> Deal +2 force damage up to three creatures close to each other.<br/><strong>Strong. </strong>Deal +4 force damage up to three creatures close to each other.<br/><strong>Critical. </strong>Deal +6 force damage up to three creatures close to each other. 
 
-> **Heightened** <br/> <strong>(Rank 2) </strong>Deal +4/8/12 force damage to each target instead.<br/><strong>(Rank 3) </strong>Deal +6/12/18 force damage to each target instead.
+> **Heightened** <br/> <strong>(Rank 2) </strong>Deal +3/6/9 force damage to each target instead.<br/><strong>(Rank 3) </strong>Deal +4/8/12 force damage to each target instead.
 
 ### Infuse Item
 

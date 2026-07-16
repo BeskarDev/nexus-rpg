@@ -78,7 +78,7 @@ sidebar_position: 1
 
 **Effect** <br/> Holding your open hand out, a wide burst of fire erupts from it.<br/><strong>Weak.</strong><em> </em>Deals +2 fire damage to all targets. <br/><strong>Strong.</strong> Deals +4 fire damage to all targets.<br/><strong>Critical.</strong> Deals +6 fire damage to all targets and each of them suffers burning (2) for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 2) </strong>Deal +4/8/12 damage against each target instead.<br/><strong>(Rank 3) </strong>Deal +6/12/18 damage against each target instead.
+> **Heightened** <br/> <strong>(Rank 2) </strong>Deal +3/6/9 damage against each target instead.<br/><strong>(Rank 3) </strong>Deal +4/8/12 damage against each target instead.
 
 ### Flaming Weapon
 
@@ -118,7 +118,7 @@ sidebar_position: 1
 
 **Effect** <br/> Arcs of lightning spring forth from your fingertips, jumping from creature to creature.<br/><strong>Weak.</strong> Deal +2 lightning damage up to three creatures close to each other.<br/><strong>Strong. </strong>Deal +4 lightning damage up to three creatures close to each other.<br/><strong>Critical. </strong>Deal +6 lightning damage up to three creatures close to each other. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/8/12 damage to each target instead.<br/><strong>(Rank 3)</strong> Deal +6/12/18 damage to each target instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +3/6/9 damage to each target instead.<br/><strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead.
 
 ### Lightning Weapon
 
@@ -234,9 +234,9 @@ sidebar_position: 1
 ---|---|---|---|---
  2 | 4 | vs. Dodge | Short | blast (line)
 
-**Effect** <br/> You wrench the air in front of you into a compressed blade of wind and drive it forward in a line, dragging everything it catches toward its end.<br/><strong>Weak.</strong> Deal +3 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target and push each of them a close distance toward the far end of the line.<br/><strong>Critical.</strong> Deal +9 blast damage (ignore 1/2 AV) to each target and push each of them a short distance toward the far end of the line.
+**Effect** <br/> You wrench the air in front of you into a compressed blade of wind and drive it forward in a line, dragging everything it catches toward its end.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) to each target and push each of them a close distance toward the far end of the line.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target and push each of them a short distance toward the far end of the line.
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +3/6/9 damage to each target instead.
 
 ### Stoke the Blaze
 
