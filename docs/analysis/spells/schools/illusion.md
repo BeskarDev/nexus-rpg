@@ -40,9 +40,9 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 
 | Rank | Count | Spells |
 |------|-------|--------|
-| 0 | 3 | Horrific Vision, Maddening Whispers, Minor Illusion |
+| 0 | 5 | Horrific Vision, Maddening Whispers, Minor Illusion, Sensory Trick, Phantom Feint |
 | 1 | 5 | Color Spray, Disguise Form, False Enemy, Illusory Trap, Mirror Image |
-| 2 | 7 | Hallucinated Swarm, Illusionary Terrain, Invisibility, Major Illusion, Misdirection, Trap Room, Waking Dream |
+| 2 | 10 | Hallucinated Swarm, Illusionary Terrain, Invisibility, Major Illusion, Misdirection, Trap Room, Waking Dream, Phantasmal Armor, Knife Behind the Mask, Warped Perspective |
 | 3 | 3 | Mislead, Phantasmal Killer, Seeming (incomplete) |
 | 4 | 0 | — |
 | 5 | 2 | Maze of Madness, Mirage Arcane |
@@ -52,10 +52,10 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
 | trickery | Minor Illusion | Illusory Trap, False Enemy | Illusionary Terrain, Trap Room | Programmed Illusion†, Web of Lies† | — | Mirage Arcane† |
-| misdirection | Phantom Feint† | Mirror Image, Illusory Dodge† | Misdirection, Invisibility, Knife Behind the Mask† | Mislead, Veil of Deception† | — | — |
-| obfuscation | Maddening Whispers | Color Spray, Disguise Form | Waking Dream, Phantasmal Armor† | Seeming | — | — |
+| misdirection | Phantom Feint | Mirror Image, Illusory Dodge† | Misdirection, Invisibility, Knife Behind the Mask | Mislead, Veil of Deception† | — | — |
+| obfuscation | Maddening Whispers | Color Spray, Disguise Form | Waking Dream, Phantasmal Armor | Seeming | — | — |
 | hallucinations | Horrific Vision | — | Hallucinated Swarm, Major Illusion, Shattered Veil† | Phantasmal Killer | Phantasmal Catastrophe† | Maze of Madness† |
-| distortion | Sensory Trick† | — | Warped Perspective† | Shattered Perspective† | — | — |
+| distortion | Sensory Trick | — | Warped Perspective | Shattered Perspective† | — | — |
 
 *†Proposed new spell (undesigned seed)*
 

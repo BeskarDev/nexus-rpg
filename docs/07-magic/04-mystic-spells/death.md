@@ -44,6 +44,40 @@ sidebar_position: 4
 
 **Effect** <br/> You help a dying creature in range to cling onto life.<br/><strong>Weak.</strong> +1 to the dice result of the dying creature.<br/><strong>Strong.</strong> +2 to the dice result of the dying creature.<br/><strong>Critical.</strong> You stop the creature from dying, but they remain unconscious. 
 
+### Miasma
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Close | -
+
+**Effect** <br/> You exhale a breath of grave-damp air, carrying the sickness of the world below.<br/><strong>Weak.</strong> Deal +0 necrotic damage.<br/><strong>Strong.</strong> Deal +2 necrotic damage.<br/><strong>Critical.</strong> Deal +4 necrotic damage.<br/>On any success, the target is briefly poisoned.
+
+### Minor Hex
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Medium | curse
+
+**Effect** <br/> You mutter a petty malediction and flick your hand toward the target, hanging a small doom over them like a gnat.<br/>On a success, the target is hexed for a short duration. The next roll they make while hexed suffers +1 bane, and then the hex ends.
+
+### Commune with Ancestors
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | ritual (minutes)
+
+**Effect** <br/> You pour a small libation, speak the names of your honored dead, and sink into a trance at the threshold of the world below.<br/>Describe to the ancestors one problem, question, or undertaking that weighs on you.<br/><strong>Weak.</strong> The spirits give one answer.<br/><strong>Strong.</strong> The spirits give one answer, and you may ask one follow-up question about the same matter, answered the same way.<br/><strong>Critical.</strong> The spirits give one answer, and you may ask two follow-up questions about the same matter.<br/>For each answer, the GM chooses the entry from the catalog below that fits the matter best. The ancestors speak briefly and only of what the dead may know or dimly foresee.<br/>- <strong>Warning.</strong> One danger connected to the matter, named concretely enough to act on.<br/>- <strong>Name.</strong> One person, place, or thing that matters to it, and a hint of how it matters.<br/>- <strong>Memory.</strong> One thing the dead themselves saw or knew in life that touches the matter.<br/>- <strong>Path.</strong> One next step the spirits favor, with no promise it will succeed.<br/>- <strong>Omen.</strong> A symbolic sign that points at the truth sideways, when nothing concrete fits.<br/>You can only cast this spell once per day.
+
+### Festering Wound
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Medium | -
+
+**Effect** <br/> You call the patience of the grave into torn flesh, and what is open begins to rot.<br/><strong>Weak.</strong> Deal +2 necrotic damage.<br/><strong>Strong.</strong> Deal +4 necrotic damage.<br/><strong>Critical.</strong> Deal +6 necrotic damage.<br/>If the target is bleeding or suffers at least one Wound, deal +4/+8/+12 necrotic damage instead and they are briefly poisoned.
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +3/+6/+9 necrotic damage, or +6/+12/+18 necrotic damage against a bleeding or Wounded target instead.<br/><strong>(Rank 3)</strong> Deal +4/+8/+12 necrotic damage, or +8/+16/+24 necrotic damage against a bleeding or Wounded target instead.<br/><strong>(Rank 4)</strong> Deal +5/+10/+15 necrotic damage, or +10/+20/+30 necrotic damage against a bleeding or Wounded target instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 necrotic damage, or +12/+24/+36 necrotic damage against a bleeding or Wounded target instead.
+
 ### Blood Shards
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -107,6 +141,16 @@ sidebar_position: 4
  1 | 2 | vs. Dodge | Medium | -
 
 **Effect** <br/> You shoot a icy blue beam from the tip of your finger, rigidifying the target.<br/><strong>Weak.</strong> You deal +3 frost damage. <br/><strong>Strong.</strong> You deal +6 frost damage and the target is briefly slowed.<br/><strong>Critical.</strong> You deal +9 frost damage and the target is briefly dazed and slowed. 
+
+### Guardian Shade
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Short | singular
+
+**Effect** <br/> You speak an elder's name over an ally, and a dim shade rises to stand at their shoulder, patient as the grave, catching what was meant for the living.<br/>On a success, one ally in range is warded by the spirit for a short duration and gains 10 temporary HP.<br/>While the ward lasts, any enemy that hits the warded ally with a melee attack feels the shade's cold grasp and takes 4 necrotic damage (ignore AV).
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The ally gains 15 temporary HP, the shade's grasp deals 6 necrotic damage (ignore AV), and the ward lasts for a medium duration instead.
 
 ### Circle of Death
 

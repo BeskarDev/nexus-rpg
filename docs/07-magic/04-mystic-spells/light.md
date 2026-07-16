@@ -36,6 +36,22 @@ sidebar_position: 1
 
 **Effect** <br/> You let loose a quick burst of radiant energy in all directions, revealing any magical falsehoods, such as illusions, shapeshifters, or invisible creatures in range. For illusions, compare your result vs. the Resist of the illusion’s creator to see if they are broken.<br/><strong>Weak.</strong> Any magical falsehood is marked by a shimmer of light. Rolls that target any marked target gain +1 boon. The mark lasts for a short duration.<br/><strong>Strong.</strong> Any magical falsehood is immediately broken.<br/><strong>Critical.</strong> Any magical falsehood is immediately broken and any creature revealed by this is briefly dazed. 
 
+### Moment of Clarity
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Touch | quick
+
+**Effect** <br/> You press two fingers to a companion's brow and a clean light passes behind their eyes. Cast this spell on your turn.<br/>Choose one condition afflicting the touched ally among charmed, confused, frightened, or dazed.<br/>On a success, if the effect causing that condition allows a roll to end it early, the target may immediately make that roll.
+
+### Stern Gaze
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Medium | -
+
+**Effect** <br/> Your eyes catch the light of the sun's justice, and the weight of being seen lands on the target.<br/><strong>Weak.</strong> Deal +0 radiant damage.<br/><strong>Strong.</strong> Deal +2 radiant damage.<br/><strong>Critical.</strong> Deal +4 radiant damage.<br/>If the target is blinded, burning, or was stripped of an illusion, disguise, or invisibility by one of your *Light* spells this scene, deal +2/+4/+6 radiant damage instead and they are briefly dazed under the weight of judgement.
+
 ### Blessing of Light
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -69,6 +85,16 @@ sidebar_position: 1
  1 | 2 | Medium (8) | Medium | quick
 
 **Effect** <br/> Light flares behind a creature’s eyes and burns the intruding will away. Cast this spell as a Quick Action in reaction to a creature within range being afflicted by a mind-affecting spell or effect, or being hit by psychic damage.<br/>On a success, choose one:<br/>- End the confused and charmed conditions on the target.<br/>- The target gains resistance to psychic damage briefly before the incoming hit.
+
+### Kindle the Mark
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect** <br/> You pour light into the sign already hanging over the target, and it flares from an ember into a beacon.<br/>Target one creature suffering the marked condition.<br/><strong>Weak.</strong> Deal +2 radiant damage.<br/><strong>Strong.</strong> Deal +4 radiant damage.<br/><strong>Critical.</strong> Deal +6 radiant damage.<br/>On any success, this spell does not end the target's marked condition, and the mark's value increases by 2.
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 radiant damage instead.<br/><strong>(Rank 3)</strong> Deal +6/+12/+18 radiant damage instead.<br/><strong>(Rank 4)</strong> Deal +8/+16/+24 radiant damage instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 radiant damage instead.
 
 ### Protect from Influence
 
@@ -119,6 +145,26 @@ sidebar_position: 1
  1 | 2 | vs. Resist | Short | quick
 
 **Effect** <br/> You focus on a creatures thoughts, gaining insight into their defenses. Cast this spell on your turn.<br/>On a success, increase the SL of your next attack until the end of your next turn by one step (max. critical success). 
+
+### Mark of Judgement
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | singular
+
+**Effect** <br/> You call a shaft of merciless noon down upon the target, and it refuses to let them go.<br/>Target one creature you can see, or one hidden or invisible creature whose presence you are aware of.<br/>On a success, a searing brand of light clings to them for a short duration. While branded, they cannot be or become hidden or invisible, any magical disguise or false form on them is suppressed, and attacks against them gain +1 boon.<br/>If the target was hidden, invisible, or under a magical disguise or false form at any point this scene, the light also burns with the weight of their deceit and they are briefly dazed.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the brand early.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The brand lasts for a medium duration instead.
+
+### Lamp of Truth
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Medium (8) | Self | -
+
+**Effect** <br/> You kindle a small oil lamp of pale daylight that hangs in the air at your shoulder, burning without oil or wick, and its light refuses every lie of shadow.<br/>On a success, the lamp appears beside you and follows you for a medium duration. It sheds bright light in close range and dim light in short range of it. Within its bright light, no creature can be hidden or invisible.<br/>You can use your Quick Action to send the lamp to hover at a point within medium range of you, or to call it back to your side.<br/>The lamp counts as a light source. When an event would test or extinguish your light source, such as the Light Fades delve event, the lamp gutters out and this spell ends instead of you making a Supply check.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The lamp sheds bright light in short range and dim light in medium range of it instead.
 
 ### Sense Spirits
 

@@ -57,8 +57,8 @@ Necromancy runs a **partly private economy** — the framework's identity except
 | decay | Enfeebling Grasp | Grasp of Decay, Ray of Lethargy | Shroud of Blight | Wither, Curse of Mortality, ✨ Rot the Living | Necrotic Plague | Entropy |
 | undeath | Necromantic Sight | Animate Corpse, Control Undead | Animate Horde | Spectral Army, Negative Energy Flood | Death's Embrace | — (Spectral Army Heighten), Eternal Servitude |
 | siphoning | Drain Life, Soul Drain | Death Bolt | Bone Shatter, Corpse Explosion | Reaper's Harvest, ✨ Siphoning Chain | Soul Cage | Soul Harvest |
-| defilement | Life Echo | Necrotic Shield, Death Ward | Inflict Curse, Death Mark, ✨ Harvest the Mark | Soul Prison | Finger of Death | Desecration |
-| puppetry | ✨ Ghostly Hand | Bone Armor | Soul Veil | ✨ Marionette | Possess Corpse | Eternal Servitude |
+| defilement | Life Echo | Necrotic Shield, Death Ward | Inflict Curse, Death Mark, Harvest the Mark | Soul Prison | Finger of Death | Desecration |
+| puppetry | Ghostly Hand | Bone Armor | Soul Veil | ✨ Marionette | Possess Corpse | Eternal Servitude |
 
 ✨ = proposed new spell (undesigned seed)
 
@@ -104,13 +104,13 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 1. **Decay chain**: Enfeebling Grasp (R0) → Grasp of Decay / Ray of Lethargy (R1) → Shroud of Blight (R2) → Wither / Curse of Mortality / ✨ Rot the Living (R3) → Necrotic Plague (R4) → Entropy (R5, published)
 2. **Undeath chain**: Necromantic Sight (R0) → Animate Corpse / Control Undead (R1) → Animate Horde (R2) → Spectral Army / Negative Energy Flood (R3) → Death's Embrace (R4) → Spectral Army Heighten / Eternal Servitude (R5, published)
 3. **Siphoning chain**: Drain Life / Soul Drain (R0) → Death Bolt (R1) → Bone Shatter / Corpse Explosion (R2) → Reaper's Harvest / ✨ Siphoning Chain (R3) → Soul Cage (R4) → Soul Harvest (R5, published)
-4. **Defilement chain**: Life Echo (R0) → Necrotic Shield / Death Ward (R1) → Inflict Curse / Death Mark / ✨ Harvest the Mark (R2) → Soul Prison (R3) → Finger of Death (R4) → Desecration (R5, published)
-5. **Puppetry chain**: ✨ Ghostly Hand (R0) → Bone Armor (R1) → Soul Veil (R2) → ✨ Marionette (R3) → Possess Corpse (R4) → Eternal Servitude (R5, published)
+4. **Defilement chain**: Life Echo (R0) → Necrotic Shield / Death Ward (R1) → Inflict Curse / Death Mark / Harvest the Mark (R2) → Soul Prison (R3) → Finger of Death (R4) → Desecration (R5, published)
+5. **Puppetry chain**: Ghostly Hand (R0) → Bone Armor (R1) → Soul Veil (R2) → ✨ Marionette (R3) → Possess Corpse (R4) → Eternal Servitude (R5, published)
 
 ### Setup + Payoff Combos
 (✨ = undesigned seed)
-- ✅ **Slay → Corpse Explosion**: defeat enemy → detonate corpse for AoE — the model published loop; ✨ Ghostly Hand (R0) adds the logistics rung (drag the corpse into position)
-- ✅ **Death Mark → amplified follow-up**: mark grants +1 boon and rider damage to everyone → ✨ Harvest the Mark (R2) adds the school's own collect, and Soul Cage (R4, published) escalates the mark line as the school's private duel engine
+- ✅ **Slay → Corpse Explosion**: defeat enemy → detonate corpse for AoE — the model published loop; Ghostly Hand (R0) adds the logistics rung (drag the corpse into position)
+- ✅ **Death Mark → amplified follow-up**: mark grants +1 boon and rider damage to everyone → Harvest the Mark (R2) adds the school's own collect, and Soul Cage (R4, published) escalates the mark line as the school's private duel engine
 - ✅ **Kill → servant**: Finger of Death's killing blow raises the corpse — published convert
 - ✅ **Drain → Shield**: life siphoning fuels Necrotic Shield — published convert
 - ✨ **Drain → shared currency**: ✨ Rot the Living (R3) turns drained targets *bleeding* for the martials, ✨ Siphoning Chain (R3) spreads the drain — the corpse-free hedge, all seeds
@@ -122,7 +122,7 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 
 > **Review Note — RESOLVED (2026-07-10, P3 batch)**: Death Ward stays as-is by owner-approved verdict. Its identity (ally-targetable, post-hit damage halving paid in Fatigue) is mitigation, not evasion — the same school-flavored exemption granted to Tempest's Storm Shield. It fills the R1 reactive slot without the standard chassis.
 - [x] Defensive options: Bone Armor (R1), Necrotic Shield (R1), Death Ward (R1) — strong triple coverage
-- [x] Utility: Necromantic Sight (R0), Life Echo (R0), Soul Veil (R2), Possess Corpse (R4, published); ✨ Ghostly Hand extends the corpse-utility line at R0
+- [x] Utility: Necromantic Sight (R0), Life Echo (R0), Soul Veil (R2), Possess Corpse (R4, published); Ghostly Hand extends the corpse-utility line at R0
 - [x] Damage across ranks: R0–R4 published (Death Bolt, Corpse Explosion, Reaper's Harvest, Finger of Death, Necrotic Plague); R5 published (Entropy, Soul Harvest, 2026-07-13)
 - [x] Repeating conditions: stunned, paralyzed, bleeding, life drain — widest condition variety
 - [x] Setup+payoff: slay→corpse, mark→amplify, drain→shield published; the corpse-free hedge now has its R4 anchors (Soul Cage, Necrotic Plague, published 2026-07-13) — the R2–R3 rungs (Harvest the Mark, Rot the Living, Siphoning Chain) remain seeds

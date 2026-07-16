@@ -35,15 +35,15 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 
 **Synergy gaps**: overwhelming setup, near-zero **in-school payoff** — the discipline can arrange the battlefield perfectly and then has little of its own to spend it on (its crush damage is modest). Extenders beyond re-casting are also thin. The seed table below carries these design targets: *Grinding Weight* (R2) and *Kinetic Implosion* (R3) as priced payoffs against *prone/held* targets, *Meteoric Throw* (R3) converting the signature hold into a finisher, and *Relentless Grip* (R2) as the missing prolong-extender.
 
-## Current Spell Inventory (19 published spells)
+## Current Spell Inventory (21 published spells)
 
 *Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
 | Rank | Count | Spells |
 |------|-------|--------|
-| 0 | 3 | Kinetic Pull, Kinetic Push, Weak Telekinesis |
-| 1 | 7 | Feather Fall, Gravity Orb, Grease, Reflective Barrier, Shockwave, Telekinetic Crush, Telekinetic Volley |
-| 2 | 5 | Haste, Knock, Levitation, Stasis, Strong Telekinesis |
+| 0 | 4 | Alter Weight, Kinetic Pull, Kinetic Push, Weak Telekinesis |
+| 1 | 8 | Feather Fall, Gravity Orb, Grease, Kinetic Deflection, Reflective Barrier, Shockwave, Telekinetic Crush, Telekinetic Volley |
+| 2 | 7 | Grinding Weight, Haste, Knock, Levitation, Relentless Grip, Stasis, Strong Telekinesis |
 | 3 | 3 | Distortion Field, Orbiting Shards, Part Stone |
 | 4 | 1 | Reverse Gravity (published R5 Heighten) |
 | 5 | 1 | Annihilating Wave |
@@ -53,16 +53,16 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
 | move | Weak Telekinesis | Telekinetic Volley | Strong Telekinesis | Orbiting Shards, Meteoric Throw† | Telekinetic Storm† | — (Strong Telekinesis Heighten) |
-| repel | Kinetic Push | Shockwave, Kinetic Deflection† | — (Shockwave Heighten) | Distortion Field | Repulsion Field† | Annihilating Wave† |
+| repel | Kinetic Push | Shockwave, Kinetic Deflection | — (Shockwave Heighten) | Distortion Field | Repulsion Field† | Annihilating Wave† |
 | levitate | Weak Telekinesis | Feather Fall | Levitation | Aerial Grasp† | Telekinetic Flight† | — |
-| crush | — | Telekinetic Crush | Grinding Weight†, Relentless Grip† | Kinetic Implosion† | — | Annihilating Wave† |
-| gravity | Gravity Shift† | Gravity Orb | Stasis | — (Gravity Orb Heighten) | Reverse Gravity | Reverse Gravity (Heighten) |
+| crush | — | Telekinetic Crush | Grinding Weight, Relentless Grip | Kinetic Implosion† | — | Annihilating Wave† |
+| gravity | Alter Weight | Gravity Orb | Stasis | — (Gravity Orb Heighten) | Reverse Gravity | Reverse Gravity (Heighten) |
 
 *† = proposed seed (undesigned). Ranks follow the current published file: Orbiting Shards and Distortion Field are complete at R3, and Reverse Gravity is complete at R4 with a published R5 Heighten. Knock, Grease, Haste, and Part Stone sit outside the trait rows as utility.*
 
 **Coverage**: 27/30 trait×rank slots hold a published spell, a seed, or a proposed Heighten extension (see below). Honest gaps: crush R0, crush R4, levitate R5 — an honest empty cell beats a filler seed. Only published spells count as real coverage; proposed entries are undesigned seeds (principle 19).
 
-**Critical gaps**: the missing R1 Quick Action reactive (Kinetic Deflection†) and the missing in-school payoff (Grinding Weight†, Kinetic Implosion†, Meteoric Throw†) are seeded. Published coverage above R2 remains thin (R3: 3, R4: 1, R5: 0), so the R3+ seeds and Heighten extensions are the production priority.
+**Critical gaps**: the missing R1 Quick Action reactive (Kinetic Deflection) and the missing in-school payoff (Grinding Weight, Kinetic Implosion†, Meteoric Throw†) are seeded. Published coverage above R2 remains thin (R3: 3, R4: 1, R5: 0), so the R3+ seeds and Heighten extensions are the production priority.
 
 ## Proposed Spell Changes (Heighten Extensions)
 
@@ -80,7 +80,7 @@ These are **conceptual placeholders only** — thematic seeds naming the gap eac
 
 | Concept | Rank | Role | Seed |
 |---|---|---|---|
-| Gravity Shift | 0 | Control / setup | Cantrip that briefly makes one creature's gravity heavier or lighter (gravity trait). Heavier: their next roll to resist forced movement or being knocked *prone* suffers +1 bane (feeds every push and slam in the school). Lighter: they count as one Size smaller for the school's lift and throw effects (feeds Strong Telekinesis and Meteoric Throw). Pure setup, no damage. |
+| Alter Weight | 0 | Control / setup | Cantrip that briefly makes one creature's gravity heavier or lighter (gravity trait). Heavier: their next roll to resist forced movement or being knocked *prone* suffers +1 bane (feeds every push and slam in the school). Lighter: they count as one Size smaller for the school's lift and throw effects (feeds Strong Telekinesis and Meteoric Throw). Pure setup, no damage. |
 | Kinetic Deflection | 1 | Defense / standalone | The standardized R1 Quick Action reactive (+2 to Dodge or Parry against the triggering attack, no SL scaling). School secondary (repel trait): if the triggering attack was a thrown weapon or projectile and it misses, you redirect it at another creature in short range with a modest flat damage rider. |
 | Grinding Weight | 2 | Offense / payoff | Concentrated crushing pressure on one creature (crush and gravity traits): modest damage cold, but heavy bonus damage against a target that is *prone*, *restrained*, or *grappled*. The school's missing in-school payoff — spends the *prone/held* states its own pushes, Stasis, and Gravity Orb emit. Cold-cast deficit is the design center. |
 | Relentless Grip | 2 | Control / extender | Kinetic hold that tightens instead of striking (crush trait): a target currently *grappled* or *restrained* by any effect has that state prolonged and suffers +1 bane on rolls to escape it. The missing prolong-extender — converts the pushed → prone → restrained escalation into a lasting pin for allies to exploit. Does nothing to a free target. |
@@ -107,25 +107,25 @@ No shared spells are recommended for this discipline.
 ### Spell Progression Chains
 (✨ = undesigned seed; Heighten extensions cover several upper slots — see Proposed Spell Changes)
 1. **Move chain**: Weak Telekinesis (R0) → Telekinetic Volley (R1) → Strong Telekinesis (R2) → Orbiting Shards / ✨ Meteoric Throw (R3) → ✨ Telekinetic Storm (R4) → Strong Telekinesis Heighten (R5)
-2. **Repel chain**: Kinetic Push (R0) → Shockwave / ✨ Kinetic Deflection (R1) → Shockwave Heighten (R2) → Distortion Field (R3) → ✨ Repulsion Field (R4) → ✨ Annihilating Wave (R5)
+2. **Repel chain**: Kinetic Push (R0) → Shockwave / Kinetic Deflection (R1) → Shockwave Heighten (R2) → Distortion Field (R3) → ✨ Repulsion Field (R4) → ✨ Annihilating Wave (R5)
 3. **Levitate chain**: Weak Telekinesis (R0) → Feather Fall (R1) → Levitation (R2) → ✨ Aerial Grasp (R3) → ✨ Telekinetic Flight (R4) → honest gap (R5)
-4. **Crush chain**: honest gap (R0) → Telekinetic Crush (R1) → ✨ Grinding Weight / ✨ Relentless Grip (R2) → ✨ Kinetic Implosion (R3) → honest gap (R4) → ✨ Annihilating Wave (R5)
-5. **Gravity chain**: ✨ Gravity Shift (R0) → Gravity Orb (R1) → Stasis (R2) → Gravity Orb Heighten (R3) → Reverse Gravity (R4) → Reverse Gravity Heighten (R5)
+4. **Crush chain**: honest gap (R0) → Telekinetic Crush (R1) → Grinding Weight / Relentless Grip (R2) → ✨ Kinetic Implosion (R3) → honest gap (R4) → ✨ Annihilating Wave (R5)
+5. **Gravity chain**: ✨ Alter Weight (R0) → Gravity Orb (R1) → Stasis (R2) → Gravity Orb Heighten (R3) → Reverse Gravity (R4) → Reverse Gravity Heighten (R5)
 
 ### Setup + Payoff Combos
 (✨ = undesigned seed)
 - ✅ **Push into hazard → damage**: cantrip pushes and pulls into fires, ledges, and Distortion Field's zone — the core published loop, damage comes from where the target ends up
 - ✅ **Prone / held → martial exploit**: Shockwave and Stasis feed the party's damage-dealers; the premier battery-school interlock
-- ✨ **Held → in-school payoff**: Stasis / Gravity Orb / ✨ Aerial Grasp hold the target → ✨ Grinding Weight crushes the pinned body, ✨ Meteoric Throw hurls it — the missing in-school spend, currently seeds only
+- ✨ **Held → in-school payoff**: Stasis / Gravity Orb / ✨ Aerial Grasp hold the target → Grinding Weight crushes the pinned body, ✨ Meteoric Throw hurls it — the missing in-school spend, currently seeds only
 - ✨ **Cluster → AoE**: Gravity Orb drags the pack together → ✨ Kinetic Implosion or ✨ Telekinetic Storm punishes the knot (today the payoff must come from Evocation or the martials)
-- ✨ **Escalation extender**: pushed → *prone* → *restrained*, prolonged by ✨ Relentless Grip while allies line up
+- ✨ **Escalation extender**: pushed → *prone* → *restrained*, prolonged by Relentless Grip while allies line up
 - ✨ **Levitate → drop**: ✨ Aerial Grasp suspends → release converts height into falling damage; Reverse Gravity is the published area version
 
 ### Design Completeness Checklist
-- [ ] R1 Quick Action: ✨ Kinetic Deflection seeded — standardized reactive defense (+2 Dodge/Parry, projectile redirect secondary), not yet designed
+- [ ] R1 Quick Action: Kinetic Deflection seeded — standardized reactive defense (+2 Dodge/Parry, projectile redirect secondary), not yet designed
 - [x] Defensive options: Reflective Barrier (R1), Feather Fall (R1), Distortion Field (R3) published; ✨ Repulsion Field (R4) seeded
 - [x] Utility: Weak/Strong Telekinesis, Grease, Knock, Levitation, Part Stone published — the school's Excels role is well covered; ✨ Telekinetic Flight extends it to R4
-- [ ] Damage across ranks: thin above R1 by design (setup school), but the in-school payoffs (✨ Grinding Weight R2, ✨ Kinetic Implosion R3, ✨ Meteoric Throw R3, ✨ Annihilating Wave R5) are all seeds — top production priority
+- [ ] Damage across ranks: thin above R1 by design (setup school), but the in-school payoffs (Grinding Weight R2, ✨ Kinetic Implosion R3, ✨ Meteoric Throw R3, ✨ Annihilating Wave R5) are all seeds — top production priority
 - [x] Repeating conditions: prone, restrained, pushed/pulled — consistent forced-movement identity across published spells and seeds
 - [ ] Setup+payoff: published setups are rich; in-school payoff loop exists only as seeds (see combos above)
 - [x] **3 spells per rank minimum (published)**: R0: 3, R1: 7, R2: 5, R3: 3 — met through R3; R4: 1, R5: 0 need the seeded buildout

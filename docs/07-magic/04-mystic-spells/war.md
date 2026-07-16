@@ -28,6 +28,22 @@ sidebar_position: 8
 
 **Effect** <br/> Conjure a spectral blade that cuts at an enemy.<br/><strong>Weak.</strong> Deal +2 damage.<br/><strong>Strong.</strong> Deal +4 damage and the target suffers bleeding (2) until healed.<br/><strong>Critical.</strong> Deal +6 damage and the target suffers bleeding (4) until healed. 
 
+### Righteous Strike
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Special | Self | strike
+
+**Effect** <br/> You name the wrong done and your weapon grows heavy with your god's answer.<br/>Target only a creature that has dealt damage to you or one of your allies since the end of your last turn.<br/>On a hit, judgement weighs on the target and they briefly suffer +1 bane on their next attack roll.
+
+### Victor's Shout
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Self | quick
+
+**Effect** <br/> Cast this spell when an enemy within your sight is slain. You throw your weapon arm high and give the kill a voice.<br/>On a success, each ally in short range of you may immediately end the frightened condition on themselves, and may immediately move a close distance for free.
+
 ### Curse of War
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -79,6 +95,32 @@ sidebar_position: 8
  1 | 2 | Medium (8) | Medium | concentrate
 
 **Effect** <br/> To use this spell, you must first sacrifice a physical weapon along spiritual ingredients worth 100 coins in a ritual taking one exploration turn.<br/><br/>On a success, you summon an animated, spiritual version of one of the weapons you sacrificed for this spell levitating above the ground within range and obeying your command. The weapon can immediately make an attack against a target in range. Use your roll’s result for this attack. On each of your following turns, you can move the spiritual weapon a short distance within range and repeat the roll to make an attack with it. 
+
+### Terror's Edge
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Special | Self | strike
+
+**Effect** <br/> Your weapon drinks the target's dread, and the edge arrives exactly where a shaking guard fails.<br/>On a hit against a frightened target, terror seizes them and they treat their next Fear Check as if they had rolled a 1.<br/>On a strong or critical hit against a frightened target, their terror also deepens: if they are briefly frightened, they are frightened for a short duration instead.
+
+### Avenging Oath
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | singular
+
+**Effect** <br/> You point your weapon at the guilty and swear retribution before your ancestors, and a burning sigil of the broken shield settles over them.<br/>Target one creature that has dealt damage to one of your allies this scene.<br/>On a success, the sigil clings to them for a short duration, visible to all. Weapon attacks against them gain +1 boon.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the oath early.
+
+### War Banner
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Medium (8) | Self | -
+
+**Effect** <br/> You drive one weapon you are holding into the ground and call your ancestors to stand where it stands.<br/>On a success, the planted weapon becomes a war banner for a short duration. It is an object with 8 Parry, 8 Dodge, 6 AV, and 20 HP. Allies in close range of the banner cannot gain the frightened condition. When an ally in close range of the banner would be moved against their will or knocked prone, they can plant their feet and ignore it. Each ally can do this once per turn. Allies' weapon attacks against enemies in close range of the banner gain +1 boon.<br/>The banner stands where planted and cannot be moved. If it is destroyed or you take it up again, the spell ends.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The banner stands for a medium duration instead.
 
 ### Ancestral Warriors
 

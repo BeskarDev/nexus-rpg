@@ -28,6 +28,22 @@ sidebar_position: 3
 
 **Effect** <br/> You form a condensed mass of positive energy, blasting the enemy and healing nearby allies.<br/><strong>Weak.</strong> Deal +2 radiant damage.<br/><strong>Strong.</strong> Deal +4 radiant damage and restore 2 HP to allies in melee range of the target.<br/><strong>Critical.</strong> Deal +6 radiant damage and restore 4 HP to allies in melee range of the target. 
 
+### Kindred Bond
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Touch | -
+
+**Effect** <br/> You press your palm to a companion's heart and a warm thread of life joins theirs to yours.<br/>On a success, the bond holds for a medium duration. While the bonded ally is within long range of you, you can target them with your *Life* spells even when you cannot see them. Each spell's normal range still applies. You can also cast healing spells on the bonded ally at one range increment further than normal, such as close instead of touch. When you use this extended reach, the target only regains half of the HP they would normally regain (rounded up). You can only be bonded to one creature at a time.
+
+### Nurturing Touch
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Touch | -
+
+**Effect** <br/> You lay your hands on a blighted seedling, a torn flank, or a trembling muzzle and let a slow trickle of vitality flow.<br/>Target one ordinary plant or one Beast you touch. Choose one:<br/>- On a success, one Wound of the target Beast is treated. Each Beast can benefit from this effect only once per day.<br/>- Compare your casting result vs. the Resist of the target Beast. On a success, they grow calm for a medium duration. While calm, they do not flee or lash out from mundane frights, such as fire, loud noises, or the smell of blood, and rolls to handle, ride, or tame them gain +1 boon. Supernatural fear ends the calm immediately.<br/>- On a success, you cleanse an ordinary plant of rot, blight, or infestation. This has no effect on Plant creatures.
+
 ### Blessing of Life
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -77,6 +93,54 @@ sidebar_position: 3
 **Effect** <br/> Imbue a weapon with the power of vitality. If the target is dual-wielding, you can instead target both their held weapons.<br/>On a success, any strong or critical hit with the weapon restores 4 HP to the wielder. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> On a strong or critical hit, restore 6 HP instead.<br/><strong>(Rank 3)</strong> On a strong or critical hit, restore 8 HP instead.
+
+### Beacon of Hope
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | -
+
+**Effect** <br/> A steady warmth spreads from you, and hearts near you remember that dawn comes.<br/>On a success, a glow of hope surrounds you in close range for a short duration. It moves with you.<br/>Allies in the glow below half their max. HP gain +1 boon on attack rolls and Fortitude rolls. Allies in the glow also gain +1 boon on rolls to resist effects that cause the frightened condition and on rolls to end fear effects early. When an ally in the glow rolls a Fear Check, they roll two d6 and take the better result.
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> The glow surrounds you in short range instead.
+
+### Sustaining Grace
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | quick
+
+**Effect** <br/> Life swells under your skin like a drawn breath, turning the blow aside or softening it. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If the triggering attack still hits you, you first take its damage as normal and then regain 2 HP.
+
+### Surge of Renewal
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | quick
+
+**Effect** <br/> The life you poured into your companions overflows, running down their arms as golden light. Cast this spell on your turn.<br/>Target each ally you restored HP to with your *Life* spells during or since your last turn.<br/>On a success, each target briefly gains +1 boon on their next attack roll. On a hit, that attack also deals 2 radiant damage (ignore AV).
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The attack also deals 4 radiant damage (ignore AV) instead.<br/><strong>(Rank 4)</strong> The attack also deals 6 radiant damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> The attack also deals 8 radiant damage (ignore AV) instead.
+
+### Bursting Ward
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Short | singular
+
+**Effect** <br/> You seal a skin of golden vitality around an ally, taut as a full waterskin.<br/>On a success, the target gains 10 temporary HP. The ward lasts until its temporary HP are gone or for a long duration.<br/>When damage from an enemy reduces the ward's temporary HP to 0, it bursts. If that enemy is within short range of the warded ally, they take 6 radiant damage (ignore AV) and must succeed on a Spirit + Fortitude roll vs. your Resist or be briefly dazed by the flash of life force.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The target gains 20 temporary HP and the burst deals 8 radiant damage (ignore AV) instead.<br/><strong>(Rank 4)</strong> The target gains 30 temporary HP and the burst deals 10 radiant damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> The target gains 40 temporary HP and the burst deals 12 radiant damage (ignore AV) instead.
+
+### Blessing of the Harvest
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Medium (8) | Touch | ritual (hours), singular, material cost (150 coins)
+
+**Effect** <br/> Over a morning of rites you walk the bounds of field, fold, or grove, scattering blessed meal and oil. The rite consumes offerings worth 150 coins.<br/>Target one holding you walk during the ritual, such as a field, orchard, herd, or grove, up to a thousand paces across.<br/>On a success, the blessing settles over the holding for one season. Its crops and stock resist rot, blight, and common sickness, animals bear healthy young, and rolls made to tend, work, or harvest the holding gain +1 boon. When the holding's yield is assessed, count it one step more plentiful than the land alone would give.<br/>Provisions taken from the blessed holding keep twice as long before spoiling. When you take a night's rest fed on them, gain +1 boon on any recovery rolls you make against diseases and poisons during that rest.<br/>You can maintain only one Blessing of the Harvest at a time.
+
+> **GM framing note.** This is a temple rite communities petition for each season, not a lever adventurers pull for coin. One priest blesses one holding, the offering must be given, and a season's better yield feeds a village — it never floods a market. If the blessed holding belongs to a domain the party rules, the blessing grants +1 boon on the domain's Wealth-based upkeep checks while it lasts.
 
 ### Aid
 

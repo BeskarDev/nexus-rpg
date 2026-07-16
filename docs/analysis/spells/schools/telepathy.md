@@ -52,11 +52,11 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| influence | Mind Blast | Subtle Suggestion, Attack Thoughts | Forced Suggestion, Psychic Wave, Mind Fracture† | Implant Suggestion†, Psychic Lance† | Shatter Psyche† | Psychic Maelstrom† |
-| communication | Mental Link | Borrowed Tongue | Sending, Telepathic Bond† | Invade Dreams* | Astral Body | — (Sending's R5 Heighten reaches other spheres) |
-| insight | Detect Magic | Foresight, True Strike, Identify, Mental Shield† | Counterspell, Psychometry | Psychic Probe† | Prescient Awareness† | — |
-| domination | Commanding Thought† | Control Beast | Wave of Madness* | Puppet's Step† | Break the Will† | Absolute Control† |
-| memory | Surface Recall† | Memory Echo† | — (Memory Echo Heighten) | — (Memory Echo Heighten) | Modify Memory† | Mindwipe† |
+| influence | Mind Blast | Subtle Suggestion, Attack Thoughts | Forced Suggestion, Psychic Wave, Mind Fracture | Implant Suggestion†, Psychic Lance† | Shatter Psyche† | Psychic Maelstrom† |
+| communication | Mental Link | Borrowed Tongue | Sending, Telepathic Bond | Invade Dreams* | Astral Body | — (Sending's R5 Heighten reaches other spheres) |
+| insight | Detect Magic | Foresight, True Strike, Identify, Mental Shield | Counterspell, Psychometry | Psychic Probe† | Prescient Awareness† | — |
+| domination | Commanding Thought | Control Beast | Wave of Madness* | Puppet's Step† | Break the Will† | Absolute Control† |
+| memory | Surface Recall | Memory Echo | — (Memory Echo Heighten) | — (Memory Echo Heighten) | Modify Memory† | Mindwipe† |
 
 *† = proposed seed (undesigned) · \* = incomplete spell in game files*
 

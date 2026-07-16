@@ -28,6 +28,38 @@ sidebar_position: 6
 
 **Effect** <br/> Hurl a blade of compressed air against your target.<br/><strong>Weak.</strong> Deal +0 damage or +4 damage against a target in light or no armor.<br/><strong>Strong.</strong> Deal +2 damage or +6 damage against a target in light or no armor.<br/><strong>Critical.</strong> Deal +4 damage or +8 damage against a target in light or no armor.<br/>You can also use this spell to chip off or cut parts of softer materials such as wood or papyrus in range. 
 
+### Tremor
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Short | -
+
+**Effect** <br/> You stamp your heel and the ground answers, a shudder running through the earth beneath one creature.<br/>On a success, the target is briefly staggered.<br/>You can also cast this spell to shake dust, loose stones, or small objects free from a surface in range.
+
+### Sand Gust
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Short | -
+
+**Effect** <br/> A whip of wind gathers grit and sand and flings it stinging into the target's face.<br/>On a success, grit fills the target's eyes and they briefly suffer +1 bane on all rolls requiring sight, including attack rolls.<br/>You can also cast this spell to scour sand, dust, or grime from a surface or object in range.
+
+### Splash
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Special | Medium | -
+
+**Effect** <br/> You call a sudden rush of water out of the empty air and send it crashing down.<br/>When targeting a creature, roll vs. their Dodge. Otherwise roll vs. TN 8.<br/>On a success, the target is drenched. Any burning condition on them ends, ordinary open flames they carry or that burn in their melee range are doused, and a drenched creature is briefly slowed by the weight of the water.<br/>Cast on an unattended fire, the water douses flames up to the size of a campfire.
+
+### Weather Prediction
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Self | -
+
+**Effect** <br/> You wet a finger, read the wind, and listen to what the sky intends.<br/>On a success, you learn the natural weather coming to the region you stand in over the next day. The GM tells you its kind (such as clear, rain, storm, heat, cold, or sandstorm), roughly when it arrives, and how severe it will be. This spell reads only the natural course of the sky. It gives no insight into weather moved by magic or by a will beyond mortals.
+
 ### Bursting Crackle
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -128,6 +160,26 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +5/+10/+15 damage instead.<br/>- You can also target large creatures for grappling.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +7/+14/+21 damage instead.<br/>- You can also target huge creatures for grappling.
 
+### Sinking Sands
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Medium | concentrate
+
+**Effect** <br/> At your gesture the ground loosens and churns, sand turning to a hungry, sucking mire.<br/>On a success, the ground in close range of the target location turns to quicksand for a short duration while you concentrate. When your concentration ends, the ground settles and any creature grappled by the sands is freed. The area is difficult terrain. A creature that enters the area or starts their turn there must succeed on a Strength + Athletics roll vs. your Resist or they are grappled by the sands. A creature grappled this way can free themselves with a successful Strength + Athletics roll vs. your Resist as an Action.<br/>Creatures standing on solid ground can pull a grappled creature free with a successful Strength + Athletics roll vs. your Resist as an Action.
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> The quicksand covers short range of the target location instead.<br/><strong>(Rank 3)</strong> The quicksand covers short range of the target location instead. A creature starting their turn grappled by the sands must succeed on the same roll or they are also restrained.<br/><strong>(Rank 4)</strong> The quicksand covers medium range of the target location instead. A creature starting their turn grappled by the sands must succeed on the same roll or they are also restrained.<br/><strong>(Rank 5)</strong> The quicksand covers medium range of the target location instead. A creature starting their turn grappled by the sands must succeed on the same roll or they are also restrained. A creature starting their turn restrained must succeed on the same roll or they are pulled under and suffocating until freed.
+
+### Water Jet
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Parry | Medium | -
+
+**Effect** <br/> You draw the water out of air and earth into a single hard stream and let it slam home.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV) and push the target close.<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV), push the target a short distance, and they fall prone.<br/>On any success, the target is drenched and any burning condition on them ends.
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +5/+10/+15 damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +7/+14/+21 damage (ignore 1/2 AV) instead.<br/><strong>(Rank 4)</strong> Deal +9/+18/+27 damage (ignore 1/2 AV) instead.<br/><strong>(Rank 5)</strong> Deal +11/+22/+33 damage (ignore 1/2 AV) instead.
+
 ### Conjure Elemental
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -217,6 +269,16 @@ sidebar_position: 6
 **Effect** <br/> A swirling storm forms around you and follows your movements. On a success, you create a strong wind centered around you and extending in close range. While the wind remains, it has the following effects:<br/>- You and every other creature in the wind’s area is deafened.<br/>- Small sources of flames (e.g. torches) are extinguished in the wind’s area.<br/>- The wind’s area is considered difficult terrain for every creature besides you.<br/>- Any ranged attacks moving in, out, or through the wind’s are suffer +1 bane.<br/>- While in the wind’s area, every other creature takes +2 damage at the start of each of their turns.<br/>The wind remains for a medium duration. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The wind extends in short range of you and other creatures in the wind’s area takes +4 damage at the start of each of their turns instead.
+
+### Thunderfall
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Medium | -
+
+**Effect** <br/> The air above the target gathers into a single held breath of the storm, then falls all at once like a hammer of thunder.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV).<br/>If the target is prone or staggered, deal +6/+12/+18 blast damage (ignore 1/2 AV) instead and they are briefly deafened, as the full weight of the sky lands on a body that cannot brace.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +3/+6/+9 blast damage (ignore 1/2 AV), or +8/+16/+24 blast damage (ignore 1/2 AV) against a prone or staggered target instead.<br/><strong>(Rank 4)</strong> Deal +4/+8/+12 blast damage (ignore 1/2 AV), or +10/+20/+30 blast damage (ignore 1/2 AV) against a prone or staggered target instead.<br/><strong>(Rank 5)</strong> Deal +5/+10/+15 blast damage (ignore 1/2 AV), or +12/+24/+36 blast damage (ignore 1/2 AV) against a prone or staggered target instead.
 
 ### Chain Lightning
 

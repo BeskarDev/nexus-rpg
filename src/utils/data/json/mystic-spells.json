@@ -44,6 +44,28 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Moment of Clarity",
+		"tradition": "Light",
+		"rank": "0",
+		"focus": "0",
+		"target": "Medium (8)",
+		"range": "Touch",
+		"properties": "quick",
+		"effect": "You press two fingers to a companion's brow and a clean light passes behind their eyes. Cast this spell on your turn.<br/>Choose one condition afflicting the touched ally among charmed, confused, frightened, or dazed.<br/>On a success, if the effect causing that condition allows a roll to end it early, the target may immediately make that roll.",
+		"heightened": "-"
+	},
+	{
+		"name": "Stern Gaze",
+		"tradition": "Light",
+		"rank": "0",
+		"focus": "0",
+		"target": "vs. Resist",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "Your eyes catch the light of the sun's justice, and the weight of being seen lands on the target.<br/><strong>Weak.</strong> Deal +0 radiant damage.<br/><strong>Strong.</strong> Deal +2 radiant damage.<br/><strong>Critical.</strong> Deal +4 radiant damage.<br/>If the target is blinded, burning, or was stripped of an illusion, disguise, or invisibility by one of your *Light* spells this scene, deal +2/+4/+6 radiant damage instead and they are briefly dazed under the weight of judgement.",
+		"heightened": "-"
+	},
+	{
 		"name": "Blessing of Light",
 		"tradition": "Light",
 		"rank": "1",
@@ -77,6 +99,17 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Kindle the Mark",
+		"tradition": "Light",
+		"rank": "1",
+		"focus": "2",
+		"target": "vs. Dodge",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "You pour light into the sign already hanging over the target, and it flares from an ember into a beacon.<br/>Target one creature suffering the marked condition.<br/><strong>Weak.</strong> Deal +2 radiant damage.<br/><strong>Strong.</strong> Deal +4 radiant damage.<br/><strong>Critical.</strong> Deal +6 radiant damage.<br/>On any success, this spell does not end the target's marked condition, and the mark's value increases by 2.",
+		"heightened": "<strong>(Rank 2)</strong> Deal +4/+8/+12 radiant damage instead.<br/><strong>(Rank 3)</strong> Deal +6/+12/+18 radiant damage instead.<br/><strong>(Rank 4)</strong> Deal +8/+16/+24 radiant damage instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 radiant damage instead."
+	},
+	{
 		"name": "Protect from Influence",
 		"tradition": "Light",
 		"rank": "2",
@@ -86,6 +119,28 @@
 		"properties": "singular",
 		"effect": "You wrap a creature’s mind in steady light, holding it clear against intrusion. On a success, this spell ends the confused and charmed conditions on the target. For a short duration, the target also gains resistance to psychic damage and +1 boon on rolls to resist mind-affecting spells and effects.",
 		"heightened": "-"
+	},
+	{
+		"name": "Mark of Judgement",
+		"tradition": "Light",
+		"rank": "2",
+		"focus": "4",
+		"target": "vs. Resist",
+		"range": "Medium",
+		"properties": "singular",
+		"effect": "You call a shaft of merciless noon down upon the target, and it refuses to let them go.<br/>Target one creature you can see, or one hidden or invisible creature whose presence you are aware of.<br/>On a success, a searing brand of light clings to them for a short duration. While branded, they cannot be or become hidden or invisible, any magical disguise or false form on them is suppressed, and attacks against them gain +1 boon.<br/>If the target was hidden, invisible, or under a magical disguise or false form at any point this scene, the light also burns with the weight of their deceit and they are briefly dazed.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the brand early.",
+		"heightened": "<strong>(Rank 3)</strong> The brand lasts for a medium duration instead."
+	},
+	{
+		"name": "Lamp of Truth",
+		"tradition": "Light",
+		"rank": "2",
+		"focus": "4",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "-",
+		"effect": "You kindle a small oil lamp of pale daylight that hangs in the air at your shoulder, burning without oil or wick, and its light refuses every lie of shadow.<br/>On a success, the lamp appears beside you and follows you for a medium duration. It sheds bright light in close range and dim light in short range of it. Within its bright light, no creature can be hidden or invisible.<br/>You can use your Quick Action to send the lamp to hover at a point within medium range of you, or to call it back to your side.<br/>The lamp counts as a light source. When an event would test or extinguish your light source, such as the Light Fades delve event, the lamp gutters out and this spell ends instead of you making a Supply check.",
+		"heightened": "<strong>(Rank 3)</strong> The lamp sheds bright light in short range and dim light in medium range of it instead."
 	},
 	{
 		"name": "Radiant Rebuke",
@@ -294,6 +349,17 @@
 		"range": "Medium",
 		"properties": "-",
 		"effect": "You summon ghostly whispers into the mind of the target, seeding doubt and confusing them.<br/><strong>Weak. </strong>The target suffers +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> The target suffers +2 psychic damage (ignore AV) and the target is briefly confused.<br/><strong>Critical.</strong> The target suffers +4 psychic damage (ignore AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
+		"heightened": "-"
+	},
+	{
+		"name": "Thread of Fate",
+		"tradition": "Twilight",
+		"rank": "0",
+		"focus": "0",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "ritual (minutes)",
+		"effect": "Over minutes of stillness you let the threads of what comes next run through your fingers, feeling where they pull taut and where they slacken.<br/>Name two courses open to you, such as two paths, two doors, or two undertakings.<br/>On a success, the threads answer with a single whispered word: <em>weal</em> over the course that holds the better fortune for you, <em>woe</em> over the one that holds the worse, or silence when they favor neither.<br/>The answer is a leaning, not a promise. It does not account for choices or events that might later change the outcome. Casting again on the same two courses gives the same answer until circumstances meaningfully change.",
 		"heightened": "-"
 	},
 	{
@@ -517,6 +583,28 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Kindred Bond",
+		"tradition": "Life",
+		"rank": "0",
+		"focus": "0",
+		"target": "Medium (8)",
+		"range": "Touch",
+		"properties": "-",
+		"effect": "You press your palm to a companion's heart and a warm thread of life joins theirs to yours.<br/>On a success, the bond holds for a medium duration. While the bonded ally is within long range of you, you can target them with your *Life* spells even when you cannot see them. Each spell's normal range still applies. You can also cast healing spells on the bonded ally at one range increment further than normal, such as close instead of touch. When you use this extended reach, the target only regains half of the HP they would normally regain (rounded up). You can only be bonded to one creature at a time.",
+		"heightened": "-"
+	},
+	{
+		"name": "Nurturing Touch",
+		"tradition": "Life",
+		"rank": "0",
+		"focus": "0",
+		"target": "Medium (8)",
+		"range": "Touch",
+		"properties": "-",
+		"effect": "You lay your hands on a blighted seedling, a torn flank, or a trembling muzzle and let a slow trickle of vitality flow.<br/>Target one ordinary plant or one Beast you touch. Choose one:<br/>- On a success, one Wound of the target Beast is treated. Each Beast can benefit from this effect only once per day.<br/>- Compare your casting result vs. the Resist of the target Beast. On a success, they grow calm for a medium duration. While calm, they do not flee or lash out from mundane frights, such as fire, loud noises, or the smell of blood, and rolls to handle, ride, or tame them gain +1 boon. Supernatural fear ends the calm immediately.<br/>- On a success, you cleanse an ordinary plant of rot, blight, or infestation. This has no effect on Plant creatures.",
+		"heightened": "-"
+	},
+	{
 		"name": "Blessing of Life",
 		"tradition": "Life",
 		"rank": "1",
@@ -570,6 +658,61 @@
 		"properties": "enchant (weapon), singular",
 		"effect": "Imbue a weapon with the power of vitality. If the target is dual-wielding, you can instead target both their held weapons.<br/>On a success, any strong or critical hit with the weapon restores 4 HP to the wielder. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration.",
 		"heightened": "<strong>(Rank 2)</strong> On a strong or critical hit, restore 6 HP instead.<br/><strong>(Rank 3)</strong> On a strong or critical hit, restore 8 HP instead."
+	},
+	{
+		"name": "Beacon of Hope",
+		"tradition": "Life",
+		"rank": "1",
+		"focus": "2",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "-",
+		"effect": "A steady warmth spreads from you, and hearts near you remember that dawn comes.<br/>On a success, a glow of hope surrounds you in close range for a short duration. It moves with you.<br/>Allies in the glow below half their max. HP gain +1 boon on attack rolls and Fortitude rolls. Allies in the glow also gain +1 boon on rolls to resist effects that cause the frightened condition and on rolls to end fear effects early. When an ally in the glow rolls a Fear Check, they roll two d6 and take the better result.",
+		"heightened": "<strong>(Rank 2)</strong> The glow surrounds you in short range instead."
+	},
+	{
+		"name": "Sustaining Grace",
+		"tradition": "Life",
+		"rank": "1",
+		"focus": "2",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "quick",
+		"effect": "Life swells under your skin like a drawn breath, turning the blow aside or softening it. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If the triggering attack still hits you, you first take its damage as normal and then regain 2 HP.",
+		"heightened": "-"
+	},
+	{
+		"name": "Surge of Renewal",
+		"tradition": "Life",
+		"rank": "2",
+		"focus": "4",
+		"target": "Hard (10)",
+		"range": "Medium",
+		"properties": "quick",
+		"effect": "The life you poured into your companions overflows, running down their arms as golden light. Cast this spell on your turn.<br/>Target each ally you restored HP to with your *Life* spells during or since your last turn.<br/>On a success, each target briefly gains +1 boon on their next attack roll. On a hit, that attack also deals 2 radiant damage (ignore AV).",
+		"heightened": "<strong>(Rank 3)</strong> The attack also deals 4 radiant damage (ignore AV) instead.<br/><strong>(Rank 4)</strong> The attack also deals 6 radiant damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> The attack also deals 8 radiant damage (ignore AV) instead."
+	},
+	{
+		"name": "Bursting Ward",
+		"tradition": "Life",
+		"rank": "2",
+		"focus": "4",
+		"target": "Hard (10)",
+		"range": "Short",
+		"properties": "singular",
+		"effect": "You seal a skin of golden vitality around an ally, taut as a full waterskin.<br/>On a success, the target gains 10 temporary HP. The ward lasts until its temporary HP are gone or for a long duration.<br/>When damage from an enemy reduces the ward's temporary HP to 0, it bursts. If that enemy is within short range of the warded ally, they take 6 radiant damage (ignore AV) and must succeed on a Spirit + Fortitude roll vs. your Resist or be briefly dazed by the flash of life force.",
+		"heightened": "<strong>(Rank 3)</strong> The target gains 20 temporary HP and the burst deals 8 radiant damage (ignore AV) instead.<br/><strong>(Rank 4)</strong> The target gains 30 temporary HP and the burst deals 10 radiant damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> The target gains 40 temporary HP and the burst deals 12 radiant damage (ignore AV) instead."
+	},
+	{
+		"name": "Blessing of the Harvest",
+		"tradition": "Life",
+		"rank": "2",
+		"focus": "4",
+		"target": "Medium (8)",
+		"range": "Touch",
+		"properties": "ritual (hours), singular, material cost (150 coins)",
+		"effect": "Over a morning of rites you walk the bounds of field, fold, or grove, scattering blessed meal and oil. The rite consumes offerings worth 150 coins.<br/>Target one holding you walk during the ritual, such as a field, orchard, herd, or grove, up to a thousand paces across.<br/>On a success, the blessing settles over the holding for one season. Its crops and stock resist rot, blight, and common sickness, animals bear healthy young, and rolls made to tend, work, or harvest the holding gain +1 boon. When the holding's yield is assessed, count it one step more plentiful than the land alone would give.<br/>Provisions taken from the blessed holding keep twice as long before spoiling. When you take a night's rest fed on them, gain +1 boon on any recovery rolls you make against diseases and poisons during that rest.<br/>You can maintain only one Blessing of the Harvest at a time.",
+		"heightened": "-"
 	},
 	{
 		"name": "Aid",
@@ -715,6 +858,50 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Miasma",
+		"tradition": "Death",
+		"rank": "0",
+		"focus": "0",
+		"target": "vs. Resist",
+		"range": "Close",
+		"properties": "-",
+		"effect": "You exhale a breath of grave-damp air, carrying the sickness of the world below.<br/><strong>Weak.</strong> Deal +0 necrotic damage.<br/><strong>Strong.</strong> Deal +2 necrotic damage.<br/><strong>Critical.</strong> Deal +4 necrotic damage.<br/>On any success, the target is briefly poisoned.",
+		"heightened": "-"
+	},
+	{
+		"name": "Minor Hex",
+		"tradition": "Death",
+		"rank": "0",
+		"focus": "0",
+		"target": "vs. Resist",
+		"range": "Medium",
+		"properties": "curse",
+		"effect": "You mutter a petty malediction and flick your hand toward the target, hanging a small doom over them like a gnat.<br/>On a success, the target is hexed for a short duration. The next roll they make while hexed suffers +1 bane, and then the hex ends.",
+		"heightened": "-"
+	},
+	{
+		"name": "Commune with Ancestors",
+		"tradition": "Death",
+		"rank": "1",
+		"focus": "2",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "ritual (minutes)",
+		"effect": "You pour a small libation, speak the names of your honored dead, and sink into a trance at the threshold of the world below.<br/>Describe to the ancestors one problem, question, or undertaking that weighs on you.<br/><strong>Weak.</strong> The spirits give one answer.<br/><strong>Strong.</strong> The spirits give one answer, and you may ask one follow-up question about the same matter, answered the same way.<br/><strong>Critical.</strong> The spirits give one answer, and you may ask two follow-up questions about the same matter.<br/>For each answer, the GM chooses the entry from the catalog below that fits the matter best. The ancestors speak briefly and only of what the dead may know or dimly foresee.<br/>- <strong>Warning.</strong> One danger connected to the matter, named concretely enough to act on.<br/>- <strong>Name.</strong> One person, place, or thing that matters to it, and a hint of how it matters.<br/>- <strong>Memory.</strong> One thing the dead themselves saw or knew in life that touches the matter.<br/>- <strong>Path.</strong> One next step the spirits favor, with no promise it will succeed.<br/>- <strong>Omen.</strong> A symbolic sign that points at the truth sideways, when nothing concrete fits.<br/>You can only cast this spell once per day.",
+		"heightened": "-"
+	},
+	{
+		"name": "Festering Wound",
+		"tradition": "Death",
+		"rank": "1",
+		"focus": "2",
+		"target": "vs. Resist",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "You call the patience of the grave into torn flesh, and what is open begins to rot.<br/><strong>Weak.</strong> Deal +2 necrotic damage.<br/><strong>Strong.</strong> Deal +4 necrotic damage.<br/><strong>Critical.</strong> Deal +6 necrotic damage.<br/>If the target is bleeding or suffers at least one Wound, deal +4/+8/+12 necrotic damage instead and they are briefly poisoned.",
+		"heightened": "<strong>(Rank 2)</strong> Deal +3/+6/+9 necrotic damage, or +6/+12/+18 necrotic damage against a bleeding or Wounded target instead.<br/><strong>(Rank 3)</strong> Deal +4/+8/+12 necrotic damage, or +8/+16/+24 necrotic damage against a bleeding or Wounded target instead.<br/><strong>(Rank 4)</strong> Deal +5/+10/+15 necrotic damage, or +10/+20/+30 necrotic damage against a bleeding or Wounded target instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 necrotic damage, or +12/+24/+36 necrotic damage against a bleeding or Wounded target instead."
+	},
+	{
 		"name": "Blood Shards",
 		"tradition": "Death",
 		"rank": "1",
@@ -790,6 +977,17 @@
 		"properties": "-",
 		"effect": "You shoot a icy blue beam from the tip of your finger, rigidifying the target.<br/><strong>Weak.</strong> You deal +3 frost damage. <br/><strong>Strong.</strong> You deal +6 frost damage and the target is briefly slowed.<br/><strong>Critical.</strong> You deal +9 frost damage and the target is briefly dazed and slowed.",
 		"heightened": "-"
+	},
+	{
+		"name": "Guardian Shade",
+		"tradition": "Death",
+		"rank": "2",
+		"focus": "4",
+		"target": "Hard (10)",
+		"range": "Short",
+		"properties": "singular",
+		"effect": "You speak an elder's name over an ally, and a dim shade rises to stand at their shoulder, patient as the grave, catching what was meant for the living.<br/>On a success, one ally in range is warded by the spirit for a short duration and gains 10 temporary HP.<br/>While the ward lasts, any enemy that hits the warded ally with a melee attack feels the shade's cold grasp and takes 4 necrotic damage (ignore AV).",
+		"heightened": "<strong>(Rank 3)</strong> The ally gains 15 temporary HP, the shade's grasp deals 6 necrotic damage (ignore AV), and the ward lasts for a medium duration instead."
 	},
 	{
 		"name": "Circle of Death",
@@ -899,6 +1097,17 @@
 		"range": "Self",
 		"properties": "strike",
 		"effect": "You imbue a wooden weapon with nature’s power to strike your enemy with. This spell's strike must be made with a crush weapon you are holding that is made from wood.",
+		"heightened": "-"
+	},
+	{
+		"name": "Shape Water",
+		"tradition": "Nature",
+		"rank": "0",
+		"focus": "0",
+		"target": "Special",
+		"range": "Short",
+		"properties": "-",
+		"effect": "You beckon, and water already at hand answers, rising from pool, jar, or rain-wet ground into a living rope of current.<br/>When targeting an unwilling creature, roll vs. their Dodge. Otherwise roll vs. TN 8.<br/>On a success, choose one:<br/>- A pressurized stream shoves one object or creature of small or smaller Size a close distance.<br/>- You extinguish open flames up to the size of a campfire.<br/>- You move water you can see within range into or out of one vessel, such as a waterskin, a clay jar, or an amphora. You can move up to enough water to fill a large storage jar. This spell moves water that already exists and never creates it.",
 		"heightened": "-"
 	},
 	{
@@ -1276,6 +1485,50 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Tremor",
+		"tradition": "Tempest",
+		"rank": "0",
+		"focus": "0",
+		"target": "vs. Dodge",
+		"range": "Short",
+		"properties": "-",
+		"effect": "You stamp your heel and the ground answers, a shudder running through the earth beneath one creature.<br/>On a success, the target is briefly staggered.<br/>You can also cast this spell to shake dust, loose stones, or small objects free from a surface in range.",
+		"heightened": "-"
+	},
+	{
+		"name": "Sand Gust",
+		"tradition": "Tempest",
+		"rank": "0",
+		"focus": "0",
+		"target": "vs. Dodge",
+		"range": "Short",
+		"properties": "-",
+		"effect": "A whip of wind gathers grit and sand and flings it stinging into the target's face.<br/>On a success, grit fills the target's eyes and they briefly suffer +1 bane on all rolls requiring sight, including attack rolls.<br/>You can also cast this spell to scour sand, dust, or grime from a surface or object in range.",
+		"heightened": "-"
+	},
+	{
+		"name": "Splash",
+		"tradition": "Tempest",
+		"rank": "0",
+		"focus": "0",
+		"target": "Special",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "You call a sudden rush of water out of the empty air and send it crashing down.<br/>When targeting a creature, roll vs. their Dodge. Otherwise roll vs. TN 8.<br/>On a success, the target is drenched. Any burning condition on them ends, ordinary open flames they carry or that burn in their melee range are doused, and a drenched creature is briefly slowed by the weight of the water.<br/>Cast on an unattended fire, the water douses flames up to the size of a campfire.",
+		"heightened": "-"
+	},
+	{
+		"name": "Weather Prediction",
+		"tradition": "Tempest",
+		"rank": "0",
+		"focus": "0",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "-",
+		"effect": "You wet a finger, read the wind, and listen to what the sky intends.<br/>On a success, you learn the natural weather coming to the region you stand in over the next day. The GM tells you its kind (such as clear, rain, storm, heat, cold, or sandstorm), roughly when it arrives, and how severe it will be. This spell reads only the natural course of the sky. It gives no insight into weather moved by magic or by a will beyond mortals.",
+		"heightened": "-"
+	},
+	{
 		"name": "Bursting Crackle",
 		"tradition": "Tempest",
 		"rank": "1",
@@ -1375,6 +1628,28 @@
 		"heightened": "<strong>(Rank 2)</strong> Choose one:<br/>- Deal +5/+10/+15 damage instead.<br/>- You can also target large creatures for grappling.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +7/+14/+21 damage instead.<br/>- You can also target huge creatures for grappling."
 	},
 	{
+		"name": "Sinking Sands",
+		"tradition": "Tempest",
+		"rank": "1",
+		"focus": "2",
+		"target": "Medium (8)",
+		"range": "Medium",
+		"properties": "concentrate",
+		"effect": "At your gesture the ground loosens and churns, sand turning to a hungry, sucking mire.<br/>On a success, the ground in close range of the target location turns to quicksand for a short duration while you concentrate. When your concentration ends, the ground settles and any creature grappled by the sands is freed. The area is difficult terrain. A creature that enters the area or starts their turn there must succeed on a Strength + Athletics roll vs. your Resist or they are grappled by the sands. A creature grappled this way can free themselves with a successful Strength + Athletics roll vs. your Resist as an Action.<br/>Creatures standing on solid ground can pull a grappled creature free with a successful Strength + Athletics roll vs. your Resist as an Action.",
+		"heightened": "<strong>(Rank 2)</strong> The quicksand covers short range of the target location instead.<br/><strong>(Rank 3)</strong> The quicksand covers short range of the target location instead. A creature starting their turn grappled by the sands must succeed on the same roll or they are also restrained.<br/><strong>(Rank 4)</strong> The quicksand covers medium range of the target location instead. A creature starting their turn grappled by the sands must succeed on the same roll or they are also restrained.<br/><strong>(Rank 5)</strong> The quicksand covers medium range of the target location instead. A creature starting their turn grappled by the sands must succeed on the same roll or they are also restrained. A creature starting their turn restrained must succeed on the same roll or they are pulled under and suffocating until freed."
+	},
+	{
+		"name": "Water Jet",
+		"tradition": "Tempest",
+		"rank": "1",
+		"focus": "2",
+		"target": "vs. Parry",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "You draw the water out of air and earth into a single hard stream and let it slam home.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV) and push the target close.<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV), push the target a short distance, and they fall prone.<br/>On any success, the target is drenched and any burning condition on them ends.",
+		"heightened": "<strong>(Rank 2)</strong> Deal +5/+10/+15 damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +7/+14/+21 damage (ignore 1/2 AV) instead.<br/><strong>(Rank 4)</strong> Deal +9/+18/+27 damage (ignore 1/2 AV) instead.<br/><strong>(Rank 5)</strong> Deal +11/+22/+33 damage (ignore 1/2 AV) instead."
+	},
+	{
 		"name": "Conjure Elemental",
 		"tradition": "Tempest",
 		"rank": "2",
@@ -1472,6 +1747,17 @@
 		"properties": "concentrate, enchant (body)",
 		"effect": "A swirling storm forms around you and follows your movements. On a success, you create a strong wind centered around you and extending in close range. While the wind remains, it has the following effects:<br/>- You and every other creature in the wind’s area is deafened.<br/>- Small sources of flames (e.g. torches) are extinguished in the wind’s area.<br/>- The wind’s area is considered difficult terrain for every creature besides you.<br/>- Any ranged attacks moving in, out, or through the wind’s are suffer +1 bane.<br/>- While in the wind’s area, every other creature takes +2 damage at the start of each of their turns.<br/>The wind remains for a medium duration.",
 		"heightened": "<strong>(Rank 3)</strong> The wind extends in short range of you and other creatures in the wind’s area takes +4 damage at the start of each of their turns instead."
+	},
+	{
+		"name": "Thunderfall",
+		"tradition": "Tempest",
+		"rank": "2",
+		"focus": "4",
+		"target": "vs. Dodge",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "The air above the target gathers into a single held breath of the storm, then falls all at once like a hammer of thunder.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV).<br/>If the target is prone or staggered, deal +6/+12/+18 blast damage (ignore 1/2 AV) instead and they are briefly deafened, as the full weight of the sky lands on a body that cannot brace.",
+		"heightened": "<strong>(Rank 3)</strong> Deal +3/+6/+9 blast damage (ignore 1/2 AV), or +8/+16/+24 blast damage (ignore 1/2 AV) against a prone or staggered target instead.<br/><strong>(Rank 4)</strong> Deal +4/+8/+12 blast damage (ignore 1/2 AV), or +10/+20/+30 blast damage (ignore 1/2 AV) against a prone or staggered target instead.<br/><strong>(Rank 5)</strong> Deal +5/+10/+15 blast damage (ignore 1/2 AV), or +12/+24/+36 blast damage (ignore 1/2 AV) against a prone or staggered target instead."
 	},
 	{
 		"name": "Chain Lightning",
@@ -1639,6 +1925,39 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Shared Burden",
+		"tradition": "Peace",
+		"rank": "0",
+		"focus": "0",
+		"target": "Medium (8)",
+		"range": "Touch",
+		"properties": "-",
+		"effect": "You lay both hands on a companion and speak the old words of the shared road, drawing their suffering into your own body as a flash of pain.<br/>Choose one condition the touched ally currently suffers among dazed, frightened, slowed, staggered, or poisoned.<br/>On a success, the condition ends on them and you take damage (ignore AV) based on its remaining duration: 2 if it would end briefly, 4 for a short duration, or 6 for a medium or longer duration. This damage cannot be redirected, prevented, or reduced.<br/>This spell cannot end a condition sustained by a persistent source, such as a curse, an illness, or an ongoing effect that reapplies it.",
+		"heightened": "-"
+	},
+	{
+		"name": "Wayfinder's Mark",
+		"tradition": "Peace",
+		"rank": "0",
+		"focus": "0",
+		"target": "Medium (8)",
+		"range": "Touch",
+		"properties": "-",
+		"effect": "You trace a small blessed sign onto a stone, doorpost, tree, or waypost, and it settles into the grain like a promise of return. The mark must be placed on an unmoving structure or feature of the land, never on a creature, a vehicle, or anything else that moves. If the marked object is moved from its place, the mark breaks.<br/>On a success, the mark lasts for one moon. While you are within the same region, you feel a faint pull toward each of your marks. It tells you the rough direction and the distance as a range band, such as a day's march, a thousand paces, or medium range. The pull sharpens as you draw near. Creatures you name aloud as you cast gain +1 boon on rolls to navigate toward the marked place.<br/>You can maintain up to three marks. Placing a fourth fades your oldest mark.",
+		"heightened": "-"
+	},
+	{
+		"name": "Oathmark",
+		"tradition": "Peace",
+		"rank": "0",
+		"focus": "0",
+		"target": "Medium (8)",
+		"range": "Short",
+		"properties": "-",
+		"effect": "Cast this spell when a creature freely swears an oath aloud in your presence.<br/>On a success, a pale blessed sign settles onto the back of the swearer's hand, plain for all to see. It lasts for one moon or until the oath is fulfilled.<br/>If the marked creature breaks the spoken wording of their oath, you know it the moment it happens while you are within the same region, the mark turns ashen for all to see, and the breaker feels that you know. The mark follows only the oath's literal wording, nothing of its intent.",
+		"heightened": "-"
+	},
+	{
 		"name": "Absorb Harm",
 		"tradition": "Peace",
 		"rank": "1",
@@ -1668,8 +1987,30 @@
 		"target": "Medium (8)",
 		"range": "Medium",
 		"properties": "concentrate",
-		"effect": "You build a empathetic link with one of your allies, sharing your surface thoughts and senses.<br/>On a success, you establish the link between you and your ally. While the link holds, if either one of you takes damage, both of you take half of the damage instead.<br/>The link lasts for a medium duration or until you are further away from each other than the range of this spell.",
+		"effect": "You build a empathetic link with one of your allies, sharing your surface thoughts and senses.<br/>On a success, you establish the link between you and your ally. While the link holds, you gain the following effects:<br/>- If either one of you takes damage, both of you take half of the damage instead.<br/>- You can share simple thoughts and feelings with each other without speaking, and each of you always knows the other's direction and state of health.<br/>- Each of you can use the Help action for the other as a Quick Action on their own turn, without needing to be in melee range of each other.<br/>The link lasts for a medium duration or until you are further away from each other than the range of this spell.",
 		"heightened": "<strong>(Rank 2) </strong>While the link holds you and your ally also gain the following effect(s):<br/>- You gain +1 on all Defenses.<br/><strong>(Rank 3) </strong>While the link holds you and your ally also gain the following effect(s):<br/>- You gain +1 on all Defenses.<br/>- Attacks against a target both of you can perceive gain +1 boon.<br/>- Attacks from creatures both of you can perceive suffer +1 bane against you."
+	},
+	{
+		"name": "Swift Journey",
+		"tradition": "Peace",
+		"rank": "1",
+		"focus": "2",
+		"target": "Medium (8)",
+		"range": "Short",
+		"properties": "ritual (minutes)",
+		"effect": "You anoint the sandals and staves of the company at first light, and the road seems to rise to meet their steps.<br/>On a success, you bless yourself and up to six willing travelers for one day. Blessed travelers gain +1 boon on rolls made to travel.<br/>You can only cast this spell once per day.",
+		"heightened": "<strong>(Rank 2)</strong> Blessed travelers gain +1 boon on rolls made to travel, and the group gains +1 progress on that day of travel instead."
+	},
+	{
+		"name": "Peace Bond",
+		"tradition": "Peace",
+		"rank": "1",
+		"focus": "2",
+		"target": "vs. Resist",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "You speak a word of law over the target's weapons, and their arms grow heavy with the weight of it.<br/>On a success, the bond lies on the target for a short duration. Their attacks deal -2 damage (min. 0), and each time they make an attack, they take 2 psychic damage (ignore AV) as the bond stings them for raising a hand. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
+		"heightened": "<strong>(Rank 2)</strong> Their attacks deal -4 damage (min. 0) and the sting deals 4 psychic damage (ignore AV) instead.<br/><strong>(Rank 3)</strong> Their attacks deal -6 damage (min. 0) and the sting deals 6 psychic damage (ignore AV) instead."
 	},
 	{
 		"name": "Pacifying Weapon",
@@ -1692,6 +2033,50 @@
 		"properties": "quick",
 		"effect": "Cast this spell after you have taken damage from an attack. On a success, the attacker takes the same amount of damage you took from them (ignore AV).",
 		"heightened": "<strong>(Rank 2)</strong> Add your Mysticism to the damage the attacker takes.<br/><strong>(Rank 3)</strong> Add 2 x your Mysticism to the damage the attacker takes."
+	},
+	{
+		"name": "Renewed Resolve",
+		"tradition": "Peace",
+		"rank": "2",
+		"focus": "4",
+		"target": "Hard (10)",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "You speak a word of calm to a defended companion, and the sanctuary's stillness knits their wounds and clears their mind.<br/>Target one ally who is currently affected by one of your *Peace* spells.<br/><strong>Weak.</strong> The target regains 3 HP.<br/><strong>Strong.</strong> The target regains 6 HP.<br/><strong>Critical.</strong> The target regains 9 HP.<br/>On any success, the target also gains +1 boon on the next roll they make.",
+		"heightened": "<strong>(Rank 3)</strong> The target regains 4/8/12 HP instead.<br/><strong>(Rank 4)</strong> The target regains 5/10/15 HP instead.<br/><strong>(Rank 5)</strong> The target regains 6/12/18 HP instead."
+	},
+	{
+		"name": "Shield of the Meek",
+		"tradition": "Peace",
+		"rank": "2",
+		"focus": "4",
+		"target": "vs. Resist",
+		"range": "Medium",
+		"properties": "quick",
+		"effect": "Cast this spell when an enemy damages an ally who is currently affected by one of your *Peace* spells. The ward flares with a sound like a struck bell.<br/><strong>Weak.</strong> Deal +3 psychic damage (ignore AV) to the attacker.<br/><strong>Strong.</strong> Deal +6 psychic damage (ignore AV) to the attacker.<br/><strong>Critical.</strong> Deal +9 psychic damage (ignore AV) to the attacker.<br/>On any success, the attacker also suffers +1 bane on their next attack roll against that ally.",
+		"heightened": "<strong>(Rank 3)</strong> Deal +4/+8/+12 psychic damage (ignore AV) instead.<br/><strong>(Rank 4)</strong> Deal +5/+10/+15 psychic damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 psychic damage (ignore AV) instead."
+	},
+	{
+		"name": "Herald's Aegis",
+		"tradition": "Peace",
+		"rank": "2",
+		"focus": "4",
+		"target": "Medium (8)",
+		"range": "Touch",
+		"properties": "enchant (body), singular",
+		"effect": "You anoint the brow of an envoy, and the old law of the herald settles over them like a mantle all can feel.<br/>Target yourself or one willing creature.<br/>On a success, the target stands under the herald's law for a medium duration. While this spell lasts, any creature near the target instinctively recognizes them as an envoy under sacred law, attack rolls against them suffer +1 bane, and any creature that damages them is briefly dazed by the weight of their transgression. Each creature can suffer the condition from this spell only once per scene.<br/>The blessing ends early if the target makes an attack or casts a spell that deals damage.",
+		"heightened": "<strong>(Rank 3)</strong> The blessing lasts for a long duration instead."
+	},
+	{
+		"name": "Wayfarer's Shield",
+		"tradition": "Peace",
+		"rank": "2",
+		"focus": "4",
+		"target": "Medium (8)",
+		"range": "Short",
+		"properties": "ritual (minutes)",
+		"effect": "You draw a circle of ash and oil around the company and ask the road to be gentle with them.<br/>On a success, you ward yourself and up to six willing travelers for one day. Warded travelers gain +1 boon on rolls to endure heat, cold, storms, foul air, and other natural hardships of the environment, and harsh weather inflicts no Fatigue on them. When they camp, the ward holds wind, rain, and cold at bay, and they can take a night's rest in the open as if sheltered.<br/>This ward offers no protection against creatures or violence, and none against weather or other hardships brought about by magic.<br/>You can only cast this spell once per day.",
+		"heightened": "<strong>(Rank 3)</strong> You can ward yourself and up to twelve willing travelers instead."
 	},
 	{
 		"name": "Dome of Sanctuary",
@@ -1815,6 +2200,28 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Righteous Strike",
+		"tradition": "War",
+		"rank": "0",
+		"focus": "0",
+		"target": "Special",
+		"range": "Self",
+		"properties": "strike",
+		"effect": "You name the wrong done and your weapon grows heavy with your god's answer.<br/>Target only a creature that has dealt damage to you or one of your allies since the end of your last turn.<br/>On a hit, judgement weighs on the target and they briefly suffer +1 bane on their next attack roll.",
+		"heightened": "-"
+	},
+	{
+		"name": "Victor's Shout",
+		"tradition": "War",
+		"rank": "0",
+		"focus": "0",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "quick",
+		"effect": "Cast this spell when an enemy within your sight is slain. You throw your weapon arm high and give the kill a voice.<br/>On a success, each ally in short range of you may immediately end the frightened condition on themselves, and may immediately move a close distance for free.",
+		"heightened": "-"
+	},
+	{
 		"name": "Curse of War",
 		"tradition": "War",
 		"rank": "1",
@@ -1879,6 +2286,39 @@
 		"properties": "concentrate",
 		"effect": "To use this spell, you must first sacrifice a physical weapon along spiritual ingredients worth 100 coins in a ritual taking one exploration turn.<br/>On a success, you summon an animated, spiritual version of one of the weapons you sacrificed for this spell levitating above the ground within range and obeying your command. The weapon can immediately make an attack against a target in range. Use your roll’s result for this attack. On each of your following turns, you can move the spiritual weapon a short distance within range and repeat the roll to make an attack with it.",
 		"heightened": "-"
+	},
+	{
+		"name": "Terror's Edge",
+		"tradition": "War",
+		"rank": "2",
+		"focus": "4",
+		"target": "Special",
+		"range": "Self",
+		"properties": "strike",
+		"effect": "Your weapon drinks the target's dread, and the edge arrives exactly where a shaking guard fails.<br/>On a hit against a frightened target, terror seizes them and they treat their next Fear Check as if they had rolled a 1.<br/>On a strong or critical hit against a frightened target, their terror also deepens: if they are briefly frightened, they are frightened for a short duration instead.",
+		"heightened": "-"
+	},
+	{
+		"name": "Avenging Oath",
+		"tradition": "War",
+		"rank": "2",
+		"focus": "4",
+		"target": "vs. Resist",
+		"range": "Medium",
+		"properties": "singular",
+		"effect": "You point your weapon at the guilty and swear retribution before your ancestors, and a burning sigil of the broken shield settles over them.<br/>Target one creature that has dealt damage to one of your allies this scene.<br/>On a success, the sigil clings to them for a short duration, visible to all. Weapon attacks against them gain +1 boon.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the oath early.",
+		"heightened": "-"
+	},
+	{
+		"name": "War Banner",
+		"tradition": "War",
+		"rank": "2",
+		"focus": "4",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "-",
+		"effect": "You drive one weapon you are holding into the ground and call your ancestors to stand where it stands.<br/>On a success, the planted weapon becomes a war banner for a short duration. It is an object with 8 Parry, 8 Dodge, 6 AV, and 20 HP. Allies in close range of the banner cannot gain the frightened condition. When an ally in close range of the banner would be moved against their will or knocked prone, they can plant their feet and ignore it. Each ally can do this once per turn. Allies' weapon attacks against enemies in close range of the banner gain +1 boon.<br/>The banner stands where planted and cannot be moved. If it is destroyed or you take it up again, the spell ends.",
+		"heightened": "<strong>(Rank 3)</strong> The banner stands for a medium duration instead."
 	},
 	{
 		"name": "Ancestral Warriors",
@@ -2011,6 +2451,17 @@
 		"properties": "ritual (minutes)",
 		"effect": "You hold light over a text and pray for revelation. The truth of the words rises glowing from the surface. Target one text, inscription, or set of markings you study during the ritual.<br/><strong>Weak.</strong> You learn the text's general subject and the intent of its author.<br/><strong>Strong.</strong> You understand the text's plain meaning in full, as if fluent in its language.<br/><strong>Critical.</strong> As strong, and the light reveals whether hidden layers exist, such as ciphers, concealed messages, or magical obfuscation, and you gain +1 boon on rolls to uncover them.<br/>You can only cast this spell once per text.",
 		"heightened": "-"
+	},
+	{
+		"name": "Deepening Venom",
+		"tradition": "Nature",
+		"rank": "2",
+		"focus": "4",
+		"target": "vs. Resist",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "You whisper to the venom already in the target's blood, and it wakes, virulent and patient.<br/>Target one creature that is currently poisoned.<br/><strong>Weak.</strong> Deal +4 poison damage.<br/><strong>Strong.</strong> Deal +8 poison damage.<br/><strong>Critical.</strong> Deal +12 poison damage.<br/>On any success, the target also suffers 4 lasting poison damage while they remain poisoned.",
+		"heightened": "<strong>(Rank 3)</strong> Deal +6/+12/+18 poison damage and inflict 6 lasting poison damage instead.<br/><strong>(Rank 4)</strong> Deal +8/+16/+24 poison damage and inflict 8 lasting poison damage instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 poison damage and inflict 10 lasting poison damage instead."
 	},
 	{
 		"name": "Gift of the Wild",
@@ -2387,6 +2838,17 @@
         "heightened": "-"
     },
     {
+        "name": "Undying Devotion",
+        "tradition": "Peace",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Short",
+        "properties": "concentrate",
+        "effect": "You speak the names of your companions as a vow, and a thread of your own life ties itself to each of their hearts.<br/>On a success, choose up to four allies in range. A thread of devotion binds each of them to you for a medium duration while you concentrate. Once bound, the threads stretch up to long range. While a bound ally is beyond long range of you, their thread grows slack and grants none of these effects until they return.<br/>While the threads hold, you gain the following effects:<br/>- Whenever a bound ally takes damage, you can choose to suffer it in their stead (ignore AV). They take no damage.<br/>- Whenever you take damage in an ally's stead, through this or any other of your *Peace* spells, you only take half of it (rounded up).<br/>- The first time each bound ally would be reduced to 0 HP, they remain at 1 HP instead and their thread burns away. You take 12 damage (ignore AV). This damage cannot be redirected, prevented, or reduced.<br/>If you are reduced to 0 HP, this spell ends immediately.",
+        "heightened": "-"
+    },
+    {
         "name": "Sanctuary Sphere",
         "tradition": "Peace",
         "rank": "5",
@@ -2439,6 +2901,17 @@
         "range": "Long",
         "properties": "-",
         "effect": "You pronounce the last sentence of the light, and a blade of pure dawn falls upon the condemned.<br/>You can target a hidden or invisible creature with this spell if you are aware of their presence, and your roll suffers no banes from being unable to see them.<br/><strong>Weak.</strong> Deal +8 radiant damage.<br/><strong>Strong.</strong> Deal +16 radiant damage.<br/><strong>Critical.</strong> Deal +24 radiant damage.<br/>If the target is blinded, burning, or invisible, deal +12/+24/+36 radiant damage instead.<br/>An undead creature slain by this spell is destroyed utterly, their remains burned to ash, and they cannot be raised or reanimated again.",
+        "heightened": "-"
+    },
+    {
+        "name": "Everlasting Night",
+        "tradition": "Twilight",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Touch",
+        "properties": "ritual (hours), singular, material cost (5000 coins)",
+        "effect": "Through a night-long rite you raise a stele of black stone and speak the moon's claim over the land, and the sun forgets the way there. The rite consumes rare offerings and the graven stele worth 5000 coins, whether or not it succeeds.<br/>On a success, unending night settles over a single valley, city, or other bounded site up to a thousand paces across, centered on the anchor stele, and holds for one moon. You may maintain only one Everlasting Night at a time, and you can renew it by casting this spell again at the stele before the moon turns. Within the site, apply the following effects:<br/>- The sun does not rise over the site. Under open sky the land is lit as by a clear, moonlit night, dim light at its brightest hour. Mundane fires, lamps, and magical light sources work normally within the night.<br/>- Spells and abilities that require night, darkness, or moonlight treat the whole site as night at all hours.<br/>- You and any creatures you name during the rite see within the site's night as if it were bright light.<br/>The anchor stele is an object with 8 AV and 30 HP. If it is destroyed, the night lifts at once. The night also ends if an effect that ends spells, cast at rank 5, is used upon the stele, or when the light of a *Dawnbreak* fills the site.",
         "heightened": "-"
     },
     {

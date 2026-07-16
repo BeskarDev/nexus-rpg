@@ -52,6 +52,14 @@ sidebar_position: 5
 
 **Effect** <br/> You imbue a wooden weapon with nature’s power to strike your enemy with. This spell's strike must be made with a crush weapon you are holding that is made from wood. 
 
+### Shape Water
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Special | Short | -
+
+**Effect** <br/> You beckon, and water already at hand answers, rising from pool, jar, or rain-wet ground into a living rope of current.<br/>When targeting an unwilling creature, roll vs. their Dodge. Otherwise roll vs. TN 8.<br/>On a success, choose one:<br/>- A pressurized stream shoves one object or creature of small or smaller Size a close distance.<br/>- You extinguish open flames up to the size of a campfire.<br/>- You move water you can see within range into or out of one vessel, such as a waterskin, a clay jar, or an amphora. You can move up to enough water to fill a large storage jar. This spell moves water that already exists and never creates it.
+
 ### Bark Shield
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -135,6 +143,16 @@ sidebar_position: 5
 **Effect** <br/> You can’t cast this spell if you haven’t learned the “Animal Companion” talent.<br/>You set up a ritual to summon a spiritual beast of the land. As part of casting this spell, you must also spend 100 coins in incense and other sacred ingredients (they are spend even on a failure). Follow the normal rules, described in the “Animal Companion” talent for choosing a form for your animal companion (you can still only control as many animal companions, as you are allowed by the talent).<br/>On a success, you summon a spiritual being in your chosen animal form. Apply the following traits to it:<br/>- It’s It's creature type becomes Spirit (Primordial subtype)<br/>
 
 > **Heightened** <br/> <strong>(Rank 2) </strong>As part of casting this spell, you must spend 200 coins instead. Also apply the following traits to your companion:<br/>- It can cast any rank 0 or 1 spells you know. It casts them with it’s Spirit + your Nature. Instead of spending Focus, it can only cast a number of rank 1 spells per day equal to your Nature.<br/><strong>(Rank 3) </strong>As part of casting this spell, you must spend 500 coins instead. Also apply the following traits to your companion:<br/>- It can cast any rank 0, 1, or 2 spells you know (rank 1 spells are heightened to rank 2). It casts them with it’s Spirit + your Nature. Instead of spending Focus, it can only cast a combined number of rank 1 or 2 spells per day equal to your Nature.
+
+### Deepening Venom
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | -
+
+**Effect** <br/> You whisper to the venom already in the target's blood, and it wakes, virulent and patient.<br/>Target one creature that is currently poisoned.<br/><strong>Weak.</strong> Deal +4 poison damage.<br/><strong>Strong.</strong> Deal +8 poison damage.<br/><strong>Critical.</strong> Deal +12 poison damage.<br/>On any success, the target also suffers 4 lasting poison damage while they remain poisoned.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/+12/+18 poison damage and inflict 6 lasting poison damage instead.<br/><strong>(Rank 4)</strong> Deal +8/+16/+24 poison damage and inflict 8 lasting poison damage instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 poison damage and inflict 10 lasting poison damage instead.
 
 ### Gift of the Wild
 

@@ -28,6 +28,22 @@ sidebar_position: 2
 
 **Effect** <br/> You can create a stationary image of a small or medium sized creature or object. On a success, your chosen illusion appears at the target location in range. Attempts to physically interact with the illusion automatically reveal it to be an illusion.<br/>The illusion lasts for a short duration or until you move out of range of it. You can immediately recast this spell as an Action at the end of the duration to maintain the illusion for a longer time. 
 
+### Sensory Trick
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Medium | -
+
+**Effect** <br/> You conjure a momentary false sensation at any point in range, such as a whispered voice, a glint of metal, a footstep, or a sudden stench.<br/>On a success, the target turns toward the false sensation and is briefly distracted by it.
+
+### Phantom Feint
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Medium | -
+
+**Effect** <br/> An illusory double of you darts at the target from a false angle, dragging their guard out of line.<br/>On a success, the target is briefly marked (2).
+
 ### Color Spray
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -147,6 +163,36 @@ sidebar_position: 2
 **Effect** <br/> You trap a creature in their dreams. The target has to be of a tier equal to or lower than your Arcana. If the creature is at full HP, you suffer +1 bane on the roll.<br/>On a success, the creature falls unconscious for a short duration. If any creature uses an Action to shake them, they take any damage, or are otherwise disturbed, they can roll Spirit + Perception vs. your Resist to break free of the illusion. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The target remains unconscious for up to a medium duration instead.
+
+### Phantasmal Armor
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Self | enchant (body),  illusory,  quick
+
+**Effect** <br/> You wrap yourself in a shifting veil of menacing false shapes, and every blow aimed at you must first find you among them.<br/>On a success, the veil clings to you for a short duration. While this spell lasts, melee attacks against you suffer +1 bane. When a melee attack misses you, the attacker is briefly distracted as the veil's horrors lunge back at them.<br/>A creature that sees through the illusion ignores this spell's effects.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> This spell lasts for up to a medium duration instead.
+
+### Knife Behind the Mask
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Special | Self | strike
+
+**Effect** <br/> Your blade slips out from behind the lie before the lie falls apart. You can only cast this spell while you are concealed or disguised from the target by one of your own illusory spell effects, such as *Invisibility*, *Mislead*, or an unbroken *Disguise Form*.<br/>On a hit, add the following damage:<br/><strong>Weak.</strong> +3 damage.<br/><strong>Strong.</strong> +6 damage, and the target is briefly frightened of you.<br/><strong>Critical.</strong> +9 damage, and the target is briefly frightened of you.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Add +4/+8/+12 damage instead.<br/><strong>(Rank 4)</strong> Add +5/+10/+15 damage instead.<br/><strong>(Rank 5)</strong> Add +6/+12/+18 damage instead.
+
+### Warped Perspective
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate,  illusory
+
+**Effect** <br/> You bend how space itself is seen: floors tilt that are level, near becomes far, and a straight corridor drifts sideways.<br/>On a success, you warp the perception of the area in close range of the target location. The area counts as difficult terrain. Ranged attacks into, out of, or through the area suffer +1 bane.<br/>A creature that sees through the illusion ignores the area's effects.<br/>The zone lasts while you concentrate, up to a short duration.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The zone covers the area in short range of the target location instead.<br/><strong>(Rank 4)</strong> The zone covers the area in short range of the target location and lasts up to a medium duration instead.
 
 ### Mislead
 

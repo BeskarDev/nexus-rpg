@@ -4,6 +4,14 @@ sidebar_position: 4
 
 # Telepathy
 
+### Commanding Thought
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Medium | -
+
+**Effect** <br/> You hurl a single word into the target's mind with the weight of a shout, such as "halt", "drop", or "flee". The target hears it in their mind and understands it regardless of language.<br/>On a success, the target briefly suffers +1 bane on rolls for any action other than following the command.<br/>You can only cast this spell against any creature once per scene.
+
 ### Detect Magic
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -27,6 +35,14 @@ sidebar_position: 4
  0 | 0 | vs. Resist | Medium | -
 
 **Effect** <br/> You concentrate to overwhelm a creature’s mind with mental energy.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly dazed.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignore AV) and the target is briefly dazed. 
+
+### Surface Recall
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Short | -
+
+**Effect** <br/> You brush against the top of a creature's mind, where the last few moments still float unsorted.<br/>Against an unwilling creature, also use your roll's result vs. their Resist.<br/><strong>Weak.</strong> Ask one question from the catalog below.<br/><strong>Strong.</strong> Ask two questions.<br/><strong>Critical.</strong> Ask three questions.<br/>On a failure, the target is aware of your attempt to pry their mind and you can't target them again with this spell for the rest of the scene.<br/>Each question reaches only into the target's last minute. The GM answers each question truthfully with one concrete impression:<br/>- <strong>Seen.</strong> One face, object, or scene the target looked at.<br/>- <strong>Heard.</strong> One sound or spoken phrase the target heard.<br/>- <strong>Said.</strong> One phrase the target spoke, word for word if it was brief.<br/>- <strong>Done.</strong> One action the target performed, such as an object handled, a door unlocked, or a signal given.<br/>- <strong>Went.</strong> The path the target took, named as the places they passed.<br/>If the target's last minute holds nothing that answers the question, you learn that instead.<br/>You can only cast this spell against any creature once per scene.
 
 ### Attack Thoughts
 
@@ -68,6 +84,24 @@ sidebar_position: 4
 
 **Effect** <br/> You lay your hands on an item and unravel the weave of its enchantment thread by thread, prying loose what its maker bound into it. Target one magical item you touch throughout the ritual. Roll against a difficulty of 5 + the item's Quality.<br/><strong>Weak.</strong> You learn the general nature of the item's magic, such as whether it harms, protects, stores a spell, or wards against certain creatures.<br/><strong>Strong.</strong> You learn the item's enchantment in full, its exact effect and values and how to activate or use it, and whether the item is cursed.<br/><strong>Critical.</strong> As strong, and if the item is cursed you learn exactly how the curse works, its demand and its price. If it is one of the rare items carrying more than one enchantment, you learn all of them.<br/>You can only cast this spell once per item. On a failure, you must find another means to identify it. 
 
+### Memory Echo
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Close | -
+
+**Effect** <br/> You reach into a mind and draw one of its threads through your own, living a stolen moment from behind another's eyes.<br/>Name or describe one memory you seek from the target, such as an event, a conversation, a person met, or a route taken, from within the past hour. The memory can span a single scene of up to a few minutes.<br/>On a success, you relive the target's memory of it through their senses. The memory plays out in your mind in the space of a few breaths, no matter its true length. You experience it as the target remembers it, with their attention and their gaps, not as a perfect record. If they hold no such memory, you learn that instead.<br/>The target feels the touch on their mind whether or not you succeed. You can only cast this spell against any creature once per day.
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> The memory can be from within the past day instead.<br/><strong>(Rank 3)</strong> The memory can be from within the past week instead.<br/><strong>(Rank 4)</strong> The memory can be anything the target still clearly remembers instead.
+
+### Mental Shield
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | quick
+
+**Effect** <br/> You slip into the attacker's mind as the blow falls and see it coming before their body moves. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. You hold the read on your attacker and they briefly suffer +1 bane on attack rolls against you.
+
 ### Subtle Suggestion
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -100,6 +134,16 @@ sidebar_position: 4
 
 **Effect** <br/> You speak an word of command, forcing your target to take a certain course of action.<br/>Choose any reasonable sounding course of action that doesn‘t inflict harm on the creature itself. If the creature is in combat with you or otherwise actively aggressive towards you, you suffer +1 bane on the roll.<br/>On a success, the target is forced to pursue your suggested course of action without distraction.<br/>This spell lasts until the course of action is complete or for a short duration. The target can roll Spirit + Insight vs. your Resist at the end of their turns to end the effect early. The effect also ends early if the target takes damage from any source.<br/>After the spell ends, the target is aware you influenced their mind.  
 
+### Mind Fracture
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | -
+
+**Effect** <br/> You find the crack already running through the target's thoughts and drive your will into it like a wedge.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV).<br/><strong>Critical.</strong> Deal +6 psychic damage (ignore AV).<br/>If the target is dazed, confused, or charmed, deal +4/+8/+12 psychic damage (ignore AV) instead. If they were briefly dazed, confused, or charmed, that condition lasts for a short duration instead. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end it early.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +3/+6/+9 psychic damage (ignore AV), or +5/+10/+15 psychic damage (ignore AV) against a dazed, confused, or charmed target instead.<br/><strong>(Rank 4)</strong> Deal +4/+8/+12 psychic damage (ignore AV), or +6/+12/+18 psychic damage (ignore AV) against a dazed, confused, or charmed target instead.<br/><strong>(Rank 5)</strong> Deal +5/+10/+15 psychic damage (ignore AV), or +7/+14/+21 psychic damage (ignore AV) against a dazed, confused, or charmed target instead.
+
 ### Psychometry
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -117,6 +161,16 @@ sidebar_position: 4
  2 | 4 | vs. Resist | Short | blast (cone)
 
 **Effect** <br/> You send out a wave of destructive mental energy.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) against each target and they are briefly dazed.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignore AV) against each target and they are dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+
+### Telepathic Bond
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Close | -
+
+**Effect** <br/> You draw a thread from your mind to each companion's brow, weaving them into one silent web.<br/>On a success, you link yourself and up to four willing creatures in range together for a medium duration.<br/>Linked creatures can share words, feelings, and simple mental images with each other at will, regardless of language and distance, as long as they remain within the same region. A creature can leave the web at will.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> You can link yourself and up to six willing creatures, and the bond lasts for a long duration instead.<br/><strong>(Rank 4)</strong> You can link yourself and up to eight willing creatures, and the bond lasts for a long duration instead.
 
 ### Sending
 

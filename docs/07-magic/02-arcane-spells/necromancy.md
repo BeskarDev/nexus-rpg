@@ -20,6 +20,14 @@ sidebar_position: 6
 
 **Effect** <br/> You summon a ghostly translucent claw, taking hold of the target and draining their strength.<br/><strong>Weak. </strong>Deal +2 necrotic damage.<br/><strong>Strong. </strong>Deal +4 necrotic damage and briefly reduce their Strength die by one step.<br/><strong>Critical. </strong>Deal +6 necrotic damage and reduce their Strength die by one step for a short duration.<br/>They can roll Spirit + Fortitude at the end of their turns to end the effect early.<br/>Lowering an Attribute die temporarily doesn't change any statistics derived from it. Any individual creature can only suffer this effect once at a time. 
 
+### Ghostly Hand
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Short | -
+
+**Effect** <br/> A pallid, spectral hand crawls from your sleeve and drifts through the air, seizing only what is dead. The hand is plainly visible to anyone as a faintly glowing, translucent apparition. It is not a creature and it cannot be attacked, blocked, or harmed, but any creature can simply see where it goes and what it carries.<br/>Target one corpse, skeleton, bone, or other piece of dead matter of medium or smaller Size in range. The hand can instead grasp one object of 1 load or less from a corpse, such as a ring, a key, or a weapon still in its grip.<br/>On a success, the hand drags or carries the target up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the target until your next turn. During your next turn, you can cast this spell again to move it further.
+
 ### Life Echo
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -161,6 +169,16 @@ sidebar_position: 6
 **Effect** <br/> You place a spectral mark of death upon a creature, making them vulnerable to necromantic energies.<br/>On a success, the target suffers the death mark for a short duration. The mark is visible as a faint skull sigil on their forehead. It inflicts the following effects:<br/>- Attacks against them gain +1 boon.<br/>- Each time they take damage, also inflict 4 necrotic damage (ignore AV) to them.<br/>- If the marked creature dies while under this effect, you regain Focus equal to half the spell's cost.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the mark early. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> You can target up to two creatures in range with the spell instead.
+
+### Harvest the Mark
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | -
+
+**Effect** <br/> You clench your fist and the skull sigil of your mark caves inward, dragging the life it fed on back to you. Target one creature suffering from your *Death Mark*.<br/><strong>Weak.</strong> Deal +6 necrotic damage and regain +2 HP.<br/><strong>Strong.</strong> Deal +12 necrotic damage and regain +4 HP.<br/><strong>Critical.</strong> Deal +18 necrotic damage and regain +6 HP.<br/>On any success, the death mark triggers from this spell's damage as normal, inflicting its additional necrotic damage. Then the harvest consumes the mark. The death mark on the target ends and you regain Focus equal to half the death mark's cost, as if the marked creature had died.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +8/+16/+24 necrotic damage and regain +3/+6/+9 HP instead.<br/><strong>(Rank 4)</strong> Deal +10/+20/+30 necrotic damage and regain +4/+8/+12 HP instead.<br/><strong>(Rank 5)</strong> Deal +12/+24/+36 necrotic damage and regain +5/+10/+15 HP instead.
 
 ### Inflict Curse
 

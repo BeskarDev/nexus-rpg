@@ -28,6 +28,30 @@ sidebar_position: 7
 
 **Effect** <br/> You bring tranquility to the target‘s mind, either to renew their spirits, or to forcefully pacify them. When targeting an ally, roll vs. moderate difficulty (8). When targeting an enemy, roll vs. Resist.<br/><strong>Weak.</strong> Restore +2 HP to an ally or deal +0 psychic damage (ignore AV) against an enemy.<br/><strong>Strong.</strong> Restore +4 HP to an ally or deal +2 psychic damage (ignore AV) against an enemy and they are briefly dazed.<br/><strong>Critical. </strong>Restore +6 HP to an ally or deal +4 psychic damage (ignore AV) against an enemy and they are dazed for a short duration. The enemy can roll Spirit + Fortitude at the end of their turns to end the effect early. 
 
+### Shared Burden
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Touch | -
+
+**Effect** <br/> You lay both hands on a companion and speak the old words of the shared road, drawing their suffering into your own body as a flash of pain.<br/>Choose one condition the touched ally currently suffers among dazed, frightened, slowed, staggered, or poisoned.<br/>On a success, the condition ends on them and you take damage (ignore AV) based on its remaining duration: 2 if it would end briefly, 4 for a short duration, or 6 for a medium or longer duration. This damage cannot be redirected, prevented, or reduced.<br/>This spell cannot end a condition sustained by a persistent source, such as a curse, an illness, or an ongoing effect that reapplies it.
+
+### Wayfinder's Mark
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Touch | -
+
+**Effect** <br/> You trace a small blessed sign onto a stone, doorpost, tree, or waypost, and it settles into the grain like a promise of return. The mark must be placed on an unmoving structure or feature of the land, never on a creature, a vehicle, or anything else that moves. If the marked object is moved from its place, the mark breaks.<br/>On a success, the mark lasts for one moon. While you are within the same region, you feel a faint pull toward each of your marks. It tells you the rough direction and the distance as a range band, such as a day's march, a thousand paces, or medium range. The pull sharpens as you draw near. Creatures you name aloud as you cast gain +1 boon on rolls to navigate toward the marked place.<br/>You can maintain up to three marks. Placing a fourth fades your oldest mark.
+
+### Oathmark
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Short | -
+
+**Effect** <br/> Cast this spell when a creature freely swears an oath aloud in your presence.<br/>On a success, a pale blessed sign settles onto the back of the swearer's hand, plain for all to see. It lasts for one moon or until the oath is fulfilled.<br/>If the marked creature breaks the spoken wording of their oath, you know it the moment it happens while you are within the same region, the mark turns ashen for all to see, and the breaker feels that you know. The mark follows only the oath's literal wording, nothing of its intent.
+
 ### Absorb Harm
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -52,9 +76,29 @@ sidebar_position: 7
 ---|---|---|---|---
  1 | 2 | Medium (8) | Medium | concentrate
 
-**Effect** <br/> You build a empathetic link with one of your allies, sharing your surface thoughts and senses.<br/>On a success, you establish the link between you and your ally. While the link holds, if either one of you takes damage, both of you take half of the damage instead.<br/>The link lasts for a medium duration or until you are further away from each other than the range of this spell. 
+**Effect** <br/> You build a empathetic link with one of your allies, sharing your surface thoughts and senses.<br/>On a success, you establish the link between you and your ally. While the link holds, you gain the following effects:<br/>- If either one of you takes damage, both of you take half of the damage instead.<br/>- You can share simple thoughts and feelings with each other without speaking, and each of you always knows the other's direction and state of health.<br/>- Each of you can use the Help action for the other as a Quick Action on their own turn, without needing to be in melee range of each other.<br/>The link lasts for a medium duration or until you are further away from each other than the range of this spell. 
 
 > **Heightened** <br/> <strong>(Rank 2) </strong>While the link holds you and your ally also gain the following effect(s):<br/>- You gain +1 on all Defenses.<br/><strong>(Rank 3) </strong>While the link holds you and your ally also gain the following effect(s):<br/>- You gain +1 on all Defenses.<br/>- Attacks against a target both of you can perceive gain +1 boon.<br/>- Attacks from creatures both of you can perceive suffer +1 bane against you.
+
+### Swift Journey
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Short | ritual (minutes)
+
+**Effect** <br/> You anoint the sandals and staves of the company at first light, and the road seems to rise to meet their steps.<br/>On a success, you bless yourself and up to six willing travelers for one day. Blessed travelers gain +1 boon on rolls made to travel.<br/>You can only cast this spell once per day.
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Blessed travelers gain +1 boon on rolls made to travel, and the group gains +1 progress on that day of travel instead.
+
+### Peace Bond
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Medium | -
+
+**Effect** <br/> You speak a word of law over the target's weapons, and their arms grow heavy with the weight of it.<br/>On a success, the bond lies on the target for a short duration. Their attacks deal -2 damage (min. 0), and each time they make an attack, they take 2 psychic damage (ignore AV) as the bond stings them for raising a hand. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Their attacks deal -4 damage (min. 0) and the sting deals 4 psychic damage (ignore AV) instead.<br/><strong>(Rank 3)</strong> Their attacks deal -6 damage (min. 0) and the sting deals 6 psychic damage (ignore AV) instead.
 
 ### Pacifying Weapon
 
@@ -75,6 +119,46 @@ sidebar_position: 7
 **Effect** <br/> Cast this spell after you have taken damage from an attack. On a success, the attacker takes the same amount of damage you took from them (ignore AV). 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Add your Mysticism to the damage the attacker takes.<br/><strong>(Rank 3)</strong> Add 2 x your Mysticism to the damage the attacker takes.
+
+### Renewed Resolve
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | -
+
+**Effect** <br/> You speak a word of calm to a defended companion, and the sanctuary's stillness knits their wounds and clears their mind.<br/>Target one ally who is currently affected by one of your *Peace* spells.<br/><strong>Weak.</strong> The target regains 3 HP.<br/><strong>Strong.</strong> The target regains 6 HP.<br/><strong>Critical.</strong> The target regains 9 HP.<br/>On any success, the target also gains +1 boon on the next roll they make.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The target regains 4/8/12 HP instead.<br/><strong>(Rank 4)</strong> The target regains 5/10/15 HP instead.<br/><strong>(Rank 5)</strong> The target regains 6/12/18 HP instead.
+
+### Shield of the Meek
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | quick
+
+**Effect** <br/> Cast this spell when an enemy damages an ally who is currently affected by one of your *Peace* spells. The ward flares with a sound like a struck bell.<br/><strong>Weak.</strong> Deal +3 psychic damage (ignore AV) to the attacker.<br/><strong>Strong.</strong> Deal +6 psychic damage (ignore AV) to the attacker.<br/><strong>Critical.</strong> Deal +9 psychic damage (ignore AV) to the attacker.<br/>On any success, the attacker also suffers +1 bane on their next attack roll against that ally.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/+8/+12 psychic damage (ignore AV) instead.<br/><strong>(Rank 4)</strong> Deal +5/+10/+15 psychic damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 psychic damage (ignore AV) instead.
+
+### Herald's Aegis
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Medium (8) | Touch | enchant (body), singular
+
+**Effect** <br/> You anoint the brow of an envoy, and the old law of the herald settles over them like a mantle all can feel.<br/>Target yourself or one willing creature.<br/>On a success, the target stands under the herald's law for a medium duration. While this spell lasts, any creature near the target instinctively recognizes them as an envoy under sacred law, attack rolls against them suffer +1 bane, and any creature that damages them is briefly dazed by the weight of their transgression. Each creature can suffer the condition from this spell only once per scene.<br/>The blessing ends early if the target makes an attack or casts a spell that deals damage.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The blessing lasts for a long duration instead.
+
+### Wayfarer's Shield
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Medium (8) | Short | ritual (minutes)
+
+**Effect** <br/> You draw a circle of ash and oil around the company and ask the road to be gentle with them.<br/>On a success, you ward yourself and up to six willing travelers for one day. Warded travelers gain +1 boon on rolls to endure heat, cold, storms, foul air, and other natural hardships of the environment, and harsh weather inflicts no Fatigue on them. When they camp, the ward holds wind, rain, and cold at bay, and they can take a night's rest in the open as if sheltered.<br/>This ward offers no protection against creatures or violence, and none against weather or other hardships brought about by magic.<br/>You can only cast this spell once per day.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> You can ward yourself and up to twelve willing travelers instead.
 
 ### Dome of Sanctuary
 
@@ -161,6 +245,14 @@ sidebar_position: 7
 **Effect** <br/> You open the wellspring of your own life and pour it out, giving freely what violence took.<br/>On a success, sacrifice up to 10 of your own HP. Up to two other creatures in range each restore twice as many HP as you sacrificed. Any of them that are dying also stop dying and stabilize.<br/>The HP you sacrifice cannot be redirected, prevented, or reduced.
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> The targets each restore three times as many HP as you sacrificed instead.
+
+### Undying Devotion
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Short | concentrate
+
+**Effect** <br/> You speak the names of your companions as a vow, and a thread of your own life ties itself to each of their hearts.<br/>On a success, choose up to four allies in range. A thread of devotion binds each of them to you for a medium duration while you concentrate. Once bound, the threads stretch up to long range. While a bound ally is beyond long range of you, their thread grows slack and grants none of these effects until they return.<br/>While the threads hold, you gain the following effects:<br/>- Whenever a bound ally takes damage, you can choose to suffer it in their stead (ignore AV). They take no damage.<br/>- Whenever you take damage in an ally's stead, through this or any other of your *Peace* spells, you only take half of it (rounded up).<br/>- The first time each bound ally would be reduced to 0 HP, they remain at 1 HP instead and their thread burns away. You take 12 damage (ignore AV). This damage cannot be redirected, prevented, or reduced.<br/>If you are reduced to 0 HP, this spell ends immediately.
 
 ### Sanctuary Sphere
 

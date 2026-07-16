@@ -28,6 +28,14 @@ sidebar_position: 5
 
 **Effect** <br/> You hold out your hand and grasp at an object in range, slowly levitating it it into the air. The object can be of small or tiny size and take up to your carrying capacity in load. The object can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the object towards a target location.<br/><br/><strong>Move.</strong> Roll vs. moderate difficulty (8). On a success, you move the object up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the object until your next turn. During your next turn, you can cast this spell again to move the object further. On a failure, you drop the object at it’s current location.<br/><br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range.  On a hit, the object deals 2 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
 
+### Alter Weight
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Medium | -
+
+**Effect** <br/> As on the scales of judgment, you tip the weight of a living body toward stone or toward feather. Choose one creature in range and one of the following effects when casting this spell. Against an unwilling creature, also use your roll's result vs. their Parry.<br/><strong>Stone.</strong> On a success, the earth claims the target and their limbs turn to lead. They are briefly slowed and cannot jump.<br/><strong>Feather.</strong> On a success, the earth loosens its hold on the target briefly. They count as one Size smaller against effects that push, pull, lift, or throw them, and rolls to push, pull, throw, or knock the target prone gain +1 boon. When they jump, they jump up to a short distance instead of a close distance.
+
 ### Feather Fall
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -56,6 +64,14 @@ sidebar_position: 5
 
 **Effect** <br/> You create a nearly invisible energy barrier around you, held up by your mental power.<br/>On a success, the barrier grants you +4 AV (armor bonus) and lasts for a short duration.<br/>While the barrier is active, when you are attacked by a ranged attack and they miss you, you can use a Quick Action to reflect their attack back on them. Roll Mind + Arcana vs. their Dodge. On a hit, resolve the attack’s normal effects. 
 
+### Kinetic Deflection
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | quick
+
+**Effect** <br/> You throw an open palm against the incoming blow and unseen force shoves it off its line. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack.<br/>If the triggering attack was made with a thrown weapon or projectile and it misses you, you seize the missile mid-flight and fling it at a creature of your choice in short range of you, including the original attacker. Use this spell's roll result vs. that creature's Dodge. On a hit, treat it as a weak hit with the missile, using your spell power as the base damage.
+
 ### Shockwave
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -70,7 +86,7 @@ sidebar_position: 5
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | vs. Resist | Medium | -
+ 1 | 2 | vs. Parry | Medium | -
 
 **Effect** <br/> You telekinetically grasp at a creature, suffocating them inside a giant, invisible hand.<br/><strong>Weak. </strong>Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong. </strong>Deal +6 damage (ignore 1/2 AV).<br/><strong>Critical. </strong>Deal +9 damage (ignore 1/2 AV). 
 
@@ -132,7 +148,7 @@ sidebar_position: 5
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 2 | 4 | vs. Resist | Medium | concentrate
+ 2 | 4 | vs. Parry | Medium | concentrate
 
 **Effect** <br/> You pressure a creature in kinetic force from all sides, making them unable to move. You suffer +1 bane on the roll for every size category the target is larger than you.<br/>On a success, the target is stunned while you concentrate on this spell. If the target takes damage while stunned by this spell, you automatically lose concentration for it and the effect ends.<br/>You can use your Action on your next turn to repeat the roll for this spell without spending additional Focus. On a success, continue the spell’s effect. On a failure or if you choose not to use your Action to continue the spell, the spell ends and you can’t continue to cast it for free. 
 
@@ -150,21 +166,21 @@ sidebar_position: 5
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 2 | 4 | vs. Resist | Medium | -
+ 2 | 4 | vs. Parry | Medium | -
 
-**Effect** <br/> You lean invisible tonnage onto the target, and the ground itself seems to rise hungry beneath them.<br/><strong>Weak.</strong> Deal +4 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +8 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +12 damage (ignore 1/2 AV).<br/>If the target is prone, restrained, or grappled, they take +4 additional damage as the weight grinds them against what already holds them. 
+**Effect** <br/> You raise your fist and slam the weight of a hillside down on a single body.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV).<br/>If the target is prone, grappled, or restrained, deal +6/+12/+18 damage (ignore 1/2 AV) instead, as the pressure grinds them against the ground.
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/+12/+18 damage (ignore 1/2 AV), and a prone, restrained, or grappled target takes +6 additional damage instead.<br/><strong>(Rank 4)</strong> Deal +8/+16/+24 damage (ignore 1/2 AV), and a prone, restrained, or grappled target takes +8 additional damage instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 damage (ignore 1/2 AV), and a prone, restrained, or grappled target takes +10 additional damage instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/+8/+12 damage (ignore 1/2 AV) instead, or +8/+16/+24 damage (ignore 1/2 AV) against a prone, grappled, or restrained target instead.<br/><strong>(Rank 4)</strong> Deal +5/+10/+15 damage (ignore 1/2 AV) instead, or +10/+20/+30 damage (ignore 1/2 AV) against a prone, grappled, or restrained target instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 damage (ignore 1/2 AV) instead, or +12/+24/+36 damage (ignore 1/2 AV) against a prone, grappled, or restrained target instead.
 
 ### Relentless Grip
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 2 | 4 | vs. Resist | Medium | -
+ 2 | 4 | vs. Parry | Medium | singular
 
-**Effect** <br/> You add your will to a hold already closed around the target, and it tightens like a knot pulled wet.<br/>Target a creature that is currently grappled or restrained.<br/><strong>Weak.</strong> The target suffers +1 bane on rolls to escape or end the grappled or restrained state, and if the state has a set duration, it extends by one step.<br/><strong>Strong.</strong> Same as a weak success, and deal +3 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Same as a weak success, and deal +6 damage (ignore 1/2 AV).<br/>This spell has no effect on a target that is neither grappled nor restrained. 
+**Effect** <br/> You close an unseen fist around a body already faltering, and it tightens with every breath. Target one creature of medium or smaller Size that is currently prone, grappled, or restrained.<br/>On a success, the target is grappled and restrained by the crushing grip for a short duration. While held this way, they cannot stand up from being prone. At the end of their turns, they can roll Strength + Athletics vs. your Resist to break free, ending this spell.
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/+8 damage (ignore 1/2 AV) on a strong or critical success instead.<br/><strong>(Rank 4)</strong> Deal +5/+10 damage (ignore 1/2 AV) on a strong or critical success instead.<br/><strong>(Rank 5)</strong> Deal +6/+12 damage (ignore 1/2 AV) on a strong or critical success instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Target a creature of large or smaller Size instead.<br/><strong>(Rank 4)</strong> Target a creature of huge or smaller Size instead.
 
 ### Kinetic Implosion
 
@@ -180,7 +196,7 @@ sidebar_position: 5
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 6 | vs. Resist | Medium | -
+ 3 | 6 | vs. Parry | Medium | -
 
 **Effect** <br/> You tear a held enemy off the ground and turn them into ammunition.<br/>Target a creature of large or smaller Size that is currently grappled or restrained.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV).<br/>Also on a success, the target is pushed up to a short distance in any direction you choose. Being slammed into a creature, solid object, or the ground follows the normal rules of the pushed condition, and the throw ends any grapple holding them.<br/>This spell has no effect on a target that is neither grappled nor restrained. 
 

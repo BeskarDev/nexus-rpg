@@ -44,6 +44,14 @@ sidebar_position: 2
 
 **Effect** <br/> You summon ghostly whispers into the mind of the target, seeding doubt and confusing them.<br/><strong>Weak. </strong>The target suffers +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> The target suffers +2 psychic damage (ignore AV) and the target is briefly confused.<br/><strong>Critical.</strong> The target suffers +4 psychic damage (ignore AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
+### Thread of Fate
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Self | ritual (minutes)
+
+**Effect** <br/> Over minutes of stillness you let the threads of what comes next run through your fingers, feeling where they pull taut and where they slacken.<br/>Name two courses open to you, such as two paths, two doors, or two undertakings.<br/>On a success, the threads answer with a single whispered word: <em>weal</em> over the course that holds the better fortune for you, <em>woe</em> over the one that holds the worse, or silence when they favor neither.<br/>The answer is a leaning, not a promise. It does not account for choices or events that might later change the outcome. Casting again on the same two courses gives the same answer until circumstances meaningfully change.
+
 ### Cloak of Night
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -305,6 +313,16 @@ sidebar_position: 2
 **Effect** <br/> You draw the dusk over a place like a curtain, and what happens within slips out of the world's sight and memory.<br/>On a success, a veil settles over the area in short range of the target location for a medium duration while you concentrate. Apply the following effects:<br/>- To any observer outside, the area appears still and empty to every sense, as it would seem with no one within it. Creatures and objects inside cannot be perceived from outside, and no sound, smell, light, or smoke from within crosses the veil's edge.<br/>- Any scrying sensor or divination magic targeting the area or anything inside it perceives only the same empty stillness.<br/>- Creatures inside the veil perceive their surroundings and the world outside normally.<br/>The veil does not bar passage. Any creature can walk in, and once inside they perceive everything within normally. An outside observer with reason to be suspicious of the place can roll Spirit + Perception vs. your Resist to sense that the stillness is unnatural, though not what it hides.
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> The veil extends in medium range of the target location instead and lasts for a long duration.
+
+### Everlasting Night
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Touch | ritual (hours), singular, material cost (5000 coins)
+
+**Effect** <br/> Through a night-long rite you raise a stele of black stone and speak the moon's claim over the land, and the sun forgets the way there. The rite consumes rare offerings and the graven stele worth 5000 coins, whether or not it succeeds.<br/>On a success, unending night settles over a single valley, city, or other bounded site up to a thousand paces across, centered on the anchor stele, and holds for one moon. You may maintain only one Everlasting Night at a time, and you can renew it by casting this spell again at the stele before the moon turns. Within the site, apply the following effects:<br/>- The sun does not rise over the site. Under open sky the land is lit as by a clear, moonlit night, dim light at its brightest hour. Mundane fires, lamps, and magical light sources work normally within the night.<br/>- Spells and abilities that require night, darkness, or moonlight treat the whole site as night at all hours.<br/>- You and any creatures you name during the rite see within the site's night as if it were bright light.<br/>The anchor stele is an object with 8 AV and 30 HP. If it is destroyed, the night lifts at once. The night also ends if an effect that ends spells, cast at rank 5, is used upon the stele, or when the light of a *Dawnbreak* fills the site.
+
+> **GM framing note.** A land where the sun stops rising is a story, not a buff: crops fail within the moon, fear spreads faster than any blade, and every faith of the sun marches on the stele. Use it as the signature of a cult, a shadow court, or a player bold enough to accept what it announces — the site is visible from every horizon, and the counter-rites (the stele, a rank-5 unmaking, *Dawnbreak*) are exactly what heroes and rival priesthoods will seek.
 
 ### Dream Realm
 

@@ -683,7 +683,7 @@ Sequence after P5. 7.2 is small and can ship whenever; 7.1 is the long tail and 
 
 #### 7.1 Execution Plan — per-school batches (opened 2026-07-14)
 
-**Batching rule (owner directive 2026-07-14):** run **one school per batch** (grouping only the near-complete tiny schools, splitting the 8–9-seed schools by rank tier within their draft). Small batches keep the whole skill's principle set tracked and output quality high — large multi-school batches let the designer lose track of principles and reintroduce mistakes the principles already cover. Each batch: draft under repo-root `.drafts/<school>-r0-r2-batch.md` → owner approval → publish docs → JSON → Notion → tick the school's matrix/checklist and this table.
+**Batching rule (owner directive 2026-07-14):** run **one school per batch** (grouping only the near-complete tiny schools, splitting the 8–9-seed schools by rank tier within their draft). Small batches keep the whole skill's principle set tracked and output quality high — large multi-school batches let the designer lose track of principles and reintroduce mistakes the principles already cover. Each batch: draft under repo-root `.drafts/p7-low-rank-backfill/<batch##>-<school>-r0-r2-batch.md` → owner approval → publish docs → JSON → Notion → tick the school's matrix/checklist and this table.
 
 **Total scope:** ~74 R0–R2 aspect seeds across 14 schools (source: each school file's Proposed New Spells seed table, rank ≤ 2). Nature (2), Necromancy (2), Twilight (1) are near-complete at low rank — light lift, grouped. Note: several "seeds" are cross-list **adoptions** of an already-published spell (e.g. Evocation's Acid Splash = Nature's published text verbatim), not fresh designs.
 
@@ -691,16 +691,16 @@ Sequence after P5. 7.2 is small and can ship whenever; 7.1 is the long tail and 
 |---|---|---|---|---|
 | 1 | Evocation | 9 (Acid Splash [adopt], Air Burst, Thermal Control, Concussive Bolt, Elemental Shaping, Acid Rain, Gale Force, Wildfire, Stoke the Blaze [owner-added]) | — | ✅ published 2026-07-14 |
 | 2 | Conjuration | 6 (Conjure Servant, Far Reach, Arcane Snare, Spatial Echo, Fabricate, Force Surge) | — | ✅ published 2026-07-14 |
-| 3 | Illusion | 5 (Sensory Trick, Phantom Feint, Phantasmal Armor, Knife Behind the Mask, Warped Perspective) | — | ✏️ drafted 2026-07-14 (`.drafts/illusion-r0-r2-batch.md`) |
-| 4 | Necromancy + Telekinetics | 2 + 4 (Ghostly Hand, Harvest the Mark; Gravity Shift, Kinetic Deflection, Grinding Weight, Relentless Grip) | — | ✏️ drafted 2026-07-14 (`.drafts/necromancy-telekinetics-r0-r2-batch.md`) |
-| 5 | Telepathy | 6 (Surface Recall, Commanding Thought, Mental Shield, Memory Echo, Mind Fracture, Telepathic Bond) | — | ✏️ drafted 2026-07-14 (`.drafts/telepathy-r0-r2-batch.md`) |
-| 6 | Death | 5 (Miasma, Minor Hex, Commune with Ancestors, Festering Wound, Ancestral Guardian — Grave Chill, Curse of Frailty, Weight of Dooms turned out already published) | — | ✏️ drafted 2026-07-14 (`.drafts/death-r0-r2-batch.md`) |
-| 7 | Peace | 9 (Shared Burden, Wayfinder's Mark, Oathmark, Swift Journey, Peace Bond, Steady Hands, Shield of the Meek, **Binding Oath**, Wayfarer's Shield) | 7.2 **Undying Devotion** (R5) folded in | ✏️ drafted 2026-07-14 (`.drafts/peace-r0-r2-batch.md`) |
-| 8 | Life | 7 (Kindred Bond, Nurturing Touch, Beacon of Hope, Sustaining Grace, Surge of Renewal, Bursting Ward, Blessing of the Harvest) | — | ☐ |
-| 9 | Tempest | 7 (Tremor, Sand Gust, Splash, Weather Prediction, Sandblast, Water Jet, Thunderfall) | — | ☐ |
-| 10 | War | 5 (Righteous Strike, Victor's Shout, Terror's Edge, Avenging Oath, War Banner) | — | ☐ |
-| 11 | Light | 4 (Moment of Clarity, Stern Gaze, Mark of Judgement, Weapon of Revelation) | — | ☐ |
-| 12 | Nature + Twilight | 2 + 1 (Shape Water, Deepening Venom; Thread of Fate) | 7.2 **Everlasting Night** (Twilight R5) | ☐ |
+| 3 | Illusion | 5 (Sensory Trick, Phantom Feint, Phantasmal Armor, Knife Behind the Mask, Warped Perspective) | — | ✅ published 2026-07-16 |
+| 4 | Necromancy + Telekinetics | 2 + 4 (Ghostly Hand, Harvest the Mark; Alter Weight, Kinetic Deflection, Grinding Weight [rework], Relentless Grip [rework]) | — | ✅ published 2026-07-16 |
+| 5 | Telepathy | 6 (Surface Recall, Commanding Thought, Mental Shield, Memory Echo, Mind Fracture, Telepathic Bond) | — | ✅ published 2026-07-16 |
+| 6 | Death | 5 (Miasma, Minor Hex, Commune with Ancestors, Festering Wound, Ancestral Guardian — Grave Chill, Curse of Frailty, Weight of Dooms turned out already published) | — | ✏️ drafted 2026-07-14 (`.drafts/p7-low-rank-backfill/06-death-r0-r2-batch.md`) |
+| 7 | Peace | 9 (Shared Burden, Wayfinder's Mark, Oathmark, Swift Journey, Peace Bond, Steady Hands, Shield of the Meek, **Binding Oath**, Wayfarer's Shield) | 7.2 **Undying Devotion** (R5) folded in | ✏️ drafted 2026-07-14 (`.drafts/p7-low-rank-backfill/07-peace-r0-r2-batch.md`) |
+| 8 | Life | 7 (Kindred Bond, Nurturing Touch, Beacon of Hope, Sustaining Grace, Surge of Renewal, Bursting Ward, Blessing of the Harvest) | — | ✏️ drafted 2026-07-14 (`.drafts/p7-low-rank-backfill/08-life-r0-r2-batch.md`) |
+| 9 | Tempest | 7 (Tremor, Sand Gust, Splash, Weather Prediction, Sandblast, Water Jet, Thunderfall) | — | ✏️ drafted 2026-07-15 (`.drafts/p7-low-rank-backfill/09-tempest-r0-r2-batch.md`) |
+| 10 | War | 5 (Righteous Strike, Victor's Shout, Terror's Edge, Avenging Oath, War Banner) | — | ✏️ drafted 2026-07-15 (`.drafts/p7-low-rank-backfill/10-war-r0-r2-batch.md`) |
+| 11 | Light | 5 (Moment of Clarity, Stern Gaze, Kindle the Mark [owner's mark-sustaining idea], Mark of Judgement, Weapon of Revelation) | — | ✏️ drafted 2026-07-15 (`.drafts/p7-low-rank-backfill/11-light-r0-r2-batch.md`) |
+| 12 | Nature + Twilight | 2 + 1 (Shape Water, Deepening Venom; Thread of Fate) | 7.2 **Everlasting Night** (Twilight R5) folded in | ✏️ drafted 2026-07-15 (`.drafts/p7-low-rank-backfill/12-nature-twilight-r0-r2-batch.md`) |
 | 13 | Wrap: 7.3 keyword | — | "unprovoked movement" keyword coined + corpus sweep — do **last**, after all movement-granting spells exist | ☐ |
 
 Seed counts are the honest-gap target per school; a cell may resolve to an intentional empty (principle 3) during design rather than a spell. Fresh sessions: pick the first ☐ batch, read that school's `docs/analysis/spells/schools/<school>.md` + the seed table, design against the current chassis/principles, draft, then get owner approval before publishing.
@@ -726,6 +726,19 @@ The over-value is **negligible at R0–R1** (why Gust at full column is fine) an
 3. Blast spells where damage is **secondary to control** (push/cluster/knockdown primary, e.g. Gale Force): keep the low number as-is; it already pays for the bypass.
 
 **Scope:** corpus-wide pass over every published R2+ spell dealing blast damage (Tempest, Telekinetics, Evocation, Conjuration, and any others), re-pricing the damage-primary ones. Enumerate the affected spells, propose per-spell new values, one owner-approved batch. **Does not touch** P7.1 Batch 1 spells (all R0–R1 or control-primary). Sequence: independent of P7.1; run whenever, but a natural companion to the Evocation/Tempest/Telekinetics low-rank batches.
+
+### Priority 9 — Pre-scientific naming sweep (opened 2026-07-15, P7.1 Batch 4)
+
+**Origin:** owner ruling during the Telekinetics batch — "Gravity Shift" carries a modern physics register the Bronze Age setting doesn't support; renamed *Alter Weight* (first draft *Burden and Feather* was re-struck as too thematic — function in the name, poetry in the flavor). Codified as **principle 91**: names and flavor speak in a pre-scientific register (the earth's pull, weight, burden, unseen force), while effects may still model the physics exactly.
+
+**Tension to balance (owner directive):** recognizable names for veteran TTRPG players vs. in-world logic. A name like *Fireball* or *Invisibility* is genre furniture and instantly parseable — that recognition has real value at the table (principle 21: a classic name obligates the classic's action). The sweep must not sand every name down to obscure poetry. Guideline: rename only where the term implies a *modern scientific framework* (gravity, kinetic, momentum, vacuum, energy-as-physics); keep names that are classic genre vocabulary even when slightly anachronistic, and prefer renames that stay one step from the original (*Reverse Gravity* → something like *The Earth Refuses* / *Sky Burial* — still recognizably "the upside-down-fall spell").
+
+**Scope:**
+1. Enumerate: sweep all published spell names + effect prose for modern-physics vocabulary (`gravity`, `kinetic`, `momentum`, `energy`, `vacuum`, `pressure`, …). Known offenders: *Gravity Orb*, *Reverse Gravity* (telekinetics.md); audit Telekinetics prose broadly ("telekinetically" in effect text), Evocation, Tempest.
+2. Per-name proposal table: current name, verdict (keep as genre-classic / rename), proposed new name, one-line reasoning. Owner approves the table before any edit.
+3. Apply approved renames across all three surfaces (docs, app JSON, Notion) plus every cross-reference (other spells' text, talents, analysis files, draft batches).
+
+**Sequence:** after P7.1 batches land (avoids renaming targets mid-review). Independent of P8.
 
 ### Sequencing Note
 
