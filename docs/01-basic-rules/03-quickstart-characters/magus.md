@@ -60,8 +60,8 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
   - Rank 0: Flickering Flame, Frost Snap
   - Rank 1: Chromatic Orb, Flaming Weapon
 - **Telekinetics:**
-  - Rank 0: Kinetic Pull, Kinetic Push
-  - Rank 1: Gravity Orb, Reflective Barrier
+  - Rank 0: Phantom Pull, Phantom Push
+  - Rank 1: Pressure Orb, Reflective Barrier
 
 Note: At rank 1, you know 4 total spells within your chosen discipline.
 

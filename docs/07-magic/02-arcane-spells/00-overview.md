@@ -45,7 +45,7 @@ The discipline of mental domination and psychic intrusion. Telepathy spells read
 **Focus**: Utility, Offense, Defense  
 **Damage Types**: Physical, Blast, Lightning
 
-The power to move objects and creatures through mental force alone. Telekinetic spells move objects at a distance, create force barriers, levitate creatures, crush targets, and manipulate gravity.
+The power to move objects and creatures through mental force alone. Telekinetic spells move objects at a distance, create force barriers, levitate creatures, crush targets, and bend the pull of the earth.
 
 ### [Necromancy](./necromancy)
 **Identity**: Selfish manipulation of death and life force  

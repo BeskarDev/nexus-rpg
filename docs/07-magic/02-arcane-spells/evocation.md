@@ -44,7 +44,7 @@ sidebar_position: 1
 
 **Effect** <br/> You clap your hands and a ring of compressed air detonates outward from you. Target each creature in melee range of you.<br/><strong>Weak.</strong> Deal +0 blast damage (ignore 1/2 AV) to each target and push each of them a close distance away from you.<br/><strong>Strong.</strong> Deal +2 blast damage (ignore 1/2 AV) to each target and push each of them a close distance away from you.<br/><strong>Critical.</strong> Deal +4 blast damage (ignore 1/2 AV) to each target and push each of them a short distance away from you.<br/>You can also cast this spell to snuff small open flames or scatter loose light objects around you.
 
-### Thermal Control
+### Temper Heat
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
@@ -296,7 +296,7 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> Deal +5/+10/+15 frost damage to each target instead.
 
-### Voltaic Surge
+### Levin Surge
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---

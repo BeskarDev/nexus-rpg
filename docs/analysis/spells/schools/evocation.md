@@ -48,7 +48,7 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | 1 | 9 | Chromatic Orb, Elemental Ward (reactive), Flame Burst, Flaming Weapon, Frozen Weapon, Ice Shards, Lightning Arc, Lightning Weapon, Scorching Ray |
 | 2 | 6 | Fireball, Frost Wave, Frostfire Shield, Ice Lance, Lightning Strike, Prismatic Missile |
 | 3 | 3 | Black Flame Bolt, Chain Lightning, Dissolving Ray |
-| 4 | 3 | Cone of Cold, Voltaic Surge, Wall of Fire |
+| 4 | 3 | Cone of Cold, Levin Surge, Wall of Fire |
 | 5 | 2 | Fulminate, Smoldering Star |
 
 ### Trait × Rank Coverage Matrix
@@ -59,11 +59,11 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 |-------|-----|-----|-----|-----|-----|-----|
 | fire | Flickering Flame | Flame Burst, Flaming Weapon, Scorching Ray | Fireball, *Wildfire* | Black Flame Bolt | Wall of Fire | *Delayed Blast Meteor* |
 | frost | Frost Snap | Frozen Weapon, Ice Shards | Frost Wave, Ice Lance | *Conducting Chill* | Cone of Cold | — |
-| lightning | Static Spark | Lightning Arc, Lightning Weapon | Lightning Strike, Prismatic Missile | Chain Lightning | Voltaic Surge | Fulminate |
+| lightning | Static Spark | Lightning Arc, Lightning Weapon | Lightning Strike, Prismatic Missile | Chain Lightning | Levin Surge | Fulminate |
 | acid | *Acid Splash* | Chromatic Orb (multi) | *Acid Rain* | Dissolving Ray | — (Dissolving Ray Heighten) | — |
 | air | *Air Burst* | *Concussive Bolt* | *Gale Force* | *Thunderous Rupture* | *Vacuum Sphere* | — |
 
-**Additional multi-element / utility spells**: *Thermal Control* (R0), Elemental Ward (R1), *Elemental Shaping* (R1), Chromatic Orb (R1), Frostfire Shield (R2, fire/frost), Prismatic Missile (R2), *Elemental Ruin* (R4)
+**Additional multi-element / utility spells**: *Temper Heat* (R0), Elemental Ward (R1), *Elemental Shaping* (R1), Chromatic Orb (R1), Frostfire Shield (R2, fire/frost), Prismatic Missile (R2), *Elemental Ruin* (R4)
 
 **Coverage**: only published spells count as real coverage — proposed entries (italics) are undesigned seeds (principle 19). The empty R4–R5 cells are deliberate: fire and lightning each carry one R5 capstone (seeded Delayed Blast Meteor, published Fulminate), and high-rank acid rides Dissolving Ray's Heighten cascade (principle 3) instead of a duplicate spell entry. A trait does not need a dedicated capstone at every rank — an honest gap beats a filler seed. If a frost or air R5 concept with a genuinely distinct identity emerges, it earns a seed then.
 
@@ -87,7 +87,7 @@ Role reads "combat-role / synergy-role" (synergy roles per the framework: setup 
 |---|---|---|---|
 | Acid Splash | 0 | Offense / standalone | Adopt Nature's published Acid Splash unchanged (acid damage, ignore 1/2 AV) as a shared spell — identical text in both lists. **No Durability check at R0** (owner decision, principle 51: at-will attrition riders are far too powerful). Acid's Durability identity starts at Acid Rain (R2). |
 | Air Burst | 0 | Offense / setup | Concussive burst of compressed air (air trait) around the caster: blast damage in melee range and pushes targets a close distance away. Emits pushed positioning at will, feeding field payoffs such as shoving enemies into Wall of Fire or out of reach. |
-| Thermal Control | 0 | Utility / standalone | Warm, chill, or hold the temperature of a small area or object (fire and frost traits at trick scale, principle 6). Weak-role seed kept deliberately: the school identity flags zero non-combat spells as its major gap, and this is the R0 utility answer. |
+| Temper Heat | 0 | Utility / standalone | Warm, chill, or hold the temperature of a small area or object (fire and frost traits at trick scale, principle 6). Weak-role seed kept deliberately: the school identity flags zero non-combat spells as its major gap, and this is the R0 utility answer. |
 | Concussive Bolt | 1 | Offense / setup | Single-target bolt of compressed air: blast damage (ignores half AV), and on a strong or critical success the target is pushed a close distance and falls prone if they collide with an obstacle. Emits pushed/prone, the shared socket martials and Telekinetics payoffs spend. |
 | Elemental Shaping | 1 | Utility / standalone | Reshape or move existing elemental material in range: bend a bonfire around a camp, carve or melt ice, part smoke or fumes (fire, frost, air traits — earth and water belong to Nature). Weak-role seed justified by the school's declared utility gap. |
 | Acid Rain | 2 | Control / extender | Placed caustic zone (fixed-TN cast, flat per-tick acid damage per principle 44) that also forces a Durability check on the armor of any creature ending their turn inside. Prolong extender: keeps stripped-AV pressure open across turns for focus fire and Elemental Ruin. |
@@ -100,7 +100,7 @@ Role reads "combat-role / synergy-role" (synergy roles per the framework: setup 
 | Thunderous Rupture | 3 | Offense / setup | Self-centered omnidirectional pressure pulse: blast damage in a close area, pushing targets away, and knocking them prone on a strong or critical success. Emits prone and buys the caster space when surrounded. |
 | Wall of Fire | 4 | Control / extender | Standing curtain of flame with flat crossing/adjacency fire damage (principle 44) and burning on anyone who passes through. Prolong extender and field reshape. Pairs with the air push seeds (Air Burst, Gale Force, Thunderous Rupture, Vacuum Sphere) that force enemies through it. Needs concrete durability stats per principle 35. |
 | Cone of Cold | 4 | Offense / payoff | Medium frost cone at reduced multi-target damage (strong-secondary trade per the deviation table): targets are briefly slowed, and targets that were already slowed are briefly restrained instead (slowed to restrained convert). Cold-cast it seeds its own follow-up; on Frost Wave setup it is the frost engine's R4 payoff. |
-| Voltaic Surge | 4 | Offense / payoff | Single-target lightning lance priced below the R4 single-target curve when cast cold. Against a staggered target it deals bonus damage and upgrades the stagger to briefly stunned, breaking concentration. Payoff on the staggered socket Lightning Strike and Lightning Weapon emit. |
+| Levin Surge | 4 | Offense / payoff | Single-target lightning lance priced below the R4 single-target curve when cast cold. Against a staggered target it deals bonus damage and upgrades the stagger to briefly stunned, breaking concentration. Payoff on the staggered socket Lightning Strike and Lightning Weapon emit. |
 | Elemental Ruin | 4 | Offense / payoff | Single-target strike dealing bonus damage per distinct exploitable state the target carries (burning, slowed, staggered, prone, reduced AV), consuming the conditions it counts. Well below curve cold, far above when fully stacked. The condition engine's crown and the school's multi-element capstone. |
 | Vacuum Sphere | 4 | Control / setup | Collapse the air at a point: creatures in the area are dragged toward the center and take blast damage, and mundane flames inside are snuffed out. Emits cluster — the state the school wants most — teeing up Fireball, Chain Lightning, or Delayed Blast Meteor. |
 | Delayed Blast Meteor | 5 | Offense / standalone | A hanging orb of superheated force planted at a point, detonating on command or after a set delay, its damage growing the longer it waits (the Delayed Blast Fireball ceiling model — never Meteor Swarm). Cashes in clusters that allies or Vacuum Sphere pack together. Mandatory material cost 5,000+ per R5 rules. |
@@ -121,13 +121,13 @@ The following spells are shared between Evocation and mystic traditions (same sp
 ### Spell Progression Chains
 1. **Fire chain**: Flickering Flame (R0 condition) → Flame Burst/Scorching Ray (R1 damage) → Fireball (R2 AoE) → Wildfire (R2 spread) → Black Flame Bolt (R3 single) → Wall of Fire (R4 control) → Delayed Blast Meteor (R5)
 2. **Frost chain**: Frost Snap (R0 condition) → Ice Shards/Frozen Weapon (R1) → Frost Wave/Ice Lance (R2) → Conducting Chill (R3 convert) → Cone of Cold (R4 payoff)
-3. **Lightning chain**: Static Spark (R0 condition) → Lightning Arc (R1) → Lightning Strike (R2 line) → Chain Lightning (R3 chain) → Voltaic Surge (R4 payoff) → Fulminate (R5 AoE, published)
+3. **Lightning chain**: Static Spark (R0 condition) → Lightning Arc (R1) → Lightning Strike (R2 line) → Chain Lightning (R3 chain) → Levin Surge (R4 payoff) → Fulminate (R5 AoE, published)
 4. **Acid chain**: Acid Splash (R0 weak rider) → Chromatic Orb (R1 multi) → Acid Rain (R2 zone, Durability entry rank) → Dissolving Ray (R3 single, Heighten carries to R4–R5)
 5. **Air chain**: Air Burst (R0 push) → Concussive Bolt (R1 single) → Gale Force (R2 line) → Thunderous Rupture (R3 self-AoE) → Vacuum Sphere (R4 implosion)
 6. **AV-strip combo**: Acid Rain (R2 Durability pressure) → Dissolving Ray (AV reduction, heightened for deeper strip) → fire/lightning follow-ups and martial focus fire deal more effective damage
 7. **Condition-stack engine**: any two elemental setups (burning, slowed, staggered, prone, reduced AV) → Elemental Ruin (R4 payoff consumes the stack)
 8. **Frost-to-lightning convert**: Frost Snap/Frost Wave (slowed) → Conducting Chill (restrained + lightning rod) → Lightning Strike/Chain Lightning (arcing payoff)
-9. **Anti-caster**: Lightning Strike/Lightning Weapon (staggered) → Voltaic Surge (R4 stagger-to-stunned concentration break)
+9. **Anti-caster**: Lightning Strike/Lightning Weapon (staggered) → Levin Surge (R4 stagger-to-stunned concentration break)
 
 ### Setup + Payoff Combos
 - ✅ **Element condition → bonus damage**: well-supported across ranks, capped by Elemental Ruin (R4) consuming the full stack
@@ -137,12 +137,12 @@ The following spells are shared between Evocation and mystic traditions (same sp
 - ✅ **Frost convert**: Frost Snap/Frost Wave/Ice Shards apply slowed → Conducting Chill (R3) or Cone of Cold (R4) converts slowed to restrained
 - ✅ **Fire spread**: Flickering Flame/Fireball apply burning → Wildfire (R2) leaps the burn to neighbors
 - ✅ **Frost → lightning conductor**: Conducting Chill explicitly turns a frozen target into an arc socket for the next lightning spell
-- ✅ **Concentration breaking**: staggered emitters → Voltaic Surge (R4 stagger-to-stunned)
+- ✅ **Concentration breaking**: staggered emitters → Levin Surge (R4 stagger-to-stunned)
 
 ### Design Completeness Checklist
 - [x] R1 Quick Action: Elemental Ward (R1, realigned 2026-07-10) — standardized reactive defense (+2 Dodge/Parry, elemental backlash secondary)
 - [x] Defensive options: Elemental Ward (R1), Frostfire Shield (R2), Wall of Fire (R4) — all published
-- [x] Utility: Thermal Control (R0 seed), Elemental Shaping (R1 seed) — the school's only non-combat coverage, kept despite the Weak role because the identity section names utility as the major gap
+- [x] Utility: Temper Heat (R0 seed), Elemental Shaping (R1 seed) — the school's only non-combat coverage, kept despite the Weak role because the identity section names utility as the major gap
 - [x] Damage across all ranks: published R0–R3 plus Fulminate (R5); seeds fill R4 and reinforce R5
 - [x] Repeating conditions: burning, slowed, staggered, corroding (Durability + AV reduction), pushed/prone (air)
 - [x] Setup+payoff: condition stack → Elemental Ruin, slowed → restrained converts, burning spread (Wildfire), frost → lightning rod (Conducting Chill), Durability → AV strip → focus fire, push → cluster → AoE

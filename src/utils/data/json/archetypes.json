@@ -447,17 +447,17 @@
 					"discipline": "Evocation"
 				},
 				{
-					"name": "Kinetic Pull",
+					"name": "Phantom Pull",
 					"rank": 0,
 					"discipline": "Telekinetics"
 				},
 				{
-					"name": "Kinetic Push",
+					"name": "Phantom Push",
 					"rank": 0,
 					"discipline": "Telekinetics"
 				},
 				{
-					"name": "Gravity Orb",
+					"name": "Pressure Orb",
 					"rank": 1,
 					"discipline": "Telekinetics"
 				},

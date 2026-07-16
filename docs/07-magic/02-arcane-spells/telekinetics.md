@@ -4,15 +4,15 @@ sidebar_position: 5
 
 # Telekinetics
 
-### Kinetic Pull
+### Phantom Pull
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  0 | 0 | vs. Dodge | Short | -
 
-**Effect** <br/> You telekinetically hold onto a target object or creature of medium or smaller size within range and violently pull them towards you.<br/>When targeting an object held by a creature, you suffer +1 bane on the roll.<br/><strong>Weak.</strong> Pull the target up to a close distance towards you.<br/><strong>Strong.</strong> Pull the target up to a close distance towards you and they fall prone.<br/><strong>Critical.</strong> Pull the target up to a short distance towards you and they fall prone.<br/>This Movement is treated the same as pushing in regards to Opportunity Attacks, larger creatures, and other effects. 
+**Effect** <br/> You reach out with unseen force and hold onto a target object or creature of medium or smaller size within range and violently pull them towards you.<br/>When targeting an object held by a creature, you suffer +1 bane on the roll.<br/><strong>Weak.</strong> Pull the target up to a close distance towards you.<br/><strong>Strong.</strong> Pull the target up to a close distance towards you and they fall prone.<br/><strong>Critical.</strong> Pull the target up to a short distance towards you and they fall prone.<br/>This Movement is treated the same as pushing in regards to Opportunity Attacks, larger creatures, and other effects. 
 
-### Kinetic Push
+### Phantom Push
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
@@ -46,7 +46,7 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Affect up to two falling creatures within range instead.<br/><strong>(Rank 3)</strong> Up to three creatures instead.<br/><strong>(Rank 4)</strong> Up to four creatures instead.<br/><strong>(Rank 5)</strong> Up to five creatures instead.
 
-### Gravity Orb
+### Pressure Orb
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
@@ -62,9 +62,9 @@ sidebar_position: 5
 ---|---|---|---|---
  1 | 2 | Medium (8) | Self | concentrate
 
-**Effect** <br/> You create a nearly invisible energy barrier around you, held up by your mental power.<br/>On a success, the barrier grants you +4 AV (armor bonus) and lasts for a short duration.<br/>While the barrier is active, when you are attacked by a ranged attack and they miss you, you can use a Quick Action to reflect their attack back on them. Roll Mind + Arcana vs. their Dodge. On a hit, resolve the attack’s normal effects. 
+**Effect** <br/> You create a nearly invisible barrier of force around you, held up by your mental power.<br/>On a success, the barrier grants you +4 AV (armor bonus) and lasts for a short duration.<br/>While the barrier is active, when you are attacked by a ranged attack and they miss you, you can use a Quick Action to reflect their attack back on them. Roll Mind + Arcana vs. their Dodge. On a hit, resolve the attack’s normal effects. 
 
-### Kinetic Deflection
+### Unseen Deflection
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
@@ -78,25 +78,25 @@ sidebar_position: 5
 ---|---|---|---|---
  1 | 2 | vs. Dodge | Close | -
 
-**Effect** <br/> You spread your arms out from you, sending a shockwave of kinetic energy in all directions.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against all creatures and objects in range.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against all creatures and objects in range and push them close away from you.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against all creatures and objects in range, push them close away from you, and they fall prone. 
+**Effect** <br/> You spread your arms out from you, sending a shockwave of unseen force in all directions.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against all creatures and objects in range.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against all creatures and objects in range and push them close away from you.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against all creatures and objects in range, push them close away from you, and they fall prone. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +2/+4/+6 blast damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +3/+6/+9 blast damage (ignore 1/2 AV) instead, and on a strong or critical success targets are pushed a short distance away from you.
 
-### Telekinetic Crush
+### Phantom Crush
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  1 | 2 | vs. Parry | Medium | -
 
-**Effect** <br/> You telekinetically grasp at a creature, suffocating them inside a giant, invisible hand.<br/><strong>Weak. </strong>Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong. </strong>Deal +6 damage (ignore 1/2 AV).<br/><strong>Critical. </strong>Deal +9 damage (ignore 1/2 AV). 
+**Effect** <br/> You grasp at a creature with unseen force, suffocating them inside a giant, invisible hand.<br/><strong>Weak. </strong>Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong. </strong>Deal +6 damage (ignore 1/2 AV).<br/><strong>Critical. </strong>Deal +9 damage (ignore 1/2 AV). 
 
-### Telekinetic Volley
+### Unseen Volley
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  1 | 2 | Special | Short | -
 
-**Effect** <br/> You telekinetically take hold of multiple small items. Choose up to three tiny objects, such as ammo, stones, or household objects taking up 2 or less load each. The objects can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the objects towards a target location.<br/><br/><strong>Move.</strong> Roll vs. moderate difficulty (8). On a success, you move the objects in a cluster up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the objects until your next turn. During your next turn, you can cast this spell again to move the objects further. On a failure, you drop the objects at their current location.<br/><br/><strong>Throw.</strong> Once per object, roll vs. Dodge against a target in range. You can choose the same or different targets for each thrown object. On a hit, each object deals 2 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
+**Effect** <br/> You take hold of multiple small items with unseen force. Choose up to three tiny objects, such as ammo, stones, or household objects taking up 2 or less load each. The objects can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the objects towards a target location.<br/><br/><strong>Move.</strong> Roll vs. moderate difficulty (8). On a success, you move the objects in a cluster up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the objects until your next turn. During your next turn, you can cast this spell again to move the objects further. On a failure, you drop the objects at their current location.<br/><br/><strong>Throw.</strong> Once per object, roll vs. Dodge against a target in range. You can choose the same or different targets for each thrown object. On a hit, each object deals 2 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose up to four objects of up to 4 load each instead. Each thrown object deals 4 weapon damage.<br/><strong>(Rank 3)</strong> Choose up to five objects of up to 6 load each instead. Each thrown object deals 6 weapon damage.
 
@@ -106,7 +106,7 @@ sidebar_position: 5
 ---|---|---|---|---
  1 | 2 | Medium (8) | Medium | -
 
-**Effect** <br/> You flatten your palm and a film of frictionless force spreads across the ground, slick as oil. On a success, an area close to the target location becomes slippery. The area is difficult terrain. When a creature tries to move through the slippery area for the first time on their turn, or is pushed or pulled into it, they must succeed on an Agility + Athletics roll vs. this spell’s target Difficulty or fall prone. A prone creature that tries to stand while in the area must succeed on the same roll or remain prone. The effect lasts for a short duration. 
+**Effect** <br/> You flatten your palm and a film of unseen force spreads across the ground, slick as oil. On a success, an area close to the target location becomes slippery. The area is difficult terrain. When a creature tries to move through the slippery area for the first time on their turn, or is pushed or pulled into it, they must succeed on an Agility + Athletics roll vs. this spell’s target Difficulty or fall prone. A prone creature that tries to stand while in the area must succeed on the same roll or remain prone. The effect lasts for a short duration. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose one, the slippery area extends to medium range from the target location, or the effect lasts for a medium duration instead.<br/><strong>(Rank 3)</strong> Both, the slippery area extends to medium range and the effect lasts for a medium duration.
 
@@ -116,7 +116,7 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | Hard (10) | Short | concentrate,  enchant (body)
 
-**Effect** <br/> You seize a willing creature in a web of kinetic force, wrenching their movements faster than flesh should allow.<br/>Choose a willing creature in range. On a success, the target gains the following effects:<br/>- gain +1 Movement per turn<br/>- gain +1 Parry and Dodge<br/>- gain +1 boon on all Strength and Agility rolls<br/>- you can replace your Quick Action on your turn for a second Action<br/>The spell lasts for a short duration. When the spell ends, the target suffers one Fatigue and is briefly paralyzed as the released force overtaxes their body. 
+**Effect** <br/> You seize a willing creature in a web of unseen force, wrenching their movements faster than flesh should allow.<br/>Choose a willing creature in range. On a success, the target gains the following effects:<br/>- gain +1 Movement per turn<br/>- gain +1 Parry and Dodge<br/>- gain +1 boon on all Strength and Agility rolls<br/>- you can replace your Quick Action on your turn for a second Action<br/>The spell lasts for a short duration. When the spell ends, the target suffers one Fatigue and is briefly paralyzed as the released force overtaxes their body. 
 
 ### Knock
 
@@ -150,7 +150,7 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | vs. Parry | Medium | concentrate
 
-**Effect** <br/> You pressure a creature in kinetic force from all sides, making them unable to move. You suffer +1 bane on the roll for every size category the target is larger than you.<br/>On a success, the target is stunned while you concentrate on this spell. If the target takes damage while stunned by this spell, you automatically lose concentration for it and the effect ends.<br/>You can use your Action on your next turn to repeat the roll for this spell without spending additional Focus. On a success, continue the spell’s effect. On a failure or if you choose not to use your Action to continue the spell, the spell ends and you can’t continue to cast it for free. 
+**Effect** <br/> You press a creature in unseen force from all sides, making them unable to move. You suffer +1 bane on the roll for every size category the target is larger than you.<br/>On a success, the target is stunned while you concentrate on this spell. If the target takes damage while stunned by this spell, you automatically lose concentration for it and the effect ends.<br/>You can use your Action on your next turn to repeat the roll for this spell without spending additional Focus. On a success, continue the spell’s effect. On a failure or if you choose not to use your Action to continue the spell, the spell ends and you can’t continue to cast it for free. 
 
 ### Strong Telekinesis
 
@@ -168,7 +168,7 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | vs. Parry | Medium | -
 
-**Effect** <br/> You raise your fist and slam the weight of a hillside down on a single body.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV).<br/>If the target is prone, grappled, or restrained, deal +6/+12/+18 damage (ignore 1/2 AV) instead, as the pressure grinds them against the ground.
+**Effect** <br/> You raise your fist and slam the weight of a hillside down on a single body.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV).<br/>If the target is prone, grappled, or restrained, deal +6/+12/+18 damage (ignore 1/2 AV) instead, as the weight grinds them against the ground.
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/+8/+12 damage (ignore 1/2 AV) instead, or +8/+16/+24 damage (ignore 1/2 AV) against a prone, grappled, or restrained target instead.<br/><strong>(Rank 4)</strong> Deal +5/+10/+15 damage (ignore 1/2 AV) instead, or +10/+20/+30 damage (ignore 1/2 AV) against a prone, grappled, or restrained target instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 damage (ignore 1/2 AV) instead, or +12/+24/+36 damage (ignore 1/2 AV) against a prone, grappled, or restrained target instead.
 
@@ -182,7 +182,7 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Target a creature of large or smaller Size instead.<br/><strong>(Rank 4)</strong> Target a creature of huge or smaller Size instead.
 
-### Kinetic Implosion
+### Forceful Implosion
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
@@ -218,13 +218,13 @@ sidebar_position: 5
 
 **Effect** <br/> The air within warps like heat over sand, and anything crossing it is shoved from its true course. On a success, you create a distortion zone in short range of the target location for up to a medium duration while you concentrate. Ranged attacks that pass into or through the zone suffer +1 bane, and the zone is difficult terrain for your enemies. When a creature enters the zone for the first time on their turn or starts their turn within it, they must succeed on an Agility + Fortitude roll vs. your Resist or take 6 damage (ignore AV). 
 
-### Reverse Gravity
+### Falling Sky
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Very Long | concentrate
 
-**Effect** <br/> You seize the pull of the earth itself and turn it on its head, and everything not rooted down plunges toward the sky. On a success, gravity reverses within a cylinder in short range of the target location, rising to a height of up to medium range, for up to a short duration while you concentrate. Each creature and unsecured object in the cylinder falls upward toward its top. A creature may succeed on an Agility + Athletics roll vs. your Resist to grab hold of a fixed object they can reach and avoid the rise. A creature or object that strikes a ceiling or an anchored object as it rises takes falling damage for the distance risen. A creature that reaches the top of the cylinder without striking anything hovers there until the spell ends, when they fall back down and take falling damage for the distance fallen.
+**Effect** <br/> You seize the pull of the earth itself and turn it on its head, and everything not rooted down plunges toward the sky. On a success, the earth's pull reverses within a cylinder in short range of the target location, rising to a height of up to medium range, for up to a short duration while you concentrate. Each creature and unsecured object in the cylinder falls upward toward its top. A creature may succeed on an Agility + Athletics roll vs. your Resist to grab hold of a fixed object they can reach and avoid the rise. A creature or object that strikes a ceiling or an anchored object as it rises takes falling damage for the distance risen. A creature that reaches the top of the cylinder without striking anything hovers there until the spell ends, when they fall back down and take falling damage for the distance fallen.
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> The cylinder's radius extends to medium range and its height to long range of the target location instead.
 
@@ -234,4 +234,4 @@ sidebar_position: 5
 ---|---|---|---|---
  5 | 10 | vs. Dodge | Long | blast (cone)
 
-**Effect** <br/> You sweep your arm and hurl a wall of pure kinetic force that flattens everything before you.<br/>Target each creature in the cone.<br/><strong>Weak.</strong> Deal +5 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +10 blast damage (ignore 1/2 AV) to each target.<br/><strong>Critical.</strong> Deal +15 blast damage (ignore 1/2 AV) to each target.<br/>Each creature hit is pushed a medium distance away from you and falls prone. Mundane structures, cover, and unattended objects in the cone are shattered and blown apart. A conjured barrier or construct of force in the cone takes 40 damage (ignore AV).
+**Effect** <br/> You sweep your arm and hurl a wall of pure unseen force that flattens everything before you.<br/>Target each creature in the cone.<br/><strong>Weak.</strong> Deal +5 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +10 blast damage (ignore 1/2 AV) to each target.<br/><strong>Critical.</strong> Deal +15 blast damage (ignore 1/2 AV) to each target.<br/>Each creature hit is pushed a medium distance away from you and falls prone. Mundane structures, cover, and unattended objects in the cone are shattered and blown apart. A conjured barrier or construct of force in the cone takes 40 damage (ignore AV).

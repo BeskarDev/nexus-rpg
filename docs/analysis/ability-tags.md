@@ -817,14 +817,14 @@ All spells reviewed and tagged by discipline/tradition. Only the base rank is ta
 
 | Spell | Rank | Effect | Action Economy | Damage Type | Condition |
 | --- | --- | --- | --- | --- | --- |
-| **Kinetic Pull** | 0 | `movement`, `debuff` | `action` | — | `prone` |
-| **Kinetic Push** | 0 | `damage` | `action` | `blast` | `pushed` |
+| **Phantom Pull** | 0 | `movement`, `debuff` | `action` | — | `prone` |
+| **Phantom Push** | 0 | `damage` | `action` | `blast` | `pushed` |
 | **Weak Telekinesis** | 0 | `movement` | `action` | `physical` | — |
-| **Gravity Orb** | 1 | `debuff` | `action` | — | `slowed`, `grappled`, `restrained` |
+| **Pressure Orb** | 1 | `debuff` | `action` | — | `slowed`, `grappled`, `restrained` |
 | **Reflective Barrier** | 1 | `protection` | `action` | — | — |
 | **Shockwave** | 1 | `damage` | `action` | `blast` | `pushed`, `prone` |
-| **Telekinetic Crush** | 1 | `damage` | `action` | `physical` | — |
-| **Telekinetic Volley** | 1 | `damage`, `movement` | `action` | `physical` | — |
+| **Phantom Crush** | 1 | `damage` | `action` | `physical` | — |
+| **Unseen Volley** | 1 | `damage`, `movement` | `action` | `physical` | — |
 | **Levitation** | 2 | `movement` | `action` | — | — |
 | **Orbiting Shards** | 2 | `protection`, `damage` | `action` | `physical` | — |
 | **Stasis** | 2 | `debuff` | `action` | — | `stunned` |

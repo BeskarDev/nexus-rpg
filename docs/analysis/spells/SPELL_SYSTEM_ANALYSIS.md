@@ -578,7 +578,7 @@ The old concept lists formerly in this section are superseded by the per-school 
 | **Peace** | 15 | ~34 | Travel and law pillars through R5 (Binding Oath, Safe Passage, Sanctuary Sphere) |
 | **Evocation** | 19 | ~38 | R3–R4 hole (1 spell at R3, 0 at R4 despite an R5): Chain Lightning, Cone of Cold, Wall of Fire tier |
 | **Telepathy** | 19 | ~36 | R3 hole (1 spell), then the influence-ladder top (Break the Will, Absolute Control) |
-| **Telekinetics** | 19 | ~30 | In-school payoffs at R2–R3 (Grinding Weight, Kinetic Implosion, Meteoric Throw), then R4–R5 |
+| **Telekinetics** | 19 | ~30 | In-school payoffs at R2–R3 (Grinding Weight, Forceful Implosion, Meteoric Throw), then R4–R5 |
 
 ### 10.2 Per-School Suggestions
 
@@ -613,7 +613,7 @@ The old concept lists formerly in this section are superseded by the per-school 
 | # | Action | Impact |
 |---|---|---|
 | 1.1 | Complete the 3 remaining stubs: **Prismatic Missile** (Evocation R2), **Detect Life** (Life R2), **Stone Pillar** (Nature R3) | Zero incomplete spells in the published docs |
-| 1.2 | Publish the pending Heighten extensions logged in school files: Moonbeam R3–R5 (Twilight), Spectral Army R4–R5 (Necromancy), Shockwave / Telekinetic Volley / Gravity Orb / Strong Telekinesis (Telekinetics), Major Illusion R3–R4 (Illusion) | Covers many upper trait×rank slots without new spell entries (principle 3) |
+| 1.2 | Publish the pending Heighten extensions logged in school files: Moonbeam R3–R5 (Twilight), Spectral Army R4–R5 (Necromancy), Shockwave / Unseen Volley / Pressure Orb / Strong Telekinesis (Telekinetics), Major Illusion R3–R4 (Illusion) | Covers many upper trait×rank slots without new spell entries (principle 3) |
 | 1.3 | ~~Acid Splash durability rework~~ **Rejected by owner** (2026-07-10, principle 51): published R0 text (ignore 1/2 AV) stays — at-will Durability checks are far too powerful. Acid's Durability identity starts at R2+ (§15B) | Decision recorded; no doc change |
 | 1.4 | Fix stale **"encumbrance limit"** → **carrying capacity** in Weak Telekinesis and Strong Telekinesis (principle 52; system-wide sweep found no other spells) | Published text matches current Carrying Capacity rules |
 
@@ -622,9 +622,9 @@ The old concept lists formerly in this section are superseded by the per-school 
 | # | Batch | Why first |
 |---|---|---|
 | 2.1 | **Death R2–R3** (Grave Chill, Curse of Frailty, Weight of Dooms, Harvest seeds through The Reckoning) | Thinnest school above R1 (2/2/0/0); its signature affliction-harvest gimmick has zero published rungs |
-| 2.2 | **Evocation R3–R4** (Chain Lightning, Dissolving Ray, Cone of Cold, Wall of Fire, Voltaic Surge tier) | The flagship damage school has 1 spell at R3 and 0 at R4 — casters lose their damage curve exactly where it should peak |
+| 2.2 | **Evocation R3–R4** (Chain Lightning, Dissolving Ray, Cone of Cold, Wall of Fire, Levin Surge tier) | The flagship damage school has 1 spell at R3 and 0 at R4 — casters lose their damage curve exactly where it should peak |
 | 2.3 | **Telepathy R3** (Psychic Lance, Psychic Probe, Puppet's Step, Implant Suggestion) | 1 spell at R3; the influence ladder (dazed → charmed → commanded) is missing its middle rungs |
-| 2.4 | **Telekinetics R2–R3 payoffs** (Grinding Weight, Relentless Grip, Kinetic Implosion, Meteoric Throw) | The premier setup school has near-zero in-school payoff — its engine cannot close a loop alone |
+| 2.4 | **Telekinetics R2–R3 payoffs** (Grinding Weight, Relentless Grip, Forceful Implosion, Meteoric Throw) | The premier setup school has near-zero in-school payoff — its engine cannot close a loop alone |
 | 2.5 | **Twilight R2 engine rungs** (Fangs of the Dark, Shadow Mantle, Written in the Stars) | The stated "cast from darkness" core and the fate trait have no published mechanics |
 
 ### Priority 3 — R1 Reactive Baseline — ✅ DONE (published 2026-07-10)
@@ -634,7 +634,7 @@ The old concept lists formerly in this section are superseded by the per-school 
 | 3.1 | ~~Design the 4 missing R1 Quick Action reactives~~ **Published**: Arcane Deflection (Conjuration), Death's Rebuke (Death), Bark Shield (Nature), Dusk Veil (Twilight) — all on the standard chassis (principle 4), flat with no Heighten (owner ruling) | Every school with an empty R1 quick slot now has baseline reactive play |
 | 3.2 | ~~Align pre-standard R1 quick spells~~ **Resolved**: Elemental Ward realigned to the chassis (elemental backlash secondary) with new companion **Frostfire Shield** (R2) absorbing the removed resistance/reflection niche; Death Ward, Storm Shield, Share Harm, Rapid Vitality, Updraft keep their school-flavored forms by owner-approved verdict | Reactive chassis consistent; distinctive published reactives grandfathered |
 
-*Still seeded for their school batches (P4/P5): Retaliating Fury (War), Kinetic Deflection (Telekinetics), Sustaining Grace (Life), Absorb Harm (Peace), Radiant Rebuke (Light), Illusory Dodge (Illusion), Mental Shield (Telepathy) — these schools already have some R1 quick spell.*
+*Still seeded for their school batches (P4/P5): Retaliating Fury (War), Unseen Deflection (Telekinetics), Sustaining Grace (Life), Absorb Harm (Peace), Radiant Rebuke (Light), Illusory Dodge (Illusion), Mental Shield (Telepathy) — these schools already have some R1 quick spell.*
 
 ### Priority 4 — Raise Every School to R4 — ✅ DONE (published 2026-07-12)
 
@@ -689,10 +689,10 @@ Sequence after P5. 7.2 is small and can ship whenever; 7.1 is the long tail and 
 
 | Batch | School(s) | R0–R2 seeds | Folds in | Status |
 |---|---|---|---|---|
-| 1 | Evocation | 9 (Acid Splash [adopt], Air Burst, Thermal Control, Concussive Bolt, Elemental Shaping, Acid Rain, Gale Force, Wildfire, Stoke the Blaze [owner-added]) | — | ✅ published 2026-07-14 |
+| 1 | Evocation | 9 (Acid Splash [adopt], Air Burst, Temper Heat, Concussive Bolt, Elemental Shaping, Acid Rain, Gale Force, Wildfire, Stoke the Blaze [owner-added]) | — | ✅ published 2026-07-14 |
 | 2 | Conjuration | 6 (Conjure Servant, Far Reach, Arcane Snare, Spatial Echo, Fabricate, Force Surge) | — | ✅ published 2026-07-14 |
 | 3 | Illusion | 5 (Sensory Trick, Phantom Feint, Phantasmal Armor, Knife Behind the Mask, Warped Perspective) | — | ✅ published 2026-07-16 |
-| 4 | Necromancy + Telekinetics | 2 + 4 (Ghostly Hand, Harvest the Mark; Alter Weight, Kinetic Deflection, Grinding Weight [rework], Relentless Grip [rework]) | — | ✅ published 2026-07-16 |
+| 4 | Necromancy + Telekinetics | 2 + 4 (Ghostly Hand, Harvest the Mark; Alter Weight, Unseen Deflection, Grinding Weight [rework], Relentless Grip [rework]) | — | ✅ published 2026-07-16 |
 | 5 | Telepathy | 6 (Surface Recall, Commanding Thought, Mental Shield, Memory Echo, Mind Fracture, Telepathic Bond) | — | ✅ published 2026-07-16 |
 | 6 | Death | 5 (Miasma, Minor Hex, Commune with Ancestors, Festering Wound, Ancestral Guardian — Grave Chill, Curse of Frailty, Weight of Dooms turned out already published) | — | ✏️ drafted 2026-07-14 (`.drafts/p7-low-rank-backfill/06-death-r0-r2-batch.md`) |
 | 7 | Peace | 9 (Shared Burden, Wayfinder's Mark, Oathmark, Swift Journey, Peace Bond, Steady Hands, Shield of the Meek, **Binding Oath**, Wayfarer's Shield) | 7.2 **Undying Devotion** (R5) folded in | ✏️ drafted 2026-07-14 (`.drafts/p7-low-rank-backfill/07-peace-r0-r2-batch.md`) |
@@ -720,10 +720,10 @@ Seed counts are the honest-gap target per school; a cell may resolve to an inten
 
 The over-value is **negligible at R0–R1** (why Gust at full column is fine) and **significant at R3+** (a free +3 to +5 vs. light, far more vs. heavy, on top of full-column damage). Principle 57 already prescribes the fix (blast/ignore-½ prices one step below plain) — it was just never applied to pure-blast damage spells.
 
-**Rule, corrected after owner review (2026-07-16) — a full step down to the multi column was too harsh a nerf** (it would make blast strictly worse than plain damage against light armor, not just a smaller edge). The standing rule instead mirrors the existing Rock Throw / Telekinetic Crush precedent (principle 57's own worked examples), which discounts by a flat **1/2/3 off weak/strong/critical (−1×SL)**, not a full column step:
+**Rule, corrected after owner review (2026-07-16) — a full step down to the multi column was too harsh a nerf** (it would make blast strictly worse than plain damage against light armor, not just a smaller edge). The standing rule instead mirrors the existing Rock Throw / Phantom Crush precedent (principle 57's own worked examples), which discounts by a flat **1/2/3 off weak/strong/critical (−1×SL)**, not a full column step:
 
 1. R0–R1 blast: keep full column (bypass ≈ +1, legacy generosity). No change.
-2. R2+ **single-target damage-primary** blast spells: price at **single column − 1×SL** (weak −1, strong −2, critical −3). Matches Rock Throw/Water Jet/Telekinetic Crush's existing values exactly at every rank — no new numbers, just applying the established discount everywhere it's missing.
+2. R2+ **single-target damage-primary** blast spells: price at **single column − 1×SL** (weak −1, strong −2, critical −3). Matches Rock Throw/Water Jet/Phantom Crush's existing values exactly at every rank — no new numbers, just applying the established discount everywhere it's missing.
 3. R2+ **multi-target/AoE damage-primary** blast spells: price at **multi column − 1×SL**, which algebraically equals **the previous rank's multi-target column** (multi(R) − SL = multi(R−1)) — reuses an existing table value, and the relative cut shrinks at higher rank (33% at R2 down to 17% at R5), so it doesn't get harsher going up. New sub-finding (2026-07-16): several AoE blast spells (e.g. Tempest's Thunder Clap) currently sit *above* the plain multi column entirely (a distinct bug from the original single-target finding — see Priority 10), so this rule fixes both problems at once for those spells.
 4. Blast spells where damage is **secondary to control** (push/cluster/knockdown primary, e.g. Gale Force) or a **conditional/cold-cast-dead extender bonus** (e.g. Thunderfall's and Grinding Weight's prone/staggered bonus branch, which mirrors the accepted Stoke the Blaze precedent of paying full price for a setup-gated payoff): leave as-is.
 
@@ -731,18 +731,38 @@ The over-value is **negligible at R0–R1** (why Gust at full column is fine) an
 
 **Scope:** the single-target side of this audit is done (no changes needed). The multi-target side is folded into Priority 10's broader multi-target consistency sweep, since the same underlying issue (multi-target values not consistently applied) shows up beyond just blast-tagged spells — ✅ **DONE (2026-07-16)**, see Priority 10 below (Gale Force, Annihilating Wave, Shockwave, Thunder Clap were this rule's share of that fix).
 
-### Priority 9 — Pre-scientific naming sweep (opened 2026-07-15, P7.1 Batch 4)
+### Priority 9 — Pre-scientific naming sweep (opened 2026-07-15, P7.1 Batch 4) — ✅ DONE (2026-07-16)
 
 **Origin:** owner ruling during the Telekinetics batch — "Gravity Shift" carries a modern physics register the Bronze Age setting doesn't support; renamed *Alter Weight* (first draft *Burden and Feather* was re-struck as too thematic — function in the name, poetry in the flavor). Codified as **principle 91**: names and flavor speak in a pre-scientific register (the earth's pull, weight, burden, unseen force), while effects may still model the physics exactly.
 
-**Tension to balance (owner directive):** recognizable names for veteran TTRPG players vs. in-world logic. A name like *Fireball* or *Invisibility* is genre furniture and instantly parseable — that recognition has real value at the table (principle 21: a classic name obligates the classic's action). The sweep must not sand every name down to obscure poetry. Guideline: rename only where the term implies a *modern scientific framework* (gravity, kinetic, momentum, vacuum, energy-as-physics); keep names that are classic genre vocabulary even when slightly anachronistic, and prefer renames that stay one step from the original (*Reverse Gravity* → something like *The Earth Refuses* / *Sky Burial* — still recognizably "the upside-down-fall spell").
+**Tension to balance (owner directive):** recognizable names for veteran TTRPG players vs. in-world logic. A name like *Fireball* or *Invisibility* is genre furniture and instantly parseable — that recognition has real value at the table (principle 21: a classic name obligates the classic's action). The sweep must not sand every name down to obscure poetry. Guideline: rename only where the term implies a *modern scientific framework* (kinetic, voltaic, thermal, momentum, vacuum, energy-as-physics); keep names that are classic genre vocabulary even when slightly anachronistic.
 
-**Scope:**
-1. Enumerate: sweep all published spell names + effect prose for modern-physics vocabulary (`gravity`, `kinetic`, `momentum`, `energy`, `vacuum`, `pressure`, …). Known offenders: *Gravity Orb*, *Reverse Gravity* (telekinetics.md); audit Telekinetics prose broadly ("telekinetically" in effect text), Evocation, Tempest.
-2. Per-name proposal table: current name, verdict (keep as genre-classic / rename), proposed new name, one-line reasoning. Owner approves the table before any edit.
-3. Apply approved renames across all three surfaces (docs, app JSON, Notion) plus every cross-reference (other spells' text, talents, analysis files, draft batches).
+**Owner rulings (2026-07-16):**
+- **School name kept** — *Telekinetics* stays (genre-classic, deeply app-embedded: glossary, search-dialog color map, archetypes, magic-item tables). *Weak/Strong Telekinesis* also kept for the same reason.
+- **Aspect keyword kept** — the discipline's *gravity* trait tag stays as an internal design keyword; only the player-facing **framing/flavor** goes pre-scientific (e.g. overview prose "manipulate gravity" → "bend the pull of the earth"). Codified as an extension to principle 91: modern terms may persist as design-layer tags, never in flavor.
+- **No "Force X" pattern** — "Force Push"/"Force Pull" reads as Star Wars; the word *force* stays only in prose ("unseen force"), never as a spell-name prefix.
+- **Names use aggressive pre-scientific descriptors** — *Phantom* (invisible menace), *Forceful* (raw power), *Unseen* (subtle/defensive), keeping the base verb (Pull, Push, Deflection…).
 
-**Sequence:** after P7.1 batches land (avoids renaming targets mid-review). Independent of P8.
+**Renames applied (docs + JSON + Notion + analysis + quickstart magus + archetypes builder):**
+
+| Old | New | Register fix |
+|---|---|---|
+| Kinetic Pull | **Phantom Pull** | kinetic |
+| Kinetic Push | **Phantom Push** | kinetic (paired opposite of Pull) |
+| Kinetic Deflection | **Unseen Deflection** | kinetic |
+| Telekinetic Crush | **Phantom Crush** | telekinetic |
+| Telekinetic Volley | **Unseen Volley** | telekinetic |
+| Kinetic Implosion | **Forceful Implosion** | kinetic |
+| Gravity Orb | **Pressure Orb** | gravity |
+| Reverse Gravity | **Falling Sky** | gravity |
+| Thermal Control (Evocation) | **Temper Heat** | thermal |
+| Voltaic Surge (Evocation) | **Levin Surge** | voltaic (Volta, 1800); *levin* = archaic "lightning" |
+
+**Prose de-modernizing** (kept-name spells): "telekinetically" → "with unseen force"; "kinetic energy/force" → "unseen force"; "frictionless force" → "unseen force"; "energy barrier" → "barrier of force"; Grinding Weight "the pressure grinds" → "the weight grinds"; Falling Sky "gravity reverses" → "the earth's pull reverses".
+
+**Kept as-is (genre-classic / not a modern framework):** Distortion Field, Static Spark, Static Shock, Concussive Bolt.
+
+**Flagged, not swept (out of scope):** the Wild Surge chaos table (`02-wild-surge-table.mdx`, Notion-only — Gravity Reversal, Kinetic Burst, Momentum Theft, Telekinetic Slam, etc.) and the random-spell name-generator word tables (`07-random-spell.mdx`). Legacy converter artifacts (`src/utils/data/markdown/`, `split-tables/`, `src/utils/input/*.html`) left untouched — deprecated, regenerated from Notion.
 
 ### Priority 10 — Multi-target damage value consistency sweep (opened 2026-07-16, found during P8) — ✅ DONE (2026-07-16)
 
@@ -868,7 +888,7 @@ The analysis in §7.6 identified that blast damage on missile spells undermines 
 - Arcane Blast (R3) — concussive force wave
 
 **Telekinetics (2 spells using blast)**:
-- Kinetic Push (R0) — concussive kinetic wave
+- Phantom Push (R0) — concussive kinetic wave
 - Shockwave (R1) — expanding kinetic shockwave
 
 **Tempest (4 spells using blast)**:
@@ -894,7 +914,7 @@ The analysis in §7.6 identified that blast damage on missile spells undermines 
 | Arcane Blast | Conjuration | 3 | Blast | **Blast** (keep) | Concussive force wave; ½ AV fits thematically |
 | Hale of Blades | Conjuration | 2 | Untyped | **Force** | Magical energy blades; should have explicit type |
 | Ancestral Warriors | War | 2 | Force | **Force** (keep) | Already correctly typed |
-| Kinetic Push | Telekinetics | 0 | Blast | **Blast** (keep) | Concussive kinetic wave |
+| Phantom Push | Telekinetics | 0 | Blast | **Blast** (keep) | Concussive kinetic wave |
 | Shockwave | Telekinetics | 1 | Blast | **Blast** (keep) | Concussive shockwave |
 | Gust | Tempest | 0 | Blast | **Blast** (keep) | Concussive wind |
 | Bursting Crackle | Tempest | 1 | Blast | **Blast** (keep) | Concussive sonic burst |
