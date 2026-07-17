@@ -1,0 +1,89 @@
+# Designer Principles — Talent Design
+
+Binding rules, not suggestions. Two sources feed this file:
+
+1. **Ported principles** — established through extensive spell-design sessions with the owner, translated to talent terms below. Each cites its spell-design provenance number; the full original reasoning lives in `.claude/skills/spell-design/references/principles/`.
+2. **Talent-native principles** — distilled from owner feedback during talent work, appended over time (see "Appending a new principle" at the bottom).
+
+Numbering is local to this file and stable — never renumber. The talent-specific structural rules (three progression paths, per-rank resource budget, rank progression pattern) live in [../SKILL.md](../SKILL.md); this file holds design-judgment rules.
+
+## Shared spell-design principle files that bind talent text directly
+
+Talent ability text follows the same house conventions as spell text. Before writing any talent, these spell-design files apply as-is (read "spell" as "talent ability"):
+
+| File | What it governs |
+|------|-----------------|
+| `../../spell-design/references/principles/wording-conventions.md` | General-application-first ordering, defined keywords referenced by name and never re-explained, durations as defined intervals, duration keyword next to the effect it governs, activation cost opens the sentence, house micro-conventions (minimum 0, signed banes), capitalize only named mechanics, narrative span ladders for non-combat reach, typed-rider wording |
+| `../../spell-design/references/principles/gm-facing.md` | Bounded GM parameters, info-tier grounding, cross-subsystem validation |
+| `../../spell-design/references/principles/conditions.md` | Condition definition checks, parameterized (X) values, consumed-key traps, kill-rider wording, no-roll trigger limits |
+
+The most load-bearing of these are also ported with talent framing below so they are never missed.
+
+## Ported Principles
+
+### Power budget
+
+**1. Talents assist, never bypass.** A talent improves rolls, options, and economy inside a subsystem — it never auto-resolves a scene type or skips a game mode. An infiltration talent makes the infiltration challenge better, it does not replace the challenge with an auto-success. If a talent's best use is "we no longer play out X", redesign it. *(spell principle 1)*
+
+**2. Flat damage riders don't proliferate.** The default talent damage rider is a small fixed ability bonus (+2 typical, per the §4.5 fixed-bonus table — never "+Skill Rank"). Only one ability bonus applies per hit, but every new rider still competes for that slot and adds mental load. New support, mark, and aura talents default to non-damage payoffs: action economy, a bane on the aggressor, a boon on attackers, free movement, condition control. Damage riders remain only where damage IS the talent's identity. *(spell principle 96; confirmed by the §4.2–4.3 talent damage audit)*
+
+**3. Success Level manipulation is premium budget.** Upgrading a hit's Success Level by one step multiplies weapon damage — it compresses the entire damage curve into one ability. SL upgrades are R3+ material, carry a per-scene limit, and never stack with a flat damage rider inside the same talent (the Assassination R1+R3 lesson: SL upgrade plus flat rider produced near one-shots). *(adapted from spell principle 2 and the §4.3 audit)*
+
+**4. Never scale a cap.** System caps are fixed guardrails, not scaling axes. Unarmored-defense AV never exceeds the armor it replaces ("AV = 1 + Fortitude (max 4)"), tier-gated effects never extend their tier reach with talent ranks, and no talent raises a cap another subsystem establishes. Scale honest axes instead: uses per scene, scope, reliability. *(spell principle 31; §4.6 AV caps)*
+
+**5. A granted immunity needs a circumvention.** A talent granting immunity (to prone, push, fear, a damage type) must leave counterplay or it becomes an invisible invincibility wall. House pattern: acting aggressively or a specific circumstance degrades immunity to resistance or a boon, or the immunity carries a stance/equipment condition that enemies can see and attack. Flag for review: Polearm Mastery R3's unconditional prone/push immunity. *(spell principle 77)*
+
+**6. Healing and recovery sit under the Life-tradition ceiling.** Talent healing must be strictly worse than a Life spell of comparable tier in at least one axis (cost, trigger narrowness, rate). Wound recovery never becomes routine through a talent. HP is encounter-scale only — it refills at any short break and never interacts with rest-scale effects. Rest acceleration shortens a rest, never banks an extra one, and no talent upgrades a night's rest into a full rest (full rest belongs to safe havens only). *(spell principles 67, 13, 16, 76, 81)*
+
+**7. Fatigue-removal ceiling.** Nightly recovery baseline is 1 Fatigue; travel inflicts ~0–2 per day. A talent granting +1 removal already doubles recovery — that is the ceiling. Never scale removal further with ranks, or travel attrition stops threatening entirely. Directly binds every P2 travel-talent design. *(spell principle 17)*
+
+### Triggers and conditions
+
+**8. Debuffs key off rolls that actually happen.** The acting side rolls against static Defenses; a defender only rolls in specific carve-outs (end-of-turn saves, entering a hazard, contested checks). "The target suffers +1 bane to resist X" is dead text when X resolves by the attacker rolling. Grant the boon to rolls the party makes, lower a Defense, or apply a condition. *(spell principle 90)*
+
+**9. High-impact conditions never ride automatic, no-roll triggers.** An on-miss or on-hit emitter uses a low-impact condition (distracted, briefly slowed); frightened and stronger need a roll, a save, or an SL gate. A defensive talent that frightens every attacker who whiffs is repeated hard control for free. *(spell principle 88)*
+
+**10. Check every condition against its definition; parameterized conditions carry their (X).** Write "suffers burning (4) for a short duration", never "briefly burning". Copy a published talent's or spell's exact phrasing rather than writing from memory. *(spell principle 73)*
+
+**11. Kill-riders say "slain", and never key on a condition the triggering attack consumes.** Elite and Lord creatures refill HP on Wounds, so "reduced to 0 HP" erases a boss mid-fight. Marked ends when the next attack resolves, so an attack cannot both consume and be gated by it. *(spell principle 80)*
+
+### Scope and fiction
+
+**12. Limits live in the fiction, not game structure.** Restrictions are diegetic: weapon type, armor class, stance, terrain, intoxication, daily rhythms. Never scope to meta-constructs ("only during encounter turns", "only in combat"). The per-rank resource budget (once per scene / once per day) is the sanctioned exception — it is the talent economy's pacing language, stated plainly. *(spell principle 12)*
+
+**13. A flat effect on success is often correct, especially for utility.** Not every talent ability needs SL tiers or scaling. When the value is binary (you reroll or you don't, the contact exists or doesn't), one reliable effect on any success is a feature. Add tiers only where a genuine potency axis exists. *(spell principle 24)*
+
+**14. GM-facing effects give the GM parameters, never open-ended "GM decides".** A talent that reveals information, reads intentions, or invokes contacts spells out a bounded menu of answer types the GM chooses among, with a safety-valve option when nothing concrete fits. Models: the *Magical Sense* talent, *Divination*. Critical for P2 designs: contact networks, informants, omen and prophecy talents. *(spell principle 29)*
+
+**15. Weigh worldbuilding implications as an explicit balance axis.** Nexus is Bronze Age sword & sorcery — institutions are pre-modern and stay that way. Before finalizing a talent with social, economic, legal, or informational reach (forgery, contact networks, infiltration, truth-reading, wealth generation via crafting), ask what happens if it becomes a routine tool of courts, markets, armies, or guilds. Keep it rare or costly, prefer constrain-over-auto-solve, leave in-world counterplay, and add a short GM framing note where the reach is setting-shaping. *(spell principle 33)*
+
+**16. The name is a promise, spoken in a pre-scientific register.** Every effect must fit what the name leads a player to expect, and the name must cover every mode. Names and flavor use Bronze Age vocabulary — no modern physics or science terms — but stay clear and functional first: function in the name, poetry in the flavor. Classic genre terms stay when recognizability wins. *(spell principles 61, 91)*
+
+### Cross-system interfaces
+
+**17. Cross-system interactions gate in the talent, never by disclaimers elsewhere.** A talent that modifies spells, items, or subsystem procedures carries every restriction in its own wording (the Communal Practices model: "a singular mystic spell that targets only a single willing creature"). Never scatter "this ignores talent X" text into spells or items. When designing a talent that touches another system, write the gate so future content in that system is automatically in or out by the talent's own words. *(spell principle 83)*
+
+**18. Validate against spells, items, and subsystems — not just other talents.** Before finalizing, check whether a spell, folk trait, or item already covers the same job. A talent must not strictly outclass a same-job spell, and vice versa — put them in parity with distinct edges: the talent is repeatable, slot-bought, and upgrades with ranks; the spell costs Focus and needs no slot. Grep the spell files, not only the talent files. *(spell principle 27)*
+
+## Talent-Native Principles
+
+**19. High-rank abilities are never JUST a number bump.** Numbers do grow at R4–R5 — within the fixed bonus menus (analysis §4.5: damage {+2/+4/+6}, slow rank ceilings, +6 legal from R4). But a rank whose entire content is a numeric step reads boring and uninspired. Every R4–R5 rank leads with a new capability (scope expansion, action economy, reliability, system bridge, recovery); the menu step rides along as an accompaniment. The older phrasing "not bigger numbers at R4+" was an over-extension of the bounded-ceiling principle by the v2 analysis, corrected here. *(Owner ruling 2026-07-17, P0 review session: "of course numbers can grow at R4 and R5. But… these high rank abilities should not JUST scale numbers because that makes them boring and uninspired.")*
+
+**20. Multi-ability ranks use the list format.** When one rank grants more than one individual ability, introduce them with "You gain the following abilities:" and list each on its own line with "- ". Never chain multiple abilities in flowing prose inside a rank, and never pack two abilities into one list item. Stance-conditional variants keep the same shape with the condition leading ("While enraged, you also gain the following effects:"). Single-ability ranks state the ability directly with no list. *(Owner ruling 2026-07-17, P0.2 review; live exemplars: Assassination R2, Martial Artist R2–R3, Battle Rage.)*
+
+**21. The preamble holds only prerequisites and whole-talent conditions — never abilities — and gateway talents need no preamble at all.** Text before the first "(Rank 1)" block is reserved for general gates: skill prerequisites ("Requires Artisan Rank 3"), equipment restrictions across independent abilities ("You can't use any of these abilities while wearing heavy armor.", Escape Artist model), or exclusivity lines. Every ability, including a stance's entry/exit/lifecycle mechanics, lives inside a rank block — a stance's lifecycle is its R1 unlock content. Refinement: when every rank of the talent flows through one gateway ability (a stance like Battle Rage, where R2+ all nest under "while enraged"), attach the condition to the gateway ability itself in Rank 1 ("While you wear no heavy armor, you can enter…") — gating the entry gates the whole talent, no preamble needed. *(Owner rulings 2026-07-17, P0.2 review: first correcting a Battle Rage draft that put the rage lifecycle in the preamble, then folding the armor condition into R1 as well.)*
+
+**22. Bonuses are typed by source lane — the two-lane rider rule.** Four canonical types (published in `docs/01-basic-rules/05-general-rulings.md`): **ability** (your own talents, folk abilities, innate — standing self-riders), **situational** (external or momentary: another creature's aid, positioning, terrain, triggered grants), **enhancement** (improvements attached to an item, the item's own stats), **armor** (armor worn or an armor stand-in, AV only). Same type never stacks (highest wins), different types stack, untyped stacks. A character's own standing riders live in the ability lane; buffs granted to them from outside live in the situational lane — your training and their blessing stack, two blessings don't. Boons and banes are never typed. AV never routes through ability. Permanent build gains (+2 HP, +2 Focus) stay untyped. One-roll effects (combat arts) may stay untyped. Spells reuse these types by what the effect does — there is no "spell bonus" type; a spell is a delivery mechanism, not a source lane. *(Owner rulings 2026-07-17, P0.4: taxonomy triggered by Inspire Ally's ability-typed grant being dead against allies' own passive riders; "situational" confirmed over "support"; no spell-bonus type confirmed.)*
+
+**23. Bonus values come from fixed magnitude menus.** Damage riders from **{+2, +4, +6}** with slow rank ceilings: R1 +2 exceptional (rolled or tightly limited activations only), R2 +2 normal, R3–R4 +4, +6 legal from R4 (exceptional) and broadly at R5. Healing riders run one step ahead (R1 +2, R2 +4, R3 +6); whole-ability heals (Second Wind model — the heal is the entire costed ability) ladder 4/6/8 across talent ranks. Defense bonuses (Parry/Dodge/Resist/Defenses) from **{+1, +2}**, +2 the ceiling. Pools (temp HP and absorption barriers) from **{5, 10, 20}**: 5 = R2–R3, 10 = R4–R5 or heavily restricted, 20 = R5/legendary. Marked (X) draws from the damage menu. No odd damage values. Riders entering at R1/R2 of a multi-rank talent grow via an in-talent ladder ("increases to +4" at the talent's R3) — the talent's own ranks carry the growth the old +Skill formulas provided implicitly. Exempt: talents where rank-up IS the identity (Spell Knowledge Focus ladder, Pugilist) and cast-parameter values set by the spell being cast (Mana Shield's 2×rank barrier). Full tables: TALENT_SYSTEM_ANALYSIS §4.5. *(Owner rulings 2026-07-17, P0.2/P0.3: even menu only, slow ceilings, pool steps mirroring creature HP brackets, whole-ability heal ladder, in-talent ladders applied.)*
+
+## Appending a new principle
+
+When the owner corrects or refines a talent design decision in session:
+
+1. Take the next free number (currently next: **24**).
+2. Append the full principle under the matching section above (numbered, bolded one-line rule, then reasoning, then owner-ruling provenance).
+3. If it is frequently load-bearing, add its one-line hook to the Designer Principles paragraph in [../SKILL.md](../SKILL.md).
+4. Update the "currently next" number in step 1. Never renumber.
+
+If a correction refines a *ported* principle, note the talent-side ruling here under the ported entry rather than editing the spell-design file — each skill owns its own provenance chain.

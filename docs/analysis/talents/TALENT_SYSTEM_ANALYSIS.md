@@ -6,7 +6,7 @@
 >
 > **References:** [Character Progression](../../01-basic-rules/04-character-progression.md) | [Talent Overview](../../03-statistics/06-talents/00-overview.md) | [Challenge System](../../06-scenes/07-challenges/00-overview.md) | [Social Intrigue](../../06-scenes/07-challenges/01-social-intrigue.md) | [Travel](../../06-scenes/07-challenges/02-travel.md) | [Combat Arts](../../05-combat/05-combat-arts/00-overview.md)
 >
-> **Per-skill detail:** Once the per-skill analysis files are created, they will live at `docs/analysis/talents/skills/<skill>.md`. This document covers system-wide findings; per-skill files cover talent-by-talent inventory, gap lists, and design proposals.
+> **Per-skill detail:** Per-skill workbenches live at `docs/analysis/talents/skills/<skill>.md` (all 16 exist). This document covers system-wide findings; the workbenches cover talent-by-talent inventory, gap lists, and full design proposals — several roadmap items are already drafted there. Where a workbench and this document disagree on skill-level priorities, the workbench is the more current source.
 
 ---
 
@@ -29,7 +29,7 @@
 
 1. **Fiction-first, mechanically precise.** Talents describe abilities narratively but must have unambiguous trigger, effect, and limit. No vague narrative-only effects.
 2. **Skill-internal diversity.** Every skill should support combat, utility, and downtime play through its talent pool.
-3. **Bounded power ceiling.** Rank 5 = mortal pinnacle (≈ D&D 10–12 martial). Growth comes from efficiency, reliability, and breadth — not raw damage inflation.
+3. **Bounded power ceiling.** Rank 5 = mortal pinnacle (≈ D&D 10–12 martial). Numbers grow with rank within the §4.5 menu ceilings, but a high-rank ability is never JUST a number bump — every R4–R5 rank leads with a new capability (scope, action economy, reliability, system bridge), with numeric growth as an accompaniment (owner ruling 2026-07-17).
 4. **System integration.** Talents should create meaningful interactions with Challenges, Social Intrigue, Travel, and Combat Arts.
 5. **Archetype enablement.** Talents empower archetypes without locking builds. Multi-skill synergies should be rewarding, not mandatory.
 6. **Minimal bookkeeping.** Talents should avoid internal scaling that forces recalculation when skill ranks or attributes change. Prefer fixed bonuses and tiered unlocks over formulas.
@@ -317,26 +317,36 @@ Only one ability bonus applies per hit (highest wins), preventing stacking. Howe
 
 **Total:** 28 talents with some form of internal scaling. 15 scale damage — the most impactful type.
 
-### 4.5 Recommendations: Fixed Bonus Table
+### 4.5 Recommendations: Fixed Bonus Menus
 
-Replace "+Skill Rank" scaling with fixed bonuses appropriate to the talent's acquired rank:
+Replace "+Skill Rank" scaling with fixed bonuses from a small even-step menu (owner ruling 2026-07-17: damage bonuses come only from **+2 / +4 / +6** — no odd values, minimal mental math at the table).
 
-| Rank Acquired | Fixed Damage Bonus | Fixed Healing Bonus | Rationale |
-|--------------|-------------------|---------------------|-----------|
-| R1 | +1 | +2 | Minor supplement (~12% of a Weak hit) |
-| R2 | +2 | +4 | Moderate payoff (~25% of a Weak hit) |
-| R3 | +3 | +6 | Strong payoff (~35% of a Weak hit) |
-| R4 | +4 | +8 | Encounter-shaping territory |
-| R5 | +5 | +10 | Peak mortal — absolute ceiling |
+**Damage menu — {+2, +4, +6}, slow ceilings** (owner ruling 2026-07-17, second refinement):
 
-**Exception:** Talents where rank-up IS the core identity (Spell Knowledge granting +2 Focus per rank, Pugilist increasing unarmed damage per rank) should keep their scaling. The concern is talents where the bonus silently scales with an unrelated progression.
+| Rank Acquired | Ceiling | Guidance |
+|--------------|---------|----------|
+| R1 | +2, exceptional | Riders are normally absent at R1; +2 only for rolled or tightly limited activations |
+| R2 | +2 | The normal entry point for a damage rider |
+| R3 | +4 | |
+| R4 | +4 default, +6 exceptional | First rank where +6 is legal — resource-costed or heavily conditional only |
+| R5 | +6 | Broadly available |
+
+This gives R4–R5 talents a sanctioned numeric axis: a rider may grow to +6 at high ranks. The binding constraint (owner ruling 2026-07-17): a high-rank ability must never be JUST a number bump — that reads boring and uninspired. Every R4–R5 rank leads with a new capability (scope, action economy, reliability, system bridge, recovery — §8.4 templates); menu-step growth rides along as an accompaniment, never as the rank's whole content.
+
+**Healing menu — {+2, +4, +6}:** R1 +2 · R2 +4 · R3 +6. Healing runs one step ahead of damage because it competes with the Life-tradition bottleneck, not the damage curve. **Whole-ability heals** (the heal IS the entire ability, paid with an action and a use limit — Second Wind model) run their own ladder above the rider menu: 4 at R1, +2 per talent rank thereafter (6 at R2, 8 at R3) — owner ruling 2026-07-17. **Marked (X)** values come from the damage menu at the acquiring rank (X is bonus damage on the next attack).
+
+**Pool menu — {5, 10, 20}** (owner ruling 2026-07-17): temporary HP and damage-absorption barriers (the *of Shielding* model) use doubling steps, not the rider menu — temp HP never stacks with itself, so widely spaced values keep "which source wins" readable, and the values mirror creature HP brackets. Ceilings: 5 = R2–R3 talents · 10 = R4–R5 or heavily restricted grants (stance-bound, once per day, high Focus cost per refresh) · 20 = R5 capstones and legendary effects only (20 exceeds most adventurer max HP). Prefer an absorption barrier over temp HP when the granting ability belongs to a build that also generates temp HP elsewhere — barriers stack alongside temp HP, avoiding the highest-wins collision (Mana Shield rework precedent). **Cast-parameter exemption:** pool values set by the spell being cast (Mana Shield's barrier at twice the cast spell's rank, known at cast time) are exempt from the fixed menu, the same way rank-up-identity talents are exempt from the rider menus.
+
+**Defense bonuses (Parry, Dodge, Resist, Defenses) — {+1, +2}:** defenses swing TN math far harder than damage; +2 is the ceiling for any single talent-granted defense bonus. **AV** follows the §4.6 caps.
+
+**Exception:** Talents where rank-up IS the core identity (Spell Knowledge granting +2 Focus per rank, Pugilist increasing unarmed damage per rank) keep their scaling. The concern is talents where the bonus silently scales with an unrelated progression.
 
 ### 4.6 Defensive AV Scaling Issues
 
-Body of Bronze and Armor of the Faithful both use "AV = 1 + Skill" (armor bonus), scaling to AV 6 at Rank 5 — exceeding plate armor. Mana Shield reaches AV 7 at high spell ranks. Recommended caps:
-- Body of Bronze: "AV = 1 + Fortitude (max 4)"
-- Armor of the Faithful: "AV = 1 + Mysticism (max 4)"
-- Mana Shield: "AV = 2 + spell rank (max 5)"
+Body of Bronze and Armor of the Faithful both used "AV = 1 + Skill" (armor bonus), scaling to AV 6 at Rank 5 — exceeding plate armor. Mana Shield reached AV 7 at high spell ranks. **Resolved (P0.2, published 2026-07-17):**
+- Body of Bronze: capped at +4, explicit exclusivity preamble
+- Armor of the Faithful: capped at +4, explicit exclusivity preamble
+- Mana Shield: reworked away from AV entirely — now an absorption barrier at twice the cast spell's rank (cast-parameter exemption, §4.5)
 
 ---
 
@@ -647,7 +657,7 @@ Every talent follows exactly one of three paths — designer decision, binding. 
 
 | Path | Ranks | Purpose | Examples |
 |------|-------|---------|---------|
-| **Signature (R1–R5)** | 1, 2, 3, 4, 5 | Core archetype identity. Career talent growing from Novice to Grandmaster. Exactly 10 designated. | Art of Fighting, Pact of Devotion, Animal Companion |
+| **Signature (R1–R5)** | 1, 2, 3, 4, 5 | Core archetype identity. Career talent growing from Novice to Grandmaster. Exactly 11 designated (see §8.3). | Art of Fighting, Pact of Devotion, Animal Companion |
 | **Basic (R1–R3)** | 1, 2, 3 | Standard talents — playstyle fully unlocked at Expert tier. Default for new talents (~112 existing). | Blade Mastery, Evasion, Born Haggler |
 | **High-Level (R4–R5)** | 4, 5 only | Prestige talents — only at Master/Grandmaster tier. New options that can't exist at lower ranks. May have cross-skill prerequisites. | New designs — see §8.4–8.5 |
 
@@ -661,7 +671,9 @@ Every talent follows exactly one of three paths — designer decision, binding. 
 
 **Impact:** High-level characters accumulate unspendable TP. Leveling up from R4 to R5 provides zero talent benefit in most skills.
 
-### 8.3 The Ten Signature Talents (R1–R5 — closed list)
+### 8.3 The Eleven Signature Talents (R1–R5 — closed list)
+
+> Battle Rage promoted to the signature list by owner ruling 2026-07-17 (during the P0.2 rework): it is the Barbarian's core career talent and must fill R4–R5. List grew 10 → 11.
 
 | Skill | Signature Talent | Archetype(s) Served | Current Status |
 |-------|-----------------|---------------------|----------------|
@@ -671,8 +683,9 @@ Every talent follows exactly one of three paths — designer decision, binding. 
 | Arcana | Arcane Spell Knowledge | Sorcerer, Summoner | R4 complete; needs R5 |
 | Arcana | Battle Mage | Magus | R4 complete; needs R5 |
 | Mysticism | Mystical Spell Knowledge | Priest, Druid, Shaman | R4 complete; needs R5 |
-| Mysticism | Pact of Devotion | Champion | R3 complete; needs R4–R5 |
+| Mysticism | Pact family (Glory, Piety, Protection, Vengeance) | Champion | Split into four standalone talents, R1–R3 published (P0.2b, 2026-07-17); counts as one signature slot. Each needs R4–R5 (P4, four small designs) |
 | Fortitude | Hard to Kill | Barbarian, Fighter | R3 complete; needs R4–R5 |
+| Fortitude | Battle Rage | Barbarian | R1–R3 rework published (P0.2, 2026-07-17); needs R4–R5. Seeds: chosen-cost Fatigue push (extra action, pay 1 Fatigue when the rage ends), +6 rider step, temp HP step to 10 |
 | Nature | Animal Companion | Tamer, Druid | R3 complete; needs R4–R5 |
 | Lore | Magical Sense | Warlock, Sorcerer | R4 partial (???); needs R4 completion + R5 |
 
@@ -740,109 +753,145 @@ Every talent follows exactly one of three paths — designer decision, binding. 
 
 ---
 
-## 9. Implementation Roadmap
+## 9. Implementation Roadmap (v2.1 — re-sequenced 2026-07-17)
 
-### 9.1 Phase 1a — Complete Incomplete Talents (Immediate Priority)
+> **Revision note:** This roadmap supersedes the v2 phase plan after a challenge review. Key changes:
+>
+> 1. **Balance fixes to live talents now come first.** The §4.5/§4.6/§6.3 recommendations were previously absent from every phase — new content would have been balanced against a broken baseline.
+> 2. **Rank 5 spell access promoted to top priority.** Rank 5 arcane and mystic spells are now published, but Arcane Spell Knowledge and Mystical Spell Knowledge still cap at "rank 4 or lower" — there is currently no legal way to learn a rank 5 spell.
+> 3. **Former Phases 1b and 2 merged.** The undersized-skill additions and the system-integration talents are largely the same designs (Road Warden and Streetwise Informant ARE the Streetwise expansion, Pathfinder and Dogged Pursuit ARE the Survival expansion). One design pass per skill, not two.
+> 4. **Archetype signature work gated behind a spell-catalog re-audit.** The signature gap list (§3.2) predates the full spell expansion; several gaps (Summoner, Warlock, Oracle, Bard) may be partially closed spell-side.
+> 5. **High-rank program cut to demand-driven scope.** The blanket plan (1–2 capstones for all 16 skills plus 10–15 prestige talents, up to ~47 high-rank designs) overstates the dead zone: TP always has breadth sinks in large skills; literal TP exhaustion only occurs in small skills. Priority goes to pillar skills and TP-exhausted skills.
+> 6. **Per-skill workbenches (`skills/<skill>.md`) are now the finer-grained source.** Several proposals below already have full drafts there — those items are review-and-promote, not design-from-scratch.
+>
+> Subsection numbering within §9 changed in this revision. External references to old §9.x subsections may be off by one phase.
 
-**Goal:** Zero incomplete entries. Blocks character progression until resolved.
+### 9.1 P0 — Baseline Fixes (immediate, before any new design)
+
+> **STATUS: P0.1–P0.4 and P0.2b PUBLISHED 2026-07-17** (docs, talents.json, general-rulings, skill references; Notion sync in the same batch). Pact of Devotion split into four standalone talents (Glory, Piety, Protection, Vengeance) per P0.2b. Draft records in `.drafts/talents/p0-*.md`.
+
+**P0.1 — Rank 5 spell access (live blocker):**
+
+| Talent | Skill | Action |
+|--------|-------|--------|
+| Arcane Spell Knowledge | Arcana | Design R5: +2 Focus, learn two rank 5 or lower spells |
+| Mystical Spell Knowledge | Mysticism | Design R5: +2 Focus, learn two rank 5 or lower spells |
+
+**P0.2 — Balance pass on live talents.** Apply the §6.3 redesigns and §4.6 AV caps: Inspire Ally, Insult to Injury, Identify Weakness, Battle Rage, Escape Artist R3 (verified still "Your Movement is unprovoked" — unlimited passive; change to once between turns), General Education R1, Assassination R1+R3 stack, Body of Bronze, Armor of the Faithful, Mana Shield, Pact of Devotion effect count.
+
+**P0.3 — Fixed-bonus conversion.** Apply the §4.5 fixed bonus table to the internally scaling talents (28 total; the 15 damage-scaling talents first — verified still live, e.g. Expert Slinger R2 and Martial Artist R3 "+skill to damage").
+
+**Rationale for ordering:** every talent designed in later phases is validated by comparison against published neighbors. Fixing the baseline first prevents new content from inheriting the scaling and limit anti-patterns.
+
+### 9.2 P1 — Complete Incomplete Talents
+
+**P1.1 — Nine partial talents** (recommendations pre-approved in this analysis; cheap wins):
 
 | Talent | Skill | Action Required |
 |--------|-------|----------------|
-| Adrenaline Rush | Fortitude | Design R1–R3 (damage-triggered benefits, temp HP surge) |
-| Supernatural Mobility | Athletics | Design R1–R3 (also serves as High-Level R4–R5 capstone) |
-| Performer | Influence | Design R1–R3 (entertainment, crowd effects for Bard archetype) |
-| Presence of Conquest | Influence | Design R1–R3 (fear aura, mass intimidation — High-Level R4–R5) |
-| Foresight | Insight | Design R1–R3 (predictive defense, avoid surprise — High-Level R4–R5) |
-| Divine Favor | Mysticism | Design R1–R3 (prayer benefits, daily Favor pool for Priest/Champion) |
-| Herbalist | Nature | Design R1–R3 (remedy creation for Apothecary) |
-| Master Artisan | Crafting | Design R1–R3 (prerequisite: Artisan R3; Quality 4–5 items) |
 | Plant Lore R3 | Nature | Complete Rank 3 (plant identification, terrain interaction) |
 | Knowledgeable Wanderer R3 | Nature | Recommended: "+2 HP. When you succeed on any travel role roll, the party gains +1 progress (once per day)" |
 | Magical Sense R4 | Lore | Recommended: long range + identify active spell schools on creatures |
 | Roguish Wits R3 | Stealth | Recommended: Patience die doesn't tick on successful deception (1/scene) |
 | Sleight of Hand R3 | Stealth | Recommended: planted evidence grants +1 boon on Leverage/Deceive; stolen document reveals Motivation/Pitfall |
 | I Know A Guy R2–R3 | Streetwise | R2: intelligence gathering; R3: contact in previously-unvisited settlements at lower SL |
-| Explorer of Nature R3 | Survival | Third chosen environment + enhanced exploration |
+| Explorer of Nature R3 | Survival | Third chosen environment + enhanced exploration. Also fix R2 wording: "Encounter Die" → current Travel Event Table terminology |
 | Relentless Tracker R2–R3 | Survival | R2: quarry information details on success; R3: +1 boon, never lose trail (1/scene recovery) |
 | Wilderness Expert R3 | Survival | Recommended: warming meal or trail mix (boon vs. weather OR Supply Check advantage) |
 
-**Also in Phase 1a:** Update Explorer of Nature R2 wording from "Encounter Die" to current Travel Event Table terminology.
+**P1.2 — Five uncontested stubs** (design as Basic R1–R3):
 
-### 9.2 Phase 1b — Expand Critically Low Skills (Immediate Priority)
+| Talent | Skill | Direction |
+|--------|-------|-----------|
+| Adrenaline Rush | Fortitude | Damage-triggered benefits, temp HP surge |
+| Performer | Influence | Entertainment, crowd effects (Bard support) |
+| Divine Favor | Mysticism | Prayer benefits, daily Favor pool for Priest/Champion |
+| Herbalist | Nature | Remedy creation (Apothecary support) |
+| Master Artisan | Crafting | Prerequisite: Artisan R3; Quality 4–5 items |
 
-**Goal:** Minimum 8 complete talents per skill.
+**P1.3 — Three contested stubs (owner decision required before design):**
 
-| Skill | Current Complete | Target | New Talents Needed | Priority Areas |
-|-------|-----------------|--------|--------------------|----------------|
-| **Streetwise** | 3 | 8–9 | +5–6 | Infiltration (Rogue), urban challenge support, I Know A Guy completion counts |
-| **Survival** | 3 | 8–9 | +5–6 | Travel integration (Pathfinder), stub completions count toward this |
-| **Insight** | 4 | 8–9 | +4–5 | Prophecy (Oracle), Read the Room, defensive redirection |
-| **Perception** | 5 | 8–9 | +3–4 | Cartographer's Eye, Combat Instincts, Keen Observer |
-| **Stealth** | 4 | 8–9 | +4–5 | Infiltration, Shadow Slip, stub completions count |
-| **Influence** | 5 | 9–10 | +4–5 | Performer/Bard signature, Silver Tongue, stub completions count |
+Supernatural Mobility (Athletics), Presence of Conquest (Influence), and Foresight (Insight) carry contradictory instructions: the v2 Phase 1a said "Design R1–R3" while §8.5 lists them as High-Level R4–R5 capstones. The three-path rule (§8.1) allows only one. Additionally, all three are framed as supernatural abilities ("supernatural jumps", conqueror's aura, "instinctively predicting the future"), which conflicts with the R5 principle that Grandmaster abilities are mortal pinnacle, never supernatural.
 
-**Defensive talent additions** (from §3.5 proposals): Deflecting Presence (Insight), Shadow Slip (Stealth), Combat Instincts (Perception), Desperate Gambit (Athletics), Arcane Warding (Arcana), Guardian's Oath (Mysticism).
+Per stub, the owner must decide: (a) progression path — Basic R1–R3 or High-Level R4–R5, and (b) power framing — re-scope to peak-mortal capability, or explicitly justify a supernatural exception (e.g. mystic-empowered flavor). Design work on these three is blocked until decided.
 
-### 9.3 Phase 2 — Modern System Integration (High Priority)
+### 9.3 P2 — Merged Expansion Pass (replaces former Phases 1b and 2)
 
-**Goal:** 15+ direct-interaction talents per system.
+**Goal:** minimum 8 complete talents per skill AND 15+ direct-interaction talents per modern system, achieved in **one design pass per undersized skill**, driven by that skill's workbench (`skills/<skill>.md`). The system-integration proposals (§5.4, §5.7) and defensive proposals (§3.5) are the raw material for these passes, not a separate phase.
 
-Implement the talents proposed in §5.4 and §5.7 (full designs in archived side documents):
+Order by severity:
 
-| Talent | Skill | System(s) | Priority |
-|--------|-------|-----------|----------|
-| Pathfinder | Survival | Travel | High |
-| Dogged Pursuit | Survival | Challenge (Tracking/Chase) | High |
-| Silver Tongue | Influence | Social Intrigue | High |
-| Read the Room | Insight | Social Intrigue | High |
-| Trailblazer | Athletics | Travel | High |
-| Keen Observer | Perception | Challenge | Medium |
-| Cartographer's Eye | Perception | Travel | Medium |
-| Expedition Leader | Education | Travel | Medium |
-| Road Warden | Streetwise | Travel | Medium |
-| Seasoned Forager | Nature | Travel | Medium |
-| Streetwise Informant | Streetwise | Challenge, Social Intrigue | Medium |
-| Methodical Research | Education | Challenge (Research) | Medium |
+| Order | Skill | Complete Now | Target | Anchor Proposals (workbench has details) |
+|-------|-------|--------------|--------|------------------------------------------|
+| 1 | **Streetwise** | 3 | 8–9 | Infiltration/lockpicking, forgery, Road Warden, Streetwise Informant; I Know A Guy completion counts |
+| 2 | **Survival** | 3 | 8–9 | Pathfinder, Dogged Pursuit; P1.1 completions count |
+| 3 | **Insight** | 4 | 8–9 | Read the Room, Deflecting Presence, prophecy space (pending P1.3 Foresight decision) |
+| 4 | **Perception** | 5 | 8–9 | Combat Instincts, Keen Observer, Cartographer's Eye |
+| 5 | **Stealth** | 4 | 8–9 | Shadow Slip, infiltration (shared tag with Streetwise); P1.1 completions count |
+| 6 | **Influence** | 5 | 9–10 | Silver Tongue; Performer counts (P1.2) |
 
-### 9.4 Phase 3 — High-Rank Progression (Medium Priority)
+**Riding along in the same passes** (skills not undersized, but proposals fill the critical redirection/avoidance gap): Desperate Gambit (Athletics), Arcane Warding (Arcana), Guardian's Oath (Mysticism), Trailblazer (Athletics), Expedition Leader + Methodical Research (Education), Seasoned Forager (Nature).
 
-**Phase 3a — Extend Signature Talents to R4–R5:**
+Several of these proposals already have full mechanical drafts in the workbenches (e.g. Read the Room, Deflecting Presence in `skills/insight.md`). For those, the work is: re-validate against the P0-corrected baseline and current design principles, then promote through the draft → approval → publication pipeline.
+
+### 9.4 P3 — Archetype Signature Re-Audit (gate before signature design)
+
+The §3.2 gap list (Bard, Engineer, Oracle, Summoner, Warlock, Apothecary lacking signatures) predates the full spell expansion. Conjuration, telepathy, necromancy, death, peace and other schools now carry substantial archetype identity spell-side.
+
+1. **Audit first:** re-check each of the 6 archetypes against the current spell catalog and the talents added in P1/P2. A caster archetype whose identity is fully expressed through spells plus Spell Knowledge lines may need no dedicated talent at all.
+2. **Then design targeted R1–R3 signatures** only where a gap survives. Expected survivors: **Apothecary** and **Engineer** (Crafting pillar — no spell support exists for Crafting), possibly the Bard performance angle beyond the Performer talent.
+3. **Signatures enter at R1** in the pillar skill. The old plan's cross-skill R4+ prestige talents do not solve signature gaps — a level-1 Oracle needs an entry point, not a Master-tier capstone.
+
+### 9.5 P4 — High-Rank Progression (scoped)
+
+**P4.1 — Extend the eleven signature talents to R4–R5** (the real dead-zone fix for pillar skills):
 
 | Signature Talent | Status | Action |
 |----------------|--------|--------|
-| Arcane Spell Knowledge | R4 complete | Design R5: learn rank 5 spells |
-| Mystical Spell Knowledge | R4 complete | Design R5: learn rank 5 spells |
+| Arcane Spell Knowledge | R4 complete | R5 moved to **P0.1** (live blocker) |
+| Mystical Spell Knowledge | R4 complete | R5 moved to **P0.1** (live blocker) |
 | Battle Mage | R4 complete | Design R5: cast spell + weapon attack in one Action |
 | Art of Fighting | R4 complete | Design R5: once/day treat Fighting roll as Critical Success |
 | Art of Archery | R4 complete | Design R5: once/day treat Archery roll as Critical Success |
 | Martial Artist | R3 complete | Design R4: 5 WD + stun on hit; R5: magic weapon, 6 WD |
-| Pact of Devotion | R3 complete | Design R4: per-pact enhancement; R5: pinnacle pact ability |
+| Pact family (Glory, Piety, Protection, Vengeance) | R1–R3 published as four talents (P0.2b) | Design R4–R5 per pact: enhancement + pinnacle ability, four small designs |
 | Hard to Kill | R3 complete | Design R4: survive at 1 HP (1/day); R5: refuse death once per day |
 | Animal Companion | R3 complete | Design R4: companion acts independently; R5: +1 all attributes |
 | Magical Sense | R4 partial | Fix R4 (???): long range + school identification; design R5: permanent passive detection |
 
-**Phase 3b — New High-Level R4–R5 Talents:** Create 1–2 capstones per skill from §8.5 proposals (~16–32 new entries).
+**P4.2 — New High-Level R4–R5 talents, demand-driven scope.** NOT 1–2 capstones for all 16 skills. Start with ~6–8 designs covering:
 
-### 9.5 Phase 4 — Prestige Talents (If Adopted — Lower Priority)
+- **Pillar skills** where Grandmaster investment is most common: Fighting, Archery, Arcana, Mysticism, Fortitude.
+- **TP-exhausted small skills** where a Grandmaster literally runs out of rank-slots (Streetwise pre-P2: 4 talents × 3 ranks = 12 slots = exactly 12 TP). Re-check exhaustion after P2 lands — expansion may already solve it.
 
-Implement 10–15 cross-skill prestige talents from §8.5 proposals. Prioritize Oracle, Bard, Engineer, Tamer, Warlock, Apothecary.
+Rationale for the cut: the "dead zone" is overstated for large skills. Fighting offers ~40 rank-slots against 12 TP — spending is always possible, it just lacks rank-appropriate excitement. The signature extensions (P4.1) address that feel for the builds that actually reach Grandmaster. Blanket 16-skill R5 coverage is content inflation without demand.
 
-### 9.6 Success Metrics
+**P4.3 — Acceptance criterion for martial R4–R5 designs:** interact with supreme Combat Arts (reduced costs, enhanced effects, new combinations) — the Appendix C gap. High-rank martial talents that ignore Combat Arts waste the system's existing high-level hook.
 
-| Metric | Current (v2 audit) | Phase 1 Target | Phase 2 Target | Final Target |
-|--------|-------------------|---------------|----------------|-------------|
-| Total talents | 121 | 148–155 | 162–170 | 195–210 |
-| Min complete per skill | 3 (Survival) | 8 | 8 | 10 |
-| Stub/incomplete talents | 17 | 0 | 0 | 0 |
-| Max talent rank (in use) | 4 (partial) | 4 | 4 | 5 |
-| Challenge-interactive | ~5 direct | 12 | 15+ | 20+ |
-| Social Intrigue-interactive | ~8 direct | 12 | 15+ | 20+ |
-| Travel-interactive | 4 direct | 10 | 15+ | 18+ |
-| Skills with complete Rank 4 | 5 | 5 | 8 | 16 |
-| Skills with Rank 5 | 0 | 0 | 4 | 16 |
-| Defensive redirection % | ~1% | 3% | 5–10% | 5–10% |
-| Travel talent % | ~3% | 8% | 10–15% | 10–15% |
-| Archetypes with pillar signature | 14/25 | 18/25 | 20/25 | 25/25 |
+### 9.6 Deferred / Cut
+
+| Item | Status | Reason |
+|------|--------|--------|
+| Blanket prestige-talent program (old Phase 4: 10–15 cross-skill designs) | Deferred | Revisit after P4 lands and play data exists. §8.5 prestige proposals remain a design pool. Signature gaps are handled by P3 at R1, not by prestige talents |
+| "Total talents 195–210" metric | Cut | Count inflation as a goal contradicts the §3.1 finding that Fighting is over-served and combat over-represented |
+| "All 16 skills with Rank 5" metric | Cut | See P4.2 rationale — demand-driven, not blanket |
+
+### 9.7 Success Metrics (revised)
+
+| Metric | Current (v2 audit) | After P0–P1 | After P2–P3 | Final Target |
+|--------|-------------------|-------------|-------------|--------------|
+| Rank 5 spells learnable via talents | ❌ No | ✅ Yes | ✅ Yes | ✅ Yes |
+| Over-performing talents (§4.3 list) unfixed | 5+ | 0 | 0 | 0 |
+| Damage-scaling talents converted to fixed bonuses | 0/15 | 15/15 | 15/15 | 15/15 |
+| Stub/incomplete talents | 17 | ≤3 (P1.3 pending decision) | 0 | 0 |
+| Min complete per skill | 3 (Survival, Streetwise) | 3 | 8 | 8 |
+| Challenge-interactive | ~5 direct | ~7 | 15+ | 15+ |
+| Social Intrigue-interactive | ~8 direct | ~10 | 15+ | 15+ |
+| Travel-interactive | 4 direct | ~8 | 15+ | 15+ |
+| Defensive redirection % | ~1% | ~1% | 5–10% | 5–10% |
+| Archetypes with viable identity path (talent OR spell-side, per P3 audit) | 14/25 | 16/25 | 22/25 | 25/25 |
+| Signature talents at R5 | 0/10 | 2/10 (Spell Knowledge lines) | 2/10 | 10/10 |
+| High-level (R4–R5) capstones beyond signatures | 0 | 0 | 0 | 6–8 |
 
 ---
 
@@ -866,9 +915,9 @@ Implement 10–15 cross-skill prestige talents from §8.5 proposals. Prioritize 
 - `CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md` — Preserved for full mechanical write-ups of 6 proposed talents (Silver Tongue, Read the Room, Keen Observer, Streetwise Informant, Dogged Pursuit, Methodical Research) and 4 talent completions (Relentless Tracker, I Know A Guy, Roguish Wits, Sleight of Hand). §5 of this document contains all design conclusions.
 - `TRAVEL_TALENT_INTEGRATION.md` — Preserved for full mechanical write-ups of 6 proposed talents (Pathfinder, Trailblazer, Cartographer's Eye, Expedition Leader, Road Warden, Seasoned Forager) and 4 talent completions (Explorer of Nature, Knowledgeable Wanderer, Wilderness Expert, Relentless Tracker). §5 of this document contains all design conclusions.
 
-### Per-Skill Analysis Files (to be created)
+### Per-Skill Workbenches
 
-Will live at `docs/analysis/talents/skills/<skill>.md`. Each file covers: talent-by-talent inventory with role classification, skill-specific gap analysis and archetype support mapping, full write-ups of proposed new talents, and validation checklist results per existing talent.
+All 16 exist at `docs/analysis/talents/skills/<skill>.md`. Each covers: talent-by-talent inventory with role classification, skill-specific gap analysis and archetype support mapping, full write-ups of proposed new talents (several P2 roadmap items are fully drafted there), and validation results per existing talent. For skill-level priorities, the workbench supersedes this document where they disagree.
 
 ---
 

@@ -12,4 +12,19 @@ Whenever you divide some number and end up with an decimal fraction, round down 
 
 ## Stacking multiple bonuses
 
-When having talents, abilities, spells, enchantments, etc. applying bonuses to your character’s statistics or to items you are wearing, you need to consider whether they will all apply at the same time or if they won’t. When a bonus, such as “gain +1 Parry” doesn’t specify which category of bonus it is, it will stack with other similar bonuses. But an effect “gain +1 Parry (ability bonus)” will not stack with another effect granting Parry as an ability bonus. The same rule applies to bonuses (temporary and permanent) affecting equipment. So if your weapon would gain “increase the weapon damage by 1 (enhancement bonus)” multiple times, one one of those bonuses would apply. If multiple bonuses would not stack with each other and they differ in value, choose the highest one among them.
+Talents, abilities, spells, enchantments, and items can all grant bonuses to your statistics or your equipment. Whether they all apply at the same time depends on their bonus type.
+
+A bonus without a stated type, such as "gain +1 Parry", stacks with all other bonuses. A bonus with a stated type, such as "gain +1 Parry (ability bonus)", doesn't stack with another bonus of the same type affecting the same statistic. If multiple bonuses of the same type would apply to the same statistic, only the highest one counts. Bonuses of different types stack with each other.
+
+| Bonus Type | Comes from | Applies to |
+|------------|-----------|------------|
+| **ability bonus** | Your own talents, folk abilities, or other innate abilities | Damage, healing, Parry, Dodge, Resist |
+| **situational bonus** | Help from other creatures, positioning, terrain, or other momentary circumstances | Damage, Parry, Dodge, Resist, AV |
+| **enhancement bonus** | Improvements to an item, whether mundane or magical | The item's own statistics, such as weapon damage or AV |
+| **armor bonus** | Armor you wear, or an effect that stands in for armor | AV |
+
+Some rare effects use a unique named bonus type of their own. These follow the same rule: same type doesn't stack, different types do.
+
+Boons and banes are not bonuses. They are part of the dice roll, they cancel each other out one for one, and they never have a bonus type.
+
+> Kesh wears a leather harness (AV 2, armor bonus) and knows *Body of Bronze* (AV = 1 + Fortitude, armor bonus). Both are armor bonuses, so only the higher applies. When an ally's shield formation grants +2 AV (situational bonus), that is a different type, so it stacks.

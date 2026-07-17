@@ -2,14 +2,15 @@
 
 ## Bonus Types
 
-Fixed categories prevent stacking abuse. **Only the highest bonus of a given type applies; different types stack.**
+Canonical system (owner-approved 2026-07-17, published in `docs/01-basic-rules/05-general-rulings.md`). The type answers "where does the bonus come from" — that's what stacking cares about. **Same type never stacks (highest wins), different types stack, untyped stacks with everything. Boons/banes are never typed.**
 
-1. **Ability Bonus** — from attributes (STR, AGI, SPI, MND)
-2. **Skill Bonus** — from ranks or talents tied to that skill
-3. **Item Bonus** — from weapons, armor, tools, magic items
-4. **Situational Bonus** — from conditions, positioning, talent triggers
-5. **Armor Bonus** — for defense/soak values
-6. **Other (Named)** — unique cases, e.g. *Blessing Bonus*
+1. **Ability Bonus** — your own talents, folk abilities, or innate abilities (own standing riders)
+2. **Situational Bonus** — external or momentary: another creature's aid, positioning, terrain, circumstances, a triggered grant
+3. **Enhancement Bonus** — improvements to an item, attached to the item (the item's own stats)
+4. **Armor Bonus** — armor worn, or an effect standing in for armor (AV only)
+5. **Other (Named)** — rare unique cases (e.g. troop bonus, creature-internal)
+
+Boundary rules: AV never routes through ability (use armor/situational/enhancement). Permanent character-building gains (+2 HP, +2 Focus, +1 Movement) stay untyped. One-roll effects (combat arts) may stay untyped. **Two-lane rider rule:** a character's own standing riders are ability; buffs granted from outside are situational — your training and their blessing stack, two blessings don't. Spells reuse these types by what the effect does (no "spell bonus" type). Full rationale: TALENT_SYSTEM_ANALYSIS §4.5 and designer-principles 22–23.
 
 ## Skill Role Spreads & Aspects
 
@@ -78,4 +79,4 @@ Each archetype = 1 pillar skill (Fighting, Archery, Arcana, or Mysticism) + 3 su
 | Warlock | Arcana, Lore, Insight, Fortitude | Striker/Controller | Eldritch pact, curses, patron obligations, familiar |
 | Warlord | Fighting, Influence, Education, Fortitude | Support/Controller | Battlefield leader, tactical commands, ally buffs |
 
-**Signature talent principle**: every archetype should have at least one R1 talent in its pillar skill that directly enables its core fantasy. Missing signatures (as of the last audit): Bard, Engineer, Oracle, Summoner, Warlock, Apothecary — see `docs/analysis/talents/TALENT_SYSTEM_ANALYSIS.md` §6.
+**Signature talent principle**: every archetype should have at least one R1 talent in its pillar skill that directly enables its core fantasy. Missing signatures (as of the last audit): Bard, Engineer, Oracle, Summoner, Warlock, Apothecary — see `docs/analysis/talents/TALENT_SYSTEM_ANALYSIS.md` §3.2 and §7.1. ⚠️ That gap list predates the full spell expansion — roadmap P3 (§9.4) requires re-auditing each gap against the current spell catalog before designing signature talents; caster-archetype identities may already be carried spell-side. Signatures enter at R1 in the pillar skill — a cross-skill R4+ prestige talent never substitutes for a missing signature.
