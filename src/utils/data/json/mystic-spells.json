@@ -275,6 +275,17 @@
 		"heightened": "<strong>(Rank 4)</strong> Deal +5/+10/+15 radiant damage to hostile creatures and restore +4/+8/+12 HP to allies instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 radiant damage to hostile creatures and restore +5/+10/+15 HP to allies instead."
 	},
 	{
+		"name": "Searing Revelation",
+		"tradition": "Light",
+		"rank": "3",
+		"focus": "6",
+		"target": "Very Hard (12)",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "You speak the dawn's oldest name and a wave of merciless light washes the lie out of the world, racing back along its threads to the one who told it.<br/>Choose one active spell effect of rank 3 or lower within range that creates darkness, concealment, disguise, or false images, such as magical darkness, an invisibility, a shapechanged or disguised form, or an illusion.<br/>On a success, the chosen effect is burned away and ends immediately.<br/>If the effect's caster is within range, the light streaks back to them:<br/><strong>Weak.</strong> They take +4 radiant damage (ignore AV).<br/><strong>Strong.</strong> They take +8 radiant damage (ignore AV).<br/><strong>Critical.</strong> They take +12 radiant damage (ignore AV).<br/>Also on a success against the caster, they are plainly lit until the start of your next turn and cannot become hidden or invisible while lit.",
+		"heightened": "<strong>(Rank 4)</strong> Burn away an effect of rank 4 or lower, and the caster takes +6/+12/+18 radiant damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> Burn away an effect of rank 5 or lower, and the caster takes +8/+16/+24 radiant damage (ignore AV) instead."
+	},
+	{
 		"name": "Divine Judgement",
 		"tradition": "Light",
 		"rank": "4",
@@ -2145,6 +2156,17 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Righteous Verdict",
+		"tradition": "Peace",
+		"rank": "3",
+		"focus": "6",
+		"target": "vs. Resist",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "You speak the old formula of judgement, and the weight of the broken word settles on the guilty like a millstone.<br/>You can only cast this spell on a creature that has broken an oath sealed, marked, or witnessed by any of your <em>Peace</em> spells, such as <em>Oathmark</em> or <em>Sacred Covenant</em>, or that has damaged a creature warded by one of your <em>Peace</em> spells during this scene.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +8 psychic damage (ignore AV).<br/><strong>Critical.</strong> Deal +12 psychic damage (ignore AV).<br/>Also on a success, the target is dazed for a short duration as the covenant presses down on them. At the end of each of their turns, they can roll Spirit + Fortitude vs. your Resist to end the condition early.",
+		"heightened": "<strong>(Rank 4)</strong> Deal +6/+12/+18 psychic damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> Deal +8/+16/+24 psychic damage (ignore AV) instead."
+	},
+	{
 		"name": "Pilgrim's Gate",
 		"tradition": "Peace",
 		"rank": "4",
@@ -2409,6 +2431,17 @@
 		"heightened": "<strong>(Rank 4)</strong> The guardian has 40 HP and 6 AV, its Strike deals +6/+12/+18 force damage, and it can use Guard twice per round, instead.<br/><strong>(Rank 5)</strong> The guardian has 50 HP and 8 AV, its Strike deals +8/+16/+24 force damage, and it can use Guard three times per round, instead."
 	},
 	{
+		"name": "Rout",
+		"tradition": "War",
+		"rank": "3",
+		"focus": "6",
+		"target": "vs. Resist",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "You bellow the cry that breaks armies, and every shaken heart in earshot remembers its legs.<br/>Target each enemy in range that is currently frightened. This spell has no effect on other creatures.<br/>On a success against a target, they suffer all of the following:<br/>- They immediately move up to their Movement away from the source of their fear, avoiding obvious danger where possible.<br/>- They suffer +1 bane on all rolls until the end of their next turn.<br/>- Their terror deepens: if they are briefly frightened, they are frightened for a short duration instead.<br/>Each creature can only be affected by this spell once per scene.",
+		"heightened": "-"
+	},
+	{
 		"name": "Blood Frenzy",
 		"tradition": "War",
 		"rank": "4",
@@ -2596,6 +2629,28 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Rallying Cry",
+		"tradition": "Life",
+		"rank": "3",
+		"focus": "6",
+		"target": "Very Hard (12)",
+		"range": "Self",
+		"properties": "-",
+		"effect": "You cry out with the warmth of every dawn yet to come, and the wounded remember they are not done living.<br/>Target each ally in short range of you whose current HP is at or below half their maximum, including allies at 0 HP.<br/><strong>Weak.</strong> Each target regains 4 HP.<br/><strong>Strong.</strong> Each target regains 8 HP.<br/><strong>Critical.</strong> Each target regains 12 HP.<br/>Also on a success, each target gains +1 boon on the next roll they make before the end of their next turn. This spell has no effect on allies above half their maximum HP.",
+		"heightened": "<strong>(Rank 4)</strong> Each target regains +5/+10/+15 HP instead.<br/><strong>(Rank 5)</strong> Each target regains +6/+12/+18 HP instead."
+	},
+	{
+		"name": "Seed of Life",
+		"tradition": "Life",
+		"rank": "3",
+		"focus": "6",
+		"target": "Very Hard (12)",
+		"range": "Touch",
+		"properties": "singular",
+		"effect": "You plant a mote of dawn beneath an ally's heart, where it waits, warm and patient, for their darkest moment.<br/>Target one willing creature you touch.<br/>On a success, the seed holds 16 HP and lasts for a medium duration. If the target drops to 0 HP while the seed holds, it blooms at once: the target immediately regains the held HP. Suffering a Wound and its effects from dropping to 0 HP happens as normal before the seed blooms. If the seed has not bloomed when the duration ends, its vitality fades without effect.",
+		"heightened": "<strong>(Rank 4)</strong> The seed holds 20 HP instead.<br/><strong>(Rank 5)</strong> The seed holds 24 HP instead."
+	},
+	{
 		"name": "Raise Dead",
 		"tradition": "Life",
 		"rank": "4",
@@ -2671,6 +2726,17 @@
         "properties": "-",
         "effect": "You speak the target's accumulated dooms aloud, and every sickness, terror, and curse upon them comes due at once, called home by the world below.<br/>Count the target's afflictions: each condition they currently suffer among poisoned, frightened, bleeding, slowed, dazed, staggered, and stunned, and each <strong>curse</strong> spell affecting them.<br/><strong>Weak.</strong> Deal +2 necrotic damage, plus +4 necrotic damage for each affliction counted.<br/><strong>Strong.</strong> Deal +4 necrotic damage, plus +4 necrotic damage for each affliction counted.<br/><strong>Critical.</strong> Deal +6 necrotic damage, plus +4 necrotic damage for each affliction counted.<br/>Also on a success, all counted conditions on the target end and all counted <strong>curse</strong> spells on them are lifted. The tally consumes what it counts.",
         "heightened": "<strong>(Rank 4)</strong> Deal +5 necrotic damage for each affliction counted instead.<br/><strong>(Rank 5)</strong> Deal +6 necrotic damage for each affliction counted instead."
+    },
+    {
+        "name": "Speak with Dead",
+        "tradition": "Death",
+        "rank": "3",
+        "focus": "6",
+        "target": "Very Hard (12)",
+        "range": "Touch",
+        "properties": "ritual (minutes), material cost (500 coins)",
+        "effect": "You anoint the body with oil and ash, speak the rites of passage backward, and ask the spirit to linger a while at the threshold. Target the body of a creature that died within the last moon and could speak a language in life. The spirit answers from what they knew in life, in their own manner and temper.<br/><strong>Weak.</strong> The spirit answers one question.<br/><strong>Strong.</strong> The spirit answers two questions.<br/><strong>Critical.</strong> The spirit answers three questions.<br/>For each question, the GM answers with one of the following, choosing what fits the question best:<br/>- <strong>Account.</strong> One thing the dead saw, did, or heard, told plainly.<br/>- <strong>Name.</strong> One person, place, or thing the dead knew that bears on the question, and how it bears.<br/>- <strong>Manner.</strong> How the dead met their end, as they experienced it.<br/>- <strong>Refusal.</strong> The spirit keeps this secret, as they would have in life. The refusal itself is honest, and the GM names the kind of loyalty, shame, or fear that seals their lips.<br/>The spirit cannot lie but answers as the person they were, with their loyalties and grudges intact. A body can be called to the threshold only once by this spell, ever. This rite is a petition, not a binding, and holy rites of rest performed over a body before casting bar the spell entirely.",
+        "heightened": "<strong>(Rank 4)</strong> Target the body of a creature that died within the last year instead.<br/><strong>(Rank 5)</strong> Target the body of a creature however long dead instead, so long as any part of it remains."
     },
     {
         "name": "Pestilence",

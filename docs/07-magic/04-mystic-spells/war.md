@@ -198,6 +198,14 @@ sidebar_position: 8
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> The guardian has 40 HP and 6 AV, its Strike deals +6/+12/+18 force damage, and it can use Guard twice per round, instead.<br/><strong>(Rank 5)</strong> The guardian has 50 HP and 8 AV, its Strike deals +8/+16/+24 force damage, and it can use Guard three times per round, instead.
 
+### Rout
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | -
+
+**Effect** <br/> You bellow the cry that breaks armies, and every shaken heart in earshot remembers its legs.<br/>Target each enemy in range that is currently frightened. This spell has no effect on other creatures.<br/>On a success against a target, they suffer all of the following:<br/>- They immediately move up to their Movement away from the source of their fear, avoiding obvious danger where possible.<br/>- They suffer +1 bane on all rolls until the end of their next turn.<br/>- Their terror deepens: if they are briefly frightened, they are frightened for a short duration instead.<br/>Each creature can only be affected by this spell once per scene.
+
 ### Blood Frenzy
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

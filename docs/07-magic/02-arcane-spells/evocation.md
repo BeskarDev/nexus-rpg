@@ -286,6 +286,26 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +8/+16/+24 acid damage and the target loses 3 AV (min. 0) instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 acid damage and the target loses 4 AV (min. 0) instead.
 
+### Conducting Chill
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | -
+
+**Effect** <br/> You snap the deep cold of the void shut around a creature already sluggish with frost, sealing them in a shell of groaning ice. You can only cast this spell on a creature that is currently slowed.<br/><strong>Weak.</strong> Deal +4 frost damage.<br/><strong>Strong.</strong> Deal +8 frost damage.<br/><strong>Critical.</strong> Deal +12 frost damage.<br/>Also on a success, the target is briefly restrained by the ice. While restrained this way, the first time the target takes lightning damage, lightning arcs from them to each enemy in close range of them, dealing 6 lightning damage (ignore AV) to each.
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Deal +6/+12/+18 frost damage and the arc deals 8 lightning damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> Deal +8/+16/+24 frost damage and the arc deals 10 lightning damage (ignore AV) instead.
+
+### Thunderous Rupture
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Dodge | Short | -
+
+**Effect** <br/> You clap your hands together and the air itself ruptures, detonating outward from you in a ring of thunderous pressure that fills the field around you.<br/>This spell targets all creatures and objects within range of you.<br/><strong>Weak.</strong> Deal +3 blast damage (ignore 1/2 AV) against each target.<br/><strong>Strong.</strong> Deal +6 blast damage (ignore 1/2 AV) against each target and push them close away from you.<br/><strong>Critical.</strong> Deal +9 blast damage (ignore 1/2 AV) against each target, push them close away from you, and they fall prone.<br/>Also on a success, each target is briefly deafened by the thunderclap.
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Deal +4/+8/+12 blast damage (ignore 1/2 AV) against each target instead.<br/><strong>(Rank 5)</strong> Deal +5/+10/+15 blast damage (ignore 1/2 AV) against each target instead.
+
 ### Cone of Cold
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

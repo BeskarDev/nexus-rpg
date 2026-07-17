@@ -16,7 +16,7 @@
 1. Telekinetics excels at battlefield repositioning — push, pull, levitate, drop
 2. Forced movement is the primary control tool (different from conditions)
 3. Blast damage (½ AV ignore) fits kinetic shockwave effects
-4. **Known gaps**: no published R1 Quick Action reactive spell, thin R3+ coverage (R3: 3, R4: 1, R5: 0 published), and near-zero in-school payoff for the school's own setups
+4. **Known gaps (updated 2026-07-16)**: R1 reactive (Unseen Deflection) and the in-school payoffs (Grinding Weight, Forceful Implosion, Meteoric Throw) are now published; the R4 seeds (Telekinetic Storm, Telekinetic Flight, Repulsion Field) were passed over in the P4 cycle — R4 stands at Falling Sky alone by owner choice. Only remaining seed: Aerial Grasp (R3)
 5. Complete levitate/crush/gravity chains from R0 cantrips through R5 capstones
 
 ### Internal Synergies
@@ -33,9 +33,9 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 
 **Party interlock**: **emits** *prone*, *clusters*, *restrained*, and delivery (throwing an enemy to the martial's feet, or holding one still for the assassin) — the premier battery school, feeding every damage-dealer at the table. **wants** damage payoffs it cannot supply: an Evocation AoE for its clusters, a martial's heavy blow for its prone and held targets. Cross-player line: Telekinetics pins the ogre *prone* with a kinetic hold and the fighter's greataxe falls on a target that cannot dodge.
 
-**Synergy gaps**: overwhelming setup, near-zero **in-school payoff** — the discipline can arrange the battlefield perfectly and then has little of its own to spend it on (its crush damage is modest). Extenders beyond re-casting are also thin. The seed table below carries these design targets: *Grinding Weight* (R2) and *Forceful Implosion* (R3) as priced payoffs against *prone/held* targets, *Meteoric Throw* (R3) converting the signature hold into a finisher, and *Relentless Grip* (R2) as the missing prolong-extender.
+**Synergy gaps (updated 2026-07-16)**: the in-school payoff loop is now published — *Grinding Weight* (R2) and *Forceful Implosion* (R3) price up against *prone/held* targets, *Meteoric Throw* (R3) converts the signature hold into a finisher, and *Relentless Grip* (R2) is the prolong-extender. Remaining gap: the levitate → drop loop still rests on the *Aerial Grasp* seed (R3, the school's only live seed).
 
-## Current Spell Inventory (21 published spells)
+## Current Spell Inventory (26 published spells)
 
 *Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
@@ -44,7 +44,7 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | 0 | 4 | Alter Weight, Phantom Pull, Phantom Push, Weak Telekinesis |
 | 1 | 8 | Feather Fall, Pressure Orb, Grease, Unseen Deflection, Reflective Barrier, Shockwave, Phantom Crush, Unseen Volley |
 | 2 | 7 | Grinding Weight, Haste, Knock, Levitation, Relentless Grip, Stasis, Strong Telekinesis |
-| 3 | 3 | Distortion Field, Orbiting Shards, Part Stone |
+| 3 | 5 | Distortion Field, Forceful Implosion, Meteoric Throw, Orbiting Shards, Part Stone |
 | 4 | 1 | Falling Sky (published R5 Heighten) |
 | 5 | 1 | Annihilating Wave |
 
@@ -52,45 +52,31 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| move | Weak Telekinesis | Unseen Volley | Strong Telekinesis | Orbiting Shards, Meteoric Throw† | Telekinetic Storm† | — (Strong Telekinesis Heighten) |
-| repel | Phantom Push | Shockwave, Unseen Deflection | — (Shockwave Heighten) | Distortion Field | Repulsion Field† | Annihilating Wave† |
-| levitate | Weak Telekinesis | Feather Fall | Levitation | Aerial Grasp† | Telekinetic Flight† | — |
-| crush | — | Phantom Crush | Grinding Weight, Relentless Grip | Forceful Implosion† | — | Annihilating Wave† |
-| gravity | Alter Weight | Pressure Orb | Stasis | — (Pressure Orb Heighten) | Falling Sky | Falling Sky (Heighten) |
+| move | Weak Telekinesis | Unseen Volley | Strong Telekinesis | Orbiting Shards, Meteoric Throw | — | Strong Telekinesis (Heighten) |
+| repel | Phantom Push | Shockwave, Unseen Deflection | Shockwave (Heighten) | Distortion Field | — | Annihilating Wave |
+| levitate | Weak Telekinesis | Feather Fall | Levitation | Aerial Grasp† | — | — |
+| crush | — | Phantom Crush | Grinding Weight, Relentless Grip | Forceful Implosion | — | Annihilating Wave |
+| gravity | Alter Weight | Pressure Orb | Stasis | Pressure Orb (Heighten) | Falling Sky | Falling Sky (Heighten) |
 
-*† = proposed seed (undesigned). Ranks follow the current published file: Orbiting Shards and Distortion Field are complete at R3, and Falling Sky is complete at R4 with a published R5 Heighten. Knock, Grease, Haste, and Part Stone sit outside the trait rows as utility.*
+*† = proposed seed (undesigned). All Heighten cells above are published (Shockwave R2–R3, Pressure Orb R2–R3, Strong Telekinesis R3–R5, Falling Sky R5). Knock, Grease, Haste, and Part Stone sit outside the trait rows as utility. The old R4 seeds (Telekinetic Storm, Telekinetic Flight, Repulsion Field) were passed over in the P4 cycle — those cells are honest gaps now.*
 
-**Coverage**: 27/30 trait×rank slots hold a published spell, a seed, or a proposed Heighten extension (see below). Honest gaps: crush R0, crush R4, levitate R5 — an honest empty cell beats a filler seed. Only published spells count as real coverage; proposed entries are undesigned seeds (principle 19).
+**Coverage**: 24/30 trait×rank slots hold a published spell or a published Heighten; 1 seed (Aerial Grasp, levitate R3). Honest gaps: crush R0, crush R4, levitate R5, and the R4 row outside gravity — an honest empty cell beats a filler seed (principle 19).
 
-**Critical gaps**: the missing R1 Quick Action reactive (Unseen Deflection) and the missing in-school payoff (Grinding Weight, Forceful Implosion†, Meteoric Throw†) are seeded. Published coverage above R2 remains thin (R3: 3, R4: 1, R5: 0), so the R3+ seeds and Heighten extensions are the production priority.
+**Critical gaps (updated 2026-07-16)**: none open for design except Aerial Grasp (R3, levitate). R4 thinness (Falling Sky alone) is accepted by owner choice from the P4 cycle.
 
 ## Proposed Spell Changes (Heighten Extensions)
 
-Per principle 3, "bigger version of X" concepts are Heighten notes on published spells, not new seeds:
-
-- **Shockwave (R1)**: add (Rank 2) and (Rank 3) Heighten lines scaling damage and push distance. Covers the R2 repel AoE slot.
-- **Unseen Volley (R1)**: add (Rank 2) and (Rank 3) Heighten lines for more or heavier hurled objects. Covers the mid-rank object-barrage concept.
-- **Pressure Orb (R1)**: add (Rank 2) and (Rank 3) Heighten lines growing the orb's area, duration, and the creature Size it can grapple. Covers the R3 gravity-pull zone.
-- **Strong Telekinesis (R2)**: add (Rank 3) through (Rank 5) Heighten lines scaling object Size and load. Covers the top-end "battlefield authority" concept.
-- **Falling Sky (R4)** already carries its published R5 Heighten — the R5 gravity capstone exists and needs no seed.
+✅ **All published (P7 cycle)** — Shockwave (R2–R3), Unseen Volley (R2–R3), Pressure Orb (R2–R3), Strong Telekinesis (R3–R5), and Falling Sky (R5) all carry their Heighten lines in the published file. No pending Heighten work.
 
 ## Proposed New Spells
 
 These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
 
+*Published from this table (2026-07-13 to 2026-07-16): Alter Weight (R0), Unseen Deflection (R1), Grinding Weight (R2), Relentless Grip (R2), Meteoric Throw (R3), Forceful Implosion (R3), Annihilating Wave (R5). Passed over (P4 cycle, owner choice — do not re-seed): Telekinetic Storm (R4), Telekinetic Flight (R4), Repulsion Field (R4).*
+
 | Concept | Rank | Role | Seed |
 |---|---|---|---|
-| Alter Weight | 0 | Control / setup | Cantrip that briefly makes one creature's gravity heavier or lighter (gravity trait). Heavier: their next roll to resist forced movement or being knocked *prone* suffers +1 bane (feeds every push and slam in the school). Lighter: they count as one Size smaller for the school's lift and throw effects (feeds Strong Telekinesis and Meteoric Throw). Pure setup, no damage. |
-| Unseen Deflection | 1 | Defense / standalone | The standardized R1 Quick Action reactive (+2 to Dodge or Parry against the triggering attack, no SL scaling). School secondary (repel trait): if the triggering attack was a thrown weapon or projectile and it misses, you redirect it at another creature in short range with a modest flat damage rider. |
-| Grinding Weight | 2 | Offense / payoff | Concentrated crushing pressure on one creature (crush and gravity traits): modest damage cold, but heavy bonus damage against a target that is *prone*, *restrained*, or *grappled*. The school's missing in-school payoff — spends the *prone/held* states its own pushes, Stasis, and Pressure Orb emit. Cold-cast deficit is the design center. |
-| Relentless Grip | 2 | Control / extender | Kinetic hold that tightens instead of striking (crush trait): a target currently *grappled* or *restrained* by any effect has that state prolonged and suffers +1 bane on rolls to escape it. The missing prolong-extender — converts the pushed → prone → restrained escalation into a lasting pin for allies to exploit. Does nothing to a free target. |
-| Meteoric Throw | 3 | Offense / payoff | Hurl a creature you or an ally holds *restrained* or *grappled* (move trait) at another target: both take blast damage and fall *prone*. Converts the school's signature hold (Stasis, Pressure Orb's grapple) into a finisher and re-emits prone for the martials. Castable only on a held target — hard cold-cast deficit. |
-| Forceful Implosion | 3 | Offense / payoff | Crushing force collapses inward on a point (crush and gravity traits): creatures in the area are dragged toward the center and take damage on the half single-target AoE chassis, with bonus damage against *prone* or *restrained* targets. The AoE payoff for Pressure Orb's clusters — cold on a spread field, brutal on the knot the school built. |
 | Aerial Grasp | 3 | Control / setup | Wrench one creature skyward (levitate trait): *restrained* in mid-air while you concentrate, and when the spell ends or you release them they take falling damage for the height. Sets up Grinding Weight and Meteoric Throw (target is held), and the drop is its own delayed payoff. Tier-capped by Size like Stasis. |
-| Telekinetic Storm | 4 | Offense / setup | Whirlwind of seized debris in an area (move and repel traits): blast damage to creatures in the zone and each is pushed and knocked *prone* on a failed save vs. your Resist. The school's first real AoE damage, still setup-heavy — the prone field it leaves is the party's payoff surface. Flat recurring zone damage per principle 44 if made a lasting zone. |
-| Telekinetic Flight | 4 | Utility / standalone | Sustained true flight for yourself or a touched ally (levitate trait), enchant duration. The levitate chain's utility capstone in the school's Excels role. Rank justified against Levitation (R2, hover only) — this is the D&D Fly-and-above tier with full aerial mobility. |
-| Repulsion Field | 4 | Defense / setup | A dome of outward kinetic pressure around you (repel trait): enemies treat the dome as difficult terrain, must save vs. your Resist to enter, and a failed save pushes them back and can leave them *prone*. Denies melee and manufactures the forced-movement states the party spends. Concentrate. |
-| Annihilating Wave | 5 | Offense / payoff | The repel and crush capstone: a devastating kinetic wave in a line or cone — heavy blast damage, destroys mundane structures and cover, pushes creatures and knocks them *prone*, with bonus damage against targets that strike a wall or obstacle (the collision payoff writ large). Material cost 5,000+ coins. Mortal pinnacle: Delayed-Blast-Fireball tier, not Meteor Swarm. |
 
 ## Cross-School Spell Sharing
 
@@ -106,27 +92,27 @@ No shared spells are recommended for this discipline.
 
 ### Spell Progression Chains
 (✨ = undesigned seed; Heighten extensions cover several upper slots — see Proposed Spell Changes)
-1. **Move chain**: Weak Telekinesis (R0) → Unseen Volley (R1) → Strong Telekinesis (R2) → Orbiting Shards / ✨ Meteoric Throw (R3) → ✨ Telekinetic Storm (R4) → Strong Telekinesis Heighten (R5)
-2. **Repel chain**: Phantom Push (R0) → Shockwave / Unseen Deflection (R1) → Shockwave Heighten (R2) → Distortion Field (R3) → ✨ Repulsion Field (R4) → ✨ Annihilating Wave (R5)
-3. **Levitate chain**: Weak Telekinesis (R0) → Feather Fall (R1) → Levitation (R2) → ✨ Aerial Grasp (R3) → ✨ Telekinetic Flight (R4) → honest gap (R5)
-4. **Crush chain**: honest gap (R0) → Phantom Crush (R1) → Grinding Weight / Relentless Grip (R2) → ✨ Forceful Implosion (R3) → honest gap (R4) → ✨ Annihilating Wave (R5)
-5. **Gravity chain**: ✨ Alter Weight (R0) → Pressure Orb (R1) → Stasis (R2) → Pressure Orb Heighten (R3) → Falling Sky (R4) → Falling Sky Heighten (R5)
+1. **Move chain**: Weak Telekinesis (R0) → Unseen Volley (R1) → Strong Telekinesis (R2) → Orbiting Shards / Meteoric Throw (R3) → honest gap (R4) → Strong Telekinesis Heighten (R5)
+2. **Repel chain**: Phantom Push (R0) → Shockwave / Unseen Deflection (R1) → Shockwave Heighten (R2) → Distortion Field (R3) → honest gap (R4) → Annihilating Wave (R5)
+3. **Levitate chain**: Weak Telekinesis (R0) → Feather Fall (R1) → Levitation (R2) → ✨ Aerial Grasp (R3) → honest gaps (R4, R5)
+4. **Crush chain**: honest gap (R0) → Phantom Crush (R1) → Grinding Weight / Relentless Grip (R2) → Forceful Implosion (R3) → honest gap (R4) → Annihilating Wave (R5)
+5. **Gravity chain**: Alter Weight (R0) → Pressure Orb (R1) → Stasis (R2) → Pressure Orb Heighten (R3) → Falling Sky (R4) → Falling Sky Heighten (R5)
 
 ### Setup + Payoff Combos
 (✨ = undesigned seed)
 - ✅ **Push into hazard → damage**: cantrip pushes and pulls into fires, ledges, and Distortion Field's zone — the core published loop, damage comes from where the target ends up
 - ✅ **Prone / held → martial exploit**: Shockwave and Stasis feed the party's damage-dealers; the premier battery-school interlock
-- ✨ **Held → in-school payoff**: Stasis / Pressure Orb / ✨ Aerial Grasp hold the target → Grinding Weight crushes the pinned body, ✨ Meteoric Throw hurls it — the missing in-school spend, currently seeds only
-- ✨ **Cluster → AoE**: Pressure Orb drags the pack together → ✨ Forceful Implosion or ✨ Telekinetic Storm punishes the knot (today the payoff must come from Evocation or the martials)
-- ✨ **Escalation extender**: pushed → *prone* → *restrained*, prolonged by Relentless Grip while allies line up
+- ✅ **Held → in-school payoff**: Stasis / Pressure Orb (/ ✨ Aerial Grasp) hold the target → Grinding Weight crushes the pinned body, Meteoric Throw hurls it — published loop
+- ✅ **Cluster → AoE**: Pressure Orb drags the pack together → Forceful Implosion punishes the knot
+- ✅ **Escalation extender**: pushed → *prone* → *restrained*, prolonged by Relentless Grip while allies line up — published
 - ✨ **Levitate → drop**: ✨ Aerial Grasp suspends → release converts height into falling damage; Falling Sky is the published area version
 
 ### Design Completeness Checklist
-- [ ] R1 Quick Action: Unseen Deflection seeded — standardized reactive defense (+2 Dodge/Parry, projectile redirect secondary), not yet designed
-- [x] Defensive options: Reflective Barrier (R1), Feather Fall (R1), Distortion Field (R3) published; ✨ Repulsion Field (R4) seeded
-- [x] Utility: Weak/Strong Telekinesis, Grease, Knock, Levitation, Part Stone published — the school's Excels role is well covered; ✨ Telekinetic Flight extends it to R4
-- [ ] Damage across ranks: thin above R1 by design (setup school), but the in-school payoffs (Grinding Weight R2, ✨ Forceful Implosion R3, ✨ Meteoric Throw R3, ✨ Annihilating Wave R5) are all seeds — top production priority
-- [x] Repeating conditions: prone, restrained, pushed/pulled — consistent forced-movement identity across published spells and seeds
-- [ ] Setup+payoff: published setups are rich; in-school payoff loop exists only as seeds (see combos above)
-- [x] **3 spells per rank minimum (published)**: R0: 3, R1: 7, R2: 5, R3: 3 — met through R3; R4: 1, R5: 0 need the seeded buildout
-- [ ] **Trait × rank coverage**: 27/30 slots hold a published spell, seed, or Heighten extension; honest gaps at crush R0, crush R4, levitate R5
+- [x] R1 Quick Action: Unseen Deflection published (reactive +2 Dodge/Parry with projectile redirect)
+- [x] Defensive options: Reflective Barrier (R1), Feather Fall (R1), Unseen Deflection (R1), Distortion Field (R3) published
+- [x] Utility: Weak/Strong Telekinesis, Grease, Knock, Levitation, Part Stone published — the school's Excels role is well covered
+- [x] Damage across ranks: in-school payoffs published (Grinding Weight R2, Forceful Implosion R3, Meteoric Throw R3, Annihilating Wave R5) — thin-above-R1-by-design is now a choice, not a hole
+- [x] Repeating conditions: prone, restrained, pushed/pulled — consistent forced-movement identity across published spells
+- [x] Setup+payoff: published setups rich and the in-school payoff loop is published (see combos above); only the levitate → drop loop remains a seed
+- [x] **3 spells per rank minimum (published)**: R0: 4, R1: 8, R2: 7, R3: 5 — met through R3; R4: 1, R5: 1 accepted below target by owner choice (P4/P5 cycles)
+- [ ] **Trait × rank coverage**: 24/30 slots published (+1 seed: Aerial Grasp, levitate R3); honest gaps at crush R0, the non-gravity R4 row, and levitate R5

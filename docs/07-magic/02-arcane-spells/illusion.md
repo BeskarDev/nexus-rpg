@@ -228,6 +228,16 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +5/+10/+15 psychic damage (ignore AV) to each target instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 psychic damage (ignore AV) to each target instead.
 
+### Veil of Deception
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Self | concentrate,  illusory
+
+**Effect** <br/> You weave a lie so deep that even your knife believes it, and the world refuses to see the hand that strikes.<br/>On a success, you become invisible for up to a short duration while you concentrate.<br/>Unlike lesser veils, this spell does not immediately end when you act. Whenever you take an action that would end normal invisibility, such as attacking a creature or casting another spell, immediately re-roll this spell's test after the action resolves. On a success, the veil holds. On a failure, the spell ends. This re-roll costs no Focus and is not a casting, so failing it causes no mishap.
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> The veil lasts for up to a medium duration while you concentrate instead.<br/><strong>(Rank 5)</strong> The veil lasts for up to a medium duration while you concentrate, and you gain +1 boon on the re-rolls to hold it instead.
+
 ### Phantasmal Catastrophe
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

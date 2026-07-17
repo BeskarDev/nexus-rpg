@@ -238,6 +238,16 @@ sidebar_position: 4
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +5 necrotic damage for each affliction counted instead.<br/><strong>(Rank 5)</strong> Deal +6 necrotic damage for each affliction counted instead.
 
+### Speak with Dead
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Touch | ritual (minutes),  material cost (500 coins)
+
+**Effect** <br/> You anoint the body with oil and ash, speak the rites of passage backward, and ask the spirit to linger a while at the threshold. Target the body of a creature that died within the last moon and could speak a language in life. The spirit answers from what they knew in life, in their own manner and temper.<br/><strong>Weak.</strong> The spirit answers one question.<br/><strong>Strong.</strong> The spirit answers two questions.<br/><strong>Critical.</strong> The spirit answers three questions.<br/>For each question, the GM answers with one of the following, choosing what fits the question best:<br/>- <strong>Account.</strong> One thing the dead saw, did, or heard, told plainly.<br/>- <strong>Name.</strong> One person, place, or thing the dead knew that bears on the question, and how it bears.<br/>- <strong>Manner.</strong> How the dead met their end, as they experienced it.<br/>- <strong>Refusal.</strong> The spirit keeps this secret, as they would have in life. The refusal itself is honest, and the GM names the kind of loyalty, shame, or fear that seals their lips.<br/>The spirit cannot lie but answers as the person they were, with their loyalties and grudges intact. A body can be called to the threshold only once by this spell, ever. This rite is a petition, not a binding, and holy rites of rest performed over a body before casting bar the spell entirely.
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Target the body of a creature that died within the last year instead.<br/><strong>(Rank 5)</strong> Target the body of a creature however long dead instead, so long as any part of it remains.
+
 ### Pestilence
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

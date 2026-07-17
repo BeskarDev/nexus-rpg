@@ -226,6 +226,16 @@ sidebar_position: 7
 
 **Effect** <br/> You emanate an overwhelming aura of serenity that subdues violent thoughts and actions. Choose up to eight creatures within range.<br/>On a success, all targets suffer the following effects for a short duration:<br/>- They cannot make attacks or cast spells dealing damage unless they succeed on a Spirit + Fortitude roll vs. your Resist.<br/>- Whenever they deal damage to another creature, they take half that amount as psychic damage (ignore AV).<br/>- This spell’s effect ends early when the target suffers any damage, unless it is from this spell’s effect.
 
+### Righteous Verdict
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | -
+
+**Effect** <br/> You speak the old formula of judgement, and the weight of the broken word settles on the guilty like a millstone.<br/>You can only cast this spell on a creature that has broken an oath sealed, marked, or witnessed by any of your <em>Peace</em> spells, such as <em>Oathmark</em> or <em>Sacred Covenant</em>, or that has damaged a creature warded by one of your <em>Peace</em> spells during this scene.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +8 psychic damage (ignore AV).<br/><strong>Critical.</strong> Deal +12 psychic damage (ignore AV).<br/>Also on a success, the target is dazed for a short duration as the covenant presses down on them. At the end of each of their turns, they can roll Spirit + Fortitude vs. your Resist to end the condition early.
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Deal +6/+12/+18 psychic damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> Deal +8/+16/+24 psychic damage (ignore AV) instead.
+
 ### Pilgrim's Gate
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

@@ -649,7 +649,7 @@ The old concept lists formerly in this section are superseded by the per-school 
 
 *The batch also shipped the **strike** spell property (Mighty Strike, Shillelagh, Glorious Strike, Siege Breaker), the **invisible** condition (Invisibility, Mislead, Shadow Meld reworded), Healing Touch's Heighten extension to R5, and Death's Rebuke's poisoned-back secondary.*
 
-### Priority 5 — R5 Capstones (target: at least one per school; 10 schools have none)
+### Priority 5 — R5 Capstones (target: at least one per school; 10 schools have none) — ✅ DONE (all batches published 2026-07-14)
 
 | # | Batch | Seeds |
 |---|---|---|
@@ -789,6 +789,30 @@ The over-value is **negligible at R0–R1** (why Gust at full column is fine) an
 **Not fixed (confirmed compliant or intentional exception):** the bulk of the corpus (see the two audit sub-agent reports) was already at or below its column, or correctly deviation-justified (melee-AoE ceiling, control-primary, blast-discount already applied). Arcane Glyph's Explosion option stays above the R0 column by owner ruling (delayed-trigger trap, deliberately more potent than an at-will cantrip). A secondary pattern (Mesh of Vines, Thorn Barrage, Terrors of the Dark, Nightmare Realm sitting exactly at their column while also carrying a real condition rider) was flagged but not touched — none are technically over the column, just a possible future tightening candidate, not pursued now.
 
 **Sequence:** run after Priority 8's remaining multi-target items are folded in (no need to fix Thunder Clap twice). Independent of P9.
+
+### Priority 11 — R3 mid-rank completion (opened 2026-07-16)
+
+**Origin:** post-P10 review — all rank-targeted sweeps so far hit R1 (reactive baseline, P3), R4 (breadth, P4), R5 (capstones, P5), and R0–R2 (low-rank aspect completion, P7). R3 was only ever filled opportunistically (P2 sick schools, P5 spillover), never swept. Published R3 counts confirm the hole: Evocation 3, Life 3, Death 4, Illusion 4, Light 4, Peace 4, War 4 — thin against those schools' R1/R2 breadth.
+
+**Owner ruling (2026-07-17):** any R0–R2 seed still unpublished after the P7 low-rank cycle counts as **rejected or exchanged** for the spell that took its niche (e.g. Grinding Walls → Force Surge, Sandblast → Sinking Sands, Steady Hands → Renewed Resolve, Weapon of Revelation → Lamp of Truth, Ancestral Guardian (Death R2) → Guardian Shade). Likewise the unpublished R4–R5 seeds were **passed over** in the P4/P5 cycles (Telekinetics' Storm/Flight/Repulsion Field, Telepathy's four R4s, Evocation's Elemental Ruin/Vacuum Sphere/Delayed Blast Meteor, Conjuration's Apparatus/Forge Construct). None of these are re-seeded. **Only R3 seeds remain live.**
+
+**Scope:**
+1. ✅ **Reconcile stale seed markers** — DONE (2026-07-17). All 14 school files swept: inventories regenerated against the published JSON, published seeds flipped to plain references, rejected/passed-over seeds recorded per the ruling above, seed tables trimmed to live R3 seeds only.
+2. **Design the live R3 seeds** per school — the full post-reconciliation roster (27 seeds, 13 schools; Telepathy has none):
+   - *Arcane*: Conjuration (Seal the Cage, Hail of Splinters, Transmute Material, Conjure Steed), Evocation (Conducting Chill, Thunderous Rupture), Illusion (Programmed Illusion, Shattered Perspective, Veil of Deception, Web of Lies), Necromancy (Rot the Living, Siphoning Chain, Marionette), Telekinetics (Aerial Grasp)
+   - *Mystic*: Death (Speak with Dead), Life (Rallying Cry), Light (Pillar of Dawn), Nature (Devouring Bloom), Peace (Binding Calm, Safe Passage, Righteous Verdict), Tempest (Fissure, Feed the Storm, Flash Flood), Twilight (Shadow Passage, Twist of Fate), War (Rout)
+   Design fresh via the spell-design skill (principle 19); seeds are concepts, not drafts. Owner approves each batch before publication.
+3. **Optional per-batch gap check** — while designing a school's batch, sanity-check its R3 row for any hole a rejected seed left uncovered; propose replacements only if a real play gap exists (honest empty cells stay).
+
+**Refinement (owner ruling, 2026-07-17):** additions are only warranted for ranks with **fewer than 5 published spells**. Applied to R3: Evocation (3, +2), Life (3, +2), Illusion (4, +1), Death (4, +1), Light (4, +1), Peace (4, +1), War (4, +1) = 9 spells across 7 schools. The other 7 schools sit at 5+ R3 spells; their remaining seeds stay parked (Conjuration ×4, Necromancy ×3, Tempest ×3, Twilight ×2, Telekinetics ×1, Nature ×1).
+
+**Step 2 status:** ✅ DONE (2026-07-17). Both batches drafted, revised through several owner review rounds, approved, and published to docs + JSON (archived at `.drafts/archive/p11-r3-arcane-batch.md` and `p11-r3-mystic-batch.md`):
+- **Arcane** — Conducting Chill (Evocation R3, frost→lightning convert), Thunderous Rupture (Evocation R3, self-centered short-radius burst), Veil of Deception (Illusion R3, attack-stable invisibility with a caster-side hold re-roll)
+- **Mystic** — Speak with Dead (Death R3, corpse petition ritual), Rallying Cry (Life R3, crisis-point heal), Seed of Life (Life R3, fresh concept — contingent pre-cast heal, flat value, medium duration, touch range), Searing Revelation (Light R3, fresh concept replacing the retired Pillar of Dawn seed — burns away a deception effect and traces radiant judgement to its caster), Righteous Verdict (Peace R3, oathbreaker/ward-breaker judgement, gate widened to any oath-imposing Peace spell), Rout (War R3, flat-effect mass fear rout, medium range)
+
+R3 counts now: Evocation 5, Illusion 5, Death 5, Life 5, Light 5, Peace 5, War 5 — all above the <5 threshold. All 9 spells synced to Notion (Arcane Spells + Mystic Spells inline DBs, new records) and the Changelog's v0.10.0 Magic entry extended. Fully published across docs, JSON, and Notion — no outstanding surface drift.
+
+**Sequence:** step 1 and step 2 done. Independent of everything else on the board.
 
 ### Sequencing Note
 

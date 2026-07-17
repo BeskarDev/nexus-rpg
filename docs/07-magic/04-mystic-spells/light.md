@@ -234,6 +234,16 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +5/+10/+15 radiant damage to hostile creatures and restore +4/+8/+12 HP to allies instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 radiant damage to hostile creatures and restore +5/+10/+15 HP to allies instead.
 
+### Searing Revelation
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Medium | -
+
+**Effect** <br/> You speak the dawn's oldest name and a wave of merciless light washes the lie out of the world, racing back along its threads to the one who told it.<br/>Choose one active spell effect of rank 3 or lower within range that creates darkness, concealment, disguise, or false images, such as magical darkness, an invisibility, a shapechanged or disguised form, or an illusion.<br/>On a success, the chosen effect is burned away and ends immediately.<br/>If the effect's caster is within range, the light streaks back to them:<br/><strong>Weak.</strong> They take +4 radiant damage (ignore AV).<br/><strong>Strong.</strong> They take +8 radiant damage (ignore AV).<br/><strong>Critical.</strong> They take +12 radiant damage (ignore AV).<br/>Also on a success against the caster, they are plainly lit until the start of your next turn and cannot become hidden or invisible while lit.
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Burn away an effect of rank 4 or lower, and the caster takes +6/+12/+18 radiant damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> Burn away an effect of rank 5 or lower, and the caster takes +8/+16/+24 radiant damage (ignore AV) instead.
+
 ### Divine Judgement
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

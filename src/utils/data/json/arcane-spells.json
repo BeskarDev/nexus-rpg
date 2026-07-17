@@ -583,6 +583,17 @@
     "heightened": "<strong>(Rank 4)</strong> Deal +5/+10/+15 psychic damage (ignore AV) to each target instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 psychic damage (ignore AV) to each target instead."
   },
   {
+    "name": "Veil of Deception",
+    "discipline": "Illusion",
+    "rank": "3",
+    "focus": "6",
+    "target": "Very Hard (12)",
+    "range": "Self",
+    "properties": "concentrate, illusory",
+    "effect": "You weave a lie so deep that even your knife believes it, and the world refuses to see the hand that strikes.<br/>On a success, you become invisible for up to a short duration while you concentrate.<br/>Unlike lesser veils, this spell does not immediately end when you act. Whenever you take an action that would end normal invisibility, such as attacking a creature or casting another spell, immediately re-roll this spell's test after the action resolves. On a success, the veil holds. On a failure, the spell ends. This re-roll costs no Focus and is not a casting, so failing it causes no mishap.",
+    "heightened": "<strong>(Rank 4)</strong> The veil lasts for up to a medium duration while you concentrate instead.<br/><strong>(Rank 5)</strong> The veil lasts for up to a medium duration while you concentrate, and you gain +1 boon on the re-rolls to hold it instead."
+  },
+  {
     "name": "Phantasmal Catastrophe",
     "discipline": "Illusion",
     "rank": "4",
@@ -1868,6 +1879,28 @@
     "properties": "-",
     "effect": "You lock a thin, sustained ray of vitriol onto a single foe, holding it on them until their armor smokes, runs, and drips from their shoulders.<br/><strong>Weak.</strong> Deal +6 acid damage.<br/><strong>Strong.</strong> Deal +12 acid damage.<br/><strong>Critical.</strong> Deal +18 acid damage.<br/>Also on a success, the target loses 2 AV (min. 0) for a short duration, and one piece of their worn equipment of your choice (armor, helmet, or shield) must make a Durability check.",
     "heightened": "<strong>(Rank 4)</strong> Deal +8/+16/+24 acid damage and the target loses 3 AV (min. 0) instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 acid damage and the target loses 4 AV (min. 0) instead."
+  },
+  {
+    "name": "Conducting Chill",
+    "discipline": "Evocation",
+    "rank": "3",
+    "focus": "6",
+    "target": "vs. Resist",
+    "range": "Medium",
+    "properties": "-",
+    "effect": "You snap the deep cold of the void shut around a creature already sluggish with frost, sealing them in a shell of groaning ice. You can only cast this spell on a creature that is currently slowed.<br/><strong>Weak.</strong> Deal +4 frost damage.<br/><strong>Strong.</strong> Deal +8 frost damage.<br/><strong>Critical.</strong> Deal +12 frost damage.<br/>Also on a success, the target is briefly restrained by the ice. While restrained this way, the first time the target takes lightning damage, lightning arcs from them to each enemy in close range of them, dealing 6 lightning damage (ignore AV) to each.",
+    "heightened": "<strong>(Rank 4)</strong> Deal +6/+12/+18 frost damage and the arc deals 8 lightning damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> Deal +8/+16/+24 frost damage and the arc deals 10 lightning damage (ignore AV) instead."
+  },
+  {
+    "name": "Thunderous Rupture",
+    "discipline": "Evocation",
+    "rank": "3",
+    "focus": "6",
+    "target": "vs. Dodge",
+    "range": "Short",
+    "properties": "-",
+    "effect": "You clap your hands together and the air itself ruptures, detonating outward from you in a ring of thunderous pressure that fills the field around you.<br/>This spell targets all creatures and objects within range of you.<br/><strong>Weak.</strong> Deal +3 blast damage (ignore 1/2 AV) against each target.<br/><strong>Strong.</strong> Deal +6 blast damage (ignore 1/2 AV) against each target and push them close away from you.<br/><strong>Critical.</strong> Deal +9 blast damage (ignore 1/2 AV) against each target, push them close away from you, and they fall prone.<br/>Also on a success, each target is briefly deafened by the thunderclap.",
+    "heightened": "<strong>(Rank 4)</strong> Deal +4/+8/+12 blast damage (ignore 1/2 AV) against each target instead.<br/><strong>(Rank 5)</strong> Deal +5/+10/+15 blast damage (ignore 1/2 AV) against each target instead."
   },
   {
     "name": "Cone of Cold",

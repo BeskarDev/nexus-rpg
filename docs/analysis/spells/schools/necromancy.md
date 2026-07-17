@@ -35,17 +35,17 @@ Necromancy runs a **partly private economy** — the framework's identity except
 
 **Party interlock**: **emits** *marked*, *bleeding*, *stunned/paralyzed*, plus minion bodies that block, flank, and soak — the undead are walls and extra hands the party's line leans on. **wants** kills (any ally's kill feeds the corpse bank — the fighter's cleave is Necromancy's supply line) and *restrained/prone* targets its slow drains can safely latch onto. Cross-player line: the fighter drops two raiders, and by the next turn both are standing again — on the party's side.
 
-**Synergy gaps**: the corpse economy is the game's most complete synergy engine, but it is **all-or-nothing** — against constructs, spirits, or in corpse-poor fights the school loses its entire second axis. A non-corpse setup→payoff line (mark- or drain-based) at mid-rank would hedge it. Shared-socket output is also narrow; allies get bodies but few conditions. The hedge line sits in the seed table below: *Harvest the Mark* (R2, mark payoff), *Siphoning Chain* (R3, drain extender), and *Rot the Living* (R3, shared-socket setup).
+**Synergy gaps (updated 2026-07-16)**: the corpse-free hedge landed its R2 rung — *Harvest the Mark* (R2 mark payoff, published) plus *Ghostly Hand* (R0 corpse logistics, published). Remaining seeds (all R3): *Rot the Living* (drain → shared *bleeding* socket), *Siphoning Chain* (drain extender), *Marionette* (body puppetry).
 
-## Current Spell Inventory (35 published spells)
+## Current Spell Inventory (37 published spells)
 
 *Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
 | Rank | Count | Spells |
 |------|-------|--------|
-| 0 | 5 | Drain Life, Enfeebling Grasp, Life Echo, Necromantic Sight, Soul Drain |
+| 0 | 6 | Drain Life, Enfeebling Grasp, Ghostly Hand, Life Echo, Necromantic Sight, Soul Drain |
 | 1 | 8 | Animate Corpse, Bone Armor, Control Undead, Death Bolt, Death Ward, Grasp of Decay, Necrotic Shield, Ray of Lethargy |
-| 2 | 7 | Animate Horde, Bone Shatter, Corpse Explosion, Death Mark, Inflict Curse, Shroud of Blight, Soul Veil |
+| 2 | 8 | Animate Horde, Bone Shatter, Corpse Explosion, Death Mark, Harvest the Mark, Inflict Curse, Shroud of Blight, Soul Veil |
 | 3 | 6 | Curse of Mortality, Negative Energy Flood, Reaper’s Harvest, Soul Prison, Spectral Army, Wither |
 | 4 | 5 | Death’s Embrace, Finger of Death, Necrotic Plague, Possess Corpse, Soul Cage |
 | 5 | 4 | Desecration, Entropy, Eternal Servitude, Soul Harvest |
@@ -79,10 +79,10 @@ Per principle 3, the old "Army of Shadows" R5 seed was a bigger Spectral Army (R
 
 These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
 
+*Published from this table (2026-07-16): Ghostly Hand (R0), Harvest the Mark (R2).*
+
 | Concept | Rank | Role | Seed |
 |---|---|---|---|
-| Ghostly Hand | 0 | Utility / setup | A spectral claw that grasps only dead matter (puppetry trait): drag, lift, or position a corpse, bone, or grave-good within range. The corpse-logistics cantrip — moves banked bodies into place for Corpse Explosion and Animate Corpse without exposing the caster. Deliberately narrower than Telekinetics' Weak Telekinesis (dead matter only) to avoid cross-school collision. |
-| Harvest the Mark | 2 | Offense / payoff | Collapse your Death Mark early (defilement and siphoning traits): the marked creature takes necrotic damage scaled by how much harm they suffered while marked, and you regain a portion as HP. The corpse-free engine — mark, let the party beat on it, reap. Dead without a standing mark. |
 | Rot the Living | 3 | Control / setup | A creature you have drained this scene starts *bleeding* and suffers +1 bane on Strength rolls as their vigor curdles (decay trait). Converts the private drain economy (Drain Life, Enfeebling Grasp) into shared currency the martials can spend — the school's missing shared-socket output. |
 | Siphoning Chain | 3 | Offense / extender | Your next drain spell leaps from its target to a second enemy in close range, carrying half its effect (siphoning trait). Extends the drain engine sideways and hedges the corpse economy — works in corpse-poor fights where the school's second axis is dead. Define at design time whether "life force" covers constructs and spirits. |
 | Marionette | 3 | Control / setup | Necrotic strings seize a living creature's **body**, not their mind (puppetry trait, vs. Resist): force one action of movement or a single attack per turn while you concentrate; the target is aware and horrified throughout. The body-puppetry boundary keeps it off Telepathy's mind-control turf. Save-ends, tier-capped. |
@@ -109,8 +109,8 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 
 ### Setup + Payoff Combos
 (✨ = undesigned seed)
-- ✅ **Slay → Corpse Explosion**: defeat enemy → detonate corpse for AoE — the model published loop; Ghostly Hand (R0) adds the logistics rung (drag the corpse into position)
-- ✅ **Death Mark → amplified follow-up**: mark grants +1 boon and rider damage to everyone → Harvest the Mark (R2) adds the school's own collect, and Soul Cage (R4, published) escalates the mark line as the school's private duel engine
+- ✅ **Slay → Corpse Explosion**: defeat enemy → detonate corpse for AoE — the model published loop; Ghostly Hand (R0, published) adds the logistics rung (drag the corpse into position)
+- ✅ **Death Mark → amplified follow-up**: mark grants +1 boon and rider damage to everyone → Harvest the Mark (R2, published) adds the school's own collect, and Soul Cage (R4) escalates the mark line as the school's private duel engine
 - ✅ **Kill → servant**: Finger of Death's killing blow raises the corpse — published convert
 - ✅ **Drain → Shield**: life siphoning fuels Necrotic Shield — published convert
 - ✨ **Drain → shared currency**: ✨ Rot the Living (R3) turns drained targets *bleeding* for the martials, ✨ Siphoning Chain (R3) spreads the drain — the corpse-free hedge, all seeds
@@ -125,6 +125,6 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 - [x] Utility: Necromantic Sight (R0), Life Echo (R0), Soul Veil (R2), Possess Corpse (R4, published); Ghostly Hand extends the corpse-utility line at R0
 - [x] Damage across ranks: R0–R4 published (Death Bolt, Corpse Explosion, Reaper's Harvest, Finger of Death, Necrotic Plague); R5 published (Entropy, Soul Harvest, 2026-07-13)
 - [x] Repeating conditions: stunned, paralyzed, bleeding, life drain — widest condition variety
-- [x] Setup+payoff: slay→corpse, mark→amplify, drain→shield published; the corpse-free hedge now has its R4 anchors (Soul Cage, Necrotic Plague, published 2026-07-13) — the R2–R3 rungs (Harvest the Mark, Rot the Living, Siphoning Chain) remain seeds
-- [x] **3 published spells per rank through R3**: R0: 5, R1: 8, R2: 7, R3: 6; R4: 5, R5: 4 published (P5 batch, 2026-07-13) — school complete R0–R5
+- [x] Setup+payoff: slay→corpse, mark→amplify (incl. Harvest the Mark R2), drain→shield published; only the R3 hedge rungs (✨ Rot the Living, ✨ Siphoning Chain) remain seeds
+- [x] **3 published spells per rank**: R0: 6, R1: 8, R2: 8, R3: 6, R4: 5, R5: 4 — school complete R0–R5
 - [x] **Trait × rank coverage**: all 30 slots hold a published spell, seed, or Heighten extension

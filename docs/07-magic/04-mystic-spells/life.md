@@ -226,6 +226,26 @@ sidebar_position: 3
 
 **Effect** <br/> You pour life force into a body whose soul still lingers at the threshold, calling it back before it crosses. Target a creature that died since the end of your last turn, or within the last minute outside of combat. The casting consumes 500 coins worth of sacred oils and offerings whether or not it succeeds.<br/>On a success, the creature returns to life with 1 HP and suffers one Wound from the trauma of death. On a failure, their soul slips too far for swift recall. They can still be returned by a <em>Raise Dead</em> or <em>Resurrection</em> spell. 
 
+### Rallying Cry
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Self | -
+
+**Effect** <br/> You cry out with the warmth of every dawn yet to come, and the wounded remember they are not done living.<br/>Target each ally in short range of you whose current HP is at or below half their maximum, including allies at 0 HP.<br/><strong>Weak.</strong> Each target regains 4 HP.<br/><strong>Strong.</strong> Each target regains 8 HP.<br/><strong>Critical.</strong> Each target regains 12 HP.<br/>Also on a success, each target gains +1 boon on the next roll they make before the end of their next turn. This spell has no effect on allies above half their maximum HP.
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Each target regains +5/+10/+15 HP instead.<br/><strong>(Rank 5)</strong> Each target regains +6/+12/+18 HP instead.
+
+### Seed of Life
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Touch | singular
+
+**Effect** <br/> You plant a mote of dawn beneath an ally's heart, where it waits, warm and patient, for their darkest moment.<br/>Target one willing creature you touch.<br/>On a success, the seed holds 16 HP and lasts for a medium duration. If the target drops to 0 HP while the seed holds, it blooms at once: the target immediately regains the held HP. Suffering a Wound and its effects from dropping to 0 HP happens as normal before the seed blooms. If the seed has not bloomed when the duration ends, its vitality fades without effect.
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> The seed holds 20 HP instead.<br/><strong>(Rank 5)</strong> The seed holds 24 HP instead.
+
 ### Greater Restoration
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
