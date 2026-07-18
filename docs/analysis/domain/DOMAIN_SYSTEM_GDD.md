@@ -7,7 +7,7 @@
 > **Companion files:**
 > [Facility Catalog](facility-catalog.md) | [Missions & Agents](missions-and-agents.md) | [Domain NPCs & Staff](domain-npcs.md) | [Economy Simulation](economy-simulation.md) | [Worked Example: Occult Organization](occult-organization-example.md)
 >
-> **References:** [Downtime Overview](../../06-scenes/04-downtime/00-overview.md) | [Downtime System Analysis](../downtime-system-analysis.md) | [Crafting Professions](../../06-scenes/05-crafting-professions.md) | [NPCs and Relationships](../../02-adventurers/05-npc-relations.md) | [Item Quality & Cost](../../04-equipment/01-items.md) | [Magic Item Cost Tables](../../04-equipment/07-magic-items/cost-tables.md)
+> **References:** [Downtime Overview](../../06-scenes/04-downtime/00-overview.md) | [Downtime System Analysis](../downtime-system-analysis.md) | [Crafting Professions](../../06-scenes/05-crafting-professions/00-overview.md) | [NPCs and Relationships](../../02-adventurers/05-npc-relations.md) | [Item Quality & Cost](../../04-equipment/01-items.md) | [Magic Item Cost Tables](../../04-equipment/07-magic-items/cost-tables.md)
 
 ---
 

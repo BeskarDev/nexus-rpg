@@ -112,12 +112,28 @@
         "description": "Spend 1 use to coat one non-light weapon, two light weapons, or one type of ammo item in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early. If they succeed, they are also immune against this poison\u2019s effects for the rest of the scene.<br/>"
     },
     {
+        "name": "Thunderstone",
+        "quality": "2",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "30",
+        "description": "Counts as a thrown weapon (bundle, thrown (short/medium)). Instead of dealing damage, it explodes with a thunderous crack on impact. All creatures in melee range of the target must roll a Strength + Fortitude test. On a failure, they are briefly deafened and dazed. After attacking, spend 1 use."
+    },
+    {
         "name": "Weapon Poison (weak)",
         "quality": "2",
         "category": "Alchemy",
         "load": "1",
         "cost": "50",
         "description": "Spend 1 use to coat one non-light weapon, two light weapons, or one type of ammo item in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 2 poison damage (ignore AV) to the target.<br/>"
+    },
+    {
+        "name": "Alchemist's Fire",
+        "quality": "3",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "125",
+        "description": "Counts as a thrown weapon (bundle, thrown (short/medium)) dealing +2 fire damage as weapon damage. On a hit, the target is also burning (2) for a short duration. After attacking, spend 1 use."
     },
     {
         "name": "Fire Bomb",
@@ -168,6 +184,14 @@
         "description": "Counts as a thrown weapon (bundle (d4), thrown (short)). Erupts in a cloud of smoke lasting a short duration in a close range of the point of impact. The smoke counts as an area with dim light."
     },
     {
+        "name": "Tanglefoot Bag",
+        "quality": "3",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "125",
+        "description": "Counts as a thrown weapon (bundle, thrown (short/medium)). Instead of dealing damage, the bag bursts into sticky tar on a hit. The target is restrained. At the end of each of their turns, they can roll Strength + Athletics to break free. The tar dries and crumbles after a short duration. After attacking, spend 1 use."
+    },
+    {
         "name": "Weapon Poison (decent)",
         "quality": "3",
         "category": "Alchemy",
@@ -176,12 +200,20 @@
         "description": "Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 4 poison damage (ignore AV) to the target.<br/>"
     },
     {
+        "name": "Naphtha Bomb",
+        "quality": "4",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "375",
+        "description": "Counts as a thrown weapon (bundle (d4), thrown (short)) dealing +3 fire damage as weapon damage. Damage is applied to all creatures in melee range of the target. Each creature damaged by it is also burning (2) for a short duration."
+    },
+    {
         "name": "Potion of Healing (decent)",
         "quality": "4",
         "category": "Alchemy",
         "load": "1",
         "cost": "375",
-        "description": "Drink this potion as an Action to regain 16 HP.<br/>After drinking this potion, it is fully spend.<br/>"
+        "description": "Drink this potion as an Action to regain 12 HP.<br/>After drinking this potion, it is fully spend.<br/>"
     },
     {
         "name": "Weapon Poison (strong)",
@@ -190,6 +222,14 @@
         "load": "1",
         "cost": "375",
         "description": "Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 6 poison damage (ignore AV) to the target.<br/>"
+    },
+    {
+        "name": "Inferno Bomb",
+        "quality": "5",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "1,250",
+        "description": "Counts as a thrown weapon (bundle (d4), thrown (short)) dealing +6 fire damage as weapon damage. Damage is applied to all creatures in close range of the target. Each creature damaged by it is also burning (2) for a short duration."
     },
     {
         "name": "Paralyzing Poison (strong)",
@@ -205,7 +245,7 @@
         "category": "Alchemy",
         "load": "1",
         "cost": "1,250",
-        "description": "Drink this potion as an Action to regain 24 HP.<br/>After drinking this potion, it is fully spend.<br/>"
+        "description": "Drink this potion as an Action to regain 16 HP.<br/>After drinking this potion, it is fully spend.<br/>"
     },
     {
         "name": "Simple Clothes",
@@ -590,6 +630,14 @@
         "load": "1",
         "cost": "750",
         "description": "A lavishly adorned satchel containing formidable crafting materials, such as shimmering dragonhide, ethereal mooncloth, dwarf-steel ingots, electrum wire, and silken spider thread imbued with magical properties. Has a d6 Supply die."
+    },
+    {
+        "name": "Exquisite Materials (d6)",
+        "quality": "5",
+        "category": "Supply",
+        "load": "1",
+        "cost": "2,250",
+        "description": "A gilded coffer containing exquisite crafting materials, such as star-metal shavings, scales of ancient wyrms, threads of woven moonlight, adamant dust, and resin from primordial trees. Has a d6 Supply die."
     },
     {
         "name": "Adventuring Gear",

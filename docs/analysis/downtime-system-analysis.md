@@ -2,7 +2,7 @@
 
 > **Scope:** Compatibility of the current downtime system with the updated time scales, dice timers, challenges, travel, and social intrigue systems. Proposed changes, expansion opportunities, and new tools for players and GMs.
 >
-> **References:** [Downtime Overview](../06-scenes/04-downtime/00-overview.md) | [Downtime Activities](../06-scenes/04-downtime/activities.md) | [Scenes & Time Scales](../06-scenes/01-scenes-time-intervals.md) | [Challenges](../06-scenes/07-challenges/00-overview.md) | [Social Intrigue](../06-scenes/07-challenges/01-social-intrigue.md) | [Travel](../06-scenes/07-challenges/02-travel.md) | [Crafting Professions](../06-scenes/05-crafting-professions.md) | [NPCs and Relationships](../02-adventurers/05-npc-relations.md)
+> **References:** [Downtime Overview](../06-scenes/04-downtime/00-overview.md) | [Downtime Activities](../06-scenes/04-downtime/activities.md) | [Scenes & Time Scales](../06-scenes/01-scenes-time-intervals.md) | [Challenges](../06-scenes/07-challenges/00-overview.md) | [Social Intrigue](../06-scenes/07-challenges/01-social-intrigue.md) | [Travel](../06-scenes/07-challenges/02-travel.md) | [Crafting Professions](../06-scenes/05-crafting-professions/00-overview.md) | [NPCs and Relationships](../02-adventurers/05-npc-relations.md)
 
 ---
 

@@ -238,7 +238,7 @@
         "preserve_existing": true
       },
       "Crafting Professions": {
-        "target": "docs/06-scenes/05-crafting-professions.md",
+        "target": "docs/06-scenes/05-crafting-professions/00-overview.md",
         "title": "🔨 Crafting Professions",
         "banner": "/img/banner/crafting-banner.png"
       },

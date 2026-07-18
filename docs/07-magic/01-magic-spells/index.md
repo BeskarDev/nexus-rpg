@@ -34,12 +34,41 @@ Being an arcanist was, for the longest time, considered to be a heretical mutati
 
 Arcane Disciplines stand in no direct relation to one another but display the various types of influence someone can enact by their mental powers.
 
-- Evocation (*fire, frost, lightning, acid, blast*)
-- Illusion (*trickery, misdirection, obfuscation, hallucinations, distortion*)
-- Conjuration (*objects, creatures, teleportation, binding, force*)
-- Telepathy (*influence, communication, insight, domination, memory*)
-- Telekinetics (*move, repel, levitate, crush, gravity*)
-- Necromancy (*decay, undeath, siphoning, defilement, puppetry*)
+#### Evocation
+
+*fire, frost, lightning, acid, blast*
+
+Shape raw destructive energy into being. Evokers hurl flame, frost, and lightning, turning thought into elemental force.
+
+#### Illusion
+
+*trickery, misdirection, obfuscation, hallucinations, distortion*
+
+Deceive the senses and cloud the mind. Illusionists conjure what is not there and hide what is, bending perception itself into a weapon.
+
+#### Conjuration
+
+*objects, creatures, teleportation, binding, force*
+
+Call matter and creatures into existence, or move them across space. Conjurers summon servants, weave barriers of force, and bind what they call.
+
+#### Telepathy
+
+*influence, communication, insight, domination, memory*
+
+Reach into other minds. Telepaths speak without words, read intent, sway thought, and in their darkest arts seize the will of another.
+
+#### Telekinetics
+
+*move, repel, levitate, crush, gravity*
+
+Move the physical world by will alone. Telekinetics lift, hurl, crush, and repel, treating weight and gravity as suggestions to overrule.
+
+#### Necromancy
+
+*decay, undeath, siphoning, defilement, puppetry*
+
+Command the forces of death and decay. Necromancers siphon life, rot flesh, and puppet the dead, trading reverence for power over what should rest.
 
 ### Mysticism
 
@@ -62,40 +91,85 @@ When you make a pact with a god, goddess, or higher spirit to receive the divine
 
 Mystic Traditions are grouped up into opposing ideals. Most practitioners of mysticism learn the aspects of multiple traditions, though some choose to devote themselves fully to a single tradition.
 
-- Light (*sun, illumination, truth, clarity, judgement*)
-  - Illuminate truth wherever darkness and deception hide. Never willingly perpetuate a lie that causes harm.
-  - Bring clarity to confusion and guidance to those who wander lost. Your wisdom must be a beacon for others.
-  - Face your fears openly, for shadows cannot exist in pure light. Never shrink from that which must be confronted, even within yourself.
-- Twilight (*moon, dreams, secrets, fate, illusion*)
-  - Honor the balance between revelation and mystery. Never expose a secret that deserves protection.
-  - Explore the boundaries between consciousness and dream, finding wisdom in both realms. Never dismiss the messages that come in shadows.
-  - Embrace transformation as the moon changes its face. To remain unchanging is to deny the cycle of growth and renewal.
-- Life (*vitality, blessings, community, hope, fertility*)
-  - Nurture growth wherever you find potential. Never needlessly destroy what can flourish.
-  - Share your abundance with those in need, for vitality flows between all things. Selfishness withers the soul.
-  - Honor the connections between all living beings. Never sever the bonds of community without grave cause.
-- Death (*plagues, curses, fear, decay, ancestry*)
-  - Accept the necessity of endings, for they make new beginnings possible. Never cling to what must rightfully pass away.
-  - Test the worthy through trial and adversity, for strength is forged through challenge. Comfort breeds weakness.
-  - Face mortality unflinchingly and speak hard truths without hesitation. Fear of the inevitable is the greatest deception.
-- Nature (*earth, water, poison, animals, plants*)
-  - Respect the ancient rhythms of the natural world. Never take more than you need or disrupt what exists in harmony.
-  - Adapt to your surroundings as plants and animals do. Rigid thinking leads to extinction.
-  - Defend wild places and creatures against those who would destroy them for fleeting gain. The untamed must endure.
-- Tempest (hurricanes*, earthquakes, thunderstorms, sandstorms, floods*)
-  - Embrace change and upheaval as necessary forces in the world. Stagnation is death; transformation is life.
-  - Strike decisively when action is required, with the sudden force of lightning. Hesitation weakens purpose.
-  - Test boundaries and challenge the established order. What cannot withstand the storm was never meant to stand.
-- Peace (*calmness, protection, selflessness, travel, law*)
-  - Seek resolution to conflict through understanding and compromise. Violence must be the final resort, not the first.
-  - Protect those who cannot protect themselves, standing as their shield. Never abandon the vulnerable to their fate.
-  - Practice inner calm even amidst chaos, for true peace begins within. A troubled mind cannot bring harmony to others.
-- War (*fury, pride, blood, justice, triumph*)
-  - Hone your skills and strengthen your resolve daily. Complacency has no place in the warrior's heart.
-  - Honor worthy opponents and fight with dignity. Victory without honor is merely conquest.
-  - Know when to unleash your fury and when to sheathe your weapon. War without purpose is mere destruction; war with purpose is transformation.
+#### Light
 
-## Spells
+*sun, illumination, truth, clarity, judgement*
+
+- Illuminate truth wherever darkness and deception hide. Never willingly perpetuate a lie that causes harm.
+- Bring clarity to confusion and guidance to those who wander lost. Your wisdom must be a beacon for others.
+- Face your fears openly, for shadows cannot exist in pure light. Never shrink from that which must be confronted, even within yourself.
+
+#### Twilight
+
+*moon, dreams, secrets, fate, illusion*
+
+- Honor the balance between revelation and mystery. Never expose a secret that deserves protection.
+- Explore the boundaries between consciousness and dream, finding wisdom in both realms. Never dismiss the messages that come in shadows.
+- Embrace transformation as the moon changes its face. To remain unchanging is to deny the cycle of growth and renewal.
+
+#### Life
+
+*vitality, blessings, community, hope, fertility*
+
+- Nurture growth wherever you find potential. Never needlessly destroy what can flourish.
+- Share your abundance with those in need, for vitality flows between all things. Selfishness withers the soul.
+- Honor the connections between all living beings. Never sever the bonds of community without grave cause.
+
+#### Death
+
+*plagues, curses, fear, decay, ancestry*
+
+- Accept the necessity of endings, for they make new beginnings possible. Never cling to what must rightfully pass away.
+- Test the worthy through trial and adversity, for strength is forged through challenge. Comfort breeds weakness.
+- Face mortality unflinchingly and speak hard truths without hesitation. Fear of the inevitable is the greatest deception.
+
+#### Nature
+
+*earth, water, poison, animals, plants*
+
+- Respect the ancient rhythms of the natural world. Never take more than you need or disrupt what exists in harmony.
+- Adapt to your surroundings as plants and animals do. Rigid thinking leads to extinction.
+- Defend wild places and creatures against those who would destroy them for fleeting gain. The untamed must endure.
+
+#### Tempest
+
+*hurricanes, earthquakes, thunderstorms, sandstorms, floods*
+
+- Embrace change and upheaval as necessary forces in the world. Stagnation is death; transformation is life.
+- Strike decisively when action is required, with the sudden force of lightning. Hesitation weakens purpose.
+- Test boundaries and challenge the established order. What cannot withstand the storm was never meant to stand.
+
+#### Peace
+
+*calmness, protection, selflessness, travel, law*
+
+- Seek resolution to conflict through understanding and compromise. Violence must be the final resort, not the first.
+- Protect those who cannot protect themselves, standing as their shield. Never abandon the vulnerable to their fate.
+- Practice inner calm even amidst chaos, for true peace begins within. A troubled mind cannot bring harmony to others.
+
+#### War
+
+*fury, pride, blood, justice, triumph*
+
+- Hone your skills and strengthen your resolve daily. Complacency has no place in the warrior's heart.
+- Honor worthy opponents and fight with dignity. Victory without honor is merely conquest.
+- Know when to unleash your fury and when to sheathe your weapon. War without purpose is mere destruction; war with purpose is transformation.
+
+**Offerings**
+
+When you must sacrifice an offering to your patron, such as when atoning for a broken oath or for overusing their favor, the offering must fit their tradition. The offering is burned, buried, poured out, or otherwise given up for good.
+
+| Tradition | Small Offering | Large Offering |
+| --- | --- | --- |
+| Light | *lamp oil, incense, a bronze mirror* | *golden jewelry, a sun disk of electrum, a white ox* |
+| Twilight | *dream-herbs, black candles, a silver ring* | *moonstones, an obsidian mirror, silver-woven cloth* |
+| Life | *honey, wine, fresh flowers* | *the first share of a harvest, fine perfumes, a pair of doves* |
+| Death | *embalming oil, bone carvings, burial linen* | *amulets of jet, rich funerary goods, a black goat* |
+| Nature | *seeds, salt, dried herbs* | *amber, uncut gemstones, a prized hunting kill* |
+| Tempest | *beer libations, a clay storm-charm, a bronze bell* | *lapis lazuli, a bronze weapon, a bull* |
+| Peace | *bread and salt, olive oil, plain woven cloth* | *ivory, bolts of fine cloth, the ransom of a captive* |
+| War | *arrowheads, a dagger, strong drink* | *an ornate weapon, a war trophy, a share of battle spoils* |
+
 
 ### Focus
 

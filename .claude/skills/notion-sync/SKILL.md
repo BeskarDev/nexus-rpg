@@ -82,7 +82,7 @@ Many Docusaurus pages (split by subdirectory) collapse into **one** Notion page.
 | Notion page | Notion URL | Doc file(s) |
 |---|---|---|
 | Items | `https://app.notion.com/p/21c541d5871180f9bbd0c38b0dafe10e` | `docs/04-equipment/01-items.md` |
-| Equipment | `https://app.notion.com/p/2e632a9fbed6470892368f1f9d59b307` | `docs/04-equipment/02-equipment/00-overview.md` + all `docs/04-equipment/02-equipment/*.md` (merged) |
+| Equipment ⚠️ | `https://app.notion.com/p/2e632a9fbed6470892368f1f9d59b307` | `docs/04-equipment/02-equipment/00-overview.md` + all `docs/04-equipment/02-equipment/*.md` (merged) — **inline DB, no text body; see note below** |
 | Weapons | `https://app.notion.com/p/7795cbfb406e46459412cb4623e307a4` | `docs/04-equipment/03-weapons.md` |
 | Armor | `https://app.notion.com/p/21b99f5ab9bf44a1bb2b39a71e7296f0` | `docs/04-equipment/04-armor.md` |
 | Weapon & Armor Properties | `https://app.notion.com/p/33fd6d641c214c1da0d191ee46f8f411` | `docs/04-equipment/05-armor-weapon-properties.md` |
@@ -150,15 +150,18 @@ These pages exist only in Notion. They are authoritative in Notion and have no c
 
 ### ⚠️ Inline database pages — partial sync only
 
-Three Notion pages store their primary content in an **embedded inline Notion database**, not as page text. The `mcp__notion__notion-update-page` tool can only update the page's intro text, not the DB records.
+Four Notion pages store their primary content in an **embedded inline Notion database**, not as page text. The `mcp__notion__notion-update-page` tool can only update the page's intro text, not the DB records.
 
 | Notion page | What can be text-synced | What cannot |
 |---|---|---|
 | **Talents** | `00-overview.md` intro text (how talents work, categories list) | Individual talent entries — stored as linked sub-pages and an inline DB (`collection://80c7247e-c500-409c-aaa2-4b13d973f820`) |
 | **Combat Arts** | `00-overview.md` intro text (learning/using combat arts) | The arts list itself — stored in inline DB (`collection://62e8ea52-eedf-4429-b340-305105fb06a3`) |
 | **Creatures** | Nothing — the page is almost entirely the inline DB | Creature stat blocks — stored in inline DB (`collection://75eaf287-6abb-4c2c-a7a7-90765535f3b0`) |
+| **Equipment** | Nothing — `notion-fetch` on the page returns only a page title and an embedded `<database>` block, no intro text at all | Every item row — stored in inline DB **"Equipment & Livestock"** (`collection://ec33e70f-c82d-4657-9620-d105b90554e4`) |
 
-When a doc change affects **only intro text** on these pages, a normal text sync is fine. When it affects the individual entries (a talent, a combat art, a creature stat block), flag this to the user — those require manual Notion DB record edits.
+When a doc change affects **only intro text** on these pages, a normal text sync is fine. When it affects the individual entries (a talent, a combat art, a creature stat block, an equipment item), flag this to the user — those require manual Notion DB record edits.
+
+**Equipment DB schema** (`collection://ec33e70f-c82d-4657-9620-d105b90554e4`): `Name` (title), `Category` (select: Animals, Alchemy, Clothes, Container, Gear, Supply, Toolkit, Trade Good, Transportation), `Cost` (number), `Load` (number), `Quality` (number), `Description` (text). Records map 1:1 to individual equipment-table rows across `docs/04-equipment/02-equipment/*.md` — there is no merged-page text body to diff against, so match by item name via `notion-search` scoped to the data source, then create/update records directly. Unlike Talents/Combat Arts, Equipment has no per-record sub-page content — everything lives in the row properties, page body stays blank.
 
 ---
 
