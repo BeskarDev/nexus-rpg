@@ -18,6 +18,7 @@ import {
 	getSkillChipColor,
 	normalizeSkillName,
 } from '../../../../../constants/skills'
+import { buildTalentFields } from '../../../utils/talentFactory'
 
 export type TalentsSearchDialogProps = {
 	open: boolean
@@ -125,13 +126,9 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 			.filter((talent) => selectedTalents.has(talent.name))
 			.map((talent) => ({
 				id: crypto.randomUUID(),
-				title: talent.name,
-				description: sanitizeHtml(talent.description),
+				...buildTalentFields(talent),
 				tag: 'Talent' as const,
 				rank: 1, // Default to rank 1
-				skill:
-					normalizeSkillName(talent['skill requirement']) ||
-					talent['skill requirement'],
 			}))
 
 		onImportTalents(talentsToImport)

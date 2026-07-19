@@ -1,5 +1,6 @@
 import {
 	AddCircle,
+	Autorenew,
 	ExpandMore,
 	Build,
 	Search,
@@ -45,6 +46,8 @@ import { getTalentPointSummaries } from '../../utils/calculateTalentPoints'
 import { getSkillChipColor } from '../../../../constants/skills'
 import { calculateCharacterLevel } from '../../utils/calculateCharacterLevel'
 import { calculateMaxXpPerSkill } from '../../utils/validation'
+import { RefreshUpdatesDialog } from '../../components/RefreshUpdatesDialog'
+import { computeTalentUpdates } from '../../utils/computeContentUpdates'
 
 export const CategorizedAbilities: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -61,6 +64,8 @@ export const CategorizedAbilities: React.FC = () => {
 		useState<null | HTMLElement>(null)
 	const [isCombatArtsDialogOpen, setIsCombatArtsDialogOpen] = useState(false)
 	const [isTalentsDialogOpen, setIsTalentsDialogOpen] = useState(false)
+	const [isTalentRefreshDialogOpen, setIsTalentRefreshDialogOpen] =
+		useState(false)
 	const [isTalentInfoDialogOpen, setIsTalentInfoDialogOpen] = useState(false)
 	const [reorderMode, setReorderMode] = useState<Record<AbilityTag, boolean>>({
 		'Combat Art': false,
@@ -112,6 +117,27 @@ export const CategorizedAbilities: React.FC = () => {
 
 		return grouped
 	}, [abilities])
+
+	// Detect talents that have drifted from the latest JSON rulebook versions
+	const talentUpdates = useMemo(
+		() => computeTalentUpdates(abilities),
+		[abilities],
+	)
+
+	const applyTalentUpdates = (selectedIds: string[]) => {
+		const idSet = new Set(selectedIds)
+		talentUpdates
+			.filter((u) => idSet.has(u.id))
+			.forEach((u) => {
+				dispatch(
+					characterSheetActions.updateAbility({
+						update: u.next,
+						index: u.index,
+					}),
+				)
+			})
+		setIsTalentRefreshDialogOpen(false)
+	}
 
 	const addNewAbility = (tag: AbilityTag) => {
 		dispatch(characterSheetActions.addNewAbility({ tag }))
@@ -326,6 +352,27 @@ export const CategorizedAbilities: React.FC = () => {
 										</IconButton>
 									</Tooltip>
 								)}
+								{tag === 'Talent' && (
+									<Tooltip
+										title={
+											talentUpdates.length
+												? `Update ${talentUpdates.length} talent${talentUpdates.length === 1 ? '' : 's'} to their latest versions`
+												: 'Talents are up to date'
+										}
+									>
+										<IconButton
+											size="small"
+											onClick={(event) => {
+												setIsTalentRefreshDialogOpen(true)
+												event.stopPropagation()
+											}}
+											sx={{ ml: -1 }}
+											color={talentUpdates.length ? 'warning' : 'default'}
+										>
+											<Autorenew />
+										</IconButton>
+									</Tooltip>
+								)}
 							</Box>
 						</AccordionSummary>
 						<AccordionDetails>
@@ -393,6 +440,20 @@ export const CategorizedAbilities: React.FC = () => {
 					})
 					setIsTalentsDialogOpen(false)
 				}}
+			/>
+
+			<RefreshUpdatesDialog
+				open={isTalentRefreshDialogOpen}
+				onClose={() => setIsTalentRefreshDialogOpen(false)}
+				title="Refresh talents from rulebook"
+				itemNoun="talent"
+				entries={talentUpdates.map((u) => ({
+					id: u.id,
+					name: u.name,
+					sublabel: u.sublabel,
+					changes: u.changes,
+				}))}
+				onConfirm={applyTalentUpdates}
 			/>
 
 			<Dialog

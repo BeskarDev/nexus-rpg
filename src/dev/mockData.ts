@@ -618,8 +618,139 @@ export const createSecondMockCharacter = (): CharacterDocument => {
 }
 
 /**
+ * Creates a mock character carrying intentionally OUTDATED talents and spells.
+ *
+ * The spell/talent names all exist in the JSON rulebook source, but the stored
+ * effect text, focus costs, and damage values are stale on purpose. Load this
+ * character in dev mode and use the "Refresh from rulebook" buttons (Spells tab
+ * and Talent section) to exercise the update-detection + auto-update flow,
+ * including damage recalculation (e.g. Frost Snap's inflated damage gets nerfed
+ * back to the current value, Flickering Flame gains its damage detection).
+ */
+export const createOutdatedMockCharacter = (): CharacterDocument => {
+	const base = createMockCharacter()
+
+	return {
+		...base,
+		docRef: doc(db, 'mock-collection', 'mock-character-3'),
+		docId: 'mock-character-3',
+		collectionId: 'mock-collection',
+		personal: {
+			...base.personal,
+			name: 'Outdated Testdummy',
+			playerName: 'Refresh Test',
+		},
+		skills: {
+			...base.skills,
+			abilities: [
+				{
+					id: generateId(),
+					title: 'Battle Mage',
+					// stale: replaced by the current multi-rank rulebook wording
+					description:
+						'(Rank 1) Spend 2 Focus to add +2 to your Parry or Dodge against one attack.',
+					tag: 'Talent',
+					rank: 2,
+					skill: 'Arcana',
+				},
+				{
+					id: generateId(),
+					title: 'Arcane Spell Knowledge',
+					// stale: outdated summary of the talent
+					description:
+						'(Rank 1) +2 Focus. Learn two rank 0 or 1 spells for your disciplines.',
+					tag: 'Talent',
+					rank: 1,
+					skill: 'Arcana',
+				},
+			],
+		},
+		spells: {
+			...base.spells,
+			magicSkill: 'Arcana',
+			specialization: 'Evocation',
+			spells: [
+				{
+					id: generateId(),
+					name: 'Flickering Flame',
+					rank: 0,
+					cost: 0,
+					target: 'Dodge',
+					range: 'medium',
+					properties: '-',
+					// stale: damage not detected at all — refresh should turn this on
+					dealsDamage: false,
+					damage: {
+						base: '',
+						weapon: 0,
+						other: 0,
+						otherWeak: 0,
+						otherStrong: 0,
+						otherCritical: 0,
+						type: 'physical',
+						staticDamage: false,
+					},
+					effect:
+						'You create a small flame in your palm and can throw it at a target.',
+				},
+				{
+					id: generateId(),
+					name: 'Static Spark',
+					// stale: wrong rank + inflated focus cost + old effect wording
+					rank: 1,
+					cost: 2,
+					target: 'Dodge',
+					range: 'short',
+					properties: '-',
+					dealsDamage: true,
+					damage: {
+						base: 'MND',
+						weapon: 1,
+						other: 0,
+						otherWeak: 0,
+						otherStrong: 0,
+						otherCritical: 0,
+						type: 'lightning',
+						staticDamage: false,
+					},
+					effect:
+						'You zap a target with a small electric discharge for +2 lightning damage.',
+				},
+				{
+					id: generateId(),
+					name: 'Frost Snap',
+					rank: 0,
+					cost: 0,
+					target: 'Dodge',
+					range: 'medium',
+					properties: '-',
+					// stale: damage is overtuned — refresh should nerf weapon 5 -> 2
+					dealsDamage: true,
+					damage: {
+						base: 'MND',
+						weapon: 5,
+						other: 0,
+						otherWeak: 0,
+						otherStrong: 0,
+						otherCritical: 0,
+						type: 'frost',
+						staticDamage: false,
+					},
+					effect:
+						'You snap your fingers to chill the air around the target, dealing +5 frost damage.',
+				},
+			],
+		},
+	}
+}
+
+/**
  * List of all available mock characters for development testing
  */
 export const getMockCharacters = (): CharacterDocument[] => {
-	return [createMockCharacter(), createSecondMockCharacter()]
+	return [
+		createMockCharacter(),
+		createSecondMockCharacter(),
+		createOutdatedMockCharacter(),
+	]
 }

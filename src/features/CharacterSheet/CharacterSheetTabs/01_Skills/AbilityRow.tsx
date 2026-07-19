@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Ability } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
 import { ActionType } from '@site/src/types/ActionType'
@@ -43,6 +43,17 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	)
 	const [rank, setRank] = useState<number>(initialRank || 1)
 	const [skill, setSkill] = useState<string | undefined>(initialSkill)
+
+	// Sync local edit state when the ability changes externally (e.g. the
+	// "refresh from rulebook" bulk update), otherwise the row keeps showing
+	// the stale values it was mounted with.
+	useEffect(() => {
+		setTitle(initialTitle)
+		setDescription(initialDescription)
+		setActionType(initialActionType || 'Other')
+		setRank(initialRank || 1)
+		setSkill(initialSkill)
+	}, [initialTitle, initialDescription, initialActionType, initialRank, initialSkill])
 
 	const handleActionTypeChange = (newActionType: ActionType) => {
 		setActionType(newActionType)

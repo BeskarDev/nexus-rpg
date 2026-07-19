@@ -19,8 +19,7 @@ import arcaneSpellsData from '../../../../utils/data/json/arcane-spells.json'
 import mysticSpellsData from '../../../../utils/data/json/mystic-spells.json'
 import { CharacterDocument } from '../../../../types/Character'
 import { sanitizeHtml } from '../../../../utils/typescript/htmlSanitizer'
-import { parseDamageFromEffect } from '../../../../utils/typescript/spellDamageParser'
-import { targetTypeArray, rangeTypeArray } from '../../../../types/Character'
+import { buildSpellFromData } from '../../utils/spellFactory'
 
 // Color mapping for disciplines/traditions
 const disciplineColorMap: Record<
@@ -215,62 +214,13 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 		'effect',
 	]
 
-	// Hilfsfunktionen für Mapping
-	const mapRangeType = (val: string) => {
-		if (!val) return ''
-		const lower = val.trim().toLowerCase()
-		return rangeTypeArray.includes(lower as any) ? (lower as any) : ''
-	}
-
-	const mapTargetType = (val: string) => {
-		if (!val) return ''
-		let v = val.trim()
-		// z.B. "Medium (8)" → "8"
-		const parenMatch = v.match(/\((\d+)\)/)
-		if (parenMatch) {
-			v = parenMatch[1]
-		}
-		// z.B. "vs. Dodge" oder "Dodge" → "Dodge"
-		const vsMatch = v.match(/vs\.?\s*(Parry|Dodge|Resist)/i)
-		if (vsMatch) {
-			v = vsMatch[1].charAt(0).toUpperCase() + vsMatch[1].slice(1).toLowerCase()
-		}
-		// "Special" (beliebige Groß-/Kleinschreibung) zu "special"
-		if (/^special$/i.test(v)) {
-			v = 'special'
-		}
-		// Nur erlaubte Werte zulassen
-		return targetTypeArray.includes(v as any) ? (v as any) : ''
-	}
-
 	const handleImport = () => {
 		const spellsToImport = (spellsData as SpellData[])
 			.filter((spell) => selectedSpells.has(spell.name))
-			.map((spell) => {
-				const parsedDamage = parseDamageFromEffect(spell.effect, magicType)
-				// Remove staticDamage from parsed damage since it's not part of the Character.Damage type in the import
-				const { staticDamage: _, ...damageWithoutStatic } = parsedDamage
-
-				return {
-					id: crypto.randomUUID(),
-					name: spell.name,
-					rank: parseInt(spell.rank) || 0,
-					cost: parseInt(spell.focus) || 0,
-					target: mapTargetType(spell.target),
-					range: mapRangeType(spell.range),
-					properties: spell.properties,
-					// dealsDamage: true nur wenn explizit Schaden verursacht wird
-					dealsDamage:
-						/deal(s)?\s*\+?\d+\s*(\w+)?\s*damage|take(s)?\s*\+?\d+\s*(\w+)?\s*damage|inflict(s)?\s*damage/i.test(
-							spell.effect,
-						),
-					damage: {
-						...damageWithoutStatic,
-						staticDamage: parsedDamage.staticDamage,
-					},
-					effect: sanitizeHtml(spell.effect),
-				}
-			})
+			.map((spell) => ({
+				id: crypto.randomUUID(),
+				...buildSpellFromData(spell, magicType),
+			}))
 
 		onImportSpells(spellsToImport)
 	}

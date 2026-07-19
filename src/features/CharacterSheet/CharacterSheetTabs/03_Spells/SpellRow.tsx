@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { RangeType, Spell, TargetType } from '../../../../types/Character'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
@@ -22,6 +22,12 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 	onToggleQuickRef,
 }) => {
 	const [spell, setSpell] = useState<Spell>(initialSpell)
+	// Sync local edit state when the spell changes externally (e.g. the
+	// "refresh from rulebook" bulk update), otherwise the row keeps showing
+	// the stale values it was mounted with.
+	useEffect(() => {
+		setSpell(initialSpell)
+	}, [initialSpell])
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 

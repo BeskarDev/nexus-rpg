@@ -243,16 +243,18 @@ export const SkillsTab: React.FC = () => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
-	const spendXP = useMemo(() => {
-		let newSpendXP = skills
-			.map((s) => s.xp)
-			.reduce((partialSum, a) => partialSum + a, 0)
+	const spendXP = useMemo(
+		() => skills.map((s) => s.xp).reduce((partialSum, a) => partialSum + a, 0),
+		[skills],
+	)
 
-		if (newSpendXP != xp.spend) {
-			updateCharacter({ skills: { xp: { spend: newSpendXP } } })
+	// Sync the derived spend total back into the character. Done in an effect (not
+	// during render) so we never dispatch while another component is rendering.
+	useEffect(() => {
+		if (spendXP != xp.spend) {
+			updateCharacter({ skills: { xp: { spend: spendXP } } })
 		}
-		return newSpendXP
-	}, [activeCharacter])
+	}, [spendXP, xp.spend])
 
 	// Get currently selected skill names
 	const selectedSkillNames = useMemo(

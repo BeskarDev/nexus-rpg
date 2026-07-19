@@ -12,7 +12,7 @@ import {
 import React, { useMemo, useState } from 'react'
 import { UI_COLORS } from '../../../../utils/colors'
 
-import { AddCircle, ExpandMore, Search, SwapVert } from '@mui/icons-material'
+import { AddCircle, Autorenew, ExpandMore, Search, SwapVert } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DropResult } from '@hello-pangea/dnd'
@@ -28,6 +28,8 @@ import { MagicSkillCard } from './MagicSkillCard'
 import { SpecializationCard } from './SpecializationCard'
 import { CatalystCard } from './CatalystCard'
 import { FocusCard } from './FocusCard'
+import { RefreshUpdatesDialog } from '../../components/RefreshUpdatesDialog'
+import { computeSpellUpdates } from '../../utils/computeContentUpdates'
 
 export const SpellsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -36,6 +38,7 @@ export const SpellsTab: React.FC = () => {
 		useMemo(() => activeCharacter.spells, [activeCharacter.spells])
 
 	const [isSpellsDialogOpen, setIsSpellsDialogOpen] = useState(false)
+	const [isRefreshDialogOpen, setIsRefreshDialogOpen] = useState(false)
 	const [reorderMode, setReorderMode] = useState(false)
 
 	// Get Quick Ref selections
@@ -93,6 +96,27 @@ export const SpellsTab: React.FC = () => {
 
 	const deleteSpell = (spell: Spell) => {
 		dispatch(characterSheetActions.deleteSpell(spell))
+	}
+
+	// Detect spells that have drifted from the latest JSON rulebook versions
+	const spellUpdates = useMemo(
+		() => computeSpellUpdates(spells, magicType),
+		[spells, magicType],
+	)
+
+	const applySpellUpdates = (selectedIds: string[]) => {
+		const idSet = new Set(selectedIds)
+		spellUpdates
+			.filter((u) => idSet.has(u.id))
+			.forEach((u) => {
+				dispatch(
+					characterSheetActions.updateSpell({
+						update: u.next,
+						index: u.index,
+					}),
+				)
+			})
+		setIsRefreshDialogOpen(false)
 	}
 
 	const onSpellReorder = ({ source, destination }: DropResult) => {
@@ -186,6 +210,25 @@ export const SpellsTab: React.FC = () => {
 									</IconButton>
 								</span>
 							</Tooltip>
+							<Tooltip
+								title={
+									spellUpdates.length
+										? `Update ${spellUpdates.length} spell${spellUpdates.length === 1 ? '' : 's'} to their latest versions`
+										: 'Spells are up to date'
+								}
+							>
+								<IconButton
+									size="small"
+									onClick={(event) => {
+										setIsRefreshDialogOpen(true)
+										event.stopPropagation()
+									}}
+									sx={{ ml: -1, mb: 0.75 }}
+									color={spellUpdates.length ? 'warning' : 'default'}
+								>
+									<Autorenew />
+								</IconButton>
+							</Tooltip>
 						</Box>
 					</AccordionSummary>{' '}
 					<AccordionDetails>
@@ -224,6 +267,20 @@ export const SpellsTab: React.FC = () => {
 					})
 					setIsSpellsDialogOpen(false)
 				}}
+			/>
+
+			<RefreshUpdatesDialog
+				open={isRefreshDialogOpen}
+				onClose={() => setIsRefreshDialogOpen(false)}
+				title="Refresh spells from rulebook"
+				itemNoun="spell"
+				entries={spellUpdates.map((u) => ({
+					id: u.id,
+					name: u.name,
+					sublabel: u.sublabel,
+					changes: u.changes,
+				}))}
+				onConfirm={applySpellUpdates}
 			/>
 		</Box>
 	)

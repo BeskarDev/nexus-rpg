@@ -810,7 +810,7 @@ The over-value is **negligible at R0–R1** (why Gust at full column is fine) an
 - **Arcane** — Conducting Chill (Evocation R3, frost→lightning convert), Thunderous Rupture (Evocation R3, self-centered short-radius burst), Veil of Deception (Illusion R3, attack-stable invisibility with a caster-side hold re-roll)
 - **Mystic** — Speak with Dead (Death R3, corpse petition ritual), Rallying Cry (Life R3, crisis-point heal), Seed of Life (Life R3, fresh concept — contingent pre-cast heal, flat value, medium duration, touch range), Searing Revelation (Light R3, fresh concept replacing the retired Pillar of Dawn seed — burns away a deception effect and traces radiant judgement to its caster), Righteous Verdict (Peace R3, oathbreaker/ward-breaker judgement, gate widened to any oath-imposing Peace spell), Rout (War R3, flat-effect mass fear rout, medium range)
 
-R3 counts now: Evocation 5, Illusion 5, Death 5, Life 5, Light 5, Peace 5, War 5 — all above the <5 threshold. All 9 spells synced to Notion (Arcane Spells + Mystic Spells inline DBs, new records) and the Changelog's v0.10.0 Magic entry extended. Fully published across docs, JSON, and Notion — no outstanding surface drift.
+R3 counts now: Evocation 5, Illusion 5, Death 5, Life 5, Light 5, Peace 5, War 5 — all above the below-5 threshold. All 9 spells synced to Notion (Arcane Spells + Mystic Spells inline DBs, new records) and the Changelog's v0.10.0 Magic entry extended. Fully published across docs, JSON, and Notion — no outstanding surface drift.
 
 **Sequence:** step 1 and step 2 done. Independent of everything else on the board.
 
