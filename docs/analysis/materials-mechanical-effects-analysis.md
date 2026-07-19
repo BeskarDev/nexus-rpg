@@ -2,7 +2,9 @@
 
 > **Scope:** Propose concrete mechanical effects for all special materials across all tiers — Exotic (Q3–Q4), Greater (Q5–Q6), and Legendary (Q7–Q8). Includes all vault-only materials not yet in the game rules. This is a complete revision incorporating fundamental design feedback.
 >
-> **Prerequisite:** [Enchantments & Magic Items — Design Analysis](./enchantments-magic-items-analysis.md). This document picks up the deferred material-properties task from that analysis.
+> **Prerequisite:** [Magic Item System Analysis](./magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md). This document picks up the deferred material-properties task from that analysis (v1: `enchantments-magic-items-analysis.md`, since converted to the `magic-items/` folder).
+>
+> **⚠️ Implementation spec supersedes this document's proposal tables:** [magic-items/catalogs/materials.md](./magic-items/catalogs/materials.md) (2026-07-19) revises these proposals against later owner rulings — low mental load (principle 22), multi-type coverage (principle 23), Q8 artifact-only (principle 21). Where they diverge, the catalog governs; this document remains the lore/coherence deep-dive.
 >
 > **Source material:** Worldbuilding lore from the [Nexus RPG Vault](https://nexus-rpg-vault.web.app/(12)-%F0%9F%97%9D%EF%B8%8F-Artefakte/Materialien/) is incorporated for thematic flavor throughout. Vault game-mechanic speculation is **not** used — only flavor, cultural context, and physical descriptions inform these proposals.
 

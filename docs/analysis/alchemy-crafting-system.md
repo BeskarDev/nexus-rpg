@@ -4,7 +4,7 @@
 >
 > **References:** [Craft an Item](../06-scenes/04-downtime/activities.md) | [Challenges](../06-scenes/07-challenges/00-overview.md) | [Downtime Overview](../06-scenes/04-downtime/00-overview.md) | [Crafting Professions](../06-scenes/05-crafting-professions/00-overview.md) | [Magic Item Effects](../04-equipment/07-magic-items/effects.md) | [Enchantments](../04-equipment/07-magic-items/enchantments.md) | [Cost Tables](../04-equipment/07-magic-items/cost-tables.md) | [Supply](../04-equipment/02-equipment/supply.md) | [Alchemy Equipment](../04-equipment/02-equipment/alchemy.md) | [Travel](../06-scenes/07-challenges/02-travel.md)
 >
-> **Related Analyses:** [Downtime System Analysis](./downtime-system-analysis.md) | [Enchantments & Magic Items Analysis](./enchantments-magic-items-analysis.md) | [Materials Mechanical Effects Analysis](./materials-mechanical-effects-analysis.md) | [Non-Magical Equipment Analysis](./equipment/non-magical-equipment-analysis.md)
+> **Related Analyses:** [Downtime System Analysis](./downtime-system-analysis.md) | [Magic Item System Analysis](./magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md) | [Materials Mechanical Effects Analysis](./materials-mechanical-effects-analysis.md) | [Non-Magical Equipment Analysis](./equipment/non-magical-equipment-analysis.md)
 
 ---
 
@@ -487,7 +487,7 @@ Q7 essences are never purchasable — they must be quested for.
 
 ## 9. Magic Item Integration
 
-See [Enchantments & Magic Items Analysis](./enchantments-magic-items-analysis.md) for the full enchantment framework.
+See the [Magic Item System Analysis](./magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md) for the full enchantment framework.
 
 ### 9.1 Reagents as Enchantment Materials
 

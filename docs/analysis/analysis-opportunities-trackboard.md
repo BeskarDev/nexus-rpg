@@ -13,12 +13,12 @@ The following systems already have dedicated analysis reports:
 | Core dice mechanics & balance | `dice-mechanics-balance-analysis.md` |
 | Combat arts design | `combat-arts-design-analysis.md` |
 | Multi-hit damage interactions | `multi-hit-damage-interaction-analysis.md` |
-| Special materials | `materials-mechanical-effects-analysis.md` |
+| Special materials | `materials-mechanical-effects-analysis.md` (deep-dive) + `magic-items/catalogs/materials.md` (implementation spec) |
 | Alchemy & crafting system | `alchemy-crafting-system.md` |
 | Exploration crawl system | `exploration-crawl-system.md` |
 | Ability tags | `ability-tags.md` |
 | Downtime system | `downtime-system-analysis.md` |
-| Enchantments & magic items | `enchantments-magic-items-analysis.md` |
+| Enchantments & magic items | `magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` (+ `magic-items/catalogs/`) |
 | Creature creation & encounter building | `creature-creation-encounter-building-analysis.md` |
 | Non-magical equipment | `equipment/non-magical-equipment-analysis.md` |
 | Talent system (general) | `talents/TALENT_SYSTEM_ANALYSIS.md` |

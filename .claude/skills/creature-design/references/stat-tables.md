@@ -145,6 +145,6 @@ Every Elite/Lord needs at least one, matched to fighting style:
 
 **Abilities:**
 
-- **Elite Trigger — Desert Fury.** When the first life pool is depleted, the Sand Viper's rage awakens. Its Agility increases to d12 and it gains +2 weapon damage for the remainder of the scene.
-- **Sand Camouflage.** While in sandy terrain, gains +2 boons on Stealth rolls and can move through sand as if it were water.
+- **Elite Trigger — Desert Fury.** When the first life pool is depleted, the Sand Viper's rage awakens. Their Agility increases to d12 and they gain +2 weapon damage for the remainder of the scene.
+- **Sand Camouflage.** While in sandy terrain, they gain +2 boons on Stealth rolls and can move through sand as if it were water.
 - **Serpentine Dodge (Quick Action, Reactive).** When targeted by an attack, roll Agility + Athletics vs. TN 10. On a success, gain +2 Dodge against the triggering attack; strong success +4; critical +6 and move to an adjacent area without provoking attacks.

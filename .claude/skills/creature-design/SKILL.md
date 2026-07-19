@@ -7,20 +7,27 @@ description: "Design balanced, thematic creatures for Nexus RPG — stat blocks,
 
 Creatures are designed on a tier chassis (Tier 0–10, matching adventurer levels) with abilities layered on top for tactical identity. A single creature of a tier should challenge one adventurer of the same level.
 
-**All numeric tables (tier stats, size modifiers, immunity sets) live in [references/stat-tables.md](references/stat-tables.md) — use them exactly, do not derive stats from memory.** Core system mechanics and writing standards: [../game-basics.md](../game-basics.md).
+**All numeric tables (tier stats, size modifiers, immunity sets, validation checklist) live in [references/stat-tables.md](references/stat-tables.md) — use them exactly, do not derive stats from memory.** Core system mechanics and writing standards: [../game-basics.md](../game-basics.md).
 
-Existing creatures: `docs/08-creatures/03-creatures/tier-{0..10}.md`. Creature rules: `docs/08-creatures/02-creature-rules.md`. Deep analysis (survivability math, encounter building, ability catalogues): `docs/analysis/creature-creation-encounter-building-analysis.md`.
+## Source-of-Truth Map
 
-**Keyword discipline**: conditions only from `docs/05-combat/04-conditions.md`, durations only briefly/short/medium/long/very long (`docs/06-scenes/02-effect-durations.md`), weapon properties only from `docs/04-equipment/05-armor-weapon-properties.md` — complete lists in [../game-basics.md](../game-basics.md#canonical-keyword-sources).
+| What | Where |
+|------|-------|
+| Published creatures by tier | `docs/08-creatures/03-creatures/tier-{0..10}.md` |
+| Creature rules (categories, Morale, troops, triggers) | `docs/08-creatures/02-creature-rules.md` |
+| **Conditions** (official keyword list) | `docs/05-combat/04-conditions.md` |
+| **Effect durations** (briefly/short/medium/long/very long) | `docs/06-scenes/02-effect-durations.md` |
+| **Weapon/armor properties** | `docs/04-equipment/05-armor-weapon-properties.md` |
+| Published spells (for spellcasting creatures) | `docs/07-magic/02-arcane-spells/`, `04-mystic-spells/` |
+| Damage/healing scaling frameworks | `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6 and §16 |
+| Deep analysis (survivability math, encounter building, ability catalogues) | `docs/analysis/creature-creation-encounter-building-analysis.md` |
+| Creature Builder rule tables (app) | `src/utils/data/json/creature-*.json` |
+
+**Keyword discipline**: only official conditions, durations, and weapon properties — complete lists in [../game-basics.md](../game-basics.md#canonical-keyword-sources). Anything non-official must be spelled out as an exact mechanical effect.
 
 ## Design Principles
 
-1. **Stat chassis + ability menu** — the tier table provides the statistical foundation; abilities provide the tactical identity. Never let either carry the whole design.
-2. **Abilities over HP bloat** — durability comes from defensive abilities (damage reduction, condition immunity, regeneration), not inflated HP. Keeps fights snappy.
-3. **Damage threads the needle** — creature damage must threaten glass-cannon casters (16 HP, AV 2) without oppressing heavy-armor martials (20+ HP, AV 5–6). The linear +1 weapon damage per tier achieves this; don't break it.
-4. **Bounded complexity** — a creature should be buildable in under 5 minutes with this framework and immediately understandable at the table.
-5. **Adventurers don't heal on Wounds** — unlike Elite/Lord creatures, adventurers stay at 0 HP when Wounded. Party healing is their survival mechanism; factor this into lethality.
-6. **Thematic integration** — sword & sorcery, ancient-world aesthetic (Mesopotamian, Egyptian, Persian, mythological folklore). Every creature suggests its place in the world's ecology.
+**Binding rules distilled from owner feedback — [references/designer-principles.md](references/designer-principles.md) holds the full text.** Native principles 1–7 plus principles ported from the spell-design and talent-design corpora, and pointers to the shared spell-design wording/condition convention files that apply to creature text verbatim. Read it before any design pass. The most frequently load-bearing: stat chassis + ability menu, never one alone (1); abilities over HP bloat (2); damage threads the needle between casters and heavy martials (3); buildable in 5 minutes, understandable at the table (4); adventurers don't heal on Wounds — factor into lethality (5); ability output follows the spell scaling frameworks, spells verified to exist by grep (7); check every condition against its published definition — stunned doesn't disable, only paralyzed does (8); high-impact conditions need a save or rolled attack, never a no-roll trigger (9); defensive abilities and immunities need counterplay, no auto-win offense (10); limits live in the fiction (11); creatures are they/their/them, never it/its (shared wording conventions).
 
 ## Creature Categories
 
@@ -38,7 +45,7 @@ Life pool mechanics: when a pool hits 0 HP, the creature takes 1 Wound and immed
 
 - **Elite**: ≥1 **Elite Trigger** (fires when first pool depletes: power surge, ability unlock, or environmental change) and ≥1 Quick Action ability (reactive or proactive).
 - **Lord**: ≥2 **Lord Triggers** (fire when any pool depletes; each should shift combat dynamics) plus ≥1 reactive AND ≥1 proactive Quick Action ability.
-- **Elite/Lord**: ≥1 defensive ability fitting the fighting style — blocking, redirecting, evading, absorbing, negating, or environmental.
+- **Elite/Lord**: ≥1 defensive ability fitting the fighting style — blocking, redirecting, evading, absorbing, negating, or environmental (category table in references) — with counterplay per principle 10.
 
 ## Creation Workflow
 
@@ -61,22 +68,22 @@ Damage formula — always exactly:
 - **Weapon damage** = tier + 2 single-target; half that for multi-target
 - Write as `5/7/9 damage (base 5 + weapon 2)`.
 
-Use only official weapon properties (agile, crush, pierce, slash, reach, light, two-handed — see `docs/04-equipment/05-armor-weapon-properties.md`).
+Use only official weapon properties (`docs/04-equipment/05-armor-weapon-properties.md`).
 
 ### 4. Abilities
-- **Ability TN** = 6 + tier. Saves usually Spirit/Strength + Fortitude. Official durations only (briefly, short, medium, long, very long).
+- **Ability TN** = 6 + tier. Saves usually Spirit/Strength + Fortitude. Official durations only.
 - Add mandatory trigger/Quick Action/defensive abilities per category (above), then thematic abilities: movement, senses, auras, environmental manipulation.
-- **Damage/healing abilities beyond basic attacks** follow the system-wide scaling frameworks: damage per rank/tier from `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6 (AoE = half single-target), healing from §16 (single-target 1:1 with damage, Quick Action ½, AoE half; temp HP never stacks). A creature's ability output must stay consistent with what a same-tier caster could do.
-- **Spellcasting creatures**:
-  - Arcane = Mind + Arcana; Mystic = Spirit + Mysticism. Match magic type to creature nature.
-  - Max spell rank = the creature's skill rank in Arcana/Mysticism.
-  - Every referenced spell MUST exist in `docs/07-magic/02-arcane-spells/` or `docs/07-magic/04-mystic-spells/` — verify by grep, never import spells from other game systems.
+- Damage/healing beyond basic attacks and spellcasting rules: principle 7 — spell scaling frameworks, max spell rank = magic skill rank, every spell verified to exist by grep.
+- Condition-inflicting abilities: principles 8–9 — design against the published condition text, saves for high-impact conditions.
 
 ### 5. Size, Immunities, Resistances
-Apply size modifiers and category-appropriate immunity sets from references. Resistances = half damage, weaknesses = double damage. Match to creature-type logic — undead aren't immune to everything; living creatures aren't immune to bleeding.
+Apply size modifiers and category-appropriate immunity sets from references. Resistances = half damage, weaknesses = double damage. Match to creature-type logic — undead aren't immune to everything; living creatures aren't immune to bleeding. Immunity counterplay per principle 10.
 
-### 6. Validate
-Run the full checklist in [references/stat-tables.md](references/stat-tables.md#validation-checklist). Key failure modes:
+### 6. Write it into a draft document
+**Never straight into the published tier files.** Create (or append to) a batch file under the repo-root `.drafts/creatures/` (e.g. `.drafts/creatures/tier-<N>-batch.md`, or a concept-named file). The draft holds: a status banner ("pending owner approval, not yet published"), scope, per-creature design rationale (role, tier, category, any tier-adjustment justification), the full stat block in publish-ready format, and an "open questions for owner" section flagging unresolved forks. The draft is the review artifact; publication only happens after owner approval.
+
+### 7. Validate
+Run the full checklist in [references/stat-tables.md](references/stat-tables.md#validation-checklist), then sanity-check against 2–3 published creatures of the same tier and category — comparable power, no strict domination. Key failure modes:
 
 - ❌ Damage math like `6/10/14` (doubling the increment) — correct is base + 1×/2×/3× weapon: `6/8/10`.
 - ❌ Referencing undefined conditions ("cursed", "drained") — use official conditions or spell out mechanics ("+1 bane on all rolls").
@@ -84,7 +91,8 @@ Run the full checklist in [references/stat-tables.md](references/stat-tables.md#
 - ❌ AV or Resist raised without compensating reduction elsewhere.
 - ❌ Spells above skill rank or nonexistent in the spell lists.
 - ❌ Tier-inconsistent power (Tier 1 body with Tier 4 abilities).
-- ❌ Single-use "I win" abilities; effects must be counterable.
+- ❌ Single-use "I win" abilities; effects must be counterable (principle 10).
+- ❌ "It/its" for creatures — always they/their/them.
 
 ## Stat Block Template
 
@@ -116,15 +124,15 @@ Worked example (Elite with correct formats): see [references/stat-tables.md](ref
 
 ## Publication Pipeline
 
-A creature is a draft until the owner explicitly approves it as production-ready. Then:
+Every new creature starts life in a draft document under `.drafts/creatures/` (workflow step 6). A creature stays a draft until the owner explicitly approves it as production-ready. On approval, publish (then optionally delete or archive the draft file):
 
 1. **Docs** — insert the stat block into the matching tier file `docs/08-creatures/03-creatures/tier-<N>.md`, following that file's existing entry format and ordering.
 2. **Notion** — push via the `notion-sync` skill.
 
 No per-creature JSON exists — the `creature-*.json` files under `src/utils/data/json/` are the Creature Builder's **rule tables** (tier stats, sizes, types, archetypes). Only touch them when the creature *rules* change, not when adding individual creatures. If a rules change does affect them, update the JSON to stay consistent with `references/stat-tables.md` and the docs.
 
-Commit docs (and any JSON rule-table changes) together.
+Verify docs (and any JSON rule-table changes) agree, then stop — the owner commits manually.
 
 ## Designer Feedback Loop
 
-When the owner corrects a design decision during a session (a stat rule, a balance call, a thematic boundary), add it to the Design Principles above or the relevant workflow step so it persists for future sessions.
+When the owner corrects or refines a design decision in session (a balance call, a thematic boundary, a wording rule), append it to [references/designer-principles.md](references/designer-principles.md) (next free number, bolded one-line rule + reasoning + owner-ruling provenance, under the matching section — the file states the next free number). Numeric chassis corrections go into [references/stat-tables.md](references/stat-tables.md) instead. If it's frequently load-bearing, also add its one-line hook to the Design Principles section above. If the correction refines a *ported* principle, note the creature-side ruling there — never edit the spell-design or talent-design files from here. This is the accumulated design memory — it must grow. Keep SKILL.md itself lean: new lessons go into `references/`.
