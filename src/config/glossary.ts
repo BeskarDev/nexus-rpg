@@ -823,7 +823,7 @@ export const glossary: GlossaryEntry[] = [
 		summary:
 			'A crafting specialization (Alchemist, Smith, Woodworker, etc.) granting +1 boon on related crafting rolls.',
 		origin: 'Scenes',
-		link: '/docs/scenes/crafting-professions#list-of-professions',
+		link: '/docs/scenes/crafting-professions/overview#list-of-professions',
 	},
 
 	// ── Magic ────────────────────────────────────────────────────

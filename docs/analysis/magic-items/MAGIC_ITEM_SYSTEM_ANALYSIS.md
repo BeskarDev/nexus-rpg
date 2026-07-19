@@ -1,6 +1,6 @@
 # Magic Item System Analysis — Enchantments & Magic Items
 
-> **Scope:** Enchantment categories, options, scaling, gaps, the slotless utility item space, and special materials (added 2026-07-19). Successor to `docs/analysis/enchantments-magic-items-analysis.md` (converted to this folder structure and fully re-evaluated on 2026-07-19). Per-category design catalogs live in [catalogs/](catalogs/).
+> **Scope:** Enchantment categories, options, scaling, gaps, the slotless utility item space, and special materials (added 2026-07-19). Successor to `docs/analysis/enchantments-magic-items-analysis.md` (converted to this folder structure and fully re-evaluated on 2026-07-19). Per-category design catalogs live in the [catalogs/](catalogs/weapons.md) folder.
 >
 > **References:** [Enchantments](../../04-equipment/07-magic-items/enchantments.md) | [Cost Tables](../../04-equipment/07-magic-items/cost-tables.md) | [Effects](../../04-equipment/07-magic-items/effects.md) | [Materials](../../04-equipment/07-magic-items/materials.md) | [Curses](../../04-equipment/07-magic-items/curses.mdx) | [Travel](../../06-scenes/07-challenges/02-travel.md) | [Social Intrigue](../../06-scenes/07-challenges/01-social-intrigue.md) | [Field Alchemy](../../06-scenes/05-crafting-professions/01-field-alchemy.md) | [Harvesting](../../06-scenes/06-harvesting-creature-parts.md) | [Conditions](../../05-combat/04-conditions.md)
 >

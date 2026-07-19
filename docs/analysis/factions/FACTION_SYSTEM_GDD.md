@@ -8,7 +8,7 @@
 >
 > **Companion files:** [Faction Catalog](faction-catalog.md) (types, tags, goals, assets, weaknesses, signs — all pick-or-roll)
 >
-> **References:** [Scenes & Time Scales](../../06-scenes/01-scenes-time-intervals.md) (dice timers, event die) | [NPC Relations](../../02-adventurers/05-npc-relations.md) (disposition scale) | [Domain System GDD](../domain/DOMAIN_SYSTEM_GDD.md) (party-side counterpart) | [Random Tables](../../10-gm-tools/01-random-tables/) (format model)
+> **References:** [Scenes & Time Scales](../../06-scenes/01-scenes-time-intervals.md) (dice timers, event die) | [NPC Relations](../../02-adventurers/05-npc-relations.md) (disposition scale) | [Domain System GDD](../domain/DOMAIN_SYSTEM_GDD.md) (party-side counterpart) | [Random Tables](../../10-gm-tools/01-random-tables/05-random-treasure.mdx) (format model)
 
 ---
 

@@ -219,10 +219,10 @@ export const keywords: Record<string, string> = {
 	'short break': '/docs/scenes/resting#a-short-break',
 	"night's rest": '/docs/scenes/resting#a-nights-rest',
 	'bad night': '/docs/scenes/resting#a-bad-night',
-	profession: '/docs/scenes/crafting-professions#list-of-professions',
-	professions: '/docs/scenes/crafting-professions#list-of-professions',
-	Profession: '/docs/scenes/crafting-professions#list-of-professions',
-	Professions: '/docs/scenes/crafting-professions#list-of-professions',
+	profession: '/docs/scenes/crafting-professions/overview#list-of-professions',
+	professions: '/docs/scenes/crafting-professions/overview#list-of-professions',
+	Profession: '/docs/scenes/crafting-professions/overview#list-of-professions',
+	Professions: '/docs/scenes/crafting-professions/overview#list-of-professions',
 
 	// Magic
 	Focus: '/docs/magic/magic-spells#focus',
