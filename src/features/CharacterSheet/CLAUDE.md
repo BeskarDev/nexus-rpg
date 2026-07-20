@@ -55,7 +55,7 @@ Forms use react-hook-form + Yup via helper functions (no wrapper components) —
 
 ## Derived Values
 
-Pure calculation functions in `utils/` (`calculateHp`, `calculateDefenses`, `calculateFocus`, `calculateCharacterLevel`, `calculateTalentPoints`, …) with Vitest tests in `utils/__tests__/`. Add tests there when touching derivation logic (`yarn test`).
+Pure calculation functions in `utils/` (`calculateHp`, `calculateDefenses`, `calculateFocus`, `calculateCharacterLevel`, `calculateTalentPoints`, …) with Vitest tests in `utils/__tests__/`. Add tests there when touching derivation logic (`bun run test`).
 
 ## Conventions
 

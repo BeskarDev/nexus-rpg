@@ -14,7 +14,7 @@ on:
         type: choice
         options:
           - auto
-          - yarn
+          - bun
           - skip
   # Triggered when Copilot agents need environment setup
   repository_dispatch:
@@ -27,7 +27,7 @@ jobs:
   copilot-setup-steps:
     runs-on: ubuntu-latest
     name: Setup Copilot Agent Environment
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -39,43 +39,39 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          # Don't use built-in cache here, we'll handle it manually for flexibility
-          cache: ''
-          
-      - name: Verify Node.js version
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.2
+
+      - name: Verify versions
         run: |
           echo "Node.js version: $(node --version)"
-          echo "Yarn version: $(yarn --version)"
-          echo "NPM version: $(npm --version)"
+          echo "Bun version: $(bun --version)"
           # Ensure we're using the correct Node.js version
           if ! node --version | grep -q "v24"; then
             echo "ERROR: Expected Node.js v24.x.x but got $(node --version)"
             exit 1
           fi
 
-      - name: Detect package manager
-        id: detect-pm
-        run: |
-          echo "package_manager=yarn" >> $GITHUB_OUTPUT
-          echo "lockfile=yarn.lock" >> $GITHUB_OUTPUT
-
-      - name: Cache dependencies (Yarn)
-        if: steps.detect-pm.outputs.package_manager == 'yarn'
+      - name: Cache dependencies
+        if: ${{ github.event.inputs.cache_strategy != 'skip' }}
         uses: actions/cache@v4
         with:
           path: |
-            ~/.cache/yarn
+            ~/.bun/install/cache
             node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-bun-
 
-      - name: Install dependencies (Yarn)
-        if: steps.detect-pm.outputs.package_manager == 'yarn'
+      - name: Install dependencies
+        if: ${{ github.event.inputs.cache_strategy != 'skip' }}
         run: |
-          echo "Installing dependencies with Yarn..."
-          yarn install --frozen-lockfile --prefer-offline
-          echo "Yarn installation completed"
+          echo "Installing dependencies with Bun..."
+          bun install --frozen-lockfile
+          echo "Bun installation completed"
 
       - name: Run agent setup script
         run: |
@@ -89,18 +85,13 @@ jobs:
           fi
 
       - name: Verify installation
-        if: steps.detect-pm.outputs.package_manager != 'skip'
+        if: ${{ github.event.inputs.cache_strategy != 'skip' }}
         run: |
           echo "Verifying installation..."
           echo "Node.js version: $(node --version)"
-          echo "Yarn version: $(yarn --version)"
-          echo "NPM version: $(npm --version)"
+          echo "Bun version: $(bun --version)"
           echo "Checking if Docusaurus is available..."
-          if [[ "${{ steps.detect-pm.outputs.package_manager }}" == "yarn" ]]; then
-            yarn docusaurus --version
-          else
-            npx docusaurus --version
-          fi
+          bun run docusaurus --version
 
       - name: Create agent environment summary
         run: |
@@ -108,15 +99,15 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Environment Details:**" >> $GITHUB_STEP_SUMMARY
           echo "- Node.js: $(node --version)" >> $GITHUB_STEP_SUMMARY
-          echo "- Package Manager: ${{ steps.detect-pm.outputs.package_manager }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Lockfile: ${{ steps.detect-pm.outputs.lockfile }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Package Manager: bun $(bun --version)" >> $GITHUB_STEP_SUMMARY
+          echo "- Lockfile: bun.lock" >> $GITHUB_STEP_SUMMARY
           echo "- Repository: ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
           echo "- Branch: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Available Commands:**" >> $GITHUB_STEP_SUMMARY
-          echo "- \`yarn start\` - Start development server" >> $GITHUB_STEP_SUMMARY
-          echo "- \`yarn build\` - Build the site" >> $GITHUB_STEP_SUMMARY
-          echo "- \`yarn serve\` - Serve built site" >> $GITHUB_STEP_SUMMARY
-          echo "- \`yarn test:run\` - Run integration tests" >> $GITHUB_STEP_SUMMARY
+          echo "- \`bun run start\` - Start development server" >> $GITHUB_STEP_SUMMARY
+          echo "- \`bun run build\` - Build the site" >> $GITHUB_STEP_SUMMARY
+          echo "- \`bun run serve\` - Serve built site" >> $GITHUB_STEP_SUMMARY
+          echo "- \`bun run test:run\` - Run integration tests" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Project Type:** Nexus RPG Documentation (Docusaurus)" >> $GITHUB_STEP_SUMMARY

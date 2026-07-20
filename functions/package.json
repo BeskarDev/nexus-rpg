@@ -5,16 +5,16 @@
 	"scripts": {
 		"build": "tsc",
 		"build:watch": "tsc --watch",
-		"serve": "yarn build && firebase emulators:start --only functions",
-		"shell": "yarn build && firebase functions:shell",
-		"start": "yarn shell",
+		"serve": "bun run build && firebase emulators:start --only functions",
+		"shell": "bun run build && firebase functions:shell",
+		"start": "bun run shell",
 		"deploy": "firebase deploy --only functions",
 		"logs": "firebase functions:log"
 	},
 	"engines": {
 		"node": ">=22"
 	},
-	"packageManager": "yarn@1.22.0",
+	"packageManager": "bun@1.2.2",
 	"main": "lib/index.js",
 	"dependencies": {
 		"firebase-admin": "^12.0.0",

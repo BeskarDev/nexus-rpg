@@ -14,13 +14,13 @@ Docusaurus 3.8+, React 18, Redux Toolkit, Material-UI 5, Firebase 10+ (auth, Fir
 ## Commands
 
 ```bash
-yarn start            # Dev server (localhost:3000)
-yarn build            # Production build
-yarn deploy           # Build + Firebase deploy
-yarn test             # Vitest run
-yarn lint-check       # ESLint + tsc --noEmit
-yarn format           # Prettier
-yarn creature:build   # Creature builder CLI
+bun run start         # Dev server (localhost:3000)
+bun run build         # Production build
+bun run deploy        # Build + Firebase deploy
+bun run test          # Vitest run
+bun run lint-check    # ESLint + tsc --noEmit
+bun run format        # Prettier
+bun run creature:build # Creature builder CLI
 ```
 
 ## Repository Map

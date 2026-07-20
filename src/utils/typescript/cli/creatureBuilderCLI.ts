@@ -15,16 +15,16 @@
  * @usage
  * ```bash
  * # From JSON file
- * npm run creature:build < creature.json
+ * bun run creature:build < creature.json
  *
  * # From stdin
- * echo '{"tier": 2, "category": "Basic", ...}' | npm run creature:build
+ * echo '{"tier": 2, "category": "Basic", ...}' | bun run creature:build
  *
  * # Direct execution
  * npx tsx src/utils/creatureBuilderCLI.ts < creature.json
  *
  * # Save to file
- * npm run creature:build < input.json > output.md
+ * bun run creature:build < input.json > output.md
  * ```
  *
  * @input-format
@@ -410,7 +410,7 @@ async function main() {
 
 		if (!inputStr.trim()) {
 			console.error('Error: No input provided')
-			console.error('Usage: npm run creature:build < creature.json')
+			console.error('Usage: bun run creature:build < creature.json')
 			console.error('See JSDoc in creatureBuilderCLI.ts for JSON schema')
 			process.exit(1)
 		}

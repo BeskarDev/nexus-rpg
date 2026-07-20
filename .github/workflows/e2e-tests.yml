@@ -21,27 +21,31 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: '24'
-        cache: 'yarn'
-    
-    - name: Cache yarn dependencies
+
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: 1.2.2
+
+    - name: Cache dependencies
       uses: actions/cache@v4
-      id: yarn-cache
+      id: bun-cache
       with:
         path: |
-          ~/.cache/yarn
+          ~/.bun/install/cache
           node_modules
-        key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+        key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
         restore-keys: |
-          ${{ runner.os }}-yarn-
-    
+          ${{ runner.os }}-bun-
+
     - name: Install dependencies
-      run: yarn install --frozen-lockfile --prefer-offline
-    
+      run: bun install --frozen-lockfile
+
     - name: Build application
-      run: yarn build
-    
+      run: bun run build
+
     - name: Run Integration Tests
-      run: yarn test:run
+      run: bun run test:run
     
     - name: Upload Test Results
       uses: actions/upload-artifact@v4

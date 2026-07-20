@@ -75,46 +75,35 @@ EOF
 
 log_success "Created .env.agent configuration file"
 
-# Set up agent-specific npm/yarn scripts
+# Set up agent-specific bun scripts
 log_info "Configuring agent-optimized commands..."
 
 # Check if this is a development environment setup
 if [[ "${GITHUB_ACTIONS}" == "true" ]]; then
     log_info "Running in GitHub Actions environment"
-    
-    # Optimize for CI/agent usage
-    if command -v yarn &> /dev/null && [[ -f "yarn.lock" ]]; then
-        log_info "Configuring Yarn for agent mode..."
-        yarn config set network-timeout 300000
-        yarn config set cache-folder ~/.cache/yarn
-    elif command -v npm &> /dev/null; then
-        log_info "Configuring NPM for agent mode..."
-        npm config set fetch-timeout 300000
-        npm config set cache ~/.cache/npm
+
+    if ! command -v bun &> /dev/null; then
+        log_error "bun not found on PATH. Install bun before running agent setup."
+        exit 1
     fi
+    log_info "Using bun $(bun --version) for agent mode"
 fi
 
 # Validate Docusaurus installation
 log_info "Validating Docusaurus installation..."
 
-if command -v yarn &> /dev/null && [[ -f "yarn.lock" ]]; then
-    if yarn docusaurus --version &> /dev/null; then
-        log_success "Docusaurus is properly installed and accessible via Yarn"
-        DOCUSAURUS_VERSION=$(yarn docusaurus --version 2>/dev/null | head -n1)
+if command -v bun &> /dev/null; then
+    if bun run docusaurus --version &> /dev/null; then
+        log_success "Docusaurus is properly installed and accessible via bun"
+        DOCUSAURUS_VERSION=$(bun run docusaurus --version 2>/dev/null | head -n1)
         log_info "Docusaurus version: ${DOCUSAURUS_VERSION}"
     else
         log_error "Docusaurus is not properly installed or accessible"
         exit 1
     fi
-elif command -v npm &> /dev/null; then
-    if npx docusaurus --version &> /dev/null; then
-        log_success "Docusaurus is properly installed and accessible via NPM"
-        DOCUSAURUS_VERSION=$(npx docusaurus --version 2>/dev/null | head -n1)
-        log_info "Docusaurus version: ${DOCUSAURUS_VERSION}"
-    else
-        log_error "Docusaurus is not properly installed or accessible"
-        exit 1
-    fi
+else
+    log_error "bun not found on PATH. Install bun before running agent setup."
+    exit 1
 fi
 
 # Create helpful aliases for agents
@@ -127,25 +116,25 @@ cat > .copilot-commands.md << EOF
 ## Available Commands
 
 ### Development
-- \`yarn start\` - Start development server (with hot reload)
-- \`yarn build\` - Build the production site
-- \`yarn serve\` - Serve the built site locally
-- \`yarn clear\` - Clear Docusaurus cache
+- \`bun run start\` - Start development server (with hot reload)
+- \`bun run build\` - Build the production site
+- \`bun run serve\` - Serve the built site locally
+- \`bun run clear\` - Clear Docusaurus cache
 
 ### Testing
-- \`yarn test\` - Run integration tests in watch mode
-- \`yarn test:run\` - Run integration tests once (CI mode)
-- \`yarn test:ui\` - Run tests with interactive UI
-- \`yarn test:coverage\` - Run tests with coverage report
+- \`bun run test\` - Run integration tests in watch mode
+- \`bun run test:run\` - Run integration tests once (CI mode)
+- \`bun run test:ui\` - Run tests with interactive UI
+- \`bun run test:coverage\` - Run tests with coverage report
 
 ### Formatting & Quality
-- \`yarn format\` - Format code with Prettier
-- \`yarn tsc:check\` - TypeScript type checking
+- \`bun run format\` - Format code with Prettier
+- \`bun run tsc:check\` - TypeScript type checking
 
 ### Firebase Deployment
-- \`yarn deploy\` - Build and deploy to Firebase
-- \`yarn firebase:login\` - Login to Firebase
-- \`yarn firebase:deploy\` - Deploy to Firebase (after build)
+- \`bun run deploy\` - Build and deploy to Firebase
+- \`bun run firebase:login\` - Login to Firebase
+- \`bun run firebase:deploy\` - Deploy to Firebase (after build)
 
 ## Project Structure
 - \`docs/\` - Markdown documentation files
@@ -160,7 +149,7 @@ cat > .copilot-commands.md << EOF
 - \`sidebars.js\` - Documentation navigation
 
 ## Tips for Agents
-1. Use \`yarn start\` to preview changes in real-time
+1. Use \`bun run start\` to preview changes in real-time
 2. Documentation is in Markdown with MDX support
 3. The site auto-rebuilds when files change
 4. Check \`docusaurus.config.js\` for site configuration
@@ -185,10 +174,9 @@ if [[ "${GITHUB_ACTIONS}" == "true" ]]; then
     log_info "Skipping build test in CI environment"
 else
     log_info "Testing build process..."
-    if command -v yarn &> /dev/null && [[ -f "yarn.lock" ]]; then
-        if yarn build --out-dir /tmp/test-build &> /dev/null; then
+    if command -v bun &> /dev/null; then
+        if bun run build &> /dev/null; then
             log_success "Build test passed"
-            rm -rf /tmp/test-build
         else
             log_warning "Build test failed, but continuing setup"
         fi
@@ -203,11 +191,11 @@ echo "=================================="
 echo ""
 echo "📋 Environment Summary:"
 echo "   • Agent mode: Enabled"
-echo "   • Package manager: $(command -v yarn &> /dev/null && echo "Yarn" || echo "NPM")"
+echo "   • Package manager: $(command -v bun &> /dev/null && echo "bun $(bun --version)" || echo "unknown")"
 echo "   • Docusaurus: Ready"
 echo "   • Environment config: .env.agent"
 echo "   • Quick reference: .copilot-commands.md"
 echo ""
 echo "🚀 Ready for agent operations!"
-echo "   Use 'yarn start' to begin development"
+echo "   Use 'bun run start' to begin development"
 echo ""
