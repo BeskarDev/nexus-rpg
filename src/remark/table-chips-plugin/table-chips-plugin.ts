@@ -1,20 +1,18 @@
 import { Node, Parent } from 'unist'
 import { visitParents } from 'unist-util-visit-parents'
 import { chipMappings } from './chip-mappings'
-import { isBlacklisted, BlacklistContext } from '../blacklist'
+import { processText, InlineNode } from '../shared/tokenize'
+import { getTableCellContext } from '../shared/table-context'
+import { hasDamageContext } from '../shared/context'
 
 /**
  * A remark plugin to automatically convert specific keywords in all text to colored chips.
  * Transforms damage types, skills, weapon categories, and attributes as specified.
- * Also respects the blacklist configuration to prevent unwanted conversions.
+ * Context heuristics (headings/bold/table-header suppression, damage-number
+ * gating) keep flavor uses of these words from being chipped.
  */
 const tableChipsPlugin = (options = {}) => {
 	return (tree, file) => {
-		// Track keyword match counts for blacklist checking
-		const keywordMatchCounts = new Map<string, number>()
-
-		// Extract file path for blacklist context
-		const filePath = file?.path || file?.history?.[0] || ''
 
 		visitParents(
 			tree,
@@ -31,24 +29,29 @@ const tableChipsPlugin = (options = {}) => {
 					return
 				}
 
-				// Skip if this text node is inside a link or heading anywhere up
-				// the tree. Chips render as anchors, so building one inside an
-				// existing link would produce invalid nested anchors.
+				// Never chip text inside a heading, link, or bold span, checked
+				// across the full ancestor chain. Bold is skipped so that bolded
+				// ability/attack names in stat blocks (e.g. **Poison Bite**,
+				// **Undead Nature**) stay plain instead of chipping a word of the
+				// name. Links are skipped because chips render as anchors and a
+				// nested anchor would be invalid. The effect text after a bold
+				// name is not bold, so it still chips normally.
 				if (
 					ancestors.some(
 						(ancestor) =>
-							ancestor.type === 'heading' || ancestor.type === 'link',
+							ancestor.type === 'heading' ||
+							ancestor.type === 'link' ||
+							ancestor.type === 'strong',
 					)
 				) {
 					return
 				}
 
-				// Skip table headers (single words in table cells)
-				if (
-					parent.type === 'tableCell' &&
-					parent.children.length <= 1 &&
-					node.value.split(' ').length <= 1
-				) {
+				// Skip table header cells. Real structure lookup (first table row)
+				// replaces the old single-word-cell proxy: it catches multi-word
+				// headers ("AV (light / heavy)") and no longer skips legitimate
+				// single-word body cells.
+				if (getTableCellContext(ancestors).isHeaderRow) {
 					return // Skip transformation in table headers
 				}
 
@@ -91,110 +94,55 @@ const tableChipsPlugin = (options = {}) => {
 					}
 				}
 
-				// Split text into words and punctuation while preserving spaces and special characters
-				const wordsWithSpaces = node.value.split(
-					/(\s+|[.,!?;:"'(){}[\]/\\+*])/,
-				)
-				let hasChip = false
-				const processedWords: any[] = []
-				let i = 0
-
-				while (i < wordsWithSpaces.length) {
-					const current = wordsWithSpaces[i]
-
-					if (i % 2 === 1 || /^[.,!?;:"'(){}[\]/\\+*-]$/.test(current)) {
-						// If it's a space or punctuation, add it directly
-						processedWords.push({
-							type: 'text',
-							value: current,
-							processed: true,
-						})
-						i++
-						continue
-					}
-
-					let match = null
-					let matchLength = 0
-
-					// Check for multi-word keywords starting from the current word
-					for (let j = i; j < wordsWithSpaces.length; j += 2) {
-						const phrase = wordsWithSpaces
-							.slice(i, j + 1)
-							.filter(
-								(_, idx) =>
-									idx % 2 === 0 ||
-								/^[.,!?;:"'(){}[\]/\\+*]$/.test(wordsWithSpaces[idx]),
-							)
-							.join(' ')
-
-						if (chipMap.has(phrase)) {
-							// Always prioritize the longest match
-							match = phrase
-							matchLength = j - i + 1
-						}
-					}
-
-					if (match) {
-						// Get current match count for this keyword
-						const currentCount = keywordMatchCounts.get(match) || 0
-
-						// Create blacklist context
-						const blacklistContext: BlacklistContext = {
-							filePath,
-							pluginType: 'table-chips',
-						}
-
-						// Check if this match should be blacklisted
-						const shouldExclude = isBlacklisted(
-							match,
-							blacklistContext,
-							currentCount,
-						)
-
-						// Increment match count
-						keywordMatchCounts.set(match, currentCount + 1)
-
-						if (!shouldExclude) {
-							hasChip = true
+				const { nodes: processedWords, changed: hasChip } = processText(
+					node.value,
+					chipMap,
+					{
+						onKeyword: (match, context) => {
 							const chipInfo = chipMap.get(match)
+
+							// Damage-type words are common in prose ("shimmer of fire").
+							// Only chip them when a damage number / dice / damage word
+							// sits nearby, so flavor mentions stay plain.
+							if (
+								chipInfo.type === 'damage' &&
+								!hasDamageContext(
+									context.precedingText,
+									context.followingText,
+								)
+							) {
+								return null
+							}
+
 							const displayText = chipInfo.displayText || match
-							processedWords.push({
-								type: 'link',
-								url: '#', // Dummy URL since we just want a styled span
-								children: [
-									{ type: 'text', value: displayText, processed: true },
-								],
-								data: {
-									hProperties: {
-										className: [
-											`chip`,
-											`chip--${chipInfo.color}`,
-											`chip--${chipInfo.type}`,
-										],
-										'data-chip-type': chipInfo.type,
-										'aria-label': `${chipInfo.type}: ${match}`,
-										role: 'button',
+							return [
+								{
+									type: 'link',
+									url: '#', // Dummy URL since we just want a styled span
+									children: [
+										{ type: 'text', value: displayText, processed: true },
+									],
+									data: {
+										hProperties: {
+											className: [
+												`chip`,
+												`chip--${chipInfo.color}`,
+												`chip--${chipInfo.type}`,
+											],
+											'data-chip-type': chipInfo.type,
+											'aria-label': `${chipInfo.type}: ${match}`,
+											role: 'button',
+										},
 									},
+									processed: true,
 								},
-								processed: true,
-							})
-							i += matchLength // Skip the matched words and spaces
-						} else {
-							// Treat as regular text since it's blacklisted
-							const word = current
-							processedWords.push({
-								type: 'text',
-								value: word,
-								processed: true,
-							})
-							i++
-						}
-					} else {
-						const word = current
-						processedWords.push({ type: 'text', value: word, processed: true })
-						i++
-					}
-				}
+							]
+						},
+						onText: (word): InlineNode[] => [
+							{ type: 'text', value: word, processed: true },
+						],
+					},
+				)
 
 				if (hasChip) {
 					// Replace the current node with the processed nodes
