@@ -1,5 +1,5 @@
 import { Node, Parent } from 'unist'
-import { visit } from 'unist-util-visit'
+import { visitParents } from 'unist-util-visit-parents'
 import { chipMappings } from './chip-mappings'
 import { isBlacklisted, BlacklistContext } from '../blacklist'
 
@@ -16,27 +16,35 @@ const tableChipsPlugin = (options = {}) => {
 		// Extract file path for blacklist context
 		const filePath = file?.path || file?.history?.[0] || ''
 
-		visit(
+		visitParents(
 			tree,
 			'text',
 			(
 				node: Node & { value: string; processed?: boolean },
-				index: number,
-				parent: Parent & { type: string; children: any[] },
+				ancestors: (Parent & { type: string; children: any[] })[],
 			) => {
-				// Skip nodes that are already processed
-				if (node.processed) {
+				const parent = ancestors[ancestors.length - 1]
+				const index = parent ? parent.children.indexOf(node as any) : -1
+
+				// Skip nodes that are already processed or detached
+				if (node.processed || !parent || index === -1) {
 					return
 				}
 
-				// Skip if this text node is within a heading
-				if (parent && parent.type === 'heading') {
-					return // Skip transformation in headings
+				// Skip if this text node is inside a link or heading anywhere up
+				// the tree. Chips render as anchors, so building one inside an
+				// existing link would produce invalid nested anchors.
+				if (
+					ancestors.some(
+						(ancestor) =>
+							ancestor.type === 'heading' || ancestor.type === 'link',
+					)
+				) {
+					return
 				}
 
 				// Skip table headers (single words in table cells)
 				if (
-					parent &&
 					parent.type === 'tableCell' &&
 					parent.children.length <= 1 &&
 					node.value.split(' ').length <= 1

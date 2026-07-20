@@ -1,5 +1,5 @@
 import { Node, Parent } from 'unist'
-import { visit } from 'unist-util-visit'
+import { visitParents } from 'unist-util-visit-parents'
 import { keywords } from './keywords'
 import { isBlacklisted, BlacklistContext } from '../blacklist'
 
@@ -17,19 +17,30 @@ const autoKeywordPlugin = (options) => {
 
 		// Extract file path for blacklist context
 		const filePath = file?.path || file?.history?.[0] || ''
-		visit(
+		visitParents(
 			tree,
 			'text',
 			(
 				node: Node & { value: string; processed: boolean },
-				index: number,
-				parent: Parent & { name: string },
+				ancestors: (Parent & { name?: string })[],
 			) => {
-				// Ensure the parent exists, is not a heading, and the node is plain text
+				const parent = ancestors[ancestors.length - 1] as Parent & {
+					name: string
+				}
+				const index = parent ? parent.children.indexOf(node as any) : -1
+
+				// Skip when the text lives anywhere inside a link or heading
+				// (checking the full ancestor chain, not just the immediate
+				// parent, so keywords nested in emphasis/other inline wrappers
+				// don't produce invalid nested anchors), the immediate parent is
+				// bold or a single-word table cell, or the node is already processed.
 				if (
 					!parent ||
-					parent.type === 'heading' ||
-					parent.type === 'link' ||
+					index === -1 ||
+					ancestors.some(
+						(ancestor) =>
+							ancestor.type === 'heading' || ancestor.type === 'link',
+					) ||
 					parent.type === 'strong' ||
 					(parent.type === 'tableCell' &&
 						parent.children.length <= 1 &&

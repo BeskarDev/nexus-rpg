@@ -1,11 +1,46 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github')
-const darkCodeTheme = require('prism-react-renderer/themes/dracula')
+const { themes: prismThemes } = require('prism-react-renderer')
+const lightCodeTheme = prismThemes.github
+const darkCodeTheme = prismThemes.dracula
 
 const autoKeywordPlugin = require('./src/remark/auto-keyword-plugin')
 const tableChipsPlugin = require('./src/remark/table-chips-plugin')
+
+// Load .env into process.env so the Firebase config can be injected into the
+// client bundle at build time (the values are public Firebase web config).
+require('dotenv').config({ quiet: true })
+
+const FIREBASE_ENV_KEYS = [
+	'FIREBASE_API_KEY',
+	'FIREBASE_AUTH_DOMAIN',
+	'FIREBASE_PROJECT_ID',
+	'FIREBASE_STORAGE_BUCKET',
+	'MESSAGING_SENDER_ID',
+	'APP_ID',
+	'MEASUREMENT_ID',
+]
+
+// Inject the Firebase env vars via the current bundler's DefinePlugin. This
+// works with both webpack and Rspack, replacing docusaurus-plugin-dotenv
+// (which is webpack-only and blocks the faster Rspack bundler).
+function firebaseEnvPlugin() {
+	return {
+		name: 'firebase-env-plugin',
+		configureWebpack(_config, _isServer, { currentBundler }) {
+			const definitions = Object.fromEntries(
+				FIREBASE_ENV_KEYS.map((key) => [
+					`process.env.${key}`,
+					JSON.stringify(process.env[key] ?? ''),
+				]),
+			)
+			return {
+				plugins: [new currentBundler.instance.DefinePlugin(definitions)],
+			}
+		},
+	}
+}
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -20,13 +55,25 @@ const config = {
 	// For GitHub pages deployment, it is often '/<projectName>/'
 	baseUrl: '/',
 
-	// GitHub pages deployment config.
-	// If you aren't using GitHub pages, you don't need these.
-	organizationName: 'facebook', // Usually your GitHub org/user name.
-	projectName: 'docusaurus', // Usually your repo name.
+	// Repository metadata (used for edit links and deployment tooling).
+	organizationName: 'BeskarDev', // GitHub org/user name.
+	projectName: 'nexus-rpg', // Repo name.
 
 	onBrokenLinks: 'throw',
-	onBrokenMarkdownLinks: 'warn',
+
+	// Opt into the full Rust-based build toolchain (Rspack bundler, SWC
+	// transpile/minify, Lightning CSS) plus the v4 future flags so the site
+	// is ready for the next major.
+	future: {
+		v4: true,
+		faster: true,
+	},
+
+	markdown: {
+		hooks: {
+			onBrokenMarkdownLinks: 'warn',
+		},
+	},
 
 	// Even if you don't use internalization, you can use this field to set useful
 	// metadata like html lang. For example, if your site is Chinese, you may want
@@ -188,16 +235,7 @@ const config = {
 			},
 		}),
 
-	plugins: [
-		require.resolve('docusaurus-plugin-image-zoom'),
-		[
-			'docusaurus-plugin-dotenv',
-			{
-				path: './.env',
-				systemvars: true,
-			},
-		],
-	],
+	plugins: [require.resolve('docusaurus-plugin-image-zoom'), firebaseEnvPlugin],
 
 	presets: [
 		[
