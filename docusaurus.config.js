@@ -9,6 +9,7 @@ const darkCodeTheme = prismThemes.gruvboxMaterialDark
 
 const autoKeywordPlugin = require('./src/remark/auto-keyword-plugin')
 const tableChipsPlugin = require('./src/remark/table-chips-plugin')
+const chapterSigilPlugin = require('./src/remark/chapter-sigil-plugin')
 
 // Load .env into process.env so the Firebase config can be injected into the
 // client bundle at build time (the values are public Firebase web config).
@@ -99,8 +100,9 @@ const config = {
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
-			// Replace with your project's social card
-			image: 'img/docusaurus-social-card.jpg',
+			// Branded social card: parchment + bronze frame, Cinzel title, rune
+			// sigil (M4 Half B). Generated at 1200x630 from the codex tokens.
+			image: 'img/social-card.png',
 			colorMode: {
 				// Parchment is the hero look: light by default, system pref respected.
 				defaultMode: 'light',
@@ -118,69 +120,84 @@ const config = {
 					alt: 'Nexus RPG logo',
 					src: 'img/logo.png',
 				},
+				// Chapter sigils replace the old emoji labels — one mark per chapter
+				// from the shared SigilIcon set (rendered via the `navbar-sigil--*`
+				// mask rules in custom.css). Labels stay as plain text; the two
+				// right-side items keep `navbar-icon-with-label` so they show the
+				// sigil only on desktop (label restored on mobile).
 				items: [
 					{
 						type: 'docSidebar',
 						sidebarId: 'basicRulesSidebar',
 						position: 'left',
-						label: '🎲 Basic Rules',
+						label: 'Basic Rules',
+						className: 'navbar-sigil navbar-sigil--sun',
 					},
 					{
 						type: 'docSidebar',
 						sidebarId: 'adventurerSidebar',
 						position: 'left',
-						label: '👳‍♂️ Adventurers',
+						label: 'Adventurers',
+						className: 'navbar-sigil navbar-sigil--ziggurat',
 					},
 					{
 						type: 'docSidebar',
 						sidebarId: 'statisticsSidebar',
 						position: 'left',
-						label: '📊 Statistics',
+						label: 'Statistics',
+						className: 'navbar-sigil navbar-sigil--tablet',
 					},
 					{
 						type: 'docSidebar',
 						sidebarId: 'equipmentSidebar',
 						position: 'left',
-						label: '👜 Equipment',
+						label: 'Equipment',
+						className: 'navbar-sigil navbar-sigil--anvil',
 					},
 					{
 						type: 'docSidebar',
 						sidebarId: 'combatSidebar',
 						position: 'left',
-						label: '⚔ Combat',
+						label: 'Combat',
+						className: 'navbar-sigil navbar-sigil--blades',
 					},
 					{
 						type: 'docSidebar',
 						sidebarId: 'sceneSidebar',
 						position: 'left',
-						label: '⏳ Scenes',
+						label: 'Scenes',
+						className: 'navbar-sigil navbar-sigil--hourglass',
 					},
 					{
 						type: 'docSidebar',
 						sidebarId: 'magicSidebar',
 						position: 'left',
-						label: '🧙‍♂️ Magic',
+						label: 'Magic',
+						className: 'navbar-sigil navbar-sigil--rune',
 					},
 					{
 						type: 'docSidebar',
 						sidebarId: 'creatureSidebar',
 						position: 'left',
-						label: '🐲 Creatures',
+						label: 'Creatures',
+						className: 'navbar-sigil navbar-sigil--serpent',
 					},
 					{
 						type: 'docSidebar',
 						sidebarId: 'gmToolsSidebar',
 						position: 'right',
-						label: '⚙️ GM Tools',
-						className: 'navbar-icon-with-label',
+						label: 'GM Tools',
+						className:
+							'navbar-sigil navbar-sigil--key navbar-icon-with-label',
 						title: 'GM Tools',
 					},
 					{
 						type: 'docSidebar',
 						sidebarId: 'characterSheetSidebar',
 						position: 'right',
-						label: '📜 Characters',
-						className: 'navbar-icon-with-label',
+						label: 'Characters',
+						className:
+							'navbar-sigil navbar-sigil--scroll navbar-icon-with-label',
 						title: 'Character Sheet',
 					},
 					{
@@ -227,7 +244,11 @@ const config = {
 			({
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
-					remarkPlugins: [tableChipsPlugin, autoKeywordPlugin],
+					remarkPlugins: [
+						chapterSigilPlugin,
+						tableChipsPlugin,
+						autoKeywordPlugin,
+					],
 				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),

@@ -55,7 +55,7 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 			<Card variant="outlined">
 				<CardContent>
 					<Typography variant="h6" gutterBottom>
-						🎲 {title}
+						{title}
 					</Typography>
 
 					<Box

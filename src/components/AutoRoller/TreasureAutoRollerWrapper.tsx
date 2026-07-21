@@ -67,7 +67,7 @@ export const TreasureAutoRollerWrapper: React.FC = () => {
 				<Card variant="outlined">
 					<CardContent>
 						<Typography variant="h6" gutterBottom>
-							🎲 Treasure Generator
+							Treasure Generator
 						</Typography>
 
 						<Box

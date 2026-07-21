@@ -25,7 +25,9 @@
 		"test:ui": "vitest --ui",
 		"test:coverage": "vitest run --coverage",
 		"creature:build": "bun src/utils/typescript/cli/creatureBuilderCLI.ts",
-		"report:links": "bun src/utils/scripts/linkification-report.ts"
+		"report:links": "bun src/utils/scripts/linkification-report.ts",
+		"content:gen": "bun src/utils/content-gen/generate-spells.ts",
+		"content:check": "bun src/utils/content-gen/generate-spells.ts --check"
 	},
 	"dependencies": {
 		"@docusaurus/core": "^3.10.2",

@@ -315,7 +315,7 @@
     "target": "vs. Resist",
     "range": "Medium",
     "properties": "-",
-    "effect": "You conjure false visions into the target‘s mind, making them project horrific events of them or their loved ones.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly frightened.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignore AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
+    "effect": "You conjure false visions into the target‘s mind, making them project horrific events of them or their loved ones.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly frightened.<br/><strong>Critical.</strong> Deal +4 psychic damage (ignore AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
     "heightened": "-"
   },
   {
@@ -326,7 +326,7 @@
     "target": "vs. Resist",
     "range": "Medium",
     "properties": "-",
-    "effect": "You produce unintelligible voices of madness into the target’s mind, distracting them and breaking their mental fortitude.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly distracted by the whispers.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignore AV) and the target is distracted by the whispers for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
+    "effect": "You produce unintelligible voices of madness into the target’s mind, distracting them and breaking their mental fortitude.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly distracted by the whispers.<br/><strong>Critical.</strong> Deal +4 psychic damage (ignore AV) and the target is distracted by the whispers for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
     "heightened": "-"
   },
   {
@@ -436,7 +436,7 @@
     "target": "vs. Resist",
     "range": "Short",
     "properties": "blast (cone)",
-    "effect": "Create an illusory swarm of creatures or projectiles that a group of creatures believe to be attacked by. Target all creatures in the spell’s area.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) to each target and they are briefly confused.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignore AV) to each target and they are confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
+    "effect": "Create an illusory swarm of creatures or projectiles that a group of creatures believe to be attacked by. Target all creatures in the spell’s area.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) to each target and they are briefly confused.<br/><strong>Critical.</strong> Deal +6 psychic damage (ignore AV) to each target and they are confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
     "heightened": "<strong>(Rank 3) </strong>Deal +3/+6/+9 psychic damage (ignore AV) instead."
   },
   {
@@ -1030,7 +1030,7 @@
     "target": "vs. Resist",
     "range": "Medium",
     "properties": "-",
-    "effect": "You concentrate to overwhelm a creature‘s mind with mental energy.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly dazed.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignore AV) and the target is briefly dazed.",
+    "effect": "You concentrate to overwhelm a creature‘s mind with mental energy.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly dazed.<br/><strong>Critical.</strong> Deal +4 psychic damage (ignore AV) and the target is briefly dazed.",
     "heightened": "-"
   },
   {
@@ -1173,7 +1173,7 @@
     "target": "vs. Resist",
     "range": "Short",
     "properties": "blast (cone)",
-    "effect": "You send out a wave of destructive mental energy.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) against each target and they are briefly dazed.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignore AV) against each target and they are dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
+    "effect": "You send out a wave of destructive mental energy.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) against each target and they are briefly dazed.<br/><strong>Critical.</strong> Deal +6 psychic damage (ignore AV) against each target and they are dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
     "heightened": "-"
   },
   {

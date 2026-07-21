@@ -67,6 +67,9 @@ jobs:
       - name: Run tests with coverage
         run: bun run test:coverage
 
+      - name: Check generated content is up to date
+        run: bun run content:check
+
       - name: Build application
         run: bun run build
 

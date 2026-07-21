@@ -371,6 +371,42 @@ article h4 {
 	font-size: 1.6rem;
 }
 
+/* Page sigil injected before each side-nav label by the DocSidebarItems
+   swizzle (replaces the old emoji markers). Bronze, sized to the label, and
+   nudged onto the text baseline. */
+.sidebar-sigil {
+	color: var(--nexus-bronze);
+	vertical-align: -3px;
+	margin-right: 0.4rem;
+	flex: 0 0 auto;
+}
+
+/* Forked DocBreadcrumbs container (replaces the theme's CSS-module class) and
+   the per-crumb page sigil. */
+.codex-breadcrumbs {
+	--ifm-breadcrumb-size-multiplier: 0.8;
+	margin-bottom: 0.8rem;
+}
+
+.breadcrumb-sigil {
+	color: var(--nexus-bronze);
+	vertical-align: -2px;
+	margin-right: 0.3rem;
+}
+
+/* Chapter sigil injected before each page's h1 by the chapter-sigil remark
+   plugin (replaces the old emoji markers). Inherits the bronze heading color
+   via currentColor, sized to the cap height and nudged onto the baseline. */
+.theme-doc-markdown h1 .heading-sigil {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	margin-right: 0.5rem;
+	vertical-align: -0.08em;
+	color: var(--nexus-bronze);
+	flex: 0 0 auto;
+}
+
 /* Support layer: navigation and technical UI in the neutral sans. */
 .navbar,
 .menu,
@@ -474,11 +510,26 @@ table th {
 /* Chip styles for table content */
 a.chip, .chip {
   display: inline-block;
+  /* inline-block aligns on its bottom edge by default, so the pill's lower
+     padding pushes it below the text baseline. Center on the line, then lift a
+     hair: the serif body text is ascender-heavy, so a geometrically centered
+     pill still reads low. */
+  vertical-align: middle;
+  position: relative;
+  top: -0.12em;
   padding: 2px 8px;
   border-radius: 12px;
-  font-size: 0.75rem;
+  /* Sans UI face: Spectral's small x-height made chip text read tiny at this
+     size. Alegreya Sans has a larger x-height, so the same visual weight needs
+     fewer rem. */
+  font-family: var(--nexus-font-ui);
+  font-size: 0.8rem;
   font-weight: 500;
   line-height: 1.2;
+  /* Small-caps reads as struck lettering and levels mixed-case labels
+     (skills/damage) into a uniform stamp face. */
+  font-variant-caps: small-caps;
+  letter-spacing: 0.03em;
   text-align: center;
   white-space: nowrap;
   border: 1px solid transparent;
@@ -533,38 +584,47 @@ a.chip:hover {
 /* Weapon category chips */
 .chip--weapon {
   font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 
 /* Attribute chips */
 .chip--attribute {
   font-weight: bold;
   border-radius: 2px !important; /* No rounded edges for attributes - override base chip rule */
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   margin-left: 3px;
   margin-right: 3px;
   padding: 2px 6px; /* Reduced horizontal padding */
 }
 
+/* Inked-stamp rim: the retuned fills are muted/dark, which reads as pressed ink
+   on parchment but can blend into obsidian in dark mode. A faint light hairline
+   gives every rectangular chip a defined stamp edge on both surfaces. Skill
+   chips are triangular tags (their silhouette is the edge) so they are exempt. */
+.chip--damage,
+.chip--weapon,
+.chip--attribute {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
 /* Color variants */
 .chip--red {
-  background-color: #dc2626; /* Darker red for attributes - better contrast */
+  background-color: #902f2f; /* Darker red for attributes - better contrast */
   color: white;
 }
 
 .chip--blue {
-  background-color: #154dc7; /* Darker blue for attributes - better contrast */
+  background-color: #27427c; /* Darker blue for attributes - better contrast */
   color: white;
 }
 
 .chip--green {
-  background-color: #01752b; /* Darker green for attributes - better contrast */
+  background-color: #154225; /* Darker green for attributes - better contrast */
   color: white;
 }
 
 .chip--light-purple {
-  background-color: #9333ea; /* Darker purple for attributes - better contrast */
+  background-color: #6c33a0; /* Darker purple for attributes - better contrast */
   color: white;
 }
 
@@ -737,22 +797,22 @@ a.chip:hover {
 
 /* Dark mode adjustments for better contrast */
 [data-theme='dark'] .chip--light-purple {
-  background-color: #9c31ff; /* Darker purple for dark mode */
+  background-color: #6c33a0; /* Darker purple for dark mode */
   color: white;
 }
 
 [data-theme='dark'] .chip--red {
-  background-color: #dc2626; /* Keep consistent with light mode */
+  background-color: #902f2f; /* Keep consistent with light mode */
   color: white;
 }
 
 [data-theme='dark'] .chip--green {
-  background-color: #049037; /* Keep consistent with light mode */
+  background-color: #154225; /* Keep consistent with light mode */
   color: white;
 }
 
 [data-theme='dark'] .chip--blue {
-  background-color: #154dc7; /* Keep consistent with light mode */
+  background-color: #27427c; /* Keep consistent with light mode */
   color: white;
 }
 
@@ -814,255 +874,255 @@ a.chip:hover {
 
 /* Vibrant color variants for damage types */
 .chip--acid-vibrant {
-  background-color: #84cc16; /* Vibrant lime green */
+  background-color: #5d7f28; /* Vibrant lime green */
   color: white;
 }
 
 .chip--blast-vibrant {
-  background-color: #ea580c; /* Vibrant orange */
+  background-color: #8a4c2c; /* Vibrant orange */
   color: white;
 }
 
 .chip--fire-vibrant {
-  background-color: #dc2626; /* Vibrant red */
+  background-color: #902f2f; /* Vibrant red */
   color: white;
 }
 
 .chip--frost-vibrant {
-  background-color: #0891b2; /* Vibrant cyan */
+  background-color: #215b69; /* Vibrant cyan */
   color: white;
 }
 
 .chip--lightning-vibrant {
-  background-color: #eab308; /* Vibrant yellow */
+  background-color: #88712b; /* Vibrant yellow */
   color: white;
 }
 
 .chip--necrotic-vibrant {
-  background-color: #7c3aed; /* Vibrant purple */
+  background-color: #5e34a6; /* Vibrant purple */
   color: white;
 }
 
 .chip--poison-vibrant {
-  background-color: #01752b; /* Vibrant green */
+  background-color: #154225; /* Vibrant green */
   color: white;
 }
 
 .chip--psychic-vibrant {
-  background-color: #ec4899; /* Vibrant pink */
+  background-color: #ad3771; /* Vibrant pink */
   color: white;
 }
 
 .chip--radiant-vibrant {
-  background-color: #d97706; /* Vibrant gold */
+  background-color: #7d5628; /* Vibrant gold */
   color: white;
 }
 
 /* Vibrant color variants for skills */
 .chip--athletics-vibrant {
-  background-color: #22c55e; /* Vibrant green */
+  background-color: #2b804a; /* Vibrant green */
   color: white;
 }
 
 .chip--crafting-vibrant {
-  background-color: #a16207; /* Vibrant brown */
+  background-color: #5e441e; /* Vibrant brown */
   color: white;
 }
 
 .chip--nature-vibrant {
-  background-color: #059669; /* Vibrant emerald */
+  background-color: #1c5745; /* Vibrant emerald */
   color: white;
 }
 
 .chip--survival-vibrant {
-  background-color: #15803d; /* Vibrant forest green */
+  background-color: #1b5330; /* Vibrant forest green */
   color: white;
 }
 
 .chip--fighting-vibrant {
-  background-color: #dc2626; /* Vibrant red */
+  background-color: #902f2f; /* Vibrant red */
   color: white;
 }
 
 .chip--fortitude-vibrant {
-  background-color: #991b1b; /* Vibrant maroon */
+  background-color: #632222; /* Vibrant maroon */
   color: white;
 }
 
 .chip--perception-vibrant {
-  background-color: #154dc7; /* Vibrant blue */
+  background-color: #27427c; /* Vibrant blue */
   color: white;
 }
 
 .chip--arcana-vibrant {
-  background-color: #7c3aed; /* Vibrant purple */
+  background-color: #5e34a6; /* Vibrant purple */
   color: white;
 }
 
 .chip--influence-vibrant {
-  background-color: #d97706; /* Vibrant amber */
+  background-color: #7d5628; /* Vibrant amber */
   color: white;
 }
 
 .chip--lore-vibrant {
-  background-color: #0891b2; /* Vibrant teal */
+  background-color: #215b69; /* Vibrant teal */
   color: white;
 }
 
 .chip--mysticism-vibrant {
-  background-color: #9c31ff; /* Vibrant violet */
+  background-color: #7336ab; /* Vibrant violet */
   color: white;
 }
 
 .chip--insight-vibrant {
-  background-color: #0369a1; /* Vibrant sky blue */
+  background-color: #1d465c; /* Vibrant sky blue */
   color: white;
 }
 
 .chip--stealth-vibrant {
-  background-color: #374151; /* Vibrant charcoal */
+  background-color: #2c3139; /* Vibrant charcoal */
   color: white;
 }
 
 .chip--streetwise-vibrant {
-  background-color: #ea580c; /* Vibrant rust */
+  background-color: #8a4c2c; /* Vibrant rust */
   color: white;
 }
 
 .chip--education-vibrant {
-  background-color: #1e40af; /* Vibrant navy */
+  background-color: #263871; /* Vibrant navy */
   color: white;
 }
 
 .chip--archery-vibrant {
-  background-color: #92400e; /* Vibrant tan */
+  background-color: #5a341c; /* Vibrant tan */
   color: white;
 }
 
 /* Triangular pseudo-elements for skill chips */
 .chip--athletics-vibrant::before, .chip--athletics-vibrant::after {
-  border-right-color: #22c55e;
-  border-left-color: #22c55e;
+  border-right-color: #2b804a;
+  border-left-color: #2b804a;
 }
 
 .chip--crafting-vibrant::before, .chip--crafting-vibrant::after {
-  border-right-color: #a16207;
-  border-left-color: #a16207;
+  border-right-color: #5e441e;
+  border-left-color: #5e441e;
 }
 
 .chip--nature-vibrant::before, .chip--nature-vibrant::after {
-  border-right-color: #059669;
-  border-left-color: #059669;
+  border-right-color: #1c5745;
+  border-left-color: #1c5745;
 }
 
 .chip--survival-vibrant::before, .chip--survival-vibrant::after {
-  border-right-color: #15803d;
-  border-left-color: #15803d;
+  border-right-color: #1b5330;
+  border-left-color: #1b5330;
 }
 
 .chip--fighting-vibrant::before, .chip--fighting-vibrant::after {
-  border-right-color: #dc2626;
-  border-left-color: #dc2626;
+  border-right-color: #902f2f;
+  border-left-color: #902f2f;
 }
 
 .chip--fortitude-vibrant::before, .chip--fortitude-vibrant::after {
-  border-right-color: #991b1b;
-  border-left-color: #991b1b;
+  border-right-color: #632222;
+  border-left-color: #632222;
 }
 
 .chip--perception-vibrant::before, .chip--perception-vibrant::after {
-  border-right-color: #154dc7;
-  border-left-color: #154dc7;
+  border-right-color: #27427c;
+  border-left-color: #27427c;
 }
 
 .chip--arcana-vibrant::before, .chip--arcana-vibrant::after {
-  border-right-color: #7c3aed;
-  border-left-color: #7c3aed;
+  border-right-color: #5e34a6;
+  border-left-color: #5e34a6;
 }
 
 .chip--influence-vibrant::before, .chip--influence-vibrant::after {
-  border-right-color: #d97706;
-  border-left-color: #d97706;
+  border-right-color: #7d5628;
+  border-left-color: #7d5628;
 }
 
 .chip--lore-vibrant::before, .chip--lore-vibrant::after {
-  border-right-color: #0891b2;
-  border-left-color: #0891b2;
+  border-right-color: #215b69;
+  border-left-color: #215b69;
 }
 
 .chip--mysticism-vibrant::before, .chip--mysticism-vibrant::after {
-  border-right-color: #9c31ff;
-  border-left-color: #9c31ff;
+  border-right-color: #7336ab;
+  border-left-color: #7336ab;
 }
 
 .chip--insight-vibrant::before, .chip--insight-vibrant::after {
-  border-right-color: #0369a1;
-  border-left-color: #0369a1;
+  border-right-color: #1d465c;
+  border-left-color: #1d465c;
 }
 
 .chip--stealth-vibrant::before, .chip--stealth-vibrant::after {
-  border-right-color: #374151;
-  border-left-color: #374151;
+  border-right-color: #2c3139;
+  border-left-color: #2c3139;
 }
 
 .chip--streetwise-vibrant::before, .chip--streetwise-vibrant::after {
-  border-right-color: #ea580c;
-  border-left-color: #ea580c;
+  border-right-color: #8a4c2c;
+  border-left-color: #8a4c2c;
 }
 
 .chip--education-vibrant::before, .chip--education-vibrant::after {
-  border-right-color: #1e40af;
-  border-left-color: #1e40af;
+  border-right-color: #263871;
+  border-left-color: #263871;
 }
 
 .chip--archery-vibrant::before, .chip--archery-vibrant::after {
-  border-right-color: #92400e;
-  border-left-color: #92400e;
+  border-right-color: #5a341c;
+  border-left-color: #5a341c;
 }
 
 /* Vibrant color variants for weapon types - very distinct colors */
 .chip--axe-vibrant {
-  background-color: #7c2d12; /* Deep brown */
+  background-color: #502719; /* Deep brown */
   color: white;
 }
 
 .chip--blade-vibrant {
-  background-color: #64748b; /* Steel grey */
+  background-color: #4e5763; /* Steel grey */
   color: white;
 }
 
 .chip--bow-vibrant {
-  background-color: #a16207; /* Wood brown */
+  background-color: #5e441e; /* Wood brown */
   color: white;
 }
 
 .chip--brawling-vibrant {
-  background-color: #dc2626; /* Fighting red */
+  background-color: #902f2f; /* Fighting red */
   color: white;
 }
 
 .chip--crossbow-vibrant {
-  background-color: #374151; /* Dark grey */
+  background-color: #2c3139; /* Dark grey */
   color: white;
 }
 
 .chip--mace-vibrant {
-  background-color: #4338ca; /* Royal blue */
+  background-color: #3f3986; /* Royal blue */
   color: white;
 }
 
 .chip--polearm-vibrant {
-  background-color: #059669; /* Emerald green */
+  background-color: #1c5745; /* Emerald green */
   color: white;
 }
 
 .chip--shield-vibrant {
-  background-color: #7c3aed; /* Shield purple */
+  background-color: #5e34a6; /* Shield purple */
   color: white;
 }
 
 .chip--thrown-vibrant {
-  background-color: #ea580c; /* Orange */
+  background-color: #8a4c2c; /* Orange */
   color: white;
 }
 
@@ -1093,17 +1153,99 @@ a.chip:hover {
   }
 }
 
+/* Chapter sigils in the navbar — replace the old emoji labels with the shared
+   SigilIcon marks (M4 Half B). Each sigil renders as a currentColor mask before
+   the label, so it inherits the link color and tints correctly in both themes.
+   The per-chapter mask paths are GENERATED from
+   src/components/codex/SigilIcon.tsx (single source of truth). If the sigil set
+   changes, regenerate these rules rather than hand-editing them. */
+.navbar__item.navbar-sigil::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 0.4rem;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  vertical-align: -3px;
+}
+
+  .navbar-sigil--sun::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='12'%20r='4.5'%20/%3E%20%3Cpath%20d='M12%201.5v3M12%2019.5v3M1.5%2012h3M19.5%2012h3M4.6%204.6l2.1%202.1M17.3%2017.3l2.1%202.1M19.4%204.6l-2.1%202.1M6.7%2017.3l-2.1%202.1'%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='12'%20r='4.5'%20/%3E%20%3Cpath%20d='M12%201.5v3M12%2019.5v3M1.5%2012h3M19.5%2012h3M4.6%204.6l2.1%202.1M17.3%2017.3l2.1%202.1M19.4%204.6l-2.1%202.1M6.7%2017.3l-2.1%202.1'%20/%3E%3C/svg%3E"); }
+  .navbar-sigil--ziggurat::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M12%203l3%203h-6zM6%209h12M4%2014h16M2.5%2020h19'%20/%3E%20%3Cpath%20d='M9%209v-3M15%209v-3'%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M12%203l3%203h-6zM6%209h12M4%2014h16M2.5%2020h19'%20/%3E%20%3Cpath%20d='M9%209v-3M15%209v-3'%20/%3E%3C/svg%3E"); }
+  .navbar-sigil--tablet::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='6'%20y='3'%20width='12'%20height='18'%20rx='2.5'%20/%3E%20%3Cpath%20d='M9%207h2M12.5%207h2.5M9%2010h1.5M12%2010h3M9%2013h3M13%2013h2M9%2016h2.5M12.5%2016h2'%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='6'%20y='3'%20width='12'%20height='18'%20rx='2.5'%20/%3E%20%3Cpath%20d='M9%207h2M12.5%207h2.5M9%2010h1.5M12%2010h3M9%2013h3M13%2013h2M9%2016h2.5M12.5%2016h2'%20/%3E%3C/svg%3E"); }
+  .navbar-sigil--anvil::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M4%208h13a3%203%200%200%201-3%203H9l-1%200'%20/%3E%20%3Cpath%20d='M10%2011v4M14%2011v4M7%2019h10M8.5%2015h7l1%204h-9z'%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M4%208h13a3%203%200%200%201-3%203H9l-1%200'%20/%3E%20%3Cpath%20d='M10%2011v4M14%2011v4M7%2019h10M8.5%2015h7l1%204h-9z'%20/%3E%3C/svg%3E"); }
+  .navbar-sigil--blades::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M5%204l9%209M19%204l-9%209'%20/%3E%20%3Cpath%20d='M12%2011l3%203-1%201-3-3M12%2011l-3%203%201%201%203-3'%20/%3E%20%3Cpath%20d='M6%2020l3-3M18%2020l-3-3'%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M5%204l9%209M19%204l-9%209'%20/%3E%20%3Cpath%20d='M12%2011l3%203-1%201-3-3M12%2011l-3%203%201%201%203-3'%20/%3E%20%3Cpath%20d='M6%2020l3-3M18%2020l-3-3'%20/%3E%3C/svg%3E"); }
+  .navbar-sigil--hourglass::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%203h12M6%2021h12'%20/%3E%20%3Cpath%20d='M7%203c0%205%205%206%205%209s-5%204-5%209M17%203c0%205-5%206-5%209s5%204%205%209'%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%203h12M6%2021h12'%20/%3E%20%3Cpath%20d='M7%203c0%205%205%206%205%209s-5%204-5%209M17%203c0%205-5%206-5%209s5%204%205%209'%20/%3E%3C/svg%3E"); }
+  .navbar-sigil--rune::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M12%202v20M12%208l6-4M12%208l-6-4M12%2015l6%204M12%2015l-6%204'%20/%3E%20%3Ccircle%20cx='12'%20cy='12'%20r='2'%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M12%202v20M12%208l6-4M12%208l-6-4M12%2015l6%204M12%2015l-6%204'%20/%3E%20%3Ccircle%20cx='12'%20cy='12'%20r='2'%20/%3E%3C/svg%3E"); }
+  .navbar-sigil--serpent::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M4%2017c3%200%203-4%206-4s3%204%206%204%204-3%204-6-2-5-5-5'%20/%3E%20%3Ccircle%20cx='6'%20cy='7'%20r='2'%20/%3E%20%3Cpath%20d='M5.2%206.5h.01'%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M4%2017c3%200%203-4%206-4s3%204%206%204%204-3%204-6-2-5-5-5'%20/%3E%20%3Ccircle%20cx='6'%20cy='7'%20r='2'%20/%3E%20%3Cpath%20d='M5.2%206.5h.01'%20/%3E%3C/svg%3E"); }
+  .navbar-sigil--key::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='6'%20r='3.5'%20/%3E%20%3Cpath%20d='M12%209.5v11'%20/%3E%20%3Cpath%20d='M12%2015h3.5M12%2018h2.5'%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='6'%20r='3.5'%20/%3E%20%3Cpath%20d='M12%209.5v11'%20/%3E%20%3Cpath%20d='M12%2015h3.5M12%2018h2.5'%20/%3E%3C/svg%3E"); }
+  .navbar-sigil--scroll::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M7%204h10a2%202%200%200%201%202%202v12a2%202%200%200%200%202%202H8a2%202%200%200%201-2-2V6'%20/%3E%20%3Cpath%20d='M6%206a2%202%200%200%200-2%202v0a2%202%200%200%200%202%202h1M10%209h6M10%2013h6'%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M7%204h10a2%202%200%200%201%202%202v12a2%202%200%200%200%202%202H8a2%202%200%200%201-2-2V6'%20/%3E%20%3Cpath%20d='M6%206a2%202%200%200%200-2%202v0a2%202%200%200%200%202%202h1M10%209h6M10%2013h6'%20/%3E%3C/svg%3E"); }
+
 /* Navbar GitHub icon: replace the text label with a small SVG icon.
    Uses the local file `/img/github.svg` placed in /static/img so it is served
    at /img/github.svg. We style the navbar link using its className set in
    `docusaurus.config.js` (navbar-github-link). Keep the link accessible
    by using an `aria-label` in the config. */
+/* Uniform right-side icon cluster (GM Tools, Character Sheet, GitHub,
+   color-mode toggle). Each item previously carried its own spacing model AND a
+   different glyph size (sigils 18px, github 20px, toggle 24px) in a different
+   box width, so even equal gaps left the icons visually staggered. Fix: put
+   every icon item in the SAME square box, center its glyph, and size every
+   glyph the same — then a single flex `column-gap` yields perfectly even,
+   aligned icons. The search box (a sibling, not in this container) keeps its
+   own spacing. */
+.navbar__items--right {
+  column-gap: 0.5rem;
+  align-items: center;
+}
+
+.navbar__items--right > .navbar__item.navbar-sigil,
+.navbar__items--right > .navbar__item.navbar-github-link,
+.navbar__items--right > [class*='colorModeToggle'] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+}
+
+/* One glyph size (20px) across all four icons. */
+.navbar__items--right > .navbar__item.navbar-sigil::before,
+.navbar__item.navbar-github-link::before {
+  width: 20px;
+  height: 20px;
+}
+
+.navbar__items--right > [class*='colorModeToggle'] svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Toggle button fills and centers within the normalized 32px box. */
+.navbar__items--right > [class*='colorModeToggle'] button {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Flex centering handles alignment now, so drop the old vertical nudges. */
+.navbar__items--right > .navbar__item.navbar-github-link::before {
+  margin-top: 0;
+  vertical-align: middle;
+}
+
 .navbar__item.navbar-github-link {
-  /* match spacing for other navbar icons */
-  padding-left: 1rem;
-  padding-right: 1rem;
   position: relative;
-  line-height: 2rem;
 }
 
 .navbar__item.navbar-github-link::before {
@@ -1134,12 +1276,25 @@ a.chip:hover {
   border: 0;
 }
 
-/* Hide labels for icon-only navbar items on desktop */
+/* Icon-only navbar items on desktop (GM Tools, Character Sheet): the sigil
+   ::before stays visible while the text label is collapsed via font-size: 0.
+   The label returns on mobile (media query below). */
 .navbar-icon-with-label {
-  margin-inline: 0.5rem;
-  padding-left: 0;
-  width: 20px;
+  margin-inline: 0;
+  /* Shrink-wrap the anchor to the sigil (drop the default .navbar__link
+     horizontal padding) so its box matches the other icon items — otherwise the
+     leftover padding pads the icon and the visual gaps read as uneven. */
+  padding-inline: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
   white-space: nowrap;
+}
+
+.navbar-icon-with-label.navbar-sigil::before {
+  margin-right: 0;
+  vertical-align: middle;
 }
 
 /* Add bottom border to active navbar items */
@@ -1157,7 +1312,12 @@ a.chip:hover {
 @media (max-width: 996px) {
   .navbar-icon-with-label {
     width: auto;
+    font-size: inherit;
     white-space: normal;
+  }
+
+  .navbar-icon-with-label.navbar-sigil::before {
+    margin-right: 0.4rem;
   }
 
   .navbar__link--active,

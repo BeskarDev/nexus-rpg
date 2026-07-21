@@ -53,7 +53,7 @@ export const QuestAutoRollerWrapper: React.FC = () => {
 				<Card variant="outlined">
 					<CardContent>
 						<Typography variant="h6" gutterBottom>
-							🎲 Quest Hooks Generator
+							Quest Hooks Generator
 						</Typography>
 
 						<Box
