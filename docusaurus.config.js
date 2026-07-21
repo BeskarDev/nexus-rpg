@@ -2,8 +2,10 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const { themes: prismThemes } = require('prism-react-renderer')
-const lightCodeTheme = prismThemes.github
-const darkCodeTheme = prismThemes.dracula
+// Warm-neutral gruvbox pair: sits on the cream/obsidian surfaces without the
+// cool blue cast of github/dracula. Syntax hues stay distinguishable in both.
+const lightCodeTheme = prismThemes.gruvboxMaterialLight
+const darkCodeTheme = prismThemes.gruvboxMaterialDark
 
 const autoKeywordPlugin = require('./src/remark/auto-keyword-plugin')
 const tableChipsPlugin = require('./src/remark/table-chips-plugin')
@@ -195,12 +197,13 @@ const config = {
 			},
 			zoom: {
 				selector: '.markdown :not(em) > img',
-				config: {
-					// options you can specify via https://github.com/francoischalifour/medium-zoom#usage
-					background: {
-						light: 'rgb(255, 255, 255)',
-						dark: 'rgb(50, 50, 50)',
-					},
+				// docusaurus-plugin-image-zoom reads background off zoom.background
+				// (NOT zoom.config.background — nesting it there silently falls back
+				// to the plugin defaults). Tints match the M2a parchment / obsidian
+				// tokens so the zoom flash stays on-palette.
+				background: {
+					light: '#f2eadc',
+					dark: '#16120f',
 				},
 			},
 			footer: {

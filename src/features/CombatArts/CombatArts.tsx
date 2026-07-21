@@ -13,7 +13,6 @@ import {
 	TextField,
 	ThemeProvider,
 	Typography,
-	useTheme,
 } from '@mui/material'
 import { theme } from '@site/src/hooks/createTheme'
 import { CombatArt } from '@site/src/types/CombatArt'
@@ -43,7 +42,6 @@ type CombatArtSelection = {
 }
 
 export const CombatArts: React.FC = () => {
-	const muiTheme = useTheme()
 	const [selectedCombatArts, setSelectedCombatArts] = React.useState<string[]>(
 		[],
 	)
@@ -184,7 +182,7 @@ export const CombatArts: React.FC = () => {
 					py: 2,
 					px: 3,
 					backgroundColor:
-						muiTheme.palette.mode === 'dark' ? '#1e1e1e' : 'white',
+						'background.default',
 					borderRadius: '8px',
 				}}
 			>
@@ -221,7 +219,7 @@ export const CombatArts: React.FC = () => {
 							MenuProps={MenuProps}
 							sx={{
 								backgroundColor:
-									muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
+									'background.paper',
 							}}
 						>
 							{combatArts.map(({ name }) => (

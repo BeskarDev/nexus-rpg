@@ -13,7 +13,6 @@ import {
 	TextField,
 	ThemeProvider,
 	Typography,
-	useTheme,
 	experimental_extendTheme,
 } from '@mui/material'
 import { theme } from '@site/src/hooks/createTheme'
@@ -45,7 +44,6 @@ type SpellSelection = {
 
 export const MysticSpells: React.FC = () => {
 	const customTheme = experimental_extendTheme()
-	const muiTheme = useTheme()
 	const [selectedMysticSpells, setSelectedMysticSpells] = React.useState<
 		string[]
 	>([])
@@ -176,7 +174,7 @@ export const MysticSpells: React.FC = () => {
 					py: 2,
 					px: 3,
 					backgroundColor:
-						muiTheme.palette.mode === 'dark' ? '#1e1e1e' : 'white',
+						'background.default',
 					borderRadius: '8px',
 				}}
 			>
@@ -213,7 +211,7 @@ export const MysticSpells: React.FC = () => {
 							MenuProps={MenuProps}
 							sx={{
 								backgroundColor:
-									muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
+									'background.paper',
 							}}
 						>
 							{mysticSpells.map(({ name }) => (

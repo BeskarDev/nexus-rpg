@@ -125,7 +125,7 @@ export const PrintCharacterSheet: React.FC = () => {
 					py: 2,
 					px: 3,
 					backgroundColor:
-						muiTheme.palette.mode === 'dark' ? '#1e1e1e' : 'white',
+						'background.default',
 					borderRadius: '8px',
 				}}
 			>

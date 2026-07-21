@@ -73,6 +73,17 @@
 	--rune-cyan-text: var(--nexus-rune-cyan-text);
 	--rune-cyan-glow: var(--nexus-rune-cyan-glow);
 
+	/* Local search (@easyops-cn/docusaurus-search-local): point the plugin's
+	   own vars at the token palette. Highlight/cursor already fall back to
+	   --ifm-color-primary (bronze); these align the surfaces too. Active-row
+	   text must stay AA on the bronze cursor row, so it flips per mode. */
+	--search-local-modal-background: var(--ifm-background-surface-color);
+	--search-local-hit-background: var(--ifm-background-surface-color);
+	--search-local-hit-color: var(--ifm-font-color-base);
+	--search-local-highlight-color: var(--ifm-color-primary);
+	--search-local-muted-color: var(--ifm-color-emphasis-700);
+	--search-local-hit-active-color: #ffffff; /* on dark bronze, light mode */
+
 	--ifm-color-primary: var(--nexus-bronze);
 	--ifm-color-primary-dark: #7a4f26;
 	--ifm-color-primary-darker: #6f4922;
@@ -94,6 +105,9 @@
 	--ifm-code-font-size: 95%;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 	--ifm-footer-padding-vertical: var(--ifm-spacing-vertical);
+	/* Procedural parchment grain: a tiny stitched SVG noise tile, no raster
+	   asset. Consumed by body::before below. */
+	--parchment-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
 	/* Typography: display (Cinzel, h1/h2 only via scoped rules below),
 	   body serif (Spectral), UI sans (Alegreya Sans). Cinzel and Spectral
 	   only ship 400/600, so bold maps to the real 600 cut instead of
@@ -144,6 +158,9 @@
 	--ifm-footer-background-color: #191410;
 	--ifm-footer-link-color: var(--ifm-color-primary);
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+	/* Ember bronze is light in dark mode, so the active search row needs dark
+	   text to keep AA. */
+	--search-local-hit-active-color: var(--nexus-obsidian);
 	--ifm-color-grey: #959595;
 	--ifm-color-brown: #ba8670;
 	--ifm-color-yellow: #cb9a4b;
@@ -160,6 +177,47 @@
 	--ifm-color-quality-6: var(--ifm-color-purple);
 	--ifm-color-quality-7: var(--ifm-color-orange);
 	--ifm-color-quality-8: var(--ifm-color-red);
+}
+
+/* Parchment atmosphere: fixed pseudo-element behind everything (frame /
+   margins only). Grain never sits behind body text because the reading
+   column carries its own flat surface color (see .theme-doc-markdown rule).
+   Uses a fixed element rather than background-attachment:fixed to avoid
+   mobile scroll jank. Purely decorative. */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background-color: var(--ifm-background-color);
+	background-image: var(--parchment-grain),
+		radial-gradient(circle at 50% 0%, rgba(180, 140, 80, 0.1), transparent 55%),
+		radial-gradient(circle at 15% 60%, rgba(150, 110, 60, 0.06), transparent 40%);
+	background-repeat: repeat, no-repeat, no-repeat;
+}
+
+[data-theme='dark'] body::before {
+	background-image: var(--parchment-grain),
+		radial-gradient(circle at 50% 0%, rgba(90, 180, 200, 0.05), transparent 55%);
+	background-blend-mode: soft-light;
+	opacity: 0.5;
+}
+
+/* Guardrail (README § Surfaces): the reading column sits on the flat surface
+   color so grain stays off the text. Internal padding + a soft radius inset
+   the vellum sheet from the parchment frame so text never touches the edge.
+   Excluded from the character-sheet app (its own full-width layout). */
+.theme-doc-markdown:not(:has(.character-sheet-page)) {
+	background-color: var(--ifm-background-surface-color);
+	padding: 1.5rem 2rem;
+	border-radius: 8px;
+}
+
+@media (max-width: 996px) {
+	.theme-doc-markdown:not(:has(.character-sheet-page)) {
+		padding: 1rem 1.25rem;
+	}
 }
 
 /* Admonitions and example quotes: manuscript-marginalia feel, bronze only.

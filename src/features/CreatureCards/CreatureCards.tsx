@@ -12,7 +12,6 @@ import {
 	Stack,
 	TextField,
 	Typography,
-	useTheme,
 } from '@mui/material'
 import { theme } from '@site/src/hooks/createTheme'
 import { Creature, Attack, Ability } from '@site/src/types/Creature'
@@ -207,7 +206,6 @@ const splitAttacks = (attacks: Attack[]): Attack[][] => {
 }
 
 export const CreatureCards: React.FC = () => {
-	const muiTheme = useTheme()
 	const [markdownInput, setMarkdownInput] = useState<string>('')
 	const [creatures, setCreatures] = useState<Creature[]>([])
 	const [selectedCreatures, setSelectedCreatures] = useState<string[]>([])
@@ -457,7 +455,7 @@ export const CreatureCards: React.FC = () => {
 					py: 2,
 					px: 3,
 					backgroundColor:
-						muiTheme.palette.mode === 'dark' ? '#1e1e1e' : 'white',
+						'background.default',
 					borderRadius: '8px',
 				}}
 			>
@@ -512,7 +510,7 @@ export const CreatureCards: React.FC = () => {
 					placeholder="Paste your creature markdown here or upload a file..."
 					sx={{
 						backgroundColor:
-							muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
+							'background.paper',
 					}}
 				/>
 
@@ -553,7 +551,7 @@ export const CreatureCards: React.FC = () => {
 								MenuProps={MenuProps}
 								sx={{
 									backgroundColor:
-										muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
+										'background.paper',
 								}}
 							>
 								{creatures.map(({ name }) => (

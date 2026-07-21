@@ -12,7 +12,6 @@ import {
 	Stack,
 	TextField,
 	Typography,
-	useTheme,
 } from '@mui/material'
 import { ArcaneSpell } from '@site/src/types/ArcaneSpell'
 import { MysticSpell } from '@site/src/types/MysticSpell'
@@ -50,7 +49,6 @@ type SpellSelection = {
 }
 
 export const Spells: React.FC = () => {
-	const muiTheme = useTheme()
 	const [selectedSpells, setSelectedSpells] = React.useState<string[]>([])
 	const [selectedSpellsList, setSelectedSpellsList] = React.useState<
 		SpellSelection[]
@@ -208,7 +206,7 @@ export const Spells: React.FC = () => {
 					py: 2,
 					px: 3,
 					backgroundColor:
-						muiTheme.palette.mode === 'dark' ? '#1e1e1e' : 'white',
+						'background.default',
 					borderRadius: '8px',
 				}}
 			>
@@ -242,7 +240,7 @@ export const Spells: React.FC = () => {
 							input={<OutlinedInput label="Spell Type" />}
 							sx={{
 								backgroundColor:
-									muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
+									'background.paper',
 							}}
 						>
 							<MenuItem value="all">All Spells</MenuItem>
@@ -261,7 +259,7 @@ export const Spells: React.FC = () => {
 							MenuProps={MenuProps}
 							sx={{
 								backgroundColor:
-									muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
+									'background.paper',
 							}}
 						>
 							{availableSpells.map(({ name, type }) => (

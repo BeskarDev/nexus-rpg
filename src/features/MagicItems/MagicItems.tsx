@@ -12,7 +12,6 @@ import {
 	Stack,
 	TextField,
 	Typography,
-	useTheme,
 } from '@mui/material'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
@@ -32,7 +31,6 @@ const MenuProps = {
 }
 
 export const MagicItems: React.FC = () => {
-	const muiTheme = useTheme()
 	const [magicItems, setMagicItems] = React.useState<MagicItem[]>([])
 	const [selectedItems, setSelectedItems] = React.useState<string[]>([])
 	const [categoryFilter, setCategoryFilter] = React.useState<
@@ -140,7 +138,7 @@ export const MagicItems: React.FC = () => {
 					py: 2,
 					px: 3,
 					backgroundColor:
-						muiTheme.palette.mode === 'dark' ? '#1e1e1e' : 'white',
+						'background.default',
 					borderRadius: '8px',
 				}}
 			>
@@ -190,7 +188,7 @@ export const MagicItems: React.FC = () => {
 							input={<OutlinedInput label="Category" />}
 							sx={{
 								backgroundColor:
-									muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
+									'background.paper',
 							}}
 						>
 							<MenuItem value="all">All Categories</MenuItem>
@@ -211,7 +209,7 @@ export const MagicItems: React.FC = () => {
 							MenuProps={MenuProps}
 							sx={{
 								backgroundColor:
-									muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
+									'background.paper',
 							}}
 						>
 							{availableItems.map(({ name, category }) => (

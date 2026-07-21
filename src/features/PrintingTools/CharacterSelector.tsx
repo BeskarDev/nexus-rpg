@@ -10,7 +10,6 @@ import {
 	SelectChangeEvent,
 	Stack,
 	Typography,
-	useTheme,
 } from '@mui/material'
 import { AuthProvider, useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { firebaseService } from '@site/src/dev/firebaseService'
@@ -34,7 +33,6 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
 	label = 'Select Character',
 	helperText = 'Choose a character to automatically load their abilities',
 }) => {
-	const theme = useTheme()
 	const { userLoggedIn, currentUser, isAdmin, viewAsAdmin } = useAuth()
 	const [characters, setCharacters] = useState<CharacterDocument[]>([])
 	const [allCharacters, setAllCharacters] = useState<CharacterDocument[]>([])
@@ -174,7 +172,7 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
 					}}
 					sx={{
 						backgroundColor:
-							theme.palette.mode === 'dark' ? '#1e1e1e' : 'white',
+							'background.default',
 					}}
 				>
 					<MenuItem value="">
