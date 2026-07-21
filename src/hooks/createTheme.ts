@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material'
 
 export const theme = createTheme({
 	typography: {
-		fontFamily: "'Exo 2'",
+		fontFamily: "'Alegreya Sans', Arial, sans-serif",
 		fontSize: 13,
 	},
 	components: {

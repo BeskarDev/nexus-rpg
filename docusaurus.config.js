@@ -83,31 +83,6 @@ const config = {
 		locales: ['en'],
 	},
 
-	headTags: [
-		{
-			tagName: 'link',
-			attributes: {
-				rel: 'preconnect',
-				href: 'https://fonts.googleapis.com',
-			},
-		},
-		{
-			tagName: 'link',
-			attributes: {
-				rel: 'preconnect',
-				href: 'https://fonts.gstatic.com',
-				crossorigin: 'true',
-			},
-		},
-		{
-			tagName: 'link',
-			attributes: {
-				rel: 'stylesheet',
-				href: 'https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap',
-			},
-		},
-	],
-
 	themes: [
 		[
 			/** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
@@ -124,6 +99,11 @@ const config = {
 		({
 			// Replace with your project's social card
 			image: 'img/docusaurus-social-card.jpg',
+			colorMode: {
+				// Parchment is the hero look: light by default, system pref respected.
+				defaultMode: 'light',
+				respectPrefersColorScheme: true,
+			},
 			docs: {
 				sidebar: {
 					hideable: true,

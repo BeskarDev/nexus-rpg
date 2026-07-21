@@ -4,21 +4,106 @@
  * work well for content-centric websites.
  */
 
+/* Self-hosted codex fonts (GDPR: no Google Fonts CDN).
+   Subsetted to Latin via pyftsubset with smcp/c2sc/onum layout features kept. */
+@font-face {
+	font-family: 'Cinzel';
+	src: url('/fonts/cinzel-semibold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Spectral';
+	src: url('/fonts/spectral-regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Spectral';
+	src: url('/fonts/spectral-semibold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Alegreya Sans ships no 600 cut; weight 600 requests resolve up to 700
+   per CSS font matching, 500 covers MUI's medium weight. */
+@font-face {
+	font-family: 'Alegreya Sans';
+	src: url('/fonts/alegreya-sans-regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Alegreya Sans';
+	src: url('/fonts/alegreya-sans-medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Alegreya Sans';
+	src: url('/fonts/alegreya-sans-bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
 /* You can override the default Infima variables here. */
 :root {
-	--ifm-color-primary: #2e8555;
-	--ifm-color-primary-dark: #29784c;
-	--ifm-color-primary-darker: #277148;
-	--ifm-color-primary-darkest: #205d3b;
-	--ifm-color-primary-light: #33925d;
-	--ifm-color-primary-lighter: #359962;
-	--ifm-color-primary-lightest: #3cad6e;
-	--ifm-background-color: var(--ifm-color-emphasis-100);
-	--ifm-footer-background-color: var(--ifm-color-emphasis-200);
+	/* --nexus-* design tokens: single source of truth for the codex palette
+	   (parchment / bronze / ink, cyan reserved for magic). Infima reads them
+	   through the --ifm-* aliases below; MUI and the codex kit read them
+	   directly. Token values live here and in the dark block only. */
+	--nexus-bronze: #8a5a2b; /* aged bronze, structural accent */
+	--nexus-parchment: #f2eadc; /* sun-faded vellum */
+	--nexus-surface: #f7f0e4; /* cream paper */
+	--nexus-ink: #2f2418; /* dark reading ink */
+	/* Magic accent pair: defined for M3, zero uses in M2a. The text token
+	   must hold AA per mode; the glow token is for shadows/fills, never text. */
+	--nexus-rune-cyan-text: #1b6e7c;
+	--nexus-rune-cyan-glow: #63d7e6;
+	--rune-cyan-text: var(--nexus-rune-cyan-text);
+	--rune-cyan-glow: var(--nexus-rune-cyan-glow);
+
+	--ifm-color-primary: var(--nexus-bronze);
+	--ifm-color-primary-dark: #7a4f26;
+	--ifm-color-primary-darker: #6f4922;
+	--ifm-color-primary-darkest: #5c3c1c;
+	--ifm-color-primary-light: #9a6835;
+	--ifm-color-primary-lighter: #a5713d;
+	--ifm-color-primary-lightest: #bb884f;
+	--ifm-background-color: var(--nexus-parchment);
+	--ifm-background-surface-color: var(--nexus-surface);
+	--ifm-font-color-base: var(--nexus-ink);
+	--ifm-color-emphasis-200: #d8c7aa;
+	--ifm-color-emphasis-300: #c7b391;
+	--ifm-color-emphasis-700: #6a5844;
+	--ifm-color-emphasis-900: #241a12;
+	--ifm-navbar-background-color: rgba(247, 240, 228, 0.92);
+	--ifm-footer-background-color: #e8dcc8;
+	/* Base bronze is 4.33:1 on the footer surface; the dark step passes AA. */
+	--ifm-footer-link-color: var(--ifm-color-primary-dark);
 	--ifm-code-font-size: 95%;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 	--ifm-footer-padding-vertical: var(--ifm-spacing-vertical);
-	--ifm-heading-font-family: 'Exo 2', sans-serif;
+	/* Typography: display (Cinzel, h1/h2 only via scoped rules below),
+	   body serif (Spectral), UI sans (Alegreya Sans). Cinzel and Spectral
+	   only ship 400/600, so bold maps to the real 600 cut instead of
+	   synthesized 700 (Alegreya Sans resolves 600 up to its real 700). */
+	--ifm-font-family-base: 'Spectral', Georgia, serif;
+	--ifm-heading-font-family: 'Spectral', Georgia, serif;
+	--nexus-font-display: 'Cinzel', 'Times New Roman', serif;
+	--nexus-font-ui: 'Alegreya Sans', Arial, sans-serif;
+	--ifm-font-weight-bold: 600;
+	--ifm-heading-font-weight: 600;
 	--ifm-paragraph-margin-bottom: 1rem;
 	--ifm-leading: 1rem;
 
@@ -32,16 +117,32 @@
 	--cs-section-gap: 1rem;        /* Gap between sections within panels */
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark mode: charred obsidian + ember bronze — intentional, not inverted. */
 [data-theme='dark'] {
-	--ifm-color-primary: #25c2a0;
-	--ifm-color-primary-dark: #21af90;
-	--ifm-color-primary-darker: #1fa588;
-	--ifm-color-primary-darkest: #1a8870;
-	--ifm-color-primary-light: #29d5b0;
-	--ifm-color-primary-lighter: #32d8b4;
-	--ifm-color-primary-lightest: #4fddbf;
-	--ifm-footer-background-color: #0f0f10;
+	--nexus-bronze: #c9975a; /* ember bronze / dim gold */
+	--nexus-obsidian: #16120f; /* charred basalt */
+	--nexus-surface: #211a15; /* smoky bronze-black */
+	--nexus-ink: #eadfcd; /* warm sand / bone */
+	--nexus-rune-cyan-text: #63d7e6; /* AA-safe on obsidian */
+	--nexus-rune-cyan-glow: #63d7e6;
+
+	--ifm-color-primary: var(--nexus-bronze);
+	--ifm-color-primary-dark: #bd8748;
+	--ifm-color-primary-darker: #b47f40;
+	--ifm-color-primary-darkest: #966833;
+	--ifm-color-primary-light: #d3a568;
+	--ifm-color-primary-lighter: #d9af75;
+	--ifm-color-primary-lightest: #e6c795;
+	--ifm-background-color: var(--nexus-obsidian);
+	--ifm-background-surface-color: var(--nexus-surface);
+	--ifm-font-color-base: var(--nexus-ink);
+	--ifm-color-emphasis-200: #5f5142;
+	--ifm-color-emphasis-300: #786753;
+	--ifm-color-emphasis-700: #c6b69d;
+	--ifm-color-emphasis-900: #f3eadb;
+	--ifm-navbar-background-color: rgba(22, 18, 15, 0.9);
+	--ifm-footer-background-color: #191410;
+	--ifm-footer-link-color: var(--ifm-color-primary);
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 	--ifm-color-grey: #959595;
 	--ifm-color-brown: #ba8670;
@@ -61,58 +162,81 @@
 	--ifm-color-quality-8: var(--ifm-color-red);
 }
 
-/* Blockquote styling for better visibility */
-blockquote {
-	background-color: rgba(46, 133, 85, 0.1);
-	border-left: 4px solid var(--ifm-color-primary);
+/* Admonitions and example quotes: manuscript-marginalia feel, bronze only.
+   (The cyan .alert--magic variant is M3, not here.) */
+.theme-doc-markdown blockquote,
+.alert {
+	border-left: 3px solid var(--ifm-color-primary);
+	background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
+}
+
+.theme-doc-markdown blockquote {
 	padding: 0.75rem 1rem;
 	margin: 1rem 0;
 }
 
-[data-theme='dark'] blockquote {
-	background-color: rgba(37, 194, 160, 0.1);
-}
-
-/* Subtle heading visual separation for easier scanning */
+/* Subtle heading visual separation for easier scanning, tinted bronze.
+   Deriving from the primary token keeps both modes correct in one rule. */
 article h2 {
 	padding-top: 1.5rem;
 	margin-top: 2rem;
-	border-top: 1px solid rgba(0, 0, 0, 0.05);
+	border-top: 1px solid color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
 }
 
 article h3 {
 	padding-top: 1rem;
 	margin-top: 1.5rem;
-	border-top: 1px solid rgba(0, 0, 0, 0.03);
+	border-top: 1px solid color-mix(in srgb, var(--ifm-color-primary) 18%, transparent);
 }
 
 article h4 {
 	padding-top: 0.75rem;
 	margin-top: 1.25rem;
-	border-top: 1px solid rgba(0, 0, 0, 0.02);
+	border-top: 1px solid color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
 }
 
-[data-theme='dark'] article h2 {
-	border-top-color: rgba(255, 255, 255, 0.08);
+/* Reading surface: generous rhythm for long rules text. Scoped to the doc
+   markdown container so nothing bleeds into the character sheet app. */
+.theme-doc-markdown {
+	font-size: 1.05rem;
+	line-height: 1.8;
 }
 
-[data-theme='dark'] article h3 {
-	border-top-color: rgba(255, 255, 255, 0.05);
+/* Ceremonial display headings, h1/h2 only. Cinzel ships no smcp feature;
+   its lowercase glyphs ARE natively drawn small caps, so mixed-case text
+   already renders as true small caps. Do not add font-variant-caps here:
+   with smcp absent, browsers would synthesize faux scaled caps on top.
+   h3+ deliberately stay in the body serif, normal case. */
+.theme-doc-markdown h1,
+.theme-doc-markdown h2 {
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.02em;
 }
 
-[data-theme='dark'] article h4 {
-	border-top-color: rgba(255, 255, 255, 0.03);
+.theme-doc-markdown h1 {
+	font-size: 2.4rem;
 }
 
-html,
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: 'Exo 2', sans-serif;
+.theme-doc-markdown h2 {
+	font-size: 1.6rem;
+}
+
+/* Support layer: navigation and technical UI in the neutral sans. */
+.navbar,
+.menu,
+.table-of-contents,
+.pagination-nav,
+.breadcrumbs,
+.theme-code-block {
+	font-family: var(--nexus-font-ui);
+}
+
+/* Form controls don't inherit font from ancestors; the local-search input
+   (and its dropdown, which measures text off the input's computed font)
+   needs the UI sans set explicitly. */
+.navbar__search-input {
+	font-family: var(--nexus-font-ui);
 }
 
 /* @media only screen and (max-device-height: 640px) 
@@ -173,6 +297,11 @@ table tr:nth-child(2n) {
 table tr {
 	border-top: none;
 	border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+/* Header row gets a firmer bronze rule; body rows stay hairline-subtle. */
+table thead tr {
+	border-bottom: 2px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
 }
 
 table tbody tr:last-child {
@@ -871,7 +1000,7 @@ a.chip:hover {
 }
 
 .navbar__link:hover {
-  border-bottom: 2px solid rgba(46, 133, 85, 0.5);
+  border-bottom: 2px solid color-mix(in srgb, var(--ifm-color-primary) 50%, transparent);
   padding-bottom: 2px;
 }
 

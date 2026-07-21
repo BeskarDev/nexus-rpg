@@ -15,7 +15,7 @@ You can attack with various weapons in melee or at range. You can also attack wi
 | Mystic Spell | Spirit + Mysticism | depends on the spell |
 | Arcane Spell | Mind + Arcana | depends on the spell |
 
-### Weapon Attacks
+## Weapon Attacks
 
 You have to have learned the skill required by your weapon (Fighting for melee weapons, Archery for ranged) or you suffer +1 bane on the attack. When you roll a weapon attack, you add effects based on the SL.
 
