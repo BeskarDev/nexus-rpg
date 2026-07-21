@@ -220,8 +220,7 @@ body::before {
 	}
 }
 
-/* Admonitions and example quotes: manuscript-marginalia feel, bronze only.
-   (The cyan .alert--magic variant is M3, not here.) */
+/* Admonitions and example quotes: manuscript-marginalia feel, bronze default. */
 .theme-doc-markdown blockquote,
 .alert {
 	border-left: 3px solid var(--ifm-color-primary);
@@ -231,6 +230,98 @@ body::before {
 .theme-doc-markdown blockquote {
 	padding: 0.75rem 1rem;
 	margin: 1rem 0;
+}
+
+/* ---------------------------------------------------------------------------
+   M3 — Magic flavor layer. "Living magic" rune-cyan accent. All glow derived
+   from --rune-cyan-glow via color-mix. Every animation here is gated on
+   prefers-reduced-motion. Text/borders use --rune-cyan-text (AA-validated);
+   the glow token never colors text.
+
+   Owner decision (2026-07-21): the rune hover effect applies to ALL links
+   site-wide, not just magic-domain keywords — it is the signature link
+   interaction, making any link glow like a spell effect on hover. This
+   deliberately overrides the README "cyan = magic-only" rule for link hover.
+   The link hover is a soft glow pulse only (an earlier boil/displacement
+   effect was removed as too noisy).
+   --------------------------------------------------------------------------- */
+
+/* Slow, low-amplitude pulse for decorative sigils/ornaments. Uses
+   filter: drop-shadow rather than text-shadow so it glows inline SVG sigils
+   (text-shadow has no effect on SVG content); derived from the glow token. */
+@keyframes rune-pulse {
+	0%,
+	100% {
+		filter: drop-shadow(
+			0 0 0.15rem color-mix(in srgb, var(--rune-cyan-glow) 30%, transparent)
+		);
+	}
+	50% {
+		filter: drop-shadow(
+				0 0 0.4rem color-mix(in srgb, var(--rune-cyan-glow) 55%, transparent)
+			)
+			drop-shadow(
+				0 0 0.8rem color-mix(in srgb, var(--rune-cyan-glow) 20%, transparent)
+			);
+	}
+}
+
+/* Ornament glyphs and standalone (non-link) magic markers pulse continuously. */
+.runeGlyph,
+.magic-accent:not(a) {
+	color: var(--rune-cyan-text);
+	animation: rune-pulse 4s ease-in-out infinite;
+}
+
+/* Soft glow pulse for a hovered link (text-shadow from the glow token). */
+@keyframes rune-link-pulse {
+	0%,
+	100% {
+		text-shadow: 0 0 0.2rem
+			color-mix(in srgb, var(--rune-cyan-glow) 22%, transparent);
+	}
+	50% {
+		text-shadow: 0 0 0.4rem
+				color-mix(in srgb, var(--rune-cyan-glow) 42%, transparent),
+			0 0 0.9rem color-mix(in srgb, var(--rune-cyan-glow) 18%, transparent);
+	}
+}
+
+/* Universal link hover: rune-cyan color + a soft glow pulse. Applied to every
+   link (site-wide per owner decision) except inside the character-sheet app
+   (MUI scope boundary). */
+a {
+	transition: color 0.2s ease-in-out;
+}
+
+a:hover:not(.navbar__brand):not(.character-sheet-page a) {
+	color: var(--rune-cyan-text);
+	animation: rune-link-pulse 2.4s ease-in-out infinite;
+}
+
+/* Never pulse the character-sheet app's links (keeps the tool stable). */
+.character-sheet-page a:hover {
+	animation: none;
+}
+
+/* Magic admonition variant (bronze default landed in M2a). Border uses the
+   text token so it holds the 3:1 non-text contrast; fill from the glow token. */
+.alert--magic {
+	border-left-color: var(--rune-cyan-text);
+	background: color-mix(in srgb, var(--rune-cyan-glow) 8%, transparent);
+}
+
+/* Accessibility: kill all magic motion when the user asks for reduced motion.
+   The hover color change stays (it is not motion); the pulses stop.
+   Non-negotiable. */
+@media (prefers-reduced-motion: reduce) {
+	.runeGlyph,
+	.magic-accent:not(a) {
+		animation: none;
+	}
+	a:hover:not(.navbar__brand):not(.character-sheet-page a) {
+		animation: none;
+	}
 }
 
 /* Subtle heading visual separation for easier scanning, tinted bronze.
