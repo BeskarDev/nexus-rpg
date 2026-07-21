@@ -86,6 +86,38 @@
 	margin-bottom: 0;
 }
 
+/* Tighten prose paragraphs inside the card — Infima's paragraph margin is tuned
+   for the open reading column and is too airy in the compact card body. */
+.body p,
+.successText p {
+	margin-bottom: 0.4rem;
+}
+.body > p:last-child,
+.successText > p:last-child {
+	margin-bottom: 0;
+}
+
+/* Bullet lists inside the card are dense — the default reading-column list
+   rhythm is too airy for the tight card body (esp. Heightened choice lists). */
+.body ul,
+.heightenedText ul {
+	margin: 0.15rem 0;
+}
+.body ul li,
+.heightenedText ul li {
+	margin: 0;
+}
+.body ul li + li,
+.heightenedText ul li + li {
+	margin-top: 0.1rem;
+}
+/* Kill Infima's list-paragraph and paragraph margins inside card list items —
+   markdown wraps multi-line list content in <p>, which re-inflates the gaps. */
+.body li > p,
+.heightenedText li > p {
+	margin: 0;
+}
+
 /* Success-level rows — dense, baseline-aligned. A carved lozenge pip sits well
    left of the label; the label column is snug so the rule text starts close. */
 .success {

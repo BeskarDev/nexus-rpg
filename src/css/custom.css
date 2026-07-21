@@ -507,6 +507,35 @@ table th {
   margin-top: calc(-1 * var(--ifm-leading) / 2);
 }
 
+/* Bronze diamond bullets — the codex shape language applied to every unordered
+   list in the reading column. Scoped to the doc markdown so the character sheet
+   app keeps native bullets. Ordered lists keep their numerals. */
+.theme-doc-markdown ul {
+  list-style: none;
+  padding-left: 1.4rem;
+}
+.theme-doc-markdown ul > li {
+  position: relative;
+}
+.theme-doc-markdown ul > li::before {
+  content: '';
+  position: absolute;
+  left: -1.1rem;
+  /* center the mark on the first text line */
+  top: calc(0.5em * var(--ifm-line-height-base, 1.6) - 3.5px);
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg);
+  background-color: var(--ifm-color-primary);
+}
+/* Nested lists: hollow lozenge, a step quieter. */
+.theme-doc-markdown ul ul > li::before {
+  background-color: transparent;
+  border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 70%, transparent);
+  width: 6px;
+  height: 6px;
+}
+
 /* Chip styles for table content */
 a.chip, .chip {
   display: inline-block;
