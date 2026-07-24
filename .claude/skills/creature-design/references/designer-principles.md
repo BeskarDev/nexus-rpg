@@ -2,8 +2,8 @@
 
 Binding rules, not suggestions. Two sources feed this file:
 
-1. **Native principles (1–7)** — distilled from owner feedback and the creature-system analysis during creature work. Numbers are stable — **never renumber**.
-2. **Ported principles (8+)** — established through extensive spell-design and talent-design sessions with the owner, translated to creature terms. Each cites its provenance; the full original reasoning lives in `.claude/skills/spell-design/references/principles/`.
+1. **Native principles (1–7, 13)** — distilled from owner feedback and the creature-system analysis during creature work. Numbers are stable — **never renumber**.
+2. **Ported principles (8–12)** — established through extensive spell-design and talent-design sessions with the owner, translated to creature terms. Each cites its provenance; the full original reasoning lives in `.claude/skills/spell-design/references/principles/`.
 
 The numeric chassis (tier stats, size modifiers, immunity sets, validation checklist) lives in [stat-tables.md](stat-tables.md); this file holds design-judgment rules.
 
@@ -32,6 +32,8 @@ Creature ability text follows the same house conventions as spell and talent tex
 
 **7. Ability output follows the spell scaling frameworks.** Damage/healing abilities beyond basic attacks use `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6 (damage per rank/tier, AoE = half single-target) and §16 (healing: single-target 1:1 with damage, Quick Action ½, AoE half; temp HP never stacks). A creature's ability output must stay consistent with what a same-tier caster could do. Spellcasting creatures: max spell rank = skill rank in Arcana/Mysticism, and every referenced spell must exist in the published spell lists — verify by grep, never import spells from other game systems.
 
+**13. Mythological-first roster identity — D&D imports must be naturalized, never copied.** Every creature must pass the mood-board test: would it fit a Conan the Cimmerian comic panel, Clash of the Titans, or the brutality of ancient nature? Source concepts primarily from Bronze Age and ancient-world myth (Mesopotamian, Egyptian, Greek, Persian, and the analog registers of the setting's other regions) or from the natural world made deadly (giant scorpions, jackals, desert vipers). D&D monster concepts may still be imported when the underlying creature fits the setting — a stirge as an oversized bloodsucking mosquito belongs in a delta swamp — but the import must be naturalized: give it a new name (mandatory for any D&D-identified or trademarked name — otyugh, grell, stirge, bugbear, tarrasque, beholder, displacer beast, and kin — both for legal safety and because those names carry a dungeon-fantasy register), and adapt its ecology, anatomy, or behavior to a concrete place in the world (what it eats, where it lairs, which region and folk know it, what myth locals tell about it). Names from shared world myth (harpy, manticore, minotaur, lich, kraken) are fine as-is. Expansion targets that fit the register natively: lamassu, girtablilu (scorpion folk), ammit, sirrush, ushabti, roc, gorgon, mummy lords. The current published roster is an early demo roster — existing entries violating this are grandfathered until bestiary iterations replace them, but no new creature may violate it. *(Owner rulings, 2026-07-24, genre/vibe review V2: the roster is a demo, encode the identity feedback for future iterations; D&D monsters can exist in Nexus when flavor and identity match the setting — rename at minimum, and adapt ecology, anatomy, or behavior where needed.)*
+
 ## Ported Principles
 
 **8. Check every condition against its published definition; parameterized conditions carry their (X).** Never reason about a condition from its name or its D&D counterpart — open `docs/05-combat/04-conditions.md` and design against what it actually does. The canonical trap: Nexus **stunned** does not disable a creature (they still move or act, at +1 bane); full incapacitation is **paralyzed** alone, which sits a full severity tier higher and needs harsher gates (rolled, limited, repeat-save escape valves). Write "poisoned for a short duration" with the save spelled out, "burning (4)", never a bare adverb. *(spell principle 73; talent principle 26)*
@@ -48,7 +50,7 @@ Creature ability text follows the same house conventions as spell and talent tex
 
 When the owner corrects or refines a creature design decision in session:
 
-1. Take the next free number (currently next: **13**).
+1. Take the next free number (currently next: **14**).
 2. Append the full principle under the matching section above (numbered, bolded one-line rule, then reasoning, then owner-ruling provenance).
 3. If it is frequently load-bearing, add its one-line hook to the Design Principles section in [../SKILL.md](../SKILL.md).
 4. Update the "currently next" number in step 1. Never renumber.
