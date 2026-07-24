@@ -71,11 +71,19 @@ function inlineHtmlToMarkdown(html: string, context: string): string {
  * Used for fields rendered as card children so their terms keyword-link.
  */
 export function htmlToMarkdownBlocks(html: string, context = 'field'): string {
+	return htmlToMarkdownLines(html, context).join('\n\n')
+}
+
+/**
+ * Like {@link htmlToMarkdownBlocks} but returns the individual `<br/>`-split
+ * markdown lines instead of joining them — lets a caller group them (e.g. fold
+ * consecutive `- ` items into one tight list) before emitting.
+ */
+export function htmlToMarkdownLines(html: string, context = 'field'): string[] {
 	return html
 		.split(/<br\s*\/?>/i)
 		.map((c) => inlineHtmlToMarkdown(c, context))
 		.filter((line) => line !== '')
-		.join('\n\n')
 }
 
 /** Join raw `<br/>`-split chunks into one markdown block. */

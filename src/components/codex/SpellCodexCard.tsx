@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './SpellCodexCard.module.css'
-import { CardFrame, LozengeDivider, RankChip } from './ornaments'
+import { CardFrame, LozengeDivider, RankChip, Cartouche } from './ornaments'
 
 export interface SpellCodexCardProps {
 	rank: number | string
@@ -60,7 +60,9 @@ export default function SpellCodexCard({
 				<dl className={styles.statBand}>
 					{stats.map((s) => (
 						<div key={s.label} className={styles.stat}>
-							<dt className={styles.statLabel}>{s.label}</dt>
+							<dt className={styles.statLabel}>
+								<Cartouche compact>{s.label}</Cartouche>
+							</dt>
 							<dd className={styles.statValue}>{s.value}</dd>
 						</div>
 					))}

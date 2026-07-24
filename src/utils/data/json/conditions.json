@@ -29,7 +29,7 @@
     },
     {
         "name": "deprived",
-        "description": "You will suffer this condition from a lack of crucial needs, such as food, water, or sleep. While you are deprived, you suffer the following conditions: - You suffer +1 bane on all rolls. - You only regain up to half your max. HP from short breaks. - At the start of each day you suffer this condition, you also suffer 2 Fatigue. You can end this condition by having a night\u2019s rest with food and water again."
+        "description": "You will suffer this condition from a lack of crucial needs, such as food, water, or sleep. While you are deprived, you suffer the following conditions:<br/>- You suffer +1 bane on all rolls.<br/>- You only regain up to half your max. HP from short breaks.<br/>- At the start of each day you suffer this condition, you also suffer 2 Fatigue.<br/>You can end this condition by having a night\u2019s rest with food and water again."
     },
     {
         "name": "distracted",

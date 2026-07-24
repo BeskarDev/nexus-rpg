@@ -9,8 +9,10 @@
 }
 .corner {
 	position: absolute;
-	width: 22px;
-	height: 22px;
+	/* viewBox is 48; keep the px/unit of the old 25px@32 box so the diamond boss
+	   stays the same size and only the spearheads grow longer. */
+	width: 37.5px;
+	height: 37.5px;
 }
 .corner-tl {
 	top: -1px;
@@ -34,11 +36,27 @@
 .wingedDisc {
 	position: absolute;
 	left: 50%;
-	top: -9px;
-	width: 72px;
-	height: 18px;
+	top: -9.5px;
+	width: 90px;
+	height: 19px;
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
+}
+/* Serpent keystone — narrower + a touch smaller than the winged disc, so the
+   condition cards read as subordinate. */
+.serpentKeystone {
+	position: absolute;
+	left: 50%;
+	top: -11.3px;
+	width: 72px;
+	height: 22.5px;
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
+/* Compact frame (dense subordinate cards): smaller corner marks. */
+.frameCompact .corner {
+	width: 26px;
+	height: 26px;
 }
 
 /* --- Lozenge divider --- */
@@ -71,44 +89,292 @@
 	height: 12px;
 }
 
-/* --- Rank cartouche --- */
-.rankChip {
+/* --- Rank seal: FLAT bronze plaque with sunk corner rivets, for the card header.
+   No bevel/shadow (all UI stays flat); the plaque read comes from a flat keyline
+   border + four inlaid corner rivets. --- */
+.rankSeal {
+	--rivet: color-mix(in srgb, var(--ifm-color-primary) 42%, #000 58%);
+	position: relative;
 	display: inline-flex;
-	align-items: center;
+	align-items: baseline;
 	gap: 0.4rem;
 	font-family: var(--nexus-font-ui);
 	font-variant-caps: small-caps;
 	font-weight: 700;
-	font-size: 0.8rem;
-	letter-spacing: 0.04em;
-	padding: 2px 10px;
+	letter-spacing: 0.05em;
+	padding: 4px 17px;
 	border-radius: 2px;
 	color: var(--ifm-background-surface-color);
 	background-color: var(--ifm-color-primary);
-	/* struck-metal double bevel */
-	box-shadow:
-		inset 0 0 0 1px color-mix(in srgb, var(--ifm-color-primary) 55%, #000 45%),
-		inset 0 0 0 2px var(--ifm-background-surface-color);
+	/* Flat keyline. */
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 45%, #000 55%);
+	white-space: nowrap;
+	vertical-align: middle;
+}
+/* Four sunk diamond rivets, one per corner — flat, no shadow. */
+.rivet {
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	background-color: var(--rivet);
+	transform: rotate(45deg);
+}
+.rivet-tl {
+	top: 3px;
+	left: 4px;
+}
+.rivet-tr {
+	top: 3px;
+	right: 4px;
+}
+.rivet-br {
+	bottom: 3px;
+	right: 4px;
+}
+.rivet-bl {
+	bottom: 3px;
+	left: 4px;
+}
+.rankSealWord {
+	font-size: 0.7rem;
+	opacity: 0.82;
+}
+.rankSealNum {
+	font-size: 1.02rem;
+	font-weight: 700;
+	line-height: 1;
+}
+
+/* --- Rank chip: quiet inline prefix inside Heightened rule text --- */
+.rankChip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.22rem;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	font-size: 0.72rem;
+	letter-spacing: 0.04em;
+	color: var(--ifm-background-surface-color);
+	background-color: var(--ifm-color-primary);
 	white-space: nowrap;
 	vertical-align: middle;
 }
 .rankChipCompact {
-	gap: 0.22rem;
-	font-size: 0.72rem;
 	padding: 0 6px;
+	border-radius: 2px;
 	box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ifm-color-primary) 55%, #000 45%);
 	/* Nudge onto the text baseline when inline in a Heightened line. */
 	position: relative;
 	top: -0.05em;
 	margin-right: 0.1rem;
 }
-/* One uniform color for the whole chip — no faded word/stud. */
 .rankWord {
 	font-size: 0.92em;
 }
-.stud {
-	width: 5px;
-	height: 5px;
+
+/* ============================================================================
+ * M7 — Amonkhet ornament expansion. Tokens only; currentColor; both themes.
+ * ========================================================================== */
+
+/* --- Cartouche: engraved tapered nameplate --- */
+/* A carved stone nameplate — rigid rectilinear body (crisp 2px corners, matching
+   the card frames), with an inset vertical end-bar at each short edge standing in
+   for the cartouche's terminal knot. Not a pill: the architectural geometry, not a
+   button. */
+.cartouche {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.32rem;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.045em;
+	font-size: 0.78rem;
+	line-height: 1;
+	padding: 3px 13px;
+	border-radius: 2px;
+	/* Ink-forward text keeps AA; the bronze lives in the border + faint fill. */
+	color: color-mix(in srgb, var(--ifm-font-color-base) 82%, var(--ifm-color-primary));
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
+	vertical-align: middle;
+	white-space: nowrap;
+}
+/* Terminal end-bars: a hairline set in from each short edge. */
+.cartouche::before,
+.cartouche::after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	bottom: 3px;
+	width: 1px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
+}
+.cartouche::before {
+	left: 5px;
+}
+.cartouche::after {
+	right: 5px;
+}
+.cartoucheCompact {
+	gap: 0.26rem;
+	font-size: 0.7rem;
+	padding: 2px 11px;
+}
+.cartoucheCompact::before {
+	left: 4px;
+}
+.cartoucheCompact::after {
+	right: 4px;
+}
+.cartoucheGlyph {
+	color: var(--ifm-color-primary);
+	opacity: 0.85;
+}
+.cartoucheText {
+	display: inline-block;
+}
+
+/* --- Hieroglyph frieze (divider segment + cornice band) --- */
+/* One repeat-x mask tile (triangle + stroke + block); currentColor fills it, so
+   it tints in both themes and tiles seamlessly (marks sit inside the tile). */
+.friezeSeg,
+.friezeCornice {
+	--frieze-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12'%3E%3Cpath d='M2 9 L6 3 L10 9 Z' fill='%23000'/%3E%3Crect x='13.3' y='3' width='1.4' height='6' fill='%23000'/%3E%3Crect x='18' y='4.5' width='3' height='3' fill='%23000'/%3E%3C/svg%3E");
 	background-color: currentColor;
+	-webkit-mask: var(--frieze-mask) repeat-x center / auto 12px;
+	mask: var(--frieze-mask) repeat-x center / auto 12px;
+}
+.friezeDivider {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	margin: 1.75rem 0;
+	color: color-mix(in srgb, var(--ifm-color-primary) 72%, transparent);
+}
+.friezeDivider::before,
+.friezeDivider::after {
+	content: '';
+	flex: 1 1 auto;
+	height: 1px;
+}
+.friezeDivider::before {
+	background: linear-gradient(to right, transparent, currentColor);
+}
+.friezeDivider::after {
+	background: linear-gradient(to right, currentColor, transparent);
+}
+.friezeSeg {
+	flex: 0 0 auto;
+	width: 108px;
+	height: 12px;
+}
+.friezeCornice {
+	height: 12px;
+	color: color-mix(in srgb, var(--ifm-color-primary) 78%, transparent);
+}
+.friezeCornice-bottom {
+	transform: scaleY(-1);
+}
+
+/* --- Jewel accent: inlaid beveled gem, KEY glyphs only --- */
+.jewel {
+	display: inline-block;
+	flex: 0 0 auto;
+	vertical-align: middle;
+	box-shadow:
+		inset 0 0 0 1px color-mix(in srgb, #000 32%, transparent),
+		inset 1px 1px 1.5px color-mix(in srgb, #fff 45%, transparent);
+}
+.jewel-lozenge {
 	transform: rotate(45deg);
+	border-radius: 1px;
+}
+.jewel-disc {
+	border-radius: 50%;
+}
+.jewel-lapis {
+	background-color: var(--nexus-jewel-lapis);
+}
+.jewel-carnelian {
+	background-color: var(--nexus-jewel-carnelian);
+}
+.jewel-emerald {
+	background-color: var(--nexus-jewel-emerald);
+}
+
+/* --- Sun-disc section marker (wingless) --- */
+.sunDisc {
+	display: inline-block;
+	vertical-align: middle;
+	color: var(--ifm-color-primary);
+}
+
+/* --- Tablet frame: heavy STANDALONE container (pillars + keystone + cornices) --- */
+.tablet {
+	position: relative;
+	margin: 1.9rem 0;
+	padding: 1.5rem 2rem;
+	background-color: var(--ifm-background-surface-color);
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 48%, transparent);
+	border-radius: 3px;
+}
+.tabletFrame {
+	position: absolute;
+	inset: 0;
+	color: var(--ifm-color-primary);
+	pointer-events: none;
+}
+/* Flanking pillars — a double vertical rail inset from each side edge, capped by
+   short lintels top and bottom. Standalone framing, never on stacked cards. */
+.pillar {
+	position: absolute;
+	top: 12px;
+	bottom: 12px;
+	width: 3px;
+	border-left: 1px solid currentColor;
+	border-right: 1px solid currentColor;
+	opacity: 0.75;
+}
+.pillarLeft {
+	left: 5px;
+}
+.pillarRight {
+	right: 5px;
+}
+.pillar::before,
+.pillar::after {
+	content: '';
+	position: absolute;
+	left: -3px;
+	right: -3px;
+	height: 1px;
+	background: currentColor;
+}
+.pillar::before {
+	top: -4px;
+}
+.pillar::after {
+	bottom: -4px;
+}
+/* Solar-disc keystone, seated over the top edge on the surface color. */
+.tabletKeystone {
+	position: absolute;
+	left: 50%;
+	top: -14px;
+	transform: translateX(-50%);
+	padding: 0 5px;
+	line-height: 0;
+	background-color: var(--ifm-background-surface-color);
+}
+.tabletBody {
+	margin: 0.6rem 0;
+}
+.tabletBody > :first-child {
+	margin-top: 0;
+}
+.tabletBody > :last-child {
+	margin-bottom: 0;
 }

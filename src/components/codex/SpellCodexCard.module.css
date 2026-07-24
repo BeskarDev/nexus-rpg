@@ -7,14 +7,11 @@
 	position: relative;
 	margin: 1.75rem 0;
 	padding: 1.15rem 1.4rem 1.2rem;
-	/* Outer band — the thicker structural frame. */
+	/* Outer band — the thicker structural frame. Flat (no bevel/engraving shadow);
+	   depth comes from the concentric inner border below, not lighting. */
 	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
 	border-radius: 3px;
 	background-color: var(--ifm-background-surface-color);
-	/* Faint engraving: light catches the top inner edge, shadow pools below. */
-	box-shadow:
-		inset 0 1px 0 color-mix(in srgb, var(--ifm-color-primary) 12%, transparent),
-		inset 0 -8px 18px -14px color-mix(in srgb, #000 55%, transparent);
 }
 /* Inner band — a fine inlaid line set in from the outer frame (concentric). */
 .card::before {
@@ -63,18 +60,16 @@
 
 .stat {
 	display: flex;
-	align-items: baseline;
-	gap: 0.35rem;
+	align-items: center;
+	gap: 0.4rem;
 	margin: 0;
 }
 
+/* The label is now a Cartouche nameplate (ornaments.tsx); the dt is just a
+   flex/baseline slot. */
 .statLabel {
-	font-family: var(--nexus-font-ui);
-	font-variant-caps: small-caps;
-	letter-spacing: 0.03em;
-	font-size: 0.72rem;
-	font-weight: 700;
-	color: color-mix(in srgb, var(--ifm-font-color-base) 62%, transparent);
+	margin: 0;
+	line-height: 1;
 }
 
 .statValue {
@@ -182,15 +177,9 @@
 	font-size: 0.9rem;
 }
 
+/* Now a Cartouche nameplate (ornaments.tsx); the wrapper only sets spacing. */
 .heightenedLabel {
-	display: block;
-	font-family: var(--nexus-font-ui);
-	font-variant-caps: small-caps;
-	font-weight: 700;
-	letter-spacing: 0.03em;
-	font-size: 0.78rem;
-	margin-bottom: 0.2rem;
-	color: color-mix(in srgb, var(--ifm-font-color-base) 62%, transparent);
+	margin-bottom: 0.35rem;
 }
 
 .heightenedText > * {

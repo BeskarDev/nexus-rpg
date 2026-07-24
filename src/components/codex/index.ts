@@ -14,9 +14,28 @@ export { default as ChapterCard } from './ChapterCard'
 export type { ChapterCardProps } from './ChapterCard'
 export { default as SpellCodexCard } from './SpellCodexCard'
 export type { SpellCodexCardProps } from './SpellCodexCard'
+export { default as ConditionCard } from './ConditionCard'
+export type { ConditionCardProps } from './ConditionCard'
 export { default as SuccessLevel } from './SuccessLevel'
 export type { SuccessLevelProps, SuccessLevelName } from './SuccessLevel'
 export { default as SpellHeightened } from './SpellHeightened'
 export type { SpellHeightenedProps } from './SpellHeightened'
-export { CardFrame, LozengeDivider, RankChip } from './ornaments'
-export type { LozengeDividerProps, RankChipProps } from './ornaments'
+export {
+	CardFrame,
+	LozengeDivider,
+	RankChip,
+	Cartouche,
+	FriezeDivider,
+	FriezeBand,
+	JewelAccent,
+	SunDisc,
+	TabletFrame,
+} from './ornaments'
+export type {
+	LozengeDividerProps,
+	RankChipProps,
+	CartoucheProps,
+	JewelAccentProps,
+	JewelTone,
+	TabletFrameProps,
+} from './ornaments'

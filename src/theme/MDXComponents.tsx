@@ -5,6 +5,7 @@ import ChapterSigil from '@site/src/components/codex/ChapterSigil'
 import SpellCodexCard from '@site/src/components/codex/SpellCodexCard'
 import SuccessLevel from '@site/src/components/codex/SuccessLevel'
 import SpellHeightened from '@site/src/components/codex/SpellHeightened'
+import ConditionCard from '@site/src/components/codex/ConditionCard'
 import { LozengeDivider, RankChip } from '@site/src/components/codex/ornaments'
 
 /**
@@ -19,6 +20,7 @@ export default {
 	SpellCodexCard,
 	SuccessLevel,
 	SpellHeightened,
+	ConditionCard,
 	RankChip,
 	// Replace the default `---` thematic break with the ornamental divider.
 	hr: LozengeDivider,

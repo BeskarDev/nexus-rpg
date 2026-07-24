@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './SpellCodexCard.module.css'
-import { LozengeDivider } from './ornaments'
+import { LozengeDivider, Cartouche } from './ornaments'
 
 export interface SpellHeightenedProps {
 	children: React.ReactNode
@@ -15,7 +15,9 @@ export default function SpellHeightened({ children }: SpellHeightenedProps) {
 	return (
 		<div className={styles.heightened}>
 			<LozengeDivider compact />
-			<span className={styles.heightenedLabel}>Heightened</span>
+			<div className={styles.heightenedLabel}>
+				<Cartouche compact>Heightened</Cartouche>
+			</div>
 			<div className={styles.heightenedText}>{children}</div>
 		</div>
 	)

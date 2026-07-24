@@ -73,6 +73,15 @@
 	--rune-cyan-text: var(--nexus-rune-cyan-text);
 	--rune-cyan-glow: var(--nexus-rune-cyan-glow);
 
+	/* Jewel accents (M7 E3): inlaid-gem tones for KEY/divine glyphs only —
+	   never a general accent. Deliberately blue / red / green so none reads as
+	   the reserved magic rune-cyan. Values are per mode so each holds as a
+	   graphic object (>=3:1) on its surface: deeper on the cream light surface,
+	   lighter on the smoky dark surface. */
+	--nexus-jewel-lapis: #2a4d8f; /* deep lapis blue */
+	--nexus-jewel-carnelian: #a83a28; /* burnt carnelian red */
+	--nexus-jewel-emerald: #1f6b47; /* deep emerald green */
+
 	/* Local search (@easyops-cn/docusaurus-search-local): point the plugin's
 	   own vars at the token palette. Highlight/cursor already fall back to
 	   --ifm-color-primary (bronze); these align the surfaces too. Active-row
@@ -139,6 +148,10 @@
 	--nexus-ink: #eadfcd; /* warm sand / bone */
 	--nexus-rune-cyan-text: #63d7e6; /* AA-safe on obsidian */
 	--nexus-rune-cyan-glow: #63d7e6;
+	/* Jewel accents lightened for the smoky dark surface (M7 E3). */
+	--nexus-jewel-lapis: #6f93d6;
+	--nexus-jewel-carnelian: #d97a5f;
+	--nexus-jewel-emerald: #5cae82;
 
 	--ifm-color-primary: var(--nexus-bronze);
 	--ifm-color-primary-dark: #bd8748;
