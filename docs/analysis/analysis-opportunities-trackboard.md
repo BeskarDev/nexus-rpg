@@ -28,6 +28,8 @@ The following systems already have dedicated analysis reports:
 | Folk naming conventions (12 folk) | `names/*.md` |
 | Folk traits & ancestry balance | `folk-traits-ancestry-balance-analysis.md` |
 | Domain building (strongholds, organizations, agent missions) | `domain/DOMAIN_SYSTEM_GDD.md` + subfiles |
+| Sword & sorcery genre + game vibe alignment | `genre/sword-and-sorcery-genre-review-v2.md` (working document, incl. owner rulings) + `_archive_/sword-and-sorcery-genre-review.md` (V1 mechanics audit, superseded) |
+| Table experience, onboarding & setting integration | `genre/table-experience-and-setting-integration.md` (player/GM pedagogy layer, vault-to-rules import map) |
 | Faction turns (living world, GM faction procedure) | `factions/FACTION_SYSTEM_GDD.md` + catalog |
 
 ---

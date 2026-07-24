@@ -1,5 +1,7 @@
 # Sword & Sorcery Genre Review — Rules & Mechanics
 
+> **⚠️ Superseded (July 2026):** [genre/sword-and-sorcery-genre-review-v2.md](../genre/sword-and-sorcery-genre-review-v2.md) is the working document. It records owner rulings that settle several items below (notably: the short-break HP reset is deliberate design — the Recoveries proposal in §3.1 is rejected as a default rule). This file remains as the reference for full mechanical argumentation.
+
 > **Scope:** Core resolution system, wounds/HP/Fatigue, rest and recovery, magic (Arcana and Mysticism), progression, folk traits, talents, and the travel and challenge sub-systems. All references are to the published ruleset as of April 2026.
 
 ---
