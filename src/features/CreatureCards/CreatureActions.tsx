@@ -2,12 +2,19 @@ import { Box, Typography } from '@mui/material'
 import React from 'react'
 
 // Helper function to determine font size for single card layout
-const getSingleCardFontSize = (attacks: any[], abilities: any[]) => {
+const getSingleCardFontSize = (
+	attacks: any[],
+	abilities: any[],
+	quickActions: any[],
+) => {
 	// Calculate total content length for single card
 	const attackContent = attacks
 		.map((a) => `${a.name} ${a.damage} ${a.description || ''}`)
 		.join(' ')
-	const abilityContent = abilities
+	// Quick actions count toward the budget too — they used to be lumped into
+	// `abilities`, so leaving them out here would under-measure the card and let
+	// the text clip.
+	const abilityContent = [...abilities, ...quickActions]
 		.map((a) => `${a.name} ${a.description}`)
 		.join(' ')
 	const totalContent = attackContent + abilityContent
@@ -22,16 +29,19 @@ const getSingleCardFontSize = (attacks: any[], abilities: any[]) => {
 interface CreatureActionsProps {
 	attacks: any[]
 	abilities: any[]
+	/** Off-turn options, printed as their own block (see Creature.quickActions). */
+	quickActions?: any[]
 	notes: string[]
 }
 
 export const CreatureActions: React.FC<CreatureActionsProps> = ({
 	attacks,
 	abilities,
+	quickActions = [],
 	notes,
 }) => {
 	// Get dynamic font size for single card layout
-	const fontSize = getSingleCardFontSize(attacks, abilities)
+	const fontSize = getSingleCardFontSize(attacks, abilities, quickActions)
 
 	return (
 		<>
@@ -96,6 +106,31 @@ export const CreatureActions: React.FC<CreatureActionsProps> = ({
 							}}
 						>
 							<strong>{ability.name}</strong>: {ability.description}
+						</Typography>
+					))}
+				</Box>
+			)}
+
+			{/* Quick Actions — its own block. These were previously swallowed into
+			    `abilities` by a greedy section regex and printed unlabeled among the
+			    passives, so a GM could not tell which options were off-turn. */}
+			{quickActions.length > 0 && (
+				<Box sx={{ mb: 0.5 }}>
+					<Typography
+						sx={{ fontSize: '6.5pt !important', fontWeight: 600, mb: 0.25 }}
+					>
+						Quick Actions
+					</Typography>
+					{quickActions.map((quickAction, index) => (
+						<Typography
+							key={index}
+							sx={{
+								fontSize: `${fontSize} !important`,
+								mb: 0.2,
+								lineHeight: 1.2,
+							}}
+						>
+							<strong>{quickAction.name}</strong>: {quickAction.description}
 						</Typography>
 					))}
 				</Box>

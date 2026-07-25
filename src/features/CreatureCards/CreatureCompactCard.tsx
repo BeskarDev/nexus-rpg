@@ -37,6 +37,7 @@ export const CreatureCompactCard: React.FC<Creature> = (props) => {
 			<CreatureActions
 				attacks={creature.attacks}
 				abilities={creature.abilities}
+				quickActions={creature.quickActions}
 				notes={[]}
 			/>
 		</BaseCreatureCard>

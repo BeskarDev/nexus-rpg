@@ -95,21 +95,37 @@ const parseCreatureContent = (
 		? parseCommaSeparatedList(weaknessesMatch[1])
 		: []
 
+	// Parse armor category. Present on every published stat block; it was being
+	// dropped entirely, so printed cards never showed a creature's armor.
+	const armorMatch = content.match(/\*\*Armor:\*\* ([^\n]+)/)
+	const armor = armorMatch ? armorMatch[1].trim() : ''
+
 	// Parse attacks
 	const attacksSection = content.match(
-		/\*\*Attacks:\*\*([\s\S]*?)(?=\*\*Abilities:\*\*|$)/,
+		/\*\*Attacks:\*\*([\s\S]*?)(?=\*\*Abilities:\*\*|\*\*Quick Actions:\*\*|$)/,
 	)
 	const attacks = attacksSection ? parseAttacks(attacksSection[1]) : []
 
-	// Parse abilities
-	const abilitiesSection = content.match(/\*\*Abilities:\*\*([\s\S]*)/)
+	// Parse abilities. Must stop at Quick Actions: this section used to run to the
+	// end of the block, so every quick action was parsed as an ability and printed
+	// unlabeled among the passives.
+	const abilitiesSection = content.match(
+		/\*\*Abilities:\*\*([\s\S]*?)(?=\*\*Quick Actions:\*\*|$)/,
+	)
 	const abilities = abilitiesSection ? parseAbilities(abilitiesSection[1]) : []
+
+	// Parse quick actions — same line format as abilities, its own block.
+	const quickActionsSection = content.match(/\*\*Quick Actions:\*\*([\s\S]*)/)
+	const quickActions = quickActionsSection
+		? parseAbilities(quickActionsSection[1])
+		: []
 
 	return {
 		name,
 		tier,
 		category,
 		type,
+		armor,
 		hp: hp.trim(), // Keep as string to preserve patterns like "2×50"
 		av,
 		str,
@@ -125,6 +141,7 @@ const parseCreatureContent = (
 		weaknesses,
 		attacks,
 		abilities,
+		quickActions,
 	}
 }
 

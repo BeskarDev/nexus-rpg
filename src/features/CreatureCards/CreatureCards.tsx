@@ -36,15 +36,39 @@ const MenuProps = {
 	},
 }
 
+/**
+ * The ability list for the multi-card (detail) layouts: real abilities followed by
+ * the creature's quick actions.
+ *
+ * Quick actions used to arrive already merged into `abilities` because the markdown
+ * parser's abilities section ran greedily to the end of the block. Now that they
+ * are parsed as their own list, the detail layouts have to re-merge them or they
+ * would silently vanish from printed multi-card creatures — and the layout
+ * strategy would under-count content and pick too few cards.
+ *
+ * Tagging each with `recharge: 'Quick Action'` is enough to label them: both
+ * `DetailCardContent` and `CreatureAbilityCard` already render that field in
+ * parentheses after the name, so they are no longer indistinguishable from
+ * passives the way the old merge left them.
+ */
+const detailAbilities = (creature: Creature): Ability[] => [
+	...creature.abilities,
+	...creature.quickActions.map((quickAction) => ({
+		...quickAction,
+		recharge: quickAction.recharge ?? 'Quick Action',
+	})),
+]
+
 // Determine how many cards a creature needs and what type
 const getCreatureCardStrategy = (
 	creature: Creature,
 ): 'single' | 'double' | 'triple' => {
-	const totalAbilities = creature.abilities.length
+	const abilitiesForLayout = detailAbilities(creature)
+	const totalAbilities = abilitiesForLayout.length
 	const totalAttacks = creature.attacks.length
 
 	// Calculate actual content lengths for more accurate assessment
-	const abilityContentLength = getContentLength(creature.abilities)
+	const abilityContentLength = getContentLength(abilitiesForLayout)
 	const attackContentLength = getAttackContentLength(creature.attacks)
 	const statsLength =
 		creature.skills.join(' ').length +
@@ -361,8 +385,8 @@ export const CreatureCards: React.FC = () => {
 				)
 
 				// Always create abilities card(s) for double strategy
-				if (creature.abilities.length > 0) {
-					const abilityChunks = splitAbilities(creature.abilities)
+				if (detailAbilities(creature).length > 0) {
+					const abilityChunks = splitAbilities(detailAbilities(creature))
 					abilityChunks.forEach((abilityChunk, chunkIndex) => {
 						cards.push(
 							<CreatureDetailCard
@@ -413,8 +437,8 @@ export const CreatureCards: React.FC = () => {
 					})
 				}
 
-				if (creature.abilities.length > 0) {
-					const abilityChunks = splitAbilities(creature.abilities)
+				if (detailAbilities(creature).length > 0) {
+					const abilityChunks = splitAbilities(detailAbilities(creature))
 					abilityChunks.forEach((abilityChunk, chunkIndex) => {
 						cards.push(
 							<CreatureDetailCard
