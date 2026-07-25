@@ -44,7 +44,7 @@
 	letter-spacing: 0.03em;
 	/* Small-caps letterforms sit shorter than full caps, so the badge needs a
 	   slightly larger size to keep the title reading at the intended weight. */
-	font-size: 1.15rem;
+	font-size: var(--nexus-text-md);
 	line-height: 1.2;
 }
 /* Flanking diamond rivets. */
@@ -73,7 +73,7 @@
 }
 
 .body {
-	font-size: 0.92rem;
+	font-size: var(--nexus-text-dense);
 }
 .body > :last-child {
 	margin-bottom: 0;

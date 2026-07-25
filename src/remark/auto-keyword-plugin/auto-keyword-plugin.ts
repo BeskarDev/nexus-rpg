@@ -111,8 +111,16 @@ const autoKeywordPlugin = (options) => {
 									],
 									data: {
 										hProperties: {
+											// No font-size: this used to carry `font-size: large`, a CSS
+											// ABSOLUTE keyword pinned at 18px that neither inherited nor
+											// scaled. In body text it ran ~7% over the surrounding prose,
+											// and inside any compact container (badges, stat bands, trait
+											// rows) it blew the layout apart — three separate components
+											// had grown `font-size: inherit !important` resets to undo it.
+											// Keywords now take the size of whatever they sit in; small
+											// caps alone carries the emphasis.
 											style:
-												'font-variant: small-caps; text-transform: lowercase; font-size: large;',
+												'font-variant: small-caps; text-transform: lowercase;',
 										},
 									},
 									processed: true,

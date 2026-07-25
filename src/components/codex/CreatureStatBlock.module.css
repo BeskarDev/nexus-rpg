@@ -11,6 +11,10 @@
 	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
 	border-radius: 3px;
 	background-color: var(--ifm-background-surface-color);
+	/* The densest card in the codex is a scan surface, not prose: it sits one
+	   step below body text so a Lord creature's three action blocks stay on one
+	   screen. The other cards keep body size — their rule text IS reading text. */
+	font-size: var(--nexus-text-dense);
 }
 
 .head {
@@ -38,7 +42,7 @@
 	font-family: var(--nexus-font-display);
 	font-variant-caps: small-caps;
 	letter-spacing: 0.02em;
-	font-size: 1.3rem;
+	font-size: var(--nexus-text-lg);
 	line-height: 1.15;
 }
 
@@ -46,7 +50,7 @@
 .type {
 	margin: 0.05rem 0 0;
 	font-style: italic;
-	font-size: 0.88rem;
+	font-size: var(--nexus-text-sm);
 	line-height: 1.2;
 	color: color-mix(in srgb, var(--ifm-font-color-base) 70%, transparent);
 }
@@ -65,7 +69,7 @@
 	font-variant-caps: small-caps;
 	font-weight: 700;
 	letter-spacing: 0.04em;
-	font-size: 0.72rem;
+	font-size: var(--nexus-text-xs);
 	line-height: 1.5;
 	white-space: nowrap;
 }
@@ -113,7 +117,7 @@
 /* Defenses lead and are set largest — they answer the first question asked of any
    creature ("what do I roll against?"). */
 .defenses .figureNumber {
-	font-size: 1.2rem;
+	font-size: var(--nexus-text-lg);
 }
 
 /* Each group after the first is fenced off by a keyline — the one place a rule
@@ -151,7 +155,7 @@
 }
 
 .figureNumber {
-	font-size: 1.05rem;
+	font-size: var(--nexus-text-base);
 	font-weight: 600;
 	line-height: 1.1;
 	font-variant-numeric: tabular-nums;
@@ -162,7 +166,7 @@
 	font-variant-caps: small-caps;
 	font-weight: 700;
 	letter-spacing: 0.06em;
-	font-size: 0.64rem;
+	font-size: var(--nexus-text-3xs);
 	line-height: 1.2;
 	color: color-mix(in srgb, var(--ifm-color-primary) 72%, var(--ifm-font-color-base));
 }
@@ -179,7 +183,7 @@
 	font-variant-caps: small-caps;
 	font-weight: 700;
 	letter-spacing: 0.03em;
-	font-size: 0.58rem;
+	font-size: var(--nexus-text-3xs);
 	line-height: 1.5;
 	white-space: nowrap;
 	color: color-mix(in srgb, var(--ifm-font-color-base) 70%, var(--ifm-color-primary));
@@ -213,7 +217,7 @@
 }
 .traitValue {
 	margin: 0;
-	font-size: 0.92rem;
+	font-size: var(--nexus-text-dense);
 }
 .body > .trait:first-child {
 	margin-top: 0.45rem;
@@ -251,7 +255,7 @@
 	font-variant-caps: small-caps;
 	font-weight: 700;
 	letter-spacing: 0.06em;
-	font-size: 0.82rem;
+	font-size: var(--nexus-text-sm);
 	color: color-mix(in srgb, var(--ifm-color-primary) 82%, var(--ifm-font-color-base));
 }
 
@@ -303,7 +307,7 @@
 	padding: 0.45rem 0.7rem;
 	border-radius: 2px;
 	background: color-mix(in srgb, var(--ifm-color-primary) 4%, transparent);
-	font-size: 0.95rem;
+	font-size: var(--nexus-text-dense);
 	font-style: italic;
 	color: color-mix(in srgb, var(--ifm-font-color-base) 88%, transparent);
 }
@@ -324,7 +328,7 @@
 .loreSection {
 	font-style: normal;
 	margin-bottom: 0.35rem;
-	font-size: 0.92rem;
+	font-size: var(--nexus-text-dense);
 }
 .loreLabel {
 	margin-right: 0.4rem;
@@ -332,7 +336,7 @@
 	font-variant-caps: small-caps;
 	font-weight: 700;
 	letter-spacing: 0.06em;
-	font-size: 0.76rem;
+	font-size: var(--nexus-text-xs);
 	color: color-mix(in srgb, var(--ifm-color-primary) 82%, var(--ifm-font-color-base));
 }
 
@@ -348,7 +352,7 @@
 	font-variant-caps: small-caps;
 	font-weight: 700;
 	letter-spacing: 0.03em;
-	font-size: 0.66rem;
+	font-size: var(--nexus-text-2xs);
 	line-height: 1.6;
 	white-space: nowrap;
 	font-style: normal;
@@ -442,7 +446,7 @@
 .treasureNum {
 	font-family: var(--nexus-font-ui);
 	font-weight: 700;
-	font-size: 0.7rem;
+	font-size: var(--nexus-text-2xs);
 	font-variant-numeric: tabular-nums;
 	color: color-mix(in srgb, var(--ifm-color-primary) 72%, var(--ifm-font-color-base));
 }
@@ -457,14 +461,14 @@
 	font-variant-caps: small-caps;
 	font-weight: 700;
 	letter-spacing: 0.03em;
-	font-size: 0.62rem;
+	font-size: var(--nexus-text-3xs);
 	line-height: 1.45;
 	white-space: nowrap;
 	color: color-mix(in srgb, var(--ifm-font-color-base) 72%, var(--ifm-color-primary));
 }
 
 .treasureItem {
-	font-size: 0.86rem;
+	font-size: var(--nexus-text-sm);
 	line-height: 1.45;
 	padding-bottom: 0.12rem;
 }
@@ -485,7 +489,7 @@
 	font-variant-caps: small-caps;
 	font-weight: 700;
 	letter-spacing: 0.02em;
-	font-size: 0.64rem;
+	font-size: var(--nexus-text-3xs);
 	white-space: nowrap;
 }
 .treasureStats {
@@ -524,7 +528,7 @@
 	font-variant-caps: small-caps;
 	font-weight: 700;
 	letter-spacing: 0.03em;
-	font-size: 0.68rem;
+	font-size: var(--nexus-text-2xs);
 	line-height: 1.6;
 	white-space: nowrap;
 	font-style: normal;
@@ -546,11 +550,10 @@
 	white-space: normal;
 }
 /* Creature links inside the compartment inherit its type — the same inline-style
-   reset the badges need, since the auto-keyword plugin writes `font-size:large`
-   straight onto the anchor. */
+   reset the badges need, since the auto-keyword plugin writes small-caps and
+   lowercasing straight onto the anchor. */
 .encounterParts a {
 	font: inherit !important;
-	font-size: inherit !important;
 	font-variant: inherit !important;
 	font-weight: inherit !important;
 	text-transform: inherit !important;
@@ -635,7 +638,7 @@
 	font-variant-caps: small-caps;
 	font-weight: 700;
 	letter-spacing: 0.03em;
-	font-size: 0.68rem;
+	font-size: var(--nexus-text-2xs);
 	line-height: 1.55;
 	white-space: nowrap;
 	color: color-mix(in srgb, var(--ifm-font-color-base) 76%, var(--ifm-color-primary));
@@ -651,7 +654,7 @@
 	font-variant-caps: small-caps;
 	font-weight: 600;
 	letter-spacing: 0.03em;
-	font-size: 1.02rem;
+	font-size: var(--nexus-text-base);
 	color: color-mix(in srgb, var(--ifm-color-primary) 88%, var(--ifm-font-color-base));
 }
 
@@ -670,7 +673,7 @@
 	border-radius: 2px;
 	background: color-mix(in srgb, var(--ifm-color-primary) 6%, transparent);
 	border-bottom: 1px solid color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
-	font-size: 0.86rem;
+	font-size: var(--nexus-text-sm);
 	line-height: 1.5;
 }
 /* A chip inside a trait item already carries its own strong colour, so the item
@@ -691,11 +694,14 @@
 
    `!important` is genuinely required here, not laziness: the auto-keyword plugin
    writes its typography as an INLINE style attribute on the anchor
-   (`font-variant:small-caps;text-transform:lowercase;font-size:large`), and an
-   inline style outranks any class selector. Without this, `range (medium)`
-   rendered its first word at `large` inside a 0.68rem badge, and `physical`
-   blew its trait item apart the same way. Everything metric is forced back to
-   the container's own typography.
+   (`font-variant:small-caps;text-transform:lowercase`), and an inline style
+   outranks any class selector. Small caps inside a compact badge fights the
+   badge's own small-caps label, so everything metric is forced back to the
+   container's typography.
+
+   The plugin also used to write `font-size: large` here — an absolute 18px that
+   rendered `range (medium)` at 18px inside a 0.68rem badge. That was removed at
+   source, so size is no longer the reason this block exists.
 
    Chips are excluded: they are deliberately styled marks with their own colour
    and shape, not stray links that need taming. */
@@ -703,7 +709,6 @@
 .traitItem a:not(:global(.chip)),
 .ladderKind a:not(:global(.chip)) {
 	font: inherit !important;
-	font-size: inherit !important;
 	font-variant: inherit !important;
 	font-weight: inherit !important;
 	text-transform: inherit !important;
@@ -782,6 +787,6 @@
 		width: 100%;
 	}
 	.defenses .figureNumber {
-		font-size: 1.1rem;
+		font-size: var(--nexus-text-md);
 	}
 }

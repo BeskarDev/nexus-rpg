@@ -99,6 +99,39 @@ only rounded corner in the set.
 
 Identity hues live in `--chip-fill`, set per variant in `custom.css`.
 
+## Type scale — never write a raw font-size
+
+Every size comes from one ladder of tokens in `custom.css`. Before it existed there were
+**28 distinct rem values across 69 declarations**, some 0.32px apart — differences nobody
+can see, but each one a decision to re-make.
+
+| Token | px | For |
+|---|---|---|
+| `--nexus-text-3xs` … `-2xs` | 10, 11 | micro captions, badge + cartouche labels |
+| `--nexus-text-xs` | 12 | chips, TOC, breadcrumbs |
+| `--nexus-text-sm` | 14 | nav UI (navbar, sidebar, paginator), card meta |
+| `--nexus-text-dense` | 15 | tables, creature stat block — **scan** surfaces |
+| `--nexus-text-base` | 16 | body prose |
+| `--nexus-text-md` / `-lg` | 18, 20 | h4, card titles |
+| `--nexus-text-xl` / `-2xl` / `-3xl` | 22, 28, 36 | h3 / h2 / h1 ceilings |
+
+Three rules that go with it:
+
+- **`html` stays at the browser's 16px.** Overriding the root font size breaks the
+  reader's own zoom setting. Build on top of it.
+- **h1/h2/h3 are `clamp()`, not fixed.** Infima ships a `<576px` step-down, but it works by
+  reassigning `--ifm-h*-font-size`, so any rule setting `font-size` directly defeats it —
+  that is how h1 stayed at 38.4px on a 390px phone. `clamp()` cannot be defeated and has no
+  breakpoint jump.
+- **h4 must stay above body size.** Infima's default h4 is 1rem, which sat *below* the
+  reading size. Check any heading level you touch against `--nexus-text-base`.
+
+**Reading measure is `--nexus-measure` (36rem / 72ch of Spectral / ~73 characters).** It is
+capped on prose at any depth — including inside cards, which are the most-read pages — while
+tables, code and card *frames* keep the full column. The measure is the lever: a 92-character
+line was what forced the 1.8 leading that made the whole site read oversized. Fix the
+measure before reaching for a smaller font.
+
 ## Density
 
 Cards inherit Infima's open reading-column rhythm, which is far too airy for a stat block.

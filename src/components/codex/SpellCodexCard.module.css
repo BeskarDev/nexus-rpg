@@ -45,7 +45,7 @@
 	font-family: var(--nexus-font-display);
 	font-variant-caps: small-caps;
 	letter-spacing: 0.02em;
-	font-size: 1.4rem;
+	font-size: var(--nexus-text-xl);
 	line-height: 1.15;
 }
 
@@ -74,7 +74,7 @@
 
 .statValue {
 	margin: 0;
-	font-size: 0.85rem;
+	font-size: var(--nexus-text-sm);
 }
 
 .body > :last-child {
@@ -130,7 +130,7 @@
 	font-variant-caps: small-caps;
 	font-weight: 700;
 	letter-spacing: 0.03em;
-	font-size: 0.82rem;
+	font-size: var(--nexus-text-sm);
 	color: var(--accent);
 }
 /* The pip: a rotated square (lozenge) inline before the label, so it shares the
@@ -174,7 +174,7 @@
 
 /* Heightened footer. */
 .heightened {
-	font-size: 0.9rem;
+	font-size: var(--nexus-text-sm);
 }
 
 /* Now a Cartouche nameplate (ornaments.tsx); the wrapper only sets spacing. */

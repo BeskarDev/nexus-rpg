@@ -153,6 +153,22 @@ found doing the M8 default-theme pass:
 An ornament tiled along a repeated element must be ONE full-width element. A frieze mask
 put on each `th` restarts its phase at every column edge and seams.
 
+## 10. Two units that silently do nothing
+
+- **`ch` resolves against the ELEMENT's own font, not the body's.** A shared
+  `--nexus-measure: 72ch` capped paragraphs at 576px but did nothing at all to headings:
+  72ch of 28px Cinzel is wider than the column, so the `max-width` never bound. A measure
+  shared across elements of different sizes must be an absolute length (`36rem`).
+- **`font-size: large` is an ABSOLUTE keyword, not a relative one.** It is pinned at 18px
+  and neither inherits nor scales, so the same declaration that is +7% in body text is
+  catastrophic inside an 11px badge. The auto-keyword plugin emitted this for every game
+  keyword, and three components had grown `font-size: inherit !important` resets to undo
+  it. Relative emphasis is `em`; usually the right answer is to not set size at all.
+
+When a `max-width` or `font-size` appears to have no effect, measure the rendered box
+before assuming a specificity problem — check `build/assets/css/*.css` for the rule, then
+read the computed width in the browser.
+
 ## 10. Verification checklist for a new content type
 
 1. `bun run content:gen` then `content:check` clean.

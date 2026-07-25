@@ -49,7 +49,7 @@
 
 .label {
 	font-family: var(--nexus-font-display, var(--ifm-heading-font-family));
-	font-size: 1.25rem;
+	font-size: var(--nexus-text-lg);
 	letter-spacing: 0.02em;
 	color: var(--ifm-heading-color);
 }

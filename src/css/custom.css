@@ -142,6 +142,42 @@
 	--ifm-paragraph-margin-bottom: 1rem;
 	--ifm-leading: 1rem;
 
+	/* ---- Type scale (single source of truth) -------------------------------
+	   One ladder for the whole site. Before this existed there were 28 distinct
+	   rem values across 69 declarations, some 0.32px apart — differences nobody
+	   can see, but each one a decision to re-make. Every font-size outside the
+	   character sheet now comes from a step here.
+
+	   `html` deliberately stays at the browser's 16px: overriding the root font
+	   size breaks the reader's own zoom/accessibility setting, so the scale is
+	   built on top of it rather than under it. */
+	--nexus-text-3xs: 0.625rem; /* 10px — micro captions (die-token sublabels) */
+	--nexus-text-2xs: 0.6875rem; /* 11px — badge + cartouche labels */
+	--nexus-text-xs: 0.75rem; /* 12px — chips, TOC, breadcrumbs */
+	--nexus-text-sm: 0.875rem; /* 14px — nav UI, card meta */
+	--nexus-text-dense: 0.9375rem; /* 15px — tables + card bodies (scan surfaces) */
+	--nexus-text-base: 1rem; /* 16px — body prose */
+	--nexus-text-md: 1.125rem; /* 18px — h4, small card titles */
+	--nexus-text-lg: 1.25rem; /* 20px — card titles */
+	--nexus-text-xl: 1.375rem; /* 22px — h3 ceiling */
+	--nexus-text-2xl: 1.75rem; /* 28px — h2 ceiling */
+	--nexus-text-3xl: 2.25rem; /* 36px — h1 ceiling */
+
+	/* Reading measure: 36rem = 576px, which is 72ch of 16px Spectral ≈ 73 average
+	   characters, inside the 66–75 optimum. The doc column itself is ~823px, so
+	   this is applied to the PROSE elements only — tables, cards and code keep
+	   the full width they need. Before this cap the measure ran to 92
+	   characters, which is what forced the 1.8 leading that made the page read
+	   oversized.
+
+	   Deliberately NOT expressed in `ch`. The `ch` unit resolves against the
+	   ELEMENT's own font, not the body's, so `72ch` on a 28px Cinzel h2 came out
+	   wider than the column and the cap silently did nothing — headings kept
+	   their full 759px while paragraphs wrapped at 576px. An absolute length
+	   resolves identically for every element it is applied to. */
+	--nexus-measure: 36rem;
+	--nexus-leading-prose: 1.7;
+
 	/* Character Sheet Layout System */
 	--cs-max-width-sm: 25rem;      /* Statistics panel, Skills lists */
 	--cs-max-width-md: 38rem;      /* Spells tab */
@@ -348,11 +384,56 @@ a:hover:not(.navbar__brand):not(.character-sheet-page a) {
    full-width hairlines were recut there into fading cornices with a lozenge
    terminal). */
 
-/* Reading surface: generous rhythm for long rules text. Scoped to the doc
-   markdown container so nothing bleeds into the character sheet app. */
+/* Reading surface. Scoped to the doc markdown container so nothing bleeds into
+   the character sheet app.
+
+   Was 1.05rem / 1.8. The bump existed for a real reason — Spectral's x-height
+   is 0.45em, smaller than Georgia's 0.481 — but combined with a 92-character
+   measure and 1.8 leading it made the page read oversized. With the measure
+   capped below, the base size carries fine at 1.7. */
 .theme-doc-markdown {
-	font-size: 1.05rem;
-	line-height: 1.8;
+	font-size: var(--nexus-text-base);
+	line-height: var(--nexus-leading-prose);
+}
+
+/* Measure cap. Applied to the PROSE elements rather than the container, so
+   tables, cards and code blocks keep the full column width they need — the
+   ragged right edge where a table outdents past the text is deliberate, and is
+   how a printed manual sets a wide figure beside a text column.
+
+   Prose is capped at ANY depth, not just as a direct child, because the content
+   cards (spell, creature, talent, combat art) are the most-read pages on the
+   site: capping only the top level left their rule text at 90 characters, which
+   is the problem this cap exists to solve. The card FRAME still spans the full
+   column — its stat bands, badges and rank seals need that room — so a long
+   paragraph simply leaves some air at its right.
+
+   Headings stay direct-child only: a card's `### Name` heading sits in a flex
+   row beside its rank badge, where a max-width would fight the layout. */
+.theme-doc-markdown p,
+.theme-doc-markdown ul,
+.theme-doc-markdown ol,
+.theme-doc-markdown dl,
+.theme-doc-markdown blockquote,
+.theme-doc-markdown > h1,
+.theme-doc-markdown > header > h1,
+.theme-doc-markdown > h2,
+.theme-doc-markdown > h3,
+.theme-doc-markdown > h4,
+.theme-doc-markdown > h5,
+.theme-doc-markdown > h6 {
+	max-width: var(--nexus-measure);
+}
+
+/* Scope boundary: the sheet's MUI Typography renders real `<p>` elements inside
+   the doc markdown container, so the measure cap has to be lifted there — the
+   sheet owns its own layout widths (--cs-max-width-*). */
+.character-sheet-page p,
+.character-sheet-page ul,
+.character-sheet-page ol,
+.character-sheet-page dl,
+.character-sheet-page blockquote {
+	max-width: none;
 }
 
 /* Ceremonial display headings, h1/h2 only. Cinzel ships no smcp feature;
@@ -367,12 +448,35 @@ a:hover:not(.navbar__brand):not(.character-sheet-page a) {
 	letter-spacing: 0.02em;
 }
 
+/* Heading ramp: 36 / 28 / 22 / 18 / 16 / 16 at full width.
+
+   h1 and h2 are fluid rather than fixed. Infima ships its own step-down below
+   576px, but it works by reassigning `--ifm-h*-font-size`, and the old rules
+   here set `font-size` directly — which beat the variable and left h1 at 38.4px
+   on a 390px phone. `clamp()` cannot be defeated that way and has no breakpoint
+   jump, so the fluid range replaces the override rather than fighting it.
+
+   h3 and h4 also have to be stated: Infima's defaults (24px and 16px) left h3
+   only 6.7% below h2, and put h4 BELOW body text. */
 .theme-doc-markdown h1 {
-	font-size: 2.4rem;
+	font-size: clamp(1.75rem, 1.4rem + 1.6vw, var(--nexus-text-3xl));
 }
 
 .theme-doc-markdown h2 {
-	font-size: 1.6rem;
+	font-size: clamp(1.375rem, 1.15rem + 1vw, var(--nexus-text-2xl));
+}
+
+.theme-doc-markdown h3 {
+	font-size: clamp(1.1875rem, 1.1rem + 0.35vw, var(--nexus-text-xl));
+}
+
+.theme-doc-markdown h4 {
+	font-size: var(--nexus-text-md);
+}
+
+.theme-doc-markdown h5,
+.theme-doc-markdown h6 {
+	font-size: var(--nexus-text-base);
 }
 
 /* Page sigil injected before each side-nav label by the DocSidebarItems
@@ -388,7 +492,10 @@ a:hover:not(.navbar__brand):not(.character-sheet-page a) {
 /* Forked DocBreadcrumbs container (replaces the theme's CSS-module class) and
    the per-crumb page sigil. */
 .codex-breadcrumbs {
-	--ifm-breadcrumb-size-multiplier: 0.8;
+	/* Infima sizes crumb links off this multiplier against 1rem, not off the
+	   container's font-size, so the secondary-nav step has to be set here:
+	   0.75 x 16px = the 12px --nexus-text-xs step. */
+	--ifm-breadcrumb-size-multiplier: 0.75;
 	margin-bottom: 0.8rem;
 }
 
@@ -419,6 +526,27 @@ a:hover:not(.navbar__brand):not(.character-sheet-page a) {
 .breadcrumbs,
 .theme-code-block {
 	font-family: var(--nexus-font-ui);
+}
+
+/* Nav sizing had no system: navbar and sidebar sat at the full 16px body size
+   while the TOC and breadcrumbs were at 12.8px, so the chrome read as two
+   unrelated layers. Both now come off the ladder — the primary nav a step below
+   body, the secondary nav a step below that. Alegreya Sans has a larger
+   x-height than Spectral, so 14px of sans holds its own beside 16px of serif. */
+.navbar__item,
+.navbar__link,
+.menu__link {
+	font-size: var(--nexus-text-sm);
+}
+
+.table-of-contents,
+.breadcrumbs {
+	font-size: var(--nexus-text-xs);
+}
+
+/* The paginator carries page TITLES, so it stays with the primary nav step. */
+.pagination-nav__label {
+	font-size: var(--nexus-text-sm);
 }
 
 /* Form controls don't inherit font from ancestors; the local-search input
@@ -525,8 +653,9 @@ table th {
   content: '';
   position: absolute;
   left: -1.1rem;
-  /* center the mark on the first text line */
-  top: calc(0.5em * var(--ifm-line-height-base, 1.6) - 3.5px);
+  /* Center the mark on the first text line. Tracks the prose leading token, not
+     Infima's --ifm-line-height-base: the reading column sets its own. */
+  top: calc(0.5em * var(--nexus-leading-prose, 1.7) - 3.5px);
   width: 7px;
   height: 7px;
   transform: rotate(45deg);
@@ -563,7 +692,7 @@ a.chip, .chip {
      size. Alegreya Sans has a larger x-height, so the same visual weight needs
      fewer rem. */
   font-family: var(--nexus-font-ui);
-  font-size: 0.8rem;
+  font-size: var(--nexus-text-xs);
   font-weight: 500;
   line-height: 1.2;
   /* Small-caps reads as struck lettering and levels mixed-case labels
@@ -634,14 +763,14 @@ a.chip:hover {
 /* Weapon category chips */
 .chip--weapon {
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: var(--nexus-text-xs);
 }
 
 /* Attribute chips */
 .chip--attribute {
   font-weight: bold;
   border-radius: 2px !important; /* No rounded edges for attributes - override base chip rule */
-  font-size: 0.75rem;
+  font-size: var(--nexus-text-xs);
   margin-left: 3px;
   margin-right: 3px;
   padding: 2px 6px; /* Reduced horizontal padding */
@@ -1619,15 +1748,30 @@ a.chip,
   padding-bottom: 2px;
 }
 
-/* Show labels on mobile sidebar */
+/* Show labels in the mobile DRAWER only.
+
+   Docusaurus renders every right-position navbar item twice below 996px: once in
+   the collapsed top bar and once inside `.navbar-sidebar`. This rule used to be
+   unscoped, so restoring the label also un-collapsed the TOP-BAR copies — which
+   keep their 32px icon box — and the text spilled sideways across the navbar.
+   Scoping to the drawer is the whole fix: the top-bar copies keep the base
+   `font-size: 0` and stay icon-only, exactly as on desktop. */
 @media (max-width: 996px) {
-  .navbar-icon-with-label {
+  .navbar-sidebar .navbar-icon-with-label {
     width: auto;
-    font-size: inherit;
+    /* The nav type step, matching the sibling drawer links rather than
+       inheriting the 16px body size. */
+    font-size: var(--nexus-text-sm);
     white-space: normal;
+    /* Undo the desktop icon shrink-wrap. In the drawer these are ordinary
+       left-aligned menu links, so they need the menu link's own padding and
+       alignment back — without this they sat flush against the drawer edge while
+       every sibling was indented. */
+    padding-inline: var(--ifm-menu-link-padding-horizontal);
+    justify-content: flex-start;
   }
 
-  .navbar-icon-with-label.navbar-sigil::before {
+  .navbar-sidebar .navbar-icon-with-label.navbar-sigil::before {
     margin-right: 0.4rem;
   }
 
@@ -1720,7 +1864,7 @@ a.chip,
 	border-bottom: 1px solid
 		color-mix(in srgb, var(--codex-alert-ink) 38%, transparent);
 	font-family: var(--nexus-font-display);
-	font-size: 0.95rem;
+	font-size: var(--nexus-text-dense);
 	font-weight: 600;
 	letter-spacing: 0.06em;
 	/* Cinzel's lowercase glyphs ARE natively drawn small caps, so the theme's
@@ -1805,6 +1949,12 @@ a.chip,
 	overflow-x: auto;
 	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
 	border-radius: 2px;
+	/* A table is a scan surface, not prose: one step below body, with the prose
+	   leading dropped back to a compact line so rows stay dense. Wide comparison
+	   tables (equipment, weapons) were the heaviest thing on the page at full
+	   body size. */
+	font-size: var(--nexus-text-dense);
+	line-height: 1.5;
 }
 
 .codex-table-slab::before {
