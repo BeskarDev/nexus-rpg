@@ -1,0 +1,66 @@
+/* DieToken — an attribute die as a polygon whose side count encodes the die size.
+   See DieToken.tsx for why shape beats a label here. Tokens only. */
+
+.token {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.85rem;
+	height: 1.85rem;
+	color: color-mix(in srgb, var(--ifm-color-primary) 72%, var(--ifm-font-color-base));
+}
+
+.die {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* The numeral sits inside the polygon. Nudged down a hair because every shape in
+   the ladder is point-up, so the optical centre of the enclosed area is below the
+   geometric centre of the bounding box. */
+.numeral {
+	position: relative;
+	top: 0.08em;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: 0.78rem;
+	font-variant-numeric: tabular-nums;
+	color: var(--ifm-font-color-base);
+}
+
+/* A modifier (d4-1, d12+2) rides outside the polygon: cramming it inside would
+   force the numeral down to an unreadable size, and it is a separate fact from
+   the die anyway. */
+.modifier {
+	position: absolute;
+	right: -0.75em;
+	bottom: -0.1em;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: 0.62rem;
+	font-variant-numeric: tabular-nums;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, var(--ifm-color-primary));
+}
+
+/* Fallback for a value the parser does not recognise — better a plain string than
+   a confidently wrong shape. */
+.plain {
+	font-size: 0.92rem;
+	font-variant-numeric: tabular-nums;
+}
+
+/* The full value ("d4-1") for screen readers: sighted users get shape + numeral +
+   modifier, which is not a sensible reading order in the accessibility tree. */
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}

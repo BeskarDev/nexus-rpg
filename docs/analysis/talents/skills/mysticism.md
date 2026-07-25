@@ -1,6 +1,6 @@
 # Mysticism — Talent Design Workbench
 
-> **Source:** [docs/03-statistics/06-talents/mysticism.md](../../../03-statistics/06-talents/mysticism.md) | **Main Analysis:** [TALENT_SYSTEM_ANALYSIS.md](../TALENT_SYSTEM_ANALYSIS.md)
+> **Source:** [docs/03-statistics/06-talents/mysticism.mdx](../../../03-statistics/06-talents/mysticism.mdx) | **Main Analysis:** [TALENT_SYSTEM_ANALYSIS.md](../TALENT_SYSTEM_ANALYSIS.md)
 
 ## 1. Skill Identity
 

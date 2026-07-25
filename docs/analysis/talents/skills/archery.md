@@ -1,6 +1,6 @@
 # Archery — Talent Design Workbench
 
-> **Source:** [docs/03-statistics/06-talents/archery.md](../../../03-statistics/06-talents/archery.md) | **Main Analysis:** [TALENT_SYSTEM_ANALYSIS.md](../TALENT_SYSTEM_ANALYSIS.md)
+> **Source:** [docs/03-statistics/06-talents/archery.mdx](../../../03-statistics/06-talents/archery.mdx) | **Main Analysis:** [TALENT_SYSTEM_ANALYSIS.md](../TALENT_SYSTEM_ANALYSIS.md)
 
 ## 1. Skill Identity
 
@@ -331,4 +331,4 @@ All named Archery aspects now have at least one talent: precision (Sharpshooter)
 
 ---
 
-> **Status:** Deep design phase complete. Seven talents designed (Art of Archery R5, Predator's Mark, Covering Fire, Windreader, Trapline, Phantom Strike, Living Cyclone). High-Level target of 3 reached. Ready for owner review. Publication requires: update Art of Archery in `docs/03-statistics/06-talents/archery.md` (add R5); add six new talent entries to the same file.
+> **Status:** Deep design phase complete. Seven talents designed (Art of Archery R5, Predator's Mark, Covering Fire, Windreader, Trapline, Phantom Strike, Living Cyclone). High-Level target of 3 reached. Ready for owner review. Publication requires: update Art of Archery in `src/utils/data/json/talents.json` (add R5) and add six new talent entries there, then `bun run content:gen` — the tier pages are generated.

@@ -1,0 +1,469 @@
+---
+sidebar_position: 8
+toc_max_heading_level: 3
+---
+
+# Tier 7
+
+{/* GENERATED from src/utils/data/json/creatures.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}
+
+Tier 7 creatures require coordinated party tactics to defeat. They include massive giants, legendary dragons, and powerful supernatural beings.
+
+<CreatureStatBlock
+	type="Gargantuan Draconic"
+	tier={7}
+	category="Elite"
+	hp="2x70"
+	av="14 (natural heavy)"
+	str="d12"
+	agi="d8"
+	spi="d10"
+	mnd="d10"
+	parry={15}
+	dodge={11}
+	resist={13}
+>
+
+### Old Fire Dragon
+
+<StatBlockTrait label="Skills">Athletics (4), Fighting (4), Fortitude (4), Insight (4), Lore (4), Perception (4), Survival (4)</StatBlockTrait>
+
+<StatBlockTrait label="Immunities"><TraitItem>fire</TraitItem><TraitItem>frightened</TraitItem></StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>2 x Claw</EntryName> <StatBadge>light</StatBadge><StatBadge>slash</StatBadge> <DamageLadder values="13/23/33" />
+- <EntryName>Bite</EntryName> <StatBadge>crush</StatBadge><StatBadge>reach</StatBadge> <DamageLadder values="16/29/42" /> On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained.
+- <EntryName>Tail</EntryName> <StatBadge>crush</StatBadge><StatBadge>reach</StatBadge> <DamageLadder values="13/23/33" /> On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.
+- <EntryName>Dragon's Breath</EntryName> <StatBadge>recharge (d6)</StatBadge> Roll Strength + Fortitude vs. Dodge. Target all creatures in long range in a cone. On a success, each target suffers 28 fire damage. On a strong or critical success, each target also suffers burning (10).
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Flying</EntryName> <StatBadge>Passive</StatBadge> This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- <EntryName>Legendary Resistance</EntryName> <StatBadge>Passive</StatBadge><StatBadge>3/day</StatBadge> If this creature fails a save, it can choose to succeed instead.
+- <EntryName>Fiery Wrath</EntryName> <StatBadge>Elite Trigger</StatBadge> When this creature loses its first life pool, it immediately regains its Dragon's Breath, uses it, and creates a fire aura. The aura deals 8 fire damage to any creature that ends its turn within melee range of this creature for the rest of the scene.
+- <EntryName>Frightful Presence</EntryName> <StatBadge>Action</StatBadge> Each creature of this creature's choice within very long range must roll Spirit + Fortitude vs. TN 13 or become frightened for a short duration. A creature can repeat the save at the end of each of its turns.
+
+</StatBlockSection>
+
+<StatBlockSection label="Quick Actions">
+
+- <EntryName>Wing Attack</EntryName>. This creature beats its wings. Each creature within close range must roll Agility + Athletics vs. TN 13 or take 11 damage and be knocked prone. This creature can then fly up to half its flying speed.
+- <EntryName>Tail Sweep</EntryName>. This creature sweeps its tail. Each creature within close range must roll Agility + Athletics vs. TN 13 or take 11 damage and be pushed close.
+- <EntryName>Detect</EntryName>. This creature makes a Perception check.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Huge Giant"
+	tier={7}
+	category="Elite"
+	hp="2x70"
+	av="14 (heavy)"
+	str="d12"
+	agi="d6"
+	spi="d10"
+	mnd="d8"
+	parry={15}
+	dodge={11}
+	resist={13}
+>
+
+### Frost Giant Jarl
+
+<StatBlockTrait label="Skills">Athletics (4), Fighting (4), Fortitude (4), Influence (4), Perception (4)</StatBlockTrait>
+
+<StatBlockTrait label="Immunities"><TraitItem>frost</TraitItem></StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Greataxe</EntryName> <StatBadge>heavy (d12)</StatBadge><StatBadge>slash</StatBadge><StatBadge>two-handed</StatBadge> <DamageLadder values="16/29/42" />
+- <EntryName>Ice Boulder</EntryName> <StatBadge>range (very long)</StatBadge><StatBadge>crush</StatBadge> <DamageLadder values="15/27/39">frost</DamageLadder> On a strong or critical hit, the target is slowed until the end of its next turn.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Cold Aura</EntryName> <StatBadge>Passive</StatBadge> At the start of this creature's turn, each creature within melee range takes 5 frost damage.
+- <EntryName>Ice Walk</EntryName> <StatBadge>Passive</StatBadge> This creature can move across and climb icy surfaces without needing to make ability checks. Difficult terrain composed of ice or snow doesn't cost extra movement.
+- <EntryName>Frozen Fury</EntryName> <StatBadge>Elite Trigger</StatBadge> When this creature loses its first life pool, it lets out a freezing roar. All creatures within short range must roll Spirit + Fortitude vs. TN 13 or be frozen solid (restrained) until the end of their next turn.
+
+</StatBlockSection>
+
+<StatBlockSection label="Quick Actions">
+
+- <EntryName>Icy Stomp</EntryName>. One creature in melee range must roll Agility + Athletics vs. TN 13 or take 9 frost damage and fall prone. The area becomes icy difficult terrain.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Large Spirit"
+	tier={7}
+	category="Elite"
+	hp="2x70"
+	av="14 (natural heavy)"
+	str="d12"
+	agi="d10"
+	spi="d12"
+	mnd="d10"
+	parry={14}
+	dodge={13}
+	resist={14}
+>
+
+### Infernal Lord
+
+<StatBlockTrait label="Skills">Arcana (4), Fighting (4), Fortitude (4), Insight (4), Perception (4), Influence (4)</StatBlockTrait>
+
+<StatBlockTrait label="Immunities"><TraitItem>fire</TraitItem><TraitItem>poison</TraitItem><TraitItem>poisoned</TraitItem><TraitItem>charmed</TraitItem></StatBlockTrait>
+
+<StatBlockTrait label="Resistances"><TraitItem>frost</TraitItem><TraitItem>physical (from non-magical weapons)</TraitItem></StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Burning Blade</EntryName> <StatBadge>slash</StatBadge> <DamageLadder values="14/25/36">fire</DamageLadder>
+- <EntryName>Claw</EntryName> <StatBadge>slash</StatBadge> <DamageLadder values="13/23/33" />
+- <EntryName>Hellfire Ray</EntryName> <StatBadge>range (long)</StatBadge> <DamageLadder values="15/27/39">fire</DamageLadder> On a strong or critical hit, the target suffers burning (6).
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Fear Aura</EntryName> <StatBadge>Passive</StatBadge> Any creature hostile to this creature that starts its turn within short range must roll Spirit + Fortitude vs. TN 13 or be frightened until the start of its next turn.
+- <EntryName>Magic Resistance</EntryName> <StatBadge>Passive</StatBadge> This creature has +1 boon on saves against spells and other magical effects.
+- <EntryName>Innate Spellcasting</EntryName> <StatBadge>Passive</StatBadge> This creature can cast the following spells once per scene each: *Dispel Magic*, *Fear*, *Fireball*, *Hold Person*, *Wall of Fire*.
+- <EntryName>Teleport</EntryName> <StatBadge>Action</StatBadge> This creature magically teleports up to long range to an unoccupied space it can see.
+- <EntryName>Infernal Rage</EntryName> <StatBadge>Elite Trigger</StatBadge> When this creature loses its first life pool, fire erupts from its body. All creatures within short range take 12 fire damage and the ground becomes burning terrain for a short duration.
+
+</StatBlockSection>
+
+<StatBlockSection label="Quick Actions">
+
+- <EntryName>Command Hell Hound</EntryName>. One Hell Hound or other fiendish creature of tier 4 or lower within short range can immediately make an attack or move.
+- <EntryName>Flame Shield</EntryName>. This creature surrounds itself with flames. Until the start of its next turn, any creature that hits it with a melee attack takes 6 fire damage.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Large Spirit"
+	tier={7}
+	category="Basic"
+	hp="70"
+	av="14 (divine heavy)"
+	str="d12"
+	agi="d10"
+	spi="d12"
+	mnd="d10"
+	parry={15}
+	dodge={12}
+	resist={14}
+>
+
+### Celestial Guardian
+
+<StatBlockTrait label="Skills">Fighting (4), Fortitude (4), Insight (4), Perception (4), Mysticism (4)</StatBlockTrait>
+
+<StatBlockTrait label="Immunities"><TraitItem>charmed</TraitItem><TraitItem>frightened</TraitItem><TraitItem>necrotic</TraitItem></StatBlockTrait>
+
+<StatBlockTrait label="Resistances"><TraitItem>radiant</TraitItem><TraitItem>physical (from non-magical weapons)</TraitItem></StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Divine Blade</EntryName> <StatBadge>slash</StatBadge> <DamageLadder values="14/25/36">radiant</DamageLadder>
+- <EntryName>Smite</EntryName> <StatBadge>range (long)</StatBadge> <DamageLadder values="13/23/33">radiant</DamageLadder> Undead and fiends take an extra 6 damage.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Divine Aura</EntryName> <StatBadge>Passive</StatBadge> Allies within short range gain +1 boon on saves against fear and charm effects.
+- <EntryName>Flying</EntryName> <StatBadge>Passive</StatBadge> This creature can fly with 3 Movement per turn.
+- <EntryName>Magic Resistance</EntryName> <StatBadge>Passive</StatBadge> This creature has +1 boon on saves against spells and other magical effects.
+- <EntryName>Innate Spellcasting</EntryName> <StatBadge>Passive</StatBadge> This creature can cast the following spells rolling Spirit + Mysticism once per scene each: *Cure Wounds*, *Dispel Magic*, *Lesser Restoration*, *Zone of Truth*.
+
+</StatBlockSection>
+
+<StatBlockSection label="Quick Actions">
+
+- <EntryName>Protective Light</EntryName>. One ally within short range gains +3 AV until the start of this creature's next turn.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Huge Draconic"
+	tier={7}
+	category="Elite"
+	hp="2x70"
+	av="14 (natural heavy)"
+	str="d12"
+	agi="d8"
+	spi="d10"
+	mnd="d10"
+	parry={15}
+	dodge={11}
+	resist={13}
+>
+
+### Desert Dragon
+
+<StatBlockTrait label="Skills">Athletics (4), Fighting (4), Fortitude (4), Insight (4), Perception (4), Stealth (4), Survival (4)</StatBlockTrait>
+
+<StatBlockTrait label="Immunities"><TraitItem>fire</TraitItem></StatBlockTrait>
+
+<StatBlockTrait label="Resistances"><TraitItem>lightning</TraitItem></StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>2 x Claw</EntryName> <StatBadge>light</StatBadge><StatBadge>slash</StatBadge> <DamageLadder values="13/23/33" />
+- <EntryName>Bite</EntryName> <StatBadge>crush</StatBadge><StatBadge>reach</StatBadge> <DamageLadder values="16/29/42" /> On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained.
+- <EntryName>Tail</EntryName> <StatBadge>crush</StatBadge><StatBadge>reach</StatBadge> <DamageLadder values="13/23/33" /> On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.
+- <EntryName>Sandstorm Breath</EntryName> <StatBadge>recharge (d6)</StatBadge> Roll Strength + Fortitude vs. Dodge. Target all creatures in a line up to long range. On a success, each target suffers 22 damage and is blinded until the end of their next turn. On a strong or critical success, each target is also knocked prone.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Flying</EntryName> <StatBadge>Passive</StatBadge> This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- <EntryName>Burrow</EntryName> <StatBadge>Passive</StatBadge> This creature can burrow through sand at its normal movement speed.
+- <EntryName>Sand Camouflage</EntryName> <StatBadge>Passive</StatBadge> This creature gains +2 boons on Stealth checks in sandy terrain.
+- <EntryName>Legendary Resistance</EntryName> <StatBadge>Passive</StatBadge><StatBadge>2/day</StatBadge> If this creature fails a save, it can choose to succeed instead.
+- <EntryName>Frightful Presence</EntryName> <StatBadge>Action</StatBadge> Each creature of this creature's choice within medium range must roll Spirit + Fortitude vs. TN 13 or become frightened for a short duration.
+- <EntryName>Desert Fury</EntryName> <StatBadge>Elite Trigger</StatBadge> When this creature loses its first life pool, a sandstorm erupts around it. All areas within short range become obscured (creatures inside are blinded and attacks through it have +1 bane) for the rest of the scene.
+
+</StatBlockSection>
+
+<StatBlockSection label="Quick Actions">
+
+- <EntryName>Wing Attack</EntryName>. This creature beats its wings. Each creature within close range must roll Agility + Athletics vs. TN 13 or take 9 damage and be knocked prone.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Medium Undead"
+	tier={7}
+	category="Elite"
+	hp="2x70"
+	av="14 (heavy)"
+	str="d12"
+	agi="d8"
+	spi="d10"
+	mnd="d8"
+	parry={14}
+	dodge={12}
+	resist={13}
+>
+
+### Death Knight
+
+<StatBlockTrait label="Skills">Athletics (4), Fighting (4), Fortitude (4), Insight (4), Mysticism (4), Perception (4)</StatBlockTrait>
+
+<StatBlockTrait label="Immunities"><TraitItem>bleeding</TraitItem><TraitItem>charmed</TraitItem><TraitItem>frightened</TraitItem><TraitItem>poisoned</TraitItem><TraitItem>unconscious</TraitItem></StatBlockTrait>
+
+<StatBlockTrait label="Resistances"><TraitItem>necrotic</TraitItem></StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Longsword</EntryName> <StatBadge>pierce</StatBadge><StatBadge>versatile +1</StatBadge> 15/27/39 damage plus 8 necrotic damage.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Undead Nature</EntryName> <StatBadge>Passive</StatBadge> This creature is immune to bleeding, being charmed, frightened, poisoned, or falling unconscious.
+- <EntryName>Magic Resistance</EntryName> <StatBadge>Passive</StatBadge> This creature has +1 boon on saves against spells and other magical effects.
+- <EntryName>Marshal Undead</EntryName> <StatBadge>Passive</StatBadge> Unless surprised, undead within short range have +1 boon on saves against effects that turn undead.
+- <EntryName>Innate Spellcasting</EntryName> <StatBadge>Passive</StatBadge> This creature can cast the following spells rolling Spirit + Mysticism once per scene each: *Command*, *Dispel Magic*, *Hold Person*.
+- <EntryName>Hellfire Orb</EntryName> <StatBadge>Action</StatBadge><StatBadge>recharge (d6)</StatBadge> This creature hurls a magical ball of fire at a point it can see within long range. Each creature in a short range sphere must roll Agility + Athletics vs. TN 13. On a failure, a creature takes 15 fire damage and 15 necrotic damage, or half on a success.
+- <EntryName>Deathly Wrath</EntryName> <StatBadge>Elite Trigger</StatBadge> When this creature loses its first life pool, it unleashes a wave of necrotic energy. All creatures within short range must roll Spirit + Fortitude vs. TN 13 or take 10 necrotic damage and be frightened until the end of their next turn.
+
+</StatBlockSection>
+
+<StatBlockSection label="Quick Actions">
+
+- <EntryName>Parry</EntryName>. This creature adds +3 to its Parry against one melee attack that would hit it.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Large Aberration"
+	tier={7}
+	category="Basic"
+	hp="70"
+	av="8 (natural light)"
+	str="d12"
+	agi="d6"
+	spi="d12"
+	mnd="d12"
+	parry={14}
+	dodge={12}
+	resist={14}
+>
+
+### Aboleth
+
+<StatBlockTrait label="Skills">Arcana (4), Insight (4), Lore (4), Perception (4)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Tentacle</EntryName> <StatBadge>reach</StatBadge> <DamageLadder values="13/23/33" /> On a hit, the target must roll Spirit + Fortitude vs. TN 13 or become diseased. The diseased creature can breathe only underwater.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Amphibious</EntryName> <StatBadge>Passive</StatBadge> This creature can breathe air and water.
+- <EntryName>Mucous Cloud</EntryName> <StatBadge>Passive</StatBadge> While underwater, this creature is surrounded by mucus. A creature that touches this creature or hits it with a melee attack while within melee range must roll Spirit + Fortitude vs. TN 13 or become diseased.
+- <EntryName>Probing Telepathy</EntryName> <StatBadge>Passive</StatBadge> If a creature communicates telepathically with this creature, it learns the creature's greatest desires.
+- <EntryName>Enslave</EntryName> <StatBadge>Action</StatBadge><StatBadge>3/day</StatBadge> This creature targets one creature within short range. The target must roll Spirit + Fortitude vs. TN 13 or be magically charmed by this creature until it dies or until it is far away from this creature. The charmed target is under this creature's control.
+
+</StatBlockSection>
+
+<StatBlockSection label="Quick Actions">
+
+- <EntryName>Psychic Drain</EntryName>. One charmed or diseased creature within short range takes 6 psychic damage and this creature regains the same amount of HP.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Huge Monstrosity"
+	tier={7}
+	category="Basic"
+	hp="70"
+	av="14 (natural heavy)"
+	str="d12"
+	agi="d8"
+	spi="d8"
+	mnd="d4"
+	parry={15}
+	dodge={12}
+	resist={13}
+>
+
+### Behir
+
+<StatBlockTrait label="Skills">Athletics (4), Fighting (4), Perception (4), Stealth (4), Survival (4)</StatBlockTrait>
+
+<StatBlockTrait label="Immunities"><TraitItem>lightning</TraitItem></StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Bite</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="15/27/39" /> On a strong or critical hit and if the target is smaller than this creature, the target is swallowed. While swallowed, the creature is blinded and restrained, has total cover against attacks from outside, and takes 8 acid damage at the start of each of this creature's turns.
+- <EntryName>Constrict</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="14/25/36" /> On a hit, the target is grappled and restrained.
+- <EntryName>Lightning Breath</EntryName> <StatBadge>recharge (d6)</StatBadge> Roll Strength + Fortitude vs. Dodge. Target all creatures in a line up to medium range. On a success, each target suffers 18 lightning damage.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Spider Climb</EntryName> <StatBadge>Passive</StatBadge> This creature can climb difficult surfaces without needing to make ability checks.
+
+</StatBlockSection>
+
+<StatBlockSection label="Quick Actions">
+
+- <EntryName>Regurgitate</EntryName>. This creature can spit out a swallowed creature, which lands prone in a space within close range.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Huge Giant"
+	tier={7}
+	category="Basic"
+	hp="70"
+	av="14 (heavy)"
+	str="d12"
+	agi="d8"
+	spi="d10"
+	mnd="d8"
+	parry={15}
+	dodge={12}
+	resist={13}
+>
+
+### Cloud Giant
+
+<StatBlockTrait label="Skills">Athletics (4), Fighting (4), Fortitude (4), Insight (4), Perception (4)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Morningstar</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="15/27/39" />
+- <EntryName>Rock</EntryName> <StatBadge>range (very long)</StatBadge><StatBadge>crush</StatBadge> <DamageLadder values="14/25/36" />
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Keen Smell</EntryName> <StatBadge>Passive</StatBadge> This creature gains +1 boon on Perception rolls based on smell.
+- <EntryName>Innate Spellcasting</EntryName> <StatBadge>Passive</StatBadge> This creature can cast the following spells once per scene each: *Control Weather*, *Fog Cloud*, *Gaseous Form*, *Fly*.
+
+</StatBlockSection>
+
+<StatBlockSection label="Quick Actions">
+
+- <EntryName>Wind Gust</EntryName>. All creatures within close range must roll Strength + Athletics vs. TN 13 or be pushed close.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Huge Beast"
+	tier={7}
+	category="Basic"
+	hp="70"
+	av="14 (natural heavy)"
+	str="d12"
+	agi="d8"
+	spi="d8"
+	mnd="d4"
+	parry={15}
+	dodge={11}
+	resist={13}
+>
+
+### Nidhogg Serpent
+
+<StatBlockTrait label="Skills">Athletics (4), Fighting (4), Fortitude (4), Perception (4), Stealth (4)</StatBlockTrait>
+
+<StatBlockTrait label="Resistances"><TraitItem>poison</TraitItem><TraitItem>necrotic</TraitItem></StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Bite</EntryName> <StatBadge>crush</StatBadge><StatBadge>reach</StatBadge> 15/27/39 damage plus 6 poison damage. On a strong or critical hit, the target is poisoned for a short duration.
+- <EntryName>Constrict</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="14/25/36" /> On a hit, a creature up to Large size is grappled and restrained.
+- <EntryName>Tail</EntryName> <StatBadge>reach</StatBadge> <DamageLadder values="13/23/33" /> On a strong or critical hit, the target is knocked prone.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Corpse Eater</EntryName> <StatBadge>Passive</StatBadge> This creature regains 10 HP at the start of its turn if there is a dead creature within melee range.
+- <EntryName>Tremorsense</EntryName> <StatBadge>Passive</StatBadge> This creature can detect vibrations through the ground within medium range.
+
+</StatBlockSection>
+
+<StatBlockSection label="Quick Actions">
+
+- <EntryName>Venomous Spit</EntryName>. One creature within short range must roll Agility + Athletics vs. TN 13 or take 8 poison damage and be blinded until the end of their next turn.
+
+</StatBlockSection>
+
+</CreatureStatBlock>

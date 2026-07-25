@@ -2921,7 +2921,7 @@
 		],
 		"resistances": [
 			"acid",
-			"cold",
+			"frost",
 			"fire damage"
 		],
 		"weaknesses": [],
@@ -5165,7 +5165,88 @@
 				"text": "This creature targets one creature within short range. If the target can see this creature, it must roll Spirit + Fortitude vs. TN 10 or be frightened until the end of this creature's next turn. If the target fails by 5 or more, it is also paralyzed for the same duration."
 			}
 		],
-		"quickActions": []
+		"quickActions": [],
+		"lore": {
+			"narrative": "The embalmers of the delta bound their kings against decay, and against departure. A mummy walks because some part of the rite held and some part did not, and they return to the tomb they were sealed in as surely as water runs downhill.",
+			"environment": [
+				"Desert",
+				"Ruins",
+				"Tomb"
+			],
+			"ecology": "They do not eat, drink, or age, and they have no territory beyond the ground they were interred in. A sealed mummy lies still for centuries. Breaking the seal wakes every mummy in the complex at once, and they walk until the intrusion is ended and the door is shut again. Herders of the salt roads leave a bowl of milk and a lit lamp at a tomb threshold, trusting that a mummy offered hospitality will count it as tribute owed and let one intruder pass.",
+			"tactics": "A mummy opens with their Dreadful Glare, then closes on whoever is held. They fight to bury an intruder, not to win ground, so they ignore flanking and press the target they first fixed on. They pursue only to the edge of the tomb and will not step past the boundary stones, and a party that retreats beyond them is not followed.",
+			"treasure": {
+				"scale": "Rich",
+				"table": [
+					{
+						"kind": "Valuables",
+						"item": "Gilded pectoral",
+						"value": "200 coins",
+						"note": "Lapis and carnelian, still clasped at the throat. Half that melted down."
+					},
+					{
+						"kind": "Valuables",
+						"item": "Funerary rings and amulets",
+						"value": "3d6 x 10 coins",
+						"note": "Scattered loose through the wrappings."
+					},
+					{
+						"kind": "Material",
+						"item": "Sealed jar of natron and resins",
+						"stats": "Quality 4 material",
+						"value": "80 coins",
+						"note": "Three preservations, or one batch of alchemical reagents."
+					},
+					{
+						"kind": "Weapon",
+						"item": "Ceremonial khopesh",
+						"stats": "Scimitar, Quality 2",
+						"value": "150 coins",
+						"note": "Gold-inlaid but soundly forged, so it carries no penalty."
+					},
+					{
+						"kind": "Magic",
+						"item": "Amulet of Willpower",
+						"stats": "Wearable (neck), Quality 4",
+						"value": "1,050 coins",
+						"note": "While worn, you gain +1 Resist (max. 10). Cut with wards against the tomb's own guardian."
+					},
+					{
+						"kind": "Relic",
+						"item": "Canopic jars and name-scroll",
+						"value": "—",
+						"note": "Names the tomb's owner, their titles, and the heirs who sealed them in. Worthless to sell, decisive to anyone tracing the dynasty."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Warden squad",
+					"count": "2-4"
+				},
+				{
+					"name": "Guardian detail",
+					"count": "6-10"
+				},
+				{
+					"name": "Tomb guard",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Mummy Lord"
+						},
+						{
+							"count": "6-10",
+							"creature": "Mummy"
+						}
+					]
+				}
+			]
+		}
 	},
 	{
 		"name": "Manticore",
@@ -5464,7 +5545,7 @@
 			"unconscious"
 		],
 		"resistances": [
-			"cold",
+			"frost",
 			"fire damage"
 		],
 		"weaknesses": [],
@@ -5523,7 +5604,7 @@
 		],
 		"immunities": [
 			"acid",
-			"cold",
+			"frost",
 			"lightning damage",
 			"blinded",
 			"charmed",
@@ -6490,7 +6571,7 @@
 			"Survival (3)"
 		],
 		"immunities": [
-			"cold damage",
+			"frost damage",
 			"frightened"
 		],
 		"resistances": [],
@@ -6520,7 +6601,7 @@
 			{
 				"name": "Winter's Bite",
 				"qualifier": "Passive",
-				"text": "This creature's bite attacks deal an additional 4 cold damage (included in damage)."
+				"text": "This creature's bite attacks deal an additional 4 frost damage (included in damage)."
 			},
 			{
 				"name": "Howl of the North",
@@ -7252,7 +7333,7 @@
 		],
 		"resistances": [
 			"acid",
-			"cold",
+			"frost",
 			"fire",
 			"lightning",
 			"necrotic damage",
@@ -7556,7 +7637,7 @@
 			"Perception (4)"
 		],
 		"immunities": [
-			"cold damage"
+			"frost damage"
 		],
 		"resistances": [],
 		"weaknesses": [],
@@ -7576,14 +7657,14 @@
 					"range (very long)",
 					"crush"
 				],
-				"text": "15/27/39 cold damage. On a strong or critical hit, the target is slowed until the end of its next turn."
+				"text": "15/27/39 frost damage. On a strong or critical hit, the target is slowed until the end of its next turn."
 			}
 		],
 		"abilities": [
 			{
 				"name": "Cold Aura",
 				"qualifier": "Passive",
-				"text": "At the start of this creature's turn, each creature within melee range takes 5 cold damage."
+				"text": "At the start of this creature's turn, each creature within melee range takes 5 frost damage."
 			},
 			{
 				"name": "Ice Walk",
@@ -7599,7 +7680,7 @@
 		"quickActions": [
 			{
 				"name": "Icy Stomp",
-				"text": "One creature in melee range must roll Agility + Athletics vs. TN 13 or take 9 cold damage and fall prone. The area becomes icy difficult terrain."
+				"text": "One creature in melee range must roll Agility + Athletics vs. TN 13 or take 9 frost damage and fall prone. The area becomes icy difficult terrain."
 			}
 		]
 	},
@@ -7633,7 +7714,7 @@
 			"charmed"
 		],
 		"resistances": [
-			"cold damage",
+			"frost damage",
 			"physical damage (from non-magical weapons)"
 		],
 		"weaknesses": [],
@@ -8353,7 +8434,7 @@
 			"unconscious"
 		],
 		"resistances": [
-			"cold",
+			"frost",
 			"lightning",
 			"necrotic damage"
 		],
@@ -8364,7 +8445,7 @@
 				"properties": [
 					"target: vs. Resist"
 				],
-				"text": "14/24/34 cold damage. The target must roll Spirit + Fortitude vs. TN 14 or be paralyzed for a short duration."
+				"text": "14/24/34 frost damage. The target must roll Spirit + Fortitude vs. TN 14 or be paralyzed for a short duration."
 			},
 			{
 				"name": "Disintegrate",
@@ -8437,7 +8518,7 @@
 		],
 		"immunities": [
 			"lightning",
-			"thunder damage"
+			"blast damage"
 		],
 		"resistances": [],
 		"weaknesses": [],
@@ -8479,13 +8560,13 @@
 			{
 				"name": "Thunderous Fury",
 				"qualifier": "Elite Trigger",
-				"text": "When this creature loses its first life pool, a thunderstorm erupts around it. All creatures within medium range must roll Spirit + Fortitude vs. TN 14 or take 12 thunder damage and be deafened for a short duration."
+				"text": "When this creature loses its first life pool, a thunderstorm erupts around it. All creatures within medium range must roll Spirit + Fortitude vs. TN 14 or take 12 blast damage and be deafened for a short duration."
 			}
 		],
 		"quickActions": [
 			{
 				"name": "Thunder Step",
-				"text": "This creature disappears in a clap of thunder and reappears in a space it can see within short range. Each creature within melee range of its original location takes 6 thunder damage."
+				"text": "This creature disappears in a clap of thunder and reappears in a space it can see within short range. Each creature within melee range of its original location takes 6 blast damage."
 			}
 		]
 	},
@@ -8518,7 +8599,7 @@
 			"poisoned"
 		],
 		"resistances": [
-			"cold damage",
+			"frost damage",
 			"physical damage (from non-magical weapons)"
 		],
 		"weaknesses": [],
@@ -8766,7 +8847,7 @@
 			"Stealth (5)"
 		],
 		"immunities": [
-			"cold damage",
+			"frost damage",
 			"lightning damage"
 		],
 		"resistances": [],
@@ -8801,7 +8882,7 @@
 				"properties": [
 					"recharge (d6)"
 				],
-				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in long range in a cone. On a success, each target suffers 24 cold damage and is pushed a short distance. On a strong or critical success, each target is also knocked prone."
+				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in long range in a cone. On a success, each target suffers 24 frost damage and is pushed a short distance. On a strong or critical success, each target is also knocked prone."
 			}
 		],
 		"abilities": [
@@ -9081,7 +9162,7 @@
 			"unconscious"
 		],
 		"resistances": [
-			"cold",
+			"frost",
 			"lightning",
 			"necrotic damage"
 		],
@@ -9092,7 +9173,7 @@
 				"properties": [
 					"target: vs. Resist"
 				],
-				"text": "16/29/42 cold damage. The target must roll Spirit + Fortitude vs. TN 15 or be paralyzed for a short duration."
+				"text": "16/29/42 frost damage. The target must roll Spirit + Fortitude vs. TN 15 or be paralyzed for a short duration."
 			},
 			{
 				"name": "Soul Bolt",
@@ -9238,7 +9319,7 @@
 			"Perception (5)"
 		],
 		"immunities": [
-			"cold damage",
+			"frost damage",
 			"frightened"
 		],
 		"resistances": [
@@ -9254,7 +9335,7 @@
 					"slash",
 					"two-handed"
 				],
-				"text": "20/37/54 damage plus 10 cold damage."
+				"text": "20/37/54 damage plus 10 frost damage."
 			},
 			{
 				"name": "Ice Boulder",
@@ -9262,14 +9343,14 @@
 					"range (extreme)",
 					"crush"
 				],
-				"text": "18/33/48 cold damage. On a hit, the area becomes frozen difficult terrain."
+				"text": "18/33/48 frost damage. On a hit, the area becomes frozen difficult terrain."
 			}
 		],
 		"abilities": [
 			{
 				"name": "Primordial Cold",
 				"qualifier": "Passive",
-				"text": "At the start of this creature's turn, each creature within melee range takes 8 cold damage."
+				"text": "At the start of this creature's turn, each creature within melee range takes 8 frost damage."
 			},
 			{
 				"name": "Legendary Resistance",
@@ -9284,7 +9365,7 @@
 			{
 				"name": "Winter's End",
 				"qualifier": "Lord Trigger",
-				"text": "When this creature loses a life pool, a blizzard erupts around it. All areas within long range become frozen difficult terrain and heavily obscured. Any creature that starts its turn in the area takes 8 cold damage and must roll Strength + Fortitude vs. TN 15 or be slowed until the end of its turn."
+				"text": "When this creature loses a life pool, a blizzard erupts around it. All areas within long range become frozen difficult terrain and heavily obscured. Any creature that starts its turn in the area takes 8 frost damage and must roll Strength + Fortitude vs. TN 15 or be slowed until the end of its turn."
 			}
 		],
 		"quickActions": [
@@ -9294,7 +9375,7 @@
 			},
 			{
 				"name": "Ice Breath",
-				"text": "All creatures in a short cone must roll Agility + Athletics vs. TN 15 or take 14 cold damage and be slowed until the end of their next turn."
+				"text": "All creatures in a short cone must roll Agility + Athletics vs. TN 15 or take 14 frost damage and be slowed until the end of their next turn."
 			}
 		]
 	},
@@ -9521,7 +9602,7 @@
 		],
 		"immunities": [
 			"fire",
-			"cold",
+			"frost",
 			"lightning",
 			"poison damage",
 			"charmed",
@@ -9547,7 +9628,7 @@
 					"very long range",
 					"recharge (d6)"
 				],
-				"text": "This creature calls down elemental fury on a point it can see. All creatures within medium range must roll Agility + Athletics vs. TN 16 or take 28 elemental damage (fire, cold, or lightning) and be knocked prone."
+				"text": "This creature calls down elemental fury on a point it can see. All creatures within medium range must roll Agility + Athletics vs. TN 16 or take 28 elemental damage (fire, frost, or lightning) and be knocked prone."
 			}
 		],
 		"abilities": [
@@ -9569,7 +9650,7 @@
 			{
 				"name": "Elemental Mastery",
 				"qualifier": "Passive",
-				"text": "At the start of each of its turns, this creature can choose one elemental damage type (fire, cold, or lightning). It becomes immune to that damage type and its attacks deal that type of damage until its next turn."
+				"text": "At the start of each of its turns, this creature can choose one elemental damage type (fire, frost, or lightning). It becomes immune to that damage type and its attacks deal that type of damage until its next turn."
 			},
 			{
 				"name": "Innate Spellcasting",
@@ -9801,7 +9882,7 @@
 			"Perception (5)"
 		],
 		"immunities": [
-			"cold",
+			"frost",
 			"necrotic",
 			"poison damage",
 			"bleeding",

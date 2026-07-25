@@ -20,6 +20,42 @@ export { default as CombatArtCard } from './CombatArtCard'
 export type { CombatArtCardProps } from './CombatArtCard'
 export { default as TalentCard, TalentRank } from './TalentCard'
 export type { TalentCardProps, TalentRankProps } from './TalentCard'
+export {
+	default as CreatureStatBlock,
+	StatBlockSection,
+	StatBlockTrait,
+	DamageLadder,
+	StatBadge,
+	EntryName,
+	TraitItem,
+	CreatureLore,
+	LoreSection,
+	LoreTag,
+	EncounterTemplate,
+	EncounterGroup,
+	TreasureTable,
+	TreasureRow,
+} from './CreatureStatBlock'
+export type {
+	CreatureStatBlockProps,
+	StatBlockSectionProps,
+	StatBlockTraitProps,
+	DamageLadderProps,
+	StatBadgeProps,
+	EntryNameProps,
+	TraitItemProps,
+	CreatureLoreProps,
+	LoreSectionProps,
+	LoreTagProps,
+	EncounterTemplateProps,
+	EncounterGroupProps,
+	TreasureTableProps,
+	TreasureRowProps,
+} from './CreatureStatBlock'
+export { default as DieToken } from './DieToken'
+export { default as StatGlyph } from './StatGlyph'
+export type { StatGlyphProps, StatGlyphName } from './StatGlyph'
+export type { DieTokenProps } from './DieToken'
 export { default as SuccessLevel } from './SuccessLevel'
 export type { SuccessLevelProps, SuccessLevelName } from './SuccessLevel'
 export { default as SpellHeightened } from './SpellHeightened'

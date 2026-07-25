@@ -1,6 +1,6 @@
 # Crafting — Talent Design Workbench
 
-> **Source:** [docs/03-statistics/06-talents/crafting.md](../../../03-statistics/06-talents/crafting.md) | **Main Analysis:** [TALENT_SYSTEM_ANALYSIS.md](../TALENT_SYSTEM_ANALYSIS.md)
+> **Source:** [docs/03-statistics/06-talents/crafting.mdx](../../../03-statistics/06-talents/crafting.mdx) | **Main Analysis:** [TALENT_SYSTEM_ANALYSIS.md](../TALENT_SYSTEM_ANALYSIS.md)
 
 ## 1. Skill Identity
 

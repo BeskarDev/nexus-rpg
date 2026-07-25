@@ -8,6 +8,21 @@ import SpellHeightened from '@site/src/components/codex/SpellHeightened'
 import ConditionCard from '@site/src/components/codex/ConditionCard'
 import CombatArtCard from '@site/src/components/codex/CombatArtCard'
 import TalentCard, { TalentRank } from '@site/src/components/codex/TalentCard'
+import CreatureStatBlock, {
+	StatBlockSection,
+	StatBlockTrait,
+	DamageLadder,
+	StatBadge,
+	EntryName,
+	TraitItem,
+	CreatureLore,
+	LoreSection,
+	LoreTag,
+	EncounterTemplate,
+	EncounterGroup,
+	TreasureTable,
+	TreasureRow,
+} from '@site/src/components/codex/CreatureStatBlock'
 import { LozengeDivider, RankChip } from '@site/src/components/codex/ornaments'
 
 /**
@@ -26,6 +41,20 @@ export default {
 	CombatArtCard,
 	TalentCard,
 	TalentRank,
+	CreatureStatBlock,
+	StatBlockSection,
+	StatBlockTrait,
+	DamageLadder,
+	StatBadge,
+	EntryName,
+	TraitItem,
+	CreatureLore,
+	LoreSection,
+	LoreTag,
+	EncounterTemplate,
+	EncounterGroup,
+	TreasureTable,
+	TreasureRow,
 	RankChip,
 	// Replace the default `---` thematic break with the ornamental divider.
 	hr: LozengeDivider,

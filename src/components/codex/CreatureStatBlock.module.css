@@ -1,0 +1,787 @@
+/* CreatureStatBlock — the densest card in the codex. Laid out around how a GM
+   reads a stat block at the table (defenses, then vitals, then attributes, then
+   actions) rather than around the shape of the markdown table it replaced.
+   See CreatureStatBlock.tsx for the reasoning. Tokens only, flat throughout. */
+
+.card {
+	position: relative;
+	/* Top margin clears the bull keystone's 18.1px overhang (see ornaments.module.css). */
+	margin: 1.6rem 0 1.4rem;
+	padding: 0.95rem 1.25rem 1rem;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	border-radius: 3px;
+	background-color: var(--ifm-background-surface-color);
+}
+
+.head {
+	margin-bottom: 0.1rem;
+}
+
+.nameRow {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 0.4rem 0.9rem;
+	flex-wrap: wrap;
+}
+
+/* Name and type travel together, so the chip can never wedge between them. */
+.identity {
+	min-width: 0;
+}
+
+.identity :global(h3) {
+	margin: 0;
+	/* Cancel the global `article h3` scan-separator (border-top + top spacing). */
+	padding-top: 0;
+	border-top: none;
+	font-family: var(--nexus-font-display);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.02em;
+	font-size: 1.3rem;
+	line-height: 1.15;
+}
+
+/* Size and type ("Medium Beast") — flavour-adjacent, so italic and quiet. */
+.type {
+	margin: 0.05rem 0 0;
+	font-style: italic;
+	font-size: 0.88rem;
+	line-height: 1.2;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 70%, transparent);
+}
+
+/* Tier + category: the threat read, so it is the one chip allowed a solid fill.
+   Category rides in a dimmed compartment rather than beside it as separate text —
+   "Tier 4" and "Elite" are one fact. */
+.tierChip {
+	flex: none;
+	display: inline-flex;
+	align-items: stretch;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	border-radius: 2px;
+	overflow: hidden;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	font-size: 0.72rem;
+	line-height: 1.5;
+	white-space: nowrap;
+}
+.tierNumber {
+	padding: 1px 7px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+	color: color-mix(in srgb, var(--ifm-font-color-base) 80%, var(--ifm-color-primary));
+}
+.category {
+	padding: 1px 7px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 68%, transparent);
+	color: var(--ifm-background-surface-color);
+}
+/* Elite and Lord are rarer and more dangerous, so they carry more bronze. Basic
+   stays quiet — most creatures are Basic and 26 loud chips on a page is noise. */
+.tier-basic .category {
+	background: color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
+	color: color-mix(in srgb, var(--ifm-font-color-base) 88%, var(--ifm-color-primary));
+}
+
+/* --- Stat panel: defenses | vitals | attributes --- */
+
+/* An inlaid panel rather than bare text on the card: the stats are the part a GM
+   returns to mid-combat, so they get a surface of their own to land on. Flat wash
+   and a hairline keyline, never a bevel. */
+.statPanel {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	gap: 0.35rem 1.15rem;
+	margin: 0.1rem 0 0.15rem;
+	padding: 0.35rem 0.7rem;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 5%, transparent);
+}
+
+.group {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 0.3rem 0.75rem;
+}
+
+/* Defenses lead and are set largest — they answer the first question asked of any
+   creature ("what do I roll against?"). */
+.defenses .figureNumber {
+	font-size: 1.2rem;
+}
+
+/* Each group after the first is fenced off by a keyline — the one place a rule
+   earns its keep: it is a boundary between two panels, not a grouping device
+   dropped between related items. Defenses answer "what do I roll against?" and
+   vitals "how long does it last?", so running them together made one long
+   undifferentiated row of numbers. */
+.vitals,
+.attributes {
+	padding-left: 1.15rem;
+	margin-left: -0.3rem;
+	border-left: 1px solid color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
+}
+
+.figure {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 2rem;
+}
+
+/* Value-over-label: the number is what gets scanned, so it comes first and large,
+   with the label beneath it small. The old inline `HP 5` made the label compete
+   with the value at equal weight. */
+.figureValue {
+	display: flex;
+	align-items: center;
+	gap: 0.2rem;
+	min-height: 1.6rem;
+}
+
+.figureGlyph {
+	color: color-mix(in srgb, var(--ifm-color-primary) 65%, transparent);
+	flex: none;
+}
+
+.figureNumber {
+	font-size: 1.05rem;
+	font-weight: 600;
+	line-height: 1.1;
+	font-variant-numeric: tabular-nums;
+}
+
+.figureLabel {
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	font-size: 0.64rem;
+	line-height: 1.2;
+	color: color-mix(in srgb, var(--ifm-color-primary) 72%, var(--ifm-font-color-base));
+}
+
+/* AV's armor category, abbreviated and set beside the numeral rather than on a
+   line of its own — a third line under one figure pulled the whole panel taller
+   for a fact that fits in two letters. */
+.armorTag {
+	align-self: center;
+	padding: 0 3px;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	border-radius: 2px;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	font-size: 0.58rem;
+	line-height: 1.5;
+	white-space: nowrap;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 70%, var(--ifm-color-primary));
+}
+
+/* Life pools (Elite/Lord "3x100"): one pip per pool, so the count reads as a
+   structural fact about the fight rather than as a multiplication to perform. */
+.pools {
+	display: inline-flex;
+	gap: 2px;
+	align-self: center;
+}
+.pool {
+	width: 5px;
+	height: 5px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 70%, transparent);
+	transform: rotate(45deg);
+}
+
+/* --- Traits --- */
+
+.trait {
+	margin-top: 0.3rem;
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 0.2rem 0.45rem;
+}
+.traitLabel {
+	flex: none;
+}
+.traitValue {
+	margin: 0;
+	font-size: 0.92rem;
+}
+.body > .trait:first-child {
+	margin-top: 0.45rem;
+}
+
+/* --- Action blocks: Attacks / Abilities / Quick Actions --- */
+
+/* Each block is its own inlaid panel rather than a label over loose text. With
+   several long entries per block, a bare small-caps heading was not enough
+   structure — the eye could not tell where Attacks ended and Abilities began, and
+   on a Lord creature with three blocks the card read as one undifferentiated
+   column. The block is defined by a WASH plus the label's own underline — no left
+   accent bar: a flat vertical rule used as a grouping device has now been
+   rejected three times in this theme (the spell card's 3px accent, the talent
+   rung rail, and this), because it reads as digital UI chrome against carved
+   stone. The wash is lighter than the stat panel's, so the panel keeps primacy. */
+.section {
+	margin-top: 0.5rem;
+	padding: 0.4rem 0.7rem 0.45rem;
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 3.5%, transparent);
+}
+
+/* An h4 so the block labels stay real headings for assistive tech, but excluded
+   from the TOC by `toc_max_heading_level` — the TOC lists creature names only.
+   Set on the panel's own top edge, so the label reads as the block's title
+   rather than as a line floating above it. */
+.sectionLabel {
+	margin: 0 0 0.3rem;
+	padding-top: 0;
+	padding-bottom: 0.22rem;
+	border-top: none;
+	border-bottom: 1px solid color-mix(in srgb, var(--ifm-color-primary) 18%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	font-size: 0.82rem;
+	color: color-mix(in srgb, var(--ifm-color-primary) 82%, var(--ifm-font-color-base));
+}
+
+/* --- Lore (collapsed by default) --- */
+
+/* The toggle rides the name line beside the tier chip, so a collapsed creature
+   costs NO vertical space — the previous version sat at the bottom of the card
+   and spent a line even when shut. Square, keyline-only and glyph-first, so it
+   reads as an inlaid stud rather than a web button. */
+.headerMarks {
+	flex: none;
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.loreToggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.55rem;
+	height: 1.55rem;
+	padding: 0;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
+	color: color-mix(in srgb, var(--ifm-color-primary) 85%, var(--ifm-font-color-base));
+	cursor: pointer;
+	transition: background-color 120ms ease;
+}
+.loreToggle:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
+}
+/* Open state inverts to solid bronze — the same "this is active" language the
+   tier chip's category compartment uses. */
+.loreToggle[aria-expanded='true'] {
+	background: color-mix(in srgb, var(--ifm-color-primary) 68%, transparent);
+	color: var(--ifm-background-surface-color);
+}
+.loreToggle:focus-visible {
+	outline: 2px solid var(--ifm-color-primary);
+	outline-offset: 2px;
+}
+
+/* The panel opens directly under the header, above the stats: lore is an
+   introduction to the creature, not a footnote after their abilities. */
+.loreBody {
+	margin: 0.5rem 0 0.1rem;
+	padding: 0.45rem 0.7rem;
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 4%, transparent);
+	font-size: 0.95rem;
+	font-style: italic;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 88%, transparent);
+}
+.loreBody > :last-child {
+	margin-bottom: 0;
+}
+
+/* The lead narrative — the one part of the lore block that is pure voice, so it
+   keeps the italic and every labeled section below it drops back to roman. */
+.loreBody > p:first-child {
+	font-style: italic;
+	margin-bottom: 0.45rem;
+}
+
+/* A labeled part. Inline lead-in rather than a block heading: these run two or
+   three sentences each, and a stack of headings inside a collapsed panel reads
+   heavier than the prose it introduces. */
+.loreSection {
+	font-style: normal;
+	margin-bottom: 0.35rem;
+	font-size: 0.92rem;
+}
+.loreLabel {
+	margin-right: 0.4rem;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	font-size: 0.76rem;
+	color: color-mix(in srgb, var(--ifm-color-primary) 82%, var(--ifm-font-color-base));
+}
+
+/* Keyworded lore values (environment terms, treasure scale). Quieter than
+   StatBadge — these never matter mid-combat, they are for reading. */
+.loreTag {
+	display: inline-block;
+	margin: 0 0.12rem 0.1rem 0;
+	padding: 0 5px;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 26%, transparent);
+	border-radius: 2px;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	font-size: 0.66rem;
+	line-height: 1.6;
+	white-space: nowrap;
+	font-style: normal;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 74%, var(--ifm-color-primary));
+}
+
+/* --- Treasure table --- */
+
+/* A dense d6 grid rather than a real <table>: three columns (die number,
+   category, item) at chip scale. The roll button is hoisted out of the grid up to
+   the label line beside the scale tag, which buys the rows a whole column of
+   width back and puts the die next to "how much treasure". */
+.treasure {
+	display: grid;
+	grid-template-columns: auto auto 1fr;
+	gap: 0 0.45rem;
+	align-items: baseline;
+	margin-top: 0.15rem;
+	font-style: normal;
+}
+.treasureRow {
+	display: contents;
+}
+
+.treasureRoll {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.35rem;
+	height: 1.35rem;
+	padding: 0;
+	margin-left: 0.15rem;
+	vertical-align: -0.25em;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
+	color: color-mix(in srgb, var(--ifm-color-primary) 88%, var(--ifm-font-color-base));
+	cursor: pointer;
+}
+.treasureRoll:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
+}
+.treasureRoll:focus-visible {
+	outline: 2px solid var(--ifm-color-primary);
+	outline-offset: 2px;
+}
+.treasureRoll:disabled {
+	cursor: default;
+}
+
+/* The shuffle. Transform and colour ONLY — no size, margin or border change — so
+   the button cannot move itself or the scale tag beside it while it tumbles. The
+   die rocks rather than spinning a full turn: a square pip-face reads as a die at
+   rest and as a blur when spun, and the rock keeps the pips legible while they
+   change underneath. */
+@keyframes treasure-tumble {
+	0% {
+		transform: rotate(0deg) scale(1);
+	}
+	20% {
+		transform: rotate(-14deg) scale(1.08);
+	}
+	45% {
+		transform: rotate(12deg) scale(1.08);
+	}
+	70% {
+		transform: rotate(-7deg) scale(1.05);
+	}
+	88% {
+		transform: rotate(4deg) scale(1.02);
+	}
+	100% {
+		transform: rotate(0deg) scale(1);
+	}
+}
+
+.treasureRolling {
+	animation: treasure-tumble 470ms ease-out;
+	background: color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+	border-color: color-mix(in srgb, var(--ifm-color-primary) 70%, transparent);
+}
+
+/* Someone who has asked for less motion gets the result with no theatre. The
+   component skips the shuffle entirely too, so this is belt and braces. */
+@media (prefers-reduced-motion: reduce) {
+	.treasureRolling {
+		animation: none;
+	}
+}
+
+.treasureNum {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: 0.7rem;
+	font-variant-numeric: tabular-nums;
+	color: color-mix(in srgb, var(--ifm-color-primary) 72%, var(--ifm-font-color-base));
+}
+
+/* The loot category, a closed vocabulary — badged so six rows can be scanned by
+   type without reading the items. */
+.treasureKind {
+	padding: 0 4px;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 26%, transparent);
+	border-radius: 2px;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	font-size: 0.62rem;
+	line-height: 1.45;
+	white-space: nowrap;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 72%, var(--ifm-color-primary));
+}
+
+.treasureItem {
+	font-size: 0.86rem;
+	line-height: 1.45;
+	padding-bottom: 0.12rem;
+}
+.treasureItem :global(strong) {
+	font-weight: 600;
+}
+
+/* The two standardised facts every row can carry: what it IS in core-rules terms,
+   and what it is WORTH. Set as compact inline marks so the eye can find the
+   number without reading the sentence — the whole reason the rows are structured
+   rather than prose. */
+.treasureStats,
+.treasureValue {
+	margin-left: 0.3rem;
+	padding: 0 4px;
+	border-radius: 2px;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	font-size: 0.64rem;
+	white-space: nowrap;
+}
+.treasureStats {
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+	color: color-mix(in srgb, var(--ifm-font-color-base) 68%, var(--ifm-color-primary));
+}
+/* Value carries a bronze wash — it is the single most looked-up fact in a
+   treasure table. */
+.treasureValue {
+	background: color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
+	color: color-mix(in srgb, var(--ifm-font-color-base) 82%, var(--ifm-color-primary));
+	font-variant-numeric: tabular-nums;
+}
+
+/* The rolled row is marked, not isolated — the other five stay readable so a GM
+   can overrule the die when something else fits the scene better. */
+.treasureRolled .treasureNum,
+.treasureRolled .treasureItem {
+	color: var(--ifm-color-primary);
+}
+.treasureRolled .treasureKind {
+	border-color: color-mix(in srgb, var(--ifm-color-primary) 60%, transparent);
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+}
+
+/* An encounter template: grouping and count as two compartments of one badge,
+   the tier chip's construction — "warden squad" and "2-4" are one answer. */
+.encounter {
+	display: inline-flex;
+	align-items: stretch;
+	margin: 0 0.2rem 0.15rem 0;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 34%, transparent);
+	border-radius: 2px;
+	overflow: hidden;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	font-size: 0.68rem;
+	line-height: 1.6;
+	white-space: nowrap;
+	font-style: normal;
+}
+.encounterName {
+	padding: 0 6px;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, var(--ifm-color-primary));
+}
+.encounterCount,
+.encounterParts {
+	padding: 0 6px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	color: color-mix(in srgb, var(--ifm-font-color-base) 88%, var(--ifm-color-primary));
+	font-variant-numeric: tabular-nums;
+}
+/* A mixed band names other creatures, so its compartment holds words as well as
+   numbers and must be allowed to wrap on a narrow card. */
+.encounterParts {
+	white-space: normal;
+}
+/* Creature links inside the compartment inherit its type — the same inline-style
+   reset the badges need, since the auto-keyword plugin writes `font-size:large`
+   straight onto the anchor. */
+.encounterParts a {
+	font: inherit !important;
+	font-size: inherit !important;
+	font-variant: inherit !important;
+	font-weight: inherit !important;
+	text-transform: inherit !important;
+	letter-spacing: inherit !important;
+	color: inherit;
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+	text-decoration-color: color-mix(in srgb, currentColor 55%, transparent);
+	text-underline-offset: 2px;
+}
+.encounterParts a:hover {
+	text-decoration-style: solid;
+}
+
+/* --- Damage ladder (inline) --- */
+
+/* Sits ON the text line. The stacked version parsed well but cost a line of
+   height per attack and knocked the following sentence off the baseline, so a
+   list of attacks stopped aligning. */
+.ladder {
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+
+.ladderSlash {
+	margin: 0 0.1em;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 40%, transparent);
+}
+
+/* Escalating weight across weak → strong → critical, echoing the SuccessLevel
+   rows on the spell cards so the whole codex grades severity the same way. */
+.ladderCell0,
+.ladderCell1,
+.ladderCell2 {
+	font-weight: 600;
+}
+.ladderCell0 {
+	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, transparent);
+}
+.ladderCell1 {
+	color: var(--ifm-font-color-base);
+}
+.ladderCell2 {
+	font-weight: 700;
+	color: color-mix(in srgb, var(--ifm-color-primary) 82%, var(--ifm-font-color-base));
+}
+
+/* A single small-caps initial per number (W/S/C) — enough to key the triple
+   without a second line. The full level name is in the title and the sr-only run. */
+.ladderTick {
+	margin-left: 0.06em;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	font-size: 0.62em;
+	vertical-align: 0.35em;
+	color: color-mix(in srgb, var(--ifm-color-primary) 78%, var(--ifm-font-color-base));
+}
+
+.ladderKind {
+	color: color-mix(in srgb, var(--ifm-font-color-base) 82%, transparent);
+}
+/* A damage-type chip inside the ladder sits on the number baseline. */
+.ladderKind :global(.chip) {
+	top: -0.05em;
+}
+
+/* --- Property badges --- */
+
+/* Attack properties and ability qualifiers. Previously italic text in
+   parentheses, in the same register as the rule text, so the eye had to read them
+   to skip them. Lighter than the Cartouche, which marks a label — these are
+   values, the same distinction the combat art card's weapon rail makes. */
+.badge {
+	display: inline-block;
+	margin: 0 0.12rem;
+	padding: 0 5px;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 32%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	font-size: 0.68rem;
+	line-height: 1.55;
+	white-space: nowrap;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 76%, var(--ifm-color-primary));
+}
+/* The entry name — a different REGISTER from both the effect text (serif body)
+   and the property badges (sans, boxed). Once properties became badges, a bold
+   serif name sat at the same weight as the badge next to it and the boundary
+   between "what this is" and "what it does" was lost. Making the name a third
+   badge would have put three pill shapes on every line, so it moves face and
+   colour instead of gaining a box. */
+.entryName {
+	font-family: var(--nexus-font-display);
+	font-variant-caps: small-caps;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	font-size: 1.02rem;
+	color: color-mix(in srgb, var(--ifm-color-primary) 88%, var(--ifm-font-color-base));
+}
+
+/* --- Trait items: immunities / resistances / weaknesses --- */
+
+/* These lists mix damage types (which chip) with conditions and free-form
+   qualifiers (which do not), so an unstyled run read as a sentence with a few
+   loud chips dropped in. Quieter than BOTH the skill chips above and the property
+   badges below: a creature can carry a dozen, and they are the most situational
+   thing on the card. No border — a wash and a hairline underline only, so twelve
+   of them do not build a fence. */
+.traitItem {
+	display: inline-block;
+	margin: 0 0.1rem 0.15rem 0;
+	padding: 0 5px;
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 6%, transparent);
+	border-bottom: 1px solid color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+	font-size: 0.86rem;
+	line-height: 1.5;
+}
+/* A chip inside a trait item already carries its own strong colour, so the item
+   drops its wash and lets the chip be the whole mark. */
+.traitItem:has(> :global(.chip)) {
+	padding: 0;
+	background: none;
+	border-bottom: none;
+}
+
+/* A badge sitting directly after the bold entry name needs no leading gap. */
+.sectionBody strong + .badge {
+	margin-left: 0.18rem;
+}
+
+/* A term inside a badge, trait item or damage ladder that keyword-links must
+   still read as part of its container.
+
+   `!important` is genuinely required here, not laziness: the auto-keyword plugin
+   writes its typography as an INLINE style attribute on the anchor
+   (`font-variant:small-caps;text-transform:lowercase;font-size:large`), and an
+   inline style outranks any class selector. Without this, `range (medium)`
+   rendered its first word at `large` inside a 0.68rem badge, and `physical`
+   blew its trait item apart the same way. Everything metric is forced back to
+   the container's own typography.
+
+   Chips are excluded: they are deliberately styled marks with their own colour
+   and shape, not stray links that need taming. */
+.badge a:not(:global(.chip)),
+.traitItem a:not(:global(.chip)),
+.ladderKind a:not(:global(.chip)) {
+	font: inherit !important;
+	font-size: inherit !important;
+	font-variant: inherit !important;
+	font-weight: inherit !important;
+	text-transform: inherit !important;
+	letter-spacing: inherit !important;
+	line-height: inherit !important;
+	color: inherit;
+	/* The link affordance survives as an underline, which costs no height and
+	   cannot disturb the container's metrics the way a size or colour change does.
+	   Longhand, not the shorthand: the CSS minifier collapses
+	   `text-decoration: underline dotted color-mix(…)` down to plain `underline`,
+	   silently dropping both the dotted style and the colour. */
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+	text-decoration-color: color-mix(in srgb, var(--ifm-color-primary) 60%, transparent);
+	text-underline-offset: 2px;
+}
+.badge a:not(:global(.chip)):hover,
+.traitItem a:not(:global(.chip)):hover,
+.ladderKind a:not(:global(.chip)):hover {
+	color: var(--ifm-color-primary);
+	text-decoration-style: solid;
+}
+
+/* --- Density: the open reading-column rhythm is far too airy for a stat block --- */
+
+.body > :last-child,
+.sectionBody > :last-child {
+	margin-bottom: 0;
+}
+.sectionBody p {
+	margin-bottom: 0.3rem;
+}
+.sectionBody ul {
+	margin: 0.1rem 0;
+}
+.sectionBody ul li {
+	margin: 0;
+}
+.sectionBody ul li + li {
+	margin-top: 0.28rem;
+}
+/* Markdown wraps multi-line list content in <p>; zero it so gaps don't re-inflate. */
+.sectionBody li > p {
+	margin: 0;
+}
+/* Nested sub-lists (Beholder Spawn's numbered eye rays) stay tight and indented. */
+.sectionBody li > ol,
+.sectionBody li > ul {
+	margin: 0.15rem 0 0;
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Narrow viewports: the attributes keyline becomes a horizontal boundary once the
+   group wraps onto its own line, and the panel loses its side padding. */
+@media (max-width: 768px) {
+	.statPanel {
+		gap: 0.5rem 1.1rem;
+	}
+	.vitals,
+	.attributes {
+		padding-left: 0;
+		margin-left: 0;
+		border-left: none;
+		padding-top: 0.45rem;
+		border-top: 1px solid color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
+		width: 100%;
+	}
+	.defenses .figureNumber {
+		font-size: 1.1rem;
+	}
+}

@@ -3,7 +3,7 @@ import { visitParents } from 'unist-util-visit-parents'
 import { keywords } from './keywords'
 import { processText, InlineNode } from '../shared/tokenize'
 import { getTableCellContext } from '../shared/table-context'
-import { ZONE_GATED_TERMS, isMechanicalZone } from '../shared/zones'
+import { ZONE_GATED_TERMS, isMechanicalZone, inNameElement } from '../shared/zones'
 
 const EXCLUSION_PREFIX = '_'
 
@@ -49,6 +49,9 @@ const autoKeywordPlugin = (options) => {
 							ancestor.type === 'link' ||
 							ancestor.type === 'strong',
 					) ||
+					// Entry names moved from `**bold**` into their own JSX element (see
+					// inNameElement), which took them out of the `strong` guard.
+					inNameElement(ancestors as any) ||
 					parent.name === 'strong' ||
 					node.type !== 'text' ||
 					node.processed // Skip nodes that are already processed

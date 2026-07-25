@@ -903,7 +903,8 @@ Rationale for the cut: the "dead zone" is overstated for large skills. Fighting 
 |----------|----------|----------|
 | Talent design skill | `.claude/skills/talent-design/SKILL.md` | Creation workflow, validation checklist, anti-patterns, publication pipeline |
 | Skill themes & archetypes | `.claude/skills/talent-design/references/skill-themes.md` | Bonus types, role spreads, all 25 archetypes with identity tags |
-| Published talent files | `docs/03-statistics/06-talents/<skill>.md` | Single source of truth for all live talent text |
+| **Canonical talent data** | `src/utils/data/json/talents.json` | Single source of truth for all live talent text — edit here, then `bun run content:gen` |
+| Published talent pages | `docs/03-statistics/06-talents/<skill>.mdx` | **Generated** from the JSON; never hand-edited |
 | Conditions | `docs/05-combat/04-conditions.md` | Official condition keyword list |
 | Effect durations | `docs/06-scenes/02-effect-durations.md` | briefly/short/medium/long/very long definitions |
 | Challenge system | `docs/06-scenes/07-challenges/00-overview.md` | Challenge die, TN, skill-once rule, consequences |

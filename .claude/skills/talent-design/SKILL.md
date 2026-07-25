@@ -13,7 +13,8 @@ Talents are special abilities tied to one of 16 skills, bought with talent point
 
 | What | Where |
 |------|-------|
-| Published talents | `docs/03-statistics/06-talents/<skill>.md` |
+| **Canonical talent data** | `src/utils/data/json/talents.json` — **edit here, never in the docs** |
+| Published talents | `docs/03-statistics/06-talents/<skill>.mdx` — **generated, do not hand-edit** |
 | Talent economy rules | `docs/03-statistics/06-talents/00-overview.md` |
 | **Conditions** (official keyword list) | `docs/05-combat/04-conditions.md` |
 | **Effect durations** (briefly/short/medium/long/very long) | `docs/06-scenes/02-effect-durations.md` |
@@ -94,7 +95,7 @@ When a talent adds damage or grants healing, it plugs into the system-wide scali
 
 ## Creation Workflow
 
-1. **Pick the skill, read its pool and its workbench** — `docs/03-statistics/06-talents/<skill>.md` plus `docs/analysis/talents/skills/<skill>.md`. What themes are covered? What's missing (combat/utility/downtime spread)? Does the workbench already carry a full draft for this concept? If yes, the job is review-and-promote against current principles, not fresh design.
+1. **Pick the skill, read its pool and its workbench** — `docs/03-statistics/06-talents/<skill>.mdx` plus `docs/analysis/talents/skills/<skill>.md`. What themes are covered? What's missing (combat/utility/downtime spread)? Does the workbench already carry a full draft for this concept? If yes, the job is review-and-promote against current principles, not fresh design.
 2. **Check the roadmap position** — analysis §9 (v2.1): does this design belong to the current phase? Baseline fixes (P0) and completions (P1) come before new designs (P2+). Filling a documented gap > new territory. Watch the P1.3 blocked list (Supernatural Mobility, Presence of Conquest, Foresight — owner decision pending).
 3. **Anchor to skill identity** — role spread and aspects from references. Prefer Excels/Decent roles; the talent must clearly fit one of the skill's aspects.
 4. **Read every system the talent touches — in source, this session, before writing any mechanics.** A talent hooks into or modifies existing procedures; designing from memory invents mechanics that don't exist (a Master Artisan draft once gave "craft above what materials allow" and "repair magic items" — neither concept existed once `Craft an Item` and the repair-kit rules were actually read; the real hooks were the Crafting-rank Quality gate, the damaged→broken ladder, and a dangling "masterwork property" reference). Open the actual rules for whatever the talent's abilities reference and design onto the published procedure — its TNs, costs, gates, and terminology. Common surfaces: downtime activities incl. Craft an Item (`docs/06-scenes/04-downtime/activities.md`), crafting professions & field alchemy (`docs/06-scenes/05-crafting-professions/`), item uses/Durability/damaged/broken/repair (`docs/04-equipment/01-items.md`, repair kit in `02-equipment/gear.md`), magic items — Quality tiers, masterworks, materials, enchantments (`docs/04-equipment/07-magic-items/`), equipment lists (`docs/04-equipment/02-equipment/`), resting (`docs/06-scenes/03-resting.md`), time scales (`docs/06-scenes/01-scenes-time-intervals.md`), challenges/travel (`docs/06-scenes/07-challenges/`), combat rules (`docs/05-combat/`), spells (`docs/07-magic/`). The best designs graft onto hooks the system already dangles rather than adding parallel subsystems.
@@ -147,13 +148,13 @@ When a rank grants **more than one individual ability**, introduce them with "Yo
 
 ## Publication Pipeline
 
-Every new design starts life in a draft document under `.drafts/talents/` (workflow step 7). A talent stays a draft until the owner explicitly approves it as production-ready. On approval, publish to **all three surfaces** (then optionally delete or archive the draft file):
+Every new design starts life in a draft document under `.drafts/talents/` (workflow step 7). A talent stays a draft until the owner explicitly approves it as production-ready. On approval, publish (then optionally delete or archive the draft file):
 
-1. **Docs** — add the row to the skill's table in `docs/03-statistics/06-talents/<skill>.md`, matching the existing format: `**Name**  | <strong>(Rank 1)</strong> …<br/><br/><strong>(Rank 2)</strong> …` (alphabetical order within the table).
-2. **App JSON** — append to `src/utils/data/json/talents.json` (consumed by the character sheet's talent search dialog). Schema: `name`, `skill requirement`, `description` (full rank text with the same inline HTML). ⚠️ Edit directly — the legacy JSON regeneration scripts are deprecated and source from Notion exports, not docs.
+1. **`src/utils/data/json/talents.json`** — add the record. **This is the only file you author by hand.** Schema: `name`, `skill requirement` (the exact skill name, which selects the page), `description` (the full rank ladder). The description is one HTML string of optional preamble prose followed by rank sections, each opened by a canonical `<strong>(Rank N)</strong>` label. The generator **fails the build** on a malformed label — a paren outside the tag, a `<br/>` swallowed inside it, or no emphasis at all — because each of those silently drops a whole rank section. ⚠️ For edits to existing entries, use surgical string replacement — never parse + re-serialize the whole file.
+2. **`bun run content:gen`** — regenerates `docs/03-statistics/06-talents/<skill>.mdx`. Never edit those files: they carry a do-not-edit banner, and `bun run content:check` runs in CI and fails on any hand-edit or missed regeneration.
 3. **Notion** — push via the `notion-sync` skill. Note: talents live as an **inline database** on the Notion Talents page (flagged ⚠️ in the sync mapping) — follow the skill's inline-DB handling.
 
-Verify docs and JSON agree, then commit docs + JSON together.
+Then verify: `bun run content:check` clean and `bun run build` green. Docs and JSON agree **by construction** now — one JSON edit plus `content:gen` updates both surfaces in the same commit.
 
 ## Designer Feedback Loop
 

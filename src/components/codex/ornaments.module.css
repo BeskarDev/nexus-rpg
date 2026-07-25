@@ -70,6 +70,19 @@
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }
+/* Horned-bull keystone (creature stat blocks). viewBox is 96x30 with the border
+   line at y=20, so top = 20/30 of the rendered height. Sized between the ziggurat
+   and the winged disc: the horns need width to read as a bull rather than a mask,
+   but the head must not tower over a card that already carries a dense stat band. */
+.bullKeystone {
+	position: absolute;
+	left: 50%;
+	top: -18.13px;
+	width: 87px;
+	height: 27.19px;
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
 /* Stepped-ziggurat keystone (talents). viewBox is 84x26 with the base/border line
    at y=19.4, so 19.4/26 of the rendered height sits above the card edge — the
    tower rises out of the frame and only the base course reads inside it.

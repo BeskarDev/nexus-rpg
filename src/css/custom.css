@@ -623,6 +623,16 @@ a.chip:hover {
   border-left-color: inherit;
 }
 
+/* A skill rank absorbed into its chip (see the table-chips plugin). Set inside a
+   struck divider so "Athletics 3" reads as name + rank rather than one label. */
+.chip__rank {
+  margin-left: 5px;
+  padding-left: 5px;
+  border-left: 1px solid color-mix(in srgb, currentColor 45%, transparent);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
 /* Weapon category chips */
 .chip--weapon {
   font-weight: 600;
@@ -639,404 +649,656 @@ a.chip:hover {
   padding: 2px 6px; /* Reduced horizontal padding */
 }
 
-/* Inked-stamp rim: the retuned fills are muted/dark, which reads as pressed ink
-   on parchment but can blend into obsidian in dark mode. A faint light hairline
-   gives every rectangular chip a defined stamp edge on both surfaces. Skill
-   chips are triangular tags (their silhouette is the edge) so they are exempt. */
-.chip--damage,
-.chip--weapon,
-.chip--attribute {
-  border-color: rgba(255, 255, 255, 0.22);
-}
-
 /* Color variants */
 .chip--red {
+  --chip-fill: #902f2f;
   background-color: #902f2f; /* Darker red for attributes - better contrast */
   color: white;
 }
 
 .chip--blue {
+  --chip-fill: #27427c;
   background-color: #27427c; /* Darker blue for attributes - better contrast */
   color: white;
 }
 
 .chip--green {
+  --chip-fill: #154225;
   background-color: #154225; /* Darker green for attributes - better contrast */
   color: white;
 }
 
 .chip--light-purple {
+  --chip-fill: #6c33a0;
   background-color: #6c33a0; /* Darker purple for attributes - better contrast */
   color: white;
 }
 
 .chip--yellow {
+  --chip-fill: #b8860b;
   background-color: #b8860b; /* Darker yellow for better contrast */
   color: white;
 }
 
 .chip--purple {
+  --chip-fill: var(--ifm-color-purple);
   background-color: var(--ifm-color-purple);
   color: white;
 }
 
 .chip--orange {
+  --chip-fill: var(--ifm-color-orange);
   background-color: var(--ifm-color-orange);
   color: white;
 }
 
 .chip--brown {
+  --chip-fill: var(--ifm-color-brown);
   background-color: var(--ifm-color-brown);
   color: white;
 }
 
 .chip--grey {
+  --chip-fill: #555555;
   background-color: #555555; /* Darker grey for better contrast */
   color: white;
 }
 
 /* Pastel color variants for improved diversity and softer appearance */
 .chip--lime-pastel {
+  --chip-fill: #c3f0ca;
   background-color: #c3f0ca; /* Pastel lime */
   color: black;
 }
 
 .chip--cyan-pastel {
+  --chip-fill: #a5f3fc;
   background-color: #a5f3fc; /* Pastel cyan */
   color: black;
 }
 
 .chip--pink-pastel {
+  --chip-fill: #fbb6ce;
   background-color: #fbb6ce; /* Pastel pink */
   color: black;
 }
 
 .chip--gold-pastel {
+  --chip-fill: #fed766;
   background-color: #fed766; /* Pastel gold */
   color: black;
 }
 
 .chip--olive-pastel {
+  --chip-fill: #d4d48a;
   background-color: #d4d48a; /* Pastel olive */
   color: black;
 }
 
 .chip--maroon-pastel {
+  --chip-fill: #e06b6b;
   background-color: #e06b6b; /* Pastel maroon */
   color: white;
 }
 
 .chip--navy-pastel {
+  --chip-fill: #7c93c3;
   background-color: #7c93c3; /* Pastel navy */
   color: white;
 }
 
 .chip--indigo-pastel {
+  --chip-fill: #a78bfa;
   background-color: #a78bfa; /* Pastel indigo */
   color: white;
 }
 
 .chip--teal-pastel {
+  --chip-fill: #7dd3fc;
   background-color: #7dd3fc; /* Pastel teal */
   color: black;
 }
 
 .chip--slate-pastel {
+  --chip-fill: #cbd5e1;
   background-color: #cbd5e1; /* Pastel slate */
   color: black;
 }
 
 .chip--tan-pastel {
+  --chip-fill: #fed7aa;
   background-color: #fed7aa; /* Pastel tan */
   color: black;
 }
 
 .chip--silver-pastel {
+  --chip-fill: #e2e8f0;
   background-color: #e2e8f0; /* Pastel silver */
   color: black;
 }
 
 .chip--copper-pastel {
+  --chip-fill: #fdba74;
   background-color: #fdba74; /* Pastel copper */
   color: black;
 }
 
 .chip--bronze-pastel {
+  --chip-fill: #fed7aa;
   background-color: #fed7aa; /* Pastel bronze */
   color: black;
 }
 
 .chip--steel-pastel {
+  --chip-fill: #bfdbfe;
   background-color: #bfdbfe; /* Pastel steel */
   color: black;
 }
 
 .chip--amber-pastel {
+  --chip-fill: #fde68a;
   background-color: #fde68a; /* Pastel amber */
   color: black;
 }
 
 .chip--orange-pastel {
+  --chip-fill: #fed7aa;
   background-color: #fed7aa; /* Pastel orange */
   color: black;
 }
 
 .chip--brown-pastel {
+  --chip-fill: #d6d3d1;
   background-color: #d6d3d1; /* Pastel brown */
   color: black;
 }
 
 .chip--red-pastel {
+  --chip-fill: #fca5a5;
   background-color: #fca5a5; /* Pastel red */
   color: black;
 }
 
 .chip--green-pastel {
+  --chip-fill: #bbf7d0;
   background-color: #bbf7d0; /* Pastel green */
   color: black;
 }
 
 .chip--purple-pastel {
+  --chip-fill: #e9d5ff;
   background-color: #e9d5ff; /* Pastel purple */
   color: black;
 }
 
 .chip--blue-pastel {
+  --chip-fill: #bfdbfe;
   background-color: #bfdbfe; /* Pastel blue */
   color: black;
 }
 
 .chip--yellow-pastel {
+  --chip-fill: #fde68a;
   background-color: #fde68a; /* Pastel yellow */
   color: black;
 }
 
 .chip--grey-pastel {
+  --chip-fill: #e5e7eb;
   background-color: #e5e7eb; /* Pastel grey */
   color: black;
 }
 
 /* Additional pastel colors for better skill distribution */
 .chip--forest-green-pastel {
+  --chip-fill: #86efac;
   background-color: #86efac; /* Forest green pastel for Athletics */
   color: black;
 }
 
 .chip--sage-green-pastel {
+  --chip-fill: #a7f3d0;
   background-color: #a7f3d0; /* Sage green pastel for Survival */
   color: black;
 }
 
 .chip--violet-pastel {
+  --chip-fill: #ddd6fe;
   background-color: #ddd6fe; /* Violet pastel for Mysticism */
   color: black;
 }
 
 .chip--charcoal-pastel {
+  --chip-fill: #d1d5db;
   background-color: #d1d5db; /* Charcoal pastel for Stealth */
   color: black;
 }
 
 /* Dark mode adjustments for better contrast */
 [data-theme='dark'] .chip--light-purple {
+  --chip-fill: #6c33a0;
   background-color: #6c33a0; /* Darker purple for dark mode */
   color: white;
 }
 
 [data-theme='dark'] .chip--red {
+  --chip-fill: #902f2f;
   background-color: #902f2f; /* Keep consistent with light mode */
   color: white;
 }
 
 [data-theme='dark'] .chip--green {
+  --chip-fill: #154225;
   background-color: #154225; /* Keep consistent with light mode */
   color: white;
 }
 
 [data-theme='dark'] .chip--blue {
+  --chip-fill: #27427c;
   background-color: #27427c; /* Keep consistent with light mode */
   color: white;
 }
 
 [data-theme='dark'] .chip--yellow-pastel {
+  --chip-fill: #fbbf24;
   background-color: #fbbf24;
   color: black;
 }
 
 [data-theme='dark'] .chip--gold-pastel {
+  --chip-fill: #f59e0b;
   background-color: #f59e0b;
   color: black;
 }
 
 [data-theme='dark'] .chip--lime-pastel {
+  --chip-fill: #84cc16;
   background-color: #84cc16;
   color: black;
 }
 
 [data-theme='dark'] .chip--cyan-pastel {
+  --chip-fill: #06b6d4;
   background-color: #06b6d4;
   color: black;
 }
 
 [data-theme='dark'] .chip--tan-pastel {
+  --chip-fill: #d97706;
   background-color: #d97706;
   color: black;
 }
 
 [data-theme='dark'] .chip--silver-pastel {
+  --chip-fill: #94a3b8;
   background-color: #94a3b8;
   color: black;
 }
 
 [data-theme='dark'] .chip--amber-pastel {
+  --chip-fill: #f59e0b;
   background-color: #f59e0b;
   color: black;
 }
 
 /* Dark mode adjustments for new skill colors */
 [data-theme='dark'] .chip--forest-green-pastel {
+  --chip-fill: #22c55e;
   background-color: #22c55e;
   color: black;
 }
 
 [data-theme='dark'] .chip--sage-green-pastel {
+  --chip-fill: #34d399;
   background-color: #34d399;
   color: black;
 }
 
 [data-theme='dark'] .chip--violet-pastel {
+  --chip-fill: #9c31ff;
   background-color: #9c31ff;
   color: black;
 }
 
 [data-theme='dark'] .chip--charcoal-pastel {
+  --chip-fill: #9ca3af;
   background-color: #9ca3af;
   color: black;
 }
 
 /* Vibrant color variants for damage types */
 .chip--acid-vibrant {
+  --chip-fill: #5d7f28;
   background-color: #5d7f28; /* Vibrant lime green */
   color: white;
 }
 
 .chip--blast-vibrant {
+  --chip-fill: #8a4c2c;
   background-color: #8a4c2c; /* Vibrant orange */
   color: white;
 }
 
 .chip--fire-vibrant {
+  --chip-fill: #902f2f;
   background-color: #902f2f; /* Vibrant red */
   color: white;
 }
 
 .chip--frost-vibrant {
+  --chip-fill: #215b69;
   background-color: #215b69; /* Vibrant cyan */
   color: white;
 }
 
 .chip--lightning-vibrant {
+  --chip-fill: #88712b;
   background-color: #88712b; /* Vibrant yellow */
   color: white;
 }
 
 .chip--necrotic-vibrant {
+  --chip-fill: #5e34a6;
   background-color: #5e34a6; /* Vibrant purple */
   color: white;
 }
 
 .chip--poison-vibrant {
+  --chip-fill: #154225;
   background-color: #154225; /* Vibrant green */
   color: white;
 }
 
 .chip--psychic-vibrant {
+  --chip-fill: #ad3771;
   background-color: #ad3771; /* Vibrant pink */
   color: white;
 }
 
 .chip--radiant-vibrant {
+  --chip-fill: #7d5628;
   background-color: #7d5628; /* Vibrant gold */
   color: white;
 }
 
+/* Physical is the DEFAULT damage type (rules prose omits it entirely), so it gets
+   a neutral struck-steel grey rather than an elemental hue — it should read as
+   "mundane" beside the coloured elements, not compete with them. */
+.chip--physical-vibrant {
+  --chip-fill: #55504a;
+  background-color: #55504a; /* Struck steel grey */
+  color: white;
+}
+
+/* Force is pure magical energy — a cold violet-white, kept clear of necrotic's
+   purple and psychic's pink. */
+.chip--force-vibrant {
+  --chip-fill: #4a4a86;
+  background-color: #4a4a86; /* Arcane violet */
+  color: white;
+}
+
+/* ============================================================================
+ * Codex chip unification (M6).
+ *
+ * The chips predate the codex theme: fully rounded pills, flat saturated fills
+ * and pure-white text read as generic web UI against carved stone and inlaid
+ * bronze. The COLOUR IDENTITIES are deliberately untouched — they are the whole
+ * point of the chips, and scanning a stat block depends on them — so this only
+ * changes the material the colour is set in:
+ *
+ *  - squared corners, matching every other codex element (cards 3px, badges,
+ *    cartouches, cartouche labels and the tier chip all sit at 2px);
+ *  - a BRONZE bezel instead of the white hairline, so a chip reads as enamel
+ *    inlaid into metal, and so all four chip families are tied together by the
+ *    same edge regardless of fill;
+ *  - warm parchment ink instead of pure white, which glared against the deep
+ *    fills.
+ *
+ * Skill chips keep their tag silhouette: the pointed ends are a banner/cartouche
+ * shape rather than a web pill, so they are already on-theme, and their points
+ * are drawn as border triangles coloured per variant — an outer bezel cannot be
+ * added to that construction without rebuilding all 16 variants.
+ * ========================================================================== */
+
+/* ── Codex chip unification (M6) ─────────────────────────────────────────────
+ * Chips predate the codex theme. Solid saturated fills made them the only
+ * elements on a page carrying heavy colour MASS, so against carved stone and
+ * inlaid bronze they read as stickers laid on top. Retuning the hues was not
+ * enough — the mass itself was the clash.
+ *
+ * So the colour moves from the fill to the INK. Each chip is now a keyline
+ * around the card surface with its identity colour applied to the text. Identity
+ * survives completely — a red word is still fire, a blue one still insight — but
+ * nothing on the page carries a block of colour any more.
+ *
+ * The identity hue lives in `--chip-fill`, set by every variant rule below.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+/* Ink, not fill. Mixing toward `--ifm-font-color-base` rather than using the raw
+   hue is what keeps these legible in BOTH themes: that token is light on dark and
+   dark on light, so the same declaration lightens the hue in dark mode and
+   darkens it in light mode while holding the hue itself. */
+.chip[class*='chip--'] {
+  color: color-mix(in srgb, var(--chip-fill) 68%, var(--ifm-font-color-base));
+  background-color: transparent !important;
+}
+
+a.chip,
+.chip {
+  border-radius: 2px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ── Per-family silhouettes ──────────────────────────────────────────────────
+ * Squaring every chip removed the one thing that told the families apart at a
+ * glance. Each family keeps its own carved silhouette, cut with `clip-path`:
+ *
+ *   skill      pointed tag, both ends   — a banner/standard: a named proficiency
+ *   damage     cut-corner tessera       — an inlaid stone chip: elemental matter
+ *   weapon     chevron, pointed right   — a blade profile
+ *   attribute  square, concentric rule  — a die face, echoing DieToken and the
+ *                                          card frame's nested border
+ *
+ * A clipped shape cannot take a `border`, so the outline is built from two flat
+ * layers: the keyline beneath, and the CARD SURFACE inset 1.5px above it, which
+ * punches the middle back out. The keyline carries a trace of the identity hue
+ * over bronze — at hairline width that sharpens identity without reintroducing
+ * any mass.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+.chip--skill,
+.chip--damage,
+.chip--weapon {
+  position: relative;
+  isolation: isolate;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.chip--skill::before,
+.chip--damage::before,
+.chip--weapon::before,
+.chip--skill::after,
+.chip--damage::after,
+.chip--weapon::after {
+  content: '';
+  position: absolute;
+  /* Reset the skill chip's old triangular-point construction, which used these
+     same two pseudo-elements as CSS border triangles. */
+  border: none;
+  width: auto;
+  height: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  clip-path: var(--chip-shape);
+}
+/* keyline */
+.chip--skill::before,
+.chip--damage::before,
+.chip--weapon::before {
+  background: color-mix(in srgb, var(--chip-fill) 45%, var(--ifm-color-primary));
+  z-index: -2;
+}
+/* the surface, punching the middle back out to leave an outline */
+.chip--skill::after,
+.chip--damage::after,
+.chip--weapon::after {
+  inset: 1.5px;
+  background: var(--ifm-background-surface-color);
+  z-index: -1;
+}
+
+.chip--skill {
+  --chip-shape: polygon(
+    7px 0,
+    calc(100% - 7px) 0,
+    100% 50%,
+    calc(100% - 7px) 100%,
+    7px 100%,
+    0 50%
+  );
+  padding: 2px 12px !important;
+  margin: 0 2px !important;
+}
+
+.chip--damage {
+  --chip-shape: polygon(
+    4px 0,
+    calc(100% - 4px) 0,
+    100% 4px,
+    100% calc(100% - 4px),
+    calc(100% - 4px) 100%,
+    4px 100%,
+    0 calc(100% - 4px),
+    0 4px
+  );
+  padding: 2px 9px;
+}
+
+.chip--weapon {
+  --chip-shape: polygon(0 0, calc(100% - 7px) 0, 100% 50%, calc(100% - 7px) 100%, 0 100%);
+  padding: 2px 13px 2px 8px;
+}
+
+/* Attributes stay a true square — a die face. It carried a concentric second
+   keyline at first, which was redundant: the square is ALREADY the only
+   right-angled silhouette among the four families, so its own outline is the
+   distinction and the inner rule was just weight. A single keyline is enough,
+   and at this size two hairlines 3px apart read as noise rather than as the
+   card frame's nested border they were meant to echo. */
+.chip--attribute {
+  /* 1.5px, not 1px: the clipped families get their outline from a bezel layer
+     with the surface inset 1.5px on top, so a 1px border here rendered visibly
+     thinner than every chip beside it. Hard corners too — the other three
+     silhouettes are cut with clip-path and have no rounding to soften, so a
+     radius here was the only rounded corner left in the set. */
+  border: 1.5px solid color-mix(in srgb, var(--chip-fill) 45%, var(--ifm-color-primary)) !important;
+  border-radius: 0 !important;
+  padding: 2px 6px;
+}
+
+/* The rank divider inside a skill chip picks up the chip's own ink. */
+.chip__rank {
+  border-left-color: color-mix(in srgb, currentColor 40%, transparent);
+}
+
 /* Vibrant color variants for skills */
 .chip--athletics-vibrant {
+  --chip-fill: #2b804a;
   background-color: #2b804a; /* Vibrant green */
   color: white;
 }
 
 .chip--crafting-vibrant {
+  --chip-fill: #5e441e;
   background-color: #5e441e; /* Vibrant brown */
   color: white;
 }
 
 .chip--nature-vibrant {
+  --chip-fill: #1c5745;
   background-color: #1c5745; /* Vibrant emerald */
   color: white;
 }
 
 .chip--survival-vibrant {
+  --chip-fill: #1b5330;
   background-color: #1b5330; /* Vibrant forest green */
   color: white;
 }
 
 .chip--fighting-vibrant {
+  --chip-fill: #902f2f;
   background-color: #902f2f; /* Vibrant red */
   color: white;
 }
 
 .chip--fortitude-vibrant {
+  --chip-fill: #632222;
   background-color: #632222; /* Vibrant maroon */
   color: white;
 }
 
 .chip--perception-vibrant {
+  --chip-fill: #27427c;
   background-color: #27427c; /* Vibrant blue */
   color: white;
 }
 
 .chip--arcana-vibrant {
+  --chip-fill: #5e34a6;
   background-color: #5e34a6; /* Vibrant purple */
   color: white;
 }
 
 .chip--influence-vibrant {
+  --chip-fill: #7d5628;
   background-color: #7d5628; /* Vibrant amber */
   color: white;
 }
 
 .chip--lore-vibrant {
+  --chip-fill: #215b69;
   background-color: #215b69; /* Vibrant teal */
   color: white;
 }
 
 .chip--mysticism-vibrant {
+  --chip-fill: #7336ab;
   background-color: #7336ab; /* Vibrant violet */
   color: white;
 }
 
 .chip--insight-vibrant {
+  --chip-fill: #1d465c;
   background-color: #1d465c; /* Vibrant sky blue */
   color: white;
 }
 
 .chip--stealth-vibrant {
+  --chip-fill: #2c3139;
   background-color: #2c3139; /* Vibrant charcoal */
   color: white;
 }
 
 .chip--streetwise-vibrant {
+  --chip-fill: #8a4c2c;
   background-color: #8a4c2c; /* Vibrant rust */
   color: white;
 }
 
 .chip--education-vibrant {
+  --chip-fill: #263871;
   background-color: #263871; /* Vibrant navy */
   color: white;
 }
 
 .chip--archery-vibrant {
+  --chip-fill: #5a341c;
   background-color: #5a341c; /* Vibrant tan */
   color: white;
 }
@@ -1124,46 +1386,55 @@ a.chip:hover {
 
 /* Vibrant color variants for weapon types - very distinct colors */
 .chip--axe-vibrant {
+  --chip-fill: #502719;
   background-color: #502719; /* Deep brown */
   color: white;
 }
 
 .chip--blade-vibrant {
+  --chip-fill: #4e5763;
   background-color: #4e5763; /* Steel grey */
   color: white;
 }
 
 .chip--bow-vibrant {
+  --chip-fill: #5e441e;
   background-color: #5e441e; /* Wood brown */
   color: white;
 }
 
 .chip--brawling-vibrant {
+  --chip-fill: #902f2f;
   background-color: #902f2f; /* Fighting red */
   color: white;
 }
 
 .chip--crossbow-vibrant {
+  --chip-fill: #2c3139;
   background-color: #2c3139; /* Dark grey */
   color: white;
 }
 
 .chip--mace-vibrant {
+  --chip-fill: #3f3986;
   background-color: #3f3986; /* Royal blue */
   color: white;
 }
 
 .chip--polearm-vibrant {
+  --chip-fill: #1c5745;
   background-color: #1c5745; /* Emerald green */
   color: white;
 }
 
 .chip--shield-vibrant {
+  --chip-fill: #5e34a6;
   background-color: #5e34a6; /* Shield purple */
   color: white;
 }
 
 .chip--thrown-vibrant {
+  --chip-fill: #8a4c2c;
   background-color: #8a4c2c; /* Orange */
   color: white;
 }

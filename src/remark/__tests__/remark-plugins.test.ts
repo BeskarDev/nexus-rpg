@@ -19,6 +19,7 @@ type Conversion = {
 	text: string
 	url?: string
 	className?: string[]
+	ariaLabel?: string
 }
 
 /** Parses markdown to mdast and runs a single plugin transformer over it. */
@@ -32,17 +33,22 @@ function runPlugin(
 	return tree
 }
 
+/** Flattens the text of a node subtree — chip children can be nested (a skill
+ *  chip wraps its absorbed rank in a span node, not a bare text node). */
+function nodeText(node: any): string {
+	if (typeof node?.value === 'string') return node.value
+	return (node?.children || []).map(nodeText).join('')
+}
+
 /** Collects every produced link/chip node (both render as mdast `link`). */
 function collectConversions(tree: any): Conversion[] {
 	const out: Conversion[] = []
 	visit(tree, 'link', (n: any) => {
-		const text = (n.children || [])
-			.map((c: any) => c.value || '')
-			.join('')
 		out.push({
-			text,
+			text: nodeText(n),
 			url: n.url,
 			className: n.data?.hProperties?.className,
+			ariaLabel: n.data?.hProperties?.['aria-label'],
 		})
 	})
 	return out
@@ -231,10 +237,42 @@ describe('table header detection (Phase 2)', () => {
 		expect(chips[0].text).toBe('Fighting')
 	})
 
+	it('table-chips: pulls a trailing skill rank inside the chip', () => {
+		// Stat blocks write "Fighting (2), Perception (1)"; chipping only the name
+		// left the one number that matters stranded outside the pill.
+		const tree = runPlugin(
+			tableChipsPlugin,
+			'Fighting (2), Perception (1)',
+			'docs/08-creatures/03-creatures/tier-1.mdx',
+		)
+		const chips = collectConversions(tree).filter((c) =>
+			c.className?.includes('chip--skill'),
+		)
+		expect(chips).toHaveLength(2)
+		expect(chips.map((c) => c.text)).toEqual(['Fighting2', 'Perception1'])
+		expect(chips[0].ariaLabel).toBe('skill: Fighting rank 2')
+	})
+
+	it('table-chips: leaves a skill chip alone when no rank follows', () => {
+		const tree = runPlugin(
+			tableChipsPlugin,
+			'Fighting and Perception',
+			'docs/08-creatures/03-creatures/tier-1.mdx',
+		)
+		const chips = collectConversions(tree).filter((c) =>
+			c.className?.includes('chip--skill'),
+		)
+		expect(chips.map((c) => c.text)).toEqual(['Fighting', 'Perception'])
+	})
+
 	it('real creature stat block: HP/AV/STR headers stay plain, no blacklist needed', () => {
-		// Mirrors docs/08-creatures/03-creatures/tier-1.md. The stale blacklist
-		// entries point at the old 03-creatures.md path (now a directory) and no
-		// longer fire — header-row detection is what keeps these plain.
+		// Mirrored docs/08-creatures/03-creatures/tier-1.md before the M6 migration.
+		// The published stat blocks no longer carry this table at all — the nine
+		// stats are now `CreatureStatBlock` props — so this is a synthetic guard
+		// kept for any OTHER page that writes a stat table by hand, and for the
+		// creature builder's markdown output, which still emits this shape.
+		// The stale blacklist entries point at the old 03-creatures.md path (now a
+		// directory) and no longer fire — header-row detection keeps these plain.
 		const statBlock = [
 			'| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |',
 			'|----|----|----|----|----|-----|-------|-------|--------|',

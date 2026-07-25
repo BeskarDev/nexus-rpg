@@ -13,7 +13,8 @@ Spells belong to one of 14 schools: 6 **arcane disciplines** (Mind + Arcana, tra
 
 | What | Where |
 |------|-------|
-| Published spells | `docs/07-magic/02-arcane-spells/*.md`, `docs/07-magic/04-mystic-spells/*.md` |
+| **Canonical spell data** | `src/utils/data/json/{arcane,mystic}-spells.json` — **edit here, never in the docs** |
+| Published spells | `docs/07-magic/02-arcane-spells/*.mdx`, `04-mystic-spells/*.mdx` — **generated, do not hand-edit** |
 | Spell properties | `docs/07-magic/05-spell-properties.md` |
 | **Conditions** (official keyword list) | `docs/05-combat/04-conditions.md` |
 | **Effect durations** (briefly/short/medium/long/very long) | `docs/06-scenes/02-effect-durations.md` |
@@ -104,13 +105,13 @@ Before finalizing any spell with social, legal, economic, informational, or logi
 
 ## Publication Pipeline
 
-Every new design starts life in a draft document under the repo-root `.drafts/` directory (step 5). A spell stays a draft until the owner explicitly approves it as production-ready. On approval, publish to **all three surfaces** (then optionally delete or archive the draft file):
+Every new design starts life in a draft document under the repo-root `.drafts/` directory (step 5). A spell stays a draft until the owner explicitly approves it as production-ready. On approval, publish (then optionally delete or archive the draft file):
 
-1. **Docs** — insert into the school's file (`docs/07-magic/02-arcane-spells/<discipline>.md` or `04-mystic-spells/<tradition>.md`), matching the existing per-spell format exactly: `### Name` heading, the 5-column mini-table (`**Rank** | **Focus** | **Target** | **Range** | **Properties**`), then the `**Effect** <br/>` block with `<strong>Weak./Strong./Critical.</strong>` inline HTML. Keep rank order within the file. ⚠️ Never insert bare `>` lines between spells — they are legacy Notion-import artifacts that render as ugly empty callouts on the wiki (systematically purged 2026-07-10; a Heightened block is a single `> **Heightened** ...` line, then a blank line, then the next `###` heading directly).
-2. **App JSON** — append to `src/utils/data/json/arcane-spells.json` or `mystic-spells.json` (consumed by the spell search dialogs and spell list pages). Match the existing schema (`name, discipline/tradition, rank, focus, target, range, properties, effect, heightened`) and HTML conventions (`<br/>`, `<strong>`). ⚠️ Do NOT run the legacy `convert-tables.sh` regeneration — it's deprecated and sources from Notion exports, not docs; edit the JSON directly. ⚠️ For edits to existing entries, use surgical string replacement — never parse + re-serialize the whole file (reformats every line, drowns the real diff).
+1. **`src/utils/data/json/arcane-spells.json`** or **`mystic-spells.json`** — add the record. **This is the only file you author by hand.** Match the existing schema (`name, discipline/tradition, rank, focus, target, range, properties, effect, heightened`) and its HTML conventions: `effect` is one string of leading prose, then `<br/><strong>Weak.</strong> …<br/><strong>Strong.</strong> …<br/><strong>Critical.</strong> …`, with `-` as the empty value for `properties` / `heightened`. The generator **fails the build** on any effect it cannot split into a clean weak→strong→critical run, so a malformed entry is caught rather than silently mangled. ⚠️ For edits to existing entries, use surgical string replacement — never parse + re-serialize the whole file (reformats every line, drowns the real diff).
+2. **`bun run content:gen`** — regenerates the discipline/tradition `.mdx` pages from the JSON. Never edit those files: they carry a do-not-edit banner, and `bun run content:check` runs in CI and fails on any hand-edit or missed regeneration.
 3. **Notion** — push via the `notion-sync` skill (handles the doc→page mapping and the changelog entry). Can be batched: multiple approved spells in one sync session.
 
-Finally verify docs and JSON agree (same spell text in both), then commit docs + JSON together.
+Then verify: `bun run content:check` clean and `bun run build` green. Docs and JSON agree **by construction** now — one JSON edit plus `content:gen` updates both surfaces in the same commit, so there is nothing to reconcile by hand.
 
 ## Designer Feedback Loop
 
