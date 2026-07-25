@@ -58,16 +58,20 @@
   margin-inline: auto;
 }
 
-/* Marginalia disclaimer — bronze admonition (M2a style): parchment-tinted
- * surface with a bronze left rule, replacing the old flat orange box. */
+/* Marginalia disclaimer — the same carved-stone callout as a doc admonition
+ * (M8 S1): a flat keyline frame over a bronze wash. The earlier bronze left rule
+ * and drop shadow were the last of that pattern on a default surface. */
 .contentContainer {
   position: relative;
   z-index: 1;
   padding: 1rem 1.5rem;
-  background-color: var(--ifm-background-surface-color);
-  border-left: 4px solid var(--nexus-bronze);
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+  background-color: color-mix(
+    in srgb,
+    var(--nexus-bronze) 6%,
+    var(--ifm-background-surface-color)
+  );
+  border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 55%, transparent);
+  border-radius: 2px;
   color: var(--ifm-font-color-base);
   margin-top: 3rem;
   max-width: 1400px;

@@ -82,6 +82,13 @@
 	--nexus-jewel-carnelian: #a83a28; /* burnt carnelian red */
 	--nexus-jewel-emerald: #1f6b47; /* deep emerald green */
 
+	/* Admonition alarm hues (M8 S1). Only warning and danger take a hue —
+	   note/tip/info stay bronze and are told apart by their sigil — so the
+	   reading column never carries a block of saturated colour. Kept separate
+	   from the jewel tokens, which are reserved for KEY/divine marks. */
+	--nexus-alert-warning: #9a6a12; /* ochre, kin to the bronze accent */
+	--nexus-alert-danger: #9c3322; /* oxidized red */
+
 	/* Local search (@easyops-cn/docusaurus-search-local): point the plugin's
 	   own vars at the token palette. Highlight/cursor already fall back to
 	   --ifm-color-primary (bronze); these align the surfaces too. Active-row
@@ -117,6 +124,11 @@
 	/* Procedural parchment grain: a tiny stitched SVG noise tile, no raster
 	   asset. Consumed by body::before below. */
 	--parchment-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+	/* Hieroglyph frieze tile (M7 E2). A repeat-x MASK, so whatever element
+	   carries it tints from its own color and tiles seamlessly at any width.
+	   Shared by ornaments.module.css (FriezeDivider/FriezeBand) and the M8
+	   navbar / footer cornices below — one tile, one definition. */
+	--nexus-frieze-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12'%3E%3Cpath d='M2 9 L6 3 L10 9 Z' fill='%23000'/%3E%3Crect x='13.3' y='3' width='1.4' height='6' fill='%23000'/%3E%3Crect x='18' y='4.5' width='3' height='3' fill='%23000'/%3E%3C/svg%3E");
 	/* Typography: display (Cinzel, h1/h2 only via scoped rules below),
 	   body serif (Spectral), UI sans (Alegreya Sans). Cinzel and Spectral
 	   only ship 400/600, so bold maps to the real 600 cut instead of
@@ -152,6 +164,9 @@
 	--nexus-jewel-lapis: #6f93d6;
 	--nexus-jewel-carnelian: #d97a5f;
 	--nexus-jewel-emerald: #5cae82;
+	/* Alarm hues lifted for the smoky dark surface (M8 S1). */
+	--nexus-alert-warning: #d9a63f;
+	--nexus-alert-danger: #e07a63;
 
 	--ifm-color-primary: var(--nexus-bronze);
 	--ifm-color-primary-dark: #bd8748;
@@ -233,17 +248,9 @@ body::before {
 	}
 }
 
-/* Admonitions and example quotes: manuscript-marginalia feel, bronze default. */
-.theme-doc-markdown blockquote,
-.alert {
-	border-left: 3px solid var(--ifm-color-primary);
-	background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
-}
-
-.theme-doc-markdown blockquote {
-	padding: 0.75rem 1rem;
-	margin: 1rem 0;
-}
+/* Admonitions and example quotes are themed in the M8 default-theme section at
+   the end of this file (the M2a left-accent bar was replaced there by carved
+   frames + title bands). */
 
 /* ---------------------------------------------------------------------------
    M3 — Magic flavor layer. "Living magic" rune-cyan accent. All glow derived
@@ -317,11 +324,11 @@ a:hover:not(.navbar__brand):not(.character-sheet-page a) {
 	animation: none;
 }
 
-/* Magic admonition variant (bronze default landed in M2a). Border uses the
-   text token so it holds the 3:1 non-text contrast; fill from the glow token. */
+/* Magic admonition variant. The frame/band geometry is shared with every other
+   callout in the M8 section; only the ink changes, to the cyan text token (it
+   holds the 3:1 non-text contrast where the glow token would not). */
 .alert--magic {
-	border-left-color: var(--rune-cyan-text);
-	background: color-mix(in srgb, var(--rune-cyan-glow) 8%, transparent);
+	--codex-alert-ink: var(--rune-cyan-text);
 }
 
 /* Accessibility: kill all magic motion when the user asks for reduced motion.
@@ -337,25 +344,9 @@ a:hover:not(.navbar__brand):not(.character-sheet-page a) {
 	}
 }
 
-/* Subtle heading visual separation for easier scanning, tinted bronze.
-   Deriving from the primary token keeps both modes correct in one rule. */
-article h2 {
-	padding-top: 1.5rem;
-	margin-top: 2rem;
-	border-top: 1px solid color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
-}
-
-article h3 {
-	padding-top: 1rem;
-	margin-top: 1.5rem;
-	border-top: 1px solid color-mix(in srgb, var(--ifm-color-primary) 18%, transparent);
-}
-
-article h4 {
-	padding-top: 0.75rem;
-	margin-top: 1.25rem;
-	border-top: 1px solid color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
-}
+/* Heading separators: see the S9 cornice rules in the M8 section (the flat
+   full-width hairlines were recut there into fading cornices with a lozenge
+   terminal). */
 
 /* Reading surface: generous rhythm for long rules text. Scoped to the doc
    markdown container so nothing bleeds into the character sheet app. */
@@ -540,6 +531,13 @@ table th {
   height: 7px;
   transform: rotate(45deg);
   background-color: var(--ifm-color-primary);
+}
+/* Scope boundary: the character sheet renders its MUI lists INSIDE the doc
+   markdown container, so the codex bullet lands on every MuiListItem (bronze
+   diamonds beside each saved character). Switch the marker back off there —
+   found during the M8 scope-boundary check. */
+.character-sheet-page ul > li::before {
+  content: none;
 }
 /* Nested lists: hollow lozenge, a step quieter. */
 .theme-doc-markdown ul ul > li::before {
@@ -1637,4 +1635,640 @@ a.chip,
   .navbar__link:hover {
     border-bottom: none;
   }
+}
+
+/* ============================================================================
+   M8 — Bronze-Age look as the DEFAULT theme.
+
+   Every Docusaurus surface renders in the carved-stone / inlaid-bronze language
+   with zero per-page placement: a plain markdown page with headings, lists, a
+   blockquote, a table, a code block and an admonition comes out fully themed.
+   Mechanism is the lightest that reaches each surface — CSS on stable class
+   names first, then MDX element mapping, then a WRAPPING swizzle. Only two
+   components are swizzled (`Admonition/Layout`, `Footer/Layout`), both wrappers.
+
+   Two standing rules govern everything here:
+   - Flat only. Keyline borders, flat washes and inlaid motifs. No shadows,
+     bevels or glossy depth.
+   - Never a straight rule as a grouping device. A keyline is a FRAME on a
+     container; content is grouped by a background wash, spacing or a carved
+     ornament — never a bare left bar.
+
+   Scope: doc/site chrome only. Nothing here may reach `.character-sheet-page`
+   or MUI; reading-column rules are scoped to `.theme-doc-markdown`.
+   ========================================================================== */
+
+/* --- S1 Admonitions → carved-stone callouts --------------------------------
+   The stock alert is a coloured box with a fat left bar. Recut as a stone
+   panel: a flat keyline frame, a faint wash, and a title BAND (a wash, not a
+   rule) carrying the type's codex sigil.
+
+   Colour does focused work: note / tip / info all stay bronze and are told
+   apart by sigil and label, so the reading column never carries a block of
+   saturated colour. Only the two alarm types take a hue. Geometry comes from
+   overriding Infima's own `--ifm-alert-*` vars rather than fighting its rules,
+   so the theme keeps ownership of the box model. */
+.alert {
+	--codex-alert-ink: var(--ifm-color-primary);
+	--ifm-alert-border-left-width: var(--ifm-alert-border-width);
+	--ifm-alert-border-width: 1.5px;
+	--ifm-alert-border-radius: 2px;
+	--ifm-alert-padding-vertical: 0;
+	--ifm-alert-padding-horizontal: 0;
+	--ifm-alert-shadow: none;
+	--ifm-alert-foreground-color: var(--ifm-font-color-base);
+	--ifm-alert-border-color: color-mix(
+		in srgb,
+		var(--codex-alert-ink) 55%,
+		transparent
+	);
+	--ifm-alert-background-color: color-mix(
+		in srgb,
+		var(--codex-alert-ink) 6%,
+		var(--ifm-background-surface-color)
+	);
+	--ifm-alert-background-color-highlight: color-mix(
+		in srgb,
+		var(--codex-alert-ink) 12%,
+		transparent
+	);
+	/* Links inside a callout keep the site's bronze, not the alert foreground. */
+	--ifm-link-color: var(--ifm-color-primary);
+	--ifm-link-hover-color: var(--ifm-color-primary);
+	overflow: hidden; /* the title band runs edge to edge inside the frame */
+}
+
+/* Alarm types only. Mixed toward the base ink so one declaration holds in both
+   themes (the token is dark on parchment, light on obsidian). */
+.theme-admonition-warning,
+.theme-admonition-caution {
+	--codex-alert-ink: var(--nexus-alert-warning);
+}
+.theme-admonition-danger {
+	--codex-alert-ink: var(--nexus-alert-danger);
+}
+
+/* Title band. The heading class is a hashed CSS module, so it is matched by
+   substring — the stable part of the theme's own naming. */
+.codex-admonition > [class*='admonitionHeading'] {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0.35rem 0.85rem;
+	background: color-mix(in srgb, var(--codex-alert-ink) 13%, transparent);
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--codex-alert-ink) 38%, transparent);
+	font-family: var(--nexus-font-display);
+	font-size: 0.95rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	/* Cinzel's lowercase glyphs ARE natively drawn small caps, so the theme's
+	   uppercasing is removed rather than replaced (see the h1/h2 rule). */
+	text-transform: none;
+	color: color-mix(
+		in srgb,
+		var(--codex-alert-ink) 65%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.codex-admonition > [class*='admonitionHeading'] [class*='admonitionIcon'] {
+	display: inline-flex;
+	margin-right: 0;
+}
+
+/* The theme's icon rule sets a fill and a 1.6em box; a CSS fill beats the SVG's
+   own `fill="none"` presentation attribute and would flood the stroke sigil. */
+.codex-admonition [class*='admonitionIcon'] svg.codex-admonition__sigil {
+	width: 22px;
+	height: 22px;
+	fill: none;
+	stroke: currentColor;
+}
+
+.codex-admonition > [class*='admonitionContent'] {
+	padding: 0.7rem 0.85rem;
+}
+
+/* --- S2 Blockquotes → inset tablet -----------------------------------------
+   The game uses `>` for in-world examples. Distinct from an admonition by
+   having no title band; identified instead by two inlaid corner beads on the
+   top edge (mirror-symmetric, detail hugging the frame). */
+.theme-doc-markdown blockquote {
+	position: relative;
+	border: none;
+	border-radius: 2px;
+	margin: 1.35rem 0;
+	padding: 0.85rem 1.1rem;
+	background: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 6%,
+		var(--ifm-background-surface-color)
+	);
+	/* A flat second keyline drawn inside the box: `outline` with a negative
+	   offset, never a shadow. */
+	outline: 1px solid color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	outline-offset: -1px;
+}
+
+.theme-doc-markdown blockquote::before,
+.theme-doc-markdown blockquote::after {
+	content: '';
+	position: absolute;
+	top: -3.5px;
+	width: 7px;
+	height: 7px;
+	transform: rotate(45deg);
+	background: color-mix(in srgb, var(--ifm-color-primary) 75%, transparent);
+}
+.theme-doc-markdown blockquote::before {
+	left: 10px;
+}
+.theme-doc-markdown blockquote::after {
+	right: 10px;
+}
+
+.theme-doc-markdown blockquote > :last-child {
+	margin-bottom: 0;
+}
+
+/* --- S3 Tables → stone slab + frieze cornice -------------------------------
+   Comparison tables stay tables (cards-vs-tables rule) and gain a slab frame
+   with a hieroglyph cornice above the header band. The slab is the wrapper from
+   the `table` element mapping (`DocTable`) — see that file for why the frame
+   cannot live on the table element itself. The cornice is ONE full-width
+   element, so the tile never resets phase (a per-cell tile would seam at every
+   column edge). */
+.codex-table-slab {
+	margin-bottom: var(--ifm-spacing-vertical);
+	overflow-x: auto;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
+	border-radius: 2px;
+}
+
+.codex-table-slab::before {
+	content: '';
+	display: block;
+	height: 9px;
+	background-color: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 9px;
+	mask: var(--nexus-frieze-tile) repeat-x center / auto 9px;
+}
+
+/* Back to a real table box, so the frame and the rows describe the same width. */
+.codex-table-slab > table {
+	display: table;
+	width: 100%;
+	margin-bottom: 0;
+}
+
+.theme-doc-markdown table thead tr {
+	background-color: color-mix(in srgb, var(--ifm-color-primary) 11%, transparent);
+	border-bottom: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+}
+
+.theme-doc-markdown table thead th {
+	padding: 0.4rem 0.55rem;
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-align: left;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 55%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.theme-doc-markdown table tbody tr {
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
+}
+
+/* --- S4 Code blocks → inlaid tablet ----------------------------------------
+   Flat bronze frame over a stone fill, with the optional title as a cornice
+   band. Mono legibility and the copy button are untouched apart from their
+   frame. */
+.theme-code-block {
+	--prism-background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 5%,
+		var(--ifm-background-surface-color)
+	) !important;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
+	border-radius: 2px;
+	box-shadow: none !important;
+}
+
+/* prism-react-renderer writes the theme's plain background as an INLINE style on
+   the `pre`, which outranks any class selector — so the stone fill only lands if
+   the inline value is cleared with `!important` and the container's fill shows
+   through. */
+.theme-code-block pre {
+	background-color: transparent !important;
+}
+
+.theme-code-block [class*='codeBlockTitle'] {
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.theme-code-block [class*='copyButton'] button,
+.theme-code-block [class*='wordWrapButton'] button {
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	border-radius: 2px;
+	background: var(--ifm-background-surface-color);
+	color: var(--ifm-color-primary);
+	box-shadow: none;
+}
+
+/* Inline code: a small inlaid chip of stone rather than a rounded pill. */
+.theme-doc-markdown code {
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 28%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
+}
+
+/* --- S5 Pagination → cartouche nav -----------------------------------------
+   The prev/next plates become nameplates with a carved directional chevron.
+   Infima's `«`/`»` glyph content is replaced by a clip-path triangle so the
+   mark matches the kit's hard-vertex shape language. */
+.pagination-nav__link {
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	border-radius: 2px;
+	background: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 5%,
+		var(--ifm-background-surface-color)
+	);
+	transition: background-color 150ms ease;
+}
+
+.pagination-nav__link:hover {
+	border-color: var(--ifm-color-primary);
+	background: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 11%,
+		var(--ifm-background-surface-color)
+	);
+}
+
+.pagination-nav__sublabel {
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.pagination-nav__label {
+	display: flex;
+	align-items: center;
+	gap: 0.45rem;
+	font-family: var(--ifm-font-family-base);
+	color: var(--ifm-font-color-base);
+}
+
+.pagination-nav__link--next .pagination-nav__label {
+	justify-content: flex-end;
+}
+
+.pagination-nav__link--prev .pagination-nav__label::before,
+.pagination-nav__link--next .pagination-nav__label::after {
+	content: '';
+	flex: 0 0 auto;
+	width: 8px;
+	height: 11px;
+	background-color: var(--ifm-color-primary);
+}
+
+.pagination-nav__link--prev .pagination-nav__label::before {
+	clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+.pagination-nav__link--next .pagination-nav__label::after {
+	clip-path: polygon(0 0, 0 100%, 100% 50%);
+}
+
+/* --- S6 TOC → framed side tablet -------------------------------------------
+   Infima binds the TOC with a bare left rule — exactly the flat-chrome bar the
+   theme forbids. Replaced by a framed panel (a keyline is legitimate AS a
+   container frame) with a lozenge marking the active entry. */
+.table-of-contents {
+	border-left: none;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 4%, transparent);
+	padding: 0.6rem 0.75rem;
+}
+
+.table-of-contents ul {
+	padding-left: 0.9rem;
+}
+
+.table-of-contents__link {
+	position: relative;
+}
+
+.table-of-contents__link--active {
+	font-weight: 600;
+}
+
+.table-of-contents__link--active::before {
+	content: '';
+	position: absolute;
+	left: -0.85rem;
+	top: 0.5em;
+	width: 6px;
+	height: 6px;
+	transform: rotate(45deg);
+	background-color: var(--ifm-color-primary);
+}
+
+/* --- S7 Sidebar → cartouche category headers -------------------------------
+   Top-level chapter labels become inlaid nameplates: a wash plus a keyline
+   frame, in the display face. The page sigils (M4) already lead each label. */
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible {
+	border-radius: 2px;
+}
+
+.theme-doc-sidebar-item-category-level-1
+	> .menu__list-item-collapsible
+	> .menu__link {
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
+	outline: 1px solid color-mix(in srgb, var(--ifm-color-primary) 28%, transparent);
+	outline-offset: -1px;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 55%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* Active leaf: engraved into the stone — a wash plus its own keyline, never a
+   left bar. */
+.menu__link--active:not(.menu__link--sublist) {
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+	outline: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	outline-offset: -1.5px;
+}
+
+/* --- S8 Navbar + footer → friezes and a solar crest ------------------------
+   Both bands get the shared hieroglyph frieze tile as an architectural cornice.
+   One full-width element per band, so the tile never seams. */
+.navbar {
+	box-shadow: none;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+}
+
+.navbar::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 8px;
+	pointer-events: none;
+	background-color: color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 8px;
+	mask: var(--nexus-frieze-tile) repeat-x center / auto 8px;
+}
+
+.footer {
+	position: relative;
+	border-top: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+}
+
+.footer::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 10px;
+	pointer-events: none;
+	background-color: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
+	mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
+}
+
+/* Solar crest at the head of the footer band (Footer/Layout swizzle). */
+.footer__crest {
+	display: flex;
+	justify-content: center;
+	margin: 0.5rem 0 1.1rem;
+	color: var(--ifm-color-primary);
+}
+
+.footer__title {
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* --- S9 Headings → architectural cornices ----------------------------------
+   The M2/M6 flat hairlines are recut as cornices: a rule that fades out to the
+   right rather than a full-width bar, capped at its left terminal by an inlaid
+   lozenge. The lozenge is opaque, so the rule stops at the ornament. */
+article h2,
+article h3,
+article h4 {
+	position: relative;
+	border-top: none;
+}
+
+article h2 {
+	padding-top: 1.5rem;
+	margin-top: 2.25rem;
+}
+
+article h3 {
+	padding-top: 1rem;
+	margin-top: 1.5rem;
+}
+
+article h4 {
+	padding-top: 0.75rem;
+	margin-top: 1.25rem;
+}
+
+article h2::before,
+article h3::before,
+article h4::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+}
+
+/* The strength step per level is written out longhand: a var() in the
+   color-mix() percentage slot is valid CSS but a needless minifier risk. */
+article h2::before {
+	background: linear-gradient(
+		to right,
+		color-mix(in srgb, var(--ifm-color-primary) 55%, transparent),
+		color-mix(in srgb, var(--ifm-color-primary) 55%, transparent) 45%,
+		transparent
+	);
+}
+
+article h3::before {
+	background: linear-gradient(
+		to right,
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent),
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent) 35%,
+		transparent
+	);
+}
+
+article h4::before {
+	background: linear-gradient(
+		to right,
+		color-mix(in srgb, var(--ifm-color-primary) 18%, transparent),
+		color-mix(in srgb, var(--ifm-color-primary) 18%, transparent) 25%,
+		transparent
+	);
+}
+
+/* Terminal lozenge — h2 only, so the mark stays a section opening rather than
+   ornament on every heading level. */
+article h2::after {
+	content: '';
+	position: absolute;
+	top: -3.5px;
+	left: 0;
+	width: 7px;
+	height: 7px;
+	transform: rotate(45deg);
+	background-color: var(--ifm-color-primary);
+}
+
+/* --- S10 Buttons, tabs, details --------------------------------------------
+   Flat plates and engraved states. Infima marks the active tab with a 3px
+   bottom bar; replaced by a wash plus a keyline. */
+.button {
+	border-radius: 2px;
+	border-width: 1.5px;
+	box-shadow: none;
+	font-family: var(--nexus-font-ui);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+}
+
+.tabs__item {
+	border-radius: 2px 2px 0 0;
+	border-bottom: none;
+	font-family: var(--nexus-font-ui);
+	letter-spacing: 0.03em;
+}
+
+.tabs__item--active {
+	border-bottom: none;
+	background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+	outline: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	outline-offset: -1.5px;
+	color: var(--ifm-color-primary);
+}
+
+/* Disclosures. The theme renders `<details>` as an `.alert`, so the frame above
+   already applies; this adds the summary band and turns the caret bronze. */
+.theme-doc-markdown details {
+	--docusaurus-details-decoration-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		transparent
+	);
+}
+
+.theme-doc-markdown details > summary {
+	padding: 0.4rem 0.85rem 0.4rem 1.75rem;
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* The theme pins the caret at `left: 0` of the summary box. With the alert's
+   padding zeroed for the band, that edge is now the frame itself, so the caret
+   has to be nudged back inside. */
+.theme-doc-markdown details > summary::before {
+	left: 0.8rem;
+}
+
+.theme-doc-markdown details[open] > summary {
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+}
+
+/* The panel's own top rule would double the summary's — the band already
+   separates them. */
+.theme-doc-markdown details [class*='collapsibleContent'] {
+	margin-top: 0;
+	border-top: none;
+	padding: 0.7rem 0.85rem;
+}
+
+/* --- S11 Cards → CardFrame language ----------------------------------------
+   Docusaurus `.card` (generated index pages, `<DocCardList>`) picks up the card
+   family's flat frame plus a lozenge keystone on the top edge. The keystone's
+   surface-coloured ring is its opaque backing, so the card's own border stops
+   at the ornament (the same trick the SVG keystones use). The homepage
+   `ChapterCard` adopts the real `CardFrame` component instead. */
+.card {
+	position: relative;
+	margin-top: 0.6rem;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
+	border-radius: 2px;
+	background: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 4%,
+		var(--ifm-background-surface-color)
+	);
+	box-shadow: none;
+}
+
+.card::before {
+	content: '';
+	position: absolute;
+	top: -7.5px;
+	left: 50%;
+	width: 15px;
+	height: 15px;
+	box-sizing: border-box;
+	transform: translateX(-50%) rotate(45deg);
+	background-color: var(--ifm-color-primary);
+	border: 3px solid var(--ifm-background-surface-color);
 }

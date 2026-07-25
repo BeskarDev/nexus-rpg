@@ -855,6 +855,12 @@ export interface CardFrameProps {
 	 * (talents), or the horned bull (creature stat blocks).
 	 */
 	keystone?: CodexVariant
+	/**
+	 * Draw the corner marks but omit the top-edge keystone. For containers that
+	 * already carry their own dominant mark (the homepage chapter cards hold a
+	 * large chapter sigil), where a keystone would be a second focal point.
+	 */
+	cornersOnly?: boolean
 }
 
 const KEYSTONES = {
@@ -872,14 +878,17 @@ const KEYSTONES = {
  * bottom one would collide with the next stacked card. Parent must be
  * `position: relative`.
  */
-export function CardFrame({ keystone = 'winged' }: CardFrameProps) {
+export function CardFrame({
+	keystone = 'winged',
+	cornersOnly = false,
+}: CardFrameProps) {
 	const Keystone = KEYSTONES[keystone]
 	return (
 		<div className={styles.frame} aria-hidden="true">
 			{CORNERS.map((pos) => (
 				<Corner key={pos} pos={pos} variant={keystone} />
 			))}
-			<Keystone />
+			{cornersOnly ? null : <Keystone />}
 		</div>
 	)
 }

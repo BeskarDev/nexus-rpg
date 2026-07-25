@@ -124,7 +124,36 @@ changes.
 - `Math.random()` and `Date.now()` are fine in an event handler, but never during render —
   they would differ between SSR and hydration.
 
-## 9. Verification checklist for a new content type
+## 9. Theming Docusaurus's own surfaces
+
+Reach for the lightest mechanism that gets there — CSS on a stable class, then an
+`MDXComponents` element map, then a swizzle that WRAPS `@theme-original/...`. Four traps
+found doing the M8 default-theme pass:
+
+- **A frame on a markdown `<table>` does not fit its rows.** Infima makes tables
+  `display: block; overflow: auto`, so the table box spans the full column while the rows
+  are only as wide as their content — a border floats detached (measured: a 759px frame
+  around 344px of rows). Fix is the `table` element map to `DocTable`, which moves the
+  scroll container and the frame to a wrapper and puts the table back to
+  `display: table; width: 100%`. Pass props straight through so `thead`/`tbody` stay
+  intrinsics — `RollableTable` finds them by element type.
+- **Override Infima's `--ifm-*` vars instead of fighting its rules.** The admonition frame
+  is entirely `--ifm-alert-border-width` / `-radius` / `-padding-*` / `-shadow` set on
+  `.alert`; the theme keeps the box model and the result survives upgrades. A component
+  that then needs its own padding back (`MagicCallout`) should set the same vars, not race
+  the `padding` shorthand.
+- **Theme-internal class names are hashed CSS modules.** `admonitionHeading_xJq3`,
+  `codeBlockTitle_…`, `collapsibleContent_…`. Match the stable substring —
+  `[class*='admonitionHeading']` — and add your own stable hook via the wrapper's
+  `className` for anything you need to target precisely.
+- **`prism-react-renderer` writes the code background as an inline style** on the `pre`,
+  which outranks every class selector. The stone fill only lands with
+  `background-color: transparent !important`.
+
+An ornament tiled along a repeated element must be ONE full-width element. A frieze mask
+put on each `th` restarts its phase at every column edge and seams.
+
+## 10. Verification checklist for a new content type
 
 1. `bun run content:gen` then `content:check` clean.
 2. `bun run build` green, with no NEW broken links or anchors.

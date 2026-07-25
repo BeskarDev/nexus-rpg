@@ -280,13 +280,14 @@
 
 /* --- Hieroglyph frieze (divider segment + cornice band) --- */
 /* One repeat-x mask tile (triangle + stroke + block); currentColor fills it, so
-   it tints in both themes and tiles seamlessly (marks sit inside the tile). */
+   it tints in both themes and tiles seamlessly (marks sit inside the tile). The
+   tile itself is `--nexus-frieze-tile` in custom.css — M8 reuses it on the
+   navbar and footer cornices, so it lives in one place. */
 .friezeSeg,
 .friezeCornice {
-	--frieze-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12'%3E%3Cpath d='M2 9 L6 3 L10 9 Z' fill='%23000'/%3E%3Crect x='13.3' y='3' width='1.4' height='6' fill='%23000'/%3E%3Crect x='18' y='4.5' width='3' height='3' fill='%23000'/%3E%3C/svg%3E");
 	background-color: currentColor;
-	-webkit-mask: var(--frieze-mask) repeat-x center / auto 12px;
-	mask: var(--frieze-mask) repeat-x center / auto 12px;
+	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 12px;
+	mask: var(--nexus-frieze-tile) repeat-x center / auto 12px;
 }
 .friezeDivider {
 	display: flex;

@@ -125,7 +125,8 @@ which silently re-inflates every gap you just closed.
 |---|---|
 | Codex components | `src/components/codex/` (+ `index.ts` barrel) |
 | Ornament kit | `src/components/codex/ornaments.tsx` + `.module.css` |
-| Global MDX registration | `src/theme/MDXComponents.tsx` — a generated component MUST be registered here |
+| Global MDX registration | `src/theme/MDXComponents.tsx` — a generated component MUST be registered here; also where markdown intrinsics are remapped (`hr` → `LozengeDivider`, `table` → `DocTable`) |
+| Theme swizzles (all wrappers) | `src/theme/` — `Admonition/Layout` (type sigil), `Footer/Layout` (solar crest), `DocSidebarItems`, `DocBreadcrumbs` |
 | Chips, global tokens, bullets | `src/css/custom.css` |
 | Content generators | `src/utils/content-gen/` |
 | Remark plugins (keywords, chips) | `src/remark/` |

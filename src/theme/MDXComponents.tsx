@@ -24,6 +24,7 @@ import CreatureStatBlock, {
 	TreasureRow,
 } from '@site/src/components/codex/CreatureStatBlock'
 import { LozengeDivider, RankChip } from '@site/src/components/codex/ornaments'
+import DocTable from '@site/src/components/codex/DocTable'
 
 /**
  * Global MDX component registry. Extends the Docusaurus defaults with codex
@@ -58,4 +59,6 @@ export default {
 	RankChip,
 	// Replace the default `---` thematic break with the ornamental divider.
 	hr: LozengeDivider,
+	// Wrap every markdown table in its stone slab + frieze cornice (M8 S3).
+	table: DocTable,
 }
