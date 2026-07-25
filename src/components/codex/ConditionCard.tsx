@@ -9,7 +9,7 @@ export interface ConditionCardProps {
 /**
  * Visual card for one condition, rendered from generated MDX (README § game
  * content architecture, M6). A denser, lighter sibling of the spell card
- * (compact frame + serpent keystone, no stat band or success levels) so the many
+ * (single thin frame + serpent keystone, no stat band or success levels) so the many
  * short condition entries stay subordinate. The first child must be the `### Name`
  * heading; it is lifted into
  * the name row so its anchor stays a real heading (deep-linked from the
@@ -26,7 +26,7 @@ export default function ConditionCard({ children }: ConditionCardProps) {
 
 	return (
 		<section className={styles.card}>
-			<CardFrame keystone="serpent" compact />
+			<CardFrame keystone="serpent" />
 			<header className={styles.head}>
 				<div className={styles.nameRow}>{nameHeading}</div>
 			</header>

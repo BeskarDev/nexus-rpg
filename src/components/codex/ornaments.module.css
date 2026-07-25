@@ -9,10 +9,11 @@
 }
 .corner {
 	position: absolute;
-	/* viewBox is 48; keep the px/unit of the old 25px@32 box so the diamond boss
-	   stays the same size and only the spearheads grow longer. */
-	width: 37.5px;
-	height: 37.5px;
+	/* viewBox is 96, sized so the px/unit ratio (~0.79) is unchanged: the diamond
+	   boss keeps its rendered size and the extra units go to rail reach. Every
+	   card family uses this one size — rail LENGTH is what varies, per family. */
+	width: 76px;
+	height: 76px;
 }
 .corner-tl {
 	top: -1px;
@@ -33,12 +34,15 @@
 	left: -1px;
 	transform: rotate(270deg);
 }
+/* viewBox is 120x30 with the disc/border line at y=18 — deliberately off-centre,
+   so the corona gets headroom above the wings without the ornament hanging
+   further into the card. Top offset is 18/30 of the rendered height. */
 .wingedDisc {
 	position: absolute;
 	left: 50%;
-	top: -9.5px;
-	width: 90px;
-	height: 19px;
+	top: -14.1px;
+	width: 94px;
+	height: 23.5px;
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }
@@ -47,16 +51,24 @@
 .serpentKeystone {
 	position: absolute;
 	left: 50%;
-	top: -11.3px;
-	width: 72px;
-	height: 22.5px;
+	top: -13.4px;
+	width: 86px;
+	height: 26.9px;
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }
-/* Compact frame (dense subordinate cards): smaller corner marks. */
-.frameCompact .corner {
-	width: 26px;
-	height: 26px;
+/* Crossed-khopesh keystone (combat arts) — the widest of the three, since the
+   crossed-swords silhouette needs vertical spread to read as weapons rather than
+   a flourish. viewBox is 76x26 with the border line at y=15.5, so the top offset
+   is 15.5/26 of the rendered height. */
+.khopeshKeystone {
+	position: absolute;
+	left: 50%;
+	top: -15.9px;
+	width: 78px;
+	height: 26.7px;
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
 }
 
 /* --- Lozenge divider --- */

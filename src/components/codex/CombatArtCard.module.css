@@ -1,0 +1,109 @@
+/* CombatArtCard — the middle weight of the codex card family. Denser than the
+   spell card (no stat band, no nested concentric border, tighter padding) but
+   fuller than the condition card, because combat art rule text runs long
+   (median ~275 chars, up to ~800). Tokens only. */
+
+.card {
+	position: relative;
+	margin: 1.4rem 0;
+	padding: 0.95rem 1.25rem 1rem;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	border-radius: 3px;
+	background-color: var(--ifm-background-surface-color);
+}
+
+.head {
+	margin-bottom: 0.1rem;
+}
+
+/* Name left, weapon rail bound right on the same line. Baseline alignment seats
+   the small-caps tags on the heading's baseline; the rail wraps to its own line
+   when the two no longer fit. */
+.nameRow {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.5rem 0.9rem;
+	flex-wrap: wrap;
+}
+
+/* The lifted `### Name` heading. Display face and small caps like the spell card,
+   a step smaller. Deliberately NOT the condition card's bronze badge: a condition
+   name is a status keyword applied to a creature, so it reads as an inlaid token,
+   while a combat art is a technique with its own entry and reads as a heading. */
+.nameRow :global(h3) {
+	margin: 0;
+	/* Cancel the global `article h3` scan-separator (border-top + top spacing). */
+	padding-top: 0;
+	border-top: none;
+	font-family: var(--nexus-font-display);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.02em;
+	font-size: 1.25rem;
+	line-height: 1.15;
+}
+
+/* Weapon rail — the card's scanning key, bound to the right of the name line.
+   Wraps internally first, then drops below the name when the row is too tight. */
+/* Doubled class to out-specify the reading column's `.theme-doc-markdown ul`,
+   whose `padding-left: 1.4rem` would otherwise indent the rail — harmless while
+   the rail is bound right, but plainly visible once it wraps to its own line. */
+.weaponRail.weaponRail {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 0.28rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+/* The reading column also paints a bronze diamond bullet via `li::before`, which
+   `list-style: none` cannot remove — it would land on top of each tag. Two
+   classes again to out-specify `.theme-doc-markdown ul > li::before`. */
+.weaponRail > .weaponTag::before {
+	content: none;
+}
+
+/* A struck bronze tag. Lighter than the Cartouche (no terminal end-bars): the
+   cartouche marks a *label* in the stat band, these are *values*, so they must
+   read as the quieter of the two. */
+.weaponTag {
+	margin: 0;
+	padding: 1px 7px;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 34%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
+	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, var(--ifm-color-primary));
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	font-size: 0.72rem;
+	line-height: 1.45;
+	white-space: nowrap;
+}
+
+.body > :last-child {
+	margin-bottom: 0;
+}
+
+/* Tighten prose inside the card — the open reading-column rhythm is too airy. */
+.body p {
+	margin-bottom: 0.4rem;
+}
+.body > p:last-child {
+	margin-bottom: 0;
+}
+.body ul {
+	margin: 0.15rem 0;
+}
+.body ul li {
+	margin: 0;
+}
+.body ul li + li {
+	margin-top: 0.1rem;
+}
+/* Markdown wraps multi-line list content in <p>; zero it so gaps don't re-inflate. */
+.body li > p {
+	margin: 0;
+}

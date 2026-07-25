@@ -95,18 +95,37 @@ function chunksToMarkdown(chunks: string[], context: string): string {
 		.trim()
 }
 
+export interface ParseEffectOptions {
+	/**
+	 * Accept a success run that omits leading levels (e.g. strong→critical).
+	 *
+	 * Off for spells, where every run must be the full weak→strong→critical and a
+	 * gap means the data lost a line. Combat arts genuinely use partial runs: the
+	 * prose above the run IS the base case that applies on any hit, and the tiers
+	 * only add to it (see Deep Cut). Order and uniqueness stay enforced either
+	 * way, so a scrambled or duplicated run still fails.
+	 */
+	allowPartialRuns?: boolean
+}
+
 /**
  * Parse a spell's `effect` HTML into an ordered list of prose / success nodes.
  *
  * Every contiguous run of success levels must be exactly weak→strong→critical;
- * a partial or scrambled run is a data bug and fails the build. Prose between
+ * a partial or scrambled run is a data bug and fails the build (relax the
+ * partial case with {@link ParseEffectOptions.allowPartialRuns}). Prose between
  * runs is preserved (a mode label like `**Slam.**` is just prose), so both
  * single-run and multi-run spells parse without special cases.
  *
  * @param effect  the raw JSON effect string
  * @param context a label (spell name) used in error messages
+ * @param options parser relaxations for non-spell content types
  */
-export function parseSpellEffect(effect: string, context = 'spell'): ParsedEffect {
+export function parseSpellEffect(
+	effect: string,
+	context = 'spell',
+	options: ParseEffectOptions = {},
+): ParsedEffect {
 	if (typeof effect !== 'string' || effect.trim() === '')
 		fail(context, 'effect is empty')
 
@@ -145,10 +164,19 @@ export function parseSpellEffect(effect: string, context = 'spell'): ParsedEffec
 			runNodes.push({ kind: 'success', level, text })
 			i++
 		}
-		if (run.length !== 3 || LEVEL_ORDER.some((lvl, k) => run[k] !== lvl))
+		// Strictly ascending through weak→strong→critical. Full runs must use all
+		// three unless partials are allowed; either way the levels must climb, so
+		// a repeat or a swapped pair is still a data bug.
+		const ascends = run.every(
+			(lvl, k) => k === 0 || LEVEL_ORDER.indexOf(lvl) > LEVEL_ORDER.indexOf(run[k - 1]),
+		)
+		const complete = options.allowPartialRuns || run.length === 3
+		if (!ascends || !complete)
 			fail(
 				context,
-				`each success run must be weak→strong→critical, found (${run.join(', ')})`,
+				options.allowPartialRuns
+					? `each success run must ascend weak→strong→critical, found (${run.join(', ')})`
+					: `each success run must be weak→strong→critical, found (${run.join(', ')})`,
 				effect,
 			)
 		nodes.push(...runNodes)

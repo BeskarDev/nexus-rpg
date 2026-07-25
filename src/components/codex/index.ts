@@ -16,6 +16,8 @@ export { default as SpellCodexCard } from './SpellCodexCard'
 export type { SpellCodexCardProps } from './SpellCodexCard'
 export { default as ConditionCard } from './ConditionCard'
 export type { ConditionCardProps } from './ConditionCard'
+export { default as CombatArtCard } from './CombatArtCard'
+export type { CombatArtCardProps } from './CombatArtCard'
 export { default as SuccessLevel } from './SuccessLevel'
 export type { SuccessLevelProps, SuccessLevelName } from './SuccessLevel'
 export { default as SpellHeightened } from './SpellHeightened'
@@ -32,6 +34,8 @@ export {
 	TabletFrame,
 } from './ornaments'
 export type {
+	CodexVariant,
+	CardFrameProps,
 	LozengeDividerProps,
 	RankChipProps,
 	CartoucheProps,
