@@ -17,6 +17,26 @@ Two references carry the depth:
   MDX / remark-plugin traps that silently break content. Read before building a card or
   a generator.
 
+## Composition, not just surface
+
+A page can pass every rule below and still read as a web app, because the theme
+lives in the *composition* as much as the styling. Three tells, all found on the
+old homepage:
+
+- **A translucent panel floating over a photograph.** The scrim-over-hero is the
+  streaming-service pattern, and it makes the artwork spend most of its area
+  being covered up. Art belongs in a bounded, framed **plate** — carved edges,
+  its own keyline — with the words on stone beside or beneath it.
+- **A grid of equally-weighted tiles.** That is a dashboard. A codex opens on a
+  **contents page**: ruled rows, a mark, a name, and a line saying what is
+  inside. It is also the better navigation, because ten naked labels tell a
+  newcomer nothing.
+- **No hierarchy.** Decide who is arriving and what the two or three things they
+  could want are, give those weight, and let everything else be an index.
+
+Verify the layout at 430px as well as full width — a two-column index loses its
+alignment long before three cards get uncomfortable.
+
 ## The one rule that gets broken most
 
 **Never use a straight rule as a grouping device.** A keyline is right as a *frame or

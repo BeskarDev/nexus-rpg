@@ -114,7 +114,68 @@ ziggurat overhangs 20.3px and would have sat ~2px off the card above at the defa
 Keep the CSS `width`/`height` ratio equal to the viewBox ratio, and set `top` to
 `(borderLineY / viewBoxHeight) * renderedHeight`.
 
-## 10. Mechanics
+## 10. Repeating bands (friezes): weight is a function of SPAN
+
+A tiled band has no single correct weight — the same tile that reads as an architectural
+cornice over a 400px table reads as a stripe fencing the page when it runs the full
+1500px viewport. Decide the weight from how far the band runs, not from which surface it
+is on:
+
+| Span | Treatment | Where |
+|---|---|---|
+| bounded (a container, a divider) | may carry solid mass | `--nexus-frieze-tile`, the merlon course |
+| full viewport edge | almost all line, almost no mass | `--nexus-frieze-rail`, the braid rail |
+
+Two tiles at two weights are correct; two unrelated *motifs* are not. Keep one vocabulary
+across them — the rail's lozenge node is the merlon tile's lozenge, and both stand on a
+continuous line that runs edge to edge.
+
+What makes a tile a frieze rather than a row of shapes, all three required:
+
+- **Continuity.** Something must cross the tile edge (a ground course, an axis line) or
+  consecutive tiles read as detached ornaments with gaps.
+- **Rhythm.** A small number of beats at even spacing. Cycling three unrelated primitives
+  with arbitrary gaps is the failure mode — it looks like a list, not a pattern.
+- **One family.** Draw the beats from motifs the kit already uses.
+
+Even a fine band still reads as texture across a viewport, so **break the repeat**: the
+braid rail plaits for only half its period and runs as plain line either side of the node.
+A continuous plait edge to edge is busy however thin the stroke.
+
+Practical constraints:
+
+- **Author at 2x the rendered height** so nothing lands sub-pixel, and pick ONE rendered
+  height per role. Running one tile at 8px / 9px / 10px on three surfaces scales it
+  differently on each, which alone stops the bands reading as one motif.
+- **The sub-3px rule applies hardest here.** A voided lozenge in the 12px merlon course
+  came out with a 0.65px wall and rendered as mud; at band sizes, heavy/light has to be
+  carried by MASS and silhouette, never by an interior void.
+- **A mask has only alpha, so there is no over/under.** The opaque-casing trick that makes
+  `TrailBraid` plait cannot work in a tile — a "casing" punches a hole through the strand
+  below instead of covering it. Either draw the strands as segmented paths with real gaps,
+  or accept two clean mirrored strands, which read as guilloche anyway below ~1.5px.
+- Nothing but the continuity element should cross the tile edge, or the repeat seams.
+- A `linecap` of `round` overhangs the tile edge and gets clipped — use `butt` on anything
+  that touches x=0 or x=width.
+
+## 11. Ornament on top of a photograph
+
+Do not put bronze on a picture. It has no reliable contrast — the same rule that
+reads on a dark cliff vanishes against a bright sky two hundred pixels along, and
+you cannot tune for it because the artwork varies per page.
+
+Give the image a **mat** instead: inset it in a band of the surface colour, put
+the keyline on the mat's inner edge, and place any corner marks in the band. The
+ornament then always sits on stone, and the picture reads as an inlaid plate
+rather than a bleed.
+
+A boss that straddles an edge follows from the same logic. Its opaque backing
+must take the ORNAMENT's shape and hug its extent: a padded rectangle blanks a
+straight section of the keyline and leaves a notch either side, and a backing
+noticeably wider than the ink leaves a bare halo that reads as a sticker laid on
+the picture. Sized right, the rule runs in and stops against metal.
+
+## 12. Mechanics
 
 - All stroke and fill uses `currentColor` so an ornament tints per theme; the container
   sets the colour.

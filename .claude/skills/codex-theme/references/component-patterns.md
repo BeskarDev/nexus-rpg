@@ -151,7 +151,27 @@ found doing the M8 default-theme pass:
   `background-color: transparent !important`.
 
 An ornament tiled along a repeated element must be ONE full-width element. A frieze mask
-put on each `th` restarts its phase at every column edge and seams.
+put on each `th` restarts its phase at every column edge and seams. Sizing and weighting
+that band is [ornament-craft §10](ornament-craft.md).
+
+**To replace a theme icon, swizzle `@theme/Icon/<Name>` — never the component using it.**
+Docusaurus routes every glyph through one of these, so a single file changes the artwork
+everywhere it appears and inherits all of the caller's behaviour for free. `Icon/Arrow`
+covers both the sidebar collapse button and the expand tab; `Icon/LightMode`,
+`Icon/DarkMode` and `Icon/SystemColorMode` cover the three states of the colour-mode
+toggle. Spread `{...props}` first so the caller's `className` lands, then set your own
+`width`/`height`/`viewBox` after it.
+
+Icons in a cluster must share a CONSTRUCTION, not just a size. The colour-mode set is one
+rimmed disc through three states (rays + core → half-lit → crescent), which is what makes
+it read as one control cycling rather than three unrelated pictures.
+
+**Do not redraw a brand mark.** Every other glyph on the navbar can be recut in the codex
+hand because a label sits beside it carrying the meaning; the GitHub mark has no label and
+recognition *is* its function. Style the setting instead — it is inset in a carved keyline
+roundel, matching the colour-mode icons' ring-and-core build, with the silhouette itself
+untouched. Note it is consumed as a CSS mask, so its fill must be a literal colour:
+`currentColor` does not resolve inside a masked or backgrounded image.
 
 ## 10. Two units that silently do nothing
 
@@ -168,6 +188,42 @@ put on each `th` restarts its phase at every column edge and seams.
 When a `max-width` or `font-size` appears to have no effect, measure the rendered box
 before assuming a specificity problem — check `build/assets/css/*.css` for the rule, then
 read the computed width in the browser.
+
+## 11. Restyling a third-party plugin (the search bar)
+
+`@easyops-cn/docusaurus-search-local` is the awkward case, and it taught four things worth
+reusing for any vendored component:
+
+- **Prefer the plugin's own CSS variables to a selector.** It reads
+  `--search-local-modal-background`, `-hit-background`, `-hit-shadow`, `-modal-shadow`,
+  `-highlight-color`, `-hit-active-color`, `-muted-color`. Setting those in `:root` needs no
+  specificity fight and survives upgrades. Only reach for a selector where the value is
+  hardcoded (its 6px dropdown and 4px row radii are).
+- **Equal specificity loses to load order.** Its `.searchBar .dropdownMenu` (0,2,0) ships in
+  a stylesheet that loads AFTER `custom.css`, so a matching 0,2,0 selector silently lost.
+  Winning needs one component more — `.navbar__search [class*='searchBar']
+  [class*='dropdownMenu']` — matched on stable substrings, never the hashed suffix.
+- **ALWAYS tag-qualify a `[class*=…]` selector.** CSS-module names nest by prefix, so the
+  substring you match on almost always matches a CHILD too, and your background gets painted
+  twice — once as an unexplained slab behind the real element. This has now bitten twice:
+  `[class*='collapseSidebarButton']` also matches its icon (`collapseSidebarButtonIcon…`),
+  and `[class*='searchHint']` also matches its wrapper (`searchHintContainer…`). Write
+  `button[class*='collapseSidebarButton']`, `kbd[class*='searchHint']`. When a mystery
+  rectangle appears behind a glyph, this is the first thing to check.
+- **Watch for one vendor token doing two jobs.** `--search-local-highlight-color` is both
+  the selected row's *background fill* and the matched-text *ink*. That is the cyan
+  two-token problem again: a value legible as ink is a saturated block as a fill. Keep the
+  token on the ink job and override the fill separately.
+- **A presentation attribute on an inner `<g>` beats a rule on the `svg`.** The sidebar
+  collapse icon carries `<g fill="#7a7a7a">`, so `svg { fill: currentColor }` left it grey;
+  the `g`/`path` must be targeted. Same for Infima's disclosure caret, which is a
+  background-image data-URI with `fill="rgba(0,0,0,0.5)"` baked in and tintable only via
+  `filter` — replaced with a flat `clip-path` triangle so it takes the bronze token.
+
+Doc titles reach three surfaces built from the raw title, and all three need the legacy
+leading emoji stripped at render (`stripLeadingEmoji`) plus the page sigil: the sidebar,
+the breadcrumbs, **and the prev/next paginator**. The paginator was missed for a while
+because it is the only one of the three you have to scroll to see.
 
 ## 10. Verification checklist for a new content type
 

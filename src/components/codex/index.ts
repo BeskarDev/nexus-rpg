@@ -67,7 +67,9 @@ export {
 	Cartouche,
 	FriezeDivider,
 	FriezeBand,
+	TrailBraid,
 	JewelAccent,
+	SolarMedallion,
 	SunDisc,
 	TabletFrame,
 } from './ornaments'
@@ -77,7 +79,9 @@ export type {
 	LozengeDividerProps,
 	RankChipProps,
 	CartoucheProps,
+	TrailBraidProps,
 	JewelAccentProps,
 	JewelTone,
+	SolarMedallionProps,
 	TabletFrameProps,
 } from './ornaments'

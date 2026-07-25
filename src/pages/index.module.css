@@ -1,99 +1,443 @@
 /**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
+ * Homepage — the codex frontispiece.
+ *
+ * The page it replaced was themed but composed as a web app: a full-viewport
+ * photographic backdrop with translucent black rounded panels and drop shadows
+ * floating on top of it, then ten equally-weighted chapter tiles. Three things
+ * changed, and they are the reason the rules below look the way they do:
+ *
+ * 1. The art is an inlaid PLATE inside a frame, not a backdrop. A scrim panel
+ *    over a photo is the streaming-service pattern; it also forced every card
+ *    below it to sit on an opaque fill to stay legible, so the artwork spent
+ *    most of its area being covered up.
+ * 2. Hierarchy. Three thresholds carry weight, the ten chapters became a ruled
+ *    INDEX with descriptions. A contents page is what a codex actually opens
+ *    with, and it tells a newcomer what is inside each chapter, which a grid of
+ *    ten naked labels cannot.
+ * 3. Flat throughout — no radius above 3px, no shadows, no scrims. Mass and
+ *    keylines do the separating.
  */
 
-.heroBanner {
-  position: relative;
-  padding: 2rem 6rem;
-  text-align: center;
-  overflow: hidden;
-  min-height: calc(100vh - 60px);
+.page {
+	max-width: 66rem;
+	margin: 0 auto;
+	padding: 2.5rem 1.5rem 4rem;
 }
 
-/* Framed-plate treatment: an inset vignette darkens the banner edges and a
- * bronze rule frames it, so the hero reads as a plate in a codex rather than a
- * game-launcher splash (M4 § Framed hero retint). */
-.heroBanner::after {
-  content: '';
-  position: absolute;
-  inset: 0.75rem;
-  pointer-events: none;
-  border: 1px solid color-mix(in srgb, var(--nexus-bronze) 65%, transparent);
-  border-radius: 6px;
-  box-shadow:
-    inset 0 0 6rem 2rem rgba(0, 0, 0, 0.55),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+/* --- Frontispiece --------------------------------------------------------- */
+
+.plate {
+	position: relative;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	border-radius: 2px;
+	background-color: var(--ifm-background-surface-color);
+	text-align: center;
 }
 
-.heroContainer {
-  position: relative;
-  z-index: 1;
-  padding: 1rem 2rem 0.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  color: white;
+/* The banner as an inlaid panel: a fixed band with its own keyline, cropped by
+   aspect-ratio rather than allowed to set the page's height. The old hero was
+   `min-height: calc(100vh - 60px)`, which made the first screen almost entirely
+   picture and pushed every word of orientation below the fold. */
+/* The art is a bright daylit scene, so on obsidian it arrives as the one glaring
+   rectangle on the page. Knocked back so it reads as an illuminated plate set
+   into dark stone rather than a lightbox. A filter, not an overlay scrim — the
+   scrim is the pattern this page was rebuilt to get rid of. */
+[data-theme='dark'] .plateArt {
+	filter: brightness(0.82) saturate(0.92);
 }
 
-.chaptersHeading {
-  position: relative;
-  z-index: 1;
-  margin-top: 3rem;
-  padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-  color: white;
-  max-width: 1400px;
-  margin-inline: auto;
+/* The mat. Also the crest's positioning context: the medallion hangs off the
+   ART's lower edge, so anchoring it to the plate and offsetting by a percentage
+   cannot work — the plate is the art plus a body of unknown length. */
+.plateArtWrap {
+	position: relative;
+	padding: 14px;
 }
 
-.cardGrid {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  max-width: 1400px;
-  margin-inline: auto;
+.plateArt {
+	aspect-ratio: 3 / 1;
+	background-position: center 62%;
+	background-size: cover;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 48%, transparent);
 }
 
-/* Marginalia disclaimer — the same carved-stone callout as a doc admonition
- * (M8 S1): a flat keyline frame over a bronze wash. The earlier bronze left rule
- * and drop shadow were the last of that pattern on a default surface. */
-.contentContainer {
-  position: relative;
-  z-index: 1;
-  padding: 1rem 1.5rem;
-  background-color: color-mix(
-    in srgb,
-    var(--nexus-bronze) 6%,
-    var(--ifm-background-surface-color)
-  );
-  border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 55%, transparent);
-  border-radius: 2px;
-  color: var(--ifm-font-color-base);
-  margin-top: 3rem;
-  max-width: 1400px;
-  margin-inline: auto;
-  text-align: left;
+/* Corner rivets, centred in the mat band rather than on the picture — a lozenge
+   laid over a bright sky is invisible, and on stone it always reads. Small
+   enough to be a fastening, not a fifth ornament competing with the medallion. */
+.plateRivet {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: color-mix(in srgb, var(--ifm-color-primary) 72%, transparent);
+	transform: rotate(45deg);
+	pointer-events: none;
 }
 
-.disclaimerHeading {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding-top: 0.5rem;
-  color: var(--nexus-bronze);
+.plateRivet-tl {
+	top: 9px;
+	left: 9px;
+}
+.plateRivet-tr {
+	top: 9px;
+	right: 9px;
+}
+.plateRivet-br {
+	bottom: 9px;
+	right: 9px;
+}
+.plateRivet-bl {
+	bottom: 9px;
+	left: 9px;
 }
 
-.disclaimerHeading h3 {
-  margin: 0;
-  color: var(--nexus-bronze);
+/* The centrepiece boss, straddling the art's lower rule at the foot of the plate.
+   The opaque backing (ornament-craft §2) has to be a DISC, not a padded
+   rectangle: a rectangle blanks a straight section of the keyline and leaves a
+   visible notch either side of the mark, whereas a disc lets the rule run in and
+   stop against the boss, which is how a real one is set.
+
+   Sized to hug the ray tips (the medallion's ink reaches 48/50 of its box) so the
+   rule terminates on metal. Any more and the spare halo of stone reads as a
+   sticker laid on the picture rather than a boss set into it. */
+.plateCrest {
+	position: absolute;
+	left: 50%;
+	bottom: -44px;
+	width: 88px;
+	height: 88px;
+	transform: translateX(-50%);
+	border-radius: 50%;
+	background-color: var(--ifm-background-surface-color);
+	color: var(--ifm-color-primary);
 }
+
+.plateCrest svg {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* The stone panel below the art carries the cover ornament — diamond corner
+   bosses and flanking pillars, the kit's heaviest framing, reserved for surfaces
+   that stand alone. It goes HERE and not on the plate as a whole because the
+   plate's upper half is the picture: bronze rails laid across a painting read as
+   clutter, and the ornament's job is to frame the title, not the landscape. */
+/* Top padding clears the medallion, which hangs 46px below the art's rule and so
+   reaches 32px past the mat into this panel. Anything under ~3.5rem and the
+   title collides with the corona. */
+.plateBody {
+	position: relative;
+	padding: 3.75rem 2.75rem 2.25rem;
+}
+
+/* Flanking pillars: a double vertical rail capped by short lintels, mirroring
+   TabletFrame's. Written out here rather than reached for by reusing the whole
+   TabletFrame, which brings its own padding, background and frieze bands and
+   would have fought the plate on all three. */
+.platePillar {
+	position: absolute;
+	top: 16px;
+	bottom: 16px;
+	width: 3px;
+	border-left: 1px solid currentColor;
+	border-right: 1px solid currentColor;
+	color: color-mix(in srgb, var(--ifm-color-primary) 62%, transparent);
+	pointer-events: none;
+}
+
+.platePillarLeft {
+	left: 9px;
+}
+
+.platePillarRight {
+	right: 9px;
+}
+
+.platePillar::before,
+.platePillar::after {
+	content: '';
+	position: absolute;
+	left: -3px;
+	right: -3px;
+	height: 1px;
+	background: currentColor;
+}
+
+.platePillar::before {
+	top: -5px;
+}
+
+.platePillar::after {
+	bottom: -5px;
+}
+
+.title {
+	margin: 0;
+	font-family: var(--nexus-font-display);
+	/* Fluid rather than a breakpoint step, matching the h1 treatment in
+	   custom.css; one size above it because this is the site's only masthead. */
+	font-size: clamp(2.5rem, 6vw, 4rem);
+	line-height: 1.05;
+	letter-spacing: 0.02em;
+	color: var(--ifm-heading-color);
+}
+
+.standfirst {
+	max-width: var(--nexus-measure);
+	margin: 0 auto 0.9rem;
+	font-size: var(--nexus-text-md);
+	line-height: var(--nexus-leading-prose);
+	color: var(--ifm-font-color-base);
+}
+
+.standfirst:last-child {
+	margin-bottom: 0;
+}
+
+/* --- Thresholds ----------------------------------------------------------- */
+
+.thresholds {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+	margin-top: 2.25rem;
+}
+
+.threshold {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.6rem;
+	padding: 1.5rem 1.25rem 1.35rem;
+	text-align: center;
+	text-decoration: none;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
+	border-radius: 2px;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 5%,
+		var(--ifm-background-surface-color)
+	);
+	/* A negative-offset outline is the kit's one legitimate flat second keyline
+	   (SKILL.md); these carry it and the index rows do not, which is most of
+	   what separates a threshold from a contents entry. */
+	outline: 1px solid color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+	outline-offset: -5px;
+	transition:
+		border-color 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.threshold:hover {
+	text-decoration: none;
+	border-color: var(--ifm-color-primary);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 11%,
+		var(--ifm-background-surface-color)
+	);
+}
+
+.thresholdSigil {
+	line-height: 0;
+	color: var(--ifm-color-primary);
+}
+
+.thresholdBlurb {
+	max-width: 22ch;
+	font-size: var(--nexus-text-sm);
+	line-height: 1.5;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, transparent);
+}
+
+/* --- Contents index ------------------------------------------------------- */
+
+.contents {
+	margin-top: 3rem;
+}
+
+.sectionHeading {
+	margin: 0 0 1.1rem;
+	text-align: center;
+	/* The Cartouche carries the type; the h2 is structure only, so it must not
+	   also apply the display face and heading size on top of it. */
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: 1;
+}
+
+.indexList {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0 2.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.indexItem {
+	margin: 0;
+	padding: 0;
+}
+
+.indexRow {
+	display: grid;
+	grid-template-columns: 2.2rem 1.75rem 1fr;
+	align-items: baseline;
+	gap: 0 0.5rem;
+	/* Fill the grid cell so the two rows of a pair are the same height and their
+	   rules line up across the gutter. Without this, one column's description
+	   wrapping to a second line pushes its rule out of register with the other,
+	   and a contents page whose rules do not align reads as broken. */
+	height: 100%;
+	padding: 0.7rem 0.4rem;
+	text-decoration: none;
+	/* A hairline between rows: a border on a container, which is the allowed use
+	   of a rule (SKILL.md) — the same treatment the doc tables use for row
+	   separation, not a bar used to group. */
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 18%, transparent);
+	transition: background-color 0.2s ease;
+}
+
+.indexRow:hover {
+	text-decoration: none;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 8%,
+		transparent
+	);
+}
+
+.indexNumeral {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-sm);
+	letter-spacing: 0.04em;
+	color: color-mix(in srgb, var(--ifm-color-primary) 75%, transparent);
+}
+
+/* Sits on the LABEL's line, not the row's centre — centring it over a two-line
+   entry drops it visibly below its own title. */
+.indexSigil {
+	align-self: start;
+	margin-top: 0.1rem;
+	line-height: 0;
+	color: var(--ifm-color-primary);
+}
+
+.indexText {
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+}
+
+.indexLabel {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-md);
+	letter-spacing: 0.01em;
+	color: var(--ifm-heading-color);
+}
+
+.indexBlurb {
+	font-size: var(--nexus-text-sm);
+	line-height: 1.45;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 72%, transparent);
+}
+
+/* --- Colophon ------------------------------------------------------------- */
+
+.colophon {
+	margin-top: 3rem;
+	padding: 1.25rem 1.5rem 1.4rem;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
+	border-radius: 2px;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 5%,
+		var(--ifm-background-surface-color)
+	);
+}
+
+.colophonHeading {
+	margin: 0 0 0.7rem;
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: 1;
+}
+
+.colophon p {
+	max-width: var(--nexus-measure);
+	margin-bottom: 0.6rem;
+	font-size: var(--nexus-text-sm);
+	line-height: 1.6;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 82%, transparent);
+}
+
+.colophon p:last-child {
+	margin-bottom: 0;
+}
+
+/* --- Narrow ---------------------------------------------------------------
+   The index collapses to one column before the thresholds do: two columns of
+   ruled rows lose their alignment long before three cards get uncomfortable. */
 
 @media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+	.indexList {
+		grid-template-columns: 1fr;
+		gap: 0;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.page {
+		padding: 1.5rem 1rem 3rem;
+	}
+
+	.plateArt {
+		aspect-ratio: 2 / 1;
+	}
+
+	/* Side padding cannot drop below the pillars (9px out, 3px wide) plus room to
+	   breathe, or the first character of every line sits on the rail. Top padding
+	   still has to clear the medallion, which does not shrink — a boss cut for
+	   88px goes to mud at phone sizes, so it keeps its size and the panel makes
+	   room instead. */
+	.plateBody {
+		padding: 3.5rem 1.6rem 1.5rem;
+	}
+
+	.plateArtWrap {
+		padding: 10px;
+	}
+
+	.plateRivet {
+		width: 8px;
+		height: 8px;
+	}
+
+	.plateRivet-tl,
+	.plateRivet-tr {
+		top: 6px;
+	}
+	.plateRivet-br,
+	.plateRivet-bl {
+		bottom: 6px;
+	}
+	.plateRivet-tl,
+	.plateRivet-bl {
+		left: 6px;
+	}
+	.plateRivet-tr,
+	.plateRivet-br {
+		right: 6px;
+	}
+
+	.thresholds {
+		grid-template-columns: 1fr;
+	}
+
+	.thresholdBlurb {
+		max-width: none;
+	}
 }

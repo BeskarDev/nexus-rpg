@@ -1009,6 +1009,76 @@ export function Cartouche({
 	)
 }
 
+export interface TrailBraidProps {
+	/** Number of half-periods. Each adds one crossing; 2 gives a single twist. */
+	twists?: number
+	/** Rendered width in px. Height follows the fixed 1:2.4 period ratio. */
+	width?: number
+}
+
+/**
+ * A twisted-cord braid, used as the connector between breadcrumb crumbs.
+ *
+ * Two strands in antiphase crossing at a fixed period, so a longer braid grows
+ * more crossings rather than stretching the same two (craft rule: fixed period,
+ * variable shaft). Symmetry is by construction — both strands come from one
+ * generator with the phase inverted, never two hand-authored paths, which is how
+ * the first guilloche in this kit ended up visibly lopsided.
+ *
+ * Replaces a plain triangle: a chevron between crumbs reads as browser
+ * furniture, whereas a cord reads as an inscription binding two nameplates.
+ */
+export function TrailBraid({ twists = 3, width = 26 }: TrailBraidProps) {
+	const PERIOD = 9 // viewBox units per lobe
+	const H = 9
+	const mid = H / 2
+	const amp = 2.5
+	const span = PERIOD * twists
+	const surface = 'var(--ifm-background-surface-color)'
+
+	// One strand, phase = +1 or -1. Cubic lobes alternate above/below centre, so
+	// the pair crosses at every period boundary — a twisted cord.
+	//
+	// TWO lobes read as an infinity symbol rather than a rope (the pair closes
+	// into two symmetric lenses); three or more read as a running twist, which is
+	// why the default is 3.
+	const strand = (phase: number) => {
+		let d = `M0 ${mid}`
+		for (let i = 0; i < twists; i++) {
+			const x0 = i * PERIOD
+			const dir = phase * (i % 2 === 0 ? 1 : -1)
+			d +=
+				` C${x0 + PERIOD * 0.3} ${mid - amp * dir},` +
+				`${x0 + PERIOD * 0.7} ${mid - amp * dir},` +
+				`${x0 + PERIOD} ${mid}`
+		}
+		return d
+	}
+
+	return (
+		<svg
+			className={styles.trailBraid}
+			width={width}
+			height={(width / span) * H}
+			viewBox={`0 0 ${span} ${H}`}
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={1.1}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			{/* Under-strand first. */}
+			<path d={strand(-1)} />
+			{/* Opaque casing, then the over-strand on top of it: the over/under at
+			    each crossing is what makes a pair of waves read as a braid rather
+			    than as two overlapping lines (craft rule: opaque backing). */}
+			<path d={strand(1)} stroke={surface} strokeWidth={2.9} />
+			<path d={strand(1)} />
+		</svg>
+	)
+}
+
 /**
  * A hieroglyph frieze rule: a short band of rhythmic carved glyph-marks centered
  * between two fading rails, as an alternate {@link LozengeDivider}. The band is a
@@ -1067,6 +1137,102 @@ export function JewelAccent({
 			style={{ width: size, height: size }}
 			aria-hidden="true"
 		/>
+	)
+}
+
+export interface SolarMedallionProps {
+	/**
+	 * Rendered px. Do not go below ~72: the carved groove is 3.4 viewBox units,
+	 * which is exactly 3px at 88 and turns to mud under it (ornament-craft §10).
+	 * For anything small, {@link SunDisc} is the mark, not a shrunk medallion.
+	 */
+	size?: number
+}
+
+const MEDALLION_RAYS = 8
+/** Corona base, seated INSIDE the keyline ring so the rays spring from it. */
+const MEDALLION_R0 = 33
+const MEDALLION_R_LONG = 48
+const MEDALLION_R_SHORT = 40.5
+
+/**
+ * The great solar medallion — the site's centrepiece boss, for the homepage
+ * frontispiece and nothing smaller.
+ *
+ * {@link SunDisc} is a section marker and stays a marker: ring plus core, legible
+ * at 22px, and far too plain to carry a title page. This is the same motif built
+ * out to the weight a tome cover's central boss needs — an alternating corona of
+ * eight lanceolate rays and eight short triangles, a keyline ring they spring
+ * from, then a solid field carved back out with a groove and a lozenge heart.
+ *
+ * The lanceolate ray is the same profile as the sidebar arrow's blade, so the
+ * corona is in the kit's hand rather than being a generic starburst. Geometry is
+ * generated from the angle, never hand-authored, so the corona cannot drift out
+ * of rotational symmetry (ornament-craft §6).
+ *
+ * The groove and the heart are cut in the SURFACE colour, which is the kit's
+ * standard carve: solid mass with material taken back out of it, not outlines
+ * stacked up. That also means this must sit on `--ifm-background-surface-color`
+ * to read — on any other fill the carving fills with the wrong colour.
+ *
+ * (The concentric rings here are not the reserved nested-frame treatment, which
+ * is a CARD FRAME weight belonging to `SpellCodexCard`. This is a boss.)
+ */
+export function SolarMedallion({ size = 88 }: SolarMedallionProps) {
+	const c = 50
+	const surface = 'var(--ifm-background-surface-color)'
+
+	/** Point at angle `a`, radius `r`, offset `w` perpendicular to the ray axis. */
+	const pt = (a: number, r: number, w: number) => {
+		const cos = Math.cos(a)
+		const sin = Math.sin(a)
+		return `${(c + r * cos - w * sin).toFixed(2)} ${(c + r * sin + w * cos).toFixed(2)}`
+	}
+
+	const step = (2 * Math.PI) / MEDALLION_RAYS
+	const span = MEDALLION_R_LONG - MEDALLION_R0
+	const halfW = 3.3
+	const rays: string[] = []
+
+	for (let i = 0; i < MEDALLION_RAYS; i++) {
+		const a = i * step - Math.PI / 2
+		// Long ray: a leaf that swells a quarter of the way out, then converges.
+		rays.push(
+			`M${pt(a, MEDALLION_R0, 0)} ` +
+				`C${pt(a, MEDALLION_R0 + span * 0.22, halfW)},` +
+				`${pt(a, MEDALLION_R0 + span * 0.58, halfW * 0.78)},` +
+				`${pt(a, MEDALLION_R_LONG, 0)} ` +
+				`C${pt(a, MEDALLION_R0 + span * 0.58, -halfW * 0.78)},` +
+				`${pt(a, MEDALLION_R0 + span * 0.22, -halfW)},` +
+				`${pt(a, MEDALLION_R0, 0)} Z`,
+		)
+		// Short ray, bisecting the gap: a plain triangle, so the two alternate by
+		// both length and shape rather than length alone.
+		const b = a + step / 2
+		rays.push(
+			`M${pt(b, MEDALLION_R0, 2.3)} L${pt(b, MEDALLION_R_SHORT, 0)} ` +
+				`L${pt(b, MEDALLION_R0, -2.3)} Z`,
+		)
+	}
+
+	return (
+		<svg
+			className={styles.solarMedallion}
+			width={size}
+			height={size}
+			viewBox="0 0 100 100"
+			fill="none"
+			aria-hidden="true"
+		>
+			<path d={rays.join(' ')} fill="currentColor" />
+			<circle cx={c} cy={c} r={33.2} stroke="currentColor" strokeWidth={2.4} />
+			<circle cx={c} cy={c} r={25} fill="currentColor" />
+			<circle cx={c} cy={c} r={16.6} stroke={surface} strokeWidth={3.4} />
+			<path
+				d={`M${c} ${c - 5.8} L${c + 5.8} ${c} L${c} ${c + 5.8} L${c - 5.8} ${c} Z`}
+				fill={surface}
+			/>
+		</svg>
 	)
 }
 

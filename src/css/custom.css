@@ -94,11 +94,22 @@
 	   --ifm-color-primary (bronze); these align the surfaces too. Active-row
 	   text must stay AA on the bronze cursor row, so it flips per mode. */
 	--search-local-modal-background: var(--ifm-background-surface-color);
-	--search-local-hit-background: var(--ifm-background-surface-color);
+	/* Rows are transparent so only the selected row carries a wash — with the
+	   dropdown on the same surface colour, per-row fills read as nothing. */
+	--search-local-hit-background: transparent;
 	--search-local-hit-color: var(--ifm-font-color-base);
+	/* This token has TWO jobs in the plugin: the matched-text ink AND the selected
+	   row's background fill. A single value cannot serve both (see the cyan
+	   two-token rule), so it keeps the INK job here and the row fill is
+	   overridden to a wash in the S12 block. */
 	--search-local-highlight-color: var(--ifm-color-primary);
 	--search-local-muted-color: var(--ifm-color-emphasis-700);
-	--search-local-hit-active-color: #ffffff; /* on dark bronze, light mode */
+	/* Bronze ink on the wash, matching "you are here" in the side nav. Was white,
+	   which only worked while the selected row was a solid bronze block. */
+	--search-local-hit-active-color: var(--ifm-color-primary);
+	/* Flat: no modal or per-row shadows. */
+	--search-local-modal-shadow: none;
+	--search-local-hit-shadow: none;
 
 	--ifm-color-primary: var(--nexus-bronze);
 	--ifm-color-primary-dark: #7a4f26;
@@ -124,11 +135,83 @@
 	/* Procedural parchment grain: a tiny stitched SVG noise tile, no raster
 	   asset. Consumed by body::before below. */
 	--parchment-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-	/* Hieroglyph frieze tile (M7 E2). A repeat-x MASK, so whatever element
-	   carries it tints from its own color and tiles seamlessly at any width.
-	   Shared by ornaments.module.css (FriezeDivider/FriezeBand) and the M8
-	   navbar / footer cornices below — one tile, one definition. */
-	--nexus-frieze-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12'%3E%3Cpath d='M2 9 L6 3 L10 9 Z' fill='%23000'/%3E%3Crect x='13.3' y='3' width='1.4' height='6' fill='%23000'/%3E%3Crect x='18' y='4.5' width='3' height='3' fill='%23000'/%3E%3C/svg%3E");
+	/* TWO frieze tiles, both repeat-x MASKs, so whatever element carries one
+	   tints from its own color and tiles seamlessly at any width.
+
+	   The split is by SPAN, not by surface. A cornice sits over a container a
+	   few hundred pixels wide and can carry mass; the navbar and footer bands
+	   run the full viewport, where the same mass turns into a heavy stripe
+	   fencing the page top and bottom. So:
+
+	   - `--nexus-frieze-tile` (merlon course, 10px on the table cornice, 12px on
+	     the short FriezeDivider / FriezeBand ornaments).
+	   - `--nexus-frieze-rail` (braid rail, 9px) — full-width edges: navbar and
+	     footer.
+
+	   They are the same language at two weights, not two motifs: the rail's
+	   lozenge node is the merlon tile's lozenge, and both stand on a continuous
+	   line that runs edge to edge.
+
+	   --- The merlon course ---------------------------------------------------
+	   The stepped crenellation that crowns a ziggurat and a city wall,
+	   alternating with a lozenge, both standing on an unbroken ground course.
+
+	   Three things make it a frieze rather than a row of shapes, and the first
+	   version had none of them:
+	   - CONTINUITY. The ground course runs edge to edge, so consecutive tiles
+	     join into one band instead of reading as detached ornaments.
+	   - RHYTHM. Two beats, evenly spaced (5.5 units of air either side of the
+	     lozenge), alternating heavy/light rather than cycling three unrelated
+	     primitives with arbitrary gaps.
+	   - ONE FAMILY. Both beats already exist in the kit — the stepped ziggurat
+	     is TalentCard's keystone, the lozenge is CardFrame's corner mark. Heavy
+	     and light alternate by MASS — a tall stepped block against a small
+	     diamond — because at 12px that is the only contrast that survives. The
+	     first cut carved the lozenge out as a ring; its wall came to 0.65px and
+	     rendered as mud, which is the sub-3px rule biting in the usual way.
+
+	   Authored at 2x (36x24) and rendered at 12px, so nothing is authored
+	   sub-pixel. Nothing but the ground course crosses a tile edge, so the
+	   repeat cannot seam. */
+	--nexus-frieze-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='24'%3E%3Cpath fill='%23000' d='M0 20h36v2.6H0z M2 20V11h4V4h7v7h4v9z M27.5 8 32.5 14 27.5 20 22.5 14z'/%3E%3C/svg%3E");
+	/* --- The braid rail -----------------------------------------------------
+	   Two mirrored strands plaiting through each other, run in sections and
+	   interrupted by a lozenge node the strands thread into. Guilloche is the
+	   Mesopotamian border ornament, and it is the same strand the breadcrumb
+	   TrailBraid is cut from, so the page's top and bottom edges rhyme with its
+	   navigation.
+
+	   Almost all line and almost no mass — 0.9px strokes plus one 3x4px diamond
+	   per 30px — which is the whole point: a full-viewport band reads at a
+	   glance as a rule, so what it must NOT do is read as a heavy stripe.
+
+	   The plaited section is deliberately only HALF the repeat, with the rest
+	   left as plain rail either side of the node. A braid run edge to edge is a
+	   continuous texture and reads busy across 1500px however fine the stroke;
+	   breaking it with quiet line is what keeps it a rule rather than a pattern.
+
+	   The over/under is deliberately not drawn. Faking it needs an opaque casing
+	   on the upper strand, and a mask has only alpha, so a "casing" would punch
+	   a hole through the lower strand instead of covering it. Two clean mirrored
+	   strands read as guilloche anyway at 1.2px.
+
+	   Authored at 78x18 and rendered at 7px. Both strands and the axis line meet
+	   the tile edge at y=9 with butt caps, so consecutive tiles join
+	   mid-crossing and the run has no seam. */
+	--nexus-frieze-rail: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='78' height='18'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2.4' d='M0 9C5 1 15 1 20 9 25 17 35 17 40 9M0 9C5 17 15 17 20 9 25 1 35 1 40 9M40 9H55M63 9H78'/%3E%3Cpath fill='%23000' d='M59 4 63 9 59 14 55 9z'/%3E%3C/svg%3E");
+	/* The `eye` sigil as a MASK, for the search field's seeking glyph. Geometry is
+	   the same path as SIGIL_INNER.eye in sigil-paths.ts — kept in sync by hand,
+	   like the navbar sigil masks, because a mask cannot import from TS. A mask
+	   (not a background-image) so it tints from currentColor in both themes. */
+	--nexus-eye-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z'/%3E%3Ccircle cx='12' cy='12' r='2.5'/%3E%3C/svg%3E");
+	/* The disclosure caret: a CARVED arrowhead, not a plain triangle. Keeps the
+	   triangle silhouette but crenellates the base (two notches cut up into it,
+	   the ziggurat's stepped language) and voids an inlaid lozenge at its centre.
+	   `fill-rule: evenodd` makes the lozenge a real hole, so the surface shows
+	   through it — the mask paints a single colour, and a hole is the only way to
+	   carve detail back out of it. Points UP: Infima orients the caret by rotating
+	   180deg when open and 90deg when collapsed. */
+	--nexus-caret-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M12 4.4 L20.6 16.8 L16.4 16.8 L15.2 14.6 L14 16.8 L10 16.8 L8.8 14.6 L7.6 16.8 L3.4 16.8 Z M12 8.8 L14.4 11.7 L12 14.6 L9.6 11.7 Z'/%3E%3C/svg%3E");
 	/* Typography: display (Cinzel, h1/h2 only via scoped rules below),
 	   body serif (Spectral), UI sans (Alegreya Sans). Cinzel and Spectral
 	   only ship 400/600, so bold maps to the real 600 cut instead of
@@ -222,9 +305,11 @@
 	--ifm-footer-background-color: #191410;
 	--ifm-footer-link-color: var(--ifm-color-primary);
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-	/* Ember bronze is light in dark mode, so the active search row needs dark
-	   text to keep AA. */
-	--search-local-hit-active-color: var(--nexus-obsidian);
+	/* The selected search row is now a faint bronze WASH on the dark surface, not
+	   a solid bronze block, so its text takes the ember bronze like the rest of
+	   the "you are here" language — the old dark-on-bronze value would be
+	   near-invisible against the wash. */
+	--search-local-hit-active-color: var(--ifm-color-primary);
 	--ifm-color-grey: #959595;
 	--ifm-color-brown: #ba8670;
 	--ifm-color-yellow: #cb9a4b;
@@ -491,18 +576,82 @@ a:hover:not(.navbar__brand):not(.character-sheet-page a) {
 
 /* Forked DocBreadcrumbs container (replaces the theme's CSS-module class) and
    the per-crumb page sigil. */
-.codex-breadcrumbs {
-	/* Infima sizes crumb links off this multiplier against 1rem, not off the
-	   container's font-size, so the secondary-nav step has to be set here:
-	   0.75 x 16px = the 12px --nexus-text-xs step. */
-	--ifm-breadcrumb-size-multiplier: 0.75;
-	margin-bottom: 0.8rem;
+/* ---- The carved trail (breadcrumbs) ---------------------------------------
+   Infima's pill-and-chevron markup is gone entirely (see the DocBreadcrumbs
+   swizzle), so none of its classes or tokens apply here. Ancestors are quiet
+   small-caps ink joined by carved triangle marks; the current page is the one
+   plated element, a compact Cartouche carrying its page sigil. */
+.codex-trail {
+	margin-bottom: 0.9rem;
 }
 
-.breadcrumb-sigil {
-	color: var(--nexus-bronze);
-	vertical-align: -2px;
-	margin-right: 0.3rem;
+.codex-trail__list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.1rem 0.15rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* The bullet system is scoped to `.theme-doc-markdown ul`, but the trail can sit
+   inside that container, so the marker is switched off explicitly. */
+.codex-trail__list > li::before {
+	content: none;
+}
+
+.codex-trail__item {
+	display: inline-flex;
+	align-items: center;
+	min-width: 0;
+}
+
+.codex-trail__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	padding: 0.1rem 0.15rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	font-weight: 600;
+	letter-spacing: 0.07em;
+	text-decoration: none;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 62%, transparent);
+	transition: color 150ms ease;
+}
+
+.codex-trail__link:hover {
+	color: var(--ifm-color-primary);
+	text-decoration: none;
+}
+
+/* The home crumb: the temple sigil (the great house), replacing the theme's
+   hardcoded house glyph. */
+.codex-trail__sigil {
+	color: color-mix(in srgb, var(--ifm-color-primary) 75%, transparent);
+	flex: 0 0 auto;
+}
+
+.codex-trail__link:hover .codex-trail__sigil {
+	color: var(--ifm-color-primary);
+}
+
+/* The connector is a twisted-cord braid (the TrailBraid ornament), not a
+   chevron: an arrow between crumbs reads as browser furniture, a cord reads as
+   an inscription binding two nameplates. */
+.codex-trail__mark {
+	display: inline-flex;
+	align-items: center;
+	flex: 0 0 auto;
+	margin: 0 0.45rem;
+}
+
+/* The current page is the only plate. The Cartouche brings its own nameplate
+   geometry; this just seats it on the trail's baseline. */
+.codex-trail__item--current {
+	margin-left: 0.1rem;
 }
 
 /* Chapter sigil injected before each page's h1 by the chapter-sigil remark
@@ -1630,7 +1779,14 @@ a.chip,
    Uses the local file `/img/github.svg` placed in /static/img so it is served
    at /img/github.svg. We style the navbar link using its className set in
    `docusaurus.config.js` (navbar-github-link). Keep the link accessible
-   by using an `aria-label` in the config. */
+   by using an `aria-label` in the config.
+
+   That file now carries the mark as a SEAL — the official silhouette inset in a
+   carved keyline roundel — matching the ring-plus-solid-core build of the
+   colour-mode icons in src/theme/Icon/. The mark itself is deliberately left
+   unredrawn: every other glyph on the bar can be recut in the codex hand
+   because its meaning is carried by the label beside it, but this one has no
+   label and brand recognition IS its function. */
 /* Uniform right-side icon cluster (GM Tools, Character Sheet, GitHub,
    color-mode toggle). Each item previously carried its own spacing model AND a
    different glyph size (sigils 18px, github 20px, toggle 24px) in a different
@@ -1960,10 +2116,10 @@ a.chip,
 .codex-table-slab::before {
 	content: '';
 	display: block;
-	height: 9px;
-	background-color: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
-	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 9px;
-	mask: var(--nexus-frieze-tile) repeat-x center / auto 9px;
+	height: 10px;
+	background-color: color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
+	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
+	mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
 }
 
 /* Back to a real table box, so the frame and the rows describe the same width. */
@@ -2149,42 +2305,132 @@ a.chip,
 	background-color: var(--ifm-color-primary);
 }
 
-/* --- S7 Sidebar → cartouche category headers -------------------------------
-   Top-level chapter labels become inlaid nameplates: a wash plus a keyline
-   frame, in the display face. The page sigils (M4) already lead each label. */
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible {
+/* --- S7 Sidebar → one face, two orthogonal signals -------------------------
+   The first pass set category headers in the DISPLAY face, which broke the
+   README typography rule ("no decorative fonts for the sidebar"; Cinzel is
+   restricted to large headings where the letterforms can breathe). It also left
+   two different boxed treatments sitting next to each other — an active leaf in
+   sans inside a keyline, and a category in Cinzel inside a keyline — which read
+   as two unrelated objects rather than one system.
+
+   Recut so the whole side nav is ONE face (the UI sans) and the two signals are
+   independent and composable:
+
+     keyline + faint wash = "this names a GROUP"   (a nameplate on the stone)
+     stronger wash, no keyline = "you are HERE"    (engraved into the stone)
+
+   A category you are inside therefore carries both, and nothing has to be read
+   as a special case. */
+   Owner revision: EVERY top-level entry now shares one plain style. The category
+   nameplate (keyline + wash + heavier weight) is gone — a parent page announces
+   itself only by the caret to its right. A boxed header among plain siblings
+   read as an unrelated object no matter which typeface it used, and it made the
+   one category on a page the loudest thing in the nav.
+
+   So the single remaining signal in the side nav is:
+
+     wash + bronze ink = "you are HERE"
+
+   which composes freely with anything, category or leaf. */
+
+/* "You are here": a flat wash and bronze ink. Never a left bar. */
+.menu__link--active {
 	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 15%, transparent);
+	color: var(--ifm-color-primary);
 }
 
-.theme-doc-sidebar-item-category-level-1
-	> .menu__list-item-collapsible
-	> .menu__link {
-	font-family: var(--nexus-font-display);
-	font-weight: 600;
-	letter-spacing: 0.03em;
-	border-radius: 2px;
-	background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
-	outline: 1px solid color-mix(in srgb, var(--ifm-color-primary) 28%, transparent);
-	outline-offset: -1px;
-	color: color-mix(
+/* Nested children: light, and ALIGNED. The previous recessed wash plus a lozenge
+   per row read as heavy across a 20+ entry list (Talents, Spells), and the rows
+   were out-dented — their markers sat LEFT of the parents' sigils, so children
+   looked like a higher level than their parent.
+
+   Hierarchy is now carried by indentation alone: 22.4px = the parent's 16px sigil
+   plus its 0.4rem gap, so a child's text starts exactly under its parent's text
+   and the nav reads as one left rhythm. */
+.theme-doc-sidebar-menu .menu__list {
+	padding-left: 1.4rem;
+}
+
+.theme-doc-sidebar-menu .menu__list .menu__link {
+	font-weight: 500;
+	letter-spacing: 0;
+}
+
+/* The disclosure caret. Infima draws it as a background-image data-URI with
+   `fill="rgba(0,0,0,0.5)"` baked in, tintable only through a `filter` — which is
+   why it stayed grey and why dark mode inverted it.
+
+   Replaced with a carved arrowhead mask (`--nexus-caret-glyph`): the triangle
+   silhouette is kept, but its base is crenellated and an inlaid lozenge is voided
+   through its centre, so it reads as cut stone rather than a UI chevron. A mask
+   rather than a clip-path, because clip-path can only cut one outline and cannot
+   carve the interior void. */
+.menu__caret::before,
+.menu__link--sublist-caret::after {
+	background-image: none;
+	background-color: color-mix(
 		in srgb,
-		var(--ifm-color-primary) 55%,
+		var(--ifm-color-primary) 75%,
 		var(--ifm-font-color-base)
 	);
+	filter: none;
+	clip-path: none;
+	-webkit-mask: var(--nexus-caret-glyph) no-repeat center / contain;
+	mask: var(--nexus-caret-glyph) no-repeat center / contain;
 }
 
-/* Active leaf: engraved into the stone — a wash plus its own keyline, never a
-   left bar. */
-.menu__link--active:not(.menu__link--sublist) {
+.menu__caret {
 	border-radius: 2px;
+}
+
+.menu__caret:hover {
 	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
-	outline: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
-	outline-offset: -1.5px;
+}
+
+/* Sidebar collapse toggle: a flat bronze plate, not Infima's generic outline
+   button. The glyph itself is a bespoke SVG (the `Icon/Arrow` swizzle), shared
+   by this button and the expand tab.
+
+   The element selectors matter. `[class*='collapseSidebarButton']` also matches
+   the ICON, whose class is `collapseSidebarButtonIcon…` — the wash was being
+   painted a second time as a dark box behind the glyph. Tag-qualifying pins each
+   rule to the control rather than its child.
+
+   `position` is deliberately NOT set: the expand tab relies on Docusaurus's own
+   `position: absolute`, and overriding it collapsed the tab to nothing, which is
+   why the expand anchor was invisible once the sidebar was closed. */
+.theme-doc-sidebar-container button[class*='collapseSidebarButton'],
+div[class*='expandButton'] {
+	border: none;
+	border-top: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 28%, transparent);
+	border-radius: 0;
+	background: color-mix(in srgb, var(--ifm-color-primary) 5%, transparent);
+	color: var(--ifm-color-primary);
+}
+
+.theme-doc-sidebar-container button[class*='collapseSidebarButton']:hover,
+div[class*='expandButton']:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+}
+
+/* The sigil beside a paginator label (PaginatorNavLink swizzle). */
+.pagination-sigil {
+	flex: 0 0 auto;
+	color: var(--ifm-color-primary);
+	vertical-align: -2px;
 }
 
 /* --- S8 Navbar + footer → friezes and a solar crest ------------------------
-   Both bands get the shared hieroglyph frieze tile as an architectural cornice.
-   One full-width element per band, so the tile never seams. */
+   Both bands get the braid RAIL, not the merlon course: they span the full
+   viewport, and at that length the merlon's mass reads as a stripe fencing the
+   page rather than as an ornament. See the token block for the split.
+
+   One full-width element per band, and identical height (7px) and ink (46%) on
+   both, so the page's two edges are the same edge. They previously ran at
+   8px/40% and 10px/45% off a tile authored for neither height, which is a large
+   part of why the friezes did not read as one motif. */
 .navbar {
 	box-shadow: none;
 	border-bottom: 1px solid
@@ -2197,11 +2443,11 @@ a.chip,
 	left: 0;
 	right: 0;
 	bottom: 0;
-	height: 8px;
+	height: 7px;
 	pointer-events: none;
-	background-color: color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
-	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 8px;
-	mask: var(--nexus-frieze-tile) repeat-x center / auto 8px;
+	background-color: color-mix(in srgb, var(--ifm-color-primary) 46%, transparent);
+	-webkit-mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
+	mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
 }
 
 .footer {
@@ -2216,11 +2462,11 @@ a.chip,
 	left: 0;
 	right: 0;
 	top: 0;
-	height: 10px;
+	height: 7px;
 	pointer-events: none;
-	background-color: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
-	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
-	mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
+	background-color: color-mix(in srgb, var(--ifm-color-primary) 46%, transparent);
+	-webkit-mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
+	mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
 }
 
 /* Solar crest at the head of the footer band (Footer/Layout swizzle). */
@@ -2319,6 +2565,180 @@ article h2::after {
 	height: 7px;
 	transform: rotate(45deg);
 	background-color: var(--ifm-color-primary);
+}
+
+/* --- S12 Search: input, dropdown and hits ----------------------------------
+   `@easyops-cn/docusaurus-search-local` ships a 32px pill input and a 6px
+   rounded dropdown with no border — the only fully rounded shapes left in a kit
+   built on hard 2px vertices, and the focus ring was still the browser default
+   blue. Its internal class names are hashed CSS modules, so they are matched by
+   the stable substring, the same escape hatch the admonition heading uses. The
+   `--search-local-*` vars set in :root cover the modal variant's colours; the
+   dropdown variant needs these rules. */
+/* The vendor magnifier is REPLACED, not retinted. It ships as a
+   `background-image` data-URI on the input, and `currentColor` does not resolve
+   inside a background-image (no element context), so it could never take the
+   bronze token. Dropped, and the watchful eye — the search glyph of a Bronze-Age
+   codex — is drawn on the container as a MASK instead, which does tint from
+   currentColor in both themes. Same mechanism as the navbar chapter sigils. */
+.navbar__search {
+	position: relative;
+}
+
+.navbar__search::before {
+	content: '';
+	position: absolute;
+	left: 0.65rem;
+	top: calc(50% - 8px);
+	width: 16px;
+	height: 16px;
+	pointer-events: none;
+	z-index: 1;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 80%,
+		transparent
+	);
+	-webkit-mask: var(--nexus-eye-glyph) no-repeat center / contain;
+	mask: var(--nexus-eye-glyph) no-repeat center / contain;
+}
+
+.navbar__search-input {
+	border-radius: 2px;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	background-color: var(--ifm-background-surface-color);
+	background-image: none;
+	padding-left: 2.1rem;
+	color: var(--ifm-font-color-base);
+	font-size: var(--nexus-text-sm);
+}
+
+/* The ⌘K hint keys. Borderless: a keyline around each key put a second frame
+   inside the field's own frame, which read as clutter at this size. They are a
+   faint inlaid wash with bronze ink instead.
+
+   `kbd[...]` matters: `[class*='searchHint']` also matches the wrapping
+   `searchHintContainer`, which painted the wash as a slab spanning both keys and
+   the gap between them. Same sibling-class trap as the collapse button's icon —
+   always tag-qualify a hashed-module substring selector. */
+.navbar__search kbd[class*='searchHint'] {
+	border: none;
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+	box-shadow: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.navbar__search-input::placeholder {
+	color: color-mix(in srgb, var(--ifm-font-color-base) 55%, transparent);
+}
+
+/* Bronze focus keyline instead of the UA blue ring. A flat second keyline via
+   outline, never a glow. */
+.navbar__search-input:focus,
+.navbar__search-input:focus-visible {
+	outline: 1.5px solid var(--ifm-color-primary);
+	outline-offset: 1px;
+	border-color: var(--ifm-color-primary);
+}
+
+/* The results dropdown: a carved plate, flat, hard corners. The plugin's own
+   `.searchBar .dropdownMenu` hardcodes a 6px radius at 0,2,0 and loads after
+   this file, so this chain is one component longer to win outright. */
+.navbar__search [class*='searchBar'] [class*='dropdownMenu'] {
+	border-radius: 2px;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+}
+
+/* Hit rows. The plugin hardcodes a 4px radius on each row and drives the
+   SELECTED row's fill from `--search-local-highlight-color` — a token it also
+   uses as the matched-text ink. One value cannot be both a background and
+   legible ink (the same trap as the cyan two-token rule in the README), so the
+   token keeps the INK job and the row's fill is overridden here as a wash.
+
+   Its own rule is `.searchBar .dropdownMenu .suggestion.cursor` (0,4,0) and the
+   plugin's stylesheet loads after this one, so an equal-specificity selector
+   would lose on order — hence the deliberately longer chain. Hashed module names
+   are matched by their stable substring. */
+.navbar__search
+	[class*='searchBar']
+	[class*='dropdownMenu']
+	[class*='suggestion'] {
+	border-radius: 2px;
+}
+
+.navbar__search
+	[class*='searchBar']
+	[class*='dropdownMenu']
+	[class*='suggestion'][class*='cursor'] {
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 15%,
+		transparent
+	);
+}
+
+/* Section/path captions inside a hit sit a step quieter. */
+.navbar__search [class*='hitPath'],
+.navbar__search [class*='hitFooter'] {
+	font-size: var(--nexus-text-xs);
+}
+
+/* The hit glyphs are REPLACED, not retinted: the plugin ships a document icon
+   for page hits and a `#` hash for heading hits, both unmistakably web-docs
+   furniture. Swapped for the kit's universal marker — a hollow lozenge, the same
+   mark the sidebar's nested children carry. The page/heading distinction is not
+   lost: heading hits are the ones that also draw a tree connector. */
+.navbar__search [class*='hitIcon'] svg {
+	display: none;
+}
+
+.navbar__search [class*='hitIcon'] {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.1rem;
+}
+
+.navbar__search [class*='hitIcon']::before {
+	content: '';
+	width: 7px;
+	height: 7px;
+	transform: rotate(45deg);
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 60%, transparent);
+}
+
+/* The selected row's marker fills in, matching the sidebar's current-page mark. */
+.navbar__search
+	[class*='suggestion'][class*='cursor']
+	[class*='hitIcon']::before {
+	background-color: var(--ifm-color-primary);
+	border-color: var(--ifm-color-primary);
+}
+
+/* The tree connector and the return affordance take bronze instead of grey. */
+.navbar__search [class*='hitTree'] svg,
+.navbar__search [class*='hitTree'] svg path,
+.navbar__search [class*='hitAction'] svg,
+.navbar__search [class*='hitAction'] svg path {
+	stroke: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	fill: none;
+}
+
+/* Full-page search results (/search) share the reading column's ink. */
+.search-result-match {
+	background: transparent;
+	color: var(--ifm-color-primary);
+	font-weight: 700;
 }
 
 /* --- S10 Buttons, tabs, details --------------------------------------------

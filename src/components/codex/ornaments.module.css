@@ -278,11 +278,13 @@
 	display: inline-block;
 }
 
-/* --- Hieroglyph frieze (divider segment + cornice band) --- */
-/* One repeat-x mask tile (triangle + stroke + block); currentColor fills it, so
-   it tints in both themes and tiles seamlessly (marks sit inside the tile). The
-   tile itself is `--nexus-frieze-tile` in custom.css — M8 reuses it on the
-   navbar and footer cornices, so it lives in one place. */
+/* --- Merlon-course frieze (divider segment + cornice band) --- */
+/* One repeat-x mask tile; currentColor fills it, so it tints in both themes and
+   tiles seamlessly (only the ground course crosses a tile edge). The tile itself
+   is `--nexus-frieze-tile` in custom.css — the navbar, footer and table cornices
+   reuse it at this same 12px height, so it lives in one place and every band on
+   the site is the same band. The 108px segment below is exactly six 18px
+   repeats; keep it a multiple of 18 so the run ends on a whole merlon. */
 .friezeSeg,
 .friezeCornice {
 	background-color: currentColor;
@@ -354,6 +356,13 @@
 	color: var(--ifm-color-primary);
 }
 
+/* The great solar medallion. Carved in the surface colour, so it only reads on
+   `--ifm-background-surface-color` — see the component doc. */
+.solarMedallion {
+	display: block;
+	color: var(--ifm-color-primary);
+}
+
 /* --- Tablet frame: heavy STANDALONE container (pillars + keystone + cornices) --- */
 .tablet {
 	position: relative;
@@ -419,4 +428,11 @@
 }
 .tabletBody > :last-child {
 	margin-bottom: 0;
+}
+
+/* --- Trail braid: the twisted-cord connector between breadcrumb crumbs --- */
+.trailBraid {
+	display: block;
+	flex: 0 0 auto;
+	color: color-mix(in srgb, var(--ifm-color-primary) 55%, transparent);
 }
