@@ -1,0 +1,136 @@
+/* TalentCard — the heaviest of the codex cards by content (median ~670 chars of
+   rule text against a combat art's ~275), carried on a single frame because the
+   rank ladder inside already supplies the structure a nested border would. The
+   spell card keeps the nested concentric border as its mark of primacy.
+   Tokens only. */
+
+.card {
+	position: relative;
+	/* Extra top margin, unlike its siblings' flat 1.4rem: the ziggurat keystone
+	   overhangs the card edge by 20.3px against the khopesh's 15.9px, and at
+	   1.4rem (22.4px) the tower would sit ~2px off the card stacked above it.
+	   1.75rem restores the ~7px breathing room the other families have. */
+	margin: 1.75rem 0 1.4rem;
+	padding: 0.95rem 1.25rem 1rem;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	border-radius: 3px;
+	background-color: var(--ifm-background-surface-color);
+}
+
+.head {
+	margin-bottom: 0.1rem;
+}
+
+/* Name left, rank span bound right on the same line; wraps when the two no longer
+   fit. Baseline alignment seats the small-caps span on the heading's baseline. */
+.nameRow {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.4rem 0.9rem;
+	flex-wrap: wrap;
+}
+
+/* The lifted `### Name` heading — same treatment as the combat art card: a
+   heading in the display face, NOT the condition card's bronze badge (a condition
+   name is a status keyword applied to a creature, a talent is an entry). */
+.nameRow :global(h3) {
+	margin: 0;
+	/* Cancel the global `article h3` scan-separator (border-top + top spacing). */
+	padding-top: 0;
+	border-top: none;
+	font-family: var(--nexus-font-display);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.02em;
+	font-size: 1.25rem;
+	line-height: 1.15;
+}
+
+/* Rank span — the card's scanning key. Deliberately quieter than the rung marks
+   inside: it is a *summary* of the ladder, so it must not out-shout the rungs it
+   summarises. Hence an outlined keyline rather than the rung's solid bronze fill. */
+.rankSpan {
+	flex: none;
+	padding: 1px 7px;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 34%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
+	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, var(--ifm-color-primary));
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	font-size: 0.72rem;
+	line-height: 1.45;
+	white-space: nowrap;
+}
+
+/* --- The rank ladder --- */
+
+/* One rung: rank marker in a left gutter, rule text beside it. Deliberately NO
+   gutter ornament — an earlier pass ran a bronze keyline down each rung and it
+   read as the same flat digital bar the spell card rejected in its first round.
+   The solid bronze rank chips are already strong markers and the gutter keeps the
+   text edge aligned, so the ladder reads without any rail. It also leaves the
+   body's bronze diamond bullets as the only lozenges in the card, instead of
+   competing with a second column of them. */
+.rung {
+	display: grid;
+	grid-template-columns: 3.5rem 1fr;
+	column-gap: 0.7rem;
+}
+/* With no rail binding a rung together, separation between rungs is what groups
+   them, so it is slightly wider than it was. */
+.rung + .rung {
+	margin-top: 0.7rem;
+}
+
+/* The marker sits on the first line's baseline rather than the grid row's top,
+   so the chip lines up with the text it labels. */
+.rungMark {
+	padding-top: 0.1rem;
+	line-height: 1.45;
+}
+
+.rungBody > :last-child {
+	margin-bottom: 0;
+}
+
+/* Narrow viewports: the gutter costs more width than the reading column can
+   spare, so the marker stacks above its text. */
+@media (max-width: 576px) {
+	.rung {
+		display: block;
+	}
+	.rungMark {
+		padding-top: 0;
+		margin-bottom: 0.2rem;
+	}
+}
+
+/* --- Density: the open reading-column rhythm is too airy inside a card --- */
+
+.body > :last-child {
+	margin-bottom: 0;
+}
+.body p,
+.rungBody p {
+	margin-bottom: 0.4rem;
+}
+.body > p:last-child,
+.rungBody > p:last-child {
+	margin-bottom: 0;
+}
+.body ul {
+	margin: 0.15rem 0;
+}
+.body ul li {
+	margin: 0;
+}
+.body ul li + li {
+	margin-top: 0.1rem;
+}
+/* Markdown wraps multi-line list content in <p>; zero it so gaps don't re-inflate. */
+.body li > p {
+	margin: 0;
+}

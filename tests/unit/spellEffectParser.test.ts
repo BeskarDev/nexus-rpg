@@ -182,6 +182,66 @@ describe('validateSpellRecord', () => {
 	})
 })
 
+describe('bold-labeled menu folding', () => {
+	// `<br/>`-split prose lines join with a plain newline, which markdown collapses
+	// to a space. Fine for consecutive sentences, but it destroyed menus of modes.
+	const prose = (effect: string) => {
+		const { nodes } = parseSpellEffect(effect, 'Menu')
+		return nodes[0].kind === 'prose' ? nodes[0].text : ''
+	}
+
+	it('folds a run of bold-labeled lines into a tight list after the intro', () => {
+		const text = prose(
+			'Choose one option:<br/><strong>Move.</strong> Shift it.' +
+				'<br/><strong>Throw.</strong> Hurl it.',
+		)
+		expect(text).toBe(
+			'Choose one option:\n\n- **Move.** Shift it.\n- **Throw.** Hurl it.',
+		)
+	})
+
+	it('accepts both punctuation placements, which one menu mixes', () => {
+		// Life from Stone lists `**HP**. +10 HP` beside `**AV.** + Tier`. Matching
+		// only one form left the odd sibling stranded above the list as prose.
+		const text = prose('<strong>HP</strong>. +10 HP<br/><strong>AV.</strong> +2')
+		expect(text).toBe('- **HP**. +10 HP\n- **AV.** +2')
+	})
+
+	it('leaves a lone bold label as prose', () => {
+		const text = prose('<strong>Note.</strong> Just an emphasized sentence.')
+		expect(text).toBe('**Note.** Just an emphasized sentence.')
+	})
+
+	it('leaves a bare bold heading with no period alone', () => {
+		const text = prose('<strong>Attacks</strong><br/><strong>Traits</strong>')
+		expect(text).toBe('**Attacks**\n**Traits**')
+	})
+
+	it('attaches a line between entries to the entry above it', () => {
+		// Control Water's "If using this option on a large body of water…" belongs to
+		// Flood, so it must not break the run into two lists.
+		const text = prose(
+			'<strong>Flood.</strong> Raise it.<br/>On a large body, a wave instead.' +
+				'<br/><strong>Split.</strong> Part it.',
+		)
+		expect(text).toBe(
+			'- **Flood.** Raise it.\n  On a large body, a wave instead.\n- **Split.** Part it.',
+		)
+	})
+
+	it('keeps a closing note after the last entry as its own paragraph', () => {
+		// Plant Growth's "The plants last for a medium duration…" applies to every
+		// option, so folding it into the final entry would mis-scope it.
+		const text = prose(
+			'<strong>Attack.</strong> Hit them.<br/><strong>Shape.</strong> Build it.' +
+				'<br/>The plants last a short duration.',
+		)
+		expect(text).toBe(
+			'- **Attack.** Hit them.\n- **Shape.** Build it.\n\nThe plants last a short duration.',
+		)
+	})
+})
+
 describe('full JSON corpus parses cleanly (fail-loud guard)', () => {
 	const jsonDir = path.join(__dirname, '../../src/utils/data/json')
 	for (const file of ['arcane-spells.json', 'mystic-spells.json']) {

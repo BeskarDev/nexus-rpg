@@ -26,8 +26,8 @@
 		"test:coverage": "vitest run --coverage",
 		"creature:build": "bun src/utils/typescript/cli/creatureBuilderCLI.ts",
 		"report:links": "bun src/utils/scripts/linkification-report.ts",
-		"content:gen": "bun src/utils/content-gen/generate-spells.ts && bun src/utils/content-gen/generate-conditions.ts && bun src/utils/content-gen/generate-combat-arts.ts",
-		"content:check": "bun src/utils/content-gen/generate-spells.ts --check && bun src/utils/content-gen/generate-conditions.ts --check && bun src/utils/content-gen/generate-combat-arts.ts --check"
+		"content:gen": "bun src/utils/content-gen/generate-spells.ts && bun src/utils/content-gen/generate-conditions.ts && bun src/utils/content-gen/generate-combat-arts.ts && bun src/utils/content-gen/generate-talents.ts",
+		"content:check": "bun src/utils/content-gen/generate-spells.ts --check && bun src/utils/content-gen/generate-conditions.ts --check && bun src/utils/content-gen/generate-combat-arts.ts --check && bun src/utils/content-gen/generate-talents.ts --check"
 	},
 	"dependencies": {
 		"@docusaurus/core": "^3.10.2",

@@ -40,7 +40,7 @@ const SUN_RAYS = (() => {
 })()
 
 /** Card families, keyed by their keystone. Corners follow the same motif. */
-export type CodexVariant = 'winged' | 'serpent' | 'khopesh'
+export type CodexVariant = 'winged' | 'serpent' | 'khopesh' | 'ziggurat'
 
 const SURFACE = 'var(--ifm-background-surface-color)'
 
@@ -55,7 +55,10 @@ const SURFACE = 'var(--ifm-background-surface-color)'
  * line. Sized to leave at least ~38% of that shortest card as gap.
  *
  * Measured shortest cards: spells 317px, combat arts 147px, conditions 85px, all
- * on a 76px corner box (≈0.79px per unit).
+ * on a 76px corner box (≈0.79px per unit). Talents reuse the spell/khopesh
+ * reaches: the shortest talent still carries a name row, a divider and at least
+ * two rank rungs, so it is bounded well above the 147px combat-art case that
+ * those reaches were already validated against. Not independently measured.
  *
  * Asymmetric reach only works because every terminal — spear blade, triangle
  * band, tail wave period — is FIXED size, independent of `len`; only the shaft
@@ -66,6 +69,7 @@ const SURFACE = 'var(--ifm-background-surface-color)'
 const RAIL_LEN: Record<CodexVariant, { edge: number; side: number }> = {
 	winged: { edge: 92, side: 55 },
 	khopesh: { edge: 92, side: 55 },
+	ziggurat: { edge: 92, side: 55 },
 	serpent: { edge: 88, side: 43 },
 }
 
@@ -127,6 +131,52 @@ function CornerRail({ variant, len }: { variant: CodexVariant; len: number }) {
 					stroke={SURFACE}
 					strokeWidth={0.45}
 				/>
+			</>
+		)
+	}
+	if (variant === 'ziggurat') {
+		// Architectural: a low plinth course running the edge, ending in a stepped
+		// terminal — the ziggurat keystone's profile laid on its side. The steps
+		// DESCEND outward so the rail still tapers to a thin tip like its siblings;
+		// an ascending stair ended blunt and read as a broken-off fragment.
+		//
+		// The terminal is a FIXED 15 units (per the rail-length note): only the
+		// plinth stretches, so the long top rail and the short side rail carry the
+		// identical stair instead of two scaled copies.
+		const TERMINAL = 15
+		const b = len - TERMINAL
+		// Course heights step down 3 → 2 → 1 units above the border line. All growth
+		// is upward (−y): the top rail's detail must never project down into the
+		// content panel.
+		const steps: [number, number, number][] = [
+			[b, b + 5, 3.2],
+			[b + 5, b + 10, 2.2],
+			[b + 10, b + TERMINAL, 1.2],
+		]
+		return (
+			<>
+				{/* plinth: a solid low course, thicker than a stroke so the rail reads as
+				    masonry rather than a line */}
+				<path
+					d={`M13 5.2 L${n(b)} 5.2 L${n(b)} 6.8 L13 6.8 Z`}
+					fill="currentColor"
+					stroke="none"
+				/>
+				{/* two pilaster ticks near the butt — the rhythm the keystone's flanking
+				    courses use, so corner and keystone read as one order */}
+				<path d="M18 4.2 L18 7.8 M22.5 4.2 L22.5 7.8" strokeWidth={0.8} />
+				<g fill="currentColor" stroke="none">
+					{steps.map(([xa, xb, h]) => (
+						<path key={xa} d={`M${n(xa)} ${n(6.8 - h)} L${n(xb)} ${n(6.8 - h)} L${n(xb)} 6.8 L${n(xa)} 6.8 Z`} />
+					))}
+				</g>
+				{/* carved coping: a surface-colour line under each course top, so the
+				    stepped mass stays legible instead of fusing into one wedge */}
+				<g stroke={SURFACE} strokeWidth={0.45}>
+					{steps.map(([xa, xb, h]) => (
+						<path key={xa} d={`M${n(xa + 0.8)} ${n(6.8 - h + 0.75)} L${n(xb - 0.8)} ${n(6.8 - h + 0.75)}`} />
+					))}
+				</g>
 			</>
 		)
 	}
@@ -514,11 +564,98 @@ function KhopeshKeystone() {
 	)
 }
 
+/**
+ * A stepped ziggurat — the Mesopotamian temple-tower — as the keystone for
+ * talent cards.
+ *
+ * Chosen because a talent *is* a ladder: you buy Rank 1, then 2, then 3, and the
+ * card renders that as tiers. The ziggurat encodes tiered ascent literally, it is
+ * period-correct for the setting's Mesopotamian half, and its stepped triangular
+ * silhouette reads clearly apart from its siblings (the winged disc spreads flat,
+ * the serpents wave, the khopeshes cross in an X).
+ *
+ * Same craft rules as the rest of the kit: opaque backing so the card's top
+ * border stops at the ornament, currentColor, flat. The tiers are struck SOLID
+ * with carved surface-colour coping lines rather than drawn as outlines — at this
+ * size nested rectangles of hairline stroke read as a wireframe diagram, not
+ * masonry. The summit shrine is a hollow diamond with a solid core, matching the
+ * serpent and khopesh bosses; the concentric ring stays reserved for the winged
+ * disc so the hierarchy holds.
+ */
+function ZigguratKeystone() {
+	// Four receding courses. Each entry is [x-left, x-right, y-top]; every course
+	// runs down to the base line so the mass is continuous rather than a stack of
+	// floating bars.
+	const BASE = 19.4
+	const COURSES: [number, number, number][] = [
+		[26, 58, 15.0],
+		[30, 54, 11.4],
+		[34, 50, 7.9],
+		[37.6, 46.4, 5.0],
+	]
+	// The monumental central stairway, carved out in the surface colour as a ladder
+	// of treads rather than a solid slot — a solid slot cut the tower in half.
+	const TREADS = [17.6, 15.6, 13.6, 11.6, 9.6].map(
+		(y, i) => `M${n(39.4 + i * 0.45)} ${n(y)} L${n(44.6 - i * 0.45)} ${n(y)}`,
+	)
+	return (
+		<svg
+			className={styles.zigguratKeystone}
+			viewBox="0 0 84 26"
+			fill="none"
+			stroke="currentColor"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			{/* Opaque backing along the border line only (y=19.4), so the card's top
+			    border stops at the ornament instead of running through the tiers. */}
+			<path d="M2 18.2 L82 18.2 L82 20.6 L2 20.6 Z" fill={SURFACE} stroke="none" />
+
+			{/* Flanking plinth courses out to the frame edges, stepping DOWN in height
+			    away from the tower. This is what lets the keystone span the top edge
+			    like its siblings, and it gives the rigid stepped geometry a gradient of
+			    mass instead of an abrupt stop. */}
+			<g fill="currentColor" stroke="none">
+				<path d={`M14 16.6 L26 16.6 L26 ${n(BASE)} L14 ${n(BASE)} Z`} />
+				<path d={`M4 17.6 L14 17.6 L14 ${n(BASE)} L4 ${n(BASE)} Z`} />
+				<path d={`M58 16.6 L70 16.6 L70 ${n(BASE)} L58 ${n(BASE)} Z`} />
+				<path d={`M70 17.6 L80 17.6 L80 ${n(BASE)} L70 ${n(BASE)} Z`} />
+			</g>
+
+			{/* the tower: solid receding courses */}
+			<g fill="currentColor" stroke="none">
+				{COURSES.map(([xa, xb, yt]) => (
+					<path key={xa} d={`M${n(xa)} ${n(yt)} L${n(xb)} ${n(yt)} L${n(xb)} ${n(BASE)} L${n(xa)} ${n(BASE)} Z`} />
+				))}
+			</g>
+
+			{/* carved coping under each course top + the stairway treads, all in the
+			    surface colour so the tiers stay separable */}
+			<g stroke={SURFACE} strokeWidth={0.5}>
+				{COURSES.map(([xa, xb, yt]) => (
+					<path key={xa} d={`M${n(xa + 1)} ${n(yt + 0.85)} L${n(xb - 1)} ${n(yt + 0.85)}`} />
+				))}
+				{TREADS.map((d) => (
+					<path key={d} d={d} />
+				))}
+			</g>
+
+			{/* summit shrine: hollow diamond with a solid core (no concentric ring —
+			    that stays the winged disc's alone) */}
+			<path d={`M42 0.6 L46.2 4.6 L42 8.6 L37.8 4.6 Z`} fill={SURFACE} stroke="none" />
+			<path d={`M42 1.4 L45.4 4.6 L42 7.8 L38.6 4.6 Z`} strokeWidth={1.1} />
+			<path d={`M42 3.1 L43.9 4.6 L42 6.1 L40.1 4.6 Z`} fill="currentColor" stroke="none" />
+		</svg>
+	)
+}
+
 export interface CardFrameProps {
 	/**
 	 * Which card family this is. Selects both the top-edge keystone and the
 	 * matching corner rails: the grand winged disc (spells), twin serpents
-	 * (conditions), or crossed khopeshes (combat arts).
+	 * (conditions), crossed khopeshes (combat arts), or the stepped ziggurat
+	 * (talents).
 	 */
 	keystone?: CodexVariant
 }
@@ -527,6 +664,7 @@ const KEYSTONES = {
 	winged: WingedDisc,
 	serpent: SerpentKeystone,
 	khopesh: KhopeshKeystone,
+	ziggurat: ZigguratKeystone,
 } as const
 
 /**

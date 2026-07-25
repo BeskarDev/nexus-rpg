@@ -86,13 +86,59 @@ export function htmlToMarkdownLines(html: string, context = 'field'): string[] {
 		.filter((line) => line !== '')
 }
 
+/**
+ * A line that opens with a bolded label acting as a menu entry: `**Throw.**`,
+ * `**Ritual (minutes).**`, `**1.**`. The label is short and ends in a period,
+ * which is what separates it from a sentence that merely starts with emphasis.
+ *
+ * Both punctuation placements are accepted — `**AV.**` and `**HP**.` — because the
+ * corpus mixes them inside a single menu (Life from Stone's trait list). Matching
+ * only one form stranded the odd sibling above the folded list as loose prose,
+ * which looked more broken than the run-on paragraph it replaced. A trailing
+ * period is still required, so a bare `**Attacks**` heading stays prose.
+ */
+const MENU_LABEL = /^(?:\*\*(?:\d+\.|[A-Z][^*]{0,28}\.)\*\*|\*\*[A-Z][^*]{0,28}\*\*\.)\s/
+
+/**
+ * Fold a run of bold-labeled menu entries into a tight markdown list.
+ *
+ * Prose lines come from `<br/>`-split chunks and are joined with a plain newline,
+ * which markdown collapses to a space. For consecutive sentences that reads fine
+ * (better, even), but a spell or talent that offers a *menu* of modes — Glyph's
+ * Explosion/Alarm/Spell Effect, Wild Overload's six d6 outcomes — collapsed into
+ * one run-on paragraph and lost the structure entirely.
+ *
+ * Only a run of two or more labels folds; a lone bold label is just an emphasized
+ * sentence. Non-label lines BETWEEN labels become lazy continuations of the entry
+ * above them (Tempest's "If using this option on a large body of water…" belongs
+ * to Flood), while lines before the first label and after the last stay ordinary
+ * prose — that is how a closing note ("The plants last for a medium duration…")
+ * avoids being swallowed into the final menu entry.
+ */
+function foldMenuList(lines: string[]): string[] {
+	const labelAt = lines.map((line) => MENU_LABEL.test(line))
+	if (labelAt.filter(Boolean).length < 2) return lines
+	const first = labelAt.indexOf(true)
+	const last = labelAt.lastIndexOf(true)
+
+	const out: string[] = lines.slice(0, first)
+	// Blank line so the list is its own block rather than interrupting the intro
+	// paragraph.
+	if (out.length > 0) out.push('')
+	for (let i = first; i <= last; i++) {
+		out.push(labelAt[i] ? `- ${lines[i]}` : `  ${lines[i]}`)
+	}
+	const tail = lines.slice(last + 1)
+	if (tail.length > 0) out.push('', ...tail)
+	return out
+}
+
 /** Join raw `<br/>`-split chunks into one markdown block. */
 function chunksToMarkdown(chunks: string[], context: string): string {
-	return chunks
+	const lines = chunks
 		.map((c) => inlineHtmlToMarkdown(c, context))
 		.filter((line) => line.length > 0)
-		.join('\n')
-		.trim()
+	return foldMenuList(lines).join('\n').trim()
 }
 
 export interface ParseEffectOptions {

@@ -70,6 +70,22 @@
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }
+/* Stepped-ziggurat keystone (talents). viewBox is 84x26 with the base/border line
+   at y=19.4, so 19.4/26 of the rendered height sits above the card edge — the
+   tower rises out of the frame and only the base course reads inside it.
+   height = 26 * (88/84) keeps the scale uniform; top = 19.4/26 of that height.
+   This is by far the tallest keystone (20.3px of overhang against the khopesh's
+   15.9px), which is why the talent card carries a larger top margin — see
+   TalentCard.module.css. */
+.zigguratKeystone {
+	position: absolute;
+	left: 50%;
+	top: -20.33px;
+	width: 88px;
+	height: 27.24px;
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
 
 /* --- Lozenge divider --- */
 .divider {
