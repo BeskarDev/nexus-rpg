@@ -185,3 +185,59 @@ the picture. Sized right, the rule runs in and stops against metal.
 - Generate repeated geometry in code (a loop emitting path strings) rather than
   hand-authoring coordinates: hand-authored arcs drift, and parametric geometry keeps
   proportions honest when a size changes.
+
+## 13. Sigils are a different animal — alpha silhouettes, not carved-back ornaments
+
+The sigils (`sigil-paths.ts`) are the marks beside headings, sidebar entries, breadcrumbs,
+navbar items and chapter cards. They share the kit's language but NOT its construction, and
+the difference is invisible until you check the navbar specifically.
+
+**The mask constraint.** The navbar renders a chapter mark through CSS `mask-image` with an
+SVG data URI. Per CSS Masking, an image source resolves as **alpha**, not luminance. So rule
+1's signature move — a solid shape with detail carved back out in
+`stroke="var(--ifm-background-surface-color)"` — is **illegal for a sigil**: a surface-coloured
+stroke is fully opaque, so in a mask it is ink, not a carve, and the mark silently turns into
+a blob.
+
+**Sigil law: every mark must be a correct alpha silhouette.** Interior detail is real
+geometry — even-odd voids in one path, or separated subpaths — never an overpaint in the
+background colour. `sigils:check` fails any `stroke=`, any non-`currentColor` fill, and any
+`var(--…)` in the data.
+
+### The design law
+
+Enforced by `bun run sigils:check` (in CI). Thresholds live in `src/utils/sigils/constants.ts`.
+
+| Rule | Value | Why |
+|---|---|---|
+| Grid | `viewBox="0 0 32 32"` | 24 forces sub-unit fractions once detail is carved; 32 gives clean coordinates against the 16px baseline |
+| Construction | one `fill="currentColor"` mass per element, `fill-rule="evenodd"` for voids | rule 1, and the only mask-safe form |
+| Min ink feature | ≥ **2.5 units** | 2.5/32 at a 14px sidebar render is 1.09px — the smallest thing that survives |
+| Min void | ≥ **2 units**, enclosed or between masses | rule 1's corollary: edge-spanning detail turned a snake into a dashed caterpillar |
+| Ink coverage | **20–38%** | one measurable density, so the set does not read as three icon packs |
+| Cap box | ink within ~26×26 centred, ±2 | so sidebar rows and breadcrumb baselines align |
+| Corners | no `rx`, no round linecap on a terminal | carved stone has vertices; blades end in points |
+| Detail budget | ≤ 3 interior features | rule 8: below ~3px a feature is texture, draw rhythm or leave it out |
+| Silhouette | distinguishable by outline alone at 14px | machine-checked as pairwise distance between 8×8 coverage signatures |
+
+**The size ladder.** A mark ships at 13 (breadcrumb), 15 (sidebar), 16 (paginator), 20
+(navbar), 22 (callout, index row), 32 (homepage tile), 38 (chapter card), and 1em in an h1.
+One geometry serves all of them — authored to survive the 13px end, which is also how a real
+signet reads. Per-surface sizes live in `SIGIL_SIZE` in `SigilIcon.tsx`; adjust there, once,
+never per mark.
+
+**Motif vocabulary.** A thing seen in profile or plan, silhouetted — the determinative logic
+of Egyptian and Mesopotamian sign lists, a writing system built to stay legible tiny. Banned:
+caret/chevron arrows, concentric-ring targets, rounded-rect frames, speech bubbles, gauges,
+dashboard glyphs, and anything whose referent is a modern object (notebook, clipboard, card).
+Name a mark after what it depicts; a name that lies about its geometry makes every future
+assignment a guess.
+
+**Coverage floors are motif-dependent.** A key, a bow, a sickle and a crescent are honestly
+linear and land near 20%; a temple facade or a rolled scroll lands near 37%. Reaching for a
+uniform 30% turns the linear ones into clubs. Fatten by giving a motif more mass (a second
+element, a heavier haft), never by thickening a limb past what the object would be.
+
+**Practical loop.** Draw → `bun run sigils:check` (it names the mark and the rule, and for a
+gap failure the two nearest points) → `bun run sigils:sheet` and look at the 14px column →
+review in `/dev/sigils` in both themes. Do not trust the path data; the law is about ink.

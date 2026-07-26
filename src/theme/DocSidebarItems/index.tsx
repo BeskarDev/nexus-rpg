@@ -1,7 +1,9 @@
 import React from 'react'
 import OriginalDocSidebarItems from '@theme-original/DocSidebarItems'
 import { stripLeadingEmoji } from '@site/src/remark/shared/strip-leading-emoji'
-import SigilIcon from '@site/src/components/codex/SigilIcon'
+import SigilIcon, {
+	SIGIL_SIZE,
+} from '@site/src/components/codex/SigilIcon'
 import {
 	pageSigilForDocId,
 	pageSigilForHref,
@@ -43,7 +45,7 @@ function decorate(items: any[]): any[] {
 				<>
 					<SigilIcon
 						name={sigil}
-						size={16}
+						size={SIGIL_SIZE.sidebar}
 						className="sidebar-sigil"
 					/>
 					{clean}

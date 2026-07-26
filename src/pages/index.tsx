@@ -6,6 +6,7 @@ import {
   Cartouche,
   FriezeDivider,
   LozengeDivider,
+  SIGIL_SIZE,
   SigilIcon,
   SolarMedallion,
 } from '@site/src/components/codex'
@@ -39,13 +40,13 @@ const THRESHOLDS: Entry[] = [
 	{
 		label: 'Learn the Game',
 		href: '/docs/basic-rules/how-to-roll',
-		sigil: 'dice',
+		sigil: 'casting-sticks',
 		blurb: 'One attribute die, one skill, one target number. Start here.',
 	},
 	{
 		label: 'Make a Character',
 		href: '/docs/basic-rules/character-creation',
-		sigil: 'quill',
+		sigil: 'stylus',
 		blurb: 'Folk, upbringing, background, and the skills that shape them.',
 	},
 	{
@@ -154,7 +155,7 @@ function IndexRow({
 					{numeral ?? ''}
 				</span>
 				<span className={styles.indexSigil} aria-hidden="true">
-					<SigilIcon name={entry.sigil} size={22} />
+					<SigilIcon name={entry.sigil} size={SIGIL_SIZE.indexRow} />
 				</span>
 				<span className={styles.indexText}>
 					<span className={styles.indexLabel}>{entry.label}</span>
@@ -253,7 +254,7 @@ export default function Home(): React.ReactNode {
 					{THRESHOLDS.map((t) => (
 						<Link key={t.href} to={t.href} className={styles.threshold}>
 							<span className={styles.thresholdSigil} aria-hidden="true">
-								<SigilIcon name={t.sigil} size={34} />
+								<SigilIcon name={t.sigil} size={SIGIL_SIZE.tile} />
 							</span>
 							<Cartouche>{t.label}</Cartouche>
 							<span className={styles.thresholdBlurb}>{t.blurb}</span>
@@ -264,7 +265,7 @@ export default function Home(): React.ReactNode {
 				{/* --- Contents ---------------------------------------------------- */}
 				<section className={styles.contents} aria-labelledby="contents-heading">
 					<h2 className={styles.sectionHeading} id="contents-heading">
-						<Cartouche glyph="book">Contents</Cartouche>
+						<Cartouche glyph="scroll">Contents</Cartouche>
 					</h2>
 					<ol className={styles.indexList}>
 						{CHAPTERS.map((c) => (
@@ -275,7 +276,7 @@ export default function Home(): React.ReactNode {
 					<FriezeDivider compact />
 
 					<h2 className={styles.sectionHeading} id="tools-heading">
-						<Cartouche glyph="crossedtools">At the Table</Cartouche>
+						<Cartouche glyph="hammer">At the Table</Cartouche>
 					</h2>
 					<ul className={styles.indexList} aria-labelledby="tools-heading">
 						{TOOLS.map((t) => (

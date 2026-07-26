@@ -1,5 +1,5 @@
 import React from 'react'
-import SigilIcon, { SigilName } from './SigilIcon'
+import SigilIcon, { SIGIL_SIZE, SigilName } from './SigilIcon'
 import styles from './MagicCallout.module.css'
 
 export interface MagicCalloutProps {
@@ -27,7 +27,7 @@ export default function MagicCallout({
 				className={`${styles.glyph} runeGlyph magic-accent`}
 				aria-hidden="true"
 			>
-				<SigilIcon name={sigil} size={22} />
+				<SigilIcon name={sigil} size={SIGIL_SIZE.callout} />
 			</span>
 			<div className={styles.body}>
 				{title ? <strong className={styles.title}>{title}</strong> : null}

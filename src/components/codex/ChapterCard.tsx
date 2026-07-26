@@ -1,5 +1,5 @@
 import React from 'react'
-import SigilIcon, { SigilName } from './SigilIcon'
+import SigilIcon, { SIGIL_SIZE, SigilName } from './SigilIcon'
 import { CardFrame } from './ornaments'
 import styles from './ChapterCard.module.css'
 
@@ -31,7 +31,7 @@ export default function ChapterCard({ label, href, sigil }: ChapterCardProps) {
 			<CardFrame keystone="winged" cornersOnly />
 			{sigil ? (
 				<span className={styles.sigil} aria-hidden="true">
-					<SigilIcon name={sigil} size={40} />
+					<SigilIcon name={sigil} size={SIGIL_SIZE.chapterCard} />
 				</span>
 			) : null}
 			<span className={styles.label}>{label}</span>

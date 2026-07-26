@@ -70,6 +70,12 @@ jobs:
       - name: Check generated content is up to date
         run: bun run content:check
 
+      - name: Check sigils against the design law
+        run: bun run sigils:check
+
+      - name: Check navbar sigil masks are up to date
+        run: bun run sigils:masks --check
+
       - name: Build application
         run: bun run build
 

@@ -7,7 +7,9 @@ import Link from '@docusaurus/Link'
 import { translate } from '@docusaurus/Translate'
 import DocBreadcrumbsStructuredData from '@theme/DocBreadcrumbs/StructuredData'
 import { stripLeadingEmoji } from '@site/src/remark/shared/strip-leading-emoji'
-import SigilIcon from '@site/src/components/codex/SigilIcon'
+import SigilIcon, {
+	SIGIL_SIZE,
+} from '@site/src/components/codex/SigilIcon'
 import { Cartouche, TrailBraid } from '@site/src/components/codex/ornaments'
 import {
 	pageSigilForDocId,
@@ -103,7 +105,7 @@ export default function DocBreadcrumbs(): React.ReactNode {
 							>
 								<SigilIcon
 									name="temple"
-									size={15}
+									size={SIGIL_SIZE.breadcrumb}
 									className="codex-trail__sigil"
 								/>
 							</Link>

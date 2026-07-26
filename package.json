@@ -26,6 +26,9 @@
 		"test:coverage": "vitest run --coverage",
 		"creature:build": "bun src/utils/typescript/cli/creatureBuilderCLI.ts",
 		"report:links": "bun src/utils/scripts/linkification-report.ts",
+		"sigils:check": "bun src/utils/sigils/check.ts",
+		"sigils:masks": "bun src/utils/sigils/masks.ts",
+		"sigils:sheet": "bun src/utils/sigils/sheet.ts",
 		"content:gen": "bun src/utils/content-gen/generate-spells.ts && bun src/utils/content-gen/generate-conditions.ts && bun src/utils/content-gen/generate-combat-arts.ts && bun src/utils/content-gen/generate-talents.ts && bun src/utils/content-gen/generate-creatures.ts",
 		"content:check": "bun src/utils/content-gen/generate-spells.ts --check && bun src/utils/content-gen/generate-conditions.ts --check && bun src/utils/content-gen/generate-combat-arts.ts --check && bun src/utils/content-gen/generate-talents.ts --check && bun src/utils/content-gen/generate-creatures.ts --check"
 	},

@@ -1,7 +1,7 @@
 import React, { useEffect, useId, useRef, useState } from 'react'
 import styles from './CreatureStatBlock.module.css'
 import { CardFrame, LozengeDivider, Cartouche } from './ornaments'
-import SigilIcon, { SigilName } from './SigilIcon'
+import SigilIcon, { SIGIL_SIZE, SigilName } from './SigilIcon'
 import StatGlyph, { StatGlyphName } from './StatGlyph'
 import DieToken from './DieToken'
 
@@ -201,7 +201,7 @@ export default function CreatureStatBlock({
 								title={loreOpen ? 'Hide lore' : 'Show lore'}
 								onClick={() => setLoreOpen((open) => !open)}
 							>
-								<SigilIcon name="scroll" size={15} />
+								<SigilIcon name="scroll" size={SIGIL_SIZE.breadcrumb} />
 								<span className={styles.srOnly}>Lore</span>
 							</button>
 						)}
@@ -264,10 +264,10 @@ export interface StatBlockTraitProps {
 
 /** Glyphs for the trait rows, so each is identifiable without reading its label. */
 const TRAIT_GLYPHS: Record<string, SigilName> = {
-	Skills: 'scroll',
+	Skills: 'hand',
 	Immunities: 'shield',
-	Resistances: 'grid',
-	Weaknesses: 'burst',
+	Resistances: 'breastplate',
+	Weaknesses: 'khopesh',
 }
 
 /**

@@ -14,11 +14,16 @@ import {
 } from '@site/src/components/codex/page-sigils'
 
 describe('codex kit', () => {
-	it('SigilIcon renders an inline svg using currentColor', () => {
+	it('SigilIcon renders a mask-safe currentColor silhouette', () => {
 		const { container } = render(<SigilIcon name="rune" />)
 		const svg = container.querySelector('svg')
 		expect(svg).toBeTruthy()
-		expect(svg?.getAttribute('stroke')).toBe('currentColor')
+		expect(svg?.getAttribute('viewBox')).toBe('0 0 32 32')
+		expect(svg?.getAttribute('fill')).toBe('currentColor')
+		// No stroke anywhere: the navbar renders these through `mask-image`, which
+		// resolves alpha, so a mark has to be a correct solid silhouette.
+		expect(svg?.getAttribute('stroke')).toBeNull()
+		expect(svg?.innerHTML).not.toContain('stroke=')
 		// Decorative by default: hidden from the a11y tree.
 		expect(svg?.getAttribute('aria-hidden')).toBe('true')
 	})
@@ -59,7 +64,7 @@ describe('codex kit', () => {
 		const svg = container.querySelector('svg.heading-sigil')
 		expect(svg).toBeTruthy()
 		expect(svg?.getAttribute('aria-hidden')).toBe('true')
-		expect(svg?.getAttribute('stroke')).toBe('currentColor')
+		expect(svg?.getAttribute('fill')).toBe('currentColor')
 	})
 
 	it('resolves the same page sigil from a source path, doc id, and href', () => {
@@ -69,8 +74,10 @@ describe('codex kit', () => {
 			pageSigilForSourcePath(
 				'/repo/docs/01-basic-rules/01-how-to-roll.md',
 			),
-		).toBe('dice')
-		expect(pageSigilForDocId('basic-rules/how-to-roll')).toBe('dice')
+		).toBe('casting-sticks')
+		expect(pageSigilForDocId('basic-rules/how-to-roll')).toBe(
+			'casting-sticks',
+		)
 
 		// Index/overview normalization: category href, overview doc id, and the
 		// index source all collapse to one key.
@@ -80,12 +87,12 @@ describe('codex kit', () => {
 		)
 		expect(
 			pageSigilForHref('/docs/basic-rules/quickstart-characters/overview'),
-		).toBe('masks')
+		).toBe('votive-mask')
 		expect(
 			pageSigilForSourcePath(
 				'/x/docs/01-basic-rules/03-quickstart-characters/00-overview.md',
 			),
-		).toBe('masks')
+		).toBe('votive-mask')
 
 		// Unmapped leaf page (never had an emoji) → no bespoke sigil.
 		expect(

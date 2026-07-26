@@ -1,5 +1,5 @@
 import React from 'react'
-import SigilIcon, { SigilName } from './SigilIcon'
+import SigilIcon, { SIGIL_SIZE, SigilName } from './SigilIcon'
 import styles from './OrnamentDivider.module.css'
 
 export interface OrnamentDividerProps {
@@ -26,7 +26,7 @@ export default function OrnamentDivider({
 			<span
 				className={`${styles.glyph}${magic ? ' runeGlyph magic-accent' : ''}`}
 			>
-				<SigilIcon name={sigil} size={20} />
+				<SigilIcon name={sigil} size={SIGIL_SIZE.navbar} />
 			</span>
 		</div>
 	)

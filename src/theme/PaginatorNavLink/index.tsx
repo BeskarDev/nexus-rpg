@@ -3,7 +3,9 @@ import Link from '@docusaurus/Link'
 import clsx from 'clsx'
 import type { Props } from '@theme/PaginatorNavLink'
 import { stripLeadingEmoji } from '@site/src/remark/shared/strip-leading-emoji'
-import SigilIcon from '@site/src/components/codex/SigilIcon'
+import SigilIcon, {
+	SIGIL_SIZE,
+} from '@site/src/components/codex/SigilIcon'
 import { pageSigilForHref } from '@site/src/components/codex/page-sigils'
 
 /**
@@ -37,7 +39,7 @@ export default function PaginatorNavLink(props: Props): React.ReactNode {
 			{subLabel && <div className="pagination-nav__sublabel">{subLabel}</div>}
 			<div className="pagination-nav__label">
 				{sigil && (
-					<SigilIcon name={sigil} size={16} className="pagination-sigil" />
+					<SigilIcon name={sigil} size={SIGIL_SIZE.paginator} className="pagination-sigil" />
 				)}
 				{label}
 			</div>

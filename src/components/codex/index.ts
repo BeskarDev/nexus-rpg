@@ -1,5 +1,6 @@
 export { default as SigilIcon } from './SigilIcon'
 export type { SigilIconProps } from './SigilIcon'
+export { SIGIL_SIZE } from './SigilIcon'
 export type { SigilName } from './sigil-paths'
 export { SIGIL_INNER } from './sigil-paths'
 export { default as ChapterSigil } from './ChapterSigil'

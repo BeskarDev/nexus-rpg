@@ -178,6 +178,8 @@ which silently re-inflates every gap you just closed.
 |---|---|
 | Codex components | `src/components/codex/` (+ `index.ts` barrel) |
 | Ornament kit | `src/components/codex/ornaments.tsx` + `.module.css` |
+| Sigils | `src/components/codex/sigil-paths.ts` (geometry) + `sigil-geometry.ts` (drawing primitives) + `page-sigils.ts` (doc → mark). Rules: `references/ornament-craft.md` § Sigils |
+| Sigil tooling | `bun run sigils:check` (design law, in CI) · `bun run sigils:masks [--check]` (navbar mask block in `custom.css`, in CI) · `bun run sigils:sheet [out.png]` (contact sheet) · `/dev/sigils` (dev-only review gallery) |
 | Global MDX registration | `src/theme/MDXComponents.tsx` — a generated component MUST be registered here; also where markdown intrinsics are remapped (`hr` → `LozengeDivider`, `table` → `DocTable`) |
 | Theme swizzles (all wrappers) | `src/theme/` — `Admonition/Layout` (type sigil), `Footer/Layout` (solar crest), `DocSidebarItems`, `DocBreadcrumbs` |
 | Chips, global tokens, bullets | `src/css/custom.css` |

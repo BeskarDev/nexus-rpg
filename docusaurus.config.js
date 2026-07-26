@@ -250,6 +250,22 @@ const config = {
 						autoKeywordPlugin,
 					],
 				},
+				// The sigil review gallery (`/dev/sigils`) is a development tool: it
+				// exists so the 12–14px marks can be judged at the size they ship at.
+				// Excluded from production builds outright, not just hidden, so it
+				// never becomes a public route or a sitemap entry.
+				pages: {
+					exclude: [
+						'**/_*.{js,jsx,ts,tsx,md,mdx}',
+						'**/_*/**',
+						'**/*.test.{js,jsx,ts,tsx}',
+						'**/__tests__/**',
+						...(process.env.NODE_ENV === 'production' ? ['**/dev/**'] : []),
+					],
+				},
+				sitemap: {
+					ignorePatterns: ['/dev/**'],
+				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
 				},

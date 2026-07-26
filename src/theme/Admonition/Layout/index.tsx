@@ -2,7 +2,9 @@ import React from 'react'
 import clsx from 'clsx'
 import Layout from '@theme-original/Admonition/Layout'
 import type { Props } from '@theme/Admonition/Layout'
-import SigilIcon from '@site/src/components/codex/SigilIcon'
+import SigilIcon, {
+	SIGIL_SIZE,
+} from '@site/src/components/codex/SigilIcon'
 import type { SigilName } from '@site/src/components/codex/sigil-paths'
 
 /**
@@ -27,23 +29,22 @@ import type { SigilName } from '@site/src/components/codex/sigil-paths'
  * reference detail, the watchful eye for a warning, crossed blades for real
  * danger.
  *
- * The marks have to be distinguishable at ~22px, which ruled out two of the
- * first picks: `scroll` for info was a second small rectangle beside note's
- * tablet, and `fang` collapsed into a pair of vertical strokes.
+ * The marks have to be distinguishable at ~22px side by side, so the set spans
+ * four different silhouette families rather than four rectangles.
  */
 const TYPE_SIGILS: Record<string, SigilName> = {
 	note: 'tablet',
-	tip: 'spark',
-	info: 'book',
+	tip: 'flame',
+	info: 'scroll',
 	warning: 'eye',
-	caution: 'eye',
+	caution: 'venom-fang',
 	danger: 'blades',
 }
 
 export default function AdmonitionLayout(props: Props): React.ReactNode {
 	const sigil = TYPE_SIGILS[props.type]
 	const icon = sigil ? (
-		<SigilIcon name={sigil} size={22} className="codex-admonition__sigil" />
+		<SigilIcon name={sigil} size={SIGIL_SIZE.callout} className="codex-admonition__sigil" />
 	) : (
 		props.icon
 	)
