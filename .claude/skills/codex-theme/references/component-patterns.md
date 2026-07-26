@@ -154,6 +154,12 @@ An ornament tiled along a repeated element must be ONE full-width element. A fri
 put on each `th` restarts its phase at every column edge and seams. Sizing and weighting
 that band is [ornament-craft §10](ornament-craft.md).
 
+**An ornament that belongs to a FRAME must be `position: sticky` inside a scroll container.**
+A block child of `overflow-x: auto` is only as wide as the *visible* box, so scrolling a wide
+table right dragged `.codex-table-slab::before` out of view and left the cornice ending
+mid-slab while the border — which never scrolls — carried on. `position: sticky; left: 0`
+pins it back to the scrollport so frame and cornice stay one edge.
+
 **To replace a theme icon, swizzle `@theme/Icon/<Name>` — never the component using it.**
 Docusaurus routes every glyph through one of these, so a single file changes the artwork
 everywhere it appears and inherits all of the caller's behaviour for free. `Icon/Arrow`
@@ -166,12 +172,35 @@ Icons in a cluster must share a CONSTRUCTION, not just a size. The colour-mode s
 rimmed disc through three states (rays + core → half-lit → crescent), which is what makes
 it read as one control cycling rather than three unrelated pictures.
 
-**Do not redraw a brand mark.** Every other glyph on the navbar can be recut in the codex
-hand because a label sits beside it carrying the meaning; the GitHub mark has no label and
-recognition *is* its function. Style the setting instead — it is inset in a carved keyline
-roundel, matching the colour-mode icons' ring-and-core build, with the silhouette itself
-untouched. Note it is consumed as a CSS mask, so its fill must be a literal colour:
-`currentColor` does not resolve inside a masked or backgrounded image.
+**Do not redraw a brand mark.** A glyph can be recut in the codex hand when a label sits
+beside it carrying the meaning; a bare brand mark has no label and recognition *is* its
+function. Style the setting instead — inset in a carved keyline roundel, matching the
+colour-mode icons' ring-and-core build, silhouette untouched. Note such a mark is consumed
+as a CSS mask, so its fill must be a literal colour: `currentColor` does not resolve inside
+a masked or backgrounded image. (The GitHub mark that this rule was written for now lives
+in the footer's link columns, not the navbar — see the mobile bar note below.)
+
+### The navbar renders every item TWICE
+
+Below 996px Docusaurus renders each navbar item a second time inside `.navbar-sidebar`, and
+the two copies do **not** share a class: the top bar gets `.navbar__item`, the drawer gets
+`.menu__link`. Three consequences, all of which shipped as bugs:
+
+- **Never qualify a custom navbar class with `.navbar__item`.** `.navbar__item.navbar-sigil::before`
+  set `content` only in the top bar, so the mask-image resolved in the drawer but the box
+  never did and the phone's chapter list was naked labels. Use the bare custom class.
+- **Infima hides the top-bar copies** with `.navbar__item { display: none }`, because the
+  drawer already carries them. Any rule that gives those items a `display` at higher
+  specificity (an icon cluster at 0,3,0) silently un-hides them into a bar with no room, and
+  they overlap whatever else is on the right. Re-hide inside the mobile media query.
+- **The mobile search container is `position: absolute; right: var(--ifm-navbar-padding-horizontal)`**
+  (`Navbar/Search/styles.module.css`), on the assumption it is the only thing on the right of
+  a phone bar. With a colour-mode toggle beside it the two are pinned to the same edge and
+  sit on top of each other. `position: static` puts it back in the flex row, where the
+  cluster's own `column-gap` and `align-items: center` align it like any other control.
+
+Rules that override an earlier same-specificity rule must come LATER in `custom.css` —
+a mobile media query near the top of the file loses to a desktop rule 1000 lines down.
 
 ## 10. Two units that silently do nothing
 

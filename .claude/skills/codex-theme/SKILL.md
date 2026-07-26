@@ -146,11 +146,22 @@ Three rules that go with it:
 - **h4 must stay above body size.** Infima's default h4 is 1rem, which sat *below* the
   reading size. Check any heading level you touch against `--nexus-text-base`.
 
-**Reading measure is `--nexus-measure` (36rem / 72ch of Spectral / ~73 characters).** It is
-capped on prose at any depth — including inside cards, which are the most-read pages — while
-tables, code and card *frames* keep the full column. The measure is the lever: a 92-character
-line was what forced the 1.8 leading that made the whole site read oversized. Fix the
-measure before reaching for a smaller font.
+**Reading measure is `--nexus-measure` (42rem / ~84 characters of Spectral).** It caps the
+whole vellum SHEET — `.theme-doc-markdown` is `max-width: measure + 2 × --nexus-sheet-padding-x`
+— so prose, tables, cards and code all describe **one right edge**. The measure is also still
+applied to prose at any depth, which is what keeps a card's rule text from running to the
+card's full frame width.
+
+It got here the hard way. It began at 36rem on the prose elements *only*, with tables and
+cards keeping the full ~813px column, on the theory that a wide figure outdenting past a text
+column is how a printed manual sets one. In practice prose stopped 237px short of every table
+on the page and the ragged edge read as broken. Two standing rules fall out of that:
+
+- **Never cap prose and leave a sibling block uncapped.** Whatever the sheet contains shares
+  its edge.
+- The measure is still the lever for *density*: a 92-character line was what forced the 1.8
+  leading that made the whole site read oversized. Fix the measure before reaching for a
+  smaller font — but move the sheet with it.
 
 ## Density
 
@@ -181,7 +192,7 @@ which silently re-inflates every gap you just closed.
 | Sigils | `src/components/codex/sigil-paths.ts` (geometry) + `sigil-geometry.ts` (drawing primitives) + `page-sigils.ts` (doc → mark). Rules: `references/ornament-craft.md` § Sigils |
 | Sigil tooling | `bun run sigils:check` (design law, in CI) · `bun run sigils:masks [--check]` (navbar mask block in `custom.css`, in CI) · `bun run sigils:sheet [out.png]` (contact sheet) · `/dev/sigils` (dev-only review gallery) |
 | Global MDX registration | `src/theme/MDXComponents.tsx` — a generated component MUST be registered here; also where markdown intrinsics are remapped (`hr` → `LozengeDivider`, `table` → `DocTable`) |
-| Theme swizzles (all wrappers) | `src/theme/` — `Admonition/Layout` (type sigil), `Footer/Layout` (solar crest), `DocSidebarItems`, `DocBreadcrumbs` |
+| Theme swizzles (all wrappers) | `src/theme/` — `Admonition/Layout` (type sigil), `Footer/Layout` (colophon crest + wordmark), `DocSidebarItems`, `DocBreadcrumbs` |
 | Chips, global tokens, bullets | `src/css/custom.css` |
 | Content generators | `src/utils/content-gen/` |
 | Remark plugins (keywords, chips) | `src/remark/` |

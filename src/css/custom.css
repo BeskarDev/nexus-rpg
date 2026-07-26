@@ -246,19 +246,27 @@
 	--nexus-text-2xl: 1.75rem; /* 28px — h2 ceiling */
 	--nexus-text-3xl: 2.25rem; /* 36px — h1 ceiling */
 
-	/* Reading measure: 36rem = 576px, which is 72ch of 16px Spectral ≈ 73 average
-	   characters, inside the 66–75 optimum. The doc column itself is ~823px, so
-	   this is applied to the PROSE elements only — tables, cards and code keep
-	   the full width they need. Before this cap the measure ran to 92
-	   characters, which is what forced the 1.8 leading that made the page read
-	   oversized.
+	/* Reading measure: 42rem = 672px, ~84 characters of 16px Spectral. Above the
+	   66–75 optimum on purpose, because it is now the width of the whole vellum
+	   sheet rather than of the prose alone.
+
+	   It started at 36rem applied to the PROSE elements only, with tables, cards
+	   and code keeping the full ~813px column. That left prose ending 237px short
+	   of every table on the page, and the ragged right edge read as broken rather
+	   than as a printed manual setting a wide figure beside a text column. The
+	   cap moved onto the sheet itself (see `.theme-doc-markdown` below), so prose
+	   and tables now describe ONE right edge, and the measure was widened to keep
+	   tables from being squeezed by the move.
 
 	   Deliberately NOT expressed in `ch`. The `ch` unit resolves against the
 	   ELEMENT's own font, not the body's, so `72ch` on a 28px Cinzel h2 came out
 	   wider than the column and the cap silently did nothing — headings kept
 	   their full 759px while paragraphs wrapped at 576px. An absolute length
 	   resolves identically for every element it is applied to. */
-	--nexus-measure: 36rem;
+	--nexus-measure: 42rem;
+	/* Horizontal padding on the vellum sheet, published as a token so the sheet's
+	   max-width can be written as measure + padding and the two cannot drift. */
+	--nexus-sheet-padding-x: 2rem;
 	--nexus-leading-prose: 1.7;
 
 	/* Character Sheet Layout System */
@@ -359,13 +367,22 @@ body::before {
    Excluded from the character-sheet app (its own full-width layout). */
 .theme-doc-markdown:not(:has(.character-sheet-page)) {
 	background-color: var(--ifm-background-surface-color);
-	padding: 1.5rem 2rem;
+	padding: 1.5rem var(--nexus-sheet-padding-x);
 	border-radius: 8px;
+	/* The measure cap lives HERE, on the sheet, not on the prose elements — see
+	   the --nexus-measure token for why. Everything the page sets (prose, tables,
+	   cards, code, images) is bounded by the same edge, so the reading flow has
+	   one right margin instead of two. */
+	max-width: calc(var(--nexus-measure) + 2 * var(--nexus-sheet-padding-x));
 }
 
 @media (max-width: 996px) {
 	.theme-doc-markdown:not(:has(.character-sheet-page)) {
-		padding: 1rem 1.25rem;
+		--nexus-sheet-padding-x: 1.25rem;
+		padding: 1rem var(--nexus-sheet-padding-x);
+		/* Below the doc column's own max-width the sheet is already narrower than
+		   the measure, so the cap only costs horizontal room. */
+		max-width: none;
 	}
 }
 
@@ -481,17 +498,16 @@ a:hover:not(.navbar__brand):not(.character-sheet-page a) {
 	line-height: var(--nexus-leading-prose);
 }
 
-/* Measure cap. Applied to the PROSE elements rather than the container, so
-   tables, cards and code blocks keep the full column width they need — the
-   ragged right edge where a table outdents past the text is deliberate, and is
-   how a printed manual sets a wide figure beside a text column.
+/* Measure cap on prose. The SHEET is already capped at the measure plus its own
+   padding (above), so at the top level this is a no-op that holds the invariant:
+   if the sheet is ever widened for a layout, prose still stops at the measure.
 
-   Prose is capped at ANY depth, not just as a direct child, because the content
-   cards (spell, creature, talent, combat art) are the most-read pages on the
-   site: capping only the top level left their rule text at 90 characters, which
-   is the problem this cap exists to solve. The card FRAME still spans the full
-   column — its stat bands, badges and rank seals need that room — so a long
-   paragraph simply leaves some air at its right.
+   It does real work at depth. Prose is capped at ANY depth, not just as a direct
+   child, because the content cards (spell, creature, talent, combat art) are the
+   most-read pages on the site: capping only the top level left their rule text
+   at 90 characters, which is the problem this cap exists to solve. The card
+   FRAME still spans the full sheet — its stat bands, badges and rank seals need
+   that room.
 
    Headings stay direct-child only: a card's `### Name` heading sits in a flex
    row beside its rank badge, where a max-width would fight the layout. */
@@ -745,15 +761,9 @@ img[alt='folk-img'] {
   padding-right: 0;
 }
 
-@media (max-width: 996px) {
-	.navbar__search-input {
-		width: 12rem;
-	}
-}
-
-.footer__logo {
-	margin-top: 0;
-}
+/* The mobile top-bar layout (icon cluster, search sizing) lives with the rest of
+   the navbar rules in the M4 section below — it has to load AFTER the desktop
+   icon-cluster rules it overrides, which are the same specificity. */
 
 table thead,
 table tr:nth-child(2n) {
@@ -1754,7 +1764,13 @@ a.chip,
    The per-chapter rules below are GENERATED from src/components/codex/sigil-paths.ts
    by `bun run sigils:masks`. Do not hand-edit them; `sigils:masks --check` runs in
    CI and fails on drift. */
-.navbar__item.navbar-sigil::before {
+/* Deliberately NOT qualified with `.navbar__item`. Docusaurus renders every
+   navbar item twice: as `.navbar__item` in the top bar and as `.menu__link`
+   inside the mobile drawer (`DefaultNavbarItem/Mobile`). Qualifying on
+   `.navbar__item` meant the generated mask-image below resolved in the drawer
+   but `content` never did, so below 996px the chapter list was naked labels.
+   The class is ours and appears nowhere else, so the bare selector is safe. */
+.navbar-sigil::before {
   content: "";
   display: inline-block;
   width: 20px;
@@ -1783,33 +1799,24 @@ a.chip,
   .navbar-sigil--scroll::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5%204.5L8.5%204.5L8.5%2027.5L5%2027.5Z%22%20/%3E%3Cpath%20d=%22M23.5%204.5L27%204.5L27%2027.5L23.5%2027.5Z%22%20/%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%207L23.5%207L23.5%2025L8.5%2025ZM11.5%209.9L20.5%209.9L20.5%2012.1L11.5%2012.1ZM11.5%2014.9L18%2014.9L18%2017.1L11.5%2017.1ZM11.5%2019.9L19.5%2019.9L19.5%2022.1L11.5%2022.1Z%22%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5%204.5L8.5%204.5L8.5%2027.5L5%2027.5Z%22%20/%3E%3Cpath%20d=%22M23.5%204.5L27%204.5L27%2027.5L23.5%2027.5Z%22%20/%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%207L23.5%207L23.5%2025L8.5%2025ZM11.5%209.9L20.5%209.9L20.5%2012.1L11.5%2012.1ZM11.5%2014.9L18%2014.9L18%2017.1L11.5%2017.1ZM11.5%2019.9L19.5%2019.9L19.5%2022.1L11.5%2022.1Z%22%20/%3E%3C/svg%3E"); }
 /* sigils:masks:end */
 
-/* Navbar GitHub icon: replace the text label with a small SVG icon.
-   Uses the local file `/img/github.svg` placed in /static/img so it is served
-   at /img/github.svg. We style the navbar link using its className set in
-   `docusaurus.config.js` (navbar-github-link). Keep the link accessible
-   by using an `aria-label` in the config.
+/* Uniform right-side icon cluster (GM Tools, Character Sheet, color-mode
+   toggle). Each item previously carried its own spacing model AND a different
+   glyph size (sigils 18px, toggle 24px) in a different box width, so even equal
+   gaps left the icons visually staggered. Fix: put every icon item in the SAME
+   square box, center its glyph, and size every glyph the same — then a single
+   flex `column-gap` yields perfectly even, aligned icons. The search box (a
+   sibling, not in this container) keeps its own spacing.
 
-   That file now carries the mark as a SEAL — the official silhouette inset in a
-   carved keyline roundel — matching the ring-plus-solid-core build of the
-   colour-mode icons in src/theme/Icon/. The mark itself is deliberately left
-   unredrawn: every other glyph on the bar can be recut in the codex hand
-   because its meaning is carried by the label beside it, but this one has no
-   label and brand recognition IS its function. */
-/* Uniform right-side icon cluster (GM Tools, Character Sheet, GitHub,
-   color-mode toggle). Each item previously carried its own spacing model AND a
-   different glyph size (sigils 18px, github 20px, toggle 24px) in a different
-   box width, so even equal gaps left the icons visually staggered. Fix: put
-   every icon item in the SAME square box, center its glyph, and size every
-   glyph the same — then a single flex `column-gap` yields perfectly even,
-   aligned icons. The search box (a sibling, not in this container) keeps its
-   own spacing. */
+   The GitHub mark used to be a fourth icon here, drawn from /img/github.svg as a
+   currentColor mask. It moved to the footer's "Tools & Source" column — it is
+   provenance, not navigation, and it was the icon the crowded mobile bar could
+   least afford. */
 .navbar__items--right {
   column-gap: 0.5rem;
   align-items: center;
 }
 
 .navbar__items--right > .navbar__item.navbar-sigil,
-.navbar__items--right > .navbar__item.navbar-github-link,
 .navbar__items--right > [class*='colorModeToggle'] {
   display: inline-flex;
   align-items: center;
@@ -1820,9 +1827,8 @@ a.chip,
   margin: 0;
 }
 
-/* One glyph size (20px) across all four icons. */
-.navbar__items--right > .navbar__item.navbar-sigil::before,
-.navbar__item.navbar-github-link::before {
+/* One glyph size (20px) across all the icons. */
+.navbar__items--right > .navbar__item.navbar-sigil::before {
   width: 20px;
   height: 20px;
 }
@@ -1840,44 +1846,6 @@ a.chip,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Flex centering handles alignment now, so drop the old vertical nudges. */
-.navbar__items--right > .navbar__item.navbar-github-link::before {
-  margin-top: 0;
-  vertical-align: middle;
-}
-
-.navbar__item.navbar-github-link {
-  position: relative;
-}
-
-.navbar__item.navbar-github-link::before {
-  content: "";
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  /* Use the SVG as a mask so the icon inherits `currentColor` and is
-     always visible in both light/dark themes. */
-  background-color: currentColor;
-  -webkit-mask: url('/img/github.svg') no-repeat center / contain;
-  mask: url('/img/github.svg') no-repeat center / contain;
-  vertical-align: middle;
-  /* Nudge to better align with other icons (tweak if needed) */
-  margin-top: -1px;
-}
-
-/* Visually hide the textual label but keep it available to screen readers */
-.navbar__item.navbar-github-link .menu__link {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
 }
 
 /* Icon-only navbar items on desktop (GM Tools, Character Sheet): the sigil
@@ -1942,6 +1910,36 @@ a.chip,
   .navbar__link--active,
   .navbar__link:hover {
     border-bottom: none;
+  }
+
+  /* Mobile top bar. Infima hides the top-bar copies of every navbar item with
+     `.navbar__item { display: none }` because the drawer already carries them.
+     The icon-cluster rule above (same 0,3,0 specificity, earlier in the file)
+     outranked that, so two 32px sigils plus the GitHub mark stayed in a bar with
+     no room for them: they overlapped the colour-mode toggle and squeezed the
+     12rem search field down to 45px. That overlap is the misalignment. Hand the
+     top bar back to Infima and give the room to the search instead. */
+  .navbar__items--right > .navbar__item.navbar-sigil {
+    display: none;
+  }
+
+  /* And the search field itself. Docusaurus pulls the search container OUT of
+     the flow below 996px (`position: absolute; right: var(--ifm-navbar-padding-
+     horizontal)` in Navbar/Search/styles.module.css) on the assumption that it
+     is the only thing on the right of a mobile bar. This bar also carries the
+     colour-mode toggle, so the field was pinned to the same 16px right edge as
+     the toggle and sat directly on top of it — that overlap is the whole of the
+     "search is badly aligned" symptom.
+
+     Putting it back in the flex row lets `.navbar__items--right`'s own
+     `column-gap` and `align-items: center` space it like every other control.
+     The search plugin's collapse-when-unfocused behaviour below 576px is left
+     alone: it is the right pattern for a phone, and it only looked broken
+     because of where the collapsed field was sitting. */
+  .navbar__items--right > [class*='navbarSearchContainer'] {
+    position: static;
+    /* The plugin's own 16px offset, superseded by the cluster's column-gap. */
+    margin-left: 0;
   }
 }
 
@@ -2122,9 +2120,17 @@ a.chip,
 	line-height: 1.5;
 }
 
+/* Sticky, because the cornice belongs to the FRAME, not the content. The slab is
+   the scroll container, so this block's width is the visible width — scrolling a
+   wide table right used to drag the frieze out of view and leave the cornice
+   ending mid-slab while the border (which never scrolls) carried on. `left: 0`
+   pins it back to the scrollport so frame and cornice stay one edge. */
 .codex-table-slab::before {
 	content: '';
 	display: block;
+	position: sticky;
+	left: 0;
+	z-index: 1;
 	height: 10px;
 	background-color: color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
 	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
@@ -2314,6 +2320,111 @@ a.chip,
 	background-color: var(--ifm-color-primary);
 }
 
+/* --- S6b Mobile TOC → a small carved tablet --------------------------------
+   Below 997px the TOC becomes `TOCCollapsible`, which arrives entirely
+   untreated: a soft-radius panel filled with `--ifm-menu-color-background-active`,
+   a plain sentence-case label, a generic chevron drawn as a `background-image`
+   run through `--ifm-menu-link-sublist-icon-filter`, and — twice over — a bare
+   rule as a grouping device (`border-top` on the list, plus Infima's
+   `table-of-contents__left-border`).
+
+   Rebuilt on the table slab's own build, because it is the same object at a
+   smaller scale: frieze cornice, header band, content. Its internal class names
+   are hashed CSS modules, so they are matched by the stable substring and TAG
+   QUALIFIED — `[class*='tocCollapsible']` on its own also matches the button,
+   the content wrapper and the expanded-state class. The container is hooked by
+   `theme-doc-toc-mobile`, which is stable. */
+.theme-doc-toc-mobile {
+	margin: 1rem 0;
+	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 34%, transparent);
+	border-radius: 2px;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 4%,
+		transparent
+	);
+	overflow: hidden;
+}
+
+/* The merlon cornice, at the table slab's 10px band. Sits above the head rather
+   than between head and list, so the plate reads as a tablet whether it is open
+   or shut. */
+.theme-doc-toc-mobile::before {
+	content: '';
+	display: block;
+	height: 10px;
+	background-color: color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
+	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
+	mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
+}
+
+/* Header band: the same faint bronze wash and display small caps the table's
+   `thead` uses, which is what separates it from the list below. A rule would do
+   the job too, and is exactly what the theme forbids. */
+.theme-doc-toc-mobile button[class*='tocCollapsibleButton'] {
+	padding: 0.45rem 0.8rem;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 11%,
+		transparent
+	);
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 58%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* Caret recut as a flat bronze triangle in the paginator's arrow hand. The stock
+   glyph is a background-image, so it cannot take `currentColor` — `clip-path` on
+   a solid fill can, and it drops the `filter` hack with it.
+
+   Infima has the rotation the other way round (base `rotate(180deg)`, expanded
+   `none`), so both states are restated rather than only one. */
+.theme-doc-toc-mobile button[class*='tocCollapsibleButton']::after {
+	width: 9px;
+	height: 7px;
+	background: currentColor;
+	filter: none;
+	clip-path: polygon(0 0, 100% 0, 50% 100%);
+	transform: none;
+}
+
+.theme-doc-toc-mobile button[class*='tocCollapsibleButtonExpanded']::after {
+	transform: rotate(180deg);
+}
+
+/* The list inside is already framed by the plate, so it drops the framed-panel
+   treatment the desktop TOC carries — and both of its bare rules with it. */
+.theme-doc-toc-mobile .table-of-contents {
+	border: none;
+	background: none;
+	padding: 0.35rem 0 0.5rem;
+}
+
+/* The nav step, not the desktop TOC's secondary step: these are tap targets on a
+   phone, so they match the drawer's menu links rather than the 12px side rail. */
+.theme-doc-toc-mobile div[class*='tocCollapsibleContent'] > ul {
+	border-top: none;
+	font-size: var(--nexus-text-sm);
+}
+
+/* Nesting step. The theme's own `margin: 0.4rem 0.8rem` on every `li` stacks on
+   top of the TOC's `padding-left`, so each level indented by ~46px and the
+   sub-entries drifted into the middle of the plate. */
+.theme-doc-toc-mobile div[class*='tocCollapsibleContent'] ul li {
+	margin-inline: 0.8rem 0;
+}
+
+.theme-doc-toc-mobile .table-of-contents ul {
+	padding-left: 0.35rem;
+}
+
 /* --- S7 Sidebar → one face, two orthogonal signals -------------------------
    The first pass set category headers in the DISPLAY face, which broke the
    README typography rule ("no decorative fonts for the sidebar"; Cinzel is
@@ -2478,23 +2589,121 @@ div[class*='expandButton']:hover {
 	mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
 }
 
-/* Solar crest at the head of the footer band (Footer/Layout swizzle). */
-.footer__crest {
-	display: flex;
-	justify-content: center;
-	margin: 0.5rem 0 1.1rem;
-	color: var(--ifm-color-primary);
+/* The footer as a COLOPHON: an index of the book's parts, then the crest, then
+   the provenance. It previously held nothing but a centred sun disc, which is
+   why the disc read as spent space — it was marking an empty band.
+
+   Grouping is by spacing and by the crest itself (a carved ornament), never by a
+   rule: a bare hairline binding the legal block would be exactly the flat-UI
+   chrome the theme rejects. */
+.footer {
+	padding-top: calc(var(--ifm-footer-padding-vertical) * 1.5);
 }
 
+.footer__links {
+	max-width: 52rem;
+	margin-inline: auto;
+	margin-bottom: 0;
+}
+
+/* Column heads are LABELS, not headings: the quietest register that still reads
+   as a head, so the links under them stay the loudest thing in the band. */
 .footer__title {
 	font-family: var(--nexus-font-display);
-	font-weight: 600;
-	letter-spacing: 0.05em;
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	margin-bottom: 0.6rem;
 	color: color-mix(
 		in srgb,
 		var(--ifm-color-primary) 60%,
 		var(--ifm-font-color-base)
 	);
+}
+
+.footer__item {
+	position: relative;
+	padding-left: 0.9rem;
+	margin-top: 0;
+	line-height: 1.9;
+}
+
+/* The doc column's bronze lozenge bullet, at the nav register. Echoes the list
+   marker readers already know from the rules pages, rather than introducing a
+   second marker shape for the footer. */
+.footer__item::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0.75em;
+	width: 4px;
+	height: 4px;
+	transform: rotate(45deg);
+	background-color: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+}
+
+.footer__link-item {
+	font-size: var(--nexus-text-sm);
+}
+
+.footer__link-item svg {
+	width: 0.7em;
+	height: 0.7em;
+	margin-left: 0.3em;
+	opacity: 0.7;
+}
+
+/* Colophon block: crest, wordmark, then licence and attribution. */
+.footer__bottom {
+	padding-top: 1.75rem;
+}
+
+.footer__crest {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.55rem;
+	color: var(--ifm-color-primary);
+}
+
+.footer__wordmark {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-sm);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.16em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 65%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* Provenance text. Capped well inside the footer's own width: three centred
+   lines running the full band would be the widest measure on the site. */
+.footer__legal {
+	max-width: 38rem;
+	margin: 0 auto 0.5rem;
+	font-size: var(--nexus-text-xs);
+	line-height: 1.65;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 72%, transparent);
+}
+
+.footer__legal--mark {
+	margin-bottom: 0;
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-2xs);
+	letter-spacing: 0.12em;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 55%, transparent);
+}
+
+/* Infima already stacks `.col` below 996px, so the columns only need the gap
+   they lose when they stop sitting side by side. */
+@media (max-width: 996px) {
+	.footer__col {
+		margin-bottom: 1.1rem;
+	}
 }
 
 /* --- S9 Headings → architectural cornices ----------------------------------
