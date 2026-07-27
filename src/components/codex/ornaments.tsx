@@ -34,13 +34,23 @@ const SUN_RAYS = (() => {
 	// inside the disc radius so the disc, drawn after, hides their feet.
 	for (let i = 0; i < 9; i++) {
 		const deg = -145 + i * 13.75
-		rays.push(`M${pt(7.4, deg - 3.8)} L${pt(i % 2 === 0 ? 14.5 : 11.5, deg)} L${pt(7.4, deg + 3.8)} Z`)
+		rays.push(
+			`M${pt(7.4, deg - 3.8)} L${pt(i % 2 === 0 ? 14.5 : 11.5, deg)} L${pt(7.4, deg + 3.8)} Z`,
+		)
 	}
 	return rays
 })()
 
-/** Card families, keyed by their keystone. Corners follow the same motif. */
-export type CodexVariant = 'winged' | 'serpent' | 'khopesh' | 'ziggurat' | 'bull'
+/**
+ * Card families, keyed by their keystone. Corners follow the same motif.
+ *
+ * `plate` is the image-plate family (M11). It is the one variant with no card
+ * behind it — it frames artwork — but it lives here because the rail/keystone
+ * contract is identical, and because it is the fallback construction for
+ * {@link PlateFrame} (see the D2 note there).
+ */
+export type CodexVariant =
+	'winged' | 'serpent' | 'khopesh' | 'ziggurat' | 'bull' | 'plate'
 
 const SURFACE = 'var(--ifm-background-surface-color)'
 
@@ -72,6 +82,11 @@ const RAIL_LEN: Record<CodexVariant, { edge: number; side: number }> = {
 	ziggurat: { edge: 92, side: 55 },
 	bull: { edge: 92, side: 55 },
 	serpent: { edge: 88, side: 43 },
+	// An image plate is bounded by the artwork, not by a text block, and the
+	// shortest one it must survive is a 300px square portrait. Same reaches as
+	// the spell family: 55 units of side rail on a 76px corner box is ~44px,
+	// which leaves well over half a 300px edge as gap.
+	plate: { edge: 92, side: 55 },
 }
 
 const n = (v: number) => v.toFixed(2)
@@ -168,14 +183,20 @@ function CornerRail({ variant, len }: { variant: CodexVariant; len: number }) {
 				<path d="M18 4.2 L18 7.8 M22.5 4.2 L22.5 7.8" strokeWidth={0.8} />
 				<g fill="currentColor" stroke="none">
 					{steps.map(([xa, xb, h]) => (
-						<path key={xa} d={`M${n(xa)} ${n(6.8 - h)} L${n(xb)} ${n(6.8 - h)} L${n(xb)} 6.8 L${n(xa)} 6.8 Z`} />
+						<path
+							key={xa}
+							d={`M${n(xa)} ${n(6.8 - h)} L${n(xb)} ${n(6.8 - h)} L${n(xb)} 6.8 L${n(xa)} 6.8 Z`}
+						/>
 					))}
 				</g>
 				{/* carved coping: a surface-colour line under each course top, so the
 				    stepped mass stays legible instead of fusing into one wedge */}
 				<g stroke={SURFACE} strokeWidth={0.45}>
 					{steps.map(([xa, xb, h]) => (
-						<path key={xa} d={`M${n(xa + 0.8)} ${n(6.8 - h + 0.75)} L${n(xb - 0.8)} ${n(6.8 - h + 0.75)}`} />
+						<path
+							key={xa}
+							d={`M${n(xa + 0.8)} ${n(6.8 - h + 0.75)} L${n(xb - 0.8)} ${n(6.8 - h + 0.75)}`}
+						/>
 					))}
 				</g>
 			</>
@@ -220,6 +241,65 @@ function CornerRail({ variant, len }: { variant: CodexVariant; len: number }) {
 			</>
 		)
 	}
+	if (variant === 'plate') {
+		// Vegetal: a low plinth course ending in a fixed-size palmette fan — the
+		// standard companion border element to the rosette, so the image plate's
+		// corner and keystone come from one grammar rather than being assembled
+		// from two.
+		//
+		// Same two-part construction as its siblings (fixed terminal, variable
+		// shaft), so the long top rail and the short side rail carry the identical
+		// fan instead of two scaled copies.
+		const FAN = 17
+		const b = len - FAN
+		// The fan springs from the plinth's end and opens across ±58° about the
+		// rail axis. Lobes are generated from the angle so the spread cannot drift
+		// out of symmetry, and the middle lobe (on the axis) is the longest — the
+		// palmette's characteristic profile.
+		const LOBES = 5
+		const spread = (58 * Math.PI) / 180
+		const pt = (a: number, r: number, w: number) =>
+			`${n(b + r * Math.cos(a) - w * Math.sin(a))} ${n(6 + r * Math.sin(a) + w * Math.cos(a))}`
+		const lobes: string[] = []
+		for (let i = 0; i < LOBES; i++) {
+			const t = i / (LOBES - 1)
+			const a = -spread + t * 2 * spread
+			// Symmetric about t = 0.5 by construction: both the angle and the length
+			// are functions that mirror about it.
+			const r = 11 + 6 * Math.sin(Math.PI * t)
+			const halfW = 1.5
+			lobes.push(
+				`M${pt(a, 1.5, 0)} ` +
+					`C${pt(a, 1.5 + r * 0.24, halfW)},${pt(a, 1.5 + r * 0.66, halfW * 0.7)},${pt(a, 1.5 + r, 0)} ` +
+					`C${pt(a, 1.5 + r * 0.66, -halfW * 0.7)},${pt(a, 1.5 + r * 0.24, -halfW)},${pt(a, 1.5, 0)} Z`,
+			)
+		}
+		return (
+			<>
+				<path
+					d={`M13 5.3 L${n(b)} 5.3 L${n(b)} 6.7 L13 6.7 Z`}
+					fill="currentColor"
+					stroke="none"
+				/>
+				{/* two collar ticks near the butt — the rhythm every rail in the kit
+				    carries, so the new family still reads as part of it */}
+				<path d="M18 4.3 L18 7.7 M22.5 4.3 L22.5 7.7" strokeWidth={0.8} />
+				<g fill="currentColor" stroke="none">
+					{lobes.map((d) => (
+						<path key={d} d={d} />
+					))}
+					{/* calyx: the solid knot the lobes spring from */}
+					<circle cx={b} cy={6} r={2.4} />
+				</g>
+				{/* one carved tick across the calyx, stopping short of its silhouette */}
+				<path
+					d={`M${n(b - 1.1)} 6 L${n(b + 1.1)} 6`}
+					stroke={SURFACE}
+					strokeWidth={0.5}
+				/>
+			</>
+		)
+	}
 	if (variant === 'serpent') {
 		// A serpent's tail running the edge: a solid body that tapers to a point,
 		// not a uniform stroke. Carries no scale ticks on purpose — the body is
@@ -236,7 +316,8 @@ function CornerRail({ variant, len }: { variant: CodexVariant; len: number }) {
 		const period = 24
 		const halfT = 1.5
 		const steps = Math.max(14, Math.round((len - x0) / 2))
-		const centre = (x: number) => 6 + amp * Math.sin((2 * Math.PI * (x - x0)) / period)
+		const centre = (x: number) =>
+			6 + amp * Math.sin((2 * Math.PI * (x - x0)) / period)
 		// Taper over a fixed run-out from the tip, not a fraction of total length,
 		// so the pointed end is identical on the long and short rails and the body
 		// stays at full thickness for as long as the rail allows.
@@ -311,7 +392,13 @@ function CornerRail({ variant, len }: { variant: CodexVariant; len: number }) {
  *
  * An opaque surface backing keeps the frame border from crossing the boss.
  */
-function Corner({ pos, variant }: { pos: (typeof CORNERS)[number]; variant: CodexVariant }) {
+function Corner({
+	pos,
+	variant,
+}: {
+	pos: (typeof CORNERS)[number]
+	variant: CodexVariant
+}) {
 	// Corners are oriented with CSS `rotate()`, and at 90°/270° (tr, bl) that turns
 	// the SVG's +x axis into the screen's vertical. Swap the two reaches there, or
 	// half the corners end up with the long rail running down the side. Invisible
@@ -331,14 +418,22 @@ function Corner({ pos, variant }: { pos: (typeof CORNERS)[number]; variant: Code
 			aria-hidden="true"
 		>
 			{/* opaque backing: the frame border stops at the boss, never crosses it */}
-			<path d="M6 -0.4 L12.4 6 L6 12.4 L-0.4 6 Z" fill={SURFACE} stroke="none" />
+			<path
+				d="M6 -0.4 L12.4 6 L6 12.4 L-0.4 6 Z"
+				fill={SURFACE}
+				stroke="none"
+			/>
 			{/* the two rails: one along +x, one mirrored across y=x onto +y */}
 			<CornerRail variant={variant} len={alongX} />
 			<g transform="matrix(0 1 1 0 0 0)">
 				<CornerRail variant={variant} len={alongY} />
 			</g>
 			{/* prominent hollow diamond boss — drawn last so the rails tuck under it */}
-			<path d="M6 -0.4 L12.4 6 L6 12.4 L-0.4 6 Z" fill={SURFACE} stroke="none" />
+			<path
+				d="M6 -0.4 L12.4 6 L6 12.4 L-0.4 6 Z"
+				fill={SURFACE}
+				stroke="none"
+			/>
 			<path d="M6 0.4 L11.6 6 L6 11.6 L0.4 6 Z" strokeWidth={1.3} />
 		</svg>
 	)
@@ -391,7 +486,11 @@ function WingedDisc() {
 		>
 			{/* Opaque backing along the border line only, so the card's top border
 			    stops at the ornament instead of running through the open wings. */}
-			<path d="M4 16.8 L116 16.8 L116 19.2 L4 19.2 Z" fill={surface} stroke="none" />
+			<path
+				d="M4 16.8 L116 16.8 L116 19.2 L4 19.2 Z"
+				fill={surface}
+				stroke="none"
+			/>
 
 			{/* right wing: outlined fan, inner arc, then the triangle band. The root
 			    tucks under the disc, which is drawn last. */}
@@ -429,7 +528,14 @@ function WingedDisc() {
 				))}
 			</g>
 			<circle cx={60} cy={18} r={7.6} fill="currentColor" stroke="none" />
-			<circle cx={60} cy={18} r={5.8} stroke={surface} strokeWidth={1.3} fill="none" />
+			<circle
+				cx={60}
+				cy={18}
+				r={5.8}
+				stroke={surface}
+				strokeWidth={1.3}
+				fill="none"
+			/>
 		</svg>
 	)
 }
@@ -493,7 +599,11 @@ function SerpentKeystone() {
 				fill="currentColor"
 				stroke="none"
 			/>
-			<path d="M6.2 14.6 Q7.8 13.1 9.5 14.6 Q7.8 16.1 6.2 14.6 Z" fill={surface} stroke="none" />
+			<path
+				d="M6.2 14.6 Q7.8 13.1 9.5 14.6 Q7.8 16.1 6.2 14.6 Z"
+				fill={surface}
+				stroke="none"
+			/>
 			<path d="M3.4 15.2 L0.4 13.9 M3.4 15.2 L0.6 16.5" strokeWidth={0.8} />
 
 			{/* right serpent (mirror) */}
@@ -511,13 +621,25 @@ function SerpentKeystone() {
 				fill="currentColor"
 				stroke="none"
 			/>
-			<path d="M89.8 14.6 Q88.2 13.1 86.5 14.6 Q88.2 16.1 89.8 14.6 Z" fill={surface} stroke="none" />
+			<path
+				d="M89.8 14.6 Q88.2 13.1 86.5 14.6 Q88.2 16.1 89.8 14.6 Z"
+				fill={surface}
+				stroke="none"
+			/>
 			<path d="M92.6 15.2 L95.6 13.9 M92.6 15.2 L95.4 16.5" strokeWidth={0.8} />
 
 			{/* central lozenge boss — solid centre, no concentric ring (reserved for
 			    the winged disc so the hierarchy holds) */}
-			<path d="M48 10.6 L53.1 15 L48 19.4 L42.9 15 Z" strokeWidth={1.2} fill={surface} />
-			<path d="M48 12.9 L50.2 15 L48 17.1 L45.8 15 Z" fill="currentColor" stroke="none" />
+			<path
+				d="M48 10.6 L53.1 15 L48 19.4 L42.9 15 Z"
+				strokeWidth={1.2}
+				fill={surface}
+			/>
+			<path
+				d="M48 12.9 L50.2 15 L48 17.1 L45.8 15 Z"
+				fill="currentColor"
+				stroke="none"
+			/>
 		</svg>
 	)
 }
@@ -599,7 +721,11 @@ function KhopeshKeystone() {
 				strokeWidth={1.1}
 				fill="var(--ifm-background-surface-color)"
 			/>
-			<path d="M35.3 15.5 L38 13.85 L40.7 15.5 L38 17.15 Z" fill="currentColor" stroke="none" />
+			<path
+				d="M35.3 15.5 L38 13.85 L40.7 15.5 L38 17.15 Z"
+				fill="currentColor"
+				stroke="none"
+			/>
 		</svg>
 	)
 }
@@ -650,7 +776,11 @@ function ZigguratKeystone() {
 		>
 			{/* Opaque backing along the border line only (y=19.4), so the card's top
 			    border stops at the ornament instead of running through the tiers. */}
-			<path d="M2 18.2 L82 18.2 L82 20.6 L2 20.6 Z" fill={SURFACE} stroke="none" />
+			<path
+				d="M2 18.2 L82 18.2 L82 20.6 L2 20.6 Z"
+				fill={SURFACE}
+				stroke="none"
+			/>
 
 			{/* Flanking plinth courses out to the frame edges, stepping DOWN in height
 			    away from the tower. This is what lets the keystone span the top edge
@@ -666,7 +796,10 @@ function ZigguratKeystone() {
 			{/* the tower: solid receding courses */}
 			<g fill="currentColor" stroke="none">
 				{COURSES.map(([xa, xb, yt]) => (
-					<path key={xa} d={`M${n(xa)} ${n(yt)} L${n(xb)} ${n(yt)} L${n(xb)} ${n(BASE)} L${n(xa)} ${n(BASE)} Z`} />
+					<path
+						key={xa}
+						d={`M${n(xa)} ${n(yt)} L${n(xb)} ${n(yt)} L${n(xb)} ${n(BASE)} L${n(xa)} ${n(BASE)} Z`}
+					/>
 				))}
 			</g>
 
@@ -674,7 +807,10 @@ function ZigguratKeystone() {
 			    surface colour so the tiers stay separable */}
 			<g stroke={SURFACE} strokeWidth={0.5}>
 				{COURSES.map(([xa, xb, yt]) => (
-					<path key={xa} d={`M${n(xa + 1)} ${n(yt + 0.85)} L${n(xb - 1)} ${n(yt + 0.85)}`} />
+					<path
+						key={xa}
+						d={`M${n(xa + 1)} ${n(yt + 0.85)} L${n(xb - 1)} ${n(yt + 0.85)}`}
+					/>
 				))}
 				{TREADS.map((d) => (
 					<path key={d} d={d} />
@@ -683,9 +819,17 @@ function ZigguratKeystone() {
 
 			{/* summit shrine: hollow diamond with a solid core (no concentric ring —
 			    that stays the winged disc's alone) */}
-			<path d={`M42 0.6 L46.2 4.6 L42 8.6 L37.8 4.6 Z`} fill={SURFACE} stroke="none" />
+			<path
+				d={`M42 0.6 L46.2 4.6 L42 8.6 L37.8 4.6 Z`}
+				fill={SURFACE}
+				stroke="none"
+			/>
 			<path d={`M42 1.4 L45.4 4.6 L42 7.8 L38.6 4.6 Z`} strokeWidth={1.1} />
-			<path d={`M42 3.1 L43.9 4.6 L42 6.1 L40.1 4.6 Z`} fill="currentColor" stroke="none" />
+			<path
+				d={`M42 3.1 L43.9 4.6 L42 6.1 L40.1 4.6 Z`}
+				fill="currentColor"
+				stroke="none"
+			/>
 		</svg>
 	)
 }
@@ -798,7 +942,11 @@ function BullKeystone() {
 		>
 			{/* Opaque backing along the border line (y=20) only — the head and horns
 			    are solid, so they mask themselves. */}
-			<path d="M2 18.8 L94 18.8 L94 21.2 L2 21.2 Z" fill={SURFACE} stroke="none" />
+			<path
+				d="M2 18.8 L94 18.8 L94 21.2 L2 21.2 Z"
+				fill={SURFACE}
+				stroke="none"
+			/>
 
 			{/* Flanking friezes out to the frame edges. A plain bar was tried first and
 			    read as two boring rules bolted onto the head; this is the Ishtar Gate
@@ -841,8 +989,16 @@ function BullKeystone() {
 			<path d="M41.4 15.4 L54.6 15.4" stroke={SURFACE} strokeWidth={0.7} />
 
 			{/* brow boss: a solid lozenge between the horns (no concentric ring) */}
-			<path d="M48 10.4 L51.2 13.2 L48 16.0 L44.8 13.2 Z" fill={SURFACE} stroke="none" />
-			<path d="M48 11.2 L50.2 13.2 L48 15.2 L45.8 13.2 Z" fill="currentColor" stroke="none" />
+			<path
+				d="M48 10.4 L51.2 13.2 L48 16.0 L44.8 13.2 Z"
+				fill={SURFACE}
+				stroke="none"
+			/>
+			<path
+				d="M48 11.2 L50.2 13.2 L48 15.2 L45.8 13.2 Z"
+				fill="currentColor"
+				stroke="none"
+			/>
 		</svg>
 	)
 }
@@ -869,6 +1025,7 @@ const KEYSTONES = {
 	khopesh: KhopeshKeystone,
 	ziggurat: ZigguratKeystone,
 	bull: BullKeystone,
+	plate: RosetteKeystone,
 } as const
 
 /**
@@ -918,7 +1075,11 @@ export function LozengeDivider({ compact = false }: LozengeDividerProps) {
 				aria-hidden="true"
 			>
 				<path d="M11 1 L18 6 L11 11 L4 6 Z" />
-				<path d="M11 3.6 L14.4 6 L11 8.4 L7.6 6 Z" fill="currentColor" stroke="none" />
+				<path
+					d="M11 3.6 L14.4 6 L11 8.4 L7.6 6 Z"
+					fill="currentColor"
+					stroke="none"
+				/>
 				<path d="M4 6 L1 6" />
 				<path d="M18 6 L21 6" />
 			</svg>
@@ -950,7 +1111,11 @@ export function RankChip({ rank, compact = false }: RankChipProps) {
 	return (
 		<span className={styles.rankSeal}>
 			{RIVETS.map((pos) => (
-				<i key={pos} className={`${styles.rivet} ${styles[`rivet-${pos}`]}`} aria-hidden="true" />
+				<i
+					key={pos}
+					className={`${styles.rivet} ${styles[`rivet-${pos}`]}`}
+					aria-hidden="true"
+				/>
 			))}
 			<span className={styles.rankSealWord}>Rank</span>
 			<span className={styles.rankSealNum}>{rank}</span>
@@ -1288,5 +1453,373 @@ export function TabletFrame({ children, className }: TabletFrameProps) {
 			<div className={styles.tabletBody}>{children}</div>
 			<FriezeBand edge="bottom" />
 		</section>
+	)
+}
+
+/* ============================================================================
+ * M11 — Image plates. A new ornament family, so it gets its own keystone and
+ * its own corner rail (SKILL.md § The card family) and may borrow neither.
+ *
+ * Motif: the EIGHT-PETAL ROSETTE — the star of Ishtar, the Ishtar Gate emblem —
+ * as keystone, with PALMETTE fans on the corners. Three reasons it is the right
+ * mark for a frame specifically:
+ *
+ * - It is RADIALLY SYMMETRIC. Every other keystone in the kit has a definite up:
+ *   a winged disc on the bottom edge of a surround would be upside down. A
+ *   rosette reads the same on all four edges.
+ * - It is solid mass at small size, so it survives the 300px inline plate.
+ * - The palmette is the rosette's standard companion border element, so corner
+ *   and keystone come from one grammar rather than being assembled.
+ * ========================================================================== */
+
+const ROSETTE_PETALS = 8
+
+/**
+ * An eight-petal rosette. Petals are generated from the angle, never
+ * hand-authored, so the mark cannot drift out of rotational symmetry
+ * (ornament-craft §6/§12).
+ *
+ * `detail` adds the eight short spurs bisecting the petal gaps. It is OFF at
+ * the inline weight on purpose: at a 26px render a spur is under 2px across,
+ * and ornament-craft §8 says that is texture, not anatomy. The inline rosette
+ * is a REDRAW, not a `transform: scale()` of the large one.
+ */
+export function RosetteMark({
+	size,
+	detail = true,
+}: {
+	/** Rendered px. Omit to fill the parent (the keystone slot sizes it). */
+	size?: number
+	detail?: boolean
+}) {
+	const c = 50
+	/** Point at angle `a`, radius `r`, offset `w` perpendicular to the axis. */
+	const pt = (a: number, r: number, w: number) =>
+		`${n(c + r * Math.cos(a) - w * Math.sin(a))} ${n(c + r * Math.sin(a) + w * Math.cos(a))}`
+
+	const step = (2 * Math.PI) / ROSETTE_PETALS
+	const R0 = 13
+	const R1 = 46
+	const span = R1 - R0
+	const halfW = 8.6
+	const petals: string[] = []
+	const spurs: string[] = []
+	for (let i = 0; i < ROSETTE_PETALS; i++) {
+		const a = i * step - Math.PI / 2
+		// A lanceolate petal: swells a fifth of the way out, then converges to a
+		// point. The same profile as the solar medallion's long ray, so the plate
+		// family is in the kit's hand rather than being a generic flower.
+		petals.push(
+			`M${pt(a, R0, 0)} ` +
+				`C${pt(a, R0 + span * 0.2, halfW)},${pt(a, R0 + span * 0.62, halfW * 0.72)},${pt(a, R1, 0)} ` +
+				`C${pt(a, R0 + span * 0.62, -halfW * 0.72)},${pt(a, R0 + span * 0.2, -halfW)},${pt(a, R0, 0)} Z`,
+		)
+		if (detail) {
+			const b = a + step / 2
+			spurs.push(
+				`M${pt(b, R0, 3.4)} L${pt(b, R0 + span * 0.42, 0)} L${pt(b, R0, -3.4)} Z`,
+			)
+		}
+	}
+
+	return (
+		<svg
+			className={styles.rosetteMark}
+			{...(size ? { width: size, height: size } : {})}
+			viewBox="0 0 100 100"
+			fill="none"
+			aria-hidden="true"
+		>
+			{/* Opaque backing shaped to the ORNAMENT and hugging its extent
+			    (ornament-craft §11): a rosette needs a DISC. A padded rectangle
+			    blanks a straight section of the surround's keyline and leaves a
+			    notch either side; a disc lets the rule run in and stop against
+			    metal. r=47 against ink reaching 46 is a half-pixel of halo at the
+			    banner size — any more reads as a sticker laid on the plate. */}
+			<circle cx={c} cy={c} r={47} fill={SURFACE} />
+			<g fill="currentColor" stroke="none">
+				{petals.map((d) => (
+					<path key={d} d={d} />
+				))}
+				{spurs.map((d) => (
+					<path key={d} d={d} />
+				))}
+				{/* hub: one solid mass */}
+				<circle cx={c} cy={c} r={15.5} />
+			</g>
+			{/* The heart, CARVED back out of the hub in the surface colour — mass
+			    taken away, not a ring stacked on top. The concentric focal (ring,
+			    gap, core) stays the winged disc's alone (ornament-craft §7), and
+			    the lozenge is the kit's own shape. */}
+			<path
+				d={`M${c} ${c - 7.5} L${c + 7.5} ${c} L${c} ${c + 7.5} L${c - 7.5} ${c} Z`}
+				fill={SURFACE}
+			/>
+		</svg>
+	)
+}
+
+/** The plate family's keystone, for {@link CardFrame} parity with its siblings. */
+function RosetteKeystone() {
+	return (
+		<span className={styles.rosetteKeystoneSlot} aria-hidden="true">
+			<RosetteMark />
+		</span>
+	)
+}
+
+/* --- The corner ------------------------------------------------------------
+ *
+ * Drawn for the TOP-LEFT and rotated by CSS for the other three. The whole
+ * corner is symmetric about the y=x diagonal BY CONSTRUCTION, which is what
+ * defuses ornament-craft §5: a rotation transposes the SVG's axes, and a mark
+ * that is already its own transpose cannot notice.
+ *
+ * The viewBox is exactly the corner square, whose side is the surround width.
+ * Every constant below is therefore a fraction of the surround, and because the
+ * plate's CSS holds `course = surround / 2` and `gap = surround * 0.0714` at
+ * every weight, these numbers are the same at every weight — one drawing serves
+ * all four plates, and the corner meets the edge run at exactly its ground line
+ * without per-weight tuning.
+ * -------------------------------------------------------------------------- */
+
+/** Corner viewBox side. */
+const PC_BOX = 48
+/**
+ * Depth of the merlon course's GROUND, from the plate's outer edge, in corner
+ * units. Derived, not chosen: the run sits at `surround − gap − course` and the
+ * tile's ground occupies units 20–22.6 of its 24-unit height.
+ */
+const PC_GROUND = 40.57
+const PC_GROUND_THICK = 2.6
+/** The merlon crest line — 16 tile-units above the ground, per the tile. */
+const PC_CREST = PC_GROUND - 16
+
+/**
+ * A palmette corner block: the merlon course mitred around the corner, with a
+ * palmette fan springing off its crest along the outward diagonal.
+ *
+ * The fan opens AWAY from the picture (ornament-craft §7: detail runs along the
+ * frame, never inward), and it springs from exactly the height the run's merlons
+ * reach, so the corner reads as the course turning rather than as a separate
+ * ornament dropped at the join.
+ */
+function PalmetteCorner({ lobes = 5 }: { lobes?: number }) {
+	const o = PC_CREST
+	const pt = (a: number, r: number, w: number) =>
+		`${n(o + r * Math.cos(a) - w * Math.sin(a))} ${n(o + r * Math.sin(a) + w * Math.cos(a))}`
+
+	// 180°..270° is the quarter opening onto the plate's outer corner. Angle and
+	// length are both mirrored about the 225° bisector, so the fan is symmetric
+	// about y=x — see the rotation note above.
+	const A0 = Math.PI
+	const halfW = lobes >= 5 ? 3.6 : 5.4
+	const paths: string[] = []
+	for (let i = 0; i < lobes; i++) {
+		const t = lobes === 1 ? 0.5 : i / (lobes - 1)
+		const a = A0 + t * (Math.PI / 2)
+		// Longest on the diagonal, where the corner square has the most room.
+		const r = 17 + 7 * Math.sin(Math.PI * t)
+		paths.push(
+			`M${pt(a, 3, 0)} ` +
+				`C${pt(a, 3 + r * 0.24, halfW)},${pt(a, 3 + r * 0.66, halfW * 0.7)},${pt(a, 3 + r, 0)} ` +
+				`C${pt(a, 3 + r * 0.66, -halfW * 0.7)},${pt(a, 3 + r * 0.24, -halfW)},${pt(a, 3, 0)} Z`,
+		)
+	}
+
+	const g0 = PC_GROUND
+	const g1 = PC_GROUND + PC_GROUND_THICK
+	return (
+		<svg
+			className={styles.palmetteCorner}
+			viewBox={`0 0 ${PC_BOX} ${PC_BOX}`}
+			fill="none"
+			aria-hidden="true"
+		>
+			<g fill="currentColor" stroke="none">
+				{/* The ground course, mitred. This is the CONTINUITY element
+				    (ornament-craft §10): the line the runs stand on must cross the
+				    corner unbroken, or the four edges read as four detached bands
+				    with a gap at every corner instead of as one surround. */}
+				<path
+					d={
+						`M${PC_BOX} ${n(g0)} L${n(g0)} ${n(g0)} L${n(g0)} ${PC_BOX} ` +
+						`L${n(g1)} ${PC_BOX} L${n(g1)} ${n(g1)} L${PC_BOX} ${n(g1)} Z`
+					}
+				/>
+				{paths.map((d) => (
+					<path key={d} d={d} />
+				))}
+				{/* calyx: the solid knot the lobes spring from, seated on the crest */}
+				<circle cx={o} cy={o} r={4.6} />
+			</g>
+			{/* One carved tick across the calyx, on the diagonal, stopping short of
+			    its silhouette — the corollary to the solid-mass rule: detail that
+			    spans a shape's full width segments it instead of carving it. */}
+			<path
+				d={`M${n(o - 2.1)} ${n(o + 2.1)} L${n(o + 2.1)} ${n(o - 2.1)}`}
+				stroke={SURFACE}
+				strokeWidth={1.1}
+			/>
+		</svg>
+	)
+}
+
+/* --- The plate ------------------------------------------------------------- */
+
+/** The graded frame system: four weights, distinguished by how much ornament the
+ *  surface can carry before the ornament becomes the subject. */
+export type PlateWeight = 'frontispiece' | 'banner' | 'inline' | 'figure'
+/**
+ * D2. `frieze` is the ornate result the milestone asks for — mitred corner
+ * blocks with a repeating course on every span. `rails` is the fallback: the
+ * existing `CardFrame` vocabulary at plate scale, kept because it is proven
+ * code, and kept SELECTABLE because the two are what the review gallery is for.
+ */
+export type PlateConstruction = 'frieze' | 'rails'
+/** D4. `mitred` chamfers the SURROUND; the picture inside stays a full rectangle. */
+export type PlateSilhouette = 'rect' | 'mitred'
+
+/** Lobe count per weight. Fewer and fatter as the plate shrinks — a five-lobe
+ *  fan at the inline size puts every lobe under the 3px floor. */
+const PLATE_LOBES: Record<PlateWeight, number> = {
+	frontispiece: 5,
+	banner: 5,
+	inline: 3,
+	figure: 5,
+}
+
+/** Keystones per weight. `figure` carries a caption cartouche instead.
+ *
+ *  `frontispiece` carries NONE, which looks backwards for the heaviest weight
+ *  and is the point: it is the only weight whose page supplies its own crest.
+ *  The homepage hangs a `SolarMedallion` at the plate's lower edge, and that
+ *  medallion is the site's central mark. A rosette straddling the same edge put
+ *  two crests within ~40px of each other and made the frame compete with the
+ *  thing it frames. The frame's job here is to be a quiet border. */
+const PLATE_KEYSTONES: Record<PlateWeight, ('top' | 'bottom')[]> = {
+	frontispiece: [],
+	banner: ['top'],
+	inline: ['top'],
+	figure: [],
+}
+
+export interface PlateFrameProps {
+	weight?: PlateWeight
+	construction?: PlateConstruction
+}
+
+/**
+ * The image plate's continuous surround: four palmette corners, four merlon
+ * runs, and the rosette keystone(s). An absolutely-positioned overlay —
+ * `currentColor` throughout, `aria-hidden`, no hit testing. The parent supplies
+ * the geometry tokens (see `.plate` in the stylesheet).
+ *
+ * PHASE. A span is never a whole number of tiles, so one merlon is always cut.
+ * Every run centres its repeat, so both ends are cut EQUALLY: a symmetric cut
+ * reads as intentional where a single orphan at one end reads as a bug. This is
+ * decided here rather than left to chance, and it is why the corner blocks do
+ * not need to be wide enough to hide a cut.
+ */
+export function PlateFrame({
+	weight = 'banner',
+	construction = 'frieze',
+}: PlateFrameProps) {
+	if (construction === 'rails') {
+		return <CardFrame keystone="plate" />
+	}
+	return (
+		// A `<span>`, not a `<div>`, for the same reason `PlateShell`'s box is —
+		// see the nesting note there.
+		<span className={styles.plateFrame} aria-hidden="true">
+			{(['top', 'bottom', 'left', 'right'] as const).map((edge) => (
+				<span
+					key={edge}
+					className={`${styles.plateRun} ${styles[`plateRun-${edge}`]}`}
+				/>
+			))}
+			{CORNERS.map((pos) => (
+				<span
+					key={pos}
+					className={`${styles.plateCorner} ${styles[`plateCorner-${pos}`]}`}
+				>
+					<PalmetteCorner lobes={PLATE_LOBES[weight]} />
+				</span>
+			))}
+			{PLATE_KEYSTONES[weight].map((edge) => (
+				<span
+					key={edge}
+					className={`${styles.plateKeystone} ${styles[`plateKeystone-${edge}`]}`}
+				>
+					<RosetteMark detail={weight !== 'inline'} />
+				</span>
+			))}
+		</span>
+	)
+}
+
+export interface PlateShellProps {
+	children: React.ReactNode
+	weight?: PlateWeight
+	construction?: PlateConstruction
+	silhouette?: PlateSilhouette
+	/** Rendered under the plate, for the `figure` weight. Use a `Cartouche`. */
+	caption?: React.ReactNode
+	className?: string
+	/**
+	 * `span` is what MDX content needs: a lone `![alt](src)` on its own line is
+	 * parsed as a PARAGRAPH containing an image, so a plate rendered from the
+	 * `img` intrinsic lands inside a `<p>`. A `<figure>` or `<div>` there is
+	 * invalid nesting — the HTML parser closes the `<p>` before it, so the
+	 * browser's DOM stops matching React's tree and hydration breaks. Every
+	 * element INSIDE the shell is a span for the same reason, blocked in CSS.
+	 */
+	as?: 'figure' | 'div' | 'span'
+}
+
+/**
+ * The framed box itself: a stone surround carrying {@link PlateFrame}, with the
+ * artwork inlaid inside its own keyline. `ImagePlate` (M11 S2) is a thin wrapper
+ * over this that adds the `<img>` and its alt/aspect handling.
+ *
+ * The shell is TWO flat layers rather than a border, because a clipped shape
+ * cannot take one (SKILL.md § Chips): a bronze-filled box beneath, and the
+ * surface colour inset 1.5px above it punching the middle out. The same two
+ * layers serve the rectangular silhouette, so there is one code path and the
+ * keyline weight is identical either way.
+ *
+ * The shell is a SIBLING of the frame overlay, not its ancestor: the mitred
+ * clip-path would otherwise cut the keystone's overhang off at the plate edge.
+ */
+export function PlateShell({
+	children,
+	weight = 'banner',
+	construction = 'frieze',
+	silhouette = 'mitred',
+	caption,
+	className,
+	as: Tag = 'figure',
+}: PlateShellProps) {
+	return (
+		<Tag
+			className={
+				`${styles.plate} ${styles[`plate-${weight}`]} ${styles[`plate-${silhouette}`]}` +
+				(className ? ' ' + className : '')
+			}
+		>
+			{/* The framed box is its own element so a caption can sit OUTSIDE it —
+			    the shell and the frame both span `inset: 0`, so a caption inside
+			    them would land in the surround band and break the edge runs. */}
+			<span className={styles.plateBox}>
+				<span className={styles.plateShell} aria-hidden="true">
+					<span className={styles.plateShellInner} />
+				</span>
+				<span className={styles.plateWell}>{children}</span>
+				<PlateFrame weight={weight} construction={construction} />
+			</span>
+			{caption && Tag === 'figure' ? (
+				<figcaption className={styles.plateCaption}>{caption}</figcaption>
+			) : null}
+		</Tag>
 	)
 }

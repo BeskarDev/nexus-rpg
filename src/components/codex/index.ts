@@ -73,8 +73,20 @@ export {
 	SolarMedallion,
 	SunDisc,
 	TabletFrame,
+	RosetteMark,
+	PlateFrame,
+	PlateShell,
 } from './ornaments'
+export { default as ImagePlate } from './ImagePlate'
+export type { ImagePlateProps } from './ImagePlate'
+export { default as MdxImage, parseImageAlt } from './MdxImage'
+export type { MdxImageProps } from './MdxImage'
 export type {
+	PlateWeight,
+	PlateConstruction,
+	PlateSilhouette,
+	PlateFrameProps,
+	PlateShellProps,
 	CodexVariant,
 	CardFrameProps,
 	LozengeDividerProps,

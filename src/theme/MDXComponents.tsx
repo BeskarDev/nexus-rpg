@@ -25,6 +25,7 @@ import CreatureStatBlock, {
 } from '@site/src/components/codex/CreatureStatBlock'
 import { LozengeDivider, RankChip } from '@site/src/components/codex/ornaments'
 import DocTable from '@site/src/components/codex/DocTable'
+import MdxImage from '@site/src/components/codex/MdxImage'
 
 /**
  * Global MDX component registry. Extends the Docusaurus defaults with codex
@@ -61,4 +62,8 @@ export default {
 	hr: LozengeDivider,
 	// Wrap every markdown table in its stone slab + frieze cornice (M8 S3).
 	table: DocTable,
+	// Route alt-marked images into their carved plate (M11 S2). This one
+	// registration is the entire banner rollout: 46 placements across 41 files,
+	// with no markdown edited — which is also what makes it safe to revert.
+	img: MdxImage,
 }

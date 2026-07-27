@@ -5,6 +5,7 @@ import {
   CardFrame,
   Cartouche,
   FriezeDivider,
+  ImagePlate,
   LozengeDivider,
   SIGIL_SIZE,
   SigilIcon,
@@ -18,9 +19,6 @@ import styles from './index.module.css'
 
 /** Year the project started, for the colophon's "in development since" line. */
 const PROJECT_START_YEAR = 2020
-
-/** Corner rivets pinning the matted art. Order is irrelevant; the CSS places them. */
-const PLATE_RIVETS = ['tl', 'tr', 'br', 'bl'] as const
 
 interface Entry {
 	label: string
@@ -182,25 +180,28 @@ export default function Home(): React.ReactNode {
 				    The banner is an inlaid PLATE inside the frame, not a full-bleed
 				    backdrop with translucent boxes floating on it. */}
 				<header className={styles.plate}>
-					{/* The art is MATTED — inset in a band of stone with its own keyline
-					    and a rivet at each corner — rather than bleeding to the plate
-					    edge. Decorating a photograph directly does not work: bronze on
-					    a bright sky has no contrast, so the ornament has to sit on the
-					    mat, where it is guaranteed to read whatever the picture does. */}
+					{/* The art sits in a carved SURROUND (M11 S4), replacing the mat and
+					    its four corner rivets — that was a picture with fasteners at its
+					    corners rather than a framed picture.
+
+					    The medallion STAYS. It is the site's central eye-catcher, and the
+					    frame is subordinate to it: the frontispiece weight carries no
+					    rosette keystones at all and runs a lighter surround than the other
+					    plates, precisely so this one mark reads as the centrepiece. */}
 					<div className={styles.plateArtWrap}>
-						<div
-							className={styles.plateArt}
-							style={{ backgroundImage: `url(${homeBanner})` }}
-							role="img"
-							aria-label="A Bronze Age river valley beneath high cliffs"
+						<ImagePlate
+							as="div"
+							weight="frontispiece"
+							src={homeBanner}
+							alt="A Bronze Age river valley beneath high cliffs"
+							// The hero is the only image on the site that crops: native
+							// 2.40:1, shown at 3:1 so the art cannot set the page's height.
+							// The ratio lives in the stylesheet because it tightens on narrow
+							// screens, where a 3:1 band is a letterbox slot.
+							crop
+							cropPosition="center 62%"
+							imgClassName={styles.heroCrop}
 						/>
-						{PLATE_RIVETS.map((pos) => (
-							<span
-								key={pos}
-								className={`${styles.plateRivet} ${styles[`plateRivet-${pos}`]}`}
-								aria-hidden="true"
-							/>
-						))}
 						<span className={styles.plateCrest} aria-hidden="true">
 							<SolarMedallion size={88} />
 						</span>

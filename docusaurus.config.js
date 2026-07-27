@@ -211,7 +211,18 @@ const config = {
 				darkTheme: darkCodeTheme,
 			},
 			zoom: {
-				selector: '.markdown :not(em) > img',
+				// D5 (b): portraits and reference figures only. A banner is mood art
+				// with no detail to inspect, and zooming one now lifts it out of its
+				// plate for nothing.
+				//
+				// The selector names the WEIGHTS via `data-plate-weight`, not the
+				// plate's classes — CSS-module names are hashed at build time, so a
+				// class selector here would work in dev and match nothing in prod.
+				// The old `.markdown :not(em) > img` is not narrowed by the wrapping:
+				// the <img> is still a descendant of a non-`em` parent, so every
+				// banner would keep zooming.
+				selector:
+					'.markdown img[data-plate-weight="inline"], .markdown img[data-plate-weight="figure"]',
 				// docusaurus-plugin-image-zoom reads background off zoom.background
 				// (NOT zoom.config.background — nesting it there silently falls back
 				// to the plugin defaults). Tints match the M2a parchment / obsidian

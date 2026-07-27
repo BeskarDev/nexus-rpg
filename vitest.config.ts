@@ -53,6 +53,15 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@site': path.resolve(__dirname, './'),
+			// `@theme/...` is a Docusaurus build-time alias, so a component that
+			// delegates to a theme default (MdxImage -> MDXComponents/Img) has an
+			// unresolvable import under vitest. This makes the specifier resolve;
+			// tests still `vi.mock` the module itself, because theme-classic ships
+			// JSX inside `.js` files that Vite's loader cannot parse.
+			'@theme': path.resolve(
+				__dirname,
+				'./node_modules/@docusaurus/theme-classic/lib/theme',
+			),
 			'@': path.resolve(__dirname, './src'),
 		},
 	},

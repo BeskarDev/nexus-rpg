@@ -158,6 +158,33 @@ Practical constraints:
 - A `linecap` of `round` overhangs the tile edge and gets clipped — use `butt` on anything
   that touches x=0 or x=width.
 
+### The corollary: a weight is a RATIO, so it must step down with its container
+
+If weight follows span, then a named weight (`frontispiece`, `banner`, `inline`) is not a
+set of pixel values — it is a chosen ornament-to-picture *ratio*, and the pixels that
+express it are only correct at the span it was drawn for. The image-plate frontispiece is
+drawn for a ~1100px run: 28px surround, 52px rosette. Put the same numbers in a 430px
+column and the picture inside a 4.03:1 plate is ~93px tall, so the surround alone is 60%
+of the plate's height and the frame becomes the subject. It was right and it stayed the
+same size, which is exactly how it went wrong.
+
+Two rules:
+
+- **Step, do not scale.** Below the threshold a heavy weight adopts the next weight's
+  geometry wholesale — same corner drawing, same rosette, different numbers. A
+  `transform: scale()` would take the hairlines under the 3px floor with it, and the
+  lighter weight is already the drawing that reads at that span.
+- **Key the step off the CONTAINER, not the viewport.** `@container (max-width: …)` on the
+  ornament's own box, because the same plate is over-ornamented in a narrow well inside a
+  wide window and on a phone, and only a container query catches both. It also makes a dev
+  gallery honest: a 430px `<div>` in a desktop browser then shows what 430px really does.
+
+One trap when you wire it. **Custom properties are substituted where they are DECLARED.**
+A derived chain (`--course: calc(var(--surround) / 2)`) written on an ancestor freezes
+against that ancestor's surround and inherits down already resolved, so overriding
+`--surround` lower moves the corners without moving the runs. Declare the derived half on
+the *same element* the query overrides, and both halves resolve against the winning value.
+
 ## 11. Ornament on top of a photograph
 
 Do not put bronze on a picture. It has no reliable contrast — the same rule that
@@ -186,7 +213,62 @@ the picture. Sized right, the rule runs in and stops against metal.
   hand-authoring coordinates: hand-authored arcs drift, and parametric geometry keeps
   proportions honest when a size changes.
 
-## 13. Sigils are a different animal — alpha silhouettes, not carved-back ornaments
+## 13. Turning a corner — a frieze that has to run all four edges
+
+Every band before the image plate ran one direction along one edge. A **surround** is the
+first ornament in this kit that has to turn, and it raises three problems a straight band
+never does. All three are solved in `PlateFrame` / `.plate*` (`ornaments.module.css`) and
+`--nexus-frieze-tile-v` (`custom.css`); reuse those rather than re-deriving.
+
+**Direction: transpose the tile, do not rotate the band.** The merlon course stands on a
+ground line at the bottom, and in a frame the ground must face the picture on all four
+sides. Reflection is fine — `scaleY(-1)` gives the bottom run, `scaleX(-1)` the right — but
+a quarter turn is not, for two reasons that compound. Rule 5's axis transposition hits a
+`repeat-x` masked band especially hard: it flips the repeat axis *and* the tile aspect at
+once. And a rotated element's `width` is the run's rendered **height**, which for a plate is
+the artwork's height — a length no CSS declaration can name. So author a **second tile with
+x and y swapped** and drive it with `repeat-y`. Two tiles serve four edges, the vertical run
+keeps the horizontal run's period and mass by construction, and nothing has to be tuned.
+
+**Phase: centre the repeat, and say so.** A span is never a whole number of tiles, so one
+merlon is always cut. `center` cuts both ends equally, and a **symmetric cut reads as
+intentional where a single orphan at one end reads as a bug**. Decide this in the drawing —
+the alternative (corner blocks wide enough to hide the cut) buys nothing and costs the
+corner its own proportion.
+
+**Continuity through the corner.** Rule 10 asks a frieze for continuity; at a corner that
+becomes load-bearing. The **ground course must cross the corner unbroken**, mitred at 45°,
+or four edges read as four detached bands with a gap at every corner instead of as one
+surround. In `PalmetteCorner` the mitred ground course is drawn first, and the corner's own
+motif springs off the **merlon crest line** — the exact height the runs' merlons reach — so
+the corner reads as the course turning rather than as an ornament dropped on the join.
+
+**Make the corner its own transpose.** The four corners are oriented by CSS rotation, so
+rule 5 applies to the corner drawing too. Draw it **symmetric about the y=x diagonal** and
+the transposition becomes invisible: generate the motif from an angle sweeping the quarter
+turn, with both the angle and the length mirrored about the 45° bisector. That is checkable
+mechanically — reflect every coordinate and diff the point sets — and `codex.test.tsx` does.
+
+**Derive the geometry, do not tabulate it.** A graded frame ships at several surround
+widths, and the corner drawing has to meet the runs at every one. Express the whole chain as
+fractions of the surround:
+
+```
+course    = surround / 2
+gap       = surround × 0.0714     (run to inner keyline)
+run inset = surround − gap − course
+```
+
+That makes one tile unit equal exactly one corner-viewBox unit at *every* weight, so a
+single 48-unit corner drawing serves a 28px surround and a 14px one. Change a fraction and
+the corner's derived constants (`PC_GROUND`, `PC_CREST`) must move with it — they are
+derived numbers with their derivation written down, not magic ones.
+
+What still does **not** scale: the motif's detail budget. Rule 8 does not care how the frame
+was parameterised. The small weight is a **redraw** — fewer, fatter lobes; drop the
+inter-petal spurs — never a `transform: scale()`.
+
+## 14. Sigils are a different animal — alpha silhouettes, not carved-back ornaments
 
 The sigils (`sigil-paths.ts`) are the marks beside headings, sidebar entries, breadcrumbs,
 navbar items and chapter cards. They share the kit's language but NOT its construction, and

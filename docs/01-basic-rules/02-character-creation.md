@@ -197,4 +197,17 @@ Remember that the journey of an adventurer is never complete. There are always n
 
 ## Character Sheet
 
+<details>
+<summary>The printable character sheet, both pages</summary>
+
 Use this sheet to record your adventurer's statistics, equipment, and connections within the game world.
+
+**Page one: statistics, equipment and abilities.**
+
+![figure-img|Character sheet, page one. The left half holds name, folk, upbringing and background, the four attribute dice with Parry, Dodge, Resist and Resolve beneath them, current and maximum HP, armor value, three wound circles, level and XP, a ranked skill list and an abilities panel. The right half holds coins and carried load, a weapons table with damage, properties, cost and load, and a long equipment and items table.](./img/character-sheet-p1.jpg)
+
+**Page two: magic, description and connections.**
+
+![figure-img|Character sheet, page two. The left half holds magic skill, disciplines or traditions, current and maximum Focus, and a learned spells table with cost, rank, name, target, range and properties. The right half holds motivation, height, weight and age, a physical description box, and lists for allies, contacts, rivals and personal notes.](./img/character-sheet-p2.jpg)
+
+</details>

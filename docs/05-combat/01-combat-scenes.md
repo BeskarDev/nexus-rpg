@@ -84,3 +84,14 @@ Quick Actions are small actions that take no more than a few seconds. They can a
 | Opportunity Attack | An enemy in your melee reach attempts to move out of melee (unless they are moved involuntarily by another source). | Roll an attack against the enemy with a melee weapon you wield. You can’t use any abilities or Combat Arts on this attack.<br/>Instead of an attack, you can also attempt to grapple the enemy if they are in melee range. |
 | Protect Ally | When an ally close to you is attacked. | You quickly step into the way and take the hit instead. As part of this Quick Action, you move into melee range of your targeted ally. The enemy then rolls against your Defense. If they hit, you take the damage instead of your ally. |
 | Delay Action | You can use your Quick Action on your turn to delay your Action until some condition is met. | You can use that delayed Action once the condition is met before your next turn. |
+
+## Quick Reference
+
+<details>
+<summary>The one page combat quick reference</summary>
+
+Everything on this page and the chapters around it, condensed onto a single sheet for printing or keeping open at the table.
+
+![figure-img|Combat quick reference sheet in four columns. The first two cover starting combat and rolling Initiative, the order of a combat turn, the full list of Actions, Skill Actions and Quick Actions, how to roll each kind of attack, what each Success Level deals in damage, the distance bands from melee out to out of range, movement and difficult terrain, and effect durations. The last two list every condition in alphabetical order with its full effects, from bleeding through to unconscious.](./img/combat-quick-references.png)
+
+</details>

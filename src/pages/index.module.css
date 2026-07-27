@@ -34,73 +34,41 @@
 	text-align: center;
 }
 
-/* The banner as an inlaid panel: a fixed band with its own keyline, cropped by
-   aspect-ratio rather than allowed to set the page's height. The old hero was
-   `min-height: calc(100vh - 60px)`, which made the first screen almost entirely
-   picture and pushed every word of orientation below the fold. */
-/* The art is a bright daylit scene, so on obsidian it arrives as the one glaring
-   rectangle on the page. Knocked back so it reads as an illuminated plate set
-   into dark stone rather than a lightbox. A filter, not an overlay scrim — the
-   scrim is the pattern this page was rebuilt to get rid of. */
-[data-theme='dark'] .plateArt {
-	filter: brightness(0.82) saturate(0.92);
-}
+/* M11 S4 — the mat and its four corner rivets are gone, replaced by
+   `<ImagePlate weight="frontispiece">`. The hero's crop, its keyline and its
+   dark-theme knock-back all moved into the plate component, so the homepage no
+   longer carries a private copy of any of them.
 
-/* The mat. Also the crest's positioning context: the medallion hangs off the
-   ART's lower edge, so anchoring it to the plate and offsetting by a percentage
-   cannot work — the plate is the art plus a body of unknown length. */
+   The MEDALLION stayed. It is the site's central eye-catcher, so the frame gave
+   way instead: the frontispiece weight drops both rosette keystones and runs a
+   lighter surround than any other plate. Nothing else on the page may sit at the
+   art's lower edge.
+
+   Two more things the plate deliberately does NOT take over: the flanking
+   pillars and the diamond corner bosses belong to `.plateBody`, the stone panel
+   under the art. They frame the TITLE, not the landscape. */
+
+/* The crest's positioning context. It has to wrap the plate rather than be the
+   plate, because the medallion hangs off the ART's lower edge and `.plate` is
+   the art plus a body of unknown length. */
 .plateArtWrap {
 	position: relative;
-	padding: 14px;
 }
 
-.plateArt {
-	aspect-ratio: 3 / 1;
-	background-position: center 62%;
-	background-size: cover;
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 48%, transparent);
-}
+/* The centrepiece boss, straddling the plate's lower rule.
 
-/* Corner rivets, centred in the mat band rather than on the picture — a lozenge
-   laid over a bright sky is invisible, and on stone it always reads. Small
-   enough to be a fastening, not a fifth ornament competing with the medallion. */
-.plateRivet {
-	position: absolute;
-	width: 10px;
-	height: 10px;
-	background-color: color-mix(in srgb, var(--ifm-color-primary) 72%, transparent);
-	transform: rotate(45deg);
-	pointer-events: none;
-}
+   The opaque backing (ornament-craft §2) is a DISC, not a padded rectangle: a
+   rectangle blanks a straight run of the keyline and leaves a visible notch
+   either side of the mark, whereas a disc lets the rule run in and stop against
+   the boss, which is how a real one is set. Sized to hug the ray tips (the
+   medallion's ink reaches 48/50 of its box) so the rule terminates on metal —
+   any more and the spare halo of stone reads as a sticker laid on the picture.
 
-.plateRivet-tl {
-	top: 9px;
-	left: 9px;
-}
-.plateRivet-tr {
-	top: 9px;
-	right: 9px;
-}
-.plateRivet-br {
-	bottom: 9px;
-	right: 9px;
-}
-.plateRivet-bl {
-	bottom: 9px;
-	left: 9px;
-}
-
-/* The centrepiece boss, straddling the art's lower rule at the foot of the plate.
-   The opaque backing (ornament-craft §2) has to be a DISC, not a padded
-   rectangle: a rectangle blanks a straight section of the keyline and leaves a
-   visible notch either side of the mark, whereas a disc lets the rule run in and
-   stop against the boss, which is how a real one is set.
-
-   Sized to hug the ray tips (the medallion's ink reaches 48/50 of its box) so the
-   rule terminates on metal. Any more and the spare halo of stone reads as a
-   sticker laid on the picture rather than a boss set into it. */
+   Above the frame overlay (`z-index: 2`) so the disc punches through the merlon
+   run rather than being carved by it. */
 .plateCrest {
 	position: absolute;
+	z-index: 3;
 	left: 50%;
 	bottom: -44px;
 	width: 88px;
@@ -116,6 +84,14 @@
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
+}
+
+/* The hero's crop ratio. It lives on the page, not in the plate component,
+   because it is art direction for THIS picture and it changes with the
+   viewport (see the 768px block below). The plate supplies `object-fit: cover`
+   and the object-position; the ratio is ours. */
+.heroCrop {
+	aspect-ratio: 3 / 1;
 }
 
 /* The stone panel below the art carries the cover ornament — diamond corner
@@ -394,43 +370,18 @@
 		padding: 1.5rem 1rem 3rem;
 	}
 
-	.plateArt {
+	/* A 3:1 band in a phone column is a letterbox slot, so the crop tightens.
+	   This is the one piece of the old hero worth keeping verbatim. */
+	.heroCrop {
 		aspect-ratio: 2 / 1;
 	}
 
 	/* Side padding cannot drop below the pillars (9px out, 3px wide) plus room to
-	   breathe, or the first character of every line sits on the rail. Top padding
-	   still has to clear the medallion, which does not shrink — a boss cut for
-	   88px goes to mud at phone sizes, so it keeps its size and the panel makes
-	   room instead. */
+	   breathe, or the first character of every line sits on the rail. The top
+	   padding used to clear the hanging medallion; it now clears the plate's own
+	   bottom rosette, which straddles the join at the same place. */
 	.plateBody {
 		padding: 3.5rem 1.6rem 1.5rem;
-	}
-
-	.plateArtWrap {
-		padding: 10px;
-	}
-
-	.plateRivet {
-		width: 8px;
-		height: 8px;
-	}
-
-	.plateRivet-tl,
-	.plateRivet-tr {
-		top: 6px;
-	}
-	.plateRivet-br,
-	.plateRivet-bl {
-		bottom: 6px;
-	}
-	.plateRivet-tl,
-	.plateRivet-bl {
-		left: 6px;
-	}
-	.plateRivet-tr,
-	.plateRivet-br {
-		right: 6px;
 	}
 
 	.thresholds {

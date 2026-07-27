@@ -1,0 +1,86 @@
+/* ============================================================================
+ * M11 S2 — the plate's PLACEMENT. The frame itself (surround, runs, corners,
+ * keystones) is `PlateShell` in ornaments.module.css; nothing here draws.
+ * ========================================================================== */
+
+/* A banner spans its container, which since the measure rule is the vellum
+   sheet — prose, tables, cards and plates therefore describe one right edge.
+   This is a widening: the old `img[alt='banner-img']` capped at 1000px for no
+   stated reason, so a banner stopped short of every table on the page. */
+.plate-banner {
+	width: 100%;
+	margin-block: 0.75rem;
+}
+
+/* The folk portrait floats beside its entry — right in principle, but only while
+   the column can still hold a readable text column next to it.
+
+   The arithmetic behind the floor: the plate is 300px plus a 1.25rem gutter, so
+   it costs ~20rem of column. Forty characters of Spectral at the base size is
+   another ~20rem. Below a 40rem column the text beside the plate drops under
+   that floor, and at a 430px viewport the old rule gave a 195px float against
+   roughly 150px of text — three or four words per line, for the height of a
+   portrait, with nothing dropping the float at any width.
+
+   Note the threshold is a column width, not a viewport width, which is why this
+   is a container query: the same plate is unreadable in a narrow column whether
+   that column is narrow because the device is or because the layout is. */
+.plate-inline {
+	float: right;
+	width: 300px;
+	margin: 0 0 0.75rem 1.25rem;
+}
+
+@container nexus-prose (max-width: 40rem) {
+	.plate-inline {
+		float: none;
+		/* At the measure, not 300px: once it is a block in the flow there is no
+		   reason to leave it smaller than the column it now owns. */
+		width: 100%;
+		margin: 1rem 0;
+	}
+}
+
+.plate-figure {
+	width: 100%;
+	margin-block: 1rem;
+}
+
+/* Reserve the box before the PNG lands. Every banner is currently a layout
+   shift: the prose reflows ~250px down on load.
+
+   The `width`/`height` ATTRIBUTES on the <img> are what browsers derive the
+   default aspect-ratio from, but `.plateWell > img` sets `height: auto`, which
+   in older engines discards that ratio. Declaring `aspect-ratio` explicitly
+   costs one line and does not depend on the attribute heuristic. Both are set:
+   the attributes also serve the no-CSS case. */
+.img-banner {
+	aspect-ratio: 2000 / 496;
+}
+/* All 12 folk portraits are square (2048² or 1024²). */
+.img-inline {
+	aspect-ratio: 1 / 1;
+}
+
+/* A cropped plate (the homepage hero, native 2.40:1 shown at 3:1). `object-fit`
+   on a real <img> rather than a `background-image` div, so the crop costs
+   nothing in alt text, lazy loading or zoom, and there is one code path.
+   `aspect-ratio` and `object-position` come from the call site as inline style,
+   because they describe THAT picture rather than a weight. */
+.imgCropped {
+	object-fit: cover;
+}
+
+/* The site's images are bright, saturated, full-colour renders sitting on
+   desaturated stone. On obsidian an untreated one arrives as the single glaring
+   rectangle on the page, so it is knocked back to read as an illuminated plate
+   set into dark stone rather than as a lightbox.
+
+   These exact numbers were already in `index.module.css`, patching ONE image in
+   ONE theme. Generalized here rather than inventing a second set (M11 S5.3). A
+   full bronze duotone was considered and rejected: it unifies the palette
+   completely but flattens the artwork the site is otherwise showcasing, and it
+   cannot be recovered per image. */
+[data-theme='dark'] .plateImg {
+	filter: brightness(0.82) saturate(0.92);
+}

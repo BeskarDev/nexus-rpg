@@ -204,7 +204,8 @@
 .rankChipCompact {
 	padding: 0 6px;
 	border-radius: 2px;
-	box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ifm-color-primary) 55%, #000 45%);
+	box-shadow: inset 0 0 0 1px
+		color-mix(in srgb, var(--ifm-color-primary) 55%, #000 45%);
 	/* Nudge onto the text baseline when inline in a Heightened line. */
 	position: relative;
 	top: -0.05em;
@@ -237,8 +238,13 @@
 	padding: 3px 13px;
 	border-radius: 2px;
 	/* Ink-forward text keeps AA; the bronze lives in the border + faint fill. */
-	color: color-mix(in srgb, var(--ifm-font-color-base) 82%, var(--ifm-color-primary));
-	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	color: color-mix(
+		in srgb,
+		var(--ifm-font-color-base) 82%,
+		var(--ifm-color-primary)
+	);
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
 	background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
 	vertical-align: middle;
 	white-space: nowrap;
@@ -369,7 +375,8 @@
 	margin: 1.9rem 0;
 	padding: 1.5rem 2rem;
 	background-color: var(--ifm-background-surface-color);
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 48%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 48%, transparent);
 	border-radius: 3px;
 }
 .tabletFrame {
@@ -435,4 +442,301 @@
 	display: block;
 	flex: 0 0 auto;
 	color: color-mix(in srgb, var(--ifm-color-primary) 55%, transparent);
+}
+
+/* ============================================================================
+ * M11 — Image plates. Geometry lives here as ONE derived chain, so the drawn
+ * corner (ornaments.tsx, `PalmetteCorner`) meets the edge runs at every weight
+ * without per-weight tuning:
+ *
+ *   course    = surround / 2
+ *   gap       = surround * 0.0714   (run to inner keyline)
+ *   run inset = surround - gap - course = surround * 0.4286
+ *
+ * Because all three are FRACTIONS of the surround, the tile unit works out to
+ * exactly one corner-viewBox unit at every weight, which is what lets a single
+ * 48-unit corner drawing serve a 28px surround and a 14px one. Change the 0.5
+ * or the 0.0714 and PC_GROUND / PC_CREST in ornaments.tsx must move with them.
+ * ========================================================================== */
+
+.plate {
+	position: relative;
+	display: block;
+	margin: 0;
+	/* The plate is its own query container so the weight step-down below keys off
+	   the PLATE's width rather than the viewport's. A frontispiece inside a 430px
+	   column is over-ornamented whether that column is a phone or a narrow well
+	   in a wide window, and only a container query catches both. */
+	container-type: inline-size;
+	/* Banner weight is the default; the others override the surround and the
+	   rosette, and everything else follows. */
+	--plate-surround: 20px;
+	--plate-rosette: 38px;
+	--plate-chamfer: 10px;
+	--plate-keyline: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 48%,
+		transparent
+	);
+	color: var(--ifm-color-primary);
+}
+
+/* Ornament does NOT scale linearly with the plate: a frontispiece corner on a
+   300px portrait is most of the portrait. The inline weight is a redraw (fewer,
+   fatter palmette lobes; no rosette spurs), not a `transform: scale()`. */
+/* Lighter than the 28px it started at. The frontispiece is the ONE plate whose
+   page hangs its own crest on it (the homepage's `SolarMedallion`), so the frame
+   has to yield: at 28px with a rosette on each edge it was the loudest thing on
+   the page and the medallion had to fight it. A border, not a centrepiece. */
+.plate-frontispiece {
+	--plate-surround: 24px;
+	--plate-rosette: 52px;
+	--plate-chamfer: 12px;
+}
+.plate-inline {
+	--plate-surround: 14px;
+	--plate-rosette: 26px;
+	--plate-chamfer: 7px;
+}
+
+/* Ornament-craft §10 applied to the frame: frieze weight is a function of SPAN,
+   and a weight is a choice of ornament-to-picture ratio, not an absolute size.
+   The frontispiece's 28px surround and 52px rosette are drawn for a ~1100px run;
+   at 430px the same numbers eat the picture — a 4.03:1 banner is only ~93px of
+   art there, so the surround alone is 60% of the plate's height. Below the
+   threshold the frontispiece takes the BANNER geometry, which is the weight that
+   reads correctly at that span. It is a step, not a scale: the corner and the
+   rosette are the same drawings at both, and the derived chain above keeps the
+   runs meeting the corners at either size with no per-weight tuning.
+
+   The override lands on `.plateBox`, not `.plate`: a query container cannot
+   style itself, and every consumer of these tokens (shell, runs, corners,
+   keystones) is inside the box.
+
+   20px is the FLOOR, not an arbitrary step: the corner is drawn with five
+   palmette lobes at this weight, and the `inline` redraw exists because five
+   lobes on a 14px surround puts every lobe under the ~3px floor. Lobe count is
+   a React prop and cannot change inside a container query, so the step may not
+   go below the smallest surround five lobes survive. */
+@container (max-width: 640px) {
+	.plate-frontispiece .plateBox {
+		--plate-surround: 20px;
+		--plate-rosette: 38px;
+		--plate-chamfer: 10px;
+	}
+}
+
+/* The derived half of the chain is declared HERE, on the same element the
+   container query overrides `--plate-surround` on. A custom property is
+   substituted where it is DECLARED, so `--plate-course` written on `.plate`
+   would freeze against `.plate`'s surround and the step-down would move the
+   corners without moving the runs. Declared on `.plateBox`, both halves resolve
+   against whichever surround won on this element. */
+/* `display: block` on every box below because they are all `<span>`s: an MDX
+   image lands inside a `<p>`, where a `<div>` would be closed out by the HTML
+   parser and break hydration. See `PlateShell`'s `as` prop. */
+.plateBox {
+	position: relative;
+	display: block;
+	--plate-course: calc(var(--plate-surround) / 2);
+	--plate-run-inset: calc(var(--plate-surround) * 0.4286);
+	padding: var(--plate-surround);
+}
+
+/* --- The shell: two flat layers, never a border -----------------------------
+   A clipped shape cannot take a `border`, so the keyline is a bronze-filled box
+   with the surface colour inset 1.5px above it punching the middle out. The
+   rectangular silhouette uses the identical construction so the two read at the
+   same weight — the only difference between them is the clip. */
+.plateShell {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background-color: var(--plate-keyline);
+}
+.plateShellInner {
+	position: absolute;
+	inset: 1.5px;
+	background-color: var(--ifm-background-surface-color);
+}
+
+/* D4 (b): the SURROUND is chamfered; the picture inside stays a full rectangle.
+   Clipping the artwork was rejected — what an arch or an ogee eats varies
+   unpredictably with the picture, and the artwork varies per page. */
+.plate-mitred .plateShell {
+	clip-path: polygon(
+		var(--plate-chamfer) 0,
+		calc(100% - var(--plate-chamfer)) 0,
+		100% var(--plate-chamfer),
+		100% calc(100% - var(--plate-chamfer)),
+		calc(100% - var(--plate-chamfer)) 100%,
+		var(--plate-chamfer) 100%,
+		0 calc(100% - var(--plate-chamfer)),
+		0 var(--plate-chamfer)
+	);
+}
+/* The inner layer's chamfer shrinks with its inset so the keyline keeps an even
+   width around the mitre instead of thickening at the 45°. */
+.plate-mitred .plateShellInner {
+	--c: calc(var(--plate-chamfer) - 0.6px);
+	clip-path: polygon(
+		var(--c) 0,
+		calc(100% - var(--c)) 0,
+		100% var(--c),
+		100% calc(100% - var(--c)),
+		calc(100% - var(--c)) 100%,
+		var(--c) 100%,
+		0 calc(100% - var(--c)),
+		0 var(--c)
+	);
+}
+
+/* The picture, inlaid behind its own keyline. A plain border is legitimate
+   here: it is the border OF a container, not a bar used to group. */
+.plateWell {
+	position: relative;
+	display: block;
+	z-index: 1;
+	border: 1.5px solid var(--plate-keyline);
+	line-height: 0;
+	font-size: 0;
+}
+.plateWell > img {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 0;
+}
+
+/* --- The surround ornament ------------------------------------------------- */
+.plateFrame {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	color: var(--ifm-color-primary);
+	pointer-events: none;
+}
+
+/* The four merlon runs. `center` on both axes so the inevitable partial tile is
+   cut EQUALLY at both ends — a symmetric cut reads as intentional, a single
+   orphan at one end reads as a bug. */
+.plateRun {
+	position: absolute;
+	background-color: currentColor;
+}
+.plateRun-top,
+.plateRun-bottom {
+	left: var(--plate-surround);
+	right: var(--plate-surround);
+	height: var(--plate-course);
+	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto
+		var(--plate-course);
+	mask: var(--nexus-frieze-tile) repeat-x center / auto var(--plate-course);
+}
+.plateRun-top {
+	top: var(--plate-run-inset);
+}
+/* Ground must face the picture on all four sides. Reflection is safe (it is not
+   a transposition), so the bottom run is the same tile flipped — the trick
+   `.friezeCornice-bottom` already uses. */
+.plateRun-bottom {
+	bottom: var(--plate-run-inset);
+	transform: scaleY(-1);
+}
+/* The side runs take the TRANSPOSED tile with `repeat-y`, not a rotation: a
+   rotated `repeat-x` band transposes the repeat axis and the tile aspect at
+   once, and the run's length here is the plate's height, which no CSS length
+   can name. See `--nexus-frieze-tile-v` in custom.css. */
+.plateRun-left,
+.plateRun-right {
+	top: var(--plate-surround);
+	bottom: var(--plate-surround);
+	width: var(--plate-course);
+	-webkit-mask: var(--nexus-frieze-tile-v) repeat-y center / var(--plate-course)
+		auto;
+	mask: var(--nexus-frieze-tile-v) repeat-y center / var(--plate-course) auto;
+}
+.plateRun-left {
+	left: var(--plate-run-inset);
+}
+.plateRun-right {
+	right: var(--plate-run-inset);
+	transform: scaleX(-1);
+}
+
+/* Corner squares are exactly the surround wide, so the corner drawing's viewBox
+   IS the corner square and its constants can be fractions of the surround. */
+.plateCorner {
+	position: absolute;
+	width: var(--plate-surround);
+	height: var(--plate-surround);
+	line-height: 0;
+}
+.plateCorner-tl {
+	top: 0;
+	left: 0;
+}
+.plateCorner-tr {
+	top: 0;
+	right: 0;
+	transform: rotate(90deg);
+}
+.plateCorner-br {
+	bottom: 0;
+	right: 0;
+	transform: rotate(180deg);
+}
+.plateCorner-bl {
+	bottom: 0;
+	left: 0;
+	transform: rotate(270deg);
+}
+.palmetteCorner {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+/* The rosette straddles the plate's OUTER edge, the same relation every card
+   keystone has to its card's top border. Radial symmetry is what lets the same
+   mark sit on the bottom edge of the frontispiece without being upside down. */
+.plateKeystone {
+	position: absolute;
+	left: 50%;
+	width: var(--plate-rosette);
+	height: var(--plate-rosette);
+	transform: translateX(-50%);
+	line-height: 0;
+}
+.plateKeystone-top {
+	top: calc(var(--plate-rosette) / -2);
+}
+.plateKeystone-bottom {
+	bottom: calc(var(--plate-rosette) / -2);
+}
+.rosetteMark {
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: var(--ifm-color-primary);
+}
+
+/* The rosette as a CardFrame keystone (the D2 `rails` construction), matching
+   the sizing convention of its siblings: the mark straddles the card's top
+   border, so half its height sits above the edge. */
+.rosetteKeystoneSlot {
+	position: absolute;
+	left: 50%;
+	top: -21px;
+	width: 42px;
+	height: 42px;
+	transform: translateX(-50%);
+	line-height: 0;
+	color: var(--ifm-color-primary);
+}
+
+.plateCaption {
+	margin-top: 0.6rem;
+	text-align: center;
+	line-height: 1.4;
 }
