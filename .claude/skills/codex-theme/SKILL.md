@@ -9,13 +9,17 @@ The site's visual language is **carved stone inlaid with bronze**: a Bronze-Age 
 rather than a web app. This skill holds the accumulated rules for building in it, most of
 them learned by getting them wrong first.
 
-Two references carry the depth:
+Three references carry the depth:
 
 - **[references/ornament-craft.md](references/ornament-craft.md)** — drawing SVG ornaments
   (keystones, corner rails, dividers). Read before drawing anything.
 - **[references/component-patterns.md](references/component-patterns.md)** — the React /
   MDX / remark-plugin traps that silently break content. Read before building a card or
   a generator.
+- **[references/art-direction.md](references/art-direction.md)** — the illustration brief:
+  two registers (wide Moebius plates, hatched D&D-3.5-style figures), the palette lock,
+  prompt templates and the acceptance checklist. Read before generating or replacing any
+  banner or folk/creature artwork.
 
 ## Composition, not just surface
 
