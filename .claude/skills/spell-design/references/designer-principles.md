@@ -2,7 +2,7 @@
 
 Distilled from owner feedback — **binding rules, not suggestions**.
 
-**How to use (don't read all 82 cold):** scan the Index by Concern below, pick the concern(s) matching your current task, and read that concern's file in full under [principles/](principles/). Each concern's principles live in the file named in its heading. A principle may be *listed* under more than one concern but its full text lives in exactly one home file — if a number isn't in the file you opened, grep `principles/` for `^NN.`. Numbers are global and stable, referenced from other docs — **never renumber**.
+**How to use (don't read all 97 cold):** scan the Index by Concern below, pick the concern(s) matching your current task, and read that concern's file in full under [principles/](principles/). Each concern's principles live in the file named in its heading. A principle may be *listed* under more than one concern but its full text lives in exactly one home file — if a number isn't in the file you opened, grep `principles/` for `^NN.`. Numbers are global and stable, referenced from other docs — **never renumber**.
 
 ## Index by Concern
 

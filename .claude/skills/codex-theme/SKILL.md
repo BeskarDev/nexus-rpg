@@ -9,17 +9,30 @@ The site's visual language is **carved stone inlaid with bronze**: a Bronze-Age 
 rather than a web app. This skill holds the accumulated rules for building in it, most of
 them learned by getting them wrong first.
 
-Three references carry the depth:
+Two references carry the depth of the build side:
 
 - **[references/ornament-craft.md](references/ornament-craft.md)** — drawing SVG ornaments
   (keystones, corner rails, dividers). Read before drawing anything.
 - **[references/component-patterns.md](references/component-patterns.md)** — the React /
   MDX / remark-plugin traps that silently break content. Read before building a card or
   a generator.
-- **[references/art-direction.md](references/art-direction.md)** — the illustration brief:
-  two registers (wide Moebius plates, hatched D&D-3.5-style figures), the palette lock,
-  prompt templates and the acceptance checklist. Read before generating or replacing any
-  banner or folk/creature artwork.
+
+The illustration brief is split across five files, so a task pays only for the concern it
+touches. Read the hub before generating or replacing any banner or folk/creature artwork:
+
+- **[references/art-direction.md](references/art-direction.md)** — the hub: the drawn-not-
+  rendered premise, the shared spine, the palette lock, modesty and presentation. Read this
+  first, and always.
+- **[references/art-registers.md](references/art-registers.md)** — the two register specs
+  (wide Moebius plates, hatched D&D-3.5-style figures). Read this when choosing or writing
+  to a register.
+- **[references/art-setting.md](references/art-setting.md)** — Bronze Age authenticity, the
+  iron taboo, folk/culture and creature sourcing. Read this for any image with a folk, a
+  culture, a creature or a tool in it.
+- **[references/art-prompting.md](references/art-prompting.md)** — model type, the two
+  prompt templates, the negative block. Read this when writing the prompt.
+- **[references/art-acceptance.md](references/art-acceptance.md)** — the reject-and-
+  regenerate checklist. Read this when judging a returned render.
 
 ## Composition, not just surface
 

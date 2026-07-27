@@ -29,7 +29,16 @@ Creatures are designed on a tier chassis (Tier 0–10, matching adventurer level
 
 ## Design Principles
 
-**Binding rules distilled from owner feedback — [references/designer-principles.md](references/designer-principles.md) holds the full text.** Native principles 1–7 plus principles ported from the spell-design and talent-design corpora, and pointers to the shared spell-design wording/condition convention files that apply to creature text verbatim. Read it before any design pass. The most frequently load-bearing: stat chassis + ability menu, never one alone (1); abilities over HP bloat (2); damage threads the needle between casters and heavy martials (3); buildable in 5 minutes, understandable at the table (4); adventurers don't heal on Wounds — factor into lethality (5); ability output follows the spell scaling frameworks, spells verified to exist by grep (7); check every condition against its published definition — stunned doesn't disable, only paralyzed does (8); high-impact conditions need a save or rolled attack, never a no-roll trigger (9); defensive abilities and immunities need counterplay, no auto-win offense (10); limits live in the fiction (11); mythological-first roster identity — D&D imports allowed only naturalized: renamed (legal minimum) with setting-fit ecology (13); creatures are they/their/them, never it/its (shared wording conventions).
+[references/designer-principles.md](references/designer-principles.md) holds the binding rules in full: native principles 1–7 and 13, principles 8–12 ported from the spell-design and talent-design corpora, and pointers to the shared spell-design wording and condition files that bind creature text verbatim. Read it before any design pass — this list is only the shortlist of the ones most often violated.
+
+- **1.** Stat chassis + ability menu — never let either carry the whole design.
+- **3.** Damage threads the needle between glass-cannon casters and heavy-armor martials.
+- **5.** Adventurers don't heal on Wounds (creatures do) — factor into lethality.
+- **7.** Ability output follows the spell scaling frameworks; every referenced spell verified to exist by grep.
+- **8.** Check every condition against its published definition — stunned doesn't disable, only paralyzed does.
+- **9.** High-impact conditions need a save or a rolled attack, never a no-roll trigger.
+- **10.** Defensive abilities and immunities need counterplay; no auto-win offense either.
+- **13.** Mythological-first roster identity — D&D imports only naturalized: renamed (legal minimum), setting-fit ecology.
 
 ## Creature Categories
 
@@ -88,123 +97,16 @@ Apply size modifiers and category-appropriate immunity sets from references. Res
 **Use the published damage-type names only** — acid, blast, fire, force, frost, lightning, necrotic, physical, poison, psychic, radiant (`docs/05-combat/02-attacking.md` § Damage Types). D&D's `cold` and `thunder` are **not** Nexus types; they drifted into the data once and had to be normalised to `frost` and `blast`. Anything off that list will also fail to render as a damage chip, since the chip map follows the published table.
 
 ### 5b. Lore (optional field, fixed structure)
-A creature may carry a `lore` object, rendered collapsed behind a toggle on the card's
-name line so it never competes with play-time reference. It is a **fixed structure**, not
-free prose: every creature answers the same questions in the same order, so a reader
-learns the shape once. Half the parts are prose and half are shorthand, and the split is
-the point.
+A creature may carry an optional `lore` object — a **fixed structure**, not free prose —
+rendered collapsed behind a toggle on the card's name line so it never competes with
+play-time reference. Write it to the same standards as rules text: they/their/them, no
+semicolons or dashes, no purple prose. Omit any optional key rather than writing an empty
+value; the generator rejects unknown keys and empty strings outright.
 
-| Key | Kind | What to write |
-|---|---|---|
-| `narrative` | **prose**, required | One short passage in the setting's voice. What this creature *is*, not what it does. 2–3 sentences. |
-| `environment` | shorthand | Terrain terms, **ordered generic to specific**: `["Desert", "Ruins", "Tomb"]`. See below. |
-| `ecology` | **prose** | How they live: diet, range, activity, what wakes or draws them, what people believe and do about them. |
-| `tactics` | **prose** | What they actually do in a fight — opening move, what they target, when they break off. Reference their own abilities by name. |
-| `treasure` | shorthand + **d6 table** | `{ "scale": "...", "table": [...6 rows...] }`. See below. |
-| `organization` | shorthand | Encounter templates (see below). Always include a solitary entry if they are ever met alone. |
-
-Write it to the same standards as rules text: they/their/them, no semicolons or dashes,
-no purple prose. Tactics should tell a GM how to *run* them, not restate the stat block.
-Omit any optional key rather than writing an empty value — the generator rejects unknown
-keys and empty strings outright, so the structure cannot drift entry by entry.
-
-**Environment is a ranked vocabulary**, and the list must run broadest to narrowest:
-
-| rank | meaning | terms |
-|---|---|---|
-| 1 | region — the land you travel through | Desert, Grassland, Steppe, Forest, Jungle, Mountains, Hills, Marsh, Coast, Sea, River, Wastes, Arctic, Underground, Sky, Otherworld |
-| 2 | site — the place you arrive at | Ruins, Settlement, City, Temple, Fortress, Caves, Mine, Road, Farmland, Battlefield, Necropolis, Ship |
-| 3 | feature — the chamber or lair you enter | Tomb, Crypt, Vault, Shrine, Lair, Nest, Den, Well, Sewer, Barrow |
-
-This is **groundwork for a future encounter builder**: "a desert tomb, challenging for
-three level-4 characters" is a rank-1 filter plus a rank-3 filter, and a tool can only
-intersect creature lists per level if every entry agrees on what is broad and what is
-narrow. An unknown term or an out-of-order list fails the build. Adding a term is a
-deliberate act — extend `ENVIRONMENT_RANKS` in `generate-creatures.ts` rather than
-inventing a synonym no filter will ever match.
-
-**Treasure is a rollable d6 table**, not flavour text. Prose tells a GM what a creature
-has and leaves them inventing specifics mid-session; a table is usable at once, and six
-typed rows are what a future **hoard generator** can compose from.
-
-**Read [references/treasure-design.md](references/treasure-design.md) before writing a
-treasure table.** Loot is where creature design touches the most other systems at once —
-the item catalogues, magic-item construction and pricing, the enchantment and material
-catalogues, Quality tiers, and the coin economy — and every one of them has published
-numbers that a treasure row can contradict. That file holds the tier→value anchor (the
-harvesting table), the pricing formulas, and the worked Mummy example.
-
-The four rules that matter most, in short:
-
-1. **Price against the harvesting table.** It is the published creature-level→coins curve;
-   a creature worth less than its own corpse is not worth looting. Items sell for **half**
-   value (trade goods and gems for full).
-2. **Name published items.** A weapon or armour row cites a real entry from
-   `weapons.json` / `armor.json` — there is no *khopesh*, so the ceremonial one is a
-   `Scimitar, Quality 2`. Decoration raises value, never damage.
-3. **Magic items are assembled, not invented.** Base item + quality + optional special
-   material + **at most one enchantment from `magic-item-enchantments.json`**, respecting
-   its `applicableCategories` and `qualityTiers`. Magic items are Quality 3+. Keep quality
-   in the creature's tier band: Q3–4 ≈ tiers 3–5, Q5–6 ≈ 6–8, Q7–8 only 9–10.
-4. **Spread the six rows** across kinds, make every one specific, and give at least one
-   row that is worth nothing in coins and everything in play (a name-scroll, a key, a map).
-
-Schema:
-
-```json
-"treasure": {
-  "scale": "Rich",
-  "table": [
-    { "kind": "Weapon", "item": "Ceremonial khopesh",
-      "stats": "Scimitar, Quality 2", "value": "150 coins",
-      "note": "Gold-inlaid but soundly forged, so it carries no penalty." },
-    { "kind": "Magic", "item": "Amulet of Willpower",
-      "stats": "Wearable (neck), Quality 4", "value": "1,050 coins",
-      "note": "While worn, you gain +1 Resist (max. 10)." }
-  ]
-}
-```
-
-| field | required | content |
-|---|---|---|
-| `kind` | yes | **Weapon, Armor, Magic, Material, Valuables, Supplies, Relic** — closed, so a generator can filter and a GM can find the weapon without reading six rows. |
-| `item` | yes | The **name only**, under 60 characters. The generator rejects prose here. |
-| `stats` | when it has rules | What it IS in core-rules terms: `Scimitar, Quality 2`, `Wearable (neck), Quality 4`. |
-| `value` | usually | `150 coins`, `3d6 x 10 coins`, or `—` when it cannot be sold. Never contradict the Quality in `stats`. |
-| `note` | optional | One short qualifier, or a magic item's actual published effect. Not a paragraph. |
-
-`scale` is one of **None, Incidental, Standard, Rich, Hoard** — how much, relative to what
-is normal for their tier. A `table` of **exactly six rows** is required unless the scale is
-`None`.
-
-**Encounter templates** come in two shapes. Either N of this creature:
-
-```json
-{ "name": "Warden squad", "count": "2-4" }
-```
-
-or a mixed band naming other creatures, for the bands this creature is actually met in:
-
-```json
-{ "name": "Tomb guard", "composition": [
-    { "count": "1",    "creature": "Mummy Lord" },
-    { "count": "6-10", "creature": "Mummy" }
-] }
-```
-
-Exactly one of `count` or `composition` — both is a size stated twice, neither says
-nothing. Every name in a `composition` is **resolved against the roster and linked to
-that creature's entry**, across tiers, and the build fails naming any creature that does
-not exist. So a band can reference a leader written later, but only after that leader is
-in `creatures.json`.
-
-**Mummy (tier 4) is the reference implementation** — read it in `creatures.json` before
-writing your first lore block.
-
-> **Treasure scale is new vocabulary.** Nexus has no published treasure-by-tier system,
-> so these five words were introduced with the bestiary's lore layer and describe relative
-> quantity only. If a real treasure system lands later, this is the vocabulary to
-> reconcile with.
+**Full schema — keys, environment vocabulary, treasure table, encounter templates:
+[references/lore-schema.md](references/lore-schema.md).** Read it before writing a lore
+block, and [references/treasure-design.md](references/treasure-design.md) before writing a
+treasure table. **Mummy (tier 4) is the reference implementation** in `creatures.json`.
 
 ### 6. Write it into a draft document
 **Never straight into `creatures.json`, and never into the tier pages at all.** Create (or append to) a batch file under the repo-root `.drafts/creatures/` (e.g. `.drafts/creatures/tier-<N>-batch.md`, or a concept-named file). The draft holds: a status banner ("pending owner approval, not yet published"), scope, per-creature design rationale (role, tier, category, any tier-adjustment justification), the full stat block in readable markdown, and an "open questions for owner" section flagging unresolved forks. The draft is the review artifact; publication only happens after owner approval.
@@ -258,7 +160,7 @@ creature is one object in that array:
     }
   ],
   "quickActions": [],
-  "lore": "Optional. Non-mechanical setting text, rendered collapsed under the block."
+  "lore": { }                         // optional, fixed structure — see references/lore-schema.md
 }
 ```
 
@@ -275,7 +177,8 @@ Field notes that the generator enforces (it fails the build, it does not guess):
 - `properties` and `qualifier` become badges; write them as plain words, no markup.
 - Every string is markdown, so conditions and damage types auto-link and chip. Do not
   hand-write links.
-- `lore` is optional — omit the key rather than writing `""`.
+- `lore` is an optional fixed-structure object — omit the key rather than writing an empty
+  value. Keys and shapes: [references/lore-schema.md](references/lore-schema.md).
 
 ## Publication Pipeline
 
@@ -309,4 +212,4 @@ tool are unaffected: they exchange markdown between themselves and never read
 
 ## Designer Feedback Loop
 
-When the owner corrects or refines a design decision in session (a balance call, a thematic boundary, a wording rule), append it to [references/designer-principles.md](references/designer-principles.md) (next free number, bolded one-line rule + reasoning + owner-ruling provenance, under the matching section — the file states the next free number). Numeric chassis corrections go into [references/stat-tables.md](references/stat-tables.md) instead. If it's frequently load-bearing, also add its one-line hook to the Design Principles section above. If the correction refines a *ported* principle, note the creature-side ruling there — never edit the spell-design or talent-design files from here. This is the accumulated design memory — it must grow. Keep SKILL.md itself lean: new lessons go into `references/`.
+When the owner corrects or refines a design decision in session (a balance call, a thematic boundary, a wording rule), append it to [references/designer-principles.md](references/designer-principles.md) (next free number, bolded one-line rule + reasoning + owner-ruling provenance, under the matching section — the file states the next free number). Numeric chassis corrections go into [references/stat-tables.md](references/stat-tables.md) instead, and corrections to the `lore` object — its keys, the environment vocabulary, treasure tables, encounter templates — into [references/lore-schema.md](references/lore-schema.md). If it's frequently load-bearing, also add its one-line hook to the Design Principles shortlist above. If the correction refines a *ported* principle, note the creature-side ruling there — never edit the spell-design or talent-design files from here. This is the accumulated design memory — it must grow. Keep SKILL.md itself lean: new lessons go into `references/`.
