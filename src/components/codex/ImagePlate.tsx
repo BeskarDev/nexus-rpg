@@ -4,11 +4,15 @@ import styles from './ImagePlate.module.css'
 
 /** Native dimensions per weight, for reserving the box before the file lands.
  *  Both are dimensionally uniform across the whole site — every banner is
- *  2000x496 and every folk portrait is square — so one pair of numbers per
+ *  1584x672 and every folk portrait is 1024 square — so one pair of numbers per
  *  weight is not an assumption, it is the inventory. A `figure` has no known
- *  size and reserves nothing. */
+ *  size and reserves nothing.
+ *
+ *  A banner's native ratio is 2.36:1 and it is DISPLAYED at 4:1, which the
+ *  `.img-banner` `aspect-ratio` supplies; these attributes describe the file and
+ *  serve the no-CSS case, where showing the whole picture is the right fallback. */
 const NATIVE: Partial<Record<PlateWeight, { width: number; height: number }>> = {
-	banner: { width: 2000, height: 496 },
+	banner: { width: 1584, height: 672 },
 	inline: { width: 1024, height: 1024 },
 }
 
@@ -34,8 +38,16 @@ export interface ImagePlateProps {
 	 * media query the page could write.
 	 */
 	crop?: boolean
-	/** `object-position` for a cropped plate, e.g. `'center 62%'`. Ignored
-	 *  without `crop`, since an uncropped picture has nothing to position. */
+	/**
+	 * `object-position` for a plate whose picture is larger than its box, e.g.
+	 * `'center 62%'`.
+	 *
+	 * Independent of `crop`. Banners are natively 2.36:1 shown at 4:1, so a
+	 * banner is cropped by its weight's `aspect-ratio` and needs positioning
+	 * without ever setting `crop` — which exists to override a ratio, not to
+	 * turn cropping on. Tying the two together would have meant every banner
+	 * passing `crop` and then re-supplying the ratio it already had.
+	 */
 	cropPosition?: string
 	/** Extra class on the `<img>`. The escape hatch for art direction that
 	 *  belongs to a page rather than to a weight: the hero's crop ratio, which
@@ -90,7 +102,7 @@ export default function ImagePlate({
 					(crop ? styles.imgCropped : (styles[`img-${weight}`] ?? '')) +
 					(imgClassName ? ' ' + imgClassName : '')
 				}
-				style={crop ? { objectPosition: cropPosition } : undefined}
+				style={cropPosition ? { objectPosition: cropPosition } : undefined}
 				width={native?.width}
 				height={native?.height}
 				decoding="async"

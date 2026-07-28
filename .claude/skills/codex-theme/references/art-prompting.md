@@ -148,9 +148,27 @@ reaches the edge instead: the scene continuing past the crop, colour in every co
 
 It carries two instructions that look contradictory and are not. **Bleed** stops the model
 framing the picture — crop a framed image in height and you are left with orphaned border
-segments down the left and right edges. **Central band** is what makes the 21:9 → 4:1
-centre-crop safe. Sky and ground run to all four
+segments down the left and right edges. **Central band** keeps subjects away from the edges so
+the 21:9 → 4:1 crop has something to land on. Sky and ground run to all four
 edges; subjects sit in the middle. Keep both even when generating at 4:1 directly.
+
+**Central band makes the crop survivable, not safe.** 21:9 → 4:1 removes 41% of the height, and
+Register A also wants sky across 40–60% of the frame, so a centred window clips anything tall no
+matter how the prompt is worded. Do not answer a badly-framed banner by rewriting the prompt
+harder. The crop is aimed per image in `banner-crop.ts` — see
+[art-registers.md](art-registers.md) § The crop is data, not a publish step.
+
+**Central band and "sky 40–60%" pull against each other, and sky wins.** Measured over 55
+banners: 49 needed the window moved, **46 of those moved DOWN**, median 67%. The cause is
+arithmetic, not disobedience. Ask for sky across 60% of the frame and the horizon lands at 60%
+down, subjects sit just beneath it, and the centre of everything worth seeing is near 70% — so
+"subjects sit in the middle" was never going to hold. Two consequences:
+
+- **Expect to aim downward.** `DEFAULT_BANNER_CROP` is 66% for this reason, not 50%.
+- If you want a *centred* composition instead, the lever is the sky fraction: hold it near the
+  40% end of the register's range so the horizon lands close to mid-height. Do not add a second
+  sentence about where subjects go — the model is already following the sky instruction, and the
+  two instructions do not have equal force.
 
 ### The negative block
 

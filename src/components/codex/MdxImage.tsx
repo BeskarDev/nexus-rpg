@@ -1,6 +1,7 @@
 import React from 'react'
 import MDXImg from '@theme/MDXComponents/Img'
 import ImagePlate from './ImagePlate'
+import { bannerCrop } from './banner-crop'
 import type { PlateWeight } from './ornaments'
 
 /**
@@ -60,6 +61,11 @@ export default function MdxImage(props: MdxImageProps): React.ReactNode {
 			// already returns "" when no description follows the marker.
 			alt={alt}
 			weight={weight}
+			// Banners are native 2.36:1 shown at 4:1, so which 4:1 slice is kept
+			// is a per-picture decision. Only banners have a native ratio wider
+			// than their box; a folk plate is square in a square box, and a
+			// `figure` reserves no ratio at all, so neither has a slice to pick.
+			cropPosition={weight === 'banner' ? bannerCrop(src) : undefined}
 			className={typeof rest.className === 'string' ? rest.className : undefined}
 		/>
 	)

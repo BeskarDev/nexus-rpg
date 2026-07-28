@@ -26,7 +26,8 @@ grade a sky and use atmospheric recession. What is excluded is *photographic ren
 
 | | |
 |---|---|
-| Aspect | **4:1 published, 1584 × 396** — all 54 in-doc banners. `home-banner.png` is 1584 × 660 (2.40:1), the homepage hero, cropped to 3:1 at the call site; not the template. `.img-banner` in `ImagePlate.module.css` reserves `4 / 1`, so changing the aspect means changing that line too. Generate at 21:9 and **centre-crop only — never upscale to hit a number.** Nano Banana returns 1584 × 672, the crop takes it to 1584 × 396, and that is the published size: the vellum sheet is ~813px so 1584 is already 2× retina, and the earlier 2000 × 496 convention was 1.26× upscale buying no detail on flat-wash art (M12, 2026-07-28) |
+| Aspect | **4:1 displayed, 1584 × 672 published.** All 55 banners ship at Nano Banana's native 2.36:1 and are cropped to the 4:1 band by `.img-banner` in `ImagePlate.module.css`, with the vertical framing per file in `src/components/codex/banner-crop.ts`. `home-banner.png` is the same file size and ratio, cropped to 3:1 at the call site instead; not the template |
+| Cropping | **Never bake the crop, and never upscale to hit a number.** Publish the render as it came and let CSS take the slice. Two rules fall out of one bad afternoon (M12, 2026-07-28) — see below |
 | Line | fine ink of **varying weight** — firm in the foreground, thinning to almost nothing in the distance. Never a heavy uniform outline |
 | Colour | flat washes on solid forms, no rendering, no glossy highlights |
 | Sky | 40–60% of the frame, **large soft cumulus, softly graded and gently modelled** — the one place tonal modelling belongs |
@@ -43,6 +44,42 @@ progress — see [art-composition.md](art-composition.md) § On a mechanics page
 
 Never put "on cream paper" in a plate prompt — the model draws itself a keyline and a paper
 margin that then fight the component frame.
+
+### The crop is data, not a publish step
+
+A 21:9 render is 2.36:1 and the band is 4:1, so a centre-crop discards **41% of the height** —
+138px off each edge of a 672px frame. That is not a trim, and it cannot be a fixed rule,
+because this register also asks for **sky across 40–60% of the frame**: the horizon lands near
+mid-height, and a centred window then clips whatever is tall. A ziggurat's top, a toppled
+column, the foreground ground detail. Which 41% is expendable is a different answer in every
+picture.
+
+So the whole set was published twice, and the second way is the rule:
+
+- **Baked centre-crop — wrong.** Ships 1584 × 396 files. Cheapest in bytes, but the framing is
+  frozen at generation time, retuning one banner means re-cropping from the original, and the
+  originals live in a gitignored staging folder that gets deleted. One unlucky render and the
+  fix is a regeneration.
+- **Native + CSS crop — right.** Ship 1584 × 672 and let `.img-banner`'s `aspect-ratio: 4 / 1`
+  plus `object-fit: cover` take the slice, with `object-position` per filename in
+  `banner-crop.ts`. Page layout is identical, every banner is retunable by a one-line edit
+  forever, and nothing depends on the staging folder. Costs ~30MB across 55 banners.
+
+Prompt-side guidance cannot substitute for this. `art-prompting.md`'s **central band** still
+earns its place — it keeps subjects away from the edges so the slice has something to land on —
+but no phrasing makes a 41% cut safe unaimed. Write the band into the prompt *and* expect to
+aim the window afterwards.
+
+**Aim downward by default.** Over the full 55, 49 banners needed moving and **46 of those moved
+down**, at a median of 67%. Sky at 40–60% of the frame puts the horizon below mid-height, so the
+content worth keeping is the lower two thirds. `DEFAULT_BANNER_CROP` is therefore **66%**, and a
+banner reviewed and genuinely left at centre must say `'50% 50%'` explicitly — an omission no
+longer means "leave it alone". See [art-prompting.md](art-prompting.md) § Central band for the
+prompt-side lever if you want a centred composition instead.
+
+Corollary: **`crop` on `ImagePlate` is not "turn cropping on."** It overrides the weight's own
+ratio, which only the homepage hero needs. A banner is already cropped by its weight and passes
+`cropPosition` alone.
 
 ## Register B — the Figure (folk, creatures, item and equipment cuts)
 

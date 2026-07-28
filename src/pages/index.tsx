@@ -194,10 +194,13 @@ export default function Home(): React.ReactNode {
 							weight="frontispiece"
 							src={homeBanner}
 							alt="A Bronze Age river valley beneath high cliffs"
-							// The hero is the only image on the site that crops: native
-							// 2.40:1, shown at 3:1 so the art cannot set the page's height.
-							// The ratio lives in the stylesheet because it tightens on narrow
-							// screens, where a 3:1 band is a letterbox slot.
+							// Native 2.36:1, shown at 3:1 so the art cannot set the page's
+							// height. The ratio lives in the stylesheet because it tightens
+							// on narrow screens, where a 3:1 band is a letterbox slot.
+							//
+							// `crop` is what overrides the weight's own ratio, which is why
+							// the hero passes it and a banner does not — a banner is cropped
+							// by `.img-banner`'s 4:1 and only supplies `cropPosition`.
 							crop
 							cropPosition="center 62%"
 							imgClassName={styles.heroCrop}

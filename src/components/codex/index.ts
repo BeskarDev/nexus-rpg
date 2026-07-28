@@ -81,6 +81,7 @@ export { default as ImagePlate } from './ImagePlate'
 export type { ImagePlateProps } from './ImagePlate'
 export { default as MdxImage, parseImageAlt } from './MdxImage'
 export type { MdxImageProps } from './MdxImage'
+export { BANNER_CROP, DEFAULT_BANNER_CROP, bannerCrop } from './banner-crop'
 export type {
 	PlateWeight,
 	PlateConstruction,

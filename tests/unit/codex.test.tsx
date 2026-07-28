@@ -19,6 +19,9 @@ import {
 	ChapterSigil,
 	MdxImage,
 	parseImageAlt,
+	BANNER_CROP,
+	DEFAULT_BANNER_CROP,
+	bannerCrop,
 } from '@site/src/components/codex'
 import {
 	pageSigilForSourcePath,
@@ -450,9 +453,50 @@ describe('MdxImage — the alt-marker router (M11 S2)', () => {
 
 	it('reserves the box before the file lands', () => {
 		const img = marked('banner-img').querySelector('img')!
-		// The banner inventory is uniform 2000x496, so the ratio is known.
-		expect(img.getAttribute('width')).toBe('2000')
-		expect(img.getAttribute('height')).toBe('496')
+		// The banner inventory is uniform 1584x672, so the ratio is known. These
+		// describe the FILE, which is native 2.36:1 — the 4:1 the page shows comes
+		// from `.img-banner`, and the no-CSS fallback wants the whole picture.
+		expect(img.getAttribute('width')).toBe('1584')
+		expect(img.getAttribute('height')).toBe('672')
+	})
+
+	it('aims the 4:1 window per banner, and only for banners', () => {
+		// A banner is native 2.36:1 inside a 4:1 box, so which slice survives is a
+		// per-picture call. Everything else is square in a square box or reserves
+		// no ratio at all, so an object-position would be meaningless there.
+		//
+		// Asserted against the MAP rather than a literal: the fixture src is a real
+		// banner, so hard-coding its value here would make re-aiming one picture
+		// fail a test about routing.
+		const banner = marked('banner-img').querySelector('img')!
+		expect(banner.style.objectPosition).toBe(BANNER_CROP['folk-banner.png'])
+		expect(marked('folk-img').querySelector('img')!.style.objectPosition).toBe('')
+	})
+
+	it('falls back to the measured default for a banner nobody has aimed yet', () => {
+		const img = render(
+			<MdxImage alt="banner-img" src="/img/banner/not-yet-reviewed-banner.png" />,
+		).container.querySelector('img')!
+		expect(img.style.objectPosition).toBe(DEFAULT_BANNER_CROP)
+	})
+
+	it('lists every in-doc banner, because the default is not centre', () => {
+		// `DEFAULT_BANNER_CROP` is 66%, so an omission does not mean "leave it
+		// alone" — it moves the picture. A banner reviewed and left at centre has
+		// to say so explicitly, which is why the map holds all 54 rather than only
+		// the ones that moved.
+		expect(Object.keys(BANNER_CROP)).toHaveLength(54)
+		expect(BANNER_CROP).not.toHaveProperty('home-banner.png')
+	})
+
+	it('looks the crop up by filename stem, so a content hash cannot break it', () => {
+		// Docusaurus serves `x.png` in dev and `x.a1b2c3.png` in production. A
+		// lookup keyed on the full basename would silently fall back to centre for
+		// every banner in the built site — the one place it matters.
+		const key = Object.keys(BANNER_CROP)[0]
+		if (!key) return // map is empty until the framing review lands
+		const stem = key.replace(/\.png$/, '')
+		expect(bannerCrop(`/img/banner/${stem}.a1b2c3d4.png`)).toBe(BANNER_CROP[key])
 	})
 
 	it('wraps the plate in spans only, so it is legal inside a <p>', () => {

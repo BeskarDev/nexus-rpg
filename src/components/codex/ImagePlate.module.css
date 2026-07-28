@@ -54,8 +54,13 @@
    in older engines discards that ratio. Declaring `aspect-ratio` explicitly
    costs one line and does not depend on the attribute heuristic. Both are set:
    the attributes also serve the no-CSS case. */
+/* Banners ship at their native 1584 x 672 (2.36:1) and are cropped to the 4:1
+   band HERE rather than at publish time, so the framing of any one banner stays
+   a one-line edit in `banner-crop.ts` instead of a re-crop from a gitignored
+   folder. `object-position` comes per file from that map. */
 .img-banner {
 	aspect-ratio: 4 / 1;
+	object-fit: cover;
 }
 /* All 12 folk portraits are square (1024²). */
 .img-inline {
