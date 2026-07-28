@@ -75,7 +75,7 @@ When creating your adventurer, you may use the following tables to determine you
 
 > "The stone remembers what flesh forgets. From the mountain quarries to the desert monuments, our crafts endure when empires crumble to dust."
 
-![folk-img|Two dwarves in red and gold walking a stone paved canyon street, one shouldering an axe and a round shield, the other carrying a crossbow and a quiver of arrows](./img/dwarf.jpeg)
+![folk-img|Two bearded dwarves standing on rocky ground, one gripping a long staff and wearing a tiered kilt, the other dangling a plumb bob and carrying a clay tablet](./img/dwarf.jpeg)
 
 
 Carved of the stone itself, dwarves maintain a deep connection to the earth. They are masters of mining and metalworking, renowned for their craftsmanship and skill. They value honor and tradition, and their unyielding determination reflects their unbreakable bond with the earth. In Atakhet, dwarven stoneworkers are highly prized for their ability to craft monuments that withstand the harsh desert conditions.
@@ -104,7 +104,7 @@ Carved of the stone itself, dwarves maintain a deep connection to the earth. The
 
 > "We do not conquer the land—we commune with it. From the sacred river's source in the distant mountains to its delta where it meets the sea, each drop of water, each grain of sand carries a spirit you cannot hear."
 
-![folk-img|Two white haired elves in broad gold collars and jewelled headbands beside a desert river, the taller one wearing a blue cloak clasped with an eye emblem](./img/elf.jpeg)
+![folk-img|Two elves standing on sandy ground in pleated linen wraps and broad beaded collars, one carrying a hooked crook and the other raising a ring topped staff](./img/elf.jpeg)
 
 
 Living in a spiritual symbiotic state with the life force of nature in their immediate environment, elves are intimately connected to the natural world. They are sensitive to changes in their surroundings and suffer physically when in barren or lifeless terrain for too long. They are often aloof and unapproachable, but their fierce loyalty to their home and way of life is unwavering. In the realm of Atakhet, the Ra'thep sun-elves have adapted to channel the desert's harsh energies, ruling as divine representatives blessed by the sun.
@@ -135,7 +135,7 @@ Living in a spiritual symbiotic state with the life force of nature in their imm
 
 > "Your thoughts shine like torches in the night. From the river's source to its mangrove delta, secrets flow like water. From us? How amusing."
 
-![folk-img|Two gnomes with long pointed ears, hooded and wrapped in patterned desert robes, standing on open sand below carved cliffs](./img/gnome.png)
+![folk-img|Two gnomes with large pointed ears standing in hooded robes and sashes, one shading their eyes with a hand, the other spreading both arms among rocks and scrub](./img/gnome.png)
 
 
 Natural psychics with the ability to read other people's intentions and surface thoughts, the child-sized gnomes are an open and harmonious culture. However, this often makes them naive when faced with other folk who attempt to deceive them. Their playful nature is a welcome addition to any company. In Atakhet, gnomes often serve as diplomatic intermediaries, using their empathic abilities to foster understanding between different folk.
@@ -166,7 +166,7 @@ Natural psychics with the ability to read other people's intentions and surface 
 
 > "We have watched civilizations rise and fall like the river delta's tides. From mountain peaks to swampland depths, patience is our greatest strength."
 
-![folk-img|Two grey skinned hune outside cliffside houses, one a head and shoulders taller carrying a spiked stone club, the other holding a runed axe](./img/hune.jpeg)
+![folk-img|Two bald Hune standing before a cliff face, one gripping a feathered ritual staff, the other holding a plain staff with a fur pelt draped over one arm](./img/hune.jpeg)
 
 
 A race of towering beings with incredible strength and endurance. They are often nomadic and reclusive but possess a deep wisdom and knowledge of the world. In the deserts of Atakhet, Hunes are often sought out as caravan guards or builders for grand monuments, their strength and endurance invaluable in the harsh climate.
@@ -196,7 +196,7 @@ A race of towering beings with incredible strength and endurance. They are often
 
 > "Our ancestors' deeds do not define us, but their strength flows in our veins like the great river through the desert. We build terraces on the mountain slopes where they once only destroyed."
 
-![folk-img|Two tusked orcs in white robes trimmed with a gold key pattern, standing above a blue coastline with a columned temple behind them](./img/orc.jpeg)
+![folk-img|Two orcs standing on a rocky shore in scale vests and wrapped kilts with bedrolls, one shouldering a curved sword, the other shading their eyes toward a distant watchtower](./img/orc.jpeg)
 
 
 Coming from once violent and brutal cultures, the orcs have a reputation for savagery that many have worked hard to overcome. While many have adopted a more civilized life, they are often judged by the deeds of their ancestors rather than their own merits. Despite this, orcs value strength and honor above all else, and their fierce determination and indomitable will make them formidable allies. In Atakhet, many orcs serve as elite mercenaries or skilled craftspeople, gradually earning respect through their deeds rather than their lineage.
@@ -222,7 +222,7 @@ Coming from once violent and brutal cultures, the orcs have a reputation for sav
 
 > "Underestimated is exactly where I prefer to be. Whether in the crowded bazaars or the dense mangrove swamps of the delta, by the time they realize their mistake, their coin purse is already in my hand."
 
-![folk-img|Two goblins crouching and grinning in a green jungle, one turning over a small skull, the other holding a bone topped staff](./img/goblin.jpeg)
+![folk-img|Two goblins grinning on open ground in ragged tunics and wrapped shins, one raising a carved stone maul, the other hauling a patched sack and a skull pouch](./img/goblin.jpeg)
 
 
 A cunning and resourceful race of small build, with a knack for trickery and deception. They are often viewed as untrustworthy and sneaky, but their ingenuity can be a valuable asset. In the deserts of Atakhet, goblins often serve as scouts or messengers, their small size and quick wits allowing them to navigate both the physical and social landscapes with surprising effectiveness.
@@ -253,7 +253,7 @@ A cunning and resourceful race of small build, with a knack for trickery and dec
 
 > "They fear what flows in our veins, yet seek to harness it like the waters of the great river. We walk a dangerous path between power and persecution, from the savannah's edge to the temple steps."
 
-![folk-img|Two humans on golden savanna under acacia trees, one wearing a leopard pelt and carrying a bow, the other wearing a horned headdress and holding a spear](./img/human.jpeg)
+![folk-img|Two humans standing in fringed linen robes and beaded necklaces, one extending a sparking rod toward a stone block, the other carrying a clay jar and palm fronds](./img/human.jpeg)
 
 
 A resilient and adaptable people, humans possess a natural arcane ability that sets them apart from other folk. Others sometimes try to subjugate them to make use of their natural gifts as a weapon. As a result, humans are often caught between fear and exploitation, struggling to find their place in a world that both values and fears their power. But their incredible adaptability and boundless ambition have allowed them to thrive despite these challenges. In Atakhet, humans often serve as advisors or arcane specialists, their natural magical talents both valued and closely monitored.
@@ -278,7 +278,7 @@ A resilient and adaptable people, humans possess a natural arcane ability that s
 
 > "We hunt not just with claws and teeth, but with patience and respect. The savannah's beasts and the jungle's shadows have taught us when to strike and when to wait."
 
-![folk-img|Two catfolk beside a river at dusk, a maned one holding a curved sword, the other with braided dreadlocks holding a long spear](./img/lionfolk.jpeg)
+![folk-img|Two catfolk standing on open ground in cloaks and layered kilts, one maned and resting both hands on a planted sword, the other shouldering a spear](./img/lionfolk.jpeg)
 
 
 A proud and regal race, with a deep connection to the natural world and a reverence for the power of the hunt. They are often viewed as noble and honorable, but their fierce pride can make them difficult to work with. In the realm of Atakhet, lionfolk often serve as desert guides or warriors, their natural hunting instincts and keen senses invaluable in the harsh environment.
@@ -306,7 +306,7 @@ A proud and regal race, with a deep connection to the natural world and a revere
 
 > "We remember when the desert was an ocean. Our blood is cold, but our memories are long, flowing from the mountain jungles to the vast delta swamps where we make our homes."
 
-![folk-img|Two lizardfolk crouched at the edge of a misty swamp, one crowned with a horned bull skull, the other in a feathered headdress, both holding spears](./img/lizardfolk.jpeg)
+![folk-img|Two lizardfolk standing on bare ground in beaded collars and tattered cloaks, one holding a tall spear and the other carrying a knotted fishing net, tails trailing behind](./img/lizardfolk.jpeg)
 
 
 A cold-blooded and inscrutable species, with a deep connection to the swamps and marshes where they make their homes. They are often viewed as mysterious and dangerous but possess wisdom and cunning born of their harsh environment. In Atakhet, lizardfolk are often found near the life-giving oases and rivers, serving as guardians of these precious water sources.
@@ -335,7 +335,7 @@ A cold-blooded and inscrutable species, with a deep connection to the swamps and
 
 > "Our horns may be fearsome, but our hearts honor the ancient ways. We guard the sacred mountain passes and river crossings that others have forgotten, from savannah to delta."
 
-![folk-img|Two minotaurs crossing dry grassland below mountains, one shouldering a great axe, the other walking with a gem tipped staff](./img/minotaur.jpeg)
+![folk-img|Two horned minotaurs walking through grass in fringed kilts and medallion belts, one shouldering a broad axe, the other carrying a crook staff hung with a bell](./img/minotaur.jpeg)
 
 
 A horned, furry species known for their immense strength and unwavering determination. They are fiercely protective of their clan and territories, often seen as guardians of sacred places. Their physical prowess is matched by their sense of honor, making them formidable allies and respected adversaries. In Atakhet, minotaurs often serve as temple guardians or caravan protectors, their imposing presence deterring all but the most determined threats.
@@ -366,7 +366,7 @@ A horned, furry species known for their immense strength and unwavering determin
 
 > "The pack endures where the lone hunter falters. Our noses read the wind like scholars read their scrolls—every scent a story, every trail a promise kept."
 
-![folk-img|Two jackal headed dogfolk in a sunlit hall of hieroglyph carved columns, one crouching with a curved dagger, the other cloaked with a bundle over one shoulder](./img/dogfolk.png)
+![folk-img|Two jackal headed dogfolk standing back to back on sandy ground in hooded robes and sashes, one wearing a disc amulet, the other holding a curved dagger](./img/dogfolk.png)
 
 
 Dogfolk are a canine folk with keen senses and an unshakable loyalty to their kin. Their sharp ears and powerful noses make them unparalleled trackers, while their pack instincts drive them to protect their companions at any cost. Though sometimes dismissed by other folk as overly trusting, their dedication and reliability have earned them a respected place in many communities. In Atakhet, dogfolk often serve as caravan scouts, border patrols, and desert trackers, their senses invaluable for navigating the treacherous sands and detecting hidden dangers.
@@ -394,7 +394,7 @@ Dogfolk are a canine folk with keen senses and an unshakable loyalty to their ki
 
 > "Why do you build walls of stone when the forest offers shelter, the river offers song, and the wind offers freedom? Come, drink, and let the music carry your sorrows away."
 
-![folk-img|Two satyrs dancing in a sunlit wood, one playing a wooden flute, the other raising a hand drum and beater](./img/satyr.png)
+![folk-img|Two satyrs with curled horns and goat legs dancing along a path, one playing a reed flute, the other raising a hand drum and beater, both in fleece kilts](./img/satyr.png)
 
 
 Satyrs are a spirited and free-willed folk with the legs and horns of goats. Known for their love of music, revelry, and the natural world, satyrs are deeply connected to wild places and resist the constraints of civilization. Their innate resistance to magic and supernatural charm makes them remarkably difficult to manipulate, a trait that has served them well in a world full of sorcery. In Atakhet, satyrs are often found in the lush oases and mountain valleys that border the desert, serving as musicians, herbalists, and guides through the wilderness.

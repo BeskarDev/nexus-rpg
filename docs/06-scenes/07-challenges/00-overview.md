@@ -4,7 +4,7 @@ sidebar_position: 0
 
 # 🎯 Challenges
 
-![banner-img](/img/banner/scenes-banner.png)
+![banner-img](/img/banner/challenges-banner.png)
 
 Challenges provide a unified mechanic for chases, research, tracking, social intrigue, and any scene where progress must be measured against difficulty and urgency.
 

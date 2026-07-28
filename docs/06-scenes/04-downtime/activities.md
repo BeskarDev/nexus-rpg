@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Downtime Activities
 
+![banner-img](/img/banner/downtime-activities-banner.png)
+
 ### Manual Labour
 
 | Min. Settlement Rank | Requirements | Expenses |

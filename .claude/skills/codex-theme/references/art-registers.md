@@ -26,7 +26,7 @@ grade a sky and use atmospheric recession. What is excluded is *photographic ren
 
 | | |
 |---|---|
-| Aspect | **4:1 published, 2000 × 496** — all 40 in-doc banners. `home-banner.png` is 2.40:1, the homepage hero, cropped to 3:1 at the call site; not the template. `.img-banner` in `ImagePlate.module.css` reserves `2000 / 496`, so changing the aspect means changing that line too. Generate at 21:9 and centre-crop when the tool has no 4:1 preset |
+| Aspect | **4:1 published, 1584 × 396** — all 54 in-doc banners. `home-banner.png` is 1584 × 660 (2.40:1), the homepage hero, cropped to 3:1 at the call site; not the template. `.img-banner` in `ImagePlate.module.css` reserves `4 / 1`, so changing the aspect means changing that line too. Generate at 21:9 and **centre-crop only — never upscale to hit a number.** Nano Banana returns 1584 × 672, the crop takes it to 1584 × 396, and that is the published size: the vellum sheet is ~813px so 1584 is already 2× retina, and the earlier 2000 × 496 convention was 1.26× upscale buying no detail on flat-wash art (M12, 2026-07-28) |
 | Line | fine ink of **varying weight** — firm in the foreground, thinning to almost nothing in the distance. Never a heavy uniform outline |
 | Colour | flat washes on solid forms, no rendering, no glossy highlights |
 | Sky | 40–60% of the frame, **large soft cumulus, softly graded and gently modelled** — the one place tonal modelling belongs |
@@ -51,7 +51,8 @@ never cleaned up**, not a finished inking.
 
 | | |
 |---|---|
-| Aspect | 1:1 for folk pairs, 4:5 for single figures |
+| Aspect | 1:1 for folk pairs, 4:5 for single figures. **Published at 1024 × 1024**, no upscale, same reason as Register A |
+| Filename | `docs/02-adventurers/img/` mixes extensions — nine folk are `.jpeg` (`dwarf`, `elf`, `goblin`, `hune`, `human`, `lionfolk`, `lizardfolk`, `minotaur`, `orc`) and three are `.png` (`gnome`, `dogfolk`, `satyr`). **Convert the render, never rename the file**, or every `![folk-img](./img/…)` reference breaks |
 | Line | **variable weight, broken and searching**; thins and drops out entirely in lit areas; construction lines left visible |
 | Shading | scribbled crosshatch that overshoots the edge of the form |
 | Colour | near-monochrome bronze and sepia wash over the ink; one spot hue at most |

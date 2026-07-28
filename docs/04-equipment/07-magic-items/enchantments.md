@@ -4,6 +4,8 @@ sidebar_position: 4
 
 # Enchantments
 
+![banner-img](/img/banner/enchanting-banner.png)
+
 ## Enchantments
 
 Enchantments are optional magical properties for items of Q4+. Each enchantment adds its full cost to the item (see Enchantment Cost table).

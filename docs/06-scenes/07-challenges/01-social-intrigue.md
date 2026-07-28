@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # 🗣️ Social Intrigue
 
+![banner-img](/img/banner/social-intrigue-banner.png)
+
 Social Intrigue covers the messy, back-and-forth work of negotiation, persuasion, deception, and alliance-building. It is a specialized application of the [Challenge rules](./00-overview.md), built for situations where a single skill roll is not enough and the NPC's stance needs to be tracked over time.
 
 This page adds the social-specific layer on top: **Interest**, **Patience**, **Motivations**, and **Pitfalls**.

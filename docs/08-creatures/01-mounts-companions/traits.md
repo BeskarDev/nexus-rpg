@@ -3,6 +3,8 @@ sidebar_position: 3
 title: "Companion Traits"
 ---
 
+![banner-img](/img/banner/companion-traits-banner.png)
+
 ## Beast
 
 Natural animals that can serve as companions or mounts.

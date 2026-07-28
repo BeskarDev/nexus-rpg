@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # ⚗️ Field Alchemy
 
+![banner-img](/img/banner/field-alchemy-banner.png)
+
 Field alchemy is quick, improvised crafting during adventures. Working by firelight or crouched over a bronze mortar, a practiced hand turns raw materials into a single finished alchemical item.
 
 Field alchemy and workshop alchemy are separate crafts. The Alchemist crafting profession covers workshop production during downtime (see the Craft an Item activity). Creating alchemical items in the field is the domain of talents.

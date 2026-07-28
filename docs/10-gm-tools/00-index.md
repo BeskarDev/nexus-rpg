@@ -4,6 +4,8 @@ sidebar_position: 0
 
 # ⚙️ GM Tools
 
+![banner-img](/img/banner/gm-tools-banner.png)
+
 Welcome to the GM Tools section — a collection of printable references and Random Tables to help you run sessions faster.
 
 ## 📄 Printable References

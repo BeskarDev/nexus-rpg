@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # 🔪 Harvesting Creature Parts
 
-![banner-img](/img/banner/crafting-banner.png)
+![banner-img](/img/banner/harvesting-parts-banner.png)
 
 Choose from different categories:
 

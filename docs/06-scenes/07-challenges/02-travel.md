@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # 🧭 Travel
 
-![banner-img](/img/banner/scenes-banner.png)
+![banner-img](/img/banner/travel-banner.png)
 
 Travel covers multi-day overland journeys between known locations. It is a specialized application of the [Challenge rules](./00-overview.md), built for situations where the party must navigate dangerous terrain, manage supplies, and deal with the unpredictable hazards of the road.
 

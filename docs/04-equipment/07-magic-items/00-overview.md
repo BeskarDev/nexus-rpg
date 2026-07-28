@@ -6,7 +6,7 @@ import { MagicItemBuilderWrapper } from '@site/src/components/MagicItemBuilderWr
 
 # 💎 Magic Items
 
-![banner-img](/img/banner/weapon-armor-materials-banner.png)
+![banner-img](/img/banner/magic-items-banner.png)
 
 Magic items are higher Quality versions of normal equipment that enhance your character's combat prowess, spellcasting power, and survivability. From flaming swords that ignite with fire to armor that deflects spells, from boots that enhance reflexes to amulets that store magical energy—magic items are key to facing deadlier foes and surviving legendary adventures.
 

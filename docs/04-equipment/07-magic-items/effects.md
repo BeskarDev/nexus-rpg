@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # Magic Item Effects
 
+![banner-img](/img/banner/magic-effects-banner.png)
+
 ## Magic Weapons and Spell Catalysts
 
 Magic weapons and spell catalysts increase their weapon or spell damage by +1 for each step above their original Quality respectively and increases their innate Durability. The following table describes the exact bonuses magic weapons and spell catalysts gain. Quality 3 is a special case, where the items count as non-magical masterworks but follow the same principle.

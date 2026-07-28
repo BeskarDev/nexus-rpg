@@ -55,9 +55,9 @@
    costs one line and does not depend on the attribute heuristic. Both are set:
    the attributes also serve the no-CSS case. */
 .img-banner {
-	aspect-ratio: 2000 / 496;
+	aspect-ratio: 4 / 1;
 }
-/* All 12 folk portraits are square (2048² or 1024²). */
+/* All 12 folk portraits are square (1024²). */
 .img-inline {
 	aspect-ratio: 1 / 1;
 }

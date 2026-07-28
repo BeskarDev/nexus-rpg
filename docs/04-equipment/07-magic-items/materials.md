@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # Special Materials
 
+![banner-img](/img/banner/magic-materials-banner.png)
+
 ## Materials
 
 All items are crafted from materials that determine their construction, durability, and appearance.

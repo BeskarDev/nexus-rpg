@@ -166,7 +166,7 @@
       "Magic Items": {
         "target": "docs/04-equipment/07-magic-items/00-overview.md",
         "title": "💎 Magic Items",
-        "banner": "/img/banner/weapon-armor-materials-banner.png",
+        "banner": "/img/banner/magic-items-banner.png",
         "preserve_existing": true
       },
       "Magic Item Cost Tables": {
