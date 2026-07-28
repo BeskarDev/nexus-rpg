@@ -17,22 +17,12 @@ Two references carry the depth of the build side:
   MDX / remark-plugin traps that silently break content. Read before building a card or
   a generator.
 
-The illustration brief is split across five files, so a task pays only for the concern it
-touches. Read the hub before generating or replacing any banner or folk/creature artwork:
-
-- **[references/art-direction.md](references/art-direction.md)** — the hub: the drawn-not-
-  rendered premise, the shared spine, the palette lock, modesty and presentation. Read this
-  first, and always.
-- **[references/art-registers.md](references/art-registers.md)** — the two register specs
-  (wide Moebius plates, hatched D&D-3.5-style figures). Read this when choosing or writing
-  to a register.
-- **[references/art-setting.md](references/art-setting.md)** — Bronze Age authenticity, the
-  iron taboo, folk/culture and creature sourcing. Read this for any image with a folk, a
-  culture, a creature or a tool in it.
-- **[references/art-prompting.md](references/art-prompting.md)** — model type, the two
-  prompt templates, the negative block. Read this when writing the prompt.
-- **[references/art-acceptance.md](references/art-acceptance.md)** — the reject-and-
-  regenerate checklist. Read this when judging a returned render.
+The illustration brief is split across eight files so a task pays only for the concern it
+touches, and **[references/art-direction.md](references/art-direction.md)** is the hub. Read
+it before generating or replacing any banner or folk/creature artwork: it carries the
+drawn-not-rendered premise, the shared spine, the palette lock, modesty and presentation, plus
+the routing table for the seven concern files (registers, plate composition, setting, folk,
+gods, creatures, prompting, acceptance).
 
 ## Composition, not just surface
 

@@ -4,84 +4,95 @@ Applies to both registers. Read alongside [art-direction.md](art-direction.md), 
 the palette lock and the modesty rules. **Modesty outranks setting authenticity: where the
 two conflict, cover the figure.**
 
+This page holds the rules that touch **every** image: the period, the material world, and
+magical naturalism. Who or what is *in* the image is sourced from canon, one file per kind:
+
+| File | Read it when the image contains |
+|---|---|
+| [art-folk.md](art-folk.md) | **a folk, a culture or a named person** — the desert cast table, the species-noun and garment traps, the dwarf beards |
+| [art-gods.md](art-gods.md) | **a god, a temple, a mystic or an arcanist** — the Atakhet pantheon table, the arcane-is-a-crime staging rules |
+| [art-creatures.md](art-creatures.md) | **a creature** — sourcing from `creatures.json`, Bronze Age anatomy, pairing a creature with a folk |
+
+## The period
+
 Bronze Age Mesopotamia, Egypt and Persia. Between roughly 3000 and 1200 BCE.
 
-**Draw on:** ziggurats and mudbrick, palm and papyrus columns, glazed-brick relief,
-lamassu and winged bulls, kaunakes tiered wool, linen kilts and shawls, faience and
-carnelian beadwork, cylinder seals, reed boats, bronze sickle-swords and khopeshes, lotus
-and palmette borders, cuneiform and hieroglyph texture, lapis inlay, date palms, canals.
+**Draw on:** ziggurats and mudbrick, palm and papyrus columns, glazed-brick relief, lamassu
+and winged bulls, kaunakes tiered wool, linen kilts and shawls, faience and carnelian
+beadwork, cylinder seals, reed boats, bronze sickle-swords and khopeshes, lotus and palmette
+borders, cuneiform and hieroglyph texture, lapis inlay, date palms, canals.
 
 **Never:** Greek meander borders, Doric or Corinthian columns, pediments and togas, Roman
 anything, medieval European armour or heraldry, Norse or Celtic knotwork, Plains-Indian
 regalia, Japanese or Chinese motifs, steel plate, printed fabric.
 
+### The one licensed exception: goods carried in from another continent
+
+That ban protects the **desert**. A plate whose whole subject is a *foreign trader* is the one
+place another region's look belongs, and there the reference must be named or the model
+supplies generic fantasy-orientalism.
+
+For the **eastern mist realms** the anchor is **Shang and early Zhou China, roughly 1600 to
+1000 BCE** — inside the setting's own window, so a sibling Bronze Age rather than an
+anachronism. Draw on: bronze cast in piece-moulds with animal-mask collars, the *ge*
+dagger-axe whose blade is lashed **crosswise** to the shaft, long double-bladed halberds,
+straight double-edged bronze swords, pierced jade discs, lacquered shafts, silk cord and plain
+bordered silk robes. **Still never** the later Asia the ban was aimed at: katana, samurai
+armour, pagodas, kimono, folding fans, porcelain, chinoiserie.
+
+Two rules keep the exception from leaking:
+
+- **Confine it to the visiting party and the goods on the ground.** The quay, the architecture,
+  the buyers and the sky stay Bronze Age Mesopotamia. The contrast *is* the picture: if the
+  setting also goes foreign there is nothing for the goods to be foreign to.
+- **Say the region, not the real culture** — "court work from the far eastern river kingdoms".
+  The object description carries the look. (This guards against a **foreign** period leaking in.
+  It does *not* apply to Mesopotamia, the setting's own anchor — see
+  [art-folk.md](art-folk.md) § The two dwarf cultures.)
+
 ## Iron is taboo, not merely absent
 
-Iron exists in the setting and is **cursed**. The vault
-(`(12) 🗝️ Artefakte/Materialien/Metalle/Eisen.md`) has it as *Fluchstein*: an anti-spiritual
-taboo metal that repels spirits and attracts monsters, blocks divine and primal magic,
-temples forbid it, kings legislate against it, and it is used chiefly by the Urduk and the
-sorcerer-kings, or to shackle and mask captive mystics.
-
-So an iron tool in a banner is not just an anachronism, it is a **lore signal** that the
-scene is cursed. Reserve dark iron for images that mean exactly that.
+Iron exists and is **cursed**. The vault (`(12) 🗝️ Artefakte/Materialien/Metalle/Eisen.md`) has
+it as *Fluchstein*: an anti-spiritual taboo metal that repels spirits and attracts monsters,
+blocks divine and primal magic, forbidden in temples, legislated against by kings, used chiefly
+by the Urduk and the sorcerer-kings, or to shackle and mask captive mystics. So an iron tool in
+a banner is not just an anachronism, it is a **lore signal that the scene is cursed**. Reserve
+dark iron for images that mean exactly that.
 
 Everything else is bronze, knapped stone, wood, reed, rope, leather, bone and fired clay,
-lashed and pegged by hand. Prompt it **positively** — say "warm dull bronze, tarnished
-green and brown, short leaf-shaped blades, plain timber hafts bound with cord". Writing
-"no iron" or "not steel" names the metal and puts it in the picture; a long-handled steel
-spade turned up in a sculptor's yard exactly that way. A materials clause belongs in the
-**fixed palette block**, not per scene, because every banner with a tool in it is exposed.
+lashed and pegged by hand. Prompt it **positively** — "warm dull bronze, tarnished green and
+brown, short leaf-shaped blades, plain timber hafts bound with cord". Writing "no iron" or "not
+steel" names the metal and puts it in the picture; a long-handled steel spade turned up in a
+sculptor's yard exactly that way. The materials clause belongs in the **fixed palette block**,
+not per scene, because every banner with a tool in it is exposed.
 
-**Phrase that clause conditionally, or it becomes a props list.** A global rule sits in
-front of scenes that contain no objects at all, and "every tool and vessel in the scene is
-bronze" asserts that tools and vessels are there — enough to furnish an empty landscape
-with an adze leaning on a rock. Say "*wherever* a tool or vessel *happens to appear*, it
-is…", "*any* metal is…", "*any* blade is…". This is the mirror of the negation rule: a
-negation summons what it names, and an existential asserts what it names. A global
-constraint has to do neither.
+**Phrase that clause conditionally, or it becomes a props list.** A global rule sits in front of
+scenes containing no objects at all, and "every tool and vessel in the scene is bronze" asserts
+that tools and vessels are there — enough to furnish an empty landscape with an adze leaning on
+a rock. Say "*wherever* a tool or vessel *happens to appear*, it is…", "*any* metal is…",
+"*any* blade is…". This is the mirror of the negation rule: a negation summons what it names, an
+existential asserts what it names, and a global constraint must do neither.
 
-## Cultures come from the worldbuilding vault, not from `docs/`
+The materials clause enumerates "tool, weapon, fitting or vessel" and has **never covered
+clothing** — garments have their own trap, in [art-folk.md](art-folk.md) § A bare garment noun.
 
-For anything depicting a **folk or a culture**, the source of truth is
-`/Users/rm-aclue/git/personal/nexus-rpg-vault/(05) 🏛️ Kulturen/` — `Kulturen/<Name>.md`
-for a culture, `Völker/<Volk>.md` for the folk's baseline anatomy. Read the `updated:`
-field; several entries were revised in 2026 and the docs have not caught up.
+## Magic is ordinary, and nobody in the picture marvels at it
 
-**The culture tables in `docs/02-adventurers/01-folk.md` are stale in at least seven
-places** and will hand you a wrong identity if you trust them. The one that cost the most
-time: the docs give the *dwarves* astronomy, while the vault moved it to the *hune* and
-left the dwarves as hydraulic engineers with a dying golem tradition. Two folk also read
-as an entirely different species in the vault than in the docs — Burrin gnomes are
-meerkat-like and furred, not small humans, and goblins are the scavenger and scrap-trade
-caste rather than scouts.
+The setting's governing writing rule is **magical naturalism** (`(01) 🌍
+Weltübersicht/Design-Dokument.md`, revised 2026-02-27, naming *Morrowind* as the model):
+*"Magic in Nexus is not an exception, it is nature… Inhabitants of this world do not marvel at
+magical flora, fauna or phenomena. They use them, occasionally fear them."*
 
-Check the vault before every folk or culture plate. The full divergence list is in
-`.drafts/nexus-docusaurus-theme/milestone-12-art-regeneration.md` § Log.
+An illustration breaks this in a way prose rarely does, because the obvious way to show that an
+object is magical is to have somebody stare at it — one item hovering in a shaft of light with
+two figures transfixed over it reads as a fantasy reliquary rather than as this world.
+**Reverence is the tell.** The people around a magical thing are carrying it, selling it,
+wearing it, digging it out, arguing over what it is worth, or keeping their distance because it
+is dangerous or illegal. Say outright in the prompt that the work is ordinary and that nobody is
+looking at the light.
 
-## Creatures come from `creatures.json`
-
-Never invent a monster for a banner and never let the model pick one. Name a creature that
-exists in `src/utils/data/json/creatures.json` and **describe its anatomy from Bronze Age
-iconography**, or the model fills in generic western fantasy — the same failure class as
-the Greek orcs.
-
-The worked example: "dragon" alone produced a western wyvern with bat wings in front of a
-gothic spired castle. The Bronze Age dragon is the **mušḫuššu** of the Ishtar Gate —
-scaled serpentine body, slender neck, horned viper head with a forked tongue, a crest of
-spines, the forelegs of a lion and scaled bird-like hind legs with talons. Spelling that
-out fixed it in one pass.
-
-On-theme creatures already in the data: Desert Dragon, Sphinx, Anubis Guardian, Apophis
-Serpent, Lamia, Mummy Lord, Roc, Behir, Hydra, Cyclops.
-
-Two traps when a creature also exists as real-world statuary:
-
-- **Say it is alive and give it an action.** "A sphinx sits couchant on a ruined stone
-  plinth" is a description of the Great Sphinx of Giza, and that is what came back — a
-  monument. "A living winged sphinx crouches on a rock, wings spread, snarling" does not.
-  Put `statue, monument, stone carving` in the negative as well.
-- **State the interaction, not a list of subjects.** Naming three things in three places
-  gets three unrelated things in three places. Say what they are doing *to each other* —
-  "two great monsters face each other across the frame, mid-confrontation, with the
-  hunters caught between them".
+This does not weaken the emphasis kit in [art-composition.md](art-composition.md) — a swept
+floor, one patch of light and every figure staggered off the centre line still buy focus. It
+rules out one beat only: awe. The rule applies to the practitioner as much as to the onlookers,
+which is what makes arcane corruption drawable — see [art-gods.md](art-gods.md) § Arcane
+corruption.

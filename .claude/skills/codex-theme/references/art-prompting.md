@@ -1,7 +1,8 @@
 # Prompting the Image Pipeline
 
-How to write the prompt once the register is chosen ([art-registers.md](art-registers.md))
-and the setting is sourced ([art-setting.md](art-setting.md)). Judge what comes back
+How to write the prompt once the register is chosen ([art-registers.md](art-registers.md)),
+the scene is composed ([art-composition.md](art-composition.md)) and the cast is sourced
+([art-setting.md](art-setting.md) and its folk / gods / creatures files). Judge what comes back
 against [art-acceptance.md](art-acceptance.md).
 
 ## Know which kind of model you are prompting
@@ -34,6 +35,23 @@ Rules for the instruction-following case:
   wash. A style block stranded at the end of a long prompt gets outweighed by the subject.
 - **Keep it short**, and break it into short paragraphs: medium, subject and pose,
   costume, setting.
+- **Never give a background group a motion verb without a destination.** "A few figures are
+  already running for cover" has no target in the sentence, so the model supplies the only
+  other figure in the frame and the crowd charges the lone subject — three attempts in a row on
+  the resolve banner. Fix it by **removing the motion**: say where they already are, at which
+  end of the strip, and what posture they hold ("far off at the opposite end, gone to ground
+  behind a rock and staying put, hunched with their backs to the wind"). A held posture cannot
+  be aimed. Direction, when it is genuinely needed, comes from body orientation — backs turned,
+  heads tucked — never from a verb of travel.
+- **For a specific historical form, name the real-world reference.** A model knows "the stele of
+  Hammurabi" and does not know "straight vertical crimped strands". Pure geometric description of
+  a costume or grooming detail loses to the noun it is attached to — a dwarf beard described only
+  by its shape came back as a fantasy plait three times, because *dwarf* is the stronger prior.
+  A named monument overrides it in one phrase. This does **not** conflict with "say the region,
+  not the real culture" in [art-setting.md](art-setting.md): that guards against importing a
+  **foreign** period, and Bronze Age Mesopotamia is the setting's own anchor. Name the reference,
+  then give the geometry — **silhouette of the mass first, surface texture second**, and never a
+  self-cancelling pair like "straight … crimped".
 - **State the aspect ratio inside the prompt text**, not only in the pipeline field.
   Gemini honours "(must be in the 21:9 aspect ratio)" written into the first sentence far
   more reliably than a ratio passed alongside, and a wide plate returned at 16:9 or square
