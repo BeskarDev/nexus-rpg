@@ -2,6 +2,7 @@
 import React from 'react'
 import { Box, IconButton, Tooltip, alpha } from '@mui/material'
 import { Settings } from '@mui/icons-material'
+import { CardFrame } from '@site/src/components/codex/ornaments'
 import { CharacterSheetCardProps } from './types'
 
 export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
@@ -16,6 +17,13 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 	maxWidth,
 	sx,
 	borderColor,
+	// M9 S3: the codex kit's cartouche keystone + corner rails (its own motif,
+	// per the card-family table in codex-theme/SKILL.md). Off by default —
+	// several CharacterSheetCard contexts (weapon/equipment rows) stack tightly
+	// with near-zero gap, and the keystone's ~16px overhang needs real
+	// clearance above it (ornament-craft §9) or it collides with the card
+	// stacked above. Opt in per usage where the surrounding layout has room.
+	frame = false,
 	'data-testid': testId,
 }) => {
 	const [isMenuOpen, setIsMenuOpen] = React.useState(false)
@@ -51,11 +59,26 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 				p: 0.5,
 				position: 'relative',
 				minWidth: minWidth || '4rem',
+				// The cartouche keystone overhangs ~16px above the border (see
+				// CardFrame's own module CSS); this is that clearance, matching the
+				// codex kit's own convention for a keystone this weight.
+				...(frame && { mt: '1.15rem' }),
 				...(maxWidth && { maxWidth }),
 				...sx,
 			}}
 		>
-			{/* Header */}
+			{/* M9 S3: corner marks, codex-kit register. `frame` cards get the full
+				cartouche keystone + corner rails (CardFrame supplies its own
+				corners); everything else gets the lighter rivet dots instead — most
+				CharacterSheetCard instances are small stat tiles (AvCard etc., as
+				narrow as 4rem) that a full rail system was never sized for. */}
+			{frame ? (
+				<CardFrame keystone="sheet" />
+			) : (
+				(['tl', 'tr', 'br', 'bl'] as const).map((pos) => (
+					<span key={pos} className={`cs-rivet cs-rivet-${pos}`} aria-hidden="true" />
+				))
+			)}
 			{header && header}
 
 			{/* Main Content */}

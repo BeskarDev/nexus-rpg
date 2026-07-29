@@ -81,6 +81,60 @@
 	--nexus-jewel-lapis: #2a4d8f; /* deep lapis blue */
 	--nexus-jewel-carnelian: #a83a28; /* burnt carnelian red */
 	--nexus-jewel-emerald: #1f6b47; /* deep emerald green */
+	/* Added for M9 D3: the sheet's Spirit attribute is amethyst-derived and
+	   Mind reuses lapis, so this is the fourth jewel needed for four
+	   distinguishable attribute hues. Same "graphic object, not text" pairing
+	   rule as the other three — M9 mixes it toward ink before using it as text. */
+	--nexus-jewel-amethyst: #6b3fa0; /* deep amethyst purple */
+
+	/* Skill identity hues (M5 chip retune): one set of 16, read by the doc-table
+	   skill chips below AND (M9) by the character sheet's per-skill labels, so a
+	   skill is one color site-wide instead of two palettes describing the same
+	   sixteen concepts. Chip fills stay these literal values in both modes
+	   (opaque swatch + white text needs no mode variance); the sheet mixes them
+	   toward ink separately per mode in characterSheet.css since a solid chip
+	   fill and legible small-caption text have different contrast needs. */
+	--nexus-skill-arcana: #5e34a6;
+	--nexus-skill-archery: #5a341c;
+	--nexus-skill-athletics: #2b804a;
+	--nexus-skill-crafting: #5e441e;
+	--nexus-skill-education: #263871;
+	--nexus-skill-fighting: #902f2f;
+	--nexus-skill-fortitude: #632222;
+	--nexus-skill-influence: #7d5628;
+	--nexus-skill-insight: #1d465c;
+	--nexus-skill-lore: #215b69;
+	--nexus-skill-mysticism: #7336ab;
+	--nexus-skill-nature: #1c5745;
+	--nexus-skill-perception: #27427c;
+	--nexus-skill-stealth: #2c3139;
+	--nexus-skill-streetwise: #8a4c2c;
+	--nexus-skill-survival: #1b5330;
+
+	/* Text-safe per-skill variants (M9 F2/S1): the --nexus-skill-* values above
+	   are dark, chosen for white-on-chip contrast, so they read as near-black
+	   text on the dark-mode surface unless lifted further toward that mode's
+	   ink. These are global (not scoped to the character sheet) precisely so
+	   embedded doc-page tools like CreatureAdvancedSettings.tsx read the same
+	   per-skill color the sheet does — the fix for the F2 leak is that both
+	   surfaces now consume the SAME derived token, not that the sheet stopped
+	   reaching outside itself. */
+	--cs-skill-arcana: color-mix(in oklab, var(--nexus-skill-arcana), var(--ifm-font-color-base) 10%);
+	--cs-skill-archery: color-mix(in oklab, var(--nexus-skill-archery), var(--ifm-font-color-base) 10%);
+	--cs-skill-athletics: color-mix(in oklab, var(--nexus-skill-athletics), var(--ifm-font-color-base) 10%);
+	--cs-skill-crafting: color-mix(in oklab, var(--nexus-skill-crafting), var(--ifm-font-color-base) 10%);
+	--cs-skill-education: color-mix(in oklab, var(--nexus-skill-education), var(--ifm-font-color-base) 10%);
+	--cs-skill-fighting: color-mix(in oklab, var(--nexus-skill-fighting), var(--ifm-font-color-base) 10%);
+	--cs-skill-fortitude: color-mix(in oklab, var(--nexus-skill-fortitude), var(--ifm-font-color-base) 10%);
+	--cs-skill-influence: color-mix(in oklab, var(--nexus-skill-influence), var(--ifm-font-color-base) 10%);
+	--cs-skill-insight: color-mix(in oklab, var(--nexus-skill-insight), var(--ifm-font-color-base) 10%);
+	--cs-skill-lore: color-mix(in oklab, var(--nexus-skill-lore), var(--ifm-font-color-base) 10%);
+	--cs-skill-mysticism: color-mix(in oklab, var(--nexus-skill-mysticism), var(--ifm-font-color-base) 10%);
+	--cs-skill-nature: color-mix(in oklab, var(--nexus-skill-nature), var(--ifm-font-color-base) 10%);
+	--cs-skill-perception: color-mix(in oklab, var(--nexus-skill-perception), var(--ifm-font-color-base) 10%);
+	--cs-skill-stealth: color-mix(in oklab, var(--nexus-skill-stealth), var(--ifm-font-color-base) 10%);
+	--cs-skill-streetwise: color-mix(in oklab, var(--nexus-skill-streetwise), var(--ifm-font-color-base) 10%);
+	--cs-skill-survival: color-mix(in oklab, var(--nexus-skill-survival), var(--ifm-font-color-base) 10%);
 
 	/* Admonition alarm hues (M8 S1). Only warning and danger take a hue —
 	   note/tip/info stay bronze and are told apart by their sigil — so the
@@ -313,9 +367,31 @@
 	--nexus-jewel-lapis: #6f93d6;
 	--nexus-jewel-carnelian: #d97a5f;
 	--nexus-jewel-emerald: #5cae82;
+	--nexus-jewel-amethyst: #a883d9;
 	/* Alarm hues lifted for the smoky dark surface (M8 S1). */
 	--nexus-alert-warning: #d9a63f;
 	--nexus-alert-danger: #e07a63;
+
+	/* Text-safe skill variants (M9 F2/S1): 50% is the minimum ink-mix that
+	   clears AA for every one of the 16 identity hues at once on the smoky
+	   dark surface — the light-mode 10% mix above isn't enough here because
+	   these hexes were chosen dark for white-on-chip contrast. */
+	--cs-skill-arcana: color-mix(in oklab, var(--nexus-skill-arcana), var(--ifm-font-color-base) 50%);
+	--cs-skill-archery: color-mix(in oklab, var(--nexus-skill-archery), var(--ifm-font-color-base) 50%);
+	--cs-skill-athletics: color-mix(in oklab, var(--nexus-skill-athletics), var(--ifm-font-color-base) 50%);
+	--cs-skill-crafting: color-mix(in oklab, var(--nexus-skill-crafting), var(--ifm-font-color-base) 50%);
+	--cs-skill-education: color-mix(in oklab, var(--nexus-skill-education), var(--ifm-font-color-base) 50%);
+	--cs-skill-fighting: color-mix(in oklab, var(--nexus-skill-fighting), var(--ifm-font-color-base) 50%);
+	--cs-skill-fortitude: color-mix(in oklab, var(--nexus-skill-fortitude), var(--ifm-font-color-base) 50%);
+	--cs-skill-influence: color-mix(in oklab, var(--nexus-skill-influence), var(--ifm-font-color-base) 50%);
+	--cs-skill-insight: color-mix(in oklab, var(--nexus-skill-insight), var(--ifm-font-color-base) 50%);
+	--cs-skill-lore: color-mix(in oklab, var(--nexus-skill-lore), var(--ifm-font-color-base) 50%);
+	--cs-skill-mysticism: color-mix(in oklab, var(--nexus-skill-mysticism), var(--ifm-font-color-base) 50%);
+	--cs-skill-nature: color-mix(in oklab, var(--nexus-skill-nature), var(--ifm-font-color-base) 50%);
+	--cs-skill-perception: color-mix(in oklab, var(--nexus-skill-perception), var(--ifm-font-color-base) 50%);
+	--cs-skill-stealth: color-mix(in oklab, var(--nexus-skill-stealth), var(--ifm-font-color-base) 50%);
+	--cs-skill-streetwise: color-mix(in oklab, var(--nexus-skill-streetwise), var(--ifm-font-color-base) 50%);
+	--cs-skill-survival: color-mix(in oklab, var(--nexus-skill-survival), var(--ifm-font-color-base) 50%);
 
 	--ifm-color-primary: var(--nexus-bronze);
 	--ifm-color-primary-dark: #bd8748;
@@ -1518,182 +1594,184 @@ a.chip,
   border-left-color: color-mix(in srgb, currentColor 40%, transparent);
 }
 
-/* Vibrant color variants for skills */
+/* Vibrant color variants for skills. Hex values live once, in the
+   --nexus-skill-* tokens at the top of this file (M9 F2) — the sheet's
+   per-skill labels read the same tokens, so a skill is one color site-wide. */
 .chip--athletics-vibrant {
-  --chip-fill: #2b804a;
-  background-color: #2b804a; /* Vibrant green */
+  --chip-fill: var(--nexus-skill-athletics);
+  background-color: var(--nexus-skill-athletics);
   color: white;
 }
 
 .chip--crafting-vibrant {
-  --chip-fill: #5e441e;
-  background-color: #5e441e; /* Vibrant brown */
+  --chip-fill: var(--nexus-skill-crafting);
+  background-color: var(--nexus-skill-crafting);
   color: white;
 }
 
 .chip--nature-vibrant {
-  --chip-fill: #1c5745;
-  background-color: #1c5745; /* Vibrant emerald */
+  --chip-fill: var(--nexus-skill-nature);
+  background-color: var(--nexus-skill-nature);
   color: white;
 }
 
 .chip--survival-vibrant {
-  --chip-fill: #1b5330;
-  background-color: #1b5330; /* Vibrant forest green */
+  --chip-fill: var(--nexus-skill-survival);
+  background-color: var(--nexus-skill-survival);
   color: white;
 }
 
 .chip--fighting-vibrant {
-  --chip-fill: #902f2f;
-  background-color: #902f2f; /* Vibrant red */
+  --chip-fill: var(--nexus-skill-fighting);
+  background-color: var(--nexus-skill-fighting);
   color: white;
 }
 
 .chip--fortitude-vibrant {
-  --chip-fill: #632222;
-  background-color: #632222; /* Vibrant maroon */
+  --chip-fill: var(--nexus-skill-fortitude);
+  background-color: var(--nexus-skill-fortitude);
   color: white;
 }
 
 .chip--perception-vibrant {
-  --chip-fill: #27427c;
-  background-color: #27427c; /* Vibrant blue */
+  --chip-fill: var(--nexus-skill-perception);
+  background-color: var(--nexus-skill-perception);
   color: white;
 }
 
 .chip--arcana-vibrant {
-  --chip-fill: #5e34a6;
-  background-color: #5e34a6; /* Vibrant purple */
+  --chip-fill: var(--nexus-skill-arcana);
+  background-color: var(--nexus-skill-arcana);
   color: white;
 }
 
 .chip--influence-vibrant {
-  --chip-fill: #7d5628;
-  background-color: #7d5628; /* Vibrant amber */
+  --chip-fill: var(--nexus-skill-influence);
+  background-color: var(--nexus-skill-influence);
   color: white;
 }
 
 .chip--lore-vibrant {
-  --chip-fill: #215b69;
-  background-color: #215b69; /* Vibrant teal */
+  --chip-fill: var(--nexus-skill-lore);
+  background-color: var(--nexus-skill-lore);
   color: white;
 }
 
 .chip--mysticism-vibrant {
-  --chip-fill: #7336ab;
-  background-color: #7336ab; /* Vibrant violet */
+  --chip-fill: var(--nexus-skill-mysticism);
+  background-color: var(--nexus-skill-mysticism);
   color: white;
 }
 
 .chip--insight-vibrant {
-  --chip-fill: #1d465c;
-  background-color: #1d465c; /* Vibrant sky blue */
+  --chip-fill: var(--nexus-skill-insight);
+  background-color: var(--nexus-skill-insight);
   color: white;
 }
 
 .chip--stealth-vibrant {
-  --chip-fill: #2c3139;
-  background-color: #2c3139; /* Vibrant charcoal */
+  --chip-fill: var(--nexus-skill-stealth);
+  background-color: var(--nexus-skill-stealth);
   color: white;
 }
 
 .chip--streetwise-vibrant {
-  --chip-fill: #8a4c2c;
-  background-color: #8a4c2c; /* Vibrant rust */
+  --chip-fill: var(--nexus-skill-streetwise);
+  background-color: var(--nexus-skill-streetwise);
   color: white;
 }
 
 .chip--education-vibrant {
-  --chip-fill: #263871;
-  background-color: #263871; /* Vibrant navy */
+  --chip-fill: var(--nexus-skill-education);
+  background-color: var(--nexus-skill-education);
   color: white;
 }
 
 .chip--archery-vibrant {
-  --chip-fill: #5a341c;
-  background-color: #5a341c; /* Vibrant tan */
+  --chip-fill: var(--nexus-skill-archery);
+  background-color: var(--nexus-skill-archery);
   color: white;
 }
 
 /* Triangular pseudo-elements for skill chips */
 .chip--athletics-vibrant::before, .chip--athletics-vibrant::after {
-  border-right-color: #2b804a;
-  border-left-color: #2b804a;
+  border-right-color: var(--nexus-skill-athletics);
+  border-left-color: var(--nexus-skill-athletics);
 }
 
 .chip--crafting-vibrant::before, .chip--crafting-vibrant::after {
-  border-right-color: #5e441e;
-  border-left-color: #5e441e;
+  border-right-color: var(--nexus-skill-crafting);
+  border-left-color: var(--nexus-skill-crafting);
 }
 
 .chip--nature-vibrant::before, .chip--nature-vibrant::after {
-  border-right-color: #1c5745;
-  border-left-color: #1c5745;
+  border-right-color: var(--nexus-skill-nature);
+  border-left-color: var(--nexus-skill-nature);
 }
 
 .chip--survival-vibrant::before, .chip--survival-vibrant::after {
-  border-right-color: #1b5330;
-  border-left-color: #1b5330;
+  border-right-color: var(--nexus-skill-survival);
+  border-left-color: var(--nexus-skill-survival);
 }
 
 .chip--fighting-vibrant::before, .chip--fighting-vibrant::after {
-  border-right-color: #902f2f;
-  border-left-color: #902f2f;
+  border-right-color: var(--nexus-skill-fighting);
+  border-left-color: var(--nexus-skill-fighting);
 }
 
 .chip--fortitude-vibrant::before, .chip--fortitude-vibrant::after {
-  border-right-color: #632222;
-  border-left-color: #632222;
+  border-right-color: var(--nexus-skill-fortitude);
+  border-left-color: var(--nexus-skill-fortitude);
 }
 
 .chip--perception-vibrant::before, .chip--perception-vibrant::after {
-  border-right-color: #27427c;
-  border-left-color: #27427c;
+  border-right-color: var(--nexus-skill-perception);
+  border-left-color: var(--nexus-skill-perception);
 }
 
 .chip--arcana-vibrant::before, .chip--arcana-vibrant::after {
-  border-right-color: #5e34a6;
-  border-left-color: #5e34a6;
+  border-right-color: var(--nexus-skill-arcana);
+  border-left-color: var(--nexus-skill-arcana);
 }
 
 .chip--influence-vibrant::before, .chip--influence-vibrant::after {
-  border-right-color: #7d5628;
-  border-left-color: #7d5628;
+  border-right-color: var(--nexus-skill-influence);
+  border-left-color: var(--nexus-skill-influence);
 }
 
 .chip--lore-vibrant::before, .chip--lore-vibrant::after {
-  border-right-color: #215b69;
-  border-left-color: #215b69;
+  border-right-color: var(--nexus-skill-lore);
+  border-left-color: var(--nexus-skill-lore);
 }
 
 .chip--mysticism-vibrant::before, .chip--mysticism-vibrant::after {
-  border-right-color: #7336ab;
-  border-left-color: #7336ab;
+  border-right-color: var(--nexus-skill-mysticism);
+  border-left-color: var(--nexus-skill-mysticism);
 }
 
 .chip--insight-vibrant::before, .chip--insight-vibrant::after {
-  border-right-color: #1d465c;
-  border-left-color: #1d465c;
+  border-right-color: var(--nexus-skill-insight);
+  border-left-color: var(--nexus-skill-insight);
 }
 
 .chip--stealth-vibrant::before, .chip--stealth-vibrant::after {
-  border-right-color: #2c3139;
-  border-left-color: #2c3139;
+  border-right-color: var(--nexus-skill-stealth);
+  border-left-color: var(--nexus-skill-stealth);
 }
 
 .chip--streetwise-vibrant::before, .chip--streetwise-vibrant::after {
-  border-right-color: #8a4c2c;
-  border-left-color: #8a4c2c;
+  border-right-color: var(--nexus-skill-streetwise);
+  border-left-color: var(--nexus-skill-streetwise);
 }
 
 .chip--education-vibrant::before, .chip--education-vibrant::after {
-  border-right-color: #263871;
-  border-left-color: #263871;
+  border-right-color: var(--nexus-skill-education);
+  border-left-color: var(--nexus-skill-education);
 }
 
 .chip--archery-vibrant::before, .chip--archery-vibrant::after {
-  border-right-color: #5a341c;
-  border-left-color: #5a341c;
+  border-right-color: var(--nexus-skill-archery);
+  border-left-color: var(--nexus-skill-archery);
 }
 
 /* Vibrant color variants for weapon types - very distinct colors */

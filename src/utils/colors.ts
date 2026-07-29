@@ -1,26 +1,34 @@
 // Centralized color constants for reuse across the app
 // Export attribute colors and re-export skill color getter
-// Attribute-specific palette (kept light for cards)
+//
+// M9 S0/S1: these used to be literal Material Design pastels, hardcoded for a
+// dark surface and unreadable in light mode (F1). They now read the
+// `--cs-*` custom properties declared in `characterSheet.css`, scoped to
+// `.character-sheet-page` and derived from the `--nexus-*` jewel/alert tokens
+// per M9 D3 — one declaration per color tracks both color modes. Export shape
+// is unchanged so all 39 consumers (StatCard, CardHeader, tab cards, etc.)
+// need no edits.
+// Attribute-specific palette, jewel-derived (D3)
 export const ATTRIBUTE_COLORS = {
-    strength: '#ef9a9a', // light red
-    agility: '#81c784', // light green
-    spirit: '#ce93d8', // light purple
-    mind: '#90caf9', // light blue
+    strength: 'var(--cs-attr-strength)',
+    agility: 'var(--cs-attr-agility)',
+    spirit: 'var(--cs-attr-spirit)',
+    mind: 'var(--cs-attr-mind)',
 }
 
 // Common UI color constants used in the character sheet
 export const UI_COLORS = {
-    danger: '#f44336', // red
-    success: '#4caf50', // green
-    info: '#2196f3', // primary blue
-    warning: '#ff9800', // orange
-    purple: '#ba68c8',
-    amber: '#ffb74d',
-    lightBlue: '#64b5f6',
-    grey: '#9e9e9e',
-    greyBlue: '#78909c',
+    danger: 'var(--cs-danger)',
+    success: 'var(--cs-success)',
+    info: 'var(--cs-info)',
+    warning: 'var(--cs-warning)',
+    purple: 'var(--cs-purple)',
+    amber: 'var(--cs-amber)',
+    lightBlue: 'var(--cs-light-blue)',
+    grey: 'var(--cs-grey)',
+    greyBlue: 'var(--cs-grey-blue)',
     // Additional semantic color used by Resolve card
-    resolve: '#9575cd',
+    resolve: 'var(--cs-resolve)',
 }
 
 export { getSkillChipColor, getProfessionChipColor } from '../constants/skills'

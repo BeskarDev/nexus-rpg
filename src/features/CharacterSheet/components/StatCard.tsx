@@ -96,7 +96,12 @@ export const StatCard: React.FC<StatCardProps> = ({
 				position: 'relative',
 				transition: 'border-color 0.2s ease-in-out',
 				'&:hover': {
-					borderColor: isWounded ? undefined : alpha(color, 0.6),
+					// `color` may be a `var(--cs-*)` custom property (M9 S1) — alpha()
+					// can only parse a resolved color, not a CSS var, so this is a
+					// color-mix() rather than an alpha() call (the only such site, F7).
+					borderColor: isWounded
+						? undefined
+						: `color-mix(in srgb, ${color} 60%, transparent)`,
 				},
 				...sx,
 			}}
@@ -108,23 +113,31 @@ export const StatCard: React.FC<StatCardProps> = ({
 						{icon}
 					</Box>
 				)}
+				{/* M9 S3: same cartouche-register small-caps treatment as CardHeader,
+					at the token scale's smallest step (3xs) — the raw 0.55rem this
+					replaced was one of the sizes the type-scale token ladder exists
+					to retire. */}
 				<Typography
 					variant="caption"
 					sx={{
+						fontFamily: 'var(--nexus-font-ui)',
 						fontWeight: 700,
-						fontSize: '0.55rem',
+						fontSize: 'var(--nexus-text-3xs)',
 						color: color,
-						textTransform: 'uppercase',
-						letterSpacing: '0.5px',
+						fontVariant: 'small-caps',
+						letterSpacing: '0.03em',
 					}}
 				>
 					{label}
 				</Typography>
 			</Box>
 
-			{/* Value display - centered */}
+			{/* Value display - centered. Display serif (M9 S2): a stat value is a
+				carved numeral, not field content, so it takes the same font as a
+				card title rather than the sheet's UI sans. */}
 			<Typography
 				sx={{
+					fontFamily: 'var(--nexus-font-display)',
 					fontWeight: 'bold',
 					fontSize: valueFontSize,
 					lineHeight: 1.2,

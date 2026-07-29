@@ -20,14 +20,20 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
 					{icon}
 				</Box>
 			)}
+			{/* M9 S3: the codex kit's cartouche label register (small-caps, UI font)
+				without its bordered nameplate box — that box hardcodes an
+				ink-forward color with no per-instance override, which would lose
+				the attribute/skill identity hue this label carries, and its padding
+				doesn't fit a StatCard's ~3.5rem width. */}
 			<Typography
 				variant="caption"
 				sx={{
+					fontFamily: 'var(--nexus-font-ui)',
 					fontWeight: 700,
-					fontSize: '0.65rem',
+					fontSize: 'var(--nexus-text-2xs)',
 					color,
-					textTransform: 'uppercase',
-					letterSpacing: '0.5px',
+					fontVariant: 'small-caps',
+					letterSpacing: '0.04em',
 				}}
 			>
 				{label}

@@ -25,6 +25,7 @@ export const UpbringingCard: React.FC<UpbringingCardProps> = ({
 			tooltip="Character's upbringing or early life"
 			minWidth="8rem"
 			maxWidth="12rem"
+			frame
 		>
 			<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, width: '100%' }}>
 				<TextField

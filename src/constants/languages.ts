@@ -27,26 +27,28 @@ export const ALL_LANGUAGES = [
 // Default language that all characters start with
 export const DEFAULT_LANGUAGE = 'Tradespeak' as const
 
-// Color mapping for language chips - using colors from the skills constants with varied selection
+// Color mapping for language chips — each language aliases the skill color it
+// was already documented as matching (M9 S1 / F2: one token per identity,
+// read from characterSheet.css rather than a third hand-picked hex set).
 export const getLanguageChipColor = (language: string): string => {
 	const colorMap: Record<string, string> = {
 		// Common languages - using varied skill colors
-		Catspeech: '#3FA769', // Athletics green
-		Dwarvish: '#B1642F', // Fighting brown
-		Elvish: '#3E9B4E', // Nature green
-		Giant: '#A14646', // Fortitude red
-		Gnomish: '#4B91C0', // Perception blue
-		Goblin: '#777777', // Stealth gray
-		Lizardspeech: '#48A06C', // Survival green
-		Orc: '#9C5635', // Streetwise brown
-		Tradespeak: '#3C6FA8', // Education blue (primary for default language)
+		Catspeech: 'var(--cs-skill-athletics)',
+		Dwarvish: 'var(--cs-skill-fighting)',
+		Elvish: 'var(--cs-skill-nature)',
+		Giant: 'var(--cs-skill-fortitude)',
+		Gnomish: 'var(--cs-skill-perception)',
+		Goblin: 'var(--cs-skill-stealth)',
+		Lizardspeech: 'var(--cs-skill-survival)',
+		Orc: 'var(--cs-skill-streetwise)',
+		Tradespeak: 'var(--cs-skill-education)', // primary for default language
 
 		// Ancient languages - using more mystical/powerful skill colors
-		Celestial: '#8E3F66', // Arcana purple
-		'Dark Tongue': '#914C70', // Mysticism purple
-		Draconic: '#C2892F', // Lore gold
-		Primordial: '#B28A3F', // Influence gold
+		Celestial: 'var(--cs-skill-arcana)',
+		'Dark Tongue': 'var(--cs-skill-mysticism)',
+		Draconic: 'var(--cs-skill-lore)',
+		Primordial: 'var(--cs-skill-influence)',
 	}
 
-	return colorMap[language] || '#9A9A9A' // default crafting gray
+	return colorMap[language] || 'var(--cs-skill-crafting)' // default crafting gray
 }

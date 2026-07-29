@@ -25,6 +25,7 @@ export const NameCard: React.FC<NameCardProps> = ({
 			tooltip="Character name"
 			minWidth="10rem"
 			maxWidth="15rem"
+			frame
 		>
 			<TextField
 				value={name}

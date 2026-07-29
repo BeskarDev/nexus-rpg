@@ -1518,7 +1518,9 @@ export const CreatureAdvancedSettings: React.FC = () => {
 														px: 1.5,
 														py: 0.5,
 														borderRadius: '16px',
-														bgcolor: `${getSkillChipColor(skill.name)}15`,
+														// getSkillChipColor returns a var(--cs-skill-*) (M9 F2); use
+														// color-mix() instead of the old alpha-suffix hex trick.
+														bgcolor: `color-mix(in srgb, ${getSkillChipColor(skill.name)} 15%, transparent)`,
 														border: `2px solid ${getSkillChipColor(skill.name)}`,
 													}}
 												>
@@ -1618,7 +1620,9 @@ export const CreatureAdvancedSettings: React.FC = () => {
 														/>
 													}
 													sx={{
-														bgcolor: `${getSkillChipColor(skill.name)}15`,
+														// getSkillChipColor returns a var(--cs-skill-*) (M9 F2); use
+														// color-mix() instead of the old alpha-suffix hex trick.
+														bgcolor: `color-mix(in srgb, ${getSkillChipColor(skill.name)} 15%, transparent)`,
 														border: `1px solid ${getSkillChipColor(skill.name)}`,
 														'& .MuiChip-label': {
 															cursor: 'pointer',

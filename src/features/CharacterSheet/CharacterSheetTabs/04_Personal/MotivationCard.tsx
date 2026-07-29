@@ -23,6 +23,7 @@ export const MotivationCard: React.FC<MotivationCardProps> = ({
 			tooltip="Character's driving goal or motivation"
 			minWidth="8rem"
 			maxWidth="12rem"
+			frame
 		>
 			<TextField
 				value={motivation}

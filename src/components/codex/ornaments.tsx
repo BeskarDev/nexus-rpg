@@ -50,7 +50,7 @@ const SUN_RAYS = (() => {
  * {@link PlateFrame} (see the D2 note there).
  */
 export type CodexVariant =
-	'winged' | 'serpent' | 'khopesh' | 'ziggurat' | 'bull' | 'plate'
+	'winged' | 'serpent' | 'khopesh' | 'ziggurat' | 'bull' | 'plate' | 'sheet'
 
 const SURFACE = 'var(--ifm-background-surface-color)'
 
@@ -87,6 +87,11 @@ const RAIL_LEN: Record<CodexVariant, { edge: number; side: number }> = {
 	// the spell family: 55 units of side rail on a 76px corner box is ~44px,
 	// which leaves well over half a 300px edge as gap.
 	plate: { edge: 92, side: 55 },
+	// M9 — the character sheet family. Its cards run wide (weapon rows, personal
+	// info) but are shallower than a spell/combat-art card, so the reach matches
+	// the serpent family's more conservative side reach rather than the 55-unit
+	// default.
+	sheet: { edge: 92, side: 43 },
 }
 
 const n = (v: number) => v.toFixed(2)
@@ -296,6 +301,50 @@ function CornerRail({ variant, len }: { variant: CodexVariant; len: number }) {
 					d={`M${n(b - 1.1)} 6 L${n(b + 1.1)} 6`}
 					stroke={SURFACE}
 					strokeWidth={0.5}
+				/>
+			</>
+		)
+	}
+	if (variant === 'sheet') {
+		// M9 — the character sheet family: a low plinth ending in a fixed-size
+		// signet seal, echoing the keystone's cartouche ring. Unlike the
+		// keystone, the rail terminal is SOLID rather than a hollow ring — at
+		// only 15 units (~12px rendered) a ring's wall would fall well under the
+		// sub-3px floor and read as mud (ornament-craft §8/§10), exactly the
+		// failure every other rail terminal in the kit avoids by staying solid
+		// (the bull's crescent, the plate's palmette lobes). One carved tie-line
+		// stands in for the ring's knot instead of trying to hollow it out.
+		const TERMINAL = 15
+		const b = len - TERMINAL
+		const cx = b + 8
+		const ro = 2.6
+		const halfLen = 3.5
+		return (
+			<>
+				<path
+					d={`M13 5.3 L${n(b)} 5.3 L${n(b)} 6.7 L13 6.7 Z`}
+					fill="currentColor"
+					stroke="none"
+				/>
+				{/* two collar ticks, the rhythm every rail in the kit carries */}
+				<path d="M18 4.3 L18 7.7 M22.5 4.3 L22.5 7.7" strokeWidth={0.8} />
+				{/* the seal: a solid stadium cap, flat ends up against the rail tip */}
+				<path
+					d={
+						`M${n(cx - halfLen)} ${n(6 - ro)} L${n(cx + halfLen)} ${n(6 - ro)} ` +
+						`A${ro} ${ro} 0 0 1 ${n(cx + halfLen)} ${n(6 + ro)} ` +
+						`L${n(cx - halfLen)} ${n(6 + ro)} ` +
+						`A${ro} ${ro} 0 0 1 ${n(cx - halfLen)} ${n(6 - ro)} Z`
+					}
+					fill="currentColor"
+					stroke="none"
+				/>
+				{/* carved tie-line near the outer cap — the knot, stopping short of the
+				    silhouette so the seal stays one solid mass */}
+				<path
+					d={`M${n(cx + halfLen - 1.1)} ${n(6 - ro + 0.6)} L${n(cx + halfLen - 1.1)} ${n(6 + ro - 0.6)}`}
+					stroke={SURFACE}
+					strokeWidth={0.55}
 				/>
 			</>
 		)
@@ -1003,12 +1052,87 @@ function BullKeystone() {
 	)
 }
 
+/**
+ * A royal cartouche — the ancient name-ring — as the keystone for character
+ * sheet cards (M9). Chosen because a character sheet exists to hold ONE
+ * person's identity and stats, and a cartouche is literally the sign for
+ * "this encloses a name." Its plain elongated-ring silhouette reads clearly
+ * apart from every sibling — nothing else in the kit is a closed loop (the
+ * winged disc spreads flat, the serpents wave, the khopeshes cross in an X,
+ * the ziggurat steps, the bull's horns curve).
+ *
+ * The ring is Rule 1's stated exception: a bold contour enclosing a large
+ * area, drawn as one unbroken solid band (an `evenodd` stadium-in-a-stadium),
+ * not the thin parallel-outline failure the rule warns against — a cartouche's
+ * whole identity IS the hollow ring around a name. The name itself is
+ * abstracted to a rhythm of ticks (rule 8: anything this small reads as
+ * texture, not literal glyphs) sitting inside the hollow rather than carved
+ * into the band. The ring rests on a solid base plinth that doubles as the
+ * card border's opaque backing — the traditional cartouche base-tie, reused
+ * for construction the kit already needs.
+ */
+function CartoucheKeystone() {
+	const cx = 48
+	const cy = 9
+	const ro = 8
+	const ri = 5
+	const half = 24
+	const stadium = (r: number) =>
+		`M${n(cx - half)} ${n(cy - r)} L${n(cx + half)} ${n(cy - r)} ` +
+		`A${r} ${r} 0 0 1 ${n(cx + half)} ${n(cy + r)} ` +
+		`L${n(cx - half)} ${n(cy + r)} ` +
+		`A${r} ${r} 0 0 1 ${n(cx - half)} ${n(cy - r)} Z`
+	const ticks = [-7, 0, 7]
+	return (
+		<svg
+			className={styles.cartoucheKeystone}
+			viewBox="0 0 96 27"
+			fill="none"
+			stroke="currentColor"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			{/* opaque backing along the border line, so the card's top border stops
+			    at the ornament */}
+			<path d="M8 16.4 L88 16.4 L88 19 L8 19 Z" fill={SURFACE} stroke="none" />
+			{/* base plinth — the cartouche's traditional tie, doubling as backing */}
+			<path
+				d="M14 16.6 L82 16.6 L82 18.8 L14 18.8 Z"
+				fill="currentColor"
+				stroke="none"
+			/>
+			{/* the ring: one solid band, hollow centre — rule 1's bold-contour
+			    exception, not a filled disc */}
+			<path
+				d={`${stadium(ro)} ${stadium(ri)}`}
+				fill="currentColor"
+				fillRule="evenodd"
+				stroke="none"
+			/>
+			{/* the name, abstracted to a rhythm of ticks rather than literal glyphs */}
+			<g fill="currentColor" stroke="none">
+				{ticks.map((dx) => (
+					<rect
+						key={dx}
+						x={n(cx + dx - 0.65)}
+						y={n(cy - 3)}
+						width={1.3}
+						height={6}
+					/>
+				))}
+			</g>
+		</svg>
+	)
+}
+
 export interface CardFrameProps {
 	/**
 	 * Which card family this is. Selects both the top-edge keystone and the
 	 * matching corner rails: the grand winged disc (spells), twin serpents
 	 * (conditions), crossed khopeshes (combat arts), the stepped ziggurat
-	 * (talents), or the horned bull (creature stat blocks).
+	 * (talents), the horned bull (creature stat blocks), or the name-ring
+	 * cartouche (character sheet, M9).
 	 */
 	keystone?: CodexVariant
 	/**
@@ -1026,6 +1150,7 @@ const KEYSTONES = {
 	ziggurat: ZigguratKeystone,
 	bull: BullKeystone,
 	plate: RosetteKeystone,
+	sheet: CartoucheKeystone,
 } as const
 
 /**

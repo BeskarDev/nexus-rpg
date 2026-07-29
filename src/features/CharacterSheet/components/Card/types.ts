@@ -66,6 +66,13 @@ export interface CharacterSheetCardProps {
 	/** Custom border color (when highlighted, errored, etc.) */
 	borderColor?: string
 
+	/**
+	 * Adopt the codex kit's cartouche keystone + corner rails (M9 S3). Off by
+	 * default — opt in only where the surrounding layout has ~16px of gap
+	 * above the card for the keystone's overhang (see CharacterSheetCard).
+	 */
+	frame?: boolean
+
 	/** Test ID for testing purposes */
 	'data-testid'?: string
 }

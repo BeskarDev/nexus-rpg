@@ -9,3 +9,68 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
 	-moz-appearance: textfield;
 }
+
+/* M9 S0+S1 — the sheet's own UI-semantic palette, scoped to this page so it
+   never leaks into the doc reading surface (nothing on a doc page needs an
+   "attribute hue" or a "resolve resource color"). Every color here is read as
+   small-caption TEXT on a card surface (see StatCard.tsx, CardHeader.tsx).
+   Every value is measured >=4.5:1 against both the sheet's paper
+   (#f7f0e4 / #211a15) and default (#f2eadc / #16120f) backgrounds in both
+   modes. The per-skill colors (--cs-skill-*) are NOT declared here — they're
+   global, in custom.css, alongside the --nexus-skill-* identity tokens they
+   derive from, so embedded doc-page tools (CreatureAdvancedSettings.tsx) read
+   the exact same per-skill color the sheet does (M9 F2). */
+.character-sheet-page {
+	/* Attributes (D3): four distinguishable hues, jewel-derived, each mixed
+	   toward the reading ink so one declaration tracks both modes. */
+	--cs-attr-strength: color-mix(in oklab, var(--nexus-jewel-carnelian), var(--ifm-font-color-base) 15%);
+	--cs-attr-agility: color-mix(in oklab, var(--nexus-jewel-emerald), var(--ifm-font-color-base) 15%);
+	--cs-attr-spirit: color-mix(in oklab, var(--nexus-jewel-amethyst), var(--ifm-font-color-base) 15%);
+	--cs-attr-mind: color-mix(in oklab, var(--nexus-jewel-lapis), var(--ifm-font-color-base) 15%);
+
+	/* UI semantic colors (replaces utils/colors.ts UI_COLORS Material palette). */
+	--cs-danger: color-mix(in oklab, var(--nexus-alert-danger), var(--ifm-font-color-base) 15%);
+	--cs-success: color-mix(in oklab, var(--nexus-jewel-emerald), var(--ifm-font-color-base) 15%);
+	--cs-info: color-mix(in oklab, var(--nexus-jewel-lapis), var(--ifm-font-color-base) 15%);
+	--cs-warning: color-mix(in oklab, var(--nexus-alert-warning), var(--ifm-font-color-base) 20%);
+	--cs-purple: color-mix(in oklab, var(--nexus-jewel-amethyst), var(--ifm-font-color-base) 15%);
+	--cs-amber: color-mix(in oklab, var(--nexus-bronze), var(--ifm-font-color-base) 15%);
+	/* Catalyst is the one sheet card under the Spells tab — the magic-only
+	   cyan exception (README, M9 guidelines) applies here, nowhere else. */
+	--cs-light-blue: var(--rune-cyan-text);
+	--cs-grey: var(--ifm-color-emphasis-700);
+	--cs-grey-blue: var(--ifm-color-emphasis-700);
+	--cs-resolve: color-mix(in oklab, var(--nexus-jewel-amethyst), var(--ifm-font-color-base) 30%);
+}
+
+/* M9 S3 — corner rivets for StatCard's small tiles. The codex kit's full
+   CardFrame (keystone + corner rails) is sized for real cards (ornament-craft
+   §9 wants ~16px clearance above for the overhang); a StatCard is as narrow as
+   3.5rem (56px) and stacks with almost no gap, so it gets the lighter
+   register instead — the same flat sunk-diamond rivet already used by
+   ornaments.module.css's RankChip, reused here as plain CSS rather than
+   importing the codex module for four dots. */
+.character-sheet-page .cs-rivet {
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	background-color: color-mix(in srgb, var(--nexus-bronze) 55%, transparent);
+	transform: rotate(45deg);
+	pointer-events: none;
+}
+.character-sheet-page .cs-rivet-tl {
+	top: 2px;
+	left: 2px;
+}
+.character-sheet-page .cs-rivet-tr {
+	top: 2px;
+	right: 2px;
+}
+.character-sheet-page .cs-rivet-br {
+	bottom: 2px;
+	right: 2px;
+}
+.character-sheet-page .cs-rivet-bl {
+	bottom: 2px;
+	left: 2px;
+}

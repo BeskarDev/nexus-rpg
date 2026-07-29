@@ -38,8 +38,10 @@ describe('CardHeader', () => {
 	})
 
 	it('applies default color when not provided', () => {
+		// M9 S1: UI_COLORS.grey is now a `var(--cs-grey)` token, not a Material
+		// hex literal (see utils/colors.ts).
 		const { container } = render(<CardHeader label="HP" />)
 		const labelElement = screen.getByText('HP')
-		expect(labelElement).toHaveStyle({ color: '#9e9e9e' })
+		expect(labelElement).toHaveStyle({ color: 'var(--cs-grey)' })
 	})
 })

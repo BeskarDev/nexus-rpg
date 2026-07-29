@@ -99,6 +99,20 @@
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }
+/* Cartouche keystone (character sheet, M9). viewBox is 96x27 with the border
+   line at y=18, so top = -(18/27) of the rendered height. Sized between the
+   khopesh and the bull: the ring needs height to read as a closed loop rather
+   than a bar, but the sheet is a working tool, not the primary content, so it
+   stays lighter than the talent/bull weight. */
+.cartoucheKeystone {
+	position: absolute;
+	left: 50%;
+	top: -15.75px;
+	width: 84px;
+	height: 23.63px;
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
 
 /* --- Lozenge divider --- */
 .divider {

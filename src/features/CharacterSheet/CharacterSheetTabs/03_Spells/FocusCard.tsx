@@ -200,10 +200,6 @@ export const FocusCard = () => {
 									flex: 1,
 									height: '100%',
 									transition: 'all 0.3s ease',
-									backgroundColor: 'rgba(0, 0, 0, 0.2)',
-									'& .MuiLinearProgress-bar': {
-										boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3)',
-									},
 								}}
 							/>
 

@@ -25,6 +25,7 @@ export const FolkCard: React.FC<FolkCardProps> = ({
 			tooltip="Character's folk or ancestry"
 			minWidth="8rem"
 			maxWidth="12rem"
+			frame
 		>
 			<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, width: '100%' }}>
 				<TextField

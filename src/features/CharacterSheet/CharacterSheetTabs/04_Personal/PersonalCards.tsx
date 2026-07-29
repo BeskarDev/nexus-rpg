@@ -37,6 +37,11 @@ export const SimpleTextCard: React.FC<SimpleTextCardProps> = ({
 			tooltip={tooltip}
 			minWidth={minWidth}
 			maxWidth={maxWidth}
+			// M9 S3: these are identity cards (name, folk, background...) — the
+			// cartouche keystone's "this encloses a name" motif fits here more than
+			// anywhere else in the sheet, and the Personal tab's grid gap already
+			// clears the overhang.
+			frame
 		>
 			<TextField
 				value={value}

@@ -75,7 +75,9 @@ export const UpbringingSelectionDialog: React.FC<
 								borderColor: getSkillChipColor(skill.trim()),
 								color: getSkillChipColor(skill.trim()),
 								'&:hover': {
-									backgroundColor: getSkillChipColor(skill.trim()) + '20',
+									// getSkillChipColor returns a var(--cs-skill-*) (M9 S1), so the
+									// alpha-suffix hex trick no longer applies — color-mix() instead.
+									backgroundColor: `color-mix(in srgb, ${getSkillChipColor(skill.trim())} 20%, transparent)`,
 								},
 							}}
 						/>

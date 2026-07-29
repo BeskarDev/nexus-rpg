@@ -33,11 +33,138 @@ export const theme: CssVarsThemeOptions = {
 	typography: {
 		fontFamily: "'Alegreya Sans', Arial, sans-serif",
 		fontSize: 13,
+		// M9 S2: h6 is the sheet's section/dialog-title variant (CharacterList,
+		// CharacterSheetHeader, MagicItemBuilder dialogs, SharedNotes) — never
+		// field content — so it takes the display serif like a doc card title.
+		h6: {
+			fontFamily: 'var(--nexus-font-display)',
+		},
 	},
 	shape: {
 		borderRadius: 4,
 	},
 	components: {
+		// M9 S2 — flat keylines everywhere, no shadows/bevels/gloss. This block
+		// is the theme lever: one declaration per component reaches every
+		// instance across 107 files without an `sx` edit (see F7).
+		MuiPaper: {
+			styleOverrides: {
+				root: {
+					// Kill MUI's tonal-overlay elevation gradient and drop shadow —
+					// every Paper-based surface (Dialog, Accordion, ad-hoc cards) goes
+					// flat instead of skeuomorphic.
+					backgroundImage: 'none',
+					boxShadow: 'none',
+				},
+			},
+		},
+		MuiChip: {
+			styleOverrides: {
+				root: {
+					// No radius on chips (D2/S2): a chip is a cartouche tag, not a
+					// rounded pill.
+					borderRadius: 0,
+				},
+				label: {
+					fontFamily: 'var(--nexus-font-ui)',
+					fontSize: 'var(--nexus-text-2xs)',
+					fontVariant: 'small-caps',
+					letterSpacing: '0.03em',
+				},
+			},
+		},
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					boxShadow: 'none',
+					textTransform: 'none',
+					fontWeight: 600,
+					letterSpacing: '0.02em',
+					'&:hover': { boxShadow: 'none' },
+					'&:active': { boxShadow: 'none' },
+				},
+			},
+		},
+		MuiTabs: {
+			styleOverrides: {
+				root: {
+					minHeight: 36,
+				},
+				indicator: {
+					height: 2,
+				},
+			},
+		},
+		MuiTab: {
+			styleOverrides: {
+				root: {
+					minHeight: 36,
+					textTransform: 'none',
+					fontFamily: 'var(--nexus-font-ui)',
+					fontWeight: 600,
+					letterSpacing: '0.03em',
+				},
+			},
+		},
+		MuiDialog: {
+			styleOverrides: {
+				paper: {
+					boxShadow: 'none',
+					border: '1px solid var(--nexus-bronze)',
+				},
+			},
+		},
+		MuiTooltip: {
+			styleOverrides: {
+				tooltip: {
+					borderRadius: 2,
+					fontFamily: 'var(--nexus-font-ui)',
+					fontSize: 'var(--nexus-text-xs)',
+				},
+			},
+		},
+		MuiIconButton: {
+			styleOverrides: {
+				root: {
+					borderRadius: 2,
+					'&.Mui-focusVisible': {
+						outline: '1.5px solid var(--nexus-bronze)',
+						outlineOffset: '-1.5px',
+					},
+				},
+			},
+		},
+		MuiDivider: {
+			styleOverrides: {
+				root: {
+					borderColor: 'color-mix(in srgb, var(--nexus-bronze) 25%, transparent)',
+				},
+			},
+		},
+		// S7: the five meters become carved gauges — a flat keyline track plus a
+		// flat fill in the semantic ink, never MUI's stock Material-primary
+		// green/blue/orange/red (F6). `color` stays the prop each meter already
+		// passes (success/warning/error/info); only the rendered fill changes.
+		MuiLinearProgress: {
+			styleOverrides: {
+				root: {
+					borderRadius: 2,
+					backgroundColor: 'color-mix(in srgb, var(--nexus-bronze) 18%, transparent)',
+				},
+				// `bar` covers the layered bar1/bar2 fill elements for every variant.
+				bar: ({ ownerState }: { ownerState: { color?: string } }) => ({
+					backgroundColor:
+						{
+							success: 'var(--cs-success)',
+							warning: 'var(--cs-warning)',
+							error: 'var(--cs-danger)',
+							info: 'var(--cs-info)',
+							primary: 'var(--nexus-bronze)',
+							secondary: 'var(--nexus-bronze)',
+						}[ownerState.color ?? 'primary'] ?? 'var(--nexus-bronze)',
+				}),
+			},
+		},
 		MuiTextField: {
 			defaultProps: {
 				InputLabelProps: { shrink: true },
@@ -49,6 +176,9 @@ export const theme: CssVarsThemeOptions = {
 		},
 		MuiInputBase: {
 			styleOverrides: {
+				root: {
+					backgroundColor: 'transparent',
+				},
 				input: {
 					'&.Mui-disabled': {
 						color: 'var(--mui-palette-text-primary)',
@@ -65,7 +195,21 @@ export const theme: CssVarsThemeOptions = {
 				},
 			],
 		},
+		// M9 S5 (D1): the label is a small-caps cartouche tag. `shrink` is safe to
+		// target unconditionally because MuiTextField's defaultProps above force
+		// `InputLabelProps: { shrink: true }` sitewide — every label in the sheet
+		// is always in the shrunk position, never floating over the value.
 		MuiInputLabel: {
+			styleOverrides: {
+				root: {
+					fontFamily: 'var(--nexus-font-ui)',
+				},
+				shrink: {
+					fontVariant: 'small-caps',
+					fontSize: 'var(--nexus-text-2xs)',
+					letterSpacing: '0.04em',
+				},
+			},
 			variants: [
 				{
 					props: { size: 'small' },
@@ -76,17 +220,60 @@ export const theme: CssVarsThemeOptions = {
 				},
 			],
 		},
+		// M9 S5 (D1, F4): kills the floating-label-plus-underline pattern by
+		// giving every field the SAME rest state regardless of MUI `variant`
+		// (both "standard" and "outlined" are in live use across the sheet) —
+		// transparent fill, a flat bronze-tinted baseline, no box. Focus is a
+		// full bronze keyline, not a shadow (flat, always).
 		MuiInput: {
 			styleOverrides: {
+				root: {
+					backgroundColor: 'transparent',
+				},
 				underline: {
 					'&.MuiInputBase-sizeSmall': {
 						paddingBottom: '6px',
+					},
+					'&:before': {
+						borderBottom:
+							'1px solid color-mix(in srgb, var(--nexus-bronze) 35%, transparent)',
+					},
+					'&:hover:not(.Mui-disabled):before': {
+						borderBottom:
+							'1px solid color-mix(in srgb, var(--nexus-bronze) 60%, transparent)',
+					},
+					'&.Mui-disabled:before': {
+						borderBottomStyle: 'solid',
+						borderBottom:
+							'1px solid color-mix(in srgb, var(--nexus-bronze) 15%, transparent)',
 					},
 				},
 			},
 		},
 		MuiOutlinedInput: {
 			styleOverrides: {
+				root: {
+					borderRadius: 0,
+					backgroundColor: 'transparent',
+					'& .MuiOutlinedInput-notchedOutline': {
+						border: 'none',
+						borderRadius: 0,
+						borderBottom:
+							'1px solid color-mix(in srgb, var(--nexus-bronze) 35%, transparent)',
+					},
+					'&:hover:not(.Mui-disabled) .MuiOutlinedInput-notchedOutline': {
+						borderBottom:
+							'1px solid color-mix(in srgb, var(--nexus-bronze) 60%, transparent)',
+					},
+					'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+						border: '1.5px solid var(--nexus-bronze)',
+					},
+					'&.Mui-disabled .MuiOutlinedInput-notchedOutline': {
+						border: 'none',
+						borderBottom:
+							'1px solid color-mix(in srgb, var(--nexus-bronze) 15%, transparent)',
+					},
+				},
 				input: {
 					'&.Mui-disabled': {
 						color: 'var(--mui-palette-text-primary)',
