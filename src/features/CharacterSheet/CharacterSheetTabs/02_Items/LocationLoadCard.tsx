@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { Box, Typography, TextField } from '@mui/material'
-import { FitnessCenter } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 
@@ -38,7 +38,7 @@ export const LocationLoadCard: React.FC<LocationLoadCardProps> = ({
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<FitnessCenter />} label="Load" color={loadColor} />}
+			header={<CardHeader icon={<StatSigil name="load" size="1.15em" />} label="Load" color={loadColor} />}
 			minWidth="5.5rem"
 			maxWidth="7rem"
 			tooltip="Load capacity for this location"

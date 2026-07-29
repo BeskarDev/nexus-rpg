@@ -1,7 +1,8 @@
 import React, { useMemo, useState, useEffect } from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Settings, Remove, Add, AutoFixHigh } from '@mui/icons-material'
+import { Settings, Remove, Add } from '@mui/icons-material'
 import {
 	Box,
 	IconButton,
@@ -147,7 +148,7 @@ export const FocusCard = () => {
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<AutoFixHigh />} label="Focus" color={UI_COLORS.purple} />}
+			header={<CardHeader icon={<StatSigil name="focus" size="1.15em" />} label="Focus" color={UI_COLORS.purple} />}
 			tooltip="Magical energy pool for casting spells"
 			showConfigButton
 			onConfigClick={handleClick}

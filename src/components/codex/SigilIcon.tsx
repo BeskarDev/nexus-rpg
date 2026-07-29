@@ -37,8 +37,12 @@ export const SIGIL_SIZE = {
 
 export interface SigilIconProps {
 	name: SigilName
-	/** Pixel size of the square icon. Defaults to 24. */
-	size?: number
+	/**
+	 * Size of the square icon. A number is pixels; a string passes through as a
+	 * CSS length, so `size="1.15em"` inherits the container's font-size the way a
+	 * Material icon does. Defaults to 24.
+	 */
+	size?: number | string
 	className?: string
 	/** Accessible label. Omit for purely decorative use (icon is hidden). */
 	title?: string

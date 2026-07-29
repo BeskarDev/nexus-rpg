@@ -1,7 +1,8 @@
 import { useMemo } from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings, Psychology } from '@mui/icons-material'
+import { Settings } from '@mui/icons-material'
 import { Menu, Typography } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -88,7 +89,7 @@ export const ResistCard = () => {
 	return (
 		<CharacterSheetCard
 			header={
-				<CardHeader icon={<Psychology />} label="Resist" color={ATTRIBUTE_COLORS.mind} />
+				<CardHeader icon={<StatSigil name="resist" size="1.15em" />} label="Resist" color={ATTRIBUTE_COLORS.mind} />
 			}
 			showConfigButton
 			onConfigClick={resistDetails ? handleClick : initializeDetails}

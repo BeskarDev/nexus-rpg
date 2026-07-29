@@ -1,7 +1,8 @@
 import { useMemo } from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings, Security } from '@mui/icons-material'
+import { Settings } from '@mui/icons-material'
 import { Menu, Typography } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -108,7 +109,7 @@ export const ParryCard = () => {
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Security />} label="Parry" color={ATTRIBUTE_COLORS.strength} />}
+			header={<CardHeader icon={<StatSigil name="parry" size="1.15em" />} label="Parry" color={ATTRIBUTE_COLORS.strength} />}
 			showConfigButton
 			onConfigClick={parryDetails ? handleClick : initializeDetails}
 			tooltip="Parry: Defense against melee attacks (7 + Fighting + level bonus + shield)"

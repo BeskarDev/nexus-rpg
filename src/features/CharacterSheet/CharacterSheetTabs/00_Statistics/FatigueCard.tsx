@@ -1,5 +1,5 @@
-import { WaterDrop, WaterDropOutlined } from '@mui/icons-material'
 import { Box, Checkbox, Typography } from '@mui/material'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import React from 'react'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
@@ -25,7 +25,11 @@ export const FatigueCard: React.FC<FatigueCardProps> = ({
 	return (
 		<CharacterSheetCard
 			header={
-				<CardHeader icon={<WaterDrop />} label="Fatigue" color={UI_COLORS.amber} />
+				<CardHeader
+					icon={<StatSigil name="fatigue" size="1.15em" />}
+					label="Fatigue"
+					color={UI_COLORS.amber}
+				/>
 			}
 			minWidth="5rem"
 			tooltip="Fatigue: Each level reduces max HP by 2 (at 6, you fall unconscious)"
@@ -44,9 +48,18 @@ export const FatigueCard: React.FC<FatigueCardProps> = ({
 					<Checkbox
 						key={index}
 						size="small"
-						icon={<WaterDropOutlined sx={{ fontSize: '0.85rem' }} />}
+						// A sigil is always solid mass, so an unspent pip cannot be the
+						// hollow outline it used to be. Colour carries the state instead:
+						// dimmed for not-yet-taken, full amber once taken.
+						icon={
+							<Box sx={{ display: 'flex', color: 'text.disabled', opacity: 0.55 }}>
+								<StatSigil name="fatigue" size="0.85rem" />
+							</Box>
+						}
 						checkedIcon={
-							<WaterDrop color="warning" sx={{ fontSize: '0.85rem' }} />
+							<Box sx={{ display: 'flex', color: 'warning.main' }}>
+								<StatSigil name="fatigue" size="0.85rem" />
+							</Box>
 						}
 						checked={index < current}
 						onChange={() => handleFatigueChange(index)}

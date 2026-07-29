@@ -2,7 +2,8 @@ import React, { useEffect, useId, useRef, useState } from 'react'
 import styles from './CreatureStatBlock.module.css'
 import { CardFrame, LozengeDivider, Cartouche } from './ornaments'
 import SigilIcon, { SIGIL_SIZE, SigilName } from './SigilIcon'
-import StatGlyph, { StatGlyphName } from './StatGlyph'
+import StatSigil from './StatSigil'
+import { StatSigilName } from './stat-sigils'
 import DieToken from './DieToken'
 
 export interface CreatureStatBlockProps {
@@ -27,7 +28,7 @@ export interface CreatureStatBlockProps {
 interface Figure {
 	label: string
 	value: React.ReactNode
-	glyph: StatGlyphName
+	glyph: StatSigilName
 	/** Short armor-category tag riding beside the AV numeral. */
 	note?: string
 }
@@ -79,7 +80,7 @@ function StatFigure({ label, value, glyph, note, pools = 1 }: Figure & { pools?:
 	return (
 		<div className={styles.figure}>
 			<div className={styles.figureValue}>
-				<StatGlyph name={glyph} size={14} className={styles.figureGlyph} />
+				<StatSigil name={glyph} size={14} className={styles.figureGlyph} />
 				<span className={styles.figureNumber}>{value}</span>
 				{abbr && (
 					<span className={styles.armorTag} title={note}>
@@ -265,8 +266,12 @@ export interface StatBlockTraitProps {
 /** Glyphs for the trait rows, so each is identifiable without reading its label. */
 const TRAIT_GLYPHS: Record<string, SigilName> = {
 	Skills: 'hand',
+	// A shield stops a blow outright; a standing stone weathers it. That is the
+	// Immunities/Resistances distinction, and it keeps Resistances off
+	// `breastplate`, which `stat-sigils.ts` assigns to AV — the two would
+	// otherwise render the same mark twice in one card meaning different things.
 	Immunities: 'shield',
-	Resistances: 'breastplate',
+	Resistances: 'stele',
 	Weaknesses: 'khopesh',
 }
 

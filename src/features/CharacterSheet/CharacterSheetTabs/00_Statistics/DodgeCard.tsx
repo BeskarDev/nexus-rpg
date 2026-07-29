@@ -1,7 +1,8 @@
 import { useMemo } from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings, Speed } from '@mui/icons-material'
+import { Settings } from '@mui/icons-material'
 import { Menu, Typography } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -87,7 +88,7 @@ export const DodgeCard = () => {
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Speed />} label="Dodge" color={ATTRIBUTE_COLORS.agility} />}
+			header={<CardHeader icon={<StatSigil name="dodge" size="1.15em" />} label="Dodge" color={ATTRIBUTE_COLORS.agility} />}
 			showConfigButton
 			onConfigClick={dodgeDetails ? handleClick : initializeDetails}
 			tooltip="Dodge: Defense against ranged attacks (5 + 1/2 Agility + level bonus)"

@@ -1,6 +1,6 @@
 import React from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { TextField } from '@mui/material'
-import { Paid } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 import { CharacterDocument } from '../../../../types/Character'
@@ -14,7 +14,7 @@ export type CoinsCardProps = {
 export const CoinsCard: React.FC<CoinsCardProps> = ({ coins, updateCharacter }) => {
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Paid />} label="Coins" color={UI_COLORS.amber} />}
+			header={<CardHeader icon={<StatSigil name="coins" size="1.15em" />} label="Coins" color={UI_COLORS.amber} />}
 			tooltip="Coins: Your current wealth"
 			minWidth="8rem"
 		>

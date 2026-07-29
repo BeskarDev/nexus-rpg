@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { Box, Typography, Menu, TextField } from '@mui/material'
-import { Stars } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
@@ -36,7 +36,7 @@ export const XpCard: React.FC<XpCardProps> = ({ total, spent }) => {
 	return (
 		<>
 			<CharacterSheetCard
-				header={<CardHeader icon={<Stars />} label="Experience" color={UI_COLORS.amber} />}
+				header={<CardHeader icon={<StatSigil name="xp" size="1.15em" />} label="Experience" color={UI_COLORS.amber} />}
 				minWidth="8rem"
 				tooltip="Your spend and total XP."
 				showConfigButton

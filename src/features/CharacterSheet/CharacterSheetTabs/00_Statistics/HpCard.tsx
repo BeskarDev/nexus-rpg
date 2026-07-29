@@ -1,10 +1,11 @@
 import { useMemo, useState, useEffect } from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { getHpBarColor } from '@site/src/utils/typescript/getHpBarColor'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings, Remove, Add, Favorite } from '@mui/icons-material'
+import { Settings, Remove, Add } from '@mui/icons-material'
 import {
 	Box,
 	IconButton,
@@ -210,7 +211,7 @@ export const HpCard = () => {
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Favorite />} label="HP" color={hpColor} />}
+			header={<CardHeader icon={<StatSigil name="hp" size="1.15em" />} label="HP" color={hpColor} />}
 			showConfigButton
 			onConfigClick={handleClick}
 			tooltip="Hit Points: Your health and ability to withstand damage"

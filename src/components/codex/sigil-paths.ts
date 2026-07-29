@@ -109,6 +109,12 @@ export type SigilName =
 	| 'cartouche'
 	| 'temple'
 	| 'mountains'
+	// --- 11 Character sheet stats (M9 S4) ---
+	// Only the marks the sheet needed that nothing here already depicted. The
+	// other stat tiles reuse existing marks — see `stat-sigils.ts`.
+	| 'sweat-drop'
+	| 'broken-jar'
+	| 'ingots'
 
 export const SIGIL_INNER: Record<SigilName, string> = {
 	// --- Chapter sigils ---
@@ -860,4 +866,45 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 			[30, 28.5],
 		]),
 	),
+
+	// --- Character sheet stats -----------------------------------------------
+
+
+	/** A single bead of sweat — Fatigue. */
+	'sweat-drop': path(
+		blobD([
+			[16, 2.5],
+			[23, 13],
+			[24.5, 20.5],
+			[16, 29.5],
+			[7.5, 20.5],
+			[9, 13],
+		]),
+	),
+
+	/**
+	 * The vessel of life, broken: lidless, its rim cracked away, a shard beside
+	 * it — a Wound. Pairs with `canopic-jar`, which an unwounded slot shows.
+	 */
+	'broken-jar':
+		path(
+			polyD([
+				[9.5, 11],
+				[15.5, 11],
+				[17.5, 16.5],
+				[21, 12],
+				[24.5, 17.5],
+				[22.5, 25.5],
+				[18.5, 29.5],
+				[12.5, 29.5],
+				[8.5, 25.5],
+				[6.5, 17.5],
+			]),
+		) + path(polyD([[23.5, 3.5], [27.5, 7.5], [22.5, 8.5]])),
+
+	/** Stacked ring-ingots — Coins. Coinage postdates the setting; wealth was weighed silver. */
+	ingots:
+		path(ellipseD(16, 6.5, 10, 3.1)) +
+		path(ellipseD(16, 16, 10, 3.1)) +
+		path(ellipseD(16, 25.5, 10, 3.1)),
 }

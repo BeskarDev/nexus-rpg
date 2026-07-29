@@ -1,5 +1,5 @@
-import { HeartBroken, HeartBrokenOutlined } from '@mui/icons-material'
 import { Box, Checkbox, MenuItem, Tooltip } from '@mui/material'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import {
 	Attribute,
 	AttributeType,
@@ -104,9 +104,17 @@ export const AttributeCard: React.FC<AttributeCardProps> = ({
 				<Tooltip title={getWoundTooltip(label)} placement="bottom">
 					<Checkbox
 						size="small"
-						icon={<HeartBrokenOutlined sx={{ fontSize: '0.8rem' }} />}
+						// The vessel of life, intact, then split: the same jar the HP
+						// card carries, cracked through once the attribute is wounded.
+						icon={
+							<Box sx={{ display: 'flex', color: 'text.disabled', opacity: 0.55 }}>
+								<StatSigil name="hp" size="0.8rem" />
+							</Box>
+						}
 						checkedIcon={
-							<HeartBroken color="error" sx={{ fontSize: '0.8rem' }} />
+							<Box sx={{ display: 'flex', color: 'error.main' }}>
+								<StatSigil name="wound" size="0.8rem" />
+							</Box>
 						}
 						checked={attribute.wounded}
 						disabled={!attribute.wounded && totalWounds >= 3}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { Box, Menu, Button, LinearProgress, Typography, alpha, TextField } from '@mui/material'
-import { Favorite, Remove, Add } from '@mui/icons-material'
+import { Remove, Add } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 import { SectionHeader, AttributeField } from '../../CharacterSheet'
@@ -50,7 +51,7 @@ export const CompanionHPCard: React.FC<CompanionHPCardProps> = ({
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Favorite />} label="HP" color={hpColor} />}
+			header={<CardHeader icon={<StatSigil name="hp" size="1.15em" />} label="HP" color={hpColor} />}
 			tooltip="Companion hit points"
 			minWidth="7rem"
 			showConfigButton

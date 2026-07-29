@@ -54,8 +54,10 @@ export type {
 	TreasureRowProps,
 } from './CreatureStatBlock'
 export { default as DieToken } from './DieToken'
-export { default as StatGlyph } from './StatGlyph'
-export type { StatGlyphProps, StatGlyphName } from './StatGlyph'
+export { default as StatSigil } from './StatSigil'
+export type { StatSigilProps } from './StatSigil'
+export { STAT_SIGIL } from './stat-sigils'
+export type { StatSigilName } from './stat-sigils'
 export type { DieTokenProps } from './DieToken'
 export { default as SuccessLevel } from './SuccessLevel'
 export type { SuccessLevelProps, SuccessLevelName } from './SuccessLevel'

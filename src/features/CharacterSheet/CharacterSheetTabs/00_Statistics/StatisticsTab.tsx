@@ -1,12 +1,7 @@
 import { Box } from '@mui/material'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import React from 'react'
 
-import {
-	BubbleChart,
-	DirectionsRun,
-	PanTool,
-	Visibility,
-} from '@mui/icons-material'
 import ATTRIBUTE_COLORS from '../../../../utils/colors'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -146,7 +141,7 @@ export const StatisticsTab: React.FC = () => {
 						})
 					}
 					label="Strength"
-					icon={<PanTool fontSize="inherit" />}
+					icon={<StatSigil name="strength" size="1.15em" />}
 					color={ATTRIBUTE_COLORS.strength}
 					totalWounds={totalWounds}
 				/>
@@ -159,7 +154,7 @@ export const StatisticsTab: React.FC = () => {
 					}
 					label="Agility"
 					color={ATTRIBUTE_COLORS.agility}
-					icon={<DirectionsRun fontSize="inherit" />}
+					icon={<StatSigil name="agility" size="1.15em" />}
 					totalWounds={totalWounds}
 				/>
 				<AttributeCard
@@ -170,7 +165,7 @@ export const StatisticsTab: React.FC = () => {
 						})
 					}
 					label="Spirit"
-					icon={<Visibility fontSize="inherit" />}
+					icon={<StatSigil name="spirit" size="1.15em" />}
 					color={ATTRIBUTE_COLORS.spirit}
 					totalWounds={totalWounds}
 				/>
@@ -182,7 +177,7 @@ export const StatisticsTab: React.FC = () => {
 						})
 					}
 					label="Mind"
-					icon={<BubbleChart fontSize="inherit" />}
+					icon={<StatSigil name="mind" size="1.15em" />}
 					color={ATTRIBUTE_COLORS.mind}
 					totalWounds={totalWounds}
 				/>

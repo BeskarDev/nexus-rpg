@@ -1,6 +1,6 @@
 import React from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { TextField } from '@mui/material'
-import { FlashOn } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 import { CharacterDocument } from '../../../../types/Character'
@@ -17,7 +17,7 @@ export const CatalystCard: React.FC<CatalystCardProps> = ({
 }) => {
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<FlashOn />} label="Catalyst" color={UI_COLORS.lightBlue} />}
+			header={<CardHeader icon={<StatSigil name="catalyst" size="1.15em" />} label="Catalyst" color={UI_COLORS.lightBlue} />}
 			tooltip="Bonus damage per success level from your Spell Catalyst"
 			maxWidth="4.5rem"
 		>

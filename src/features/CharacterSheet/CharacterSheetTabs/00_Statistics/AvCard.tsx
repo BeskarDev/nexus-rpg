@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings, Shield } from '@mui/icons-material'
+import { Settings } from '@mui/icons-material'
 import { Menu, Typography, Box } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -40,7 +41,7 @@ export const AvCard = () => {
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Shield />} label="AV" color={UI_COLORS.greyBlue} />}
+			header={<CardHeader icon={<StatSigil name="av" size="1.15em" />} label="AV" color={UI_COLORS.greyBlue} />}
 			showConfigButton
 			onConfigClick={handleClick}
 			tooltip="Armor Value: Damage reduction from armor, helmet, and shield"

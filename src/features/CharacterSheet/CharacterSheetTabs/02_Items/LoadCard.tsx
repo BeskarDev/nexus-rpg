@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { Box, Menu, TextField, Typography, alpha } from '@mui/material'
-import { FitnessCenter } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 import { SectionHeader } from '../../CharacterSheet'
@@ -53,7 +53,7 @@ export const LoadCard: React.FC<LoadCardProps> = ({
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<FitnessCenter />} label="Load" color={loadColor} />}
+			header={<CardHeader icon={<StatSigil name="load" size="1.15em" />} label="Load" color={loadColor} />}
 			showConfigButton
 			onConfigClick={handleClick}
 			tooltip={tooltipText}
