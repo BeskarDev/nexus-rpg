@@ -211,10 +211,13 @@ export const HpCard = () => {
 
 	return (
 		<CharacterSheetCard
+			editLabel="Edit Hit Points"
+			// M9 S6: frameless inside the stats plate, which supplies the single
+			// frame. Prominence comes from the meter and the numerals, not a box.
+			weight="column"
 			header={<CardHeader icon={<StatSigil name="hp" size="1.15em" />} label="HP" color={hpColor} />}
-			showConfigButton
 			onConfigClick={handleClick}
-			tooltip="Hit Points: Your health and ability to withstand damage"
+			info="Hit Points: Your health and ability to withstand damage"
 			minWidth="7rem"
 			footer={
 				<Box

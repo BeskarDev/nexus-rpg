@@ -24,6 +24,9 @@ export const FatigueCard: React.FC<FatigueCardProps> = ({
 
 	return (
 		<CharacterSheetCard
+			// M9 S6: frameless inside the stats plate, which supplies the single
+			// frame. Prominence comes from the meter and the numerals, not a box.
+			weight="column"
 			header={
 				<CardHeader
 					icon={<StatSigil name="fatigue" size="1.15em" />}
@@ -32,7 +35,7 @@ export const FatigueCard: React.FC<FatigueCardProps> = ({
 				/>
 			}
 			minWidth="5rem"
-			tooltip="Fatigue: Each level reduces max HP by 2 (at 6, you fall unconscious)"
+			info="Fatigue: Each level reduces max HP by 2 (at 6, you fall unconscious)"
 			footer={
 				<Typography
 					variant="caption"
@@ -43,7 +46,7 @@ export const FatigueCard: React.FC<FatigueCardProps> = ({
 				</Typography>
 			}
 		>
-			<Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', mt: 1 }}>
+			<Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
 				{Array.from({ length: max }).map((_, index) => (
 					<Checkbox
 						key={index}

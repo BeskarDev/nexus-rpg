@@ -54,7 +54,6 @@ export const LocationHeaderCard: React.FC<LocationHeaderCardProps> = ({
 		<CharacterSheetCard
 			header={<CardHeader icon={icon} label={label} color={loadColor} />}
 			minWidth="14rem"
-			tooltip={`${label}: Container for storing items`}
 			borderColor={currentLoad >= maxLoad && maxLoad > 0 ? loadColor : undefined}
 		>
 			<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', width: '100%' }}>

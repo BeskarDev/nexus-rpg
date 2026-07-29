@@ -22,7 +22,6 @@ export const BackgroundCard: React.FC<BackgroundCardProps> = ({
 	return (
 		<CharacterSheetCard
 			header={<CardHeader icon={<Work />} label="Background" color={UI_COLORS.greyBlue} />}
-			tooltip="Character's background or profession"
 			minWidth="8rem"
 			maxWidth="12rem"
 			frame

@@ -2,7 +2,6 @@ import { useMemo } from 'react'
 import StatSigil from '@site/src/components/codex/StatSigil'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings } from '@mui/icons-material'
 import { Menu, Typography } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -88,10 +87,14 @@ export const DodgeCard = () => {
 
 	return (
 		<CharacterSheetCard
+			editLabel="Edit Dodge"
+			// M9 S6: read often, edited almost never — so it sits in the defence
+			// band with no keyline or wash of its own. Its calculator is unchanged
+			// and still reached through the config button.
+			weight="band"
 			header={<CardHeader icon={<StatSigil name="dodge" size="1.15em" />} label="Dodge" color={ATTRIBUTE_COLORS.agility} />}
-			showConfigButton
 			onConfigClick={dodgeDetails ? handleClick : initializeDetails}
-			tooltip="Dodge: Defense against ranged attacks (5 + 1/2 Agility + level bonus)"
+			info="Dodge: Defense against ranged attacks (5 + 1/2 Agility + level bonus)"
 			minWidth="5rem"
 			configMenu={
 				dodgeDetails && (

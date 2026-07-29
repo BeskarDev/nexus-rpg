@@ -22,7 +22,6 @@ export const NameCard: React.FC<NameCardProps> = ({
 			header={
 				<CardHeader icon={<Person />} label="Name" color={UI_COLORS.greyBlue} />
 			}
-			tooltip="Character name"
 			minWidth="10rem"
 			maxWidth="15rem"
 			frame

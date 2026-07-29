@@ -2,7 +2,6 @@ import { useMemo } from 'react'
 import StatSigil from '@site/src/components/codex/StatSigil'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings } from '@mui/icons-material'
 import { Menu, Typography } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -109,10 +108,14 @@ export const ParryCard = () => {
 
 	return (
 		<CharacterSheetCard
+			editLabel="Edit Parry"
+			// M9 S6: read often, edited almost never — so it sits in the defence
+			// band with no keyline or wash of its own. Its calculator is unchanged
+			// and still reached through the config button.
+			weight="band"
 			header={<CardHeader icon={<StatSigil name="parry" size="1.15em" />} label="Parry" color={ATTRIBUTE_COLORS.strength} />}
-			showConfigButton
 			onConfigClick={parryDetails ? handleClick : initializeDetails}
-			tooltip="Parry: Defense against melee attacks (7 + Fighting + level bonus + shield)"
+			info="Parry: Defense against melee attacks (7 + Fighting + level bonus + shield)"
 			minWidth="5rem"
 			configMenu={
 				parryDetails && (

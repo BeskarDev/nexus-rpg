@@ -1,5 +1,6 @@
-import { Box, Checkbox, MenuItem, Tooltip } from '@mui/material'
+import { Box, Checkbox, MenuItem } from '@mui/material'
 import StatSigil from '@site/src/components/codex/StatSigil'
+import DieToken from '@site/src/components/codex/DieToken'
 import {
 	Attribute,
 	AttributeType,
@@ -85,24 +86,33 @@ export const AttributeCard: React.FC<AttributeCardProps> = ({
 
 	const abbr = getAttributeAbbr(label)
 	const isWounded = attribute.wounded
+	/**
+	 * The die Select is driven open by the card, not only by clicking the token —
+	 * so entering edit state is the same gesture here as on every other stat card.
+	 */
+	const [dieMenuOpen, setDieMenuOpen] = React.useState(false)
 
 	return (
 		<CharacterSheetCard
-			minWidth="4rem"
+			// M9 S6: a column inside the attribute plate, which supplies the single
+			// frame for all four. A wounded attribute still draws its own red keyline
+			// (borderColor), since that is state rather than decoration.
+			weight="column"
+			onConfigClick={() => setDieMenuOpen(true)}
+			editLabel={`Change ${label} die`}
+			minWidth="3.5rem"
 			maxWidth="5rem"
-			tooltip={getAttributeDescription(label)}
-			sx={{
-				flex: '1 1 auto',
-				transition: 'border-color 0.2s ease-in-out',
-				'&:hover': {
-					borderColor: isWounded ? undefined : color,
-				},
-			}}
+			info={`${getAttributeDescription(label)} — Wound: ${getWoundTooltip(label)}`}
+			infoLabel={`About ${label}`}
+			// M9 S6: no bespoke hover here. Attributes used to signal clickability
+			// with a coloured keyline while the defence band used a wash — two
+			// languages for one meaning. CharacterSheetCard's wash is now the single
+			// affordance for every card.
+			sx={{ flex: '1 1 auto' }}
 			borderColor={isWounded ? 'error.main' : undefined}
 			header={<CardHeader icon={icon} label={abbr} color={color} />}
 			footer={
-				<Tooltip title={getWoundTooltip(label)} placement="bottom">
-					<Checkbox
+				<Checkbox
 						size="small"
 						// The vessel of life, intact, then split: the same jar the HP
 						// card carries, cracked through once the attribute is wounded.
@@ -121,7 +131,6 @@ export const AttributeCard: React.FC<AttributeCardProps> = ({
 						onChange={handleWoundChange}
 						sx={{ p: 0, mt: 0 }}
 					/>
-				</Tooltip>
 			}
 		>
 			<AttributeField
@@ -133,27 +142,39 @@ export const AttributeCard: React.FC<AttributeCardProps> = ({
 					})
 				}
 				variant="standard"
+				// M9 S6: the die token IS the control. `renderValue` swaps the "d8"
+				// text for `DieToken`, whose polygon side-count encodes the die size —
+				// shape is preattentive in a way four same-face numerals are not, so a
+				// glance reads the spread across all four attributes.
+				//
+				// Editing costs no more taps than before: the token opens the same menu
+				// the old text did. Dropping `IconComponent` removes the dropdown arrow
+				// and the 16px of padding it reserved, which is the space this slice
+				// reclaims. The affordance is the same hover wash every other stat card
+				// uses, and the menu is driven open by the card as well as the token.
+				SelectProps={{
+					IconComponent: () => null,
+					renderValue: (value) => <DieToken value={`d${value}`} />,
+					open: dieMenuOpen,
+					onOpen: () => setDieMenuOpen(true),
+					onClose: () => setDieMenuOpen(false),
+				}}
 				InputProps={{
 					disableUnderline: true,
 					sx: {
-						ml: 1.5,
-						mr: -1.5,
-						fontWeight: 'bold',
-						fontSize: '0.95rem',
-						textAlign: 'center',
 						justifyContent: 'center',
+						cursor: 'pointer',
 						'& .MuiSelect-select': {
 							py: 0,
-							pr: '16px',
-							textAlign: 'center',
+							pr: '0 !important',
+							display: 'flex',
+							justifyContent: 'center',
 						},
 					},
 				}}
 				sx={{
 					maxWidth: '3.5rem',
-					'& .MuiInput-root': {
-						justifyContent: 'center',
-					},
+					'& .MuiInput-root': { justifyContent: 'center' },
 				}}
 			>
 				{attributeTypeArray.map((at) => (

@@ -148,9 +148,9 @@ export const FocusCard = () => {
 
 	return (
 		<CharacterSheetCard
+			editLabel="Edit Focus"
 			header={<CardHeader icon={<StatSigil name="focus" size="1.15em" />} label="Focus" color={UI_COLORS.purple} />}
-			tooltip="Magical energy pool for casting spells"
-			showConfigButton
+			info="Magical energy pool for casting spells"
 			onConfigClick={handleClick}
 			minWidth="8rem"
 			footer={

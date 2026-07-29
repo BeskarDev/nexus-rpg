@@ -11,7 +11,6 @@ interface SimpleTextCardProps {
 	error?: string
 	label: string
 	icon: React.ReactNode
-	tooltip: string
 	minWidth?: string
 	maxWidth?: string
 	multiline?: boolean
@@ -24,7 +23,6 @@ export const SimpleTextCard: React.FC<SimpleTextCardProps> = ({
 	error,
 	label,
 	icon,
-	tooltip,
 	minWidth = '5rem',
 	maxWidth = '8rem',
 	multiline = false,
@@ -34,7 +32,6 @@ export const SimpleTextCard: React.FC<SimpleTextCardProps> = ({
 			header={
 				<CardHeader icon={icon} label={label} color={UI_COLORS.greyBlue} />
 			}
-			tooltip={tooltip}
 			minWidth={minWidth}
 			maxWidth={maxWidth}
 			// M9 S3: these are identity cards (name, folk, background...) — the
@@ -69,49 +66,45 @@ export const SimpleTextCard: React.FC<SimpleTextCardProps> = ({
 
 // Convenience exports for common use cases
 export const HeightCard: React.FC<
-	Omit<SimpleTextCardProps, 'label' | 'icon' | 'tooltip'>
+	Omit<SimpleTextCardProps, 'label' | 'icon'>
 > = (props) => (
 	<SimpleTextCard
 		{...props}
 		label="Height"
 		icon={<Height />}
-		tooltip="Character's height"
 	/>
 )
 
 export const WeightCard: React.FC<
-	Omit<SimpleTextCardProps, 'label' | 'icon' | 'tooltip'>
+	Omit<SimpleTextCardProps, 'label' | 'icon'>
 > = (props) => (
 	<SimpleTextCard
 		{...props}
 		label="Weight"
 		icon={<Scale />}
-		tooltip="Character's weight"
 	/>
 )
 
 export const AgeCard: React.FC<
-	Omit<SimpleTextCardProps, 'label' | 'icon' | 'tooltip'>
+	Omit<SimpleTextCardProps, 'label' | 'icon'>
 > = (props) => (
 	<SimpleTextCard
 		{...props}
 		label="Age"
 		icon={<Cake />}
-		tooltip="Character's age"
 	/>
 )
 
 export const DescriptionCard: React.FC<
 	Omit<
 		SimpleTextCardProps,
-		'label' | 'icon' | 'tooltip' | 'multiline' | 'minWidth' | 'maxWidth'
+		'label' | 'icon' | 'multiline' | 'minWidth' | 'maxWidth'
 	>
 > = (props) => (
 	<SimpleTextCard
 		{...props}
 		label="Description"
 		icon={<Description />}
-		tooltip="Character's physical description"
 		minWidth="19.5rem"
 		multiline
 	/>

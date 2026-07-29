@@ -20,7 +20,6 @@ export const MotivationCard: React.FC<MotivationCardProps> = ({
 	return (
 		<CharacterSheetCard
 			header={<CardHeader icon={<EmojiEvents />} label="Motivation" color={UI_COLORS.greyBlue} />}
-			tooltip="Character's driving goal or motivation"
 			minWidth="8rem"
 			maxWidth="12rem"
 			frame

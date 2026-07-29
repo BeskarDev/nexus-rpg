@@ -22,7 +22,6 @@ export const UpbringingCard: React.FC<UpbringingCardProps> = ({
 	return (
 		<CharacterSheetCard
 			header={<CardHeader icon={<School />} label="Upbringing" color={UI_COLORS.greyBlue} />}
-			tooltip="Character's upbringing or early life"
 			minWidth="8rem"
 			maxWidth="12rem"
 			frame

@@ -22,7 +22,6 @@ export const FolkCard: React.FC<FolkCardProps> = ({
 	return (
 		<CharacterSheetCard
 			header={<CardHeader icon={<Group />} label="Folk" color={UI_COLORS.greyBlue} />}
-			tooltip="Character's folk or ancestry"
 			minWidth="8rem"
 			maxWidth="12rem"
 			frame

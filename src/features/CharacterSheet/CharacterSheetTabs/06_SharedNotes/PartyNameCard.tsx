@@ -37,7 +37,6 @@ export const PartyNameCard: React.FC<PartyNameCardProps> = ({
 	return (
 		<CharacterSheetCard
 			header={<CardHeader icon={<Groups />} label="Party" color={UI_COLORS.greyBlue} />}
-			tooltip="Adventuring party name"
 			minWidth="12rem"
 			maxWidth="20rem"
 		>

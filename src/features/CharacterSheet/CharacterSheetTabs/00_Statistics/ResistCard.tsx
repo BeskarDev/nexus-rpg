@@ -2,7 +2,6 @@ import { useMemo } from 'react'
 import StatSigil from '@site/src/components/codex/StatSigil'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings } from '@mui/icons-material'
 import { Menu, Typography } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -88,12 +87,16 @@ export const ResistCard = () => {
 
 	return (
 		<CharacterSheetCard
+			editLabel="Edit Resist"
+			// M9 S6: read often, edited almost never — so it sits in the defence
+			// band with no keyline or wash of its own. Its calculator is unchanged
+			// and still reached through the config button.
+			weight="band"
 			header={
 				<CardHeader icon={<StatSigil name="resist" size="1.15em" />} label="Resist" color={ATTRIBUTE_COLORS.mind} />
 			}
-			showConfigButton
 			onConfigClick={resistDetails ? handleClick : initializeDetails}
-			tooltip="Resist: Defense against mental and magical effects (5 + 1/2 Spirit/Mind + level bonus)"
+			info="Resist: Defense against mental and magical effects (5 + 1/2 Spirit/Mind + level bonus)"
 			minWidth="5rem"
 			configMenu={
 				resistDetails && (

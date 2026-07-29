@@ -53,10 +53,10 @@ export const LoadCard: React.FC<LoadCardProps> = ({
 
 	return (
 		<CharacterSheetCard
+			editLabel="Edit carrying capacity"
 			header={<CardHeader icon={<StatSigil name="load" size="1.15em" />} label="Load" color={loadColor} />}
-			showConfigButton
 			onConfigClick={handleClick}
-			tooltip={tooltipText}
+			info={tooltipText}
 			minWidth="5.5rem"
 			borderColor={currentLoad >= carryCapacity ? loadColor : undefined}
 			footer={

@@ -11,7 +11,7 @@ export const MagicSkillCard: React.FC<MagicSkillCardProps> = ({ magicSkill }) =>
 	return (
 		<CharacterSheetCard
 			header={<CardHeader icon={<StatSigil name="magic" size="1.15em" />} label="Magic" color={UI_COLORS.purple} />}
-			tooltip="Your primary magic tradition (Arcana or Mysticism)"
+			info="Your primary magic tradition (Arcana or Mysticism)"
 			minWidth="7rem"
 		>
 			<CardContent value={magicSkill || '—'} />

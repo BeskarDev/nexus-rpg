@@ -41,7 +41,7 @@ export const LocationLoadCard: React.FC<LocationLoadCardProps> = ({
 			header={<CardHeader icon={<StatSigil name="load" size="1.15em" />} label="Load" color={loadColor} />}
 			minWidth="5.5rem"
 			maxWidth="7rem"
-			tooltip="Load capacity for this location"
+			info="Load capacity for this location"
 			borderColor={currentLoad >= maxLoad && maxLoad > 0 ? loadColor : undefined}
 		>
 			<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'baseline' }}>

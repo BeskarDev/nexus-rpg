@@ -18,7 +18,6 @@ export const SpecializationCard: React.FC<SpecializationCardProps> = ({
 	return (
 		<CharacterSheetCard
 			header={<CardHeader icon={<Star />} label="Specializations" color={UI_COLORS.amber} />}
-			tooltip="Your magical specialization or tradition"
 			minWidth="16rem"
 		>
 			<TextField

@@ -15,7 +15,6 @@ export const CoinsCard: React.FC<CoinsCardProps> = ({ coins, updateCharacter }) 
 	return (
 		<CharacterSheetCard
 			header={<CardHeader icon={<StatSigil name="coins" size="1.15em" />} label="Coins" color={UI_COLORS.amber} />}
-			tooltip="Coins: Your current wealth"
 			minWidth="8rem"
 		>
 			<TextField

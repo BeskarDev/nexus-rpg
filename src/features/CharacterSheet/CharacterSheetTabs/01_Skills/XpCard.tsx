@@ -36,10 +36,10 @@ export const XpCard: React.FC<XpCardProps> = ({ total, spent }) => {
 	return (
 		<>
 			<CharacterSheetCard
+			editLabel="Edit experience"
 				header={<CardHeader icon={<StatSigil name="xp" size="1.15em" />} label="Experience" color={UI_COLORS.amber} />}
 				minWidth="8rem"
-				tooltip="Your spend and total XP."
-				showConfigButton
+				info="Your spend and total XP."
 				onConfigClick={handleClick}
 				sx={{ alignSelf: 'flex-start' }}
 				configMenu={

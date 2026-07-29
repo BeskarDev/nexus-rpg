@@ -51,10 +51,9 @@ export const CompanionHPCard: React.FC<CompanionHPCardProps> = ({
 
 	return (
 		<CharacterSheetCard
+			editLabel="Edit companion hit points"
 			header={<CardHeader icon={<StatSigil name="hp" size="1.15em" />} label="HP" color={hpColor} />}
-			tooltip="Companion hit points"
 			minWidth="7rem"
-			showConfigButton
 			onConfigClick={handleClick}
 			footer={
 				<Box sx={{ width: '100%', mt: 0.5, px: 1 }}>

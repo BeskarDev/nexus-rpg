@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 import StatSigil from '@site/src/components/codex/StatSigil'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings } from '@mui/icons-material'
 import { Menu, Typography, Box } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -41,10 +40,14 @@ export const AvCard = () => {
 
 	return (
 		<CharacterSheetCard
+			editLabel="Edit Armor Value"
+			// M9 S6: read often, edited almost never — so it sits in the defence
+			// band with no keyline or wash of its own. Its calculator is unchanged
+			// and still reached through the config button.
+			weight="band"
 			header={<CardHeader icon={<StatSigil name="av" size="1.15em" />} label="AV" color={UI_COLORS.greyBlue} />}
-			showConfigButton
 			onConfigClick={handleClick}
-			tooltip="Armor Value: Damage reduction from armor, helmet, and shield"
+			info="Armor Value: Damage reduction from armor, helmet, and shield"
 			minWidth="4rem"
 			maxWidth="5rem"
 			configMenu={

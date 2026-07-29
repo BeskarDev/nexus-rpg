@@ -32,7 +32,6 @@ export const LocationNameCard: React.FC<LocationNameCardProps> = ({
 			header={<CardHeader icon={icon} label={label} color={UI_COLORS.greyBlue} />}
 			minWidth="6rem"
 			maxWidth="8rem"
-			tooltip={`${label} name`}
 		>
 			<TextField
 				size="small"
