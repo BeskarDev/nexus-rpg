@@ -1,10 +1,18 @@
 import React from 'react'
 import SigilIcon from './SigilIcon'
-import { STAT_SIGIL, StatSigilName } from './stat-sigils'
+import {
+	SHEET_SIGIL,
+	STAT_SIGIL,
+	SheetSigilName,
+	StatSigilName,
+} from './stat-sigils'
+
+const SIGIL = { ...STAT_SIGIL, ...SHEET_SIGIL }
 
 /**
  * The mark on a stat tile — a character sheet card header, or a creature card's
- * figure row.
+ * figure row. Also carries the sheet's non-stat chrome slots (`folk`, `party`,
+ * `location-mount`), which resolve through `SHEET_SIGIL` the same way (M9 S8).
  *
  * A thin wrapper over `SigilIcon`: it takes a **game** name (`parry`, `focus`)
  * and resolves it through `STAT_SIGIL` to the **depictive** name of a sigil
@@ -20,7 +28,7 @@ import { STAT_SIGIL, StatSigilName } from './stat-sigils'
  * the sole carrier of meaning.
  */
 export interface StatSigilProps {
-	name: StatSigilName
+	name: StatSigilName | SheetSigilName
 	/**
 	 * Size of the square mark. A number is pixels; a string is a CSS length, so
 	 * `size="1.15em"` inherits the surrounding font-size.
@@ -34,5 +42,5 @@ export default function StatSigil({
 	size = 15,
 	className,
 }: StatSigilProps) {
-	return <SigilIcon name={STAT_SIGIL[name]} size={size} className={className} />
+	return <SigilIcon name={SIGIL[name]} size={size} className={className} />
 }

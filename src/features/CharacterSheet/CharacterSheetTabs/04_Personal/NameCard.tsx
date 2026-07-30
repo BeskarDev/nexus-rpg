@@ -1,6 +1,6 @@
 import React from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { TextField } from '@mui/material'
-import { Person } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 
@@ -20,7 +20,7 @@ export const NameCard: React.FC<NameCardProps> = ({
 	return (
 		<CharacterSheetCard
 			header={
-				<CardHeader icon={<Person />} label="Name" color={UI_COLORS.greyBlue} />
+				<CardHeader icon={<StatSigil name="name" size="1.15em" />} label="Name" color={UI_COLORS.greyBlue} />
 			}
 			minWidth="10rem"
 			maxWidth="15rem"

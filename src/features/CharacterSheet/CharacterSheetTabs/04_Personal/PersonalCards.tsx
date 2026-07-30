@@ -1,6 +1,6 @@
 import React from 'react'
 import { TextField } from '@mui/material'
-import { Height, Scale, Cake, Description } from '@mui/icons-material'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 
@@ -71,7 +71,7 @@ export const HeightCard: React.FC<
 	<SimpleTextCard
 		{...props}
 		label="Height"
-		icon={<Height />}
+		icon={<StatSigil name="height" size="1.15em" />}
 	/>
 )
 
@@ -81,7 +81,7 @@ export const WeightCard: React.FC<
 	<SimpleTextCard
 		{...props}
 		label="Weight"
-		icon={<Scale />}
+		icon={<StatSigil name="weight" size="1.15em" />}
 	/>
 )
 
@@ -91,7 +91,7 @@ export const AgeCard: React.FC<
 	<SimpleTextCard
 		{...props}
 		label="Age"
-		icon={<Cake />}
+		icon={<StatSigil name="age" size="1.15em" />}
 	/>
 )
 
@@ -104,7 +104,7 @@ export const DescriptionCard: React.FC<
 	<SimpleTextCard
 		{...props}
 		label="Description"
-		icon={<Description />}
+		icon={<StatSigil name="description" size="1.15em" />}
 		minWidth="19.5rem"
 		multiline
 	/>

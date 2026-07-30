@@ -74,3 +74,21 @@ input[type='number'] {
 	bottom: 2px;
 	left: 2px;
 }
+
+/* M9 S9 — the replacement for a re-decided M8 exclusion.
+   custom.css excludes sheet links from BOTH the universal hover treatments: the
+   rune-cyan color (`a:hover:not(.character-sheet-page a)`) and the glow pulse
+   (`.character-sheet-page a:hover { animation: none }`). Both exclusions stand
+   after review — cyan is magic-only and a character link is not magic, and a
+   pulsing link in a mid-play tool is noise — but together they left sheet links
+   with NO hover feedback at all, which is a lost affordance, not a design
+   choice. Restored here in the sheet's own register: a flat ink shift, no
+   motion.
+
+   NOT plain `var(--nexus-bronze)` — measured, a sheet link already RESTS at
+   exactly that value (rgb(138,90,43) in light), so the hover was a no-op. Mixing
+   toward the reading ink deepens it in light mode and brightens it in dark from
+   the one declaration, per the milestone's every-hue-mixes-toward-the-ink rule. */
+.character-sheet-page a:hover {
+	color: color-mix(in oklab, var(--nexus-bronze), var(--ifm-font-color-base) 40%);
+}

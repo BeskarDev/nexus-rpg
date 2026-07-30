@@ -1,6 +1,6 @@
 import React from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { TextField } from '@mui/material'
-import { EmojiEvents } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 
@@ -19,7 +19,7 @@ export const MotivationCard: React.FC<MotivationCardProps> = ({
 }) => {
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<EmojiEvents />} label="Motivation" color={UI_COLORS.greyBlue} />}
+			header={<CardHeader icon={<StatSigil name="motivation" size="1.15em" />} label="Motivation" color={UI_COLORS.greyBlue} />}
 			minWidth="8rem"
 			maxWidth="12rem"
 			frame

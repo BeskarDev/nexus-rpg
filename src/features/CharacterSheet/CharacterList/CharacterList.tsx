@@ -1,10 +1,4 @@
-import {
-	ListAlt,
-	ChevronLeft,
-	ChevronRight,
-	Expand,
-	ExpandMore,
-} from '@mui/icons-material'
+import { ChevronRight, ExpandMore } from '@mui/icons-material'
 import {
 	Avatar,
 	Box,
@@ -18,6 +12,8 @@ import {
 	ListItemText,
 	Typography, // Import Typography for headers
 } from '@mui/material'
+import { Cartouche } from '@site/src/components/codex/ornaments'
+import SigilIcon from '@site/src/components/codex/SigilIcon'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import React, { useState, useEffect } from 'react'
 import { CharacterDocument } from '../../../types/Character'
@@ -28,6 +24,14 @@ export interface CharacterListProps {
 	characters: CharacterDocument[]
 	handleDeleteCharacter: (char: CharacterDocument) => Promise<void>
 }
+
+/* M9 S8 — the character list is a CONTENTS PAGE, not a tile grid
+   (codex-theme § Composition). Ruled rows: name left in the display serif, the
+   folk/background line beneath it, the level as a cartouche tag on the right,
+   one engraved hairline between entries. The old pill (`borderRadius: 30`) and
+   the circular avatar were the two things that read as a web-app contact list. */
+const ROW_RULE =
+	'1px solid color-mix(in srgb, var(--nexus-bronze) 22%, transparent)'
 
 export const CharacterList: React.FC<CharacterListProps> = ({
 	characters,
@@ -58,6 +62,9 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 	const buildCharacterName = (char: CharacterDocument) =>
 		`${char.personal.name} (${char.personal.folk} ${char.personal.background}, Level ${calculateCharacterLevel(char.skills.xp.spend)})`
 
+	const buildCharacterMeta = (char: CharacterDocument) =>
+		[char.personal.folk, char.personal.background].filter(Boolean).join(' · ')
+
 	const togglePlayerExpanded = (playerName: string) => {
 		setExpandedPlayers((prev) => {
 			const newSet = new Set(prev)
@@ -69,6 +76,75 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 			return newSet
 		})
 	}
+
+	/** One ruled entry in the contents page. */
+	const renderCharacterRow = (char: CharacterDocument) => (
+		<ListItem
+			key={char.docId}
+			disablePadding
+			sx={{ borderBottom: ROW_RULE }}
+			secondaryAction={
+				<DeleteButton
+					handleDeleteCharacter={() => handleDeleteCharacter(char)}
+					characterName={char.personal.name}
+				/>
+			}
+		>
+			<Link
+				href={`${window.location.href.split('?')[0]}?id=${char.collectionId}-${char.docId}`}
+				sx={{ width: '100%', textDecoration: 'none' }}
+			>
+				<ListItemButton
+					sx={{
+						borderRadius: 0,
+						py: 1,
+						pr: 7,
+						gap: 1,
+						'&:hover': {
+							backgroundColor:
+								'color-mix(in srgb, var(--nexus-bronze) 8%, transparent)',
+						},
+					}}
+				>
+					<ListItemAvatar sx={{ minWidth: 44 }}>
+						<Avatar
+							src={char.personal.profilePicture}
+							variant="square"
+							sx={{
+								width: 34,
+								height: 34,
+								borderRadius: '2px',
+								backgroundColor: 'transparent',
+								color: 'var(--nexus-bronze)',
+								border:
+									'1px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent)',
+							}}
+						>
+							<SigilIcon name="scroll" size={18} aria-hidden="true" />
+						</Avatar>
+					</ListItemAvatar>
+					<ListItemText
+						primary={char.personal.name}
+						secondary={buildCharacterMeta(char)}
+						primaryTypographyProps={{
+							sx: {
+								fontFamily: 'var(--nexus-font-display)',
+								fontWeight: 600,
+								letterSpacing: '0.02em',
+							},
+						}}
+						secondaryTypographyProps={{
+							sx: { fontSize: 'var(--nexus-text-2xs)' },
+						}}
+						sx={{ textDecoration: 'none', my: 0 }}
+					/>
+					<Cartouche compact>
+						{`Level ${calculateCharacterLevel(char.skills.xp.spend)}`}
+					</Cartouche>
+				</ListItemButton>
+			</Link>
+		</ListItem>
+	)
 
 	// Show empty state if no characters
 	if (characters.length === 0) {
@@ -95,7 +171,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 	}
 
 	return (
-		<List>
+		<List disablePadding sx={{ borderTop: ROW_RULE }}>
 			{isAdmin && viewAsAdmin
 				? // Group characters by playerName if the user is an admin viewing as admin
 					Object.entries(
@@ -120,13 +196,14 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 										sx={{
 											display: 'flex',
 											alignItems: 'center',
-											mt: 2,
-											mb: 1,
 											cursor: 'pointer',
+											borderBottom: ROW_RULE,
+											backgroundColor:
+												'color-mix(in srgb, var(--nexus-bronze) 8%, transparent)',
 											'&:hover': {
-												backgroundColor: 'action.hover',
+												backgroundColor:
+													'color-mix(in srgb, var(--nexus-bronze) 14%, transparent)',
 											},
-											borderRadius: 1,
 											px: 1,
 											py: 0.5,
 										}}
@@ -135,7 +212,14 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 										<IconButton size="small" sx={{ mr: 0.5 }}>
 											{isExpanded ? <ExpandMore /> : <ChevronRight />}
 										</IconButton>
-										<Typography variant="subtitle2">
+										<Typography
+											variant="subtitle2"
+											sx={{
+												fontFamily: 'var(--nexus-font-ui)',
+												fontVariant: 'small-caps',
+												letterSpacing: '0.05em',
+											}}
+										>
 											{playerName} ({playerCharacters.length})
 										</Typography>
 									</Box>
@@ -146,69 +230,13 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 													buildCharacterName(b),
 												),
 											) // Sort characters alphabetically by name
-											.map((char) => (
-												<ListItem
-													key={char.docId}
-													secondaryAction={
-														<DeleteButton
-															handleDeleteCharacter={() =>
-																handleDeleteCharacter(char)
-															}
-															characterName={char.personal.name}
-														/>
-													}
-												>
-													<Link
-														href={`${window.location.href.split('?')[0]}?id=${char.collectionId}-${char.docId}`}
-														sx={{ width: '100%', textDecoration: 'none' }}
-													>
-														<ListItemButton sx={{ borderRadius: 30, mr: 2 }}>
-															<ListItemAvatar>
-																<Avatar src={char.personal.profilePicture}>
-																	<ListAlt />
-																</Avatar>
-															</ListItemAvatar>
-															<ListItemText
-																primary={buildCharacterName(char)}
-																sx={{ textDecoration: 'none' }}
-															/>
-														</ListItemButton>
-													</Link>
-												</ListItem>
-											))}
+											.map(renderCharacterRow)}
 									</Collapse>
 								</React.Fragment>
 							)
 						})
 				: // Render characters normally if the user is not an admin
-					characters.map((char) => (
-						<ListItem
-							key={char.docId}
-							secondaryAction={
-							<DeleteButton
-								handleDeleteCharacter={() => handleDeleteCharacter(char)}
-								characterName={char.personal.name}
-							/>
-							}
-						>
-							<Link
-								href={`${window.location.href.split('?')[0]}?id=${char.collectionId}-${char.docId}`}
-								sx={{ width: '100%', textDecoration: 'none' }}
-							>
-								<ListItemButton sx={{ borderRadius: 30, mr: 2 }}>
-									<ListItemAvatar>
-										<Avatar src={char.personal.profilePicture}>
-											<ListAlt />
-										</Avatar>
-									</ListItemAvatar>
-									<ListItemText
-										primary={buildCharacterName(char)}
-										sx={{ textDecoration: 'none' }}
-									/>
-								</ListItemButton>
-							</Link>
-						</ListItem>
-					))}
+					characters.map(renderCharacterRow)}
 		</List>
 	)
 }

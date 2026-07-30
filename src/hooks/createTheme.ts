@@ -85,13 +85,18 @@ export const theme: CssVarsThemeOptions = {
 				},
 			},
 		},
+		// M9 S8 — tabs match the doc surface. Infima's `.tabs__item--active` (M8
+		// S10) marks the active tab with a wash plus an inset keyline, NOT a bar;
+		// MUI's stock 2px indicator is the same "underline as grouping device"
+		// move the sheet spent S5 removing. Indicator off, wash + keyline on, so
+		// a doc tab and a sheet tab read as the same control.
 		MuiTabs: {
 			styleOverrides: {
 				root: {
 					minHeight: 36,
 				},
 				indicator: {
-					height: 2,
+					display: 'none',
 				},
 			},
 		},
@@ -103,14 +108,54 @@ export const theme: CssVarsThemeOptions = {
 					fontFamily: 'var(--nexus-font-ui)',
 					fontWeight: 600,
 					letterSpacing: '0.03em',
+					borderRadius: '2px 2px 0 0',
+					'&.Mui-selected': {
+						backgroundColor:
+							'color-mix(in srgb, var(--nexus-bronze) 10%, transparent)',
+						outline:
+							'1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent)',
+						outlineOffset: '-1.5px',
+					},
 				},
 			},
 		},
+		// M9 S8 — dialogs become tablets: an outer bronze keyline plus an inset
+		// engraved hairline (the double edge of a carved slab). `outline` with a
+		// negative offset is the sanctioned second keyline, so this stays flat —
+		// no pillars, no cornices. The kit's `TabletFrame` was NOT wrapped around
+		// each dialog: it is a React surround with side pillars, deliberately for
+		// stand-alone display surfaces, and 21 call sites is a component sweep
+		// where a theme override reaches all of them.
 		MuiDialog: {
 			styleOverrides: {
 				paper: {
 					boxShadow: 'none',
+					borderRadius: 2,
 					border: '1px solid var(--nexus-bronze)',
+					outline:
+						'1px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent)',
+					outlineOffset: '-4px',
+				},
+			},
+		},
+		// The tablet's inscribed band. Display serif is already on `h6`, which is
+		// DialogTitle's default variant, so this adds the band, not the type.
+		MuiDialogTitle: {
+			styleOverrides: {
+				root: {
+					backgroundColor:
+						'color-mix(in srgb, var(--nexus-bronze) 8%, transparent)',
+					borderBottom:
+						'1px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent)',
+					letterSpacing: '0.03em',
+				},
+			},
+		},
+		MuiDialogActions: {
+			styleOverrides: {
+				root: {
+					borderTop:
+						'1px solid color-mix(in srgb, var(--nexus-bronze) 20%, transparent)',
 				},
 			},
 		},

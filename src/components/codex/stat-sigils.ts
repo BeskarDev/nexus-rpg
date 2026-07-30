@@ -111,3 +111,70 @@ export const STAT_SIGIL: Record<StatSigilName, SigilName> = {
 	// The four-pointed star, the ancient sign for the divine and its power.
 	magic: 'sparkle',
 }
+
+/**
+ * Non-stat sheet slots — the identity cards, item locations and party chrome
+ * that PR E left on Material icons (M9 S8).
+ *
+ * Kept in this file rather than a third table on purpose: PR E found a real bug
+ * where `CreatureStatBlock`'s own local glyph table silently assigned a mark
+ * that `STAT_SIGIL` had already given a different meaning. `sigils:check`
+ * enforces that marks are visually distinct, not that a mark carries one
+ * meaning — one table per surface is what makes that checkable by reading.
+ *
+ * Every assignment here reuses the mark the corresponding RULES page already
+ * carries (`page-sigils.ts`), so a reader who learns `hearth` on the Upbringing
+ * page meets the same mark on the Upbringing card.
+ */
+export type SheetSigilName =
+	| 'name'
+	| 'folk'
+	| 'upbringing'
+	| 'background'
+	| 'motivation'
+	| 'specialization'
+	| 'location-mount'
+	| 'location-storage'
+	| 'party'
+	| 'height'
+	| 'weight'
+	| 'age'
+	| 'description'
+
+export const SHEET_SIGIL: Record<SheetSigilName, SigilName> = {
+	// The sign that literally means "this encloses a name" — the same reason PR D
+	// made the sheet's card keystone a cartouche. `gm-tools/random-tables/random-name`
+	// already uses it.
+	name: 'cartouche',
+	// `adventurers/folk`.
+	folk: 'figure',
+	// `adventurers/upbringing` — where you were raised.
+	upbringing: 'hearth',
+	// `adventurers/background` — the standing stone that records what you were.
+	background: 'stele',
+	// The guiding star, as on `basic-rules/character-progression`: what a
+	// character steers by is also what they advance toward.
+	motivation: 'ishtar-star',
+	// `statistics/talents` — a specialization is a branch of the same growth.
+	specialization: 'sprig',
+	// `creatures/mounts-companions` — the pack animal carrying the load.
+	'location-mount': 'horse',
+	// `scenes/resting` — the camp the rest of the gear is left at.
+	'location-storage': 'tent',
+	// `adventurers/npc-relations` — the mark for people bound to each other.
+	party: 'figure-pair',
+	// The one mark drawn for this table (M9 S8). Nothing in the set stated
+	// "measured extent of a person": `mountains` means terrain and `stele` means
+	// a monument, and PR E's law is that a mark which misstates its subject is
+	// worse than no mark. The surveyor's rod is the period's own answer.
+	height: 'measuring-rod',
+	// A balance beam is literally the instrument. `basic-rules/general-rulings`
+	// carries it for weighing a ruling; the depiction is the same act.
+	weight: 'scales',
+	// `scenes/effect-durations` — elapsed time, which is what an age is.
+	age: 'hourglass',
+	// Cuneiform wedges: written text about the character. NOT `stylus`, which PR F
+	// already spent on the RuleInfo gloss mark, and not `scroll`, which the header
+	// and character list use to mean "a character sheet".
+	description: 'wedges',
+}

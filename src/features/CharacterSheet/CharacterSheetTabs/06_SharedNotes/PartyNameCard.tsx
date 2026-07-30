@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { Box, TextField, IconButton, Tooltip } from '@mui/material'
-import { Groups, Edit, Save, Cancel } from '@mui/icons-material'
+import { Edit, Save, Cancel } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 
@@ -36,7 +37,7 @@ export const PartyNameCard: React.FC<PartyNameCardProps> = ({
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Groups />} label="Party" color={UI_COLORS.greyBlue} />}
+			header={<CardHeader icon={<StatSigil name="party" size="1.15em" />} label="Party" color={UI_COLORS.greyBlue} />}
 			minWidth="12rem"
 			maxWidth="20rem"
 		>

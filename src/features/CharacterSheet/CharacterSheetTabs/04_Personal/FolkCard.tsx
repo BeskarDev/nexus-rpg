@@ -1,6 +1,7 @@
 import React from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { Box, TextField, IconButton } from '@mui/material'
-import { Group, Edit } from '@mui/icons-material'
+import { Edit } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 
@@ -21,7 +22,7 @@ export const FolkCard: React.FC<FolkCardProps> = ({
 }) => {
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Group />} label="Folk" color={UI_COLORS.greyBlue} />}
+			header={<CardHeader icon={<StatSigil name="folk" size="1.15em" />} label="Folk" color={UI_COLORS.greyBlue} />}
 			minWidth="8rem"
 			maxWidth="12rem"
 			frame

@@ -1,6 +1,6 @@
 import React from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { TextField } from '@mui/material'
-import { Star } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 import { CharacterDocument } from '../../../../types/Character'
@@ -17,7 +17,7 @@ export const SpecializationCard: React.FC<SpecializationCardProps> = ({
 }) => {
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Star />} label="Specializations" color={UI_COLORS.amber} />}
+			header={<CardHeader icon={<StatSigil name="specialization" size="1.15em" />} label="Specializations" color={UI_COLORS.amber} />}
 			minWidth="16rem"
 		>
 			<TextField

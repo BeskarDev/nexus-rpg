@@ -113,6 +113,7 @@ export type SigilName =
 	// Only the marks the sheet needed that nothing here already depicted. The
 	// other stat tiles reuse existing marks — see `stat-sigils.ts`.
 	| 'sweat-drop'
+	| 'measuring-rod'
 	| 'broken-jar'
 	| 'ingots'
 
@@ -907,4 +908,19 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 		path(ellipseD(16, 6.5, 10, 3.1)) +
 		path(ellipseD(16, 16, 10, 3.1)) +
 		path(ellipseD(16, 25.5, 10, 3.1)),
+
+	/**
+	 * A graduated measuring rod — Height. The rod-and-line is the surveyor's
+	 * instrument the period actually used (Ur-Nammu and Gudea are both depicted
+	 * holding one), and unlike a mountain or a standing stone it means MEASURED
+	 * extent rather than terrain or a monument, so it does not collide with
+	 * `mountains` or `stele`. Read vertically: the graduations are what make it
+	 * a rule and not a staff.
+	 */
+	'measuring-rod':
+		path(boxD(9.5, 3, 15.5, 29)) +
+		path(boxD(15.5, 6, 22.5, 9)) +
+		path(boxD(15.5, 12, 22.5, 15)) +
+		path(boxD(15.5, 18, 22.5, 21)) +
+		path(boxD(15.5, 24, 22.5, 27)),
 }

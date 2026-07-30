@@ -1,10 +1,7 @@
 import {
 	ArrowBackIosNew,
-	ChevronLeft,
 	Download,
-	Reply,
 	Save,
-	Star,
 	Upload,
 } from '@mui/icons-material'
 import {
@@ -32,6 +29,8 @@ import {
 	InputLabel,
 	FormControl,
 } from '@mui/material'
+import { Cartouche } from '@site/src/components/codex/ornaments'
+import SigilIcon from '@site/src/components/codex/SigilIcon'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -294,19 +293,36 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						</IconButton>
 					</Link>
 				)}
-				<Typography
-					variant="h6"
+				{/* M9 S8 — the nameplate. The character's name is the page's identity,
+				    so it stays display serif at reading size; the level rides beside
+				    it in the kit's own `Cartouche` (a label register, which is what a
+				    level is). Reused rather than redrawn: its ink-forward color has no
+				    identity hue to preserve here, unlike the stat tiles in PR D. */}
+				<Box
 					sx={{
-						whiteSpace: 'nowrap',
-						overflow: 'hidden',
-						textOverflow: 'ellipsis',
+						display: 'flex',
+						alignItems: 'center',
+						gap: 1,
+						minWidth: 0,
 					}}
 				>
-					{!activeCharacterId && 'Your Characters'}
-					{activeCharacterId &&
-						activeCharacter &&
-						`${activeCharacter?.personal.name} (Level ${calculateCharacterLevel(activeCharacter?.skills.xp.spend)})`}
-				</Typography>
+					<Typography
+						variant="h6"
+						sx={{
+							whiteSpace: 'nowrap',
+							overflow: 'hidden',
+							textOverflow: 'ellipsis',
+						}}
+					>
+						{!activeCharacterId && 'Your Characters'}
+						{activeCharacterId && activeCharacter && activeCharacter.personal.name}
+					</Typography>
+					{activeCharacterId && activeCharacter && (
+						<Cartouche compact>
+							{`Level ${calculateCharacterLevel(activeCharacter.skills.xp.spend)}`}
+						</Cartouche>
+					)}
+				</Box>
 				<Box sx={{ display: 'flex', gap: 2, ml: 'auto' }}>
 					{!activeCharacterId && (
 						<>
@@ -371,15 +387,13 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				<DialogTitle
 					id="alert-dialog-title"
 					sx={{
-						borderBottom: 1,
-						borderColor: 'divider',
 						pb: 1,
 						display: 'flex',
 						alignItems: 'center',
 						gap: 1,
 					}}
 				>
-					<Star />
+					<SigilIcon name="scroll" size="1.15em" aria-hidden="true" />
 					{'New Character'}
 				</DialogTitle>
 
@@ -388,15 +402,14 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						value={activeTab}
 						onChange={(_, newValue) => setActiveTab(newValue)}
 						sx={{
-							borderBottom: 1,
-							borderColor: 'divider',
 							px: 3,
+							pt: 1,
 						}}
 					>
-						<Tab label="Quick Start" sx={{ textTransform: 'none' }} />
-						<Tab label="Custom" sx={{ textTransform: 'none' }} />
-						<Tab label="Blank" sx={{ textTransform: 'none' }} />
-						<Tab label="Import" sx={{ textTransform: 'none' }} />
+						<Tab label="Quick Start" />
+						<Tab label="Custom" />
+						<Tab label="Blank" />
+						<Tab label="Import" />
 					</Tabs>
 				)}
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import { TextField } from '@mui/material'
-import { Pets, Storage } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 import { ItemLocation } from '../../../../types/ItemLocation'
@@ -24,7 +24,12 @@ export const LocationNameCard: React.FC<LocationNameCardProps> = ({
 		setLocalName(name)
 	}, [name])
 
-	const icon = location === 'mount' ? <Pets /> : <Storage />
+	const icon = (
+		<StatSigil
+			name={location === 'mount' ? 'location-mount' : 'location-storage'}
+			size="1.15em"
+		/>
+	)
 	const label = location === 'mount' ? 'Mount' : 'Storage'
 
 	return (
