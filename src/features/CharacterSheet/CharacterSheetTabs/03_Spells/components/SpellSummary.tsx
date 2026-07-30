@@ -1,7 +1,7 @@
 import { Avatar, Box, TextField } from '@mui/material'
+import { SheetInput } from '../../../components'
 import React from 'react'
 import { Spell } from '@site/src/types/Character'
-import { AttributeField } from '@site/src/features/CharacterSheet/CharacterSheet'
 import { DamageFields } from '../../DamageFields'
 
 export type SpellSummaryProps = {
@@ -72,7 +72,7 @@ export const SpellSummary: React.FC<SpellSummaryProps> = ({
 			>
 				{spellCost}
 			</Avatar>
-			<AttributeField
+			<SheetInput
 				size="small"
 				variant="standard"
 				value={spell.rank}
@@ -98,7 +98,7 @@ export const SpellSummary: React.FC<SpellSummaryProps> = ({
 				sx={{ maxWidth: '9rem', flexGrow: 1 }}
 			/>
 
-			<AttributeField
+			<SheetInput
 				disabled
 				size="small"
 				variant="standard"
@@ -106,7 +106,7 @@ export const SpellSummary: React.FC<SpellSummaryProps> = ({
 				label="Target"
 				sx={{ maxWidth: '3rem', flexGrow: 0 }}
 			/>
-			<AttributeField
+			<SheetInput
 				disabled
 				size="small"
 				variant="standard"

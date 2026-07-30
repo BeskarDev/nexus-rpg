@@ -1,4 +1,5 @@
 import { Add, HelpOutline, Delete } from '@mui/icons-material'
+import { SheetInput } from '../../components'
 import {
 	Box,
 	Button,
@@ -18,7 +19,7 @@ import {
 import React, { useEffect, useMemo, useState } from 'react'
 import { useForm, Controller, UseFormReturn } from 'react-hook-form'
 import { CharacterDocument } from '../../../../types/Character'
-import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { SectionHeader } from '../../CharacterSheet'
 
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
@@ -141,7 +142,7 @@ const SkillXpRow: React.FC<{
 					},
 				}}
 				render={({ field, fieldState }) => (
-					<AttributeField
+					<SheetInput
 						{...field}
 						size="small"
 						type="number"

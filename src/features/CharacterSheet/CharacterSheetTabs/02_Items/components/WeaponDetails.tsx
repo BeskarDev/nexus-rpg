@@ -1,4 +1,5 @@
 import { Box, MenuItem, TextField } from '@mui/material'
+import { SheetInput } from '../../../components'
 import React from 'react'
 import {
 	DurabilityDie,
@@ -6,7 +7,6 @@ import {
 	Weapon,
 } from '@site/src/types/Character'
 import { ItemLocation, ITEM_LOCATIONS } from '@site/src/types/ItemLocation'
-import { AttributeField } from '@site/src/features/CharacterSheet/CharacterSheet'
 import { QualityTier, qualityTierLabels } from '../utils/magicItemsConfig'
 import { QuickRefButton, DeleteButton, UsesDisplay } from '@site/src/features/CharacterSheet/components'
 
@@ -60,7 +60,7 @@ export const WeaponDetails: React.FC<WeaponDetailsProps> = ({
 				onBlur={onDescriptionBlur}
 				label="Description"
 			/>
-			<AttributeField
+			<SheetInput
 				type="number"
 				size="small"
 				value={weapon.cost}
@@ -73,7 +73,7 @@ export const WeaponDetails: React.FC<WeaponDetailsProps> = ({
 					},
 				}}
 			/>
-			<AttributeField
+			<SheetInput
 				type="number"
 				size="small"
 				value={weapon.load}
@@ -81,7 +81,7 @@ export const WeaponDetails: React.FC<WeaponDetailsProps> = ({
 				label="Load"
 				sx={{ maxWidth: '4rem', flexGrow: 0 }}
 			/>
-			<AttributeField
+			<SheetInput
 				type="number"
 				size="small"
 				value={weapon.amount || 1}
@@ -90,7 +90,7 @@ export const WeaponDetails: React.FC<WeaponDetailsProps> = ({
 				sx={{ maxWidth: '4rem', flexGrow: 0 }}
 			/>
 			{/* Quality field for all weapons */}
-			<AttributeField
+			<SheetInput
 				select
 				size="small"
 				variant="standard"
@@ -112,8 +112,8 @@ export const WeaponDetails: React.FC<WeaponDetailsProps> = ({
 						</MenuItem>
 					),
 				)}
-			</AttributeField>
-			<AttributeField
+			</SheetInput>
+			<SheetInput
 				select
 				size="small"
 				variant="standard"
@@ -127,7 +127,7 @@ export const WeaponDetails: React.FC<WeaponDetailsProps> = ({
 						{location}
 					</MenuItem>
 				))}
-			</AttributeField>
+			</SheetInput>
 			{(weapon.location === 'mount' || weapon.location === 'storage') && (
 				<TextField
 					size="small"
@@ -154,7 +154,7 @@ export const WeaponDetails: React.FC<WeaponDetailsProps> = ({
 				showDamageWarning={(weapon.uses || 0) >= 3}
 				damageWarningText="Weapon is damaged"
 			/>
-			<AttributeField
+			<SheetInput
 				select
 				size="small"
 				variant="standard"
@@ -170,7 +170,7 @@ export const WeaponDetails: React.FC<WeaponDetailsProps> = ({
 						{die || 'None'}
 					</MenuItem>
 				))}
-			</AttributeField>
+			</SheetInput>
 			<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center', my: 'auto' }}>
 				{onToggleQuickRef && (
 					<QuickRefButton

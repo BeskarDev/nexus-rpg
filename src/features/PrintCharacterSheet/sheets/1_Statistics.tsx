@@ -9,7 +9,7 @@ import {
 import { SheetLayout } from './SheetLayout'
 import React from 'react'
 import { Character } from '@site/src/types/Character'
-import { RoundTextField } from '../../CharacterSheet/CharacterSheetTabs/00_Statistics/RoundTextField'
+import { RoundTextField } from '../RoundTextField'
 import { DiceGuide } from '../assets/DiceGuide'
 import {
 	CharacterHeaderTextField,

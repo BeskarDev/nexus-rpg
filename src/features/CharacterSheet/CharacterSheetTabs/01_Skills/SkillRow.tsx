@@ -1,9 +1,9 @@
 import { Box, IconButton, TextField } from '@mui/material'
+import { SheetInput } from '../../components'
 import React, { useMemo, useState } from 'react'
 
 import { Delete } from '@mui/icons-material'
 import { Skill } from '../../../../types/Character'
-import { AttributeField } from '../../CharacterSheet'
 
 export type SkillRowProps = {
 	skill: Skill
@@ -48,7 +48,7 @@ export const SkillRow: React.FC<SkillRowProps> = ({
 
 	return (
 		<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-			<AttributeField
+			<SheetInput
 				disabled
 				type="number"
 				size="small"
@@ -70,7 +70,7 @@ export const SkillRow: React.FC<SkillRowProps> = ({
 				onBlur={() => updateSkill({ name })}
 				sx={{ maxWidth: '8rem' }}
 			/>
-			<AttributeField
+			<SheetInput
 				type="number"
 				size="small"
 				value={skill.xp}

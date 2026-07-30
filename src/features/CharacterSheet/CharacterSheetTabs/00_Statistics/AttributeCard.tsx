@@ -1,5 +1,5 @@
-import { Box, Checkbox, MenuItem } from '@mui/material'
-import StatSigil from '@site/src/components/codex/StatSigil'
+import { MenuItem, MenuList } from '@mui/material'
+import { SheetField, SigilPip } from '../../components'
 import DieToken from '@site/src/components/codex/DieToken'
 import {
 	Attribute,
@@ -7,13 +7,13 @@ import {
 	attributeTypeArray,
 } from '@site/src/types/Character'
 import React from 'react'
-import { AttributeField } from '../../CharacterSheet'
-import { CharacterSheetCard, CardHeader } from '../../components'
+import type { StatSigilName } from '@site/src/components/codex/stat-sigils'
 
 export type AttributeCardProps = {
 	attribute: Attribute
 	label: string
-	icon: React.ReactNode
+	/** M9 S11: the mark is data now, not a rendered node — SheetField draws it. */
+	sigil: StatSigilName
 	updateAttribute: (update: Partial<Attribute>) => void
 	totalWounds: number
 	color: string
@@ -68,7 +68,7 @@ export const getAttributeAbbr = (label: string) => {
 export const AttributeCard: React.FC<AttributeCardProps> = ({
 	attribute,
 	label,
-	icon,
+	sigil,
 	updateAttribute,
 	totalWounds,
 	color,
@@ -86,103 +86,66 @@ export const AttributeCard: React.FC<AttributeCardProps> = ({
 
 	const abbr = getAttributeAbbr(label)
 	const isWounded = attribute.wounded
-	/**
-	 * The die Select is driven open by the card, not only by clicking the token —
-	 * so entering edit state is the same gesture here as on every other stat card.
-	 */
-	const [dieMenuOpen, setDieMenuOpen] = React.useState(false)
-
 	return (
-		<CharacterSheetCard
+		<SheetField
+			label={abbr}
+			sigil={sigil}
+			tone={color}
 			// M9 S6: a column inside the attribute plate, which supplies the single
 			// frame for all four. A wounded attribute still draws its own red keyline
 			// (borderColor), since that is state rather than decoration.
 			weight="column"
-			onConfigClick={() => setDieMenuOpen(true)}
 			editLabel={`Change ${label} die`}
 			minWidth="3.5rem"
 			maxWidth="5rem"
 			info={`${getAttributeDescription(label)} — Wound: ${getWoundTooltip(label)}`}
 			infoLabel={`About ${label}`}
-			// M9 S6: no bespoke hover here. Attributes used to signal clickability
-			// with a coloured keyline while the defence band used a wash — two
-			// languages for one meaning. CharacterSheetCard's wash is now the single
-			// affordance for every card.
 			sx={{ flex: '1 1 auto' }}
 			borderColor={isWounded ? 'error.main' : undefined}
-			header={<CardHeader icon={icon} label={abbr} color={color} />}
+			editorWidth="6rem"
+			// M9 S11: the die chooser is now SheetField's own popover rather than a
+			// MUI `Select` rendered as the value. The Select looked identical but
+			// behaved differently from every other stat card — it owned its own open
+			// state, so a click outside could close it and immediately re-open it via
+			// the card's trigger, and it was the one editor on the sheet that did not
+			// dismiss like the rest. One popover implementation, one behaviour.
+			editor={(close) => (
+				<MenuList sx={{ p: 0 }}>
+					{attributeTypeArray.map((at) => (
+						<MenuItem
+							key={at}
+							selected={at === attribute.value}
+							onClick={() => {
+								updateAttribute({ value: at as AttributeType })
+								close()
+							}}
+							sx={{ fontSize: '0.75rem', justifyContent: 'center', gap: 0.75 }}
+						>
+							<DieToken value={`d${at}`} />d{at}
+						</MenuItem>
+					))}
+				</MenuList>
+			)}
 			footer={
-				<Checkbox
-						size="small"
-						// The vessel of life, intact, then split: the same jar the HP
-						// card carries, cracked through once the attribute is wounded.
-						icon={
-							<Box sx={{ display: 'flex', color: 'text.disabled', opacity: 0.55 }}>
-								<StatSigil name="hp" size="0.8rem" />
-							</Box>
-						}
-						checkedIcon={
-							<Box sx={{ display: 'flex', color: 'error.main' }}>
-								<StatSigil name="wound" size="0.8rem" />
-							</Box>
-						}
-						checked={attribute.wounded}
-						disabled={!attribute.wounded && totalWounds >= 3}
-						onChange={handleWoundChange}
-						sx={{ p: 0, mt: 0 }}
-					/>
+				// The vessel of life, intact, then split: the same jar the HP card
+				// carries, cracked through once the attribute is wounded.
+				<SigilPip
+					sigil="wound"
+					emptySigil="hp"
+					tone="error.main"
+					size="0.8rem"
+					filled={attribute.wounded}
+					disabled={!attribute.wounded && totalWounds >= 3}
+					onToggle={handleWoundChange}
+					label={`${label} wound`}
+					sx={{ p: 0, mt: 0 }}
+				/>
 			}
 		>
-			<AttributeField
-				select
-				value={attribute.value}
-				onChange={(event) =>
-					updateAttribute({
-						value: Number(event.target.value) as AttributeType,
-					})
-				}
-				variant="standard"
-				// M9 S6: the die token IS the control. `renderValue` swaps the "d8"
-				// text for `DieToken`, whose polygon side-count encodes the die size —
-				// shape is preattentive in a way four same-face numerals are not, so a
-				// glance reads the spread across all four attributes.
-				//
-				// Editing costs no more taps than before: the token opens the same menu
-				// the old text did. Dropping `IconComponent` removes the dropdown arrow
-				// and the 16px of padding it reserved, which is the space this slice
-				// reclaims. The affordance is the same hover wash every other stat card
-				// uses, and the menu is driven open by the card as well as the token.
-				SelectProps={{
-					IconComponent: () => null,
-					renderValue: (value) => <DieToken value={`d${value}`} />,
-					open: dieMenuOpen,
-					onOpen: () => setDieMenuOpen(true),
-					onClose: () => setDieMenuOpen(false),
-				}}
-				InputProps={{
-					disableUnderline: true,
-					sx: {
-						justifyContent: 'center',
-						cursor: 'pointer',
-						'& .MuiSelect-select': {
-							py: 0,
-							pr: '0 !important',
-							display: 'flex',
-							justifyContent: 'center',
-						},
-					},
-				}}
-				sx={{
-					maxWidth: '3.5rem',
-					'& .MuiInput-root': { justifyContent: 'center' },
-				}}
-			>
-				{attributeTypeArray.map((at) => (
-					<MenuItem key={at} value={at} sx={{ fontSize: '0.75rem' }}>
-						d{at}
-					</MenuItem>
-				))}
-			</AttributeField>
-		</CharacterSheetCard>
+			{/* The die token IS the read state: the polygon's side count encodes the
+			    die size, so a glance across four columns reads the spread in a way
+			    four same-face numerals cannot. */}
+			<DieToken value={`d${attribute.value}`} />
+		</SheetField>
 	)
 }

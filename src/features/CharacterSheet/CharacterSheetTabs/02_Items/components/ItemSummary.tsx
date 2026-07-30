@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material'
+import { SheetInput } from '../../../components'
 import React from 'react'
 import { Item } from '@site/src/types/Character'
-import { AttributeField } from '@site/src/features/CharacterSheet/CharacterSheet'
 
 export type ItemSummaryProps = {
 	item: Item
@@ -54,7 +54,7 @@ export const ItemSummary: React.FC<ItemSummaryProps> = ({
 				label="Properties"
 				sx={{ maxWidth: { sm: '10rem', xs: '7rem' } }}
 			/>
-			<AttributeField
+			<SheetInput
 				disabled
 				size="small"
 				variant="standard"
@@ -66,7 +66,7 @@ export const ItemSummary: React.FC<ItemSummaryProps> = ({
 				label={item.location === 'worn' && item.slot ? 'Slot' : 'Location'}
 				sx={{ maxWidth: '4.25rem' }}
 			/>
-			<AttributeField
+			<SheetInput
 				size="small"
 				variant="standard"
 				value={item.cost}
@@ -74,7 +74,7 @@ export const ItemSummary: React.FC<ItemSummaryProps> = ({
 				label="Cost"
 				sx={{ maxWidth: '2.5rem' }}
 			/>
-			<AttributeField
+			<SheetInput
 				size="small"
 				variant="standard"
 				value={(item as any).load || (item as any).weight || 0}
@@ -82,7 +82,7 @@ export const ItemSummary: React.FC<ItemSummaryProps> = ({
 				label="Load"
 				sx={{ maxWidth: '1.5rem' }}
 			/>
-			<AttributeField
+			<SheetInput
 				type="number"
 				size="small"
 				variant="standard"
@@ -91,7 +91,7 @@ export const ItemSummary: React.FC<ItemSummaryProps> = ({
 				label="Amount"
 				sx={{ maxWidth: '2.5rem', flexGrow: 0 }}
 			/>
-			<AttributeField
+			<SheetInput
 				disabled
 				size="small"
 				variant="standard"

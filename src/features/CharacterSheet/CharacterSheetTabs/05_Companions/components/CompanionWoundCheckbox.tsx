@@ -1,36 +1,29 @@
-import { Box, Checkbox } from '@mui/material'
-import StatSigil from '@site/src/components/codex/StatSigil'
 import React from 'react'
+import { SigilPip } from '../../../components'
 
 interface CompanionWoundCheckboxProps {
 	wounded: boolean
 	onWoundedChange: (wounded: boolean) => void
 }
 
+/**
+ * M9 S11: now the shared `SigilPip`. The stopPropagation stays local — a
+ * companion pip sits inside a clickable row, which no other pip does.
+ */
 export const CompanionWoundCheckbox: React.FC<CompanionWoundCheckboxProps> = ({
 	wounded,
 	onWoundedChange,
-}) => {
-	return (
-		<Checkbox
-			icon={
-				<Box sx={{ display: 'flex', color: 'text.disabled', opacity: 0.55 }}>
-					<StatSigil name="hp" size="1.5rem" />
-				</Box>
-			}
-			checkedIcon={
-				<Box sx={{ display: 'flex', color: 'error.main' }}>
-					<StatSigil name="wound" size="1.5rem" />
-				</Box>
-			}
-			checked={wounded}
-			onChange={(e) => {
-				e.stopPropagation()
-				onWoundedChange(!wounded)
-			}}
-			onClick={(e) => e.stopPropagation()}
+}) => (
+	<span onClick={(e) => e.stopPropagation()}>
+		<SigilPip
+			sigil="wound"
+			emptySigil="hp"
+			tone="error.main"
+			size="1.5rem"
+			filled={wounded}
+			onToggle={() => onWoundedChange(!wounded)}
+			label="Wounded"
 			sx={{ p: 0.5 }}
-			title="Wounded"
 		/>
-	)
-}
+	</span>
+)

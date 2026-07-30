@@ -1,4 +1,5 @@
 import { Box, MenuItem, TextField } from '@mui/material'
+import { SheetInput } from '../../../components'
 import React from 'react'
 import {
 	DurabilityDie,
@@ -8,7 +9,6 @@ import {
 	Item,
 } from '@site/src/types/Character'
 import { ItemLocation, ITEM_LOCATIONS } from '@site/src/types/ItemLocation'
-import { AttributeField } from '@site/src/features/CharacterSheet/CharacterSheet'
 import { QualityTier, qualityTierLabels } from '../utils/magicItemsConfig'
 import { QuickRefButton, DeleteButton, UsesDisplay } from '@site/src/features/CharacterSheet/components'
 
@@ -55,7 +55,7 @@ export const ItemDetails: React.FC<ItemDetailsProps> = ({
 				label="Description"
 			/>
 			{/* Quality field for all items */}
-			<AttributeField
+			<SheetInput
 				select
 				size="small"
 				variant="standard"
@@ -77,8 +77,8 @@ export const ItemDetails: React.FC<ItemDetailsProps> = ({
 						</MenuItem>
 					),
 				)}
-			</AttributeField>
-			<AttributeField
+			</SheetInput>
+			<SheetInput
 				select
 				size="small"
 				variant="standard"
@@ -95,8 +95,8 @@ export const ItemDetails: React.FC<ItemDetailsProps> = ({
 						{location}
 					</MenuItem>
 				))}
-			</AttributeField>
-			<AttributeField
+			</SheetInput>
+			<SheetInput
 				disabled={!item.location || item.location !== 'worn'}
 				select
 				size="small"
@@ -113,7 +113,7 @@ export const ItemDetails: React.FC<ItemDetailsProps> = ({
 						{slot}
 					</MenuItem>
 				))}
-			</AttributeField>
+			</SheetInput>
 			<UsesDisplay
 				uses={item.uses || 0}
 				onUsesChange={onUsesChange}
@@ -122,7 +122,7 @@ export const ItemDetails: React.FC<ItemDetailsProps> = ({
 				}
 				damageWarningText="Item is damaged"
 			/>
-			<AttributeField
+			<SheetInput
 				select
 				size="small"
 				variant="standard"
@@ -138,7 +138,7 @@ export const ItemDetails: React.FC<ItemDetailsProps> = ({
 						{die || 'None'}
 					</MenuItem>
 				))}
-			</AttributeField>
+			</SheetInput>
 			<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
 				{onToggleQuickRef && (
 					<QuickRefButton

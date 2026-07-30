@@ -1,8 +1,7 @@
 import { useMemo } from 'react'
-import StatSigil from '@site/src/components/codex/StatSigil'
-import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Menu, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -14,12 +13,10 @@ import {
 	migrateCharacterDefenses,
 } from '../../utils/calculateDefenses'
 import { ATTRIBUTE_COLORS } from '../../../../utils/colors'
-import { CharacterSheetCard, CardHeader, CardContent } from '../../components'
+import { SheetField, DerivedPart } from '../../components'
 
 export const DodgeCard = () => {
 	const dispatch = useAppDispatch()
-	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-	const open = Boolean(anchorEl)
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
 	)
@@ -62,16 +59,6 @@ export const DodgeCard = () => {
 		}
 	}, [autoBase, autoLevelBonus, totalDodge])
 
-	const handleClick = (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-	) => {
-		setAnchorEl(event.currentTarget)
-	}
-
-	const handleClose = () => {
-		setAnchorEl(null)
-	}
-
 	// Initialize detailed structure if it doesn't exist
 	const initializeDetails = () => {
 		const migratedDefenses = migrateCharacterDefenses(activeCharacter)
@@ -83,65 +70,46 @@ export const DodgeCard = () => {
 		})
 	}
 
-	const displayValue = dodgeDetails ? totalDodge : dodge
-
 	return (
-		<CharacterSheetCard
-			editLabel="Edit Dodge"
+		<SheetField
+			label="Dodge"
+			sigil="dodge"
+			tone={ATTRIBUTE_COLORS.agility}
 			// M9 S6: read often, edited almost never — so it sits in the defence
-			// band with no keyline or wash of its own. Its calculator is unchanged
-			// and still reached through the config button.
+			// band with no keyline or wash of its own.
 			weight="band"
-			header={<CardHeader icon={<StatSigil name="dodge" size="1.15em" />} label="Dodge" color={ATTRIBUTE_COLORS.agility} />}
-			onConfigClick={dodgeDetails ? handleClick : initializeDetails}
+			size="sm"
 			info="Dodge: Defense against ranged attacks (5 + 1/2 Agility + level bonus)"
-			minWidth="5rem"
-			configMenu={
-				dodgeDetails && (
-					<Menu
-						anchorEl={anchorEl}
-						open={open}
-						onClose={handleClose}
-						MenuListProps={{ sx: { p: 2, maxWidth: '17rem' } }}
-					>
-						<SectionHeader>Dodge Calculator</SectionHeader>
-						<Typography variant="subtitle2">
-							Set the individual sources of Dodge defense.
-						</Typography>
-						<AttributeField
-							disabled
-							type="number"
-							size="small"
-							value={autoBase}
-							label="Base"
-							helperText="5 + 1/2 Agility"
-						/>
-						<AttributeField
-							disabled
-							type="number"
-							size="small"
-							value={autoLevelBonus}
-							label="Level Bonus"
-						/>
-						<AttributeField
-							type="number"
-							size="small"
-							value={details.other}
-							onChange={(event) =>
-								updateCharacter({
-									statistics: {
-										dodgeDetails: { other: Number(event.target.value) },
-										dodge: autoBase + autoLevelBonus + Number(event.target.value),
-									},
-								})
-							}
-							label="Other"
-						/>
-					</Menu>
-				)
+			value={dodgeDetails ? totalDodge : dodge}
+			// The first activation ALSO migrates the legacy flat value into the
+			// detailed structure, so later edits persist. It no longer *replaces*
+			// opening the editor: gating the editor on the migrated structure made
+			// the first click look like it did nothing (it dispatched, so only the
+			// save control moved) and forced a second click. `details` already falls
+			// back to the auto-derived values, so the editor can always render.
+			onEditOpen={dodgeDetails ? undefined : initializeDetails}
+			editor={
+				<>
+					<SectionHeader>Dodge Calculator</SectionHeader>
+					<Typography variant="subtitle2">
+						Set the individual sources of Dodge defense.
+					</Typography>
+					<DerivedPart auto value={autoBase} label="Base" helperText="5 + 1/2 Agility" />
+					<DerivedPart auto value={autoLevelBonus} label="Level Bonus" />
+					<DerivedPart
+						value={details.other}
+						label="Other"
+						onChange={(other) =>
+							updateCharacter({
+								statistics: {
+									dodgeDetails: { other },
+									dodge: autoBase + autoLevelBonus + other,
+								},
+							})
+						}
+					/>
+				</>
 			}
-		>
-			<CardContent value={displayValue} />
-		</CharacterSheetCard>
+		/>
 	)
 }

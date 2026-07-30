@@ -1,8 +1,7 @@
 import { useMemo } from 'react'
-import StatSigil from '@site/src/components/codex/StatSigil'
-import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Menu, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -15,13 +14,11 @@ import {
 } from '../../utils/calculateDefenses'
 import { extractShieldParryBonus } from '../02_Items/utils/itemUtils'
 import { organizeItemsByLocation } from '../02_Items/utils/itemUtils'
-import { CharacterSheetCard, CardHeader, CardContent } from '../../components'
+import { SheetField, DerivedPart } from '../../components'
 import { ATTRIBUTE_COLORS } from '../../../../utils/colors'
 
 export const ParryCard = () => {
 	const dispatch = useAppDispatch()
-	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-	const open = Boolean(anchorEl)
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
 	)
@@ -83,16 +80,6 @@ export const ParryCard = () => {
 		}
 	}, [autoBase, autoLevelBonus, autoShieldBonus, totalParry, parryDetails])
 
-	const handleClick = (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-	) => {
-		setAnchorEl(event.currentTarget)
-	}
-
-	const handleClose = () => {
-		setAnchorEl(null)
-	}
-
 	// Initialize detailed structure if it doesn't exist
 	const initializeDetails = () => {
 		const migratedDefenses = migrateCharacterDefenses(activeCharacter)
@@ -104,88 +91,57 @@ export const ParryCard = () => {
 		})
 	}
 
-	const displayValue = parryDetails ? totalParry : parry
-
 	return (
-		<CharacterSheetCard
-			editLabel="Edit Parry"
+		<SheetField
+			label="Parry"
+			sigil="parry"
+			tone={ATTRIBUTE_COLORS.strength}
 			// M9 S6: read often, edited almost never — so it sits in the defence
-			// band with no keyline or wash of its own. Its calculator is unchanged
-			// and still reached through the config button.
+			// band with no keyline or wash of its own.
 			weight="band"
-			header={<CardHeader icon={<StatSigil name="parry" size="1.15em" />} label="Parry" color={ATTRIBUTE_COLORS.strength} />}
-			onConfigClick={parryDetails ? handleClick : initializeDetails}
+			size="sm"
 			info="Parry: Defense against melee attacks (7 + Fighting + level bonus + shield)"
-			minWidth="5rem"
-			configMenu={
-				parryDetails && (
-					<Menu
-						anchorEl={anchorEl}
-						open={open}
-						onClose={handleClose}
-						MenuListProps={{ sx: { p: 2, maxWidth: '17rem' } }}
-					>
-						<SectionHeader>Parry Calculator</SectionHeader>
-						<Typography variant="subtitle2">
-							Set the individual sources of Parry defense.
-						</Typography>
-						<AttributeField
-							disabled
-							type="number"
-							size="small"
-							value={autoBase}
-							label="Base"
-							helperText="7 + Fighting"
-						/>
-						<AttributeField
-							disabled
-							type="number"
-							size="small"
-							value={autoLevelBonus}
-							label="Level Bonus"
-						/>
-						<AttributeField
-							type="number"
-							size="small"
-							value={details.shieldBonus}
-							onChange={(event) => {
-								const newShieldBonus = Number(event.target.value)
-								updateCharacter({
-									statistics: {
-										parryDetails: { shieldBonus: newShieldBonus },
-										parry:
-											autoBase + autoLevelBonus + newShieldBonus + details.other,
-									},
-								})
-							}}
-							label="Shield Bonus"
-							helperText={
-								autoShieldBonus > 0 ? `Auto: ${autoShieldBonus}` : undefined
-							}
-						/>
-						<AttributeField
-							type="number"
-							size="small"
-							value={details.other}
-							onChange={(event) =>
-								updateCharacter({
-									statistics: {
-										parryDetails: { other: Number(event.target.value) },
-										parry:
-											autoBase +
-											autoLevelBonus +
-											autoShieldBonus +
-											Number(event.target.value),
-									},
-								})
-							}
-							label="Other"
-						/>
-					</Menu>
-				)
+			value={parryDetails ? totalParry : parry}
+			onEditOpen={parryDetails ? undefined : initializeDetails}
+			editor={
+				<>
+					<SectionHeader>Parry Calculator</SectionHeader>
+					<Typography variant="subtitle2">
+						Set the individual sources of Parry defense.
+					</Typography>
+					<DerivedPart auto value={autoBase} label="Base" helperText="7 + Fighting" />
+					<DerivedPart auto value={autoLevelBonus} label="Level Bonus" />
+					<DerivedPart
+						value={details.shieldBonus}
+						label="Shield Bonus"
+						helperText={
+							autoShieldBonus > 0 ? `Auto: ${autoShieldBonus}` : undefined
+						}
+						onChange={(shieldBonus) =>
+							updateCharacter({
+								statistics: {
+									parryDetails: { shieldBonus },
+									parry:
+										autoBase + autoLevelBonus + shieldBonus + details.other,
+								},
+							})
+						}
+					/>
+					<DerivedPart
+						value={details.other}
+						label="Other"
+						onChange={(other) =>
+							updateCharacter({
+								statistics: {
+									parryDetails: { other },
+									parry:
+										autoBase + autoLevelBonus + autoShieldBonus + other,
+								},
+							})
+						}
+					/>
+				</>
 			}
-		>
-			<CardContent value={displayValue} />
-		</CharacterSheetCard>
+		/>
 	)
 }

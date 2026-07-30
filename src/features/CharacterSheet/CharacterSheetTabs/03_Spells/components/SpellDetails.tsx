@@ -5,6 +5,7 @@ import {
 	MenuItem,
 	TextField,
 } from '@mui/material'
+import { SheetInput } from '../../../components'
 import React from 'react'
 import {
 	RangeType,
@@ -13,7 +14,6 @@ import {
 	TargetType,
 	targetTypeArray,
 } from '@site/src/types/Character'
-import { AttributeField } from '@site/src/features/CharacterSheet/CharacterSheet'
 import {
 	QuickRefButton,
 	DeleteButton,
@@ -96,7 +96,7 @@ export const SpellDetails: React.FC<SpellDetailsProps> = ({
 					},
 				}}
 			/>
-			<AttributeField
+			<SheetInput
 				select
 				size="small"
 				value={spell.target}
@@ -109,8 +109,8 @@ export const SpellDetails: React.FC<SpellDetailsProps> = ({
 						{target}
 					</MenuItem>
 				))}
-			</AttributeField>
-			<AttributeField
+			</SheetInput>
+			<SheetInput
 				select
 				size="small"
 				value={spell.range}
@@ -123,7 +123,7 @@ export const SpellDetails: React.FC<SpellDetailsProps> = ({
 						{range}
 					</MenuItem>
 				))}
-			</AttributeField>
+			</SheetInput>
 			<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center', my: 'auto' }}>
 				{onToggleQuickRef && (
 					<QuickRefButton

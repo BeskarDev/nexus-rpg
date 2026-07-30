@@ -1,4 +1,5 @@
 import { Settings } from '@mui/icons-material'
+import { SheetInput } from '../components'
 import {
 	Box,
 	IconButton,
@@ -17,7 +18,7 @@ import {
 	damageTypeArray,
 } from '@site/src/types/Character'
 import React, { useMemo } from 'react'
-import { AttributeField, SectionHeader } from '../CharacterSheet'
+import { SectionHeader } from '../CharacterSheet'
 import { useAppSelector } from '../hooks/useAppSelector'
 
 export type DamageFieldsProps = {
@@ -159,7 +160,7 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 					{damage.staticDamage ? '' : ', Y = strong hit, and Z = critical hit'}.
 				</Typography>
 				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-					<AttributeField
+					<SheetInput
 						select
 						size="small"
 						type="number"
@@ -175,8 +176,8 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 								{attribute}
 							</MenuItem>
 						))}
-					</AttributeField>
-					<AttributeField
+					</SheetInput>
+					<SheetInput
 						size="small"
 						type="number"
 						value={damage.weapon}
@@ -187,7 +188,7 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 						sx={{ maxWidth: '5.5rem' }}
 					/>
 					<Box sx={{ width: '100%', flexGrow: 1 }} />
-					<AttributeField
+					<SheetInput
 						size="small"
 						type="number"
 						value={damage.other}
@@ -197,7 +198,7 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 						label="Other"
 						sx={{ maxWidth: '5.5rem' }}
 					/>
-					<AttributeField
+					<SheetInput
 						size="small"
 						type="number"
 						value={damage.otherWeak}
@@ -208,7 +209,7 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 						sx={{ maxWidth: '5.5rem' }}
 						disabled={damage.staticDamage}
 					/>
-					<AttributeField
+					<SheetInput
 						size="small"
 						type="number"
 						value={damage.otherStrong}
@@ -219,7 +220,7 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 						sx={{ maxWidth: '5.5rem' }}
 						disabled={damage.staticDamage}
 					/>
-					<AttributeField
+					<SheetInput
 						size="small"
 						type="number"
 						value={damage.otherCritical}

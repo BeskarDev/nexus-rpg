@@ -1,8 +1,7 @@
 import React from 'react'
-import { TextField } from '@mui/material'
-import StatSigil from '@site/src/components/codex/StatSigil'
-import { CharacterSheetCard, CardHeader } from '../../components'
+import { SheetField, FieldText } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
+import type { SheetSigilName } from '@site/src/components/codex/stat-sigils'
 
 interface SimpleTextCardProps {
 	value: string
@@ -10,101 +9,76 @@ interface SimpleTextCardProps {
 	onBlur: () => void
 	error?: string
 	label: string
-	icon: React.ReactNode
+	sigil: SheetSigilName
 	minWidth?: string
 	maxWidth?: string
 	multiline?: boolean
 }
 
+/**
+ * A plain free-text identity card — Height, Weight, Age, Description.
+ *
+ * M9 S11: the `icon` prop became `sigil`. It used to take a rendered node, so
+ * every convenience export below constructed its own `<StatSigil>` at the same
+ * size and could have disagreed about it. The mark is now data, and `SheetField`
+ * renders it.
+ */
 export const SimpleTextCard: React.FC<SimpleTextCardProps> = ({
 	value,
 	onChange,
 	onBlur,
 	error,
 	label,
-	icon,
+	sigil,
 	minWidth = '5rem',
 	maxWidth = '8rem',
 	multiline = false,
-}) => {
-	return (
-		<CharacterSheetCard
-			header={
-				<CardHeader icon={icon} label={label} color={UI_COLORS.greyBlue} />
-			}
-			minWidth={minWidth}
-			maxWidth={maxWidth}
-			// M9 S3: these are identity cards (name, folk, background...) — the
-			// cartouche keystone's "this encloses a name" motif fits here more than
-			// anywhere else in the sheet, and the Personal tab's grid gap already
-			// clears the overhang.
-			frame
-		>
-			<TextField
-				value={value}
-				onChange={(e) => onChange(e.target.value)}
-				onBlur={onBlur}
-				error={!!error}
-				placeholder={`your ${label.toLowerCase()}`}
-				multiline={multiline}
-				minRows={multiline ? 2 : undefined}
-				maxRows={multiline ? 4 : undefined}
-				variant="standard"
-				sx={{
-					'& .MuiInput-root': {
-						'&:before, &:after': { display: 'none' },
-					},
-					'& input, & textarea': {
-						textAlign: multiline ? 'left' : 'center',
-            mx: 1,
-					},
-				}}
-			/>
-		</CharacterSheetCard>
-	)
-}
+}) => (
+	<SheetField
+		label={label}
+		sigil={sigil}
+		tone={UI_COLORS.greyBlue}
+		minWidth={minWidth}
+		maxWidth={maxWidth}
+		// M9 S3: these are identity cards (name, folk, background...) — the
+		// cartouche keystone's "this encloses a name" motif fits here more than
+		// anywhere else in the sheet, and the Personal tab's grid gap already
+		// clears the overhang.
+		frame
+	>
+		<FieldText
+			value={value}
+			onChange={onChange}
+			onBlur={onBlur}
+			error={!!error}
+			multiline={multiline}
+		/>
+	</SheetField>
+)
 
 // Convenience exports for common use cases
 export const HeightCard: React.FC<
-	Omit<SimpleTextCardProps, 'label' | 'icon'>
-> = (props) => (
-	<SimpleTextCard
-		{...props}
-		label="Height"
-		icon={<StatSigil name="height" size="1.15em" />}
-	/>
-)
+	Omit<SimpleTextCardProps, 'label' | 'sigil'>
+> = (props) => <SimpleTextCard {...props} label="Height" sigil="height" />
 
 export const WeightCard: React.FC<
-	Omit<SimpleTextCardProps, 'label' | 'icon'>
-> = (props) => (
-	<SimpleTextCard
-		{...props}
-		label="Weight"
-		icon={<StatSigil name="weight" size="1.15em" />}
-	/>
-)
+	Omit<SimpleTextCardProps, 'label' | 'sigil'>
+> = (props) => <SimpleTextCard {...props} label="Weight" sigil="weight" />
 
-export const AgeCard: React.FC<
-	Omit<SimpleTextCardProps, 'label' | 'icon'>
-> = (props) => (
-	<SimpleTextCard
-		{...props}
-		label="Age"
-		icon={<StatSigil name="age" size="1.15em" />}
-	/>
-)
+export const AgeCard: React.FC<Omit<SimpleTextCardProps, 'label' | 'sigil'>> = (
+	props,
+) => <SimpleTextCard {...props} label="Age" sigil="age" />
 
 export const DescriptionCard: React.FC<
 	Omit<
 		SimpleTextCardProps,
-		'label' | 'icon' | 'multiline' | 'minWidth' | 'maxWidth'
+		'label' | 'sigil' | 'multiline' | 'minWidth' | 'maxWidth'
 	>
 > = (props) => (
 	<SimpleTextCard
 		{...props}
 		label="Description"
-		icon={<StatSigil name="description" size="1.15em" />}
+		sigil="description"
 		minWidth="19.5rem"
 		multiline
 	/>

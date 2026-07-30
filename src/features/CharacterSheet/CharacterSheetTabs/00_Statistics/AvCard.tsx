@@ -1,20 +1,17 @@
-import { useMemo, useState } from 'react'
-import StatSigil from '@site/src/components/codex/StatSigil'
-import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { useMemo } from 'react'
+import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Menu, Typography, Box } from '@mui/material'
+import { Typography, Box } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
-import { CharacterSheetCard, CardHeader, CardContent } from '../../components'
+import { SheetField, DerivedPart } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 
 export const AvCard = () => {
 	const dispatch = useAppDispatch()
-	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-	const open = Boolean(anchorEl)
 	const { av } = useAppSelector(
 		(state) => state.characterSheet.activeCharacter.statistics,
 	)
@@ -28,97 +25,37 @@ export const AvCard = () => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
-	const handleClick = (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-	) => {
-		setAnchorEl(event.currentTarget)
-	}
-
-	const handleClose = () => {
-		setAnchorEl(null)
-	}
+	const setPart = (part: 'armor' | 'helmet' | 'shield' | 'other') => (value: number) =>
+		updateCharacter({ statistics: { av: { [part]: value } } })
 
 	return (
-		<CharacterSheetCard
-			editLabel="Edit Armor Value"
+		<SheetField
+			label="AV"
+			sigil="av"
+			tone={UI_COLORS.greyBlue}
 			// M9 S6: read often, edited almost never — so it sits in the defence
-			// band with no keyline or wash of its own. Its calculator is unchanged
-			// and still reached through the config button.
+			// band with no keyline or wash of its own.
 			weight="band"
-			header={<CardHeader icon={<StatSigil name="av" size="1.15em" />} label="AV" color={UI_COLORS.greyBlue} />}
-			onConfigClick={handleClick}
-			info="Armor Value: Damage reduction from armor, helmet, and shield"
 			minWidth="4rem"
 			maxWidth="5rem"
-			configMenu={
-				<Menu
-					anchorEl={anchorEl}
-					open={open}
-					onClose={handleClose}
-					MenuListProps={{ sx: { p: 2, maxWidth: '17.5rem' } }}
-				>
+			info="Armor Value: Damage reduction from armor, helmet, and shield"
+			value={totalAV}
+			editorWidth="17.5rem"
+			editor={
+				<>
 					<SectionHeader>AV Calculator</SectionHeader>
 					<Typography variant="subtitle2">
 						Set the individual sources of AV.
 					</Typography>
 					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-						<AttributeField
-							type="number"
-							size="small"
-							value={av.armor}
-							onChange={(event) =>
-								updateCharacter({
-									statistics: { av: { armor: Number(event.target.value) } },
-								})
-							}
-							label="Armor"
-						/>
-						<AttributeField
-							type="number"
-							size="small"
-							value={av.helmet}
-							onChange={(event) =>
-								updateCharacter({
-									statistics: { av: { helmet: Number(event.target.value) } },
-								})
-							}
-							label="Helmet"
-						/>
-						<AttributeField
-							type="number"
-							size="small"
-							value={av.shield}
-							onChange={(event) =>
-								updateCharacter({
-									statistics: { av: { shield: Number(event.target.value) } },
-								})
-							}
-							label="Shield"
-						/>
-						<AttributeField
-							type="number"
-							size="small"
-							value={av.other}
-							onChange={(event) =>
-								updateCharacter({
-									statistics: { av: { other: Number(event.target.value) } },
-								})
-							}
-							label="Other"
-						/>
-						<AttributeField
-							disabled
-							type="number"
-							size="small"
-							value={av.auto || 0}
-							label="Auto"
-							sx={{ width: '4rem' }}
-						/>
+						<DerivedPart value={av.armor} label="Armor" onChange={setPart('armor')} />
+						<DerivedPart value={av.helmet} label="Helmet" onChange={setPart('helmet')} />
+						<DerivedPart value={av.shield} label="Shield" onChange={setPart('shield')} />
+						<DerivedPart value={av.other} label="Other" onChange={setPart('other')} />
+						<DerivedPart auto value={av.auto || 0} label="Auto" sx={{ width: '4rem' }} />
 					</Box>
-				</Menu>
+				</>
 			}
-		>
-			<CardContent value={totalAV} />
-		</CharacterSheetCard>
+		/>
 	)
 }

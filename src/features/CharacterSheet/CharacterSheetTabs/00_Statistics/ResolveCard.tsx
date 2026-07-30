@@ -1,7 +1,6 @@
 import React from 'react'
 import StatSigil from '@site/src/components/codex/StatSigil'
-import { Box, Checkbox } from '@mui/material'
-import { CharacterSheetCard, CardHeader } from '../../components'
+import { CharacterSheetCard, CardHeader, PipRow } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
@@ -24,7 +23,8 @@ const MAX_RESOLVE = 3
  *
  * It also reuses Fatigue's exact idiom, which is half the point — two spendable
  * resources that behave alike now look alike, instead of one being a text field
- * and the other a pip row.
+ * and the other a pip row. M9 S11 made that literal: both rows are now the same
+ * `PipRow`, so the fill-to-here / clear-to-here rule is defined once.
  */
 export const ResolveCard = () => {
 	const dispatch = useAppDispatch()
@@ -34,17 +34,6 @@ export const ResolveCard = () => {
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
-	}
-
-	/**
-	 * Clicking a pip sets Resolve to it, or clears back to it — the same
-	 * fill-to-here / clear-to-here behaviour the fatigue pips have, so the two
-	 * rows respond identically.
-	 */
-	const handleResolveChange = (index: number) => {
-		updateCharacter({
-			statistics: { resolve: index < resolve ? index : index + 1 },
-		})
 	}
 
 	return (
@@ -60,29 +49,14 @@ export const ResolveCard = () => {
 				/>
 			}
 		>
-			<Box sx={{ display: 'flex', flexDirection: 'row' }}>
-				{Array.from({ length: MAX_RESOLVE }).map((_, index) => (
-					<Checkbox
-							key={index}
-							size="small"
-							// A sigil is solid mass either way, so colour carries the state —
-							// the same treatment the fatigue pips use.
-							icon={
-								<Box sx={{ display: 'flex', color: 'text.disabled', opacity: 0.55 }}>
-									<StatSigil name="resolve" size="0.85rem" />
-								</Box>
-							}
-							checkedIcon={
-								<Box sx={{ display: 'flex', color: UI_COLORS.resolve }}>
-									<StatSigil name="resolve" size="0.85rem" />
-								</Box>
-							}
-							checked={index < resolve}
-							onChange={() => handleResolveChange(index)}
-							sx={{ p: 0.25 }}
-						/>
-				))}
-			</Box>
+			<PipRow
+				label="Resolve"
+				count={MAX_RESOLVE}
+				value={resolve}
+				onChange={(next) => updateCharacter({ statistics: { resolve: next } })}
+				sigil="resolve"
+				tone={UI_COLORS.resolve}
+			/>
 		</CharacterSheetCard>
 	)
 }

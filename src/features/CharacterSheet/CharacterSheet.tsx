@@ -1,19 +1,7 @@
-import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
+import { Box, Tab, Tabs, Typography, styled } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useDeviceSize } from './utils/useDeviceSize'
 import { mobileTabsConfig, desktopTabsConfig, getTabComponent } from './utils'
-
-export const AttributeField = styled(TextField)({
-	maxWidth: '5rem',
-})
-AttributeField.defaultProps = {
-	size: 'medium',
-	inputProps: {
-		sx: {
-			textAlign: 'center',
-		},
-	},
-}
 
 export const SectionHeader = styled(Typography)(({ theme }) => ({
 	marginBottom: `${theme.spacing(0.75)} `,

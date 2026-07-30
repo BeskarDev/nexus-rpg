@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import StatSigil from '@site/src/components/codex/StatSigil'
-import { TextField } from '@mui/material'
-import { CharacterSheetCard, CardHeader } from '../../components'
+import React from 'react'
+import { SheetField, FieldText } from '../../components'
+import { useFieldDraft } from '../../hooks/useFieldDraft'
 import { UI_COLORS } from '../../../../utils/colors'
 import { ItemLocation } from '../../../../types/ItemLocation'
 
@@ -16,47 +15,21 @@ export const LocationNameCard: React.FC<LocationNameCardProps> = ({
 	name,
 	onNameChange,
 }) => {
-	// Local state to prevent focus loss during typing
-	const [localName, setLocalName] = useState(name)
-
-	// Update local state when props change
-	useEffect(() => {
-		setLocalName(name)
-	}, [name])
-
-	const icon = (
-		<StatSigil
-			name={location === 'mount' ? 'location-mount' : 'location-storage'}
-			size="1.15em"
-		/>
-	)
-	const label = location === 'mount' ? 'Mount' : 'Storage'
+	const draft = useFieldDraft(name, onNameChange)
+	const isMount = location === 'mount'
 
 	return (
-		<CharacterSheetCard
-			header={<CardHeader icon={icon} label={label} color={UI_COLORS.greyBlue} />}
+		<SheetField
+			label={isMount ? 'Mount' : 'Storage'}
+			sigil={isMount ? 'location-mount' : 'location-storage'}
+			tone={UI_COLORS.greyBlue}
 			minWidth="6rem"
 			maxWidth="8rem"
 		>
-			<TextField
-				size="small"
-				variant="standard"
-				value={localName}
-				onChange={(event) => setLocalName(event.target.value)}
-				onBlur={() => onNameChange(localName)}
-				placeholder={location === 'mount' ? 'Mount name' : 'Storage location'}
-				InputProps={{
-					disableUnderline: true,
-					sx: {
-						fontSize: '0.85rem',
-						'& input': {
-							textAlign: 'center',
-							p: 0,
-						},
-					},
-				}}
-				sx={{ width: '100%' }}
+			<FieldText
+				{...draft}
+				placeholder={isMount ? 'Mount name' : 'Storage location'}
 			/>
-		</CharacterSheetCard>
+		</SheetField>
 	)
 }

@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material'
+import { SheetInput } from '../../../components'
 import React from 'react'
 import { Weapon } from '@site/src/types/Character'
-import { AttributeField } from '@site/src/features/CharacterSheet/CharacterSheet'
 import { DamageFields } from '../../DamageFields'
 
 export type WeaponSummaryProps = {
@@ -51,7 +51,7 @@ export const WeaponSummary: React.FC<WeaponSummaryProps> = ({
 				label="Properties"
 				sx={{ maxWidth: '14rem' }}
 			/>
-			<AttributeField
+			<SheetInput
 				disabled
 				size="small"
 				variant="standard"

@@ -1,5 +1,4 @@
 import { Box, alpha } from '@mui/material'
-import StatSigil from '@site/src/components/codex/StatSigil'
 import React from 'react'
 
 import ATTRIBUTE_COLORS from '../../../../utils/colors'
@@ -219,7 +218,7 @@ export const StatisticsTab: React.FC = () => {
 							})
 						}
 						label="Strength"
-						icon={<StatSigil name="strength" size="1.15em" />}
+						sigil="strength"
 						color={ATTRIBUTE_COLORS.strength}
 						totalWounds={totalWounds}
 					/>
@@ -232,7 +231,7 @@ export const StatisticsTab: React.FC = () => {
 						}
 						label="Agility"
 						color={ATTRIBUTE_COLORS.agility}
-						icon={<StatSigil name="agility" size="1.15em" />}
+						sigil="agility"
 						totalWounds={totalWounds}
 					/>
 					<AttributeCard
@@ -243,7 +242,7 @@ export const StatisticsTab: React.FC = () => {
 							})
 						}
 						label="Spirit"
-						icon={<StatSigil name="spirit" size="1.15em" />}
+						sigil="spirit"
 						color={ATTRIBUTE_COLORS.spirit}
 						totalWounds={totalWounds}
 					/>
@@ -255,7 +254,7 @@ export const StatisticsTab: React.FC = () => {
 							})
 						}
 						label="Mind"
-						icon={<StatSigil name="mind" size="1.15em" />}
+						sigil="mind"
 						color={ATTRIBUTE_COLORS.mind}
 						totalWounds={totalWounds}
 					/>
