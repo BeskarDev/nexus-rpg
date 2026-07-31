@@ -25,7 +25,6 @@ import {
 	Unsubscribe,
 } from 'firebase/firestore'
 import React, { useEffect, useState, useCallback, useRef } from 'react'
-import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useDeviceSize } from '../../utils/useDeviceSize'
 import { logger } from '../../utils'
@@ -33,6 +32,8 @@ import { PartyService } from '../../services/PartyService'
 import { MigrationService } from '../../services/MigrationService'
 import { PartyInfo } from '@site/src/types/Party'
 import { PartyManagement } from './components/PartyManagement'
+import { createMockParty } from '@site/src/dev/mockData'
+import { ListSection, RuleInfo } from '../../components'
 
 export const SharedNotes: React.FC = () => {
 	const { currentUser } = useAuth()
@@ -78,11 +79,44 @@ export const SharedNotes: React.FC = () => {
 		? `${activeCharacter.collectionId}-${activeCharacter.docId}`
 		: ''
 
+	/**
+	 * A MOCK character runs on a mock party (M13 S7, owner review round 2).
+	 *
+	 * The Party tab is the one surface whose content does not come from the character
+	 * document: it lives in a `parties` document only Firestore has. So locally the tab showed
+	 * the "create or join" branch and then failed once a subscription was attempted, and two of
+	 * its three surfaces had never been visible in dev at all.
+	 *
+	 * The trigger is the CHARACTER, not the session. My first attempt gated on "no signed-in
+	 * user", which fails the moment a developer is signed in on localhost — as the owner was —
+	 * because then a mock character id gets looked up in a real `parties` collection where it
+	 * can never appear. A `mock-collection-*` id is decisive: those characters exist only in
+	 * `src/dev/mockData.ts`, so no real party can reference them, and a signed-in developer's
+	 * REAL characters still take the live path.
+	 *
+	 * Host-gated the same way `dev/firebaseService.ts` gates its own mock data, so this cannot
+	 * reach a deployed build even if `NODE_ENV` is wrong.
+	 */
+	const usingMockParty =
+		process.env.NODE_ENV === 'development' &&
+		typeof window !== 'undefined' &&
+		(window.location.hostname === 'localhost' ||
+			window.location.hostname === '127.0.0.1') &&
+		characterId.startsWith('mock-collection-')
+
 	// Real-time party subscription
 	useEffect(() => {
 		let unsubscribe: Unsubscribe | null = null
 
 		const setupPartySubscription = async () => {
+			if (usingMockParty) {
+				const mock = createMockParty(characterId)
+				setPartyInfo(mock)
+				setNotes(mock.party.notes)
+				setOriginalNotes(mock.party.notes)
+				setIsLoading(false)
+				return
+			}
 			if (!currentUser || !characterId) {
 				setIsLoading(false)
 				return
@@ -161,7 +195,7 @@ export const SharedNotes: React.FC = () => {
 				unsubscribe()
 			}
 		}
-	}, [currentUser, characterId])
+	}, [currentUser, characterId, usingMockParty])
 
 	// Update notes locally (no auto-save)
 	const updateNotes = useCallback((newNotes: string) => {
@@ -188,6 +222,14 @@ export const SharedNotes: React.FC = () => {
 	const performSave = useCallback(async () => {
 		if (!partyInfo) return
 
+		// The mock party has no document to write to, so "saving" is committing the draft
+		// into the local party — which exercises exactly the states the strip reports.
+		if (usingMockParty) {
+			setPartyInfo({ ...partyInfo, party: { ...partyInfo.party, notes } })
+			setOriginalNotes(notes)
+			return
+		}
+
 		setIsSaving(true)
 		try {
 			await PartyService.updatePartyNotes(partyInfo.party.id, notes)
@@ -200,7 +242,7 @@ export const SharedNotes: React.FC = () => {
 		} finally {
 			setIsSaving(false)
 		}
-	}, [partyInfo, notes])
+	}, [partyInfo, notes, usingMockParty])
 
 	// Handle conflict resolution
 	const handleConflictResolution = useCallback(
@@ -256,6 +298,11 @@ export const SharedNotes: React.FC = () => {
 
 	// Party management handlers
 	const handleCreateParty = async (name: string) => {
+		if (usingMockParty) {
+			const mock = createMockParty(characterId)
+			setPartyInfo({ ...mock, party: { ...mock.party, name } })
+			return
+		}
 		if (!currentUser || !characterId) return
 
 		setPartyLoading(true)
@@ -277,6 +324,29 @@ export const SharedNotes: React.FC = () => {
 
 	const handleAddMember = async (newCharacterId: string) => {
 		if (!partyInfo) return
+		if (usingMockParty) {
+			// A pasted id has no character behind it locally, so the invite lands as a
+			// placeholder member — enough to see the row, the columns and the remove verb.
+			setPartyInfo({
+				...partyInfo,
+				party: {
+					...partyInfo.party,
+					members: [...partyInfo.party.members, newCharacterId],
+				},
+				members: [
+					...partyInfo.members,
+					{
+						characterId: newCharacterId,
+						name: 'Invited adventurer',
+						playerName: '—',
+						folk: '—',
+						background: '—',
+						level: 1,
+					},
+				],
+			})
+			return
+		}
 
 		setPartyLoading(true)
 		try {
@@ -291,6 +361,21 @@ export const SharedNotes: React.FC = () => {
 
 	const handleRemoveMember = async (memberCharacterId: string) => {
 		if (!partyInfo) return
+		if (usingMockParty) {
+			setPartyInfo({
+				...partyInfo,
+				party: {
+					...partyInfo.party,
+					members: partyInfo.party.members.filter(
+						(id) => id !== memberCharacterId,
+					),
+				},
+				members: partyInfo.members.filter(
+					(member) => member.characterId !== memberCharacterId,
+				),
+			})
+			return
+		}
 
 		setPartyLoading(true)
 		try {
@@ -308,6 +393,12 @@ export const SharedNotes: React.FC = () => {
 
 	const handleLeaveParty = async () => {
 		if (!partyInfo || !characterId) return
+		if (usingMockParty) {
+			setPartyInfo(null)
+			setNotes('')
+			setOriginalNotes('')
+			return
+		}
 
 		setPartyLoading(true)
 		try {
@@ -327,6 +418,12 @@ export const SharedNotes: React.FC = () => {
 	}
 
 	const handleDeleteParty = async () => {
+		if (usingMockParty) {
+			setPartyInfo(null)
+			setNotes('')
+			setOriginalNotes('')
+			return
+		}
 		if (!partyInfo || !characterId || !currentUser) {
 			logger.error(
 				'Missing party info, character ID, or current user for deletion',
@@ -362,6 +459,15 @@ export const SharedNotes: React.FC = () => {
 
 	const handleUpdatePartyName = async (newName: string) => {
 		if (!partyInfo) return
+		if (usingMockParty) {
+			// No subscription to echo the write back locally, so the rename is applied here —
+			// which is also what proves the band field's blur-commit works.
+			setPartyInfo({
+				...partyInfo,
+				party: { ...partyInfo.party, name: newName },
+			})
+			return
+		}
 
 		setPartyLoading(true)
 		try {
@@ -375,11 +481,24 @@ export const SharedNotes: React.FC = () => {
 		}
 	}
 
-	if (!currentUser) {
+	/**
+	 * THE actual reason the tab was unreachable locally (owner review round 2).
+	 *
+	 * This guard returned a Material error alert whenever there was no signed-in user, before
+	 * any of the mock-party work below could run — so the tab said "you must be logged in" and
+	 * nothing else, whichever debug character was loaded. Adding a dev fixture behind a guard
+	 * that returns first fixes nothing, which is what my first attempt did.
+	 *
+	 * A mock character passes; everything else still needs a session, because a real party is a
+	 * real document. Also no longer a Material `Alert`: an empty state is a sentence on the
+	 * stone, and this one is the sheet's only signed-out message.
+	 */
+	if (!currentUser && !usingMockParty) {
 		return (
-			<Alert severity="error">
-				You must be logged in to access shared notes.
-			</Alert>
+			<Box className="cs-empty-note">
+				Sign in to share notes with a party. Your character sheet works either
+				way.
+			</Box>
 		)
 	}
 
@@ -392,24 +511,29 @@ export const SharedNotes: React.FC = () => {
 		)
 	}
 
+	/**
+	 * One state line rather than three mutually exclusive captions (M13 S7).
+	 *
+	 * The old version rendered three `Typography`s guarded by the same two booleans, in
+	 * warning / info / success — which is three elements to say one thing, and it read as a
+	 * legend rather than as a status.
+	 */
+	const noteState = isSaving
+		? 'saving'
+		: hasUnsavedChanges
+			? 'unsaved'
+			: hasServerChanges
+				? 'behind'
+				: 'saved'
+	const noteStateLabel = {
+		saving: 'Saving…',
+		unsaved: 'Unsaved changes',
+		behind: 'Someone else has saved since you loaded',
+		saved: 'All changes saved',
+	}[noteState]
+
 	return (
 		<>
-			<Box
-				sx={{
-					position: isMobile ? 'sticky' : 'static',
-					top: '164px',
-					zIndex: isMobile ? 100 : 'auto',
-					backgroundColor: 'var(--ifm-background-color)',
-					display: 'flex',
-					alignItems: 'center',
-					gap: 1,
-					width: '100%',
-					maxWidth: { lg: 'unset', xl: '47rem' },
-				}}
-			>
-				<SectionHeader>Shared Notes & Party</SectionHeader>
-			</Box>
-
 			{/* Party Management Section */}
 			<PartyManagement
 				characterId={characterId}
@@ -423,77 +547,95 @@ export const SharedNotes: React.FC = () => {
 				loading={partyLoading || isLoading}
 			/>
 
-			{/* Notes Section */}
+			{/* M13 S7: the notes are a SECTION with its own control strip, not a heading
+				plus a caption plus a contained button plus three status captions. The verbs
+				are in the strip where every other list keeps them, and the state is one line
+				rather than three mutually exclusive ones. */}
 			{partyInfo ? (
-				<>
-					<Typography variant="h6" sx={{ mb: 1 }}>
-						Party Notes
-					</Typography>
-					<Typography variant="caption" sx={{ mb: 1, display: 'block' }}>
-						Make your changes and click Save to share with party members.
-					</Typography>
+				<ListSection
+					label="Party Notes"
+					collapsible
+					defaultExpanded
+					info={
+						<RuleInfo label="About party notes">
+							Everyone in the party edits the same page. Your changes are
+							private until you save them, and the strip tells you when someone
+							else has saved since you loaded.
+						</RuleInfo>
+					}
+					actions={
+						<>
+							<Tooltip title="Fetch the latest notes from the party">
+								<IconButton
+									size="small"
+									onClick={refreshNotes}
+									disabled={isSaving}
+									data-state={hasServerChanges ? 'on' : 'off'}
+								>
+									<Refresh fontSize="inherit" />
+								</IconButton>
+							</Tooltip>
+							<Tooltip
+								title={
+									hasUnsavedChanges ? 'Share your changes' : 'Nothing to save'
+								}
+							>
+								<span>
+									{/* `data-state="pending"` drives the pulse in characterSheet.css.
+										Party notes do not autosave — a write is shared, so it is deliberate —
+										which makes "not saved yet" the one state on this sheet that earns an
+										animation rather than only a colour. */}
+									<IconButton
+										size="small"
+										onClick={saveNotes}
+										disabled={!hasUnsavedChanges || isSaving}
+										data-state={
+											hasUnsavedChanges && !isSaving ? 'pending' : undefined
+										}
+										aria-label={
+											hasUnsavedChanges
+												? 'Save notes — you have unsaved changes'
+												: 'Save notes'
+										}
+									>
+										{isSaving ? (
+											<CircularProgress size={13} />
+										) : (
+											<Save fontSize="inherit" />
+										)}
+									</IconButton>
+								</span>
+							</Tooltip>
+						</>
+					}
+				>
+					<Box className="cs-notes-state" data-state={noteState}>
+						{noteStateLabel}
+					</Box>
 					<TextField
+						className="cs-inscription cs-inscription--block"
 						disabled={isLoading}
 						multiline
-						minRows={15}
-						maxRows={20}
+						minRows={10}
+						maxRows={24}
 						value={notes}
 						onChange={(event) => updateNotes(event.target.value)}
 						placeholder="Share notes with your party here..."
+						inputProps={{ 'aria-label': 'Party notes' }}
 						sx={{
-							maxWidth: '100%',
+							width: '100%',
+							m: 0,
 							'& textarea.Mui-disabled': {
 								color: 'inherit',
 								WebkitTextFillColor: 'inherit',
 							},
 						}}
-						fullWidth
 					/>
-
-					{/* Save Button and Status */}
-					<Box sx={{ mt: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
-						<Button
-							variant="contained"
-							startIcon={isSaving ? <CircularProgress size={16} /> : <Save />}
-							onClick={saveNotes}
-							disabled={!hasUnsavedChanges || isSaving}
-						>
-							{isSaving ? 'Saving...' : 'Save Notes'}
-						</Button>
-
-						<Tooltip title="Refresh with latest notes from server">
-							<IconButton
-								onClick={refreshNotes}
-								disabled={isSaving}
-								color={hasServerChanges ? 'warning' : 'default'}
-							>
-								<Refresh />
-							</IconButton>
-						</Tooltip>
-
-						{hasUnsavedChanges && !isSaving && (
-							<Typography variant="caption" color="warning.main">
-								You have unsaved changes
-							</Typography>
-						)}
-
-						{!hasUnsavedChanges && hasServerChanges && !isSaving && (
-							<Typography variant="caption" color="info.main">
-								There are changes from others
-							</Typography>
-						)}
-
-						{!hasUnsavedChanges && !hasServerChanges && !isSaving && (
-							<Typography variant="caption" color="success.main">
-								All changes saved
-							</Typography>
-						)}
-					</Box>
-				</>
+				</ListSection>
 			) : (
-				<Alert severity="info" sx={{ mt: 2 }}>
-					Create or join a party to access shared notes.
-				</Alert>
+				<Box className="cs-empty-note">
+					Create or join a party to share notes with it.
+				</Box>
 			)}
 
 			{/* Conflict Resolution Dialog */}

@@ -1,7 +1,7 @@
-import { DragHandle } from '@mui/icons-material'
 import { Box, ListItem, ListItemIcon, ListItemProps } from '@mui/material'
 import React from 'react'
 import { Draggable } from '@hello-pangea/dnd'
+import { DragMark } from '../DragMark'
 
 export type DynamicListItemProps = {
 	id: string
@@ -26,24 +26,29 @@ export const DynamicListItem: React.FC<DynamicListItemProps> = ({
 					{...provided.draggableProps}
 					sx={{ width: '100%' }}
 				>
-					<ListItem
-						{...props}
-						sx={{ p: 0, ...props.sx }}
-					>
-						{/* 
+					<ListItem {...props} sx={{ p: 0, ...props.sx }}>
+						{/*
 						 * Always render the drag handle element but hide it visually when not needed.
 						 * @hello-pangea/dnd requires the dragHandleProps element to exist even when hidden.
 						 */}
+						{/* M13 S6: `DragMark`, not MUI's `DragHandle` — two hairline rules is
+							Material's grip and, on this sheet, a pair of bare lines on every row of
+							every reorderable list. The grip is three inlaid lozenges, the shape the
+							sheet already uses for a fixed point. */}
 						<ListItemIcon
 							{...provided.dragHandleProps}
 							sx={{
-								minWidth: showDragHandle ? '32px' : 0,
+								minWidth: showDragHandle ? 'var(--nexus-target)' : 0,
 								opacity: showDragHandle ? 1 : 0,
 								width: showDragHandle ? 'auto' : 0,
 								overflow: 'hidden',
+								display: 'flex',
+								justifyContent: 'center',
+								color: 'primary.main',
+								cursor: showDragHandle ? 'grab' : 'default',
 							}}
 						>
-							<DragHandle />
+							<DragMark />
 						</ListItemIcon>
 						{children}
 					</ListItem>

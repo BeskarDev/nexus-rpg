@@ -173,17 +173,20 @@ export const expectCharacterMigrated = (character: CharacterDocument) => {
 }
 
 /**
- * Helper to verify companion migration was performed correctly
- * Checks that companions have HP and wounded fields
+ * Helper to verify companion migration was performed correctly.
+ *
+ * Checks HP and the wound COUNT. It asserted a `wounded` boolean until M13 S7, when the flag
+ * was replaced by `wounds` (0-2) because a companion has two Health Marks and one boolean
+ * cannot record the second — see `characterMigration.test.ts` for the conversion itself.
  */
 export const expectCompanionMigrated = (companions: any[]) => {
 	companions.forEach((companion) => {
 		expect(companion.currentHP).toBeDefined()
 		expect(companion.maxHP).toBeDefined()
-		expect(companion.wounded).toBeDefined()
+		expect(companion.wounds).toBeDefined()
 		expect(typeof companion.currentHP).toBe('number')
 		expect(typeof companion.maxHP).toBe('number')
-		expect(typeof companion.wounded).toBe('boolean')
+		expect(typeof companion.wounds).toBe('number')
 	})
 }
 

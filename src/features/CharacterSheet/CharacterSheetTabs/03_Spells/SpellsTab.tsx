@@ -10,7 +10,7 @@ import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { SpellRow } from './SpellRow'
-import { ListSection, MarkButton } from '../../components'
+import { ListSection, MarkButton, TabHeader } from '../../components'
 import { SPELL_HEADINGS, spellHeaderTemplate } from './components/spellColumns'
 import { SpellsSearchDialog } from './SpellsSearchDialog'
 import { SpellsHeader } from './SpellsHeader'
@@ -127,12 +127,16 @@ export const SpellsTab: React.FC = () => {
 			}}
 		>
 			<Box sx={{ mb: 2, width: '100%' }}>
-				<SpellsHeader
-					magicSkill={magicSkill}
-					specialization={specialization}
-					spellCatalystDamage={spellCatalystDamage}
-					updateCharacter={updateCharacter}
-				/>
+				{/* M13 S6: every tab opens on the same plate — the carved frame spent once,
+					holding the tab's name and the band of facts about the whole tab. */}
+				<TabHeader>
+					<SpellsHeader
+						magicSkill={magicSkill}
+						specialization={specialization}
+						spellCatalystDamage={spellCatalystDamage}
+						updateCharacter={updateCharacter}
+					/>
+				</TabHeader>
 
 				{/* M13 S5: was an MUI `Accordion` with a bold `SectionHeader` and a
 					hand-built row of icon buttons — the same arrangement S4 replaced on the

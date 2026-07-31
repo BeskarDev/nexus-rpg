@@ -14,8 +14,15 @@
  * and break the alignment for the whole list.
  */
 
-/** The cast control: a plate, at the interactive floor plus its own keyline. */
-const CAST = 'calc(var(--nexus-target) + 8px)'
+/**
+ * The cast rune, and the "Cost" heading above it.
+ *
+ * Sized by whichever is wider — the same correction the Companions ledger's wound track
+ * needed (S7): a track carrying a column heading cannot be sized to its control alone, or the
+ * heading clips while the control has room. `Cost` in the small-caps heading register is about
+ * 30px, the rune is 30px, so this holds both with a little air.
+ */
+const CAST = '3rem'
 const RANK = '2.5rem'
 const TARGET = '5rem'
 const RANGE = '5.5rem'

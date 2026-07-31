@@ -1,11 +1,7 @@
 import React from 'react'
 import { IconButton, Tooltip, Button } from '@mui/material'
 import { Build, AutoFixHigh } from '@mui/icons-material'
-import {
-	ListSectionHeader,
-	SheetMenu,
-	ToggleMenuItem,
-} from '../../../components'
+import { SheetMenu, TabHeader, ToggleMenuItem } from '../../../components'
 import { ItemLocation } from '../../../../../types/ItemLocation'
 
 /**
@@ -24,6 +20,8 @@ const CATEGORIES: { location: ItemLocation; label: string }[] = [
 ]
 
 interface ItemsSettingsMenuProps {
+	/** The tab's meta band — the purse strip, rendered inside the header plate. */
+	header?: React.ReactNode
 	itemLocationVisibility: Record<ItemLocation, boolean> | undefined
 	settingsMenuAnchor: HTMLElement | null
 	onSettingsMenuOpen: (event: React.MouseEvent<HTMLElement>) => void
@@ -33,6 +31,7 @@ interface ItemsSettingsMenuProps {
 }
 
 export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
+	header,
 	itemLocationVisibility,
 	settingsMenuAnchor,
 	onSettingsMenuOpen,
@@ -42,13 +41,12 @@ export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
 }) => {
 	return (
 		<>
-			{/* M13 S4: the tab's own heading on the shared ruled header, matching
-				`Abilities` on the Skills tab. The Magic Item Builder is a real command
-				rather than an icon, so it stays a labelled button — it sits in the
-				actions slot beside the levelled icon controls, not instead of them. */}
-			<ListSectionHeader
-				label="Items & Equipment"
-				sx={{ mb: 2 }}
+			{/* M13 S6: the tab opens on a `TabHeader` plate — the ornate frame the Personal
+				tab was spending on every field, spent once here, holding the tab's name, its
+				commands and its purse band. The Magic Item Builder stays a labelled button
+				rather than an icon: it is a real command, and it sits in the actions slot
+				beside the levelled icon controls rather than instead of them. */}
+			<TabHeader
 				actions={
 					<>
 						<Tooltip title="toggle inventory categories">
@@ -69,7 +67,9 @@ export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
 						)}
 					</>
 				}
-			/>
+			>
+				{header}
+			</TabHeader>
 			<SheetMenu
 				anchorEl={settingsMenuAnchor}
 				onClose={onSettingsMenuClose}

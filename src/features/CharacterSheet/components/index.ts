@@ -1,4 +1,6 @@
-export { PersonalField } from './PersonalField'
+// `PersonalField` is gone (M13 S6, carried forward from M9): a thin `TextField` wrapper
+// whose last consumers were the Personal tab's identity cards, which are now rows in a
+// `RecordPlate`. `FieldText` is the field primitive it was standing in for.
 export { NpcRelationshipsSection } from './NpcRelationshipsSection'
 export { FolkSelectionDialog } from './FolkSelectionDialog'
 export { UpbringingSelectionDialog } from './UpbringingSelectionDialog'
@@ -14,6 +16,8 @@ export { RuleInfo } from './RuleInfo'
 export { SheetChip } from './SheetChip'
 export { MarkButton } from './MarkButton'
 export { Chevron } from './Chevron'
+// M13 S6 — the reorder grip, drawn in the sheet's own shape language.
+export { DragMark } from './DragMark'
 // M13 S2 — the ledger primitives, exported alongside the M9 field library so a
 // list tab reaches for a row the same way a stat card reaches for a field.
 export {
@@ -34,6 +38,9 @@ export {
 	DetailField,
 	Inscription,
 } from './DetailsPanel'
+// M13 S6 — a tab's opening plate: the carved frame, spent once per tab rather than
+// once per field.
+export { TabHeader } from './TabHeader'
 // M13 S5 — the labelled either/or switch (`static`, `deals damage`).
 export { ToggleMark } from './ToggleMark'
 // M13 S4e — the sheet's tab bar: a rail of nameplates that knows when it overflows.

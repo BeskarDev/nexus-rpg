@@ -132,9 +132,48 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 		</Box>
 	) : null
 
+	/**
+	 * A control inside the summary is NOT the row's disclosure (M13 S7, owner review).
+	 *
+	 * The summary line is a button — that is what makes the whole row a disclosure — so every
+	 * click inside it bubbles up and toggles the row, including clicks on the controls the
+	 * summary is supposed to carry: the wear pips on an item, a companion's HP trigger, an
+	 * amount field. Ticking a pip also collapsed the row it belonged to.
+	 *
+	 * Every call site was solving this locally, or forgetting to: `CompanionWoundCheckbox` had
+	 * a `stopPropagation` wrapper with a comment explaining that it was the only pip inside a
+	 * clickable row, and it was not.
+	 *
+	 * So the rule lives here, once, for every list on the sheet: if the event started on
+	 * something interactive, it belongs to that thing and not to the row. `closest()` rather
+	 * than a target check, because the click usually lands on a glyph or a label INSIDE the
+	 * control. Keyboard is guarded the same way — Enter and Space on an inner button would
+	 * otherwise both press it and toggle the row.
+	 */
+	/* eslint-disable no-undef -- DOM globals; the lint env does not list them. */
+	const stopIfControl = (
+		event: React.MouseEvent | React.KeyboardEvent,
+	): void => {
+		const target = event.target
+		if (!(target instanceof Element)) return
+		const control = target.closest(
+			'button, a, input, select, textarea, label, [role="button"], [role="checkbox"], [role="menuitem"], .MuiInputBase-root',
+		)
+		// The control has to be INSIDE the summary row. `AccordionSummary` is itself a
+		// button, so a bare `closest()` matches it from any plain text in the row — which
+		// made the row untoggleable, since every click looked like a control's. `contains`
+		// on the row settles it: an ancestor button is the disclosure, a descendant one is
+		// a control the summary carries.
+		if (control && event.currentTarget.contains(control))
+			event.stopPropagation()
+	}
+	/* eslint-enable no-undef */
+
 	const summaryRow = (
 		<Box
 			className={summaryClassName}
+			onClick={stopIfControl}
+			onKeyDown={stopIfControl}
 			sx={{
 				width: '100%',
 				minWidth: 0,

@@ -136,6 +136,15 @@ export interface DetailsPanelProps {
 	 * record (S4d, owner review). So the panel no longer has an actions slot at all.
 	 */
 	aside?: React.ReactNode
+	/**
+	 * The aside column's preferred width.
+	 *
+	 * 17rem suits a plate of short figures (an item's cost and load). A panel whose aside
+	 * carries PROSE as well — the NPC record, where the rules text for a role and a
+	 * disposition sits under the selects that set them — needs more, or the column becomes
+	 * a two-word-per-line gutter (M13 S6, owner review).
+	 */
+	asideWidth?: string
 }
 
 /**
@@ -156,6 +165,7 @@ export interface DetailsPanelProps {
 export const DetailsPanel: React.FC<DetailsPanelProps> = ({
 	children,
 	aside,
+	asideWidth = '17rem',
 }) => (
 	<Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 1 }}>
 		<Box
@@ -179,7 +189,19 @@ export const DetailsPanel: React.FC<DetailsPanelProps> = ({
 			>
 				{children}
 			</Box>
-			{aside && <Box sx={{ flex: '0 1 17rem', minWidth: 0 }}>{aside}</Box>}
+			{aside && (
+				<Box
+					sx={{
+						flex: `0 1 ${asideWidth}`,
+						minWidth: 0,
+						display: 'flex',
+						flexDirection: 'column',
+						gap: 1.25,
+					}}
+				>
+					{aside}
+				</Box>
+			)}
 		</Box>
 	</Box>
 )

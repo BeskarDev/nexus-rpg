@@ -6,22 +6,22 @@ import {
 	DialogContent,
 	DialogContentText,
 	DialogTitle,
-	Chip,
-	IconButton,
-	TextField,
 } from '@mui/material'
-import { Edit } from '@mui/icons-material'
 import React, { useMemo, useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { CharacterDocument } from '../../../../types/Character'
-import { SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useNpcRelationshipCrud } from '../../hooks'
-import { PersonalField, NpcRelationshipsSection } from '../../components'
+import {
+	DetailsGroup,
+	Inscription,
+	NpcRelationshipsSection,
+} from '../../components'
+import { PersonalRecord } from './PersonalRecord'
 import { ProfilePictureUpload } from './ProfilePictureUpload'
 import {
 	FolkSelectionDialog,
@@ -31,11 +31,23 @@ import {
 	UpbringingData,
 	BackgroundData,
 } from '../../components'
-import { getTextFieldProps, personalTabSchema } from '../../utils/validation'
+import { personalTabSchema } from '../../utils/validation'
 
 /**
  * Parses a comma-separated string of suggested skills and returns an array of skill names
  */
+/** The `personal` keys this tab edits as free text. */
+type PersonalKey =
+	| 'name'
+	| 'folk'
+	| 'upbringing'
+	| 'background'
+	| 'motivation'
+	| 'height'
+	| 'weight'
+	| 'age'
+	| 'description'
+
 const parseSuggestedSkills = (
 	suggestedSkills: string | undefined,
 ): string[] => {
@@ -62,12 +74,6 @@ const resolveSkillConflicts = (skills: string[]): string[] => {
 
 	return Array.from(skillSet)
 }
-import { NameCard } from './NameCard'
-import { FolkCard } from './FolkCard'
-import { UpbringingCard } from './UpbringingCard'
-import { BackgroundCard } from './BackgroundCard'
-import { MotivationCard } from './MotivationCard'
-import { HeightCard, WeightCard, AgeCard, DescriptionCard } from './PersonalCards'
 import folkData from '../../../../utils/data/json/folk.json'
 import upbringingData from '../../../../utils/data/json/upbringings.json'
 import backgroundData from '../../../../utils/data/json/backgrounds.json'
@@ -82,7 +88,6 @@ export const PersonalTab: React.FC = () => {
 
 	// Initialize react-hook-form with Yup schema validation
 	const {
-		register,
 		formState: { errors },
 		reset,
 		watch,
@@ -462,145 +467,88 @@ export const PersonalTab: React.FC = () => {
 	// Always show the NPC relationships interface
 	const showNewInterface = true
 
+	/**
+	 * The identity fields, as data (M13 S6).
+	 *
+	 * They were nine card components — `NameCard`, `FolkCard`, `UpbringingCard`,
+	 * `BackgroundCard`, `MotivationCard`, `HeightCard`, `WeightCard`, `AgeCard`,
+	 * `DescriptionCard` — which differed in a label, a sigil and a prop name, and each
+	 * carried its own copy of the same validate-then-commit blur. A list, one row
+	 * renderer, one blur helper.
+	 */
+	const commit = (key: PersonalKey) => async () => {
+		await trigger(key)
+		updateCharacter({ personal: { [key]: formValues[key] } })
+	}
+	const set = (key: PersonalKey) => (value: string) =>
+		setValue(key, value, { shouldDirty: true })
+
+	const identityFields = [
+		{ label: 'Name', sigil: 'name' as const, key: 'name' as const },
+		{
+			label: 'Folk',
+			sigil: 'folk' as const,
+			key: 'folk' as const,
+			onPick: () => setFolkDialogOpen(true),
+		},
+		{
+			label: 'Upbringing',
+			sigil: 'upbringing' as const,
+			key: 'upbringing' as const,
+			onPick: () => setUpbringingDialogOpen(true),
+		},
+		{
+			label: 'Background',
+			sigil: 'background' as const,
+			key: 'background' as const,
+			onPick: () => setBackgroundDialogOpen(true),
+		},
+		{
+			label: 'Motivation',
+			sigil: 'motivation' as const,
+			key: 'motivation' as const,
+		},
+		{
+			label: 'Height',
+			sigil: 'height' as const,
+			key: 'height' as const,
+			section: true,
+		},
+		{ label: 'Weight', sigil: 'weight' as const, key: 'weight' as const },
+		{ label: 'Age', sigil: 'age' as const, key: 'age' as const },
+	].map((field) => ({
+		label: field.label,
+		sigil: field.sigil,
+		value: formValues[field.key] ?? '',
+		onChange: set(field.key),
+		onBlur: commit(field.key),
+		error: errors[field.key]?.message,
+		onPick: 'onPick' in field ? field.onPick : undefined,
+		section: 'section' in field ? field.section : undefined,
+	}))
+
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				columnGap: 3,
-				flexWrap: 'wrap',
-				width: '100%',
-			}}
-		>
-			<Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start', mb: 2, flexWrap: 'wrap' }}>
-				<Box sx={{ flexGrow: 1 }}>
-					<SectionHeader sx={{ mb: 2 }}>Your Character</SectionHeader>
-					<Box
-						sx={{
-							display: 'flex',
-							alignItems: 'stretch',
-							flexWrap: 'wrap',
-							gap: 0.75,
-							'@media (max-width: 768px)': {
-								flexDirection: 'column',
-								alignItems: 'stretch',
-							},
-						}}
-					>
-						<NameCard
-							name={formValues.name}
-							onChange={(value) => {
-							setValue('name', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('name')
-							updateCharacter({ personal: { name: formValues.name } })
-						}}
-							error={errors.name?.message}
-						/>
+		<Box sx={{ width: '100%' }}>
+			{/* No tab header here: a `TabHeader` holds facts about the whole tab and the
+				commands that act on it, and this tab has neither — its facts ARE its content.
+				An empty plate with the tab's name in it would be the title repeat the tab bar
+				already covers (S6, owner review). */}
 
-						<FolkCard
-							folk={formValues.folk}
-							onChange={(value) => {
-							setValue('folk', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('folk')
-							updateCharacter({ personal: { folk: formValues.folk } })
-						}}
-							onEditClick={() => setFolkDialogOpen(true)}
-							error={errors.folk?.message}
-						/>
-
-						<UpbringingCard
-							upbringing={formValues.upbringing}
-							onChange={(value) => {
-							setValue('upbringing', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('upbringing')
-							updateCharacter({ personal: { upbringing: formValues.upbringing } })
-						}}
-							onEditClick={() => setUpbringingDialogOpen(true)}
-							error={errors.upbringing?.message}
-						/>
-
-						<BackgroundCard
-							background={formValues.background}
-							onChange={(value) => {
-							setValue('background', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('background')
-							updateCharacter({ personal: { background: formValues.background } })
-						}}
-							onEditClick={() => setBackgroundDialogOpen(true)}
-							error={errors.background?.message}
-						/>
-
-						<MotivationCard
-							motivation={formValues.motivation}
-							onChange={(value) => {
-							setValue('motivation', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('motivation')
-							updateCharacter({ personal: { motivation: formValues.motivation } })
-						}}
-							error={errors.motivation?.message}
-						/>
-
-						<HeightCard
-							value={formValues.height}
-							onChange={(value) => {
-							setValue('height', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('height')
-							updateCharacter({ personal: { height: formValues.height } })
-						}}
-							error={errors.height?.message}
-						/>
-
-						<WeightCard
-							value={formValues.weight}
-							onChange={(value) => {
-							setValue('weight', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('weight')
-							updateCharacter({ personal: { weight: formValues.weight } })
-						}}
-							error={errors.weight?.message}
-						/>
-
-						<AgeCard
-							value={formValues.age}
-							onChange={(value) => {
-							setValue('age', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('age')
-							updateCharacter({ personal: { age: formValues.age } })
-						}}
-							error={errors.age?.message}
-						/>
-
-						<Box sx={{ width: '100%' }} />
-
-						<DescriptionCard
-							value={formValues.description}
-							onChange={(value) => {
-							setValue('description', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('description')
-							updateCharacter({ personal: { description: formValues.description } })
-						}}
-							error={errors.description?.message}
-						/>
-					</Box>
+			{/* The portrait beside the record, which is how a character sheet has always
+				opened: a likeness and the facts about the person in it. The record is the
+				wider column because it holds eight lines against one image. */}
+			<Box
+				sx={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					alignItems: 'flex-start',
+					gap: 1.5,
+					mb: 1.5,
+				}}
+			>
+				<Box sx={{ flex: '1 1 20rem', minWidth: 0 }}>
+					<PersonalRecord fields={identityFields} />
 				</Box>
-
 				<ProfilePictureUpload
 					profilePicture={personal.profilePicture}
 					onProfilePictureUpdate={(base64) =>
@@ -609,37 +557,53 @@ export const PersonalTab: React.FC = () => {
 				/>
 			</Box>
 
-			<Box sx={{ width: '100%', flexGrow: 1, mb: 2 }} />
-
-			{/* NPC relationships section */}
-			{showNewInterface && (
-				<Box sx={{ width: '100%' }}>
-					<NpcRelationshipsSection
-						npcRelationships={npcRelationships || []}
-						onAdd={npcRelationshipCrud.addNew}
-						onUpdate={npcRelationshipCrud.update}
-						onDelete={npcRelationshipCrud.delete}
-						onReorder={npcRelationshipCrud.onReorder}
+			{/* Description and notes are PROSE, so they are inscriptions rather than fields
+				in the plate — the same split the Items details panel makes between what a
+				thing is and what is written about it. */}
+			<Box sx={{ mb: 1.5 }}>
+				<DetailsGroup label="Description" sigil="description">
+					<Inscription
+						block
+						multiline
+						maxRows={8}
+						label="Appearance and bearing"
+						value={formValues.description ?? ''}
+						onChange={(event) =>
+							setValue('description', event.target.value, { shouldDirty: true })
+						}
+						onBlur={commit('description')}
+						sx={{ flex: '1 1 100%' }}
 					/>
-				</Box>
+				</DetailsGroup>
+			</Box>
+
+			{showNewInterface && (
+				<NpcRelationshipsSection
+					npcRelationships={npcRelationships || []}
+					onAdd={npcRelationshipCrud.addNew}
+					onUpdate={npcRelationshipCrud.update}
+					onDelete={npcRelationshipCrud.delete}
+					onReorder={npcRelationshipCrud.onReorder}
+				/>
 			)}
 
-			<Box sx={{ width: '100%', flexGrow: 1 }} />
-
-			<Box sx={{ minWidth: '100%', mt: 1 }}>
-				<SectionHeader>Personal Notes</SectionHeader>
-				<TextField
-					{...getTextFieldProps(register('notes'), errors.notes)}
-					variant="standard"
-					multiline
-					minRows={1}
-					maxRows={20}
-					onBlur={(e) => {
-						register('notes').onBlur(e)
-						updateCharacter({ personal: { notes: formValues.notes } })
-					}}
-					sx={{ maxWidth: '100%' }}
-				/>
+			<Box sx={{ mt: 1.5 }}>
+				<DetailsGroup label="Personal Notes" sigil="description">
+					<Inscription
+						block
+						multiline
+						maxRows={20}
+						label="Anything else worth keeping"
+						value={formValues.notes ?? ''}
+						onChange={(event) =>
+							setValue('notes', event.target.value, { shouldDirty: true })
+						}
+						onBlur={() =>
+							updateCharacter({ personal: { notes: formValues.notes } })
+						}
+						sx={{ flex: '1 1 100%' }}
+					/>
+				</DetailsGroup>
 			</Box>
 
 			{/* Selection Dialogs */}

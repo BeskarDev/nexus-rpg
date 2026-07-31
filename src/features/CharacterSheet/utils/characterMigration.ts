@@ -15,12 +15,18 @@ export function migrateCharacterData(
 		character.companions = []
 	}
 
-	// Migrate companions that don't have HP/wounded fields
+	/*
+		Companions gained HP fields in M9 and a wound COUNT in M13 S7.
+		
+		A companion has two Health Marks, so `wounded: boolean` could not record the second —
+		and the second is the one that decides whether it lives. An existing `true` becomes one
+		wound, which is the only reading of that flag that does not invent information.
+	*/
 	character.companions = character.companions.map((companion) => ({
 		currentHP: 0,
 		maxHP: 0,
-		wounded: false,
 		...companion,
+		wounds: companion.wounds ?? (companion.wounded ? 1 : 0),
 	}))
 
 	// Migrate older characters that don't have statusEffects array

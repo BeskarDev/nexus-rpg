@@ -104,9 +104,8 @@ export const ItemsTab: React.FC = () => {
 				maxWidth: 'var(--cs-max-width-xl)',
 			}}
 		>
-			{/* Header with coins and load info */}
-
-			{/* Header with settings menu */}
+			{/* M13 S6: the tab's name, its commands and its purse band are one plate now,
+				so the band is passed INTO the header rather than following it. */}
 			<ItemsSettingsMenu
 				itemLocationVisibility={itemLocationVisibility}
 				settingsMenuAnchor={settingsMenuAnchor}
@@ -114,15 +113,16 @@ export const ItemsTab: React.FC = () => {
 				onSettingsMenuClose={handleSettingsMenuClose}
 				onToggleLocationVisibility={toggleLocationVisibility}
 				onOpenMagicItemBuilder={() => setMagicItemBuilderOpen(true)}
-			/>
-
-			<ItemsHeader
-				coins={coins}
-				currentLoad={currentLoad}
-				carryCapacity={carryCapacity}
-				maxCapacity={maxCapacity}
-				carryModifier={encumbrance.carryModifier}
-				updateCharacter={updateCharacter}
+				header={
+					<ItemsHeader
+						coins={coins}
+						currentLoad={currentLoad}
+						carryCapacity={carryCapacity}
+						maxCapacity={maxCapacity}
+						carryModifier={encumbrance.carryModifier}
+						updateCharacter={updateCharacter}
+					/>
+				}
 			/>
 
 			{/* Weapons Section */}

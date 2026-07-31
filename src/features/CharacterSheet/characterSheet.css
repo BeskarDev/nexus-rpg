@@ -952,9 +952,15 @@ input[type='number'] {
 	flex: 0 0 auto;
 	display: inline-flex;
 	align-items: center;
-	gap: 0.45rem;
+	justify-content: center;
+	/* `relative` for every plate, not just the selected one: the mark is positioned against it,
+	   and it must sit in the same place whichever state the plate is in. */
+	position: relative;
 	min-height: calc(var(--nexus-target) + 20px);
-	padding: 0 1.1rem;
+	/* The extra 7px per side is HALF the mark's footprint (a 7px lozenge plus a 7px gap).
+	   An inactive plate has no mark in flow, so it pays for it in padding instead and ends up
+	   exactly as wide as the active one — see the note on the mark below. */
+	padding: 0 calc(1.1rem + 7px);
 	border: 1.5px solid transparent;
 	border-bottom: none;
 	border-radius: 0;
@@ -984,39 +990,45 @@ input[type='number'] {
    the space on all seven costs 12px per plate and buys a bar where nothing moves
    when the selection does — the same rule the ledger's reserved column tracks and
    the focus keyline already follow. */
-.character-sheet-page .cs-tabbar__tab::before {
+/* The mark is IN FLOW beside the label, and the plate's width does not change (S7, owner review
+   round 3).
+   
+   Three attempts on the same 7px, and the requirements only look contradictory:
+   
+   1. S4e reserved the mark's width on one side of every plate. Nothing reflowed, and every label
+      sat half a mark right of its plate's centre.
+   2. Mirroring it with a second reserved gutter centred the label and still read wrong: the mark
+      hung off the left of a centred word, so the active plate looked unbalanced.
+   3. Absolutely positioning it in the padding centred the label perfectly and left the mark
+      crowded against the plate's edge, which is the owner's screenshot.
+   
+   What a reader actually wants centred is the **mark and the label together**, as one group. So
+   the mark is a normal flex child again — and the width is held by ARITHMETIC rather than by
+   reserved space: the mark's footprint is 7px plus a 7px gap, and an inactive plate carries
+   exactly half of that (7px) in extra padding on each side. Active and inactive plates are the
+   same width to the pixel, the group is centred in both, and nothing moves when the selection
+   changes. */
+.character-sheet-page .cs-tabbar__tab[aria-selected='true']::before {
 	content: '';
 	flex: 0 0 auto;
 	width: 7px;
 	height: 7px;
-	background: transparent;
+	margin-right: 7px;
+	background: var(--nexus-bronze);
 	transform: rotate(45deg);
 }
 
-/* The active plate (S4e, owner review round 2).
-   --------------------------------------------------------------------------
-
-   A wash and a hairline was not enough to carry "this is the page you are on"
-   against six siblings. Two flat devices do it: the keyline goes to FULL bronze, and
-   the lozenge above is inked — the same diamond the checkbox inlay and the site's
-   list bullets use, which is the codex's own mark for "this one".
-
-   NOT a thicker top edge, which was the first attempt: a 3px rule along one side of
-   a plate reads as a tab-strip underline flipped upside down, which is the Material
-   idiom this bar exists to get away from. The ink and the mark say it without a
-   second weight of line. */
 .character-sheet-page .cs-tabbar__tab[aria-selected='true'] {
 	border-color: var(--nexus-bronze);
 	background: color-mix(in srgb, var(--nexus-bronze) 16%, transparent);
 	color: var(--nexus-bronze);
+	/* The 7px each side that an inactive plate spends on padding is spent on the mark here. */
+	padding-left: 1.1rem;
+	padding-right: 1.1rem;
 	/* Covers the rail below it: the selected plate and its panel are one surface. */
 	margin-bottom: -2px;
 	padding-bottom: 2px;
-	position: relative;
 	z-index: 1;
-}
-.character-sheet-page .cs-tabbar__tab[aria-selected='true']::before {
-	background: var(--nexus-bronze);
 }
 
 .character-sheet-page .cs-tabbar__edge {
@@ -1190,6 +1202,417 @@ input[type='number'] {
 }
 .character-sheet-page .cs-record-row .MuiTextField-root {
 	margin: 0;
+}
+
+/* M13 S7 (owner review) — the unsaved-notes nudge.
+   ==========================================================================
+
+   Party notes do not autosave: they are shared, so a write is a deliberate act. That makes
+   "you have not saved yet" the one state on this sheet worth an ANIMATION rather than a
+   colour — the status line already says it in words, and a word in a strip is easy to read
+   past when you are typing.
+
+   The pulse is on the plate's own keyline and wash, not a shadow or a scale: nothing moves,
+   nothing casts light, and the row it sits in does not reflow. 2s is slow enough to read as
+   "still pending" rather than as an alarm, and it stops the moment the state clears because
+   it is bound to the strip's `data-state`.
+
+   Gated on `prefers-reduced-motion`, where the plate simply holds the lit end of the cycle —
+   the reminder survives, the motion does not. */
+.character-sheet-page
+	.cs-section-actions
+	.MuiIconButton-root[data-state='pending'] {
+	border-color: var(--cs-warning);
+	color: var(--cs-warning);
+	animation: cs-save-pulse 2s ease-in-out infinite;
+}
+@keyframes cs-save-pulse {
+	0%,
+	100% {
+		background: color-mix(in srgb, var(--cs-warning) 6%, transparent);
+		border-color: color-mix(in srgb, var(--cs-warning) 45%, transparent);
+	}
+	50% {
+		background: color-mix(in srgb, var(--cs-warning) 22%, transparent);
+		border-color: var(--cs-warning);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.character-sheet-page
+		.cs-section-actions
+		.MuiIconButton-root[data-state='pending'] {
+		animation: none;
+		background: color-mix(in srgb, var(--cs-warning) 18%, transparent);
+	}
+}
+
+/* M13 S7 — "this row is you".
+   ==========================================================================
+
+   The party list marked the current member with `bgcolor: action.hover`, which is the same
+   wash this sheet uses for HOVER everywhere else — so your own row looked permanently
+   hovered, and hovering it said nothing. A word in the small-caps register instead: it
+   states the fact rather than implying it, and it leaves the hover wash meaning hover. */
+.character-sheet-page .cs-you {
+	margin-left: 0.4rem;
+	padding: 0 4px;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	color: var(--nexus-bronze);
+	vertical-align: 0.1em;
+}
+
+/* M13 S7 — a section's own status line, and the "nothing here yet" note.
+   ==========================================================================
+
+   The party notes reported their state with three `Typography` captions in warning, info
+   and success, guarded by the same two booleans — three elements to say one thing, reading
+   as a legend rather than as a status. One line, one data attribute, one ink. */
+.character-sheet-page .cs-notes-state {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--ifm-color-emphasis-600);
+	padding: 0 2px 4px;
+}
+.character-sheet-page .cs-notes-state[data-state='unsaved'] {
+	color: var(--cs-warning);
+}
+.character-sheet-page .cs-notes-state[data-state='behind'] {
+	color: var(--cs-info);
+}
+.character-sheet-page .cs-notes-state[data-state='saved'] {
+	color: var(--cs-success);
+}
+/* An empty state is a sentence on the stone, not a Material `Alert` with an info roundel
+   and a tinted panel — the sheet has three of those and they are the loudest thing on a
+   page that has nothing in it. */
+.character-sheet-page .cs-empty-note {
+	padding: 0.75rem 1rem;
+	border: 1.5px dashed color-mix(in srgb, var(--nexus-bronze) 26%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 3%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-dense);
+	color: var(--ifm-color-emphasis-700);
+}
+
+/* M13 S7 (owner review) — the codex creature card, inside a details panel.
+   ==========================================================================
+
+   A companion whose markdown parses renders as `CreatureStatBlock`, the same card the creature
+   pages use. Three things need saying for it to read the same inside a panel, and only three —
+   the frame, the defence band and the die tokens are the card's own and untouched.
+
+   1. It must not reserve the keystone clearance twice; the panel already spaces its groups.
+   2. Its prose measure is set for a doc column; in a panel the panel decides.
+   3. **The list markers and the entry register have to be supplied here.** A creature page gets
+      its bullets from `.theme-doc-markdown ul > li::before`, which is deliberately switched OFF
+      inside `.character-sheet-page` (the sheet's MUI lists would otherwise all sprout diamonds),
+      and its `EntryName` / `StatBadge` from MDX components the sheet does not run. So the bullet
+      is redrawn for this card only, and the two entry registers are classes the inline renderer
+      emits. */
+.character-sheet-page .cs-companion-card {
+	container-type: inline-size;
+}
+.character-sheet-page .cs-companion-card > * {
+	max-width: 100%;
+	margin-top: 0;
+}
+.character-sheet-page .cs-companion-card p,
+.character-sheet-page .cs-companion-card ul,
+.character-sheet-page .cs-companion-card li {
+	max-width: none;
+}
+/* The codex bullet, redrawn for this card and sized to the PANEL's type rather than the doc
+   column's (S7, owner review): 5px against the docs' 7px, because the panel reads at 15px where
+   a creature page reads at 16-17px, and a marker that keeps its absolute size while the text
+   shrinks around it reads as oversized — which is what the owner saw. Centred on the item's
+   first line. */
+.character-sheet-page .cs-companion-card ul {
+	list-style: none;
+	padding-left: 0.9rem;
+	margin: 0.1rem 0;
+}
+.character-sheet-page .cs-companion-card ul > li {
+	position: relative;
+}
+.character-sheet-page .cs-companion-card ul > li::before {
+	content: '';
+	position: absolute;
+	left: -0.9rem;
+	top: 0.62em;
+	width: 5px;
+	height: 5px;
+	margin-top: -2.5px;
+	transform: rotate(45deg);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 85%,
+		transparent
+	);
+}
+/* An entry's NAME — the bold lead-in on an attack or ability, in the same register the docs'
+   `EntryName` uses. */
+.character-sheet-page .cs-entry-name {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.03em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 85%,
+		var(--ifm-font-color-base)
+	);
+	margin-right: 0.3rem;
+}
+/* A property badge (`Passive`, `Quick Action`) — the docs' `StatBadge`: a keyline and a faint
+   wash, small caps, never a filled pill. */
+.character-sheet-page .cs-entry-badge {
+	display: inline-block;
+	margin-right: 0.3rem;
+	padding: 0 0.3rem;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
+	vertical-align: 0.05em;
+}
+
+/* M13 S7 — a companion's rendered stat block.
+   ==========================================================================
+
+   The markdown a companion holds is usually a table pasted from the Companion Builder, and
+   `ReactMarkdown` renders it into the doc's own element set — which inside the sheet means
+   Infima's reading-column rhythm (16px body, 1rem paragraph margins, a full-width table)
+   landing in a details panel built at 15px. This is that block, retuned to the sheet's
+   density: the same job every codex card does for its own rule text. */
+.character-sheet-page .cs-statblock {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-dense);
+	line-height: 1.45;
+}
+.character-sheet-page .cs-statblock > *:first-child {
+	margin-top: 0;
+}
+.character-sheet-page .cs-statblock p,
+.character-sheet-page .cs-statblock ul,
+.character-sheet-page .cs-statblock ol {
+	margin: 0 0 0.35rem;
+}
+.character-sheet-page .cs-statblock li > p {
+	margin: 0;
+}
+.character-sheet-page .cs-statblock h1,
+.character-sheet-page .cs-statblock h2,
+.character-sheet-page .cs-statblock h3,
+.character-sheet-page .cs-statblock h4,
+.character-sheet-page .cs-statblock h5 {
+	margin: 0.5rem 0 0.25rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--nexus-bronze);
+}
+/* A stat block's table is a ledger: ruled courses, small-caps head, tabular figures. It
+   arrives as a plain markdown table, so the register is applied here rather than being
+   pasted in by whoever generated it. */
+.character-sheet-page .cs-statblock table {
+	width: 100%;
+	display: table;
+	border-collapse: collapse;
+	margin: 0 0 0.35rem;
+	font-variant-numeric: tabular-nums;
+}
+.character-sheet-page .cs-statblock th {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--nexus-bronze);
+	text-align: left;
+	border: 0;
+	border-bottom: 1.5px solid
+		color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
+	padding: 2px 6px;
+	background: none;
+}
+.character-sheet-page .cs-statblock td {
+	border: 0;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+	padding: 2px 6px;
+	background: none;
+}
+.character-sheet-page .cs-statblock tr:last-child td {
+	border-bottom: none;
+}
+
+/* M13 S6 (owner review) — the character portrait.
+   ==========================================================================
+
+   Was a circular MUI `Paper` with `elevation` (a drop shadow this theme forbids), a
+   Material camera glyph, a red circular delete badge in `error.main`, and two lines of
+   caption beneath — one naming it, one stating the file limits. A raised circle is every
+   web app's avatar; a portrait in a codex is a framed plate.
+
+   Hard vertices, corner rivets, keyline and wash — the same container the tab header
+   uses, at the record's own height so the two columns end level. Its empty state draws
+   the `folk` mark (a figure: what is missing) rather than a camera, because the sheet has
+   a mark for "a person" and no reason to borrow one for "a photograph". */
+.character-sheet-page .cs-portrait {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	flex: 0 0 auto;
+}
+.character-sheet-page .cs-portrait__plate {
+	position: relative;
+	width: 9.5rem;
+	height: 9.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4px;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 34%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
+	cursor: pointer;
+	overflow: hidden;
+}
+.character-sheet-page .cs-portrait__plate:hover,
+.character-sheet-page .cs-portrait__plate:focus-visible {
+	border-color: var(--nexus-bronze);
+	outline: none;
+}
+/* The drop target says so with a CUT edge — a dashed keyline is the one place a broken
+   line is legitimate here, because it means "not yet filled". */
+.character-sheet-page .cs-portrait__plate[data-drag] {
+	border-style: dashed;
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.character-sheet-page .cs-portrait__image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+.character-sheet-page .cs-portrait__empty {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.35rem;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	text-align: center;
+}
+.character-sheet-page .cs-portrait__busy {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: color-mix(in srgb, var(--ifm-background-color) 65%, transparent);
+}
+/* The caption line: what it is, the gloss that explains the limits, and the remove mark
+   when there is something to remove. */
+.character-sheet-page .cs-portrait__strip {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+.character-sheet-page .cs-portrait__label {
+	flex: 1 1 auto;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--nexus-bronze);
+}
+
+/* A record row's "choose from the rulebook" control (S6, owner review).
+   --------------------------------------------------------------------------
+
+   Was a Material pencil in a bare `IconButton`: the last pen icon on the sheet, and a
+   pencil means "edit" where this opens a LIST — the field beside it is already editable
+   by typing in it. A bronze mark on the row's own line instead, keylined on hover like
+   every other quiet control here, drawn as the scroll the codex already uses to mean "the
+   book" (the character list and the sheet header both carry it). */
+.character-sheet-page .cs-record-row .MuiIconButton-root {
+	width: var(--nexus-target);
+	height: var(--nexus-target);
+	padding: 0;
+	border: 1.5px solid transparent;
+	border-radius: 0;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 75%,
+		var(--ifm-font-color-base)
+	);
+}
+.character-sheet-page .cs-record-row .MuiIconButton-root:hover {
+	border-color: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
+	color: var(--nexus-bronze);
+}
+
+/* M13 S6 — the tab header plate.
+   ==========================================================================
+
+   The container the Personal tab's per-field ornament became — at the second attempt.
+   Round one wrapped it in `CardFrame` (cartouche keystone + four corner rails), which at
+   a tab's full width drew a metre of filigree across the top of the sheet. An ornament
+   sized for a spell card is not sized for a 1200px strip. The plate keeps the idea and
+   drops the dose: four rivets, a keyline, a wash. `position: relative` because the rivets
+   are positioned against it.
+
+   No title either — the tab bar directly above already names the tab, and a page title is
+   something a document needs and a tool does not. The plate holds the band and the tab's
+   commands, side by side. */
+.character-sheet-page .cs-tab-header {
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.5rem 1rem;
+	padding: 0.5rem 0.75rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 34%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
+	margin-bottom: 0.75rem;
+}
+.character-sheet-page .cs-tab-header__body {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+/* Inside the plate the band has no frame of its own: it is already inside the tab's
+   container, and a bounded band within a bounded plate is the box-in-a-box this theme
+   spends its time removing. It keeps its type sizes and its line box. */
+.character-sheet-page .cs-tab-header .cs-meta-band {
+	padding: 0;
+	border: none;
+	background: none;
+	outline: none;
+	margin-bottom: 0;
 }
 
 /* M13 S4d (owner review) — the meta band.

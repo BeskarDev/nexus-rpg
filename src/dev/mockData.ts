@@ -1,6 +1,7 @@
 import { Character, CharacterDocument } from '../types/Character'
 import { doc } from 'firebase/firestore'
 import { db } from '@site/src/config/firebase'
+import { PartyInfo } from '@site/src/types/Party'
 
 // Helper function to generate UUIDs consistently with the rest of the codebase
 const generateId = () => crypto.randomUUID()
@@ -359,7 +360,45 @@ export const createMockCharacter = (): CharacterDocument => {
 				},
 			],
 		},
-		companions: [],
+		companions: [
+			{
+				id: 'mock-companion-1',
+				name: 'Ashfoot',
+				// The Companion Builder's own output shape, verbatim — so the dev fixture
+				// exercises `parseCompanionMarkdown` rather than a hand-tidied version of it
+				// that would hide a parser fault (M13 S7, owner review).
+				markdown: [
+					'#### **Ashfoot** (Medium Beast)',
+					'',
+					'**Tier:** 2 (Veteran)',
+					'',
+					'| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |',
+					'| --- | --- | --- | --- | --- | --- | --- | --- | --- |',
+					'| 18 | 2 (natural light) | d8 | d10 | d6 | d4 | 8 | 10 | 7 |',
+					'',
+					'**Diet:** herbivore',
+					'',
+					'**Skills:** Athletics (2), Perception (2), Survival (1)',
+					'',
+					'**Movement:** 12 (gallop)',
+					'',
+					'**Immunities:** —',
+					'**Resistances:** frost',
+					'**Weaknesses:** fire',
+					'',
+					'**Attacks:**',
+					'- **Hooves** 7/11/15 physical damage. On a strong hit, the target is knocked prone.',
+					'- **Trample** 5/8/11 physical damage against a prone target, no roll needed.',
+					'',
+					'**Abilities:**',
+					'- **Sure-footed** *Passive* Ignores difficult terrain caused by scree or sand.',
+					'- **Bolt** *Quick Action* Moves its full movement away from a threat without provoking.',
+				].join('\n'),
+				currentHP: 14,
+				maxHP: 18,
+				wounds: 1,
+			},
+		],
 		partyId: undefined,
 	}
 
@@ -754,3 +793,70 @@ export const getMockCharacters = (): CharacterDocument[] => {
 		createOutdatedMockCharacter(),
 	]
 }
+
+/**
+ * A party for the Party tab in dev mode (M13 S7, owner review).
+ *
+ * The tab is the one surface on the sheet that cannot render from a mock CHARACTER: its
+ * content belongs to a `parties` document that only Firestore has, so signed out — which is
+ * how the sheet is reviewed locally — it showed the "create or join a party" branch and, once
+ * a subscription was attempted, an error. Two of its three surfaces (the member ledger and the
+ * shared notes) were therefore unreviewable.
+ *
+ * This is that document, shaped exactly as `PartyService` returns it: three members, one of
+ * them the mock character itself, so the `you` mark, the leave-vs-remove verbs and the
+ * last-member delete case are all visible. `SharedNotes` uses it only when there is no signed
+ * in user AND `NODE_ENV === 'development'`.
+ */
+export const createMockParty = (characterId: string): PartyInfo => ({
+	party: {
+		id: 'mock-party-1',
+		name: 'The Ashen Compact',
+		notes: [
+			'## Standing questions',
+			'',
+			'- Who paid the Kesh caravan to leave three days early?',
+			'- The seal below the granary is Akashic, not local. Ask Theron.',
+			'',
+			'## Owed',
+			'',
+			'| To | What | By when |',
+			'| --- | --- | --- |',
+			'| Harbourmaster | 40c berth fee | next full moon |',
+			'| Theron | the copied tablet | no deadline given |',
+		].join('\n'),
+		createdBy: 'mock-user',
+		createdAt: new Date('2026-07-01T10:00:00Z').toISOString(),
+		members: [
+			characterId,
+			'mock-collection-mock-character-2',
+			'mock-collection-mock-character-3',
+		],
+	},
+	members: [
+		{
+			characterId,
+			name: 'Kael Stormwind',
+			playerName: 'You',
+			folk: 'Akashic',
+			background: 'Scholar',
+			level: 4,
+		},
+		{
+			characterId: 'mock-collection-mock-character-2',
+			name: 'Ysra of the Reeds',
+			playerName: 'Mara',
+			folk: 'Human',
+			background: 'Fisher',
+			level: 3,
+		},
+		{
+			characterId: 'mock-collection-mock-character-3',
+			name: 'Bardun Ninefold',
+			playerName: 'Sam',
+			folk: 'Duran',
+			background: 'Smith',
+			level: 5,
+		},
+	],
+})

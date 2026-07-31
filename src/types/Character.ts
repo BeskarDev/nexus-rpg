@@ -78,7 +78,23 @@ export type Companion = {
 	markdown: string
 	currentHP: number
 	maxHP: number
-	wounded: boolean
+	/**
+	 * @deprecated Since M13 S7 — superseded by `wounds`.
+	 *
+	 * Kept on the type because stored documents still carry it: `migrateCharacterData`
+	 * converts a `true` into one wound, and the field is left in place so an older client
+	 * reading the same document does not lose the flag.
+	 */
+	wounded?: boolean
+	/**
+	 * Wounds taken, 0-2.
+	 *
+	 * A companion has **two Health Marks** (`docs/08-creatures/01-mounts-companions`): at two
+	 * Wounds they are instantly dead, and one Wound plus one Fatigue starts them dying like an
+	 * adventurer. The sheet modelled this as a single boolean, so the second mark — the one
+	 * that decides whether the companion survives — could not be recorded.
+	 */
+	wounds?: number
 }
 
 export type Statistics = {
