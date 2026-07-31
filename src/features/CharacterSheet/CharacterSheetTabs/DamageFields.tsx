@@ -19,18 +19,31 @@ import {
 } from '@site/src/types/Character'
 import React, { useMemo } from 'react'
 import { SectionHeader } from '../CharacterSheet'
+import DamageSigil from '@site/src/components/codex/DamageSigil'
 import { useAppSelector } from '../hooks/useAppSelector'
 
 export type DamageFieldsProps = {
 	type: 'weapon' | 'spell'
 	damage: Damage
 	updateDamage: (update: Partial<Damage>) => void
+	/**
+	 * Render the calculator's parts directly instead of behind a gear popover
+	 * (M13 S4b).
+	 *
+	 * The gear existed because this component used to sit in a weapon's SUMMARY
+	 * row, where a full calculator has no room — which made it a second, nested
+	 * disclosure inside a row that already expands, the only one of its kind on
+	 * the sheet. Inside the details panel there is room, and a popover over a
+	 * popover-less panel is a step for nothing.
+	 */
+	inline?: boolean
 }
 
 export const DamageFields: React.FC<DamageFieldsProps> = ({
 	type,
 	damage,
 	updateDamage,
+	inline = false,
 }) => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
@@ -119,47 +132,8 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 		setAnchorEl(null)
 	}
 
-	return (
-		<>
-			<Box
-				sx={{
-					display: 'flex',
-					alignItems: 'center',
-					columnGap: 0.5,
-				}}
-			>
-				<TextField
-					disabled
-					size="small"
-					variant="standard"
-					value={
-						damage.staticDamage
-							? `${weakDamage} ${damage.type}`
-							: `${weakDamage}/${strongDamage}/${criticalDamage} ${damage.type}`
-					}
-					label="Damage"
-					sx={{
-						maxWidth: '6.5rem',
-					}}
-				/>
-				<IconButton size="small" onClick={handleClick} sx={{ ml: -0.5 }}>
-					<Settings fontSize="small" />
-				</IconButton>
-			</Box>
-			<Menu
-				anchorEl={anchorEl}
-				open={open}
-				onClose={handleClose}
-				MenuListProps={{ sx: { p: 2, maxWidth: '20rem' } }}
-			>
-				<SectionHeader>Damage Calculator</SectionHeader>
-				<Typography variant="subtitle2" sx={{ mb: 1 }}>
-					Set the individual components for calculation your damage. The result
-					will display as {damage.staticDamage ? '"X"' : '"X/Y/Z"'}, where X =
-					weak hit
-					{damage.staticDamage ? '' : ', Y = strong hit, and Z = critical hit'}.
-				</Typography>
-				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+	const parts = (
+		<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
 					<SheetInput
 						select
 						size="small"
@@ -244,6 +218,12 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 						<Typography variant="caption">static</Typography>
 					</Box>
 					<Box sx={{ width: '100%', flexGrow: 1 }} />
+					{/* M13 S4c: each option carries its mark, inked in its identity hue.
+						MUI renders the selected option's children as the closed value, so
+						one change gives the mark to both the list and the field — and the
+						field then matches the weapon row, where the same type is a mark
+						rather than a word. The word stays here: a dropdown is where you
+						LEARN which mark is which, so this is the one place both belong. */}
 					<TextField
 						size="small"
 						select
@@ -252,14 +232,51 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 							updateDamage({ type: event.target.value as DamageType })
 						}
 						label="Type"
+						sx={{ width: '10rem' }}
 					>
 						{damageTypeArray.map((dt) => (
 							<MenuItem key={dt} value={dt}>
-								{dt}
+								<Box
+									sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}
+								>
+									<DamageSigil type={dt} size={15} />
+									{dt}
+								</Box>
 							</MenuItem>
 						))}
 					</TextField>
 				</Box>
+	)
+
+	if (inline) return parts
+
+	return (
+		<>
+			<Box sx={{ display: 'flex', alignItems: 'center', columnGap: 0.5 }}>
+				<TextField
+					disabled
+					size="small"
+					variant="standard"
+					value={
+						damage.staticDamage
+							? `${weakDamage} ${damage.type}`
+							: `${weakDamage}/${strongDamage}/${criticalDamage} ${damage.type}`
+					}
+					label="Damage"
+					sx={{ maxWidth: '6.5rem' }}
+				/>
+				<IconButton size="small" onClick={handleClick} sx={{ ml: -0.5 }}>
+					<Settings fontSize="small" />
+				</IconButton>
+			</Box>
+			<Menu
+				anchorEl={anchorEl}
+				open={open}
+				onClose={handleClose}
+				MenuListProps={{ sx: { p: 2, maxWidth: '20rem' } }}
+			>
+				<SectionHeader>Damage Calculator</SectionHeader>
+				{parts}
 			</Menu>
 		</>
 	)

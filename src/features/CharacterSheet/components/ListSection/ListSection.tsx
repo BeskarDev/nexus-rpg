@@ -16,6 +16,8 @@ export interface ListSectionProps
 	onExpandedChange?: (expanded: boolean) => void
 	sx?: object
 	headerSx?: object
+	/** Class for the section container — see `UnifiedListItem.summaryClassName`. */
+	className?: string
 }
 
 /**
@@ -47,6 +49,7 @@ export const ListSection: React.FC<ListSectionProps> = ({
 	onExpandedChange,
 	sx,
 	headerSx,
+	className,
 	label,
 	...headerProps
 }) => {
@@ -62,7 +65,7 @@ export const ListSection: React.FC<ListSectionProps> = ({
 	}
 
 	return (
-		<Box sx={{ width: '100%', px: 1, py: 0.5, ...sx }}>
+		<Box className={className} sx={{ width: '100%', px: 1, py: 0.5, ...sx }}>
 			<ListSectionHeader
 				label={label}
 				{...headerProps}

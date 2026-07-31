@@ -262,7 +262,9 @@ input[type='number'] {
 	justify-content: center;
 	flex-shrink: 0;
 	/* M13 S3.5: sized by the shared interactive floor, so this control and every
-	   MUI IconButton beside it are one size on a mouse and one size on a finger. */
+	   MUI IconButton beside it are one size — S4d dropped the token's touch step,
+	   and the glyph bump that rode along with it, so a control strip reads the same
+	   on a phone as on a laptop. */
 	width: var(--nexus-target);
 	height: var(--nexus-target);
 	padding: 0;
@@ -285,15 +287,6 @@ input[type='number'] {
 .cs-tokens .cs-mark-button:focus-visible {
 	outline: 1.5px solid var(--nexus-bronze);
 	outline-offset: 2px;
-}
-
-/* Touch pointers get the bigger target. `pointer: coarse` asks the real
-   question — is this being tapped — where a width breakpoint only guesses. */
-@media (pointer: coarse) {
-	.character-sheet-page .cs-mark-button,
-	.cs-tokens .cs-mark-button {
-		font-size: var(--nexus-text-md);
-	}
 }
 
 /* Inside a chip there is no plate: the chip IS the plate, and a box inside a box
@@ -326,12 +319,6 @@ input[type='number'] {
 	background: none;
 	opacity: 1;
 }
-@media (pointer: coarse) {
-	.character-sheet-page .cs-chip .cs-mark-button,
-	.cs-tokens .cs-chip .cs-mark-button {
-		font-size: var(--nexus-text-xl);
-	}
-}
 
 /* M13 S3 (owner review) — one register for a section header's controls.
 
@@ -347,7 +334,9 @@ input[type='number'] {
 .character-sheet-page .cs-section-actions .MuiIconButton-root,
 .cs-tokens .cs-section-actions .MuiIconButton-root {
 	/* M13 S3.5: sized by the shared interactive floor, so this control and every
-	   MUI IconButton beside it are one size on a mouse and one size on a finger. */
+	   MUI IconButton beside it are one size — S4d dropped the token's touch step,
+	   and the glyph bump that rode along with it, so a control strip reads the same
+	   on a phone as on a laptop. */
 	width: var(--nexus-target);
 	height: var(--nexus-target);
 	padding: 0;
@@ -363,12 +352,6 @@ input[type='number'] {
 .character-sheet-page .cs-section-actions .MuiSvgIcon-root,
 .cs-tokens .cs-section-actions .MuiSvgIcon-root {
 	font-size: 0.95rem;
-}
-@media (pointer: coarse) {
-	.character-sheet-page .cs-section-actions .MuiSvgIcon-root,
-	.cs-tokens .cs-section-actions .MuiSvgIcon-root {
-		font-size: 1.15rem;
-	}
 }
 /* A control that is also a STATE says so by filling its plate, not by being the
    only one with a border. `data-state` marks the ones where the difference is
@@ -402,4 +385,328 @@ input[type='number'] {
 	width: 2.35rem;
 	height: 2.35rem;
 	font-size: var(--nexus-text-sm);
+}
+
+/* M13 S4 (owner review) — a labelled command in a section header.
+   ==========================================================================
+
+   "Magic Item Builder" was a stock MUI outlined `Button`: 4px radius, sentence
+   case, its own type size, its own height. Beside a row of 24px stamped keyline
+   plates it read as a control borrowed from a different application. It is the
+   same plate as its neighbours now, only wider because it carries a word — the
+   register is the plate, the difference is the content. */
+.character-sheet-page .cs-section-actions .MuiButton-root,
+.cs-tokens .cs-section-actions .MuiButton-root {
+	min-height: var(--nexus-target);
+	height: var(--nexus-target);
+	padding: 0 0.5rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	border-radius: 0;
+	color: var(--nexus-bronze);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+}
+.character-sheet-page .cs-section-actions .MuiButton-root:hover,
+.cs-tokens .cs-section-actions .MuiButton-root:hover {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.character-sheet-page .cs-section-actions .MuiButton-startIcon,
+.cs-tokens .cs-section-actions .MuiButton-startIcon {
+	margin-right: 4px;
+	margin-left: 0;
+}
+
+/* M13 S4 (owner review) — the ledger's COLUMN HEADER.
+   ==========================================================================
+
+   An inventory row carried its own label on every cell, so a list of four items
+   printed "Name / Properties / Location / Cost / Load / Amount / Uses" four
+   times. That is a form repeated N times; a ledger names its columns once at the
+   top and then rules the entries under them.
+
+   The labels are not deleted — they are still rendered on every field and still
+   name it in the accessibility tree — they are visually hidden while the column
+   header is carrying the same words. `display: none` would have taken the
+   accessible name with it, which is why this is a clip rather than a hide.
+
+   Below `--cs-ledger-collapse` there is no room for seven columns, so the header
+   is dropped and the per-field labels come back: the wrapped-with-labels layout
+   is the correct one on a phone, and it is what the rows already do. */
+.character-sheet-page .cs-ledger-cols {
+	--cs-ledger-collapse: 45rem;
+}
+
+@media (min-width: 45rem) {
+	/* Scoped to the ROW, not the section: the details panel lives inside the same
+	   `.cs-ledger-cols` container and its fields are the only place several of
+	   these values can be edited — hiding their labels left a panel of unnamed
+	   boxes. The column header replaces labels for the summary line only. */
+	.character-sheet-page .cs-ledger-cols .cs-ledger-row-grid .MuiInputLabel-root {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+	.character-sheet-page .cs-ledger-cols .cs-ledger-head {
+		display: grid;
+	}
+	.character-sheet-page .cs-ledger-cols .cs-ledger-row-grid {
+		display: grid !important;
+		align-items: center;
+	}
+	/* A field in a grid cell fills its column: the row's alignment is the
+	   column's job now, not each field's own `maxWidth`. */
+	.character-sheet-page .cs-ledger-cols .cs-ledger-row-grid > * {
+		max-width: none !important;
+		min-width: 0 !important;
+		width: 100%;
+	}
+}
+
+/* Hidden until the columns exist. */
+.character-sheet-page .cs-ledger-head {
+	display: none;
+	align-items: end;
+	/* 4px matches `AccordionSummary`'s `px: 0.5`; the row's own grid starts there,
+	   so the header must too or every column is four pixels out. */
+	padding: 0 4px 2px;
+	column-gap: 8px;
+}
+.character-sheet-page .cs-ledger-head > span {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	line-height: 1;
+	color: color-mix(in srgb, var(--nexus-bronze) 78%, var(--ifm-font-color-base));
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* M13 S4d (owner review) — the meta band.
+   ==========================================================================
+
+   A bounded line of facts ABOUT a thing, above the thing itself. Two ranks:
+   `primary` for a tab's own facts (the Items purse strip — coins, load, carry
+   mod) and `--sub` for a section's (mount / storage name and capacity).
+
+   It began as the purse strip alone. Coins and load were the same weight as a
+   location's meta line and the owner's report was that you look straight past
+   them — they are not peers of a row label, they are the two numbers the whole
+   tab is about. Promoting them meant a bounded band, and once the sub-header
+   needed the same thing the styling and the markup both got a name:
+   `MetaBand` in components/MetaBand, this block, one idiom at two ranks.
+
+   Grouping is a WASH plus a keyline frame, per the theme's standing rule — the
+   fields inside are separated by space alone, because a vertical rule between
+   them would be exactly the bar-as-grouping-device that has been rejected three
+   times. `outline` at a negative offset is the sanctioned flat second keyline and
+   does the work an inlaid border would in stone; there is no bevel anywhere. */
+.character-sheet-page .cs-meta-band {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 1.5rem;
+	padding: 0.5rem 0.75rem;
+	margin-bottom: 0.75rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 42%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	outline: 1px solid color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+	outline-offset: -4px;
+}
+/* The band's own label register. It borrowed `cs-section-meta__label` for one
+   slice, and inheriting that class's bottom RULE under a frame the band already
+   has gave the line two edges. That class is gone now — the band replaced its only
+   two consumers, so the caption-line register no longer exists on the sheet. */
+.character-sheet-page .cs-meta-band__label {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	line-height: 1.2;
+	color: var(--nexus-bronze);
+	white-space: nowrap;
+}
+/* A value in the band, not a caption beside a label: the ladder's 18px step, and
+   tabular so a coin count does not shift its own label when it changes. The label
+   grows a rung with it — 11px small caps under an 18px numeral reads as a footnote
+   on the number rather than as its name. */
+.character-sheet-page .cs-meta-band__value {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-md);
+	font-variant-numeric: tabular-nums;
+	line-height: 1.2;
+}
+.character-sheet-page .cs-meta-band .cs-meta-band__value input {
+	font-size: var(--nexus-text-md);
+	font-weight: 700;
+}
+
+/* The sub-header: the same band, one rank down (S4d, owner review).
+   --------------------------------------------------------------------------
+
+   "On Mount" and "In Storage" open with the same kind of line — what the section
+   is called and what it is carrying — and it had the same two faults the purse
+   strip had: the pieces did not share a line box, and nothing bounded them.
+
+   It is the same idiom rather than a second one, quieted by three steps and no
+   new ideas: the values drop to the 15px scan step instead of 18px, the labels
+   stay at 11px, and the inset second keyline is dropped — that inlaid edge is
+   what marks the purse as the tab's opening statement, so it must not appear on
+   a line subordinate to it. The wash and the keyline are lighter for the same
+   reason.
+
+   It is also CAPPED at the ledger's measure, where the purse runs the full width.
+   That is the fix for the other half of the report: with the two groups pushed
+   apart in a 1049px-wide row, "Load 0 / 0" ended up ~600px from the name it
+   belongs to and read as an unrelated fragment. Bounded at the same measure the
+   rows use, its right edge lands where the ledger's own numeric columns end. */
+.character-sheet-page .cs-meta-band--sub {
+	max-width: var(--cs-max-width-lg);
+	gap: 0 1rem;
+	padding: 0.3rem 0.625rem;
+	margin-bottom: 0.5rem;
+	border-color: color-mix(in srgb, var(--nexus-bronze) 26%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 4%, transparent);
+	outline: none;
+}
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__value,
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__value input {
+	font-size: var(--nexus-text-dense);
+}
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__label {
+	font-size: var(--nexus-text-2xs);
+}
+/* The location's NAME is prose, not a figure: same line box and size as a value,
+   but no tabular figures and a text weight, or "Kesh's mule" reads as a total. */
+.character-sheet-page .cs-meta-band__text input {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-dense);
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+/* One line box for everything in the band.
+   --------------------------------------------------------------------------
+
+   The band holds four KINDS of thing — a small-caps label with an inline sigil, a
+   plain 18px numeral, an 18px numeral inside a text field, and an 11px qualifier
+   ("max 22") — and `align-items: center` only lines those up if their line boxes
+   agree. They did not: a field carries MUI's own input padding and line-height on
+   top of the glyphs, so the numeral inside one sat lower than the numeral beside
+   it, and the small-caps labels floated between the two.
+
+   Fixed by making every line box the same 1.2 and stripping the field's vertical
+   padding, so centring has identical boxes to centre. Optical centring by hand
+   (a `translateY` on one item) was the alternative and is not one: it would have
+   to be re-tuned for every font-size in the band. */
+.character-sheet-page .cs-meta-band,
+.character-sheet-page .cs-meta-band > * {
+	align-items: center;
+}
+.character-sheet-page .cs-meta-band .MuiInputBase-input {
+	padding-top: 0;
+	padding-bottom: 0;
+	line-height: 1.2;
+}
+
+/* M13 S4 (owner review) — the doc reading column's list indent does NOT apply to
+   the sheet's lists.
+
+   `custom.css` sets `.theme-doc-markdown ul { padding-left: 1.4rem }` for the
+   bronze diamond bullets, with a comment saying it is scoped away from the
+   character sheet. It is not: the sheet is rendered inside an MDX page, so it is
+   inside `.theme-doc-markdown`, and every `DynamicList` — which is a `<ul>` —
+   was indented 22px. Invisible until S4 put a column header above one and the
+   two did not line up.
+
+   Undone here rather than in `DynamicList`'s `sx`, because an `sx` class loses to
+   a two-class selector; this needs the extra specificity to win, and CSS is where
+   that argument belongs. */
+.theme-doc-markdown .character-sheet-page ul.MuiList-root {
+	padding-left: 0;
+}
+
+/* M13 S4b — a ledger row is one line on a mouse.
+   ==========================================================================
+
+   Rows measured 53px, mostly because every value sat in its own bordered slot
+   whether or not it could be edited. With the read-only values un-boxed (D5) the
+   row only has to be as tall as its one remaining control (the uses pips — S4d
+   made amount read-only too), and the interactive floor already answers what that
+   is. So this is `--nexus-target` plus the row's own padding, one value on every
+   pointer since S4d dropped the token's touch step. */
+@media (min-width: 45rem) {
+	.character-sheet-page .cs-ledger-cols .MuiAccordionSummary-root {
+		min-height: calc(var(--nexus-target) + 10px);
+		padding-top: 0;
+	}
+	.character-sheet-page .cs-ledger-cols .MuiAccordionSummary-root.Mui-expanded {
+		min-height: calc(var(--nexus-target) + 10px);
+	}
+	/* The list's own gap is what remains of the old spacing; the engraved rule on
+	   each row is the separator now, so the gap only has to keep the rules from
+	   touching their neighbour's content. */
+	.character-sheet-page .cs-ledger-cols .MuiList-root {
+		gap: 0;
+	}
+	.character-sheet-page .cs-ledger-cols .MuiListItem-root {
+		align-items: center;
+	}
+}
+
+/* M13 S4b — the column name, carried by the cell, below the ledger breakpoint.
+   ==========================================================================
+
+   Un-boxing the read-only cells removed their `<label>` along with their border,
+   which is right at desktop width because the column header names them. On a
+   phone the header is gone and the row has wrapped, and a cell with no label is
+   a bare number — "light armor, +1 AV — 25 0". So each read cell carries its
+   column's name and shows it exactly where the header cannot. */
+.character-sheet-page .cs-cell-label {
+	margin-right: 0.4rem;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: color-mix(in srgb, var(--nexus-bronze) 78%, var(--ifm-font-color-base));
+}
+@media (min-width: 45rem) {
+	.character-sheet-page .cs-ledger-cols .cs-ledger-row-grid .cs-cell-label {
+		display: none;
+	}
+}
+
+/* M13 S4b — the floating label's reserved space, reclaimed.
+   ==========================================================================
+
+   MUI puts `margin-top: 16px` on any input that follows a `<label>`, to leave
+   room for the label to float down over the field. S3.5 made every label static,
+   so that reservation has been dead space on every labelled field on the sheet
+   ever since — 16px each, and it is what kept an otherwise 24px inventory row at
+   40px.
+
+   Undone here rather than in `createTheme.ts`, after three attempts there did
+   nothing: the rule lives inside InputBase's root styled component as
+   `'label + &'`, not in a `formControl` slot, so a slot override emits CSS that
+   matches nothing, and a root-slot override ties on specificity with MUI's own
+   and loses on order. A two-class selector wins outright and says why. */
+.character-sheet-page label + .MuiInputBase-root {
+	margin-top: 0;
 }

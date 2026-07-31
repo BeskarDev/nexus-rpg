@@ -135,6 +135,16 @@ export type SigilName =
 	| 'fallen-figure'
 	| 'water'
 	| 'hollow-figure'
+	// --- Damage types (M13 S4c) ---
+	| 'spearhead'
+	| 'icicles'
+	| 'bolt'
+	| 'corroded-drop'
+	| 'skull'
+	| 'halo'
+	| 'cracked-disc'
+	| 'burst'
+	| 'shockwave'
 
 export const SIGIL_INNER: Record<SigilName, string> = {
 	// --- Chapter sigils ---
@@ -1186,4 +1196,205 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 				3.4,
 			),
 		),
+
+	// --- Damage types (M13 S4c) ---------------------------------------------
+	//
+	// Eleven types, nine drawn here; `fire` reuses `flame` and `poison` reuses
+	// `venom-fang`, because those marks already depict exactly this (they are the
+	// `burning` and `poisoned` conditions). See `damage-sigils.ts` for the mapping
+	// and for why the reuse is tolerable in this table specifically.
+	//
+	// These render smaller than any other tier — ~13px in a weapon row's damage
+	// cell, against the conditions' 16px — so the design law from that tier is
+	// tightened rather than merely followed: no interior detail at all except a
+	// void of 4+ units, one silhouette idea per mark, and nothing that resolves to
+	// a lozenge. The crowded neighbourhood here is radiance: `sun` (chapter),
+	// `sparkle` (arcane), `ishtar-star` (motivation) and `burst` all live in it,
+	// which is why `halo` is a directional beam rather than a fourth
+	// rayed disc.
+
+	/**
+	 * A socketed spearhead — physical damage.
+	 *
+	 * The mundane type, so it depicts a plain bronze point rather than an
+	 * element. NOT `blades`/`sword`/`axe`/`khopesh`, all of which are assigned and
+	 * all of which say "a weapon" where this has to say "the damage a weapon
+	 * does".
+	 */
+	spearhead:
+		// A lugged spear, point up-right. The reading history is the design brief:
+		// point-UP was `sword` and collapsed into the UI up-arrow; a small head on a
+		// long diagonal shaft was `knife`; a big head on a thin shaft was a BRUSH,
+		// because that is exactly what a brush is. The lugs fix the last one — a
+		// crossbar through a shaft is a thing no brush has, and it is the single
+		// most weapon-ish feature available at this size.
+		path(
+			polyD([
+				[29, 3],
+				[19.5, 6],
+				[16.5, 9],
+				[26, 12.5],
+			]),
+		) +
+		path(barD([23.5, 5.5], [18, 11], 5)) +
+		path(barD([13.5, 8], [22.5, 17], 5.5)) +
+		path(barD([19.5, 12.5], [5, 27], 6)),
+
+	/** Three hanging icicles under a shelf — frost. */
+	icicles:
+		path(barD([4, 7.5], [28, 7.5], 6)) +
+		path(wedgeD(9.5, 9, 11, 8, 90)) +
+		path(wedgeD(16.5, 9, 16, 8.5, 90)) +
+		path(wedgeD(23, 9, 10, 7.5, 90)),
+
+	/**
+	 * A struck bolt — lightning.
+	 *
+	 * The one mark in the set that is a pre-learned sign as much as a depiction,
+	 * which is what lets it stay this thin: a zig-zag reads as lightning at any
+	 * size because the reader already knows it.
+	 */
+	bolt: path(
+		polyD([
+			[25, 3],
+			[16.5, 3],
+			[4.5, 18],
+			[14, 18],
+			[10, 29],
+			[16.5, 29],
+			[27.5, 12.5],
+			[17.5, 12.5],
+		]),
+	),
+
+	/**
+	 * A drop above a surface eaten away — acid.
+	 *
+	 * `sweat-drop` alone is bleeding and Fatigue, so the drop cannot carry this on
+	 * its own; the pitted bar under it is what makes the mark say *corrosion*
+	 * rather than *liquid*. The pits are voids at 4.5 units, which is the floor
+	 * this tier holds to.
+	 */
+	'corroded-drop':
+		// A drop, and the hole it has eaten through the slab beneath. Round 1 put
+		// pits on the slab's surface and round 2 put notches in its edge; neither
+		// survived 13px, because surface texture is exactly the interior detail the
+		// conditions tier learned fills in. A hole is not texture — it is a void in
+		// the silhouette, and a void of this size is the one kind of detail that
+		// does survive.
+		path(
+			blobD([
+				[16, 3],
+				[20.5, 9.5],
+				[22, 14.5],
+				[19, 18],
+				[13, 18],
+				[10, 14.5],
+				[11.5, 9.5],
+			]),
+		) +
+		path(boxD(3.5, 21.5, 28.5, 29.5) + circleD(16, 25.5, 3.6), true),
+
+	/**
+	 * A skull — necrotic.
+	 *
+	 * Solid cranium with two real voids and a nasal notch. The eye voids are 5
+	 * units, deliberately larger than the mask marks', because at this tier a
+	 * 3.5-unit void closes up and a skull with filled eyes is a stone.
+	 */
+	skull: path(
+		blobD([
+			[16, 2.5],
+			[24.5, 6.5],
+			[27, 14.5],
+			[23, 19.5],
+			[22, 27],
+			[10, 27],
+			[9, 19.5],
+			[5.5, 14.5],
+			[8, 7],
+		]) +
+			circleD(11.5, 13.2, 3.3) +
+			circleD(20.5, 13.2, 3.3) +
+			polyD([
+				[16, 16.5],
+				[19, 21.5],
+				[13, 21.5],
+			]),
+		true,
+	),
+
+	/**
+	 * A shaft of light falling from a slit — radiant.
+	 *
+	 * Directional on purpose. `sun`, `sparkle` and `ishtar-star` are all rayed
+	 * discs and all assigned, so a fourth would be indistinguishable at 13px; a
+	 * beam is the one shape for light that none of them occupy.
+	 */
+	'halo':
+		// A haloed ring — radiant.
+		//
+		// Renamed from `light-shaft` when the object changed: the sigil law names a
+		// mark for its own geometry, not for the idea it was commissioned to carry,
+		// so a mark that stopped being a shaft had to stop being called one.
+		//
+		// Three objects before this one. A cored beam read as a bowtie; a rising
+		// disc read as `burst`; a plain widening wedge read as a tower. The
+		// radiance neighbourhood is the most crowded in the set — `sun` (chapter),
+		// `sparkle` (arcane), `ishtar-star` (motivation) and `burst` are all rayed —
+		// and the one axis none of them uses is a HOLE. `sun` is a solid disc with a
+		// corona; this is the same corona around a ring, and at 13px the void is the
+		// difference you actually see.
+		path(ringD(16, 16, 9.5, 5.4), true) +
+		path(rayFanD(16, 16, 9, 14, 7, 6, -90)),
+
+	'cracked-disc':
+		// A disc split by a jagged fissure — psychic. Renamed from `mind-waves`
+		// with the same reasoning as `halo`: there are no waves in it any more.
+		//
+		// Three objects were tried before this one. A round mass with arcs above
+		// and below is an EYE whatever it depicts, which is the `bull-head` horns
+		// problem again; a head in profile is legible at 64px and a keyhole at
+		// 13px. What is left is the effect rather than the organ: a whole thing
+		// broken from the inside. Nothing else in the set is a cracked disc, and
+		// the fissure is a real void rather than a scored line, so it survives.
+		path(
+			circleD(16, 16, 11.4) +
+				polyD([
+					[13, 7.5],
+					[19, 13],
+					[13.5, 18],
+					[18, 24.5],
+					[21, 22.5],
+					[16.5, 17.5],
+					[22, 12],
+					[16.5, 7.5],
+				]),
+			true,
+		),
+
+	/**
+	 * Shards thrown from a centre — blast.
+	 *
+	 * Six uneven wedges, not a star: `sparkle`'s rays are regular and tapered, and
+	 * regularity is what made it read as "radiance". Unevenness is what makes this
+	 * read as "something came apart".
+	 */
+	burst:
+		path(polyD([[16, 16], [10, 2.5], [19.5, 6]])) +
+		path(polyD([[16, 16], [27, 8], [28.5, 18]])) +
+		path(polyD([[16, 16], [23, 27], [13, 29]])) +
+		path(polyD([[16, 16], [4, 24], [3, 13.5]])) +
+		path(circleD(16, 16, 4)),
+
+	/**
+	 * A driven core with two pressure arcs ahead of it — force.
+	 *
+	 * Pure magical energy with no element, so it depicts the *push* rather than a
+	 * substance. Directional, which is also what separates it from `burst`.
+	 */
+	shockwave:
+		path(circleD(8.5, 16, 4.8)) +
+		path(arcBandD(8.5, 16, 12.5, 9.2, -60, 60)) +
+		path(arcBandD(8.5, 16, 18.5, 15.2, -46, 46)),
 }

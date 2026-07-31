@@ -568,59 +568,6 @@
 	text-decoration-style: solid;
 }
 
-/* --- Damage ladder (inline) --- */
-
-/* Sits ON the text line. The stacked version parsed well but cost a line of
-   height per attack and knocked the following sentence off the baseline, so a
-   list of attacks stopped aligning. */
-.ladder {
-	white-space: nowrap;
-	font-variant-numeric: tabular-nums;
-}
-
-.ladderSlash {
-	margin: 0 0.1em;
-	color: color-mix(in srgb, var(--ifm-font-color-base) 40%, transparent);
-}
-
-/* Escalating weight across weak → strong → critical, echoing the SuccessLevel
-   rows on the spell cards so the whole codex grades severity the same way. */
-.ladderCell0,
-.ladderCell1,
-.ladderCell2 {
-	font-weight: 600;
-}
-.ladderCell0 {
-	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, transparent);
-}
-.ladderCell1 {
-	color: var(--ifm-font-color-base);
-}
-.ladderCell2 {
-	font-weight: 700;
-	color: color-mix(in srgb, var(--ifm-color-primary) 82%, var(--ifm-font-color-base));
-}
-
-/* A single small-caps initial per number (W/S/C) — enough to key the triple
-   without a second line. The full level name is in the title and the sr-only run. */
-.ladderTick {
-	margin-left: 0.06em;
-	font-family: var(--nexus-font-ui);
-	font-variant-caps: small-caps;
-	font-weight: 700;
-	font-size: 0.62em;
-	vertical-align: 0.35em;
-	color: color-mix(in srgb, var(--ifm-color-primary) 78%, var(--ifm-font-color-base));
-}
-
-.ladderKind {
-	color: color-mix(in srgb, var(--ifm-font-color-base) 82%, transparent);
-}
-/* A damage-type chip inside the ladder sits on the number baseline. */
-.ladderKind :global(.chip) {
-	top: -0.05em;
-}
-
 /* --- Property badges --- */
 
 /* Attack properties and ability qualifiers. Previously italic text in

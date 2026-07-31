@@ -1,17 +1,27 @@
 import React from 'react'
-import {
-	Box,
-	IconButton,
-	Tooltip,
-	Menu,
-	MenuItem,
-	FormControlLabel,
-	Checkbox,
-	Button,
-} from '@mui/material'
+import { IconButton, Tooltip, Button } from '@mui/material'
 import { Build, AutoFixHigh } from '@mui/icons-material'
-import { SectionHeader } from '../../../CharacterSheet'
+import {
+	ListSectionHeader,
+	SheetMenu,
+	ToggleMenuItem,
+} from '../../../components'
 import { ItemLocation } from '../../../../../types/ItemLocation'
+
+/**
+ * The tab's sections, in the order they appear on it.
+ *
+ * A list, not four copy-pasted `MenuItem` blocks (M13 S4d). The four differed only
+ * in a location key and a label, and the copies had already drifted — each one
+ * carried its own `size="small"` and its own `sx`, so a change to the row had to be
+ * made four times and was.
+ */
+const CATEGORIES: { location: ItemLocation; label: string }[] = [
+	{ location: 'worn', label: 'Weapons & Equipment' },
+	{ location: 'carried', label: 'Inventory' },
+	{ location: 'mount', label: 'On Mount' },
+	{ location: 'storage', label: 'In Storage' },
+]
 
 interface ItemsSettingsMenuProps {
 	itemLocationVisibility: Record<ItemLocation, boolean> | undefined
@@ -32,101 +42,49 @@ export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
 }) => {
 	return (
 		<>
-			<Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-				<SectionHeader sx={{ mb: 0 }}>Items & Equipment</SectionHeader>
-
-				<Tooltip title="toggle inventory categories">
-					<IconButton
-						size="small"
-						onClick={onSettingsMenuOpen}
-						sx={{
-							border: '1px solid',
-							borderColor: 'divider',
-						}}
+			{/* M13 S4: the tab's own heading on the shared ruled header, matching
+				`Abilities` on the Skills tab. The Magic Item Builder is a real command
+				rather than an icon, so it stays a labelled button — it sits in the
+				actions slot beside the levelled icon controls, not instead of them. */}
+			<ListSectionHeader
+				label="Items & Equipment"
+				sx={{ mb: 2 }}
+				actions={
+					<>
+						<Tooltip title="toggle inventory categories">
+							<IconButton size="small" onClick={onSettingsMenuOpen}>
+								<Build fontSize="inherit" />
+							</IconButton>
+						</Tooltip>
+						{onOpenMagicItemBuilder && (
+							<Button
+								size="small"
+								variant="outlined"
+								startIcon={<AutoFixHigh />}
+								onClick={onOpenMagicItemBuilder}
+								sx={{ minWidth: 'auto', px: 1, ml: 0.5 }}
+							>
+								Magic Item Builder
+							</Button>
+						)}
+					</>
+				}
+			/>
+			<SheetMenu
+				anchorEl={settingsMenuAnchor}
+				onClose={onSettingsMenuClose}
+				caption="Show categories"
+			>
+				{CATEGORIES.map(({ location, label }) => (
+					<ToggleMenuItem
+						key={location}
+						checked={itemLocationVisibility?.[location] ?? true}
+						onToggle={() => onToggleLocationVisibility(location)}
 					>
-						<Build fontSize="inherit" />
-					</IconButton>
-				</Tooltip>
-
-				{onOpenMagicItemBuilder && (
-					<Tooltip title="Create custom magic item">
-						<Button
-							size="small"
-							variant="outlined"
-							startIcon={<AutoFixHigh />}
-							onClick={onOpenMagicItemBuilder}
-							sx={{
-								minWidth: 'auto',
-								px: 1,
-								textTransform: 'none',
-							}}
-						>
-							Magic Item Builder
-						</Button>
-					</Tooltip>
-				)}
-
-				<Menu
-					anchorEl={settingsMenuAnchor}
-					open={Boolean(settingsMenuAnchor)}
-					onClose={onSettingsMenuClose}
-					transformOrigin={{ horizontal: 'left', vertical: 'top' }}
-					anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
-				>
-					<MenuItem dense>
-						<FormControlLabel
-							control={
-								<Checkbox
-									checked={itemLocationVisibility?.['worn'] ?? true}
-									onChange={() => onToggleLocationVisibility('worn')}
-									size="small"
-								/>
-							}
-							label="Weapons & Equipment"
-							sx={{ width: '100%', margin: 0 }}
-						/>
-					</MenuItem>
-					<MenuItem dense>
-						<FormControlLabel
-							control={
-								<Checkbox
-									checked={itemLocationVisibility?.['carried'] ?? true}
-									onChange={() => onToggleLocationVisibility('carried')}
-									size="small"
-								/>
-							}
-							label="Inventory"
-							sx={{ width: '100%', margin: 0 }}
-						/>
-					</MenuItem>
-					<MenuItem dense>
-						<FormControlLabel
-							control={
-								<Checkbox
-									checked={itemLocationVisibility?.['mount'] ?? true}
-									onChange={() => onToggleLocationVisibility('mount')}
-									size="small"
-								/>
-							}
-							label="On Mount"
-							sx={{ width: '100%', margin: 0 }}
-						/>
-					</MenuItem>
-					<MenuItem dense>
-						<FormControlLabel
-							control={
-								<Checkbox
-									checked={itemLocationVisibility?.['storage'] ?? true}
-									onChange={() => onToggleLocationVisibility('storage')}
-									size="small"
-								/>
-							}
-							label="In Storage"
-							sx={{ width: '100%', margin: 0 }}
-						/>
-					</MenuItem>
-				</Menu>
-			</Box>
+						{label}
+					</ToggleMenuItem>
+				))}
+			</SheetMenu>
 		</>
 	)
 }

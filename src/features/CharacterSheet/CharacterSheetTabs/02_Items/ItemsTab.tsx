@@ -105,14 +105,6 @@ export const ItemsTab: React.FC = () => {
 			}}
 		>
 			{/* Header with coins and load info */}
-			<ItemsHeader
-				coins={coins}
-				currentLoad={currentLoad}
-				carryCapacity={carryCapacity}
-				maxCapacity={maxCapacity}
-				carryModifier={encumbrance.carryModifier}
-				updateCharacter={updateCharacter}
-			/>
 
 			{/* Header with settings menu */}
 			<ItemsSettingsMenu
@@ -122,6 +114,15 @@ export const ItemsTab: React.FC = () => {
 				onSettingsMenuClose={handleSettingsMenuClose}
 				onToggleLocationVisibility={toggleLocationVisibility}
 				onOpenMagicItemBuilder={() => setMagicItemBuilderOpen(true)}
+			/>
+
+			<ItemsHeader
+				coins={coins}
+				currentLoad={currentLoad}
+				carryCapacity={carryCapacity}
+				maxCapacity={maxCapacity}
+				carryModifier={encumbrance.carryModifier}
+				updateCharacter={updateCharacter}
 			/>
 
 			{/* Weapons Section */}

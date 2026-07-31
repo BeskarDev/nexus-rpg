@@ -57,6 +57,13 @@ export type UnifiedListItemProps = {
 	sx?: object
 	/** Additional styling for the summary row */
 	summarySx?: object
+	/**
+	 * Class for the summary row, for layout a stylesheet owns rather than `sx` —
+	 * the inventory ledger's column grid is switched on by a media query in
+	 * `characterSheet.css`, so the breakpoint lives in one place instead of being
+	 * duplicated into every consumer's `sx`.
+	 */
+	summaryClassName?: string
 	/** Additional styling for the details content box */
 	detailsSx?: object
 }
@@ -95,6 +102,7 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 	maxWidth = 'var(--cs-max-width-lg)',
 	sx,
 	summarySx,
+	summaryClassName,
 	detailsSx,
 }) => {
 	const [internalExpanded, setInternalExpanded] = useState(defaultExpanded)
@@ -126,6 +134,7 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 
 	const summaryRow = (
 		<Box
+			className={summaryClassName}
 			sx={{
 				width: '100%',
 				minWidth: 0,
@@ -133,6 +142,10 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 				alignItems: 'center',
 				flexWrap: 'wrap',
 				columnGap: 1,
+				// Only visible below the ledger breakpoint, where the row wraps onto two
+				// or three lines and the cells' own line-height was the only thing keeping
+				// them apart (M13 S4d).
+				rowGap: 0.5,
 				...summarySx,
 			}}
 		>

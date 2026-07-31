@@ -23,6 +23,20 @@ export {
 	reorder,
 } from './DynamicList'
 export { ListSection, ListSectionHeader } from './ListSection'
+// M13 S4d — a menu of switches: the panel's structure and the row that is a
+// toggle. Everything visual about them is in the MUI theme.
+export { SheetMenu, ToggleMenuItem } from './SheetMenu'
+// M13 S4d — the meta band: a bounded line of facts about a tab or a section, at
+// two ranks. Two tabs' worth of hand-built `Box` trees before this existed.
+export {
+	MetaBand,
+	MetaBandField,
+	MetaBandLabel,
+	MetaBandValue,
+	MetaBandNote,
+	metaBandInputClass,
+	metaBandInputSx,
+} from './MetaBand'
 export {
 	SheetField,
 	SheetInput,

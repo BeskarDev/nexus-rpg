@@ -35,13 +35,13 @@ describe('the interactive floor is declared', () => {
 		expect(customCss).toMatch(/--nexus-target:\s*24px/)
 	})
 
-	it('steps the floor up for touch pointers', () => {
-		// `pointer: coarse`, not a width breakpoint: the question is whether this
-		// is being tapped, not how wide the window is.
-		const coarse = customCss.match(
-			/@media \(pointer: coarse\)\s*\{[^}]*\{[^}]*--nexus-target:\s*44px/,
-		)
-		expect(coarse).not.toBeNull()
+	it('does NOT step the floor up for touch pointers', () => {
+		// S3.5 stepped the token to 44px under `pointer: coarse`; S4d removed that
+		// (owner call). The step grew the header control strips, the field heights
+		// and the gap between a pip row's sigils, so the same tab read as a looser
+		// design on a phone than on a laptop. 24px meets SC 2.5.8 AA on every
+		// pointer; a touch complaint gets solved per-control from here.
+		expect(customCss).not.toMatch(/@media \(pointer: coarse\)/)
 	})
 })
 

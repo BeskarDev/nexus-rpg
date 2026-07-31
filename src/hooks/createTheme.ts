@@ -1,4 +1,10 @@
+import { createElement } from 'react'
 import type { CssVarsThemeOptions } from '@mui/material/styles'
+import {
+	CheckMarkChecked,
+	CheckMarkEmpty,
+	CheckMarkIndeterminate,
+} from '@site/src/components/codex/CheckMark'
 
 /**
  * MUI theme options for the character sheet + embedded doc tools.
@@ -167,6 +173,93 @@ export const theme: CssVarsThemeOptions = {
 				},
 			},
 		},
+		// M13 S4d — a menu is a small carved panel, not a floating Material card.
+		//
+		// `MuiPaper` already killed the elevation gradient and the shadow, which left
+		// a rounded rectangle of surface colour with no edge at all: it read as a hole
+		// rather than as a panel. One keyline and hard corners give it an edge. The
+		// inset second keyline is NOT used here — that is the Dialog's rank marker,
+		// and a menu is subordinate to the control that opened it.
+		MuiMenu: {
+			styleOverrides: {
+				paper: {
+					borderRadius: 0,
+					border: '1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent)',
+				},
+				list: { paddingTop: 4, paddingBottom: 4 },
+			},
+		},
+		// A row in that panel: hard corners, a bronze wash on hover rather than
+		// MUI's grey tonal fill, and the interactive floor as its height.
+		MuiMenuItem: {
+			styleOverrides: {
+				root: {
+					borderRadius: 0,
+					minHeight: 'var(--nexus-target)',
+					gap: 8,
+					// A menu row is CHROME, so it takes the UI face at the dense step. It
+					// was Infima's reading serif at body size — the register the sheet's
+					// prose is in — which is why a four-row config menu read as four
+					// sentences rather than as a set of switches.
+					fontFamily: 'var(--nexus-font-ui)',
+					fontSize: 'var(--nexus-text-dense)',
+					'&:hover': {
+						backgroundColor:
+							'color-mix(in srgb, var(--nexus-bronze) 10%, transparent)',
+					},
+					'&.Mui-selected, &.Mui-selected:hover': {
+						backgroundColor:
+							'color-mix(in srgb, var(--nexus-bronze) 16%, transparent)',
+					},
+					// A row that carries its own checked state inks its mark from that
+					// state. `CheckMark` draws in `currentColor`, and a menu row's colour
+					// is the reading ink, so without this a SET inlay would be bone-white.
+					// One rule here rather than an `sx` per call site — that `sx` was the
+					// last piece of this menu's styling still living in the feature.
+					'&[aria-checked="true"] .cs-check-mark': {
+						color: 'var(--nexus-bronze)',
+					},
+					'&[aria-checked="false"] .cs-check-mark': {
+						color:
+							'color-mix(in srgb, var(--nexus-bronze) 55%, var(--ifm-font-color-base))',
+						opacity: 0.7,
+					},
+				},
+			},
+		},
+		// The caption that says what a menu's rows are FOR — the same small-caps
+		// bronze register the ledger's column header and the meta band's labels use,
+		// so a menu opens with a heading instead of with an unexplained list.
+		MuiListSubheader: {
+			styleOverrides: {
+				root: {
+					backgroundColor: 'transparent',
+					fontFamily: 'var(--nexus-font-ui)',
+					fontSize: 'var(--nexus-text-2xs)',
+					fontWeight: 700,
+					fontVariantCaps: 'small-caps',
+					letterSpacing: '0.06em',
+					lineHeight: 1.6,
+					color: 'var(--nexus-bronze)',
+				},
+			},
+		},
+		// A checkbox's or radio's own label. It was Infima's reading serif at body
+		// size, which is the register the sheet's PROSE is in — so a four-row config
+		// menu read like four sentences. The UI face at the dense step is what every
+		// other label on the sheet uses, and the gap is stated here rather than left
+		// to MUI's 11px default so a drawn 18px mark sits at a deliberate distance
+		// from the words it names.
+		MuiFormControlLabel: {
+			styleOverrides: {
+				root: { marginLeft: 0, marginRight: 0, gap: 6 },
+				label: {
+					fontFamily: 'var(--nexus-font-ui)',
+					fontSize: 'var(--nexus-text-dense)',
+					lineHeight: 1.3,
+				},
+			},
+		},
 		MuiTooltip: {
 			styleOverrides: {
 				tooltip: {
@@ -178,8 +271,8 @@ export const theme: CssVarsThemeOptions = {
 		},
 		// M13 S3.5 — the interactive floor, applied at the component layer so it
 		// reaches all 125 IconButton call sites and the embedded doc tools without
-		// an `sx` edit anywhere. `--nexus-target` is 24px on a mouse and 44px under
-		// `pointer: coarse` (custom.css).
+		// an `sx` edit anywhere. `--nexus-target` is 24px on every pointer since S4d
+		// dropped the touch step (see custom.css for why).
 		MuiIconButton: {
 			styleOverrides: {
 				root: {
@@ -200,12 +293,39 @@ export const theme: CssVarsThemeOptions = {
 		// the whole trick of this slice: a control can become tappable without the
 		// list it sits in becoming taller, because the padding overlaps the row's
 		// existing leading.
+		// M13 S4d — the drawn checkbox, levelled here so EVERY checkbox in the app
+		// gets it: the sheet's config menus, the doc tools' filter lists, anything
+		// added later. MUI's default was a rounded square that fills with primary and
+		// carries a white Material tick; see `CheckMark` for why all three of those
+		// are wrong on carved stone. `SigilPip` passes its own icons and is unaffected
+		// — a pip row is a resource track, not a set of choices.
 		MuiCheckbox: {
+			defaultProps: {
+				icon: createElement(CheckMarkEmpty),
+				checkedIcon: createElement(CheckMarkChecked),
+				indeterminateIcon: createElement(CheckMarkIndeterminate),
+				// A ripple is a Material motion idiom; the mark's own state change is the
+				// feedback here, and the hover wash below is the rest of it.
+				disableRipple: true,
+			},
 			styleOverrides: {
 				root: {
 					minWidth: 'var(--nexus-target)',
 					minHeight: 'var(--nexus-target)',
-					borderRadius: 2,
+					// Hard vertices, like every other control on the site. The 2px radius
+					// was the last rounded corner in the sheet's chrome.
+					borderRadius: 0,
+					// The hover state is a wash on the socket's own square, not a circle
+					// around it — MUI's default is a round translucent puck, which is a
+					// second shape appearing behind a hard-cornered mark.
+					'&:hover': {
+						backgroundColor:
+							'color-mix(in srgb, var(--nexus-bronze) 12%, transparent)',
+					},
+					'&.Mui-focusVisible': {
+						outline: '1.5px solid var(--nexus-bronze)',
+						outlineOffset: '-1.5px',
+					},
 				},
 			},
 		},
@@ -282,6 +402,11 @@ export const theme: CssVarsThemeOptions = {
 					// M13 S3.5 — a slot is a tap target too. It measured 21px tall, which
 					// is not something you hit on a phone while reading a spell aloud.
 					minHeight: 'var(--nexus-target)',
+					// M13 S4b: the sheet's fields read at the dense scan size, not at
+					// MUI's 1rem. `medium` is the sitewide default size and it was
+					// inheriting the browser's 16px, so every unlabelled-size field on
+					// the sheet was a step larger than the text around it.
+					fontSize: 'var(--nexus-text-dense)',
 					backgroundColor:
 						'color-mix(in srgb, var(--nexus-bronze) 7%, transparent)',
 					border:
@@ -333,6 +458,7 @@ export const theme: CssVarsThemeOptions = {
 				inputMultiline: {
 					padding: 0,
 				},
+
 				multiline: {
 					padding: '4px 8px',
 				},
@@ -393,6 +519,7 @@ export const theme: CssVarsThemeOptions = {
 				root: {
 					padding: 0,
 				},
+
 				underline: {
 					'&:before, &:after': { display: 'none' },
 				},
@@ -405,8 +532,17 @@ export const theme: CssVarsThemeOptions = {
 					// label. With the label static there is nothing to notch.
 					'& .MuiOutlinedInput-notchedOutline': { display: 'none' },
 				},
+				// M13 S4b: MUI's own `MuiOutlinedInput-input` padding is `16.5px 14px`
+				// and it beats the `MuiInputBase-input` rule above on specificity — so
+				// the slot's declared 3px padding was being ignored on every outlined
+				// field, and a details panel of them was 58px per row. This is the same
+				// declaration, at the specificity that actually applies.
+				input: {
+					padding: '3px 8px',
+				},
 			},
 		},
+
 		MuiFormHelperText: {
 			styleOverrides: {
 				root: {
@@ -424,6 +560,12 @@ export const theme: CssVarsThemeOptions = {
 		// M13 S9 with the rest of the icon accounting.
 		MuiSelect: {
 			styleOverrides: {
+				// A select's rendered value is a `div`, not an `input`, so it takes
+				// neither of the input padding rules above (M13 S4b).
+				select: {
+					padding: '3px 8px',
+					minHeight: 'auto',
+				},
 				icon: {
 					right: 4,
 					color: 'var(--nexus-bronze)',

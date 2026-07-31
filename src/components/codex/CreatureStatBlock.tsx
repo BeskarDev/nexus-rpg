@@ -5,6 +5,11 @@ import SigilIcon, { SIGIL_SIZE, SigilName } from './SigilIcon'
 import StatSigil from './StatSigil'
 import { StatSigilName } from './stat-sigils'
 import DieToken from './DieToken'
+// Moved to its own module in M13 S4d (the character sheet's weapon rows use it
+// too); re-exported here so every existing import and the MDX registration keep
+// resolving from where they always did.
+export { DamageLadder } from './DamageLadder'
+export type { DamageLadderProps } from './DamageLadder'
 
 export interface CreatureStatBlockProps {
 	/** Size and type, e.g. "Medium Beast". */
@@ -317,62 +322,6 @@ export function StatBlockSection({ label, children }: StatBlockSectionProps) {
 			<h4 className={styles.sectionLabel}>{label}</h4>
 			<div className={styles.sectionBody}>{children}</div>
 		</section>
-	)
-}
-
-export interface DamageLadderProps {
-	/** The weak/strong/critical damage triple, as written: `"6/9/12"`. */
-	values: string
-	/**
-	 * The damage TYPE only ("necrotic", "fire"), as markdown children so it chips.
-	 * Omitted entirely for plain untyped damage.
-	 */
-	children?: React.ReactNode
-}
-
-const LEVELS = ['Weak', 'Strong', 'Critical']
-
-/**
- * An attack's damage triple, split into its three success levels — INLINE.
- *
- * `6/9/12 damage` is one of the densest notations in the game: three numbers
- * keyed to weak / strong / critical, written as a slash-run that has to be
- * decoded every time. 265 of the 317 published attacks open with one.
- *
- * A first version stacked a full-width label under each number. It parsed well
- * but cost a line of height per attack and pushed the following sentence off the
- * text baseline, so a list of attacks no longer aligned. This version keeps the
- * whole thing on the text line: each number carries a single small-caps initial
- * (W/S/C) as a suffix, with escalating weight across the three. The full level
- * name goes to screen readers and to the title, so nothing is lost.
- *
- * The trailing word "damage" is dropped: the three success-level ticks already
- * say that these numbers are damage, so repeating it on every attack was pure
- * redundancy. The TYPE survives, as markdown children rather than a prop, so it
- * still renders as a damage chip — passing it as a prop killed the chip, the same
- * children-vs-props trap the trait rows hit.
- *
- * Attacks whose text does not open with a clean triple keep their prose untouched
- * — the generator only emits this when it can split the value with certainty.
- */
-export function DamageLadder({ values, children }: DamageLadderProps) {
-	const cells = values.split('/')
-	return (
-		<span className={styles.ladder} title={`${values} damage (weak / strong / critical)`}>
-			{cells.map((cell, i) => (
-				<React.Fragment key={i}>
-					{i > 0 && <span className={styles.ladderSlash}>/</span>}
-					<span className={styles[`ladderCell${i}`]}>
-						{cell}
-						<span className={styles.ladderTick}>{(LEVELS[i] ?? '').charAt(0)}</span>
-					</span>
-				</React.Fragment>
-			))}
-			{children && <span className={styles.ladderKind}> {children}</span>}
-			<span className={styles.srOnly}>
-				{` damage (${cells.map((c, i) => `${LEVELS[i]} ${c}`).join(', ')})`}
-			</span>
-		</span>
 	)
 }
 

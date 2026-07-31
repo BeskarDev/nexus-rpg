@@ -111,6 +111,38 @@
 	--nexus-skill-streetwise: #8a4c2c;
 	--nexus-skill-survival: #1b5330;
 
+	/* Damage-type identity hues (M13 S4c). Hoisted out of the eleven
+	   `.chip--*-vibrant` rules below so the sheet's damage SIGILS and the doc
+	   tables' damage CHIPS read one value per type, exactly as the skills do —
+	   before this the hexes existed only inside the chip classes and a mark on the
+	   character sheet had nowhere to read them from. Values unchanged. */
+	--nexus-damage-acid: #5d7f28;
+	--nexus-damage-blast: #8a4c2c;
+	--nexus-damage-fire: #902f2f;
+	--nexus-damage-frost: #215b69;
+	--nexus-damage-lightning: #88712b;
+	--nexus-damage-necrotic: #5e34a6;
+	--nexus-damage-poison: #154225;
+	--nexus-damage-psychic: #ad3771;
+	--nexus-damage-radiant: #7d5628;
+	--nexus-damage-physical: #55504a;
+	--nexus-damage-force: #4a4a86;
+
+	/* Text-safe variants: the values above are chosen for white text on an opaque
+	   chip, so as INK they are near-black on parchment. Mixed toward the reading
+	   ink per mode, the same one-declaration trick `--cs-skill-*` uses. */
+	--cs-damage-acid: color-mix(in oklab, var(--nexus-damage-acid), var(--ifm-font-color-base) 12%);
+	--cs-damage-blast: color-mix(in oklab, var(--nexus-damage-blast), var(--ifm-font-color-base) 12%);
+	--cs-damage-fire: color-mix(in oklab, var(--nexus-damage-fire), var(--ifm-font-color-base) 12%);
+	--cs-damage-frost: color-mix(in oklab, var(--nexus-damage-frost), var(--ifm-font-color-base) 12%);
+	--cs-damage-lightning: color-mix(in oklab, var(--nexus-damage-lightning), var(--ifm-font-color-base) 12%);
+	--cs-damage-necrotic: color-mix(in oklab, var(--nexus-damage-necrotic), var(--ifm-font-color-base) 12%);
+	--cs-damage-poison: color-mix(in oklab, var(--nexus-damage-poison), var(--ifm-font-color-base) 12%);
+	--cs-damage-psychic: color-mix(in oklab, var(--nexus-damage-psychic), var(--ifm-font-color-base) 12%);
+	--cs-damage-radiant: color-mix(in oklab, var(--nexus-damage-radiant), var(--ifm-font-color-base) 12%);
+	--cs-damage-physical: color-mix(in oklab, var(--nexus-damage-physical), var(--ifm-font-color-base) 12%);
+	--cs-damage-force: color-mix(in oklab, var(--nexus-damage-force), var(--ifm-font-color-base) 12%);
+
 	/* Text-safe per-skill variants (M9 F2/S1): the --nexus-skill-* values above
 	   are dark, chosen for white-on-chip contrast, so they read as near-black
 	   text on the dark-mode surface unless lifted further toward that mode's
@@ -310,17 +342,25 @@
 	   `html` deliberately stays at the browser's 16px: overriding the root font
 	   size breaks the reader's own zoom/accessibility setting, so the scale is
 	   built on top of it rather than under it. */
-	/* M13 S3.5 — the interactive floor.
+	/* M13 S3.5 — the interactive floor. ONE size, S4d (owner call).
 
-	   ONE token, redefined by pointer type, so a rule reads `var(--nexus-target)`
-	   and is correct on both. WCAG 2.2 SC 2.5.8 (Target Size, Minimum) is 24x24
-	   CSS px at AA; SC 2.5.5 asks 44x44 at AAA and both Apple HIG (44pt) and
-	   Material (48dp) agree for touch. So: AA on a mouse, AAA on a finger.
+	   WCAG 2.2 SC 2.5.8 (Target Size, Minimum) is 24x24 CSS px at AA, which this
+	   meets on every pointer. S3.5 additionally stepped the token to 44px under
+	   `pointer: coarse` — SC 2.5.5's AAA figure, and what Apple HIG and Material
+	   ask for touch.
 
-	   `pointer: coarse` rather than a width breakpoint, because the question is
-	   whether this is being TAPPED, not how wide the window is — a tablet held in
-	   two hands at 1024px needs the big target and a small laptop window does
-	   not. */
+	   **That step is gone.** It did not only grow the hit area: it grew the header
+	   buttons, the field heights and the GAP between a pip row's sigils, so the
+	   same tab read as a different, looser design on a phone than at the table on a
+	   laptop. Nothing was gained by the pips being 20px further apart — a pip row
+	   is read as a count, and its marks stayed 0.85rem while the space between them
+	   nearly doubled.
+
+	   The premise of S3.5 was that padding could grow the target without growing
+	   the layout, and on the ledger rows it did. It did not hold for the control
+	   strips and the pip rows, which are laid out FROM those paddings. One size,
+	   AA everywhere, and a touch complaint gets solved per-control rather than by a
+	   token that moves the whole sheet. */
 	--nexus-target: 24px;
 
 	--nexus-text-3xs: 0.625rem; /* 10px — micro captions (die-token sublabels) */
@@ -384,6 +424,21 @@
 	/* Alarm hues lifted for the smoky dark surface (M8 S1). */
 	--nexus-alert-warning: #d9a63f;
 	--nexus-alert-danger: #e07a63;
+
+	/* Text-safe damage variants (M13 S4c): same reasoning as the skills below —
+	   these hexes were chosen dark for white-on-chip, so the dark surface needs a
+	   heavier mix toward the bone ink before they read as ink. */
+	--cs-damage-acid: color-mix(in oklab, var(--nexus-damage-acid), var(--ifm-font-color-base) 48%);
+	--cs-damage-blast: color-mix(in oklab, var(--nexus-damage-blast), var(--ifm-font-color-base) 48%);
+	--cs-damage-fire: color-mix(in oklab, var(--nexus-damage-fire), var(--ifm-font-color-base) 48%);
+	--cs-damage-frost: color-mix(in oklab, var(--nexus-damage-frost), var(--ifm-font-color-base) 48%);
+	--cs-damage-lightning: color-mix(in oklab, var(--nexus-damage-lightning), var(--ifm-font-color-base) 48%);
+	--cs-damage-necrotic: color-mix(in oklab, var(--nexus-damage-necrotic), var(--ifm-font-color-base) 48%);
+	--cs-damage-poison: color-mix(in oklab, var(--nexus-damage-poison), var(--ifm-font-color-base) 48%);
+	--cs-damage-psychic: color-mix(in oklab, var(--nexus-damage-psychic), var(--ifm-font-color-base) 48%);
+	--cs-damage-radiant: color-mix(in oklab, var(--nexus-damage-radiant), var(--ifm-font-color-base) 48%);
+	--cs-damage-physical: color-mix(in oklab, var(--nexus-damage-physical), var(--ifm-font-color-base) 48%);
+	--cs-damage-force: color-mix(in oklab, var(--nexus-damage-force), var(--ifm-font-color-base) 48%);
 
 	/* Text-safe skill variants (M9 F2/S1): 50% is the minimum ink-mix that
 	   clears AA for every one of the 16 identity hues at once on the smoky
@@ -950,13 +1005,6 @@ table th {
   height: 6px;
 }
 
-/* M13 S3.5 — the touch step for the interactive floor. See --nexus-target. */
-@media (pointer: coarse) {
-  :root {
-    --nexus-target: 44px;
-  }
-}
-
 /* Chip styles for table content */
 a.chip, .chip {
   display: inline-block;
@@ -1376,56 +1424,56 @@ a.chip:hover {
 
 /* Vibrant color variants for damage types */
 .chip--acid-vibrant {
-  --chip-fill: #5d7f28;
-  background-color: #5d7f28; /* Vibrant lime green */
+  --chip-fill: var(--nexus-damage-acid);
+  background-color: var(--nexus-damage-acid); /* Vibrant lime green */
   color: white;
 }
 
 .chip--blast-vibrant {
-  --chip-fill: #8a4c2c;
-  background-color: #8a4c2c; /* Vibrant orange */
+  --chip-fill: var(--nexus-damage-blast);
+  background-color: var(--nexus-damage-blast); /* Vibrant orange */
   color: white;
 }
 
 .chip--fire-vibrant {
-  --chip-fill: #902f2f;
-  background-color: #902f2f; /* Vibrant red */
+  --chip-fill: var(--nexus-damage-fire);
+  background-color: var(--nexus-damage-fire); /* Vibrant red */
   color: white;
 }
 
 .chip--frost-vibrant {
-  --chip-fill: #215b69;
-  background-color: #215b69; /* Vibrant cyan */
+  --chip-fill: var(--nexus-damage-frost);
+  background-color: var(--nexus-damage-frost); /* Vibrant cyan */
   color: white;
 }
 
 .chip--lightning-vibrant {
-  --chip-fill: #88712b;
-  background-color: #88712b; /* Vibrant yellow */
+  --chip-fill: var(--nexus-damage-lightning);
+  background-color: var(--nexus-damage-lightning); /* Vibrant yellow */
   color: white;
 }
 
 .chip--necrotic-vibrant {
-  --chip-fill: #5e34a6;
-  background-color: #5e34a6; /* Vibrant purple */
+  --chip-fill: var(--nexus-damage-necrotic);
+  background-color: var(--nexus-damage-necrotic); /* Vibrant purple */
   color: white;
 }
 
 .chip--poison-vibrant {
-  --chip-fill: #154225;
-  background-color: #154225; /* Vibrant green */
+  --chip-fill: var(--nexus-damage-poison);
+  background-color: var(--nexus-damage-poison); /* Vibrant green */
   color: white;
 }
 
 .chip--psychic-vibrant {
-  --chip-fill: #ad3771;
-  background-color: #ad3771; /* Vibrant pink */
+  --chip-fill: var(--nexus-damage-psychic);
+  background-color: var(--nexus-damage-psychic); /* Vibrant pink */
   color: white;
 }
 
 .chip--radiant-vibrant {
-  --chip-fill: #7d5628;
-  background-color: #7d5628; /* Vibrant gold */
+  --chip-fill: var(--nexus-damage-radiant);
+  background-color: var(--nexus-damage-radiant); /* Vibrant gold */
   color: white;
 }
 
@@ -1433,16 +1481,16 @@ a.chip:hover {
    a neutral struck-steel grey rather than an elemental hue — it should read as
    "mundane" beside the coloured elements, not compete with them. */
 .chip--physical-vibrant {
-  --chip-fill: #55504a;
-  background-color: #55504a; /* Struck steel grey */
+  --chip-fill: var(--nexus-damage-physical);
+  background-color: var(--nexus-damage-physical); /* Struck steel grey */
   color: white;
 }
 
 /* Force is pure magical energy — a cold violet-white, kept clear of necrotic's
    purple and psychic's pink. */
 .chip--force-vibrant {
-  --chip-fill: #4a4a86;
-  background-color: #4a4a86; /* Arcane violet */
+  --chip-fill: var(--nexus-damage-force);
+  background-color: var(--nexus-damage-force); /* Arcane violet */
   color: white;
 }
 
