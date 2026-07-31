@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Typography, Chip, Box } from '@mui/material'
+import { Typography, Box } from '@mui/material'
+import { SheetChip } from './SheetChip'
 import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
@@ -31,6 +32,7 @@ export const UpbringingSelectionDialog: React.FC<
 		{
 			key: 'name',
 			label: 'Upbringing',
+			width: 'minmax(0, 1fr)',
 			render: (value, upbringing) => (
 				<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
 					{upbringing.name}
@@ -41,6 +43,7 @@ export const UpbringingSelectionDialog: React.FC<
 			key: 'description',
 			label: 'Description',
 			sortable: false,
+			width: 'minmax(0, 2.4fr)',
 			render: (value, upbringing) => (
 				<Typography
 					variant="caption"
@@ -60,27 +63,13 @@ export const UpbringingSelectionDialog: React.FC<
 			key: 'suggested skills',
 			label: 'Suggested Skills',
 			sortable: false,
+			width: 'minmax(0, 1.2fr)',
 			render: (value, upbringing) => (
-				<Box>
+				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
 					{upbringing['suggested skills'].split(', ').map((skill, index) => (
-						<Chip
-							key={index}
-							label={skill.trim()}
-							size="small"
-							variant="outlined"
-							sx={{
-								fontSize: 'var(--nexus-text-2xs)',
-								mb: 0.25,
-								mr: 0.25,
-								borderColor: getSkillChipColor(skill.trim()),
-								color: getSkillChipColor(skill.trim()),
-								'&:hover': {
-									// getSkillChipColor returns a var(--cs-skill-*) (M9 S1), so the
-									// alpha-suffix hex trick no longer applies — color-mix() instead.
-									backgroundColor: `color-mix(in srgb, ${getSkillChipColor(skill.trim())} 20%, transparent)`,
-								},
-							}}
-						/>
+						<SheetChip key={index} tone={getSkillChipColor(skill.trim())}>
+							{skill.trim()}
+						</SheetChip>
 					))}
 				</Box>
 			),
@@ -112,6 +101,7 @@ export const UpbringingSelectionDialog: React.FC<
 			onConfirm={handleConfirm}
 			getItemKey={(upbringing) => upbringing.name}
 			confirmButtonText="Select Upbringing"
+			itemNoun="upbringing"
 			searchPlaceholder="Search by name, description, or suggested skills..."
 		/>
 	)

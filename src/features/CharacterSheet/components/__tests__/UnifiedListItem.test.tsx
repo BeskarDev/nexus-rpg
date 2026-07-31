@@ -130,6 +130,92 @@ describe('UnifiedListItem — non-expanding variant', () => {
 })
 
 /**
+ * M13 S8 — the selectable row, for a list the reader chooses FROM.
+ *
+ * The five search dialogs rendered a MUI table with a checkbox column. This is what
+ * replaced it: the same ledger line, with the choice as the row's own state rather than
+ * as a control sitting in the first cell.
+ */
+describe('UnifiedListItem — the selectable variant', () => {
+	it('is an option that reports its own state', () => {
+		render(
+			<UnifiedListItem
+				summaryContent={<span>Bronze Spear</span>}
+				selected={false}
+				onSelectedChange={vi.fn()}
+			/>,
+		)
+		const row = screen.getByRole('option', { name: /Bronze Spear/ })
+		expect(row).toHaveAttribute('aria-selected', 'false')
+	})
+
+	it('toggles on click and on the keyboard', async () => {
+		const onSelectedChange = vi.fn()
+		render(
+			<UnifiedListItem
+				summaryContent={<span>Bronze Spear</span>}
+				selected={false}
+				onSelectedChange={onSelectedChange}
+			/>,
+		)
+		const row = screen.getByRole('option', { name: /Bronze Spear/ })
+
+		// Reachable by tab before anything has been clicked — a row that only answers
+		// the mouse is the failure this assertion is here to catch.
+		await userEvent.tab()
+		expect(row).toHaveFocus()
+
+		await userEvent.keyboard(' ')
+		expect(onSelectedChange).toHaveBeenLastCalledWith(true)
+
+		await userEvent.click(row)
+		expect(onSelectedChange).toHaveBeenLastCalledWith(true)
+		expect(onSelectedChange).toHaveBeenCalledTimes(2)
+	})
+
+	it('reports the way back out when it is already chosen', async () => {
+		const onSelectedChange = vi.fn()
+		render(
+			<UnifiedListItem
+				summaryContent={<span>Bronze Spear</span>}
+				selected
+				onSelectedChange={onSelectedChange}
+			/>,
+		)
+		await userEvent.click(screen.getByRole('option', { name: /Bronze Spear/ }))
+		expect(onSelectedChange).toHaveBeenCalledWith(false)
+	})
+
+	it('draws the choice as a mark rather than as a checkbox control', () => {
+		const { container, rerender } = render(
+			<UnifiedListItem
+				summaryContent={<span>Bronze Spear</span>}
+				selected={false}
+				onSelectedChange={vi.fn()}
+			/>,
+		)
+		// The mark is decorative — the row carries `aria-selected`, so a second
+		// checkbox in the accessibility tree would announce the same fact twice.
+		expect(screen.queryByRole('checkbox')).not.toBeInTheDocument()
+		expect(container.querySelectorAll('.cs-check-mark')).toHaveLength(1)
+
+		rerender(
+			<UnifiedListItem
+				summaryContent={<span>Bronze Spear</span>}
+				selected
+				onSelectedChange={vi.fn()}
+			/>,
+		)
+		expect(container.querySelectorAll('.cs-check-mark')).toHaveLength(1)
+	})
+
+	it('stays a plain ledger line when no selection handler is given', () => {
+		render(<UnifiedListItem summaryContent={<span>Athletics</span>} />)
+		expect(screen.queryByRole('option')).not.toBeInTheDocument()
+	})
+})
+
+/**
  * M13 S7 — a summary control must not toggle the row it sits in.
  *
  * The summary line is a button, so every click inside it bubbled to the disclosure: ticking

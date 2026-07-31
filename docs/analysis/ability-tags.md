@@ -789,7 +789,6 @@ All spells reviewed and tagged by discipline/tradition. Only the base rank is ta
 | **Dimension Door** | 3 | `movement` | `action` | — | — |
 | **Wall of Force** | 3 | `creation`, `protection` | `action` | — | `pushed` |
 | **Arcane Empowerment** | 4 | `enhancement`, `resistance` | `action` | — | `paralyzed` |
-| **Astral Body** | 4 | `transformation` | `action` | — | — |
 | **Force Cage** | 4 | `debuff` | `action` | — | `restrained` |
 | **Teleportation Circle** | 4 | `creation`, `movement` | `action` | — | — |
 
@@ -811,7 +810,7 @@ All spells reviewed and tagged by discipline/tradition. Only the base rank is ta
 | **Psychic Wave** | 2 | `damage`, `debuff` | `action` | `psychic` | `dazed` |
 | **Wave of Madness** | 2 | `debuff` | `action` | `psychic` | `confused` |
 | **Invade Dreams** | 3 | `debuff`, `information` | `ritual` | `psychic` | — |
-| **Astral Body** | 4 | `transformation` | `ritual` | — | — |
+| **Astral Body** | 4 | `transformation` | `action` | — | — |
 
 #### Telekinetics
 
@@ -1151,8 +1150,8 @@ Counts spells that deal a given damage type (a spell may appear in multiple rows
 
 5. **Summoning is rare but impactful.** Only 8 spells carry the `summoning` tag, concentrated in conjuration, necromancy, nature, and war. These tend to be high-commitment spells requiring concentration.
 
-6. **Several spells are stubs or placeholders.** Prismatic Missile, Orbiting Shards, Wave of Madness, Invade Dreams, Seeming, Astral Body (conjuration), Force Cage, Teleportation Circle, Detect Life, Distortion Field, Invert Gravity, Sandstorm, Stone Pillar, Control Weather, Earthquake, Lightning Storm, Control Winds, and Silent Night have minimal or placeholder text. Their tags are provisional and based on inferred intent.
+6. **Several spells are stubs or placeholders.** Prismatic Missile, Orbiting Shards, Wave of Madness, Invade Dreams, Seeming, Force Cage, Teleportation Circle, Detect Life, Distortion Field, Invert Gravity, Sandstorm, Stone Pillar, Control Weather, Earthquake, Lightning Storm, Control Winds, and Silent Night have minimal or placeholder text. Their tags are provisional and based on inferred intent.
 
 7. **The Life tradition is unique in its healing focus.** It is the only tradition where `healing` is the primary effect for the majority of spells. All other traditions treat healing as an incidental or absent effect, consistent with the design philosophy that healing magic is concentrated in one path.
 
-8. **Ritual spells are rare but span multiple categories.** Ritual casting appears in conjuration (Arcane Glyph, Alarm, Conjure Familiar), necromancy (Animate Corpse, Animate Horde), telepathy (Psychometry, Invade Dreams, Astral Body), light (Break Curse), and nature (Wild Companion). Rituals are used exclusively for summoning, information, or permanent effects — never for direct damage.
+8. **Ritual spells are rare but span multiple categories.** Ritual casting appears in conjuration (Arcane Glyph, Alarm, Conjure Familiar), necromancy (Animate Corpse, Animate Horde), telepathy (Psychometry, Invade Dreams), light (Break Curse), and nature (Wild Companion). Rituals are used exclusively for summoning, information, or permanent effects — never for direct damage.

@@ -1,26 +1,17 @@
 import React, { useState } from 'react'
-import { Typography, Chip } from '@mui/material'
-import {
-	SearchDialog,
-	SearchDialogColumn,
-} from '../02_Items/SearchDialog/GenericSearchDialog'
+import { Typography } from '@mui/material'
+import { SheetChip } from '../../components'
+import { SearchDialog } from '../../components'
+import type { SearchDialogColumn } from '../../components'
 import combatArtsData from '../../../../utils/data/json/combat-arts.json'
 import { CharacterDocument, Ability } from '../../../../types/Character'
 import { sanitizeHtml } from '../../../../utils/typescript/htmlSanitizer'
 
-// Function to get color for combat art categories
-const getCategoryColor = (
-	category: string,
-): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
-	switch (category) {
-		case 'Basic':
-			return 'info'
-		case 'Supreme':
-			return 'error'
-		default:
-			return 'secondary'
-	}
-}
+/**
+ * `getCategoryColor` is gone (M13 S8) — see `EquipmentSearchDialog` for the general
+ * reason. Basic was `info` and Supreme was `error`, so the rarer and better combat
+ * art was the one painted in the colour the rest of the app uses for a failure.
+ */
 
 export type CombatArtsSearchDialogProps = {
 	open: boolean
@@ -50,6 +41,7 @@ export const CombatArtsSearchDialog: React.FC<CombatArtsSearchDialogProps> = ({
 		{
 			key: 'name',
 			label: 'Combat Art',
+			width: 'minmax(0, 1.2fr)',
 			render: (value, combatArt) => (
 				<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
 					{combatArt.name}
@@ -59,6 +51,7 @@ export const CombatArtsSearchDialog: React.FC<CombatArtsSearchDialogProps> = ({
 		{
 			key: 'weapons',
 			label: 'Weapons',
+			width: 'minmax(0, 1fr)',
 			render: (value) => (
 				<Typography
 					variant="caption"
@@ -77,20 +70,14 @@ export const CombatArtsSearchDialog: React.FC<CombatArtsSearchDialogProps> = ({
 		{
 			key: 'category',
 			label: 'Type',
-			render: (value) => (
-				<Chip
-					label={value}
-					size="small"
-					variant="outlined"
-					color={getCategoryColor(value)}
-					sx={{ fontSize: 'var(--nexus-text-xs)' }}
-				/>
-			),
+			width: '7rem',
+			render: (value) => <SheetChip>{value}</SheetChip>,
 		},
 		{
 			key: 'effect',
 			label: 'Effect',
 			sortable: false,
+			width: 'minmax(0, 2fr)',
 			render: (value) => (
 				<Typography
 					variant="caption"
@@ -136,6 +123,7 @@ export const CombatArtsSearchDialog: React.FC<CombatArtsSearchDialogProps> = ({
 			onImport={handleImport}
 			getItemKey={(combatArt) => combatArt.name}
 			importButtonText="Import"
+			itemNoun="combat art"
 			searchPlaceholder="Search by name, category, weapons, or effect..."
 		/>
 	)

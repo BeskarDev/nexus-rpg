@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Typography, Chip, Box } from '@mui/material'
+import { Typography, Box } from '@mui/material'
+import { SheetChip } from './SheetChip'
 import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
@@ -32,6 +33,7 @@ export const BackgroundSelectionDialog: React.FC<
 		{
 			key: 'name',
 			label: 'Background',
+			width: 'minmax(0, 1fr)',
 			render: (value, background) => (
 				<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
 					{background.name}
@@ -42,6 +44,7 @@ export const BackgroundSelectionDialog: React.FC<
 			key: 'description',
 			label: 'Description',
 			sortable: false,
+			width: 'minmax(0, 2fr)',
 			render: (value, background) => (
 				<Typography
 					variant="caption"
@@ -61,27 +64,13 @@ export const BackgroundSelectionDialog: React.FC<
 			key: 'suggested skills',
 			label: 'Suggested Skills',
 			sortable: false,
+			width: 'minmax(0, 1.2fr)',
 			render: (value, background) => (
-				<Box>
+				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
 					{background['suggested skills'].split(', ').map((skill, index) => (
-						<Chip
-							key={index}
-							label={skill.trim()}
-							size="small"
-							variant="outlined"
-							sx={{
-								fontSize: 'var(--nexus-text-2xs)',
-								mb: 0.25,
-								mr: 0.25,
-								borderColor: getSkillChipColor(skill.trim()),
-								color: getSkillChipColor(skill.trim()),
-								'&:hover': {
-									// getSkillChipColor returns a var(--cs-skill-*) (M9 S1), so the
-									// alpha-suffix hex trick no longer applies — color-mix() instead.
-									backgroundColor: `color-mix(in srgb, ${getSkillChipColor(skill.trim())} 20%, transparent)`,
-								},
-							}}
-						/>
+						<SheetChip key={index} tone={getSkillChipColor(skill.trim())}>
+							{skill.trim()}
+						</SheetChip>
 					))}
 				</Box>
 			),
@@ -90,6 +79,7 @@ export const BackgroundSelectionDialog: React.FC<
 			key: 'starting item',
 			label: 'Starting Item',
 			sortable: false,
+			width: 'minmax(0, 1fr)',
 			render: (value, background) => (
 				<Typography
 					variant="caption"
@@ -134,6 +124,7 @@ export const BackgroundSelectionDialog: React.FC<
 			onConfirm={handleConfirm}
 			getItemKey={(background) => background.name}
 			confirmButtonText="Select Background"
+			itemNoun="background"
 			searchPlaceholder="Search by name, description, skills, or starting item..."
 		/>
 	)

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Typography, Chip, Box } from '@mui/material'
+import { Typography, Box } from '@mui/material'
+import { SheetChip } from './SheetChip'
 import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
@@ -58,18 +59,15 @@ export const ArchetypeSelectionDialog: React.FC<
 		{
 			key: 'name',
 			label: 'Archetype',
+			width: 'minmax(0, 1fr)',
 			render: (value, archetype) => (
 				<Box>
 					<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
 						{archetype.name}
 					</Typography>
-					<Chip
-						label={archetype.role}
-						size="small"
-						variant="outlined"
-						color="primary"
-						sx={{ fontSize: 'var(--nexus-text-xs)', mt: 0.5 }}
-					/>
+					<Box sx={{ mt: 0.5 }}>
+						<SheetChip variant="plate">{archetype.role}</SheetChip>
+					</Box>
 				</Box>
 			),
 		},
@@ -77,6 +75,7 @@ export const ArchetypeSelectionDialog: React.FC<
 			key: 'description',
 			label: 'Description',
 			sortable: false,
+			width: 'minmax(0, 2fr)',
 			render: (value, archetype) => (
 				<Box>
 					<Typography
@@ -110,6 +109,7 @@ export const ArchetypeSelectionDialog: React.FC<
 			key: 'primarySkills',
 			label: 'Primary Skills',
 			sortable: false,
+			width: 'minmax(0, 1fr)',
 			render: (value, archetype) => (
 				<Box>
 					{archetype.primarySkills.map((skill, index) => (
@@ -152,6 +152,7 @@ export const ArchetypeSelectionDialog: React.FC<
 			}}
 			getItemKey={(item) => item.name}
 			confirmButtonText="Select Archetype"
+			itemNoun="archetype"
 			searchPlaceholder="Search archetypes by name, role, or description..."
 		/>
 	)

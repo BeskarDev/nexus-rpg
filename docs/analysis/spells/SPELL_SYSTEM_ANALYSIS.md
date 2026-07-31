@@ -516,7 +516,7 @@ All resurrection spells should carry heavy costs: material costs (consumed), fat
 | ~~Force Cage (Conjuration)~~ | — | **4** | ✅ Resolved — published at R4 in v0.11.0 (durability stats, breakable) |
 | ~~Teleportation Circle (Conjuration)~~ | — | **4** | ✅ Resolved — published at R4 |
 | ~~Wave of Madness, Silent Night, Sense Spirits~~ | — | — | ✅ Resolved — published complete at their ranks |
-| ~~Astral Body (Conjuration/Telepathy, shared)~~ | 4 | **4** | ✅ Re-validated at R4 during the P5.1 Conjuration R5 batch (2026-07-13): scouting-only form, tight tether, snap-back on damage sit under the R5 ceiling. Tether re-worded to "a thousand paces" (principle 71 errata, both copies + Alarm) |
+| ~~Astral Body (Telepathy)~~ | 4 | **4** | ✅ Re-validated at R4 during the P5.1 Conjuration R5 batch (2026-07-13): scouting-only form, tight tether, snap-back on damage sit under the R5 ceiling. Tether re-worded to "a thousand paces" (principle 71 errata + Alarm). **2026-07-31 — the Conjuration copy was removed (owner's direction).** It was an arcane-to-arcane duplicate, which §15A.1 forbids: sharing is cross-category only. Telepathy keeps it, and is the copy its own trait matrix and communication chain (R4 rung) always claimed; Conjuration's matrix never listed it. Earlier notes in this file that call it "shared Conjuration/Telepathy" are history, not current state |
 | Prismatic Missile (Evocation) | 2 | **2** | Stub — validate on completion |
 | Detect Life (Life) | 2 | **2** | Stub — validate on completion |
 | Stone Pillar (Nature) | 3 | **3** | Stub — validate on completion (ceiling-crush wording needs bounding) |

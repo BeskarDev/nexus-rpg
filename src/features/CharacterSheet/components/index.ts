@@ -7,6 +7,14 @@ export { UpbringingSelectionDialog } from './UpbringingSelectionDialog'
 export { BackgroundSelectionDialog } from './BackgroundSelectionDialog'
 export { ArchetypeSelectionDialog } from './ArchetypeSelectionDialog'
 export { SingleSelectionDialog } from './SingleSelectionDialog'
+// M13 S8 — the ledger dialog. It lived under `02_Items/SearchDialog/` and was
+// imported by Skills, Spells and Items from three directions; it is a shared
+// primitive now, which is also what let `SingleSelectionDialog` become an adapter
+// over it rather than a second copy of its table.
+export { SearchDialog } from './SearchDialog'
+// M13 S8 — the one confirmation shape, for the four actions whose loss cannot be
+// rebuilt from the rulebook. Everything else on the sheet deletes on the spot.
+export { ConfirmDialog } from './ConfirmDialog'
 export { QuickRefButton } from './QuickRefButton'
 export { DeleteButton } from './DeleteButton'
 export { UsesDisplay } from './UsesDisplay'
@@ -68,16 +76,14 @@ export {
 	FieldGroupLabel,
 	SHEET_FIELD_SIZE,
 } from './SheetField'
-export {
-	CharacterSheetCard,
-	CardHeader,
-	CardContent,
-} from './Card'
+export { CharacterSheetCard, CardHeader, CardContent } from './Card'
 
 export type { FolkData } from './FolkSelectionDialog'
 export type { UpbringingData } from './UpbringingSelectionDialog'
 export type { BackgroundData } from './BackgroundSelectionDialog'
 export type { ArchetypeData } from './ArchetypeSelectionDialog'
+export type { SearchDialogColumn, SearchDialogProps } from './SearchDialog'
+export type { ConfirmDialogProps } from './ConfirmDialog'
 export type { QuickRefButtonProps } from './QuickRefButton'
 export type { DeleteButtonProps } from './DeleteButton'
 export type { UsesDisplayProps } from './UsesDisplay'
@@ -88,10 +94,7 @@ export type { SheetChipProps, SheetChipVariant } from './SheetChip'
 export type { MarkButtonProps, MarkButtonGlyph } from './MarkButton'
 export type { ChevronProps } from './Chevron'
 export type { UnifiedListItemProps } from './DynamicList'
-export type {
-	ListSectionProps,
-	ListSectionHeaderProps,
-} from './ListSection'
+export type { ListSectionProps, ListSectionHeaderProps } from './ListSection'
 export type {
 	SheetFieldProps,
 	SheetInputProps,

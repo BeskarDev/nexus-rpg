@@ -29,7 +29,7 @@ export const MagicItemBuilderStandalone: React.FC<
 > = ({ open, onClose }) => {
 	const [dialogOpen, setDialogOpen] = useState(false)
 	const [generatedItem, setGeneratedItem] = useState<
-		(Partial<Weapon> | Partial<Item>) & { slot?: string } | null
+		((Partial<Weapon> | Partial<Item>) & { slot?: string }) | null
 	>(null)
 	const [itemName, setItemName] = useState('')
 	const [copiedToClipboard, setCopiedToClipboard] = useState(false)
@@ -114,7 +114,9 @@ export const MagicItemBuilderStandalone: React.FC<
 				<CardHeader
 					title={itemName}
 					action={
-						<Tooltip title={copiedToClipboard ? 'Copied!' : 'Copy to clipboard'}>
+						<Tooltip
+							title={copiedToClipboard ? 'Copied!' : 'Copy to clipboard'}
+						>
 							<IconButton onClick={handleCopyToClipboard} size="small">
 								<ContentCopyIcon fontSize="small" />
 							</IconButton>
@@ -126,7 +128,11 @@ export const MagicItemBuilderStandalone: React.FC<
 				<CardContent>
 					<Box sx={{ mb: 2, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
 						{weapon.quality && (
-							<Chip label={`Q${weapon.quality}`} size="small" variant="outlined" />
+							<Chip
+								label={`Q${weapon.quality}`}
+								size="small"
+								variant="outlined"
+							/>
 						)}
 						{isWeapon && (
 							<Chip
@@ -166,7 +172,9 @@ export const MagicItemBuilderStandalone: React.FC<
 							<Typography variant="caption" sx={{ fontWeight: 600, mr: 1 }}>
 								Properties:
 							</Typography>
-							<Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mt: 0.5 }}>
+							<Box
+								sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mt: 0.5 }}
+							>
 								{(Array.isArray(weapon.properties)
 									? weapon.properties
 									: weapon.properties.split(', ')
@@ -182,7 +190,10 @@ export const MagicItemBuilderStandalone: React.FC<
 							<Typography variant="caption" sx={{ fontWeight: 600 }}>
 								Description:
 							</Typography>
-							<Typography variant="body2" sx={{ mt: 0.5, whiteSpace: 'pre-wrap' }}>
+							<Typography
+								variant="body2"
+								sx={{ mt: 0.5, whiteSpace: 'pre-wrap' }}
+							>
 								{weapon.description}
 							</Typography>
 						</Box>
@@ -199,7 +210,10 @@ export const MagicItemBuilderStandalone: React.FC<
 				<Box sx={{ pt: 2 }}>
 					{!generatedItem ? (
 						<Box sx={{ textAlign: 'center', py: 3 }}>
-							<Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
+							<Typography
+								variant="body2"
+								sx={{ mb: 2, color: 'text.secondary' }}
+							>
 								Click the button below to start building a magic item
 							</Typography>
 							<Button variant="contained" onClick={handleBuilderOpen}>

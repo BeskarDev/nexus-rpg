@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useMemo } from 'react'
+import { ConfirmDialog } from '../../../components'
 import {
 	Dialog,
 	DialogTitle,
@@ -100,7 +101,7 @@ const weaponCategoryColorMap: Record<
 const getWeaponCategoryColor = (
 	category: string,
 ): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
-	return weaponCategoryColorMap[category] || 'default' as any
+	return weaponCategoryColorMap[category] || ('default' as any)
 }
 
 // Helpers to identify wand/staff base items
@@ -116,7 +117,10 @@ export type MagicItemBuilderDialogProps = {
 	onClose: () => void
 	onCreateItem?: (item: Partial<Item> | Partial<Weapon>) => void
 	character?: CharacterDocument
-	onItemCreated?: (item: Partial<Item> | Partial<Weapon>, itemName: string) => void
+	onItemCreated?: (
+		item: Partial<Item> | Partial<Weapon>,
+		itemName: string,
+	) => void
 }
 
 const steps = [
@@ -150,7 +154,9 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 		'carried',
 	)
 	const [showConfirmClose, setShowConfirmClose] = useState(false)
-	const [createdItem, setCreatedItem] = useState<(Partial<Weapon> | Partial<Item>) & { slot?: string } | null>(null)
+	const [createdItem, setCreatedItem] = useState<
+		((Partial<Weapon> | Partial<Item>) & { slot?: string }) | null
+	>(null)
 	const [createdItemName, setCreatedItemName] = useState('')
 	const [copiedToClipboard, setCopiedToClipboard] = useState(false)
 
@@ -652,7 +658,11 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 														<Chip
 															label={item.weaponCategory || '—'}
 															size="small"
-															color={item.weaponCategory ? getWeaponCategoryColor(item.weaponCategory) : 'default'}
+															color={
+																item.weaponCategory
+																	? getWeaponCategoryColor(item.weaponCategory)
+																	: 'default'
+															}
 														/>
 													</TableCell>
 												)}
@@ -817,7 +827,11 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 													<>
 														<TableCell>
 															<Chip
-																label={quality >= 4 ? `Rank ${getMaxSpellRank(quality)}` : '—'}
+																label={
+																	quality >= 4
+																		? `Rank ${getMaxSpellRank(quality)}`
+																		: '—'
+																}
 																size="small"
 																color="secondary"
 																variant="outlined"
@@ -825,7 +839,13 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 														</TableCell>
 														<TableCell>
 															<Chip
-																label={quality >= 4 ? (isStaffItem(selectedBaseItem) ? getStaffCharges(quality) : getWandCharges(quality)) : '—'}
+																label={
+																	quality >= 4
+																		? isStaffItem(selectedBaseItem)
+																			? getStaffCharges(quality)
+																			: getWandCharges(quality)
+																		: '—'
+																}
 																size="small"
 																color="secondary"
 																variant="outlined"
@@ -836,7 +856,11 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 												{isStaffItem(selectedBaseItem) && (
 													<TableCell>
 														<Chip
-															label={quality >= 4 ? getStaffSpellCapacity(quality) : '—'}
+															label={
+																quality >= 4
+																	? getStaffSpellCapacity(quality)
+																	: '—'
+															}
 															size="small"
 															color="secondary"
 															variant="outlined"
@@ -1211,7 +1235,10 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 																: 'Special'
 														}
 														size="small"
-														sx={{ height: 16, fontSize: 'var(--nexus-text-2xs)' }}
+														sx={{
+															height: 16,
+															fontSize: 'var(--nexus-text-2xs)',
+														}}
 													/>
 												)}
 											</Box>
@@ -1281,32 +1308,38 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 											</Typography>
 										</Grid>
 									)}
-									{isWandOrStaff(selectedBaseItem) && selectedQuality && (selectedQuality as number) >= 4 && (
-										<>
+									{isWandOrStaff(selectedBaseItem) &&
+										selectedQuality &&
+										(selectedQuality as number) >= 4 && (
+											<>
+												<Grid item xs={6}>
+													<Typography variant="body2" color="text.secondary">
+														<strong>Max Spell Rank:</strong>{' '}
+														{getMaxSpellRank(selectedQuality as QualityTier)}
+													</Typography>
+												</Grid>
+												<Grid item xs={6}>
+													<Typography variant="body2" color="text.secondary">
+														<strong>Charges:</strong>{' '}
+														{isStaffItem(selectedBaseItem)
+															? getStaffCharges(selectedQuality as QualityTier)
+															: getWandCharges(selectedQuality as QualityTier)}
+													</Typography>
+												</Grid>
+											</>
+										)}
+									{isStaffItem(selectedBaseItem) &&
+										selectedQuality &&
+										(selectedQuality as number) >= 4 && (
 											<Grid item xs={6}>
 												<Typography variant="body2" color="text.secondary">
-													<strong>Max Spell Rank:</strong>{' '}
-													{getMaxSpellRank(selectedQuality as QualityTier)}
+													<strong>Spells Held:</strong>{' '}
+													{getStaffSpellCapacity(
+														selectedQuality as QualityTier,
+													)}
 												</Typography>
 											</Grid>
-											<Grid item xs={6}>
-												<Typography variant="body2" color="text.secondary">
-													<strong>Charges:</strong>{' '}
-													{isStaffItem(selectedBaseItem)
-														? getStaffCharges(selectedQuality as QualityTier)
-														: getWandCharges(selectedQuality as QualityTier)}
-												</Typography>
-											</Grid>
-										</>
-									)}
-									{isStaffItem(selectedBaseItem) && selectedQuality && (selectedQuality as number) >= 4 && (
-										<Grid item xs={6}>
-											<Typography variant="body2" color="text.secondary">
-												<strong>Spells Held:</strong>{' '}
-												{getStaffSpellCapacity(selectedQuality as QualityTier)}
-											</Typography>
-										</Grid>
-									)}
+										)}
 									<Grid item xs={12}>
 										<Typography variant="body2" color="text.secondary">
 											<strong>Properties:</strong>{' '}
@@ -1369,7 +1402,9 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 													}
 												>
 													<MenuItem value="worn">Equipment (Worn)</MenuItem>
-													<MenuItem value="carried">Inventory (Carried)</MenuItem>
+													<MenuItem value="carried">
+														Inventory (Carried)
+													</MenuItem>
 												</Select>
 											</FormControl>
 										</Grid>
@@ -1480,14 +1515,14 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 							{renderStepContent(activeStep)}
 						</>
 					) : (
-					<MagicItemBuilderOutput
-						createdItem={createdItem}
-						createdItemName={createdItemName}
-						copiedToClipboard={copiedToClipboard}
-						onCopyToClipboard={handleCopyToClipboard}
-						onBuildAnother={handleResetForNewItem}
-						onClose={handleClose}
-					/>
+						<MagicItemBuilderOutput
+							createdItem={createdItem}
+							createdItemName={createdItemName}
+							copiedToClipboard={copiedToClipboard}
+							onCopyToClipboard={handleCopyToClipboard}
+							onBuildAnother={handleResetForNewItem}
+							onClose={handleClose}
+						/>
 					)}
 				</DialogContent>
 				<DialogActions
@@ -1561,11 +1596,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 							>
 								Build Another Item
 							</Button>
-							<Button
-								onClick={handleClose}
-								variant="outlined"
-								color="inherit"
-							>
+							<Button onClick={handleClose} variant="outlined" color="inherit">
 								Close
 							</Button>
 						</Box>
@@ -1573,26 +1604,20 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 				</DialogActions>
 			</Dialog>
 
-			{/* Confirmation Dialog */}
-			<Dialog open={showConfirmClose} onClose={handleCancelClose}>
-				<DialogTitle>Unsaved Changes</DialogTitle>
-				<DialogContent>
-					<Typography>
-						You have unsaved changes. Are you sure you want to close without
-						saving?
-					</Typography>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={handleCancelClose}>Keep Editing</Button>
-					<Button
-						onClick={handleConfirmClose}
-						color="error"
-						variant="contained"
-					>
-						Discard Changes
-					</Button>
-				</DialogActions>
-			</Dialog>
+			{/* Kept by the S8 confirm audit: the builder holds a multi-step draft the
+				sheet never persisted, so closing is the one press here that loses work
+				rather than an entity that can be re-imported. */}
+			<ConfirmDialog
+				open={showConfirmClose}
+				title="Unsaved changes"
+				confirmLabel="Discard changes"
+				cancelLabel="Keep editing"
+				onConfirm={handleConfirmClose}
+				onCancel={handleCancelClose}
+			>
+				Closing the builder discards the item you are building. This cannot be
+				undone.
+			</ConfirmDialog>
 		</>
 	)
 }

@@ -10,6 +10,10 @@ import type {
 	SheetSigilName,
 	StatSigilName,
 } from '@site/src/components/codex/stat-sigils'
+import {
+	CheckMarkChecked,
+	CheckMarkEmpty,
+} from '@site/src/components/codex/CheckMark'
 import { Chevron } from '../Chevron'
 
 /**
@@ -66,6 +70,20 @@ export type UnifiedListItemProps = {
 	summaryClassName?: string
 	/** Additional styling for the details content box */
 	detailsSx?: object
+	/**
+	 * Whether this row is picked, for a list the reader chooses FROM rather than
+	 * reads (M13 S8: the search dialogs' result lists).
+	 *
+	 * Passing `onSelectedChange` is what turns the row into a choice: it gains a
+	 * `CheckMark` in its gutter, `role="option"` with `aria-selected`, and
+	 * keyboard activation. Without it the row is a plain ledger line, unchanged.
+	 *
+	 * Only the non-expanding variant is selectable. A row cannot be both a
+	 * disclosure and a choice — one activation gesture, two meanings, and the
+	 * reader has no way to tell which one a click will get.
+	 */
+	selected?: boolean
+	onSelectedChange?: (selected: boolean) => void
 }
 
 /**
@@ -104,6 +122,8 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 	summarySx,
 	summaryClassName,
 	detailsSx,
+	selected = false,
+	onSelectedChange,
 }) => {
 	const [internalExpanded, setInternalExpanded] = useState(defaultExpanded)
 
@@ -196,9 +216,28 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 	// identical ledger line minus the disclosure, which is the point: a skill and
 	// a weapon should sit in one column, not in two idioms.
 	if (detailsContent === undefined) {
+		const selectable = onSelectedChange !== undefined
+		const toggle = () => onSelectedChange?.(!selected)
+
 		return (
 			<Box
-				className="cs-ledger-row"
+				className={
+					selectable
+						? `cs-ledger-row cs-ledger-row--choice${selected ? ' is-selected' : ''}`
+						: 'cs-ledger-row'
+				}
+				{...(selectable && {
+					role: 'option',
+					'aria-selected': selected,
+					tabIndex: 0,
+					onClick: toggle,
+					onKeyDown: (event: React.KeyboardEvent) => {
+						if (event.key === 'Enter' || event.key === ' ') {
+							event.preventDefault()
+							toggle()
+						}
+					},
+				})}
 				sx={{
 					flexGrow: 1,
 					maxWidth,
@@ -213,9 +252,46 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 					// padding because `AccordionSummary` needs room for the chevron.
 					px: 0,
 					borderBottom: LEDGER_RULE,
+					// A chosen row takes the SAME wash and keyline an expanded row takes.
+					// Two states, one device: "this is the row you are working on" should
+					// not look like two different ideas depending on which list it is in.
+					...(selectable && {
+						cursor: 'pointer',
+						px: 0.5,
+						'&:hover': {
+							backgroundColor:
+								'color-mix(in srgb, var(--nexus-bronze) 8%, transparent)',
+						},
+						'&:focus-visible': {
+							outline: '1.5px solid var(--nexus-bronze)',
+							outlineOffset: '-1.5px',
+						},
+						...(selected && {
+							backgroundColor:
+								'color-mix(in srgb, var(--nexus-bronze) 10%, transparent)',
+							outline:
+								'1.5px solid color-mix(in srgb, var(--nexus-bronze) 50%, transparent)',
+							outlineOffset: '-1.5px',
+						}),
+					}),
 					...sx,
 				}}
 			>
+				{selectable && (
+					<Box
+						aria-hidden="true"
+						sx={{
+							flexShrink: 0,
+							display: 'flex',
+							alignItems: 'center',
+							color: selected
+								? 'var(--nexus-bronze)'
+								: 'color-mix(in srgb, var(--nexus-bronze) 55%, var(--ifm-font-color-base))',
+						}}
+					>
+						{selected ? <CheckMarkChecked /> : <CheckMarkEmpty />}
+					</Box>
+				)}
 				{gutter}
 				{summaryRow}
 			</Box>

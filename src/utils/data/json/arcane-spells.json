@@ -957,17 +957,6 @@
     "heightened": "-"
   },
   {
-    "name": "Astral Body",
-    "discipline": "Conjuration",
-    "rank": "4",
-    "focus": "8",
-    "target": "Extreme (14)",
-    "range": "Self",
-    "properties": "concentrate",
-    "effect": "You loosen your soul from your flesh and step out of yourself, joined to your body by a thin silver cord only you can see.<br/>On a success, your body falls unconscious where it rests and your astral form rises from it. Your astral form can fly with +1 Movement per turn, passes through solid objects and walls freely, and perceives its surroundings normally. You cannot touch, carry, or affect anything physical, you cannot cast spells, and you cannot speak to creatures, though creatures able to perceive spirits can see you and speak with you. Your astral form can travel up to a thousand paces away from your body. If your astral form takes damage from any effect that can strike spirits, you immediately snap back into your body and suffer one Fatigue. You can end the spell at will, returning to your body instantly. If your body is moved, disturbed, or takes damage while you are away, you feel it and can return to your body instantly. This spell lasts for a medium duration.",
-    "heightened": "-"
-  },
-  {
     "name": "Force Cage",
     "discipline": "Conjuration",
     "rank": "4",

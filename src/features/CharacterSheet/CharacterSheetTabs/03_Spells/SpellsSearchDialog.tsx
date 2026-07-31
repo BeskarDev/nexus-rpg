@@ -1,8 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import {
 	Typography,
-	Chip,
-	Box,
 	FormControl,
 	InputLabel,
 	Select,
@@ -11,45 +9,26 @@ import {
 	ListItemText,
 	Button,
 } from '@mui/material'
-import {
-	SearchDialog,
-	SearchDialogColumn,
-} from '../02_Items/SearchDialog/GenericSearchDialog'
+import { SheetChip } from '../../components'
+import { SearchDialog } from '../../components'
+import type { SearchDialogColumn } from '../../components'
 import arcaneSpellsData from '../../../../utils/data/json/arcane-spells.json'
 import mysticSpellsData from '../../../../utils/data/json/mystic-spells.json'
 import { CharacterDocument } from '../../../../types/Character'
 import { sanitizeHtml } from '../../../../utils/typescript/htmlSanitizer'
 import { buildSpellFromData } from '../../utils/spellFactory'
 
-// Color mapping for disciplines/traditions
-const disciplineColorMap: Record<
-	string,
-	'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
-> = {
-	// Arcane disciplines
-	Evocation: 'error',
-	Illusion: 'secondary',
-	Conjuration: 'warning',
-	Telepathy: 'primary',
-	Telekinetics: 'info',
-	Necromancy: 'success',
-
-	// Mystic traditions
-	Light: 'warning',
-	Twilight: 'secondary',
-	Life: 'success',
-	Death: 'primary',
-	Nature: 'info',
-	Tempest: 'error',
-	Peace: 'primary',
-	War: 'error',
-}
-
-const getDisciplineColor = (
-	discipline: string,
-): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
-	return disciplineColorMap[discipline] || 'primary'
-}
+/**
+ * The discipline colour map is gone (M13 S8) — see `EquipmentSearchDialog` for the
+ * general reason. This one is worth its own note: the map had fourteen entries and
+ * six colours, so Evocation, Tempest and War were one hue and Telepathy, Death and
+ * Peace were another. Readers cannot learn an identity that three subjects share.
+ *
+ * Not the magic register either, though a discipline is unambiguously magic. S5
+ * spent `--cs-magic` on three things — the cast plate, the focus pool, the catalyst
+ * — and the milestone's rule is that cyan reads as sorcery only while it stays
+ * rare. A filter facet inside a search dialog is not worth the fourth spend.
+ */
 
 export type SpellsSearchDialogProps = {
 	open: boolean
@@ -112,8 +91,7 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 		() =>
 			(spellsData as SpellData[]).filter((spell) => {
 				const rankMatch =
-					!rankFilter.length ||
-					rankFilter.includes(String(spell.rank))
+					!rankFilter.length || rankFilter.includes(String(spell.rank))
 				const typeValue =
 					(spell[typeFieldKey as keyof SpellData] as string) || ''
 				const typeMatch = !typeFilter.length || typeFilter.includes(typeValue)
@@ -131,6 +109,7 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 		{
 			key: 'name',
 			label: 'Spell',
+			width: 'minmax(0, 1.2fr)',
 			render: (value, spell) => (
 				<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
 					{spell.name}
@@ -140,52 +119,44 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 		{
 			key: typeFieldKey as keyof SpellData,
 			label: typeLabel,
-			render: (value) => (
-				<Chip
-					label={value}
-					size="small"
-					variant="outlined"
-					color={getDisciplineColor(value)}
-					sx={{ fontSize: 'var(--nexus-text-xs)' }}
-				/>
-			),
+			width: '9rem',
+			render: (value) => <SheetChip>{value}</SheetChip>,
 		},
 		{
 			key: 'rank',
 			label: 'Rank',
-			width: '80px',
-			render: (value) => (
-				<Typography variant="body2" sx={{ textAlign: 'center' }}>
-					{value}
-				</Typography>
-			),
+			width: '4rem',
+			// The cell's alignment, not the Typography's: the column heading reads the
+			// same `align` the cell does, so a value centred locally under a heading
+			// aligned by the shared template is exactly the drift the one-template rule
+			// exists to stop (M13 S8).
+			align: 'center',
+			render: (value) => <Typography variant="body2">{value}</Typography>,
 		},
 		{
 			key: 'focus',
 			label: 'Focus',
-			width: '80px',
-			render: (value) => (
-				<Typography variant="body2" sx={{ textAlign: 'center' }}>
-					{value}
-				</Typography>
-			),
+			width: '4rem',
+			align: 'center',
+			render: (value) => <Typography variant="body2">{value}</Typography>,
 		},
 		{
 			key: 'target',
 			label: 'Target',
-			width: '120px',
+			width: '7rem',
 			render: (value) => <Typography variant="caption">{value}</Typography>,
 		},
 		{
 			key: 'range',
 			label: 'Range',
-			width: '100px',
+			width: '5.5rem',
 			render: (value) => <Typography variant="caption">{value}</Typography>,
 		},
 		{
 			key: 'effect',
 			label: 'Effect',
 			sortable: false,
+			width: 'minmax(0, 2fr)',
 			render: (value) => (
 				<Typography
 					variant="caption"
@@ -214,9 +185,25 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 		'effect',
 	]
 
+	/**
+	 * A spell's identity is its name AND its discipline, not its name.
+	 *
+	 * `arcane-spells.json` holds two spells called *Astral Body* — one Conjuration,
+	 * one Telepathy — and keying rows by name alone gave React two children with
+	 * the same key. Filtering to rank 5 then rendered 17 rows for 16 spells with a
+	 * rank 4 spell stranded at the top, because React could not tell which of the
+	 * two a retained node belonged to. Selecting one also selected the other, and
+	 * importing it imported both.
+	 *
+	 * `SearchDialog` now shouts about a non-unique key in development, but the fix
+	 * belongs here: this is where a spell's identity is known.
+	 */
+	const spellKey = (spell: SpellData) =>
+		`${spell.name}|${(spell[typeFieldKey as keyof SpellData] as string) ?? ''}`
+
 	const handleImport = () => {
 		const spellsToImport = (spellsData as SpellData[])
-			.filter((spell) => selectedSpells.has(spell.name))
+			.filter((spell) => selectedSpells.has(spellKey(spell)))
 			.map((spell) => ({
 				id: crypto.randomUUID(),
 				...buildSpellFromData(spell, magicType),
@@ -236,8 +223,13 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 			selectedItems={selectedSpells}
 			onSelectionChange={setSelectedSpells}
 			onImport={handleImport}
-			getItemKey={(spell) => spell.name}
+			getItemKey={spellKey}
 			importButtonText="Import"
+			itemNoun="spell"
+			// Rank ascending, then name — the order a reader looks a spell up in. The
+			// JSON's own order is by discipline with ranks interleaved, which is an
+			// authoring artefact, not a reading order.
+			defaultSort={{ key: 'rank' }}
 			searchPlaceholder={`Search by name, ${typeLabel.toLowerCase()}, rank, or effect...`}
 			filters={
 				<>
@@ -245,6 +237,10 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 						<InputLabel id="rank-filter-label">Rank</InputLabel>
 						<Select
 							multiple
+							// `renderValue` is not called for an empty selection unless the
+							// control is told to render one, so every filter sat as a blank
+							// box under a static label instead of saying "All …" (M13 S8).
+							displayEmpty
 							labelId="rank-filter-label"
 							value={rankFilter}
 							label="Rank"
@@ -268,6 +264,10 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 						<InputLabel id="type-filter-label">{typeLabel}</InputLabel>
 						<Select
 							multiple
+							// `renderValue` is not called for an empty selection unless the
+							// control is told to render one, so every filter sat as a blank
+							// box under a static label instead of saying "All …" (M13 S8).
+							displayEmpty
 							labelId="type-filter-label"
 							value={typeFilter}
 							label={typeLabel}
@@ -287,16 +287,14 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 						</Select>
 					</FormControl>
 
-					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-						<Button
-							variant="text"
-							size="small"
-							onClick={clearFilters}
-							disabled={!rankFilter.length && !typeFilter.length}
-						>
-							Clear filters
-						</Button>
-					</Box>
+					<Button
+						variant="text"
+						size="small"
+						onClick={clearFilters}
+						disabled={!rankFilter.length && !typeFilter.length}
+					>
+						Clear filters
+					</Button>
 				</>
 			}
 		/>

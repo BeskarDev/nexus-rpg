@@ -61,7 +61,9 @@ describe('FolkSelectionDialog', () => {
 				'Search by name, category, or description...',
 			),
 		).toBeDefined()
-		expect(screen.getByText('2 items found')).toBeDefined()
+		// The count line is the ledger's now (M13 S8), and the plural of "folk" is
+		// "folk" — the picker passes `itemNounPlural` for exactly this.
+		expect(screen.getByText(/2 folk/)).toBeDefined()
 	})
 
 	it('does not render when closed', () => {
@@ -123,13 +125,13 @@ describe('FolkSelectionDialog', () => {
 			/>,
 		)
 
-		// Find and click the radio button for Dwarf
-		const dwarfRow = await screen.findByText('Dwarf')
-		const row = dwarfRow.closest('tr')
-		const radio = row?.querySelector('input[type="radio"]')
-		if (radio) {
-			fireEvent.click(radio)
-		}
+		// The row IS the choice since M13 S8 — no radio in a first table cell. It is
+		// an `option` carrying its own `aria-selected`, so this is also the assertion
+		// that the picker still speaks single selection after being folded onto the
+		// multi-select ledger.
+		const dwarfRow = await screen.findByRole('option', { name: /Dwarf/ })
+		fireEvent.click(dwarfRow)
+		expect(dwarfRow).toHaveAttribute('aria-selected', 'true')
 
 		// Click the Select Folk button
 		const selectButton = screen.getByRole('button', { name: /select folk/i })

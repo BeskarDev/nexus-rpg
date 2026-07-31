@@ -1916,3 +1916,274 @@ input[type='number'] {
 .character-sheet-page label + .MuiInputBase-root {
 	margin-top: 0;
 }
+
+/* M13 S8 — the search dialog's ledger.
+   ==========================================================================
+
+   The five search dialogs shared one `SearchDialog` (then named `GenericSearchDialog`, and living under `02_Items/`), and that component
+   rendered a MUI `Table`: sticky header, checkbox column, `TableSortLabel`, hover
+   rows. It was the sheet's LAST list idiom that was not the ledger — F6's actual
+   cost, which was never that the dialogs disagreed with each other (they already
+   shared a component) but that all five together disagreed with every tab behind
+   them.
+
+   Scoped under `.cs-search-dialog` rather than `.character-sheet-page` because a
+   MUI dialog portals to `<body>`, outside the page element every other rule here
+   hangs off. The paper carries `.cs-tokens` for the same reason — that is the
+   established escape hatch (`FocusField`, `StatusEffects`) and it is what makes
+   `--cs-*` resolve out here at all. */
+
+/* The filter strip: the caller's controls in a washed band, so the things that
+   NARROW the list are visibly one group and visibly not part of it. */
+.cs-search-dialog .cs-search-filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	margin-bottom: 0.5rem;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
+}
+
+/* The meta line: what is in front of you, and the one control acting on all of
+   it. The count is a reading, so it is a bare numeral in the UI face — not a
+   badge, which is what a Material list would have put here. */
+.cs-search-dialog .cs-search-meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	min-height: 1.75rem;
+}
+.cs-search-dialog .cs-search-meta__count {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* The ledger itself. It scrolls; the column header does not, so the tracks stay
+   named while the reader moves through 200 rows. */
+.cs-search-dialog .cs-search-ledger {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+}
+.cs-search-dialog .cs-search-ledger__rows {
+	overflow-y: auto;
+	max-height: min(52vh, 28rem);
+	/* An overflow container is its own scroll root, so the header's bottom rule is
+	   the only edge it needs; a border here would double it. */
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+}
+
+/* The columns exist only where they fit.
+   ==========================================================================
+
+   A dialog is `maxWidth="md"` and `fullWidth`, so on a phone it is the phone —
+   about 400px of usable measure for six named tracks. Below the breakpoint the
+   header is dropped and each row falls back to `UnifiedListItem`'s own wrapping
+   flex line, which is exactly what the tab ledgers do below `.cs-ledger-cols`.
+   Above it, one declaration feeds both the header and every row from the custom
+   property the dialog sets, so the two cannot drift. */
+.cs-search-dialog .cs-search-ledger__head {
+	display: none;
+}
+/* Below the breakpoint a row wraps onto two or three lines, and a selection mark
+   centred against the whole of that lands beside the DESCRIPTION rather than
+   beside the name it marks. Aligned to the first line instead, with the lift back
+   to centre restored once the row is one line again. */
+@media (max-width: 699.98px) {
+	.cs-search-dialog .cs-ledger-row--choice {
+		align-items: flex-start;
+		padding-top: 6px;
+		padding-bottom: 6px;
+	}
+}
+@media (min-width: 700px) {
+	.cs-search-dialog .cs-search-row {
+		display: grid;
+		grid-template-columns: var(--cs-search-cols);
+		column-gap: 8px;
+		align-items: center;
+	}
+	.cs-search-dialog .cs-search-ledger__head {
+		grid-template-columns: var(--cs-search-head-cols);
+	}
+}
+
+/* The column header, in the same small-caps register `.cs-ledger-head` gives the
+   tabs. Not that class: it is display:none outside `.cs-ledger-cols`, a media
+   query keyed to the sheet page's width, and this one is keyed to the dialog's. */
+@media (min-width: 700px) {
+	.cs-search-dialog .cs-search-ledger__head {
+		display: grid;
+	}
+}
+.cs-search-dialog .cs-search-ledger__head {
+	align-items: end;
+	column-gap: 8px;
+	/* 4px matches the selectable row's own `px: 0.5`, so the two grids start at
+	   the same x. */
+	padding: 0 4px 3px;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
+}
+.cs-search-dialog .cs-search-ledger__head > span,
+.cs-search-dialog .cs-search-ledger__head > button {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	line-height: 1;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 78%,
+		var(--ifm-font-color-base)
+	);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+/* A sortable heading is a real button — `TableSortLabel` was a span with a click
+   handler and a Material arrow. Stripped to the heading it already is, so sorting
+   is available to the keyboard without the column looking like a control. */
+.cs-search-dialog .cs-search-ledger__head > button {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+.cs-search-dialog .cs-search-ledger__head > button:hover,
+.cs-search-dialog .cs-search-ledger__head > button[data-active='true'] {
+	color: var(--nexus-bronze);
+}
+.cs-search-dialog .cs-search-ledger__head > button:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: 2px;
+}
+
+/* Nothing matched. A line that names the constraint, and the control that lifts
+   it — bounded by the same rules the rows would have sat between, so the list
+   does not appear to have vanished along with its contents. */
+.cs-search-dialog .cs-search-empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 2rem 1rem;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+}
+.cs-search-dialog .cs-search-empty__line {
+	margin: 0;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-dense);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.04em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 62%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* M13 S8 — the refresh dialog's notice and its diff plate.
+   ==========================================================================
+
+   `RefreshUpdatesDialog` was the last hand-built list on the sheet: an MUI
+   `Accordion` per entry with a Material `ExpandMore`, a `FormControlLabel`
+   wrapping a checkbox, an `info` chip, and a `<Table>` of changes inked from
+   `error.main` / `success.main`. It sits on the ledger row now; what is left here
+   is the two registers that row needs. */
+
+/* The caution band. Not an MUI `Alert`: a filled severity box is Material's voice,
+   and this warning is about an action that cannot be undone, which the sheet
+   already has an ink for (`--cs-warning`, the pending-save strip). Bounded and
+   keylined like the meta band, so it reads as part of the dialog rather than as a
+   notification pasted into it. */
+.cs-search-dialog .cs-dialog-notice {
+	margin-bottom: 0.75rem;
+	padding: 0.5rem 0.75rem;
+	border: 1.5px solid color-mix(in srgb, var(--cs-warning) 55%, transparent);
+	background: color-mix(in srgb, var(--cs-warning) 8%, transparent);
+	font-size: var(--nexus-text-dense);
+	line-height: 1.5;
+}
+
+/* The diff, as courses of a record plate: field name left, the two values right.
+   One label measure down the column, like every other plate on the sheet. */
+.cs-search-dialog .cs-change-plate {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.cs-search-dialog .cs-change-row {
+	display: grid;
+	grid-template-columns: 8rem minmax(0, 1fr);
+	gap: 0.5rem;
+	padding: 0.25rem 0;
+	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+}
+.cs-search-dialog .cs-change-row:first-of-type {
+	border-top: 0;
+}
+.cs-search-dialog .cs-change-row__label {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--nexus-bronze);
+}
+.cs-search-dialog .cs-change-row__values {
+	min-width: 0;
+}
+/* The value you have now: struck, dimmed, and in the sheet's own danger ink rather
+   than MUI's `error.main`. Dimmed because what a diff wants said loudest is the
+   value you are moving TO — the old one is context, not an alarm. */
+.cs-search-dialog .cs-change-row__before {
+	font-size: var(--nexus-text-xs);
+	white-space: pre-wrap;
+	text-decoration: line-through;
+	color: var(--cs-danger);
+	opacity: 0.75;
+}
+.cs-search-dialog .cs-change-row__after {
+	font-size: var(--nexus-text-xs);
+	white-space: pre-wrap;
+	color: var(--cs-success);
+}
+
+/* The confirm's verb, in the danger ink (M13 S8).
+   ==========================================================================
+
+   Three of the four confirms used MUI's `color="error"`, which FILLS the button
+   with the Material red. Filling was tried here too and failed in dark mode for a
+   reason worth recording: `--cs-danger` is mixed toward the reading ink, which is
+   bone in dark mode, so the fill comes out a pale salmon and no text colour sits
+   comfortably on it.
+
+   So it is a plate in the danger ink rather than a block of it — keyline, faint
+   wash, danger-coloured label. That is the same construction `DeleteButton`'s
+   hover state already uses, it holds contrast in both modes because the ink is the
+   TEXT, and it still outranks Cancel, which carries no plate at all. */
+.cs-search-dialog .cs-confirm-danger.MuiButton-contained {
+	background: color-mix(in srgb, var(--cs-danger) 14%, transparent);
+	border: 1.5px solid var(--cs-danger);
+	color: var(--cs-danger);
+	font-weight: 700;
+}
+.cs-search-dialog .cs-confirm-danger.MuiButton-contained:hover {
+	background: color-mix(in srgb, var(--cs-danger) 26%, transparent);
+}

@@ -60,7 +60,8 @@ Pure calculation functions in `utils/` (`calculateHp`, `calculateDefenses`, `cal
 ## Conventions
 
 - MUI styling via `sx` prop; theme in `/src/hooks/createTheme.ts` (dark/light).
-- Lists are built from the ledger primitives in `components/` (M13 S2): `UnifiedListItem` for a row (omit `detailsContent` for the non-expanding variant), `ListSection` / `ListSectionHeader` for a grouping header, `DynamicList` / `DynamicListItem` for drag-and-drop. All live in `components/DynamicList/` and `components/ListSection/` — they moved out of `/src/components/` in M13 S2 because every consumer is inside the sheet and the print sheet forks freely.
+- Lists are built from the ledger primitives in `components/` (M13 S2): `UnifiedListItem` for a row (omit `detailsContent` for the non-expanding variant; add `onSelectedChange` to that variant for a list the reader chooses FROM, as the search dialogs do), `ListSection` / `ListSectionHeader` for a grouping header, `DynamicList` / `DynamicListItem` for drag-and-drop. All live in `components/DynamicList/` and `components/ListSection/` — they moved out of `/src/components/` in M13 S2 because every consumer is inside the sheet and the print sheet forks freely.
+- Dialogs (M13 S8): `SearchDialog` in `components/SearchDialog/` is the one list-in-a-dialog — pass `selectionMode: 'single'` for a pick-one picker (`SingleSelectionDialog` is a thin adapter over it). `ConfirmDialog` is the one confirmation shape, and the sheet only confirms where the loss cannot be rebuilt from the rulebook — everything else deletes on the spot.
 - `CharacterSheetCard` is a **tile** container, not a section container: it centres its children in a flex row and pads for content that never reaches the frame. Use `ListSection` for anything full-width.
 - Local-state + `onBlur` dispatch pattern for text fields (avoids dispatch-per-keystroke).
 - Test a live character with URL pattern `?id=test-character-1`.

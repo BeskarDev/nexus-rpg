@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import {
 	Typography,
-	Chip,
 	Box,
 	FormControl,
 	InputLabel,
@@ -11,11 +10,11 @@ import {
 	Button,
 	Checkbox,
 	ListItemText,
-	InputAdornment,
 } from '@mui/material'
-import { AttachMoney, ArrowDownward, ArrowUpward } from '@mui/icons-material'
+import { SheetChip } from '../../../components'
 import { parseCostValue } from './costUtils'
-import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
+import type { SearchDialogColumn } from '../../../components'
+import { SearchDialog } from '../../../components'
 import weaponsData from '../../../../../utils/data/json/weapons.json'
 import {
 	Weapon,
@@ -25,33 +24,12 @@ import {
 } from '../../../../../types/Character'
 import { QualityTier } from '../utils/magicItemsConfig'
 
-// Function to get color for weapon types
-const getWeaponTypeColor = (
-	type: string,
-): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
-	switch (type) {
-		case 'Axe':
-			return 'error'
-		case 'Blade':
-			return 'primary'
-		case 'Bow':
-			return 'success'
-		case 'Brawling':
-			return 'warning'
-		case 'Crossbow':
-			return 'info'
-		case 'Mace':
-			return 'secondary'
-		case 'Polearm':
-			return 'error'
-		case 'Shield':
-			return 'info'
-		case 'Thrown':
-			return 'warning'
-		default:
-			return 'secondary'
-	}
-}
+/**
+ * `getWeaponTypeColor` is gone (M13 S8) — see the note in `EquipmentSearchDialog`.
+ * It mapped nine weapon types onto MUI's semantic palette, twice over: axe and
+ * polearm were both `error`, crossbow and shield were both `info`. A hue that does
+ * not even distinguish its own members is not an identity system.
+ */
 
 export type WeaponSearchDialogProps = {
 	open: boolean
@@ -169,6 +147,7 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 		{
 			key: 'name',
 			label: 'Name',
+			width: 'minmax(0, 1.3fr)',
 			render: (value, weapon) => (
 				<>
 					<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
@@ -183,20 +162,14 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 		{
 			key: 'type',
 			label: 'Type',
-			render: (value) => (
-				<Chip
-					label={value}
-					size="small"
-					variant="outlined"
-					color={getWeaponTypeColor(value)}
-					sx={{ fontSize: 'var(--nexus-text-xs)' }}
-				/>
-			),
+			width: '8rem',
+			render: (value) => <SheetChip>{value}</SheetChip>,
 		},
 		{
 			key: 'damage',
 			label: 'Dmg',
 			align: 'center',
+			width: '4.5rem',
 			render: (value, weapon) => {
 				const baseDamage = getBaseDamageType(weapon)
 				return (
@@ -217,18 +190,21 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 			key: 'load',
 			label: 'Load',
 			align: 'center',
+			width: '3rem',
 			render: (value) => <Typography variant="body2">{value}</Typography>,
 		},
 		{
 			key: 'cost',
 			label: 'Cost',
 			align: 'center',
+			width: '4rem',
 			render: (value) => <Typography variant="body2">{value}</Typography>,
 		},
 		{
 			key: 'properties',
 			label: 'Properties',
 			sortable: false,
+			width: 'minmax(0, 1.5fr)',
 			render: (value) => (
 				<Typography
 					variant="caption"
@@ -285,19 +261,17 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 			getItemKey={(weapon) => weapon.name}
 			importButtonText="Import"
 			searchPlaceholder="Search by name, type, or properties..."
+			itemNoun="weapon"
 			filters={
-				<Box
-					sx={{
-						display: 'flex',
-						flexWrap: 'wrap',
-						gap: 1,
-						alignItems: 'center',
-					}}
-				>
+				<>
 					<FormControl size="small" sx={{ minWidth: '10rem' }}>
 						<InputLabel id="weapon-quality-filter-label">Quality</InputLabel>
 						<Select
 							multiple
+							// `renderValue` is not called for an empty selection unless the
+							// control is told to render one, so every filter sat as a blank
+							// box under a static label instead of saying "All …" (M13 S8).
+							displayEmpty
 							labelId="weapon-quality-filter-label"
 							value={qualityFilter}
 							label="Quality"
@@ -321,10 +295,16 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 						<InputLabel id="weapon-type-filter-label">Weapon Type</InputLabel>
 						<Select
 							multiple
+							// `renderValue` is not called for an empty selection unless the
+							// control is told to render one, so every filter sat as a blank
+							// box under a static label instead of saying "All …" (M13 S8).
+							displayEmpty
 							labelId="weapon-type-filter-label"
 							value={typeFilter}
 							label="Weapon Type"
-							onChange={(event) => setTypeFilter(event.target.value as string[])}
+							onChange={(event) =>
+								setTypeFilter(event.target.value as string[])
+							}
 							renderValue={(selected) =>
 								selected.length ? selected.join(', ') : 'All types'
 							}
@@ -338,63 +318,40 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 						</Select>
 					</FormControl>
 
+					{/* Three Material icons retired here (M13 S8), as in the equipment
+						dialog: a dollar sign for a currency the setting does not have, and
+						two arrows restating "Min" and "Max". */}
 					<TextField
-						label="Min"
+						label="Min cost"
 						size="small"
 						type="number"
 						value={costMin}
 						onChange={(event) => setCostMin(event.target.value)}
 						sx={{ width: '7rem' }}
-						InputProps={{
-							startAdornment: (
-								<InputAdornment position="start">
-									<AttachMoney fontSize="small" />
-								</InputAdornment>
-							),
-							endAdornment: (
-								<InputAdornment position="end">
-									<ArrowDownward fontSize="small" />
-								</InputAdornment>
-							),
-						}}
 					/>
 					<TextField
-						label="Max"
+						label="Max cost"
 						size="small"
 						type="number"
 						value={costMax}
 						onChange={(event) => setCostMax(event.target.value)}
 						sx={{ width: '7rem' }}
-						InputProps={{
-							startAdornment: (
-								<InputAdornment position="start">
-									<AttachMoney fontSize="small" />
-								</InputAdornment>
-							),
-							endAdornment: (
-								<InputAdornment position="end">
-									<ArrowUpward fontSize="small" />
-								</InputAdornment>
-							),
-						}}
 					/>
 
-					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-						<Button
-							variant="text"
-							size="small"
-							onClick={resetFilters}
-							disabled={
-								!qualityFilter.length &&
-								!typeFilter.length &&
-								!costMin &&
-								!costMax
-							}
-							>
-							Clear filters
-						</Button>
-					</Box>
-				</Box>
+					<Button
+						variant="text"
+						size="small"
+						onClick={resetFilters}
+						disabled={
+							!qualityFilter.length &&
+							!typeFilter.length &&
+							!costMin &&
+							!costMax
+						}
+					>
+						Clear filters
+					</Button>
+				</>
 			}
 		/>
 	)

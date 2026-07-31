@@ -1,12 +1,12 @@
-import { MarkButton, SheetChip, SheetInput } from '../../components'
+import {
+	ConfirmDialog,
+	MarkButton,
+	SheetChip,
+	SheetInput,
+} from '../../components'
 import {
 	Box,
 	Button,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogContentText,
-	DialogTitle,
 	FormControl,
 	InputLabel,
 	MenuItem,
@@ -16,11 +16,7 @@ import {
 import React, { useEffect, useMemo, useState } from 'react'
 import { useForm, Controller, UseFormReturn } from 'react-hook-form'
 import { CharacterDocument } from '../../../../types/Character'
-import {
-	ListSectionHeader,
-	RuleInfo,
-	UnifiedListItem,
-} from '../../components'
+import { ListSectionHeader, RuleInfo, UnifiedListItem } from '../../components'
 
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
@@ -88,115 +84,116 @@ const SkillXpRow: React.FC<{
 			summarySx={{ gap: 1, flexWrap: 'nowrap' }}
 			summaryContent={
 				<>
-			{/* M13 S3: the skill is one carved stamp, not a row of parts. It was an
+					{/* M13 S3: the skill is one carved stamp, not a row of parts. It was an
 				outlined MUI `Chip` stretched to fill the row (a box competing with the
 				row's own rule), then briefly a legend dot plus two loose labels. Both
 				said "web app". `SheetChip` puts the identity in the INK and absorbs the
 				rank behind a struck divider, which is the exact device the doc pages
 				use for the same skill — so `Athletics 3` reads the same in the rules
 				and on the sheet. */}
-			<Box
-				sx={{
-					display: 'flex',
-					alignItems: 'center',
-					flexGrow: 1,
-					minWidth: 0,
-				}}
-			>
-				<SheetChip tone={getSkillChipColor(skill.name)} value={skillRank}>
-					{skill.name}
-				</SheetChip>
-			</Box>
-			<Controller
-				name={skill.name}
-				control={control}
-				rules={{
-					validate: (value) => {
-						try {
-							// Calculate current total spent XP from all skills in the form
-							const formValues = skillsForm.getValues()
-							const currentTotalSpentXp = Object.values(formValues).reduce(
-								(sum, xp) => sum + (xp || 0),
-								0,
-							)
+					<Box
+						sx={{
+							display: 'flex',
+							alignItems: 'center',
+							flexGrow: 1,
+							minWidth: 0,
+						}}
+					>
+						<SheetChip tone={getSkillChipColor(skill.name)} value={skillRank}>
+							{skill.name}
+						</SheetChip>
+					</Box>
+					<Controller
+						name={skill.name}
+						control={control}
+						rules={{
+							validate: (value) => {
+								try {
+									// Calculate current total spent XP from all skills in the form
+									const formValues = skillsForm.getValues()
+									const currentTotalSpentXp = Object.values(formValues).reduce(
+										(sum, xp) => sum + (xp || 0),
+										0,
+									)
 
-							// Validate this skill's XP against the current total
-							createSkillXpSchema(currentTotalSpentXp, skill.xp).validateSync(
-								value,
-							)
-							return true
-						} catch (err: any) {
-							return err.message
-						}
-					},
-				}}
-				render={({ field, fieldState }) => (
-					/* M13 S3 (owner review): the XP field was a stacked MUI field — a
+									// Validate this skill's XP against the current total
+									createSkillXpSchema(
+										currentTotalSpentXp,
+										skill.xp,
+									).validateSync(value)
+									return true
+								} catch (err: any) {
+									return err.message
+								}
+							},
+						}}
+						render={({ field, fieldState }) => (
+							/* M13 S3 (owner review): the XP field was a stacked MUI field — a
 						floating "XP" label above a boxed input — so it stood a whole label
 						taller than the chip beside it and nothing on the row shared a
 						line. It is one line now: the label sits BESIDE the value in the
 						same small-caps register the section headers use, and the engraved
 						baseline runs under the numeral alone, which is the only part that
 						is editable. */
-					<Box
-						sx={{
-							flexShrink: 0,
-							display: 'flex',
-							alignItems: 'baseline',
-							gap: 0.5,
-						}}
-					>
-						<Typography
-							component="span"
-							sx={{
-								fontFamily: 'var(--nexus-font-ui)',
-								fontSize: 'var(--nexus-text-2xs)',
-								fontVariant: 'small-caps',
-								letterSpacing: '0.06em',
-								lineHeight: 1,
-								color: 'text.secondary',
-							}}
-						>
-							XP
-						</Typography>
-						<SheetInput
-							{...field}
-							size="small"
-							type="number"
-							variant="standard"
-							onChange={async (e) => {
-								const newValue = Number(e.target.value)
-								field.onChange(newValue)
-								updateSkill(skill.name, { xp: newValue })
-								// Trigger validation on all skills to revalidate with new total
-								await trigger()
-							}}
-							error={!!fieldState.error}
-							helperText={fieldState.error?.message || ''}
-							FormHelperTextProps={{ sx: { display: 'none' } }}
-							inputProps={{ 'aria-label': `${skill.name} XP` }}
-							sx={{
-								width: '2.75rem',
-								m: 0,
-								'& .MuiInputBase-input': {
-									p: 0,
-									fontFamily: 'var(--nexus-font-ui)',
-									fontSize: 'var(--nexus-text-xs)',
-									fontVariantNumeric: 'tabular-nums',
-									textAlign: 'center',
-								},
-							}}
-						/>
-					</Box>
-				)}
-			/>
-			{/* Remove is remove: the same `×` the chips in this column carry, not a
+							<Box
+								sx={{
+									flexShrink: 0,
+									display: 'flex',
+									alignItems: 'baseline',
+									gap: 0.5,
+								}}
+							>
+								<Typography
+									component="span"
+									sx={{
+										fontFamily: 'var(--nexus-font-ui)',
+										fontSize: 'var(--nexus-text-2xs)',
+										fontVariant: 'small-caps',
+										letterSpacing: '0.06em',
+										lineHeight: 1,
+										color: 'text.secondary',
+									}}
+								>
+									XP
+								</Typography>
+								<SheetInput
+									{...field}
+									size="small"
+									type="number"
+									variant="standard"
+									onChange={async (e) => {
+										const newValue = Number(e.target.value)
+										field.onChange(newValue)
+										updateSkill(skill.name, { xp: newValue })
+										// Trigger validation on all skills to revalidate with new total
+										await trigger()
+									}}
+									error={!!fieldState.error}
+									helperText={fieldState.error?.message || ''}
+									FormHelperTextProps={{ sx: { display: 'none' } }}
+									inputProps={{ 'aria-label': `${skill.name} XP` }}
+									sx={{
+										width: '2.75rem',
+										m: 0,
+										'& .MuiInputBase-input': {
+											p: 0,
+											fontFamily: 'var(--nexus-font-ui)',
+											fontSize: 'var(--nexus-text-xs)',
+											fontVariantNumeric: 'tabular-nums',
+											textAlign: 'center',
+										},
+									}}
+								/>
+							</Box>
+						)}
+					/>
+					{/* Remove is remove: the same `×` the chips in this column carry, not a
 				Material trash can two rows below one. */}
-			<MarkButton
-				glyph="×"
-				label={`Delete ${skill.name}`}
-				onClick={() => handleSkillDeletion(skill.name)}
-			/>
+					<MarkButton
+						glyph="×"
+						label={`Delete ${skill.name}`}
+						onClick={() => handleSkillDeletion(skill.name)}
+					/>
 				</>
 			}
 		/>
@@ -324,7 +321,11 @@ export const SkillsTab: React.FC = () => {
 				},
 			})
 		}
-	}, [activeCharacter.skills.abilities, activeCharacter.statistics.av.armor, skills])
+	}, [
+		activeCharacter.skills.abilities,
+		activeCharacter.statistics.av.armor,
+		skills,
+	])
 
 	// Get available skills (not yet selected)
 	const availableSkills = useMemo(() => {
@@ -467,7 +468,14 @@ export const SkillsTab: React.FC = () => {
 			{/* Left Column: XP, Skills, Professions, Languages */}
 			<Box sx={{ mb: 2 }}>
 				{/* XP Section */}
-				<Box sx={{ mx: 'auto', display: 'flex', justifyContent: 'flex-start', mb: 2 }}>
+				<Box
+					sx={{
+						mx: 'auto',
+						display: 'flex',
+						justifyContent: 'flex-start',
+						mb: 2,
+					}}
+				>
 					<XpCard total={xp.total} spent={spendXP} />
 				</Box>
 
@@ -700,36 +708,24 @@ export const SkillsTab: React.FC = () => {
 			</Box>
 			{/* End Right Column */}
 
-			{/* Skill Deletion Confirmation Dialog */}
-			<Dialog
+			{/* Kept by the S8 confirm audit, unlike the item / spell / companion
+				deletions the sheet does on the spot: a skill takes its RANK and its
+				accumulated XP with it, and Crafting takes every profession under it —
+				none of which can be rebuilt from the rulebook. */}
+			<ConfirmDialog
 				open={skillToDelete !== null}
-				onClose={cancelSkillDeletion}
-				aria-labelledby="delete-skill-dialog-title"
-				aria-describedby="delete-skill-dialog-description"
+				title="Remove skill"
+				confirmLabel="Remove skill"
+				onConfirm={confirmSkillDeletion}
+				onCancel={cancelSkillDeletion}
 			>
-				<DialogTitle id="delete-skill-dialog-title">
-					Confirm Skill Deletion
-				</DialogTitle>
-				<DialogContent>
-					<DialogContentText id="delete-skill-dialog-description">
-						Are you sure you want to remove the <strong>{skillToDelete}</strong>{' '}
-						skill?
-						{skillToDelete === 'Crafting' && professions.length > 0 && (
-							<span> This will also remove all selected professions.</span>
-						)}
-					</DialogContentText>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={cancelSkillDeletion}>Cancel</Button>
-					<Button
-						onClick={confirmSkillDeletion}
-						color="error"
-						variant="contained"
-					>
-						Delete
-					</Button>
-				</DialogActions>
-			</Dialog>
+				Removing <strong>{skillToDelete}</strong> discards its rank and its
+				accumulated XP.
+				{skillToDelete === 'Crafting' && professions.length > 0 && (
+					<> Every profession under it goes with it.</>
+				)}{' '}
+				This cannot be undone.
+			</ConfirmDialog>
 		</Box>
 	)
 }

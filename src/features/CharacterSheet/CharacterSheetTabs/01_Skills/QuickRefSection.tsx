@@ -6,11 +6,6 @@ import {
 	Chip,
 	IconButton,
 	Tooltip,
-	Dialog,
-	DialogTitle,
-	DialogContent,
-	DialogActions,
-	DialogContentText,
 	FormControl,
 	InputLabel,
 	Select,
@@ -31,6 +26,7 @@ import {
 	getActionTypeIcon,
 } from '../../../../types/ActionType'
 import {
+	ConfirmDialog,
 	ListSection,
 	ListSectionHeader,
 	UnifiedListItem,
@@ -278,7 +274,11 @@ export const QuickRefSection: React.FC = () => {
 					source: 'weapon' as const,
 					sourceCategory: 'Weapon',
 					actionType: determineActionType(weapon),
-					properties: weapon.properties ? (Array.isArray(weapon.properties) ? weapon.properties : [weapon.properties]) : undefined,
+					properties: weapon.properties
+						? Array.isArray(weapon.properties)
+							? weapon.properties
+							: [weapon.properties]
+						: undefined,
 					damage: damageStr,
 				}
 			}),
@@ -289,7 +289,11 @@ export const QuickRefSection: React.FC = () => {
 				source: 'item' as const,
 				sourceCategory: 'Item',
 				actionType: determineActionType(item),
-				properties: item.properties ? (Array.isArray(item.properties) ? item.properties : [item.properties]) : undefined,
+				properties: item.properties
+					? Array.isArray(item.properties)
+						? item.properties
+						: [item.properties]
+					: undefined,
 			})),
 			...selectedSpells.map((spell) => {
 				const damageStr =
@@ -304,7 +308,11 @@ export const QuickRefSection: React.FC = () => {
 					sourceCategory: 'Spell',
 					actionType: determineActionType(spell),
 					rank: spell.rank,
-					properties: spell.properties ? (Array.isArray(spell.properties) ? spell.properties : [spell.properties]) : undefined,
+					properties: spell.properties
+						? Array.isArray(spell.properties)
+							? spell.properties
+							: [spell.properties]
+						: undefined,
 					damage: damageStr,
 				}
 			}),
@@ -571,8 +579,7 @@ export const QuickRefSection: React.FC = () => {
 												value={item.actionType || 'Action'}
 												label="Action Type"
 												onChange={(event) => {
-													const newActionType = event.target
-														.value as ActionType
+													const newActionType = event.target.value as ActionType
 													handleActionTypeChange(item.id, newActionType)
 												}}
 											>
@@ -610,22 +617,20 @@ export const QuickRefSection: React.FC = () => {
 				</ListSection>
 			))}
 
-			{/* Confirmation Dialog for Clear All */}
-			<Dialog open={confirmDialogOpen} onClose={handleCancelClear}>
-				<DialogTitle>Clear All Quick References</DialogTitle>
-				<DialogContent>
-					<DialogContentText>
-						Are you sure you want to clear all Quick Reference selections? This
-						action cannot be undone.
-					</DialogContentText>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={handleCancelClear}>Cancel</Button>
-					<Button onClick={handleConfirmClear} color="error" autoFocus>
-						Clear All
-					</Button>
-				</DialogActions>
-			</Dialog>
+			{/* Kept by the S8 confirm audit: this is the sheet's only BULK clear. One
+				press drops every quick-ref pick, and they were gathered one at a time
+				across four tabs — cheap to redo individually, tedious to redo all at
+				once, which is exactly the case a confirmation is for. */}
+			<ConfirmDialog
+				open={confirmDialogOpen}
+				title="Clear all quick references"
+				confirmLabel="Clear all"
+				onConfirm={handleConfirmClear}
+				onCancel={handleCancelClear}
+			>
+				This drops every quick-reference pick at once, across all tabs. This
+				cannot be undone.
+			</ConfirmDialog>
 		</Box>
 	)
 }
