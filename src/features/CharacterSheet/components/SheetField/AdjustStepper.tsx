@@ -3,7 +3,14 @@ import React from 'react'
 import { FieldGroupLabel } from './FieldGroupLabel'
 
 export interface AdjustStepperProps {
-	/** Section heading, e.g. "Damage / Healing". */
+	/**
+	 * Section heading. Defaults to the two verbs — `Spend / Restore` on a focus pool,
+	 * `Damage / Healing` on HP.
+	 *
+	 * It used to default to the literal string "Damage / Healing", so the Focus editor
+	 * headed a Spend/Restore stepper with HP's vocabulary (M13 S5, owner review). A
+	 * default that names one caller is not a default.
+	 */
 	title?: string
 	/** Label for the subtract button — "Damage", "Spend". */
 	decreaseLabel: string
@@ -54,7 +61,7 @@ export interface AdjustStepperProps {
  * M13 S9 to account for.
  */
 export const AdjustStepper: React.FC<AdjustStepperProps> = ({
-	title = 'Damage / Healing',
+	title,
 	decreaseLabel,
 	increaseLabel,
 	onDecrease,
@@ -130,7 +137,9 @@ export const AdjustStepper: React.FC<AdjustStepperProps> = ({
 
 	return (
 		<>
-			<FieldGroupLabel sx={{ mb: 0.75 }}>{title}</FieldGroupLabel>
+			<FieldGroupLabel sx={{ mb: 0.75 }}>
+				{title ?? `${decreaseLabel} / ${increaseLabel}`}
+			</FieldGroupLabel>
 
 			{/* The tally: one-tap stones, then the free field for anything else. */}
 			<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 1 }}>
@@ -175,6 +184,10 @@ export const AdjustStepper: React.FC<AdjustStepperProps> = ({
 						</Button>
 					)
 				})}
+				{/* The free-entry field is one of the stones, not a taller box beside them:
+					same flex share, same height, same radius (S5, owner review). It was
+					`width: 3.25rem` with its own padding, so it stood a few pixels taller than
+					the row it belongs to and broke the tally's line. */}
 				<TextField
 					type="number"
 					size="small"
@@ -183,9 +196,19 @@ export const AdjustStepper: React.FC<AdjustStepperProps> = ({
 					inputProps={{
 						min: 0,
 						'aria-label': 'Amount',
-						sx: { textAlign: 'center', py: 0.35, fontWeight: 700 },
+						sx: { textAlign: 'center', py: 0, fontWeight: 700 },
 					}}
-					sx={{ width: '3.25rem', ml: 0.25 }}
+					sx={{
+						flex: 1,
+						minWidth: 0,
+						ml: 0.25,
+						// `m: 0` is the fix, and it is the third time this exact trap has been
+						// paid for in this milestone: `MuiTextField`'s sitewide `margin: 'dense'`
+						// adds 8px above and 4px below for a stacked label this field does not
+						// have, which sat it a few pixels below the row of stones it belongs to.
+						m: 0,
+						'& .MuiInputBase-root': { minHeight: '1.85rem', borderRadius: 0.5 },
+					}}
 				/>
 			</Box>
 

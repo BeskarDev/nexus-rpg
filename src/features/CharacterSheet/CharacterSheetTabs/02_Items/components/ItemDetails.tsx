@@ -17,18 +17,16 @@ import {
 import { LOCATION_SIGIL, MarkedOption, slotSigil } from '../utils/itemMarks'
 import {
 	DeleteButton,
+	DetailField,
+	DetailsGroup,
+	DetailsPanel,
+	Inscription,
 	PipRow,
 	QuickRefButton,
 	RecordPlate,
 	RecordRow,
 } from '@site/src/features/CharacterSheet/components'
 import { UI_COLORS } from '@site/src/utils/colors'
-import {
-	DetailField,
-	DetailsGroup,
-	DetailsPanel,
-	Inscription,
-} from './DetailsPanel'
 import { useFieldDraft } from '../../../hooks/useFieldDraft'
 
 export type ItemDetailsProps = {

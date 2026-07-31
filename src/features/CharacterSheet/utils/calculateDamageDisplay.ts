@@ -5,7 +5,7 @@ import { CharacterDocument, Damage } from '@site/src/types/Character'
  *
  * ## Why this is a util
  *
- * This arithmetic existed **three times**: inside `DamageFields`, again inside
+ * This arithmetic existed **three times**: inside `DamageFields` (deleted in S5), again inside
  * `QuickRefSection`, and it was about to be written a fourth time for the weapon
  * row's summary, which no longer holds the editor that used to compute it. Three
  * copies of a damage formula is the same hazard the S1 log recorded for effective

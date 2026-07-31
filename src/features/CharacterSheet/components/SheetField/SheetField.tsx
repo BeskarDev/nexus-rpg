@@ -112,7 +112,12 @@ export const SheetField: React.FC<SheetFieldProps> = ({
 						// contents reference resolved to nothing. See the note on
 						// `.cs-tokens` in characterSheet.css.
 						slotProps={{ paper: { className: 'cs-tokens' } }}
-						MenuListProps={{ sx: { p: 2, maxWidth: editorWidth } }}
+						// `width` with a viewport cap, not `maxWidth` alone: a `maxWidth` lets the
+						// list collapse to its content, which is how the HP and Focus editors ended
+						// up narrow enough to wrap their steppers (M13 S5, owner review).
+						MenuListProps={{
+							sx: { p: 2, width: editorWidth, maxWidth: '92vw' },
+						}}
 					>
 						{typeof editor === 'function' ? editor(close) : editor}
 					</Menu>

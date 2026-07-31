@@ -1,10 +1,6 @@
 import React from 'react'
 import { Box, MenuItem, Typography } from '@mui/material'
 import DamageSigil from '@site/src/components/codex/DamageSigil'
-import {
-	CheckMarkChecked,
-	CheckMarkEmpty,
-} from '@site/src/components/codex/CheckMark'
 import StatSigil from '@site/src/components/codex/StatSigil'
 import type { StatSigilName } from '@site/src/components/codex/stat-sigils'
 import {
@@ -14,7 +10,7 @@ import {
 	damageTypeArray,
 	DamageType,
 } from '@site/src/types/Character'
-import { SheetInput } from '../components'
+import { SheetInput, ToggleMark } from '../components'
 
 /** The four attributes damage can scale from, each with its own mark. */
 const BASE_SIGIL: Record<string, StatSigilName> = {
@@ -73,9 +69,14 @@ export type DamageEquationProps = {
  * Everything is bare text at rest with the slot appearing under the pointer, so
  * the equation reads as an inscription rather than as nine boxes.
  *
- * `DamageFields` still exists and still serves the SPELL summary, which has a
- * different container and its own gear-popover history. This is the weapon's
- * version; the spell tab gets it when S5 rebuilds that surface.
+ * ## It replaced `DamageFields` outright (S5)
+ *
+ * That component was the calculator both a weapon row and a spell row used, behind a
+ * gear popover on one and inline on the other. S4d took the weapon off it and S5 took
+ * the spell off it, at which point it had no consumers and was deleted — the `type`
+ * prop here ('weapon' | 'spell') is what it existed to carry, and the only rule that
+ * differs between the two is the spell catalyst, which `calculateDamageValue` already
+ * owns.
  */
 export const DamageEquation: React.FC<DamageEquationProps> = ({
 	type,
@@ -190,26 +191,13 @@ export const DamageEquation: React.FC<DamageEquationProps> = ({
 					disabled={damage.staticDamage}
 					onChange={(otherCritical) => updateDamage({ otherCritical })}
 				/>
-				{/* A toggle, and it has to LOOK like one: the plate alone read as a command
-					button ("do the static thing"), so it carries the app's checkbox mark —
-					empty socket off, inlaid lozenge on, the same pair the category menu's rows
-					use. `aria-pressed` on a button is the right semantics for a control that
-					changes how the thing beside it is computed. */}
-				<Box
-					component="button"
-					type="button"
-					className="cs-equation__static"
-					aria-pressed={damage.staticDamage || false}
-					onClick={() => updateDamage({ staticDamage: !damage.staticDamage })}
+				<ToggleMark
+					checked={damage.staticDamage || false}
+					onChange={(staticDamage) => updateDamage({ staticDamage })}
 					title="Static damage uses one number for all three success levels"
 				>
-					{damage.staticDamage ? (
-						<CheckMarkChecked size={14} />
-					) : (
-						<CheckMarkEmpty size={14} />
-					)}
 					static
-				</Box>
+				</ToggleMark>
 			</Box>
 		</Box>
 	)

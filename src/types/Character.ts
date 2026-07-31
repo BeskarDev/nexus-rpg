@@ -268,10 +268,21 @@ export type Damage = {
 export const baseDamageTypeArray = ['', 'STR', 'AGI', 'SPI', 'MND'] as const
 export type BaseDamageType = (typeof baseDamageTypeArray)[number]
 
+/**
+ * The eleven damage types, as published in `docs/05-combat/02-attacking.md` (M13 S5).
+ *
+ * This array is the app's single source of truth: `DAMAGE_SIGIL`, the damage chips and
+ * every select read it, and `damageSigils.test.ts` asserts parity in both directions.
+ * `force` was missing here while existing in the rules, in the chip system and in the
+ * sigil table — so a force spell could be authored in the book, coloured by the chips
+ * and drawn a mark, and still not be selectable on the sheet. The test used to encode
+ * that gap as expected; it now asserts there is no gap.
+ */
 export const damageTypeArray = [
 	'acid',
 	'blast',
 	'fire',
+	'force',
 	'frost',
 	'lightning',
 	'necrotic',

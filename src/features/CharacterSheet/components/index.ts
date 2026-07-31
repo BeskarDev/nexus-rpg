@@ -26,6 +26,16 @@ export { ListSection, ListSectionHeader } from './ListSection'
 // M13 S4d — a menu of switches: the panel's structure and the row that is a
 // toggle. Everything visual about them is in the MUI theme.
 export { SheetMenu, ToggleMenuItem } from './SheetMenu'
+// M13 S4b/S5 — the expanded-row details panel and its field registers. Moved here
+// out of `02_Items/components/` when the Spells tab became the second consumer.
+export {
+	DetailsPanel,
+	DetailsGroup,
+	DetailField,
+	Inscription,
+} from './DetailsPanel'
+// M13 S5 — the labelled either/or switch (`static`, `deals damage`).
+export { ToggleMark } from './ToggleMark'
 // M13 S4e — the sheet's tab bar: a rail of nameplates that knows when it overflows.
 export { SheetTabBar } from './SheetTabBar'
 // M13 S4d — the record plate: an entity's numeric facts as a ledger of marked

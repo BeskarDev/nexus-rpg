@@ -15,6 +15,10 @@ import {
 import { LOCATION_SIGIL, MarkedOption } from '../utils/itemMarks'
 import {
 	DeleteButton,
+	DetailField,
+	DetailsGroup,
+	DetailsPanel,
+	Inscription,
 	PipRow,
 	QuickRefButton,
 	RecordPlate,
@@ -22,12 +26,6 @@ import {
 } from '@site/src/features/CharacterSheet/components'
 import { UI_COLORS } from '@site/src/utils/colors'
 import { DamageEquation } from '../../DamageEquation'
-import {
-	DetailField,
-	DetailsGroup,
-	DetailsPanel,
-	Inscription,
-} from './DetailsPanel'
 import { useFieldDraft } from '../../../hooks/useFieldDraft'
 
 export type WeaponDetailsProps = {

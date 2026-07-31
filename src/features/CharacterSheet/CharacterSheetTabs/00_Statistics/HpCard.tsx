@@ -167,7 +167,7 @@ export const HpCard = () => {
 			// Narrower than the old 25rem: the stepper row is the widest thing in
 			// here and needs ~20rem, so the rest was slack that let the three groups
 			// drift apart instead of reading as one column.
-			editorWidth="21rem"
+			editorWidth="26rem"
 			// M13 S1: the meter fills the card. It used to be capped at
 			// `maxWidth: 5.5rem` inside a card that spans two of the register's four
 			// columns, so the most-watched value on the sheet had the shortest meter

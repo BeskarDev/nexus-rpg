@@ -1,13 +1,16 @@
 import { Box } from '@mui/material'
 import React from 'react'
-import {
-	FieldGroupLabel,
-	SheetInput,
-	SheetInputProps,
-} from '../../../components'
+import { FieldGroupLabel } from '../SheetField/FieldGroupLabel'
+import { SheetInput, SheetInputProps } from '../SheetField/SheetInput'
 
 /**
- * The frame every expanded inventory row opens into (M13 S4b).
+ * The frame every expanded row opens into — items, spells, and whatever S7 adds
+ * (M13 S4b, generalized in S5).
+ *
+ * It lived under `02_Items/components/` while the Items tab was its only consumer.
+ * The S4d log's standing instruction was to MOVE it rather than copy it when a
+ * second tab needed it, because copy-then-diverge is what produced the two meta
+ * bands drifting apart in that slice. This is that move.
  *
  * Before this the details panel was a flat run of fields in source order —
  * description, quality, location, slot, uses, durability, then two buttons —

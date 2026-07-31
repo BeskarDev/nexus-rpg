@@ -24,6 +24,10 @@ export const UI_COLORS = {
     warning: 'var(--cs-warning)',
     purple: 'var(--cs-purple)',
     amber: 'var(--cs-amber)',
+    // The magic register (M13 S5) — rune-cyan, reserved by the README for content
+    // that IS magical: the focus pool, the catalyst, the cast control. `lightBlue`
+    // is the M9-era alias for the same token and is kept for its existing callers.
+    magic: 'var(--cs-magic)',
     lightBlue: 'var(--cs-light-blue)',
     grey: 'var(--cs-grey)',
     greyBlue: 'var(--cs-grey-blue)',

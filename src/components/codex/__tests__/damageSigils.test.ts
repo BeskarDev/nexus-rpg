@@ -24,9 +24,10 @@ describe('DAMAGE_SIGIL', () => {
 		const extra = Object.keys(DAMAGE_SIGIL).filter(
 			(type) => !(damageTypeArray as readonly string[]).includes(type),
 		)
-		// `force` is a published damage type in the rules and the chip system but
-		// is not yet in the app's array — see docs/05-combat/02-attacking.md.
-		expect(extra).toEqual(['force'])
+		// Was `['force']` — a published type the app's array did not carry, which meant
+		// a force spell could not be authored on the sheet. Closed in S5, and the
+		// assertion is now exact parity so it cannot reopen.
+		expect(extra).toEqual([])
 	})
 
 	it('only names marks that exist', () => {

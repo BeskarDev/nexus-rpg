@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { UnifiedListItem } from '@site/src/features/CharacterSheet/components/DynamicList'
 import { SpellSummary, SpellDetails } from './components'
+import { SPELL_TEMPLATE } from './components/spellColumns'
 
 export type SpellRowProps = {
 	spell: Spell
@@ -14,6 +15,14 @@ export type SpellRowProps = {
 	onToggleQuickRef?: (spellId: string) => void
 }
 
+/**
+ * One spell, as a ledger row that opens into its record (M13 S5).
+ *
+ * The local `spell` state is the sheet's standard draft pattern: text fields edit
+ * locally and commit on blur, so a name is not dispatched per keystroke. Everything
+ * else dispatches immediately, which is why the summary reads `initialSpell` for those
+ * fields — the row must show what the store holds, not a draft that never changed.
+ */
 export const SpellRow: React.FC<SpellRowProps> = ({
 	spell: initialSpell,
 	updateSpell,
@@ -31,6 +40,8 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 
+	// `rank × 2` is the rule, and the derived value is written back so every other
+	// surface (Quick Ref, the cast) reads one number rather than re-deriving it.
 	const spellCost = useMemo(() => {
 		const newSpellCost = initialSpell.rank * 2
 		if (newSpellCost !== initialSpell.cost) {
@@ -42,7 +53,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 	const castSpell = () => {
 		const newFocusValue = Math.max(
 			0,
-			activeCharacter.spells.focus.current - spell.cost,
+			activeCharacter.spells.focus.current - spellCost,
 		)
 		dispatch(
 			characterSheetActions.updateCharacter({
@@ -55,26 +66,28 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 
 	return (
 		<UnifiedListItem
+			summaryClassName="cs-ledger-row-grid"
+			summarySx={{ gridTemplateColumns: SPELL_TEMPLATE, columnGap: 1 }}
 			summaryContent={
 				<SpellSummary
-					spell={{ ...spell, rank: initialSpell.rank, target: initialSpell.target, range: initialSpell.range, dealsDamage: initialSpell.dealsDamage, damage: initialSpell.damage }}
+					spell={initialSpell}
 					spellCost={spellCost}
 					onCast={castSpell}
-					onRankChange={(rank) => updateSpell({ rank })}
-					onNameChange={(name) => setSpell((s) => ({ ...s, name }))}
-					onNameBlur={() => updateSpell({ name: spell.name })}
-					onPropertiesChange={(properties) =>
-						setSpell((s) => ({ ...s, properties }))
-					}
-					onPropertiesBlur={() => updateSpell({ properties: spell.properties })}
-					onDamageUpdate={(update) =>
-						updateSpell({ damage: { ...initialSpell.damage, ...update } })
-					}
 				/>
 			}
 			detailsContent={
 				<SpellDetails
-					spell={{ ...spell, target: initialSpell.target, range: initialSpell.range, dealsDamage: initialSpell.dealsDamage, id: initialSpell.id }}
+					spell={{
+						...spell,
+						...initialSpell,
+						name: spell.name,
+						properties: spell.properties,
+						effect: spell.effect,
+					}}
+					spellCost={spellCost}
+					onNameChange={(name) => setSpell((s) => ({ ...s, name }))}
+					onNameBlur={() => updateSpell({ name: spell.name })}
+					onRankChange={(rank) => updateSpell({ rank })}
 					onPropertiesChange={(properties) =>
 						setSpell((s) => ({ ...s, properties }))
 					}
@@ -82,7 +95,12 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 					onEffectChange={(effect) => setSpell((s) => ({ ...s, effect }))}
 					onEffectBlur={() => updateSpell({ effect: spell.effect })}
 					onDealsDamageChange={(dealsDamage) => updateSpell({ dealsDamage })}
-					onTargetChange={(target) => updateSpell({ target: target as TargetType })}
+					onDamageUpdate={(update) =>
+						updateSpell({ damage: { ...initialSpell.damage, ...update } })
+					}
+					onTargetChange={(target) =>
+						updateSpell({ target: target as TargetType })
+					}
 					onRangeChange={(range) => updateSpell({ range: range as RangeType })}
 					onDelete={deleteSpell}
 					isInQuickRef={isInQuickRef}

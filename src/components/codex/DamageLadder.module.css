@@ -35,7 +35,11 @@
 }
 .ladderCell2 {
 	font-weight: 700;
-	color: color-mix(in srgb, var(--ifm-color-primary) 82%, var(--ifm-font-color-base));
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 82%,
+		var(--ifm-font-color-base)
+	);
 }
 
 /* A single small-caps initial per number (W/S/C) — enough to key the triple
@@ -47,17 +51,37 @@
 	font-weight: 700;
 	font-size: 0.62em;
 	vertical-align: 0.35em;
-	color: color-mix(in srgb, var(--ifm-color-primary) 78%, var(--ifm-font-color-base));
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 78%,
+		var(--ifm-font-color-base)
+	);
 }
 
+/* A MARK in the kind slot (the character sheet passes `DamageSigil`, the docs pass a
+   chip) sat low against numerals that have no descenders. Targeting the `svg` alone was
+   not enough — `SigilIcon` wraps it, so the box that needed aligning was the wrapper,
+   not the glyph. The slot itself is now a flex line box, which centres whatever it holds
+   without knowing how many elements deep the mark is (M13 S5, owner review round 2). */
 .ladderKind {
 	color: color-mix(in srgb, var(--ifm-font-color-base) 82%, transparent);
+	display: inline-flex;
+	align-items: center;
+	vertical-align: middle;
+	/* Air between the last numeral and the type mark. The JSX already emits a space, but
+	   a space collapses against an inline-flex box, so the gap has to be declared. This
+	   is the ONE place either tab renders the pairing, so the Items ledger and the Spells
+	   ledger get it from the same rule (S5, owner review). */
+	margin-left: 0.3em;
+	/* Cap-height, not box-height: the numerals beside it have no descenders, so their
+	   optical centre sits above the line box's. */
+	position: relative;
+	top: -0.06em;
 }
 /* A damage-type chip inside the ladder sits on the number baseline. */
 .ladderKind :global(.chip) {
 	top: -0.05em;
 }
-
 
 .srOnly {
 	position: absolute;

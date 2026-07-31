@@ -89,9 +89,14 @@ input[type='number'] {
 		var(--nexus-bronze),
 		var(--ifm-font-color-base) 15%
 	);
-	/* Catalyst is the one sheet card under the Spells tab — the magic-only
-	   cyan exception (README, M9 guidelines) applies here, nowhere else. */
-	--cs-light-blue: var(--rune-cyan-text);
+	/* The magic register (M13 S5). The README's rule is that rune-cyan appears only
+	   where the content is magical, and the Spells tab is the whole of that on this
+	   sheet: the focus pool, the catalyst, and the cast control that spends focus.
+	   M9 reached the catalyst card via `--cs-light-blue`; S5 names the register
+	   properly and points the older alias at it, so the three read as one thing
+	   instead of one exception and two accidents. */
+	--cs-magic: var(--rune-cyan-text);
+	--cs-light-blue: var(--cs-magic);
 	--cs-grey: var(--ifm-color-emphasis-700);
 	--cs-grey-blue: var(--ifm-color-emphasis-700);
 	--cs-resolve: color-mix(
@@ -379,6 +384,21 @@ input[type='number'] {
    Levelled here rather than at each call site: nineteen call sites cannot be
    trusted to remember a shared `sx`, and this is the same lever `createTheme`
    is for the rest of the sheet. */
+/* Every control in a strip is the same box on the same line (S5, owner review). The
+   Spells header mixed `MarkButton` (a drawn plate) with three `IconButton`s carrying
+   Material glyphs at their own default sizes, so the four sat at four heights. The
+   strip states the box and the glyph size for whatever is in it. */
+.character-sheet-page .cs-section-actions,
+.cs-tokens .cs-section-actions {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	line-height: 1;
+}
+.character-sheet-page .cs-section-actions > *,
+.cs-tokens .cs-section-actions > * {
+	flex: 0 0 auto;
+}
 .character-sheet-page .cs-section-actions .MuiIconButton-root,
 .cs-tokens .cs-section-actions .MuiIconButton-root {
 	/* M13 S3.5: sized by the shared interactive floor, so this control and every
@@ -661,6 +681,9 @@ input[type='number'] {
 }
 /* The per-level line sits under the sum and reads quieter than it: these are
    adjustments to the result, not terms of the equation. */
+.character-sheet-page .cs-equation__levels .cs-toggle-mark {
+	margin-left: auto;
+}
 .character-sheet-page .cs-equation__levels {
 	display: flex;
 	flex-wrap: wrap;
@@ -677,14 +700,14 @@ input[type='number'] {
 .character-sheet-page .cs-equation__level[data-disabled] {
 	opacity: 0.45;
 }
-/* `static` is a STATE, so it says so by filling its plate — the same idiom the
-   section headers' toggles use. It was a checkbox with a caption beside it, which
-   put a set-of-choices control on a single either/or. */
-.character-sheet-page .cs-equation__static {
+/* A labelled either/or switch — see `ToggleMark`. It says its state by filling its
+   plate, the same idiom the section headers' toggles use, and carries the app's
+   checkbox mark so on/off reads the way the category menus teach it. Was written
+   inline for `static` and copied for `deals damage`; one class, one component. */
+.character-sheet-page .cs-toggle-mark {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.4rem;
-	margin-left: auto;
 	align-self: center;
 	min-height: var(--nexus-target);
 	padding: 2px 0.5rem;
@@ -698,18 +721,18 @@ input[type='number'] {
 	letter-spacing: 0.06em;
 	cursor: pointer;
 }
-.character-sheet-page .cs-equation__static:hover {
+.character-sheet-page .cs-toggle-mark:hover {
 	border-color: var(--nexus-bronze);
 	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
 }
-.character-sheet-page .cs-equation__static[aria-pressed='true'] {
+.character-sheet-page .cs-toggle-mark[aria-pressed='true'] {
 	border-color: var(--nexus-bronze);
 	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
 }
 /* The plate alone was read as a command button ("do the static thing") rather than
    as a state. It carries the app's checkbox mark now, so it says the same thing the
    category menu's rows say: an empty socket is off, an inlaid lozenge is on. */
-.character-sheet-page .cs-equation__static .cs-check-mark {
+.character-sheet-page .cs-toggle-mark .cs-check-mark {
 	color: var(--nexus-bronze);
 }
 /* Bare at rest, slot under the pointer — the equation is an inscription first. */
@@ -757,6 +780,115 @@ input[type='number'] {
 	.character-sheet-page .cs-section-head {
 		background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
 		margin-bottom: 0.5rem;
+	}
+}
+
+/* M13 S5 — the cast rune: the spell row's one control.
+   ==========================================================================
+
+   Two revisions. It started as a 32px MUI `Avatar` with a hand-written keyframe
+   pulsing a Material-blue box-shadow every five seconds — a depth effect the theme
+   forbids, in a hue it does not own, firing on a timer. I replaced that with a plain
+   stamped plate in the magic register, and the owner's report was correct: cyan alone
+   made it *tinted*, not *magical*, and nothing about a flat square says press me.
+
+   So it is a RUNE rather than a plate. Three things do that, and each one is a device
+   the theme already sanctions:
+
+   1. **A cut-corner tessera silhouette** (`clip-path`) — the damage chips' own shape
+      language, and the one silhouette in the set that reads as an inlaid stone rather
+      than a UI button. A clipped shape cannot take a border, so the keyline is the
+      two-layer trick the chips use: a cyan-filled backing, with the surface inset 1.5px
+      on top punching the middle out.
+   2. **Glow, not shadow.** README/M3 makes rune-cyan glow the site's one legitimate
+      lighting effect and derives every glow from `--rune-cyan-glow`. This is that,
+      applied to the mark's ink and its edge — a lit rune, not a raised button.
+   3. **A pulse that says "live", gated on `prefers-reduced-motion`.** Slow (4s) and
+      shallow, because it sits in a list a player is reading; it brightens on hover and
+      sinks on press, so the affordance is in the interaction and not only in the idle
+      state. */
+.character-sheet-page .cs-cast {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: calc(var(--nexus-target) + 6px);
+	min-height: calc(var(--nexus-target) + 6px);
+	padding: 0;
+	border: none;
+	background: color-mix(in srgb, var(--cs-magic) 60%, transparent);
+	/* The tessera: a stone chip with its corners cut, as the damage chips are cut. */
+	clip-path: polygon(
+		5px 0,
+		calc(100% - 5px) 0,
+		100% 5px,
+		100% calc(100% - 5px),
+		calc(100% - 5px) 100%,
+		5px 100%,
+		0 calc(100% - 5px),
+		0 5px
+	);
+	color: var(--cs-magic);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-dense);
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+	cursor: pointer;
+	animation: cs-rune-pulse 4s ease-in-out infinite;
+}
+/* The inset surface that turns the filled tessera into a keyline one. */
+.character-sheet-page .cs-cast::before {
+	content: '';
+	position: absolute;
+	inset: 1.5px;
+	background: color-mix(
+		in srgb,
+		var(--cs-magic) 10%,
+		var(--ifm-background-color)
+	);
+	clip-path: inherit;
+	z-index: -1;
+}
+.character-sheet-page .cs-cast:hover {
+	background: var(--cs-magic);
+	text-shadow: 0 0 8px
+		color-mix(in srgb, var(--rune-cyan-glow) 70%, transparent);
+	animation: none;
+}
+.character-sheet-page .cs-cast:active {
+	background: var(--cs-magic);
+}
+.character-sheet-page .cs-cast:active::before {
+	background: color-mix(
+		in srgb,
+		var(--cs-magic) 26%,
+		var(--ifm-background-color)
+	);
+}
+.character-sheet-page .cs-cast:focus-visible {
+	outline: 2px solid var(--cs-magic);
+	outline-offset: 2px;
+}
+/* A lit rune breathes. `text-shadow` on the numeral and a tightening of the ink, not a
+   box-shadow on the plate — the light comes off the mark, which is what makes it read
+   as an inscription with something behind it rather than a button with a halo. */
+@keyframes cs-rune-pulse {
+	0%,
+	100% {
+		text-shadow: 0 0 3px
+			color-mix(in srgb, var(--rune-cyan-glow) 30%, transparent);
+	}
+	50% {
+		text-shadow: 0 0 9px
+			color-mix(in srgb, var(--rune-cyan-glow) 75%, transparent);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.character-sheet-page .cs-cast {
+		animation: none;
+		text-shadow: 0 0 5px
+			color-mix(in srgb, var(--rune-cyan-glow) 45%, transparent);
 	}
 }
 
@@ -1103,7 +1235,13 @@ input[type='number'] {
 	font-size: var(--nexus-text-xs);
 	font-variant-caps: small-caps;
 	letter-spacing: 0.06em;
-	line-height: 1.2;
+	/* The label and the value share a line box IN PIXELS, not a ratio (S5, owner
+	   review). `line-height: 1.2` on a 12px label and on an 18px value makes two boxes
+	   14.4px and 21.6px tall; centring those centres each text inside its own box and
+	   leaves the label's BASELINE above the value's, which is exactly the "labels sit too
+	   high" report. Small caps make it worse, having no descenders to fill the slack.
+	   One height for both, and the baselines land together. */
+	line-height: 1.4rem;
 	color: var(--nexus-bronze);
 	white-space: nowrap;
 }
@@ -1111,12 +1249,25 @@ input[type='number'] {
    tabular so a coin count does not shift its own label when it changes. The label
    grows a rung with it — 11px small caps under an 18px numeral reads as a footnote
    on the number rather than as its name. */
+/* A mark beside small caps needs an optical lift, not geometric centring (S5, owner
+   review). Small caps have no descenders, so their glyphs occupy the TOP of their line
+   box — a sigil centred in that box lands visibly below the letters beside it. The lift
+   is in `em` so it tracks whatever size the rank sets. Stated for the label rather than
+   for `StatSigil`, because a mark centred against full-height text (a row title, a menu
+   item) is correct as-is; it is the small-caps pairing that needs it. */
+.character-sheet-page .cs-meta-band__label svg,
+.character-sheet-page .cs-record-row__label svg,
+.character-sheet-page .cs-section-head svg {
+	position: relative;
+	top: -0.06em;
+}
+
 .character-sheet-page .cs-meta-band__value {
 	font-family: var(--nexus-font-ui);
 	font-weight: 700;
 	font-size: var(--nexus-text-md);
 	font-variant-numeric: tabular-nums;
-	line-height: 1.2;
+	line-height: 1.4rem;
 }
 .character-sheet-page .cs-meta-band .cs-meta-band__value input {
 	font-size: var(--nexus-text-md);
@@ -1160,6 +1311,14 @@ input[type='number'] {
 .character-sheet-page .cs-meta-band--sub .cs-meta-band__value input {
 	font-size: var(--nexus-text-dense);
 }
+/* The sub rank's values are 15px rather than 18px, so its shared line box is shorter.
+   Stated per rank rather than derived, because a rank IS its type sizes. */
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__label,
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__value,
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__note,
+.character-sheet-page .cs-meta-band--sub .MuiInputBase-input {
+	line-height: 1.2rem;
+}
 .character-sheet-page .cs-meta-band--sub .cs-meta-band__label {
 	font-size: var(--nexus-text-2xs);
 }
@@ -1190,10 +1349,59 @@ input[type='number'] {
 .character-sheet-page .cs-meta-band > * {
 	align-items: center;
 }
+/* A control inside a band wears the strip's stamped plate — the band holds facts and
+   the occasional verb, and a verb here should look like a verb anywhere else on the
+   sheet (S5). */
+.character-sheet-page .cs-meta-band .MuiIconButton-root {
+	width: var(--nexus-target);
+	height: var(--nexus-target);
+	padding: 0;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	border-radius: 0;
+	color: var(--nexus-bronze);
+}
+.character-sheet-page .cs-meta-band .MuiIconButton-root:hover {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+/* A band FIELD that opens an editor (S5). Bare at rest — a band is a line of facts, and
+   framing one of them would claim it is a different kind of fact — with the slot's own
+   hover wash to say it is live. Same gesture as an HP card: click the pool, get the
+   pool's editor.
+
+   The `all: unset`-style reset is deliberate and load-bearing: this is a `button`, so
+   without it the UA paints a light grey face and drops the flex gap, which is exactly
+   what shipped when the rule below was written into a stale selector and matched
+   nothing. */
+.character-sheet-page .cs-band-trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	min-width: 0;
+	padding: 2px 6px;
+	border: 1.5px solid transparent;
+	border-radius: 0;
+	background: none;
+	background-color: transparent;
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+	appearance: none;
+}
+.character-sheet-page .cs-band-trigger:hover {
+	border-color: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	background-color: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+}
+.character-sheet-page .cs-band-trigger:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: -1.5px;
+}
+
 .character-sheet-page .cs-meta-band .MuiInputBase-input {
 	padding-top: 0;
 	padding-bottom: 0;
-	line-height: 1.2;
+	line-height: 1.4rem;
 }
 
 /* M13 S4 (owner review) — the doc reading column's list indent does NOT apply to

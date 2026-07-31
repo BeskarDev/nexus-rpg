@@ -1,33 +1,19 @@
-import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
-	Box,
-	IconButton,
-	TextField,
-	Tooltip,
-	Typography,
-	alpha,
-} from '@mui/material'
+import { Box, IconButton, Tooltip } from '@mui/material'
 import React, { useMemo, useState } from 'react'
-import { UI_COLORS } from '../../../../utils/colors'
-
-import { AddCircle, Autorenew, ExpandMore, Search, SwapVert } from '@mui/icons-material'
-import { DynamicList, reorder } from '@site/src/features/CharacterSheet/components/DynamicList'
+import { Autorenew, Search, SwapVert } from '@mui/icons-material'
+import { DynamicList } from '@site/src/features/CharacterSheet/components/DynamicList'
 import { DynamicListItem } from '@site/src/features/CharacterSheet/components/DynamicList/DynamicListItem'
 import { DropResult } from '@hello-pangea/dnd'
 import { CharacterDocument, Spell } from '../../../../types/Character'
-import { SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { SpellRow } from './SpellRow'
+import { ListSection, MarkButton } from '../../components'
+import { SPELL_HEADINGS, spellHeaderTemplate } from './components/spellColumns'
 import { SpellsSearchDialog } from './SpellsSearchDialog'
-import { MagicSkillCard } from './MagicSkillCard'
-import { SpecializationCard } from './SpecializationCard'
-import { CatalystCard } from './CatalystCard'
-import { FocusCard } from './FocusCard'
+import { SpellsHeader } from './SpellsHeader'
 import { RefreshUpdatesDialog } from '../../components/RefreshUpdatesDialog'
 import { computeSpellUpdates } from '../../utils/computeContentUpdates'
 
@@ -141,72 +127,48 @@ export const SpellsTab: React.FC = () => {
 			}}
 		>
 			<Box sx={{ mb: 2, width: '100%' }}>
-				{/* Magic Info Cards Row */}
-				<Box
-					sx={{
-						display: 'flex',
-						alignItems: 'stretch',
-						flexWrap: 'wrap',
-						gap: 0.75,
-						mb: 1,
-					}}
-				>
-					<MagicSkillCard magicSkill={magicSkill} />
-					<SpecializationCard 
-						specialization={specialization}
-						updateCharacter={updateCharacter}
-					/>
-					<CatalystCard
-						spellCatalystDamage={spellCatalystDamage}
-						updateCharacter={updateCharacter}
-					/>
-					<FocusCard />
-				</Box>
+				<SpellsHeader
+					magicSkill={magicSkill}
+					specialization={specialization}
+					spellCatalystDamage={spellCatalystDamage}
+					updateCharacter={updateCharacter}
+				/>
 
-				<Accordion defaultExpanded>
-					<AccordionSummary expandIcon={<ExpandMore />}>
-						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-							<SectionHeader>Spells</SectionHeader>
-							<Tooltip title={reorderMode ? 'Exit reorder mode' : 'Reorder spells'}>
+				{/* M13 S5: was an MUI `Accordion` with a bold `SectionHeader` and a
+					hand-built row of icon buttons — the same arrangement S4 replaced on the
+					Items tab, and the last copy of it on the sheet. `ListSection` supplies
+					the washed heading, the count, the collapse and the levelled control
+					strip; what stays here is only what this list actually owns. */}
+				<ListSection
+					label="Spells"
+					count={spells.length}
+					collapsible
+					defaultExpanded
+					className="cs-ledger-cols"
+					actions={
+						<>
+							<Tooltip
+								title={reorderMode ? 'Exit reorder mode' : 'Reorder spells'}
+							>
 								<IconButton
 									size="small"
-									onClick={(event) => {
-										event.stopPropagation()
-										setReorderMode(!reorderMode)
-									}}
-									sx={{
-										mb: 0.75,
-										border: '1px solid',
-										borderColor: reorderMode ? 'primary.main' : 'divider',
-										color: reorderMode ? 'primary.main' : 'inherit',
-									}}
+									data-state={reorderMode ? 'on' : 'off'}
+									onClick={() => setReorderMode(!reorderMode)}
 								>
 									<SwapVert fontSize="inherit" />
 								</IconButton>
 							</Tooltip>
-							<IconButton
-								onClick={(event) => {
-									addNewSpell()
-									event.stopPropagation()
-								}}
-								sx={{ mb: 0.75 }}
-							>
-								<AddCircle />
-							</IconButton>
+							<MarkButton glyph="+" label="Add spell" onClick={addNewSpell} />
 							<Tooltip
-								title={`Search ${magicType === 'Arcana' ? 'Arcane' : magicType === 'Mysticism' ? 'Mystic' : ''} Spells from database`}
+								title={`Search ${magicType === 'Arcana' ? 'Arcane' : magicType === 'Mysticism' ? 'Mystic' : ''} spells from the rulebook`}
 							>
 								<span>
 									<IconButton
 										size="small"
-										onClick={(event) => {
-											setIsSpellsDialogOpen(true)
-											event.stopPropagation()
-										}}
-										sx={{ ml: -1, mb: 0.75 }}
+										onClick={() => setIsSpellsDialogOpen(true)}
 										disabled={!magicType}
 									>
-										<Search />
+										<Search fontSize="inherit" />
 									</IconButton>
 								</span>
 							</Tooltip>
@@ -219,41 +181,54 @@ export const SpellsTab: React.FC = () => {
 							>
 								<IconButton
 									size="small"
-									onClick={(event) => {
-										setIsRefreshDialogOpen(true)
-										event.stopPropagation()
-									}}
-									sx={{ ml: -1, mb: 0.75 }}
+									onClick={() => setIsRefreshDialogOpen(true)}
 									color={spellUpdates.length ? 'warning' : 'default'}
 								>
-									<Autorenew />
+									<Autorenew fontSize="inherit" />
 								</IconButton>
 							</Tooltip>
-						</Box>
-					</AccordionSummary>{' '}
-					<AccordionDetails>
-						<DynamicList droppableId="spells" onDragEnd={onSpellReorder}>
-							{spells.map((s, index) => (
-								<DynamicListItem
-									key={s.id}
-									id={s.id}
-									index={index}
-									showDragHandle={reorderMode}
-									sx={{ alignItems: 'baseline' }}
-								>
-									<SpellRow
-										key={s.id}
-										spell={s}
-										updateSpell={(update) => updateSpell(update, index)}
-										deleteSpell={() => deleteSpell(s)}
-										isInQuickRef={quickRefSelections.spells?.includes(s.id)}
-										onToggleQuickRef={handleToggleSpellQuickRef}
-									/>
-								</DynamicListItem>
+						</>
+					}
+				>
+					{/* The ledger's column header — decorative, since every cell still
+						carries its own label for the accessibility tree. */}
+					{spells.length > 0 && (
+						<Box
+							className="cs-ledger-head"
+							aria-hidden="true"
+							sx={{
+								gridTemplateColumns: spellHeaderTemplate(),
+								maxWidth: 'var(--cs-max-width-lg)',
+							}}
+						>
+							{SPELL_HEADINGS.map((heading, index) => (
+								<span key={index} style={{ textAlign: heading.align }}>
+									{heading.label}
+								</span>
 							))}
-						</DynamicList>
-					</AccordionDetails>
-				</Accordion>
+						</Box>
+					)}
+					<DynamicList droppableId="spells" onDragEnd={onSpellReorder}>
+						{spells.map((s, index) => (
+							<DynamicListItem
+								key={s.id}
+								id={s.id}
+								index={index}
+								showDragHandle={reorderMode}
+								sx={{ alignItems: 'baseline' }}
+							>
+								<SpellRow
+									key={s.id}
+									spell={s}
+									updateSpell={(update) => updateSpell(update, index)}
+									deleteSpell={() => deleteSpell(s)}
+									isInQuickRef={quickRefSelections.spells?.includes(s.id)}
+									onToggleQuickRef={handleToggleSpellQuickRef}
+								/>
+							</DynamicListItem>
+						))}
+					</DynamicList>
+				</ListSection>
 			</Box>
 
 			<SpellsSearchDialog

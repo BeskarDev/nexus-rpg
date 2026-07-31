@@ -11,14 +11,22 @@ export interface DieTokenProps {
 }
 
 /**
- * Renders a regular polygon with `sides` sides, point-up, inscribed in a circle
- * of radius `r` about (12,12).
+ * Renders a regular polygon with `sides` sides, point-up, inscribed in a circle of
+ * radius `r` about (12, 12 + `dy`).
+ *
+ * `dy` exists for the triangle. A regular polygon's centroid IS its circumcircle
+ * centre, so every shape here is mathematically centred on the numeral — but a
+ * point-up triangle carries almost all of its area in the lower half, so its
+ * *optical* centre sits below the geometric one and the numeral reads high inside
+ * it. Dropping the shape rather than raising the numeral keeps the numeral on the
+ * same baseline as its four siblings, which is what makes a row of attributes scan
+ * (M13 S5, owner review).
  */
-function polygon(sides: number, r: number, rotate = 0): string {
+function polygon(sides: number, r: number, rotate = 0, dy = 0): string {
 	return (
 		Array.from({ length: sides }, (_, i) => {
 			const a = (i * 2 * Math.PI) / sides - Math.PI / 2 + rotate
-			return `${(12 + r * Math.cos(a)).toFixed(2)} ${(12 + r * Math.sin(a)).toFixed(2)}`
+			return `${(12 + r * Math.cos(a)).toFixed(2)} ${(12 + dy + r * Math.sin(a)).toFixed(2)}`
 		}).join(' L') + ' Z'
 	)
 }
@@ -57,6 +65,18 @@ export default function DieToken({ value, className }: DieTokenProps) {
 	// Only the d6 is rotated, to sit flat-top and read as a square rather than as
 	// a second diamond beside the d8.
 	const rotate = size === 6 ? Math.PI / 4 : 0
+	/**
+	 * Per-shape corrections so the five tokens read as ONE SIZE (S5, owner review).
+	 *
+	 * A shared circumradius does not give a shared apparent size: a square inscribed
+	 * in a circle covers 64% of it and a hexagon 83%, so at equal `r` the d6 reads
+	 * noticeably smaller than the d10 and d12 beside it. The square gets the radius
+	 * back; the triangle, which covers only 41%, gets the drop described on
+	 * `polygon` instead of a radius change, because widening a triangle to match a
+	 * hexagon's area would make it overrun the token box.
+	 */
+	const radius = size === 6 ? 10.6 : 10.5
+	const dy = size === 4 ? 1.6 : 0
 
 	return (
 		<span className={`${styles.token}${className ? ' ' + className : ''}`}>
@@ -73,7 +93,7 @@ export default function DieToken({ value, className }: DieTokenProps) {
 					<path d="M12 1.5 L21 12 L12 22.5 L3 12 Z" strokeWidth={1.3} />
 				) : (
 					<path
-						d={`M${polygon(shape, size === 6 ? 9.4 : 10.5, rotate)}`}
+						d={`M${polygon(shape, radius, rotate, dy)}`}
 						strokeWidth={1.3}
 					/>
 				)}
