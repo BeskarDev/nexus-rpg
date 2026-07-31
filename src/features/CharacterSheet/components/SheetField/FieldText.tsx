@@ -30,7 +30,7 @@ export interface FieldTextProps {
  * Nine cards on the Personal tab were each hand-rolling this: a
  * `variant="standard"` field with the underline switched off through an `sx`
  * block, centred text, and a `your {label}` placeholder built from the label. The
- * blocks had drifted — three carried a redundant `fontSize: '0.85rem'` (13.6px
+ * blocks had drifted — three carried a redundant `fontSize: 'var(--nexus-text-sm)'` (13.6px
  * against a 13px theme base) and the padding differed three ways — without any of
  * those differences meaning anything.
  *
@@ -61,7 +61,9 @@ export const FieldText: React.FC<FieldTextProps> = ({
 			onChange={(event) => onChange(event.target.value)}
 			onBlur={onBlur}
 			error={error}
-			placeholder={placeholder ?? (label ? `your ${label.toLowerCase()}` : undefined)}
+			placeholder={
+				placeholder ?? (label ? `your ${label.toLowerCase()}` : undefined)
+			}
 			multiline={multiline}
 			minRows={multiline ? 2 : undefined}
 			maxRows={multiline ? 4 : undefined}
@@ -81,7 +83,9 @@ export const FieldText: React.FC<FieldTextProps> = ({
 	if (!action) return field
 
 	return (
-		<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, width: '100%' }}>
+		<Box
+			sx={{ display: 'flex', alignItems: 'center', gap: 0.5, width: '100%' }}
+		>
 			{field}
 			{action}
 		</Box>

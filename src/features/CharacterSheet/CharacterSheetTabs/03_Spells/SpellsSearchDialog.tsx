@@ -146,7 +146,7 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 					size="small"
 					variant="outlined"
 					color={getDisciplineColor(value)}
-					sx={{ fontSize: '0.75rem' }}
+					sx={{ fontSize: 'var(--nexus-text-xs)' }}
 				/>
 			),
 		},

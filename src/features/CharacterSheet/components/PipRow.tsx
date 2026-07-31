@@ -74,7 +74,16 @@ export interface PipRowProps extends Omit<SigilPipProps, 'filled' | 'onToggle' |
 	onChange: (next: number) => void
 	/** Names the resource, e.g. "Fatigue" — each pip gets "Fatigue 3 of 6". */
 	label: string
-	wrap?: boolean
+	/**
+	 * Wrap the pips onto a fixed grid of this many columns instead of one row.
+	 *
+	 * M13 S1. Fatigue's six pips in a single row were the widest thing in the
+	 * live-resource register and forced the card past its column, while three
+	 * short rows of counters sat beside it. A 3×2 block reads its count as
+	 * quickly (two rows is still one glance) and gives the register back its
+	 * measure. Omit for short rows — Resolve's three pips have nothing to gain.
+	 */
+	columns?: number
 }
 
 /**
@@ -91,13 +100,26 @@ export const PipRow: React.FC<PipRowProps> = ({
 	value,
 	onChange,
 	label,
-	wrap = false,
+	columns,
 	...pip
 }) => (
 	<Box
 		role="group"
 		aria-label={label}
-		sx={{ display: 'flex', flexDirection: 'row', ...(wrap && { flexWrap: 'wrap' }) }}
+		sx={
+			columns
+				? {
+						display: 'grid',
+						// A fixed track count rather than `flexWrap`: wrapping breaks
+						// wherever the container happens to end, so the same six pips
+						// could read 4+2 at one width and 3+3 at another. The block
+						// shape is the information here, so it is declared, not
+						// inherited from the layout.
+						gridTemplateColumns: `repeat(${columns}, max-content)`,
+						justifyContent: 'center',
+					}
+				: { display: 'flex', flexDirection: 'row' }
+		}
 	>
 		{Array.from({ length: count }).map((_, index) => (
 			<SigilPip

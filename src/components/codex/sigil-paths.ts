@@ -116,6 +116,25 @@ export type SigilName =
 	| 'measuring-rod'
 	| 'broken-jar'
 	| 'ingots'
+	// --- Status conditions (M13) ---
+	// One mark per condition that has an instrument or a visible sign to depict.
+	// Fourteen of the twenty-four needed a new mark; the other ten reuse marks
+	// above. Both halves are mapped in `condition-sigils.ts`.
+	| 'target'
+	| 'mace'
+	| 'ram'
+	| 'tilted-column'
+	| 'lotus'
+	| 'bell'
+	| 'drum'
+	| 'bird'
+	| 'cowl'
+	| 'blindfold'
+	| 'stopper'
+	| 'statue'
+	| 'fallen-figure'
+	| 'water'
+	| 'hollow-figure'
 
 export const SIGIL_INNER: Record<SigilName, string> = {
 	// --- Chapter sigils ---
@@ -923,4 +942,248 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 		path(boxD(15.5, 12, 22.5, 15)) +
 		path(boxD(15.5, 18, 22.5, 21)) +
 		path(boxD(15.5, 24, 22.5, 27)),
+
+	// --- Status conditions (M13) ---
+	//
+	// These were the hardest tier in the set to draw, and the reason is worth
+	// recording: every other sigil names a THING, while a condition names a state
+	// of a body. So each of these depicts the instrument or the visible sign
+	// instead — a mace for stunned, a bell for dazed, water for suffocating.
+	//
+	// The mechanical gate was never the constraint. The first full round passed
+	// `sigils:check` 14/14 and read correctly 2/14: the lyre drawn for charmed came
+	// out a wastebasket, the scorpion drawn for paralyzed a bull's head, the ear
+	// drawn for deafened a snail. Four more rounds got it to 13/14. What the
+	// rounds taught, all of it about the 16px row-gutter size these ship at:
+	//
+	//   - interior detail fills in. A lyre's strings, a sistrum's crossbars and a
+	//     drum's lacing all closed up; meaning has to live in the OUTLINE, and a
+	//     void needs ~3.5 units before it survives.
+	//   - thin appendages merge or vanish — a scorpion's claws, a bird's beak.
+	//   - a mirrored pair of limbs reads as horns no matter what it depicts, which
+	//     is what made two different marks come out as `bull-head`.
+	//   - a vertical stem on a round mass always reads as a mushroom. It sank the
+	//     sistrum and the hand-mirror both, and it is why `bell` has a base plate.
+	//   - a mark has to read as one whole shape. Anything assembled from parts
+	//     reads as its own convex hull once the parts touch.
+	//
+	// Where a mark failed twice the MOTIF was wrong rather than the geometry, so
+	// most of the later rounds changed object instead of nudging coordinates.
+
+	/** A shooting butt seen face-on — Marked. */
+	target:
+		path(ringD(16, 16, 13, 9.5), true) +
+		path(ringD(16, 16, 7, 3.9), true) +
+		path(circleD(16, 16, 1.3)),
+
+	/** A pear-headed mace — Stunned. The blunt instrument, not its effect. */
+	mace:
+		path(barD([11, 28.5], [17, 13], 5.4, 5.4)) +
+		path(
+			blobD([
+				[16, 3.5],
+				[22.5, 4.5],
+				[25, 11],
+				[19.5, 15.5],
+				[12.5, 14.5],
+				[9, 8.5],
+			]),
+		),
+
+	/** A battering ram driven along its beam — Pushed. */
+	ram:
+		path(barD([4, 16], [22, 16], 5, 6)) +
+		path(polyD([[21, 9], [29.5, 12.5], [29.5, 19.5], [21, 23]])) +
+		path(boxD(7, 21, 11, 29.5)),
+
+	/** A column toppling off its base — Staggered. */
+	'tilted-column':
+		path(barD([9, 27], [21, 6.5], 6.5, 6.5)) +
+		path(polyD([[16, 2], [28, 6], [26, 11], [15, 8]])) +
+		path(boxD(3, 26.5, 17, 29.5)),
+
+	/**
+	 * A lotus in bloom — Charmed. Two rounds of drawing a lyre for this slot
+	 * proved a frame fills in at 16px; a blossom is solid mass with a splayed
+	 * outline, which is what survives.
+	 */
+	lotus:
+		path(
+			polyD([
+				[16, 6],
+				[21, 9],
+				[23, 17],
+				[16, 21],
+				[9, 17],
+				[11, 9],
+			]),
+		) +
+		path(polyD([[4, 9], [10, 12], [11.5, 19], [6, 16]])) +
+		path(polyD([[28, 9], [22, 12], [20.5, 19], [26, 16]])) +
+		path(boxD(14, 21, 18, 29.5)),
+
+	/**
+	 * A bell — Dazed. The base plate is load-bearing: without it the crown and
+	 * body read as a mushroom, and the outline sat 0.093 from `sweat-drop`,
+	 * because a bell and a falling drop are the same gesture.
+	 */
+	bell:
+		path(boxD(12, 3, 20, 6.5)) +
+		path(
+			polyD([
+				[10.5, 6.5],
+				[21.5, 6.5],
+				[24, 20],
+				[24, 24],
+				[8, 24],
+				[8, 20],
+			]),
+		) +
+		path(boxD(4.5, 24, 27.5, 28.5)),
+
+	/** A barrel drum, laced head to head — Deafened. */
+	drum:
+		path(
+			blobD([
+				[9.5, 9],
+				[16, 8],
+				[22.5, 9],
+				[25, 16],
+				[22.5, 23],
+				[16, 24],
+				[9.5, 23],
+				[7, 16],
+			]),
+		) +
+		path(boxD(5, 8, 27, 11.2)) +
+		path(boxD(5, 20.8, 27, 24)),
+
+	/** A bird flitting past — Distracted. What pulls the eye off the field. */
+	bird:
+		path(
+			blobD([
+				[11, 12],
+				[18, 11],
+				[22, 15],
+				[20, 21],
+				[13, 22],
+				[9, 17],
+			]),
+		) +
+		path(circleD(21, 12, 4.8)) +
+		path(polyD([[24, 9.5], [29.5, 12.5], [24, 15.5]])) +
+		path(polyD([[14, 13], [4.5, 6], [11, 18.5]])) +
+		path(polyD([[11.5, 18], [2.5, 25], [14, 24]])),
+
+	/**
+	 * A cowled figure, the face a carved void — Hidden. The shoulders have to be
+	 * clearly wider than the hood so the outline steps in twice on the way up;
+	 * with the hood at full width it read as an arched doorway instead.
+	 */
+	cowl: path(
+		polyD([
+			[16, 3.5],
+			[21, 7],
+			[22.5, 15],
+			[28.5, 20],
+			[29.5, 29.5],
+			[2.5, 29.5],
+			[3.5, 20],
+			[9.5, 15],
+			[11, 7],
+		]) + polyD([[16, 8.5], [20.5, 13.5], [19.5, 20], [12.5, 20], [11.5, 13.5]]),
+		true,
+	),
+
+	/**
+	 * A strap bound round the head — Blinded. The tied ends have to break the face
+	 * outline: kept inside it, the strap read as a stripe painted on a shield
+	 * rather than as cloth wrapped around something.
+	 */
+	blindfold:
+		path(
+			polyD([[9, 5], [23, 5], [22, 20], [16, 27], [10, 20]]) +
+				boxD(7, 11, 25, 15.5),
+			true,
+		) +
+		path(boxD(2.5, 11, 9.5, 15.5)) +
+		path(boxD(22.5, 11, 29.5, 15.5)) +
+		path(polyD([[24.5, 15.5], [29.5, 17], [26.5, 24]])),
+
+	/**
+	 * An amphora stopper — Silenced. Five motifs went through this one slot: a
+	 * bound mouth read as a fish, a banded face as a shield, a bridle bit as
+	 * handcuffs, a snapped reed pipe as two abstract shards. The stopper is the
+	 * only one that reads as an object at 16px. "Stopped" is a determinative for
+	 * silence rather than a picture of it, which is the job these marks actually
+	 * do — the condition's name is always beside them.
+	 */
+	stopper:
+		path(polyD([[4.5, 4], [27.5, 4], [27.5, 11], [4.5, 11]])) +
+		path(polyD([[9, 11], [23, 11], [19.5, 28.5], [12.5, 28.5]])),
+
+	/**
+	 * A stone figure on its plinth — Paralyzed. `figure` spreads its limbs; this
+	 * one cannot move them, and the plinth is what says stone rather than person.
+	 */
+	statue:
+		path(circleD(16, 7, 4.2)) +
+		path(polyD([[12, 10.5], [20, 10.5], [21.5, 24], [10.5, 24]])) +
+		path(boxD(6, 24, 26, 29.5)),
+
+	/**
+	 * A figure laid out on the ground — Prone. The ground bar is what turns a
+	 * horizontal body into a fallen one instead of a floating one, and the two
+	 * bent legs are what keep it from reading as a cannon on a carriage.
+	 */
+	'fallen-figure':
+		path(circleD(7, 12.5, 4)) +
+		path(polyD([[10.5, 9], [21, 10], [21, 16], [10.5, 16]])) +
+		path(polyD([[19, 10], [24, 10], [27.5, 16.5], [22.5, 16.5]])) +
+		path(polyD([[17.5, 16], [21.5, 16], [24, 23.5], [20, 23.5]])) +
+		path(polyD([[11, 16], [15, 16], [15.5, 23.5], [11.5, 23.5]])) +
+		path(boxD(2.5, 26, 29.5, 29.5)),
+
+	/**
+	 * Stacked ripples — Suffocating. The oldest sign there is for being under it,
+	 * and the only one of the fourteen that was legible on its first draft.
+	 */
+	/**
+	 * A figure drawn as nothing but its own outline — Invisible.
+	 *
+	 * Deliberately the same body as `statue`, hollowed: paralyzed is a figure gone
+	 * solid, invisible is the same figure with nothing inside it. Invisible is
+	 * mechanically a stronger `hidden`, so it could not reuse `cowl` — two rows
+	 * carrying one mark is exactly the ambiguity these marks exist to prevent.
+	 *
+	 * The hollowness IS the meaning here, which makes this the one mark in the set
+	 * that depicts an absence rather than a thing. It earns the exception because
+	 * there is no object that means "not there".
+	 */
+	'hollow-figure':
+		path(ringD(16, 7, 4.8, 2.2), true) +
+		path(
+			polyD([[10.5, 14.2], [21.5, 14.2], [24, 29], [8, 29]]) +
+				polyD([[14, 17.8], [18, 17.8], [19.5, 25.3], [12.5, 25.3]]),
+			true,
+		),
+
+	water:
+		path(
+			ribbonD([[4.5, 9.2], [11, 6.8], [17, 9.2], [23, 6.8], [27.5, 9.2]], 3.4, 3.4),
+		) +
+		path(
+			ribbonD(
+				[[4.5, 17.2], [11, 14.8], [17, 17.2], [23, 14.8], [27.5, 17.2]],
+				3.4,
+				3.4,
+			),
+		) +
+		path(
+			ribbonD(
+				[[4.5, 25.2], [11, 22.8], [17, 25.2], [23, 22.8], [27.5, 25.2]],
+				3.4,
+				3.4,
+			),
+		),
 }

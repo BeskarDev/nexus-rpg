@@ -1,16 +1,11 @@
 import {
-	AddCircle,
 	Autorenew,
-	ExpandMore,
 	Build,
 	Search,
 	WarningAmberOutlined,
 	SwapVert,
 } from '@mui/icons-material'
 import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
 	Box,
 	Chip,
 	IconButton,
@@ -30,11 +25,11 @@ import {
 import React, { useMemo, useState } from 'react'
 import { DropResult } from '@hello-pangea/dnd'
 import { Ability } from '../../../../types/Character'
-import { SectionHeader } from '../../CharacterSheet'
 import { ABILITY_TAGS, AbilityTag } from '../../../../types/AbilityTag'
 
-import { DynamicList } from '@site/src/components/DynamicList'
-import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
+import { ListSection, ListSectionHeader, MarkButton } from '../../components'
+import { DynamicList } from '@site/src/features/CharacterSheet/components/DynamicList'
+import { DynamicListItem } from '@site/src/features/CharacterSheet/components/DynamicList/DynamicListItem'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
@@ -223,22 +218,21 @@ export const CategorizedAbilities: React.FC = () => {
 			{/* Quick Ref Section */}
 			<QuickRefSection />
 
-			{/* Header with category settings menu */}
-			<Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-				<SectionHeader sx={{ mb: 0 }}>Abilities</SectionHeader>
-				<Tooltip title="toggle ability categories">
-					<IconButton
-						size="small"
-						onClick={handleSettingsMenuOpen}
-						sx={{
-							border: '1px solid',
-							borderColor: 'divider',
-						}}
-					>
-						<Build fontSize="inherit" />
-					</IconButton>
-				</Tooltip>
-
+			{/* M13 S3: the tab's own heading, on the shared ruled header. It carries
+				no count — it is the title of the whole list, and the per-tag headers
+				below it are what have quantities. */}
+			<ListSectionHeader
+				label="Abilities"
+				sx={{ mb: 1 }}
+				actions={
+					<Tooltip title="toggle ability categories">
+						<IconButton size="small" onClick={handleSettingsMenuOpen}>
+							<Build fontSize="inherit" />
+						</IconButton>
+					</Tooltip>
+				}
+			/>
+			<Box>
 				<Menu
 					anchorEl={settingsMenuAnchor}
 					open={Boolean(settingsMenuAnchor)}
@@ -278,63 +272,56 @@ export const CategorizedAbilities: React.FC = () => {
 				}
 
 				return (
-					<Accordion key={tag} defaultExpanded sx={{ flexGrow: 1 }}>
-						<AccordionSummary expandIcon={<ExpandMore />}>
-							<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-								<SectionHeader sx={{ mb: 0 }}>{tag}</SectionHeader>
+					<ListSection
+						key={tag}
+						label={tag}
+						count={tagAbilities.length}
+						collapsible
+						defaultExpanded
+						actions={
+							<>
 								{tag === 'Talent' && openTalentSummaries.length > 0 && (
 									<Tooltip title="Spend your talent points!">
+										{/* An alert, not a toggle — it had a box for no reason
+											other than that its neighbour had one. The warning ink
+											is what marks it. */}
 										<IconButton
 											size="small"
 											color="warning"
-											onClick={(event) => {
-												event.stopPropagation()
-												setIsTalentInfoDialogOpen(true)
-											}}
-											sx={{
-												border: '1px solid',
-												borderColor: 'divider',
-											}}
+											onClick={() => setIsTalentInfoDialogOpen(true)}
 										>
 											<WarningAmberOutlined fontSize="inherit" />
 										</IconButton>
 									</Tooltip>
 								)}
-								<Tooltip title={reorderMode[tag] ? 'Exit reorder mode' : 'Reorder abilities'}>
+								<Tooltip
+									title={
+										reorderMode[tag] ? 'Exit reorder mode' : 'Reorder abilities'
+									}
+								>
+									{/* The one control in a header that keeps a box, because here
+										the border is INFORMATION: it says reorder mode is on. Off,
+										it drops to the same bare bronze as its neighbours. */}
 									<IconButton
 										size="small"
-										onClick={(event) => {
-											event.stopPropagation()
-											toggleReorderMode(tag)
-										}}
-										sx={{
-											border: '1px solid',
-											borderColor: reorderMode[tag] ? 'primary.main' : 'divider',
-											color: reorderMode[tag] ? 'primary.main' : 'inherit',
-										}}
+										data-state={reorderMode[tag] ? 'on' : 'off'}
+										onClick={() => toggleReorderMode(tag)}
 									>
 										<SwapVert fontSize="inherit" />
 									</IconButton>
 								</Tooltip>
-								<IconButton
-									onClick={(event) => {
-										addNewAbility(tag)
-										event.stopPropagation()
-									}}
-								>
-									<AddCircle />
-								</IconButton>
+								<MarkButton
+									glyph="+"
+									label={`Add ${tag}`}
+									onClick={() => addNewAbility(tag)}
+								/>
 								{tag === 'Combat Art' && (
 									<Tooltip title="Search Combat Arts from database">
 										<IconButton
 											size="small"
-											onClick={(event) => {
-												setIsCombatArtsDialogOpen(true)
-												event.stopPropagation()
-											}}
-											sx={{ ml: -1 }}
+											onClick={() => setIsCombatArtsDialogOpen(true)}
 										>
-											<Search />
+											<Search fontSize="inherit" />
 										</IconButton>
 									</Tooltip>
 								)}
@@ -342,13 +329,9 @@ export const CategorizedAbilities: React.FC = () => {
 									<Tooltip title="Search Talents from database">
 										<IconButton
 											size="small"
-											onClick={(event) => {
-												setIsTalentsDialogOpen(true)
-												event.stopPropagation()
-											}}
-											sx={{ ml: -1 }}
+											onClick={() => setIsTalentsDialogOpen(true)}
 										>
-											<Search />
+											<Search fontSize="inherit" />
 										</IconButton>
 									</Tooltip>
 								)}
@@ -362,59 +345,52 @@ export const CategorizedAbilities: React.FC = () => {
 									>
 										<IconButton
 											size="small"
-											onClick={(event) => {
-												setIsTalentRefreshDialogOpen(true)
-												event.stopPropagation()
-											}}
-											sx={{ ml: -1 }}
+											onClick={() => setIsTalentRefreshDialogOpen(true)}
 											color={talentUpdates.length ? 'warning' : 'default'}
 										>
-											<Autorenew />
+											<Autorenew fontSize="inherit" />
 										</IconButton>
 									</Tooltip>
 								)}
-							</Box>
-						</AccordionSummary>
-						<AccordionDetails>
-							<DynamicList
-								droppableId={`abilities-${tag}`}
-								onDragEnd={onAbilityReorder(tag)}
-							>
-								{tagAbilities.map((ability, index) => (
-									<DynamicListItem
+							</>
+						}
+					>
+						<DynamicList
+							droppableId={`abilities-${tag}`}
+							onDragEnd={onAbilityReorder(tag)}
+						>
+							{tagAbilities.map((ability, index) => (
+								<DynamicListItem
+									key={ability.id}
+									id={ability.id}
+									index={index}
+									showDragHandle={reorderMode[tag]}
+									sx={{ alignItems: 'center' }}
+								>
+									<AbilityRow
 										key={ability.id}
-										id={ability.id}
-										index={index}
-										showDragHandle={reorderMode[tag]}
-										sx={{ alignItems: 'center' }}
-									>
-										<AbilityRow
-											key={ability.id}
-											title={ability.title}
-											description={ability.description}
-											tag={ability.tag}
-											actionType={ability.actionType}
-											rank={ability.rank}
-											skill={ability.skill}
-											availableTags={[...ABILITY_TAGS]}
-											updateAbility={(update) =>
-												updateAbility(update, ability.id)
-											}
-											moveToCategory={(newTag) =>
-												moveAbilityToCategory(ability.id, newTag)
-											}
-											deleteAbility={() => deleteAbility(ability)}
-											abilityId={ability.id}
-											isInQuickRef={quickRefSelections.abilities.includes(
-												ability.id,
-											)}
-											onToggleQuickRef={toggleQuickRef}
-										/>
-									</DynamicListItem>
-								))}
-							</DynamicList>
-						</AccordionDetails>
-					</Accordion>
+										title={ability.title}
+										description={ability.description}
+										tag={ability.tag}
+										actionType={ability.actionType}
+										rank={ability.rank}
+										skill={ability.skill}
+										availableTags={[...ABILITY_TAGS]}
+										updateAbility={(update) => updateAbility(update, ability.id)}
+										moveToCategory={(newTag) =>
+											moveAbilityToCategory(ability.id, newTag)
+										}
+										deleteAbility={() => deleteAbility(ability)}
+										abilityId={ability.id}
+										isInQuickRef={quickRefSelections.abilities.includes(
+											ability.id,
+										)}
+										onToggleQuickRef={toggleQuickRef}
+									/>
+								</DynamicListItem>
+							))}
+						</DynamicList>
+					</ListSection>
 				)
 			})}
 

@@ -16,7 +16,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
 			data-testid={testId}
 		>
 			{icon && (
-				<Box sx={{ fontSize: '0.7rem', color, display: 'flex', '& svg': { fontSize: 'inherit' } }}>
+				<Box sx={{ fontSize: 'var(--nexus-text-xs)', color, display: 'flex', '& svg': { fontSize: 'inherit' } }}>
 					{icon}
 				</Box>
 			)}
@@ -30,7 +30,11 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
 				sx={{
 					fontFamily: 'var(--nexus-font-ui)',
 					fontWeight: 700,
-					fontSize: 'var(--nexus-text-2xs)',
+					// M13 S3.5: one step up, from 11px. Small caps render at about cap
+					// height, so this label had roughly the optical presence of 8px text
+					// — on the surface a player scans mid-fight, beside body copy set at
+					// 14. It stays a step below the value it names.
+					fontSize: 'var(--nexus-text-xs)',
 					color,
 					fontVariant: 'small-caps',
 					letterSpacing: '0.04em',

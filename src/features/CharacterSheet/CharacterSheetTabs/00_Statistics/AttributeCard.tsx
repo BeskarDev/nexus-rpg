@@ -119,9 +119,15 @@ export const AttributeCard: React.FC<AttributeCardProps> = ({
 								updateAttribute({ value: at as AttributeType })
 								close()
 							}}
-							sx={{ fontSize: '0.75rem', justifyContent: 'center', gap: 0.75 }}
+							sx={{ fontSize: 'var(--nexus-text-xs)', justifyContent: 'center' }}
 						>
-							<DieToken value={`d${at}`} />d{at}
+							{/* M13 S1 (D2): text alone. The menu used to render the token AND
+								    the `dX` label, stating one value twice in one row. Text won
+								    here because a menu is a list of choices read once at
+								    level-up, where an unambiguous label beats a shape ladder.
+								    The ladder's job is the at-a-glance comparison across the
+								    four cards, which is where the token stays (see below). */}
+								d{at}
 						</MenuItem>
 					))}
 				</MenuList>
@@ -145,7 +151,7 @@ export const AttributeCard: React.FC<AttributeCardProps> = ({
 			{/* The die token IS the read state: the polygon's side count encodes the
 			    die size, so a glance across four columns reads the spread in a way
 			    four same-face numerals cannot. */}
-			<DieToken value={`d${attribute.value}`} />
+			<DieToken value={`d${attribute.value}`} className="cs-die-token" />
 		</SheetField>
 	)
 }

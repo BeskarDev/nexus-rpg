@@ -1,5 +1,4 @@
 import { Typography } from '@mui/material'
-import StatSigil from '@site/src/components/codex/StatSigil'
 import React from 'react'
 import { CharacterSheetCard, CardHeader, PipRow } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
@@ -24,7 +23,8 @@ export const FatigueCard: React.FC<FatigueCardProps> = ({
 			weight="column"
 			header={
 				<CardHeader
-					icon={<StatSigil name="fatigue" size="1.15em" />}
+					// M13 S1 (D1): no icon — see ResolveCard. The sweat-drop stays on
+					// the pips.
 					label="Fatigue"
 					color={UI_COLORS.amber}
 				/>
@@ -35,7 +35,7 @@ export const FatigueCard: React.FC<FatigueCardProps> = ({
 				<Typography
 					variant="caption"
 					color="warning.main"
-					sx={{ fontSize: '0.6rem' }}
+					sx={{ fontSize: 'var(--nexus-text-2xs)' }}
 				>
 					{fatigueHpPenalty > 0 ? `-${fatigueHpPenalty} HP` : '\u00A0'}
 				</Typography>
@@ -48,7 +48,8 @@ export const FatigueCard: React.FC<FatigueCardProps> = ({
 				onChange={(next) => onFatigueChange({ current: next, max })}
 				sigil="fatigue"
 				tone="warning.main"
-				wrap
+				// M13 S1: 3×2 rather than a single row of six. See PipRow's `columns`.
+				columns={3}
 			/>
 		</CharacterSheetCard>
 	)

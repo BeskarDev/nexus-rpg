@@ -68,7 +68,7 @@ export const ArchetypeSelectionDialog: React.FC<
 						size="small"
 						variant="outlined"
 						color="primary"
-						sx={{ fontSize: '0.75rem', mt: 0.5 }}
+						sx={{ fontSize: 'var(--nexus-text-xs)', mt: 0.5 }}
 					/>
 				</Box>
 			),

@@ -189,7 +189,7 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 					size="small"
 					variant="outlined"
 					color={getWeaponTypeColor(value)}
-					sx={{ fontSize: '0.75rem' }}
+					sx={{ fontSize: 'var(--nexus-text-xs)' }}
 				/>
 			),
 		},

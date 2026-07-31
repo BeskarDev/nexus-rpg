@@ -62,7 +62,7 @@ export const LoadCard: React.FC<LoadCardProps> = ({
 			footer={
 				<Typography
 					variant="caption"
-					sx={{ fontSize: '0.55rem', color: 'text.secondary' }}
+					sx={{ fontSize: 'var(--nexus-text-2xs)', color: 'text.secondary' }}
 				>
 					max {maxCapacity}
 				</Typography>
@@ -99,7 +99,7 @@ export const LoadCard: React.FC<LoadCardProps> = ({
 			<Typography
 				sx={{
 					fontWeight: 'bold',
-					fontSize: '0.95rem',
+					fontSize: 'var(--nexus-text-lg)',
 					lineHeight: 1.2,
 					textAlign: 'center',
 					color: 'text.primary',

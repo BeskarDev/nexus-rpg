@@ -47,7 +47,7 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 						size="small"
 						variant="outlined"
 						color={folk.category === 'Old Folk' ? 'primary' : 'secondary'}
-						sx={{ fontSize: '0.75rem', mt: 0.5 }}
+						sx={{ fontSize: 'var(--nexus-text-xs)', mt: 0.5 }}
 					/>
 				</Box>
 			),
@@ -127,7 +127,7 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 							size="small"
 							variant="outlined"
 							sx={{
-								fontSize: '0.7rem',
+								fontSize: 'var(--nexus-text-2xs)',
 								mb: 0.25,
 								mr: 0.25,
 							}}

@@ -20,7 +20,21 @@ input[type='number'] {
    global, in custom.css, alongside the --nexus-skill-* identity tokens they
    derive from, so embedded doc-page tools (CreatureAdvancedSettings.tsx) read
    the exact same per-skill color the sheet does (M9 F2). */
-.character-sheet-page {
+/* M13 S1 — `.cs-tokens` carries the same block for PORTALED sheet surfaces.
+   MUI renders every Menu/Popover into a container at document.body, which is
+   outside `.character-sheet-page`, so a token declared only on the page element
+   resolved to nothing inside an editor popover. That is not a subtle
+   degradation: `background-color: var(--cs-success)` with no value paints
+   nothing, so the HP meter inside the HP editor rendered as an empty trough
+   while the identical component on the card rendered green.
+
+   Deliberately a second selector rather than moving the block to `:root`:
+   custom properties are inert until used, so global declaration would be
+   visually safe, but M9 scoped these on purpose ("nothing on a doc page needs
+   an attribute hue") and a portal bug is not a reason to reverse that. The
+   popover opts in instead — see `SheetField`. */
+.character-sheet-page,
+.cs-tokens {
 	/* Attributes (D3): four distinguishable hues, jewel-derived, each mixed
 	   toward the reading ink so one declaration tracks both modes. */
 	--cs-attr-strength: color-mix(in oklab, var(--nexus-jewel-carnelian), var(--ifm-font-color-base) 15%);
@@ -91,4 +105,301 @@ input[type='number'] {
    the one declaration, per the milestone's every-hue-mixes-toward-the-ink rule. */
 .character-sheet-page a:hover {
 	color: color-mix(in oklab, var(--nexus-bronze), var(--ifm-font-color-base) 40%);
+}
+
+/* M13 S3 — the sheet's chip, `SheetChip`.
+   ==========================================================================
+
+   The sheet had no chip of its own: skills, professions, languages, talent
+   skills and NPC roles were all MUI `Chip`, which is a rounded pill with a
+   solid or outlined fill. The codex answer is the opposite — identity lives in
+   the INK, never in a colour mass — and the doc pages already implement it in
+   four carved silhouettes (custom.css § Per-family silhouettes). This is that
+   construction as a sheet component, so a skill on a rules page and the same
+   skill on the character sheet read as the same stamp.
+
+   Why not just reuse `.chip`: those classes are produced by the table-chips
+   remark plugin for generated doc markup. They carry `pointer-events: none`
+   (a doc chip is never a control), a `--chip-fill` variant per hue rather than
+   a passed value, and `vertical-align`/`top` corrections tuned for sitting in a
+   line of Spectral prose. None of that is true inside a flex row on the sheet,
+   and widening them to cover both surfaces would be a site-wide restyle to
+   serve one tab. The GEOMETRY is shared deliberately; the mechanics are not. */
+.character-sheet-page .cs-chip,
+.cs-tokens .cs-chip {
+	/* The identity hue. A caller passes a `--cs-skill-*` (or any colour); the
+	   default is the structural bronze, for chips with no identity of their own
+	   such as a language. */
+	--cs-chip-ink: var(--nexus-bronze);
+	/* What the outline's middle is punched back out to. A clipped shape cannot
+	   take a `border`, so the keyline is a filled silhouette with the surface
+	   inset 1.5px on top of it — which means this must MATCH whatever the chip
+	   sits on. Sheet lists sit on the page, so that is the default; a chip
+	   placed on a washed surface passes its own. */
+	--cs-chip-surface: var(--ifm-background-color);
+	/* The outline's colour, for both silhouettes. See the banner keyline below
+	   for why it is held back from full strength. */
+	--cs-chip-keyline: color-mix(
+		in srgb,
+		color-mix(in srgb, var(--cs-chip-ink) 45%, var(--nexus-bronze)) 55%,
+		transparent
+	);
+
+	position: relative;
+	isolation: isolate;
+	display: inline-flex;
+	align-items: center;
+	max-width: 100%;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-weight: 500;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.03em;
+	line-height: 1.35;
+	color: var(--cs-chip-ink);
+	border-radius: 0;
+	white-space: nowrap;
+}
+
+/* Banner — pointed at both ends. The doc set's `skill` silhouette, and it
+   carries the same meaning here: a NAMED PROFICIENCY. Skills, crafting
+   professions and languages are all that, so they all take it. */
+.character-sheet-page .cs-chip--banner,
+.cs-tokens .cs-chip--banner {
+	--cs-chip-shape: polygon(
+		7px 0,
+		calc(100% - 7px) 0,
+		100% 50%,
+		calc(100% - 7px) 100%,
+		7px 100%,
+		0 50%
+	);
+	padding: 2px 12px;
+	/* No horizontal margin. The doc chips carry one because they sit inline in a
+	   line of prose; every sheet chip sits in a flex container that supplies its
+	   own `gap`, and the margin only broke the chip's left edge out of alignment
+	   with the section header above it. */
+	margin: 0;
+}
+
+/* Plate — a hard square, the doc set's `attribute` silhouette. For a chip that
+   states a VALUE rather than names a proficiency. Unclipped, so it takes a real
+   border — at 1.5px, to match the weight of the bezel layer the clipped
+   silhouettes get. */
+.character-sheet-page .cs-chip--plate,
+.cs-tokens .cs-chip--plate {
+	border: 1.5px solid var(--cs-chip-keyline);
+	padding: 2px 6px;
+}
+
+.character-sheet-page .cs-chip--banner::before,
+.character-sheet-page .cs-chip--banner::after,
+.cs-tokens .cs-chip--banner::before,
+.cs-tokens .cs-chip--banner::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	clip-path: var(--cs-chip-shape);
+}
+/* The keyline: a trace of the identity hue over bronze, which sharpens identity
+   at hairline width without reintroducing any colour mass.
+
+   Held at 55% opacity, unlike the doc chips' full-strength line. A doc chip
+   appears once or twice in a paragraph; the sheet stacks nine to sixteen of them
+   down one column, directly above the ledger rules, and at full strength the
+   outlines read as a grid drawn over the list. One declaration, so both
+   silhouettes and both colour modes track it. */
+.character-sheet-page .cs-chip--banner::before,
+.cs-tokens .cs-chip--banner::before {
+	background: var(--cs-chip-keyline);
+	z-index: -2;
+}
+/* The surface, inset, punching the middle back out to leave an outline. */
+.character-sheet-page .cs-chip--banner::after,
+.cs-tokens .cs-chip--banner::after {
+	inset: 1.5px;
+	background: var(--cs-chip-surface);
+	z-index: -1;
+}
+
+/* The chip's own label, which is the part that may have to give up width. */
+.character-sheet-page .cs-chip__label,
+.cs-tokens .cs-chip__label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* A value absorbed into the chip behind a struck divider, so "Athletics 3"
+   reads as name + rank rather than as one long label. Identical to the doc
+   chips' `.chip__rank`. */
+.character-sheet-page .cs-chip__value,
+.cs-tokens .cs-chip__value {
+	margin-left: 5px;
+	padding-left: 5px;
+	border-left: 1px solid color-mix(in srgb, currentColor 40%, transparent);
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+}
+
+/* M13 S3 — `MarkButton`: the sheet's one-glyph controls, add and remove.
+
+   `+` and `×` name INTERACTIONS, and the sign list has no depiction for an
+   interaction (S1) — the same reason `GlossMark` and `Chevron` are drawn outside
+   `sigil-paths.ts`. These two are the most universally pre-learned signs there
+   are, which is what earns the exemption rather than merely needing it.
+
+   Round 2 (owner review): the first pass was a bare 1.35em glyph at 0.65 opacity
+   and it was, correctly, called tiny and too subtle. This tool is used on a
+   phone mid-fight — a 14px hint is not a tap target. It is a STAMPED PLATE now:
+   a bronze keyline square, full-strength ink, 1.9rem on a mouse and 2.4rem on a
+   touch pointer (which is a real device query, not a width breakpoint — a tablet
+   needs the bigger target at desktop width). The plate also gives the glyph a
+   reason to be square rather than a stray character in a row of text. */
+.character-sheet-page .cs-mark-button,
+.cs-tokens .cs-mark-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	/* M13 S3.5: sized by the shared interactive floor, so this control and every
+	   MUI IconButton beside it are one size on a mouse and one size on a finger. */
+	width: var(--nexus-target);
+	height: var(--nexus-target);
+	padding: 0;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	border-radius: 0;
+	background: none;
+	color: var(--nexus-bronze);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	font-weight: 600;
+	line-height: 1;
+	cursor: pointer;
+}
+.character-sheet-page .cs-mark-button:hover,
+.cs-tokens .cs-mark-button:hover {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.character-sheet-page .cs-mark-button:focus-visible,
+.cs-tokens .cs-mark-button:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: 2px;
+}
+
+/* Touch pointers get the bigger target. `pointer: coarse` asks the real
+   question — is this being tapped — where a width breakpoint only guesses. */
+@media (pointer: coarse) {
+	.character-sheet-page .cs-mark-button,
+	.cs-tokens .cs-mark-button {
+		font-size: var(--nexus-text-md);
+	}
+}
+
+/* Inside a chip there is no plate: the chip IS the plate, and a box inside a box
+   is the thing this theme spends its time removing. The control takes the chip's
+   own ink, because it belongs to the thing it removes — but it keeps a real tap
+   target, which is why it is sized rather than inheriting `1em`. */
+.character-sheet-page .cs-chip .cs-mark-button,
+.cs-tokens .cs-chip .cs-mark-button {
+	/* On the shared floor like every other control. This DOES make the chip grow
+	   to contain it — a chip is ~28px tall on a mouse and ~48px on a finger — and
+	   that is the correct trade: an exemption here was the only one in the sheet,
+	   it was 2px short of AA, and "the chip is small" is not a reason a player
+	   should miss the control that deletes their language. */
+	width: var(--nexus-target);
+	height: var(--nexus-target);
+	margin-left: 3px;
+	margin-right: -7px;
+	border: none;
+	color: inherit;
+	/* The GLYPH grows, the BOX does not. `×` occupies about half its em, so it
+	   was rendering at ~7px inside a 21.6px control — the tap target was already
+	   fine and only the mark was hard to see. Raising the box instead would have
+	   grown the chip, since this control is what sets the chip's height. */
+	font-size: var(--nexus-text-lg);
+	line-height: 0;
+	opacity: 0.85;
+}
+.character-sheet-page .cs-chip .cs-mark-button:hover,
+.cs-tokens .cs-chip .cs-mark-button:hover {
+	background: none;
+	opacity: 1;
+}
+@media (pointer: coarse) {
+	.character-sheet-page .cs-chip .cs-mark-button,
+	.cs-tokens .cs-chip .cs-mark-button {
+		font-size: var(--nexus-text-xl);
+	}
+}
+
+/* M13 S3 (owner review) — one register for a section header's controls.
+
+   A single header could hold a bordered 32px MUI IconButton, a bare Material
+   icon at a different size, and a drawn `MarkButton` — three visual weights for
+   controls that are peers. They are all the same stamped plate now, matching
+   `MarkButton` exactly, so a header reads as one control strip whether a given
+   button carries a drawn glyph or a Material verb.
+
+   Levelled here rather than at each call site: nineteen call sites cannot be
+   trusted to remember a shared `sx`, and this is the same lever `createTheme`
+   is for the rest of the sheet. */
+.character-sheet-page .cs-section-actions .MuiIconButton-root,
+.cs-tokens .cs-section-actions .MuiIconButton-root {
+	/* M13 S3.5: sized by the shared interactive floor, so this control and every
+	   MUI IconButton beside it are one size on a mouse and one size on a finger. */
+	width: var(--nexus-target);
+	height: var(--nexus-target);
+	padding: 0;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	border-radius: 0;
+	color: var(--nexus-bronze);
+}
+.character-sheet-page .cs-section-actions .MuiIconButton-root:hover,
+.cs-tokens .cs-section-actions .MuiIconButton-root:hover {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.character-sheet-page .cs-section-actions .MuiSvgIcon-root,
+.cs-tokens .cs-section-actions .MuiSvgIcon-root {
+	font-size: 0.95rem;
+}
+@media (pointer: coarse) {
+	.character-sheet-page .cs-section-actions .MuiSvgIcon-root,
+	.cs-tokens .cs-section-actions .MuiSvgIcon-root {
+		font-size: 1.15rem;
+	}
+}
+/* A control that is also a STATE says so by filling its plate, not by being the
+   only one with a border. `data-state` marks the ones where the difference is
+   information rather than decoration. */
+.character-sheet-page .cs-section-actions .MuiIconButton-root[data-state='on'],
+.cs-tokens .cs-section-actions .MuiIconButton-root[data-state='on'] {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+}
+
+/* M13 S3.5 — the Statistics plate is a READOUT, and it was set smaller than the
+   prose it sits beside.
+   ==========================================================================
+
+   Measured before this slice: every card label 11px, the attribute die numeral
+   12px, HP and the four defences 15.2px. The most-consulted number in the game —
+   the attribute die you roll on every single check — rendered two pixels smaller
+   than the body text of the rules page the sheet is embedded in.
+
+   The cause was the plate's 388px column: eleven cards were fitted to a fixed
+   narrow measure by shrinking their contents. So this raises the type AND lets
+   the plate take more width, because doing the first alone just moves the
+   problem into wrapping.
+
+   Small caps are the reason the labels read even smaller than they measure:
+   `font-variant-caps` renders at roughly cap height, so an 11px small-caps label
+   has about the optical presence of 8px text. The label register moves one step;
+   the VALUES move further, because a label is read once and a value every
+   round. */
+.character-sheet-page .cs-die-token {
+	width: 2.35rem;
+	height: 2.35rem;
+	font-size: var(--nexus-text-sm);
 }

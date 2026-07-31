@@ -1,8 +1,5 @@
 import React, { useMemo, useState } from 'react'
 import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
 	Box,
 	Button,
 	Typography,
@@ -19,7 +16,7 @@ import {
 	Select,
 	MenuItem,
 } from '@mui/material'
-import { ExpandMore, Clear, Bookmark } from '@mui/icons-material'
+import { Clear, Bookmark } from '@mui/icons-material'
 import {
 	Ability,
 	Weapon,
@@ -33,7 +30,11 @@ import {
 	ACTION_TYPES,
 	getActionTypeIcon,
 } from '../../../../types/ActionType'
-import { SectionHeader } from '../../CharacterSheet'
+import {
+	ListSection,
+	ListSectionHeader,
+	UnifiedListItem,
+} from '../../components'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { characterSheetActions } from '../../characterSheetReducer'
@@ -257,7 +258,13 @@ export const QuickRefSection: React.FC = () => {
 				description: ability.description,
 				source: 'ability' as const,
 				sourceCategory: ability.tag || 'Ability', // Show category instead of generic "Ability"
-				actionType: ability.actionType,
+				// M13 S3: `|| 'Other'` is not cosmetic. Abilities predating the
+				// actionType field store it as undefined, which matched none of the six
+				// buckets below, so a bookmarked ability was counted in the Quick Ref
+				// header and then rendered nowhere — the section claimed "1" over an
+				// empty list. `AbilityRow` already defaults the same way for display,
+				// so this makes the grouping agree with what the row shows.
+				actionType: ability.actionType || 'Other',
 				rank: ability.rank,
 			})),
 			...selectedWeapons.map((weapon) => {
@@ -418,7 +425,7 @@ export const QuickRefSection: React.FC = () => {
 	if (totalSelected === 0) {
 		return (
 			<Box sx={{ mb: 3 }}>
-				<SectionHeader>Quick Ref</SectionHeader>
+				<ListSectionHeader label="Quick Ref" sx={{ mb: 1 }} />
 				<Typography
 					variant="body2"
 					color="text.secondary"
@@ -433,109 +440,47 @@ export const QuickRefSection: React.FC = () => {
 
 	return (
 		<Box sx={{ mb: 3 }}>
-			<Box
-				sx={{
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'space-between',
-					mb: 2,
-				}}
-			>
-				<SectionHeader sx={{ mb: 0 }}>Quick Ref</SectionHeader>
-				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-					<Typography variant="caption" color="text.secondary">
-						{totalSelected} selected
-					</Typography>
+			{/* M13 S3: Quick Ref was two nested bordered-box Accordions — a fourth
+				and fifth list idiom on a sheet that now has one. The groups are
+				`ListSection`s and the entries are ledger rows, so a bookmarked
+				ability here and the same ability in its own category read alike. */}
+			<ListSectionHeader
+				label="Quick Ref"
+				count={totalSelected}
+				sx={{ mb: 1 }}
+				actions={
 					<Tooltip title="Clear all Quick Ref selections">
 						<IconButton size="small" onClick={handleClearAll}>
-							<Clear fontSize="small" />
+							<Clear fontSize="inherit" />
 						</IconButton>
 					</Tooltip>
-				</Box>
-			</Box>
+				}
+			/>
 
 			{quickRefGroups.map((group, index) => (
-				<Accordion
+				<ListSection
 					key={group.title}
+					label={group.title}
+					count={group.items.length}
+					icon={group.icon}
+					collapsible
 					defaultExpanded={index === 0}
-					disableGutters
-					sx={{
-						flexGrow: 1,
-						mt: 0,
-						mr: 1,
-						width: '100%',
-						boxShadow: 'none',
-						border: '1px solid',
-						borderColor: 'divider',
-					}}
 				>
-					<AccordionSummary
-						expandIcon={<ExpandMore />}
-						sx={{
-							gap: 1,
-							pt: 0,
-							px: 1,
-							flexDirection: 'row-reverse',
-							'& .MuiAccordionSummary-content': {
-								display: 'block',
-							},
-						}}
-					>
-						<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-							{group.icon}
-							<Typography variant="subtitle2" fontWeight="bold">
-								{group.title}
-							</Typography>
-							<Chip
-								label={group.items.length}
-								size="small"
-								sx={{ ml: 1, minWidth: 20, height: 20 }}
-							/>
-						</Box>
-					</AccordionSummary>
-					<AccordionDetails sx={{ pt: 0, px: 1 }}>
-						<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-							{group.items.map((item) => (
-								<Accordion
-									key={item.id}
-									disableGutters
-									sx={{
-										flexGrow: 1,
-										mt: 0,
-										mr: 1,
-										width: '100%',
-										boxShadow: 'none',
-										border: '1px solid',
-										borderColor: 'divider',
-									}}
-								>
-									<AccordionSummary
-										expandIcon={<ExpandMore />}
-										sx={{
-											gap: 1,
-											pt: 0,
-											px: 1,
-											flexDirection: 'row-reverse',
-											'& .MuiAccordionSummary-content': {
-												display: 'block',
-											},
-										}}
+					{group.items.map((item) => (
+						<UnifiedListItem
+							key={item.id}
+							summaryContent={
+								<>
+									<Typography
+										variant="subtitle2"
+										fontWeight="bold"
+										sx={{ flexGrow: 1 }}
 									>
-										<Box
-											sx={{
-												display: 'flex',
-												alignItems: 'center',
-												gap: 1,
-												flexWrap: 'wrap',
-											}}
-										>
-											<Typography
-												variant="subtitle2"
-												fontWeight="bold"
-												sx={{ flexGrow: 1 }}
-											>
-												{item.name}
-											{item.rank !== undefined && item.rank !== null && item.rank >= 0 && item.rank <= 5 && (
+										{item.name}
+										{item.rank !== undefined &&
+											item.rank !== null &&
+											item.rank >= 0 &&
+											item.rank <= 5 && (
 												<Typography
 													component="span"
 													sx={{
@@ -545,130 +490,124 @@ export const QuickRefSection: React.FC = () => {
 													}}
 												>
 													{['⓪', '①', '②', '③', '④', '⑤'][item.rank]}
-													</Typography>
-												)}
-											</Typography>
-											<Chip
-												label={item.sourceCategory || item.source}
-												size="small"
-												variant="outlined"
-												sx={{
-													textTransform: 'capitalize',
-													backgroundColor:
-														getCategoryColor(
-															item.sourceCategory || item.source,
-															item.source,
-														) + '20',
-													borderColor: getCategoryColor(
-														item.sourceCategory || item.source,
-														item.source,
-													),
-													color: getCategoryColor(
-														item.sourceCategory || item.source,
-														item.source,
-													),
-													flexShrink: 0,
-													fontSize: '0.75rem',
-												}}
-											/>
-										</Box>
-									</AccordionSummary>
-									<AccordionDetails sx={{ p: 1, pt: 0 }}>
-										<Box
-											sx={{
-												display: 'flex',
-												flexDirection: 'column',
-												gap: 0.5,
-											}}
+												</Typography>
+											)}
+									</Typography>
+									<Chip
+										label={item.sourceCategory || item.source}
+										size="small"
+										variant="outlined"
+										sx={{
+											textTransform: 'capitalize',
+											backgroundColor: `color-mix(in srgb, ${getCategoryColor(
+												item.sourceCategory || item.source,
+												item.source,
+											)} 12%, transparent)`,
+											borderColor: getCategoryColor(
+												item.sourceCategory || item.source,
+												item.source,
+											),
+											color: getCategoryColor(
+												item.sourceCategory || item.source,
+												item.source,
+											),
+											flexShrink: 0,
+											fontSize: 'var(--nexus-text-xs)',
+										}}
+									/>
+								</>
+							}
+							detailsContent={
+								<Box
+									sx={{
+										display: 'flex',
+										flexDirection: 'column',
+										gap: 0.5,
+										width: '100%',
+									}}
+								>
+									{/* Properties caption for items, weapons, and spells */}
+									{item.properties && (
+										<Typography
+											variant="caption"
+											color="text.secondary"
+											sx={{ fontStyle: 'italic' }}
 										>
-											{/* Properties caption for items, weapons, and spells */}
-											{item.properties && (
-												<Typography
-													variant="caption"
-													color="text.secondary"
-													sx={{ fontStyle: 'italic' }}
-												>
-													Properties: {item.properties}
-												</Typography>
-											)}
-											{/* Damage caption for weapons and spells */}
-											{item.damage && (
-												<Typography
-													variant="caption"
-													color="text.secondary"
-													sx={{ fontStyle: 'italic' }}
-												>
-													Damage: {item.damage}
-												</Typography>
-											)}
-											{/* Description */}
-											{item.description && (
-												<Typography variant="body2" color="text.secondary">
-													{item.description}
-												</Typography>
-											)}
-											{/* Action Type Dropdown and Remove from Quick Ref button */}
-											<Box
-												sx={{
-													display: 'flex',
-													gap: 1,
-													mt: 1,
-													alignItems: 'center',
-													justifyContent: 'end',
+											Properties: {item.properties}
+										</Typography>
+									)}
+									{/* Damage caption for weapons and spells */}
+									{item.damage && (
+										<Typography
+											variant="caption"
+											color="text.secondary"
+											sx={{ fontStyle: 'italic' }}
+										>
+											Damage: {item.damage}
+										</Typography>
+									)}
+									{/* Description */}
+									{item.description && (
+										<Typography variant="body2" color="text.secondary">
+											{item.description}
+										</Typography>
+									)}
+									{/* Action Type Dropdown and Remove from Quick Ref button */}
+									<Box
+										sx={{
+											display: 'flex',
+											gap: 1,
+											mt: 1,
+											alignItems: 'center',
+											justifyContent: 'end',
+										}}
+									>
+										<FormControl size="small" sx={{ width: '9.5rem' }}>
+											<InputLabel id={`quick-ref-action-type-${item.id}`}>
+												Action Type
+											</InputLabel>
+											<Select
+												labelId={`quick-ref-action-type-${item.id}`}
+												value={item.actionType || 'Action'}
+												label="Action Type"
+												onChange={(event) => {
+													const newActionType = event.target
+														.value as ActionType
+													handleActionTypeChange(item.id, newActionType)
 												}}
 											>
-												<FormControl size="small" sx={{ width: '9.5rem' }}>
-													<InputLabel id={`quick-ref-action-type-${item.id}`}>
-														Action Type
-													</InputLabel>
-													<Select
-														labelId={`quick-ref-action-type-${item.id}`}
-														value={item.actionType || 'Action'}
-														label="Action Type"
-														onChange={(event) => {
-															const newActionType = event.target
-																.value as ActionType
-															handleActionTypeChange(item.id, newActionType)
-														}}
-													>
-														{ACTION_TYPES.map((type) => (
-															<MenuItem key={type} value={type}>
-																<Box
-																	sx={{
-																		display: 'flex',
-																		alignItems: 'center',
-																		gap: 1,
-																	}}
-																>
-																	{getActionTypeIcon(type)}
-																	{type}
-																</Box>
-															</MenuItem>
-														))}
-													</Select>
-												</FormControl>
+												{ACTION_TYPES.map((type) => (
+													<MenuItem key={type} value={type}>
+														<Box
+															sx={{
+																display: 'flex',
+																alignItems: 'center',
+																gap: 1,
+															}}
+														>
+															{getActionTypeIcon(type)}
+															{type}
+														</Box>
+													</MenuItem>
+												))}
+											</Select>
+										</FormControl>
 
-												<Tooltip title="Remove from Quick Ref">
-													<IconButton
-														size="small"
-														onClick={() =>
-															handleRemoveItem(item.id, item.source)
-														}
-														sx={{
-															color: 'primary.main',
-														}}
-													>
-														<Bookmark />
-													</IconButton>
-												</Tooltip>
-											</Box>
-										</Box>
-									</AccordionDetails>
-								</Accordion>
-							))}
-						</Box>
-					</AccordionDetails>
-				</Accordion>
+										<Tooltip title="Remove from Quick Ref">
+											<IconButton
+												size="small"
+												onClick={() => handleRemoveItem(item.id, item.source)}
+												sx={{ color: 'primary.main' }}
+											>
+												<Bookmark />
+											</IconButton>
+										</Tooltip>
+									</Box>
+								</Box>
+							}
+						/>
+					))}
+				</ListSection>
 			))}
 
 			{/* Confirmation Dialog for Clear All */}

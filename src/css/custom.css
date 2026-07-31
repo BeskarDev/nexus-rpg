@@ -310,6 +310,19 @@
 	   `html` deliberately stays at the browser's 16px: overriding the root font
 	   size breaks the reader's own zoom/accessibility setting, so the scale is
 	   built on top of it rather than under it. */
+	/* M13 S3.5 — the interactive floor.
+
+	   ONE token, redefined by pointer type, so a rule reads `var(--nexus-target)`
+	   and is correct on both. WCAG 2.2 SC 2.5.8 (Target Size, Minimum) is 24x24
+	   CSS px at AA; SC 2.5.5 asks 44x44 at AAA and both Apple HIG (44pt) and
+	   Material (48dp) agree for touch. So: AA on a mouse, AAA on a finger.
+
+	   `pointer: coarse` rather than a width breakpoint, because the question is
+	   whether this is being TAPPED, not how wide the window is — a tablet held in
+	   two hands at 1024px needs the big target and a small laptop window does
+	   not. */
+	--nexus-target: 24px;
+
 	--nexus-text-3xs: 0.625rem; /* 10px — micro captions (die-token sublabels) */
 	--nexus-text-2xs: 0.6875rem; /* 11px — badge + cartouche labels */
 	--nexus-text-xs: 0.75rem; /* 12px — chips, TOC, breadcrumbs */
@@ -935,6 +948,13 @@ table th {
   border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 70%, transparent);
   width: 6px;
   height: 6px;
+}
+
+/* M13 S3.5 — the touch step for the interactive floor. See --nexus-target. */
+@media (pointer: coarse) {
+  :root {
+    --nexus-target: 44px;
+  }
 }
 
 /* Chip styles for table content */

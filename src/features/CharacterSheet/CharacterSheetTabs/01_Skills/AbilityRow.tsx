@@ -3,7 +3,7 @@ import { useFieldDraft } from '../../hooks/useFieldDraft'
 import { Ability } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
 import { ActionType } from '@site/src/types/ActionType'
-import { UnifiedListItem } from '@site/src/components/DynamicList'
+import { UnifiedListItem } from '@site/src/features/CharacterSheet/components/DynamicList'
 import { AbilitySummary, AbilityDetails } from './components'
 
 export type AbilityRowProps = {
@@ -111,11 +111,6 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 					onToggleQuickRef={onToggleQuickRef}
 				/>
 			}
-			reverseIcon={false}
-			summarySx={{
-				pl: 0,
-				alignItems: 'center',
-			}}
 		/>
 	)
 }

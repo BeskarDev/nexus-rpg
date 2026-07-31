@@ -83,7 +83,7 @@ export const CombatArtsSearchDialog: React.FC<CombatArtsSearchDialogProps> = ({
 					size="small"
 					variant="outlined"
 					color={getCategoryColor(value)}
-					sx={{ fontSize: '0.75rem' }}
+					sx={{ fontSize: 'var(--nexus-text-xs)' }}
 				/>
 			),
 		},

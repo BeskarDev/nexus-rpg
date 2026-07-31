@@ -1,5 +1,4 @@
 import React from 'react'
-import StatSigil from '@site/src/components/codex/StatSigil'
 import { CharacterSheetCard, CardHeader, PipRow } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 import { useAppSelector } from '../../hooks/useAppSelector'
@@ -43,7 +42,10 @@ export const ResolveCard = () => {
 			info="Resolve: resource for rerolls and special actions (max 3)"
 			header={
 				<CardHeader
-					icon={<StatSigil name="resolve" size="1.15em" />}
+					// M13 S1 (D1): no icon. The flame mark lives on the pips, where it
+					// carries identity AND quantity at once; repeating it in the header
+					// made the card state one thing twice. Text-only headers are the
+					// deliberate cost of that choice, and Fatigue matches.
 					label="Resolve"
 					color={UI_COLORS.resolve}
 				/>

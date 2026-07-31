@@ -277,7 +277,7 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 							)}
 							<Typography
 								variant="caption"
-								sx={{ fontSize: '0.65rem', textAlign: 'center' }}
+								sx={{ fontSize: 'var(--nexus-text-2xs)', textAlign: 'center' }}
 							>
 								{dragOver ? 'Drop here' : 'Click or drag'}
 							</Typography>
@@ -310,7 +310,7 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 			{error && (
 				<Alert
 					severity="error"
-					sx={{ mt: 1, fontSize: '0.75rem', maxWidth: '200px' }}
+					sx={{ mt: 1, fontSize: 'var(--nexus-text-xs)', maxWidth: '200px' }}
 				>
 					{error}
 				</Alert>
@@ -326,7 +326,7 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 			<Typography
 				variant="caption"
 				color="text.secondary"
-				sx={{ textAlign: 'center', fontSize: '0.65rem' }}
+				sx={{ textAlign: 'center', fontSize: 'var(--nexus-text-2xs)' }}
 			>
 				Max 500KB • Auto-resized to 200×200
 			</Typography>

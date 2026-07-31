@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Box, Typography, LinearProgress, TextField } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { getHpBarColor } from '@site/src/utils/typescript/getHpBarColor'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { UI_COLORS } from '../../../../utils/colors'
@@ -16,8 +16,14 @@ import {
 } from '../../utils/calculateHp'
 import { calculateCharacterLevel } from '../../utils/calculateCharacterLevel'
 import { createHpFieldSchema } from '../../utils/validation'
-import { SheetField, AdjustStepper, DerivedPart } from '../../components'
+import {
+	SheetField,
+	AdjustStepper,
+	DerivedPart,
+	FieldGroupLabel,
+} from '../../components'
 import { SectionHeader } from '../../CharacterSheet'
+import { HpBar } from './HpBar'
 
 export const HpCard = () => {
 	const dispatch = useAppDispatch()
@@ -76,22 +82,9 @@ export const HpCard = () => {
 		reset,
 	])
 
-	// Calculate HP bar color and progress with static bar sizing
-	const totalDisplayHp = effectiveMaxHp + (health.temp || 0)
-	const hpPercentage =
-		effectiveMaxHp > 0 ? (health.current / effectiveMaxHp) * 100 : 0
+	// The label ink. The meter is `HpBar`, which took the old proportional
+	// bar-width arithmetic with it (M13 S1).
 	const hpColor = getHpBarColor(health.current, effectiveMaxHp)
-	const getHpColorVariant = () => {
-		if (hpPercentage >= 50) return 'success'
-		if (hpPercentage >= 25) return 'warning'
-		return 'error'
-	}
-
-	// Calculate proportional widths for static bar length (120px total)
-	const mainHpBarWidth =
-		totalDisplayHp > 0 ? (effectiveMaxHp / totalDisplayHp) * 120 : 120
-	const tempHpBarWidth =
-		totalDisplayHp > 0 ? ((health.temp || 0) / totalDisplayHp) * 120 : 0
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -126,7 +119,8 @@ export const HpCard = () => {
 				if (health.current > 0 && newCurrentHp <= 0) {
 					woundText = '1 wound (HP dropped to 0 or below)'
 				}
-				woundText = woundsForExcess(remainingDamage - health.current) || woundText
+				woundText =
+					woundsForExcess(remainingDamage - health.current) || woundText
 			}
 		} else {
 			newCurrentHp = Math.max(0, health.current - amount)
@@ -170,149 +164,200 @@ export const HpCard = () => {
 			weight="column"
 			info="Hit Points: Your health and ability to withstand damage"
 			minWidth="7rem"
-			editorWidth="25rem"
+			// Narrower than the old 25rem: the stepper row is the widest thing in
+			// here and needs ~20rem, so the rest was slack that let the three groups
+			// drift apart instead of reading as one column.
+			editorWidth="21rem"
+			// M13 S1: the meter fills the card. It used to be capped at
+			// `maxWidth: 5.5rem` inside a card that spans two of the register's four
+			// columns, so the most-watched value on the sheet had the shortest meter
+			// it could have been given. Full card width is the fix; spanning the whole
+			// plate was tried and overshot — it detached the bar from the numerals it
+			// reads, and put a plate-wide rule between two registers that the engraved
+			// hairlines already separate.
 			footer={
-				<Box
-					sx={{
-						position: 'relative',
-						width: '100%',
-						maxWidth: '5.5rem',
-						height: '4px',
-						mt: 0.25,
-					}}
-				>
-					<LinearProgress
-						variant="determinate"
-						value={Math.min(100, hpPercentage)}
-						color={getHpColorVariant()}
-						sx={{
-							width: `${(mainHpBarWidth / 120) * 100}%`,
-							height: '4px',
-							borderRadius: health.temp > 0 ? '2px 0 0 2px' : '2px',
-							position: 'absolute',
-							top: 0,
-							left: 0,
-							transition: 'all 0.3s ease-in-out',
-						}}
+				<Box sx={{ width: '100%', mt: 0.4 }}>
+					<HpBar
+						current={health.current}
+						max={effectiveMaxHp}
+						temp={health.temp || 0}
 					/>
-					{health.temp > 0 && (
-						<Box
-							sx={{
-								position: 'absolute',
-								top: 0,
-								left: `${(mainHpBarWidth / 120) * 100}%`,
-								width: `${(tempHpBarWidth / 120) * 100}%`,
-								height: '4px',
-								backgroundColor: UI_COLORS.info,
-								borderRadius: '0 2px 2px 0',
-							}}
-						/>
-					)}
 				</Box>
 			}
+			/*
+				M13 S1 — the editor rebuilt as three named groups, ordered by how often
+				each is touched mid-play: the pool, the action, the reserves.
+
+				What it replaced: a 44px `LinearProgress` band with the current-HP field
+				absolutely positioned on top of it, then Temp/Mod, then the stepper. Three
+				problems. The band was a *second* meter, duplicating the one on the card
+				and reading as a flat brown slab because a theme-coloured progress fill at
+				full height has no track left to contrast against. Overlaying an input on
+				it meant the field needed its own opaque background to stay readable, so
+				the "bar" it sat on conveyed nothing. And the order buried Damage/Healing —
+				the most-used control in the whole popover — under two setup fields.
+
+				Grouping is by label and spacing, not by rules — see `FieldGroupLabel`.
+			*/
 			editor={
 				<>
-					<SectionHeader sx={{ mb: 2 }}>HP Configuration</SectionHeader>
+					<SectionHeader sx={{ mb: 1.25 }}>Hit Points</SectionHeader>
 
-					{/* Editable current HP over its own bar */}
-					<Box sx={{ mb: 3 }}>
-						<Box
-							sx={{
-								position: 'relative',
-								display: 'flex',
-								height: '44px',
-								mb: 1,
-								overflow: 'hidden',
-								border: '1px solid',
-								borderColor: 'divider',
-							}}
-						>
-							<LinearProgress
-								variant="determinate"
-								value={Math.min((health.current / effectiveMaxHp) * 100, 100)}
-								color={getHpColorVariant()}
-								sx={{ flex: 1, height: '100%' }}
+					{/*
+						1 — the pool, as a readout rather than a form row.
+
+						The current value is a large numeral in the HP tone (green / amber /
+						red), which is the same signal the card's label carries, so the
+						popover confirms the state the player already saw before they act on
+						it. It is still the input: no visible label, because "23 / 26" beside
+						a meter needs none, and the theme's bronze baseline is what says
+						editable. The accessible name is on the input.
+					*/}
+					{/*
+						Two nested rows, not one. The numerals share a BASELINE, which is what
+						makes `25 / 28` read as one quantity. The temp token is CENTRED
+						against that block instead, because baseline-aligning a bordered box
+						against a 1.6rem numeral sits it visibly high — a box's baseline is
+						its text's, so the border and padding all hang above the line.
+					*/}
+					<Box
+						sx={{
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+							gap: 0.75,
+							mb: 0.75,
+						}}
+					>
+						<Box sx={{ display: 'flex', alignItems: 'baseline', gap: 0.5 }}>
+							<Controller
+								name="currentHp"
+								control={control}
+								render={({ field, fieldState }) => (
+									<DerivedPart
+										{...field}
+										value={field.value}
+										inputProps={{
+											max: effectiveMaxHp,
+											min: 0,
+											'aria-label': 'Current HP',
+											sx: {
+												textAlign: 'center',
+												fontSize: '1.6rem',
+												fontWeight: 700,
+												lineHeight: 1.1,
+												py: 0.25,
+												color: hpColor,
+											},
+										}}
+										onChange={(value) => {
+											const clamped = Math.max(
+												0,
+												Math.min(value, effectiveMaxHp),
+											)
+											field.onChange(clamped)
+											updateCharacter({
+												statistics: { health: { current: clamped } },
+											})
+										}}
+										error={!!fieldState.error}
+										sx={{ width: '4rem', m: 0 }}
+									/>
+								)}
 							/>
-
-							{health.temp > 0 && (
-								<Box
-									sx={{
-										width: '60px',
-										backgroundColor: UI_COLORS.info,
-										borderLeft: '1px solid',
-										borderColor: 'divider',
-										display: 'flex',
-										alignItems: 'center',
-										justifyContent: 'center',
-									}}
-								>
-									<Typography variant="body1" sx={{ fontWeight: 'bold' }}>
-										+{health.temp}
-									</Typography>
-								</Box>
-							)}
-
-							<Box
+							<Typography
 								sx={{
-									position: 'absolute',
-									inset: 0,
-									display: 'flex',
-									alignItems: 'center',
-									justifyContent: 'center',
-									gap: 0.5,
-									zIndex: 2,
+									fontWeight: 700,
+									fontSize: '1.25rem',
+									color: 'text.secondary',
 								}}
 							>
-								<Controller
-									name="currentHp"
-									control={control}
-									render={({ field, fieldState }) => (
-										<TextField
-											{...field}
-											type="number"
-											size="small"
-											inputProps={{
-												max: effectiveMaxHp,
-												min: 0,
-												'aria-label': 'Current HP',
-												sx: { textAlign: 'center', py: 0.25 },
-											}}
-											onChange={(event) => {
-												const clamped = Math.max(
-													0,
-													Math.min(Number(event.target.value), effectiveMaxHp),
-												)
-												field.onChange(clamped)
-												updateCharacter({
-													statistics: { health: { current: clamped } },
-												})
-											}}
-											error={!!fieldState.error}
-											sx={{ width: '4rem', bgcolor: 'background.paper' }}
-										/>
-									)}
-								/>
-								<Typography variant="body1" sx={{ fontWeight: 'bold' }}>
-									/ {effectiveMaxHp}
-								</Typography>
-							</Box>
+								/ {effectiveMaxHp}
+							</Typography>
 						</Box>
-
-						{/* Formula Display */}
-						<Typography
-							variant="caption"
-							sx={{ display: 'block', textAlign: 'center', color: 'text.secondary' }}
-						>
-							Max HP: {baseHp} + {(characterLevel - 1) * 2}
-							{autoHpBonus > 0 && ` + ${autoHpBonus} (auto)`}
-							{(health.maxHpModifier || 0) !== 0 && ` + ${health.maxHpModifier || 0}`}
-							{fatigueHpPenalty > 0 && ` - ${fatigueHpPenalty} (fatigue)`} ={' '}
-							{effectiveMaxHp}
-						</Typography>
+						{health.temp > 0 && (
+							// Temp HP is a separate pool, not part of the total, so it reads
+							// as an appended token rather than another numeral in the sum.
+							<Box
+								component="span"
+								sx={{
+									px: 0.6,
+									py: 0.15,
+									borderRadius: 0.5,
+									border: '1px solid',
+									borderColor: UI_COLORS.info,
+									color: UI_COLORS.info,
+									fontFamily: 'var(--nexus-font-ui)',
+									fontWeight: 700,
+									fontSize: 'var(--nexus-text-xs)',
+									lineHeight: 1.4,
+									whiteSpace: 'nowrap',
+								}}
+							>
+								+{health.temp}
+							</Box>
+						)}
 					</Box>
 
-					{/* Modifiers */}
-					<Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, mb: 2 }}>
+					{/* The same meter the card carries, so the popover states the pool the
+					    same way rather than inventing a second visual language for it —
+					    heavier here, where the pool is the subject rather than a detail. */}
+					<HpBar
+						current={health.current}
+						max={effectiveMaxHp}
+						temp={health.temp || 0}
+						height="8px"
+					/>
+
+					<Typography
+						variant="caption"
+						sx={{
+							display: 'block',
+							textAlign: 'center',
+							color: 'text.secondary',
+							mt: 0.75,
+						}}
+					>
+						Max HP: {baseHp} + {(characterLevel - 1) * 2}
+						{autoHpBonus > 0 && ` + ${autoHpBonus} (auto)`}
+						{(health.maxHpModifier || 0) !== 0 &&
+							` + ${health.maxHpModifier || 0}`}
+						{fatigueHpPenalty > 0 && ` - ${fatigueHpPenalty} (fatigue)`} ={' '}
+						{effectiveMaxHp}
+					</Typography>
+
+					{/* 2 — the action. Highest traffic in the popover, so it sits directly
+					    under the value it changes. Its own group label separates it; see
+					    FieldGroupLabel for why there is no rule here. */}
+					<Box sx={{ mt: 1.75 }} />
+					<AdjustStepper
+						decreaseLabel="Damage"
+						increaseLabel="Healing"
+						onDecrease={applyDamage}
+						onIncrease={applyHealing}
+					/>
+
+					{woundHelperText && (
+						<Typography
+							variant="caption"
+							color="warning.main"
+							sx={{ display: 'block', fontWeight: 'bold', mt: 0.5 }}
+						>
+							{woundHelperText}
+						</Typography>
+					)}
+
+					{/* 3 — the reserves. Set at level-up or when a buff lands, not in a
+					    fight, so it sits last and reads as configuration. */}
+					<FieldGroupLabel sx={{ mt: 1.75 }}>Reserves</FieldGroupLabel>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'row',
+							gap: 1,
+							justifyContent: 'flex-start',
+						}}
+					>
 						<Controller
 							name="tempHp"
 							control={control}
@@ -352,33 +397,25 @@ export const HpCard = () => {
 						/>
 
 						{autoHpBonus > 0 && (
-							<DerivedPart auto value={autoHpBonus} label="Auto" sx={{ width: '4rem' }} />
+							<DerivedPart
+								auto
+								value={autoHpBonus}
+								label="Auto"
+								sx={{ width: '4rem' }}
+							/>
 						)}
 					</Box>
-
-					<AdjustStepper
-						decreaseLabel="Damage"
-						increaseLabel="Healing"
-						onDecrease={applyDamage}
-						onIncrease={applyHealing}
-					/>
-
-					{woundHelperText && (
-						<Typography
-							variant="caption"
-							color="warning.main"
-							sx={{ fontWeight: 'bold' }}
-						>
-							⚠️ {woundHelperText}
-						</Typography>
-					)}
 				</>
 			}
 		>
 			<Typography
 				sx={{
 					fontWeight: 'bold',
-					fontSize: '0.95rem',
+					// M13 S3.5: the most-watched value on the sheet, and it was set in a
+					// hardcoded 0.95rem — 15.2px, smaller than the rules text beside it.
+					// Matches `CardContent`'s new register, so HP and the four defences
+					// read at one weight.
+					fontSize: 'var(--nexus-text-lg)',
 					lineHeight: 1.2,
 					textAlign: 'center',
 					...animation.sx,
@@ -388,7 +425,7 @@ export const HpCard = () => {
 			>
 				{health.current}/{effectiveMaxHp}
 				{health.temp > 0 && (
-					<span style={{ color: UI_COLORS.info, fontSize: '0.8rem' }}>
+					<span style={{ color: UI_COLORS.info, fontSize: 'var(--nexus-text-sm)' }}>
 						{' '}
 						+{health.temp}
 					</span>

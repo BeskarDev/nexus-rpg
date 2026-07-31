@@ -46,7 +46,7 @@ export const LocationLoadCard: React.FC<LocationLoadCardProps> = ({
 				<Typography
 					sx={{
 						fontWeight: 'bold',
-						fontSize: '0.95rem',
+						fontSize: 'var(--nexus-text-lg)',
 						lineHeight: 1.2,
 						color: 'text.primary',
 						ml: 2,
@@ -70,7 +70,7 @@ export const LocationLoadCard: React.FC<LocationLoadCardProps> = ({
 						inputProps: { min: 0, 'aria-label': 'Load capacity' },
 						sx: {
 							fontWeight: 'bold',
-							fontSize: '0.95rem',
+							fontSize: 'var(--nexus-text-lg)',
 							color: 'text.primary',
 							'& input': {
 								textAlign: 'center',

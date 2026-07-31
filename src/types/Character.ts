@@ -164,6 +164,10 @@ export const statusEffectTypeArray = [
 	'frightened',
 	'grappled',
 	'hidden',
+	// Documented and published since before M13 but absent from this array, so it
+	// was unselectable on the character sheet. `conditions.json` is the source of
+	// truth for the SET as well as the text; a test pins the two together now.
+	'invisible',
 	'marked',
 	'paralyzed',
 	'poisoned',

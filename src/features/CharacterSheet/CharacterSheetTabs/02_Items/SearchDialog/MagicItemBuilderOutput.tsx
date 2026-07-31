@@ -90,7 +90,7 @@ export const MagicItemBuilderOutput: React.FC<MagicItemBuilderOutputProps> = ({
 							backgroundColor: 'background.default',
 							color: 'text.primary',
 							overflowX: 'auto',
-							fontSize: '0.875rem',
+							fontSize: 'var(--nexus-text-sm)',
 							border: 1,
 							borderColor: 'divider',
 						}}

@@ -32,7 +32,7 @@ export const CoinsCard: React.FC<CoinsCardProps> = ({ coins, updateCharacter }) 
 					'& input': {
 						textAlign: 'center',
 						fontWeight: 'bold',
-						fontSize: '0.95rem',
+						fontSize: 'var(--nexus-text-lg)',
 					},
 				}}
 			/>

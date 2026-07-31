@@ -27,7 +27,7 @@ export const SpecializationCard: React.FC<SpecializationCardProps> = ({
 				variant="standard"
 				sx={{
 					'& .MuiInput-root': {
-						fontSize: '0.95rem',
+						fontSize: 'var(--nexus-text-lg)',
 						fontWeight: 'bold',
 						'&:before, &:after': { display: 'none' },
 					},

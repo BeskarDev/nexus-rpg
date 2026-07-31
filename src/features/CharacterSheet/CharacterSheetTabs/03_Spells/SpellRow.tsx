@@ -3,7 +3,7 @@ import { RangeType, Spell, TargetType } from '../../../../types/Character'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { UnifiedListItem } from '@site/src/components/DynamicList'
+import { UnifiedListItem } from '@site/src/features/CharacterSheet/components/DynamicList'
 import { SpellSummary, SpellDetails } from './components'
 
 export type SpellRowProps = {

@@ -40,6 +40,8 @@ export const DerivedPart: React.FC<DerivedPartProps> = ({
 		size="small"
 		disabled={auto || !onChange}
 		value={value}
-		onChange={onChange ? (event) => onChange(Number(event.target.value)) : undefined}
+		onChange={
+			onChange ? (event) => onChange(Number(event.target.value)) : undefined
+		}
 	/>
 )

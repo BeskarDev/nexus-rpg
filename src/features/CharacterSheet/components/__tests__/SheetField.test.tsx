@@ -25,6 +25,27 @@ describe('SheetField', () => {
 			expect(screen.getByText('Parry Calculator')).toBeInTheDocument()
 		})
 
+		/**
+		 * M13 S1. MUI portals the popover to `document.body`, outside
+		 * `.character-sheet-page`, so every `--cs-*` token an editor's contents
+		 * reference resolved to nothing — `background-color: var(--cs-success)` with
+		 * no value paints nothing, and the HP meter inside the HP editor rendered as
+		 * an empty trough while the identical component on the card rendered green.
+		 *
+		 * Asserted on the class rather than on a resolved colour on purpose: jsdom
+		 * does not evaluate `color-mix()`, which is what every one of those tokens
+		 * is built from, so a colour assertion here would pass either way. The class
+		 * is the mechanism, and it is what a future refactor would drop.
+		 */
+		it('carries the sheet token class into the portaled popover', async () => {
+			render(<SheetField label="HP" value={8} editor={<div>HP editor</div>} />)
+			await userEvent.click(screen.getByRole('button', { name: 'Edit HP' }))
+
+			const paper = document.querySelector('.MuiMenu-paper')
+			expect(paper).not.toBeNull()
+			expect(paper).toHaveClass('cs-tokens')
+		})
+
 		it('opens on Enter as well as click', async () => {
 			render(<SheetField label="Parry" value={8} editor={<div>Parry Calculator</div>} />)
 			screen.getByRole('button', { name: 'Edit Parry' }).focus()

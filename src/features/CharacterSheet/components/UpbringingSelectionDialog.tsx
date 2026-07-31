@@ -69,7 +69,7 @@ export const UpbringingSelectionDialog: React.FC<
 							size="small"
 							variant="outlined"
 							sx={{
-								fontSize: '0.7rem',
+								fontSize: 'var(--nexus-text-2xs)',
 								mb: 0.25,
 								mr: 0.25,
 								borderColor: getSkillChipColor(skill.trim()),

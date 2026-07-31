@@ -49,6 +49,40 @@ describe('PipRow', () => {
 		)
 		expect(screen.getByRole('group', { name: 'Resolve' })).toBeInTheDocument()
 	})
+
+	// M13 S1. Asserted on the declared track count rather than on rendered
+	// positions, because jsdom does no layout — a `flexWrap` version of this would
+	// pass a "renders 6 pips" test while breaking wherever the container ended,
+	// which is the drift `columns` exists to prevent.
+	it('lays the pips on a fixed grid when columns is set', () => {
+		render(
+			<PipRow
+				count={6}
+				value={2}
+				onChange={vi.fn()}
+				sigil="fatigue"
+				tone="orange"
+				label="Fatigue"
+				columns={3}
+			/>,
+		)
+		const group = screen.getByRole('group', { name: 'Fatigue' })
+		// Emotion applies these through a class, so assert on computed style
+		// (`toHaveStyle`) rather than the inline `style` attribute, which is empty.
+		expect(group).toHaveStyle({
+			display: 'grid',
+			gridTemplateColumns: 'repeat(3, max-content)',
+		})
+		expect(screen.getAllByRole('checkbox')).toHaveLength(6)
+	})
+
+	it('stays a single flex row when columns is omitted', () => {
+		render(
+			<PipRow count={3} value={1} onChange={vi.fn()} sigil="resolve" tone="purple" label="Resolve" />,
+		)
+		const group = screen.getByRole('group', { name: 'Resolve' })
+		expect(group).toHaveStyle({ display: 'flex', flexDirection: 'row' })
+	})
 })
 
 describe('SigilPip', () => {

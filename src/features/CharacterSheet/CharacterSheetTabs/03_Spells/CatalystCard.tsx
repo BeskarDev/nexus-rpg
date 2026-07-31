@@ -34,7 +34,7 @@ export const CatalystCard: React.FC<CatalystCardProps> = ({
 				variant="standard"
 				sx={{
 					'& .MuiInput-root': {
-						fontSize: '0.95rem',
+						fontSize: 'var(--nexus-text-lg)',
 						fontWeight: 'bold',
 						'&:before, &:after': { display: 'none' },
 					},

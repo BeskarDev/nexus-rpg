@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { DurabilityDie, Weapon } from '../../../../types/Character'
 import { ItemLocation } from '../../../../types/ItemLocation'
-import { UnifiedListItem } from '@site/src/components/DynamicList'
+import { UnifiedListItem } from '@site/src/features/CharacterSheet/components/DynamicList'
 import { WeaponSummary, WeaponDetails } from './components'
 
 export type WeaponRowProps = {

@@ -1,6 +1,6 @@
-import { Add, Remove } from '@mui/icons-material'
-import { Box, Button, TextField, Typography } from '@mui/material'
+import { Box, Button, TextField, alpha } from '@mui/material'
 import React from 'react'
+import { FieldGroupLabel } from './FieldGroupLabel'
 
 export interface AdjustStepperProps {
 	/** Section heading, e.g. "Damage / Healing". */
@@ -11,6 +11,11 @@ export interface AdjustStepperProps {
 	increaseLabel: string
 	onDecrease: (amount: number) => void
 	onIncrease: (amount: number) => void
+	/**
+	 * The one-tap amounts. Defaults to the spread that covers most rolls: 1–3 for
+	 * weak hits and chip damage, 5 and 10 for solid ones.
+	 */
+	quickAmounts?: number[]
 }
 
 /**
@@ -24,6 +29,29 @@ export interface AdjustStepperProps {
  * It owns the amount, because the amount is scratch state that never belongs to
  * the character — every copy had to remember to clear it, and one of them
  * cleared it in two places.
+ *
+ * ## M13 S1 — the tally row
+ *
+ * The original composition was `[− Damage] [Amount] [+ Healing]`, which put the
+ * two verbs on the outside and made **typing mandatory**: every application cost
+ * focus the field, type a digit, click a verb. That is three interactions for the
+ * most frequent thing anyone does to this sheet, mid-fight, often on a phone.
+ *
+ * So the amount is now **armed by tapping a stone** and applied by tapping a
+ * verb: two taps, no keyboard. The free-entry field stays for amounts the stones
+ * do not cover (a 13-damage crit), but it is the fallback rather than the only
+ * path.
+ *
+ * Two deliberate rejections. The stones do **not** apply on tap — a pad that
+ * applied directly would need a damage/heal mode, and a mis-set mode silently
+ * does the opposite of what the player wanted to a value with no undo. And the
+ * verbs are **not** bare `+`/`−` icon buttons: "Damage 7" states the whole action
+ * including its amount, so the plate is its own confirmation. That echo is why
+ * the armed amount reads back inside the verb.
+ *
+ * The Material `Add`/`Remove` icons the old version imported are gone with it —
+ * typographic `−`/`+` carry the direction, which is two fewer Material icons for
+ * M13 S9 to account for.
  */
 export const AdjustStepper: React.FC<AdjustStepperProps> = ({
 	title = 'Damage / Healing',
@@ -31,6 +59,7 @@ export const AdjustStepper: React.FC<AdjustStepperProps> = ({
 	increaseLabel,
 	onDecrease,
 	onIncrease,
+	quickAmounts = [1, 2, 3, 5, 10],
 }) => {
 	const [amount, setAmount] = React.useState(0)
 
@@ -41,41 +70,128 @@ export const AdjustStepper: React.FC<AdjustStepperProps> = ({
 		setAmount(0)
 	}
 
+	const armed = amount > 0
+
+	/** A verb plate: small caps, bronze keyline, its tone washing in on hover. */
+	const verb = (
+		label: string,
+		sign: string,
+		tone: 'error' | 'success',
+		direction: 'decrease' | 'increase',
+	) => (
+		<Button
+			variant="outlined"
+			color={tone}
+			size="small"
+			onClick={() => apply(direction)}
+			disabled={!armed}
+			// The accessible name has to stay stable and verbal, because the visible
+			// label goes numeric once armed (see below) — "− 5" alone would announce
+			// as a bare number with no indication of which direction it applies.
+			aria-label={armed ? `${label} ${amount}` : label}
+			sx={{
+				flex: 1,
+				// A fixed single-line height: the plate must not change size when the
+				// armed amount changes, or every tap on a stone nudges the layout.
+				py: 0.6,
+				minHeight: '2.1rem',
+				whiteSpace: 'nowrap',
+				borderRadius: 0.5,
+				fontFamily: 'var(--nexus-font-ui)',
+				fontWeight: 700,
+				fontSize: 'var(--nexus-text-xs)',
+				fontVariant: 'small-caps',
+				letterSpacing: '0.04em',
+				borderColor: 'color-mix(in srgb, var(--nexus-bronze) 45%, transparent)',
+				'&:hover': {
+					borderColor: `${tone}.main`,
+					bgcolor: (theme) => alpha(theme.palette[tone].main, 0.1),
+				},
+				'&.Mui-disabled': {
+					borderColor:
+						'color-mix(in srgb, var(--nexus-bronze) 20%, transparent)',
+				},
+			}}
+		>
+			{/*
+				Armed, the plate reads as the signed amount alone: `− 5`.
+
+				It used to read `− Damage 5`, which is more explicit but did not fit half
+				of a 21rem popover — it wrapped to two lines, so arming an amount
+				resized both plates and shifted everything under them. Dropping the verb
+				rather than shrinking the type is the right trade because the verb is
+				still stated twice around it: by the group label above and by the plate's
+				own red/green tone. The idle label keeps the word, since there is no
+				amount to state and nothing to fit around.
+			*/}
+			{armed ? `${sign} ${amount}` : label}
+		</Button>
+	)
+
 	return (
 		<>
-			<Typography variant="subtitle2" sx={{ mb: 1 }}>
-				{title}
-			</Typography>
-			<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-				<Button
-					variant="outlined"
-					color="error"
-					size="small"
-					onClick={() => apply('decrease')}
-					startIcon={<Remove />}
-					disabled={amount <= 0}
-				>
-					{decreaseLabel}
-				</Button>
+			<FieldGroupLabel sx={{ mb: 0.75 }}>{title}</FieldGroupLabel>
+
+			{/* The tally: one-tap stones, then the free field for anything else. */}
+			<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 1 }}>
+				{quickAmounts.map((value) => {
+					const selected = amount === value
+					return (
+						<Button
+							key={value}
+							size="small"
+							onClick={() => setAmount(selected ? 0 : value)}
+							aria-pressed={selected}
+							aria-label={`Amount ${value}`}
+							sx={{
+								minWidth: 0,
+								flex: 1,
+								px: 0,
+								py: 0.35,
+								borderRadius: 0.5,
+								fontFamily: 'var(--nexus-font-ui)',
+								fontWeight: 700,
+								fontSize: 'var(--nexus-text-xs)',
+								color: selected ? 'primary.main' : 'text.secondary',
+								border: '1px solid',
+								// Selected is carried by a bronze keyline plus a wash, not by a
+								// filled block: a solid fill at this size reads as a disabled
+								// state next to the outlined verb plates below it.
+								borderColor: selected
+									? 'var(--nexus-bronze)'
+									: 'color-mix(in srgb, var(--nexus-bronze) 22%, transparent)',
+								bgcolor: selected
+									? 'color-mix(in srgb, var(--nexus-bronze) 14%, transparent)'
+									: 'transparent',
+								'&:hover': {
+									borderColor:
+										'color-mix(in srgb, var(--nexus-bronze) 55%, transparent)',
+									bgcolor:
+										'color-mix(in srgb, var(--nexus-bronze) 8%, transparent)',
+								},
+							}}
+						>
+							{value}
+						</Button>
+					)
+				})}
 				<TextField
 					type="number"
 					size="small"
-					label="Amount"
 					value={amount}
 					onChange={(event) => setAmount(Number(event.target.value))}
-					sx={{ flexGrow: 1, maxWidth: '5rem' }}
-					inputProps={{ min: 0, sx: { textAlign: 'center' } }}
+					inputProps={{
+						min: 0,
+						'aria-label': 'Amount',
+						sx: { textAlign: 'center', py: 0.35, fontWeight: 700 },
+					}}
+					sx={{ width: '3.25rem', ml: 0.25 }}
 				/>
-				<Button
-					variant="outlined"
-					color="success"
-					size="small"
-					onClick={() => apply('increase')}
-					startIcon={<Add />}
-					disabled={amount <= 0}
-				>
-					{increaseLabel}
-				</Button>
+			</Box>
+
+			<Box sx={{ display: 'flex', alignItems: 'stretch', gap: 0.75 }}>
+				{verb(decreaseLabel, '−', 'error', 'decrease')}
+				{verb(increaseLabel, '+', 'success', 'increase')}
 			</Box>
 		</>
 	)

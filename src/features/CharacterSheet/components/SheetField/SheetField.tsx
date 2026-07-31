@@ -107,6 +107,11 @@ export const SheetField: React.FC<SheetFieldProps> = ({
 						anchorEl={anchorEl}
 						open={Boolean(anchorEl)}
 						onClose={close}
+						// M13 S1: the popover is portaled to document.body, outside
+						// `.character-sheet-page`, so every `--cs-*` token an editor's
+						// contents reference resolved to nothing. See the note on
+						// `.cs-tokens` in characterSheet.css.
+						slotProps={{ paper: { className: 'cs-tokens' } }}
 						MenuListProps={{ sx: { p: 2, maxWidth: editorWidth } }}
 					>
 						{typeof editor === 'function' ? editor(close) : editor}

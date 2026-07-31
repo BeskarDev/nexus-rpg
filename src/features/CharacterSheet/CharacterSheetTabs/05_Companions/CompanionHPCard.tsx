@@ -75,7 +75,7 @@ export const CompanionHPCard: React.FC<CompanionHPCardProps> = ({
 				</>
 			}
 		>
-			<Typography sx={{ fontWeight: 'bold', fontSize: '0.95rem', lineHeight: 1.2 }}>
+			<Typography sx={{ fontWeight: 'bold', fontSize: 'var(--nexus-text-lg)', lineHeight: 1.2 }}>
 				{currentHP} / {maxHP}
 			</Typography>
 		</SheetField>

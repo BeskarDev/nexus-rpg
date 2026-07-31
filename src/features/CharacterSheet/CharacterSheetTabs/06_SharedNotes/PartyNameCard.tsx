@@ -53,7 +53,7 @@ export const PartyNameCard: React.FC<PartyNameCardProps> = ({
 						InputProps={{
 							disableUnderline: true,
 							sx: {
-								fontSize: '0.95rem',
+								fontSize: 'var(--nexus-text-lg)',
 								fontWeight: 'bold',
 								flex: 1,
 								'& input': {
@@ -91,7 +91,7 @@ export const PartyNameCard: React.FC<PartyNameCardProps> = ({
 					<Box
 						sx={{
 							flex: 1,
-							fontSize: '0.95rem',
+							fontSize: 'var(--nexus-text-lg)',
 							fontWeight: 'bold',
 							textAlign: 'center',
 							py: 0.5,

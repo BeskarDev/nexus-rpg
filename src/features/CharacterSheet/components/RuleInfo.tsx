@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Tooltip } from '@mui/material'
-import SigilIcon from '@site/src/components/codex/SigilIcon'
+import { GlossMark } from './GlossMark'
 
 export interface RuleInfoProps {
 	/** The rules clarification. Plain text, or nodes for anything richer. */
@@ -22,8 +22,8 @@ export interface RuleInfoProps {
  * no click on desktop. `enterTouchDelay` keeps it reachable by tap on mobile,
  * where there is no hover to give.
  *
- * `stylus` is the sigil because the set already draws it as a reed stylus poised
- * over the wedge it has just impressed — a written note, which is what this is.
+ * M13 S1 replaced the `stylus` sigil with {@link GlossMark}, which is not a
+ * sigil at all — see that file for why UI chrome falls outside the sign list.
  */
 export const RuleInfo: React.FC<RuleInfoProps> = ({ children, label }) => (
 	<Tooltip
@@ -51,7 +51,7 @@ export const RuleInfo: React.FC<RuleInfoProps> = ({ children, label }) => (
 				'&:hover': { opacity: 1 },
 			}}
 		>
-			<SigilIcon name="stylus" size={10} />
+			<GlossMark />
 		</Box>
 	</Tooltip>
 )

@@ -90,7 +90,7 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 						size="small"
 						variant="outlined"
 						sx={{
-							fontSize: '0.75rem',
+							fontSize: 'var(--nexus-text-xs)',
 							borderColor: getSkillChipColor(normalized),
 							color: getSkillChipColor(normalized),
 							fontWeight: 600,

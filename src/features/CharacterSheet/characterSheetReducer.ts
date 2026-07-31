@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { deepCopy, reorder } from '@site/src/components/DynamicList/utils'
+import { deepCopy, reorder } from '@site/src/features/CharacterSheet/components/DynamicList/utils'
 import {
 	Ability,
 	CharacterDocument,
@@ -9,7 +9,6 @@ import {
 	NpcRelationship,
 	Skill,
 	Spell,
-	StatusEffect,
 	StatusEffectType,
 	Weapon,
 } from '@site/src/types/Character'
@@ -19,6 +18,7 @@ import { ItemLocation } from '@site/src/types/ItemLocation'
 import { Character } from './../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
 import { getDurabilityForItem } from './CharacterSheetTabs/02_Items/utils/durabilityUtils'
+import { DurationRung, rungFields } from './constants/conditionDurations'
 import { migrateCharacterData } from './utils'
 
 function isObject(value: any) {
@@ -752,75 +752,100 @@ export const {
 				!currentVisibility
 		},
 		// Status Effects actions
-		addStatusEffect: (state, action: PayloadAction<StatusEffectType>) => {
-			state.unsavedChanges = true
-			const statusEffectType = action.payload
-			// Check if status effect already exists
-			const existingIndex =
-				state.activeCharacter.statistics.statusEffects.findIndex(
-					(effect) => effect.name === statusEffectType,
-				)
-
-			if (existingIndex >= 0) {
-				// If it exists, just make sure it's active
-				state.activeCharacter.statistics.statusEffects[existingIndex].active =
-					true
-			} else {
-				// Add new status effect (omit undefined fields for Firebase compatibility)
-				const newStatusEffect: StatusEffect = {
-					id: crypto.randomUUID(),
-					name: statusEffectType,
-					active: true,
-				}
-				state.activeCharacter.statistics.statusEffects.push(newStatusEffect)
-			}
-		},
-		updateStatusEffect: (
+		/**
+		 * Add a condition, already on its duration rung.
+		 *
+		 * The payload carries the duration because the sheet sets it at the moment
+		 * of affliction (M13): the old flow added a bare condition and then made the
+		 * player open an edit form, choose a duration and save, which is four steps
+		 * for something they knew before they started.
+		 */
+		addStatusEffect: (
 			state,
 			action: PayloadAction<{
-				id: string
-				update: Partial<StatusEffect>
-				clearFields?: string[]
+				name: StatusEffectType
+				rung?: DurationRung
+				intensity?: number
 			}>,
 		) => {
 			state.unsavedChanges = true
-			const { id, update, clearFields } = action.payload
-			const index = state.activeCharacter.statistics.statusEffects.findIndex(
-				(effect) => effect.id === id,
-			)
-			if (index >= 0) {
-				// Filter out undefined values to prevent Firebase errors
-				const filteredUpdate = Object.fromEntries(
-					Object.entries(update).filter(([_, value]) => value !== undefined),
+			const { name, rung, intensity } = action.payload
+			const existingIndex =
+				state.activeCharacter.statistics.statusEffects.findIndex(
+					(effect) => effect.name === name,
 				)
 
-				// Start with the current effect
-				let updatedEffect = {
-					...state.activeCharacter.statistics.statusEffects[index],
-					...filteredUpdate,
-				}
+			// Undefined fields are omitted rather than written: Firestore rejects
+			// `undefined`, so a condition with no duration must not carry the key.
+			const duration = rungFields(rung).update
 
-				// Clear specified fields
-				if (clearFields) {
-					clearFields.forEach((field) => {
-						delete (updatedEffect as any)[field]
-					})
+			if (existingIndex >= 0) {
+				// Re-afflicting an existing condition re-arms it on the new rung rather
+				// than adding a duplicate row.
+				const existing = state.activeCharacter.statistics.statusEffects[
+					existingIndex
+				]
+				existing.active = true
+				if (rung !== undefined) {
+					delete existing.duration
+					delete existing.narrativeDuration
+					Object.assign(existing, duration)
 				}
-
-				state.activeCharacter.statistics.statusEffects[index] = updatedEffect
+				if (intensity !== undefined) existing.intensity = intensity
+			} else {
+				state.activeCharacter.statistics.statusEffects.push({
+					id: crypto.randomUUID(),
+					name,
+					active: true,
+					...duration,
+					...(intensity !== undefined ? { intensity } : {}),
+				})
 			}
 		},
-		toggleStatusEffect: (state, action: PayloadAction<string>) => {
+		/**
+		 * Move a condition to a duration rung, or off the ladder entirely.
+		 *
+		 * A rung is one tap on the row — there is no edit mode and no save step —
+		 * so the two-field encoding of `duration` / `narrativeDuration` is resolved
+		 * here, in one place, instead of in a form's submit handler.
+		 */
+		setStatusEffectDuration: (
+			state,
+			action: PayloadAction<{ id: string; rung: DurationRung | undefined }>,
+		) => {
 			state.unsavedChanges = true
-			const id = action.payload
-			const index = state.activeCharacter.statistics.statusEffects.findIndex(
-				(effect) => effect.id === id,
+			const { id, rung } = action.payload
+			const effect = state.activeCharacter.statistics.statusEffects.find(
+				(candidate) => candidate.id === id,
 			)
-			if (index >= 0) {
-				state.activeCharacter.statistics.statusEffects[index].active =
-					!state.activeCharacter.statistics.statusEffects[index].active
-			}
+			if (!effect) return
+			const { update, clearFields } = rungFields(rung)
+			for (const field of clearFields) delete (effect as any)[field]
+			Object.assign(effect, update)
 		},
+		setStatusEffectIntensity: (
+			state,
+			action: PayloadAction<{ id: string; intensity: number }>,
+		) => {
+			state.unsavedChanges = true
+			const { id, intensity } = action.payload
+			const effect = state.activeCharacter.statistics.statusEffects.find(
+				(candidate) => candidate.id === id,
+			)
+			if (!effect) return
+			// Intensity is what the condition does per turn; zero is not a state the
+			// rules have, so the floor is 1.
+			effect.intensity = Math.max(1, Math.round(intensity))
+		},
+		// `updateStatusEffect` (a generic patch + field-clear) and
+		// `toggleStatusEffect` (suspend/resume) were removed in M13. The patch action
+		// existed to serve one edit form whose submit handler decided which of
+		// `duration` / `narrativeDuration` to write; `setStatusEffectDuration` above
+		// makes that decision in the reducer instead. The toggle backed a click on
+		// the chip body that dimmed a condition to 60% — "afflicted but inactive" is
+		// not a state the rules have, and it competed with editing for the same tap.
+		// `StatusEffect.active` is still written `true` so stored documents keep
+		// their shape.
 		removeStatusEffect: (state, action: PayloadAction<string>) => {
 			state.unsavedChanges = true
 			const id = action.payload

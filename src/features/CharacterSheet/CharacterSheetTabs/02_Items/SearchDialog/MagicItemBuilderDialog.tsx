@@ -988,7 +988,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 													<TableCell>
 														<Typography
 															variant="body2"
-															sx={{ fontSize: '0.85rem' }}
+															sx={{ fontSize: 'var(--nexus-text-sm)' }}
 														>
 															{material.description}
 															{material.materialType === 'special' &&
@@ -1106,7 +1106,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 												<TableCell>
 													<Typography
 														variant="body2"
-														sx={{ fontSize: '0.75rem' }}
+														sx={{ fontSize: 'var(--nexus-text-xs)' }}
 													>
 														{enchantment.qualityTiers
 															.map((q) => `Q${q}`)
@@ -1116,7 +1116,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 												<TableCell>
 													<Typography
 														variant="body2"
-														sx={{ fontSize: '0.85rem' }}
+														sx={{ fontSize: 'var(--nexus-text-sm)' }}
 													>
 														{enchantment.description}
 													</Typography>
@@ -1211,7 +1211,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 																: 'Special'
 														}
 														size="small"
-														sx={{ height: 16, fontSize: '0.7rem' }}
+														sx={{ height: 16, fontSize: 'var(--nexus-text-2xs)' }}
 													/>
 												)}
 											</Box>

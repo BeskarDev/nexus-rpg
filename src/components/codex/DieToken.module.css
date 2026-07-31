@@ -1,6 +1,12 @@
 /* DieToken — an attribute die as a polygon whose side count encodes the die size.
    See DieToken.tsx for why shape beats a label here. Tokens only. */
 
+/* M13 S3.5 — the token's own dimensions and its inner type are now driven from
+   ONE place, so a consumer can scale the whole mark by overriding this rule
+   alone. The rendered defaults are unchanged; what changed is that `.numeral`
+   and `.modifier` size in `em` off this box instead of reaching for the global
+   scale independently, which meant a caller who grew the polygon got a
+   same-sized numeral rattling around inside it. */
 .token {
 	position: relative;
 	display: inline-flex;
@@ -8,6 +14,7 @@
 	justify-content: center;
 	width: 1.85rem;
 	height: 1.85rem;
+	font-size: var(--nexus-text-xs);
 	color: color-mix(in srgb, var(--ifm-color-primary) 72%, var(--ifm-font-color-base));
 }
 
@@ -26,7 +33,7 @@
 	top: 0.08em;
 	font-family: var(--nexus-font-ui);
 	font-weight: 700;
-	font-size: var(--nexus-text-xs);
+	font-size: 1em;
 	font-variant-numeric: tabular-nums;
 	color: var(--ifm-font-color-base);
 }
@@ -40,7 +47,7 @@
 	bottom: -0.1em;
 	font-family: var(--nexus-font-ui);
 	font-weight: 700;
-	font-size: var(--nexus-text-3xs);
+	font-size: 0.84em;
 	font-variant-numeric: tabular-nums;
 	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, var(--ifm-color-primary));
 }

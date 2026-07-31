@@ -4,9 +4,6 @@ import {
 	TextField,
 	TextFieldProps,
 	MenuItem,
-	Accordion,
-	AccordionSummary,
-	AccordionDetails,
 	Chip,
 	Dialog,
 	DialogTitle,
@@ -18,7 +15,8 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 
-import { Delete, ExpandMore } from '@mui/icons-material'
+import { Delete } from '@mui/icons-material'
+import { UnifiedListItem } from '@site/src/features/CharacterSheet/components/DynamicList'
 import {
 	NpcRelationship,
 	npcRoleArray,
@@ -91,7 +89,6 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 	...props
 }) => {
 	const [localData, setLocalData] = useState(npcRelationship)
-	const [expanded, setExpanded] = useState(false)
 	const [confirmDelete, setConfirmDelete] = useState(false)
 
 	const handleFieldUpdate = (field: keyof NpcRelationship, value: any) => {
@@ -120,32 +117,13 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 
 	return (
 		<>
-			<Accordion
-				expanded={expanded}
-				onChange={(_, isExpanded) => setExpanded(isExpanded)}
-				disableGutters
-				sx={{ flexGrow: 1, mt: 0, mr: 1, width: '100%' }}
-			>
-				<AccordionSummary
-					expandIcon={<ExpandMore />}
-					sx={{
-						gap: 1,
-						pt: 0,
-						px: 1,
-						flexDirection: 'row-reverse',
-						'& .MuiAccordionSummary-content': {
-							display: 'block',
-						},
-					}}
-				>
-					<Box
-						sx={{
-							display: 'flex',
-							alignItems: 'center',
-							gap: 1,
-							flexWrap: 'wrap',
-						}}
-					>
+			{/* M13 S2 (F4): this row used to build its own Accordion and keep its own
+				`expanded` state, duplicating the shared row wholesale. It is a straight
+				fold-in — the summary and details are unchanged, only the container. */}
+			<UnifiedListItem
+				sx={{ mr: 1, width: '100%' }}
+				summaryContent={
+					<>
 						<TextField
 							size="small"
 							variant="standard"
@@ -166,7 +144,7 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 								sx={{
 									minWidth: '4rem',
 									flexShrink: 0,
-									fontSize: '0.75rem',
+									fontSize: 'var(--nexus-text-xs)',
 								}}
 							/>
 						</Tooltip>
@@ -181,7 +159,7 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 								variant="outlined"
 								sx={{
 									flexShrink: 0,
-									fontSize: '0.75rem',
+									fontSize: 'var(--nexus-text-xs)',
 									maxWidth: { xs: '6rem', sm: 'none' },
 								}}
 							/>
@@ -195,10 +173,10 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 						>
 							<Delete />
 						</IconButton>
-					</Box>
-				</AccordionSummary>
-				<AccordionDetails>
-					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+					</>
+				}
+				detailsContent={
+					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, width: '100%' }}>
 						<Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
 							<TextField
 								select
@@ -255,8 +233,8 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 							size="small"
 						/>
 					</Box>
-				</AccordionDetails>
-			</Accordion>
+				}
+			/>
 
 			{/* Delete Confirmation Dialog */}
 			<Dialog

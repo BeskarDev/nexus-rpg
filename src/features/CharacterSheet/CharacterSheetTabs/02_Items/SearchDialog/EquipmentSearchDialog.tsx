@@ -222,7 +222,7 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 					size="small"
 					variant="outlined"
 					color={getCategoryColor(value)}
-					sx={{ fontSize: '0.75rem' }}
+					sx={{ fontSize: 'var(--nexus-text-xs)' }}
 				/>
 			),
 		},
