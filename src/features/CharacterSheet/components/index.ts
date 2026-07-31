@@ -26,6 +26,11 @@ export { ListSection, ListSectionHeader } from './ListSection'
 // M13 S4d — a menu of switches: the panel's structure and the row that is a
 // toggle. Everything visual about them is in the MUI theme.
 export { SheetMenu, ToggleMenuItem } from './SheetMenu'
+// M13 S4e — the sheet's tab bar: a rail of nameplates that knows when it overflows.
+export { SheetTabBar } from './SheetTabBar'
+// M13 S4d — the record plate: an entity's numeric facts as a ledger of marked
+// rows, which is the shape every other numeric surface on the sheet already has.
+export { RecordPlate, RecordRow } from './RecordPlate'
 // M13 S4d — the meta band: a bounded line of facts about a tab or a section, at
 // two ranks. Two tabs' worth of hand-built `Box` trees before this existed.
 export {

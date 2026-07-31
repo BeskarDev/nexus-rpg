@@ -1,5 +1,6 @@
 import React from 'react'
 import { Item } from '@site/src/types/Character'
+import { MarkedOption, slotSigil } from '../utils/itemMarks'
 import { NameCell, ReadCell, SpacerCell, UsesCell } from './LedgerCell'
 
 export type ItemSummaryProps = {
@@ -42,8 +43,13 @@ export const ItemSummary: React.FC<ItemSummaryProps> = ({
 			{/* The shape's own column: the body slot here, damage on a weapon, air on a
 				plain item. One track, because no shape has two (M13 S4d). */}
 			{showSlot ? (
+				/* The slot carries its mark in the ROW too, not only in the details select
+					(M13 S4d): the column is the one place a player compares slots across
+					items, so it is where a mark earns the most. */
 				<ReadCell label="Slot" muted>
-					{item.slot || '—'}
+					<MarkedOption sigil={slotSigil(item.slot)}>
+						{item.slot || '—'}
+					</MarkedOption>
 				</ReadCell>
 			) : (
 				<SpacerCell />
@@ -60,7 +66,11 @@ export const ItemSummary: React.FC<ItemSummaryProps> = ({
 			<ReadCell label="Amount" align="center">
 				{item.amount ?? 0}
 			</ReadCell>
-			<UsesCell uses={item.uses || 0} onChange={onUsesChange} name={item.name} />
+			<UsesCell
+				uses={item.uses || 0}
+				onChange={onUsesChange}
+				name={item.name}
+			/>
 		</>
 	)
 }

@@ -37,24 +37,68 @@ input[type='number'] {
 .cs-tokens {
 	/* Attributes (D3): four distinguishable hues, jewel-derived, each mixed
 	   toward the reading ink so one declaration tracks both modes. */
-	--cs-attr-strength: color-mix(in oklab, var(--nexus-jewel-carnelian), var(--ifm-font-color-base) 15%);
-	--cs-attr-agility: color-mix(in oklab, var(--nexus-jewel-emerald), var(--ifm-font-color-base) 15%);
-	--cs-attr-spirit: color-mix(in oklab, var(--nexus-jewel-amethyst), var(--ifm-font-color-base) 15%);
-	--cs-attr-mind: color-mix(in oklab, var(--nexus-jewel-lapis), var(--ifm-font-color-base) 15%);
+	--cs-attr-strength: color-mix(
+		in oklab,
+		var(--nexus-jewel-carnelian),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-attr-agility: color-mix(
+		in oklab,
+		var(--nexus-jewel-emerald),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-attr-spirit: color-mix(
+		in oklab,
+		var(--nexus-jewel-amethyst),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-attr-mind: color-mix(
+		in oklab,
+		var(--nexus-jewel-lapis),
+		var(--ifm-font-color-base) 15%
+	);
 
 	/* UI semantic colors (replaces utils/colors.ts UI_COLORS Material palette). */
-	--cs-danger: color-mix(in oklab, var(--nexus-alert-danger), var(--ifm-font-color-base) 15%);
-	--cs-success: color-mix(in oklab, var(--nexus-jewel-emerald), var(--ifm-font-color-base) 15%);
-	--cs-info: color-mix(in oklab, var(--nexus-jewel-lapis), var(--ifm-font-color-base) 15%);
-	--cs-warning: color-mix(in oklab, var(--nexus-alert-warning), var(--ifm-font-color-base) 20%);
-	--cs-purple: color-mix(in oklab, var(--nexus-jewel-amethyst), var(--ifm-font-color-base) 15%);
-	--cs-amber: color-mix(in oklab, var(--nexus-bronze), var(--ifm-font-color-base) 15%);
+	--cs-danger: color-mix(
+		in oklab,
+		var(--nexus-alert-danger),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-success: color-mix(
+		in oklab,
+		var(--nexus-jewel-emerald),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-info: color-mix(
+		in oklab,
+		var(--nexus-jewel-lapis),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-warning: color-mix(
+		in oklab,
+		var(--nexus-alert-warning),
+		var(--ifm-font-color-base) 20%
+	);
+	--cs-purple: color-mix(
+		in oklab,
+		var(--nexus-jewel-amethyst),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-amber: color-mix(
+		in oklab,
+		var(--nexus-bronze),
+		var(--ifm-font-color-base) 15%
+	);
 	/* Catalyst is the one sheet card under the Spells tab — the magic-only
 	   cyan exception (README, M9 guidelines) applies here, nowhere else. */
 	--cs-light-blue: var(--rune-cyan-text);
 	--cs-grey: var(--ifm-color-emphasis-700);
 	--cs-grey-blue: var(--ifm-color-emphasis-700);
-	--cs-resolve: color-mix(in oklab, var(--nexus-jewel-amethyst), var(--ifm-font-color-base) 30%);
+	--cs-resolve: color-mix(
+		in oklab,
+		var(--nexus-jewel-amethyst),
+		var(--ifm-font-color-base) 30%
+	);
 }
 
 /* M9 S3 — corner rivets for StatCard's small tiles. The codex kit's full
@@ -104,7 +148,11 @@ input[type='number'] {
    toward the reading ink deepens it in light mode and brightens it in dark from
    the one declaration, per the milestone's every-hue-mixes-toward-the-ink rule. */
 .character-sheet-page a:hover {
-	color: color-mix(in oklab, var(--nexus-bronze), var(--ifm-font-color-base) 40%);
+	color: color-mix(
+		in oklab,
+		var(--nexus-bronze),
+		var(--ifm-font-color-base) 40%
+	);
 }
 
 /* M13 S3 — the sheet's chip, `SheetChip`.
@@ -353,6 +401,19 @@ input[type='number'] {
 .cs-tokens .cs-section-actions .MuiSvgIcon-root {
 	font-size: 0.95rem;
 }
+/* The one control in a strip that DESTROYS something says so on hover: the plate
+   and its glyph go to the danger ink. At rest it is a peer of the others — a
+   delete that is permanently red is an alarm you stop seeing, and it would be the
+   loudest thing in a details panel of quiet fields (M13 S4d). */
+.character-sheet-page
+	.cs-section-actions
+	.MuiIconButton-root[data-danger='true']:hover,
+.cs-tokens .cs-section-actions .MuiIconButton-root[data-danger='true']:hover {
+	border-color: var(--cs-danger);
+	background: color-mix(in srgb, var(--cs-danger) 12%, transparent);
+	color: var(--cs-danger);
+}
+
 /* A control that is also a STATE says so by filling its plate, not by being the
    only one with a border. `data-state` marks the ones where the difference is
    information rather than decoration. */
@@ -445,7 +506,10 @@ input[type='number'] {
 	   `.cs-ledger-cols` container and its fields are the only place several of
 	   these values can be edited — hiding their labels left a panel of unnamed
 	   boxes. The column header replaces labels for the summary line only. */
-	.character-sheet-page .cs-ledger-cols .cs-ledger-row-grid .MuiInputLabel-root {
+	.character-sheet-page
+		.cs-ledger-cols
+		.cs-ledger-row-grid
+		.MuiInputLabel-root {
 		position: absolute;
 		width: 1px;
 		height: 1px;
@@ -488,10 +552,512 @@ input[type='number'] {
 	font-variant-caps: small-caps;
 	letter-spacing: 0.06em;
 	line-height: 1;
-	color: color-mix(in srgb, var(--nexus-bronze) 78%, var(--ifm-font-color-base));
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 78%,
+		var(--ifm-font-color-base)
+	);
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+/* M13 S4d — the inscription: a prose field with no box.
+   ==========================================================================
+
+   A name, a properties list and a description were three framed slots stacked in a
+   framed group. The frames were the fault: this is the line that says what the
+   thing IS, and a form field is the wrong register for it. Bare on the panel, slot
+   under the pointer.
+
+   The name reads a step larger than the rest — it is the panel's subject. Not the
+   display serif, though: that was tried and the owner's report was immediate, and
+   correct. A serif at 18px inside a 15px UI panel reads as a different DOCUMENT
+   having been pasted in, and the sheet's own hierarchy is built out of weight and
+   size within one face. */
+.character-sheet-page .cs-inscription .MuiInputBase-root {
+	background-color: transparent;
+	border-color: transparent;
+}
+.character-sheet-page
+	.cs-inscription:hover
+	.MuiInputBase-root:not(.Mui-disabled),
+.character-sheet-page .cs-inscription .MuiInputBase-root.Mui-focused {
+	background-color: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	border-color: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+}
+/* The name reads at the sheet's own size in semibold — NOT a step up (S4d, owner
+   review). The panel belongs to one document and one type scale; the emphasis a
+   subject line needs is weight, not scale. */
+.character-sheet-page .cs-inscription--name .MuiInputBase-input {
+	font-weight: 600;
+}
+/* Prose is flush left. `SheetInput` centres its value because it was built for a
+   stat tile, and a centred name in a left-aligned panel reads as a caption. */
+.character-sheet-page .cs-inscription .MuiInputBase-input {
+	text-align: left;
+}
+/* The one prose field that keeps its edge at rest: an empty multi-line block with
+   no keyline is indistinguishable from empty panel, and this is the field most
+   often empty. `minHeight` rather than rows so it grows with its content and does
+   not reserve three blank lines the way MUI's `minRows` did. */
+.character-sheet-page .cs-inscription--block .MuiInputBase-root {
+	border-color: color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+	align-items: flex-start;
+	padding: 2px 6px;
+}
+.character-sheet-page .cs-inscription--block .MuiInputBase-input {
+	line-height: 1.45;
+}
+
+/* M13 S4d — the damage equation.
+   ==========================================================================
+
+   See `DamageEquation` for why the weapon's damage stopped being a form. The
+   styling's whole job is to make it read as a printed formula: the result at
+   headline size, drawn operators between the terms, the term names as captions
+   UNDER their controls (a caption above each was what made nine boxes look like
+   nine unrelated fields), and everything bare until the pointer arrives. */
+.character-sheet-page .cs-equation {
+	/* Two courses: the sum, then its per-level adjustments. It was a wrapping row
+	   holding a result, an `=` and the terms, which is why the terms wrapped and the
+	   operators fell at line ends (S4d, owner review). */
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	padding: 0.5rem 0.75rem;
+	background: color-mix(in srgb, var(--nexus-bronze) 4%, transparent);
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 26%, transparent);
+}
+/* The operators sit on the SLOTS' line, not on the labels' — an `+` floating level
+   with the captions reads as part of the label above it. */
+.character-sheet-page .cs-equation__operator {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-dense);
+	align-self: flex-end;
+	padding-bottom: 3px;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+.character-sheet-page .cs-equation__terms {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	gap: 0.35rem 0.6rem;
+}
+/* The terms shrink before they wrap: four short slots on one line is the entire
+   point of the layout, so a narrow panel takes narrower slots first and only wraps
+   when they genuinely cannot fit. */
+.character-sheet-page .cs-equation__term {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+.character-sheet-page .cs-equation__term .MuiTextField-root {
+	min-width: 0;
+}
+/* The per-level line sits under the sum and reads quieter than it: these are
+   adjustments to the result, not terms of the equation. */
+.character-sheet-page .cs-equation__levels {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.35rem 0.75rem;
+	flex: 1 1 100%;
+	padding-top: 0.35rem;
+	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 14%, transparent);
+}
+.character-sheet-page .cs-equation__level {
+	display: flex;
+	align-items: flex-end;
+}
+.character-sheet-page .cs-equation__level[data-disabled] {
+	opacity: 0.45;
+}
+/* `static` is a STATE, so it says so by filling its plate — the same idiom the
+   section headers' toggles use. It was a checkbox with a caption beside it, which
+   put a set-of-choices control on a single either/or. */
+.character-sheet-page .cs-equation__static {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	margin-left: auto;
+	align-self: center;
+	min-height: var(--nexus-target);
+	padding: 2px 0.5rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	background: none;
+	color: var(--nexus-bronze);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	cursor: pointer;
+}
+.character-sheet-page .cs-equation__static:hover {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.character-sheet-page .cs-equation__static[aria-pressed='true'] {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+}
+/* The plate alone was read as a command button ("do the static thing") rather than
+   as a state. It carries the app's checkbox mark now, so it says the same thing the
+   category menu's rows say: an empty socket is off, an inlaid lozenge is on. */
+.character-sheet-page .cs-equation__static .cs-check-mark {
+	color: var(--nexus-bronze);
+}
+/* Bare at rest, slot under the pointer — the equation is an inscription first. */
+.character-sheet-page .cs-equation .MuiInputBase-root {
+	background-color: transparent;
+	border-color: transparent;
+}
+.character-sheet-page .cs-equation .MuiInputBase-root:hover:not(.Mui-disabled),
+.character-sheet-page .cs-equation .MuiInputBase-root.Mui-focused {
+	background-color: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	border-color: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+}
+.character-sheet-page .cs-equation .MuiInputBase-input {
+	text-align: center;
+}
+
+/* M13 S4e — a section BEGINS somewhere.
+   ==========================================================================
+
+   See `ListSection` for the reasoning: the ruled heading carried the grouping on a
+   wide window, and on a phone — where every row wraps onto two or three lines — six
+   sections separated by one hairline read as one long list with labels sprinkled in
+   it. The heading sits on a wash, and the space between sections is larger than the
+   space between rows within one, which is what makes the boundary legible. */
+/* The two gaps, balanced (S4e, owner review). The band's own breathing room is what
+   makes it read as a heading rather than as a strip pressed against the column header
+   under it — 2px was flush. The gap DOWN to the next section then does less work and
+   costs less: the wash already says where a section starts, so the space between
+   sections only has to be visibly larger than the space inside one, not large. */
+.character-sheet-page .cs-list-section {
+	margin-bottom: 0.6rem;
+}
+.character-sheet-page .cs-section-head {
+	padding: 5px 8px;
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+	margin-bottom: 0.4rem;
+}
+/* Below the ledger breakpoint the rows are the tallest they get and the boundary has
+   the most work to do, so it gets more room. */
+@media (max-width: 45rem) {
+	.character-sheet-page .cs-list-section {
+		margin-bottom: 1rem;
+	}
+	.character-sheet-page .cs-section-head {
+		background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
+		margin-bottom: 0.5rem;
+	}
+}
+
+/* M13 S4e — the tab bar: a rail of inscribed nameplates.
+   ==========================================================================
+
+   See `SheetTabBar` for why this is not MUI `Tabs`. The look, in one line: the bar
+   sits ON a keyline rail, and the selected plate BREAKS that rail, because the panel
+   you are reading is continuous with its own label. Everything else follows from
+   that — an unselected plate is a keyline with no fill, the selected one takes the
+   bronze wash and loses its bottom edge, and nothing moves by a pixel between the
+   two states (the rail is a background gradient on the container, not a border on
+   the plates, so a plate can cover it without changing size). */
+.character-sheet-page .cs-tabbar {
+	position: relative;
+	display: flex;
+	align-items: stretch;
+	min-width: 0;
+}
+/* The rail. A background line rather than a `border-bottom`, so the selected plate
+   can sit on top of it and interrupt it. */
+.character-sheet-page .cs-tabbar::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 2px;
+	background: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	pointer-events: none;
+}
+.character-sheet-page .cs-tabbar__scroll {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+	/* A flick lands ON a plate instead of halfway through one. */
+	scroll-snap-type: x proximity;
+	scrollbar-width: none;
+}
+.character-sheet-page .cs-tabbar__scroll::-webkit-scrollbar {
+	display: none;
+}
+.character-sheet-page .cs-tabbar__rail {
+	display: flex;
+	align-items: flex-end;
+	gap: 3px;
+	/* `max-content` so the plates keep their natural width and the bar scrolls,
+	   rather than the labels compressing to fit and every tab becoming unreadable at
+	   once — which is the failure mode of letting a tab row shrink. */
+	min-width: max-content;
+	padding: 0 2px;
+}
+/* The plates are the sheet's primary navigation and were sized like secondary
+   chrome — 14px labels in a 32px plate, which on a phone is a small target for the
+   control you use most (S4e, owner review). One step up the ladder, a real 44px
+   plate, and enough side padding that the label is not touching its own keyline. */
+.character-sheet-page .cs-tabbar__tab {
+	scroll-snap-align: center;
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	min-height: calc(var(--nexus-target) + 20px);
+	padding: 0 1.1rem;
+	border: 1.5px solid transparent;
+	border-bottom: none;
+	border-radius: 0;
+	background: none;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-base);
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	white-space: nowrap;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.character-sheet-page .cs-tabbar__tab:hover {
+	background: color-mix(in srgb, var(--nexus-bronze) 8%, transparent);
+	color: var(--ifm-font-color-base);
+}
+.character-sheet-page .cs-tabbar__tab:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: -1.5px;
+}
+/* The lozenge is drawn on EVERY plate and inked only on the active one.
+   --------------------------------------------------------------------------
+
+   Showing it only when selected added its width plus a gap to that plate, so every
+   label after it slid sideways as you changed tabs (S4e, owner review). Reserving
+   the space on all seven costs 12px per plate and buys a bar where nothing moves
+   when the selection does — the same rule the ledger's reserved column tracks and
+   the focus keyline already follow. */
+.character-sheet-page .cs-tabbar__tab::before {
+	content: '';
+	flex: 0 0 auto;
+	width: 7px;
+	height: 7px;
+	background: transparent;
+	transform: rotate(45deg);
+}
+
+/* The active plate (S4e, owner review round 2).
+   --------------------------------------------------------------------------
+
+   A wash and a hairline was not enough to carry "this is the page you are on"
+   against six siblings. Two flat devices do it: the keyline goes to FULL bronze, and
+   the lozenge above is inked — the same diamond the checkbox inlay and the site's
+   list bullets use, which is the codex's own mark for "this one".
+
+   NOT a thicker top edge, which was the first attempt: a 3px rule along one side of
+   a plate reads as a tab-strip underline flipped upside down, which is the Material
+   idiom this bar exists to get away from. The ink and the mark say it without a
+   second weight of line. */
+.character-sheet-page .cs-tabbar__tab[aria-selected='true'] {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 16%, transparent);
+	color: var(--nexus-bronze);
+	/* Covers the rail below it: the selected plate and its panel are one surface. */
+	margin-bottom: -2px;
+	padding-bottom: 2px;
+	position: relative;
+	z-index: 1;
+}
+.character-sheet-page .cs-tabbar__tab[aria-selected='true']::before {
+	background: var(--nexus-bronze);
+}
+
+.character-sheet-page .cs-tabbar__edge {
+	position: absolute;
+	top: 0;
+	bottom: 2px;
+	z-index: 2;
+	display: none;
+	align-items: center;
+	/* Wide enough to be a target rather than a hint: this is the control a player
+	   uses when they cannot see the tab they want. */
+	width: 2.25rem;
+	padding: 0;
+	border: none;
+	color: var(--nexus-bronze);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xl);
+	font-weight: 700;
+	line-height: 1;
+	cursor: pointer;
+}
+.character-sheet-page .cs-tabbar__edge[data-shown] {
+	display: flex;
+}
+.character-sheet-page .cs-tabbar__edge--start {
+	left: 0;
+	justify-content: flex-start;
+	padding-left: 2px;
+	background: linear-gradient(
+		to right,
+		var(--ifm-background-color) 45%,
+		transparent
+	);
+}
+.character-sheet-page .cs-tabbar__edge--end {
+	right: 0;
+	justify-content: flex-end;
+	padding-right: 2px;
+	background: linear-gradient(
+		to left,
+		var(--ifm-background-color) 45%,
+		transparent
+	);
+}
+.character-sheet-page .cs-tabbar__edge:hover {
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* M13 S4d — the record plate: an entity's facts as an inscribed ledger.
+   ==========================================================================
+
+   See `RecordPlate` for the reasoning. The rules here are the ones that make a
+   column of facts read as a column: a shared label width so every value starts at
+   the same x, hairline courses between rows so the eye can track across a wide
+   plate, and bare controls that only show their slot under the pointer.
+
+   The courses are the ONE place a horizontal rule is legitimate in this theme —
+   they are not grouping anything, they are the ruling of a ledger, which is why
+   the ledger rows themselves carry one too. */
+.character-sheet-page .cs-record-plate {
+	background: color-mix(in srgb, var(--nexus-bronze) 4%, transparent);
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 26%, transparent);
+	padding: 0.25rem 0.5rem;
+	/* Fills the panel's height so its bottom edge lands with the last thing in the
+	   left column. The plate and the equation are the two framed blocks in the panel,
+	   and two frames that stop a few pixels apart read as a mistake rather than as two
+	   independent lengths of content (S4d, owner review). */
+	height: 100%;
+}
+.character-sheet-page .cs-record-plate__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	padding-bottom: 3px;
+	/* The plate's heaviest rule, matching the section break inside it: the caption
+	   names the whole plate, so its rule cannot be lighter than one that separates two
+	   halves of the plate's body (S4d, owner review). */
+	border-bottom: 1.5px solid
+		color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
+	margin-bottom: 2px;
+}
+.character-sheet-page .cs-record-plate__caption {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	line-height: 1.6;
+	color: var(--nexus-bronze);
+}
+.character-sheet-page .cs-record-row {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	min-height: var(--nexus-target);
+	padding: 1px 0;
+}
+.character-sheet-page .cs-record-row + .cs-record-row {
+	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+/* The one heavier course: above it the facts describe the ITEM, below it they
+   describe this copy of it. A ledger marks a change of subject by ruling harder,
+   not by growing a second heading. */
+.character-sheet-page .cs-record-row--section {
+	border-top: 1.5px solid
+		color-mix(in srgb, var(--nexus-bronze) 40%, transparent) !important;
+	margin-top: 2px;
+	padding-top: 3px;
+}
+/* One label measure for the whole plate, so every value in it starts at the same
+   x — that shared edge is the entire reason a column of facts scans as a column. */
+.character-sheet-page .cs-record-row__label {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	flex: 0 0 6.5rem;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	line-height: 1.2;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 82%,
+		var(--ifm-font-color-base)
+	);
+	white-space: nowrap;
+}
+/* Every value is flush RIGHT and every label flush left (S4d, owner review). The
+   first pass right-aligned figures and left-aligned words, on the theory that a
+   right-aligned word reads as a failed number — but the plate's whole argument is
+   ONE column edge to scan down, and splitting it by content type gave the plate two
+   ragged edges instead of one clean one. A word in the figures column is a smaller
+   problem than a plate that does not line up. */
+.character-sheet-page .cs-record-row__value {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.character-sheet-page .cs-record-row__value .MuiInputBase-input {
+	text-align: right;
+}
+/* A select renders its value in a div with room reserved for the caret, so the
+   text needs the caret's width as padding to sit on the same edge as a number. */
+.character-sheet-page .cs-record-row__value .MuiSelect-select {
+	text-align: right;
+	padding-right: 22px;
+}
+/* A fact is read far more often than it is edited, so at rest it is text on the
+   plate; the slot appears under the pointer. Same judgement as the row titles and
+   the meta band, stated here for the inputs a plate holds. */
+.character-sheet-page .cs-record-row .MuiInputBase-root {
+	background-color: transparent;
+	border-color: transparent;
+	min-height: calc(var(--nexus-target) - 4px);
+}
+.character-sheet-page
+	.cs-record-row:hover
+	.MuiInputBase-root:not(.Mui-disabled),
+.character-sheet-page .cs-record-row .MuiInputBase-root.Mui-focused {
+	background-color: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	border-color: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+}
+.character-sheet-page .cs-record-row .MuiTextField-root {
+	margin: 0;
 }
 
 /* M13 S4d (owner review) — the meta band.
@@ -578,6 +1144,11 @@ input[type='number'] {
    rows use, its right edge lands where the ledger's own numeric columns end. */
 .character-sheet-page .cs-meta-band--sub {
 	max-width: var(--cs-max-width-lg);
+	/* One line at every width. The band holds a name and a load reading, and the
+	   load reading is `nowrap` — so the name field is the only thing that can absorb a
+	   narrower viewport, and it can only do that if nothing in it has an intrinsic
+	   minimum. See `metaBandInputSx` (S4e). */
+	flex-wrap: nowrap;
 	gap: 0 1rem;
 	padding: 0.3rem 0.625rem;
 	margin-bottom: 0.5rem;
@@ -685,7 +1256,11 @@ input[type='number'] {
 	font-size: var(--nexus-text-2xs);
 	font-variant-caps: small-caps;
 	letter-spacing: 0.06em;
-	color: color-mix(in srgb, var(--nexus-bronze) 78%, var(--ifm-font-color-base));
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 78%,
+		var(--ifm-font-color-base)
+	);
 }
 @media (min-width: 45rem) {
 	.character-sheet-page .cs-ledger-cols .cs-ledger-row-grid .cs-cell-label {

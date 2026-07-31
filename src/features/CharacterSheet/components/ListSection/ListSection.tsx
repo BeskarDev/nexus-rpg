@@ -3,8 +3,10 @@ import React, { ReactNode, useState } from 'react'
 import { Chevron } from '../Chevron'
 import { ListSectionHeader, ListSectionHeaderProps } from './ListSectionHeader'
 
-export interface ListSectionProps
-	extends Omit<ListSectionHeaderProps, 'leading' | 'sx'> {
+export interface ListSectionProps extends Omit<
+	ListSectionHeaderProps,
+	'leading' | 'sx'
+> {
 	/** The rows. */
 	children: ReactNode
 	/** Give the section a disclosure control. */
@@ -32,6 +34,22 @@ export interface ListSectionProps
  * content that never approaches the frame, so a full-width child sat against it.
  * Both were fixed locally there, and both would have been rediscovered by every
  * list tab in S3–S7. This is the sibling the S1 log asked for.
+ *
+ * ## Collapsing
+ *
+ * ## Why the header sits on a wash (S4e)
+ *
+ * The ruled heading alone was enough on a wide window and not on a phone: with the
+ * ledger's columns collapsed, every row wraps onto two or three lines, and six
+ * sections of wrapped rows separated by one hairline rule read as one long list with
+ * occasional labels in it. The owner's report was that you cannot tell which rows
+ * belong to which category.
+ *
+ * The heading takes a bronze WASH now — the theme's own grouping device, and the same
+ * one the meta band and the record plate use — so a section visibly BEGINS somewhere,
+ * and the gap between sections is wider than the gap between rows inside one. Not a
+ * frame around the whole section: nesting every row inside a second box is the
+ * box-in-a-box this theme keeps removing, and the rows already carry their own rules.
  *
  * ## Collapsing
  *
@@ -65,10 +83,14 @@ export const ListSection: React.FC<ListSectionProps> = ({
 	}
 
 	return (
-		<Box className={className} sx={{ width: '100%', px: 1, py: 0.5, ...sx }}>
+		<Box
+			className={className ? `cs-list-section ${className}` : 'cs-list-section'}
+			sx={{ width: '100%', px: 1, py: 0.5, ...sx }}
+		>
 			<ListSectionHeader
 				label={label}
 				{...headerProps}
+				className="cs-section-head"
 				sx={headerSx}
 				leading={
 					collapsible ? (

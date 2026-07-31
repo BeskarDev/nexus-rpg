@@ -104,7 +104,7 @@ describe('MagicItemBuilderDialog', () => {
 
 		// Step 2: Choose quality
 		expect(screen.getByText('Choose Quality (Q3-Q8)')).toBeInTheDocument()
-		await user.click(screen.getByText('Q4 (Lesser Magic)'))
+		await user.click(screen.getByText('Q4 (formidable)'))
 
 		await user.click(screen.getByRole('button', { name: /next/i }))
 
@@ -141,7 +141,7 @@ describe('MagicItemBuilderDialog', () => {
 		await user.click(screen.getByRole('button', { name: /next/i }))
 
 		// Step 2: Choose quality
-		await user.click(screen.getByText('Q4 (Lesser Magic)'))
+		await user.click(screen.getByText('Q4 (formidable)'))
 		await user.click(screen.getByRole('button', { name: /next/i }))
 
 		// Step 3: Accept auto-selected base material (Bronze)
@@ -164,7 +164,7 @@ describe('MagicItemBuilderDialog', () => {
 		await user.click(screen.getByText('Shortsword'))
 		await user.click(screen.getByRole('button', { name: /next/i }))
 
-		await user.click(screen.getByText('Q4 (Lesser Magic)'))
+		await user.click(screen.getByText('Q4 (formidable)'))
 		await user.click(screen.getByRole('button', { name: /next/i }))
 
 		// Skip material
@@ -201,7 +201,7 @@ describe('MagicItemBuilderDialog', () => {
 		await user.click(screen.getByText('Amulet'))
 		await user.click(screen.getByRole('button', { name: /next/i }))
 
-		await user.click(screen.getByText('Q4 (Lesser Magic)'))
+		await user.click(screen.getByText('Q4 (formidable)'))
 		await user.click(screen.getByRole('button', { name: /next/i }))
 
 		// Skip material
@@ -234,7 +234,7 @@ describe('MagicItemBuilderDialog', () => {
 		await user.click(screen.getByText('Shortsword'))
 		await user.click(screen.getByRole('button', { name: /next/i }))
 
-		await user.click(screen.getByText('Q4 (Lesser Magic)'))
+		await user.click(screen.getByText('Q4 (formidable)'))
 		await user.click(screen.getByRole('button', { name: /next/i }))
 
 		// Select iron material (available for weapons at Q4 as special material)
@@ -307,7 +307,7 @@ describe('MagicItemBuilderDialog', () => {
 		await user.click(screen.getByText('Amulet'))
 		await user.click(screen.getByRole('button', { name: /next/i }))
 
-		await user.click(screen.getByText('Q5 (Potent Magic)'))
+		await user.click(screen.getByText('Q5 (exceptional)'))
 		await user.click(screen.getByRole('button', { name: /next/i }))
 
 		// Materials step - phantom-silk should be available for wearables at Q5

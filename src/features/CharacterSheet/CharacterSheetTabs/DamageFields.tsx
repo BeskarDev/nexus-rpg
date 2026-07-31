@@ -6,8 +6,8 @@ import {
 	Menu,
 	MenuItem,
 	TextField,
-	Typography,
 	Checkbox,
+	FormControlLabel,
 	Tooltip,
 } from '@mui/material'
 import {
@@ -205,18 +205,23 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 						sx={{ maxWidth: '5.5rem' }}
 						disabled={damage.staticDamage}
 					/>
-					<Box sx={{ display: 'flex', alignItems: 'center' }}>
-						<Tooltip title="Static damage uses fixed values instead of scaling">
-							<Checkbox
-								checked={damage.staticDamage || false}
-								onChange={(event) =>
-									updateDamage({ staticDamage: event.target.checked })
-								}
-								size="small"
-							/>
-						</Tooltip>
-						<Typography variant="caption">static</Typography>
-					</Box>
+					{/* One control, one label (S4d): a bare `Checkbox` beside a caption is two
+						elements for one switch and the words were not clickable. The theme
+						styles `FormControlLabel`, so this reads in the sheet's UI face without
+						anything said here. */}
+					<Tooltip title="Static damage uses fixed values instead of scaling">
+						<FormControlLabel
+							control={
+								<Checkbox
+									checked={damage.staticDamage || false}
+									onChange={(event) =>
+										updateDamage({ staticDamage: event.target.checked })
+									}
+								/>
+							}
+							label="static"
+						/>
+					</Tooltip>
 					<Box sx={{ width: '100%', flexGrow: 1 }} />
 					{/* M13 S4c: each option carries its mark, inked in its identity hue.
 						MUI renders the selected option's children as the closed value, so

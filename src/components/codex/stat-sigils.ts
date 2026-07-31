@@ -133,8 +133,18 @@ export type SheetSigilName =
 	| 'background'
 	| 'motivation'
 	| 'specialization'
+	| 'location-worn'
+	| 'location-carried'
 	| 'location-mount'
 	| 'location-storage'
+	| 'slot-head'
+	| 'slot-neck'
+	| 'slot-back'
+	| 'slot-body'
+	| 'slot-hands'
+	| 'slot-ring'
+	| 'slot-waist'
+	| 'slot-feet'
 	| 'party'
 	| 'height'
 	| 'weight'
@@ -157,10 +167,36 @@ export const SHEET_SIGIL: Record<SheetSigilName, SigilName> = {
 	motivation: 'ishtar-star',
 	// `statistics/talents` — a specialization is a branch of the same growth.
 	specialization: 'sprig',
+	// The four places a thing can be (M13 S4d). Two existed; the other two were
+	// text-only in a select whose neighbours all carried marks.
+	//
+	// Worn is the FIGURE rather than the breastplate: `breastplate` is already the
+	// mark for armour value and for the body slot below, and "on your person" is a
+	// statement about the person. Carried is the pack, the same mark `load` uses —
+	// carried load IS what that mark counts, so the two agreeing is the point.
+	'location-worn': 'figure',
+	'location-carried': 'pack',
 	// `creatures/mounts-companions` — the pack animal carrying the load.
 	'location-mount': 'horse',
 	// `scenes/resting` — the camp the rest of the gear is left at.
 	'location-storage': 'tent',
+	// The eight body slots (M13 S4d). All eight REUSE marks the set already has,
+	// deliberately: eight new sigils for eight dropdown options is the fastest way
+	// to spend the F7 budget on the least important surface on the sheet, and every
+	// one of these has an existing mark that depicts the right thing.
+	//
+	// `sigils:check` enforces that marks are visually DISTINCT, not that a mark
+	// carries one meaning — and a slot only ever appears in a list beside its seven
+	// siblings, never beside the stat that shares its mark, so no reading is
+	// ambiguous in place.
+	'slot-head': 'cowl', // a hood is worn on the head
+	'slot-neck': 'halo', // a ring of metal about the neck — a torc
+	'slot-back': 'standard', // what hangs from the back: a banner, a cloak
+	'slot-body': 'breastplate', // the same mark as armour value, for the same reason
+	'slot-hands': 'hand',
+	'slot-ring': 'gem', // a ring is a set stone
+	'slot-waist': 'knot', // a tied sash or belt
+	'slot-feet': 'footprints',
 	// `adventurers/npc-relations` — the mark for people bound to each other.
 	party: 'figure-pair',
 	// The one mark drawn for this table (M9 S8). Nothing in the set stated

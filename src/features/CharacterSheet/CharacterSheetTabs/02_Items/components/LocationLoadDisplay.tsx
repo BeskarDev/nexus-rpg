@@ -71,7 +71,10 @@ export const LocationLoadDisplay: React.FC<LocationLoadDisplayProps> = ({
 
 	return (
 		<MetaBand variant="sub">
-			<MetaBandField sx={{ flexGrow: 1 }}>
+			{/* `minWidth: 0` so the field can actually shrink — a flex item defaults to
+				its content's min-width, and the field's is an `<input>`'s twenty
+				characters. */}
+			<MetaBandField sx={{ flexGrow: 1, minWidth: 0 }}>
 				<MetaBandLabel sigil={isMount ? 'location-mount' : 'location-storage'}>
 					{isMount ? 'Mount' : 'Storage'}
 				</MetaBandLabel>
@@ -89,7 +92,7 @@ export const LocationLoadDisplay: React.FC<LocationLoadDisplayProps> = ({
 					inputProps={{
 						'aria-label': isMount ? 'Mount name' : 'Storage location',
 					}}
-					sx={{ ...metaBandInputSx, maxWidth: '12rem' }}
+					sx={{ ...metaBandInputSx, flex: '1 1 6rem', maxWidth: '12rem' }}
 				/>
 			</MetaBandField>
 			{/* `nowrap`: "Load 0 / 8" is one reading and must not break across lines,

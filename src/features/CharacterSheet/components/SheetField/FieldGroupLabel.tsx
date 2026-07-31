@@ -1,14 +1,39 @@
-import { Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import React from 'react'
+import StatSigil from '@site/src/components/codex/StatSigil'
+import type {
+	SheetSigilName,
+	StatSigilName,
+} from '@site/src/components/codex/stat-sigils'
 
 export interface FieldGroupLabelProps {
 	children: React.ReactNode
+	/**
+	 * The group's mark, drawn before its name (M13 S4d).
+	 *
+	 * A panel of five groups whose headings differ only in their WORDS has to be
+	 * read to be navigated — which was the report on the item details panel: a
+	 * player had to already know the layout to find the field they wanted. A mark
+	 * is found at a glance, and the sheet already has one for most of these
+	 * concepts (`coins` for the money group, `wound` for condition, `name` for
+	 * identity), so this costs nothing against the sigil budget.
+	 */
+	sigil?: StatSigilName | SheetSigilName
+	/**
+	 * Live content riding at the group's right edge — a computed preview of what
+	 * the group's fields produce, e.g. the damage ladder over the damage editor.
+	 *
+	 * A group of number fields does not say what those numbers come to. Showing the
+	 * result beside the heading means an edit can be checked without closing the
+	 * panel.
+	 */
+	trailing?: React.ReactNode
 	sx?: React.ComponentProps<typeof Typography>['sx']
 }
 
 /**
- * The group label inside an editor popover — small caps, bronze, letterspaced
- * (M13 S1).
+ * The group label inside an editor popover or a details panel — small caps,
+ * bronze, letterspaced, with its mark (M13 S1, extended in S4d).
  *
  * ## Why this exists instead of a `Divider`
  *
@@ -26,20 +51,38 @@ export interface FieldGroupLabelProps {
  */
 export const FieldGroupLabel: React.FC<FieldGroupLabelProps> = ({
 	children,
+	sigil,
+	trailing,
 	sx,
 }) => (
-	<Typography
-		component="div"
+	<Box
 		sx={{
-			fontFamily: 'var(--nexus-font-ui)',
-			fontWeight: 700,
-			fontSize: 'var(--nexus-text-2xs)',
-			fontVariant: 'small-caps',
-			letterSpacing: '0.06em',
-			color: 'primary.main',
-			...sx,
+			display: 'flex',
+			alignItems: 'center',
+			gap: 0.75,
+			// The preview is pushed to the group's far edge rather than tucked against
+			// the heading, so the two do not read as one phrase.
+			...(trailing && { justifyContent: 'space-between' }),
 		}}
 	>
-		{children}
-	</Typography>
+		<Typography
+			component="div"
+			sx={{
+				display: 'inline-flex',
+				alignItems: 'center',
+				gap: 0.5,
+				fontFamily: 'var(--nexus-font-ui)',
+				fontWeight: 700,
+				fontSize: 'var(--nexus-text-2xs)',
+				fontVariant: 'small-caps',
+				letterSpacing: '0.06em',
+				color: 'primary.main',
+				...sx,
+			}}
+		>
+			{sigil && <StatSigil name={sigil} size={13} />}
+			{children}
+		</Typography>
+		{trailing}
+	</Box>
 )

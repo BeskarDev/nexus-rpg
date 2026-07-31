@@ -189,6 +189,12 @@ export const metaBandInputClass = {
  * `m: 0` because `MuiTextField`'s sitewide `margin: 'dense'` adds a top margin
  * meant for a field with a label stacked above it. On a band it dropped the input
  * half a line below the words either side, which read as a wrap.
+ *
+ * `minWidth: 0` on the field AND its `<input>`: an `<input>` has an intrinsic width
+ * of about twenty characters, so a flex item containing one refuses to shrink below
+ * that no matter what its container says. That is why the storage band wrapped onto
+ * two lines while the mount band did not — same layout, a longer label and a longer
+ * placeholder, and the field could not give the difference back (S4e, owner review).
  */
 export const metaBandInputSx = {
 	'& .MuiInputBase-root': {
@@ -199,6 +205,7 @@ export const metaBandInputSx = {
 		backgroundColor: 'color-mix(in srgb, var(--nexus-bronze) 7%, transparent)',
 		borderColor: 'color-mix(in srgb, var(--nexus-bronze) 45%, transparent)',
 	},
-	'& input': { padding: '0 4px' },
+	'& input': { padding: '0 4px', minWidth: 0 },
+	minWidth: 0,
 	m: 0,
 } as const

@@ -68,13 +68,23 @@ export type BaseItem = {
 }
 
 // Quality tier labels for magic items (Q3-Q8)
+/**
+ * The builder's own labels, in the published descriptors (S4d).
+ *
+ * They read "Masterwork", "Lesser Magic", "Potent Magic", "Greater Magic",
+ * "Superior Magic", "Supreme Magic" — words that appear nowhere in the rules. The
+ * equipment chapter's Quality table is the source, and it names every rating for
+ * items in general, not for magic items specifically: a Q4 rope is *formidable*, not
+ * "Lesser Magic". Same words as `itemQuality.ts`, which covers the full Q1-Q8 range;
+ * this map stays restricted to Q3+ because the builder's cost tables are.
+ */
 export const qualityTierLabels: Record<QualityTier, string> = {
-	3: 'Q3 (Masterwork)',
-	4: 'Q4 (Lesser Magic)',
-	5: 'Q5 (Potent Magic)',
-	6: 'Q6 (Greater Magic)',
-	7: 'Q7 (Superior Magic)',
-	8: 'Q8 (Supreme Magic)',
+	3: 'Q3 (complex)',
+	4: 'Q4 (formidable)',
+	5: 'Q5 (exceptional)',
+	6: 'Q6 (epic)',
+	7: 'Q7 (legendary)',
+	8: 'Q8 (mythical)',
 }
 
 /**

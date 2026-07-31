@@ -50,25 +50,42 @@ const LEVELS = ['Weak', 'Strong', 'Critical']
  */
 export function DamageLadder({ values, children }: DamageLadderProps) {
 	const cells = values.split('/')
+	/**
+	 * One number means STATIC damage: the same value at every success level.
+	 *
+	 * It gets no tick and the middle cell's neutral ink (S4d, owner review). A lone
+	 * `6ᵂ` claimed the number was the WEAK reading of a ladder that does not exist,
+	 * which is the opposite of what static means — and the escalating ink only says
+	 * something when there are three values to escalate across.
+	 */
+	const isStatic = cells.length === 1
 	return (
 		<span
 			className={styles.ladder}
-			title={`${values} damage (weak / strong / critical)`}
+			title={
+				isStatic
+					? `${values} damage at every success level`
+					: `${values} damage (weak / strong / critical)`
+			}
 		>
 			{cells.map((cell, i) => (
 				<React.Fragment key={i}>
 					{i > 0 && <span className={styles.ladderSlash}>/</span>}
-					<span className={styles[`ladderCell${i}`]}>
+					<span className={styles[isStatic ? 'ladderCell1' : `ladderCell${i}`]}>
 						{cell}
-						<span className={styles.ladderTick}>
-							{(LEVELS[i] ?? '').charAt(0)}
-						</span>
+						{!isStatic && (
+							<span className={styles.ladderTick}>
+								{(LEVELS[i] ?? '').charAt(0)}
+							</span>
+						)}
 					</span>
 				</React.Fragment>
 			))}
 			{children && <span className={styles.ladderKind}> {children}</span>}
 			<span className={styles.srOnly}>
-				{` damage (${cells.map((c, i) => `${LEVELS[i]} ${c}`).join(', ')})`}
+				{isStatic
+					? ` damage (${cells[0]} at every success level)`
+					: ` damage (${cells.map((c, i) => `${LEVELS[i]} ${c}`).join(', ')})`}
 			</span>
 		</span>
 	)

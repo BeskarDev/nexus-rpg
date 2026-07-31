@@ -14,7 +14,12 @@ export type QuickRefButtonProps = {
 }
 
 /**
- * QuickRefButton - A reusable bookmark toggle button for adding/removing items from quick reference.
+ * The quick-ref toggle: a control that is also a STATE.
+ *
+ * `data-state` is the sheet's idiom for that (S3) — the strip's CSS fills the plate
+ * when it is on, the same way the reorder toggle does, so it does not need a colour
+ * of its own. It had `color: action.disabled` when off, which is MUI's grey and the
+ * only grey in a bronze control strip (M13 S4d).
  */
 export const QuickRefButton: React.FC<QuickRefButtonProps> = ({
 	itemId,
@@ -28,11 +33,9 @@ export const QuickRefButton: React.FC<QuickRefButtonProps> = ({
 		>
 			<IconButton
 				size={size}
+				data-state={isInQuickRef ? 'on' : 'off'}
+				aria-pressed={isInQuickRef}
 				onClick={() => onToggle(itemId)}
-				sx={{
-					p: 0.5,
-					color: isInQuickRef ? 'primary.main' : 'action.disabled',
-				}}
 			>
 				{isInQuickRef ? (
 					<Bookmark fontSize={size} />

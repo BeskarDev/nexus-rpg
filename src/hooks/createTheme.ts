@@ -52,8 +52,13 @@ export const theme: CssVarsThemeOptions = {
 			fontFamily: 'var(--nexus-font-display)',
 		},
 	},
+	// S4d — no rounded corners anywhere. This is MUI's DEFAULT radius, inherited by
+	// every component nobody has overridden yet, which is why stragglers kept turning
+	// up one screenshot at a time (the outlined slot, the expanding row, the icon
+	// plates). Carved stone has hard vertices; a component that wants a soft edge now
+	// has to ask for one explicitly.
 	shape: {
-		borderRadius: 4,
+		borderRadius: 0,
 	},
 	components: {
 		// M9 S2 — flat keylines everywhere, no shadows/bevels/gloss. This block
@@ -104,6 +109,12 @@ export const theme: CssVarsThemeOptions = {
 		// MUI's stock 2px indicator is the same "underline as grouping device"
 		// move the sheet spent S5 removing. Indicator off, wash + keyline on, so
 		// a doc tab and a sheet tab read as the same control.
+		// MUI tabs are still in use — the character-creation dialog and the creature
+		// builder both have one — so these overrides stay. The SHEET's tab bar is no
+		// longer among them: it is `SheetTabBar`, a rail of nameplates that knows when
+		// it overflows (M13 S4e). This block is what keeps the remaining two from
+		// looking Material; do not delete it on the assumption the sheet was the only
+		// consumer, which is what the first pass at S4e assumed.
 		MuiTabs: {
 			styleOverrides: {
 				root: {
@@ -122,7 +133,7 @@ export const theme: CssVarsThemeOptions = {
 					fontFamily: 'var(--nexus-font-ui)',
 					fontWeight: 600,
 					letterSpacing: '0.03em',
-					borderRadius: '2px 2px 0 0',
+					borderRadius: 0,
 					'&.Mui-selected': {
 						backgroundColor:
 							'color-mix(in srgb, var(--nexus-bronze) 10%, transparent)',
@@ -133,18 +144,11 @@ export const theme: CssVarsThemeOptions = {
 				},
 			},
 		},
-		// M9 S8 — dialogs become tablets: an outer bronze keyline plus an inset
-		// engraved hairline (the double edge of a carved slab). `outline` with a
-		// negative offset is the sanctioned second keyline, so this stays flat —
-		// no pillars, no cornices. The kit's `TabletFrame` was NOT wrapped around
-		// each dialog: it is a React surround with side pillars, deliberately for
-		// stand-alone display surfaces, and 21 call sites is a component sweep
-		// where a theme override reaches all of them.
 		MuiDialog: {
 			styleOverrides: {
 				paper: {
 					boxShadow: 'none',
-					borderRadius: 2,
+					borderRadius: 0,
 					border: '1px solid var(--nexus-bronze)',
 					outline:
 						'1px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent)',
@@ -263,7 +267,7 @@ export const theme: CssVarsThemeOptions = {
 		MuiTooltip: {
 			styleOverrides: {
 				tooltip: {
-					borderRadius: 2,
+					borderRadius: 0,
 					fontFamily: 'var(--nexus-font-ui)',
 					fontSize: 'var(--nexus-text-xs)',
 				},
@@ -276,7 +280,8 @@ export const theme: CssVarsThemeOptions = {
 		MuiIconButton: {
 			styleOverrides: {
 				root: {
-					borderRadius: 2,
+					// S4d: no radius anywhere in the chrome.
+					borderRadius: 0,
 					minWidth: 'var(--nexus-target)',
 					minHeight: 'var(--nexus-target)',
 					'&.Mui-focusVisible': {
@@ -352,7 +357,7 @@ export const theme: CssVarsThemeOptions = {
 		MuiLinearProgress: {
 			styleOverrides: {
 				root: {
-					borderRadius: 2,
+					borderRadius: 0,
 					backgroundColor:
 						'color-mix(in srgb, var(--nexus-bronze) 18%, transparent)',
 				},
@@ -528,6 +533,14 @@ export const theme: CssVarsThemeOptions = {
 		MuiOutlinedInput: {
 			styleOverrides: {
 				root: {
+					// M13 S4d — the rounded slot, finally fixed. `MuiInputBase.root` has
+					// said `borderRadius: 0` since S3, and every outlined field on the
+					// sheet was rendering with MUI's 4px radius anyway: both overrides are
+					// single-class selectors, so RULE ORDER decides, and MUI's own
+					// OutlinedInput styles are emitted after ours. Restating it at the
+					// class that actually applies is the same trick the `input` padding
+					// below needed for the same reason.
+					borderRadius: 0,
 					// The notched fieldset was only ever the receptacle for a floating
 					// label. With the label static there is nothing to notch.
 					'& .MuiOutlinedInput-notchedOutline': { display: 'none' },
@@ -577,7 +590,9 @@ export const theme: CssVarsThemeOptions = {
 			styleOverrides: {
 				root: {
 					height: 'fit-content',
-					borderRadius: 4,
+					// Hard vertices (S4d): a ledger row that expands is a panel cut into
+					// stone, and 4px was the last radius on the sheet's largest surface.
+					borderRadius: 0,
 					boxShadow: 'none',
 					marginTop: '16px',
 					'&.Mui-expanded': {

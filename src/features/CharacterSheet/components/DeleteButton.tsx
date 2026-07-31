@@ -14,7 +14,13 @@ export type DeleteButtonProps = {
 }
 
 /**
- * DeleteButton - A reusable delete icon button with tooltip.
+ * The destructive control in a control strip.
+ *
+ * It wears the same stamped plate as its neighbours (levelled in
+ * `characterSheet.css`) and marks itself `data-danger` so the strip's CSS can take
+ * the plate and glyph to the danger ink ON HOVER only — a delete that is
+ * permanently red is an alarm you stop seeing, and it would be the loudest thing
+ * in a details panel of quiet fields (M13 S4d).
  */
 export const DeleteButton: React.FC<DeleteButtonProps> = ({
 	onDelete,
@@ -28,8 +34,8 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
 				size={size}
 				edge={edge}
 				aria-label="delete"
+				data-danger="true"
 				onClick={onDelete}
-				sx={{ p: 0.5 }}
 			>
 				<Delete fontSize={size} />
 			</IconButton>

@@ -1,7 +1,8 @@
-import { Box, Tab, Tabs, Typography, styled } from '@mui/material'
+import { Box, Typography, styled } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useDeviceSize } from './utils/useDeviceSize'
 import { mobileTabsConfig, desktopTabsConfig, getTabComponent } from './utils'
+import { SheetTabBar } from './components'
 
 export const SectionHeader = styled(Typography)(({ theme }) => ({
 	marginBottom: `${theme.spacing(0.75)} `,
@@ -38,7 +39,7 @@ export const CharacterSheet: React.FC = () => {
 		}
 	}, [isMobile])
 
-	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+	const handleTabChange = (newValue: number) => {
 		setActiveTab(newValue)
 	}
 
@@ -51,28 +52,22 @@ export const CharacterSheet: React.FC = () => {
 		>
 			{isMobile && (
 				<>
+					{/* Sticky: seven tabs on a phone are how you move around the sheet, and
+						they must not scroll away under a long list. */}
 					<Box
 						sx={{
 							mb: 2,
-							display: 'flex',
-							justifyContent: 'center',
 							position: 'sticky',
 							top: '116px',
 							zIndex: 100,
 							backgroundColor: 'var(--ifm-background-color)',
 						}}
 					>
-						<Tabs
+						<SheetTabBar
+							tabs={mobileTabsConfig}
 							value={activeTab}
 							onChange={handleTabChange}
-							variant="scrollable"
-							scrollButtons={false}
-							allowScrollButtonsMobile
-						>
-							{mobileTabsConfig.map((tab) => (
-								<Tab key={tab.id} id={tab.id} label={tab.label} />
-							))}
-						</Tabs>
+						/>
 					</Box>
 					{(() => {
 						const TabComponent = getTabComponent(activeTab, true)
@@ -108,25 +103,14 @@ export const CharacterSheet: React.FC = () => {
 							maxWidth: { md: 'var(--cs-max-width-sm)', lg: 'var(--cs-max-width-md)', xl: 'var(--cs-max-width-xl)' },
 						}}
 					>
-						<Box
-							sx={{
-								overflowX: 'auto',
-								WebkitOverflowScrolling: 'touch',
-								mb: 2,
-							}}
-						>
-							<Tabs
+						{/* The bar owns its own overflow now — the wrapper that used to add
+							`overflow-x: auto` around MUI's `Tabs` is gone with it. */}
+						<Box sx={{ mb: 2 }}>
+							<SheetTabBar
+								tabs={desktopTabsConfig}
 								value={activeTab}
 								onChange={handleTabChange}
-								variant="scrollable"
-								scrollButtons={false}
-								allowScrollButtonsMobile
-								sx={{ minWidth: 'max-content' }}
-							>
-								{desktopTabsConfig.map((tab) => (
-									<Tab key={tab.id} id={tab.id} label={tab.label} />
-								))}
-							</Tabs>
+							/>
 						</Box>
 						{(() => {
 							const TabComponent = getTabComponent(activeTab, false)

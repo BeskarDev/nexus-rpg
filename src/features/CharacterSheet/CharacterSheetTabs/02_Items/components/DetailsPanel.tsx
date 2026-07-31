@@ -1,6 +1,10 @@
 import { Box } from '@mui/material'
 import React from 'react'
-import { FieldGroupLabel, SheetInput, SheetInputProps } from '../../../components'
+import {
+	FieldGroupLabel,
+	SheetInput,
+	SheetInputProps,
+} from '../../../components'
 
 /**
  * The frame every expanded inventory row opens into (M13 S4b).
@@ -22,9 +26,9 @@ import { FieldGroupLabel, SheetInput, SheetInputProps } from '../../../component
  * A field in a details panel.
  *
  * `SheetInput` centres its value, which is right for a stat tile and wrong for a
- * name or a list of properties — prose reads flush left. It also caps at 5rem,
- * so every call site was overriding `maxWidth` just to hold a word. This sets
- * both once and takes a plain `width`.
+ * name or a list of properties — prose reads flush left. It also caps at 5rem, so
+ * every call site was overriding `maxWidth` just to hold a word. This sets both
+ * once and takes a plain `width`.
  */
 export const DetailField: React.FC<
 	SheetInputProps & { width?: string; align?: 'left' | 'center' }
@@ -36,33 +40,79 @@ export const DetailField: React.FC<
 	/>
 )
 
+/**
+ * The prose register: name, properties, description as INSCRIPTIONS.
+ *
+ * Three boxes stacked in a framed group was the first attempt, and the framing was
+ * the problem — a name is not a form field being filled in, it is the line that
+ * says what this thing is. Bare on the panel, with its small-caps caption above and
+ * the slot appearing under the pointer, which is the same judgement the row titles
+ * and the meta band already make about read-mostly values.
+ *
+ * The description keeps a keyline even at rest, because a multi-line block with no
+ * edge and no content is indistinguishable from empty space; it is the one field
+ * here whose emptiness needs to be visible.
+ */
+export const Inscription: React.FC<
+	SheetInputProps & { grow?: number; block?: boolean; subject?: boolean }
+> = ({ grow = 1, block, subject, sx, ...props }) => (
+	<SheetInput
+		{...props}
+		className={[
+			'cs-inscription',
+			block ? 'cs-inscription--block' : '',
+			subject ? 'cs-inscription--name' : '',
+		]
+			.filter(Boolean)
+			.join(' ')}
+		sx={{
+			flex: `${grow} 1 12rem`,
+			width: 'auto',
+			maxWidth: 'none',
+			m: 0,
+			...sx,
+		}}
+	/>
+)
+
 export interface DetailsGroupProps {
 	label: string
-	/** Spans the panel's full width — for prose that wants the whole measure. */
-	wide?: boolean
+	/** The group's mark — see `FieldGroupLabel`. */
+	sigil?: React.ComponentProps<typeof FieldGroupLabel>['sigil']
+	/** A live preview of what the group's fields produce (the damage ladder). */
+	trailing?: React.ReactNode
 	children: React.ReactNode
 }
 
+/**
+ * A named register of the panel: a heading with its mark, then its content.
+ *
+ * S4b named the groups. S4d's first pass washed and marked them, which helped
+ * navigation and left them as five bordered pens of identical boxes. The wash is
+ * gone from the group itself now — the CONTENT carries its own shape (the record
+ * plate is a plate, the equation is an equation, the inscriptions are bare), so a
+ * second frame around it was the box-inside-a-box this theme keeps removing.
+ * Spacing plus a marked heading is the whole separation.
+ */
 export const DetailsGroup: React.FC<DetailsGroupProps> = ({
 	label,
-	wide,
+	sigil,
+	trailing,
 	children,
 }) => (
-	<Box
-		sx={{
-			display: 'flex',
-			flexDirection: 'column',
-			gap: 0.5,
-			...(wide ? { flex: '1 1 100%' } : { flex: '0 1 auto' }),
-		}}
-	>
-		<FieldGroupLabel>{label}</FieldGroupLabel>
+	<Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, minWidth: 0 }}>
+		<FieldGroupLabel sigil={sigil} trailing={trailing}>
+			{label}
+		</FieldGroupLabel>
 		<Box
 			sx={{
 				display: 'flex',
 				flexWrap: 'wrap',
 				alignItems: 'flex-start',
 				gap: 1,
+				// Every child that wants the register's whole measure says so with a
+				// `flex` of its own; the equation and the description both do.
+				'& > .cs-equation': { flex: '1 1 100%' },
 			}}
 		>
 			{children}
@@ -71,40 +121,62 @@ export const DetailsGroup: React.FC<DetailsGroupProps> = ({
 )
 
 export interface DetailsPanelProps {
+	/** The prose and the rules — name, description, the damage equation. */
 	children: React.ReactNode
-	/** Quick-ref and delete — kept away from the fields they act on. */
-	actions?: React.ReactNode
+	/**
+	 * The record plate: the item's numeric facts, as a ledger down the side — and
+	 * the record's own controls, in its caption line.
+	 *
+	 * The panel had a trailing strip for quick-ref and delete. That is where a FORM
+	 * puts its submit button, and it left two controls floating in a corner attached
+	 * to nothing; they belong with the heading of the thing they act on, which is the
+	 * record (S4d, owner review). So the panel no longer has an actions slot at all.
+	 */
+	aside?: React.ReactNode
 }
 
+/**
+ * Two registers, side by side (M13 S4d).
+ *
+ * A single wrapping flow of groups meant the panel's shape changed with its
+ * content: the same item read as three rows or five depending on the window, and
+ * nothing had a fixed home. Now the panel has a fixed anatomy — **what this thing
+ * is** on the left (identity, damage), **what it is worth and where it is** on the
+ * right (the record plate) — so a player learns one layout, and the field they want
+ * is in the same place on every item.
+ *
+ * The plate is the narrower column and the prose the wider, which is the ratio the
+ * content asks for: seven short figures against three lines of text. Below the
+ * ledger breakpoint the two stack, plate last, because at that width the identity
+ * is what you opened the row to see.
+ */
 export const DetailsPanel: React.FC<DetailsPanelProps> = ({
 	children,
-	actions,
+	aside,
 }) => (
-	<Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+	<Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 1 }}>
 		<Box
 			sx={{
 				display: 'flex',
 				flexWrap: 'wrap',
-				alignItems: 'flex-start',
-				gap: 2,
+				// `stretch`, so the plate can run to the bottom of the taller column
+				// instead of ending wherever its last row happens to fall.
+				alignItems: 'stretch',
+				gap: 1.5,
 			}}
 		>
-			{children}
-		</Box>
-		{actions && (
 			<Box
 				sx={{
+					flex: '1 1 22rem',
+					minWidth: 0,
 					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'flex-end',
-					gap: 0.5,
-					pt: 0.5,
-					borderTop:
-						'1px solid color-mix(in srgb, var(--nexus-bronze) 18%, transparent)',
+					flexDirection: 'column',
+					gap: 1.25,
 				}}
 			>
-				{actions}
+				{children}
 			</Box>
-		)}
+			{aside && <Box sx={{ flex: '0 1 17rem', minWidth: 0 }}>{aside}</Box>}
+		</Box>
 	</Box>
 )

@@ -37,6 +37,7 @@ export interface ListSectionHeaderProps {
 	info?: ReactNode
 	/** Disclosure control, when the section collapses. */
 	leading?: ReactNode
+	className?: string
 	sx?: object
 }
 
@@ -67,9 +68,11 @@ export const ListSectionHeader: React.FC<ListSectionHeaderProps> = ({
 	actions,
 	info,
 	leading,
+	className,
 	sx,
 }) => (
 	<Box
+		className={className}
 		sx={{
 			display: 'flex',
 			alignItems: 'center',
