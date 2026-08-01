@@ -44,6 +44,8 @@ const Harness: React.FC<{
 	itemNounPlural?: string
 	data?: Row[]
 	defaultSort?: { key: keyof Row; order?: 'asc' | 'desc' }
+	renderDetails?: (row: Row) => React.ReactNode
+	getStanding?: (row: Row) => { owned?: boolean; blocked?: string }
 }> = ({
 	onImport = vi.fn(),
 	selectionMode = 'multiple',
@@ -51,6 +53,8 @@ const Harness: React.FC<{
 	itemNounPlural,
 	data = DATA,
 	defaultSort,
+	renderDetails,
+	getStanding,
 }) => {
 	const [selected, setSelected] = useState<Set<string>>(new Set())
 	return (
@@ -69,6 +73,8 @@ const Harness: React.FC<{
 			selectionMode={selectionMode}
 			itemNoun={itemNoun}
 			itemNounPlural={itemNounPlural}
+			renderDetails={renderDetails}
+			getStanding={getStanding}
 		/>
 	)
 }
@@ -323,5 +329,121 @@ describe('SearchDialog', () => {
 		expect(
 			screen.queryByRole('button', { name: 'Sort by Name' }),
 		).not.toBeInTheDocument()
+	})
+})
+
+/**
+ * M13 S8b — the two things F11 said the dialog could not do: show the whole of an
+ * entry before you take it, and know whose sheet it is being opened from.
+ */
+describe('SearchDialog — the expanding row (F11.1)', () => {
+	const details = (row: Row) => <p>The full effect of {row.name}.</p>
+
+	it('leaves the row a plain listbox option when no details are given', () => {
+		render(<Harness />)
+
+		expect(screen.getAllByRole('option')).toHaveLength(3)
+		expect(screen.queryByRole('checkbox')).toBeNull()
+	})
+
+	it('becomes a disclosure with an explicit choice when details are given', async () => {
+		const user = userEvent.setup()
+		render(<Harness renderDetails={details} />)
+
+		// Not a listbox any more: the row's own job is opening, and the choice is a
+		// real control inside it rather than the row's selected state.
+		expect(screen.queryByRole('listbox')).toBeNull()
+		expect(screen.queryAllByRole('option')).toHaveLength(0)
+		expect(screen.getAllByRole('checkbox')).toHaveLength(3)
+
+		await user.click(screen.getByRole('button', { name: /Fire Bolt/ }))
+		expect(screen.getByText('The full effect of Fire Bolt.')).toBeTruthy()
+	})
+
+	it('chooses from the summary control without opening the row', async () => {
+		const user = userEvent.setup()
+		render(<Harness renderDetails={details} />)
+
+		await user.click(screen.getByRole('checkbox', { name: 'Choose Ice Shard' }))
+
+		expect(screen.getByText('3 spells · 1 chosen')).toBeTruthy()
+		expect(screen.getByRole('button', { name: /Import 1 spell$/ })).toBeTruthy()
+	})
+
+	it('reserves the chevron track in the header so the columns still agree', () => {
+		render(<Harness renderDetails={details} />)
+
+		const ledger = document.querySelector('.cs-search-ledger') as HTMLElement
+		const rowCols = ledger.style.getPropertyValue('--cs-search-cols')
+		const headCols = ledger.style.getPropertyValue('--cs-search-head-cols')
+
+		// The choice track leads the ROW template here (the checkbox is a cell),
+		// where a selectable row keeps its mark outside the grid.
+		expect(rowCols.startsWith('30px')).toBe(true)
+		expect(headCols).toBe(`${rowCols} 18px`)
+	})
+})
+
+describe('SearchDialog — standing (F11.2)', () => {
+	const standing = (row: Row) => ({
+		owned: row.name === 'Fire Bolt',
+		blocked: row.name === 'Ice Shard' ? 'rank 3' : undefined,
+	})
+
+	it('offers no standing filters when the caller cannot answer for them', () => {
+		render(<Harness />)
+
+		expect(
+			screen.queryByRole('button', { name: 'Hide what I have' }),
+		).toBeNull()
+		expect(
+			screen.queryByRole('button', { name: 'Only what I can take' }),
+		).toBeNull()
+	})
+
+	it('marks what the character has and what is out of reach', () => {
+		render(<Harness getStanding={standing} />)
+
+		expect(screen.getByText('have')).toBeTruthy()
+		// The reason, not a bare refusal — the phrase is what tells the reader what
+		// to go and fix.
+		expect(screen.getByText('rank 3')).toBeTruthy()
+	})
+
+	it('drops the owned rows on demand', async () => {
+		const user = userEvent.setup()
+		render(<Harness getStanding={standing} />)
+
+		await user.click(screen.getByRole('button', { name: 'Hide what I have' }))
+
+		expect(rowNames().join(' ')).not.toContain('Fire Bolt')
+		expect(screen.getByText('2 spells')).toBeTruthy()
+	})
+
+	it('drops the out-of-reach rows on demand, and stacks with the search', async () => {
+		const user = userEvent.setup()
+		render(<Harness getStanding={standing} />)
+
+		await user.click(
+			screen.getByRole('button', { name: 'Only what I can take' }),
+		)
+		expect(rowNames().join(' ')).not.toContain('Ice Shard')
+		expect(screen.getByText('2 spells')).toBeTruthy()
+
+		await user.type(screen.getByLabelText('Search'), 'Fire')
+		const left = rowNames()
+		expect(left).toHaveLength(1)
+		expect(left[0]).toContain('Fire Bolt')
+	})
+
+	it('reports the toggle as pressed, since a stamp has no other way to say so', async () => {
+		const user = userEvent.setup()
+		render(<Harness getStanding={standing} />)
+
+		const toggle = screen.getByRole('button', { name: 'Hide what I have' })
+		expect(toggle.getAttribute('aria-pressed')).toBe('false')
+
+		await user.click(toggle)
+		expect(toggle.getAttribute('aria-pressed')).toBe('true')
 	})
 })

@@ -87,7 +87,14 @@ export const RecordPlate: React.FC<RecordPlateProps> = ({
 export interface RecordRowProps {
 	/** The fact's mark. A row without one still aligns; it just reads slower. */
 	sigil?: StatSigilName | SheetSigilName
-	label: string
+	/**
+	 * What the fact is called.
+	 *
+	 * Usually a string in the small-caps label register. It takes a node because
+	 * the talent-point plate names its rows with a `SheetChip` — there the row is
+	 * ABOUT a skill, and a skill's identity is the one thing S8 kept a tone for.
+	 */
+	label: React.ReactNode
 	/** The value or its control — a bare field, a select, a pip row. */
 	children: React.ReactNode
 	/**

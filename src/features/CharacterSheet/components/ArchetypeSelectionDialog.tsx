@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Typography, Box } from '@mui/material'
 import { SheetChip } from './SheetChip'
+import { entrySummary } from './EntryProse'
 import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
@@ -79,17 +80,11 @@ export const ArchetypeSelectionDialog: React.FC<
 			render: (value, archetype) => (
 				<Box>
 					<Typography
-						variant="caption"
-						sx={{
-							display: '-webkit-box',
-							WebkitLineClamp: 3,
-							WebkitBoxOrient: 'vertical',
-							overflow: 'hidden',
-							lineHeight: 1.3,
-							mb: 0.5,
-						}}
+						component="span"
+						className="cs-entry-summary"
+						sx={{ mb: 0.5 }}
 					>
-						{archetype.description}
+						{entrySummary(String(archetype.description ?? ''))}
 					</Typography>
 					<Typography
 						variant="caption"
@@ -152,6 +147,8 @@ export const ArchetypeSelectionDialog: React.FC<
 			}}
 			getItemKey={(item) => item.name}
 			confirmButtonText="Select Archetype"
+			// Alphabetical rather than the JSON's authoring order (F11.6).
+			defaultSort={{ key: 'name' }}
 			itemNoun="archetype"
 			searchPlaceholder="Search archetypes by name, role, or description..."
 		/>

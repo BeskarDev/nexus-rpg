@@ -1,6 +1,7 @@
 import {
 	Box,
 	Button,
+	Checkbox,
 	Dialog,
 	DialogActions,
 	DialogContent,
@@ -81,10 +82,91 @@ export type SearchDialogProps<T> = {
 	 * `SingleSelectionDialog` stop being a second copy of this component's table.
 	 */
 	selectionMode?: 'multiple' | 'single'
+	/**
+	 * The rest of the entry, revealed when the reader opens the row (F11.1, S8b).
+	 *
+	 * **Pass this and the row becomes a disclosure.** An arcane spell's effect is a
+	 * median of 558 characters and the ledger shows it through a three-line clamp,
+	 * so the fact a player actually chooses on was about a fifth visible with no way
+	 * to reach the rest — you picked by name recognition, or imported, read it on the
+	 * sheet, and deleted it.
+	 *
+	 * S8 made the selectable row and the expanding row mutually exclusive, and that
+	 * rule holds: one activation gesture must not have two meanings. This is the
+	 * resolution `RefreshUpdatesDialog` already settled for the same collision —
+	 * **the row expands, and the choice becomes an explicit control in the summary**
+	 * — rather than an exception to it.
+	 */
+	renderDetails?: (item: T) => ReactNode
+	/**
+	 * Where this entry stands with respect to THIS character (F11.2, S8b).
+	 *
+	 * Every import dialog already receives a `character` prop, and every one of them
+	 * destructured it and threw it away — so "do I already have this", "can I cast
+	 * it yet" and "can I afford it" were all answerable from data sitting inside the
+	 * component, and none of them were answered.
+	 *
+	 * The caller answers, because only the caller knows what its content type means
+	 * by owned or by out of reach. Passing it is what puts the two standing filters
+	 * in the meta line; without it the dialog behaves exactly as it did.
+	 */
+	getStanding?: (item: T) => SearchDialogStanding
 }
+
+/** What a dialog can say about an entry once it knows whose sheet it is. */
+export type SearchDialogStanding = {
+	/** The character already holds this. */
+	owned?: boolean
+	/**
+	 * Why the character cannot take it yet — a SHORT phrase, shown as the reason.
+	 *
+	 * A phrase rather than a boolean because "rank 5" and "needs Stealth" are
+	 * different problems with different fixes, and a row that only says *no* sends
+	 * the reader back to the rulebook to find out why.
+	 */
+	blocked?: string
+}
+
+/**
+ * A filter that is one binary fact, as a pressed stamp rather than a dropdown.
+ *
+ * The builder shell has carried `FilterChip` since S8; this is the sheet-scoped
+ * twin, because a portalled dialog cannot reach `.codex-builder`'s stylesheet and
+ * the two surfaces should not share a class across that boundary. `aria-pressed`
+ * rather than a checkbox: it is a toggle button acting on the list, not a value
+ * being collected.
+ */
+const FilterToggle: React.FC<{
+	pressed: boolean
+	onClick: () => void
+	children: ReactNode
+}> = ({ pressed, onClick, children }) => (
+	<button
+		type="button"
+		className="cs-search-toggle"
+		aria-pressed={pressed}
+		onClick={onClick}
+	>
+		{children}
+	</button>
+)
 
 /** The selection gutter's mark plus the row's own gap, so the header lines up. */
 const SELECT_GUTTER = '18px'
+
+/**
+ * The tracks an expanding row needs that a selectable one does not.
+ *
+ * A selectable row carries its `CheckMark` OUTSIDE the summary grid, in the row's
+ * own gutter — hence `SELECT_GUTTER` on the header alone. A disclosure carries a
+ * real checkbox INSIDE the summary (it is a control, not the row's state), and the
+ * chevron rides outside on the other side, so both ends need reserving. Same two
+ * constants `RefreshUpdatesDialog` arrived at, for the same two reasons.
+ */
+const CHOICE_TRACK = '30px'
+const CHEVRON_RESERVE = '18px'
+/** `CheckMark` is 18px and MUI pads a checkbox by 9; 6px lands it on the track. */
+const CHOICE_SX = { p: '6px' }
 
 /**
  * Compare two rows on one column.
@@ -160,8 +242,14 @@ export function SearchDialog<T>({
 	itemNounPlural,
 	defaultSort,
 	selectionMode = 'multiple',
+	renderDetails,
+	getStanding,
 }: SearchDialogProps<T>) {
 	const isSingle = selectionMode === 'single'
+	const expands = renderDetails !== undefined
+	const knowsCharacter = getStanding !== undefined
+	const [hideOwned, setHideOwned] = useState(false)
+	const [onlyEligible, setOnlyEligible] = useState(false)
 	const plural = itemNounPlural ?? `${itemNoun}s`
 	const countNoun = (n: number) => (n === 1 ? itemNoun : plural)
 	const [searchQuery, setSearchQuery] = useState('')
@@ -214,6 +302,22 @@ export function SearchDialog<T>({
 	const filteredData = useMemo(() => {
 		let filtered = data
 
+		/*
+			The standing filters run FIRST, before the text search and the sort.
+
+			They are the cheapest cut and the one a player leaves on: "the things I
+			could actually take" is a smaller list to then search within, and running
+			them last would mean sorting rows that are about to be dropped.
+		*/
+		if (getStanding && (hideOwned || onlyEligible)) {
+			filtered = filtered.filter((item) => {
+				const standing = getStanding(item)
+				if (hideOwned && standing.owned) return false
+				if (onlyEligible && standing.blocked) return false
+				return true
+			})
+		}
+
 		if (searchQuery.trim()) {
 			const query = searchQuery.toLowerCase()
 			filtered = filtered.filter((item) =>
@@ -236,7 +340,17 @@ export function SearchDialog<T>({
 		}
 
 		return filtered
-	}, [data, searchQuery, searchFields, sortBy, sortOrder, tiebreakKey])
+	}, [
+		data,
+		searchQuery,
+		searchFields,
+		sortBy,
+		sortOrder,
+		tiebreakKey,
+		getStanding,
+		hideOwned,
+		onlyEligible,
+	])
 
 	/**
 	 * One template for the header and every row (M13 S8).
@@ -247,10 +361,21 @@ export function SearchDialog<T>({
 	 * the caller's column list rather than from a constant, because each dialog
 	 * shows a different set of facts, but the rule is the same one.
 	 */
-	const rowTemplate = useMemo(
-		() => columns.map((column) => column.width ?? 'minmax(0, 1fr)').join(' '),
-		[columns],
-	)
+	const rowTemplate = useMemo(() => {
+		const tracks = columns.map((column) => column.width ?? 'minmax(0, 1fr)')
+		// A disclosure's checkbox is a cell of the summary grid; a selectable row's
+		// mark is not (it sits in the row's own gutter, outside it).
+		return (expands ? [CHOICE_TRACK, ...tracks] : tracks).join(' ')
+	}, [columns, expands])
+
+	/*
+		The header's template. A selectable row prefixes the gutter the row carries
+		outside its grid; a disclosure already has the choice track in `rowTemplate`
+		and instead reserves the chevron on the far side.
+	*/
+	const headTemplate = expands
+		? `${rowTemplate} ${CHEVRON_RESERVE}`
+		: `${SELECT_GUTTER} ${rowTemplate}`
 
 	const handleSort = (column: keyof T) => {
 		if (sortBy === column) {
@@ -297,6 +422,10 @@ export function SearchDialog<T>({
 		// look the way it looked the first time.
 		setSortBy(defaultSort?.key ?? null)
 		setSortOrder(defaultSort?.order ?? 'asc')
+		// The standing toggles reset with everything else, for the reason the sort
+		// does: reopening the dialog should look the way opening it did.
+		setHideOwned(false)
+		setOnlyEligible(false)
 		onClose()
 	}
 
@@ -362,7 +491,35 @@ export function SearchDialog<T>({
 					}}
 				/>
 
-				{filters && <Box className="cs-search-filters">{filters}</Box>}
+				{(filters || knowsCharacter) && (
+					<Box className="cs-search-filters">
+						{filters}
+						{/* The two filters that need no configuring, because the dialog is
+							already holding the character (F11.2). They are toggles rather
+							than another dropdown: each is one binary fact, and a dropdown
+							would hide its own state behind a closed box.
+
+							Only rendered when the caller answers `getStanding` — a dialog
+							that cannot tell owned from unowned must not offer to hide the
+							owned ones. */}
+						{knowsCharacter && (
+							<>
+								<FilterToggle
+									pressed={hideOwned}
+									onClick={() => setHideOwned(!hideOwned)}
+								>
+									Hide what I have
+								</FilterToggle>
+								<FilterToggle
+									pressed={onlyEligible}
+									onClick={() => setOnlyEligible(!onlyEligible)}
+								>
+									Only what I can take
+								</FilterToggle>
+							</>
+						)}
+					</Box>
+				)}
 
 				{/* The list's meta line, in the band register the tabs use for the same
 					job: what is in front of you, and the one control that acts on all of
@@ -399,7 +556,7 @@ export function SearchDialog<T>({
 					style={
 						{
 							'--cs-search-cols': rowTemplate,
-							'--cs-search-head-cols': `${SELECT_GUTTER} ${rowTemplate}`,
+							'--cs-search-head-cols': headTemplate,
 						} as React.CSSProperties
 					}
 				>
@@ -442,38 +599,98 @@ export function SearchDialog<T>({
 									</button>
 								),
 							)}
+							{/* The disclosure mark's reserve. It rides outside the summary
+								grid, so without a track here the header's last column stops
+								agreeing with the rows under it. */}
+							{expands && <span aria-hidden="true" />}
 						</Box>
 					)}
 
 					<Box
 						className="cs-search-ledger__rows"
-						role="listbox"
-						{...(!isSingle && { 'aria-multiselectable': true })}
-						aria-label={title}
+						/*
+							A list of disclosures is not a listbox. When the row expands, the
+							choice is a real checkbox inside it and the row's own job is
+							opening — so `role="option"` would name the wrong thing, and
+							`aria-selected` would duplicate the checkbox's state in the tree.
+							`RefreshUpdatesDialog` reached the same shape for the same reason.
+						*/
+						{...(expands
+							? { role: 'group', 'aria-label': title }
+							: {
+									role: 'listbox',
+									'aria-label': title,
+									...(!isSingle && { 'aria-multiselectable': true }),
+								})}
 					>
 						{filteredData.map((item) => {
 							const itemKey = getItemKey(item)
+							const standing = getStanding?.(item)
+							const cells = columns.map((column, index) => (
+								<Box
+									key={String(column.key)}
+									sx={{ minWidth: 0, textAlign: column.align ?? 'left' }}
+								>
+									{column.render
+										? column.render(item[column.key], item)
+										: String(item[column.key])}
+									{/* The standing marks ride in the FIRST cell, beside the
+										name they qualify, rather than in a track of their own —
+										a column that is empty on most rows costs every row its
+										width to say nothing. */}
+									{index === 0 && standing?.owned && (
+										<Typography
+											component="span"
+											className="cs-standing cs-standing--owned"
+										>
+											have
+										</Typography>
+									)}
+									{index === 0 && standing?.blocked && (
+										<Typography
+											component="span"
+											className="cs-standing cs-standing--blocked"
+										>
+											{standing.blocked}
+										</Typography>
+									)}
+								</Box>
+							))
+
+							if (!expands) {
+								return (
+									<UnifiedListItem
+										key={itemKey}
+										maxWidth="none"
+										selected={selectedItems.has(itemKey)}
+										onSelectedChange={() => handleItemToggle(itemKey)}
+										summaryClassName="cs-search-row"
+										sx={{ minHeight: '44px' }}
+										summaryContent={cells}
+									/>
+								)
+							}
+
 							return (
 								<UnifiedListItem
 									key={itemKey}
 									maxWidth="none"
-									selected={selectedItems.has(itemKey)}
-									onSelectedChange={() => handleItemToggle(itemKey)}
 									summaryClassName="cs-search-row"
-									sx={{ minHeight: '44px' }}
-									summaryContent={columns.map((column) => (
-										<Box
-											key={String(column.key)}
-											sx={{
-												minWidth: 0,
-												textAlign: column.align ?? 'left',
-											}}
-										>
-											{column.render
-												? column.render(item[column.key], item)
-												: String(item[column.key])}
-										</Box>
-									))}
+									detailsContent={renderDetails(item)}
+									detailsSx={{ display: 'block' }}
+									summaryContent={
+										<>
+											<Checkbox
+												checked={selectedItems.has(itemKey)}
+												onChange={() => handleItemToggle(itemKey)}
+												sx={CHOICE_SX}
+												inputProps={{
+													'aria-label': `Choose ${String(item[columns[0].key])}`,
+												}}
+											/>
+											{cells}
+										</>
+									}
 								/>
 							)
 						})}

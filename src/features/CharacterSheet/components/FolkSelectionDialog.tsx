@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Typography, Box } from '@mui/material'
 import { SheetChip } from './SheetChip'
+import { entrySummary } from './EntryProse'
 import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
@@ -80,17 +81,8 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 							“{folk.quote}”
 						</Typography>
 					)}
-					<Typography
-						variant="caption"
-						sx={{
-							display: '-webkit-box',
-							WebkitLineClamp: 3,
-							WebkitBoxOrient: 'vertical',
-							overflow: 'hidden',
-							lineHeight: 1.2,
-						}}
-					>
-						{folk.description}
+					<Typography component="span" className="cs-entry-summary">
+						{entrySummary(String(folk.description ?? ''))}
 					</Typography>
 				</Box>
 			),
@@ -166,6 +158,8 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 			onConfirm={handleConfirm}
 			getItemKey={(folk) => folk.name}
 			confirmButtonText="Select Folk"
+			// Alphabetical rather than the JSON's authoring order (F11.6).
+			defaultSort={{ key: 'name' }}
 			itemNoun="folk"
 			itemNounPlural="folk"
 			searchPlaceholder="Search by name, category, or description..."

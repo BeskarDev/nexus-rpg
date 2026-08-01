@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Typography, Box } from '@mui/material'
 import { SheetChip } from './SheetChip'
+import { entrySummary } from './EntryProse'
 import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
@@ -46,17 +47,8 @@ export const BackgroundSelectionDialog: React.FC<
 			sortable: false,
 			width: 'minmax(0, 2fr)',
 			render: (value, background) => (
-				<Typography
-					variant="caption"
-					sx={{
-						display: '-webkit-box',
-						WebkitLineClamp: 3,
-						WebkitBoxOrient: 'vertical',
-						overflow: 'hidden',
-						lineHeight: 1.2,
-					}}
-				>
-					{background.description}
+				<Typography component="span" className="cs-entry-summary">
+					{entrySummary(String(background.description ?? ''))}
 				</Typography>
 			),
 		},
@@ -124,6 +116,8 @@ export const BackgroundSelectionDialog: React.FC<
 			onConfirm={handleConfirm}
 			getItemKey={(background) => background.name}
 			confirmButtonText="Select Background"
+			// Alphabetical rather than the JSON's authoring order (F11.6).
+			defaultSort={{ key: 'name' }}
 			itemNoun="background"
 			searchPlaceholder="Search by name, description, skills, or starting item..."
 		/>

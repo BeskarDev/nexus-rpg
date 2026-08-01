@@ -29,6 +29,16 @@ export type SingleSelectionDialogProps<T> = {
 	itemNounPlural?: string
 	/** Initial ordering; see `SearchDialog`. Omit to keep the rulebook's own order. */
 	defaultSort?: { key: keyof T; order?: 'asc' | 'desc' }
+	/**
+	 * The filter band's controls.
+	 *
+	 * Not forwarded until M13 S8b, which is why the four rulebook pickers had no
+	 * filters at all — Backgrounds is 47 rows. Nobody decided they should not; the
+	 * adapter simply dropped the prop.
+	 */
+	filters?: React.ReactNode
+	/** The rest of the entry, revealed on expand. See `SearchDialog`. */
+	renderDetails?: (item: T) => React.ReactNode
 }
 
 /**
@@ -66,6 +76,8 @@ export function SingleSelectionDialog<T>({
 	itemNoun = 'entry',
 	itemNounPlural,
 	defaultSort,
+	filters,
+	renderDetails,
 }: SingleSelectionDialogProps<T>) {
 	const selectedItems = useMemo(
 		() => new Set(selectedItem ? [selectedItem] : []),
@@ -92,6 +104,8 @@ export function SingleSelectionDialog<T>({
 			itemNoun={itemNoun}
 			itemNounPlural={itemNounPlural}
 			defaultSort={defaultSort}
+			filters={filters}
+			renderDetails={renderDetails}
 		/>
 	)
 }

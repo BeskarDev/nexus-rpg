@@ -1092,7 +1092,8 @@ input[type='number'] {
    The courses are the ONE place a horizontal rule is legitimate in this theme —
    they are not grouping anything, they are the ruling of a ledger, which is why
    the ledger rows themselves carry one too. */
-.character-sheet-page .cs-record-plate {
+.character-sheet-page .cs-record-plate,
+.cs-tokens .cs-record-plate {
 	background: color-mix(in srgb, var(--nexus-bronze) 4%, transparent);
 	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 26%, transparent);
 	padding: 0.25rem 0.5rem;
@@ -1102,7 +1103,8 @@ input[type='number'] {
 	   independent lengths of content (S4d, owner review). */
 	height: 100%;
 }
-.character-sheet-page .cs-record-plate__head {
+.character-sheet-page .cs-record-plate__head,
+.cs-tokens .cs-record-plate__head {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -1115,7 +1117,8 @@ input[type='number'] {
 		color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
 	margin-bottom: 2px;
 }
-.character-sheet-page .cs-record-plate__caption {
+.character-sheet-page .cs-record-plate__caption,
+.cs-tokens .cs-record-plate__caption {
 	font-family: var(--nexus-font-ui);
 	font-weight: 700;
 	font-size: var(--nexus-text-2xs);
@@ -1124,20 +1127,23 @@ input[type='number'] {
 	line-height: 1.6;
 	color: var(--nexus-bronze);
 }
-.character-sheet-page .cs-record-row {
+.character-sheet-page .cs-record-row,
+.cs-tokens .cs-record-row {
 	display: flex;
 	align-items: center;
 	gap: 0.75rem;
 	min-height: var(--nexus-target);
 	padding: 1px 0;
 }
-.character-sheet-page .cs-record-row + .cs-record-row {
+.character-sheet-page .cs-record-row + .cs-record-row,
+.cs-tokens .cs-record-row + .cs-record-row {
 	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
 }
 /* The one heavier course: above it the facts describe the ITEM, below it they
    describe this copy of it. A ledger marks a change of subject by ruling harder,
    not by growing a second heading. */
-.character-sheet-page .cs-record-row--section {
+.character-sheet-page .cs-record-row--section,
+.cs-tokens .cs-record-row--section {
 	border-top: 1.5px solid
 		color-mix(in srgb, var(--nexus-bronze) 40%, transparent) !important;
 	margin-top: 2px;
@@ -1145,7 +1151,8 @@ input[type='number'] {
 }
 /* One label measure for the whole plate, so every value in it starts at the same
    x — that shared edge is the entire reason a column of facts scans as a column. */
-.character-sheet-page .cs-record-row__label {
+.character-sheet-page .cs-record-row__label,
+.cs-tokens .cs-record-row__label {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.35rem;
@@ -1169,7 +1176,8 @@ input[type='number'] {
    ONE column edge to scan down, and splitting it by content type gave the plate two
    ragged edges instead of one clean one. A word in the figures column is a smaller
    problem than a plate that does not line up. */
-.character-sheet-page .cs-record-row__value {
+.character-sheet-page .cs-record-row__value,
+.cs-tokens .cs-record-row__value {
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
@@ -1219,9 +1227,43 @@ input[type='number'] {
 
    Gated on `prefers-reduced-motion`, where the plate simply holds the lit end of the cycle —
    the reminder survives, the motion does not. */
+/* Two registers of "look at this", and the difference is whether the state is
+   something YOU did (M13 S3, 2026-08-01).
+
+   `pending` — an action of yours is outstanding and one press finishes it: notes
+   you have typed but not shared, content that has drifted from the rulebook. It
+   pulses.
+
+   `alert` — a standing condition worth knowing about that no single press
+   resolves: talent points left unspent, a skill overspent. Same warning ink, no
+   motion. A strip where every flagged control pulses is a strip with an alarm in
+   it, and the reader stops reading any of them.
+
+   Both replaced `color="warning"`, which drew MUI's Material orange: the palette
+   was never retuned past `MuiLinearProgress`, so these were the last controls on
+   the sheet inking themselves from Material rather than from `--cs-warning`. */
 .character-sheet-page
 	.cs-section-actions
-	.MuiIconButton-root[data-state='pending'] {
+	.MuiIconButton-root[data-state='alert'],
+.cs-tokens .cs-section-actions .MuiIconButton-root[data-state='alert'] {
+	border-color: var(--cs-warning);
+	color: var(--cs-warning);
+	background: color-mix(in srgb, var(--cs-warning) 10%, transparent);
+}
+/* The strip's generic hover is a bronze wash at lower specificity than the rule
+   above, so without this an alerting control is the one control in the strip that
+   does not answer the pointer. Deeper wash in its own ink, not bronze. */
+.character-sheet-page
+	.cs-section-actions
+	.MuiIconButton-root[data-state='alert']:hover,
+.cs-tokens .cs-section-actions .MuiIconButton-root[data-state='alert']:hover {
+	border-color: var(--cs-warning);
+	background: color-mix(in srgb, var(--cs-warning) 22%, transparent);
+}
+.character-sheet-page
+	.cs-section-actions
+	.MuiIconButton-root[data-state='pending'],
+.cs-tokens .cs-section-actions .MuiIconButton-root[data-state='pending'] {
 	border-color: var(--cs-warning);
 	color: var(--cs-warning);
 	animation: cs-save-pulse 2s ease-in-out infinite;
@@ -1240,7 +1282,8 @@ input[type='number'] {
 @media (prefers-reduced-motion: reduce) {
 	.character-sheet-page
 		.cs-section-actions
-		.MuiIconButton-root[data-state='pending'] {
+		.MuiIconButton-root[data-state='pending'],
+	.cs-tokens .cs-section-actions .MuiIconButton-root[data-state='pending'] {
 		animation: none;
 		background: color-mix(in srgb, var(--cs-warning) 18%, transparent);
 	}
@@ -1545,7 +1588,8 @@ input[type='number'] {
    them would be exactly the bar-as-grouping-device that has been rejected three
    times. `outline` at a negative offset is the sanctioned flat second keyline and
    does the work an inlaid border would in stone; there is no bevel anywhere. */
-.character-sheet-page .cs-meta-band {
+.character-sheet-page .cs-meta-band,
+.cs-tokens .cs-meta-band {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0 1.5rem;
@@ -1560,7 +1604,8 @@ input[type='number'] {
    slice, and inheriting that class's bottom RULE under a frame the band already
    has gave the line two edges. That class is gone now — the band replaced its only
    two consumers, so the caption-line register no longer exists on the sheet. */
-.character-sheet-page .cs-meta-band__label {
+.character-sheet-page .cs-meta-band__label,
+.cs-tokens .cs-meta-band__label {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.35rem;
@@ -1590,20 +1635,24 @@ input[type='number'] {
    for `StatSigil`, because a mark centred against full-height text (a row title, a menu
    item) is correct as-is; it is the small-caps pairing that needs it. */
 .character-sheet-page .cs-meta-band__label svg,
+.cs-tokens .cs-meta-band__label svg,
+.cs-tokens .cs-record-row__label svg,
 .character-sheet-page .cs-record-row__label svg,
 .character-sheet-page .cs-section-head svg {
 	position: relative;
 	top: -0.06em;
 }
 
-.character-sheet-page .cs-meta-band__value {
+.character-sheet-page .cs-meta-band__value,
+.cs-tokens .cs-meta-band__value {
 	font-family: var(--nexus-font-ui);
 	font-weight: 700;
 	font-size: var(--nexus-text-md);
 	font-variant-numeric: tabular-nums;
 	line-height: 1.4rem;
 }
-.character-sheet-page .cs-meta-band .cs-meta-band__value input {
+.character-sheet-page .cs-meta-band .cs-meta-band__value input,
+.cs-tokens .cs-meta-band .cs-meta-band__value input {
 	font-size: var(--nexus-text-md);
 	font-weight: 700;
 }
@@ -1627,7 +1676,8 @@ input[type='number'] {
    apart in a 1049px-wide row, "Load 0 / 0" ended up ~600px from the name it
    belongs to and read as an unrelated fragment. Bounded at the same measure the
    rows use, its right edge lands where the ledger's own numeric columns end. */
-.character-sheet-page .cs-meta-band--sub {
+.character-sheet-page .cs-meta-band--sub,
+.cs-tokens .cs-meta-band--sub {
 	max-width: var(--cs-max-width-lg);
 	/* One line at every width. The band holds a name and a load reading, and the
 	   load reading is `nowrap` — so the name field is the only thing that can absorb a
@@ -1642,23 +1692,31 @@ input[type='number'] {
 	outline: none;
 }
 .character-sheet-page .cs-meta-band--sub .cs-meta-band__value,
-.character-sheet-page .cs-meta-band--sub .cs-meta-band__value input {
+.cs-tokens .cs-meta-band--sub .cs-meta-band__value,
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__value input,
+.cs-tokens .cs-meta-band--sub .cs-meta-band__value input {
 	font-size: var(--nexus-text-dense);
 }
 /* The sub rank's values are 15px rather than 18px, so its shared line box is shorter.
    Stated per rank rather than derived, because a rank IS its type sizes. */
 .character-sheet-page .cs-meta-band--sub .cs-meta-band__label,
+.cs-tokens .cs-meta-band--sub .cs-meta-band__label,
 .character-sheet-page .cs-meta-band--sub .cs-meta-band__value,
+.cs-tokens .cs-meta-band--sub .cs-meta-band__value,
 .character-sheet-page .cs-meta-band--sub .cs-meta-band__note,
-.character-sheet-page .cs-meta-band--sub .MuiInputBase-input {
+.cs-tokens .cs-meta-band--sub .cs-meta-band__note,
+.character-sheet-page .cs-meta-band--sub .MuiInputBase-input,
+.cs-tokens .cs-meta-band--sub .MuiInputBase-input {
 	line-height: 1.2rem;
 }
-.character-sheet-page .cs-meta-band--sub .cs-meta-band__label {
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__label,
+.cs-tokens .cs-meta-band--sub .cs-meta-band__label {
 	font-size: var(--nexus-text-2xs);
 }
 /* The location's NAME is prose, not a figure: same line box and size as a value,
    but no tabular figures and a text weight, or "Kesh's mule" reads as a total. */
-.character-sheet-page .cs-meta-band__text input {
+.character-sheet-page .cs-meta-band__text input,
+.cs-tokens .cs-meta-band__text input {
 	font-family: var(--nexus-font-ui);
 	font-size: var(--nexus-text-dense);
 	font-weight: 600;
@@ -1680,13 +1738,16 @@ input[type='number'] {
    (a `translateY` on one item) was the alternative and is not one: it would have
    to be re-tuned for every font-size in the band. */
 .character-sheet-page .cs-meta-band,
-.character-sheet-page .cs-meta-band > * {
+.cs-tokens .cs-meta-band,
+.character-sheet-page .cs-meta-band > *,
+.cs-tokens .cs-meta-band > * {
 	align-items: center;
 }
 /* A control inside a band wears the strip's stamped plate — the band holds facts and
    the occasional verb, and a verb here should look like a verb anywhere else on the
    sheet (S5). */
-.character-sheet-page .cs-meta-band .MuiIconButton-root {
+.character-sheet-page .cs-meta-band .MuiIconButton-root,
+.cs-tokens .cs-meta-band .MuiIconButton-root {
 	width: var(--nexus-target);
 	height: var(--nexus-target);
 	padding: 0;
@@ -1694,7 +1755,8 @@ input[type='number'] {
 	border-radius: 0;
 	color: var(--nexus-bronze);
 }
-.character-sheet-page .cs-meta-band .MuiIconButton-root:hover {
+.character-sheet-page .cs-meta-band .MuiIconButton-root:hover,
+.cs-tokens .cs-meta-band .MuiIconButton-root:hover {
 	border-color: var(--nexus-bronze);
 	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
 }
@@ -1732,7 +1794,8 @@ input[type='number'] {
 	outline-offset: -1.5px;
 }
 
-.character-sheet-page .cs-meta-band .MuiInputBase-input {
+.character-sheet-page .cs-meta-band .MuiInputBase-input,
+.cs-tokens .cs-meta-band .MuiInputBase-input {
 	padding-top: 0;
 	padding-bottom: 0;
 	line-height: 1.4rem;
@@ -1791,7 +1854,8 @@ input[type='number'] {
    phone the header is gone and the row has wrapped, and a cell with no label is
    a bare number — "light armor, +1 AV — 25 0". So each read cell carries its
    column's name and shows it exactly where the header cannot. */
-.character-sheet-page .cs-cell-label {
+.character-sheet-page .cs-cell-label,
+.cs-search-dialog .cs-cell-label {
 	margin-right: 0.4rem;
 	font-family: var(--nexus-font-ui);
 	font-weight: 700;
@@ -1847,14 +1911,110 @@ input[type='number'] {
 /* The filter strip: the caller's controls in a washed band, so the things that
    NARROW the list are visibly one group and visibly not part of it. */
 .cs-search-dialog .cs-search-filters {
+	/* One control height for the whole band, so the boxes in it are the same box.
+	   The same rule `.cs-section-actions` states for a header strip (S5, owner
+	   review) — a strip whose controls are four heights is four decisions nobody
+	   made. */
+	--cs-filter-control: 2.25rem;
+
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
+	/* Align the CONTROLS, not the stacks (S8b, owner review).
+	   A labelled `FormControl` is two parts — a static label ABOVE its slot — while
+	   a toggle is one box. Centring the taller stack against the shorter box is
+	   what dropped the select below the toggles beside it; the bottom edge is the
+	   one thing all of them genuinely share. */
+	align-items: flex-end;
 	gap: 0.5rem;
 	padding: 0.5rem 0.75rem;
 	margin-bottom: 0.5rem;
 	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
 	background: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
+}
+/* Bottom-aligning is only half of it: two boxes that end on the same line but are
+   different heights still read as misaligned at the top. Both are stated here
+   rather than left to their own content, because one is a MUI input sized by its
+   15px value and the other a stamp sized by its 11px small caps — they have no
+   reason to agree on their own. */
+.cs-search-dialog .cs-search-filters .MuiInputBase-root,
+.cs-search-dialog .cs-search-toggle {
+	height: var(--cs-filter-control);
+	box-sizing: border-box;
+}
+/* Giving the slot a height does not place what is inside it (owner review).
+   ==========================================================================
+
+   The boxes lined up and the select's value still sat high in its own box. A
+   select renders its value as a `div` carrying the theme's `3px 8px` — vertical
+   padding that positioned the text when the box was content-sized, and became a
+   top offset the moment the box was told to be 36px.
+
+   So the placement is stated rather than inherited: the value box fills the slot
+   and centres its own line. Deterministic instead of depending on which of MUI's
+   several `align-items` declarations wins, which is what the first attempt was
+   quietly relying on. An `<input>` centres its own text in its content box, so it
+   needs the height and the zeroed padding but not the flex. */
+.cs-search-dialog .cs-search-filters .MuiInputBase-root {
+	align-items: center;
+}
+.cs-search-dialog .cs-search-filters .MuiSelect-select {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	box-sizing: border-box;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.cs-search-dialog .cs-search-filters .MuiInputBase-input {
+	height: 100%;
+	box-sizing: border-box;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+/* Chosen values, as the stamps they are everywhere else on the sheet.
+   ==========================================================================
+
+   The skill filter printed `Athletics, Stealth` as plain text in the slot and as
+   `ListItemText` in the menu, so one control named a skill in a register nothing
+   else on the sheet uses for one. Chips in both places now.
+
+   `nowrap` because the slot is a fixed 36px: a wrapped second line would be
+   clipped rather than shown. The caller truncates to two and prints the overflow
+   count instead, so what is hidden is stated rather than cut off silently. */
+.cs-search-dialog .cs-filter-chips {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+	min-width: 0;
+	overflow: hidden;
+	flex-wrap: nowrap;
+}
+.cs-search-dialog .cs-filter-chips__more {
+	flex: 0 0 auto;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+/* A menu row is the chip plus its checkbox and nothing else, so the row's own
+   text metrics stop mattering — without this the `MuiMenuItem` line-height
+   reserves space for a text run that is not there. */
+.cs-tokens .MuiMenuItem-root .cs-chip {
+	margin-left: 0.15rem;
+}
+
+/* And `MuiTextField`'s sitewide `margin: 'dense'` — 8px above, 4px below — would
+   otherwise lift the two cost fields in the Equipment and Weapon bands off the
+   line everything else just agreed on. Neutralised here because bottom-alignment
+   makes that stray 4px visible for the first time; the sitewide default is still
+   wrong and is S10's item, not this one's. */
+.cs-search-dialog .cs-search-filters .MuiFormControl-root {
+	margin: 0;
 }
 
 /* The meta line: what is in front of you, and the one control acting on all of
@@ -1918,7 +2078,12 @@ input[type='number'] {
 	}
 }
 @media (min-width: 700px) {
-	.cs-search-dialog .cs-search-row {
+	/* `.cs-refresh-row` is the refresh dialog's summary line. It reads the same
+	   custom property rather than declaring a second grid, because the two
+	   dialogs are one idiom — a ledger in a portalled paper — and the only thing
+	   that differs between them is what the tracks hold. */
+	.cs-search-dialog .cs-search-row,
+	.cs-search-dialog .cs-refresh-row {
 		display: grid;
 		grid-template-columns: var(--cs-search-cols);
 		column-gap: 8px;
@@ -1926,6 +2091,13 @@ input[type='number'] {
 	}
 	.cs-search-dialog .cs-search-ledger__head {
 		grid-template-columns: var(--cs-search-head-cols);
+	}
+	/* Above the breakpoint the header names every track, so a per-cell label
+	   would print the name twice. Same rule `.cs-ledger-cols` applies on the tab
+	   ledgers, restated here because that one is keyed to the page's width and
+	   this one to the dialog's. */
+	.cs-search-dialog .cs-cell-label {
+		display: none;
 	}
 }
 
@@ -2032,6 +2204,248 @@ input[type='number'] {
 	line-height: 1.5;
 }
 
+/* M13 S8b — the standing marks, and the toggles that filter on them.
+   ==========================================================================
+
+   F11.2: every import dialog was handed the character and threw it away, so a
+   player browsing 148 talents was told nothing about which they already hold or
+   which their skills reach. These are the two answers, in the row and in the
+   filter band. */
+
+/* "have" / "rank 5" beside the name. The small-caps caption register, NOT a chip:
+   a chip is a value or a named proficiency, and this is an annotation the dialog
+   is making about the reader's own sheet. It sits inline after the name so it
+   reads as part of the name's line rather than as a column. */
+.cs-search-dialog .cs-standing {
+	margin-left: 0.4rem;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	white-space: nowrap;
+	vertical-align: 0.05em;
+}
+/* Owned is not a warning. It is a fact about a list you are browsing on purpose —
+   a second copy of a torch is a legitimate thing to want — so it takes the quiet
+   bronze the reading-only registers use. */
+.cs-search-dialog .cs-standing--owned {
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+/* Out of reach IS a caution: the rules say no, and choosing it anyway puts
+   something on the sheet the character may not use. */
+.cs-search-dialog .cs-standing--blocked {
+	color: var(--cs-warning);
+}
+
+/* The standing toggles. One binary fact each, so a stamp that is pressed or not,
+   never a dropdown hiding its own state. Same construction as the section
+   header's control plates: keyline means pressable, and the pressed state fills
+   rather than merely darkening. */
+.cs-search-dialog .cs-search-toggle {
+	/* The floor, for a toggle outside the band. Inside it the band states one
+	   height for every control in the row and that wins on specificity. */
+	min-height: var(--nexus-target);
+	padding: 0 0.55rem;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--nexus-bronze);
+	background: none;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	border-radius: 0;
+	cursor: pointer;
+}
+.cs-search-dialog .cs-search-toggle:hover {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.cs-search-dialog .cs-search-toggle[aria-pressed='true'] {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 24%, transparent);
+}
+.cs-search-dialog .cs-search-toggle:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: 2px;
+}
+
+/* The whole of the entry, once the row is opened (F11.1).
+   ==========================================================================
+
+   Read on purpose rather than scanned, so this is the ONE place in the dialog
+   that leaves the dense ledger register and takes the reading one: body size, the
+   reading serif, and capped at the codex measure. Left uncapped it would run the
+   full width of an `md` dialog — about 130 characters, half again past the 84 the
+   rest of the site sets its prose to. */
+.cs-search-dialog .cs-search-details {
+	max-width: var(--nexus-measure);
+	padding: 0.25rem 0 0.5rem;
+	font-size: var(--nexus-text-sm);
+	line-height: 1.55;
+	/* `sanitizeHtml` returns the rulebook's `<br/>` runs as newlines, and a talent
+	   that lists three ranks is unreadable as one paragraph. */
+	white-space: pre-line;
+}
+
+/* The prose cell's lead, in a ledger row (M13 S8b, owner review).
+   ==========================================================================
+
+   It was `sanitizeHtml(value)` under `white-space: pre-line`, and `sanitizeHtml`
+   turns every `<br/>` into a newline — so a talent's `<br/><br/>` rank breaks
+   spent one or two of the three clamped lines on BLANK SPACE. The row looked
+   airy and said a third of what it had room for.
+
+   Flowed as one paragraph now (`entrySummary`), and clamped to two lines rather
+   than three: two full lines of words carry more than three ragged ones, and it
+   takes a row's height back on a list of 148. The quiet reading ink, because this
+   is a gloss under a name — the name is what the row is scanned for. */
+.cs-search-dialog .cs-entry-summary {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	font-size: var(--nexus-text-xs);
+	line-height: 1.4;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 62%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* The facts band inside a details panel (M13 S8b, owner review).
+   ==========================================================================
+
+   `--sub` was cut for the mount and storage lines: TWO fields, `nowrap`, and
+   capped at the ledger's measure so a wide window could not fling the load away
+   from the coins. An item panel puts FIVE in it, inside a dialog that is the phone
+   at 430px, where `nowrap` overflows rather than folding. It wraps here.
+
+   The measure cap goes too — `.cs-entry-prose` already caps this panel, and two
+   caps on one box is the narrower one silently winning. */
+.cs-search-dialog .cs-entry-prose .cs-meta-band--sub {
+	max-width: none;
+	flex-wrap: wrap;
+	gap: 0.15rem 1rem;
+}
+
+/* M13 S8b — the entry's own prose, with the structure the JSON carries.
+   ==========================================================================
+
+   Scoped to `.cs-entry-prose` rather than to the dialog, because this is not a
+   dialog thing: the Skills tab's ability panel is the next surface owed it, and
+   the third rule of this milestone's portal traps is that a block written for one
+   scope gets found by a second one a week later. */
+.cs-entry-prose {
+	max-width: var(--nexus-measure);
+	font-size: var(--nexus-text-sm);
+	line-height: 1.55;
+}
+.cs-entry-prose .cs-entry-prose__para {
+	margin: 0 0 0.45rem;
+}
+.cs-entry-prose .cs-entry-prose__para:last-child {
+	margin-bottom: 0;
+}
+/* The bronze diamond, third sizing of it (owner review).
+   ==========================================================================
+
+   The docs column draws 7px at 16-17px type; `.cs-companion-card` recut it to 5px
+   at 15px, because a marker that holds its absolute size while the text shrinks
+   around it reads as oversized. This panel reads at 14px, so 5px again — the
+   companion card's size, not the doc column's.
+
+   Centred on the first LINE BOX, not on an em (the S8 correction): an em is the
+   type size while the mark has to centre on the LEADING, which is 1.55 here. The
+   `em` form is the fallback for engines without `lh`; the `lh` form wins where it
+   is understood. */
+.cs-entry-prose .cs-entry-prose__list {
+	margin: 0 0 0.45rem;
+	padding-left: 0.95rem;
+	list-style: none;
+}
+.cs-entry-prose .cs-entry-prose__list li {
+	position: relative;
+	margin: 0 0 0.15rem;
+}
+.cs-entry-prose .cs-entry-prose__list li::before {
+	content: '';
+	position: absolute;
+	left: -0.95rem;
+	top: calc(0.5em * 1.55 - 2.5px);
+	top: calc(0.5lh - 2.5px);
+	width: 5px;
+	height: 5px;
+	transform: rotate(45deg);
+	background-color: var(--ifm-color-primary);
+}
+/* A rule that spans every rank sits above the ladder, separated by the ledger
+   hairline rather than by a heading — 16 of the 148 talents have one, and a
+   sub-heading over a single sentence is more chrome than the split needs. */
+.cs-entry-prose .cs-entry-prose__preamble {
+	padding-bottom: 0.45rem;
+	margin-bottom: 0.1rem;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+}
+
+/* One rung of the ladder. The rank marker is a small-caps label in its own
+   measure and the text runs beside it — the same course construction the record
+   plate uses, so a talent's ranks and an item's facts read as one carving.
+
+   Ruled between rungs, NOT barred down the side: a keyline is a frame, and a bar
+   used to bind content is the correction this theme has made more often than any
+   other (the spell card's accent, TalentCard's own ladder rail, the creature
+   block's section bar). */
+.cs-entry-prose .cs-talent-rung {
+	display: flex;
+	gap: 0.75rem;
+	padding: 0.4rem 0;
+}
+.cs-entry-prose .cs-talent-rung + .cs-talent-rung {
+	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+}
+.cs-entry-prose .cs-talent-rung__mark {
+	flex: 0 0 3.75rem;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	/* Against the first LINE of the rule text, not the middle of a rung that may
+	   run four lines — a marker centred on a tall block marks the wrong line, the
+	   same fault S8 fixed for the selection mark on a wrapped row. */
+	line-height: 1.55;
+	white-space: nowrap;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 82%,
+		var(--ifm-font-color-base)
+	);
+}
+.cs-entry-prose .cs-talent-rung__text {
+	min-width: 0;
+	flex: 1 1 auto;
+}
+
+/* The entry's name — the fact the row is scanned for, so it takes the row-title
+   register rather than a bare `fontWeight: 600` in the reading serif. */
+.cs-search-dialog .cs-refresh-row__name {
+	font-family: var(--nexus-font-ui);
+	font-weight: 600;
+	font-size: var(--nexus-text-dense);
+	line-height: 1.3;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 /* The diff, as courses of a record plate: field name left, the two values right.
    One label measure down the column, like every other plate on the sheet. */
 .cs-search-dialog .cs-change-plate {
@@ -2097,4 +2511,42 @@ input[type='number'] {
 }
 .cs-search-dialog .cs-confirm-danger.MuiButton-contained:hover {
 	background: color-mix(in srgb, var(--cs-danger) 26%, transparent);
+}
+
+/* M13 S3 (second pass) — the talent-points dialog.
+   ==========================================================================
+
+   It was an inline MUI dialog with a 10px coloured CIRCLE per skill: a block of
+   saturated colour carrying identity, and the only round shape in the whole set.
+   Both are things this theme rules out by name. It reads the record plate now,
+   which is why those rules gained a `.cs-tokens` scope — a portalled dialog is
+   outside `.character-sheet-page`, the same trap `.cs-companion-card` fell into
+   in S8. */
+
+/* The plate fills its container inside a details panel, where it is one of two
+   framed blocks that must end on the same line. Here it is one of three stacked
+   plates, so it takes its content's height instead. */
+.cs-talent-points .cs-record-plate {
+	height: auto;
+}
+/* The label slot is a fixed 6.5rem measure on the sheet, where every row is named
+   by one small-caps word. Here the name is a CHIP, whose silhouette needs its
+   points and whose text is a full skill name — so the measure grows and stops
+   forcing the tally off the right edge. */
+.cs-talent-points .cs-record-row__label {
+	flex: 0 0 auto;
+}
+/* The rule the points come from, in the quiet register. Not the caution band:
+   `--cs-warning` is reserved for a loss that cannot be undone, and this is simply
+   how the system works. */
+.cs-talent-points .cs-talent-points__rule {
+	margin: 0 0 0.75rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	line-height: 1.55;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 55%,
+		var(--ifm-font-color-base)
+	);
 }

@@ -1,20 +1,18 @@
 import React, { useState, useMemo } from 'react'
-import {
-	Typography,
-	Box,
-	FormControl,
-	InputLabel,
-	Select,
-	MenuItem,
-	TextField,
-	Button,
-	Checkbox,
-	ListItemText,
-} from '@mui/material'
+import { Typography, TextField, Button } from '@mui/material'
 import { SheetChip } from '../../../components'
 import { parseCostValue } from './costUtils'
 import type { SearchDialogColumn } from '../../../components'
-import { SearchDialog } from '../../../components'
+import {
+	SearchDialog,
+	FilterSelect,
+	entrySummary,
+	EntryProse,
+	MetaBand,
+	MetaBandField,
+	MetaBandLabel,
+	MetaBandValue,
+} from '../../../components'
 import equipmentData from '../../../../../utils/data/json/equipment.json'
 import armorData from '../../../../../utils/data/json/armor.json'
 import {
@@ -182,6 +180,37 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 		setCostMax('')
 	}
 
+	/*
+		Where each item stands against this character's purse and pack (F11.2).
+
+		`character` was declared and never read here. Two facts the dialog was
+		already holding:
+
+		- **owned** — the sheet already carries one by this name. Not a bar: a second
+		  torch is a legitimate thing to want, which is why it is `owned` and not
+		  `blocked`.
+		- **cost** — `items.coins` against the entry's price. `parseCostValue` is the
+		  same reader the Min/Max filter uses, so "affordable" here and "under 50"
+		  there cannot disagree. An entry with no parseable price (a `-`) is never
+		  barred: unknown is not the same as unaffordable.
+	*/
+	const standingOf = useMemo(() => {
+		const coins = character.items?.coins ?? 0
+		const owned = new Set(
+			(character.items?.items ?? []).map((entry) =>
+				entry.name.trim().toLowerCase(),
+			),
+		)
+		return (item: CombinedItemData) => {
+			const price = parseCostValue(String(item.cost ?? ''))
+			return {
+				owned: owned.has(item.name.trim().toLowerCase()),
+				blocked:
+					price !== null && price > coins ? `costs ${item.cost}` : undefined,
+			}
+		}
+	}, [character.items?.coins, character.items?.items])
+
 	const columns: SearchDialogColumn<CombinedItemData>[] = [
 		{
 			key: 'name',
@@ -224,17 +253,8 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 			sortable: false,
 			width: 'minmax(0, 1.6fr)',
 			render: (value, item) => (
-				<Typography
-					variant="caption"
-					sx={{
-						display: '-webkit-box',
-						WebkitLineClamp: 2,
-						WebkitBoxOrient: 'vertical',
-						overflow: 'hidden',
-						lineHeight: 1.2,
-					}}
-				>
-					{item.properties || value}
+				<Typography component="span" className="cs-entry-summary">
+					{entrySummary(String((item.properties || value) ?? ''))}
 				</Typography>
 			),
 		},
@@ -309,65 +329,78 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 			importButtonText="Import"
 			searchPlaceholder="Search by name, category, description, or properties..."
 			itemNoun="item"
+			getStanding={standingOf}
+			// A band, not a plate (owner review). `RecordPlate` is the sheet's shape
+			// for an entity's facts when there are eight of them and half take a
+			// control; here there are five short read-only values, and five ruled
+			// courses at a 6.5rem label measure is a tall sparse column for
+			// "Load 1, Cost 25". `MetaBand` is the same facts as one bounded line
+			// that wraps — the idiom the Items tab's purse strip already uses, one
+			// rank down. No separators between fields: a vertical rule there is the
+			// bar-as-grouping-device this theme has rejected three times.
+			renderDetails={(item: CombinedItemData) => (
+				<div className="cs-entry-prose">
+					<MetaBand variant="sub">
+						<MetaBandField>
+							<MetaBandLabel>Category</MetaBandLabel>
+							<MetaBandValue>{item.category}</MetaBandValue>
+						</MetaBandField>
+						<MetaBandField>
+							<MetaBandLabel>Quality</MetaBandLabel>
+							<MetaBandValue>{item.quality}</MetaBandValue>
+						</MetaBandField>
+						{item.av && (
+							<MetaBandField>
+								<MetaBandLabel sigil="av">AV</MetaBandLabel>
+								<MetaBandValue>{item.av}</MetaBandValue>
+							</MetaBandField>
+						)}
+						<MetaBandField>
+							<MetaBandLabel sigil="load">Load</MetaBandLabel>
+							<MetaBandValue>{item.load}</MetaBandValue>
+						</MetaBandField>
+						<MetaBandField>
+							<MetaBandLabel sigil="coins">Cost</MetaBandLabel>
+							<MetaBandValue>{item.cost}</MetaBandValue>
+						</MetaBandField>
+					</MetaBand>
+					{item.properties && (
+						<p className="cs-entry-prose__para">
+							<strong>Properties.</strong>{' '}
+							{entrySummary(String(item.properties))}
+						</p>
+					)}
+					{/* Through the parser, not printed raw: 20 equipment descriptions
+						carry `<br/>`, and React escapes an unparsed string so the tag
+						renders as the literal characters `<br/>` mid-sentence. */}
+					{item.description && (
+						<EntryProse source={item.description} name={item.name} />
+					)}
+				</div>
+			)}
+			// Alphabetical. It opened in JSON authoring order until now (F11.6).
+			defaultSort={{ key: 'name' }}
 			filters={
 				/* No wrapper: the dialog's filter band is the flex row now, so a second
 					one inside it was a box in a box. */
 				<>
-					<FormControl size="small" sx={{ minWidth: '10rem' }}>
-						<InputLabel id="equipment-quality-filter-label">Quality</InputLabel>
-						<Select
-							multiple
-							// `renderValue` is not called for an empty selection unless the
-							// control is told to render one, so every filter sat as a blank
-							// box under a static label instead of saying "All …" (M13 S8).
-							displayEmpty
-							labelId="equipment-quality-filter-label"
-							value={qualityFilter}
-							label="Quality"
-							onChange={(event) =>
-								setQualityFilter(event.target.value as string[])
-							}
-							renderValue={(selected) =>
-								selected.length ? selected.join(', ') : 'All qualities'
-							}
-						>
-							{qualityOptions.map((quality) => (
-								<MenuItem key={quality} value={quality}>
-									<Checkbox checked={qualityFilter.indexOf(quality) > -1} />
-									<ListItemText primary={quality} />
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
+					<FilterSelect
+						label="Quality"
+						allLabel="All qualities"
+						options={qualityOptions}
+						value={qualityFilter}
+						onChange={setQualityFilter}
+						minWidth="10rem"
+					/>
 
-					<FormControl size="small" sx={{ minWidth: '12rem' }}>
-						<InputLabel id="equipment-category-filter-label">
-							Item Type
-						</InputLabel>
-						<Select
-							multiple
-							// `renderValue` is not called for an empty selection unless the
-							// control is told to render one, so every filter sat as a blank
-							// box under a static label instead of saying "All …" (M13 S8).
-							displayEmpty
-							labelId="equipment-category-filter-label"
-							value={categoryFilter}
-							label="Item Type"
-							onChange={(event) =>
-								setCategoryFilter(event.target.value as string[])
-							}
-							renderValue={(selected) =>
-								selected.length ? selected.join(', ') : 'All types'
-							}
-						>
-							{categoryOptions.map((category) => (
-								<MenuItem key={category} value={category}>
-									<Checkbox checked={categoryFilter.indexOf(category) > -1} />
-									<ListItemText primary={category} />
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
+					<FilterSelect
+						label="Item Type"
+						allLabel="All types"
+						options={categoryOptions}
+						value={categoryFilter}
+						onChange={setCategoryFilter}
+						minWidth="12rem"
+					/>
 
 					{/* Three Material icons retired here (M13 S8): a dollar sign for a
 						currency the setting does not have, plus an up and a down arrow

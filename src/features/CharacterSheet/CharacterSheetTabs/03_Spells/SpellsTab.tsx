@@ -150,7 +150,35 @@ export const SpellsTab: React.FC = () => {
 					defaultExpanded
 					className="cs-ledger-cols"
 					actions={
+						/* Section-specific tools first, then the three verbs every section
+							has (reorder, add, search) — the same order the Skills tab's
+							strip takes, so a reader learns one shape rather than one per
+							tab. */
 						<>
+							<Tooltip
+								title={
+									spellUpdates.length
+										? `Update ${spellUpdates.length} spell${spellUpdates.length === 1 ? '' : 's'} to their latest versions`
+										: 'Spells are up to date'
+								}
+							>
+								{/* `pending`, so it pulses — see the Skills tab's twin and the
+									`data-state` block in characterSheet.css. Spells that have
+									drifted from the rulebook are an outstanding action of yours,
+									which is the state this sheet animates. */}
+								<IconButton
+									size="small"
+									onClick={() => setIsRefreshDialogOpen(true)}
+									data-state={spellUpdates.length ? 'pending' : undefined}
+									aria-label={
+										spellUpdates.length
+											? `Refresh spells — ${spellUpdates.length} out of date`
+											: 'Refresh spells'
+									}
+								>
+									<Autorenew fontSize="inherit" />
+								</IconButton>
+							</Tooltip>
 							<Tooltip
 								title={reorderMode ? 'Exit reorder mode' : 'Reorder spells'}
 							>
@@ -175,21 +203,6 @@ export const SpellsTab: React.FC = () => {
 										<Search fontSize="inherit" />
 									</IconButton>
 								</span>
-							</Tooltip>
-							<Tooltip
-								title={
-									spellUpdates.length
-										? `Update ${spellUpdates.length} spell${spellUpdates.length === 1 ? '' : 's'} to their latest versions`
-										: 'Spells are up to date'
-								}
-							>
-								<IconButton
-									size="small"
-									onClick={() => setIsRefreshDialogOpen(true)}
-									color={spellUpdates.length ? 'warning' : 'default'}
-								>
-									<Autorenew fontSize="inherit" />
-								</IconButton>
 							</Tooltip>
 						</>
 					}
@@ -253,10 +266,14 @@ export const SpellsTab: React.FC = () => {
 				onClose={() => setIsRefreshDialogOpen(false)}
 				title="Refresh spells from rulebook"
 				itemNoun="spell"
+				metaColumns={[
+					{ label: 'Discipline', width: 'minmax(0, 1fr)' },
+					{ label: 'Rank', width: '3.5rem' },
+				]}
 				entries={spellUpdates.map((u) => ({
 					id: u.id,
 					name: u.name,
-					sublabel: u.sublabel,
+					meta: [u.type || '—', String(u.rank)],
 					changes: u.changes,
 				}))}
 				onConfirm={applySpellUpdates}

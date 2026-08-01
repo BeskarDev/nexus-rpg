@@ -12,6 +12,9 @@ export { SingleSelectionDialog } from './SingleSelectionDialog'
 // primitive now, which is also what let `SingleSelectionDialog` become an adapter
 // over it rather than a second copy of its table.
 export { SearchDialog } from './SearchDialog'
+// M13 S8b — the one filter facet. Seven hand-built copies across four dialogs
+// before this, which is why `displayEmpty` was missing from all of them.
+export { FilterSelect } from './SearchDialog'
 // M13 S8 — the one confirmation shape, for the four actions whose loss cannot be
 // rebuilt from the rulebook. Everything else on the sheet deletes on the spot.
 export { ConfirmDialog } from './ConfirmDialog'
@@ -56,6 +59,15 @@ export { SheetTabBar } from './SheetTabBar'
 // M13 S4d — the record plate: an entity's numeric facts as a ledger of marked
 // rows, which is the shape every other numeric surface on the sheet already has.
 export { RecordPlate, RecordRow } from './RecordPlate'
+// M13 S8b — a rulebook entry's prose with the structure its JSON carries: a
+// talent's rank ladder, a spell's success tiers. Shares the docs generators'
+// parsers, not their cards; see the component's docblock for why.
+export {
+	EntryProse,
+	TalentLadder,
+	entrySummary,
+	talentRankSpan,
+} from './EntryProse'
 // M13 S4d — the meta band: a bounded line of facts about a tab or a section, at
 // two ranks. Two tabs' worth of hand-built `Box` trees before this existed.
 export {

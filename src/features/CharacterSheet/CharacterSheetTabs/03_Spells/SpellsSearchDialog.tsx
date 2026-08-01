@@ -1,22 +1,18 @@
 import React, { useMemo, useState } from 'react'
+import { Typography, Button } from '@mui/material'
 import {
-	Typography,
-	FormControl,
-	InputLabel,
-	Select,
-	MenuItem,
-	Checkbox,
-	ListItemText,
-	Button,
-} from '@mui/material'
-import { SheetChip } from '../../components'
+	SheetChip,
+	EntryProse,
+	entrySummary,
+	FilterSelect,
+} from '../../components'
 import { SearchDialog } from '../../components'
 import type { SearchDialogColumn } from '../../components'
 import arcaneSpellsData from '../../../../utils/data/json/arcane-spells.json'
 import mysticSpellsData from '../../../../utils/data/json/mystic-spells.json'
 import { CharacterDocument } from '../../../../types/Character'
-import { sanitizeHtml } from '../../../../utils/typescript/htmlSanitizer'
 import { buildSpellFromData } from '../../utils/spellFactory'
+import { maxLearnableSpellRank } from '../../utils/spellAccess'
 
 /**
  * The discipline colour map is gone (M13 S8) — see `EquipmentSearchDialog` for the
@@ -105,6 +101,55 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 		setTypeFilter([])
 	}
 
+	/*
+		Where each spell stands on THIS character's sheet (M13 S8b, F11.2).
+
+		`character` was declared and never read. The ceiling is `maxLearnableSpellRank`
+		— the magic skill's rank OR a spell-granting talent's, whichever reaches
+		higher. The first pass used the skill alone and was wrong on the owner's
+		correction: `Divine Scholar` is a Lore talent that grants mystic spells, so a
+		character with no Mysticism can legitimately know them. See `spellAccess.ts`.
+
+		What is NOT checked is the discipline half of the rule. A learned spell is
+		stored as `Spell`, which has no discipline field, so the sheet does not know
+		which disciplines a character has adopted; checking it would mean inventing
+		the data. For the same reason `owned` matches on NAME alone — the dialog keys
+		rows by `name|discipline` because two arcane spells are called *Astral Body*,
+		but the sheet records only the name, so learning either marks both. Named
+		here rather than papered over; the fix is a discipline on `Spell`, which is a
+		schema change and a migration.
+	*/
+	const standingOf = useMemo(() => {
+		const abilities = character.skills?.abilities ?? []
+		const known = new Set(
+			(character.spells?.spells ?? []).map((spell) =>
+				spell.name.trim().toLowerCase(),
+			),
+		)
+		const ceiling = maxLearnableSpellRank(
+			magicType,
+			character.skills?.skills ?? [],
+			abilities,
+		)
+
+		return (spell: SpellData) => {
+			const owned = known.has(spell.name.trim().toLowerCase())
+			// No skill and no granting talent: every spell of this kind is out of
+			// reach, and the reason is the discipline itself rather than the rank.
+			if (ceiling === null) return { owned, blocked: `no ${magicType}` }
+			return {
+				owned,
+				blocked:
+					Number(spell.rank) > ceiling ? `rank ${spell.rank}` : undefined,
+			}
+		}
+	}, [
+		character.spells?.spells,
+		character.skills?.skills,
+		character.skills?.abilities,
+		magicType,
+	])
+
 	const columns: SearchDialogColumn<SpellData>[] = [
 		{
 			key: 'name',
@@ -158,18 +203,8 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 			sortable: false,
 			width: 'minmax(0, 2fr)',
 			render: (value) => (
-				<Typography
-					variant="caption"
-					sx={{
-						display: '-webkit-box',
-						WebkitLineClamp: 3,
-						WebkitBoxOrient: 'vertical',
-						overflow: 'hidden',
-						lineHeight: 1.2,
-						whiteSpace: 'pre-line', // Preserve newlines from sanitized HTML
-					}}
-				>
-					{sanitizeHtml(value)}
+				<Typography component="span" className="cs-entry-summary">
+					{entrySummary(String(value ?? ''))}
 				</Typography>
 			),
 		},
@@ -226,67 +261,41 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 			getItemKey={spellKey}
 			importButtonText="Import"
 			itemNoun="spell"
+			getStanding={standingOf}
 			// Rank ascending, then name — the order a reader looks a spell up in. The
 			// JSON's own order is by discipline with ranks interleaved, which is an
 			// authoring artefact, not a reading order.
 			defaultSort={{ key: 'rank' }}
+			// An arcane spell's effect is a median of 558 characters and the row
+			// clamps it to three lines (F11.1). Opened, it shows the weak / strong /
+			// critical tiers the docs card shows — the same `SuccessLevel` rows, from
+			// the same parser — instead of collapsing them into one paragraph.
+			renderDetails={(spell) => (
+				<EntryProse source={spell.effect ?? ''} name={spell.name} />
+			)}
 			searchPlaceholder={`Search by name, ${typeLabel.toLowerCase()}, rank, or effect...`}
 			filters={
 				<>
-					<FormControl size="small" sx={{ minWidth: '10rem' }}>
-						<InputLabel id="rank-filter-label">Rank</InputLabel>
-						<Select
-							multiple
-							// `renderValue` is not called for an empty selection unless the
-							// control is told to render one, so every filter sat as a blank
-							// box under a static label instead of saying "All …" (M13 S8).
-							displayEmpty
-							labelId="rank-filter-label"
-							value={rankFilter}
-							label="Rank"
-							onChange={(event) =>
-								setRankFilter(event.target.value as string[])
-							}
-							renderValue={(selected) =>
-								selected.length ? selected.join(', ') : 'All ranks'
-							}
-						>
-							{rankOptions.map((rank) => (
-								<MenuItem key={rank} value={String(rank)}>
-									<Checkbox checked={rankFilter.indexOf(String(rank)) > -1} />
-									<ListItemText primary={`Rank ${rank}`} />
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
-
-					<FormControl size="small" sx={{ minWidth: '12rem' }}>
-						<InputLabel id="type-filter-label">{typeLabel}</InputLabel>
-						<Select
-							multiple
-							// `renderValue` is not called for an empty selection unless the
-							// control is told to render one, so every filter sat as a blank
-							// box under a static label instead of saying "All …" (M13 S8).
-							displayEmpty
-							labelId="type-filter-label"
-							value={typeFilter}
-							label={typeLabel}
-							onChange={(event) =>
-								setTypeFilter(event.target.value as string[])
-							}
-							renderValue={(selected) =>
-								selected.length ? selected.join(', ') : `All ${typeLabel}s`
-							}
-						>
-							{typeOptions.map((type) => (
-								<MenuItem key={type} value={type}>
-									<Checkbox checked={typeFilter.indexOf(type) > -1} />
-									<ListItemText primary={type} />
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
-
+					<FilterSelect
+						label="Rank"
+						allLabel="All ranks"
+						options={rankOptions.map(String)}
+						value={rankFilter}
+						onChange={setRankFilter}
+						optionLabel={(rank) => `Rank ${rank}`}
+						minWidth="10rem"
+					/>
+					{/* No tone. A discipline is unambiguously magic, so `--cs-magic` was
+						available and is deliberately not spent: S5 gave the magic register
+						to the cast plate, the focus pool and the catalyst, and cyan reads
+						as sorcery only while it stays rare. Structural bronze. */}
+					<FilterSelect
+						label={typeLabel}
+						allLabel={`All ${typeLabel.toLowerCase()}s`}
+						options={typeOptions}
+						value={typeFilter}
+						onChange={setTypeFilter}
+					/>
 					<Button
 						variant="text"
 						size="small"

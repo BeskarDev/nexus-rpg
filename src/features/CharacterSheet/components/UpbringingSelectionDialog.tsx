@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Typography, Box } from '@mui/material'
 import { SheetChip } from './SheetChip'
+import { entrySummary } from './EntryProse'
 import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
@@ -45,17 +46,8 @@ export const UpbringingSelectionDialog: React.FC<
 			sortable: false,
 			width: 'minmax(0, 2.4fr)',
 			render: (value, upbringing) => (
-				<Typography
-					variant="caption"
-					sx={{
-						display: '-webkit-box',
-						WebkitLineClamp: 3,
-						WebkitBoxOrient: 'vertical',
-						overflow: 'hidden',
-						lineHeight: 1.2,
-					}}
-				>
-					{upbringing.description}
+				<Typography component="span" className="cs-entry-summary">
+					{entrySummary(String(upbringing.description ?? ''))}
 				</Typography>
 			),
 		},
@@ -101,6 +93,8 @@ export const UpbringingSelectionDialog: React.FC<
 			onConfirm={handleConfirm}
 			getItemKey={(upbringing) => upbringing.name}
 			confirmButtonText="Select Upbringing"
+			// Alphabetical rather than the JSON's authoring order (F11.6).
+			defaultSort={{ key: 'name' }}
 			itemNoun="upbringing"
 			searchPlaceholder="Search by name, description, or suggested skills..."
 		/>
