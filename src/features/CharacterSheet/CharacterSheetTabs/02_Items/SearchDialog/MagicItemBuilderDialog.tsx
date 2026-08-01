@@ -59,6 +59,11 @@ import {
 	getStaffCharges,
 	getStaffSpellCapacity,
 } from '../utils/magicItemsConfig'
+import {
+	getCulturalVariants,
+	hasCulturalVariants,
+} from '../utils/culturalVariants'
+import { getBaseDamageType } from '../utils/weaponDamage'
 
 const isWandItem = (item: BaseItem | null): boolean =>
 	!!item && item.properties?.includes('wand') === true
@@ -82,7 +87,8 @@ export type MagicItemBuilderDialogProps = {
 }
 
 /** Which register is showing its controls. */
-type OpenRegister = 'item' | 'quality' | 'material' | 'enchantment'
+type OpenRegister =
+	'item' | 'quality' | 'material' | 'enchantment' | 'appearance'
 
 /**
  * The Magic Item Builder — a commission, and the item it prices (M13 S8).
@@ -138,6 +144,17 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 	const [selectedEnchantment, setSelectedEnchantment] =
 		useState<Enchantment | null>(null)
 	/**
+	 * The cultural weapon or armor type the item is styled as — a *Bastard Sword*
+	 * rather than a *Longsword*. Null means the base item's own name.
+	 *
+	 * A NAME and nothing else, per the equipment chapter's two "of the Regions"
+	 * sections. It is deliberately not part of `BaseItem`, so no cost, load or
+	 * property calculation can ever read it.
+	 */
+	const [selectedAppearance, setSelectedAppearance] = useState<string | null>(
+		null,
+	)
+	/**
 	 * Where the item lands. NOT a question this dialog asks any more (M13 S8, second
 	 * pass): it is a filing instruction, not a property of the item, and
 	 * `ItemDetails` already carries a Location row that edits it on the sheet. It was
@@ -147,7 +164,6 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 	const targetLocation: 'worn' | 'carried' = 'carried'
 	const [openRegister, setOpenRegister] = useState<OpenRegister>('item')
 	const [showConfirmClose, setShowConfirmClose] = useState(false)
-	const [createdName, setCreatedName] = useState('')
 	const [copied, setCopied] = useState(false)
 
 	// Ledger-local filters.
@@ -321,9 +337,25 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 						selectedMaterial,
 						selectedEnchantment,
 						selectedQuality,
+						selectedAppearance,
 					)
 				: '',
-		[selectedBaseItem, selectedMaterial, selectedEnchantment, selectedQuality],
+		[
+			selectedBaseItem,
+			selectedMaterial,
+			selectedEnchantment,
+			selectedQuality,
+			selectedAppearance,
+		],
+	)
+
+	/** The appearances open to the chosen base item, its own name first. */
+	const appearances = useMemo(
+		() => (selectedBaseItem ? getCulturalVariants(selectedBaseItem.name) : []),
+		[selectedBaseItem],
+	)
+	const itemHasVariants = Boolean(
+		selectedBaseItem && hasCulturalVariants(selectedBaseItem.name),
 	)
 
 	const finalDescription = useMemo(() => {
@@ -369,7 +401,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 			: null
 
 	const hasDraft = Boolean(
-		selectedBaseItem || selectedQuality || selectedEnchantment || createdName,
+		selectedBaseItem || selectedQuality || selectedEnchantment,
 	)
 	const canCreate = Boolean(
 		selectedBaseItem && selectedQuality && selectedMaterial,
@@ -380,8 +412,8 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 		setSelectedQuality('')
 		setSelectedMaterial(null)
 		setSelectedEnchantment(null)
+		setSelectedAppearance(null)
 		setOpenRegister('item')
-		setCreatedName('')
 		setItemQuery('')
 		setCategoryFilter(null)
 		setMaterialQuery('')
@@ -403,7 +435,26 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 		// different category invalidates both. Cleared rather than silently kept.
 		setSelectedMaterial(null)
 		setSelectedEnchantment(null)
-		setCreatedName('')
+		// The appearance list is the base item's own, so a different item invalidates
+		// it as surely as the category invalidates the material.
+		setSelectedAppearance(null)
+		/*
+			Appearance next, where it has anything to offer (owner review).
+
+			It sat last on the theory that the register changing nothing but the name
+			must not interrupt the ones that price the item. But it is answered ENTIRELY
+			by the base item — nothing downstream feeds it — so putting it last made the
+			reader carry "what is this thing called" past three decisions that have no
+			bearing on it. Naming the sword is part of picking the sword.
+
+			Items with no variants skip straight to quality: advancing into a locked
+			register would state a decision that is not there.
+		*/
+		setOpenRegister(hasCulturalVariants(item.name) ? 'appearance' : 'quality')
+	}
+
+	const chooseAppearance = (name: string | null) => {
+		setSelectedAppearance(name)
 		setOpenRegister('quality')
 	}
 
@@ -412,7 +463,6 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 		// A material or enchantment can fall out of range when quality drops.
 		setSelectedMaterial(null)
 		setSelectedEnchantment(null)
-		setCreatedName('')
 		/*
 			Straight to the ENCHANTMENT, not the material.
 
@@ -423,6 +473,25 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 			it as a refinement, already answered.
 		*/
 		setOpenRegister('enchantment')
+	}
+
+	/*
+		Choosing ADVANCES the chain, it does not just record an answer (owner review).
+
+		Every register up to here handed you the next one, and the enchantment did not:
+		picking one left its own list open, so the material was reachable only through
+		its `Change` control, which a reader who had never seen it open had no reason
+		to press. A settled register that stays open is also the one thing the collapse
+		rule exists to prevent.
+	*/
+	const chooseEnchantment = (enchantment: Enchantment | null) => {
+		setSelectedEnchantment(enchantment)
+		setOpenRegister('material')
+	}
+
+	// Material is the end of the chain, so it stays open with its answer marked.
+	const chooseMaterial = (material: SpecialMaterial) => {
+		setSelectedMaterial(material)
 	}
 
 	const handleCreateItem = () => {
@@ -453,7 +522,22 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 			itemToCreate = {
 				...baseProps,
 				damage: {
-					base: '',
+					/*
+						The rules default, from the weapon's own type (owner report: a
+						Cleaver arrived with an empty base attribute).
+
+						This was a hardcoded `''`, so every weapon the builder has ever made
+						landed on the sheet with no base attribute at all and a damage
+						equation that could not be read. `importWeapons` defaults it to
+						`STR`, but the builder's payload is spread OVER that default, so the
+						empty string won every time.
+
+						A spell catalyst keeps the empty base on purpose: its bonus applies
+						to a spell, and the spell carries its own attribute.
+					*/
+					base: isWeapon
+						? getBaseDamageType(selectedBaseItem.weaponCategory)
+						: '',
 					weapon: baseDamage + bonus,
 					other: 0,
 					otherWeak: 0,
@@ -493,9 +577,24 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 			} as Partial<Item>
 		}
 
-		setCreatedName(finalName)
 		if (character && onCreateItem && itemToCreate) onCreateItem(itemToCreate)
 		if (onItemCreated && itemToCreate) onItemCreated(itemToCreate, finalName)
+
+		/*
+			Adding the item ENDS the commission (owner review).
+
+			It used to flash "Created X" and leave the whole draft standing, which put
+			the reader in front of a builder holding an item that already exists —
+			pressing the verb again silently made a second copy, and closing then asked
+			whether to discard work that had already been saved. The item's real home is
+			the Items tab, which is behind this dialog, so the deliverable is only
+			visible once the dialog is gone.
+
+			`handleReset` rather than `handleClose`: the draft was committed, so there is
+			nothing to confirm the loss of.
+		*/
+		handleReset()
+		onClose()
 	}
 
 	/**
@@ -654,11 +753,6 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 								Copied
 							</span>
 						)}
-						{createdName && !copied && (
-							<span className="cb-flash" role="status">
-								Created {createdName}
-							</span>
-						)}
 						{/*
 							The primary verb only exists where there is something to add the item
 							TO. On the docs page there is no character, `onCreateItem` is never
@@ -782,8 +876,86 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 					</Ledger>
 				</BuilderRegister>
 
+				{/*
+					The equipment chapter's two "of the Regions" sections, which the builder
+					could not reach before: every item it made was a *Bronze Longsword*,
+					never a *Bronze Bastard Sword*.
+
+					Directly behind the base item (owner review). It was last, on the
+					theory that the register changing nothing but the name must not
+					interrupt the ones that price the item. But it is answered ENTIRELY by
+					the base item and nothing downstream feeds it, so putting it last made
+					the reader carry "what is this thing called" past three decisions with
+					no bearing on it. Naming the sword is part of picking the sword.
+				*/}
 				<BuilderRegister
 					step="II"
+					label="Appearance"
+					note="a name only, no mechanical change"
+					open={openRegister === 'appearance'}
+					onOpen={() => setOpenRegister('appearance')}
+					locked={
+						!selectedBaseItem
+							? 'Choose a base item to see its cultural types'
+							: !itemHasVariants
+								? `A ${selectedBaseItem.name} has no cultural variants`
+								: undefined
+					}
+					summary={
+						<>
+							<b>{selectedAppearance ?? selectedBaseItem?.name}</b>
+							{selectedAppearance ? ` — a ${selectedBaseItem?.name}` : ''}
+						</>
+					}
+				>
+					<Ledger
+						label="Appearance"
+						columns="15px minmax(6rem, 1fr) 9.5rem minmax(0, 1.6fr)"
+						headings={[
+							{ label: '' },
+							{ label: 'Called' },
+							{ label: 'Common in' },
+							{ label: 'Counts as' },
+						]}
+					>
+						{appearances.map(({ name, region }, index) => (
+							<LedgerRow
+								key={name}
+								selected={
+									index === 0
+										? selectedAppearance === null
+										: selectedAppearance === name
+								}
+								/* The standard name is a real row, not the absence of one —
+									the same rule the "No enchantment" row above follows. It
+									stores `null` so the name tracks the base item rather than
+									going stale against it. */
+								onSelect={() => chooseAppearance(index === 0 ? null : name)}
+							>
+								<span className="cb-row__name">{name}</span>
+								{/* Where the shape is COMMON, never who may carry one — the
+									rules are explicit that the keying is suggestive. The
+									standard form belongs to no one people, so it says so
+									rather than claiming a region. */}
+								<span className="cb-row__skills">
+									{index === 0
+										? '—'
+										: region === 'Common'
+											? 'every land'
+											: region}
+								</span>
+								<span className="cb-row__skills">
+									{index === 0
+										? 'the standard form'
+										: `${selectedBaseItem?.name}, unchanged in every stat`}
+								</span>
+							</LedgerRow>
+						))}
+					</Ledger>
+				</BuilderRegister>
+
+				<BuilderRegister
+					step="III"
 					label="Quality"
 					note="magic items start at Q3"
 					open={openRegister === 'quality'}
@@ -808,7 +980,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 				</BuilderRegister>
 
 				<BuilderRegister
-					step="III"
+					step="IV"
 					label="Enchantment"
 					note="optional"
 					grow
@@ -851,7 +1023,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 							not the absence of one. */}
 						<LedgerRow
 							selected={selectedEnchantment === null}
-							onSelect={() => setSelectedEnchantment(null)}
+							onSelect={() => chooseEnchantment(null)}
 						>
 							<span className="cb-row__name">No enchantment</span>
 							<span className="cb-row__num">—</span>
@@ -861,7 +1033,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 							<LedgerRow
 								key={enchantment.id}
 								selected={selectedEnchantment?.id === enchantment.id}
-								onSelect={() => setSelectedEnchantment(enchantment)}
+								onSelect={() => chooseEnchantment(enchantment)}
 							>
 								<span className="cb-row__name">{enchantment.name}</span>
 								<span className="cb-row__num" style={{ textAlign: 'center' }}>
@@ -881,7 +1053,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 				</BuilderRegister>
 
 				<BuilderRegister
-					step="IV"
+					step="V"
 					label="Material"
 					note="required; a base material costs nothing extra"
 					grow
@@ -944,7 +1116,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 								<LedgerRow
 									key={material.id}
 									selected={selectedMaterial?.id === material.id}
-									onSelect={() => setSelectedMaterial(material)}
+									onSelect={() => chooseMaterial(material)}
 								>
 									<span className="cb-row__name">{material.name}</span>
 									<span className="cb-row__num">

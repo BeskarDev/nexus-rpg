@@ -26,6 +26,7 @@ import { normalizeSkillName } from '../../../constants/skills'
 import { calculateTalentHpBonus } from './calculateTalentHpBonus'
 import { calculateFolkAvBonus } from './calculateFolkAvBonus'
 import { createNaturalWeapons } from './createNaturalWeapons'
+import { getBaseDamageType } from '../CharacterSheetTabs/02_Items/utils/weaponDamage'
 
 /**
  * Capitalizes starting item names to match the item naming convention
@@ -191,7 +192,9 @@ const createWeaponFromName = (weaponName: string) => {
 		id: uuidv4(),
 		name: weaponData.name,
 		damage: {
-			base: 'STR' as const,
+			// The rules default for the weapon's own type. Hardcoded `STR` before,
+			// which handed every archetype starting with a bow a Strength bow.
+			base: getBaseDamageType(weaponData.type),
 			weapon: parseInt(weaponData.damage) || 0,
 			other: 0,
 			otherWeak: 0,
@@ -535,8 +538,7 @@ export const createInitialCharacter = (
 		tradition?: string
 		discipline?: string
 	}
-	const startingSpells: ArchetypeSpellInfo[] =
-		spellData?.startingSpells ?? []
+	const startingSpells: ArchetypeSpellInfo[] = spellData?.startingSpells ?? []
 
 	const filteredStartingSpells = startingSpells.filter((spell) => {
 		const spellPath = spell.tradition || spell.discipline
@@ -545,27 +547,25 @@ export const createInitialCharacter = (
 		return true
 	})
 
-	const dedupedStartingSpells = filteredStartingSpells.reduce<ArchetypeSpellInfo[]>(
-		(acc, spell) => {
-			const key = `${spell.name}-${spell.rank}`
-			if (!acc.some((existing) => `${existing.name}-${existing.rank}` === key)) {
-				acc.push(spell)
-			}
-			return acc
-		},
-		[],
-	)
+	const dedupedStartingSpells = filteredStartingSpells.reduce<
+		ArchetypeSpellInfo[]
+	>((acc, spell) => {
+		const key = `${spell.name}-${spell.rank}`
+		if (!acc.some((existing) => `${existing.name}-${existing.rank}` === key)) {
+			acc.push(spell)
+		}
+		return acc
+	}, [])
 
 	// Add combat arts for Fighting or Archery rank 1 skills
 	uniqueRank1Skills.forEach((skillName) => {
 		if (skillName === 'Fighting' || skillName === 'Archery') {
 			const combatArts =
-				archetype?.recommendedCombatArts && archetype.recommendedCombatArts.length
+				archetype?.recommendedCombatArts &&
+				archetype.recommendedCombatArts.length
 					? archetype.recommendedCombatArts
 							.map((artName) => findCombatArtByName(artName))
-							.filter(
-								(art): art is NonNullable<typeof art> => art != null,
-							)
+							.filter((art): art is NonNullable<typeof art> => art != null)
 							.slice(0, 2)
 					: findCombatArtsForSkill(skillName, 2)
 			combatArts.forEach((art) => {
@@ -885,7 +885,10 @@ export const createInitialCharacter = (
 						? 'Mysticism'
 						: ''),
 			specialization:
-				chosenSpellPath || spellData?.specialization || spellData?.magicSkill || '',
+				chosenSpellPath ||
+				spellData?.specialization ||
+				spellData?.magicSkill ||
+				'',
 			focus: {
 				total:
 					spellData ||
@@ -904,7 +907,10 @@ export const createInitialCharacter = (
 			spellCatalystDamage: 0,
 			spells:
 				spellData && startingSpells.length
-					? (dedupedStartingSpells.length ? dedupedStartingSpells : startingSpells)
+					? (dedupedStartingSpells.length
+							? dedupedStartingSpells
+							: startingSpells
+						)
 							.map((spellInfo) => {
 								const magicSkill =
 									spellData?.magicSkill ||
@@ -914,8 +920,7 @@ export const createInitialCharacter = (
 								return createSpellFromData(spellInfo.name, magicSkill)
 							})
 							.filter(
-								(spell): spell is NonNullable<typeof spell> =>
-									spell !== null,
+								(spell): spell is NonNullable<typeof spell> => spell !== null,
 							)
 					: [],
 		},

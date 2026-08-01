@@ -356,7 +356,9 @@
 }
 .codex-builder .cb-register__summary {
 	display: flex;
-	align-items: baseline;
+	/* Centred, not baseline: the `Change` control is a padded keylined box now, and
+	   seating a box on a text baseline hangs its lower half below the answer. */
+	align-items: center;
 	justify-content: space-between;
 	gap: 0.5rem;
 	width: 100%;
@@ -368,10 +370,6 @@
 	color: var(--ifm-font-color-base);
 	text-align: left;
 	cursor: pointer;
-}
-.codex-builder .cb-register__summary:hover .cb-register__change,
-.codex-builder .cb-register__summary:focus-visible .cb-register__change {
-	color: var(--nexus-bronze);
 }
 .codex-builder .cb-register__summary:focus-visible {
 	outline: 1.5px solid var(--nexus-bronze);
@@ -386,14 +384,35 @@
 .codex-builder .cb-register__answer b {
 	font-weight: 700;
 }
-/* Not a keyline: the whole summary row is the control, and a second bordered
-   shape inside it would claim there are two. */
+/* Closed but unanswered — a fact about the register, not an answer, so it takes the
+   quiet ink the locked reason does. */
+.codex-builder .cb-register__answer--none {
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--cb-ink-quiet);
+}
+/* A keyline, after all (owner review).
+   It was a bare small-caps word on the theory that the whole summary row is the
+   control and a second bordered shape inside it would claim there are two. In use
+   that reads as a caption, not as a way back into a decision — and this dialog's
+   own rule is that A KEYLINE MEANS PRESSABLE, so the one thing the reader must
+   press to reopen a settled register cannot be the one control without one.
+   The row stays clickable; this is the affordance that says so. */
 .codex-builder .cb-register__change {
 	flex: 0 0 auto;
-	font-size: var(--nexus-text-3xs);
+	padding: 0.1rem 0.45rem;
+	border: 1.5px solid var(--cb-line-strong);
+	background: var(--ifm-background-surface-color);
+	font-size: var(--nexus-text-2xs);
 	font-variant-caps: small-caps;
+	font-weight: 700;
 	letter-spacing: 0.06em;
-	color: var(--cb-ink-quiet);
+	color: var(--cb-ink);
+}
+.codex-builder .cb-register__summary:hover .cb-register__change,
+.codex-builder .cb-register__summary:focus-visible .cb-register__change {
+	border-color: var(--nexus-bronze);
+	background: var(--cb-wash-strong);
 }
 
 /* A decision that cannot be made yet — the register is SHOWN and says why, for the

@@ -83,10 +83,28 @@ export const BuilderRegister: React.FC<BuilderRegisterProps> = ({
 				<p className="cb-locked">{locked}</p>
 			) : collapsed ? (
 				/* The settled answer, and the way back to change it. A real button:
-					reopening is a press, and it must be reachable from the keyboard. */
+					reopening is a press, and it must be reachable from the keyboard.
+					The `Change` span carries the keyline (owner review) — the row being
+					clickable is not something a reader can see, and a bare small-caps word
+					read as a caption rather than as a control. */
 				<button type="button" className="cb-register__summary" onClick={onOpen}>
-					<span className="cb-register__answer">{summary}</span>
-					<span className="cb-register__change">Change</span>
+					{/*
+						A closed register is not always a SETTLED one: reordering the Magic
+						Item Builder put Appearance ahead of Quality, and Quality is
+						reachable but unanswered while it sits there. That rendered a blank
+						line with a `Change` control beside it — a way back into a decision
+						never made. It says what it is, and the verb is `Choose`.
+					*/}
+					<span
+						className={`cb-register__answer${
+							summary ? '' : ' cb-register__answer--none'
+						}`}
+					>
+						{summary ?? 'Not chosen yet'}
+					</span>
+					<span className="cb-register__change">
+						{summary ? 'Change' : 'Choose'}
+					</span>
 				</button>
 			) : (
 				children

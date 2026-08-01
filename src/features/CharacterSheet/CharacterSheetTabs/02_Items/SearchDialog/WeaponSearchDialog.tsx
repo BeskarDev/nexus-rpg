@@ -19,10 +19,10 @@ import weaponsData from '../../../../../utils/data/json/weapons.json'
 import {
 	Weapon,
 	CharacterDocument,
-	BaseDamageType,
 	DamageType,
 } from '../../../../../types/Character'
 import { QualityTier } from '../utils/magicItemsConfig'
+import { getBaseDamageType } from '../utils/weaponDamage'
 
 /**
  * `getWeaponTypeColor` is gone (M13 S8) — see the note in `EquipmentSearchDialog`.
@@ -105,44 +105,6 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 		setCostMax('')
 	}
 
-	// Helper function to determine the base damage type for a weapon
-	const getBaseDamageType = (weapon: WeaponData): BaseDamageType => {
-		const weaponType = weapon.type.toLowerCase()
-		const properties = weapon.properties.toLowerCase()
-
-		// Check if it's a ranged weapon type
-		const isRanged =
-			weaponType === 'bow' ||
-			weaponType === 'crossbow' ||
-			weaponType === 'thrown' ||
-			properties.includes('thrown') ||
-			properties.includes('range')
-
-		const isThrown = weaponType === 'thrown' || properties.includes('thrown')
-		const isAgile = properties.includes('agile')
-
-		const strValue = character.statistics.strength.value
-		const agiValue = character.statistics.agility.value
-
-		// Special case: thrown ranged weapons use STR if it's higher than AGI
-		if (isRanged && isThrown) {
-			return strValue > agiValue ? 'STR' : 'AGI'
-		}
-
-		// Other ranged weapons always use AGI
-		if (isRanged) {
-			return 'AGI'
-		}
-
-		// Agile weapons use AGI if character has higher AGI than STR
-		if (isAgile) {
-			return agiValue > strValue ? 'AGI' : 'STR'
-		}
-
-		// Default to STR for melee weapons
-		return 'STR'
-	}
-
 	const columns: SearchDialogColumn<WeaponData>[] = [
 		{
 			key: 'name',
@@ -171,7 +133,7 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 			align: 'center',
 			width: '4.5rem',
 			render: (value, weapon) => {
-				const baseDamage = getBaseDamageType(weapon)
+				const baseDamage = getBaseDamageType(weapon.type)
 				return (
 					<>
 						<Typography variant="body2">{value}</Typography>
@@ -229,7 +191,7 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 				id: crypto.randomUUID(),
 				name: weapon.name,
 				damage: {
-					base: getBaseDamageType(weapon),
+					base: getBaseDamageType(weapon.type),
 					weapon: parseInt(weapon.damage) || 0,
 					other: 0,
 					otherWeak: 0,

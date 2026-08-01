@@ -39,18 +39,58 @@ If you would gain AV from multiple sources, but they both count as your armor/sh
 | --- | --- | --- | --- | --- | --- |
 | 2 | Helmet | 1 | apparel (head) | 1 | 150 |
 <br/><br/>
-## Different Cultural Armor Types
+## Armor of the Regions
 
-Depending on the culture your adventurer is a part of or that has created a specific piece of armor, you can choose a different appearance for specific armor types without changing their game mechanics:
+Every people that works bronze shapes it their own way. The names below are the same pieces of armor under different hands, and choosing one changes nothing about how the item works. It is a name and an appearance, no more.
 
-### Light Armor
+A region tells you where a shape is **common**, not who is allowed to carry one. Name your piece of armor after any of these regardless of where your adventurer is from, or invent a name of your own and tell the table what it counts as.
 
-**Leather:** Padded Cloth, Heavy Robes<br/>**Banded Leather:** Studded Leather, Piecemeal Mail<br/>**Chain Mail:** Linothorax, Bone Lamellar, Horn Lamellar
+### The Eternal Desert
 
-### Heavy Armor
+| Name | Counts as |
+| --- | --- |
+| Heavy Robes | Leather |
+| Disk Plate | Scale Mail |
+| Reinforced Turban | Helmet |
 
-**Scale Mail:** Disk Plate, Wood Plates,  Shell Plates<br/>**Breastplate:** Plate Cuirass, Splint Mail<br/>**Plate Harness:** Segmented Plate, Heavy Lamellar, O-Yoroi
+### The Western Island Realms
 
-### Helmet
+| Name | Counts as |
+| --- | --- |
+| Linothorax | Chain Mail |
+| Shell Plates | Scale Mail |
+| Plate Cuirass | Breastplate |
+| Segmented Plate | Plate Harness |
+| Bell Cuirass | Plate Harness |
+| Boar Tusk Helm | Helmet |
 
-**Helmet:** Reinforced Turban, Studded Leather Hood
+### The Eastern Mist Realms
+
+| Name | Counts as |
+| --- | --- |
+| Horn Lamellar | Chain Mail |
+| Tanko | Breastplate |
+| Heavy Lamellar | Plate Harness |
+| Keiko | Plate Harness |
+
+### The Frozen North
+
+| Name | Counts as |
+| --- | --- |
+| Bone Lamellar | Chain Mail |
+| Splint Mail | Breastplate |
+
+### The Southern Jungle
+
+| Name | Counts as |
+| --- | --- |
+| Wood Plates | Scale Mail |
+
+### Common to Every Land
+
+| Name | Counts as |
+| --- | --- |
+| Padded Cloth | Leather |
+| Studded Leather | Banded Leather |
+| Piecemeal Mail | Banded Leather |
+| Studded Leather Hood | Helmet |

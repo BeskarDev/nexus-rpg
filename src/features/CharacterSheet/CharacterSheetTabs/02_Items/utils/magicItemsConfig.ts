@@ -808,29 +808,38 @@ export function getDurabilityDie(
 /**
  * Generate item name with material, enchantment, and bonus suffix.
  * Format: [prefix] [material] [base item] [+X] [suffix]
+ *
+ * `appearance` is the cultural weapon or armor type the reader picked (see
+ * `culturalVariants.ts`). It substitutes for the base item's own name and changes
+ * nothing else, which is exactly what the equipment chapter says it does: "you can
+ * choose a different appearance for specific weapon types without changing their
+ * game mechanics". A *Bronze Longsword* and a *Bronze Bastard Sword* are the same
+ * item priced the same way.
  */
 export function generateItemName(
 	baseItem: BaseItem,
 	material: SpecialMaterial | null,
 	enchantment: Enchantment | null,
 	quality: QualityTier,
+	appearance?: string | null,
 ): string {
-	let name = baseItem.name
+	const itemName = appearance || baseItem.name
+	let name = itemName
 
 	// Add material and enchantment
 	if (material && enchantment) {
 		if (enchantment.type === 'prefix') {
-			name = `${enchantment.name} ${material.name} ${baseItem.name}`
+			name = `${enchantment.name} ${material.name} ${itemName}`
 		} else {
-			name = `${material.name} ${baseItem.name} ${enchantment.name}`
+			name = `${material.name} ${itemName} ${enchantment.name}`
 		}
 	} else if (material) {
-		name = `${material.name} ${baseItem.name}`
+		name = `${material.name} ${itemName}`
 	} else if (enchantment) {
 		if (enchantment.type === 'prefix') {
-			name = `${enchantment.name} ${baseItem.name}`
+			name = `${enchantment.name} ${itemName}`
 		} else {
-			name = `${baseItem.name} ${enchantment.name}`
+			name = `${itemName} ${enchantment.name}`
 		}
 	}
 

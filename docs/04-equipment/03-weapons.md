@@ -87,38 +87,138 @@ Though most weapons are listed as Quality 2 items, more primitive cultures will 
 
 Primitive weapons cost 1/2 the normal amount and have the fragile property (see the rules for special materials).
 
-## Different Cultural Weapon Types
+## Arms of the Regions
 
-Depending on the culture your adventurer is a part of or that has created a specific weapon, you can choose a different appearance for specific weapon types without changing their game mechanics:
+Every people that works bronze shapes it their own way. The names below are the same weapons under different hands, and choosing one changes nothing about how the item works. It is a name and an appearance, no more.
 
-### Axe Types
+A region tells you where a shape is **common**, not who is allowed to carry one. Name your weapon after any of these regardless of where your adventurer is from, or invent a name of your own and tell the table what it counts as.
 
-**Throwing Axe:** Handaxe<br/>**Hatchet:** Broadaxe, Cleaver, War Sickle<br/>**Battleaxe:** Crescent Axe<br/>**Greataxe:** Elipson Axe, War Scythe
+### The Eternal Desert
 
-### Blade Types
+| Name | Counts as |
+| --- | --- |
+| War Sickle | Hatchet |
+| Crescent Axe | Battleaxe |
+| Duckbill Axe | Battleaxe |
+| Epsilon Axe | Greataxe |
+| Khopesh | Scimitar |
+| Sappara | Scimitar |
+| Akinakes | Shortsword |
+| Chariot Sword | Longsword |
+| Twin Khopesh | Twinblade |
+| Angular Bow | Longbow |
+| Scourge | Whip |
+| War Scepter | Club |
+| Throwing Stick | Throwing Club |
+| Flail | Mace |
+| Scepter | Quarterstaff |
 
-**Throwing Knife:** Dart, Throwing Star, Chakram<br/>**Scimitar:** Khopesh, Kukri, Kopis, Machete, Macuahuitl, Shotel<br/>**Shortsword:** Dagger, Gladius, Kris, Xiphos, Duan Jian, Wakizashi<br/>**Broadsword:** Katana, Dao, Yatagan<br/>**Longsword:** Bastard Sword, Rapier, Jian<br/>**Crescent Greatsword:** Rhomphaia, Odachi, Miaodao<br/>**Greatsword:** Claymore, Gim<br/>**Twinblade: **War Chakram
+### The Western Island Realms
 
-### Bow Types
+| Name | Counts as |
+| --- | --- |
+| Labrys | Greataxe |
+| Plumbata | Throwing Knife |
+| Kopis | Scimitar |
+| Gladius | Shortsword |
+| Xiphos | Shortsword |
+| Spatha | Broadsword |
+| Falcata | Broadsword |
+| Harpe | Crescent Greatsword |
+| Great Xiphos | Greatsword |
+| Siege Bow | Warbow |
+| Gastraphetes | Light Crossbow |
+| Hand Ballista | Heavy Crossbow |
+| Scorpion | Heavy Crossbow |
+| Harpoon | Javelin |
+| Pilum | Javelin |
+| Trident | Short Spear |
+| Sarissa | Spear |
+| Dory | Spear |
+| Staff Sling | Sling |
+| Net | Bola |
+| Kestros | Spear Thrower |
 
-**Shortbow:** Hunting Bow<br/>**Longbow:** Composite Bow<br/>**Warbow:** Greatbow
+### The Eastern Mist Realms
 
-### Brawling Types
+| Name | Counts as |
+| --- | --- |
+| Yue | Battleaxe |
+| Chakram | Throwing Knife |
+| Dao | Scimitar |
+| Jian | Shortsword |
+| Chokuto | Broadsword |
+| Ring-Pommel Sword | Longsword |
+| Tsurugi | Greatsword |
+| War Chakram | Twinblade |
+| Yumi | Longbow |
+| Urumi | Whip |
+| Katar | Claw |
+| Bagh Nakh | Claw |
+| Meteor Hammer | Spiked Chain |
+| Nu | Light Crossbow |
+| Vajra | Club |
+| Shu | Quarterstaff |
+| Ge | Glaive |
+| Ji | Glaive |
+| Mao | Spear |
 
-**Whip:** Urumi<br/>**Claw:** Arm Blade, Katar<br/>**Cestus:** Spiked Gauntlet, Push Dagger<br/>**Spiked Chain:** Kusarigama
+### The Frozen North
 
-### Crossbow Types
+| Name | Counts as |
+| --- | --- |
+| Francisca | Throwing Axe |
+| Sagaris | Battleaxe |
+| Sica | Shortsword |
+| Rhomphaia | Crescent Greatsword |
+| Falx | Crescent Greatsword |
+| Horn Bow | Shortbow |
+| Warpick | Mace |
+| Boar Spear | Short Spear |
+| Swordstaff | Glaive |
+| Winged Spear | Spear |
 
-**Light Crossbow:** Gastraphetes<br/>**Heavy Crossbow:** Hand Ballista
+### The Southern Jungle
 
-### Mace Types
+| Name | Counts as |
+| --- | --- |
+| War Scythe | Greataxe |
+| Shotel | Scimitar |
+| Macuahuitl | Scimitar |
+| Arm Blade | Claw |
+| Knuckle Stone | Cestus |
+| Stone Maul | Maul |
+| Weighted Cord | Bola |
+| Atlatl | Spear Thrower |
 
-**Club:** Tonfa, Nunchaku, War Scepter<br/>**Throwing Club:** Light Hammer<br/>**Mace:** War Club, Flail, Morningstar, Warhammer, Warpick<br/>**Maul:** Greatclub, Kanabo, Polehammer
+### Common to Every Land
 
-### Polearm Types
-
-**Javelin:** Harpoon<br/>**Short Spear:** Trident<br/>**Quarterstaff:** Scepter<br/>**Glaive:** Halberd, Poleaxe, Dagger-Axe, Swordstaff, Podao, Naginata<br/>**Spear:** Winged Spear
-
-### Thrown Types
-
-**Sling:** Slingshot<br/>**Bola:** Net<br/>**Spear Thrower:** Kestros
+| Name | Counts as |
+| --- | --- |
+| Handaxe | Throwing Axe |
+| Adze | Throwing Axe |
+| Broadaxe | Hatchet |
+| Cleaver | Hatchet |
+| Dart | Throwing Knife |
+| Dagger | Shortsword |
+| Leaf-Blade Sword | Broadsword |
+| Bastard Sword | Longsword |
+| Warblade | Greatsword |
+| Hunting Bow | Shortbow |
+| Composite Bow | Longbow |
+| Greatbow | Warbow |
+| Spiked Gauntlet | Cestus |
+| Push Dagger | Cestus |
+| Weighted Chain | Spiked Chain |
+| Belly Bow | Light Crossbow |
+| Cudgel | Club |
+| Light Hammer | Throwing Club |
+| War Club | Mace |
+| Morningstar | Mace |
+| Warhammer | Mace |
+| Greatclub | Maul |
+| Polehammer | Maul |
+| Herding Staff | Quarterstaff |
+| Halberd | Glaive |
+| Poleaxe | Glaive |
+| Slingshot | Sling |
