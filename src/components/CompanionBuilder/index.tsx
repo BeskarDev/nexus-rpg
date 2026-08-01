@@ -1,6 +1,15 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Button, Dialog } from '@mui/material'
+import {
+	BuilderRegister,
+	BuilderShell,
+	BuilderTrigger,
+	BuilderVerb,
+	BuilderVerbSpacer,
+	ChoiceRail,
+	GrantLine,
+	type RailOption,
+} from '../builder'
 import type {
 	CompanionBuilderProps,
 	CompanionTrait,
@@ -18,10 +27,8 @@ import companionTraits from '../../utils/data/json/companion-traits.json'
 import StatSigil from '../codex/StatSigil'
 import SigilIcon from '../codex/SigilIcon'
 import { MOVEMENT_SIGIL } from './companionMarks'
-import { ChoiceRail, type RailOption } from './ChoiceRail'
 import { CreatureLedger } from './CreatureLedger'
 import { CompanionPlate } from './CompanionPlate'
-import './companionBuilder.css'
 
 const TRAITS = companionTraits as CompanionTrait[]
 const ALL_SIZES = ['Tiny', 'Small', 'Medium', 'Large', 'Huge']
@@ -38,7 +45,7 @@ const signed = (value: number) => (value >= 0 ? `+${value}` : String(value))
  * elsewhere. The same component backs the Companions tab and the
  * `08-creatures/01-mounts-companions` docs page, which is why its styling stands
  * on the global codex tokens rather than the sheet's — see the head of
- * `companionBuilder.css`.
+ * `codexBuilder.css` in `components/builder/`.
  *
  * ## What this replaced
  *
@@ -74,8 +81,6 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 }) => {
 	const [open, setOpen] = useState(false)
 	const [showSource, setShowSource] = useState(false)
-	/** Which pane is shown below 900px. Inert above it — both are on screen. */
-	const [pane, setPane] = useState<'build' | 'preview'>('build')
 	const [copied, setCopied] = useState(false)
 	const dispatch = useDispatch()
 	const { state, builtCompanion } = useCompanionBuilderState()
@@ -204,151 +209,17 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 
 	return (
 		<>
-			<Button className="cb-trigger" onClick={() => setOpen(true)}>
+			<BuilderTrigger onClick={() => setOpen(true)}>
 				Build Companion
-			</Button>
+			</BuilderTrigger>
 
-			<Dialog
+			<BuilderShell
 				open={open}
 				onClose={() => setOpen(false)}
-				maxWidth="lg"
-				fullWidth
-				PaperProps={{ className: 'companion-builder' }}
-			>
-				<div className="cb-head">
-					<h3 className="cb-head__title">Companion Builder</h3>
-					<span className="cb-head__line">{commission}</span>
-				</div>
-
-				<div className="cb-body" data-pane={pane}>
-					{/*
-						The pane rail. Below 900px the two columns cannot sit side by side, and
-						stacking them costs the feedback loop the layout exists for — the card
-						would be a screen and a half below the rail that changes it — while
-						also costing a long scroll. Two panes instead.
-
-						`tablist` markup at every width; the rail is simply not displayed above
-						the breakpoint, where both panes are on screen and there is nothing to
-						switch. Which pane is hidden is decided in CSS off `data-pane`, not
-						here, so the desktop layout cannot be broken by this state.
-					*/}
-					<div className="cb-panes" role="tablist" aria-label="Builder view">
-						{(
-							[
-								['build', 'Build'],
-								['preview', 'Preview'],
-							] as const
-						).map(([value, label]) => (
-							<button
-								key={value}
-								type="button"
-								role="tab"
-								className="cb-pane-tab"
-								aria-selected={pane === value}
-								aria-controls={`cb-pane-${value}`}
-								onClick={() => setPane(value)}
-							>
-								{label}
-							</button>
-						))}
-					</div>
-
-					{/* The commission: three decisions, three shapes. Above the
-						breakpoint this column is itself a flex column, so the two rails stay
-						pinned and only the creature ledger scrolls — see the scroll note in
-						`companionBuilder.css`. */}
-					<div
-						className="cb-commission"
-						id="cb-pane-build"
-						role="tabpanel"
-						aria-label="Build"
-					>
-						<div className="cb-register">
-							<p className="cb-register__caption">
-								<span className="cb-register__step">I</span>
-								Tier
-								<span className="cb-register__note">
-									how dangerous the companion is
-								</span>
-							</p>
-							<ChoiceRail
-								label="Tier"
-								variant="tier"
-								options={tierOptions}
-								value={tier}
-								onChange={setTier}
-							/>
-							{/* The rulebook's tier table, one column at a time. */}
-							<div className="cb-grant">
-								{[
-									['HP', base.hp],
-									['AV', base.av],
-									[
-										'Dice',
-										`${base.attributes.str}/${base.attributes.agi}/${base.attributes.spi}/${base.attributes.mnd}`,
-									],
-									['Defenses', base.defenses.parry],
-									['Skill rank', base.skillRank],
-									[
-										'Damage',
-										`${base.attackDamage.weak}/${base.attackDamage.normal}/${base.attackDamage.strong}`,
-									],
-									['Max size', base.maxSize],
-								].map(([label, value]) => (
-									<span className="cb-grant__pair" key={String(label)}>
-										<span className="cb-grant__label">{label}</span>
-										<span className="cb-grant__value">{value}</span>
-									</span>
-								))}
-							</div>
-						</div>
-
-						<div className="cb-register">
-							<p className="cb-register__caption">
-								<span className="cb-register__step">II</span>
-								Size
-								<span className="cb-register__note">
-									parry / dodge / move, capped by tier
-								</span>
-							</p>
-							<ChoiceRail
-								label="Size"
-								variant="size"
-								options={sizeOptions}
-								value={size}
-								onChange={(value) =>
-									dispatch(companionBuilderActions.setSize(String(value)))
-								}
-							/>
-						</div>
-
-						{/* The one register that grows: it is the only decision here with an
-							unbounded number of options, so it takes whatever height the two
-							rails above it leave. */}
-						<div className="cb-register cb-register--grow">
-							<p className="cb-register__caption">
-								<span className="cb-register__step">III</span>
-								Creature
-								<span className="cb-register__note">
-									its skills, attacks and abilities
-								</span>
-							</p>
-							<CreatureLedger
-								traits={TRAITS}
-								selected={trait}
-								onSelect={setTrait}
-							/>
-						</div>
-					</div>
-
-					{/* The beast. Scrolls on its own above the breakpoint — a long stat
-						block must not push the commission's controls off the dialog. */}
-					<div
-						className="cb-result"
-						id="cb-pane-preview"
-						role="tabpanel"
-						aria-label="Preview"
-					>
+				title="Companion Builder"
+				commission={commission}
+				result={
+					<>
 						<CompanionPlate tier={tier} size={size} trait={trait} />
 
 						<div className="cb-source">
@@ -370,44 +241,100 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 								{markdown}
 							</pre>
 						</div>
-					</div>
-				</div>
-
-				<div className="cb-actions">
-					<Button
-						className="cb-verb--quiet"
-						disabled={!size && !trait}
-						onClick={() => dispatch(companionBuilderActions.resetBuilder())}
-					>
-						Reset
-					</Button>
-					<span className="cb-actions__spacer" />
-					{copied && (
-						<span className="cb-flash" role="status">
-							Copied
-						</span>
-					)}
-					<Button
-						className="cb-verb--quiet"
-						disabled={!builtCompanion}
-						onClick={copySource}
-					>
-						Copy markdown
-					</Button>
-					{onImportCompanion && (
-						<Button
-							className="cb-verb--primary"
-							disabled={!builtCompanion}
-							onClick={importToCharacter}
+					</>
+				}
+				actions={
+					<>
+						<BuilderVerb
+							disabled={!size && !trait}
+							onClick={() => dispatch(companionBuilderActions.resetBuilder())}
 						>
-							Import to character
-						</Button>
-					)}
-					<Button className="cb-verb--quiet" onClick={() => setOpen(false)}>
-						Close
-					</Button>
-				</div>
-			</Dialog>
+							Reset
+						</BuilderVerb>
+						<BuilderVerbSpacer />
+						{copied && (
+							<span className="cb-flash" role="status">
+								Copied
+							</span>
+						)}
+						<BuilderVerb disabled={!builtCompanion} onClick={copySource}>
+							Copy markdown
+						</BuilderVerb>
+						{onImportCompanion && (
+							<BuilderVerb
+								tone="primary"
+								disabled={!builtCompanion}
+								onClick={importToCharacter}
+							>
+								Import to character
+							</BuilderVerb>
+						)}
+						<BuilderVerb onClick={() => setOpen(false)}>Close</BuilderVerb>
+					</>
+				}
+			>
+				<BuilderRegister
+					step="I"
+					label="Tier"
+					note="how dangerous the companion is"
+				>
+					<ChoiceRail
+						label="Tier"
+						variant="tier"
+						options={tierOptions}
+						value={tier}
+						onChange={setTier}
+					/>
+					<GrantLine
+						pairs={[
+							['HP', base.hp],
+							['AV', base.av],
+							[
+								'Dice',
+								`${base.attributes.str}/${base.attributes.agi}/${base.attributes.spi}/${base.attributes.mnd}`,
+							],
+							['Defenses', base.defenses.parry],
+							['Skill rank', base.skillRank],
+							[
+								'Damage',
+								`${base.attackDamage.weak}/${base.attackDamage.normal}/${base.attackDamage.strong}`,
+							],
+							['Max size', base.maxSize],
+						]}
+					/>
+				</BuilderRegister>
+
+				<BuilderRegister
+					step="II"
+					label="Size"
+					note="parry / dodge / move, capped by tier"
+				>
+					<ChoiceRail
+						label="Size"
+						variant="size"
+						options={sizeOptions}
+						value={size}
+						onChange={(value) =>
+							dispatch(companionBuilderActions.setSize(String(value)))
+						}
+					/>
+				</BuilderRegister>
+
+				{/* The one register that grows: the only decision here with an unbounded
+					number of options, so it takes whatever height the rails leave. */}
+				<BuilderRegister
+					step="III"
+					label="Creature"
+					note="its skills, attacks and abilities"
+					grow
+				>
+					<CreatureLedger
+						traits={TRAITS}
+						selected={trait}
+						onSelect={setTrait}
+					/>
+				</BuilderRegister>
+			</BuilderShell>
 		</>
 	)
 }

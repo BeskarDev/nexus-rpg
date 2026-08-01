@@ -50,7 +50,14 @@ const SUN_RAYS = (() => {
  * {@link PlateFrame} (see the D2 note there).
  */
 export type CodexVariant =
-	'winged' | 'serpent' | 'khopesh' | 'ziggurat' | 'bull' | 'plate' | 'sheet'
+	| 'winged'
+	| 'serpent'
+	| 'khopesh'
+	| 'ziggurat'
+	| 'bull'
+	| 'plate'
+	| 'sheet'
+	| 'gem'
 
 const SURFACE = 'var(--ifm-background-surface-color)'
 
@@ -92,6 +99,10 @@ const RAIL_LEN: Record<CodexVariant, { edge: number; side: number }> = {
 	// the serpent family's more conservative side reach rather than the 55-unit
 	// default.
 	sheet: { edge: 92, side: 43 },
+	// M13 S8 — the magic-item family. A magic item card carries a cost tally, a
+	// figure band and rule text, so it is at least as deep as a combat art; the
+	// default 55-unit side reach is already validated at that depth.
+	gem: { edge: 92, side: 55 },
 }
 
 const n = (v: number) => v.toFixed(2)
@@ -204,6 +215,42 @@ function CornerRail({ variant, len }: { variant: CodexVariant; len: number }) {
 						/>
 					))}
 				</g>
+			</>
+		)
+	}
+	if (variant === 'gem') {
+		// A low mount ending in a fixed-size step-cut stone seen face on — the
+		// keystone's motif laid along the edge. Fixed terminal, variable shaft (§4),
+		// so the long top rail and the short side rail carry the identical stone.
+		const STONE = 15
+		const b = len - STONE
+		const tip = len
+		return (
+			<>
+				<path
+					d={`M13 5.3 L${n(b)} 5.3 L${n(b)} 6.7 L13 6.7 Z`}
+					fill="currentColor"
+					stroke="none"
+				/>
+				{/* the collar ticks its siblings all carry near the butt */}
+				<path d="M18 4.3 L18 7.7 M22.5 4.3 L22.5 7.7" strokeWidth={0.8} />
+				{/* the stone: an elongated hexagon, not the diamond the corner boss
+				    already uses — a second diamond here would read as a repeat rather
+				    than as the family's motif. */}
+				<path
+					d={
+						`M${n(b)} 6 L${n(b + 4.2)} 2.9 L${n(tip - 3.2)} 2.9 ` +
+						`L${n(tip)} 6 L${n(tip - 3.2)} 9.1 L${n(b + 4.2)} 9.1 Z`
+					}
+					fill="currentColor"
+					stroke="none"
+				/>
+				{/* the table, carved back — stops short of both ends (§1) */}
+				<path
+					d={`M${n(b + 5.4)} 6 L${n(tip - 4.4)} 6`}
+					stroke={SURFACE}
+					strokeWidth={0.55}
+				/>
 			</>
 		)
 	}
@@ -1151,6 +1198,7 @@ const KEYSTONES = {
 	bull: BullKeystone,
 	plate: RosetteKeystone,
 	sheet: CartoucheKeystone,
+	gem: GemKeystone,
 } as const
 
 /**
@@ -1685,6 +1733,101 @@ export function RosetteMark({
 }
 
 /** The plate family's keystone, for {@link CardFrame} parity with its siblings. */
+/**
+ * A cut stone set into a mount — the keystone for magic items (M13 S8).
+ *
+ * A magic item is a mundane object with power seated INTO it, so the motif is a
+ * step-cut gem driven point-down into a stepped setting that runs out to the
+ * frame edges. Angular throughout, because ornament-craft §3 is right that
+ * straight geometry sits calmer beside a rectilinear frame than curves do — and
+ * because a rounded cabochon at this size reads as a bead.
+ *
+ * Deliberately NOT concentric: ring-gap-core is reserved for the winged disc
+ * (§7), so the stone's internal structure is a girdle and two crown facets, which
+ * is what actually distinguishes a cut stone from a lozenge. The facets stop
+ * short of the silhouette (§1) so the stone does not read as segmented.
+ *
+ * The flanking courses are the ziggurat's device, reused on purpose: they are how
+ * a keystone spans the top edge instead of floating on it, and stepping them down
+ * away from the centre keeps the mass graded rather than abrupt.
+ */
+function GemKeystone() {
+	// The border line. Everything above it overhangs the card.
+	const BASE = 19.4
+	// The stone: table, girdle shoulders, point on the base line.
+	const TABLE_L = 34
+	const TABLE_R = 50
+	const GIRDLE_L = 29.6
+	const GIRDLE_R = 54.4
+	const GIRDLE_Y = 10.6
+	const TABLE_Y = 5.6
+	return (
+		<svg
+			className={styles.gemKeystone}
+			viewBox="0 0 84 26"
+			fill="none"
+			stroke="currentColor"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			{/* Opaque backing along the border line only, so the card's top border
+			    stops at the ornament instead of running through the setting (§2). */}
+			<path
+				d="M2 18.2 L82 18.2 L82 20.6 L2 20.6 Z"
+				fill={SURFACE}
+				stroke="none"
+			/>
+
+			{/* The setting: stepped courses out to the frame edges, stepping down away
+			    from the stone. */}
+			<g fill="currentColor" stroke="none">
+				<path
+					d={`M17.5 16.6 L${n(GIRDLE_L)} 16.6 L${n(GIRDLE_L)} ${n(BASE)} L17.5 ${n(BASE)} Z`}
+				/>
+				<path d={`M4 17.6 L17.5 17.6 L17.5 ${n(BASE)} L4 ${n(BASE)} Z`} />
+				<path
+					d={`M${n(GIRDLE_R)} 16.6 L66.5 16.6 L66.5 ${n(BASE)} L${n(GIRDLE_R)} ${n(BASE)} Z`}
+				/>
+				<path d={`M66.5 17.6 L80 17.6 L80 ${n(BASE)} L66.5 ${n(BASE)} Z`} />
+			</g>
+
+			{/* The stone itself — one solid mass, carved back out below (§1). */}
+			<path
+				d={
+					`M${n(TABLE_L)} ${n(TABLE_Y)} L${n(TABLE_R)} ${n(TABLE_Y)} ` +
+					`L${n(GIRDLE_R)} ${n(GIRDLE_Y)} L42 ${n(BASE)} ` +
+					`L${n(GIRDLE_L)} ${n(GIRDLE_Y)} Z`
+				}
+				fill="currentColor"
+				stroke="none"
+			/>
+
+			{/* Girdle and two crown facets, carved in the surface colour and stopping
+			    short of the edges so the stone reads cut rather than cracked. */}
+			<g stroke={SURFACE} strokeWidth={0.55}>
+				<path
+					d={`M${n(GIRDLE_L + 2.2)} ${n(GIRDLE_Y)} L${n(GIRDLE_R - 2.2)} ${n(GIRDLE_Y)}`}
+				/>
+				<path
+					d={`M${n(TABLE_L + 1.1)} ${n(TABLE_Y + 1.0)} L${n(GIRDLE_L + 2.9)} ${n(GIRDLE_Y - 0.5)}`}
+				/>
+				<path
+					d={`M${n(TABLE_R - 1.1)} ${n(TABLE_Y + 1.0)} L${n(GIRDLE_R - 2.9)} ${n(GIRDLE_Y - 0.5)}`}
+				/>
+			</g>
+
+			{/* Two claw ticks where the setting grips the stone — the collar rhythm
+			    the sibling rails use, and what makes it a SETTING rather than a stone
+			    resting on a shelf. */}
+			<g stroke="currentColor" strokeWidth={0.9}>
+				<path d={`M${n(GIRDLE_L + 1.4)} 15.4 L${n(GIRDLE_L + 3.6)} 12.6`} />
+				<path d={`M${n(GIRDLE_R - 1.4)} 15.4 L${n(GIRDLE_R - 3.6)} 12.6`} />
+			</g>
+		</svg>
+	)
+}
+
 function RosetteKeystone() {
 	return (
 		<span className={styles.rosetteKeystoneSlot} aria-hidden="true">

@@ -1,5 +1,11 @@
 import React, { useMemo, useState } from 'react'
-import SigilIcon from '../codex/SigilIcon'
+import {
+	FilterChip,
+	Ledger,
+	LedgerEmpty,
+	LedgerRow,
+	SearchField,
+} from '../builder'
 import type { CompanionTrait } from '../../types/companion'
 import { typeSigil } from './companionMarks'
 
@@ -23,12 +29,8 @@ export interface CreatureLedgerProps {
  *
  * It is a ledger now, which is the shape every other list in this app takes: a
  * filter, the type marks as pressable chips, and rows that state the creature's
- * skills so the choice can be made on evidence. `role="listbox"` with
- * `role="option"` rows, matching the selectable row the search dialogs gained in
- * S8.
- *
- * The empty state names WHICH constraint emptied the list and carries the control
- * that lifts it, per the same slice's rule.
+ * skills so the choice can be made on evidence. The pieces are the shared builder
+ * primitives, so this list and the Magic Item Builder's four cannot drift.
  */
 export const CreatureLedger: React.FC<CreatureLedgerProps> = ({
 	traits,
@@ -59,89 +61,52 @@ export const CreatureLedger: React.FC<CreatureLedgerProps> = ({
 	return (
 		<>
 			<div className="cb-ledger__filters">
-				{/* A carved field, not a MUI `TextField`: the outlined variant brought a
-					notched-outline fieldset, a Material-grey hairline and a 40px box, and was
-					the one place in this dialog a Material component still showed through.
-					The `eye` is an engraved fixture inside the keyline — to search is to
-					look — and is not a control, so it is not a button. */}
-				<div className="cb-search">
-					<SigilIcon name="eye" size={13} className="cb-search__mark" />
-					<input
-						type="text"
-						className="cb-search__input"
-						value={query}
-						onChange={(event) => setQuery(event.target.value)}
-						placeholder="Search creatures"
-						aria-label="Search creatures"
-					/>
-					{query && (
-						<button
-							type="button"
-							className="cb-search__clear"
-							aria-label="Clear search"
-							onClick={() => setQuery('')}
-						>
-							×
-						</button>
-					)}
-				</div>
+				<SearchField
+					value={query}
+					onChange={setQuery}
+					placeholder="Search creatures"
+				/>
 				{types.map((name) => (
-					<button
+					<FilterChip
 						key={name}
-						type="button"
-						className="cb-chip"
-						aria-pressed={type === name}
+						pressed={type === name}
+						sigil={typeSigil(name)}
 						onClick={() => setType(type === name ? null : name)}
 					>
-						{typeSigil(name) && <SigilIcon name={typeSigil(name)!} size={11} />}
 						{name}
-					</button>
+					</FilterChip>
 				))}
 			</div>
 
-			<div className="cb-ledger__rows" role="listbox" aria-label="Creature">
-				{shown.map((trait) => {
-					const chosen = selected?.name === trait.name
-					const mark = typeSigil(trait.type)
-					return (
-						<button
-							key={trait.name}
-							type="button"
-							role="option"
-							aria-selected={chosen}
-							className={`cb-row${chosen ? ' cb-row--on' : ''}`}
-							onClick={() => onSelect(trait)}
-						>
-							<span className="cb-row__mark" aria-hidden="true">
-								{mark && <SigilIcon name={mark} size={13} />}
-							</span>
-							<span className="cb-row__name">{trait.name}</span>
-							<span className="cb-row__skills">
-								{trait.skills === '-' ? '' : trait.skills}
-							</span>
-						</button>
-					)
-				})}
+			<Ledger label="Creature">
+				{shown.map((trait) => (
+					<LedgerRow
+						key={trait.name}
+						selected={selected?.name === trait.name}
+						sigil={typeSigil(trait.type)}
+						onSelect={() => onSelect(trait)}
+					>
+						<span className="cb-row__name">{trait.name}</span>
+						<span className="cb-row__skills">
+							{trait.skills === '-' ? '' : trait.skills}
+						</span>
+					</LedgerRow>
+				))}
 				{shown.length === 0 && (
-					<p className="cb-empty">
+					<LedgerEmpty
+						onClear={() => {
+							setQuery('')
+							setType(null)
+						}}
+					>
 						{type && query.trim()
 							? `No ${type} matches “${query.trim()}”`
 							: type
 								? `No ${type} creatures`
 								: `Nothing matches “${query.trim()}”`}
-						<button
-							type="button"
-							className="cb-chip"
-							onClick={() => {
-								setQuery('')
-								setType(null)
-							}}
-						>
-							Clear filters
-						</button>
-					</p>
+					</LedgerEmpty>
 				)}
-			</div>
+			</Ledger>
 		</>
 	)
 }

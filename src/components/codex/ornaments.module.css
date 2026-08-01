@@ -754,3 +754,18 @@
 	text-align: center;
 	line-height: 1.4;
 }
+/* Set-stone keystone (magic items, M13 S8). viewBox is 84x26 with the border line
+   at y=19.4, so 19.4/26 of the rendered height sits above the card edge. Same
+   geometry contract as the ziggurat, which it shares its flanking courses with:
+   height = 26 * (88/84) keeps the scale uniform, top = 19.4/26 of that height.
+   Overhang is 20.3px, so a card using this family needs its `margin-top` raised
+   to match — see the ziggurat note above. */
+.gemKeystone {
+	position: absolute;
+	left: 50%;
+	top: -20.33px;
+	width: 88px;
+	height: 27.24px;
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}

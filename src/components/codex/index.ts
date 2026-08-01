@@ -101,3 +101,14 @@ export type {
 	SolarMedallionProps,
 	TabletFrameProps,
 } from './ornaments'
+
+// M13 S8 — the magic-item card, and the `gem` keystone family it introduced.
+// Import it from the MODULE (not this barrel) inside the character sheet: the
+// barrel reaches `MDXComponents` and Docusaurus's theme components, which vitest
+// cannot parse.
+export { default as MagicItemCard } from './MagicItemCard'
+export type {
+	MagicItemCardProps,
+	MagicItemFigure,
+	MagicItemTallyRow,
+} from './MagicItemCard'

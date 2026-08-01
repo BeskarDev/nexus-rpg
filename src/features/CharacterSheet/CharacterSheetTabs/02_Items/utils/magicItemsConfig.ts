@@ -601,13 +601,49 @@ export type WandStaffTierData = {
 	staffSpellCapacity: number
 }
 
-export const wandStaffTierTable: Record<4 | 5 | 6 | 7 | 8, WandStaffTierData> = {
-	4: { spellRank: 1, attributeDie: 'd8', skillBonus: 1, wandCharges: 4, staffCharges: 6, staffSpellCapacity: 3 },
-	5: { spellRank: 2, attributeDie: 'd10', skillBonus: 2, wandCharges: 8, staffCharges: 12, staffSpellCapacity: 3 },
-	6: { spellRank: 3, attributeDie: 'd10', skillBonus: 3, wandCharges: 12, staffCharges: 18, staffSpellCapacity: 4 },
-	7: { spellRank: 4, attributeDie: 'd12', skillBonus: 4, wandCharges: 16, staffCharges: 24, staffSpellCapacity: 5 },
-	8: { spellRank: 5, attributeDie: 'd12', skillBonus: 5, wandCharges: 20, staffCharges: 30, staffSpellCapacity: 6 },
-}
+export const wandStaffTierTable: Record<4 | 5 | 6 | 7 | 8, WandStaffTierData> =
+	{
+		4: {
+			spellRank: 1,
+			attributeDie: 'd8',
+			skillBonus: 1,
+			wandCharges: 4,
+			staffCharges: 6,
+			staffSpellCapacity: 3,
+		},
+		5: {
+			spellRank: 2,
+			attributeDie: 'd10',
+			skillBonus: 2,
+			wandCharges: 8,
+			staffCharges: 12,
+			staffSpellCapacity: 3,
+		},
+		6: {
+			spellRank: 3,
+			attributeDie: 'd10',
+			skillBonus: 3,
+			wandCharges: 12,
+			staffCharges: 18,
+			staffSpellCapacity: 4,
+		},
+		7: {
+			spellRank: 4,
+			attributeDie: 'd12',
+			skillBonus: 4,
+			wandCharges: 16,
+			staffCharges: 24,
+			staffSpellCapacity: 5,
+		},
+		8: {
+			spellRank: 5,
+			attributeDie: 'd12',
+			skillBonus: 5,
+			wandCharges: 20,
+			staffCharges: 30,
+			staffSpellCapacity: 6,
+		},
+	}
 
 /**
  * Get the max spell rank for a wand or staff at a given quality tier.
@@ -631,6 +667,22 @@ export function getWandCharges(quality: QualityTier): number {
 export function getStaffCharges(quality: QualityTier): number {
 	if (quality < 4) return 0
 	return wandStaffTierTable[quality as 4 | 5 | 6 | 7 | 8].staffCharges
+}
+
+/**
+ * The roll a wand or staff is invoked with, when the reader is not using their own
+ * spellcasting roll (magic-items ▸ effects, "Casting from a Wand"/"from a Staff").
+ *
+ * The table has carried these two columns all along and nothing read them, so the
+ * builder priced a wand without ever saying what it rolls — which is the one thing
+ * you need at the table to use it (M13 S8, rules audit).
+ */
+export function getWandStaffRoll(
+	quality: QualityTier,
+): { attributeDie: string; skillBonus: number } | null {
+	if (quality < 4) return null
+	const tier = wandStaffTierTable[quality as 4 | 5 | 6 | 7 | 8]
+	return { attributeDie: tier.attributeDie, skillBonus: tier.skillBonus }
 }
 
 /**

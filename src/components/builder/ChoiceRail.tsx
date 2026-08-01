@@ -8,6 +8,14 @@ export interface RailOption {
 	/** The plate's name, in the small-caps register. */
 	name: string
 	/**
+	 * The accessible name, when the plate's own words are not the whole of it.
+	 *
+	 * The quality rail shows `Q4` as its figure and `formidable` as its name, so
+	 * neither alone identifies the option: a screen reader needs "Q4 (formidable)".
+	 * Defaults to `name`.
+	 */
+	ariaLabel?: string
+	/**
 	 * An optional third line: what this option trades away.
 	 *
 	 * A node rather than a string, so the size rail can state its trade in the
@@ -27,8 +35,15 @@ export interface ChoiceRailProps {
 	options: RailOption[]
 	value: string | number | undefined
 	onChange: (value: string | number) => void
-	/** `tier` (six plates) or `size` (five) — picks the grid. */
-	variant: 'tier' | 'size'
+	/**
+	 * Which grid the plates sit in.
+	 *
+	 * `tier` and `size` are the Companion Builder's two, kept because their
+	 * breakpoint behaviour differs (six plates fold to two rows on a narrow pane,
+	 * five do not). `quality` is the Magic Item Builder's six-step ladder and shares
+	 * the tier grid.
+	 */
+	variant: 'tier' | 'size' | 'quality'
 }
 
 /**
@@ -77,8 +92,8 @@ export const ChoiceRail: React.FC<ChoiceRailProps> = ({
 					aria-checked={selected}
 					aria-label={
 						option.disabled && option.disabledReason
-							? `${option.name} — ${option.disabledReason}`
-							: option.name
+							? `${option.ariaLabel ?? option.name} — ${option.disabledReason}`
+							: (option.ariaLabel ?? option.name)
 					}
 					disabled={option.disabled}
 					title={option.disabled ? option.disabledReason : undefined}
