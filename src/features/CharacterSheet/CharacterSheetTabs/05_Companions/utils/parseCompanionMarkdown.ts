@@ -129,8 +129,24 @@ export const parseCompanionMarkdown = (
 		const items: string[] = []
 		for (let i = index + 1; i < lines.length; i++) {
 			const item = lines[i].match(/^\s*[-*]\s+(.*)$/)
-			if (item) items.push(item[1])
-			else if (lines[i].trim() !== '') break
+			if (item) {
+				items.push(item[1])
+				continue
+			}
+			/**
+			 * An INDENTED numbered line continues the item above it (M13 S8).
+			 *
+			 * The builder writes an entry's sub-options that way — the Floating Eye's
+			 * four eye rays are `  1. **Dazing Ray.** …` under their bullet. Without
+			 * this the loop hit a non-bullet line and ended the whole section, dropping
+			 * every entry after it.
+			 */
+			const option = lines[i].match(/^\s+\d+\.\s+(.*)$/)
+			if (option && items.length > 0) {
+				items[items.length - 1] += `\n${option[1]}`
+				continue
+			}
+			if (lines[i].trim() !== '') break
 		}
 		if (items.length > 0) sections.push({ label: sectionHeader[1], items })
 	})

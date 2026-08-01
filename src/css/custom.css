@@ -131,17 +131,61 @@
 	/* Text-safe variants: the values above are chosen for white text on an opaque
 	   chip, so as INK they are near-black on parchment. Mixed toward the reading
 	   ink per mode, the same one-declaration trick `--cs-skill-*` uses. */
-	--cs-damage-acid: color-mix(in oklab, var(--nexus-damage-acid), var(--ifm-font-color-base) 12%);
-	--cs-damage-blast: color-mix(in oklab, var(--nexus-damage-blast), var(--ifm-font-color-base) 12%);
-	--cs-damage-fire: color-mix(in oklab, var(--nexus-damage-fire), var(--ifm-font-color-base) 12%);
-	--cs-damage-frost: color-mix(in oklab, var(--nexus-damage-frost), var(--ifm-font-color-base) 12%);
-	--cs-damage-lightning: color-mix(in oklab, var(--nexus-damage-lightning), var(--ifm-font-color-base) 12%);
-	--cs-damage-necrotic: color-mix(in oklab, var(--nexus-damage-necrotic), var(--ifm-font-color-base) 12%);
-	--cs-damage-poison: color-mix(in oklab, var(--nexus-damage-poison), var(--ifm-font-color-base) 12%);
-	--cs-damage-psychic: color-mix(in oklab, var(--nexus-damage-psychic), var(--ifm-font-color-base) 12%);
-	--cs-damage-radiant: color-mix(in oklab, var(--nexus-damage-radiant), var(--ifm-font-color-base) 12%);
-	--cs-damage-physical: color-mix(in oklab, var(--nexus-damage-physical), var(--ifm-font-color-base) 12%);
-	--cs-damage-force: color-mix(in oklab, var(--nexus-damage-force), var(--ifm-font-color-base) 12%);
+	--cs-damage-acid: color-mix(
+		in oklab,
+		var(--nexus-damage-acid),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-blast: color-mix(
+		in oklab,
+		var(--nexus-damage-blast),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-fire: color-mix(
+		in oklab,
+		var(--nexus-damage-fire),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-frost: color-mix(
+		in oklab,
+		var(--nexus-damage-frost),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-lightning: color-mix(
+		in oklab,
+		var(--nexus-damage-lightning),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-necrotic: color-mix(
+		in oklab,
+		var(--nexus-damage-necrotic),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-poison: color-mix(
+		in oklab,
+		var(--nexus-damage-poison),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-psychic: color-mix(
+		in oklab,
+		var(--nexus-damage-psychic),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-radiant: color-mix(
+		in oklab,
+		var(--nexus-damage-radiant),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-physical: color-mix(
+		in oklab,
+		var(--nexus-damage-physical),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-force: color-mix(
+		in oklab,
+		var(--nexus-damage-force),
+		var(--ifm-font-color-base) 12%
+	);
 
 	/* Text-safe per-skill variants (M9 F2/S1): the --nexus-skill-* values above
 	   are dark, chosen for white-on-chip contrast, so they read as near-black
@@ -151,22 +195,86 @@
 	   per-skill color the sheet does — the fix for the F2 leak is that both
 	   surfaces now consume the SAME derived token, not that the sheet stopped
 	   reaching outside itself. */
-	--cs-skill-arcana: color-mix(in oklab, var(--nexus-skill-arcana), var(--ifm-font-color-base) 10%);
-	--cs-skill-archery: color-mix(in oklab, var(--nexus-skill-archery), var(--ifm-font-color-base) 10%);
-	--cs-skill-athletics: color-mix(in oklab, var(--nexus-skill-athletics), var(--ifm-font-color-base) 10%);
-	--cs-skill-crafting: color-mix(in oklab, var(--nexus-skill-crafting), var(--ifm-font-color-base) 10%);
-	--cs-skill-education: color-mix(in oklab, var(--nexus-skill-education), var(--ifm-font-color-base) 10%);
-	--cs-skill-fighting: color-mix(in oklab, var(--nexus-skill-fighting), var(--ifm-font-color-base) 10%);
-	--cs-skill-fortitude: color-mix(in oklab, var(--nexus-skill-fortitude), var(--ifm-font-color-base) 10%);
-	--cs-skill-influence: color-mix(in oklab, var(--nexus-skill-influence), var(--ifm-font-color-base) 10%);
-	--cs-skill-insight: color-mix(in oklab, var(--nexus-skill-insight), var(--ifm-font-color-base) 10%);
-	--cs-skill-lore: color-mix(in oklab, var(--nexus-skill-lore), var(--ifm-font-color-base) 10%);
-	--cs-skill-mysticism: color-mix(in oklab, var(--nexus-skill-mysticism), var(--ifm-font-color-base) 10%);
-	--cs-skill-nature: color-mix(in oklab, var(--nexus-skill-nature), var(--ifm-font-color-base) 10%);
-	--cs-skill-perception: color-mix(in oklab, var(--nexus-skill-perception), var(--ifm-font-color-base) 10%);
-	--cs-skill-stealth: color-mix(in oklab, var(--nexus-skill-stealth), var(--ifm-font-color-base) 10%);
-	--cs-skill-streetwise: color-mix(in oklab, var(--nexus-skill-streetwise), var(--ifm-font-color-base) 10%);
-	--cs-skill-survival: color-mix(in oklab, var(--nexus-skill-survival), var(--ifm-font-color-base) 10%);
+	--cs-skill-arcana: color-mix(
+		in oklab,
+		var(--nexus-skill-arcana),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-archery: color-mix(
+		in oklab,
+		var(--nexus-skill-archery),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-athletics: color-mix(
+		in oklab,
+		var(--nexus-skill-athletics),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-crafting: color-mix(
+		in oklab,
+		var(--nexus-skill-crafting),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-education: color-mix(
+		in oklab,
+		var(--nexus-skill-education),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-fighting: color-mix(
+		in oklab,
+		var(--nexus-skill-fighting),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-fortitude: color-mix(
+		in oklab,
+		var(--nexus-skill-fortitude),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-influence: color-mix(
+		in oklab,
+		var(--nexus-skill-influence),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-insight: color-mix(
+		in oklab,
+		var(--nexus-skill-insight),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-lore: color-mix(
+		in oklab,
+		var(--nexus-skill-lore),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-mysticism: color-mix(
+		in oklab,
+		var(--nexus-skill-mysticism),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-nature: color-mix(
+		in oklab,
+		var(--nexus-skill-nature),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-perception: color-mix(
+		in oklab,
+		var(--nexus-skill-perception),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-stealth: color-mix(
+		in oklab,
+		var(--nexus-skill-stealth),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-streetwise: color-mix(
+		in oklab,
+		var(--nexus-skill-streetwise),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-survival: color-mix(
+		in oklab,
+		var(--nexus-skill-survival),
+		var(--ifm-font-color-base) 10%
+	);
 
 	/* Admonition alarm hues (M8 S1). Only warning and danger take a hue —
 	   note/tip/info stay bronze and are told apart by their sigil — so the
@@ -399,13 +507,13 @@
 	--nexus-leading-prose: 1.7;
 
 	/* Character Sheet Layout System */
-	--cs-max-width-sm: 25rem;      /* Statistics panel, Skills lists */
-	--cs-max-width-md: 38rem;      /* Spells tab */
-	--cs-max-width-lg: 47rem;      /* Items, Personal, Companions */
-	--cs-max-width-xl: 65rem;      /* Full-width content */
-	--cs-max-width-page: 100rem;   /* Global max-width for entire sheet on ultra-wide screens */
-	--cs-panel-gap: 1.5rem;        /* Gap between panels */
-	--cs-section-gap: 1rem;        /* Gap between sections within panels */
+	--cs-max-width-sm: 25rem; /* Statistics panel, Skills lists */
+	--cs-max-width-md: 38rem; /* Spells tab */
+	--cs-max-width-lg: 47rem; /* Items, Personal, Companions */
+	--cs-max-width-xl: 65rem; /* Full-width content */
+	--cs-max-width-page: 100rem; /* Global max-width for entire sheet on ultra-wide screens */
+	--cs-panel-gap: 1.5rem; /* Gap between panels */
+	--cs-section-gap: 1rem; /* Gap between sections within panels */
 }
 
 /* Dark mode: charred obsidian + ember bronze — intentional, not inverted. */
@@ -428,38 +536,146 @@
 	/* Text-safe damage variants (M13 S4c): same reasoning as the skills below —
 	   these hexes were chosen dark for white-on-chip, so the dark surface needs a
 	   heavier mix toward the bone ink before they read as ink. */
-	--cs-damage-acid: color-mix(in oklab, var(--nexus-damage-acid), var(--ifm-font-color-base) 48%);
-	--cs-damage-blast: color-mix(in oklab, var(--nexus-damage-blast), var(--ifm-font-color-base) 48%);
-	--cs-damage-fire: color-mix(in oklab, var(--nexus-damage-fire), var(--ifm-font-color-base) 48%);
-	--cs-damage-frost: color-mix(in oklab, var(--nexus-damage-frost), var(--ifm-font-color-base) 48%);
-	--cs-damage-lightning: color-mix(in oklab, var(--nexus-damage-lightning), var(--ifm-font-color-base) 48%);
-	--cs-damage-necrotic: color-mix(in oklab, var(--nexus-damage-necrotic), var(--ifm-font-color-base) 48%);
-	--cs-damage-poison: color-mix(in oklab, var(--nexus-damage-poison), var(--ifm-font-color-base) 48%);
-	--cs-damage-psychic: color-mix(in oklab, var(--nexus-damage-psychic), var(--ifm-font-color-base) 48%);
-	--cs-damage-radiant: color-mix(in oklab, var(--nexus-damage-radiant), var(--ifm-font-color-base) 48%);
-	--cs-damage-physical: color-mix(in oklab, var(--nexus-damage-physical), var(--ifm-font-color-base) 48%);
-	--cs-damage-force: color-mix(in oklab, var(--nexus-damage-force), var(--ifm-font-color-base) 48%);
+	--cs-damage-acid: color-mix(
+		in oklab,
+		var(--nexus-damage-acid),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-blast: color-mix(
+		in oklab,
+		var(--nexus-damage-blast),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-fire: color-mix(
+		in oklab,
+		var(--nexus-damage-fire),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-frost: color-mix(
+		in oklab,
+		var(--nexus-damage-frost),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-lightning: color-mix(
+		in oklab,
+		var(--nexus-damage-lightning),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-necrotic: color-mix(
+		in oklab,
+		var(--nexus-damage-necrotic),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-poison: color-mix(
+		in oklab,
+		var(--nexus-damage-poison),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-psychic: color-mix(
+		in oklab,
+		var(--nexus-damage-psychic),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-radiant: color-mix(
+		in oklab,
+		var(--nexus-damage-radiant),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-physical: color-mix(
+		in oklab,
+		var(--nexus-damage-physical),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-force: color-mix(
+		in oklab,
+		var(--nexus-damage-force),
+		var(--ifm-font-color-base) 48%
+	);
 
 	/* Text-safe skill variants (M9 F2/S1): 50% is the minimum ink-mix that
 	   clears AA for every one of the 16 identity hues at once on the smoky
 	   dark surface — the light-mode 10% mix above isn't enough here because
 	   these hexes were chosen dark for white-on-chip contrast. */
-	--cs-skill-arcana: color-mix(in oklab, var(--nexus-skill-arcana), var(--ifm-font-color-base) 50%);
-	--cs-skill-archery: color-mix(in oklab, var(--nexus-skill-archery), var(--ifm-font-color-base) 50%);
-	--cs-skill-athletics: color-mix(in oklab, var(--nexus-skill-athletics), var(--ifm-font-color-base) 50%);
-	--cs-skill-crafting: color-mix(in oklab, var(--nexus-skill-crafting), var(--ifm-font-color-base) 50%);
-	--cs-skill-education: color-mix(in oklab, var(--nexus-skill-education), var(--ifm-font-color-base) 50%);
-	--cs-skill-fighting: color-mix(in oklab, var(--nexus-skill-fighting), var(--ifm-font-color-base) 50%);
-	--cs-skill-fortitude: color-mix(in oklab, var(--nexus-skill-fortitude), var(--ifm-font-color-base) 50%);
-	--cs-skill-influence: color-mix(in oklab, var(--nexus-skill-influence), var(--ifm-font-color-base) 50%);
-	--cs-skill-insight: color-mix(in oklab, var(--nexus-skill-insight), var(--ifm-font-color-base) 50%);
-	--cs-skill-lore: color-mix(in oklab, var(--nexus-skill-lore), var(--ifm-font-color-base) 50%);
-	--cs-skill-mysticism: color-mix(in oklab, var(--nexus-skill-mysticism), var(--ifm-font-color-base) 50%);
-	--cs-skill-nature: color-mix(in oklab, var(--nexus-skill-nature), var(--ifm-font-color-base) 50%);
-	--cs-skill-perception: color-mix(in oklab, var(--nexus-skill-perception), var(--ifm-font-color-base) 50%);
-	--cs-skill-stealth: color-mix(in oklab, var(--nexus-skill-stealth), var(--ifm-font-color-base) 50%);
-	--cs-skill-streetwise: color-mix(in oklab, var(--nexus-skill-streetwise), var(--ifm-font-color-base) 50%);
-	--cs-skill-survival: color-mix(in oklab, var(--nexus-skill-survival), var(--ifm-font-color-base) 50%);
+	--cs-skill-arcana: color-mix(
+		in oklab,
+		var(--nexus-skill-arcana),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-archery: color-mix(
+		in oklab,
+		var(--nexus-skill-archery),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-athletics: color-mix(
+		in oklab,
+		var(--nexus-skill-athletics),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-crafting: color-mix(
+		in oklab,
+		var(--nexus-skill-crafting),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-education: color-mix(
+		in oklab,
+		var(--nexus-skill-education),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-fighting: color-mix(
+		in oklab,
+		var(--nexus-skill-fighting),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-fortitude: color-mix(
+		in oklab,
+		var(--nexus-skill-fortitude),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-influence: color-mix(
+		in oklab,
+		var(--nexus-skill-influence),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-insight: color-mix(
+		in oklab,
+		var(--nexus-skill-insight),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-lore: color-mix(
+		in oklab,
+		var(--nexus-skill-lore),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-mysticism: color-mix(
+		in oklab,
+		var(--nexus-skill-mysticism),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-nature: color-mix(
+		in oklab,
+		var(--nexus-skill-nature),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-perception: color-mix(
+		in oklab,
+		var(--nexus-skill-perception),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-stealth: color-mix(
+		in oklab,
+		var(--nexus-skill-stealth),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-streetwise: color-mix(
+		in oklab,
+		var(--nexus-skill-streetwise),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-survival: color-mix(
+		in oklab,
+		var(--nexus-skill-survival),
+		var(--ifm-font-color-base) 50%
+	);
 
 	--ifm-color-primary: var(--nexus-bronze);
 	--ifm-color-primary-dark: #bd8748;
@@ -514,14 +730,20 @@ body::before {
 	z-index: -1;
 	pointer-events: none;
 	background-color: var(--ifm-background-color);
-	background-image: var(--parchment-grain),
+	background-image:
+		var(--parchment-grain),
 		radial-gradient(circle at 50% 0%, rgba(180, 140, 80, 0.1), transparent 55%),
-		radial-gradient(circle at 15% 60%, rgba(150, 110, 60, 0.06), transparent 40%);
+		radial-gradient(
+			circle at 15% 60%,
+			rgba(150, 110, 60, 0.06),
+			transparent 40%
+		);
 	background-repeat: repeat, no-repeat, no-repeat;
 }
 
 [data-theme='dark'] body::before {
-	background-image: var(--parchment-grain),
+	background-image:
+		var(--parchment-grain),
 		radial-gradient(circle at 50% 0%, rgba(90, 180, 200, 0.05), transparent 55%);
 	background-blend-mode: soft-light;
 	opacity: 0.5;
@@ -605,8 +827,8 @@ body::before {
 			color-mix(in srgb, var(--rune-cyan-glow) 22%, transparent);
 	}
 	50% {
-		text-shadow: 0 0 0.4rem
-				color-mix(in srgb, var(--rune-cyan-glow) 42%, transparent),
+		text-shadow:
+			0 0 0.4rem color-mix(in srgb, var(--rune-cyan-glow) 42%, transparent),
 			0 0 0.9rem color-mix(in srgb, var(--rune-cyan-glow) 18%, transparent);
 	}
 }
@@ -947,7 +1169,8 @@ table tr {
 
 /* Header row gets a firmer bronze rule; body rows stay hairline-subtle. */
 table thead tr {
-	border-bottom: 2px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	border-bottom: 2px solid
+		color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
 }
 
 table tbody tr:last-child {
@@ -960,538 +1183,542 @@ table th {
 	padding: 0.25rem 0.5rem;
 }
 
-.markdown > pre, .markdown > ul, .markdown > p {
-  margin-bottom: calc(var(--ifm-leading) / 2);
+.markdown > pre,
+.markdown > ul,
+.markdown > p {
+	margin-bottom: calc(var(--ifm-leading) / 2);
 }
 
 .markdown > ul {
-  margin-top: calc(-1 * var(--ifm-leading) / 2);
+	margin-top: calc(-1 * var(--ifm-leading) / 2);
 }
 
 /* Bronze diamond bullets — the codex shape language applied to every unordered
    list in the reading column. Scoped to the doc markdown so the character sheet
    app keeps native bullets. Ordered lists keep their numerals. */
 .theme-doc-markdown ul {
-  list-style: none;
-  padding-left: 1.4rem;
+	list-style: none;
+	padding-left: 1.4rem;
 }
 .theme-doc-markdown ul > li {
-  position: relative;
+	position: relative;
 }
 .theme-doc-markdown ul > li::before {
-  content: '';
-  position: absolute;
-  left: -1.1rem;
-  /* Center the mark on the first text line. Tracks the prose leading token, not
+	content: '';
+	position: absolute;
+	left: -1.1rem;
+	/* Center the mark on the first text line. Tracks the prose leading token, not
      Infima's --ifm-line-height-base: the reading column sets its own. */
-  top: calc(0.5em * var(--nexus-leading-prose, 1.7) - 3.5px);
-  width: 7px;
-  height: 7px;
-  transform: rotate(45deg);
-  background-color: var(--ifm-color-primary);
+	top: calc(0.5em * var(--nexus-leading-prose, 1.7) - 3.5px);
+	width: 7px;
+	height: 7px;
+	transform: rotate(45deg);
+	background-color: var(--ifm-color-primary);
 }
 /* Scope boundary: the character sheet renders its MUI lists INSIDE the doc
    markdown container, so the codex bullet lands on every MuiListItem (bronze
    diamonds beside each saved character). Switch the marker back off there —
    found during the M8 scope-boundary check. */
 .character-sheet-page ul > li::before {
-  content: none;
+	content: none;
 }
 /* Nested lists: hollow lozenge, a step quieter. */
 .theme-doc-markdown ul ul > li::before {
-  background-color: transparent;
-  border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 70%, transparent);
-  width: 6px;
-  height: 6px;
+	background-color: transparent;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 70%, transparent);
+	width: 6px;
+	height: 6px;
 }
 
 /* Chip styles for table content */
-a.chip, .chip {
-  display: inline-block;
-  /* inline-block aligns on its bottom edge by default, so the pill's lower
+a.chip,
+.chip {
+	display: inline-block;
+	/* inline-block aligns on its bottom edge by default, so the pill's lower
      padding pushes it below the text baseline. Center on the line, then lift a
      hair: the serif body text is ascender-heavy, so a geometrically centered
      pill still reads low. */
-  vertical-align: middle;
-  position: relative;
-  top: -0.12em;
-  padding: 2px 8px;
-  border-radius: 12px;
-  /* Sans UI face: Spectral's small x-height made chip text read tiny at this
+	vertical-align: middle;
+	position: relative;
+	top: -0.12em;
+	padding: 2px 8px;
+	border-radius: 12px;
+	/* Sans UI face: Spectral's small x-height made chip text read tiny at this
      size. Alegreya Sans has a larger x-height, so the same visual weight needs
      fewer rem. */
-  font-family: var(--nexus-font-ui);
-  font-size: var(--nexus-text-xs);
-  font-weight: 500;
-  line-height: 1.2;
-  /* Small-caps reads as struck lettering and levels mixed-case labels
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-weight: 500;
+	line-height: 1.2;
+	/* Small-caps reads as struck lettering and levels mixed-case labels
      (skills/damage) into a uniform stamp face. */
-  font-variant-caps: small-caps;
-  letter-spacing: 0.03em;
-  text-align: center;
-  white-space: nowrap;
-  border: 1px solid transparent;
-  text-decoration: none !important;
-  cursor: default;
-  pointer-events: none; /* Disable clicking */
+	font-variant-caps: small-caps;
+	letter-spacing: 0.03em;
+	text-align: center;
+	white-space: nowrap;
+	border: 1px solid transparent;
+	text-decoration: none !important;
+	cursor: default;
+	pointer-events: none; /* Disable clicking */
 }
 
 a.chip:hover {
-  text-decoration: none !important;
+	text-decoration: none !important;
 }
 
 /* Skill chips */
 .chip.chip--skill {
-  position: relative;
-  border-radius: 0 !important; /* Override base chip border-radius completely */
-  padding: 2px 4px; /* Extra horizontal padding for triangular ends */
-  margin: 0 6px; /* Space for triangular pseudo-elements */
-  border: none;
-  height: 20px;
-  --chip-bg: var(--chip-background-color);
+	position: relative;
+	border-radius: 0 !important; /* Override base chip border-radius completely */
+	padding: 2px 4px; /* Extra horizontal padding for triangular ends */
+	margin: 0 6px; /* Space for triangular pseudo-elements */
+	border: none;
+	height: 20px;
+	--chip-bg: var(--chip-background-color);
 }
 
 /* Left triangular point */
 .chip--skill::before {
-  content: '';
-  position: absolute;
-  left: -6px;
-  top: 0;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 6px solid;
-  border-right-color: inherit;
+	content: '';
+	position: absolute;
+	left: -6px;
+	top: 0;
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-right: 6px solid;
+	border-right-color: inherit;
 }
 
 /* Right triangular point */
 .chip--skill::after {
-  content: '';
-  position: absolute;
-  right: -6px;
-  top: 0;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 6px solid;
-  border-left-color: inherit;
+	content: '';
+	position: absolute;
+	right: -6px;
+	top: 0;
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 6px solid;
+	border-left-color: inherit;
 }
 
 /* A skill rank absorbed into its chip (see the table-chips plugin). Set inside a
    struck divider so "Athletics 3" reads as name + rank rather than one label. */
 .chip__rank {
-  margin-left: 5px;
-  padding-left: 5px;
-  border-left: 1px solid color-mix(in srgb, currentColor 45%, transparent);
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
+	margin-left: 5px;
+	padding-left: 5px;
+	border-left: 1px solid color-mix(in srgb, currentColor 45%, transparent);
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
 }
 
 /* Weapon category chips */
 .chip--weapon {
-  font-weight: 600;
-  font-size: var(--nexus-text-xs);
+	font-weight: 600;
+	font-size: var(--nexus-text-xs);
 }
 
 /* Attribute chips */
 .chip--attribute {
-  font-weight: bold;
-  border-radius: 2px !important; /* No rounded edges for attributes - override base chip rule */
-  font-size: var(--nexus-text-xs);
-  margin-left: 3px;
-  margin-right: 3px;
-  padding: 2px 6px; /* Reduced horizontal padding */
+	font-weight: bold;
+	border-radius: 2px !important; /* No rounded edges for attributes - override base chip rule */
+	font-size: var(--nexus-text-xs);
+	margin-left: 3px;
+	margin-right: 3px;
+	padding: 2px 6px; /* Reduced horizontal padding */
 }
 
 /* Color variants */
 .chip--red {
-  --chip-fill: #902f2f;
-  background-color: #902f2f; /* Darker red for attributes - better contrast */
-  color: white;
+	--chip-fill: #902f2f;
+	background-color: #902f2f; /* Darker red for attributes - better contrast */
+	color: white;
 }
 
 .chip--blue {
-  --chip-fill: #27427c;
-  background-color: #27427c; /* Darker blue for attributes - better contrast */
-  color: white;
+	--chip-fill: #27427c;
+	background-color: #27427c; /* Darker blue for attributes - better contrast */
+	color: white;
 }
 
 .chip--green {
-  --chip-fill: #154225;
-  background-color: #154225; /* Darker green for attributes - better contrast */
-  color: white;
+	--chip-fill: #154225;
+	background-color: #154225; /* Darker green for attributes - better contrast */
+	color: white;
 }
 
 .chip--light-purple {
-  --chip-fill: #6c33a0;
-  background-color: #6c33a0; /* Darker purple for attributes - better contrast */
-  color: white;
+	--chip-fill: #6c33a0;
+	background-color: #6c33a0; /* Darker purple for attributes - better contrast */
+	color: white;
 }
 
 .chip--yellow {
-  --chip-fill: #b8860b;
-  background-color: #b8860b; /* Darker yellow for better contrast */
-  color: white;
+	--chip-fill: #b8860b;
+	background-color: #b8860b; /* Darker yellow for better contrast */
+	color: white;
 }
 
 .chip--purple {
-  --chip-fill: var(--ifm-color-purple);
-  background-color: var(--ifm-color-purple);
-  color: white;
+	--chip-fill: var(--ifm-color-purple);
+	background-color: var(--ifm-color-purple);
+	color: white;
 }
 
 .chip--orange {
-  --chip-fill: var(--ifm-color-orange);
-  background-color: var(--ifm-color-orange);
-  color: white;
+	--chip-fill: var(--ifm-color-orange);
+	background-color: var(--ifm-color-orange);
+	color: white;
 }
 
 .chip--brown {
-  --chip-fill: var(--ifm-color-brown);
-  background-color: var(--ifm-color-brown);
-  color: white;
+	--chip-fill: var(--ifm-color-brown);
+	background-color: var(--ifm-color-brown);
+	color: white;
 }
 
 .chip--grey {
-  --chip-fill: #555555;
-  background-color: #555555; /* Darker grey for better contrast */
-  color: white;
+	--chip-fill: #555555;
+	background-color: #555555; /* Darker grey for better contrast */
+	color: white;
 }
 
 /* Pastel color variants for improved diversity and softer appearance */
 .chip--lime-pastel {
-  --chip-fill: #c3f0ca;
-  background-color: #c3f0ca; /* Pastel lime */
-  color: black;
+	--chip-fill: #c3f0ca;
+	background-color: #c3f0ca; /* Pastel lime */
+	color: black;
 }
 
 .chip--cyan-pastel {
-  --chip-fill: #a5f3fc;
-  background-color: #a5f3fc; /* Pastel cyan */
-  color: black;
+	--chip-fill: #a5f3fc;
+	background-color: #a5f3fc; /* Pastel cyan */
+	color: black;
 }
 
 .chip--pink-pastel {
-  --chip-fill: #fbb6ce;
-  background-color: #fbb6ce; /* Pastel pink */
-  color: black;
+	--chip-fill: #fbb6ce;
+	background-color: #fbb6ce; /* Pastel pink */
+	color: black;
 }
 
 .chip--gold-pastel {
-  --chip-fill: #fed766;
-  background-color: #fed766; /* Pastel gold */
-  color: black;
+	--chip-fill: #fed766;
+	background-color: #fed766; /* Pastel gold */
+	color: black;
 }
 
 .chip--olive-pastel {
-  --chip-fill: #d4d48a;
-  background-color: #d4d48a; /* Pastel olive */
-  color: black;
+	--chip-fill: #d4d48a;
+	background-color: #d4d48a; /* Pastel olive */
+	color: black;
 }
 
 .chip--maroon-pastel {
-  --chip-fill: #e06b6b;
-  background-color: #e06b6b; /* Pastel maroon */
-  color: white;
+	--chip-fill: #e06b6b;
+	background-color: #e06b6b; /* Pastel maroon */
+	color: white;
 }
 
 .chip--navy-pastel {
-  --chip-fill: #7c93c3;
-  background-color: #7c93c3; /* Pastel navy */
-  color: white;
+	--chip-fill: #7c93c3;
+	background-color: #7c93c3; /* Pastel navy */
+	color: white;
 }
 
 .chip--indigo-pastel {
-  --chip-fill: #a78bfa;
-  background-color: #a78bfa; /* Pastel indigo */
-  color: white;
+	--chip-fill: #a78bfa;
+	background-color: #a78bfa; /* Pastel indigo */
+	color: white;
 }
 
 .chip--teal-pastel {
-  --chip-fill: #7dd3fc;
-  background-color: #7dd3fc; /* Pastel teal */
-  color: black;
+	--chip-fill: #7dd3fc;
+	background-color: #7dd3fc; /* Pastel teal */
+	color: black;
 }
 
 .chip--slate-pastel {
-  --chip-fill: #cbd5e1;
-  background-color: #cbd5e1; /* Pastel slate */
-  color: black;
+	--chip-fill: #cbd5e1;
+	background-color: #cbd5e1; /* Pastel slate */
+	color: black;
 }
 
 .chip--tan-pastel {
-  --chip-fill: #fed7aa;
-  background-color: #fed7aa; /* Pastel tan */
-  color: black;
+	--chip-fill: #fed7aa;
+	background-color: #fed7aa; /* Pastel tan */
+	color: black;
 }
 
 .chip--silver-pastel {
-  --chip-fill: #e2e8f0;
-  background-color: #e2e8f0; /* Pastel silver */
-  color: black;
+	--chip-fill: #e2e8f0;
+	background-color: #e2e8f0; /* Pastel silver */
+	color: black;
 }
 
 .chip--copper-pastel {
-  --chip-fill: #fdba74;
-  background-color: #fdba74; /* Pastel copper */
-  color: black;
+	--chip-fill: #fdba74;
+	background-color: #fdba74; /* Pastel copper */
+	color: black;
 }
 
 .chip--bronze-pastel {
-  --chip-fill: #fed7aa;
-  background-color: #fed7aa; /* Pastel bronze */
-  color: black;
+	--chip-fill: #fed7aa;
+	background-color: #fed7aa; /* Pastel bronze */
+	color: black;
 }
 
 .chip--steel-pastel {
-  --chip-fill: #bfdbfe;
-  background-color: #bfdbfe; /* Pastel steel */
-  color: black;
+	--chip-fill: #bfdbfe;
+	background-color: #bfdbfe; /* Pastel steel */
+	color: black;
 }
 
 .chip--amber-pastel {
-  --chip-fill: #fde68a;
-  background-color: #fde68a; /* Pastel amber */
-  color: black;
+	--chip-fill: #fde68a;
+	background-color: #fde68a; /* Pastel amber */
+	color: black;
 }
 
 .chip--orange-pastel {
-  --chip-fill: #fed7aa;
-  background-color: #fed7aa; /* Pastel orange */
-  color: black;
+	--chip-fill: #fed7aa;
+	background-color: #fed7aa; /* Pastel orange */
+	color: black;
 }
 
 .chip--brown-pastel {
-  --chip-fill: #d6d3d1;
-  background-color: #d6d3d1; /* Pastel brown */
-  color: black;
+	--chip-fill: #d6d3d1;
+	background-color: #d6d3d1; /* Pastel brown */
+	color: black;
 }
 
 .chip--red-pastel {
-  --chip-fill: #fca5a5;
-  background-color: #fca5a5; /* Pastel red */
-  color: black;
+	--chip-fill: #fca5a5;
+	background-color: #fca5a5; /* Pastel red */
+	color: black;
 }
 
 .chip--green-pastel {
-  --chip-fill: #bbf7d0;
-  background-color: #bbf7d0; /* Pastel green */
-  color: black;
+	--chip-fill: #bbf7d0;
+	background-color: #bbf7d0; /* Pastel green */
+	color: black;
 }
 
 .chip--purple-pastel {
-  --chip-fill: #e9d5ff;
-  background-color: #e9d5ff; /* Pastel purple */
-  color: black;
+	--chip-fill: #e9d5ff;
+	background-color: #e9d5ff; /* Pastel purple */
+	color: black;
 }
 
 .chip--blue-pastel {
-  --chip-fill: #bfdbfe;
-  background-color: #bfdbfe; /* Pastel blue */
-  color: black;
+	--chip-fill: #bfdbfe;
+	background-color: #bfdbfe; /* Pastel blue */
+	color: black;
 }
 
 .chip--yellow-pastel {
-  --chip-fill: #fde68a;
-  background-color: #fde68a; /* Pastel yellow */
-  color: black;
+	--chip-fill: #fde68a;
+	background-color: #fde68a; /* Pastel yellow */
+	color: black;
 }
 
 .chip--grey-pastel {
-  --chip-fill: #e5e7eb;
-  background-color: #e5e7eb; /* Pastel grey */
-  color: black;
+	--chip-fill: #e5e7eb;
+	background-color: #e5e7eb; /* Pastel grey */
+	color: black;
 }
 
 /* Additional pastel colors for better skill distribution */
 .chip--forest-green-pastel {
-  --chip-fill: #86efac;
-  background-color: #86efac; /* Forest green pastel for Athletics */
-  color: black;
+	--chip-fill: #86efac;
+	background-color: #86efac; /* Forest green pastel for Athletics */
+	color: black;
 }
 
 .chip--sage-green-pastel {
-  --chip-fill: #a7f3d0;
-  background-color: #a7f3d0; /* Sage green pastel for Survival */
-  color: black;
+	--chip-fill: #a7f3d0;
+	background-color: #a7f3d0; /* Sage green pastel for Survival */
+	color: black;
 }
 
 .chip--violet-pastel {
-  --chip-fill: #ddd6fe;
-  background-color: #ddd6fe; /* Violet pastel for Mysticism */
-  color: black;
+	--chip-fill: #ddd6fe;
+	background-color: #ddd6fe; /* Violet pastel for Mysticism */
+	color: black;
 }
 
 .chip--charcoal-pastel {
-  --chip-fill: #d1d5db;
-  background-color: #d1d5db; /* Charcoal pastel for Stealth */
-  color: black;
+	--chip-fill: #d1d5db;
+	background-color: #d1d5db; /* Charcoal pastel for Stealth */
+	color: black;
 }
 
 /* Dark mode adjustments for better contrast */
 [data-theme='dark'] .chip--light-purple {
-  --chip-fill: #6c33a0;
-  background-color: #6c33a0; /* Darker purple for dark mode */
-  color: white;
+	--chip-fill: #6c33a0;
+	background-color: #6c33a0; /* Darker purple for dark mode */
+	color: white;
 }
 
 [data-theme='dark'] .chip--red {
-  --chip-fill: #902f2f;
-  background-color: #902f2f; /* Keep consistent with light mode */
-  color: white;
+	--chip-fill: #902f2f;
+	background-color: #902f2f; /* Keep consistent with light mode */
+	color: white;
 }
 
 [data-theme='dark'] .chip--green {
-  --chip-fill: #154225;
-  background-color: #154225; /* Keep consistent with light mode */
-  color: white;
+	--chip-fill: #154225;
+	background-color: #154225; /* Keep consistent with light mode */
+	color: white;
 }
 
 [data-theme='dark'] .chip--blue {
-  --chip-fill: #27427c;
-  background-color: #27427c; /* Keep consistent with light mode */
-  color: white;
+	--chip-fill: #27427c;
+	background-color: #27427c; /* Keep consistent with light mode */
+	color: white;
 }
 
 [data-theme='dark'] .chip--yellow-pastel {
-  --chip-fill: #fbbf24;
-  background-color: #fbbf24;
-  color: black;
+	--chip-fill: #fbbf24;
+	background-color: #fbbf24;
+	color: black;
 }
 
 [data-theme='dark'] .chip--gold-pastel {
-  --chip-fill: #f59e0b;
-  background-color: #f59e0b;
-  color: black;
+	--chip-fill: #f59e0b;
+	background-color: #f59e0b;
+	color: black;
 }
 
 [data-theme='dark'] .chip--lime-pastel {
-  --chip-fill: #84cc16;
-  background-color: #84cc16;
-  color: black;
+	--chip-fill: #84cc16;
+	background-color: #84cc16;
+	color: black;
 }
 
 [data-theme='dark'] .chip--cyan-pastel {
-  --chip-fill: #06b6d4;
-  background-color: #06b6d4;
-  color: black;
+	--chip-fill: #06b6d4;
+	background-color: #06b6d4;
+	color: black;
 }
 
 [data-theme='dark'] .chip--tan-pastel {
-  --chip-fill: #d97706;
-  background-color: #d97706;
-  color: black;
+	--chip-fill: #d97706;
+	background-color: #d97706;
+	color: black;
 }
 
 [data-theme='dark'] .chip--silver-pastel {
-  --chip-fill: #94a3b8;
-  background-color: #94a3b8;
-  color: black;
+	--chip-fill: #94a3b8;
+	background-color: #94a3b8;
+	color: black;
 }
 
 [data-theme='dark'] .chip--amber-pastel {
-  --chip-fill: #f59e0b;
-  background-color: #f59e0b;
-  color: black;
+	--chip-fill: #f59e0b;
+	background-color: #f59e0b;
+	color: black;
 }
 
 /* Dark mode adjustments for new skill colors */
 [data-theme='dark'] .chip--forest-green-pastel {
-  --chip-fill: #22c55e;
-  background-color: #22c55e;
-  color: black;
+	--chip-fill: #22c55e;
+	background-color: #22c55e;
+	color: black;
 }
 
 [data-theme='dark'] .chip--sage-green-pastel {
-  --chip-fill: #34d399;
-  background-color: #34d399;
-  color: black;
+	--chip-fill: #34d399;
+	background-color: #34d399;
+	color: black;
 }
 
 [data-theme='dark'] .chip--violet-pastel {
-  --chip-fill: #9c31ff;
-  background-color: #9c31ff;
-  color: black;
+	--chip-fill: #9c31ff;
+	background-color: #9c31ff;
+	color: black;
 }
 
 [data-theme='dark'] .chip--charcoal-pastel {
-  --chip-fill: #9ca3af;
-  background-color: #9ca3af;
-  color: black;
+	--chip-fill: #9ca3af;
+	background-color: #9ca3af;
+	color: black;
 }
 
 /* Vibrant color variants for damage types */
 .chip--acid-vibrant {
-  --chip-fill: var(--nexus-damage-acid);
-  background-color: var(--nexus-damage-acid); /* Vibrant lime green */
-  color: white;
+	--chip-fill: var(--nexus-damage-acid);
+	background-color: var(--nexus-damage-acid); /* Vibrant lime green */
+	color: white;
 }
 
 .chip--blast-vibrant {
-  --chip-fill: var(--nexus-damage-blast);
-  background-color: var(--nexus-damage-blast); /* Vibrant orange */
-  color: white;
+	--chip-fill: var(--nexus-damage-blast);
+	background-color: var(--nexus-damage-blast); /* Vibrant orange */
+	color: white;
 }
 
 .chip--fire-vibrant {
-  --chip-fill: var(--nexus-damage-fire);
-  background-color: var(--nexus-damage-fire); /* Vibrant red */
-  color: white;
+	--chip-fill: var(--nexus-damage-fire);
+	background-color: var(--nexus-damage-fire); /* Vibrant red */
+	color: white;
 }
 
 .chip--frost-vibrant {
-  --chip-fill: var(--nexus-damage-frost);
-  background-color: var(--nexus-damage-frost); /* Vibrant cyan */
-  color: white;
+	--chip-fill: var(--nexus-damage-frost);
+	background-color: var(--nexus-damage-frost); /* Vibrant cyan */
+	color: white;
 }
 
 .chip--lightning-vibrant {
-  --chip-fill: var(--nexus-damage-lightning);
-  background-color: var(--nexus-damage-lightning); /* Vibrant yellow */
-  color: white;
+	--chip-fill: var(--nexus-damage-lightning);
+	background-color: var(--nexus-damage-lightning); /* Vibrant yellow */
+	color: white;
 }
 
 .chip--necrotic-vibrant {
-  --chip-fill: var(--nexus-damage-necrotic);
-  background-color: var(--nexus-damage-necrotic); /* Vibrant purple */
-  color: white;
+	--chip-fill: var(--nexus-damage-necrotic);
+	background-color: var(--nexus-damage-necrotic); /* Vibrant purple */
+	color: white;
 }
 
 .chip--poison-vibrant {
-  --chip-fill: var(--nexus-damage-poison);
-  background-color: var(--nexus-damage-poison); /* Vibrant green */
-  color: white;
+	--chip-fill: var(--nexus-damage-poison);
+	background-color: var(--nexus-damage-poison); /* Vibrant green */
+	color: white;
 }
 
 .chip--psychic-vibrant {
-  --chip-fill: var(--nexus-damage-psychic);
-  background-color: var(--nexus-damage-psychic); /* Vibrant pink */
-  color: white;
+	--chip-fill: var(--nexus-damage-psychic);
+	background-color: var(--nexus-damage-psychic); /* Vibrant pink */
+	color: white;
 }
 
 .chip--radiant-vibrant {
-  --chip-fill: var(--nexus-damage-radiant);
-  background-color: var(--nexus-damage-radiant); /* Vibrant gold */
-  color: white;
+	--chip-fill: var(--nexus-damage-radiant);
+	background-color: var(--nexus-damage-radiant); /* Vibrant gold */
+	color: white;
 }
 
 /* Physical is the DEFAULT damage type (rules prose omits it entirely), so it gets
    a neutral struck-steel grey rather than an elemental hue — it should read as
    "mundane" beside the coloured elements, not compete with them. */
 .chip--physical-vibrant {
-  --chip-fill: var(--nexus-damage-physical);
-  background-color: var(--nexus-damage-physical); /* Struck steel grey */
-  color: white;
+	--chip-fill: var(--nexus-damage-physical);
+	background-color: var(--nexus-damage-physical); /* Struck steel grey */
+	color: white;
 }
 
 /* Force is pure magical energy — a cold violet-white, kept clear of necrotic's
    purple and psychic's pink. */
 .chip--force-vibrant {
-  --chip-fill: var(--nexus-damage-force);
-  background-color: var(--nexus-damage-force); /* Arcane violet */
-  color: white;
+	--chip-fill: var(--nexus-damage-force);
+	background-color: var(--nexus-damage-force); /* Arcane violet */
+	color: white;
 }
 
 /* ============================================================================
@@ -1536,15 +1763,15 @@ a.chip:hover {
    dark on light, so the same declaration lightens the hue in dark mode and
    darkens it in light mode while holding the hue itself. */
 .chip[class*='chip--'] {
-  color: color-mix(in srgb, var(--chip-fill) 68%, var(--ifm-font-color-base));
-  background-color: transparent !important;
+	color: color-mix(in srgb, var(--chip-fill) 68%, var(--ifm-font-color-base));
+	background-color: transparent !important;
 }
 
 a.chip,
 .chip {
-  border-radius: 2px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+	border-radius: 2px;
+	font-weight: 700;
+	letter-spacing: 0.05em;
 }
 
 /* ── Per-family silhouettes ──────────────────────────────────────────────────
@@ -1567,10 +1794,10 @@ a.chip,
 .chip--skill,
 .chip--damage,
 .chip--weapon {
-  position: relative;
-  isolation: isolate;
-  border: none !important;
-  border-radius: 0 !important;
+	position: relative;
+	isolation: isolate;
+	border: none !important;
+	border-radius: 0 !important;
 }
 
 .chip--skill::before,
@@ -1579,65 +1806,75 @@ a.chip,
 .chip--skill::after,
 .chip--damage::after,
 .chip--weapon::after {
-  content: '';
-  position: absolute;
-  /* Reset the skill chip's old triangular-point construction, which used these
+	content: '';
+	position: absolute;
+	/* Reset the skill chip's old triangular-point construction, which used these
      same two pseudo-elements as CSS border triangles. */
-  border: none;
-  width: auto;
-  height: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  clip-path: var(--chip-shape);
+	border: none;
+	width: auto;
+	height: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	clip-path: var(--chip-shape);
 }
 /* keyline */
 .chip--skill::before,
 .chip--damage::before,
 .chip--weapon::before {
-  background: color-mix(in srgb, var(--chip-fill) 45%, var(--ifm-color-primary));
-  z-index: -2;
+	background: color-mix(
+		in srgb,
+		var(--chip-fill) 45%,
+		var(--ifm-color-primary)
+	);
+	z-index: -2;
 }
 /* the surface, punching the middle back out to leave an outline */
 .chip--skill::after,
 .chip--damage::after,
 .chip--weapon::after {
-  inset: 1.5px;
-  background: var(--ifm-background-surface-color);
-  z-index: -1;
+	inset: 1.5px;
+	background: var(--ifm-background-surface-color);
+	z-index: -1;
 }
 
 .chip--skill {
-  --chip-shape: polygon(
-    7px 0,
-    calc(100% - 7px) 0,
-    100% 50%,
-    calc(100% - 7px) 100%,
-    7px 100%,
-    0 50%
-  );
-  padding: 2px 12px !important;
-  margin: 0 2px !important;
+	--chip-shape: polygon(
+		7px 0,
+		calc(100% - 7px) 0,
+		100% 50%,
+		calc(100% - 7px) 100%,
+		7px 100%,
+		0 50%
+	);
+	padding: 2px 12px !important;
+	margin: 0 2px !important;
 }
 
 .chip--damage {
-  --chip-shape: polygon(
-    4px 0,
-    calc(100% - 4px) 0,
-    100% 4px,
-    100% calc(100% - 4px),
-    calc(100% - 4px) 100%,
-    4px 100%,
-    0 calc(100% - 4px),
-    0 4px
-  );
-  padding: 2px 9px;
+	--chip-shape: polygon(
+		4px 0,
+		calc(100% - 4px) 0,
+		100% 4px,
+		100% calc(100% - 4px),
+		calc(100% - 4px) 100%,
+		4px 100%,
+		0 calc(100% - 4px),
+		0 4px
+	);
+	padding: 2px 9px;
 }
 
 .chip--weapon {
-  --chip-shape: polygon(0 0, calc(100% - 7px) 0, 100% 50%, calc(100% - 7px) 100%, 0 100%);
-  padding: 2px 13px 2px 8px;
+	--chip-shape: polygon(
+		0 0,
+		calc(100% - 7px) 0,
+		100% 50%,
+		calc(100% - 7px) 100%,
+		0 100%
+	);
+	padding: 2px 13px 2px 8px;
 }
 
 /* Attributes stay a true square — a die face. It carried a concentric second
@@ -1647,281 +1884,298 @@ a.chip,
    and at this size two hairlines 3px apart read as noise rather than as the
    card frame's nested border they were meant to echo. */
 .chip--attribute {
-  /* 1.5px, not 1px: the clipped families get their outline from a bezel layer
+	/* 1.5px, not 1px: the clipped families get their outline from a bezel layer
      with the surface inset 1.5px on top, so a 1px border here rendered visibly
      thinner than every chip beside it. Hard corners too — the other three
      silhouettes are cut with clip-path and have no rounding to soften, so a
      radius here was the only rounded corner left in the set. */
-  border: 1.5px solid color-mix(in srgb, var(--chip-fill) 45%, var(--ifm-color-primary)) !important;
-  border-radius: 0 !important;
-  padding: 2px 6px;
+	border: 1.5px solid
+		color-mix(in srgb, var(--chip-fill) 45%, var(--ifm-color-primary)) !important;
+	border-radius: 0 !important;
+	padding: 2px 6px;
 }
 
 /* The rank divider inside a skill chip picks up the chip's own ink. */
 .chip__rank {
-  border-left-color: color-mix(in srgb, currentColor 40%, transparent);
+	border-left-color: color-mix(in srgb, currentColor 40%, transparent);
 }
 
 /* Vibrant color variants for skills. Hex values live once, in the
    --nexus-skill-* tokens at the top of this file (M9 F2) — the sheet's
    per-skill labels read the same tokens, so a skill is one color site-wide. */
 .chip--athletics-vibrant {
-  --chip-fill: var(--nexus-skill-athletics);
-  background-color: var(--nexus-skill-athletics);
-  color: white;
+	--chip-fill: var(--nexus-skill-athletics);
+	background-color: var(--nexus-skill-athletics);
+	color: white;
 }
 
 .chip--crafting-vibrant {
-  --chip-fill: var(--nexus-skill-crafting);
-  background-color: var(--nexus-skill-crafting);
-  color: white;
+	--chip-fill: var(--nexus-skill-crafting);
+	background-color: var(--nexus-skill-crafting);
+	color: white;
 }
 
 .chip--nature-vibrant {
-  --chip-fill: var(--nexus-skill-nature);
-  background-color: var(--nexus-skill-nature);
-  color: white;
+	--chip-fill: var(--nexus-skill-nature);
+	background-color: var(--nexus-skill-nature);
+	color: white;
 }
 
 .chip--survival-vibrant {
-  --chip-fill: var(--nexus-skill-survival);
-  background-color: var(--nexus-skill-survival);
-  color: white;
+	--chip-fill: var(--nexus-skill-survival);
+	background-color: var(--nexus-skill-survival);
+	color: white;
 }
 
 .chip--fighting-vibrant {
-  --chip-fill: var(--nexus-skill-fighting);
-  background-color: var(--nexus-skill-fighting);
-  color: white;
+	--chip-fill: var(--nexus-skill-fighting);
+	background-color: var(--nexus-skill-fighting);
+	color: white;
 }
 
 .chip--fortitude-vibrant {
-  --chip-fill: var(--nexus-skill-fortitude);
-  background-color: var(--nexus-skill-fortitude);
-  color: white;
+	--chip-fill: var(--nexus-skill-fortitude);
+	background-color: var(--nexus-skill-fortitude);
+	color: white;
 }
 
 .chip--perception-vibrant {
-  --chip-fill: var(--nexus-skill-perception);
-  background-color: var(--nexus-skill-perception);
-  color: white;
+	--chip-fill: var(--nexus-skill-perception);
+	background-color: var(--nexus-skill-perception);
+	color: white;
 }
 
 .chip--arcana-vibrant {
-  --chip-fill: var(--nexus-skill-arcana);
-  background-color: var(--nexus-skill-arcana);
-  color: white;
+	--chip-fill: var(--nexus-skill-arcana);
+	background-color: var(--nexus-skill-arcana);
+	color: white;
 }
 
 .chip--influence-vibrant {
-  --chip-fill: var(--nexus-skill-influence);
-  background-color: var(--nexus-skill-influence);
-  color: white;
+	--chip-fill: var(--nexus-skill-influence);
+	background-color: var(--nexus-skill-influence);
+	color: white;
 }
 
 .chip--lore-vibrant {
-  --chip-fill: var(--nexus-skill-lore);
-  background-color: var(--nexus-skill-lore);
-  color: white;
+	--chip-fill: var(--nexus-skill-lore);
+	background-color: var(--nexus-skill-lore);
+	color: white;
 }
 
 .chip--mysticism-vibrant {
-  --chip-fill: var(--nexus-skill-mysticism);
-  background-color: var(--nexus-skill-mysticism);
-  color: white;
+	--chip-fill: var(--nexus-skill-mysticism);
+	background-color: var(--nexus-skill-mysticism);
+	color: white;
 }
 
 .chip--insight-vibrant {
-  --chip-fill: var(--nexus-skill-insight);
-  background-color: var(--nexus-skill-insight);
-  color: white;
+	--chip-fill: var(--nexus-skill-insight);
+	background-color: var(--nexus-skill-insight);
+	color: white;
 }
 
 .chip--stealth-vibrant {
-  --chip-fill: var(--nexus-skill-stealth);
-  background-color: var(--nexus-skill-stealth);
-  color: white;
+	--chip-fill: var(--nexus-skill-stealth);
+	background-color: var(--nexus-skill-stealth);
+	color: white;
 }
 
 .chip--streetwise-vibrant {
-  --chip-fill: var(--nexus-skill-streetwise);
-  background-color: var(--nexus-skill-streetwise);
-  color: white;
+	--chip-fill: var(--nexus-skill-streetwise);
+	background-color: var(--nexus-skill-streetwise);
+	color: white;
 }
 
 .chip--education-vibrant {
-  --chip-fill: var(--nexus-skill-education);
-  background-color: var(--nexus-skill-education);
-  color: white;
+	--chip-fill: var(--nexus-skill-education);
+	background-color: var(--nexus-skill-education);
+	color: white;
 }
 
 .chip--archery-vibrant {
-  --chip-fill: var(--nexus-skill-archery);
-  background-color: var(--nexus-skill-archery);
-  color: white;
+	--chip-fill: var(--nexus-skill-archery);
+	background-color: var(--nexus-skill-archery);
+	color: white;
 }
 
 /* Triangular pseudo-elements for skill chips */
-.chip--athletics-vibrant::before, .chip--athletics-vibrant::after {
-  border-right-color: var(--nexus-skill-athletics);
-  border-left-color: var(--nexus-skill-athletics);
+.chip--athletics-vibrant::before,
+.chip--athletics-vibrant::after {
+	border-right-color: var(--nexus-skill-athletics);
+	border-left-color: var(--nexus-skill-athletics);
 }
 
-.chip--crafting-vibrant::before, .chip--crafting-vibrant::after {
-  border-right-color: var(--nexus-skill-crafting);
-  border-left-color: var(--nexus-skill-crafting);
+.chip--crafting-vibrant::before,
+.chip--crafting-vibrant::after {
+	border-right-color: var(--nexus-skill-crafting);
+	border-left-color: var(--nexus-skill-crafting);
 }
 
-.chip--nature-vibrant::before, .chip--nature-vibrant::after {
-  border-right-color: var(--nexus-skill-nature);
-  border-left-color: var(--nexus-skill-nature);
+.chip--nature-vibrant::before,
+.chip--nature-vibrant::after {
+	border-right-color: var(--nexus-skill-nature);
+	border-left-color: var(--nexus-skill-nature);
 }
 
-.chip--survival-vibrant::before, .chip--survival-vibrant::after {
-  border-right-color: var(--nexus-skill-survival);
-  border-left-color: var(--nexus-skill-survival);
+.chip--survival-vibrant::before,
+.chip--survival-vibrant::after {
+	border-right-color: var(--nexus-skill-survival);
+	border-left-color: var(--nexus-skill-survival);
 }
 
-.chip--fighting-vibrant::before, .chip--fighting-vibrant::after {
-  border-right-color: var(--nexus-skill-fighting);
-  border-left-color: var(--nexus-skill-fighting);
+.chip--fighting-vibrant::before,
+.chip--fighting-vibrant::after {
+	border-right-color: var(--nexus-skill-fighting);
+	border-left-color: var(--nexus-skill-fighting);
 }
 
-.chip--fortitude-vibrant::before, .chip--fortitude-vibrant::after {
-  border-right-color: var(--nexus-skill-fortitude);
-  border-left-color: var(--nexus-skill-fortitude);
+.chip--fortitude-vibrant::before,
+.chip--fortitude-vibrant::after {
+	border-right-color: var(--nexus-skill-fortitude);
+	border-left-color: var(--nexus-skill-fortitude);
 }
 
-.chip--perception-vibrant::before, .chip--perception-vibrant::after {
-  border-right-color: var(--nexus-skill-perception);
-  border-left-color: var(--nexus-skill-perception);
+.chip--perception-vibrant::before,
+.chip--perception-vibrant::after {
+	border-right-color: var(--nexus-skill-perception);
+	border-left-color: var(--nexus-skill-perception);
 }
 
-.chip--arcana-vibrant::before, .chip--arcana-vibrant::after {
-  border-right-color: var(--nexus-skill-arcana);
-  border-left-color: var(--nexus-skill-arcana);
+.chip--arcana-vibrant::before,
+.chip--arcana-vibrant::after {
+	border-right-color: var(--nexus-skill-arcana);
+	border-left-color: var(--nexus-skill-arcana);
 }
 
-.chip--influence-vibrant::before, .chip--influence-vibrant::after {
-  border-right-color: var(--nexus-skill-influence);
-  border-left-color: var(--nexus-skill-influence);
+.chip--influence-vibrant::before,
+.chip--influence-vibrant::after {
+	border-right-color: var(--nexus-skill-influence);
+	border-left-color: var(--nexus-skill-influence);
 }
 
-.chip--lore-vibrant::before, .chip--lore-vibrant::after {
-  border-right-color: var(--nexus-skill-lore);
-  border-left-color: var(--nexus-skill-lore);
+.chip--lore-vibrant::before,
+.chip--lore-vibrant::after {
+	border-right-color: var(--nexus-skill-lore);
+	border-left-color: var(--nexus-skill-lore);
 }
 
-.chip--mysticism-vibrant::before, .chip--mysticism-vibrant::after {
-  border-right-color: var(--nexus-skill-mysticism);
-  border-left-color: var(--nexus-skill-mysticism);
+.chip--mysticism-vibrant::before,
+.chip--mysticism-vibrant::after {
+	border-right-color: var(--nexus-skill-mysticism);
+	border-left-color: var(--nexus-skill-mysticism);
 }
 
-.chip--insight-vibrant::before, .chip--insight-vibrant::after {
-  border-right-color: var(--nexus-skill-insight);
-  border-left-color: var(--nexus-skill-insight);
+.chip--insight-vibrant::before,
+.chip--insight-vibrant::after {
+	border-right-color: var(--nexus-skill-insight);
+	border-left-color: var(--nexus-skill-insight);
 }
 
-.chip--stealth-vibrant::before, .chip--stealth-vibrant::after {
-  border-right-color: var(--nexus-skill-stealth);
-  border-left-color: var(--nexus-skill-stealth);
+.chip--stealth-vibrant::before,
+.chip--stealth-vibrant::after {
+	border-right-color: var(--nexus-skill-stealth);
+	border-left-color: var(--nexus-skill-stealth);
 }
 
-.chip--streetwise-vibrant::before, .chip--streetwise-vibrant::after {
-  border-right-color: var(--nexus-skill-streetwise);
-  border-left-color: var(--nexus-skill-streetwise);
+.chip--streetwise-vibrant::before,
+.chip--streetwise-vibrant::after {
+	border-right-color: var(--nexus-skill-streetwise);
+	border-left-color: var(--nexus-skill-streetwise);
 }
 
-.chip--education-vibrant::before, .chip--education-vibrant::after {
-  border-right-color: var(--nexus-skill-education);
-  border-left-color: var(--nexus-skill-education);
+.chip--education-vibrant::before,
+.chip--education-vibrant::after {
+	border-right-color: var(--nexus-skill-education);
+	border-left-color: var(--nexus-skill-education);
 }
 
-.chip--archery-vibrant::before, .chip--archery-vibrant::after {
-  border-right-color: var(--nexus-skill-archery);
-  border-left-color: var(--nexus-skill-archery);
+.chip--archery-vibrant::before,
+.chip--archery-vibrant::after {
+	border-right-color: var(--nexus-skill-archery);
+	border-left-color: var(--nexus-skill-archery);
 }
 
 /* Vibrant color variants for weapon types - very distinct colors */
 .chip--axe-vibrant {
-  --chip-fill: #502719;
-  background-color: #502719; /* Deep brown */
-  color: white;
+	--chip-fill: #502719;
+	background-color: #502719; /* Deep brown */
+	color: white;
 }
 
 .chip--blade-vibrant {
-  --chip-fill: #4e5763;
-  background-color: #4e5763; /* Steel grey */
-  color: white;
+	--chip-fill: #4e5763;
+	background-color: #4e5763; /* Steel grey */
+	color: white;
 }
 
 .chip--bow-vibrant {
-  --chip-fill: #5e441e;
-  background-color: #5e441e; /* Wood brown */
-  color: white;
+	--chip-fill: #5e441e;
+	background-color: #5e441e; /* Wood brown */
+	color: white;
 }
 
 .chip--brawling-vibrant {
-  --chip-fill: #902f2f;
-  background-color: #902f2f; /* Fighting red */
-  color: white;
+	--chip-fill: #902f2f;
+	background-color: #902f2f; /* Fighting red */
+	color: white;
 }
 
 .chip--crossbow-vibrant {
-  --chip-fill: #2c3139;
-  background-color: #2c3139; /* Dark grey */
-  color: white;
+	--chip-fill: #2c3139;
+	background-color: #2c3139; /* Dark grey */
+	color: white;
 }
 
 .chip--mace-vibrant {
-  --chip-fill: #3f3986;
-  background-color: #3f3986; /* Royal blue */
-  color: white;
+	--chip-fill: #3f3986;
+	background-color: #3f3986; /* Royal blue */
+	color: white;
 }
 
 .chip--polearm-vibrant {
-  --chip-fill: #1c5745;
-  background-color: #1c5745; /* Emerald green */
-  color: white;
+	--chip-fill: #1c5745;
+	background-color: #1c5745; /* Emerald green */
+	color: white;
 }
 
 .chip--shield-vibrant {
-  --chip-fill: #5e34a6;
-  background-color: #5e34a6; /* Shield purple */
-  color: white;
+	--chip-fill: #5e34a6;
+	background-color: #5e34a6; /* Shield purple */
+	color: white;
 }
 
 .chip--thrown-vibrant {
-  --chip-fill: #8a4c2c;
-  background-color: #8a4c2c; /* Orange */
-  color: white;
+	--chip-fill: #8a4c2c;
+	background-color: #8a4c2c; /* Orange */
+	color: white;
 }
 
 /* Hide left sidebar on desktop for Character Sheet page */
 @media (min-width: 997px) {
-  /* Target the sidebar when the character-sheet-page class exists in the article */
-  div:has(.character-sheet-page) aside.theme-doc-sidebar-container {
-    display: none !important; /* sidebar hiding still uses !important because theme CSS sets widths */
-  }
+	/* Target the sidebar when the character-sheet-page class exists in the article */
+	div:has(.character-sheet-page) aside.theme-doc-sidebar-container {
+		display: none !important; /* sidebar hiding still uses !important because theme CSS sets widths */
+	}
 
-  /* Keep legacy container/col fallbacks for any layouts that rely on them */
-  div:has(.character-sheet-page) .container {
-    max-width: 100% !important;
-  }
+	/* Keep legacy container/col fallbacks for any layouts that rely on them */
+	div:has(.character-sheet-page) .container {
+		max-width: 100% !important;
+	}
 
-  div:has(.character-sheet-page) .col {
-    max-width: 100% !important;
-    flex-basis: 100% !important;
-  }
+	div:has(.character-sheet-page) .col {
+		max-width: 100% !important;
+		flex-basis: 100% !important;
+	}
 
-  /* Prefer a more-specific override for the generated doc main container to
+	/* Prefer a more-specific override for the generated doc main container to
      expand it to full width without using !important. By increasing selector
      specificity and placing this in `src/css/custom.css` (loaded after theme
      CSS), this will override the rule in the bundled styles. */
-  div:has(.character-sheet-page) main.docMainContainer_TBSr {
-    max-width: 100%;
-    width: 100%;
-  }
+	div:has(.character-sheet-page) main.docMainContainer_TBSr {
+		max-width: 100%;
+		width: 100%;
+	}
 }
 
 /* Chapter sigils in the navbar — the shared SigilIcon marks in place of the old
@@ -1943,32 +2197,62 @@ a.chip,
    but `content` never did, so below 996px the chapter list was naked labels.
    The class is ours and appears nowhere else, so the bare selector is safe. */
 .navbar-sigil::before {
-  content: "";
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-right: 0.4rem;
-  background-color: currentColor;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  vertical-align: -3px;
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-right: 0.4rem;
+	background-color: currentColor;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	mask-position: center;
+	-webkit-mask-size: contain;
+	mask-size: contain;
+	vertical-align: -3px;
 }
 
 /* sigils:masks:start — generated by `bun run sigils:masks`, do not edit */
-  .navbar-sigil--sun::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M7%2016A9%209%200%201%200%2025%2016A9%209%200%201%200%207%2016Z%22%20/%3E%3Cpath%20d=%22M12.5%208.25L16%202.5L19.5%208.25ZM19%208.05L25.55%206.45L23.95%2013ZM23.75%2012.5L29.5%2016L23.75%2019.5ZM23.95%2019L25.55%2025.55L19%2023.95ZM19.5%2023.75L16%2029.5L12.5%2023.75ZM13%2023.95L6.45%2025.55L8.05%2019ZM8.25%2019.5L2.5%2016L8.25%2012.5ZM8.05%2013L6.45%206.45L13%208.05Z%22%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M7%2016A9%209%200%201%200%2025%2016A9%209%200%201%200%207%2016Z%22%20/%3E%3Cpath%20d=%22M12.5%208.25L16%202.5L19.5%208.25ZM19%208.05L25.55%206.45L23.95%2013ZM23.75%2012.5L29.5%2016L23.75%2019.5ZM23.95%2019L25.55%2025.55L19%2023.95ZM19.5%2023.75L16%2029.5L12.5%2023.75ZM13%2023.95L6.45%2025.55L8.05%2019ZM8.25%2019.5L2.5%2016L8.25%2012.5ZM8.05%2013L6.45%206.45L13%208.05Z%22%20/%3E%3C/svg%3E"); }
-  .navbar-sigil--ziggurat::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M2.5%2025L29.5%2025L29.5%2029.5L2.5%2029.5ZM5%2020.5L27%2020.5L27%2025L5%2025ZM7.5%2016L24.5%2016L24.5%2020.5L7.5%2020.5ZM10%2011.5L22%2011.5L22%2016L10%2016ZM12.5%206L19.5%206L19.5%2011.5L12.5%2011.5ZM14.2%2025L17.8%2025L17.8%2029.5L14.2%2029.5Z%22%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M2.5%2025L29.5%2025L29.5%2029.5L2.5%2029.5ZM5%2020.5L27%2020.5L27%2025L5%2025ZM7.5%2016L24.5%2016L24.5%2020.5L7.5%2020.5ZM10%2011.5L22%2011.5L22%2016L10%2016ZM12.5%206L19.5%206L19.5%2011.5L12.5%2011.5ZM14.2%2025L17.8%2025L17.8%2029.5L14.2%2029.5Z%22%20/%3E%3C/svg%3E"); }
-  .navbar-sigil--tablet::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%203.5L23.5%203.5L25%2028.5L7%2028.5ZM11%209.5L22%209.5L22%2012L11%2012ZM11%2015L22.2%2015L22.2%2017.5L11%2017.5ZM11%2020.5L22.4%2020.5L22.4%2023L11%2023Z%22%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%203.5L23.5%203.5L25%2028.5L7%2028.5ZM11%209.5L22%209.5L22%2012L11%2012ZM11%2015L22.2%2015L22.2%2017.5L11%2017.5ZM11%2020.5L22.4%2020.5L22.4%2023L11%2023Z%22%20/%3E%3C/svg%3E"); }
-  .navbar-sigil--anvil::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M1.5%2013.5L9%208L27%208L27%2015L19.5%2015L19.5%2020L25.5%2020L25.5%2025.5L6.5%2025.5L6.5%2020L12.5%2020L12.5%2015L9%2015Z%22%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M1.5%2013.5L9%208L27%208L27%2015L19.5%2015L19.5%2020L25.5%2020L25.5%2025.5L6.5%2025.5L6.5%2020L12.5%2020L12.5%2015L9%2015Z%22%20/%3E%3C/svg%3E"); }
-  .navbar-sigil--blades::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M9.28%2028.63L9.56%2028.2L9.92%2027.65L10.34%2027.01L10.81%2026.29L11.32%2025.51L11.86%2024.69L12.41%2023.86L12.96%2023.03L13.49%2022.22L14.01%2021.45L14.52%2020.67L15.04%2019.87L15.57%2019.06L16.11%2018.24L16.64%2017.43L17.17%2016.63L17.69%2015.87L18.19%2015.14L18.67%2014.47L19.14%2013.84L19.59%2013.25L20.04%2012.67L20.46%2012.13L20.87%2011.63L21.25%2011.18L21.62%2010.77L21.97%2010.41L22.3%2010.1L22.61%209.85L22.88%209.65L23.12%209.52L23.4%209.42L23.75%209.34L24.14%209.28L24.56%209.24L24.99%209.23L25.42%209.22L25.83%209.23L26.24%209.22L26.57%209.2L26.43%205.8L26.22%205.8L25.94%205.78L25.55%205.75L25.06%205.72L24.5%205.69L23.89%205.7L23.24%205.74L22.54%205.85L21.82%206.05L21.12%206.35L20.5%206.7L19.93%207.09L19.39%207.51L18.88%207.97L18.37%208.45L17.88%208.95L17.38%209.47L16.89%2010.02L16.39%2010.57L15.86%2011.16L15.3%2011.8L14.72%2012.49L14.13%2013.22L13.53%2013.98L12.92%2014.76L12.32%2015.54L11.72%2016.33L11.13%2017.09L10.55%2017.84L9.99%2018.55L9.42%2019.29L8.82%2020.06L8.2%2020.85L7.59%2021.65L6.99%2022.43L6.42%2023.17L5.89%2023.85L5.43%2024.46L5.03%2024.97L4.72%2025.37Z%22%20/%3E%3Cpath%20d=%22M27.28%2025.37L26.97%2024.97L26.57%2024.46L26.11%2023.85L25.58%2023.17L25.01%2022.43L24.41%2021.65L23.8%2020.85L23.18%2020.06L22.58%2019.29L22.01%2018.55L21.45%2017.84L20.87%2017.09L20.28%2016.33L19.68%2015.54L19.08%2014.76L18.47%2013.98L17.87%2013.22L17.28%2012.49L16.7%2011.8L16.14%2011.16L15.61%2010.57L15.11%2010.02L14.62%209.47L14.12%208.95L13.63%208.45L13.12%207.97L12.61%207.51L12.07%207.09L11.5%206.7L10.88%206.35L10.18%206.05L9.46%205.85L8.76%205.74L8.11%205.7L7.5%205.69L6.94%205.72L6.45%205.75L6.06%205.78L5.78%205.8L5.57%205.8L5.43%209.2L5.76%209.22L6.17%209.23L6.58%209.22L7.01%209.23L7.44%209.24L7.86%209.28L8.25%209.34L8.6%209.42L8.88%209.52L9.12%209.65L9.39%209.85L9.7%2010.1L10.03%2010.41L10.38%2010.77L10.75%2011.18L11.13%2011.63L11.54%2012.13L11.96%2012.67L12.41%2013.25L12.86%2013.84L13.33%2014.47L13.81%2015.14L14.31%2015.87L14.83%2016.63L15.36%2017.43L15.89%2018.24L16.43%2019.06L16.96%2019.87L17.48%2020.67L17.99%2021.45L18.51%2022.22L19.04%2023.03L19.59%2023.86L20.14%2024.69L20.68%2025.51L21.19%2026.29L21.66%2027.01L22.08%2027.65L22.44%2028.2L22.72%2028.63Z%22%20/%3E%3Cpath%20d=%22M9.5%2021.5L22.5%2021.5L22.5%2025L9.5%2025Z%22%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M9.28%2028.63L9.56%2028.2L9.92%2027.65L10.34%2027.01L10.81%2026.29L11.32%2025.51L11.86%2024.69L12.41%2023.86L12.96%2023.03L13.49%2022.22L14.01%2021.45L14.52%2020.67L15.04%2019.87L15.57%2019.06L16.11%2018.24L16.64%2017.43L17.17%2016.63L17.69%2015.87L18.19%2015.14L18.67%2014.47L19.14%2013.84L19.59%2013.25L20.04%2012.67L20.46%2012.13L20.87%2011.63L21.25%2011.18L21.62%2010.77L21.97%2010.41L22.3%2010.1L22.61%209.85L22.88%209.65L23.12%209.52L23.4%209.42L23.75%209.34L24.14%209.28L24.56%209.24L24.99%209.23L25.42%209.22L25.83%209.23L26.24%209.22L26.57%209.2L26.43%205.8L26.22%205.8L25.94%205.78L25.55%205.75L25.06%205.72L24.5%205.69L23.89%205.7L23.24%205.74L22.54%205.85L21.82%206.05L21.12%206.35L20.5%206.7L19.93%207.09L19.39%207.51L18.88%207.97L18.37%208.45L17.88%208.95L17.38%209.47L16.89%2010.02L16.39%2010.57L15.86%2011.16L15.3%2011.8L14.72%2012.49L14.13%2013.22L13.53%2013.98L12.92%2014.76L12.32%2015.54L11.72%2016.33L11.13%2017.09L10.55%2017.84L9.99%2018.55L9.42%2019.29L8.82%2020.06L8.2%2020.85L7.59%2021.65L6.99%2022.43L6.42%2023.17L5.89%2023.85L5.43%2024.46L5.03%2024.97L4.72%2025.37Z%22%20/%3E%3Cpath%20d=%22M27.28%2025.37L26.97%2024.97L26.57%2024.46L26.11%2023.85L25.58%2023.17L25.01%2022.43L24.41%2021.65L23.8%2020.85L23.18%2020.06L22.58%2019.29L22.01%2018.55L21.45%2017.84L20.87%2017.09L20.28%2016.33L19.68%2015.54L19.08%2014.76L18.47%2013.98L17.87%2013.22L17.28%2012.49L16.7%2011.8L16.14%2011.16L15.61%2010.57L15.11%2010.02L14.62%209.47L14.12%208.95L13.63%208.45L13.12%207.97L12.61%207.51L12.07%207.09L11.5%206.7L10.88%206.35L10.18%206.05L9.46%205.85L8.76%205.74L8.11%205.7L7.5%205.69L6.94%205.72L6.45%205.75L6.06%205.78L5.78%205.8L5.57%205.8L5.43%209.2L5.76%209.22L6.17%209.23L6.58%209.22L7.01%209.23L7.44%209.24L7.86%209.28L8.25%209.34L8.6%209.42L8.88%209.52L9.12%209.65L9.39%209.85L9.7%2010.1L10.03%2010.41L10.38%2010.77L10.75%2011.18L11.13%2011.63L11.54%2012.13L11.96%2012.67L12.41%2013.25L12.86%2013.84L13.33%2014.47L13.81%2015.14L14.31%2015.87L14.83%2016.63L15.36%2017.43L15.89%2018.24L16.43%2019.06L16.96%2019.87L17.48%2020.67L17.99%2021.45L18.51%2022.22L19.04%2023.03L19.59%2023.86L20.14%2024.69L20.68%2025.51L21.19%2026.29L21.66%2027.01L22.08%2027.65L22.44%2028.2L22.72%2028.63Z%22%20/%3E%3Cpath%20d=%22M9.5%2021.5L22.5%2021.5L22.5%2025L9.5%2025Z%22%20/%3E%3C/svg%3E"); }
-  .navbar-sigil--hourglass::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5.5%203.5L26.5%203.5L26.5%207.5L5.5%207.5Z%22%20/%3E%3Cpath%20d=%22M5.5%2024.5L26.5%2024.5L26.5%2028.5L5.5%2028.5Z%22%20/%3E%3Cpath%20d=%22M7.5%207.5L24.5%207.5L17.4%2014.8L14.6%2014.8ZM14.6%2014.8L17.4%2014.8L17.4%2017.2L14.6%2017.2ZM14.6%2017.2L17.4%2017.2L24.5%2024.5L7.5%2024.5Z%22%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5.5%203.5L26.5%203.5L26.5%207.5L5.5%207.5Z%22%20/%3E%3Cpath%20d=%22M5.5%2024.5L26.5%2024.5L26.5%2028.5L5.5%2028.5Z%22%20/%3E%3Cpath%20d=%22M7.5%207.5L24.5%207.5L17.4%2014.8L14.6%2014.8ZM14.6%2014.8L17.4%2014.8L17.4%2017.2L14.6%2017.2ZM14.6%2017.2L17.4%2017.2L24.5%2024.5L7.5%2024.5Z%22%20/%3E%3C/svg%3E"); }
-  .navbar-sigil--rune::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M13.4%203.5L18.6%203.5L18.6%2028.5L13.4%2028.5Z%22%20/%3E%3Cpath%20d=%22M20.05%2012.65L27.45%206.15L24.55%202.85L17.15%209.35Z%22%20/%3E%3Cpath%20d=%22M17.15%2020.65L24.55%2027.15L27.45%2023.85L20.05%2017.35Z%22%20/%3E%3Cpath%20d=%22M14.85%2013.35L7.45%206.85L4.55%2010.15L11.95%2016.65Z%22%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M13.4%203.5L18.6%203.5L18.6%2028.5L13.4%2028.5Z%22%20/%3E%3Cpath%20d=%22M20.05%2012.65L27.45%206.15L24.55%202.85L17.15%209.35Z%22%20/%3E%3Cpath%20d=%22M17.15%2020.65L24.55%2027.15L27.45%2023.85L20.05%2017.35Z%22%20/%3E%3Cpath%20d=%22M14.85%2013.35L7.45%206.85L4.55%2010.15L11.95%2016.65Z%22%20/%3E%3C/svg%3E"); }
-  .navbar-sigil--serpent::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M9.27%2029.35L9.58%2029.23L10%2029.1L10.52%2028.93L11.13%2028.73L11.8%2028.51L12.5%2028.25L13.22%2027.96L13.95%2027.64L14.67%2027.27L15.32%2026.88L15.9%2026.49L16.48%2026.08L17.09%2025.64L17.71%2025.15L18.33%2024.62L18.92%2024.04L19.49%2023.38L20%2022.61L20.41%2021.66L20.6%2020.49L20.43%2019.28L20.01%2018.28L19.5%2017.48L18.95%2016.81L18.39%2016.22L17.83%2015.68L17.3%2015.18L16.8%2014.72L16.38%2014.3L15.96%2013.87L15.39%2013.32L14.73%2012.78L14.1%2012.31L13.52%2011.89L13.02%2011.52L12.64%2011.2L12.4%2010.97L12.36%2010.9L12.51%2011.11L12.67%2011.62L12.7%2012.04L12.71%2012.1L12.82%2011.94L13.03%2011.65L13.32%2011.3L13.67%2010.93L14.03%2010.58L14.39%2010.28L14.7%2010.05L14.83%209.99L14.78%2010.04L14.82%2010.06L15.02%2010.05L15.34%2010.06L15.73%2010.08L16.17%2010.11L16.64%2010.16L17.13%2010.21L17.67%2010.24L18.12%2010.25L17.88%202.75L17.72%202.77L17.46%202.78L17%202.78L16.4%202.78L15.71%202.8L14.93%202.85L14.08%202.95L13.15%203.15L12.14%203.49L11.17%204.01L10.4%204.59L9.76%205.18L9.14%205.82L8.55%206.52L7.99%207.27L7.47%208.06L7.01%208.93L6.61%209.88L6.34%2011L6.33%2012.38L6.75%2013.77L7.43%2014.81L8.15%2015.54L8.86%2016.1L9.54%2016.55L10.18%2016.94L10.77%2017.28L11.28%2017.59L11.68%2017.85L12.04%2018.13L12.53%2018.56L13.12%2019.02L13.68%2019.45L14.21%2019.85L14.67%2020.22L15.05%2020.54L15.3%2020.78L15.43%2020.9L15.42%2020.82L15.4%2020.51L15.45%2020.26L15.47%2020.26L15.38%2020.45L15.17%2020.76L14.86%2021.13L14.48%2021.54L14.04%2021.95L13.57%2022.37L13.1%2022.77L12.68%2023.12L12.3%2023.41L11.86%2023.69L11.35%2023.99L10.79%2024.28L10.2%2024.56L9.62%2024.82L9.06%2025.06L8.55%2025.28L8.09%2025.49L7.73%2025.65Z%22%20/%3E%3Cpath%20d=%22M17%203L28%207L17%2010.5Z%22%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M9.27%2029.35L9.58%2029.23L10%2029.1L10.52%2028.93L11.13%2028.73L11.8%2028.51L12.5%2028.25L13.22%2027.96L13.95%2027.64L14.67%2027.27L15.32%2026.88L15.9%2026.49L16.48%2026.08L17.09%2025.64L17.71%2025.15L18.33%2024.62L18.92%2024.04L19.49%2023.38L20%2022.61L20.41%2021.66L20.6%2020.49L20.43%2019.28L20.01%2018.28L19.5%2017.48L18.95%2016.81L18.39%2016.22L17.83%2015.68L17.3%2015.18L16.8%2014.72L16.38%2014.3L15.96%2013.87L15.39%2013.32L14.73%2012.78L14.1%2012.31L13.52%2011.89L13.02%2011.52L12.64%2011.2L12.4%2010.97L12.36%2010.9L12.51%2011.11L12.67%2011.62L12.7%2012.04L12.71%2012.1L12.82%2011.94L13.03%2011.65L13.32%2011.3L13.67%2010.93L14.03%2010.58L14.39%2010.28L14.7%2010.05L14.83%209.99L14.78%2010.04L14.82%2010.06L15.02%2010.05L15.34%2010.06L15.73%2010.08L16.17%2010.11L16.64%2010.16L17.13%2010.21L17.67%2010.24L18.12%2010.25L17.88%202.75L17.72%202.77L17.46%202.78L17%202.78L16.4%202.78L15.71%202.8L14.93%202.85L14.08%202.95L13.15%203.15L12.14%203.49L11.17%204.01L10.4%204.59L9.76%205.18L9.14%205.82L8.55%206.52L7.99%207.27L7.47%208.06L7.01%208.93L6.61%209.88L6.34%2011L6.33%2012.38L6.75%2013.77L7.43%2014.81L8.15%2015.54L8.86%2016.1L9.54%2016.55L10.18%2016.94L10.77%2017.28L11.28%2017.59L11.68%2017.85L12.04%2018.13L12.53%2018.56L13.12%2019.02L13.68%2019.45L14.21%2019.85L14.67%2020.22L15.05%2020.54L15.3%2020.78L15.43%2020.9L15.42%2020.82L15.4%2020.51L15.45%2020.26L15.47%2020.26L15.38%2020.45L15.17%2020.76L14.86%2021.13L14.48%2021.54L14.04%2021.95L13.57%2022.37L13.1%2022.77L12.68%2023.12L12.3%2023.41L11.86%2023.69L11.35%2023.99L10.79%2024.28L10.2%2024.56L9.62%2024.82L9.06%2025.06L8.55%2025.28L8.09%2025.49L7.73%2025.65Z%22%20/%3E%3Cpath%20d=%22M17%203L28%207L17%2010.5Z%22%20/%3E%3C/svg%3E"); }
-  .navbar-sigil--key::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M16%202L24.5%2010L16%2018L7.5%2010ZM16%207L19%2010L16%2013L13%2010Z%22%20/%3E%3Cpath%20d=%22M13%2014L19%2014L19%2029.5L13%2029.5Z%22%20/%3E%3Cpath%20d=%22M19%2019.5L26%2019.5L26%2023.5L19%2023.5Z%22%20/%3E%3Cpath%20d=%22M19%2025.5L24.5%2025.5L24.5%2029.5L19%2029.5Z%22%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M16%202L24.5%2010L16%2018L7.5%2010ZM16%207L19%2010L16%2013L13%2010Z%22%20/%3E%3Cpath%20d=%22M13%2014L19%2014L19%2029.5L13%2029.5Z%22%20/%3E%3Cpath%20d=%22M19%2019.5L26%2019.5L26%2023.5L19%2023.5Z%22%20/%3E%3Cpath%20d=%22M19%2025.5L24.5%2025.5L24.5%2029.5L19%2029.5Z%22%20/%3E%3C/svg%3E"); }
-  .navbar-sigil--scroll::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5%204.5L8.5%204.5L8.5%2027.5L5%2027.5Z%22%20/%3E%3Cpath%20d=%22M23.5%204.5L27%204.5L27%2027.5L23.5%2027.5Z%22%20/%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%207L23.5%207L23.5%2025L8.5%2025ZM11.5%209.9L20.5%209.9L20.5%2012.1L11.5%2012.1ZM11.5%2014.9L18%2014.9L18%2017.1L11.5%2017.1ZM11.5%2019.9L19.5%2019.9L19.5%2022.1L11.5%2022.1Z%22%20/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5%204.5L8.5%204.5L8.5%2027.5L5%2027.5Z%22%20/%3E%3Cpath%20d=%22M23.5%204.5L27%204.5L27%2027.5L23.5%2027.5Z%22%20/%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%207L23.5%207L23.5%2025L8.5%2025ZM11.5%209.9L20.5%209.9L20.5%2012.1L11.5%2012.1ZM11.5%2014.9L18%2014.9L18%2017.1L11.5%2017.1ZM11.5%2019.9L19.5%2019.9L19.5%2022.1L11.5%2022.1Z%22%20/%3E%3C/svg%3E"); }
+.navbar-sigil--sun::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M7%2016A9%209%200%201%200%2025%2016A9%209%200%201%200%207%2016Z%22%20/%3E%3Cpath%20d=%22M12.5%208.25L16%202.5L19.5%208.25ZM19%208.05L25.55%206.45L23.95%2013ZM23.75%2012.5L29.5%2016L23.75%2019.5ZM23.95%2019L25.55%2025.55L19%2023.95ZM19.5%2023.75L16%2029.5L12.5%2023.75ZM13%2023.95L6.45%2025.55L8.05%2019ZM8.25%2019.5L2.5%2016L8.25%2012.5ZM8.05%2013L6.45%206.45L13%208.05Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M7%2016A9%209%200%201%200%2025%2016A9%209%200%201%200%207%2016Z%22%20/%3E%3Cpath%20d=%22M12.5%208.25L16%202.5L19.5%208.25ZM19%208.05L25.55%206.45L23.95%2013ZM23.75%2012.5L29.5%2016L23.75%2019.5ZM23.95%2019L25.55%2025.55L19%2023.95ZM19.5%2023.75L16%2029.5L12.5%2023.75ZM13%2023.95L6.45%2025.55L8.05%2019ZM8.25%2019.5L2.5%2016L8.25%2012.5ZM8.05%2013L6.45%206.45L13%208.05Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--ziggurat::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M2.5%2025L29.5%2025L29.5%2029.5L2.5%2029.5ZM5%2020.5L27%2020.5L27%2025L5%2025ZM7.5%2016L24.5%2016L24.5%2020.5L7.5%2020.5ZM10%2011.5L22%2011.5L22%2016L10%2016ZM12.5%206L19.5%206L19.5%2011.5L12.5%2011.5ZM14.2%2025L17.8%2025L17.8%2029.5L14.2%2029.5Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M2.5%2025L29.5%2025L29.5%2029.5L2.5%2029.5ZM5%2020.5L27%2020.5L27%2025L5%2025ZM7.5%2016L24.5%2016L24.5%2020.5L7.5%2020.5ZM10%2011.5L22%2011.5L22%2016L10%2016ZM12.5%206L19.5%206L19.5%2011.5L12.5%2011.5ZM14.2%2025L17.8%2025L17.8%2029.5L14.2%2029.5Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--tablet::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%203.5L23.5%203.5L25%2028.5L7%2028.5ZM11%209.5L22%209.5L22%2012L11%2012ZM11%2015L22.2%2015L22.2%2017.5L11%2017.5ZM11%2020.5L22.4%2020.5L22.4%2023L11%2023Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%203.5L23.5%203.5L25%2028.5L7%2028.5ZM11%209.5L22%209.5L22%2012L11%2012ZM11%2015L22.2%2015L22.2%2017.5L11%2017.5ZM11%2020.5L22.4%2020.5L22.4%2023L11%2023Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--anvil::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M1.5%2013.5L9%208L27%208L27%2015L19.5%2015L19.5%2020L25.5%2020L25.5%2025.5L6.5%2025.5L6.5%2020L12.5%2020L12.5%2015L9%2015Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M1.5%2013.5L9%208L27%208L27%2015L19.5%2015L19.5%2020L25.5%2020L25.5%2025.5L6.5%2025.5L6.5%2020L12.5%2020L12.5%2015L9%2015Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--blades::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M9.28%2028.63L9.56%2028.2L9.92%2027.65L10.34%2027.01L10.81%2026.29L11.32%2025.51L11.86%2024.69L12.41%2023.86L12.96%2023.03L13.49%2022.22L14.01%2021.45L14.52%2020.67L15.04%2019.87L15.57%2019.06L16.11%2018.24L16.64%2017.43L17.17%2016.63L17.69%2015.87L18.19%2015.14L18.67%2014.47L19.14%2013.84L19.59%2013.25L20.04%2012.67L20.46%2012.13L20.87%2011.63L21.25%2011.18L21.62%2010.77L21.97%2010.41L22.3%2010.1L22.61%209.85L22.88%209.65L23.12%209.52L23.4%209.42L23.75%209.34L24.14%209.28L24.56%209.24L24.99%209.23L25.42%209.22L25.83%209.23L26.24%209.22L26.57%209.2L26.43%205.8L26.22%205.8L25.94%205.78L25.55%205.75L25.06%205.72L24.5%205.69L23.89%205.7L23.24%205.74L22.54%205.85L21.82%206.05L21.12%206.35L20.5%206.7L19.93%207.09L19.39%207.51L18.88%207.97L18.37%208.45L17.88%208.95L17.38%209.47L16.89%2010.02L16.39%2010.57L15.86%2011.16L15.3%2011.8L14.72%2012.49L14.13%2013.22L13.53%2013.98L12.92%2014.76L12.32%2015.54L11.72%2016.33L11.13%2017.09L10.55%2017.84L9.99%2018.55L9.42%2019.29L8.82%2020.06L8.2%2020.85L7.59%2021.65L6.99%2022.43L6.42%2023.17L5.89%2023.85L5.43%2024.46L5.03%2024.97L4.72%2025.37Z%22%20/%3E%3Cpath%20d=%22M27.28%2025.37L26.97%2024.97L26.57%2024.46L26.11%2023.85L25.58%2023.17L25.01%2022.43L24.41%2021.65L23.8%2020.85L23.18%2020.06L22.58%2019.29L22.01%2018.55L21.45%2017.84L20.87%2017.09L20.28%2016.33L19.68%2015.54L19.08%2014.76L18.47%2013.98L17.87%2013.22L17.28%2012.49L16.7%2011.8L16.14%2011.16L15.61%2010.57L15.11%2010.02L14.62%209.47L14.12%208.95L13.63%208.45L13.12%207.97L12.61%207.51L12.07%207.09L11.5%206.7L10.88%206.35L10.18%206.05L9.46%205.85L8.76%205.74L8.11%205.7L7.5%205.69L6.94%205.72L6.45%205.75L6.06%205.78L5.78%205.8L5.57%205.8L5.43%209.2L5.76%209.22L6.17%209.23L6.58%209.22L7.01%209.23L7.44%209.24L7.86%209.28L8.25%209.34L8.6%209.42L8.88%209.52L9.12%209.65L9.39%209.85L9.7%2010.1L10.03%2010.41L10.38%2010.77L10.75%2011.18L11.13%2011.63L11.54%2012.13L11.96%2012.67L12.41%2013.25L12.86%2013.84L13.33%2014.47L13.81%2015.14L14.31%2015.87L14.83%2016.63L15.36%2017.43L15.89%2018.24L16.43%2019.06L16.96%2019.87L17.48%2020.67L17.99%2021.45L18.51%2022.22L19.04%2023.03L19.59%2023.86L20.14%2024.69L20.68%2025.51L21.19%2026.29L21.66%2027.01L22.08%2027.65L22.44%2028.2L22.72%2028.63Z%22%20/%3E%3Cpath%20d=%22M9.5%2021.5L22.5%2021.5L22.5%2025L9.5%2025Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M9.28%2028.63L9.56%2028.2L9.92%2027.65L10.34%2027.01L10.81%2026.29L11.32%2025.51L11.86%2024.69L12.41%2023.86L12.96%2023.03L13.49%2022.22L14.01%2021.45L14.52%2020.67L15.04%2019.87L15.57%2019.06L16.11%2018.24L16.64%2017.43L17.17%2016.63L17.69%2015.87L18.19%2015.14L18.67%2014.47L19.14%2013.84L19.59%2013.25L20.04%2012.67L20.46%2012.13L20.87%2011.63L21.25%2011.18L21.62%2010.77L21.97%2010.41L22.3%2010.1L22.61%209.85L22.88%209.65L23.12%209.52L23.4%209.42L23.75%209.34L24.14%209.28L24.56%209.24L24.99%209.23L25.42%209.22L25.83%209.23L26.24%209.22L26.57%209.2L26.43%205.8L26.22%205.8L25.94%205.78L25.55%205.75L25.06%205.72L24.5%205.69L23.89%205.7L23.24%205.74L22.54%205.85L21.82%206.05L21.12%206.35L20.5%206.7L19.93%207.09L19.39%207.51L18.88%207.97L18.37%208.45L17.88%208.95L17.38%209.47L16.89%2010.02L16.39%2010.57L15.86%2011.16L15.3%2011.8L14.72%2012.49L14.13%2013.22L13.53%2013.98L12.92%2014.76L12.32%2015.54L11.72%2016.33L11.13%2017.09L10.55%2017.84L9.99%2018.55L9.42%2019.29L8.82%2020.06L8.2%2020.85L7.59%2021.65L6.99%2022.43L6.42%2023.17L5.89%2023.85L5.43%2024.46L5.03%2024.97L4.72%2025.37Z%22%20/%3E%3Cpath%20d=%22M27.28%2025.37L26.97%2024.97L26.57%2024.46L26.11%2023.85L25.58%2023.17L25.01%2022.43L24.41%2021.65L23.8%2020.85L23.18%2020.06L22.58%2019.29L22.01%2018.55L21.45%2017.84L20.87%2017.09L20.28%2016.33L19.68%2015.54L19.08%2014.76L18.47%2013.98L17.87%2013.22L17.28%2012.49L16.7%2011.8L16.14%2011.16L15.61%2010.57L15.11%2010.02L14.62%209.47L14.12%208.95L13.63%208.45L13.12%207.97L12.61%207.51L12.07%207.09L11.5%206.7L10.88%206.35L10.18%206.05L9.46%205.85L8.76%205.74L8.11%205.7L7.5%205.69L6.94%205.72L6.45%205.75L6.06%205.78L5.78%205.8L5.57%205.8L5.43%209.2L5.76%209.22L6.17%209.23L6.58%209.22L7.01%209.23L7.44%209.24L7.86%209.28L8.25%209.34L8.6%209.42L8.88%209.52L9.12%209.65L9.39%209.85L9.7%2010.1L10.03%2010.41L10.38%2010.77L10.75%2011.18L11.13%2011.63L11.54%2012.13L11.96%2012.67L12.41%2013.25L12.86%2013.84L13.33%2014.47L13.81%2015.14L14.31%2015.87L14.83%2016.63L15.36%2017.43L15.89%2018.24L16.43%2019.06L16.96%2019.87L17.48%2020.67L17.99%2021.45L18.51%2022.22L19.04%2023.03L19.59%2023.86L20.14%2024.69L20.68%2025.51L21.19%2026.29L21.66%2027.01L22.08%2027.65L22.44%2028.2L22.72%2028.63Z%22%20/%3E%3Cpath%20d=%22M9.5%2021.5L22.5%2021.5L22.5%2025L9.5%2025Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--hourglass::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5.5%203.5L26.5%203.5L26.5%207.5L5.5%207.5Z%22%20/%3E%3Cpath%20d=%22M5.5%2024.5L26.5%2024.5L26.5%2028.5L5.5%2028.5Z%22%20/%3E%3Cpath%20d=%22M7.5%207.5L24.5%207.5L17.4%2014.8L14.6%2014.8ZM14.6%2014.8L17.4%2014.8L17.4%2017.2L14.6%2017.2ZM14.6%2017.2L17.4%2017.2L24.5%2024.5L7.5%2024.5Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5.5%203.5L26.5%203.5L26.5%207.5L5.5%207.5Z%22%20/%3E%3Cpath%20d=%22M5.5%2024.5L26.5%2024.5L26.5%2028.5L5.5%2028.5Z%22%20/%3E%3Cpath%20d=%22M7.5%207.5L24.5%207.5L17.4%2014.8L14.6%2014.8ZM14.6%2014.8L17.4%2014.8L17.4%2017.2L14.6%2017.2ZM14.6%2017.2L17.4%2017.2L24.5%2024.5L7.5%2024.5Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--rune::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M13.4%203.5L18.6%203.5L18.6%2028.5L13.4%2028.5Z%22%20/%3E%3Cpath%20d=%22M20.05%2012.65L27.45%206.15L24.55%202.85L17.15%209.35Z%22%20/%3E%3Cpath%20d=%22M17.15%2020.65L24.55%2027.15L27.45%2023.85L20.05%2017.35Z%22%20/%3E%3Cpath%20d=%22M14.85%2013.35L7.45%206.85L4.55%2010.15L11.95%2016.65Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M13.4%203.5L18.6%203.5L18.6%2028.5L13.4%2028.5Z%22%20/%3E%3Cpath%20d=%22M20.05%2012.65L27.45%206.15L24.55%202.85L17.15%209.35Z%22%20/%3E%3Cpath%20d=%22M17.15%2020.65L24.55%2027.15L27.45%2023.85L20.05%2017.35Z%22%20/%3E%3Cpath%20d=%22M14.85%2013.35L7.45%206.85L4.55%2010.15L11.95%2016.65Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--serpent::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M9.27%2029.35L9.58%2029.23L10%2029.1L10.52%2028.93L11.13%2028.73L11.8%2028.51L12.5%2028.25L13.22%2027.96L13.95%2027.64L14.67%2027.27L15.32%2026.88L15.9%2026.49L16.48%2026.08L17.09%2025.64L17.71%2025.15L18.33%2024.62L18.92%2024.04L19.49%2023.38L20%2022.61L20.41%2021.66L20.6%2020.49L20.43%2019.28L20.01%2018.28L19.5%2017.48L18.95%2016.81L18.39%2016.22L17.83%2015.68L17.3%2015.18L16.8%2014.72L16.38%2014.3L15.96%2013.87L15.39%2013.32L14.73%2012.78L14.1%2012.31L13.52%2011.89L13.02%2011.52L12.64%2011.2L12.4%2010.97L12.36%2010.9L12.51%2011.11L12.67%2011.62L12.7%2012.04L12.71%2012.1L12.82%2011.94L13.03%2011.65L13.32%2011.3L13.67%2010.93L14.03%2010.58L14.39%2010.28L14.7%2010.05L14.83%209.99L14.78%2010.04L14.82%2010.06L15.02%2010.05L15.34%2010.06L15.73%2010.08L16.17%2010.11L16.64%2010.16L17.13%2010.21L17.67%2010.24L18.12%2010.25L17.88%202.75L17.72%202.77L17.46%202.78L17%202.78L16.4%202.78L15.71%202.8L14.93%202.85L14.08%202.95L13.15%203.15L12.14%203.49L11.17%204.01L10.4%204.59L9.76%205.18L9.14%205.82L8.55%206.52L7.99%207.27L7.47%208.06L7.01%208.93L6.61%209.88L6.34%2011L6.33%2012.38L6.75%2013.77L7.43%2014.81L8.15%2015.54L8.86%2016.1L9.54%2016.55L10.18%2016.94L10.77%2017.28L11.28%2017.59L11.68%2017.85L12.04%2018.13L12.53%2018.56L13.12%2019.02L13.68%2019.45L14.21%2019.85L14.67%2020.22L15.05%2020.54L15.3%2020.78L15.43%2020.9L15.42%2020.82L15.4%2020.51L15.45%2020.26L15.47%2020.26L15.38%2020.45L15.17%2020.76L14.86%2021.13L14.48%2021.54L14.04%2021.95L13.57%2022.37L13.1%2022.77L12.68%2023.12L12.3%2023.41L11.86%2023.69L11.35%2023.99L10.79%2024.28L10.2%2024.56L9.62%2024.82L9.06%2025.06L8.55%2025.28L8.09%2025.49L7.73%2025.65Z%22%20/%3E%3Cpath%20d=%22M17%203L28%207L17%2010.5Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M9.27%2029.35L9.58%2029.23L10%2029.1L10.52%2028.93L11.13%2028.73L11.8%2028.51L12.5%2028.25L13.22%2027.96L13.95%2027.64L14.67%2027.27L15.32%2026.88L15.9%2026.49L16.48%2026.08L17.09%2025.64L17.71%2025.15L18.33%2024.62L18.92%2024.04L19.49%2023.38L20%2022.61L20.41%2021.66L20.6%2020.49L20.43%2019.28L20.01%2018.28L19.5%2017.48L18.95%2016.81L18.39%2016.22L17.83%2015.68L17.3%2015.18L16.8%2014.72L16.38%2014.3L15.96%2013.87L15.39%2013.32L14.73%2012.78L14.1%2012.31L13.52%2011.89L13.02%2011.52L12.64%2011.2L12.4%2010.97L12.36%2010.9L12.51%2011.11L12.67%2011.62L12.7%2012.04L12.71%2012.1L12.82%2011.94L13.03%2011.65L13.32%2011.3L13.67%2010.93L14.03%2010.58L14.39%2010.28L14.7%2010.05L14.83%209.99L14.78%2010.04L14.82%2010.06L15.02%2010.05L15.34%2010.06L15.73%2010.08L16.17%2010.11L16.64%2010.16L17.13%2010.21L17.67%2010.24L18.12%2010.25L17.88%202.75L17.72%202.77L17.46%202.78L17%202.78L16.4%202.78L15.71%202.8L14.93%202.85L14.08%202.95L13.15%203.15L12.14%203.49L11.17%204.01L10.4%204.59L9.76%205.18L9.14%205.82L8.55%206.52L7.99%207.27L7.47%208.06L7.01%208.93L6.61%209.88L6.34%2011L6.33%2012.38L6.75%2013.77L7.43%2014.81L8.15%2015.54L8.86%2016.1L9.54%2016.55L10.18%2016.94L10.77%2017.28L11.28%2017.59L11.68%2017.85L12.04%2018.13L12.53%2018.56L13.12%2019.02L13.68%2019.45L14.21%2019.85L14.67%2020.22L15.05%2020.54L15.3%2020.78L15.43%2020.9L15.42%2020.82L15.4%2020.51L15.45%2020.26L15.47%2020.26L15.38%2020.45L15.17%2020.76L14.86%2021.13L14.48%2021.54L14.04%2021.95L13.57%2022.37L13.1%2022.77L12.68%2023.12L12.3%2023.41L11.86%2023.69L11.35%2023.99L10.79%2024.28L10.2%2024.56L9.62%2024.82L9.06%2025.06L8.55%2025.28L8.09%2025.49L7.73%2025.65Z%22%20/%3E%3Cpath%20d=%22M17%203L28%207L17%2010.5Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--key::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M16%202L24.5%2010L16%2018L7.5%2010ZM16%207L19%2010L16%2013L13%2010Z%22%20/%3E%3Cpath%20d=%22M13%2014L19%2014L19%2029.5L13%2029.5Z%22%20/%3E%3Cpath%20d=%22M19%2019.5L26%2019.5L26%2023.5L19%2023.5Z%22%20/%3E%3Cpath%20d=%22M19%2025.5L24.5%2025.5L24.5%2029.5L19%2029.5Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M16%202L24.5%2010L16%2018L7.5%2010ZM16%207L19%2010L16%2013L13%2010Z%22%20/%3E%3Cpath%20d=%22M13%2014L19%2014L19%2029.5L13%2029.5Z%22%20/%3E%3Cpath%20d=%22M19%2019.5L26%2019.5L26%2023.5L19%2023.5Z%22%20/%3E%3Cpath%20d=%22M19%2025.5L24.5%2025.5L24.5%2029.5L19%2029.5Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--scroll::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5%204.5L8.5%204.5L8.5%2027.5L5%2027.5Z%22%20/%3E%3Cpath%20d=%22M23.5%204.5L27%204.5L27%2027.5L23.5%2027.5Z%22%20/%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%207L23.5%207L23.5%2025L8.5%2025ZM11.5%209.9L20.5%209.9L20.5%2012.1L11.5%2012.1ZM11.5%2014.9L18%2014.9L18%2017.1L11.5%2017.1ZM11.5%2019.9L19.5%2019.9L19.5%2022.1L11.5%2022.1Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5%204.5L8.5%204.5L8.5%2027.5L5%2027.5Z%22%20/%3E%3Cpath%20d=%22M23.5%204.5L27%204.5L27%2027.5L23.5%2027.5Z%22%20/%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%207L23.5%207L23.5%2025L8.5%2025ZM11.5%209.9L20.5%209.9L20.5%2012.1L11.5%2012.1ZM11.5%2014.9L18%2014.9L18%2017.1L11.5%2017.1ZM11.5%2019.9L19.5%2019.9L19.5%2022.1L11.5%2022.1Z%22%20/%3E%3C/svg%3E");
+}
 /* sigils:masks:end */
 
 /* Uniform right-side icon cluster (GM Tools, Character Sheet, color-mode
@@ -1984,72 +2268,73 @@ a.chip,
    provenance, not navigation, and it was the icon the crowded mobile bar could
    least afford. */
 .navbar__items--right {
-  column-gap: 0.5rem;
-  align-items: center;
+	column-gap: 0.5rem;
+	align-items: center;
 }
 
 .navbar__items--right > .navbar__item.navbar-sigil,
 .navbar__items--right > [class*='colorModeToggle'] {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  margin: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	margin: 0;
 }
 
 /* One glyph size (20px) across all the icons. */
 .navbar__items--right > .navbar__item.navbar-sigil::before {
-  width: 20px;
-  height: 20px;
+	width: 20px;
+	height: 20px;
 }
 
 .navbar__items--right > [class*='colorModeToggle'] svg {
-  width: 20px;
-  height: 20px;
+	width: 20px;
+	height: 20px;
 }
 
 /* Toggle button fills and centers within the normalized 32px box. */
 .navbar__items--right > [class*='colorModeToggle'] button {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 
 /* Icon-only navbar items on desktop (GM Tools, Character Sheet): the sigil
    ::before stays visible while the text label is collapsed via font-size: 0.
    The label returns on mobile (media query below). */
 .navbar-icon-with-label {
-  margin-inline: 0;
-  /* Shrink-wrap the anchor to the sigil (drop the default .navbar__link
+	margin-inline: 0;
+	/* Shrink-wrap the anchor to the sigil (drop the default .navbar__link
      horizontal padding) so its box matches the other icon items — otherwise the
      leftover padding pads the icon and the visual gaps read as uneven. */
-  padding-inline: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0;
-  white-space: nowrap;
+	padding-inline: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0;
+	white-space: nowrap;
 }
 
 .navbar-icon-with-label.navbar-sigil::before {
-  margin-right: 0;
-  vertical-align: middle;
+	margin-right: 0;
+	vertical-align: middle;
 }
 
 /* Add bottom border to active navbar items */
 .navbar__link--active {
-  border-bottom: 2px solid var(--ifm-color-primary);
-  padding-bottom: 2px;
+	border-bottom: 2px solid var(--ifm-color-primary);
+	padding-bottom: 2px;
 }
 
 .navbar__link:hover {
-  border-bottom: 2px solid color-mix(in srgb, var(--ifm-color-primary) 50%, transparent);
-  padding-bottom: 2px;
+	border-bottom: 2px solid
+		color-mix(in srgb, var(--ifm-color-primary) 50%, transparent);
+	padding-bottom: 2px;
 }
 
 /* Show labels in the mobile DRAWER only.
@@ -2061,41 +2346,41 @@ a.chip,
    Scoping to the drawer is the whole fix: the top-bar copies keep the base
    `font-size: 0` and stay icon-only, exactly as on desktop. */
 @media (max-width: 996px) {
-  .navbar-sidebar .navbar-icon-with-label {
-    width: auto;
-    /* The nav type step, matching the sibling drawer links rather than
+	.navbar-sidebar .navbar-icon-with-label {
+		width: auto;
+		/* The nav type step, matching the sibling drawer links rather than
        inheriting the 16px body size. */
-    font-size: var(--nexus-text-sm);
-    white-space: normal;
-    /* Undo the desktop icon shrink-wrap. In the drawer these are ordinary
+		font-size: var(--nexus-text-sm);
+		white-space: normal;
+		/* Undo the desktop icon shrink-wrap. In the drawer these are ordinary
        left-aligned menu links, so they need the menu link's own padding and
        alignment back — without this they sat flush against the drawer edge while
        every sibling was indented. */
-    padding-inline: var(--ifm-menu-link-padding-horizontal);
-    justify-content: flex-start;
-  }
+		padding-inline: var(--ifm-menu-link-padding-horizontal);
+		justify-content: flex-start;
+	}
 
-  .navbar-sidebar .navbar-icon-with-label.navbar-sigil::before {
-    margin-right: 0.4rem;
-  }
+	.navbar-sidebar .navbar-icon-with-label.navbar-sigil::before {
+		margin-right: 0.4rem;
+	}
 
-  .navbar__link--active,
-  .navbar__link:hover {
-    border-bottom: none;
-  }
+	.navbar__link--active,
+	.navbar__link:hover {
+		border-bottom: none;
+	}
 
-  /* Mobile top bar. Infima hides the top-bar copies of every navbar item with
+	/* Mobile top bar. Infima hides the top-bar copies of every navbar item with
      `.navbar__item { display: none }` because the drawer already carries them.
      The icon-cluster rule above (same 0,3,0 specificity, earlier in the file)
      outranked that, so two 32px sigils plus the GitHub mark stayed in a bar with
      no room for them: they overlapped the colour-mode toggle and squeezed the
      12rem search field down to 45px. That overlap is the misalignment. Hand the
      top bar back to Infima and give the room to the search instead. */
-  .navbar__items--right > .navbar__item.navbar-sigil {
-    display: none;
-  }
+	.navbar__items--right > .navbar__item.navbar-sigil {
+		display: none;
+	}
 
-  /* And the search field itself. Docusaurus pulls the search container OUT of
+	/* And the search field itself. Docusaurus pulls the search container OUT of
      the flow below 996px (`position: absolute; right: var(--ifm-navbar-padding-
      horizontal)` in Navbar/Search/styles.module.css) on the assumption that it
      is the only thing on the right of a mobile bar. This bar also carries the
@@ -2108,11 +2393,11 @@ a.chip,
      The search plugin's collapse-when-unfocused behaviour below 576px is left
      alone: it is the right pattern for a phone, and it only looked broken
      because of where the collapsed field was sitting. */
-  .navbar__items--right > [class*='navbarSearchContainer'] {
-    position: static;
-    /* The plugin's own 16px offset, superseded by the cluster's column-gap. */
-    margin-left: 0;
-  }
+	.navbar__items--right > [class*='navbarSearchContainer'] {
+		position: static;
+		/* The plugin's own 16px offset, superseded by the cluster's column-gap. */
+		margin-left: 0;
+	}
 }
 
 /* ============================================================================
@@ -2247,7 +2532,8 @@ a.chip,
 	);
 	/* A flat second keyline drawn inside the box: `outline` with a negative
 	   offset, never a shadow. */
-	outline: 1px solid color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	outline: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
 	outline-offset: -1px;
 }
 
@@ -2282,7 +2568,8 @@ a.chip,
 .codex-table-slab {
 	margin-bottom: var(--ifm-spacing-vertical);
 	overflow-x: auto;
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
 	border-radius: 2px;
 	/* A table is a scan surface, not prose: one step below body, with the prose
 	   leading dropped back to a compact line so rows stay dense. Wide comparison
@@ -2304,7 +2591,11 @@ a.chip,
 	left: 0;
 	z-index: 1;
 	height: 10px;
-	background-color: color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 42%,
+		transparent
+	);
 	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
 	mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
 }
@@ -2317,7 +2608,11 @@ a.chip,
 }
 
 .theme-doc-markdown table thead tr {
-	background-color: color-mix(in srgb, var(--ifm-color-primary) 11%, transparent);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 11%,
+		transparent
+	);
 	border-bottom: 1.5px solid
 		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
 }
@@ -2350,7 +2645,8 @@ a.chip,
 		var(--ifm-color-primary) 5%,
 		var(--ifm-background-surface-color)
 	) !important;
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
 	border-radius: 2px;
 	box-shadow: none !important;
 }
@@ -2379,7 +2675,8 @@ a.chip,
 
 .theme-code-block [class*='copyButton'] button,
 .theme-code-block [class*='wordWrapButton'] button {
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
 	border-radius: 2px;
 	background: var(--ifm-background-surface-color);
 	color: var(--ifm-color-primary);
@@ -2388,7 +2685,8 @@ a.chip,
 
 /* Inline code: a small inlaid chip of stone rather than a rounded pill. */
 .theme-doc-markdown code {
-	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 28%, transparent);
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 28%, transparent);
 	border-radius: 2px;
 	background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
 }
@@ -2398,7 +2696,8 @@ a.chip,
    Infima's `«`/`»` glyph content is replaced by a clip-path triangle so the
    mark matches the kit's hard-vertex shape language. */
 .pagination-nav__link {
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
 	border-radius: 2px;
 	background: color-mix(
 		in srgb,
@@ -2463,7 +2762,8 @@ a.chip,
    container frame) with a lozenge marking the active entry. */
 .table-of-contents {
 	border-left: none;
-	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
 	border-radius: 2px;
 	background: color-mix(in srgb, var(--ifm-color-primary) 4%, transparent);
 	padding: 0.6rem 0.75rem;
@@ -2508,7 +2808,8 @@ a.chip,
    `theme-doc-toc-mobile`, which is stable. */
 .theme-doc-toc-mobile {
 	margin: 1rem 0;
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 34%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 34%, transparent);
 	border-radius: 2px;
 	background-color: color-mix(
 		in srgb,
@@ -2525,7 +2826,11 @@ a.chip,
 	content: '';
 	display: block;
 	height: 10px;
-	background-color: color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 42%,
+		transparent
+	);
 	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
 	mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
 }
@@ -2613,7 +2918,7 @@ a.chip,
 
    A category you are inside therefore carries both, and nothing has to be read
    as a special case. */
-   Owner revision: EVERY top-level entry now shares one plain style. The category
+Owner revision: EVERY top-level entry now shares one plain style. The category
    nameplate (keyline + wash + heavier weight) is gone — a parent page announces
    itself only by the caret to its right. A boxed header among plain siblings
    read as an unrelated object no matter which typeface it used, and it made the
@@ -2737,7 +3042,11 @@ div[class*='expandButton']:hover {
 	bottom: 0;
 	height: 7px;
 	pointer-events: none;
-	background-color: color-mix(in srgb, var(--ifm-color-primary) 46%, transparent);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 46%,
+		transparent
+	);
 	-webkit-mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
 	mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
 }
@@ -2756,7 +3065,11 @@ div[class*='expandButton']:hover {
 	top: 0;
 	height: 7px;
 	pointer-events: none;
-	background-color: color-mix(in srgb, var(--ifm-color-primary) 46%, transparent);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 46%,
+		transparent
+	);
 	-webkit-mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
 	mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
 }
@@ -2812,7 +3125,11 @@ div[class*='expandButton']:hover {
 	width: 4px;
 	height: 4px;
 	transform: rotate(45deg);
-	background-color: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 45%,
+		transparent
+	);
 }
 
 .footer__link-item {
@@ -2995,7 +3312,8 @@ article h2::after {
 
 .navbar__search-input {
 	border-radius: 2px;
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
 	background-color: var(--ifm-background-surface-color);
 	background-image: none;
 	padding-left: 2.1rem;
@@ -3044,7 +3362,8 @@ article h2::after {
    this file, so this chain is one component longer to win outright. */
 .navbar__search [class*='searchBar'] [class*='dropdownMenu'] {
 	border-radius: 2px;
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
 	font-family: var(--nexus-font-ui);
 	font-size: var(--nexus-text-sm);
 }
@@ -3104,7 +3423,8 @@ article h2::after {
 	width: 7px;
 	height: 7px;
 	transform: rotate(45deg);
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 60%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 60%, transparent);
 }
 
 /* The selected row's marker fills in, matching the sidebar's current-page mark. */
@@ -3153,7 +3473,8 @@ article h2::after {
 .tabs__item--active {
 	border-bottom: none;
 	background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
-	outline: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	outline: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
 	outline-offset: -1.5px;
 	color: var(--ifm-color-primary);
 }
@@ -3251,7 +3572,8 @@ article h2::after {
 .card {
 	position: relative;
 	margin-top: 0.6rem;
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
 	border-radius: 2px;
 	background: color-mix(
 		in srgb,
@@ -3272,4 +3594,163 @@ article h2::after {
 	transform: translateX(-50%) rotate(45deg);
 	background-color: var(--ifm-color-primary);
 	border: 3px solid var(--ifm-background-surface-color);
+}
+
+/* The companion stat block — the codex creature card outside a creature page.
+   ==========================================================================
+
+   **Moved here from `characterSheet.css` and unscoped (M13 S8, the builder pass.)**
+   It was written for the Companions tab and scoped under `.character-sheet-page`.
+   It has two consumers now: that tab, and the Companion Builder's preview — and the
+   builder renders both inside a portalled dialog (outside `.character-sheet-page`)
+   and on the `creatures/mounts-companions` docs page, which never loads
+   `characterSheet.css` at all. A global home is the only one both can reach.
+
+   Unscoping is safe rather than merely convenient: `cs-companion-card`,
+   `cs-entry-name` and `cs-entry-badge` are emitted by exactly one renderer
+   (`renderCompanionInline` and the card that wraps it), so there is nothing else on
+   the site for them to reach.
+
+   A companion whose markdown parses renders as `CreatureStatBlock`, the same card the creature
+   pages use. Three things need saying for it to read the same inside a panel, and only three —
+   the frame, the defence band and the die tokens are the card's own and untouched.
+
+   1. It must not reserve the keystone clearance twice; the panel already spaces its groups.
+   2. Its prose measure is set for a doc column; in a panel the panel decides.
+   3. **The list markers and the entry register have to be supplied here.** A creature page gets
+      its bullets from `.theme-doc-markdown ul > li::before`, which is deliberately switched OFF
+      inside `.character-sheet-page` (the sheet's MUI lists would otherwise all sprout diamonds),
+      and its `EntryName` / `StatBadge` from MDX components the sheet does not run. So the bullet
+      is redrawn for this card only, and the two entry registers are classes the inline renderer
+      emits. */
+.cs-companion-card {
+	container-type: inline-size;
+}
+.cs-companion-card > * {
+	max-width: 100%;
+	margin-top: 0;
+}
+.cs-companion-card p,
+.cs-companion-card ul,
+.cs-companion-card li {
+	max-width: none;
+}
+/* The codex bullet, redrawn for this card and sized to the PANEL's type rather than the doc
+   column's (S7, owner review): 5px against the docs' 7px, because the panel reads at 15px where
+   a creature page reads at 16-17px, and a marker that keeps its absolute size while the text
+   shrinks around it reads as oversized — which is what the owner saw. Centred on the item's
+   first line. */
+.cs-companion-card ul {
+	list-style: none;
+	padding-left: 0.9rem;
+	margin: 0.1rem 0;
+}
+.cs-companion-card ul > li {
+	position: relative;
+}
+.cs-companion-card ul > li::before {
+	content: '';
+	position: absolute;
+	left: -0.9rem;
+	/*
+		Centred on the FIRST LINE BOX, not on an em of the font (M13 S8, owner review).
+
+		`top: 0.62em` plus a -2.5px nudge put the mark 6.8px down where the line's
+		centre is 12.375px — visibly high, because an em is the type size while the
+		mark has to centre on the LEADING, and this card leads at 1.65. The docs'
+		own bullet already tracks its leading (`0.5em * --nexus-leading-prose`); this
+		is the same idea expressed against the element's own line box, so it stays
+		correct if the card is ever re-typed.
+
+		Two declarations: the `em` form is the fallback for engines without the `lh`
+		unit, and the `lh` form wins wherever it is understood.
+	*/
+	top: calc(0.5em * 1.65 - 2.5px);
+	top: calc(0.5lh - 2.5px);
+	width: 5px;
+	height: 5px;
+	transform: rotate(45deg);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 85%,
+		transparent
+	);
+}
+/* An entry's numbered sub-options — the Floating Eye's four eye rays (M13 S8).
+   ==========================================================================
+
+   The source marks these with `<br/>` and `<strong>1. Dazing Ray.</strong>`, and the
+   pipeline used to flatten them into the parent paragraph, so four separate outcomes
+   ran together mid-sentence. They are a real ordered list, indented under their entry
+   and marked with their own numerals.
+
+   The numeral is the marker, in the small-caps bronze register the card uses for
+   labels — NOT the codex diamond, which is the mark of a top-level entry and would
+   say these four options are four more attacks. */
+.cs-companion-card ol.cs-entry-options {
+	list-style: none;
+	counter-reset: cs-option;
+	margin: 0.25rem 0 0;
+	padding-left: 1.15rem;
+}
+.cs-companion-card ol.cs-entry-options > li {
+	position: relative;
+	counter-increment: cs-option;
+}
+.cs-companion-card ol.cs-entry-options > li + li {
+	margin-top: 0.15rem;
+}
+.cs-companion-card ol.cs-entry-options > li::before {
+	content: counter(cs-option) '.';
+	position: absolute;
+	left: -1.15rem;
+	width: 1rem;
+	text-align: right;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
+	/* No diamond here — see above. The numeral sits on the text baseline already, so
+	   it needs none of the line-box centring the bullet does. */
+	background: none;
+	transform: none;
+	height: auto;
+}
+
+/* An entry's NAME — the bold lead-in on an attack or ability, in the same register the docs'
+   `EntryName` uses. */
+.cs-entry-name {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.03em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 85%,
+		var(--ifm-font-color-base)
+	);
+	margin-right: 0.3rem;
+}
+/* A property badge (`Passive`, `Quick Action`) — the docs' `StatBadge`: a keyline and a faint
+   wash, small caps, never a filled pill. */
+.cs-entry-badge {
+	display: inline-block;
+	margin-right: 0.3rem;
+	padding: 0 0.3rem;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
+	vertical-align: 0.05em;
 }

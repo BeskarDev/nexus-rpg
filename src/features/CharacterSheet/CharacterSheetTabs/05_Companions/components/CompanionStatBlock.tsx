@@ -11,7 +11,10 @@ import CreatureStatBlock, {
 	TraitItem,
 } from '@site/src/components/codex/CreatureStatBlock'
 import { parseCompanionMarkdown } from '../utils/parseCompanionMarkdown'
-import { renderCompanionInline } from '../utils/companionInline'
+import {
+	renderCompanionEntry,
+	renderCompanionInline,
+} from '@site/src/utils/typescript/companion/companionInline'
 
 /** Trait rows whose value is a comma-separated list rather than a phrase. */
 const LIST_TRAITS = ['Immunities', 'Resistances', 'Weaknesses']
@@ -111,7 +114,7 @@ export const CompanionStatBlock: React.FC<CompanionStatBlockProps> = ({
 					<StatBlockSection key={section.label} label={section.label}>
 						<ul>
 							{section.items.map((item, index) => (
-								<li key={index}>{renderCompanionInline(item)}</li>
+								<li key={index}>{renderCompanionEntry(item)}</li>
 							))}
 						</ul>
 					</StatBlockSection>

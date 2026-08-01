@@ -278,6 +278,12 @@ const TRAIT_GLYPHS: Record<string, SigilName> = {
 	Immunities: 'shield',
 	Resistances: 'stele',
 	Weaknesses: 'khopesh',
+	// Companions only — no generated creature page emits a Movement row, so this key
+	// is additive (M13 S8). `footprints` is the mark movement wants and is already
+	// **Dodge**, which renders four cells above in the same card; the horse is the
+	// period's own image of pace, and it is the mark the size rail uses for the same
+	// figure, so the trade you choose and the row it lands in carry one glyph.
+	Movement: 'horse',
 }
 
 /**

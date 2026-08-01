@@ -12,7 +12,6 @@ export interface CompanionTrait {
 	dodge: string
 	resist: string
 	skills: string
-	diet: string
 	immunities: string
 	resistances: string
 	weaknesses: string
@@ -57,6 +56,13 @@ export interface CompanionStats {
 }
 
 export interface CompanionBuilderProps {
-	showImportButton?: boolean
+	/**
+	 * Given when the builder can hand its result to a character — the Companions
+	 * tab passes it, the docs page does not.
+	 *
+	 * It is the only signal the builder needs: the old `showImportButton` prop was
+	 * a second switch for the same fact, and every call site set the two
+	 * consistently anyway.
+	 */
 	onImportCompanion?: (name: string, markdown: string) => void
 }

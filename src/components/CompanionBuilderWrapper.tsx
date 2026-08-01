@@ -18,7 +18,7 @@ export const CompanionBuilderWrapper: React.FC = () => {
 		<Experimental_CssVarsProvider theme={customTheme}>
 			<ThemeSwitcher />
 			<Provider store={store}>
-				<CompanionBuilder showImportButton={false} />
+				<CompanionBuilder />
 			</Provider>
 		</Experimental_CssVarsProvider>
 	)

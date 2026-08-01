@@ -103,10 +103,7 @@ export const CompanionsTab: React.FC = () => {
 						{/* A real command, like the Magic Item Builder on the Items tab: it opens
 							a separate tool rather than changing something here. */}
 						<Provider store={companionBuilderStore}>
-							<CompanionBuilder
-								showImportButton={true}
-								onImportCompanion={importFromBuilder}
-							/>
+							<CompanionBuilder onImportCompanion={importFromBuilder} />
 						</Provider>
 					</>
 				}
