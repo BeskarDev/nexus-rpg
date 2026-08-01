@@ -59,6 +59,10 @@ export { SheetTabBar } from './SheetTabBar'
 // M13 S4d — the record plate: an entity's numeric facts as a ledger of marked
 // rows, which is the shape every other numeric surface on the sheet already has.
 export { RecordPlate, RecordRow } from './RecordPlate'
+// M13 S8c — the general ledger read cell. Lifted out of `02_Items/` when
+// Abilities became the third consumer; see its docblock for why S5's decision to
+// keep a local twin was right then and wrong now.
+export { ReadCell, SpacerCell, LEDGER_BREAKPOINT } from './LedgerCell'
 // M13 S8b — a rulebook entry's prose with the structure its JSON carries: a
 // talent's rank ladder, a spell's success tiers. Shares the docs generators'
 // parsers, not their cards; see the component's docblock for why.

@@ -32,6 +32,10 @@ import { AbilityRow } from './AbilityRow'
 import { QuickRefSection } from './QuickRefSection'
 import { getTalentPointSummaries } from '../../utils/calculateTalentPoints'
 import { TalentPointsDialog } from './components'
+import {
+	abilityHeadingsFor,
+	abilityHeaderTemplate,
+} from './components/abilityColumns'
 import { calculateCharacterLevel } from '../../utils/calculateCharacterLevel'
 import { calculateMaxXpPerSkill } from '../../utils/validation'
 import { RefreshUpdatesDialog } from '../../components/RefreshUpdatesDialog'
@@ -276,6 +280,7 @@ export const CategorizedAbilities: React.FC = () => {
 						key={tag}
 						label={tag}
 						count={tagAbilities.length}
+						className="cs-ledger-cols"
 						collapsible
 						defaultExpanded
 						actions={
@@ -388,6 +393,28 @@ export const CategorizedAbilities: React.FC = () => {
 							</>
 						}
 					>
+						{/* The ledger's column header — decorative, since every cell still
+							carries its own label below the breakpoint for the accessibility
+							tree and for a wrapped row. */}
+						{tagAbilities.length > 0 && (
+							<Box
+								className="cs-ledger-head"
+								aria-hidden="true"
+								sx={{
+									gridTemplateColumns: abilityHeaderTemplate(tag),
+									maxWidth: 'var(--cs-max-width-lg)',
+								}}
+							>
+								{abilityHeadingsFor(tag).map((heading, index) => (
+									<span
+										key={heading.label || `mark-${index}`}
+										style={{ textAlign: heading.align }}
+									>
+										{heading.label}
+									</span>
+								))}
+							</Box>
+						)}
 						<DynamicList
 							droppableId={`abilities-${tag}`}
 							onDragEnd={onAbilityReorder(tag)}

@@ -1908,6 +1908,115 @@ input[type='number'] {
    established escape hatch (`FocusField`, `StatusEffects`) and it is what makes
    `--cs-*` resolve out here at all. */
 
+/* One scroller, never two (M13 S8b, F11.4).
+   ==========================================================================
+
+   MUI's `scroll="paper"` puts `overflow-y: auto` on `DialogContent`, and the
+   ledger inside it carried `max-height: min(52vh, 28rem)` with its own
+   `overflow-y`. Two scrollers, nested: the outer one moved the search field and
+   the filters away while the inner one moved the rows, and which one answered the
+   wheel depended on where the pointer happened to be. S8b's expanding rows made it
+   worse — an opened talent ladder is several times taller than the clamped cell it
+   replaced.
+
+   The Magic Item Builder was fixed for exactly this in S8 ("no body scroll at any
+   width; the scrolling happens as deep inside it as it can") and the fix was never
+   carried back to the dialog family beside it. This is that fix.
+
+   The paper is a flex column that owns its height. Title and actions are fixed
+   courses, the content is the flexible one, and inside it everything except the
+   ROWS is fixed too — so the search field, the filters, the meta line and the
+   column header all stay put and exactly one thing under the pointer moves.
+
+   `min-height: 0` on every flexible ancestor: a flex item's default minimum is its
+   content, so without it the rows push the column taller instead of scrolling
+   inside it. That is the whole trick and it is invisible when missing. */
+.cs-search-dialog.MuiPaper-root {
+	display: flex;
+	flex-direction: column;
+}
+/* Not on the full-screen paper: MUI sets `height: 100%` there and a max-height of
+   `calc(100% - 64px)` would leave a gap it has deliberately removed. */
+.cs-search-dialog.MuiPaper-root:not(.MuiDialog-paperFullScreen) {
+	max-height: calc(100% - 64px);
+}
+.cs-search-dialog .MuiDialogTitle-root,
+.cs-search-dialog .MuiDialogActions-root {
+	flex: 0 0 auto;
+}
+.cs-search-dialog .MuiDialogContent-root {
+	flex: 1 1 auto;
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+	/* The content no longer scrolls; the rows do. */
+	overflow: hidden;
+}
+.cs-search-dialog .MuiDialogContent-root > *:not(.cs-search-ledger) {
+	flex: 0 0 auto;
+}
+
+/* The carved search field — a bare input in a keylined plate (F11.5).
+   ==========================================================================
+
+   It was a MUI `TextField`, and the builder shell's own docblock says why that had
+   to go: restyling one means fighting the notched-outline machinery, a `<fieldset>`
+   with a legend gap and a hairline in Material's grey. The builder called it "the
+   one place a Material component still showed through the dialog"; this was the
+   same place, on the surface a player opens most.
+
+   A sheet-scoped twin of `.cb-search` rather than a shared class: a portalled paper
+   cannot reach `.codex-builder`'s stylesheet. */
+.cs-search-dialog .cs-search-field {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	margin-bottom: 0.75rem;
+	padding: 0 0.5rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
+}
+.cs-search-dialog .cs-search-field:focus-within {
+	border-color: var(--nexus-bronze);
+}
+/* Engraved fixture, not an icon button: pressing it does nothing. */
+.cs-search-dialog .cs-search-field__mark {
+	flex: 0 0 auto;
+	width: 14px;
+	height: 14px;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+.cs-search-dialog .cs-search-field:focus-within .cs-search-field__mark {
+	color: var(--nexus-bronze);
+}
+.cs-search-dialog .cs-search-field__input {
+	flex: 1 1 auto;
+	min-width: 0;
+	height: 34px;
+	border: 0;
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	color: var(--ifm-font-color-base);
+}
+.cs-search-dialog .cs-search-field__input:focus {
+	outline: none;
+}
+.cs-search-dialog .cs-search-field__input::placeholder {
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 62%,
+		var(--ifm-font-color-base)
+	);
+	opacity: 1;
+}
+
 /* The filter strip: the caller's controls in a washed band, so the things that
    NARROW the list are visibly one group and visibly not part of it. */
 .cs-search-dialog .cs-search-filters {
@@ -2041,13 +2150,23 @@ input[type='number'] {
 /* The ledger itself. It scrolls; the column header does not, so the tracks stay
    named while the reader moves through 200 rows. */
 .cs-search-dialog .cs-search-ledger {
+	/* The flexible course of the content column, and the only one. */
+	flex: 1 1 auto;
 	display: flex;
 	flex-direction: column;
 	min-height: 0;
 }
+.cs-search-dialog .cs-search-ledger__head,
+.cs-search-dialog .cs-search-empty {
+	flex: 0 0 auto;
+}
 .cs-search-dialog .cs-search-ledger__rows {
+	/* The one scroller in the dialog. `max-height` is gone: it was a second,
+	   viewport-relative cap fighting the paper's own, and with the frame now a
+	   flex column the rows simply take what is left. */
+	flex: 1 1 auto;
+	min-height: 0;
 	overflow-y: auto;
-	max-height: min(52vh, 28rem);
 	/* An overflow container is its own scroll root, so the header's bottom rule is
 	   the only edge it needs; a border here would double it. */
 	border-bottom: 1px solid
@@ -2333,6 +2452,255 @@ input[type='number'] {
 	max-width: none;
 	flex-wrap: wrap;
 	gap: 0.15rem 1rem;
+}
+
+/* M13 S8c — the Quick Ref play board.
+   ==========================================================================
+
+   Rethought from its purpose (owner brief). The section answers one question
+   mid-turn — "I have one Action and one Quick Action, what are my options?" — so
+   the axis stays action type and the order is the order a turn is spent. What it
+   stopped being is a LIST: it was `ListSection`s of accordion rows, and the whole
+   point of a quick reference is not having to open anything.
+
+   A course per action type, cards inside it. Cards rather than rows because a row
+   aligns a corpus by column and there is no corpus here: a handful of entries the
+   player chose, each of which has to be READ.
+
+   The card grid is `auto-fill` at a 15rem minimum, so one pinned weapon does not
+   sit alone in a 47rem column and eight of them do not become eight full-width
+   bands. */
+.character-sheet-page .cs-playboard {
+	display: flex;
+	flex-direction: column;
+	gap: 0.9rem;
+	margin-bottom: 0.75rem;
+}
+.character-sheet-page .cs-playboard__course-head {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	margin-bottom: 0.4rem;
+	padding-bottom: 3px;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+	color: var(--nexus-bronze);
+}
+.character-sheet-page .cs-playboard__course-name {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+}
+.character-sheet-page .cs-playboard__course-count {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 62%,
+		var(--ifm-font-color-base)
+	);
+}
+.character-sheet-page .cs-playboard__cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	gap: 0.5rem;
+}
+
+/* One play. A bounded plate with a keyline — the sheet's device for "this is a
+   thing you can act on" — and no disclosure of any kind. */
+.character-sheet-page .cs-play-card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	padding: 0.4rem 0.55rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
+}
+.character-sheet-page .cs-play-card__head {
+	display: flex;
+	align-items: baseline;
+	gap: 0.4rem;
+}
+.character-sheet-page .cs-play-card__name {
+	flex: 1 1 auto;
+	min-width: 0;
+	font-family: var(--nexus-font-ui);
+	font-weight: 600;
+	font-size: var(--nexus-text-sm);
+	line-height: 1.3;
+}
+.character-sheet-page .cs-play-card__rank {
+	flex: 0 0 auto;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* Maintenance waits for the pointer.
+   ==========================================================================
+
+   Unpinning and re-typing an action are authoring tasks, and they were sitting in
+   every row during combat. Hidden at rest, shown on hover and on focus-within so
+   the keyboard reaches them — the same judgement the row titles and the record
+   plate already take. `visibility` rather than `display`, so the head does not
+   reflow when the pointer arrives. */
+.character-sheet-page .cs-play-card__tools {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 0.15rem;
+	visibility: hidden;
+}
+.character-sheet-page .cs-play-card:hover .cs-play-card__tools,
+.character-sheet-page .cs-play-card:focus-within .cs-play-card__tools {
+	visibility: visible;
+}
+.character-sheet-page .cs-play-card__retype .MuiSelect-select {
+	display: flex;
+	align-items: center;
+	padding: 2px 18px 2px 2px;
+	min-height: 0;
+	background: none;
+	border: 0;
+}
+.character-sheet-page .cs-play-card__unpin,
+.character-sheet-page .cs-playboard__unpin {
+	width: 18px;
+	height: 18px;
+	padding: 0;
+	border-radius: 0;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+.character-sheet-page .cs-play-card__unpin:hover,
+.character-sheet-page .cs-playboard__unpin:hover {
+	color: var(--cs-danger);
+	background: none;
+}
+
+.character-sheet-page .cs-play-card__meta {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+}
+/* The figure a play turns on: a weapon's damage, a spell's properties. Tabular so
+   a column of cards keeps its numerals on one vertical. */
+.character-sheet-page .cs-play-card__figure {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 72%,
+		var(--ifm-font-color-base)
+	);
+}
+/* The rule itself, UNCLAMPED on purpose: clamping puts back the click this whole
+   surface exists to remove. The player controls the height by controlling what
+   they pin. */
+.character-sheet-page .cs-play-card__rule {
+	margin: 0.1rem 0 0;
+	font-size: var(--nexus-text-xs);
+	line-height: 1.45;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 30%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* In force: true all the time, never a choice, so named and not spelled out. */
+.character-sheet-page .cs-playboard__inforce {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.3rem;
+}
+.character-sheet-page .cs-playboard__standing {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.15rem;
+	padding: 1px 0.15rem 1px 0.45rem;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 24%, transparent);
+}
+.character-sheet-page .cs-playboard__standing-name {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 40%,
+		var(--ifm-font-color-base)
+	);
+}
+.character-sheet-page .cs-playboard__unpin {
+	visibility: hidden;
+}
+.character-sheet-page .cs-playboard__standing:hover .cs-playboard__unpin,
+.character-sheet-page
+	.cs-playboard__standing:focus-within
+	.cs-playboard__unpin {
+	visibility: visible;
+}
+
+/* M13 S8c — the ability details panel.
+   ==========================================================================
+
+   The expanded-row pattern's anatomy: prose on the left, the record plate on the
+   right, both ending on the same line. Same two-column split the item and spell
+   panels take, so a reader who has opened one has opened all three.
+
+   Below the ledger breakpoint the plate drops under the prose rather than
+   squeezing beside it — a 15rem plate next to a 15rem inscription is two columns
+   of neither. */
+.character-sheet-page .cs-ability-panel {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	width: 100%;
+	align-items: stretch;
+}
+.character-sheet-page .cs-ability-panel__prose {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	/* Grows, but never past the reading measure: a description is prose and a
+	   1000px line of it is unreadable however much room the panel has. */
+	flex: 1 1 18rem;
+	min-width: 0;
+	max-width: var(--nexus-measure);
+}
+/* Each field is its own height (owner review).
+   ==========================================================================
+
+   `Inscription` sets `flex: <grow> 1 12rem`, and every one of its other consumers
+   is a flex ROW where that 12rem is a sensible minimum WIDTH. This column is the
+   first vertical one, and there the same declaration is a **12rem minimum
+   HEIGHT** — which is the ~190px of blank space under the name and under the
+   description.
+
+   Passing `grow={0}` fixed only half of it: that stops the box expanding to fill
+   the column, and leaves the basis reserving the space anyway. `flex: 0 0 auto`
+   is the whole answer — each field takes exactly the height its content needs, and
+   the multiline description grows through its own `minRows`/`maxRows` rather than
+   through the flexbox. */
+.character-sheet-page .cs-ability-panel__prose > * {
+	flex: 0 0 auto;
+}
+@media (max-width: 45rem) {
+	.character-sheet-page .cs-ability-panel .cs-record-plate {
+		flex: 1 1 100%;
+	}
 }
 
 /* M13 S8b — the entry's own prose, with the structure the JSON carries.

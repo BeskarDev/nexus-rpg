@@ -94,7 +94,7 @@ describe('SearchDialog', () => {
 		render(<Harness />)
 		expect(screen.getByText(/3 spells/)).toBeInTheDocument()
 
-		await userEvent.type(screen.getByLabelText('Search'), 'ice')
+		await userEvent.type(screen.getByRole('textbox'), 'ice')
 
 		expect(rowNames()).toEqual(['Ice Shard3'])
 		expect(screen.getByText(/1 spell$/)).toBeInTheDocument()
@@ -156,12 +156,18 @@ describe('SearchDialog', () => {
 
 	it('names the constraint when nothing matches, and offers the way out', async () => {
 		render(<Harness />)
-		await userEvent.type(screen.getByLabelText('Search'), 'zzz')
+		await userEvent.type(screen.getByRole('textbox'), 'zzz')
 
 		// The empty state says WHICH constraint emptied the list — a bare "no results"
 		// leaves the reader to guess between the search and the filters.
 		expect(screen.getByText(/No spell matches “zzz”/)).toBeInTheDocument()
 
+		// The way out is the field's own clear (S8b). It used to be a second button
+		// inside the empty state, which put two controls with the same accessible
+		// name on screen the moment the carved field gained its `×`.
+		expect(
+			screen.getAllByRole('button', { name: 'Clear the search' }),
+		).toHaveLength(1)
 		await userEvent.click(
 			screen.getByRole('button', { name: 'Clear the search' }),
 		)
@@ -294,7 +300,7 @@ describe('SearchDialog', () => {
 			// when React keeps a node it should have dropped — which is what a
 			// duplicate `getItemKey` causes.
 			render(<Harness />)
-			await userEvent.type(screen.getByLabelText('Search'), 'S')
+			await userEvent.type(screen.getByRole('textbox'), 'S')
 			const listed = screen.getAllByRole('option').length
 			expect(
 				screen.getByText(new RegExp(`^${listed} spell`)),
@@ -324,7 +330,7 @@ describe('SearchDialog', () => {
 			screen.getByRole('button', { name: 'Sort by Name' }),
 		).toBeInTheDocument()
 
-		await userEvent.type(screen.getByLabelText('Search'), 'zzz')
+		await userEvent.type(screen.getByRole('textbox'), 'zzz')
 		// Headings over an empty grid name columns that are not there.
 		expect(
 			screen.queryByRole('button', { name: 'Sort by Name' }),
@@ -430,7 +436,7 @@ describe('SearchDialog — standing (F11.2)', () => {
 		expect(rowNames().join(' ')).not.toContain('Ice Shard')
 		expect(screen.getByText('2 spells')).toBeTruthy()
 
-		await user.type(screen.getByLabelText('Search'), 'Fire')
+		await user.type(screen.getByRole('textbox'), 'Fire')
 		const left = rowNames()
 		expect(left).toHaveLength(1)
 		expect(left[0]).toContain('Fire Bolt')
@@ -445,5 +451,158 @@ describe('SearchDialog — standing (F11.2)', () => {
 
 		await user.click(toggle)
 		expect(toggle.getAttribute('aria-pressed')).toBe('true')
+	})
+})
+
+/**
+ * M13 S8b.2 — the dialog frame: one scroller, a carved field, and a key that does
+ * something.
+ */
+describe('SearchDialog — the frame (F11.4, F11.5)', () => {
+	it('is a bare input in a plate, not a MUI TextField', () => {
+		render(<Harness />)
+
+		// The notched-outline machinery is what made it un-restylable, and the
+		// builder shell called it "the one place a Material component still showed
+		// through the dialog".
+		expect(document.querySelector('.cs-search-field__input')).toBeTruthy()
+		expect(
+			document.querySelector('.MuiOutlinedInput-notchedOutline'),
+		).toBeNull()
+	})
+
+	it('names the field for what it searches, not just "Search"', () => {
+		render(<Harness />)
+		expect(screen.getByRole('textbox')).toHaveAttribute(
+			'aria-label',
+			'Search spells',
+		)
+	})
+
+	it('leaves exactly one scroller, on the rows', () => {
+		render(<Harness />)
+
+		// The rows scroll; the ledger around them and the content column do not.
+		// A `max-height` here would be a second, viewport-relative cap fighting the
+		// paper's own — that was the nested-scroller bug.
+		const rows = document.querySelector(
+			'.cs-search-ledger__rows',
+		) as HTMLElement
+		expect(rows).toBeTruthy()
+		expect(rows.style.maxHeight).toBe('')
+	})
+
+	it('takes the one remaining row on Enter', async () => {
+		render(<Harness />)
+		const field = screen.getByRole('textbox')
+
+		await userEvent.type(field, 'ice')
+		await userEvent.type(field, '{Enter}')
+
+		expect(screen.getByText(/1 chosen/)).toBeInTheDocument()
+	})
+
+	it('does nothing on Enter while the list is still ambiguous', async () => {
+		render(<Harness />)
+
+		// Guessing at row one is worse than doing nothing: the reader cannot see
+		// which row it would take.
+		await userEvent.type(screen.getByRole('textbox'), '{Enter}')
+
+		expect(screen.queryByText(/chosen/)).not.toBeInTheDocument()
+	})
+})
+
+/**
+ * M13 S8b.2 — roving focus (F11.3).
+ *
+ * 285 rows that are each `tabIndex: 0` is 285 tab stops between the search field
+ * and the Import button. One stop, arrows to move.
+ */
+describe('SearchDialog — the keyboard', () => {
+	const tabbable = () =>
+		Array.from(document.querySelectorAll('[role="option"]')).filter(
+			(row) => row.getAttribute('tabindex') === '0',
+		)
+
+	it('exposes ONE tab stop for the whole list', () => {
+		render(<Harness />)
+
+		expect(screen.getAllByRole('option')).toHaveLength(3)
+		expect(tabbable()).toHaveLength(1)
+	})
+
+	it('moves the stop down and up with the arrows', async () => {
+		render(<Harness />)
+		const rows = screen.getAllByRole('option')
+
+		await userEvent.type(screen.getByRole('textbox'), '{ArrowDown}')
+		expect(rows[0]).toHaveFocus()
+
+		await userEvent.keyboard('{ArrowDown}')
+		expect(rows[1]).toHaveFocus()
+		// The stop travels WITH the focus, or Tab would return to the old row.
+		expect(tabbable()).toEqual([rows[1]])
+
+		await userEvent.keyboard('{ArrowUp}')
+		expect(rows[0]).toHaveFocus()
+	})
+
+	it('goes back to the field off the top rather than wrapping', async () => {
+		render(<Harness />)
+		const field = screen.getByRole('textbox')
+
+		await userEvent.type(field, '{ArrowDown}')
+		await userEvent.keyboard('{ArrowUp}')
+
+		// A wrap to row 285 is never what the press meant.
+		expect(field).toHaveFocus()
+	})
+
+	it('jumps to the ends with Home and End', async () => {
+		render(<Harness />)
+		const rows = screen.getAllByRole('option')
+
+		await userEvent.type(screen.getByRole('textbox'), '{ArrowDown}')
+		await userEvent.keyboard('{End}')
+		expect(rows[rows.length - 1]).toHaveFocus()
+
+		await userEvent.keyboard('{Home}')
+		expect(rows[0]).toHaveFocus()
+	})
+
+	it('stops at the last row instead of running off the end', async () => {
+		render(<Harness />)
+		const rows = screen.getAllByRole('option')
+
+		await userEvent.type(screen.getByRole('textbox'), '{ArrowDown}')
+		await userEvent.keyboard('{End}{ArrowDown}{ArrowDown}')
+
+		expect(rows[rows.length - 1]).toHaveFocus()
+	})
+
+	it('keeps the stop in range when a search shortens the list', async () => {
+		render(<Harness />)
+
+		await userEvent.type(screen.getByRole('textbox'), '{ArrowDown}')
+		await userEvent.keyboard('{End}')
+		// Row 3 was active; now there is only row 1.
+		await userEvent.click(screen.getByRole('textbox'))
+		await userEvent.keyboard('ice')
+
+		expect(screen.getAllByRole('option')).toHaveLength(1)
+		expect(tabbable()).toHaveLength(1)
+	})
+
+	it('gives a disclosure list one stop too', () => {
+		render(<Harness renderDetails={(row) => <p>{row.name} detail</p>} />)
+
+		const summaries = Array.from(
+			document.querySelectorAll('.MuiAccordionSummary-root'),
+		)
+		expect(summaries).toHaveLength(3)
+		expect(
+			summaries.filter((s) => s.getAttribute('tabindex') === '0'),
+		).toHaveLength(1)
 	})
 })

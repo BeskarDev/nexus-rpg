@@ -84,6 +84,20 @@ export type UnifiedListItemProps = {
 	 */
 	selected?: boolean
 	onSelectedChange?: (selected: boolean) => void
+	/**
+	 * The row's place in its container's roving focus (M13 S8b.2, F11.3).
+	 *
+	 * A list of 285 rows that are each `tabIndex: 0` is 285 tab stops between the
+	 * search field and the Import button, which is what the search dialogs were.
+	 * The WAI-ARIA listbox and accordion patterns both say the same thing: ONE stop
+	 * for the whole list, arrows to move within it.
+	 *
+	 * The row cannot decide this — only the container knows which sibling is
+	 * current — so it is a prop. Left undefined, both variants behave exactly as
+	 * they did, which is correct for the tab ledgers where a list is a handful of
+	 * rows rather than a corpus.
+	 */
+	rowTabIndex?: number
 }
 
 /**
@@ -124,6 +138,7 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 	detailsSx,
 	selected = false,
 	onSelectedChange,
+	rowTabIndex,
 }) => {
 	const [internalExpanded, setInternalExpanded] = useState(defaultExpanded)
 
@@ -229,7 +244,9 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 				{...(selectable && {
 					role: 'option',
 					'aria-selected': selected,
-					tabIndex: 0,
+					// The container's roving focus when it manages one; otherwise the
+					// row is its own tab stop, which is right for a short tab ledger.
+					tabIndex: rowTabIndex ?? 0,
 					onClick: toggle,
 					onKeyDown: (event: React.KeyboardEvent) => {
 						if (event.key === 'Enter' || event.key === ' ') {
@@ -331,6 +348,7 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 		>
 			<AccordionSummary
 				expandIcon={<Chevron />}
+				{...(rowTabIndex !== undefined && { tabIndex: rowTabIndex })}
 				sx={{
 					gap: 1,
 					pt: 0,

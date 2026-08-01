@@ -11,6 +11,7 @@ import {
 	Typography,
 } from '@mui/material'
 import React, { useState, useMemo, ReactNode } from 'react'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import { Chevron } from '../Chevron'
 import { MarkButton } from '../MarkButton'
 import { UnifiedListItem } from '../DynamicList'
@@ -245,6 +246,9 @@ export function SearchDialog<T>({
 	renderDetails,
 	getStanding,
 }: SearchDialogProps<T>) {
+	// `noSsr` is deliberate: without it the first client render assumes the query is
+	// false, so a phone paints the windowed dialog and then swaps to full screen.
+	const fullScreen = useMediaQuery('(max-width:699.98px)', { noSsr: true })
 	const isSingle = selectionMode === 'single'
 	const expands = renderDetails !== undefined
 	const knowsCharacter = getStanding !== undefined
@@ -361,6 +365,70 @@ export function SearchDialog<T>({
 	 * the caller's column list rather than from a constant, because each dialog
 	 * shows a different set of facts, but the rule is the same one.
 	 */
+	/*
+		Roving focus over the list (M13 S8b.2, F11.3).
+
+		Every row was `tabIndex: 0`, so a mystic list of 285 rows put 285 tab stops
+		between the search field and the Import button — and with S8b.1's checkbox in
+		each expanded row, nearer 570. Both patterns this dialog uses say the same
+		thing: ONE stop for the whole list, arrows to move inside it.
+
+		The index lives here rather than in the row because only the container knows
+		which sibling is current. Focus is applied by querying the rendered rows — the
+		focusable element differs by variant (the row itself when it is an `option`,
+		the summary button when it is a disclosure) and a ref array would have to know
+		that too.
+	*/
+	const fieldRef = React.useRef<HTMLInputElement | null>(null)
+	const rowsRef = React.useRef<HTMLDivElement | null>(null)
+	const [activeIndex, setActiveIndex] = useState(0)
+
+	// A narrowing search can leave the active index past the end of the list.
+	const clampedActive = Math.min(
+		activeIndex,
+		Math.max(filteredData.length - 1, 0),
+	)
+
+	const focusRow = (index: number) => {
+		const container = rowsRef.current
+		if (!container) return
+		const rows = container.querySelectorAll<HTMLElement>(
+			expands ? '.MuiAccordionSummary-root' : '[role="option"]',
+		)
+		const target = rows[index]
+		if (!target) return
+		setActiveIndex(index)
+		target.focus()
+	}
+
+	const onListKeyDown = (event: React.KeyboardEvent) => {
+		const last = filteredData.length - 1
+		if (last < 0) return
+		switch (event.key) {
+			case 'ArrowDown':
+				event.preventDefault()
+				focusRow(Math.min(clampedActive + 1, last))
+				break
+			case 'ArrowUp':
+				event.preventDefault()
+				// Off the top goes back to the search field rather than wrapping: the
+				// field is where the reader came from, and a wrap to row 285 is never
+				// what the press meant.
+				if (clampedActive === 0) fieldRef.current?.focus()
+				else focusRow(clampedActive - 1)
+				break
+			case 'Home':
+				event.preventDefault()
+				focusRow(0)
+				break
+			case 'End':
+				event.preventDefault()
+				focusRow(last)
+				break
+			default:
+		}
+	}
+
 	const rowTemplate = useMemo(() => {
 		const tracks = columns.map((column) => column.width ?? 'minmax(0, 1fr)')
 		// A disclosure's checkbox is a cell of the summary grid; a selectable row's
@@ -440,6 +508,17 @@ export function SearchDialog<T>({
 			onClose={handleClose}
 			maxWidth="md"
 			fullWidth
+			/*
+				Full screen on a phone (F11.4).
+
+				A `maxWidth="md" fullWidth` dialog on a 430px viewport is the phone minus
+				MUI's 32px margins, and it spends the rest of the height on the backdrop
+				around it — for a list of 285 rows, where every line of the viewport is
+				a row the reader does not have to scroll for. The breakpoint is the same
+				700px the column grid uses, so the frame changes at the same width the
+				tracks do rather than at a second, unrelated one.
+			*/
+			fullScreen={fullScreen}
 			// Portaled outside `.character-sheet-page`, so without `cs-tokens` every
 			// sheet-scoped rule the ledger and the chips depend on resolves to nothing
 			// — the same reason `FocusField` and `StatusEffects` carry it.
@@ -447,49 +526,84 @@ export function SearchDialog<T>({
 		>
 			<DialogTitle>{title}</DialogTitle>
 			<DialogContent sx={{ pt: 2 }}>
-				{/* A plain themed `TextField`, not `SheetInput`: that preset is 5rem wide
-					with centred content, built for a value cell in a dense row, and a
-					full-measure prose field is the one shape it is not. */}
-				<TextField
-					autoFocus
-					label="Search"
-					variant="outlined"
-					placeholder={searchPlaceholder}
-					fullWidth
-					value={searchQuery}
-					onChange={(e) => setSearchQuery(e.target.value)}
-					sx={{ mb: 1.5 }}
-					InputProps={{
-						startAdornment: (
-							<InputAdornment position="start">
-								{/* The search mark, drawn rather than Material: a ring with its
-									handle, which is the same lens the site's own search control
-									shows. Decorative — the field's label says what it is. */}
-								<Box
-									aria-hidden="true"
-									component="svg"
-									viewBox="0 0 16 16"
-									sx={{ width: 14, height: 14, color: 'primary.main' }}
-								>
-									<circle
-										cx="6.75"
-										cy="6.75"
-										r="4.5"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="1.5"
-									/>
-									<path
-										d="M10.2 10.2 L14 14"
-										stroke="currentColor"
-										strokeWidth="1.5"
-										strokeLinecap="square"
-									/>
-								</Box>
-							</InputAdornment>
-						),
-					}}
-				/>
+				{/* A carved field, not a MUI `TextField` (M13 S8b, F11.5).
+
+					The builder shell replaced its own `TextField` in S8 and its docblock
+					names the reason: restyling one means fighting the notched-outline
+					machinery — a `<fieldset>` with a legend gap, a hairline in Material's
+					grey, a 40px box the type sits lost inside — and it was "the one place
+					a Material component still showed through the dialog". This was that
+					same place, still unfixed, on the surface a player opens most.
+
+					A bare `<input>` in a keylined plate. The lens is drawn rather than
+					Material and sits INSIDE the keyline as an engraved fixture, because
+					pressing it does nothing.
+
+					A sheet-scoped twin of `.cb-search` rather than the builder's own
+					component: a portalled dialog cannot reach `.codex-builder`'s
+					stylesheet, and giving this paper that class to borrow one field would
+					drag the whole builder frame with it. Same call as `FilterToggle`
+					against the builder's `FilterChip`. */}
+				<Box className="cs-search-field">
+					<Box
+						aria-hidden="true"
+						component="svg"
+						viewBox="0 0 16 16"
+						className="cs-search-field__mark"
+					>
+						<circle
+							cx="6.75"
+							cy="6.75"
+							r="4.5"
+							fill="none"
+							stroke="currentColor"
+							strokeWidth="1.5"
+						/>
+						<path
+							d="M10.2 10.2 L14 14"
+							stroke="currentColor"
+							strokeWidth="1.5"
+							strokeLinecap="square"
+						/>
+					</Box>
+					<input
+						// Autofocus is right here and nowhere else on the sheet: the dialog
+						// exists to be typed into, and it is opened by a deliberate press.
+						autoFocus
+						ref={fieldRef}
+						type="text"
+						className="cs-search-field__input"
+						placeholder={searchPlaceholder}
+						aria-label={`Search ${plural}`}
+						value={searchQuery}
+						onChange={(event) => setSearchQuery(event.target.value)}
+						onKeyDown={(event) => {
+							// Down out of the field and into the list. The field autofocuses,
+							// so without this a keyboard reader has to Tab past it to reach
+							// the rows at all.
+							if (event.key === 'ArrowDown') {
+								event.preventDefault()
+								focusRow(0)
+								return
+							}
+							// Enter used to do nothing at all: you typed a name, got one
+							// row, and reached for the mouse. It takes what the list has
+							// narrowed to when that is unambiguous, and otherwise leaves
+							// the field alone rather than guessing at row one.
+							if (event.key !== 'Enter') return
+							if (filteredData.length !== 1) return
+							event.preventDefault()
+							handleItemToggle(getItemKey(filteredData[0]))
+						}}
+					/>
+					{searchQuery && (
+						<MarkButton
+							glyph="×"
+							label="Clear the search"
+							onClick={() => setSearchQuery('')}
+						/>
+					)}
+				</Box>
 
 				{(filters || knowsCharacter) && (
 					<Box className="cs-search-filters">
@@ -607,6 +721,8 @@ export function SearchDialog<T>({
 					)}
 
 					<Box
+						ref={rowsRef}
+						onKeyDown={onListKeyDown}
 						className="cs-search-ledger__rows"
 						/*
 							A list of disclosures is not a listbox. When the row expands, the
@@ -623,7 +739,7 @@ export function SearchDialog<T>({
 									...(!isSingle && { 'aria-multiselectable': true }),
 								})}
 					>
-						{filteredData.map((item) => {
+						{filteredData.map((item, rowIndex) => {
 							const itemKey = getItemKey(item)
 							const standing = getStanding?.(item)
 							const cells = columns.map((column, index) => (
@@ -662,6 +778,7 @@ export function SearchDialog<T>({
 									<UnifiedListItem
 										key={itemKey}
 										maxWidth="none"
+										rowTabIndex={rowIndex === clampedActive ? 0 : -1}
 										selected={selectedItems.has(itemKey)}
 										onSelectedChange={() => handleItemToggle(itemKey)}
 										summaryClassName="cs-search-row"
@@ -675,6 +792,7 @@ export function SearchDialog<T>({
 								<UnifiedListItem
 									key={itemKey}
 									maxWidth="none"
+									rowTabIndex={rowIndex === clampedActive ? 0 : -1}
 									summaryClassName="cs-search-row"
 									detailsContent={renderDetails(item)}
 									detailsSx={{ display: 'block' }}
@@ -709,13 +827,11 @@ export function SearchDialog<T>({
 									? ` “${searchQuery.trim()}”`
 									: ' these filters'}
 							</Typography>
-							{searchQuery.trim() && (
-								<MarkButton
-									glyph="×"
-									label="Clear the search"
-									onClick={() => setSearchQuery('')}
-								/>
-							)}
+							{/* No clear button here as of S8b, which reverses an S8 decision on
+								purpose. The carved search field carries its own `×` now, forty
+								pixels above this line, so a second one put two controls with the
+								SAME accessible name on screen at once. The way out has not been
+								removed — it moved to where the text being cleared actually is. */}
 						</Box>
 					)}
 				</Box>

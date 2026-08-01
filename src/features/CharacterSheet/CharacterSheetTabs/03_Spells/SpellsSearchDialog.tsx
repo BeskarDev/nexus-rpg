@@ -134,6 +134,10 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 
 		return (spell: SpellData) => {
 			const owned = known.has(spell.name.trim().toLowerCase())
+			// Nothing in the magic chapter lets you learn a spell twice, and a second
+			// copy on the sheet is just clutter you have to delete. The import path
+			// does not check, so this is where the reader is told.
+			if (owned) return { owned: true, blocked: 'known' }
 			// No skill and no granting talent: every spell of this kind is out of
 			// reach, and the reason is the discipline itself rather than the rank.
 			if (ceiling === null) return { owned, blocked: `no ${magicType}` }
@@ -210,10 +214,20 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 		},
 	]
 
+	/*
+		Search what the reader can see (F11.6).
+
+		Two mismatches: `focus` had a COLUMN and was not searched, and `properties`
+		was searched while appearing nowhere at all — a query matching a spell on a
+		property returned a row with no visible reason for being there. `focus` is
+		added; `properties` stays searchable because the details panel shows it now,
+		which is the honest way to close that half.
+	*/
 	const searchFields: (keyof SpellData)[] = [
 		'name',
 		typeFieldKey as keyof SpellData,
 		'rank',
+		'focus',
 		'target',
 		'range',
 		'properties',
@@ -271,7 +285,16 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 			// critical tiers the docs card shows — the same `SuccessLevel` rows, from
 			// the same parser — instead of collapsing them into one paragraph.
 			renderDetails={(spell) => (
-				<EntryProse source={spell.effect ?? ''} name={spell.name} />
+				<div className="cs-entry-prose">
+					{/* Shown because it is searched. `properties` was in `searchFields`
+						while appearing on no surface, so a match had no visible cause. */}
+					{spell.properties && (
+						<p className="cs-entry-prose__para">
+							<strong>Properties.</strong> {entrySummary(spell.properties)}
+						</p>
+					)}
+					<EntryProse source={spell.effect ?? ''} name={spell.name} />
+				</div>
 			)}
 			searchPlaceholder={`Search by name, ${typeLabel.toLowerCase()}, rank, or effect...`}
 			filters={

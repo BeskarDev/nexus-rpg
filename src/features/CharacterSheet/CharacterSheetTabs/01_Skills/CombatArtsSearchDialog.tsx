@@ -107,9 +107,13 @@ export const CombatArtsSearchDialog: React.FC<CombatArtsSearchDialogProps> = ({
 				.filter((ability) => ability.tag === 'Combat Art')
 				.map((ability) => ability.title.trim().toLowerCase()),
 		)
-		return (art: CombatArtData) => ({
-			owned: owned.has(art.name.trim().toLowerCase()),
-		})
+		// No combat art in the corpus says it may be taken more than once, so
+		// holding one is a bar rather than a note — unlike an item, where a second
+		// torch is a legitimate thing to want.
+		return (art: CombatArtData) => {
+			const isOwned = owned.has(art.name.trim().toLowerCase())
+			return { owned: isOwned, blocked: isOwned ? 'known' : undefined }
+		}
 	}, [character.skills?.abilities])
 
 	const columns: SearchDialogColumn<CombatArtData>[] = [

@@ -786,11 +786,195 @@ export const createOutdatedMockCharacter = (): CharacterDocument => {
 /**
  * List of all available mock characters for development testing
  */
+/**
+ * The review character: every surface populated, nothing left to imagine.
+ *
+ * ## Why it exists
+ *
+ * The three characters above grew one feature at a time, and between them they
+ * still cover the sheet unevenly — the owner hit this reviewing S8c:
+ *
+ * | Gap | Consequence |
+ * |---|---|
+ * | no `Folk` or `Other` ability anywhere | two of the four ability sections never render |
+ * | one Combat Art in total | the section renders with a single row |
+ * | no ability carries `actionType`, `rank` or `skill` | every row reads `Other` with both Talent tracks empty |
+ * | **no character has `quickRefSelections`** | Quick Ref only ever shows its empty state |
+ * | the second character has no spells | the Spells tab is one character deep |
+ *
+ * So it is deliberately built for LOOKING at rather than for playing: all four
+ * ability categories, all six action types, talent ranks 1 to 5, skills that are
+ * and are not trained, and a Quick Ref spanning all four kinds it can hold.
+ *
+ * ## Built on the first character, not beside it
+ *
+ * It spreads `createMockCharacter()` and replaces only what it is testing. A
+ * fourth hand-written `Character` literal would be a fourth thing to update every
+ * time the schema moves, and the three above have already drifted from each other
+ * that way.
+ */
+export const createReviewMockCharacter = (): CharacterDocument => {
+	const base = createMockCharacter()
+
+	/*
+		Ability ids are captured up front because `quickRefSelections` refers to
+		them. Generating inside the array and then trying to find them again by
+		title is how you get a Quick Ref that silently pins nothing.
+	*/
+	const ids = {
+		cleave: generateId(),
+		riposte: generateId(),
+		surge: generateId(),
+		lore: generateId(),
+		darkvision: generateId(),
+		stoneblood: generateId(),
+		contact: generateId(),
+		heirloom: generateId(),
+	}
+
+	const abilities: Character['skills']['abilities'] = [
+		// Combat Arts — the section that had one row.
+		{
+			id: ids.cleave,
+			title: 'Cleaving Blow',
+			description:
+				'Spend a boon on a melee hit to strike a second adjacent creature for half damage.',
+			tag: 'Combat Art',
+			actionType: 'Action',
+		},
+		{
+			id: ids.riposte,
+			title: 'Riposte',
+			description:
+				'When a melee attack against you misses, you may immediately attack that creature.',
+			tag: 'Combat Art',
+			actionType: 'Triggered',
+		},
+		{
+			id: generateId(),
+			title: 'Measured Guard',
+			description: 'While you have not moved this turn, gain +1 Parry.',
+			tag: 'Combat Art',
+			actionType: 'Passive',
+		},
+		// Talents — ranks 1 to 5, and one with no skill so the unassigned case shows.
+		{
+			id: ids.surge,
+			title: 'Adrenaline Surge',
+			description:
+				'While you have taken damage since your last turn, gain a boon on your next Strength roll.',
+			tag: 'Talent',
+			actionType: 'Quick Action',
+			rank: 1,
+			skill: 'Fortitude',
+		},
+		{
+			id: ids.lore,
+			title: 'Ancient Knowledge',
+			description:
+				'Gain +2 boons when recalling information about historical events or civilizations.',
+			tag: 'Talent',
+			actionType: 'Passive',
+			rank: 3,
+			skill: 'Lore',
+		},
+		{
+			id: generateId(),
+			title: 'Arcane Spell Knowledge',
+			description:
+				'You can take higher ranks for this talent without having taken its lower ranks provided your Arcana also has the required rank.',
+			tag: 'Talent',
+			actionType: 'Passive',
+			rank: 5,
+			skill: 'Arcana',
+		},
+		{
+			id: generateId(),
+			title: 'Unfiled Knack',
+			description:
+				'A talent with no skill assigned, so the unassigned case and the talent-point warning both have something to report.',
+			tag: 'Talent',
+			actionType: 'Other',
+			rank: 2,
+		},
+		// Folk — a section that never rendered at all.
+		{
+			id: ids.darkvision,
+			title: 'Darkvision',
+			description: 'You see in dim light as though it were bright light.',
+			tag: 'Folk',
+			actionType: 'Passive',
+		},
+		{
+			id: ids.stoneblood,
+			title: 'Stoneblood',
+			description:
+				'Once per rest, reduce the damage of one physical attack by 3.',
+			tag: 'Folk',
+			actionType: 'Free',
+		},
+		// Other — likewise.
+		{
+			id: ids.contact,
+			title: 'Guild Contact',
+			description:
+				'You know someone in most cities who will trade information for a favour.',
+			tag: 'Other',
+			actionType: 'Other',
+		},
+		{
+			id: ids.heirloom,
+			title: 'Heirloom Seal',
+			description:
+				'Presenting the seal to an Akashic official grants one boon on the first Influence roll.',
+			tag: 'Other',
+			actionType: 'Free',
+		},
+	]
+
+	return {
+		...base,
+		// Its own doc id and name, or it is indistinguishable from the character it
+		// was spread from in the character list.
+		docRef: doc(db, 'mock-collection', 'mock-character-review'),
+		docId: 'mock-character-review',
+		personal: {
+			...base.personal,
+			name: 'Everith Fullsheet',
+			playerName: 'Developer Review',
+			description:
+				'Built for reviewing the sheet rather than for playing: every ability category, every action type, talent ranks 1 to 5, and a populated Quick Ref.',
+		},
+		skills: {
+			...base.skills,
+			abilities,
+			/*
+				Pinned across all four kinds, so every branch of the Quick Ref grouping
+				has something in it: an Action, a Triggered, a Quick Action, a Passive
+				and a Free, plus a weapon, an item and a spell.
+			*/
+			quickRefSelections: {
+				abilities: [
+					ids.cleave,
+					ids.riposte,
+					ids.surge,
+					ids.darkvision,
+					ids.heirloom,
+				],
+				weapons: base.items.weapons.slice(0, 2).map((weapon) => weapon.id),
+				items: base.items.items.slice(0, 2).map((item) => item.id),
+				spells: base.spells.spells.slice(0, 2).map((spell) => spell.id),
+			},
+		},
+	}
+}
+
 export const getMockCharacters = (): CharacterDocument[] => {
 	return [
 		createMockCharacter(),
 		createSecondMockCharacter(),
 		createOutdatedMockCharacter(),
+		createReviewMockCharacter(),
 	]
 }
 

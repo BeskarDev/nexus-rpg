@@ -4,90 +4,14 @@ import { PipRow } from '../../../components'
 import { UI_COLORS } from '../../../../../utils/colors'
 import { LEDGER_BREAKPOINT } from './ledgerColumns'
 
-/**
- * The three kinds of cell an inventory row is made of (M13 S4b).
- *
- * ## Why a row has only three
- *
- * D5: **a summary shows, and edits only what changes mid-fight.** Sorting every
- * item field by how often it is touched during a session rather than at
- * character creation puts almost everything in one bucket — name, damage,
- * properties, cost, load, quality, durability, slot are read constantly and
- * edited almost never — and exactly two in the other: `uses`, because an item
- * degrades on a botch, and `amount`, because ammo and consumables are spent.
- *
- * Those two are the item equivalent of HP and conditions, and every earlier
- * slice in this milestone landed on the same answer for that class of value: it
- * is acted on where the player is already looking, one tap, no mode switch. So
- * the row is text plus two controls, and everything else moved into the details
- * panel.
- *
- * The consequence that matters for density: a value that is not editable does
- * not need a slot, and a row of nine bordered boxes was most of the 53px it
- * occupied.
- */
-
-export interface ReadCellProps {
-	children: React.ReactNode
-	/**
-	 * The column this cell belongs to.
-	 *
-	 * Shown **only below the ledger breakpoint**, where the column header is gone
-	 * and the row has wrapped. A read-only cell has no `<label>` of its own — that
-	 * was the point of un-boxing it — so without this a narrow row degrades to a
-	 * string of bare numbers: "light armor, +1 AV — 25 0". The editable cells kept
-	 * their labels through the same collapse; these had none to keep.
-	 */
-	label?: string
-	/** Prose reads flush left; a number reads centred under a centred heading. */
-	align?: 'left' | 'center'
-	/** Secondary facts (properties) sit back from the name they qualify. */
-	muted?: boolean
-	title?: string
-}
-
-export const ReadCell: React.FC<ReadCellProps> = ({
-	children,
-	label,
-	align = 'left',
-	muted,
-	title,
-}) => (
-	<Typography
-		component="div"
-		title={title}
-		sx={{
-			minWidth: 0,
-			overflow: 'hidden',
-			textOverflow: 'ellipsis',
-			whiteSpace: 'nowrap',
-			textAlign: align,
-			fontSize: 'var(--nexus-text-dense)',
-			...(align === 'center' && { fontVariantNumeric: 'tabular-nums' }),
-			...(muted && { color: 'text.secondary' }),
-		}}
-	>
-		{label && <span className="cs-cell-label">{label}</span>}
-		{children}
-	</Typography>
-)
-
-/**
- * A column this row shape reserves but has no value for (M13 S4d).
- *
- * Every section shares one template so the tab has one vertical grid, which
- * means an item row still has to occupy the damage track and a weapon row the
- * slot track. `aria-hidden` because there is nothing here to announce — the
- * cell exists for the geometry, not the record.
- */
-export const SpacerCell: React.FC = () => (
-	// Only below the breakpoint does it need saying: there is no grid there, so a
-	// reserved-but-empty cell is just an extra flex gap in a wrapped row.
-	<Box
-		aria-hidden="true"
-		sx={{ display: 'none', [LEDGER_BREAKPOINT]: { display: 'block' } }}
-	/>
-)
+/*
+	`ReadCell` and `SpacerCell` moved to `components/LedgerCell` in S8c, when the
+	ability ledger became the third consumer of the same three declarations. They
+	are re-exported here so the Items tab's own imports keep reading from one
+	place, and because `UsesCell` below genuinely is item behaviour and stays.
+*/
+export { ReadCell, SpacerCell } from '../../../components'
+export type { ReadCellProps } from '../../../components/LedgerCell/LedgerCell'
 
 /** The row's name cell — the one piece of text that carries weight. */
 export const NameCell: React.FC<{ children: React.ReactNode }> = ({

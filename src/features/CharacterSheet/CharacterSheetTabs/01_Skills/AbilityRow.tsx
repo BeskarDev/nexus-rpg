@@ -5,6 +5,7 @@ import { AbilityTag } from '@site/src/types/AbilityTag'
 import { ActionType } from '@site/src/types/ActionType'
 import { UnifiedListItem } from '@site/src/features/CharacterSheet/components/DynamicList'
 import { AbilitySummary, AbilityDetails } from './components'
+import { abilityTemplateFor } from './components/abilityColumns'
 
 export type AbilityRowProps = {
 	title: string
@@ -80,6 +81,8 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 
 	return (
 		<UnifiedListItem
+			summaryClassName="cs-ledger-row-grid"
+			summarySx={{ gridTemplateColumns: abilityTemplateFor(tag), columnGap: 1 }}
 			summaryContent={
 				<AbilitySummary
 					title={title.value}
@@ -87,12 +90,13 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 					tag={tag}
 					rank={rank}
 					skill={skill}
-					onTitleChange={title.onChange}
-					onTitleBlur={title.onBlur}
 				/>
 			}
 			detailsContent={
 				<AbilityDetails
+					title={title.value}
+					onTitleChange={title.onChange}
+					onTitleBlur={title.onBlur}
 					description={description.value}
 					actionType={actionType}
 					tag={tag}

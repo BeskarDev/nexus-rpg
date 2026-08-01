@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import { Typography } from '@mui/material'
+import { Typography, Button } from '@mui/material'
 import {
 	FilterSelect,
 	SheetChip,
@@ -40,6 +40,8 @@ type TalentData = {
 	 */
 	ranks: string
 	summary: string
+	/** Whether the rulebook lets this one be taken more than once. */
+	repeatable: boolean
 }
 
 export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
@@ -60,15 +62,18 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 	*/
 	const talents = useMemo<TalentData[]>(
 		() =>
-			(talentsData as Omit<TalentData, 'ranks' | 'summary'>[]).map(
-				(talent) => ({
-					...talent,
-					ranks: talentRankSpan(talent.description, talent.name) ?? '',
-					// The rank labels come out: `(Rank 1)` mid-sentence is noise in a
-					// two-line lead now that the span has a column of its own.
-					summary: entrySummary(talent.description, { stripRankLabels: true }),
-				}),
-			),
+			(
+				talentsData as Omit<TalentData, 'ranks' | 'summary' | 'repeatable'>[]
+			).map((talent) => ({
+				...talent,
+				ranks: talentRankSpan(talent.description, talent.name) ?? '',
+				// The rank labels come out: `(Rank 1)` mid-sentence is noise in a
+				// two-line lead now that the span has a column of its own.
+				summary: entrySummary(talent.description, { stripRankLabels: true }),
+				// The sentence IS the rule: four of the 148 say "You can choose this
+				// Talent multiple times", and for those a second copy is legal.
+				repeatable: /multiple times/i.test(talent.description),
+			})),
 		[],
 	)
 
@@ -137,14 +142,34 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 			const skill =
 				normalizeSkillName(talent['skill requirement']) ||
 				talent['skill requirement']
+			const isOwned = owned.has(talent.name.trim().toLowerCase())
+
+			/*
+				Holding it already is usually a bar, and sometimes is not.
+
+				Four of the 148 say "You can choose this Talent multiple times" in so
+				many words — Arcane and Mystical Spell Knowledge, Sense of Deduction,
+				Magical Sense — and for those a second copy is the rules working as
+				written. For the other 144 it is a violation the sheet was happy to
+				commit: `importAbilities` unshifts with a fresh UUID and no check.
+
+				Read from the description rather than held in a table, because the
+				sentence IS the rule and a table of four names would be a second place
+				for it to live and rot. (`SPELL_GRANTING_TALENTS` is a table because
+				the grant is a NUMBER buried in prose; this is a yes or no.)
+
+				Informational, not forbidden: `blocked` greys nothing out and the
+				"only what I can take" toggle filters on it. A GM may allow anything,
+				and the sheet's job is to say what the book says.
+			*/
+			if (isOwned && !talent.repeatable) {
+				return { owned: true, blocked: 'already taken' }
+			}
 			if (!pointsLeft.has(skill)) {
-				return {
-					owned: owned.has(talent.name.trim().toLowerCase()),
-					blocked: 'untrained',
-				}
+				return { owned: isOwned, blocked: 'untrained' }
 			}
 			return {
-				owned: owned.has(talent.name.trim().toLowerCase()),
+				owned: isOwned,
 				// Zero points left is a real bar: the talent costs one and you have
 				// none in that skill. Said as the shortage rather than as a refusal,
 				// because the fix is XP in that skill and the phrase should point at it.
@@ -255,15 +280,26 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 			searchPlaceholder="Search by name, skill requirement, or description..."
 			filters={
 				/* No wrapper: the dialog's filter band is the flex row now. */
-				<FilterSelect
-					label="Skill"
-					allLabel="All skills"
-					options={skillOptions}
-					value={skillFilter}
-					onChange={setSkillFilter}
-					tone={getSkillChipColor}
-					minWidth="13rem"
-				/>
+				<>
+					<FilterSelect
+						label="Skill"
+						allLabel="All skills"
+						options={skillOptions}
+						value={skillFilter}
+						onChange={setSkillFilter}
+						tone={getSkillChipColor}
+						minWidth="13rem"
+					/>
+					{/* The one dialog with filters that had no way to clear them (F11.6). */}
+					<Button
+						variant="text"
+						size="small"
+						onClick={() => setSkillFilter([])}
+						disabled={!skillFilter.length}
+					>
+						Clear filters
+					</Button>
+				</>
 			}
 		/>
 	)

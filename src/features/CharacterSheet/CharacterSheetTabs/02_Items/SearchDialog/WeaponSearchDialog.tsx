@@ -236,7 +236,9 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 			title="Search Weapons"
 			data={filteredWeapons as WeaponData[]}
 			columns={columns}
-			searchFields={['name', 'type', 'properties']}
+			// Every column is searchable (F11.6). Damage, load and cost were all shown
+			// and none of them were searched, so "6/9/12" found nothing.
+			searchFields={['name', 'type', 'damage', 'load', 'cost', 'properties']}
 			selectedItems={selectedWeapons}
 			onSelectionChange={setSelectedWeapons}
 			onImport={handleImport}

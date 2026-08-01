@@ -72,6 +72,16 @@ describe('search dialog parity', () => {
 		expect(handBuilt).toEqual([])
 	})
 
+	it('every dialog with filters can clear them', () => {
+		// Talents was the one with a facet and no way out of it (F11.6).
+		const withFilters = DIALOGS.filter((file) =>
+			read(file).includes('<FilterSelect'),
+		)
+		expect(offenders(withFilters, (s) => s.includes('Clear filters'))).toEqual(
+			[],
+		)
+	})
+
 	it('no dialog puts a raw content string into the DOM', () => {
 		// The owner found this rendering on screen: `{item.description}` prints the
 		// JSON verbatim, React escapes it, and a `<br/>` in the source becomes the
