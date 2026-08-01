@@ -1,9 +1,4 @@
-import {
-	ArrowBackIosNew,
-	Download,
-	Save,
-	Upload,
-} from '@mui/icons-material'
+import { ArrowBackIosNew, Download, Save, Upload } from '@mui/icons-material'
 import {
 	Box,
 	Button,
@@ -315,7 +310,9 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						}}
 					>
 						{!activeCharacterId && 'Your Characters'}
-						{activeCharacterId && activeCharacter && activeCharacter.personal.name}
+						{activeCharacterId &&
+							activeCharacter &&
+							activeCharacter.personal.name}
 					</Typography>
 					{activeCharacterId && activeCharacter && (
 						<Cartouche compact>

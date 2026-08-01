@@ -169,7 +169,8 @@ export function ribbonD(
 	const lengths: number[] = [0]
 	for (let i = 1; i < pts.length; i++) {
 		lengths.push(
-			lengths[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]),
+			lengths[i - 1] +
+				Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]),
 		)
 	}
 	const total = lengths[lengths.length - 1] || 1
@@ -231,7 +232,11 @@ export function blobD(hull: Pt[], samplesPerSegment = 10): string {
  * unit apart — invisible on screen, but it is exactly the sub-minimum void the
  * design law exists to prevent.
  */
-export function ribbonLoopD(centre: Pt[], width: number, samplesPerSegment = 10): string {
+export function ribbonLoopD(
+	centre: Pt[],
+	width: number,
+	samplesPerSegment = 10,
+): string {
 	const n = centre.length
 	const at = (i: number) => centre[((i % n) + n) % n]
 	const samples: Pt[] = []
@@ -271,12 +276,7 @@ export function ribbonLoopD(centre: Pt[], width: number, samplesPerSegment = 10)
 }
 
 /** Straight tapered bar — the two-point case of a ribbon. */
-export function barD(
-	from: Pt,
-	to: Pt,
-	w0: number,
-	w1 = w0,
-): string {
+export function barD(from: Pt, to: Pt, w0: number, w1 = w0): string {
 	return ribbonD([from, to], w0, w1)
 }
 

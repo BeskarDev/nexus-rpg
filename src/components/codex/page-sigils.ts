@@ -126,9 +126,7 @@ export function pageSigilForDocId(docId: string): SigilName | undefined {
 
 /** Sigil for a sidebar permalink/href, e.g. `/docs/basic-rules/quickstart-characters/overview`. */
 export function pageSigilForHref(href: string): SigilName | undefined {
-	const key = href
-		.replace(/^\/docs\//, '')
-		.replace(/\/$/, '')
+	const key = href.replace(/^\/docs\//, '').replace(/\/$/, '')
 	return PAGE_SIGIL[normalize(key)]
 }
 

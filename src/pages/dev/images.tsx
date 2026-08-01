@@ -120,10 +120,10 @@ export default function ImagePlateGallery(): React.ReactNode {
 				<h2>D2 × D4 — the four combinations, at banner width</h2>
 				<p>
 					<strong>Settled 2026-07-27: banner · frieze · mitred.</strong> The
-					other three stay rendered here as the comparison that decided it —
-					(a) <code>rails</code> is the existing <code>CardFrame</code>{' '}
-					vocabulary at plate scale and remains a selectable fallback, but it
-					ships nowhere.
+					other three stay rendered here as the comparison that decided it — (a){' '}
+					<code>rails</code> is the existing <code>CardFrame</code> vocabulary
+					at plate scale and remains a selectable fallback, but it ships
+					nowhere.
 				</p>
 				{CONSTRUCTIONS.map((construction) => (
 					<div key={construction} style={{ marginBottom: '2rem' }}>
@@ -161,13 +161,13 @@ export default function ImagePlateGallery(): React.ReactNode {
 				<h2>At 430px</h2>
 				<p>
 					The narrow check, and the one that failed review: at this width the
-					frontispiece&apos;s 28px surround and 52px rosette were eating a
-					plate whose picture is only ~93px tall. Below a 640px{' '}
-					<em>plate</em> width (a container query, not a viewport one) the
-					frontispiece now steps down to the banner geometry — same corner and
-					same rosette, drawn at the size that reads at this span. Compare the
-					frontispiece below against the full-width one above: it should now
-					differ from the banner beside it only by its second keystone.
+					frontispiece&apos;s 28px surround and 52px rosette were eating a plate
+					whose picture is only ~93px tall. Below a 640px <em>plate</em> width
+					(a container query, not a viewport one) the frontispiece now steps
+					down to the banner geometry — same corner and same rosette, drawn at
+					the size that reads at this span. Compare the frontispiece below
+					against the full-width one above: it should now differ from the banner
+					beside it only by its second keystone.
 				</p>
 				<div
 					style={{

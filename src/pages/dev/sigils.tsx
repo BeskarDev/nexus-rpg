@@ -121,7 +121,8 @@ export default function SigilGallery(): React.ReactNode {
 							Heading (1em)
 						</strong>
 						<h1 style={{ margin: 0 }}>
-							<SigilIcon name="rune" className="heading-sigil" /> Chapter heading
+							<SigilIcon name="rune" className="heading-sigil" /> Chapter
+							heading
 						</h1>
 					</div>
 				</div>

@@ -66,7 +66,9 @@ export default function MdxImage(props: MdxImageProps): React.ReactNode {
 			// than their box; a folk plate is square in a square box, and a
 			// `figure` reserves no ratio at all, so neither has a slice to pick.
 			cropPosition={weight === 'banner' ? bannerCrop(src) : undefined}
-			className={typeof rest.className === 'string' ? rest.className : undefined}
+			className={
+				typeof rest.className === 'string' ? rest.className : undefined
+			}
 		/>
 	)
 }

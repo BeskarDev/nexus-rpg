@@ -76,11 +76,19 @@ function splitAv(av: string): { value: string; note?: string } {
  */
 function splitHp(hp: string): { value: string; pools: number } {
 	const match = hp.trim().match(/^(\d+)\s*[x×]\s*(\d+)$/i)
-	return match ? { value: match[2], pools: Number(match[1]) } : { value: hp.trim(), pools: 1 }
+	return match
+		? { value: match[2], pools: Number(match[1]) }
+		: { value: hp.trim(), pools: 1 }
 }
 
 /** One stat: glyph, big value, small label under it. */
-function StatFigure({ label, value, glyph, note, pools = 1 }: Figure & { pools?: number }) {
+function StatFigure({
+	label,
+	value,
+	glyph,
+	note,
+	pools = 1,
+}: Figure & { pools?: number }) {
 	const abbr = note ? (ARMOR_ABBR[note.toLowerCase()] ?? note) : undefined
 	return (
 		<div className={styles.figure}>
@@ -211,7 +219,9 @@ export default function CreatureStatBlock({
 								<span className={styles.srOnly}>Lore</span>
 							</button>
 						)}
-						<span className={`${styles.tierChip} ${styles[`tier-${String(category).toLowerCase()}`] ?? ''}`}>
+						<span
+							className={`${styles.tierChip} ${styles[`tier-${String(category).toLowerCase()}`] ?? ''}`}
+						>
 							<span className={styles.tierNumber}>Tier {tier}</span>
 							<span className={styles.category}>{category}</span>
 						</span>
@@ -632,7 +642,12 @@ export interface TreasureRowProps {
  * rows can find the weapon without reading all of them. The item stays markdown,
  * so it can link to equipment and magic-item entries.
  */
-export function TreasureRow({ kind, stats, value, children }: TreasureRowProps) {
+export function TreasureRow({
+	kind,
+	stats,
+	value,
+	children,
+}: TreasureRowProps) {
 	return (
 		<>
 			<span className={styles.treasureKind}>{kind}</span>

@@ -97,7 +97,8 @@ export function htmlToMarkdownLines(html: string, context = 'field'): string[] {
  * which looked more broken than the run-on paragraph it replaced. A trailing
  * period is still required, so a bare `**Attacks**` heading stays prose.
  */
-const MENU_LABEL = /^(?:\*\*(?:\d+\.|[A-Z][^*]{0,28}\.)\*\*|\*\*[A-Z][^*]{0,28}\*\*\.)\s/
+const MENU_LABEL =
+	/^(?:\*\*(?:\d+\.|[A-Z][^*]{0,28}\.)\*\*|\*\*[A-Z][^*]{0,28}\*\*\.)\s/
 
 /**
  * Fold a run of bold-labeled menu entries into a tight markdown list.
@@ -186,7 +187,7 @@ export function parseSpellEffect(
 		proseBuf = []
 	}
 
-	for (let i = 0; i < rawChunks.length; ) {
+	for (let i = 0; i < rawChunks.length;) {
 		const m = rawChunks[i].match(LEVEL_LABEL)
 		if (!m) {
 			proseBuf.push(rawChunks[i])
@@ -205,7 +206,8 @@ export function parseSpellEffect(
 				rawChunks[i].replace(LEVEL_LABEL, ''),
 				`${context} (${level})`,
 			)
-			if (text === '') fail(context, `${level} success level has no text`, effect)
+			if (text === '')
+				fail(context, `${level} success level has no text`, effect)
 			run.push(level)
 			runNodes.push({ kind: 'success', level, text })
 			i++
@@ -214,7 +216,8 @@ export function parseSpellEffect(
 		// three unless partials are allowed; either way the levels must climb, so
 		// a repeat or a swapped pair is still a data bug.
 		const ascends = run.every(
-			(lvl, k) => k === 0 || LEVEL_ORDER.indexOf(lvl) > LEVEL_ORDER.indexOf(run[k - 1]),
+			(lvl, k) =>
+				k === 0 || LEVEL_ORDER.indexOf(lvl) > LEVEL_ORDER.indexOf(run[k - 1]),
 		)
 		const complete = options.allowPartialRuns || run.length === 3
 		if (!ascends || !complete)
@@ -267,20 +270,30 @@ const REQUIRED_STRING_FIELDS: (keyof SpellRecord)[] = [
  * Shape-check a raw JSON entry before it is rendered. Fails loudly on any
  * missing / wrong-typed field or non-numeric rank so bad data stops the build.
  */
-export function validateSpellRecord(entry: unknown, context = 'spell'): SpellRecord {
+export function validateSpellRecord(
+	entry: unknown,
+	context = 'spell',
+): SpellRecord {
 	if (typeof entry !== 'object' || entry === null)
 		fail(context, 'entry is not an object')
 	const e = entry as Record<string, unknown>
 	for (const field of REQUIRED_STRING_FIELDS) {
 		if (typeof e[field] !== 'string')
 			fail(context, `field "${field}" must be a string, got ${typeof e[field]}`)
-		if ((e[field] as string).trim() === '' && field !== 'properties' && field !== 'heightened')
+		if (
+			(e[field] as string).trim() === '' &&
+			field !== 'properties' &&
+			field !== 'heightened'
+		)
 			fail(context, `field "${field}" is empty`)
 	}
 	if (!/^\d+$/.test((e.rank as string).trim()))
 		fail(context, `rank must be a whole number, got ${JSON.stringify(e.rank)}`)
 	if (!/^\d+$/.test((e.focus as string).trim()))
-		fail(context, `focus must be a whole number, got ${JSON.stringify(e.focus)}`)
+		fail(
+			context,
+			`focus must be a whole number, got ${JSON.stringify(e.focus)}`,
+		)
 	if (typeof e.discipline !== 'string' && typeof e.tradition !== 'string')
 		fail(context, 'entry needs a discipline (arcane) or tradition (mystic)')
 	return entry as SpellRecord

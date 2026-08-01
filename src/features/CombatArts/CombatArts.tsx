@@ -19,7 +19,7 @@ import { CombatArt } from '@site/src/types/CombatArt'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import combatArtsData from '../../utils/data/json/combat-arts.json';
+import combatArtsData from '../../utils/data/json/combat-arts.json'
 import { CombatArtCard } from './CombatArtCard'
 import './combatArtStyles.css'
 import { CharacterSelector } from '../PrintingTools'
@@ -68,8 +68,7 @@ export const CombatArts: React.FC = () => {
 			// Add manual selections without duplicates in the manual category
 			const manualSelections = arts
 				.filter(
-					(name) =>
-						!prev.some((s) => s.name === name && !s.characterName),
+					(name) => !prev.some((s) => s.name === name && !s.characterName),
 				)
 				.map((name) => ({ name }))
 			// Remove manual selections that are no longer in the selected list
@@ -88,7 +87,7 @@ export const CombatArts: React.FC = () => {
 				character.skills?.abilities?.map((ability) => ability.title) || []
 			// Filter to only include abilities that exist in the combat arts data
 			const validCombatArts = characterAbilityNames.filter((name) =>
-				combatArts.some((ca) => ca.name === name)
+				combatArts.some((ca) => ca.name === name),
 			)
 			// Add character's combat arts to the list with character attribution
 			setSelectedCombatArtsList((prev) => [
@@ -114,7 +113,7 @@ export const CombatArts: React.FC = () => {
 					character.skills?.abilities?.map((ability) => ability.title) || []
 				// Filter to only include abilities that exist in the combat arts data
 				const validCombatArts = characterAbilityNames.filter((name) =>
-					combatArts.some((ca) => ca.name === name)
+					combatArts.some((ca) => ca.name === name),
 				)
 				// Add character's combat arts to the list with character attribution
 				setSelectedCombatArtsList((prev) => [
@@ -181,8 +180,7 @@ export const CombatArts: React.FC = () => {
 					mb: 2,
 					py: 2,
 					px: 3,
-					backgroundColor:
-						'background.default',
+					backgroundColor: 'background.default',
 					borderRadius: '8px',
 				}}
 			>
@@ -218,8 +216,7 @@ export const CombatArts: React.FC = () => {
 							renderValue={(selected) => selected.join(', ')}
 							MenuProps={MenuProps}
 							sx={{
-								backgroundColor:
-									'background.paper',
+								backgroundColor: 'background.paper',
 							}}
 						>
 							{combatArts.map(({ name }) => (

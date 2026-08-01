@@ -35,9 +35,10 @@ export const LoadCard: React.FC<LoadCardProps> = ({
 }) => {
 	const loadColor = getLoadColor(currentLoad, carryCapacity, maxCapacity)
 
-	const tooltipText = currentLoad >= carryCapacity
-		? "Encumbered: +1 bane on STR/AGI movement, can't Dash/Evade, +1 Fatigue during travel"
-		: "Load: Current encumbrance vs carrying capacity (max is 2× capacity)"
+	const tooltipText =
+		currentLoad >= carryCapacity
+			? "Encumbered: +1 bane on STR/AGI movement, can't Dash/Evade, +1 Fatigue during travel"
+			: 'Load: Current encumbrance vs carrying capacity (max is 2× capacity)'
 
 	// M13 S4: on `SheetField`. Besides the anchor/open/close triple this deletes,
 	// it fixes the portal defect S1 flagged for this file — the editor is rendered

@@ -88,7 +88,12 @@ export const ResistCard = () => {
 					<Typography variant="subtitle2">
 						Set the individual sources of Resist defense.
 					</Typography>
-					<DerivedPart auto value={autoBase} label="Base" helperText="5 + 1/2 Spirit/Mind" />
+					<DerivedPart
+						auto
+						value={autoBase}
+						label="Base"
+						helperText="5 + 1/2 Spirit/Mind"
+					/>
 					<DerivedPart auto value={autoLevelBonus} label="Level Bonus" />
 					<DerivedPart
 						value={details.other}

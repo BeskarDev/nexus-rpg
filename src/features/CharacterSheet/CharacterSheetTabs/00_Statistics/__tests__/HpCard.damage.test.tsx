@@ -93,7 +93,9 @@ describe('HpCard damage resolution', () => {
 		renderHp({ current: 6 })
 		await openEditor()
 		await applyDamage('6')
-		expect(await screen.findByText(/1 wound \(HP dropped to 0 or below\)/)).toBeInTheDocument()
+		expect(
+			await screen.findByText(/1 wound \(HP dropped to 0 or below\)/),
+		).toBeInTheDocument()
 	})
 
 	it('reports the extra wounds for damage far exceeding max HP', async () => {
@@ -104,9 +106,13 @@ describe('HpCard damage resolution', () => {
 		await openEditor()
 		await applyDamage('999')
 		expect(
-			await screen.findByText(/2 additional wounds \(damage exceeds twice max HP\)/),
+			await screen.findByText(
+				/2 additional wounds \(damage exceeds twice max HP\)/,
+			),
 		).toBeInTheDocument()
-		expect(screen.queryByText(/HP dropped to 0 or below/)).not.toBeInTheDocument()
+		expect(
+			screen.queryByText(/HP dropped to 0 or below/),
+		).not.toBeInTheDocument()
 	})
 
 	it('keeps the dropped-to-zero wound when the excess is too small for more', async () => {

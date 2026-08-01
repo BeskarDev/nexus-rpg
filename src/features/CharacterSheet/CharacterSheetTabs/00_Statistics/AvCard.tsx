@@ -25,8 +25,9 @@ export const AvCard = () => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
-	const setPart = (part: 'armor' | 'helmet' | 'shield' | 'other') => (value: number) =>
-		updateCharacter({ statistics: { av: { [part]: value } } })
+	const setPart =
+		(part: 'armor' | 'helmet' | 'shield' | 'other') => (value: number) =>
+			updateCharacter({ statistics: { av: { [part]: value } } })
 
 	return (
 		<SheetField
@@ -48,11 +49,32 @@ export const AvCard = () => {
 						Set the individual sources of AV.
 					</Typography>
 					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-						<DerivedPart value={av.armor} label="Armor" onChange={setPart('armor')} />
-						<DerivedPart value={av.helmet} label="Helmet" onChange={setPart('helmet')} />
-						<DerivedPart value={av.shield} label="Shield" onChange={setPart('shield')} />
-						<DerivedPart value={av.other} label="Other" onChange={setPart('other')} />
-						<DerivedPart auto value={av.auto || 0} label="Auto" sx={{ width: '4rem' }} />
+						<DerivedPart
+							value={av.armor}
+							label="Armor"
+							onChange={setPart('armor')}
+						/>
+						<DerivedPart
+							value={av.helmet}
+							label="Helmet"
+							onChange={setPart('helmet')}
+						/>
+						<DerivedPart
+							value={av.shield}
+							label="Shield"
+							onChange={setPart('shield')}
+						/>
+						<DerivedPart
+							value={av.other}
+							label="Other"
+							onChange={setPart('other')}
+						/>
+						<DerivedPart
+							auto
+							value={av.auto || 0}
+							label="Auto"
+							sx={{ width: '4rem' }}
+						/>
 					</Box>
 				</>
 			}

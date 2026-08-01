@@ -35,7 +35,11 @@ describe('parseSpellEffect', () => {
 		expect(prose(parsed)[0]).toBe(
 			'You create a small flame in your palm. It provides light at a close range. You can throw the flame as a projectile.',
 		)
-		expect(levels(parsed).map((l) => l.level)).toEqual(['weak', 'strong', 'critical'])
+		expect(levels(parsed).map((l) => l.level)).toEqual([
+			'weak',
+			'strong',
+			'critical',
+		])
 		expect(levels(parsed)[0].text).toBe('Deals +2 fire damage.')
 		expect(levels(parsed)[1].text).toContain('burning (2)')
 		expect(prose(parsed)[1]).toBe(
@@ -62,7 +66,9 @@ describe('parseSpellEffect', () => {
 			'<br/><strong>Strong.</strong> Deal +12 necrotic damage.' +
 			'<br/><strong>Critical.</strong> Deal +18 necrotic damage.'
 		const parsed = parseSpellEffect(effect, 'Harvest the Mark')
-		expect(prose(parsed)[0]).toBe('Target one creature suffering from your *Death Mark*.')
+		expect(prose(parsed)[0]).toBe(
+			'Target one creature suffering from your *Death Mark*.',
+		)
 	})
 
 	it('treats an effect with no Weak/Strong/Critical as pure prose', () => {
@@ -95,8 +101,14 @@ describe('parseSpellEffect', () => {
 		expect(levels(parsed)).toHaveLength(6)
 		// Two runs, each weak→strong→critical, with a prose mode label before each.
 		expect(parsed.nodes.map((n) => n.kind)).toEqual([
-			'prose', 'success', 'success', 'success',
-			'prose', 'success', 'success', 'success',
+			'prose',
+			'success',
+			'success',
+			'success',
+			'prose',
+			'success',
+			'success',
+			'success',
 		])
 		expect(prose(parsed)[1]).toContain('**Slam.**')
 	})
@@ -128,7 +140,9 @@ describe('parseSpellEffect', () => {
 			'<br/><strong>Weak.</strong> a' +
 			'<br/><strong>Strong.</strong> b' +
 			'<br/><strong>Critical.</strong> c'
-		expect(() => parseSpellEffect(effect, 'Tagged')).toThrow(/unexpected HTML tag/)
+		expect(() => parseSpellEffect(effect, 'Tagged')).toThrow(
+			/unexpected HTML tag/,
+		)
 	})
 
 	it('throws on an empty effect', () => {
@@ -153,7 +167,8 @@ describe('validateSpellRecord', () => {
 		range: 'Medium',
 		properties: '-',
 		heightened: '-',
-		effect: 'x<br/><strong>Weak.</strong> a<br/><strong>Strong.</strong> b<br/><strong>Critical.</strong> c',
+		effect:
+			'x<br/><strong>Weak.</strong> a<br/><strong>Strong.</strong> b<br/><strong>Critical.</strong> c',
 		discipline: 'Evocation',
 	}
 
@@ -203,7 +218,9 @@ describe('bold-labeled menu folding', () => {
 	it('accepts both punctuation placements, which one menu mixes', () => {
 		// Life from Stone lists `**HP**. +10 HP` beside `**AV.** + Tier`. Matching
 		// only one form left the odd sibling stranded above the list as prose.
-		const text = prose('<strong>HP</strong>. +10 HP<br/><strong>AV.</strong> +2')
+		const text = prose(
+			'<strong>HP</strong>. +10 HP<br/><strong>AV.</strong> +2',
+		)
 		expect(text).toBe('- **HP**. +10 HP\n- **AV.** +2')
 	})
 

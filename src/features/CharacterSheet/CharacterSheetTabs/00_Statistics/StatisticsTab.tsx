@@ -168,7 +168,11 @@ export const StatisticsTab: React.FC = () => {
 				}}
 			>
 				{(['tl', 'tr', 'br', 'bl'] as const).map((pos) => (
-					<span key={pos} className={`cs-rivet cs-rivet-${pos}`} aria-hidden="true" />
+					<span
+						key={pos}
+						className={`cs-rivet cs-rivet-${pos}`}
+						aria-hidden="true"
+					/>
 				))}
 
 				{/* Register 1 — the live resources: changed constantly mid-combat. */}
@@ -206,7 +210,8 @@ export const StatisticsTab: React.FC = () => {
 				<Box
 					sx={{
 						...REGISTER_GRID,
-						borderTop: (theme) => `1px solid ${alpha(theme.palette.divider, 0.22)}`,
+						borderTop: (theme) =>
+							`1px solid ${alpha(theme.palette.divider, 0.22)}`,
 						py: 0.75,
 					}}
 				>
@@ -269,12 +274,14 @@ export const StatisticsTab: React.FC = () => {
 				<Box
 					sx={{
 						...REGISTER_GRID,
-						borderTop: (theme) => `1px solid ${alpha(theme.palette.divider, 0.22)}`,
+						borderTop: (theme) =>
+							`1px solid ${alpha(theme.palette.divider, 0.22)}`,
 						pt: 0.75,
 						// Dividers ride on the grid cells, so they land on the column
 						// boundaries the registers above already use.
 						'& > *:not(:first-of-type)': {
-							borderLeft: (theme) => `1px solid ${alpha(theme.palette.divider, 0.22)}`,
+							borderLeft: (theme) =>
+								`1px solid ${alpha(theme.palette.divider, 0.22)}`,
 						},
 					}}
 				>

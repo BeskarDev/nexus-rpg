@@ -75,8 +75,10 @@ export function rungFields(rung: DurationRung | undefined): {
 	update: Partial<StatusEffect>
 	clearFields: string[]
 } {
-	if (rung === undefined) return { update: {}, clearFields: ['duration', 'narrativeDuration'] }
-	if (rung === 'briefly') return { update: { duration: 1 }, clearFields: ['narrativeDuration'] }
+	if (rung === undefined)
+		return { update: {}, clearFields: ['duration', 'narrativeDuration'] }
+	if (rung === 'briefly')
+		return { update: { duration: 1 }, clearFields: ['narrativeDuration'] }
 	return { update: { narrativeDuration: rung }, clearFields: ['duration'] }
 }
 

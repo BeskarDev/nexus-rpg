@@ -1,8 +1,5 @@
 export type MagicItemCategory =
-	| 'Weapon'
-	| 'Wearable'
-	| 'Consumable'
-	| 'Spell Scroll'
+	'Weapon' | 'Wearable' | 'Consumable' | 'Spell Scroll'
 
 export type MagicItem = {
 	name: string

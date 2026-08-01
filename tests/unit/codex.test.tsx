@@ -256,7 +256,10 @@ describe('image plate ornaments (M11)', () => {
 		// survive: lobe count is a React prop, so a container query cannot thin the
 		// fan to match a smaller surround the way the `inline` redraw does.
 		const { readFileSync } = await import('node:fs')
-		const css = readFileSync('src/components/codex/ornaments.module.css', 'utf8')
+		const css = readFileSync(
+			'src/components/codex/ornaments.module.css',
+			'utf8',
+		)
 		const surround = (sel: string) =>
 			parseFloat(
 				new RegExp(
@@ -374,7 +377,10 @@ describe('frieze tiles', () => {
 	// chain live on the same element the override targets.
 	it('the plate step-down declares its derived chain where the override lands', async () => {
 		const { readFileSync } = await import('node:fs')
-		const css = readFileSync('src/components/codex/ornaments.module.css', 'utf8')
+		const css = readFileSync(
+			'src/components/codex/ornaments.module.css',
+			'utf8',
+		)
 
 		// Anchored to the start of a line, or `.plateBox` also matches inside
 		// `.plate-frontispiece .plateBox` and the two assertions swap targets.
@@ -470,12 +476,17 @@ describe('MdxImage — the alt-marker router (M11 S2)', () => {
 		// fail a test about routing.
 		const banner = marked('banner-img').querySelector('img')!
 		expect(banner.style.objectPosition).toBe(BANNER_CROP['folk-banner.png'])
-		expect(marked('folk-img').querySelector('img')!.style.objectPosition).toBe('')
+		expect(marked('folk-img').querySelector('img')!.style.objectPosition).toBe(
+			'',
+		)
 	})
 
 	it('falls back to the measured default for a banner nobody has aimed yet', () => {
 		const img = render(
-			<MdxImage alt="banner-img" src="/img/banner/not-yet-reviewed-banner.png" />,
+			<MdxImage
+				alt="banner-img"
+				src="/img/banner/not-yet-reviewed-banner.png"
+			/>,
 		).container.querySelector('img')!
 		expect(img.style.objectPosition).toBe(DEFAULT_BANNER_CROP)
 	})
@@ -496,7 +507,9 @@ describe('MdxImage — the alt-marker router (M11 S2)', () => {
 		const key = Object.keys(BANNER_CROP)[0]
 		if (!key) return // map is empty until the framing review lands
 		const stem = key.replace(/\.png$/, '')
-		expect(bannerCrop(`/img/banner/${stem}.a1b2c3d4.png`)).toBe(BANNER_CROP[key])
+		expect(bannerCrop(`/img/banner/${stem}.a1b2c3d4.png`)).toBe(
+			BANNER_CROP[key],
+		)
 	})
 
 	it('wraps the plate in spans only, so it is legal inside a <p>', () => {

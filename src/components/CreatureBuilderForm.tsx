@@ -317,20 +317,22 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 					</Grid>
 				)}
 				{/* Custom Subtype (if no preset selected) */}
-				{type && availableSubtypes.length > 0 && !availableSubtypes.includes(subtype) && (
-					<Grid item xs={12}>
-						<TextField
-							fullWidth
-							label="Custom Subtype"
-							value={subtype}
-							onChange={(e) =>
-								dispatch(creatureBuilderActions.setSubtype(e.target.value))
-							}
-							placeholder="Enter custom subtype"
-							size="small"
-						/>
-					</Grid>
-				)}
+				{type &&
+					availableSubtypes.length > 0 &&
+					!availableSubtypes.includes(subtype) && (
+						<Grid item xs={12}>
+							<TextField
+								fullWidth
+								label="Custom Subtype"
+								value={subtype}
+								onChange={(e) =>
+									dispatch(creatureBuilderActions.setSubtype(e.target.value))
+								}
+								placeholder="Enter custom subtype"
+								size="small"
+							/>
+						</Grid>
+					)}
 				{/* Archetype - Full Width */}
 				<Grid item xs={12}>
 					<FormControl fullWidth size="small">

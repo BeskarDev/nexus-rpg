@@ -15,7 +15,10 @@ interface RollResults {
 	[header: string]: { value: string; roll: number }
 }
 
-const RollableTable: React.FC<RollableTableProps> = ({ children, singleRoll = false }) => {
+const RollableTable: React.FC<RollableTableProps> = ({
+	children,
+	singleRoll = false,
+}) => {
 	const [results, setResults] = useState<RollResults>({})
 
 	const { dieSize, headers, rows } = useMemo(() => {
@@ -100,7 +103,8 @@ const RollableTable: React.FC<RollableTableProps> = ({ children, singleRoll = fa
 			for (let i = 0; i < headers.length; i++) {
 				const header = headers[i]
 				const cellIndex = i + 1
-				values[header] = cellIndex < tds.length ? getText(tds[cellIndex]).trim() : '—'
+				values[header] =
+					cellIndex < tds.length ? getText(tds[cellIndex]).trim() : '—'
 			}
 
 			rows.push({ range: [from, to], values })

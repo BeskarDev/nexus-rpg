@@ -8,10 +8,37 @@ describe('getTalentPointSummaries', () => {
 		]
 
 		const abilities = [
-			{ id: 'a', title: 'Talent A1', description: '', tag: 'Talent', rank: 1, skill: 'Fighting' },
-			{ id: 'b', title: 'Talent A2', description: '', tag: 'Talent', rank: 2, skill: 'Fighting' },
-			{ id: 'c', title: 'Talent B1', description: '', tag: 'Talent', rank: 1, skill: 'Arcana' },
-			{ id: 'd', title: 'Talent Unassigned', description: '', tag: 'Talent', rank: 1 },
+			{
+				id: 'a',
+				title: 'Talent A1',
+				description: '',
+				tag: 'Talent',
+				rank: 1,
+				skill: 'Fighting',
+			},
+			{
+				id: 'b',
+				title: 'Talent A2',
+				description: '',
+				tag: 'Talent',
+				rank: 2,
+				skill: 'Fighting',
+			},
+			{
+				id: 'c',
+				title: 'Talent B1',
+				description: '',
+				tag: 'Talent',
+				rank: 1,
+				skill: 'Arcana',
+			},
+			{
+				id: 'd',
+				title: 'Talent Unassigned',
+				description: '',
+				tag: 'Talent',
+				rank: 1,
+			},
 		]
 
 		const { summaries, unassignedSpent } = getTalentPointSummaries(

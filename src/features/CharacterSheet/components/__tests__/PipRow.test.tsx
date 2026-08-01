@@ -7,7 +7,14 @@ import { PipRow, SigilPip } from '../PipRow'
 describe('PipRow', () => {
 	it('renders one pip per count and fills up to value', () => {
 		render(
-			<PipRow count={6} value={2} onChange={vi.fn()} sigil="fatigue" tone="orange" label="Fatigue" />,
+			<PipRow
+				count={6}
+				value={2}
+				onChange={vi.fn()}
+				sigil="fatigue"
+				tone="orange"
+				label="Fatigue"
+			/>,
 		)
 		const pips = screen.getAllByRole('checkbox')
 		expect(pips).toHaveLength(6)
@@ -17,7 +24,14 @@ describe('PipRow', () => {
 	it('fills up to the clicked pip when it is empty', async () => {
 		const onChange = vi.fn()
 		render(
-			<PipRow count={6} value={2} onChange={onChange} sigil="fatigue" tone="orange" label="Fatigue" />,
+			<PipRow
+				count={6}
+				value={2}
+				onChange={onChange}
+				sigil="fatigue"
+				tone="orange"
+				label="Fatigue"
+			/>,
 		)
 		// index 4 is empty (value is 2), so clicking it fills through index 4 => 5
 		await userEvent.click(screen.getByLabelText('Fatigue 5 of 6'))
@@ -27,7 +41,14 @@ describe('PipRow', () => {
 	it('clears back to the clicked pip when it is already filled', async () => {
 		const onChange = vi.fn()
 		render(
-			<PipRow count={6} value={4} onChange={onChange} sigil="fatigue" tone="orange" label="Fatigue" />,
+			<PipRow
+				count={6}
+				value={4}
+				onChange={onChange}
+				sigil="fatigue"
+				tone="orange"
+				label="Fatigue"
+			/>,
 		)
 		// index 1 is filled (value is 4), so clicking it clears back to 1
 		await userEvent.click(screen.getByLabelText('Fatigue 2 of 6'))
@@ -37,7 +58,14 @@ describe('PipRow', () => {
 	it('clicking the only filled pip clears the row to zero', async () => {
 		const onChange = vi.fn()
 		render(
-			<PipRow count={3} value={1} onChange={onChange} sigil="resolve" tone="purple" label="Resolve" />,
+			<PipRow
+				count={3}
+				value={1}
+				onChange={onChange}
+				sigil="resolve"
+				tone="purple"
+				label="Resolve"
+			/>,
 		)
 		await userEvent.click(screen.getByLabelText('Resolve 1 of 3'))
 		expect(onChange).toHaveBeenCalledWith(0)
@@ -45,7 +73,14 @@ describe('PipRow', () => {
 
 	it('names the row as a group so the pips are not announced bare', () => {
 		render(
-			<PipRow count={3} value={0} onChange={vi.fn()} sigil="resolve" tone="purple" label="Resolve" />,
+			<PipRow
+				count={3}
+				value={0}
+				onChange={vi.fn()}
+				sigil="resolve"
+				tone="purple"
+				label="Resolve"
+			/>,
 		)
 		expect(screen.getByRole('group', { name: 'Resolve' })).toBeInTheDocument()
 	})
@@ -78,7 +113,14 @@ describe('PipRow', () => {
 
 	it('stays a single flex row when columns is omitted', () => {
 		render(
-			<PipRow count={3} value={1} onChange={vi.fn()} sigil="resolve" tone="purple" label="Resolve" />,
+			<PipRow
+				count={3}
+				value={1}
+				onChange={vi.fn()}
+				sigil="resolve"
+				tone="purple"
+				label="Resolve"
+			/>,
 		)
 		const group = screen.getByRole('group', { name: 'Resolve' })
 		expect(group).toHaveStyle({ display: 'flex', flexDirection: 'row' })
@@ -89,7 +131,14 @@ describe('SigilPip', () => {
 	it('toggles when enabled', async () => {
 		const onToggle = vi.fn()
 		render(
-			<SigilPip sigil="wound" emptySigil="hp" tone="red" filled={false} onToggle={onToggle} label="Wounded" />,
+			<SigilPip
+				sigil="wound"
+				emptySigil="hp"
+				tone="red"
+				filled={false}
+				onToggle={onToggle}
+				label="Wounded"
+			/>,
 		)
 		await userEvent.click(screen.getByLabelText('Wounded'))
 		expect(onToggle).toHaveBeenCalledTimes(1)
@@ -99,7 +148,15 @@ describe('SigilPip', () => {
 		// Asserted rather than clicked: MUI disables via `pointer-events: none`, so
 		// user-event correctly refuses the click instead of reporting a no-op.
 		render(
-			<SigilPip sigil="wound" emptySigil="hp" tone="red" filled={false} onToggle={vi.fn()} disabled label="Wounded" />,
+			<SigilPip
+				sigil="wound"
+				emptySigil="hp"
+				tone="red"
+				filled={false}
+				onToggle={vi.fn()}
+				disabled
+				label="Wounded"
+			/>,
 		)
 		expect(screen.getByLabelText('Wounded')).toBeDisabled()
 	})

@@ -68,16 +68,12 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 						}}
 					>
 						<FormControl sx={{ minWidth: 200 }} size="small">
-							<InputLabel id="auto-roller-group-label">
-								Table
-							</InputLabel>
+							<InputLabel id="auto-roller-group-label">Table</InputLabel>
 							<Select
 								labelId="auto-roller-group-label"
 								value={selectedGroup}
 								label="Table"
-								onChange={(e) =>
-									setSelectedGroup(e.target.value)
-								}
+								onChange={(e) => setSelectedGroup(e.target.value)}
 							>
 								{groups.map((g) => (
 									<MenuItem key={g.id} value={g.id}>
@@ -88,16 +84,12 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 						</FormControl>
 
 						<FormControl sx={{ minWidth: 80 }} size="small">
-							<InputLabel id="auto-roller-count-label">
-								Count
-							</InputLabel>
+							<InputLabel id="auto-roller-count-label">Count</InputLabel>
 							<Select
 								labelId="auto-roller-count-label"
 								value={count}
 								label="Count"
-								onChange={(e) =>
-									setCount(Number(e.target.value))
-								}
+								onChange={(e) => setCount(Number(e.target.value))}
 							>
 								{COUNT_OPTIONS.map((n) => (
 									<MenuItem key={n} value={n}>
@@ -112,9 +104,7 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 								control={
 									<Checkbox
 										checked={useGerman}
-										onChange={(e) =>
-											setUseGerman(e.target.checked)
-										}
+										onChange={(e) => setUseGerman(e.target.checked)}
 										size="small"
 									/>
 								}
@@ -122,11 +112,7 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 							/>
 						)}
 
-						<Button
-							variant="contained"
-							color="primary"
-							onClick={handleRoll}
-						>
+						<Button variant="contained" color="primary" onClick={handleRoll}>
 							🎲 Roll
 						</Button>
 					</Box>
@@ -143,11 +129,7 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 							}}
 						>
 							{results.map((result, i) => (
-								<Typography
-									key={i}
-									variant="body1"
-									sx={{ mb: 0.5 }}
-								>
+								<Typography key={i} variant="body1" sx={{ mb: 0.5 }}>
 									<strong>{i + 1}.</strong> {result}
 								</Typography>
 							))}

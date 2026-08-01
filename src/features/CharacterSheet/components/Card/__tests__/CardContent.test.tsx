@@ -16,9 +16,7 @@ describe('CardContent', () => {
 	it('renders ReactNode value', () => {
 		render(
 			<CardContent
-				value={
-					<span data-testid="custom-content">Custom Content</span>
-				}
+				value={<span data-testid="custom-content">Custom Content</span>}
 			/>,
 		)
 		expect(screen.getByTestId('custom-content')).toBeInTheDocument()
@@ -32,7 +30,13 @@ describe('CardContent', () => {
 	})
 
 	it('applies custom sx props', () => {
-		render(<CardContent value="Test" data-testid="content" sx={{ fontSize: '2rem' }} />)
+		render(
+			<CardContent
+				value="Test"
+				data-testid="content"
+				sx={{ fontSize: '2rem' }}
+			/>,
+		)
 		expect(screen.getByTestId('content')).toBeInTheDocument()
 	})
 })

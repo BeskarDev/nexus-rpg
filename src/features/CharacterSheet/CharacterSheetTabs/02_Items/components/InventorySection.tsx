@@ -177,49 +177,49 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 					))}
 				</Box>
 			)}
-				<DynamicList droppableId={droppableId} onDragEnd={onItemReorder}>
-					{filteredItems.map((item, index) => (
-						<DynamicListItem
-							key={item.id}
-							id={item.id}
-							index={index}
-							showDragHandle={reorderMode}
-							sx={{ alignItems: 'baseline' }}
-						>
-							{'damage' in item ? (
-								<WeaponRow
-									key={item.id}
-									weapon={item as Weapon}
-									updateWeapon={(update) =>
-										updateWeapon(
-											update,
-											weapons.findIndex((w) => w.id === item.id),
-										)
-									}
-									deleteWeapon={() => deleteWeapon(item as Weapon)}
-									isInQuickRef={weaponsInQuickRef.includes(item.id)}
-									onToggleQuickRef={onToggleWeaponQuickRef}
-								/>
-							) : (
-								<ItemRow
-									key={item.id}
-									item={item as Item}
-									shape={shape === 'worn' ? 'worn' : 'item'}
-									character={character}
-									updateItem={(update) =>
-										updateItem(
-											update,
-											allItems.findIndex((i) => i.id === item.id),
-										)
-									}
-									deleteItem={() => deleteItem(item as Item)}
-									isInQuickRef={itemsInQuickRef.includes(item.id)}
-									onToggleQuickRef={onToggleItemQuickRef}
-								/>
-							)}
-						</DynamicListItem>
-					))}
-				</DynamicList>
+			<DynamicList droppableId={droppableId} onDragEnd={onItemReorder}>
+				{filteredItems.map((item, index) => (
+					<DynamicListItem
+						key={item.id}
+						id={item.id}
+						index={index}
+						showDragHandle={reorderMode}
+						sx={{ alignItems: 'baseline' }}
+					>
+						{'damage' in item ? (
+							<WeaponRow
+								key={item.id}
+								weapon={item as Weapon}
+								updateWeapon={(update) =>
+									updateWeapon(
+										update,
+										weapons.findIndex((w) => w.id === item.id),
+									)
+								}
+								deleteWeapon={() => deleteWeapon(item as Weapon)}
+								isInQuickRef={weaponsInQuickRef.includes(item.id)}
+								onToggleQuickRef={onToggleWeaponQuickRef}
+							/>
+						) : (
+							<ItemRow
+								key={item.id}
+								item={item as Item}
+								shape={shape === 'worn' ? 'worn' : 'item'}
+								character={character}
+								updateItem={(update) =>
+									updateItem(
+										update,
+										allItems.findIndex((i) => i.id === item.id),
+									)
+								}
+								deleteItem={() => deleteItem(item as Item)}
+								isInQuickRef={itemsInQuickRef.includes(item.id)}
+								onToggleQuickRef={onToggleItemQuickRef}
+							/>
+						)}
+					</DynamicListItem>
+				))}
+			</DynamicList>
 		</ListSection>
 	)
 }

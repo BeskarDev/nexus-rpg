@@ -171,8 +171,7 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
 						},
 					}}
 					sx={{
-						backgroundColor:
-							'background.default',
+						backgroundColor: 'background.default',
 					}}
 				>
 					<MenuItem value="">

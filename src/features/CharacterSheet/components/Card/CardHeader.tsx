@@ -16,7 +16,14 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
 			data-testid={testId}
 		>
 			{icon && (
-				<Box sx={{ fontSize: 'var(--nexus-text-xs)', color, display: 'flex', '& svg': { fontSize: 'inherit' } }}>
+				<Box
+					sx={{
+						fontSize: 'var(--nexus-text-xs)',
+						color,
+						display: 'flex',
+						'& svg': { fontSize: 'inherit' },
+					}}
+				>
 					{icon}
 				</Box>
 			)}

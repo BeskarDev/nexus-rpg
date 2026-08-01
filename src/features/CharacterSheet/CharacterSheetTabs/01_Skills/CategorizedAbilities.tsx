@@ -77,8 +77,7 @@ export const CategorizedAbilities: React.FC = () => {
 	}
 
 	const totalSpentXp =
-		xp?.spend ??
-		trainedSkills.reduce((sum, skill) => sum + (skill.xp || 0), 0)
+		xp?.spend ?? trainedSkills.reduce((sum, skill) => sum + (skill.xp || 0), 0)
 	const characterLevel = calculateCharacterLevel(totalSpentXp)
 	const maxXpPerSkill = calculateMaxXpPerSkill(totalSpentXp)
 
@@ -376,7 +375,9 @@ export const CategorizedAbilities: React.FC = () => {
 										rank={ability.rank}
 										skill={ability.skill}
 										availableTags={[...ABILITY_TAGS]}
-										updateAbility={(update) => updateAbility(update, ability.id)}
+										updateAbility={(update) =>
+											updateAbility(update, ability.id)
+										}
 										moveToCategory={(newTag) =>
 											moveAbilityToCategory(ability.id, newTag)
 										}
@@ -441,8 +442,9 @@ export const CategorizedAbilities: React.FC = () => {
 				<DialogTitle>Talent points</DialogTitle>
 				<DialogContent>
 					<DialogContentText sx={{ mb: 1 }}>
-						Every 2 XP spent in a skill grants 1 talent point for that skill&apos;s
-						talents. Level {characterLevel} (max {maxXpPerSkill} XP per skill).
+						Every 2 XP spent in a skill grants 1 talent point for that
+						skill&apos;s talents. Level {characterLevel} (max {maxXpPerSkill} XP
+						per skill).
 					</DialogContentText>
 					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
 						{openTalentSummaries.map((summary) => {
@@ -451,7 +453,12 @@ export const CategorizedAbilities: React.FC = () => {
 							return (
 								<Box
 									key={`tp-${summary.skill}`}
-									sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}
+									sx={{
+										display: 'flex',
+										alignItems: 'center',
+										gap: 1,
+										color: 'text.primary',
+									}}
 								>
 									<Box
 										component="span"
@@ -477,7 +484,9 @@ export const CategorizedAbilities: React.FC = () => {
 					</Box>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => setIsTalentInfoDialogOpen(false)}>Close</Button>
+					<Button onClick={() => setIsTalentInfoDialogOpen(false)}>
+						Close
+					</Button>
 				</DialogActions>
 			</Dialog>
 		</Box>

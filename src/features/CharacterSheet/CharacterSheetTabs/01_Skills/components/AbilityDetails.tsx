@@ -19,7 +19,10 @@ import {
 	getActionTypeIcon,
 } from '@site/src/types/ActionType'
 import { OFFICIAL_SKILLS, getSkillChipColor } from '@site/src/constants/skills'
-import { QuickRefButton, DeleteButton } from '@site/src/features/CharacterSheet/components'
+import {
+	QuickRefButton,
+	DeleteButton,
+} from '@site/src/features/CharacterSheet/components'
 
 export type AbilityDetailsProps = {
 	description: string
@@ -77,7 +80,9 @@ export const AbilityDetails: React.FC<AbilityDetailsProps> = ({
 	}
 
 	return (
-		<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, width: '100%' }}>
+		<Box
+			sx={{ display: 'flex', flexDirection: 'column', gap: 1, width: '100%' }}
+		>
 			<TextField
 				label="Description"
 				size="small"
@@ -100,7 +105,14 @@ export const AbilityDetails: React.FC<AbilityDetailsProps> = ({
 					justifyContent: 'space-between',
 				}}
 			>
-				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
+				<Box
+					sx={{
+						display: 'flex',
+						gap: 1,
+						alignItems: 'center',
+						flexWrap: 'wrap',
+					}}
+				>
 					<FormControl size="small" sx={{ width: '9.5rem' }}>
 						<InputLabel id="action-type-label">Action Type</InputLabel>
 						<Select
@@ -155,7 +167,9 @@ export const AbilityDetails: React.FC<AbilityDetailsProps> = ({
 									}}
 									renderValue={(value) =>
 										value ? (
-											<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+											<Box
+												sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
+											>
 												<Chip
 													size="small"
 													label={value}
@@ -220,7 +234,10 @@ export const AbilityDetails: React.FC<AbilityDetailsProps> = ({
 				{availableTags
 					.filter((t) => t !== tag)
 					.map((tagOption) => (
-						<MenuItem key={tagOption} onClick={() => handleMoveCategory(tagOption)}>
+						<MenuItem
+							key={tagOption}
+							onClick={() => handleMoveCategory(tagOption)}
+						>
 							Move to {tagOption}
 						</MenuItem>
 					))}

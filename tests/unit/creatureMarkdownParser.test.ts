@@ -4,7 +4,10 @@ import path from 'path'
 import { parseCreatureMarkdown } from '@site/src/features/CreatureCards/parseCreatureMarkdown'
 
 const DOCS = path.resolve(__dirname, '../../docs/08-creatures/03-creatures')
-const CREATURES_JSON = path.resolve(__dirname, '../../src/utils/data/json/creatures.json')
+const CREATURES_JSON = path.resolve(
+	__dirname,
+	'../../src/utils/data/json/creatures.json',
+)
 
 const STAT_BLOCK = [
 	'### **Test Beast** (Medium Beast)',
@@ -86,7 +89,9 @@ describe('published stat blocks agree with creatures.json', () => {
 			.filter((f) => /^tier-\d+\.mdx?$/.test(f))
 			.reduce(
 				(n, f) =>
-					n + (fs.readFileSync(path.join(DOCS, f), 'utf-8').match(/^### /gm) || []).length,
+					n +
+					(fs.readFileSync(path.join(DOCS, f), 'utf-8').match(/^### /gm) || [])
+						.length,
 				0,
 			)
 		expect(json).toHaveLength(headings)
@@ -120,7 +125,9 @@ describe('generated creature pages', () => {
 		// markdown children or the highest-value links on the page die silently
 		// (README § rendering contract).
 		let cards = 0
-		for (const f of fs.readdirSync(DOCS).filter((n) => /^tier-\d+\.mdx$/.test(n))) {
+		for (const f of fs
+			.readdirSync(DOCS)
+			.filter((n) => /^tier-\d+\.mdx$/.test(n))) {
 			const mdx = fs.readFileSync(path.join(DOCS, f), 'utf-8')
 			cards += (mdx.match(/<CreatureStatBlock/g) || []).length
 			expect(mdx, `${f} must not pass traits as props`).not.toMatch(
@@ -169,7 +176,9 @@ describe('damage ladder extraction', () => {
 			// Two emitted shapes: a typed ladder carries the type as children, an
 			// untyped one is self-closing. The literal word "damage" is dropped from
 			// both (the W/S/C ticks already say it), so it goes back in here.
-			const typed = line.match(/<DamageLadder values="([^"]+)">([^<]+)<\/DamageLadder>\s*(.*)$/)
+			const typed = line.match(
+				/<DamageLadder values="([^"]+)">([^<]+)<\/DamageLadder>\s*(.*)$/,
+			)
 			const bare = line.match(/<DamageLadder values="([^"]+)" \/>\s*(.*)$/)
 			const rebuilt = typed
 				? `${typed[1]} ${typed[2]} damage. ${typed[3]}`.trim()
@@ -177,7 +186,10 @@ describe('damage ladder extraction', () => {
 					? `${bare[1]} damage. ${bare[2]}`.trim()
 					: null
 			expect(rebuilt, line).not.toBeNull()
-			expect(texts.has(rebuilt!), `reconstruction not found in JSON: ${rebuilt}`).toBe(true)
+			expect(
+				texts.has(rebuilt!),
+				`reconstruction not found in JSON: ${rebuilt}`,
+			).toBe(true)
 		}
 	})
 
@@ -212,13 +224,44 @@ describe('optional creature lore', () => {
 	]
 	// Mirrors ENVIRONMENT_RANKS in the generator: 1 region, 2 site, 3 feature.
 	const ENVIRONMENT_RANKS: Record<string, number> = {
-		Desert: 1, Grassland: 1, Steppe: 1, Forest: 1, Jungle: 1, Mountains: 1,
-		Hills: 1, Marsh: 1, Coast: 1, Sea: 1, River: 1, Wastes: 1, Arctic: 1,
-		Underground: 1, Sky: 1, Otherworld: 1,
-		Ruins: 2, Settlement: 2, City: 2, Temple: 2, Fortress: 2, Caves: 2,
-		Mine: 2, Road: 2, Farmland: 2, Battlefield: 2, Necropolis: 2, Ship: 2,
-		Tomb: 3, Crypt: 3, Vault: 3, Shrine: 3, Lair: 3, Nest: 3, Den: 3,
-		Well: 3, Sewer: 3, Barrow: 3,
+		Desert: 1,
+		Grassland: 1,
+		Steppe: 1,
+		Forest: 1,
+		Jungle: 1,
+		Mountains: 1,
+		Hills: 1,
+		Marsh: 1,
+		Coast: 1,
+		Sea: 1,
+		River: 1,
+		Wastes: 1,
+		Arctic: 1,
+		Underground: 1,
+		Sky: 1,
+		Otherworld: 1,
+		Ruins: 2,
+		Settlement: 2,
+		City: 2,
+		Temple: 2,
+		Fortress: 2,
+		Caves: 2,
+		Mine: 2,
+		Road: 2,
+		Farmland: 2,
+		Battlefield: 2,
+		Necropolis: 2,
+		Ship: 2,
+		Tomb: 3,
+		Crypt: 3,
+		Vault: 3,
+		Shrine: 3,
+		Lair: 3,
+		Nest: 3,
+		Den: 3,
+		Well: 3,
+		Sewer: 3,
+		Barrow: 3,
 	}
 
 	it('follows the fixed structure, with no drifting keys', () => {
@@ -239,15 +282,20 @@ describe('optional creature lore', () => {
 				// Anything but an empty-handed creature owes a rollable table — the
 				// treasure block exists to be used at the table, not to describe.
 				if (c.lore.treasure.scale !== 'None') {
-					expect(c.lore.treasure.table, `${c.name} treasure table`).toHaveLength(6)
+					expect(
+						c.lore.treasure.table,
+						`${c.name} treasure table`,
+					).toHaveLength(6)
 				}
 				for (const row of c.lore.treasure.table ?? []) {
 					expect(TREASURE_KINDS, `${c.name} treasure kind`).toContain(row.kind)
 					expect(row.item?.trim(), `${c.name} treasure item`).toBeTruthy()
 					// `item` is a NAME; the numbers belong in `stats` / `value` so they
 					// can be found without reading the row.
-					expect(row.item.length, `${c.name} treasure item "${row.item}" reads as prose`)
-						.toBeLessThanOrEqual(60)
+					expect(
+						row.item.length,
+						`${c.name} treasure item "${row.item}" reads as prose`,
+					).toBeLessThanOrEqual(60)
 				}
 			}
 			// Environment runs broadest to narrowest, so an encounter filter can read
@@ -256,11 +304,20 @@ describe('optional creature lore', () => {
 				(term: string) => ENVIRONMENT_RANKS[term],
 			)
 			for (const [i, rank] of ranks.entries()) {
-				expect(rank, `${c.name} unknown environment "${c.lore.environment[i]}"`).toBeDefined()
-				if (i > 0) expect(rank, `${c.name} environment order`).toBeGreaterThanOrEqual(ranks[i - 1])
+				expect(
+					rank,
+					`${c.name} unknown environment "${c.lore.environment[i]}"`,
+				).toBeDefined()
+				if (i > 0)
+					expect(rank, `${c.name} environment order`).toBeGreaterThanOrEqual(
+						ranks[i - 1],
+					)
 			}
 			for (const template of c.lore.organization ?? []) {
-				expect(template.name?.trim(), `${c.name} organization name`).toBeTruthy()
+				expect(
+					template.name?.trim(),
+					`${c.name} organization name`,
+				).toBeTruthy()
 				// A template is either N of this creature, or a mixed band naming
 				// others — exactly one, never both and never neither.
 				const hasCount = template.count !== undefined
@@ -291,8 +348,11 @@ describe('optional creature lore', () => {
 			.reduce(
 				(n, f) =>
 					n +
-					(fs.readFileSync(path.join(DOCS, f), 'utf-8').match(/<CreatureLore>/g) || [])
-						.length,
+					(
+						fs
+							.readFileSync(path.join(DOCS, f), 'utf-8')
+							.match(/<CreatureLore>/g) || []
+					).length,
 				0,
 			)
 		expect(emitted).toBe(withLore)

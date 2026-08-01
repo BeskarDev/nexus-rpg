@@ -478,8 +478,7 @@ export const CreatureCards: React.FC = () => {
 					mb: 2,
 					py: 2,
 					px: 3,
-					backgroundColor:
-						'background.default',
+					backgroundColor: 'background.default',
 					borderRadius: '8px',
 				}}
 			>
@@ -487,8 +486,8 @@ export const CreatureCards: React.FC = () => {
 					Creature Card Printing
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
-					Select a character to load their companions, upload a markdown file, or
-					manually paste creature stat blocks to print cards.
+					Select a character to load their companions, upload a markdown file,
+					or manually paste creature stat blocks to print cards.
 				</Typography>
 
 				<Divider sx={{ my: 1 }} />
@@ -533,8 +532,7 @@ export const CreatureCards: React.FC = () => {
 					onChange={handleMarkdownChange}
 					placeholder="Paste your creature markdown here or upload a file..."
 					sx={{
-						backgroundColor:
-							'background.paper',
+						backgroundColor: 'background.paper',
 					}}
 				/>
 
@@ -574,8 +572,7 @@ export const CreatureCards: React.FC = () => {
 								renderValue={(selected) => selected.join(', ')}
 								MenuProps={MenuProps}
 								sx={{
-									backgroundColor:
-										'background.paper',
+									backgroundColor: 'background.paper',
 								}}
 							>
 								{creatures.map(({ name }) => (

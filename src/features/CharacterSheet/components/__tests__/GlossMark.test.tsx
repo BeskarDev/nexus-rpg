@@ -16,7 +16,10 @@ describe('GlossMark', () => {
 		const paths = container.querySelectorAll('path')
 		expect(paths).toHaveLength(1)
 		expect(paths[0]).toHaveAttribute('fill-rule', 'evenodd')
-		expect(container.querySelector('svg')).toHaveAttribute('fill', 'currentColor')
+		expect(container.querySelector('svg')).toHaveAttribute(
+			'fill',
+			'currentColor',
+		)
 		// No stroke anywhere: a stroke is not mask-safe geometry, and it is also
 		// what would make this read as an outline icon next to the solid sigils.
 		expect(container.innerHTML).not.toMatch(/stroke/)
@@ -37,7 +40,10 @@ describe('GlossMark', () => {
 
 	it('is decorative, so it is hidden from assistive tech', () => {
 		const { container } = render(<GlossMark />)
-		expect(container.querySelector('svg')).toHaveAttribute('aria-hidden', 'true')
+		expect(container.querySelector('svg')).toHaveAttribute(
+			'aria-hidden',
+			'true',
+		)
 	})
 })
 

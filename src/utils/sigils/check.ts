@@ -22,10 +22,7 @@ import {
 	SIGIL_VIEWBOX,
 	SigilName,
 } from '../../components/codex/sigil-paths'
-import {
-	CHAPTER_SIGIL,
-	PAGE_SIGIL,
-} from '../../components/codex/page-sigils'
+import { CHAPTER_SIGIL, PAGE_SIGIL } from '../../components/codex/page-sigils'
 import {
 	CAP_BOX,
 	CAP_BOX_SLACK,
@@ -155,7 +152,8 @@ function checkGeometry(name: string, shapes: Shape[]) {
 			name,
 			'geometry/min-ink-feature',
 			`a feature thinner than ${MIN_INK_FEATURE} units near (${(
-				(at % RES) / UNIT
+				(at % RES) /
+				UNIT
 			).toFixed(1)}, ${(Math.floor(at / RES) / UNIT).toFixed(
 				1,
 			)}) — ${(worst.area / (UNIT * UNIT)).toFixed(1)} sq units of ink is sub-minimum`,
@@ -192,7 +190,8 @@ function checkGeometry(name: string, shapes: Shape[]) {
 				`an enclosed void is narrower than ${MIN_VOID} units — it will fill in and read as mud` +
 					(box
 						? ` (${((box.x1 - box.x0) / UNIT).toFixed(1)}×${(
-								(box.y1 - box.y0) / UNIT
+								(box.y1 - box.y0) /
+								UNIT
 							).toFixed(1)} units at ${(box.x0 / UNIT).toFixed(1)}, ${(
 								box.y0 / UNIT
 							).toFixed(1)})`
@@ -212,7 +211,9 @@ function closestPair(masses: Component[]): string {
 	let best = Infinity
 	let where = ''
 	const sample = (c: Component) =>
-		c.pixels.filter((_, i) => i % Math.max(1, Math.floor(c.pixels.length / 400)) === 0)
+		c.pixels.filter(
+			(_, i) => i % Math.max(1, Math.floor(c.pixels.length / 400)) === 0,
+		)
 	for (let i = 0; i < masses.length; i++) {
 		for (let j = i + 1; j < masses.length; j++) {
 			for (const a of sample(masses[i])) {
@@ -309,7 +310,11 @@ function checkMapping() {
 			)
 		}
 		if (!(mark in SIGIL_INNER)) {
-			fail(mark, 'mapping/unknown-mark', `CHAPTER_SIGIL["${dir}"] is not a mark`)
+			fail(
+				mark,
+				'mapping/unknown-mark',
+				`CHAPTER_SIGIL["${dir}"] is not a mark`,
+			)
 		}
 	}
 	const used = new Set<string>([

@@ -115,47 +115,49 @@ const VARIANT = '6.25rem'
  */
 export const LEDGER_TEMPLATE = `minmax(0, 1.3fr) ${VARIANT} minmax(0, 2fr) ${NUM} ${NUM} ${AMOUNT} ${USES}`
 
-export const LEDGER_COLUMNS: Record<LedgerShape, { headings: LedgerHeading[] }> =
-	{
-		item: {
-			headings: [
-				L('Name'),
-				BLANK,
-				L('Properties'),
-				C('Cost'),
-				C('Load'),
-				C('Amount'),
-				C('Uses'),
-			],
-		},
-		worn: {
-			headings: [
-				L('Name'),
-				// Flush LEFT, not centred like the other short values: it shares the
-				// `VARIANT` track with the damage ladder, and a heading centred in that
-				// track sat a few characters right of the ladder's own left edge one
-				// section above it. A shared track needs a shared alignment or the
-				// sharing is visible (S4d, owner review).
-				L('Slot'),
-				L('Properties'),
-				C('Cost'),
-				C('Load'),
-				C('Amount'),
-				C('Uses'),
-			],
-		},
-		weapon: {
-			headings: [
-				L('Name'),
-				L('Damage'),
-				L('Properties'),
-				C('Cost'),
-				C('Load'),
-				C('Amount'),
-				C('Uses'),
-			],
-		},
-	}
+export const LEDGER_COLUMNS: Record<
+	LedgerShape,
+	{ headings: LedgerHeading[] }
+> = {
+	item: {
+		headings: [
+			L('Name'),
+			BLANK,
+			L('Properties'),
+			C('Cost'),
+			C('Load'),
+			C('Amount'),
+			C('Uses'),
+		],
+	},
+	worn: {
+		headings: [
+			L('Name'),
+			// Flush LEFT, not centred like the other short values: it shares the
+			// `VARIANT` track with the damage ladder, and a heading centred in that
+			// track sat a few characters right of the ladder's own left edge one
+			// section above it. A shared track needs a shared alignment or the
+			// sharing is visible (S4d, owner review).
+			L('Slot'),
+			L('Properties'),
+			C('Cost'),
+			C('Load'),
+			C('Amount'),
+			C('Uses'),
+		],
+	},
+	weapon: {
+		headings: [
+			L('Name'),
+			L('Damage'),
+			L('Properties'),
+			C('Cost'),
+			C('Load'),
+			C('Amount'),
+			C('Uses'),
+		],
+	},
+}
 
 /** The header repeats the row's tracks plus the chevron gutter the rows leave. */
 export const headerTemplate = () => `${LEDGER_TEMPLATE} ${CHEVRON}`

@@ -11,7 +11,11 @@
  */
 import fs from 'fs'
 import path from 'path'
-import { parseSpellEffect, normalizePlaceholder, type EffectNode } from './spell-effect-parser'
+import {
+	parseSpellEffect,
+	normalizePlaceholder,
+	type EffectNode,
+} from './spell-effect-parser'
 
 const REPO = path.resolve(__dirname, '../../..')
 const JSON_FILE = path.join(REPO, 'src/utils/data/json/combat-arts.json')
@@ -40,11 +44,14 @@ function fail(context: string, reason: string): never {
 const KNOWN_CATEGORIES = new Set(CATEGORIES.map((c) => c.name))
 
 function validateCombatArt(entry: unknown, context: string): CombatArtRecord {
-	if (typeof entry !== 'object' || entry === null) fail(context, 'entry is not an object')
+	if (typeof entry !== 'object' || entry === null)
+		fail(context, 'entry is not an object')
 	const e = entry as Record<string, unknown>
 	for (const field of ['name', 'category', 'weapons', 'effect'] as const) {
-		if (typeof e[field] !== 'string') fail(context, `field "${field}" must be a string`)
-		if ((e[field] as string).trim() === '') fail(context, `field "${field}" is empty`)
+		if (typeof e[field] !== 'string')
+			fail(context, `field "${field}" must be a string`)
+		if ((e[field] as string).trim() === '')
+			fail(context, `field "${field}" is empty`)
 	}
 	// An unknown category would silently drop the art from every page.
 	if (!KNOWN_CATEGORIES.has(e.category as string))
@@ -75,7 +82,9 @@ function renderNodes(nodes: EffectNode[]): string {
 function renderArt(art: CombatArtRecord): string {
 	// Combat arts allow partial success runs: the prose above a run is the base
 	// case that lands on any hit, and the tiers only add to it (see Deep Cut).
-	const parsed = parseSpellEffect(art.effect, art.name, { allowPartialRuns: true })
+	const parsed = parseSpellEffect(art.effect, art.name, {
+		allowPartialRuns: true,
+	})
 	return [
 		`<CombatArtCard weapons=${attr(art.weapons)}>`,
 		'',
@@ -87,18 +96,34 @@ function renderArt(art: CombatArtRecord): string {
 	].join('\n')
 }
 
-function renderPage(category: string, sidebarPosition: number, arts: CombatArtRecord[]): string {
-	const fm = ['---', `sidebar_position: ${sidebarPosition}`, 'toc_max_heading_level: 3', '---']
+function renderPage(
+	category: string,
+	sidebarPosition: number,
+	arts: CombatArtRecord[],
+): string {
+	const fm = [
+		'---',
+		`sidebar_position: ${sidebarPosition}`,
+		'toc_max_heading_level: 3',
+		'---',
+	]
 	// The h1 must immediately follow the frontmatter or Docusaurus's content-title
 	// extraction fails and the sidebar label falls back to the lowercase doc id.
-	const blocks = [fm.join('\n'), `# ${category}`, BANNER, ...arts.map(renderArt)]
+	const blocks = [
+		fm.join('\n'),
+		`# ${category}`,
+		BANNER,
+		...arts.map(renderArt),
+	]
 	return blocks.join('\n\n') + '\n'
 }
 
 function main() {
 	const check = process.argv.slice(2).includes('--check')
 	const entries: unknown[] = JSON.parse(fs.readFileSync(JSON_FILE, 'utf-8'))
-	const arts = entries.map((raw, i) => validateCombatArt(raw, `combat-arts.json[${i}]`))
+	const arts = entries.map((raw, i) =>
+		validateCombatArt(raw, `combat-arts.json[${i}]`),
+	)
 
 	let stale = 0
 	for (const { name, sidebarPosition } of CATEGORIES) {
@@ -108,7 +133,9 @@ function main() {
 		const content = renderPage(name, sidebarPosition, inCategory)
 
 		if (check) {
-			const current = fs.existsSync(outFile) ? fs.readFileSync(outFile, 'utf-8') : null
+			const current = fs.existsSync(outFile)
+				? fs.readFileSync(outFile, 'utf-8')
+				: null
 			if (current !== content) {
 				stale++
 				console.error(`STALE: ${path.relative(REPO, outFile)}`)
@@ -119,7 +146,9 @@ function main() {
 		fs.writeFileSync(outFile, content)
 		// Retire the hand-written .md once the .mdx is generated.
 		if (fs.existsSync(legacy)) fs.rmSync(legacy)
-		console.log(`wrote ${path.relative(REPO, outFile)} (${inCategory.length} combat arts)`)
+		console.log(
+			`wrote ${path.relative(REPO, outFile)} (${inCategory.length} combat arts)`,
+		)
 	}
 
 	if (check) {

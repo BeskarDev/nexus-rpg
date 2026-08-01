@@ -104,7 +104,11 @@ const DurationLadder: React.FC<{
 	onPick: (rung: DurationRung | undefined) => void
 	labelPrefix: string
 }> = ({ value, onPick, labelPrefix }) => (
-	<Box sx={{ display: 'flex', gap: 0.35 }} role="group" aria-label={labelPrefix}>
+	<Box
+		sx={{ display: 'flex', gap: 0.35 }}
+		role="group"
+		aria-label={labelPrefix}
+	>
 		{DURATION_RUNGS.map((rung) => {
 			const active = value === rung
 			return (
@@ -172,7 +176,12 @@ const IntensityPicker: React.FC<{
 						}}
 						aria-pressed={value === step}
 						aria-label={`${name} intensity ${step}`}
-						sx={{ minWidth: '2rem', px: 0.6, py: 0.1, ...keyline(value === step) }}
+						sx={{
+							minWidth: '2rem',
+							px: 0.6,
+							py: 0.1,
+							...keyline(value === step),
+						}}
 					>
 						{step}
 					</Button>
@@ -184,7 +193,8 @@ const IntensityPicker: React.FC<{
 					onChange={(event) => setDraft(event.target.value)}
 					onBlur={(event) => commit(event.target.value)}
 					onKeyDown={(event) => {
-						if (event.key === 'Enter') commit((event.target as HTMLInputElement).value)
+						if (event.key === 'Enter')
+							commit((event.target as HTMLInputElement).value)
 					}}
 					inputProps={{
 						min: MIN_INTENSITY,
@@ -246,7 +256,9 @@ export const StatusEffects: React.FC<StatusEffectsProps> = ({
 	const dispatch = useAppDispatch()
 	const [addAnchor, setAddAnchor] = useState<null | HTMLElement>(null)
 	/** The rung the next affliction lands on. Scratch state, never the character's. */
-	const [armedRung, setArmedRung] = useState<DurationRung | undefined>('briefly')
+	const [armedRung, setArmedRung] = useState<DurationRung | undefined>(
+		'briefly',
+	)
 	/**
 	 * Which value on which condition is being changed, and what it hangs off.
 	 *
@@ -271,7 +283,9 @@ export const StatusEffects: React.FC<StatusEffectsProps> = ({
 			characterSheetActions.addStatusEffect({
 				name,
 				rung: armedRung,
-				...(INTENSITY_CONDITIONS.has(name) ? { intensity: DEFAULT_INTENSITY } : {}),
+				...(INTENSITY_CONDITIONS.has(name)
+					? { intensity: DEFAULT_INTENSITY }
+					: {}),
 			}),
 		)
 		setAddAnchor(null)
@@ -334,7 +348,10 @@ export const StatusEffects: React.FC<StatusEffectsProps> = ({
 							// automatic minimum, so a long condition name would push its track
 							// past its share and break the two-up layout instead of
 							// ellipsizing inside it.
-							gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))' },
+							gridTemplateColumns: {
+								xs: '1fr',
+								sm: 'repeat(2, minmax(0, 1fr))',
+							},
 							gap: 0.4,
 						}}
 					>
@@ -378,7 +395,10 @@ export const StatusEffects: React.FC<StatusEffectsProps> = ({
 												cursor: 'help',
 											}}
 										>
-											<SigilIcon name={CONDITION_SIGIL[effect.name]} size={15} />
+											<SigilIcon
+												name={CONDITION_SIGIL[effect.name]}
+												size={15}
+											/>
 											<Typography
 												component="span"
 												sx={{
@@ -404,34 +424,36 @@ export const StatusEffects: React.FC<StatusEffectsProps> = ({
 									Intensity sits beside the name because that is how the rules
 									write it ("bleeding 2"), but it is its own button.
 								*/}
-								{takesIntensity && (
-									<Button
-										size="small"
-										onClick={(event) =>
-											setEditing({
-												id: effect.id,
-												field: 'intensity',
-												anchor: event.currentTarget,
-											})
-										}
-										aria-label={`${name} intensity ${
-											effect.intensity ?? DEFAULT_INTENSITY
-										} — change`}
-										aria-expanded={isEditing && editing?.field === 'intensity'}
-										sx={{
-											minWidth: 0,
-											px: 0.55,
-											py: 0,
-											...keyline(isEditing && editing?.field === 'intensity'),
-											color: UI_COLORS.danger,
-											fontSize: 'var(--nexus-text-xs)',
-										}}
-									>
-										{effect.intensity ?? DEFAULT_INTENSITY}
-									</Button>
-								)}
+									{takesIntensity && (
+										<Button
+											size="small"
+											onClick={(event) =>
+												setEditing({
+													id: effect.id,
+													field: 'intensity',
+													anchor: event.currentTarget,
+												})
+											}
+											aria-label={`${name} intensity ${
+												effect.intensity ?? DEFAULT_INTENSITY
+											} — change`}
+											aria-expanded={
+												isEditing && editing?.field === 'intensity'
+											}
+											sx={{
+												minWidth: 0,
+												px: 0.55,
+												py: 0,
+												...keyline(isEditing && editing?.field === 'intensity'),
+												color: UI_COLORS.danger,
+												fontSize: 'var(--nexus-text-xs)',
+											}}
+										>
+											{effect.intensity ?? DEFAULT_INTENSITY}
+										</Button>
+									)}
 
-								<Box sx={{ flex: 1, minWidth: '0.25rem' }} />
+									<Box sx={{ flex: 1, minWidth: '0.25rem' }} />
 
 									{/*
 										The read face of duration: one token, and the trigger for the
@@ -468,7 +490,9 @@ export const StatusEffects: React.FC<StatusEffectsProps> = ({
 										size="small"
 										aria-label={`Remove ${name}`}
 										onClick={() =>
-											dispatch(characterSheetActions.removeStatusEffect(effect.id))
+											dispatch(
+												characterSheetActions.removeStatusEffect(effect.id),
+											)
 										}
 										sx={{
 											p: 0.2,

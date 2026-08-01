@@ -7,7 +7,7 @@ export function generateCreatureMarkdown(creature: BuiltCreature): string {
 	const lines: string[] = []
 
 	// Header - include subtype if present
-	const typeDisplay = creature.subtype 
+	const typeDisplay = creature.subtype
 		? `${creature.type} (${creature.subtype})`
 		: creature.type
 	lines.push(`### **${creature.name}** (${creature.size} ${typeDisplay})`)

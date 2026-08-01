@@ -14,7 +14,11 @@ import {
 import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
 import { theme } from '@site/src/hooks/createTheme'
 import React, { useState, useEffect } from 'react'
-import { generateTreasure, treasureGroups, treasureSubGroups } from './generators'
+import {
+	generateTreasure,
+	treasureGroups,
+	treasureSubGroups,
+} from './generators'
 
 const COUNT_OPTIONS = [1, 2, 3, 5, 10]
 const QUALITY_OPTIONS = [
@@ -50,10 +54,7 @@ export const TreasureAutoRollerWrapper: React.FC = () => {
 	const handleRoll = () => {
 		const newResults: string[] = []
 		for (let i = 0; i < count; i++) {
-			const q =
-				quality === 0
-					? Math.floor(Math.random() * 8) + 1
-					: quality
+			const q = quality === 0 ? Math.floor(Math.random() * 8) + 1 : quality
 			const sub = showSubGroup ? selectedSubGroup : undefined
 			newResults.push(generateTreasure(selectedGroup, q, sub))
 		}
@@ -79,28 +80,16 @@ export const TreasureAutoRollerWrapper: React.FC = () => {
 								mb: 2,
 							}}
 						>
-							<FormControl
-								sx={{ minWidth: 200 }}
-								size="small"
-							>
-								<InputLabel id="treasure-group-label">
-									Table
-								</InputLabel>
+							<FormControl sx={{ minWidth: 200 }} size="small">
+								<InputLabel id="treasure-group-label">Table</InputLabel>
 								<Select
 									labelId="treasure-group-label"
 									value={selectedGroup}
 									label="Table"
-									onChange={(e) =>
-										setSelectedGroup(
-											e.target.value,
-										)
-									}
+									onChange={(e) => setSelectedGroup(e.target.value)}
 								>
 									{treasureGroups.map((g) => (
-										<MenuItem
-											key={g.id}
-											value={g.id}
-										>
+										<MenuItem key={g.id} value={g.id}>
 											{g.label}
 										</MenuItem>
 									))}
@@ -108,10 +97,7 @@ export const TreasureAutoRollerWrapper: React.FC = () => {
 							</FormControl>
 
 							{showSubGroup && (
-								<FormControl
-									sx={{ minWidth: 200 }}
-									size="small"
-								>
+								<FormControl sx={{ minWidth: 200 }} size="small">
 									<InputLabel id="treasure-subgroup-label">
 										Sub-category
 									</InputLabel>
@@ -119,17 +105,10 @@ export const TreasureAutoRollerWrapper: React.FC = () => {
 										labelId="treasure-subgroup-label"
 										value={selectedSubGroup}
 										label="Sub-category"
-										onChange={(e) =>
-											setSelectedSubGroup(
-												e.target.value,
-											)
-										}
+										onChange={(e) => setSelectedSubGroup(e.target.value)}
 									>
 										{subGroupOptions.map((sg) => (
-											<MenuItem
-												key={sg.id}
-												value={sg.id}
-											>
+											<MenuItem key={sg.id} value={sg.id}>
 												{sg.label}
 											</MenuItem>
 										))}
@@ -137,50 +116,29 @@ export const TreasureAutoRollerWrapper: React.FC = () => {
 								</FormControl>
 							)}
 
-							<FormControl
-								sx={{ minWidth: 180 }}
-								size="small"
-							>
-								<InputLabel id="treasure-quality-label">
-									Quality
-								</InputLabel>
+							<FormControl sx={{ minWidth: 180 }} size="small">
+								<InputLabel id="treasure-quality-label">Quality</InputLabel>
 								<Select
 									labelId="treasure-quality-label"
 									value={quality}
 									label="Quality"
-									onChange={(e) =>
-										setQuality(
-											Number(e.target.value),
-										)
-									}
+									onChange={(e) => setQuality(Number(e.target.value))}
 								>
 									{QUALITY_OPTIONS.map((opt) => (
-										<MenuItem
-											key={opt.value}
-											value={opt.value}
-										>
+										<MenuItem key={opt.value} value={opt.value}>
 											{opt.label}
 										</MenuItem>
 									))}
 								</Select>
 							</FormControl>
 
-							<FormControl
-								sx={{ minWidth: 80 }}
-								size="small"
-							>
-								<InputLabel id="treasure-count-label">
-									Count
-								</InputLabel>
+							<FormControl sx={{ minWidth: 80 }} size="small">
+								<InputLabel id="treasure-count-label">Count</InputLabel>
 								<Select
 									labelId="treasure-count-label"
 									value={count}
 									label="Count"
-									onChange={(e) =>
-										setCount(
-											Number(e.target.value),
-										)
-									}
+									onChange={(e) => setCount(Number(e.target.value))}
 								>
 									{COUNT_OPTIONS.map((n) => (
 										<MenuItem key={n} value={n}>
@@ -190,11 +148,7 @@ export const TreasureAutoRollerWrapper: React.FC = () => {
 								</Select>
 							</FormControl>
 
-							<Button
-								variant="contained"
-								color="primary"
-								onClick={handleRoll}
-							>
+							<Button variant="contained" color="primary" onClick={handleRoll}>
 								🎲 Roll
 							</Button>
 						</Box>
@@ -207,18 +161,12 @@ export const TreasureAutoRollerWrapper: React.FC = () => {
 									border: '2px solid',
 									borderColor: 'primary.main',
 									borderRadius: 1,
-									backgroundColor:
-										'background.paper',
+									backgroundColor: 'background.paper',
 								}}
 							>
 								{results.map((result, i) => (
-									<Typography
-										key={i}
-										variant="body1"
-										sx={{ mb: 0.5 }}
-									>
-										<strong>{i + 1}.</strong>{' '}
-										{result}
+									<Typography key={i} variant="body1" sx={{ mb: 0.5 }}>
+										<strong>{i + 1}.</strong> {result}
 									</Typography>
 								))}
 							</Box>

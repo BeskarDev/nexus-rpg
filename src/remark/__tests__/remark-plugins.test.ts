@@ -122,7 +122,6 @@ describe('auto-keyword-plugin', () => {
 		expect(texts.join('')).toContain(',')
 		expect(texts.join('')).toContain('another roll')
 	})
-
 })
 
 describe('table-chips-plugin', () => {
@@ -193,9 +192,7 @@ describe('table header detection (Phase 2)', () => {
 
 	it('auto-keyword: skips single-word header cells', () => {
 		const tree = runPlugin(autoKeywordPlugin, table('HP', 'nothing'), FILE)
-		expect(
-			collectConversions(tree).map((l) => l.text),
-		).not.toContain('HP')
+		expect(collectConversions(tree).map((l) => l.text)).not.toContain('HP')
 	})
 
 	it('auto-keyword: skips MULTI-word header cells (old proxy missed these)', () => {
@@ -205,9 +202,7 @@ describe('table header detection (Phase 2)', () => {
 			FILE,
 		)
 		// "damage" is a keyword but sits in a multi-word header → must not link.
-		expect(
-			collectConversions(tree).map((l) => l.text),
-		).not.toContain('damage')
+		expect(collectConversions(tree).map((l) => l.text)).not.toContain('damage')
 	})
 
 	it('auto-keyword: converts single-word BODY cells (old proxy over-skipped)', () => {
@@ -367,9 +362,9 @@ describe('first-occurrence-per-page for links (Phase 4)', () => {
 
 	it('does NOT limit chips to first occurrence (every damage word colors)', () => {
 		const md = 'Deals 2 fire, then 3 fire, then 4 fire damage.'
-		const chips = collectConversions(runPlugin(tableChipsPlugin, md, FILE)).filter(
-			(c) => c.className?.includes('chip--damage'),
-		)
+		const chips = collectConversions(
+			runPlugin(tableChipsPlugin, md, FILE),
+		).filter((c) => c.className?.includes('chip--damage'))
 		expect(chips.length).toBeGreaterThanOrEqual(3)
 	})
 })

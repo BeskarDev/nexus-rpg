@@ -40,7 +40,9 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 	 * Costs no extra tap; it was always one tap on the gear.
 	 */
 	const tapToEdit = Boolean(onConfigClick)
-	const handleConfigClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	const handleConfigClick = (
+		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+	) => {
 		onConfigClick?.(event)
 	}
 
@@ -48,9 +50,9 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 	const configMenuWithClose = configMenu
 		? React.cloneElement(configMenu as React.ReactElement, {
 				onClose: (e: any) => {
-					(configMenu as any).props?.onClose?.(e)
+					;(configMenu as any).props?.onClose?.(e)
 				},
-		  })
+			})
 		: null
 
 	const cardContent = (
@@ -72,13 +74,18 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 					) {
 						return
 					}
-					handleConfigClick(event as React.MouseEvent<HTMLButtonElement, MouseEvent>)
+					handleConfigClick(
+						event as React.MouseEvent<HTMLButtonElement, MouseEvent>,
+					)
 				},
 				onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => {
 					if (event.key === 'Enter' || event.key === ' ') {
 						event.preventDefault()
 						handleConfigClick(
-							event as unknown as React.MouseEvent<HTMLButtonElement, MouseEvent>,
+							event as unknown as React.MouseEvent<
+								HTMLButtonElement,
+								MouseEvent
+							>,
 						)
 					}
 				},
@@ -137,7 +144,11 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 				// would float, so unframed weights omit them.
 				framed &&
 				(['tl', 'tr', 'br', 'bl'] as const).map((pos) => (
-					<span key={pos} className={`cs-rivet cs-rivet-${pos}`} aria-hidden="true" />
+					<span
+						key={pos}
+						className={`cs-rivet cs-rivet-${pos}`}
+						aria-hidden="true"
+					/>
 				))
 			)}
 			{header && header}

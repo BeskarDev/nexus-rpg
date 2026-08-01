@@ -46,27 +46,27 @@ const calculateHpBonusFromDescription = (
 	currentRank: number,
 ): number => {
 	let totalBonus = 0
-	
+
 	// Split by rank markers like "(Rank 1)", "(Rank 2)", etc.
 	const rankPattern = /\(Rank\s+(\d+)\)/gi
 	const parts = description.split(rankPattern)
-	
+
 	// If no rank markers found, check the entire description
 	if (parts.length === 1) {
 		return extractHpBonusFromRankText(description)
 	}
-	
+
 	// Process each rank up to currentRank
 	// parts array structure: [text before rank 1, "1", rank 1 text, "2", rank 2 text, ...]
 	for (let i = 1; i < parts.length; i += 2) {
 		const rankNumber = parseInt(parts[i], 10)
 		const rankText = parts[i + 1] || ''
-		
+
 		if (rankNumber <= currentRank) {
 			totalBonus += extractHpBonusFromRankText(rankText)
 		}
 	}
-	
+
 	return totalBonus
 }
 

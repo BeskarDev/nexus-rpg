@@ -20,7 +20,7 @@ import { MysticSpell } from '@site/src/types/MysticSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import mysticSpellData from '../../utils/data/json/mystic-spells.json';
+import mysticSpellData from '../../utils/data/json/mystic-spells.json'
 import './mysticSpellsStyles.css'
 import { MysticSpellCard } from './MysticSpellCard'
 import { CharacterSelector } from '../PrintingTools'
@@ -173,8 +173,7 @@ export const MysticSpells: React.FC = () => {
 					mb: 2,
 					py: 2,
 					px: 3,
-					backgroundColor:
-						'background.default',
+					backgroundColor: 'background.default',
 					borderRadius: '8px',
 				}}
 			>
@@ -210,8 +209,7 @@ export const MysticSpells: React.FC = () => {
 							renderValue={(selected) => selected.join(', ')}
 							MenuProps={MenuProps}
 							sx={{
-								backgroundColor:
-									'background.paper',
+								backgroundColor: 'background.paper',
 							}}
 						>
 							{mysticSpells.map(({ name }) => (

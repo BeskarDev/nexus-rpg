@@ -11,10 +11,11 @@ import styles from './ImagePlate.module.css'
  *  A banner's native ratio is 2.36:1 and it is DISPLAYED at 4:1, which the
  *  `.img-banner` `aspect-ratio` supplies; these attributes describe the file and
  *  serve the no-CSS case, where showing the whole picture is the right fallback. */
-const NATIVE: Partial<Record<PlateWeight, { width: number; height: number }>> = {
-	banner: { width: 1584, height: 672 },
-	inline: { width: 1024, height: 1024 },
-}
+const NATIVE: Partial<Record<PlateWeight, { width: number; height: number }>> =
+	{
+		banner: { width: 1584, height: 672 },
+		inline: { width: 1024, height: 1024 },
+	}
 
 export interface ImagePlateProps {
 	src: string
@@ -84,7 +85,8 @@ export default function ImagePlate({
 			as={as}
 			caption={caption}
 			className={
-				`${styles[`plate-${weight}`] ?? ''}` + (className ? ' ' + className : '')
+				`${styles[`plate-${weight}`] ?? ''}` +
+				(className ? ' ' + className : '')
 			}
 		>
 			<img

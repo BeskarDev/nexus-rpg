@@ -425,7 +425,9 @@ export const HpCard = () => {
 			>
 				{health.current}/{effectiveMaxHp}
 				{health.temp > 0 && (
-					<span style={{ color: UI_COLORS.info, fontSize: 'var(--nexus-text-sm)' }}>
+					<span
+						style={{ color: UI_COLORS.info, fontSize: 'var(--nexus-text-sm)' }}
+					>
 						{' '}
 						+{health.temp}
 					</span>

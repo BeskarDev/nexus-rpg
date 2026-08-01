@@ -137,8 +137,7 @@ export const MagicItems: React.FC = () => {
 					mb: 2,
 					py: 2,
 					px: 3,
-					backgroundColor:
-						'background.default',
+					backgroundColor: 'background.default',
 					borderRadius: '8px',
 				}}
 			>
@@ -187,8 +186,7 @@ export const MagicItems: React.FC = () => {
 							onChange={handleCategoryFilterChange}
 							input={<OutlinedInput label="Category" />}
 							sx={{
-								backgroundColor:
-									'background.paper',
+								backgroundColor: 'background.paper',
 							}}
 						>
 							<MenuItem value="all">All Categories</MenuItem>
@@ -208,8 +206,7 @@ export const MagicItems: React.FC = () => {
 							renderValue={(selected) => selected.join(', ')}
 							MenuProps={MenuProps}
 							sx={{
-								backgroundColor:
-									'background.paper',
+								backgroundColor: 'background.paper',
 							}}
 						>
 							{availableItems.map(({ name, category }) => (

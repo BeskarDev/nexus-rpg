@@ -109,7 +109,12 @@ export const ParryCard = () => {
 					<Typography variant="subtitle2">
 						Set the individual sources of Parry defense.
 					</Typography>
-					<DerivedPart auto value={autoBase} label="Base" helperText="7 + Fighting" />
+					<DerivedPart
+						auto
+						value={autoBase}
+						label="Base"
+						helperText="7 + Fighting"
+					/>
 					<DerivedPart auto value={autoLevelBonus} label="Level Bonus" />
 					<DerivedPart
 						value={details.shieldBonus}
@@ -134,8 +139,7 @@ export const ParryCard = () => {
 							updateCharacter({
 								statistics: {
 									parryDetails: { other },
-									parry:
-										autoBase + autoLevelBonus + autoShieldBonus + other,
+									parry: autoBase + autoLevelBonus + autoShieldBonus + other,
 								},
 							})
 						}

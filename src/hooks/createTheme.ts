@@ -188,7 +188,8 @@ export const theme: CssVarsThemeOptions = {
 			styleOverrides: {
 				paper: {
 					borderRadius: 0,
-					border: '1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent)',
+					border:
+						'1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent)',
 				},
 				list: { paddingTop: 4, paddingBottom: 4 },
 			},
@@ -421,7 +422,8 @@ export const theme: CssVarsThemeOptions = {
 					// calculator's parts — which they cannot do in proportional figures.
 					fontVariantNumeric: 'tabular-nums',
 					'&:hover:not(.Mui-disabled)': {
-						borderColor: 'color-mix(in srgb, var(--nexus-bronze) 55%, transparent)',
+						borderColor:
+							'color-mix(in srgb, var(--nexus-bronze) 55%, transparent)',
 					},
 					// Focus is the sanctioned inset second keyline rather than a wider
 					// border, so nothing reflows by half a pixel on focus.

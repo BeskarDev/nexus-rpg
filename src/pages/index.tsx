@@ -2,14 +2,14 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import type { SigilName } from '@site/src/components/codex'
 import {
-  CardFrame,
-  Cartouche,
-  FriezeDivider,
-  ImagePlate,
-  LozengeDivider,
-  SIGIL_SIZE,
-  SigilIcon,
-  SolarMedallion,
+	CardFrame,
+	Cartouche,
+	FriezeDivider,
+	ImagePlate,
+	LozengeDivider,
+	SIGIL_SIZE,
+	SigilIcon,
+	SolarMedallion,
 } from '@site/src/components/codex'
 import homeBanner from '@site/static/img/banner/home-banner.png'
 import Layout from '@theme/Layout'

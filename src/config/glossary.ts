@@ -672,8 +672,7 @@ export const glossary: GlossaryEntry[] = [
 	},
 	{
 		term: 'Poisoned',
-		summary:
-			'A condition inflicting +1 bane on all rolls.',
+		summary: 'A condition inflicting +1 bane on all rolls.',
 		origin: 'Conditions',
 		link: '/docs/combat/conditions',
 	},
@@ -788,8 +787,7 @@ export const glossary: GlossaryEntry[] = [
 	},
 	{
 		term: 'Medium Duration',
-		summary:
-			'An effect duration lasting for one hour or one exploration turn.',
+		summary: 'An effect duration lasting for one hour or one exploration turn.',
 		origin: 'Scenes',
 		link: '/docs/scenes/effect-durations#medium',
 	},
@@ -814,7 +812,7 @@ export const glossary: GlossaryEntry[] = [
 		summary:
 			'8+ hours of rest restoring Focus, up to 1 Resolve, removing Fatigue, and healing treated Wounds.',
 		origin: 'Scenes',
-		link: "/docs/scenes/resting#a-nights-rest",
+		link: '/docs/scenes/resting#a-nights-rest',
 	},
 
 	// ── Professions ──────────────────────────────────────────────

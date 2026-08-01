@@ -27,7 +27,10 @@ export interface CombatArtCardProps {
  * Purely an information display — never merged with the character sheet's
  * interactive components (README § sheet-component separation).
  */
-export default function CombatArtCard({ weapons, children }: CombatArtCardProps) {
+export default function CombatArtCard({
+	weapons,
+	children,
+}: CombatArtCardProps) {
 	const kids = React.Children.toArray(children)
 	const nameHeading = kids[0] ?? null
 	const body = kids.slice(1)

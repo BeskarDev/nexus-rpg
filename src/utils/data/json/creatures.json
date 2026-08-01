@@ -14,21 +14,14 @@
 		"parry": 4,
 		"dodge": 8,
 		"resist": 6,
-		"skills": [
-			"Fighting (0)",
-			"Perception (1)",
-			"Survival (1)"
-		],
+		"skills": ["Fighting (0)", "Perception (1)", "Survival (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Claw",
-				"properties": [
-					"agile",
-					"light"
-				],
+				"properties": ["agile", "light"],
 				"text": "4/6/8 damage."
 			}
 		],
@@ -66,11 +59,7 @@
 		"parry": 5,
 		"dodge": 7,
 		"resist": 6,
-		"skills": [
-			"Fighting (0)",
-			"Perception (1)",
-			"Survival (1)"
-		],
+		"skills": ["Fighting (0)", "Perception (1)", "Survival (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
@@ -105,28 +94,19 @@
 		"parry": 4,
 		"dodge": 8,
 		"resist": 6,
-		"skills": [
-			"Fighting (0)",
-			"Perception (1)",
-			"Survival (1)"
-		],
+		"skills": ["Fighting (0)", "Perception (1)", "Survival (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Beak",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "4/6/8 damage."
 			},
 			{
 				"name": "Talons",
-				"properties": [
-					"slash",
-					"agile"
-				],
+				"properties": ["slash", "agile"],
 				"text": "4/6/8 damage."
 			}
 		],
@@ -159,20 +139,14 @@
 		"parry": 5,
 		"dodge": 7,
 		"resist": 6,
-		"skills": [
-			"Fighting (0)",
-			"Perception (1)",
-			"Stealth (1)"
-		],
+		"skills": ["Fighting (0)", "Perception (1)", "Stealth (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "4/6/8 damage. On a strong or critical hit, the target must roll Strength + Fortitude vs. TN 6 or become diseased."
 			}
 		],
@@ -205,19 +179,14 @@
 		"parry": 4,
 		"dodge": 8,
 		"resist": 6,
-		"skills": [
-			"Perception (1)",
-			"Survival (1)"
-		],
+		"skills": ["Perception (1)", "Survival (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Beak",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "3/4/5 damage."
 			}
 		],
@@ -250,20 +219,14 @@
 		"parry": 4,
 		"dodge": 8,
 		"resist": 6,
-		"skills": [
-			"Fighting (0)",
-			"Stealth (1)",
-			"Survival (1)"
-		],
+		"skills": ["Fighting (0)", "Stealth (1)", "Survival (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "4/6/8 damage. On a strong or critical hit, the target must roll Strength + Fortitude vs. TN 6 or become poisoned briefly."
 			}
 		],
@@ -291,13 +254,9 @@
 		"parry": 6,
 		"dodge": 6,
 		"resist": 6,
-		"skills": [
-			"Fighting (0)"
-		],
+		"skills": ["Fighting (0)"],
 		"immunities": [],
-		"resistances": [
-			"physical damage (from single-target attacks)"
-		],
+		"resistances": ["physical damage (from single-target attacks)"],
 		"weaknesses": [],
 		"attacks": [
 			{
@@ -342,9 +301,7 @@
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "5/8/11 damage. On a strong or critical hit, the target is grappled."
 			}
 		],
@@ -377,19 +334,14 @@
 		"parry": 7,
 		"dodge": 5,
 		"resist": 6,
-		"skills": [
-			"Fortitude (1)",
-			"Perception (1)"
-		],
+		"skills": ["Fortitude (1)", "Perception (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Hooves",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "6/10/14 damage. On a strong or critical hit, the target falls prone."
 			}
 		],
@@ -467,20 +419,14 @@
 		"parry": 8,
 		"dodge": 7,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Fortitude (1)",
-			"Survival (1)"
-		],
+		"skills": ["Fighting (1)", "Fortitude (1)", "Survival (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Tusks",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "6/9/12 damage. On a strong or critical hit against a creature of equal or smaller size, the target falls prone."
 			}
 		],
@@ -513,20 +459,14 @@
 		"parry": 7,
 		"dodge": 8,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)"
-		],
+		"skills": ["Fighting (1)"],
 		"immunities": [],
-		"resistances": [
-			"physical damage (from single-target attacks)"
-		],
+		"resistances": ["physical damage (from single-target attacks)"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Poison Bite",
-				"properties": [
-					"agile"
-				],
+				"properties": ["agile"],
 				"text": "6/9/12 poison damage, or 5/7/9 if this swarm has already lost half its max HP. On a strong or critical hit, the target is also poisoned for a short duration."
 			}
 		],
@@ -554,10 +494,7 @@
 		"parry": 7,
 		"dodge": 8,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Perception (1)"
-		],
+		"skills": ["Fighting (1)", "Perception (1)"],
 		"immunities": [
 			"bleeding",
 			"charmed",
@@ -567,14 +504,8 @@
 			"poisoned",
 			"unconscious"
 		],
-		"resistances": [
-			"pierce weapons",
-			"necrotic damage"
-		],
-		"weaknesses": [
-			"crush weapons",
-			"radiant damage"
-		],
+		"resistances": ["pierce weapons", "necrotic damage"],
+		"weaknesses": ["crush weapons", "radiant damage"],
 		"attacks": [
 			{
 				"name": "Claw",
@@ -583,10 +514,7 @@
 			},
 			{
 				"name": "Longsword",
-				"properties": [
-					"pierce",
-					"versatile +1"
-				],
+				"properties": ["pierce", "versatile +1"],
 				"text": "6/9/12 damage."
 			}
 		],
@@ -632,21 +560,12 @@
 		"attacks": [
 			{
 				"name": "Dagger",
-				"properties": [
-					"agile",
-					"light",
-					"pierce"
-				],
+				"properties": ["agile", "light", "pierce"],
 				"text": "5/7/9 damage."
 			},
 			{
 				"name": "Slingshot",
-				"properties": [
-					"ammo",
-					"crush",
-					"thrown (medium)",
-					"two-handed"
-				],
+				"properties": ["ammo", "crush", "thrown (medium)", "two-handed"],
 				"text": "5/7/9 damage."
 			}
 		],
@@ -692,21 +611,12 @@
 		"attacks": [
 			{
 				"name": "Cleaver",
-				"properties": [
-					"agile",
-					"light",
-					"slash"
-				],
+				"properties": ["agile", "light", "slash"],
 				"text": "5/7/9 damage."
 			},
 			{
 				"name": "Sling",
-				"properties": [
-					"ammo",
-					"crush",
-					"thrown (medium)",
-					"two-handed"
-				],
+				"properties": ["ammo", "crush", "thrown (medium)", "two-handed"],
 				"text": "5/7/9 damage."
 			}
 		],
@@ -739,10 +649,7 @@
 		"parry": 8,
 		"dodge": 6,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Fortitude (1)"
-		],
+		"skills": ["Fighting (1)", "Fortitude (1)"],
 		"immunities": [
 			"poison damage",
 			"bleeding",
@@ -751,18 +658,12 @@
 			"stunned",
 			"unconscious"
 		],
-		"resistances": [
-			"physical damage (except from crush weapons)"
-		],
-		"weaknesses": [
-			"blast damage"
-		],
+		"resistances": ["physical damage (except from crush weapons)"],
+		"weaknesses": ["blast damage"],
 		"attacks": [
 			{
 				"name": "Smash",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "6/9/12 damage. On a strong or critical hit, the target falls prone."
 			}
 		],
@@ -795,11 +696,7 @@
 		"parry": 7,
 		"dodge": 8,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Fortitude (1)",
-			"Perception (1)"
-		],
+		"skills": ["Fighting (1)", "Fortitude (1)", "Perception (1)"],
 		"immunities": [
 			"fire damage",
 			"burning",
@@ -810,13 +707,8 @@
 			"stunned",
 			"unconscious"
 		],
-		"resistances": [
-			"physical damage"
-		],
-		"weaknesses": [
-			"frost damage",
-			"damage from water"
-		],
+		"resistances": ["physical damage"],
+		"weaknesses": ["frost damage", "damage from water"],
 		"attacks": [
 			{
 				"name": "Burning Lash",
@@ -898,20 +790,14 @@
 		"parry": 7,
 		"dodge": 6,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Fortitude (1)",
-			"Survival (1)"
-		],
+		"skills": ["Fighting (1)", "Fortitude (1)", "Survival (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "6/9/12 damage. On a strong or critical hit against a creature of equal or smaller size, the target is grappled."
 			}
 		],
@@ -961,16 +847,12 @@
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "7/11/15 damage. On a strong or critical hit against a creature of equal or smaller size, the target drops prone."
 			},
 			{
 				"name": "Claw",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "6/9/12 damage. On a strong or critical hit, the target suffers bleeding (2)."
 			}
 		],
@@ -1003,40 +885,24 @@
 		"parry": 7,
 		"dodge": 7,
 		"resist": 7,
-		"skills": [
-			"Archery (1)",
-			"Fighting (1)",
-			"Perception (1)"
-		],
+		"skills": ["Archery (1)", "Fighting (1)", "Perception (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Spear",
-				"properties": [
-					"pierce",
-					"reach",
-					"two-handed"
-				],
+				"properties": ["pierce", "reach", "two-handed"],
 				"text": "6/9/12 damage."
 			},
 			{
 				"name": "Shortsword",
-				"properties": [
-					"agile",
-					"light",
-					"pierce"
-				],
+				"properties": ["agile", "light", "pierce"],
 				"text": "5/7/9 damage."
 			},
 			{
 				"name": "Shortbow",
-				"properties": [
-					"ammo",
-					"range (medium)",
-					"two-handed"
-				],
+				"properties": ["ammo", "range (medium)", "two-handed"],
 				"text": "5/7/9 damage."
 			}
 		],
@@ -1076,19 +942,12 @@
 		"attacks": [
 			{
 				"name": "Club",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "5/7/9 damage."
 			},
 			{
 				"name": "Dagger",
-				"properties": [
-					"agile",
-					"light",
-					"pierce",
-					"thrown (short)"
-				],
+				"properties": ["agile", "light", "pierce", "thrown (short)"],
 				"text": "5/7/9 damage."
 			}
 		],
@@ -1121,23 +980,14 @@
 		"parry": 7,
 		"dodge": 7,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Influence (1)",
-			"Lore (1)",
-			"Mysticism (1)"
-		],
+		"skills": ["Fighting (1)", "Influence (1)", "Lore (1)", "Mysticism (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Ritual Dagger",
-				"properties": [
-					"agile",
-					"light",
-					"pierce"
-				],
+				"properties": ["agile", "light", "pierce"],
 				"text": "5/7/9 damage."
 			}
 		],
@@ -1170,29 +1020,19 @@
 		"parry": 7,
 		"dodge": 8,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Perception (1)",
-			"Stealth (1)",
-			"Survival (1)"
-		],
+		"skills": ["Fighting (1)", "Perception (1)", "Stealth (1)", "Survival (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "5/7/9 poison damage. On a strong or critical hit, the target is poisoned for a short duration."
 			},
 			{
 				"name": "Web",
-				"properties": [
-					"range (short)",
-					"entangle"
-				],
+				"properties": ["range (short)", "entangle"],
 				"text": "On a hit, the target is restrained until they escape (Strength + Athletics vs. TN 7)."
 			}
 		],
@@ -1225,20 +1065,14 @@
 		"parry": 5,
 		"dodge": 9,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Perception (1)",
-			"Stealth (1)"
-		],
+		"skills": ["Fighting (1)", "Perception (1)", "Stealth (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Blood Drain",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "4/6/8 damage. On a hit, this creature attaches to the target. While attached, it doesn't attack but instead deals 4 damage at the start of each of the target's turns. The target or an ally can use an Action to detach this creature."
 			}
 		],
@@ -1266,12 +1100,7 @@
 		"parry": 7,
 		"dodge": 8,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Perception (1)",
-			"Stealth (1)",
-			"Survival (1)"
-		],
+		"skills": ["Fighting (1)", "Perception (1)", "Stealth (1)", "Survival (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
@@ -1311,20 +1140,14 @@
 		"parry": 6,
 		"dodge": 9,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Perception (1)",
-			"Stealth (1)"
-		],
+		"skills": ["Fighting (1)", "Perception (1)", "Stealth (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Venomous Bite",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "5/7/9 poison damage. On a strong or critical hit, the target is poisoned for a short duration."
 			}
 		],
@@ -1357,10 +1180,7 @@
 		"parry": 8,
 		"dodge": 6,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Perception (1)"
-		],
+		"skills": ["Fighting (1)", "Perception (1)"],
 		"immunities": [
 			"bleeding",
 			"charmed",
@@ -1374,9 +1194,7 @@
 		"attacks": [
 			{
 				"name": "Stone Fist",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "6/9/12 damage."
 			}
 		],
@@ -1414,30 +1232,17 @@
 		"parry": 6,
 		"dodge": 8,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Perception (1)",
-			"Stealth (1)"
-		],
-		"immunities": [
-			"bleeding",
-			"charmed",
-			"poisoned",
-			"unconscious"
-		],
+		"skills": ["Fighting (1)", "Perception (1)", "Stealth (1)"],
+		"immunities": ["bleeding", "charmed", "poisoned", "unconscious"],
 		"resistances": [
 			"necrotic damage",
 			"physical damage (from non-magical weapons)"
 		],
-		"weaknesses": [
-			"radiant damage"
-		],
+		"weaknesses": ["radiant damage"],
 		"attacks": [
 			{
 				"name": "Life Drain",
-				"properties": [
-					"target: vs. Resist"
-				],
+				"properties": ["target: vs. Resist"],
 				"text": "5/7/9 necrotic damage."
 			}
 		],
@@ -1488,18 +1293,12 @@
 		"attacks": [
 			{
 				"name": "Horns",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "5/7/9 damage."
 			},
 			{
 				"name": "Shortsword",
-				"properties": [
-					"agile",
-					"light",
-					"pierce"
-				],
+				"properties": ["agile", "light", "pierce"],
 				"text": "5/7/9 damage."
 			}
 		],
@@ -1544,18 +1343,12 @@
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "6/9/12 damage."
 			},
 			{
 				"name": "Spear",
-				"properties": [
-					"pierce",
-					"reach",
-					"two-handed"
-				],
+				"properties": ["pierce", "reach", "two-handed"],
 				"text": "6/9/12 damage."
 			}
 		],
@@ -1583,20 +1376,14 @@
 		"parry": 6,
 		"dodge": 8,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Perception (1)",
-			"Stealth (1)"
-		],
+		"skills": ["Fighting (1)", "Perception (1)", "Stealth (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Claws",
-				"properties": [
-					"agile"
-				],
+				"properties": ["agile"],
 				"text": "5/7/9 damage."
 			}
 		],
@@ -1642,19 +1429,12 @@
 		"attacks": [
 			{
 				"name": "Cutlass",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "5/7/9 damage."
 			},
 			{
 				"name": "Dagger",
-				"properties": [
-					"agile",
-					"light",
-					"pierce",
-					"thrown (short)"
-				],
+				"properties": ["agile", "light", "pierce", "thrown (short)"],
 				"text": "5/7/9 damage."
 			}
 		],
@@ -1699,20 +1479,12 @@
 		"attacks": [
 			{
 				"name": "Handaxe",
-				"properties": [
-					"light",
-					"slash",
-					"thrown (short)"
-				],
+				"properties": ["light", "slash", "thrown (short)"],
 				"text": "5/7/9 damage."
 			},
 			{
 				"name": "Javelin",
-				"properties": [
-					"bundle",
-					"light",
-					"thrown (medium)"
-				],
+				"properties": ["bundle", "light", "thrown (medium)"],
 				"text": "5/7/9 damage."
 			}
 		],
@@ -1740,22 +1512,14 @@
 		"parry": 6,
 		"dodge": 7,
 		"resist": 8,
-		"skills": [
-			"Influence (1)",
-			"Lore (1)",
-			"Mysticism (1)",
-			"Perception (1)"
-		],
+		"skills": ["Influence (1)", "Lore (1)", "Mysticism (1)", "Perception (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Staff",
-				"properties": [
-					"crush",
-					"two-handed"
-				],
+				"properties": ["crush", "two-handed"],
 				"text": "4/6/8 damage."
 			}
 		],
@@ -1788,10 +1552,7 @@
 		"parry": 8,
 		"dodge": 6,
 		"resist": 8,
-		"skills": [
-			"Fortitude (2)",
-			"Fighting (1)"
-		],
+		"skills": ["Fortitude (2)", "Fighting (1)"],
 		"immunities": [
 			"bleeding",
 			"charmed",
@@ -1801,14 +1562,8 @@
 			"poisoned",
 			"unconscious"
 		],
-		"resistances": [
-			"pierce weapons",
-			"necrotic damage"
-		],
-		"weaknesses": [
-			"slash weapons",
-			"radiant damage"
-		],
+		"resistances": ["pierce weapons", "necrotic damage"],
+		"weaknesses": ["slash weapons", "radiant damage"],
 		"attacks": [
 			{
 				"name": "Claw",
@@ -1817,9 +1572,7 @@
 			},
 			{
 				"name": "Rotten Bite",
-				"properties": [
-					"only if grappling"
-				],
+				"properties": ["only if grappling"],
 				"text": "8/14/20 poison damage."
 			}
 		],
@@ -1852,10 +1605,7 @@
 		"parry": 8,
 		"dodge": 6,
 		"resist": 8,
-		"skills": [
-			"Fortitude (2)",
-			"Fighting (1)"
-		],
+		"skills": ["Fortitude (2)", "Fighting (1)"],
 		"immunities": [
 			"bleeding",
 			"charmed",
@@ -1865,15 +1615,8 @@
 			"poisoned",
 			"unconscious"
 		],
-		"resistances": [
-			"pierce weapons",
-			"necrotic damage",
-			"poison damage"
-		],
-		"weaknesses": [
-			"slash weapons",
-			"radiant damage"
-		],
+		"resistances": ["pierce weapons", "necrotic damage", "poison damage"],
+		"weaknesses": ["slash weapons", "radiant damage"],
 		"attacks": [
 			{
 				"name": "Claw",
@@ -1882,16 +1625,12 @@
 			},
 			{
 				"name": "Rotten Bite",
-				"properties": [
-					"only if grappling"
-				],
+				"properties": ["only if grappling"],
 				"text": "8/14/20 poison damage."
 			},
 			{
 				"name": "Spew Plague",
-				"properties": [
-					"thrown (short)"
-				],
+				"properties": ["thrown (short)"],
 				"text": "8/14/20 poison damage. On a strong or critical hit, the target must roll Strength + Fortitude vs. TN 8 or become diseased."
 			}
 		],
@@ -1924,21 +1663,14 @@
 		"parry": 8,
 		"dodge": 8,
 		"resist": 8,
-		"skills": [
-			"Athletics (2)",
-			"Fighting (2)",
-			"Fortitude (2)"
-		],
+		"skills": ["Athletics (2)", "Fighting (2)", "Fortitude (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Battleaxe",
-				"properties": [
-					"slash",
-					"versatile +1"
-				],
+				"properties": ["slash", "versatile +1"],
 				"text": "8/12/16 damage."
 			}
 		],
@@ -1980,37 +1712,22 @@
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "7/11/15 damage."
 			},
 			{
 				"name": "Club",
-				"properties": [
-					"agile",
-					"crush",
-					"light"
-				],
+				"properties": ["agile", "crush", "light"],
 				"text": "6/10/14 damage."
 			},
 			{
 				"name": "Javelin",
-				"properties": [
-					"bundle",
-					"light",
-					"thrown (medium)"
-				],
+				"properties": ["bundle", "light", "thrown (medium)"],
 				"text": "6/10/14 damage."
 			},
 			{
 				"name": "Net",
-				"properties": [
-					"bundle",
-					"entangle",
-					"heavy (d6)",
-					"thrown (short)"
-				],
+				"properties": ["bundle", "entangle", "heavy (d6)", "thrown (short)"],
 				"text": "On a hit, the target is restrained until they escape (Strength + Athletics vs. TN 8)."
 			}
 		],
@@ -2051,17 +1768,12 @@
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "8/12/16 damage."
 			},
 			{
 				"name": "War Club",
-				"properties": [
-					"crush",
-					"versatile +1"
-				],
+				"properties": ["crush", "versatile +1"],
 				"text": "8/12/16 damage."
 			}
 		],
@@ -2102,20 +1814,12 @@
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "8/12/16 damage."
 			},
 			{
 				"name": "Whip",
-				"properties": [
-					"agile",
-					"entangle",
-					"light",
-					"reach",
-					"slash"
-				],
+				"properties": ["agile", "entangle", "light", "reach", "slash"],
 				"text": "6/10/14 damage."
 			}
 		],
@@ -2153,30 +1857,19 @@
 		"parry": 8,
 		"dodge": 8,
 		"resist": 9,
-		"skills": [
-			"Arcana (2)",
-			"Influence (2)",
-			"Lore (2)",
-			"Perception (2)"
-		],
+		"skills": ["Arcana (2)", "Influence (2)", "Lore (2)", "Perception (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Ritual Dagger",
-				"properties": [
-					"agile",
-					"light",
-					"pierce"
-				],
+				"properties": ["agile", "light", "pierce"],
 				"text": "6/10/14 damage."
 			},
 			{
 				"name": "Dark Bolt",
-				"properties": [
-					"range (medium)"
-				],
+				"properties": ["range (medium)"],
 				"text": "Roll Mind + Arcana. 6/10/14 necrotic damage. On a strong or critical hit, the target suffers +1 bane on their next roll."
 			}
 		],
@@ -2209,32 +1902,19 @@
 		"parry": 8,
 		"dodge": 9,
 		"resist": 8,
-		"skills": [
-			"Archery (2)",
-			"Fighting (2)",
-			"Perception (2)",
-			"Stealth (2)"
-		],
+		"skills": ["Archery (2)", "Fighting (2)", "Perception (2)", "Stealth (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Poisoned Dagger",
-				"properties": [
-					"agile",
-					"light",
-					"pierce"
-				],
+				"properties": ["agile", "light", "pierce"],
 				"text": "6/10/14 damage. On a strong or critical hit, the target is briefly poisoned."
 			},
 			{
 				"name": "Shortbow",
-				"properties": [
-					"ammo",
-					"range (medium)",
-					"two-handed"
-				],
+				"properties": ["ammo", "range (medium)", "two-handed"],
 				"text": "6/10/14 damage."
 			}
 		],
@@ -2272,11 +1952,7 @@
 		"parry": 9,
 		"dodge": 7,
 		"resist": 8,
-		"skills": [
-			"Fighting (2)",
-			"Fortitude (2)",
-			"Perception (1)"
-		],
+		"skills": ["Fighting (2)", "Fortitude (2)", "Perception (1)"],
 		"immunities": [
 			"bleeding",
 			"charmed",
@@ -2284,27 +1960,17 @@
 			"poisoned",
 			"unconscious"
 		],
-		"resistances": [
-			"necrotic damage",
-			"frost damage"
-		],
-		"weaknesses": [
-			"fire damage",
-			"radiant damage"
-		],
+		"resistances": ["necrotic damage", "frost damage"],
+		"weaknesses": ["fire damage", "radiant damage"],
 		"attacks": [
 			{
 				"name": "Rusted Axe",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "8/12/16 damage. On a strong or critical hit, the target suffers bleeding (2)."
 			},
 			{
 				"name": "Chilling Grasp",
-				"properties": [
-					"target: vs. Resist"
-				],
+				"properties": ["target: vs. Resist"],
 				"text": "6/10/14 frost damage. On a strong or critical hit, the target is slowed until the end of their next turn."
 			}
 		],
@@ -2337,17 +2003,9 @@
 		"parry": 7,
 		"dodge": 9,
 		"resist": 8,
-		"skills": [
-			"Fighting (1)",
-			"Perception (2)",
-			"Stealth (2)"
-		],
-		"immunities": [
-			"conditions from single-target effects"
-		],
-		"resistances": [
-			"physical damage (from single-target attacks)"
-		],
+		"skills": ["Fighting (1)", "Perception (2)", "Stealth (2)"],
+		"immunities": ["conditions from single-target effects"],
+		"resistances": ["physical damage (from single-target attacks)"],
 		"weaknesses": [],
 		"attacks": [
 			{
@@ -2385,11 +2043,7 @@
 		"parry": 8,
 		"dodge": 9,
 		"resist": 8,
-		"skills": [
-			"Fighting (2)",
-			"Fortitude (2)",
-			"Perception (2)"
-		],
+		"skills": ["Fighting (2)", "Fortitude (2)", "Perception (2)"],
 		"immunities": [
 			"fire damage",
 			"burning",
@@ -2400,13 +2054,8 @@
 			"stunned",
 			"unconscious"
 		],
-		"resistances": [
-			"physical damage"
-		],
-		"weaknesses": [
-			"frost damage",
-			"damage from water"
-		],
+		"resistances": ["physical damage"],
+		"weaknesses": ["frost damage", "damage from water"],
 		"attacks": [
 			{
 				"name": "Fast Strikes",
@@ -2420,9 +2069,7 @@
 			},
 			{
 				"name": "Flame Bolt",
-				"properties": [
-					"range (medium)"
-				],
+				"properties": ["range (medium)"],
 				"text": "6/10/14 fire damage. On a strong or critical hit, inflicts burning (2) for a short duration."
 			}
 		],
@@ -2473,33 +2120,17 @@
 			},
 			{
 				"name": "Scimitar",
-				"properties": [
-					"agile",
-					"light",
-					"slash"
-				],
+				"properties": ["agile", "light", "slash"],
 				"text": "6/10/14 damage."
 			},
 			{
 				"name": "Whip",
-				"properties": [
-					"agile",
-					"entangle",
-					"light",
-					"reach",
-					"slash"
-				],
+				"properties": ["agile", "entangle", "light", "reach", "slash"],
 				"text": "6/10/14 damage."
 			},
 			{
 				"name": "Dart",
-				"properties": [
-					"agile",
-					"bundle",
-					"light",
-					"pierce",
-					"thrown (short)"
-				],
+				"properties": ["agile", "bundle", "light", "pierce", "thrown (short)"],
 				"text": "6/10/14 damage."
 			}
 		],
@@ -2565,37 +2196,22 @@
 			},
 			{
 				"name": "Spear",
-				"properties": [
-					"pierce",
-					"reach",
-					"versatile +1"
-				],
+				"properties": ["pierce", "reach", "versatile +1"],
 				"text": "7/11/15 damage."
 			},
 			{
 				"name": "Broadsword",
-				"properties": [
-					"slash",
-					"versatile +1"
-				],
+				"properties": ["slash", "versatile +1"],
 				"text": "7/11/15 damage."
 			},
 			{
 				"name": "Light Shield",
-				"properties": [
-					"AV +1",
-					"parry +1"
-				],
+				"properties": ["AV +1", "parry +1"],
 				"text": "5/7/9 damage."
 			},
 			{
 				"name": "Longbow",
-				"properties": [
-					"ammo",
-					"heavy (d6)",
-					"range (long)",
-					"two-handed"
-				],
+				"properties": ["ammo", "heavy (d6)", "range (long)", "two-handed"],
 				"text": "7/11/15 damage."
 			}
 		],
@@ -2685,16 +2301,12 @@
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "9/15/21 damage. On a strong or critical hit, the target is grappled."
 			},
 			{
 				"name": "Tail Swipe",
-				"properties": [
-					"reach"
-				],
+				"properties": ["reach"],
 				"text": "7/11/15 damage. On a strong or critical hit, the target falls prone."
 			}
 		],
@@ -2733,31 +2345,18 @@
 			"Perception (2)",
 			"Stealth (2)"
 		],
-		"immunities": [
-			"bleeding",
-			"charmed",
-			"poisoned",
-			"unconscious"
-		],
-		"resistances": [
-			"necrotic damage"
-		],
-		"weaknesses": [
-			"radiant damage"
-		],
+		"immunities": ["bleeding", "charmed", "poisoned", "unconscious"],
+		"resistances": ["necrotic damage"],
+		"weaknesses": ["radiant damage"],
 		"attacks": [
 			{
 				"name": "Claws",
-				"properties": [
-					"agile"
-				],
+				"properties": ["agile"],
 				"text": "6/10/14 damage. On a strong or critical hit, the target must roll Strength + Fortitude vs. TN 8 or be paralyzed for a short duration."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "8/14/20 damage."
 			}
 		],
@@ -2790,9 +2389,7 @@
 		"parry": 9,
 		"dodge": 7,
 		"resist": 8,
-		"skills": [
-			"Fighting (2)"
-		],
+		"skills": ["Fighting (2)"],
 		"immunities": [
 			"bleeding",
 			"charmed",
@@ -2806,10 +2403,7 @@
 		"attacks": [
 			{
 				"name": "Longsword",
-				"properties": [
-					"pierce",
-					"versatile +1"
-				],
+				"properties": ["pierce", "versatile +1"],
 				"text": "8/12/16 damage."
 			}
 		],
@@ -2859,20 +2453,12 @@
 		"attacks": [
 			{
 				"name": "Longsword",
-				"properties": [
-					"pierce",
-					"versatile +1"
-				],
+				"properties": ["pierce", "versatile +1"],
 				"text": "8/12/16 damage."
 			},
 			{
 				"name": "Longbow",
-				"properties": [
-					"ammo",
-					"heavy (d6)",
-					"range (long)",
-					"two-handed"
-				],
+				"properties": ["ammo", "heavy (d6)", "range (long)", "two-handed"],
 				"text": "8/12/16 damage."
 			}
 		],
@@ -2905,10 +2491,7 @@
 		"parry": 8,
 		"dodge": 6,
 		"resist": 8,
-		"skills": [
-			"Fighting (1)",
-			"Stealth (2)"
-		],
+		"skills": ["Fighting (1)", "Stealth (2)"],
 		"immunities": [
 			"lightning damage",
 			"blinded",
@@ -2919,11 +2502,7 @@
 			"prone",
 			"unconscious"
 		],
-		"resistances": [
-			"acid",
-			"frost",
-			"fire damage"
-		],
+		"resistances": ["acid", "frost", "fire damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
@@ -2966,30 +2545,19 @@
 		"parry": 9,
 		"dodge": 6,
 		"resist": 8,
-		"skills": [
-			"Fighting (2)",
-			"Fortitude (2)",
-			"Stealth (2)"
-		],
-		"immunities": [
-			"blinded",
-			"deafened"
-		],
+		"skills": ["Fighting (2)", "Fortitude (2)", "Stealth (2)"],
+		"immunities": ["blinded", "deafened"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Constrict",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "7/11/15 damage. On a hit, the target is grappled. Until this grapple ends, the target is restrained, and this creature can't constrict another target."
 			},
 			{
 				"name": "Entangling Vines",
-				"properties": [
-					"range (short)"
-				],
+				"properties": ["range (short)"],
 				"text": "The area within close range of a point this creature can see becomes difficult terrain for a short duration. Each creature in the area when the effect begins must roll Strength + Athletics vs. TN 8 or be restrained by the vines until they escape."
 			}
 		],
@@ -3022,24 +2590,14 @@
 		"parry": 7,
 		"dodge": 9,
 		"resist": 8,
-		"skills": [
-			"Fighting (1)",
-			"Stealth (2)"
-		],
-		"immunities": [
-			"blinded",
-			"deafened"
-		],
+		"skills": ["Fighting (1)", "Stealth (2)"],
+		"immunities": ["blinded", "deafened"],
 		"resistances": [],
-		"weaknesses": [
-			"fire damage"
-		],
+		"weaknesses": ["fire damage"],
 		"attacks": [
 			{
 				"name": "Claw",
-				"properties": [
-					"agile"
-				],
+				"properties": ["agile"],
 				"text": "5/7/9 damage."
 			}
 		],
@@ -3072,22 +2630,14 @@
 		"parry": 7,
 		"dodge": 8,
 		"resist": 8,
-		"skills": [
-			"Nature (2)",
-			"Perception (2)"
-		],
-		"immunities": [
-			"blinded",
-			"deafened"
-		],
+		"skills": ["Nature (2)", "Perception (2)"],
+		"immunities": ["blinded", "deafened"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Fist",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "5/7/9 damage."
 			}
 		],
@@ -3125,28 +2675,19 @@
 		"parry": 8,
 		"dodge": 8,
 		"resist": 8,
-		"skills": [
-			"Arcana (1)",
-			"Insight (2)",
-			"Perception (2)",
-			"Stealth (2)"
-		],
+		"skills": ["Arcana (1)", "Insight (2)", "Perception (2)", "Stealth (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Claw",
-				"properties": [
-					"agile"
-				],
+				"properties": ["agile"],
 				"text": "6/10/14 damage."
 			},
 			{
 				"name": "Rotting Gaze",
-				"properties": [
-					"range (short)"
-				],
+				"properties": ["range (short)"],
 				"text": "8/14/20 necrotic damage."
 			}
 		],
@@ -3196,19 +2737,12 @@
 		"attacks": [
 			{
 				"name": "Giant Club",
-				"properties": [
-					"crush",
-					"fragile",
-					"heavy (d10)",
-					"two-handed"
-				],
+				"properties": ["crush", "fragile", "heavy (d10)", "two-handed"],
 				"text": "10/16/22 damage."
 			},
 			{
 				"name": "Wide Swing",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "7/11/15 damage against all opponents in melee range."
 			}
 		],
@@ -3248,18 +2782,12 @@
 		"attacks": [
 			{
 				"name": "Giant Club",
-				"properties": [
-					"crush",
-					"heavy (d10)",
-					"two-handed"
-				],
+				"properties": ["crush", "heavy (d10)", "two-handed"],
 				"text": "10/16/22 damage."
 			},
 			{
 				"name": "Wide Swing",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "7/11/15 damage against all opponents in melee range."
 			}
 		],
@@ -3304,16 +2832,12 @@
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "10/16/22 damage. On a strong or critical hit against a creature of equal or smaller size, the target drops prone."
 			},
 			{
 				"name": "Claw",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "9/14/19 damage. On a strong or critical hit, the target suffers bleeding (4)."
 			}
 		],
@@ -3358,18 +2882,12 @@
 		"attacks": [
 			{
 				"name": "2 x Claw",
-				"properties": [
-					"crush",
-					"light"
-				],
+				"properties": ["crush", "light"],
 				"text": "7/11/15 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. This creature cannot use a claw to attack other targets while grappling a creature with it."
 			},
 			{
 				"name": "Sting",
-				"properties": [
-					"pierce",
-					"reach"
-				],
+				"properties": ["pierce", "reach"],
 				"text": "9/14/19 poison damage. On a strong or critical hit, the target is also poisoned for a short duration. They can roll Strength + Fortitude vs. TN 9 at the end of their turns to end the effect early."
 			}
 		],
@@ -3397,34 +2915,24 @@
 		"parry": 9,
 		"dodge": 9,
 		"resist": 9,
-		"skills": [
-			"Fighting (2)",
-			"Perception (2)",
-			"Survival (2)"
-		],
+		"skills": ["Fighting (2)", "Perception (2)", "Survival (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "9/14/19 poison damage. On a strong or critical hit, the target is also poisoned for a short duration."
 			},
 			{
 				"name": "Constrict",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "7/11/15 damage. On a hit, the target is automatically grappled. If the target is the same size or smaller than this creature, it is restrained while grappled by this attack. This creature can only grapple one target at a time with this attack."
 			},
 			{
 				"name": "Poison Spit",
-				"properties": [
-					"range (medium)"
-				],
+				"properties": ["range (medium)"],
 				"text": "7/11/15 poison damage. On a strong or critical hit, the target is also poisoned for a short duration."
 			}
 		],
@@ -3452,11 +2960,7 @@
 		"parry": 9,
 		"dodge": 10,
 		"resist": 9,
-		"skills": [
-			"Fighting (2)",
-			"Fortitude (2)",
-			"Perception (2)"
-		],
+		"skills": ["Fighting (2)", "Fortitude (2)", "Perception (2)"],
 		"immunities": [
 			"fire damage",
 			"burning",
@@ -3467,13 +2971,8 @@
 			"stunned",
 			"unconscious"
 		],
-		"resistances": [
-			"physical damage"
-		],
-		"weaknesses": [
-			"frost damage",
-			"damage from water"
-		],
+		"resistances": ["physical damage"],
+		"weaknesses": ["frost damage", "damage from water"],
 		"attacks": [
 			{
 				"name": "Fast Strikes",
@@ -3487,17 +2986,12 @@
 			},
 			{
 				"name": "Flame Bolt",
-				"properties": [
-					"range (medium)"
-				],
+				"properties": ["range (medium)"],
 				"text": "9/14/19 fire damage. On a strong or critical hit, inflicts burning (4) for a short duration."
 			},
 			{
 				"name": "Incineration",
-				"properties": [
-					"blast (short)",
-					"recharge (d6)"
-				],
+				"properties": ["blast (short)", "recharge (d6)"],
 				"text": "Spirit + Fortitude vs. Dodge. 9/14/19 fire damage against each target. On a strong or critical hit, inflicts burning (4) for a short duration."
 			}
 		],
@@ -3543,30 +3037,17 @@
 		"attacks": [
 			{
 				"name": "Spear",
-				"properties": [
-					"pierce",
-					"reach",
-					"versatile +1"
-				],
+				"properties": ["pierce", "reach", "versatile +1"],
 				"text": "8/13/18 damage."
 			},
 			{
 				"name": "Heavy Shield",
-				"properties": [
-					"AV +2",
-					"parry +1",
-					"rigid 1"
-				],
+				"properties": ["AV +2", "parry +1", "rigid 1"],
 				"text": "7/11/15 damage."
 			},
 			{
 				"name": "Net",
-				"properties": [
-					"bundle",
-					"entangle",
-					"heavy (d6)",
-					"thrown (short)"
-				],
+				"properties": ["bundle", "entangle", "heavy (d6)", "thrown (short)"],
 				"text": "On a hit, the target is restrained until they escape (Strength + Athletics vs. TN 9)."
 			}
 		],
@@ -3614,10 +3095,7 @@
 		"attacks": [
 			{
 				"name": "Longsword",
-				"properties": [
-					"pierce",
-					"versatile +1"
-				],
+				"properties": ["pierce", "versatile +1"],
 				"text": "8/13/18 damage."
 			},
 			{
@@ -3678,22 +3156,12 @@
 			},
 			{
 				"name": "Sacrificial Blade",
-				"properties": [
-					"agile",
-					"light",
-					"slash"
-				],
+				"properties": ["agile", "light", "slash"],
 				"text": "7/11/15 damage. On a critical hit, this creature regains 5 HP."
 			},
 			{
 				"name": "Poisoned Darts",
-				"properties": [
-					"agile",
-					"bundle",
-					"light",
-					"pierce",
-					"thrown (short)"
-				],
+				"properties": ["agile", "bundle", "light", "pierce", "thrown (short)"],
 				"text": "7/11/15 poison damage. On a strong or critical hit, the target is also briefly poisoned."
 			}
 		],
@@ -3749,18 +3217,12 @@
 		"attacks": [
 			{
 				"name": "Staff",
-				"properties": [
-					"crush",
-					"reach",
-					"versatile +1"
-				],
+				"properties": ["crush", "reach", "versatile +1"],
 				"text": "8/13/18 damage."
 			},
 			{
 				"name": "Necrotic Bolt",
-				"properties": [
-					"range (medium)"
-				],
+				"properties": ["range (medium)"],
 				"text": "Roll Mind + Arcana. 8/13/18 necrotic damage. On a strong or critical hit, the target's maximum HP is reduced by 4 until they finish a short rest."
 			}
 		],
@@ -3806,24 +3268,17 @@
 			"Stealth (2)"
 		],
 		"immunities": [],
-		"resistances": [
-			"fire damage"
-		],
+		"resistances": ["fire damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Claws",
-				"properties": [
-					"agile",
-					"slash"
-				],
+				"properties": ["agile", "slash"],
 				"text": "7/11/15 damage."
 			},
 			{
 				"name": "Life Drain",
-				"properties": [
-					"target: vs. Resist"
-				],
+				"properties": ["target: vs. Resist"],
 				"text": "8/13/18 necrotic damage. This creature regains HP equal to half the damage dealt."
 			}
 		],
@@ -3883,23 +3338,16 @@
 			"necrotic damage",
 			"physical damage (from non-silvered weapons)"
 		],
-		"weaknesses": [
-			"radiant damage"
-		],
+		"weaknesses": ["radiant damage"],
 		"attacks": [
 			{
 				"name": "Longsword",
-				"properties": [
-					"pierce",
-					"versatile +1"
-				],
+				"properties": ["pierce", "versatile +1"],
 				"text": "8/13/18 damage."
 			},
 			{
 				"name": "Life Drain",
-				"properties": [
-					"target: vs. Resist"
-				],
+				"properties": ["target: vs. Resist"],
 				"text": "7/11/15 necrotic damage. On a strong or critical hit, the target's maximum HP is reduced by the damage dealt until they finish a long rest. If this reduces their maximum HP to 0, they die and rise as a zombie under this creature's control after 24 hours."
 			}
 		],
@@ -3932,27 +3380,19 @@
 		"parry": 8,
 		"dodge": 10,
 		"resist": 9,
-		"skills": [
-			"Fighting (2)",
-			"Perception (2)",
-			"Influence (2)"
-		],
+		"skills": ["Fighting (2)", "Perception (2)", "Influence (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Claws",
-				"properties": [
-					"agile"
-				],
+				"properties": ["agile"],
 				"text": "7/11/15 damage."
 			},
 			{
 				"name": "Club",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "7/11/15 damage."
 			}
 		],
@@ -3998,18 +3438,12 @@
 		"attacks": [
 			{
 				"name": "Morningstar",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "9/14/19 damage."
 			},
 			{
 				"name": "Javelin",
-				"properties": [
-					"bundle",
-					"light",
-					"thrown (medium)"
-				],
+				"properties": ["bundle", "light", "thrown (medium)"],
 				"text": "8/12/16 damage."
 			}
 		],
@@ -4054,18 +3488,12 @@
 		"attacks": [
 			{
 				"name": "Greataxe",
-				"properties": [
-					"heavy (d10)",
-					"slash",
-					"two-handed"
-				],
+				"properties": ["heavy (d10)", "slash", "two-handed"],
 				"text": "10/17/24 damage."
 			},
 			{
 				"name": "Gore",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "9/14/19 damage. On a strong or critical hit, the target falls prone."
 			}
 		],
@@ -4103,27 +3531,19 @@
 		"parry": 8,
 		"dodge": 10,
 		"resist": 9,
-		"skills": [
-			"Fighting (2)",
-			"Perception (2)",
-			"Stealth (2)"
-		],
+		"skills": ["Fighting (2)", "Perception (2)", "Stealth (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Claws",
-				"properties": [
-					"agile"
-				],
+				"properties": ["agile"],
 				"text": "7/11/15 damage."
 			},
 			{
 				"name": "Club",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "7/11/15 damage."
 			}
 		],
@@ -4156,35 +3576,24 @@
 		"parry": 10,
 		"dodge": 9,
 		"resist": 9,
-		"skills": [
-			"Fighting (2)",
-			"Perception (2)",
-			"Survival (2)"
-		],
+		"skills": ["Fighting (2)", "Perception (2)", "Survival (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "9/14/19 damage."
 			},
 			{
 				"name": "Claw",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "8/12/16 damage."
 			},
 			{
 				"name": "Tail Spike",
-				"properties": [
-					"pierce",
-					"thrown (medium)"
-				],
+				"properties": ["pierce", "thrown (medium)"],
 				"text": "8/12/16 damage. This creature has 24 tail spikes and regrows 1d6 spent spikes each day."
 			}
 		],
@@ -4240,28 +3649,17 @@
 		"attacks": [
 			{
 				"name": "Pike",
-				"properties": [
-					"pierce",
-					"reach",
-					"two-handed"
-				],
+				"properties": ["pierce", "reach", "two-handed"],
 				"text": "9/14/19 damage."
 			},
 			{
 				"name": "Hooves",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "8/12/16 damage."
 			},
 			{
 				"name": "Longbow",
-				"properties": [
-					"ammo",
-					"heavy (d6)",
-					"range (long)",
-					"two-handed"
-				],
+				"properties": ["ammo", "heavy (d6)", "range (long)", "two-handed"],
 				"text": "8/12/16 damage."
 			}
 		],
@@ -4289,30 +3687,19 @@
 		"parry": 10,
 		"dodge": 9,
 		"resist": 9,
-		"skills": [
-			"Fighting (2)",
-			"Perception (2)",
-			"Stealth (2)",
-			"Survival (2)"
-		],
-		"immunities": [
-			"fire damage"
-		],
+		"skills": ["Fighting (2)", "Perception (2)", "Stealth (2)", "Survival (2)"],
+		"immunities": ["fire damage"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "9/14/19 fire damage."
 			},
 			{
 				"name": "Fire Breath",
-				"properties": [
-					"recharge (d6)"
-				],
+				"properties": ["recharge (d6)"],
 				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in a short cone. On a success, each target suffers 10 fire damage."
 			}
 		],
@@ -4345,33 +3732,19 @@
 		"parry": 9,
 		"dodge": 9,
 		"resist": 9,
-		"skills": [
-			"Fighting (2)",
-			"Fortitude (2)",
-			"Perception (2)"
-		],
-		"immunities": [
-			"necrotic damage",
-			"charmed",
-			"frightened"
-		],
+		"skills": ["Fighting (2)", "Fortitude (2)", "Perception (2)"],
+		"immunities": ["necrotic damage", "charmed", "frightened"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Khopesh",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "8/12/16 damage."
 			},
 			{
 				"name": "Javelin",
-				"properties": [
-					"bundle",
-					"light",
-					"thrown (medium)"
-				],
+				"properties": ["bundle", "light", "thrown (medium)"],
 				"text": "7/11/15 damage."
 			}
 		],
@@ -4418,23 +3791,17 @@
 			"Perception (2)"
 		],
 		"immunities": [],
-		"resistances": [
-			"psychic damage"
-		],
+		"resistances": ["psychic damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Claw",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "8/12/16 damage."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "9/14/19 damage."
 			}
 		],
@@ -4472,27 +3839,19 @@
 		"parry": 10,
 		"dodge": 8,
 		"resist": 9,
-		"skills": [
-			"Fighting (2)",
-			"Fortitude (2)",
-			"Perception (2)"
-		],
+		"skills": ["Fighting (2)", "Fortitude (2)", "Perception (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "9/14/19 damage. On a strong or critical hit, the target must roll Strength + Fortitude vs. TN 9 or be diseased."
 			},
 			{
 				"name": "Tentacle",
-				"properties": [
-					"reach"
-				],
+				"properties": ["reach"],
 				"text": "8/12/16 damage. On a hit, the target is grappled. This creature has two tentacles."
 			}
 		],
@@ -4530,31 +3889,19 @@
 		"parry": 9,
 		"dodge": 9,
 		"resist": 9,
-		"skills": [
-			"Fighting (2)",
-			"Perception (2)",
-			"Stealth (2)"
-		],
-		"immunities": [
-			"lightning damage",
-			"blinded"
-		],
+		"skills": ["Fighting (2)", "Perception (2)", "Stealth (2)"],
+		"immunities": ["lightning damage", "blinded"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Tentacles",
-				"properties": [
-					"reach"
-				],
+				"properties": ["reach"],
 				"text": "8/12/16 damage. On a strong or critical hit, the target is grappled and must roll Spirit + Fortitude vs. TN 9 or be poisoned for a short duration. While poisoned, the target is also paralyzed."
 			},
 			{
 				"name": "Beak",
-				"properties": [
-					"pierce",
-					"only on grappled targets"
-				],
+				"properties": ["pierce", "only on grappled targets"],
 				"text": "10/16/22 damage."
 			}
 		],
@@ -4600,23 +3947,17 @@
 		"attacks": [
 			{
 				"name": "2 x Claw",
-				"properties": [
-					"light"
-				],
+				"properties": ["light"],
 				"text": "9/14/19 damage. On a hit, attempts to grapple the target."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"only if grappling"
-				],
+				"properties": ["only if grappling"],
 				"text": "11/18/25 damage. On a hit, the target is poisoned for a short duration."
 			},
 			{
 				"name": "Poisonous Spit",
-				"properties": [
-					"range (medium)"
-				],
+				"properties": ["range (medium)"],
 				"text": "8/12/16 poison damage. On a hit, the target is briefly poisoned."
 			}
 		],
@@ -4656,31 +3997,22 @@
 			"Survival (3)"
 		],
 		"immunities": [],
-		"resistances": [
-			"poison damage"
-		],
+		"resistances": ["poison damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Fangs",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "10/16/22 damage."
 			},
 			{
 				"name": "Claw",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "9/14/19 damage."
 			},
 			{
 				"name": "Stinger",
-				"properties": [
-					"pierce",
-					"reach"
-				],
+				"properties": ["pierce", "reach"],
 				"text": "10/16/22 poison damage. On a strong or critical hit, the target is also poisoned for a short duration."
 			}
 		],
@@ -4729,13 +4061,8 @@
 			"poisoned",
 			"unconscious"
 		],
-		"resistances": [
-			"necrotic damage"
-		],
-		"weaknesses": [
-			"fire damage",
-			"radiant damage"
-		],
+		"resistances": ["necrotic damage"],
+		"weaknesses": ["fire damage", "radiant damage"],
 		"attacks": [
 			{
 				"name": "Fast Strikes",
@@ -4744,25 +4071,17 @@
 			},
 			{
 				"name": "Khopesh",
-				"properties": [
-					"heavy (d10)",
-					"slash"
-				],
+				"properties": ["heavy (d10)", "slash"],
 				"text": "10/16/22 damage."
 			},
 			{
 				"name": "Wrapping Strike",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "9/14/19 damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone."
 			},
 			{
 				"name": "Drain Life",
-				"properties": [
-					"target: vs. Resist",
-					"range: short"
-				],
+				"properties": ["target: vs. Resist", "range: short"],
 				"text": "Roll Mind + Arcana. 8/12/16 necrotic damage. On a strong hit, this creature regains 4 HP. On a critical hit, this creature regains 6 HP instead."
 			}
 		],
@@ -4808,40 +4127,27 @@
 			"Survival (2)"
 		],
 		"immunities": [],
-		"resistances": [
-			"fire damage"
-		],
+		"resistances": ["fire damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "2 x Claw",
-				"properties": [
-					"light",
-					"slash"
-				],
+				"properties": ["light", "slash"],
 				"text": "9/14/19 damage."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "11/18/25 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. This creature cannot use its Bite attack against other targets while grappling a creature."
 			},
 			{
 				"name": "Tail",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "9/14/19 damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone."
 			},
 			{
 				"name": "Dragon's Breath",
-				"properties": [
-					"recharge (d4)"
-				],
+				"properties": ["recharge (d4)"],
 				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in melee range, or in one area within short range. On a success, each target suffers 12 fire damage. On a strong or critical success, each target also suffers burning (4)."
 			}
 		],
@@ -4893,18 +4199,12 @@
 		"attacks": [
 			{
 				"name": "Sacrificial Scepter",
-				"properties": [
-					"crush",
-					"reach",
-					"versatile +1"
-				],
+				"properties": ["crush", "reach", "versatile +1"],
 				"text": "Roll attacks with Spirit + Mysticism. 9/14/19 necrotic damage. On a strong or critical hit, this creature regains 5 HP."
 			},
 			{
 				"name": "Unholy Blast",
-				"properties": [
-					"range (medium)"
-				],
+				"properties": ["range (medium)"],
 				"text": "Roll Mind + Arcana. 9/14/19 necrotic damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed a short distance away instead."
 			}
 		],
@@ -4971,27 +4271,17 @@
 			},
 			{
 				"name": "Lance",
-				"properties": [
-					"pierce",
-					"reach"
-				],
+				"properties": ["pierce", "reach"],
 				"text": "10/16/22 damage. If this creature moves at least close toward a target before attacking, deals +4 damage."
 			},
 			{
 				"name": "Longbow",
-				"properties": [
-					"ammo",
-					"heavy (d6)",
-					"range (long)",
-					"two-handed"
-				],
+				"properties": ["ammo", "heavy (d6)", "range (long)", "two-handed"],
 				"text": "10/16/22 damage."
 			},
 			{
 				"name": "Hooves",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "9/14/19 damage."
 			}
 		],
@@ -5054,19 +4344,12 @@
 			},
 			{
 				"name": "Longsword",
-				"properties": [
-					"pierce",
-					"versatile +1"
-				],
+				"properties": ["pierce", "versatile +1"],
 				"text": "10/16/22 damage."
 			},
 			{
 				"name": "Heavy Shield",
-				"properties": [
-					"AV +2",
-					"parry +1",
-					"rigid 1"
-				],
+				"properties": ["AV +2", "parry +1", "rigid 1"],
 				"text": "8/12/16 damage."
 			},
 			{
@@ -5143,9 +4426,7 @@
 			"necrotic damage",
 			"physical damage (from non-magical weapons)"
 		],
-		"weaknesses": [
-			"fire damage"
-		],
+		"weaknesses": ["fire damage"],
 		"attacks": [
 			{
 				"name": "Rotting Fist",
@@ -5168,11 +4449,7 @@
 		"quickActions": [],
 		"lore": {
 			"narrative": "The embalmers of the delta bound their kings against decay, and against departure. A mummy walks because some part of the rite held and some part did not, and they return to the tomb they were sealed in as surely as water runs downhill.",
-			"environment": [
-				"Desert",
-				"Ruins",
-				"Tomb"
-			],
+			"environment": ["Desert", "Ruins", "Tomb"],
 			"ecology": "They do not eat, drink, or age, and they have no territory beyond the ground they were interred in. A sealed mummy lies still for centuries. Breaking the seal wakes every mummy in the complex at once, and they walk until the intrusion is ended and the door is shut again. Herders of the salt roads leave a bowl of milk and a lit lamp at a tomb threshold, trusting that a mummy offered hospitality will count it as tribute owed and let one intruder pass.",
 			"tactics": "A mummy opens with their Dreadful Glare, then closes on whoever is held. They fight to bury an intruder, not to win ground, so they ignore flanking and press the target they first fixed on. They pursue only to the edge of the tomb and will not step past the boundary stones, and a party that retreats beyond them is not followed.",
 			"treasure": {
@@ -5263,35 +4540,24 @@
 		"parry": 10,
 		"dodge": 9,
 		"resist": 10,
-		"skills": [
-			"Fighting (3)",
-			"Perception (3)",
-			"Survival (3)"
-		],
+		"skills": ["Fighting (3)", "Perception (3)", "Survival (3)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "10/16/22 damage."
 			},
 			{
 				"name": "Claw",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "9/14/19 damage."
 			},
 			{
 				"name": "Tail Spikes",
-				"properties": [
-					"range (medium)",
-					"bundle"
-				],
+				"properties": ["range (medium)", "bundle"],
 				"text": "9/14/19 damage. This creature has 24 tail spikes. Once all spikes are expended, it can't use this attack until it finishes a long rest."
 			}
 		],
@@ -5324,27 +4590,19 @@
 		"parry": 10,
 		"dodge": 9,
 		"resist": 10,
-		"skills": [
-			"Fighting (3)",
-			"Perception (3)",
-			"Survival (3)"
-		],
+		"skills": ["Fighting (3)", "Perception (3)", "Survival (3)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Beak",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "10/16/22 damage."
 			},
 			{
 				"name": "Claws",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "9/14/19 damage. On a strong or critical hit, the target suffers bleeding (4)."
 			}
 		],
@@ -5372,30 +4630,19 @@
 		"parry": 12,
 		"dodge": 8,
 		"resist": 10,
-		"skills": [
-			"Athletics (3)",
-			"Fighting (2)",
-			"Fortitude (3)"
-		],
+		"skills": ["Athletics (3)", "Fighting (2)", "Fortitude (3)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Greatclub",
-				"properties": [
-					"crush",
-					"heavy (d12)",
-					"two-handed"
-				],
+				"properties": ["crush", "heavy (d12)", "two-handed"],
 				"text": "12/21/30 damage."
 			},
 			{
 				"name": "Rock",
-				"properties": [
-					"range (long)",
-					"crush"
-				],
+				"properties": ["range (long)", "crush"],
 				"text": "11/18/25 damage."
 			}
 		],
@@ -5430,25 +4677,18 @@
 			"Stealth (3)",
 			"Survival (3)"
 		],
-		"immunities": [
-			"physical damage (from non-silvered weapons)"
-		],
+		"immunities": ["physical damage (from non-silvered weapons)"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "10/16/22 damage. On a strong or critical hit, a humanoid target must roll Spirit + Fortitude vs. TN 10 or be cursed with lycanthropy."
 			},
 			{
 				"name": "Claws",
-				"properties": [
-					"agile",
-					"slash"
-				],
+				"properties": ["agile", "slash"],
 				"text": "9/14/19 damage."
 			}
 		],
@@ -5481,30 +4721,19 @@
 		"parry": 10,
 		"dodge": 10,
 		"resist": 10,
-		"skills": [
-			"Fighting (3)",
-			"Insight (3)",
-			"Perception (3)",
-			"Stealth (3)"
-		],
+		"skills": ["Fighting (3)", "Insight (3)", "Perception (3)", "Stealth (3)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Snake Hair",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "9/14/19 poison damage. On a strong or critical hit, the target is also poisoned for a short duration."
 			},
 			{
 				"name": "Shortbow",
-				"properties": [
-					"ammo",
-					"range (medium)",
-					"two-handed"
-				],
+				"properties": ["ammo", "range (medium)", "two-handed"],
 				"text": "9/14/19 damage."
 			}
 		],
@@ -5532,11 +4761,7 @@
 		"parry": 11,
 		"dodge": 8,
 		"resist": 10,
-		"skills": [
-			"Fighting (3)",
-			"Fortitude (3)",
-			"Stealth (3)"
-		],
+		"skills": ["Fighting (3)", "Fortitude (3)", "Stealth (3)"],
 		"immunities": [
 			"lightning damage",
 			"blinded",
@@ -5544,24 +4769,17 @@
 			"frightened",
 			"unconscious"
 		],
-		"resistances": [
-			"frost",
-			"fire damage"
-		],
+		"resistances": ["frost", "fire damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Slam",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "9/14/19 damage."
 			},
 			{
 				"name": "Engulf",
-				"properties": [
-					"only on grappled targets"
-				],
+				"properties": ["only on grappled targets"],
 				"text": "The target is engulfed and blinded, restrained, and unable to breathe. At the start of each of this creature's turns, the engulfed target takes 9 damage."
 			}
 		],
@@ -5599,9 +4817,7 @@
 		"parry": 10,
 		"dodge": 7,
 		"resist": 10,
-		"skills": [
-			"Fighting (2)"
-		],
+		"skills": ["Fighting (2)"],
 		"immunities": [
 			"acid",
 			"frost",
@@ -5662,23 +4878,14 @@
 		"parry": 10,
 		"dodge": 8,
 		"resist": 11,
-		"skills": [
-			"Insight (3)",
-			"Nature (3)",
-			"Perception (3)"
-		],
-		"immunities": [
-			"blinded",
-			"deafened"
-		],
+		"skills": ["Insight (3)", "Nature (3)", "Perception (3)"],
+		"immunities": ["blinded", "deafened"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Fist",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "8/12/16 damage."
 			}
 		],
@@ -5736,33 +4943,19 @@
 		"parry": 11,
 		"dodge": 8,
 		"resist": 10,
-		"skills": [
-			"Fighting (2)",
-			"Nature (3)",
-			"Perception (3)"
-		],
+		"skills": ["Fighting (2)", "Nature (3)", "Perception (3)"],
 		"immunities": [],
-		"resistances": [
-			"physical damage (from non-magical weapons)"
-		],
-		"weaknesses": [
-			"fire damage"
-		],
+		"resistances": ["physical damage (from non-magical weapons)"],
+		"weaknesses": ["fire damage"],
 		"attacks": [
 			{
 				"name": "Slam",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "9/14/19 damage."
 			},
 			{
 				"name": "Rock",
-				"properties": [
-					"range (long)",
-					"crush"
-				],
+				"properties": ["range (long)", "crush"],
 				"text": "8/12/16 damage."
 			}
 		],
@@ -5800,13 +4993,8 @@
 		"parry": 10,
 		"dodge": 8,
 		"resist": 10,
-		"skills": [
-			"Fighting (2)",
-			"Perception (2)"
-		],
-		"immunities": [
-			"prone"
-		],
+		"skills": ["Fighting (2)", "Perception (2)"],
+		"immunities": ["prone"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
@@ -5855,30 +5043,19 @@
 		"parry": 11,
 		"dodge": 9,
 		"resist": 10,
-		"skills": [
-			"Fighting (3)",
-			"Perception (3)",
-			"Stealth (2)"
-		],
-		"immunities": [
-			"poison damage",
-			"poisoned"
-		],
+		"skills": ["Fighting (3)", "Perception (3)", "Stealth (2)"],
+		"immunities": ["poison damage", "poisoned"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Pincer",
-				"properties": [
-					"reach"
-				],
+				"properties": ["reach"],
 				"text": "9/14/19 damage. On a hit, the target is grappled. This creature has two pincers, each of which can grapple one target."
 			},
 			{
 				"name": "Tentacles",
-				"properties": [
-					"only on grappled targets"
-				],
+				"properties": ["only on grappled targets"],
 				"text": "The target must roll Spirit + Fortitude vs. TN 10 or be poisoned for a short duration. Until this poison ends, the target is paralyzed."
 			}
 		],
@@ -5925,40 +5102,27 @@
 			"Survival (3)"
 		],
 		"immunities": [],
-		"resistances": [
-			"fire damage"
-		],
+		"resistances": ["fire damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "2 x Claw",
-				"properties": [
-					"light",
-					"slash"
-				],
+				"properties": ["light", "slash"],
 				"text": "10/17/24 damage."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "13/23/33 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained."
 			},
 			{
 				"name": "Tail",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "10/17/24 damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone."
 			},
 			{
 				"name": "Dragon's Breath",
-				"properties": [
-					"recharge (d6)"
-				],
+				"properties": ["recharge (d6)"],
 				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in short range in a cone. On a success, each target suffers 18 fire damage. On a strong or critical success, each target also suffers burning (6)."
 			}
 		],
@@ -6029,9 +5193,7 @@
 			"necrotic damage",
 			"physical damage (from non-magical weapons)"
 		],
-		"weaknesses": [
-			"fire damage"
-		],
+		"weaknesses": ["fire damage"],
 		"attacks": [
 			{
 				"name": "Rotting Fist",
@@ -6100,19 +5262,12 @@
 		"attacks": [
 			{
 				"name": "Greatclub",
-				"properties": [
-					"crush",
-					"heavy (d12)",
-					"two-handed"
-				],
+				"properties": ["crush", "heavy (d12)", "two-handed"],
 				"text": "14/25/36 damage."
 			},
 			{
 				"name": "Rock",
-				"properties": [
-					"range (very long)",
-					"crush"
-				],
+				"properties": ["range (very long)", "crush"],
 				"text": "13/23/33 damage."
 			}
 		],
@@ -6245,41 +5400,29 @@
 		"parry": 12,
 		"dodge": 10,
 		"resist": 11,
-		"skills": [
-			"Fighting (3)",
-			"Perception (3)",
-			"Survival (3)"
-		],
+		"skills": ["Fighting (3)", "Perception (3)", "Survival (3)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "11/19/27 damage."
 			},
 			{
 				"name": "Horns",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "10/17/24 damage. On a strong or critical hit, the target falls prone."
 			},
 			{
 				"name": "Claws",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "10/17/24 damage."
 			},
 			{
 				"name": "Fire Breath",
-				"properties": [
-					"recharge (d6)"
-				],
+				"properties": ["recharge (d6)"],
 				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in a short cone. On a success, each target suffers 14 fire damage. On a strong or critical success, each target also suffers burning (4)."
 			}
 		],
@@ -6326,18 +5469,12 @@
 		"attacks": [
 			{
 				"name": "Staff",
-				"properties": [
-					"crush",
-					"reach",
-					"versatile +1"
-				],
+				"properties": ["crush", "reach", "versatile +1"],
 				"text": "10/17/24 damage."
 			},
 			{
 				"name": "Arcane Blast",
-				"properties": [
-					"range (long)"
-				],
+				"properties": ["range (long)"],
 				"text": "11/19/27 force damage."
 			}
 		],
@@ -6380,10 +5517,7 @@
 		"parry": 13,
 		"dodge": 9,
 		"resist": 11,
-		"skills": [
-			"Fighting (3)",
-			"Fortitude (3)"
-		],
+		"skills": ["Fighting (3)", "Fortitude (3)"],
 		"immunities": [
 			"poison damage",
 			"bleeding",
@@ -6392,18 +5526,12 @@
 			"stunned",
 			"unconscious"
 		],
-		"resistances": [
-			"physical damage (except from crush weapons)"
-		],
-		"weaknesses": [
-			"blast damage"
-		],
+		"resistances": ["physical damage (except from crush weapons)"],
+		"weaknesses": ["blast damage"],
 		"attacks": [
 			{
 				"name": "Slam",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "12/21/30 damage."
 			}
 		],
@@ -6441,27 +5569,19 @@
 		"parry": 11,
 		"dodge": 11,
 		"resist": 11,
-		"skills": [
-			"Athletics (3)",
-			"Fighting (3)",
-			"Perception (3)"
-		],
+		"skills": ["Athletics (3)", "Fighting (3)", "Perception (3)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Beak",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "11/19/27 damage."
 			},
 			{
 				"name": "Claws",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "10/17/24 damage. On a strong or critical hit, the target suffers bleeding (4)."
 			}
 		],
@@ -6506,26 +5626,18 @@
 			"Lore (3)",
 			"Perception (3)"
 		],
-		"immunities": [
-			"poison damage",
-			"poisoned",
-			"charmed"
-		],
+		"immunities": ["poison damage", "poisoned", "charmed"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "11/19/27 poison damage. On a strong or critical hit, the target is poisoned for a short duration."
 			},
 			{
 				"name": "Constrict",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "10/17/24 damage. On a hit, the target is grappled and restrained."
 			}
 		],
@@ -6570,25 +5682,18 @@
 			"Perception (3)",
 			"Survival (3)"
 		],
-		"immunities": [
-			"frost damage",
-			"frightened"
-		],
+		"immunities": ["frost damage", "frightened"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "13/23/33 damage. On a strong or critical hit, the target is grappled and knocked prone."
 			},
 			{
 				"name": "Claw",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "11/19/27 damage."
 			}
 		],
@@ -6631,18 +5736,9 @@
 		"parry": 10,
 		"dodge": 11,
 		"resist": 12,
-		"skills": [
-			"Arcana (3)",
-			"Insight (3)",
-			"Perception (3)",
-			"Stealth (3)"
-		],
-		"immunities": [
-			"charmed"
-		],
-		"resistances": [
-			"psychic damage"
-		],
+		"skills": ["Arcana (3)", "Insight (3)", "Perception (3)", "Stealth (3)"],
+		"immunities": ["charmed"],
+		"resistances": ["psychic damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
@@ -6652,10 +5748,7 @@
 			},
 			{
 				"name": "Mind Blast",
-				"properties": [
-					"short cone",
-					"recharge (d6)"
-				],
+				"properties": ["short cone", "recharge (d6)"],
 				"text": "Roll Mind + Arcana vs. Resist. On a hit, each target takes 14 psychic damage and is stunned until the end of their next turn."
 			}
 		],
@@ -6703,19 +5796,14 @@
 		"parry": 10,
 		"dodge": 11,
 		"resist": 11,
-		"skills": [
-			"Arcana (3)",
-			"Perception (3)"
-		],
+		"skills": ["Arcana (3)", "Perception (3)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "10/17/24 damage."
 			},
 			{
@@ -6775,43 +5863,28 @@
 			"Perception (4)",
 			"Survival (4)"
 		],
-		"immunities": [
-			"frightened"
-		],
-		"resistances": [
-			"fire damage"
-		],
+		"immunities": ["frightened"],
+		"resistances": ["fire damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "2 x Claw",
-				"properties": [
-					"light",
-					"slash"
-				],
+				"properties": ["light", "slash"],
 				"text": "12/21/30 damage."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "15/27/39 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained."
 			},
 			{
 				"name": "Tail",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "12/21/30 damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone."
 			},
 			{
 				"name": "Dragon's Breath",
-				"properties": [
-					"recharge (d6)"
-				],
+				"properties": ["recharge (d6)"],
 				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in medium range in a cone. On a success, each target suffers 24 fire damage. On a strong or critical success, each target also suffers burning (8)."
 			}
 		],
@@ -6965,35 +6038,23 @@
 			"Fortitude (4)",
 			"Perception (4)"
 		],
-		"immunities": [
-			"fire damage"
-		],
+		"immunities": ["fire damage"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Greatsword",
-				"properties": [
-					"heavy (d12)",
-					"slash",
-					"two-handed"
-				],
+				"properties": ["heavy (d12)", "slash", "two-handed"],
 				"text": "15/27/39 damage."
 			},
 			{
 				"name": "Rock",
-				"properties": [
-					"range (very long)",
-					"crush"
-				],
+				"properties": ["range (very long)", "crush"],
 				"text": "14/25/36 damage."
 			},
 			{
 				"name": "Flaming Boulder",
-				"properties": [
-					"range (very long)",
-					"crush"
-				],
+				"properties": ["range (very long)", "crush"],
 				"text": "14/25/36 fire damage. On a hit, the area becomes burning terrain for a short duration."
 			}
 		],
@@ -7031,20 +6092,14 @@
 		"parry": 13,
 		"dodge": 10,
 		"resist": 12,
-		"skills": [
-			"Fighting (4)",
-			"Fortitude (4)",
-			"Perception (4)"
-		],
+		"skills": ["Fighting (4)", "Fortitude (4)", "Perception (4)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"reach"
-				],
+				"properties": ["reach"],
 				"text": "12/21/30 damage. This creature makes one bite attack for each of its heads."
 			}
 		],
@@ -7105,19 +6160,12 @@
 		"attacks": [
 			{
 				"name": "Greatclub",
-				"properties": [
-					"crush",
-					"heavy (d12)",
-					"two-handed"
-				],
+				"properties": ["crush", "heavy (d12)", "two-handed"],
 				"text": "15/27/39 damage."
 			},
 			{
 				"name": "Rock",
-				"properties": [
-					"range (very long)",
-					"crush"
-				],
+				"properties": ["range (very long)", "crush"],
 				"text": "14/25/36 damage."
 			}
 		],
@@ -7163,29 +6211,18 @@
 			"Lore (4)",
 			"Perception (4)"
 		],
-		"immunities": [
-			"psychic damage",
-			"charmed",
-			"frightened"
-		],
-		"resistances": [
-			"physical damage (from non-magical weapons)"
-		],
+		"immunities": ["psychic damage", "charmed", "frightened"],
+		"resistances": ["physical damage (from non-magical weapons)"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "2 x Claw",
-				"properties": [
-					"light",
-					"slash"
-				],
+				"properties": ["light", "slash"],
 				"text": "11/19/27 damage."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "13/23/33 damage."
 			}
 		],
@@ -7249,30 +6286,18 @@
 			"Lore (4)",
 			"Perception (4)"
 		],
-		"immunities": [
-			"necrotic damage",
-			"charmed",
-			"frightened",
-			"poisoned"
-		],
-		"resistances": [
-			"physical damage (from non-magical weapons)"
-		],
+		"immunities": ["necrotic damage", "charmed", "frightened", "poisoned"],
+		"resistances": ["physical damage (from non-magical weapons)"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Crook and Flail",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "13/23/33 damage. On a strong or critical hit, the target is knocked prone."
 			},
 			{
 				"name": "Judgment Strike",
-				"properties": [
-					"target: vs. Resist"
-				],
+				"properties": ["target: vs. Resist"],
 				"text": "12/21/30 necrotic damage. On a strong or critical hit, the target is paralyzed until the end of their next turn."
 			}
 		],
@@ -7315,11 +6340,7 @@
 		"parry": 12,
 		"dodge": 13,
 		"resist": 12,
-		"skills": [
-			"Fighting (4)",
-			"Perception (4)",
-			"Stealth (4)"
-		],
+		"skills": ["Fighting (4)", "Perception (4)", "Stealth (4)"],
 		"immunities": [
 			"bleeding",
 			"charmed",
@@ -7339,15 +6360,11 @@
 			"necrotic damage",
 			"physical damage (from non-magical weapons)"
 		],
-		"weaknesses": [
-			"radiant damage"
-		],
+		"weaknesses": ["radiant damage"],
 		"attacks": [
 			{
 				"name": "Life Drain",
-				"properties": [
-					"target: vs. Resist"
-				],
+				"properties": ["target: vs. Resist"],
 				"text": "12/21/30 necrotic damage. The target must roll Spirit + Fortitude vs. TN 12 or have its maximum HP reduced by the damage dealt until it finishes a long rest."
 			}
 		],
@@ -7395,27 +6412,19 @@
 		"parry": 14,
 		"dodge": 10,
 		"resist": 12,
-		"skills": [
-			"Athletics (4)",
-			"Fighting (4)",
-			"Perception (4)"
-		],
+		"skills": ["Athletics (4)", "Fighting (4)", "Perception (4)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Beak",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "14/25/36 damage."
 			},
 			{
 				"name": "Talons",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "13/23/33 damage. On a strong or critical hit, the target is grappled and restrained."
 			}
 		],
@@ -7472,26 +6481,17 @@
 		"attacks": [
 			{
 				"name": "Claws",
-				"properties": [
-					"agile",
-					"slash"
-				],
+				"properties": ["agile", "slash"],
 				"text": "11/19/27 damage."
 			},
 			{
 				"name": "Dagger",
-				"properties": [
-					"agile",
-					"light",
-					"pierce"
-				],
+				"properties": ["agile", "light", "pierce"],
 				"text": "10/17/24 damage."
 			},
 			{
 				"name": "Intoxicating Touch",
-				"properties": [
-					"target: vs. Resist"
-				],
+				"properties": ["target: vs. Resist"],
 				"text": "No damage. The target must roll Spirit + Fortitude vs. TN 12 or be charmed for a short duration. While charmed, the target is also cursed with disadvantage on Wisdom saves and ability checks."
 			}
 		],
@@ -7538,42 +6538,28 @@
 			"Perception (4)",
 			"Survival (4)"
 		],
-		"immunities": [
-			"fire damage",
-			"frightened"
-		],
+		"immunities": ["fire damage", "frightened"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "2 x Claw",
-				"properties": [
-					"light",
-					"slash"
-				],
+				"properties": ["light", "slash"],
 				"text": "13/23/33 damage."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "16/29/42 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained."
 			},
 			{
 				"name": "Tail",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "13/23/33 damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone."
 			},
 			{
 				"name": "Dragon's Breath",
-				"properties": [
-					"recharge (d6)"
-				],
+				"properties": ["recharge (d6)"],
 				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in long range in a cone. On a success, each target suffers 28 fire damage. On a strong or critical success, each target also suffers burning (10)."
 			}
 		],
@@ -7636,27 +6622,18 @@
 			"Influence (4)",
 			"Perception (4)"
 		],
-		"immunities": [
-			"frost damage"
-		],
+		"immunities": ["frost damage"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Greataxe",
-				"properties": [
-					"heavy (d12)",
-					"slash",
-					"two-handed"
-				],
+				"properties": ["heavy (d12)", "slash", "two-handed"],
 				"text": "16/29/42 damage."
 			},
 			{
 				"name": "Ice Boulder",
-				"properties": [
-					"range (very long)",
-					"crush"
-				],
+				"properties": ["range (very long)", "crush"],
 				"text": "15/27/39 frost damage. On a strong or critical hit, the target is slowed until the end of its next turn."
 			}
 		],
@@ -7707,12 +6684,7 @@
 			"Perception (4)",
 			"Influence (4)"
 		],
-		"immunities": [
-			"fire",
-			"poison damage",
-			"poisoned",
-			"charmed"
-		],
+		"immunities": ["fire", "poison damage", "poisoned", "charmed"],
 		"resistances": [
 			"frost damage",
 			"physical damage (from non-magical weapons)"
@@ -7721,23 +6693,17 @@
 		"attacks": [
 			{
 				"name": "Burning Blade",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "14/25/36 fire damage."
 			},
 			{
 				"name": "Claw",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "13/23/33 damage."
 			},
 			{
 				"name": "Hellfire Ray",
-				"properties": [
-					"range (long)"
-				],
+				"properties": ["range (long)"],
 				"text": "15/27/39 fire damage. On a strong or critical hit, the target suffers burning (6)."
 			}
 		],
@@ -7801,11 +6767,7 @@
 			"Perception (4)",
 			"Mysticism (4)"
 		],
-		"immunities": [
-			"charmed",
-			"frightened",
-			"necrotic damage"
-		],
+		"immunities": ["charmed", "frightened", "necrotic damage"],
 		"resistances": [
 			"radiant damage",
 			"physical damage (from non-magical weapons)"
@@ -7814,16 +6776,12 @@
 		"attacks": [
 			{
 				"name": "Divine Blade",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "14/25/36 radiant damage."
 			},
 			{
 				"name": "Smite",
-				"properties": [
-					"range (long)"
-				],
+				"properties": ["range (long)"],
 				"text": "13/23/33 radiant damage. Undead and fiends take an extra 6 damage."
 			}
 		],
@@ -7880,43 +6838,28 @@
 			"Stealth (4)",
 			"Survival (4)"
 		],
-		"immunities": [
-			"fire damage"
-		],
-		"resistances": [
-			"lightning damage"
-		],
+		"immunities": ["fire damage"],
+		"resistances": ["lightning damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "2 x Claw",
-				"properties": [
-					"light",
-					"slash"
-				],
+				"properties": ["light", "slash"],
 				"text": "13/23/33 damage."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "16/29/42 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained."
 			},
 			{
 				"name": "Tail",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "13/23/33 damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone."
 			},
 			{
 				"name": "Sandstorm Breath",
-				"properties": [
-					"recharge (d6)"
-				],
+				"properties": ["recharge (d6)"],
 				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in a line up to long range. On a success, each target suffers 22 damage and is blinded until the end of their next turn. On a strong or critical success, each target is also knocked prone."
 			}
 		],
@@ -7989,17 +6932,12 @@
 			"poisoned",
 			"unconscious"
 		],
-		"resistances": [
-			"necrotic damage"
-		],
+		"resistances": ["necrotic damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Longsword",
-				"properties": [
-					"pierce",
-					"versatile +1"
-				],
+				"properties": ["pierce", "versatile +1"],
 				"text": "15/27/39 damage plus 8 necrotic damage."
 			}
 		],
@@ -8057,21 +6995,14 @@
 		"parry": 14,
 		"dodge": 12,
 		"resist": 14,
-		"skills": [
-			"Arcana (4)",
-			"Insight (4)",
-			"Lore (4)",
-			"Perception (4)"
-		],
+		"skills": ["Arcana (4)", "Insight (4)", "Lore (4)", "Perception (4)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Tentacle",
-				"properties": [
-					"reach"
-				],
+				"properties": ["reach"],
 				"text": "13/23/33 damage. On a hit, the target must roll Spirit + Fortitude vs. TN 13 or become diseased. The diseased creature can breathe only underwater."
 			}
 		],
@@ -8126,31 +7057,23 @@
 			"Stealth (4)",
 			"Survival (4)"
 		],
-		"immunities": [
-			"lightning damage"
-		],
+		"immunities": ["lightning damage"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "15/27/39 damage. On a strong or critical hit and if the target is smaller than this creature, the target is swallowed. While swallowed, the creature is blinded and restrained, has total cover against attacks from outside, and takes 8 acid damage at the start of each of this creature's turns."
 			},
 			{
 				"name": "Constrict",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "14/25/36 damage. On a hit, the target is grappled and restrained."
 			},
 			{
 				"name": "Lightning Breath",
-				"properties": [
-					"recharge (d6)"
-				],
+				"properties": ["recharge (d6)"],
 				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in a line up to medium range. On a success, each target suffers 18 lightning damage."
 			}
 		],
@@ -8196,17 +7119,12 @@
 		"attacks": [
 			{
 				"name": "Morningstar",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "15/27/39 damage."
 			},
 			{
 				"name": "Rock",
-				"properties": [
-					"range (very long)",
-					"crush"
-				],
+				"properties": ["range (very long)", "crush"],
 				"text": "14/25/36 damage."
 			}
 		],
@@ -8252,32 +7170,22 @@
 			"Stealth (4)"
 		],
 		"immunities": [],
-		"resistances": [
-			"poison damage",
-			"necrotic damage"
-		],
+		"resistances": ["poison damage", "necrotic damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "15/27/39 damage plus 6 poison damage. On a strong or critical hit, the target is poisoned for a short duration."
 			},
 			{
 				"name": "Constrict",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "14/25/36 damage. On a hit, a creature up to Large size is grappled and restrained."
 			},
 			{
 				"name": "Tail",
-				"properties": [
-					"reach"
-				],
+				"properties": ["reach"],
 				"text": "13/23/33 damage. On a strong or critical hit, the target is knocked prone."
 			}
 		],
@@ -8324,42 +7232,28 @@
 			"Perception (5)",
 			"Survival (5)"
 		],
-		"immunities": [
-			"fire damage",
-			"frightened"
-		],
+		"immunities": ["fire damage", "frightened"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "2 x Claw",
-				"properties": [
-					"light",
-					"slash"
-				],
+				"properties": ["light", "slash"],
 				"text": "15/27/39 damage."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "18/33/48 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained."
 			},
 			{
 				"name": "Tail",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "15/27/39 damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone."
 			},
 			{
 				"name": "Dragon's Breath",
-				"properties": [
-					"recharge (d6)"
-				],
+				"properties": ["recharge (d6)"],
 				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in long range in a cone. On a success, each target suffers 30 fire damage. On a strong or critical success, each target also suffers burning (10)."
 			}
 		],
@@ -8433,26 +7327,17 @@
 			"poisoned",
 			"unconscious"
 		],
-		"resistances": [
-			"frost",
-			"lightning",
-			"necrotic damage"
-		],
+		"resistances": ["frost", "lightning", "necrotic damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Paralyzing Touch",
-				"properties": [
-					"target: vs. Resist"
-				],
+				"properties": ["target: vs. Resist"],
 				"text": "14/24/34 frost damage. The target must roll Spirit + Fortitude vs. TN 14 or be paralyzed for a short duration."
 			},
 			{
 				"name": "Disintegrate",
-				"properties": [
-					"range (long)",
-					"recharge (d6)"
-				],
+				"properties": ["range (long)", "recharge (d6)"],
 				"text": "20/36/52 force damage. If this damage reduces the target to 0 HP, the target is disintegrated."
 			}
 		],
@@ -8516,28 +7401,18 @@
 			"Insight (5)",
 			"Perception (5)"
 		],
-		"immunities": [
-			"lightning",
-			"blast damage"
-		],
+		"immunities": ["lightning", "blast damage"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Greatsword",
-				"properties": [
-					"heavy (d12)",
-					"slash",
-					"two-handed"
-				],
+				"properties": ["heavy (d12)", "slash", "two-handed"],
 				"text": "18/33/48 damage plus 6 lightning damage."
 			},
 			{
 				"name": "Rock",
-				"properties": [
-					"range (very long)",
-					"crush"
-				],
+				"properties": ["range (very long)", "crush"],
 				"text": "17/31/45 damage."
 			}
 		],
@@ -8593,11 +7468,7 @@
 			"Perception (5)",
 			"Influence (5)"
 		],
-		"immunities": [
-			"fire",
-			"poison damage",
-			"poisoned"
-		],
+		"immunities": ["fire", "poison damage", "poisoned"],
 		"resistances": [
 			"frost damage",
 			"physical damage (from non-magical weapons)"
@@ -8606,30 +7477,22 @@
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "16/29/42 damage. The target must roll Spirit + Fortitude vs. TN 14 or be poisoned for a short duration."
 			},
 			{
 				"name": "Claw",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "14/25/36 damage."
 			},
 			{
 				"name": "Burning Mace",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "16/29/42 damage plus 8 fire damage."
 			},
 			{
 				"name": "Tail",
-				"properties": [
-					"reach"
-				],
+				"properties": ["reach"],
 				"text": "14/25/36 damage."
 			}
 		],
@@ -8677,39 +7540,24 @@
 		"parry": 17,
 		"dodge": 11,
 		"resist": 14,
-		"skills": [
-			"Athletics (5)",
-			"Fighting (5)",
-			"Perception (5)"
-		],
-		"immunities": [
-			"lightning damage",
-			"frightened",
-			"paralyzed"
-		],
+		"skills": ["Athletics (5)", "Fighting (5)", "Perception (5)"],
+		"immunities": ["lightning damage", "frightened", "paralyzed"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Tentacle",
-				"properties": [
-					"reach"
-				],
+				"properties": ["reach"],
 				"text": "15/27/39 damage. On a hit, the target is grappled and restrained. This creature has ten tentacles, each of which can grapple one target."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"crush",
-					"only on grappled targets"
-				],
+				"properties": ["crush", "only on grappled targets"],
 				"text": "18/33/48 damage plus 6 lightning damage."
 			},
 			{
 				"name": "Lightning Storm",
-				"properties": [
-					"recharge (d6)"
-				],
+				"properties": ["recharge (d6)"],
 				"text": "Roll Strength + Fortitude vs. Dodge. Three bolts of lightning strike points this creature can see within long range. Each creature within close range of a bolt must roll. On a failure, the creature takes 16 lightning damage, or half on a success."
 			}
 		],
@@ -8766,31 +7614,19 @@
 		"parry": 14,
 		"dodge": 15,
 		"resist": 14,
-		"skills": [
-			"Fighting (4)",
-			"Fortitude (5)",
-			"Perception (5)"
-		],
-		"immunities": [
-			"fire damage",
-			"burning",
-			"frightened"
-		],
+		"skills": ["Fighting (4)", "Fortitude (5)", "Perception (5)"],
+		"immunities": ["fire damage", "burning", "frightened"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Talons",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "14/25/36 fire damage."
 			},
 			{
 				"name": "Beak",
-				"properties": [
-					"pierce"
-				],
+				"properties": ["pierce"],
 				"text": "15/27/39 fire damage."
 			}
 		],
@@ -8846,42 +7682,28 @@
 			"Perception (5)",
 			"Stealth (5)"
 		],
-		"immunities": [
-			"frost damage",
-			"lightning damage"
-		],
+		"immunities": ["frost damage", "lightning damage"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "2 x Claw",
-				"properties": [
-					"light",
-					"slash"
-				],
+				"properties": ["light", "slash"],
 				"text": "14/25/36 damage."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "17/31/45 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained."
 			},
 			{
 				"name": "Tail",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "14/25/36 damage. On a strong or critical hit, the target is pushed close."
 			},
 			{
 				"name": "Tidal Breath",
-				"properties": [
-					"recharge (d6)"
-				],
+				"properties": ["recharge (d6)"],
 				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in long range in a cone. On a success, each target suffers 24 frost damage and is pushed a short distance. On a strong or critical success, each target is also knocked prone."
 			}
 		],
@@ -8948,43 +7770,28 @@
 			"Perception (5)",
 			"Survival (5)"
 		],
-		"immunities": [
-			"fire damage",
-			"frightened",
-			"charmed"
-		],
+		"immunities": ["fire damage", "frightened", "charmed"],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "2 x Claw",
-				"properties": [
-					"light",
-					"slash"
-				],
+				"properties": ["light", "slash"],
 				"text": "17/31/45 damage."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "20/37/54 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained."
 			},
 			{
 				"name": "Tail",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "17/31/45 damage. On a strong hit, the target is pushed a short distance. On a critical hit, the target is pushed a short distance and falls prone."
 			},
 			{
 				"name": "Dragon's Breath",
-				"properties": [
-					"recharge (d4)"
-				],
+				"properties": ["recharge (d4)"],
 				"text": "Roll Strength + Fortitude vs. Dodge. Target all creatures in very long range in a cone. On a success, each target suffers 36 fire damage. On a strong or critical success, each target also suffers burning (12)."
 			}
 		],
@@ -9066,31 +7873,22 @@
 			"restrained",
 			"unconscious"
 		],
-		"resistances": [
-			"physical damage"
-		],
+		"resistances": ["physical damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Flame Sword",
-				"properties": [
-					"slash"
-				],
+				"properties": ["slash"],
 				"text": "18/33/48 fire damage."
 			},
 			{
 				"name": "Flame Wave",
-				"properties": [
-					"short cone"
-				],
+				"properties": ["short cone"],
 				"text": "16/29/42 fire damage to all creatures in the area. On a strong or critical hit, targets suffer burning (8)."
 			},
 			{
 				"name": "Meteor Strike",
-				"properties": [
-					"range (very long)",
-					"recharge (d6)"
-				],
+				"properties": ["range (very long)", "recharge (d6)"],
 				"text": "A ball of fire crashes down at a point this creature can see. All creatures within close range must roll Agility + Athletics vs. TN 15 or take 24 fire damage and be knocked prone."
 			}
 		],
@@ -9161,25 +7959,17 @@
 			"poisoned",
 			"unconscious"
 		],
-		"resistances": [
-			"frost",
-			"lightning",
-			"necrotic damage"
-		],
+		"resistances": ["frost", "lightning", "necrotic damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Paralyzing Touch",
-				"properties": [
-					"target: vs. Resist"
-				],
+				"properties": ["target: vs. Resist"],
 				"text": "16/29/42 frost damage. The target must roll Spirit + Fortitude vs. TN 15 or be paralyzed for a short duration."
 			},
 			{
 				"name": "Soul Bolt",
-				"properties": [
-					"range (very long)"
-				],
+				"properties": ["range (very long)"],
 				"text": "18/33/48 necrotic damage. On a strong or critical hit, the target's maximum HP is reduced by half the damage dealt."
 			}
 		],
@@ -9236,33 +8026,19 @@
 		"parry": 17,
 		"dodge": 12,
 		"resist": 15,
-		"skills": [
-			"Fighting (5)",
-			"Fortitude (5)",
-			"Perception (5)"
-		],
-		"immunities": [
-			"poison damage",
-			"poisoned",
-			"prone"
-		],
-		"resistances": [
-			"physical damage"
-		],
+		"skills": ["Fighting (5)", "Fortitude (5)", "Perception (5)"],
+		"immunities": ["poison damage", "poisoned", "prone"],
+		"resistances": ["physical damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Slam",
-				"properties": [
-					"reach"
-				],
+				"properties": ["reach"],
 				"text": "18/33/48 damage."
 			},
 			{
 				"name": "Engulf",
-				"properties": [
-					"only when touching"
-				],
+				"properties": ["only when touching"],
 				"text": "The target must roll Agility + Athletics vs. TN 15 or be engulfed. While engulfed, the target is restrained, blinded, and takes 12 damage at the start of each of this creature's turns. This creature can engulf up to three creatures at once."
 			}
 		],
@@ -9318,31 +8094,18 @@
 			"Lore (5)",
 			"Perception (5)"
 		],
-		"immunities": [
-			"frost damage",
-			"frightened"
-		],
-		"resistances": [
-			"fire",
-			"lightning damage"
-		],
+		"immunities": ["frost damage", "frightened"],
+		"resistances": ["fire", "lightning damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Primordial Greataxe",
-				"properties": [
-					"heavy (d12)",
-					"slash",
-					"two-handed"
-				],
+				"properties": ["heavy (d12)", "slash", "two-handed"],
 				"text": "20/37/54 damage plus 10 frost damage."
 			},
 			{
 				"name": "Ice Boulder",
-				"properties": [
-					"range (extreme)",
-					"crush"
-				],
+				"properties": ["range (extreme)", "crush"],
 				"text": "18/33/48 frost damage. On a hit, the area becomes frozen difficult terrain."
 			}
 		],
@@ -9401,36 +8164,23 @@
 			"Perception (5)",
 			"Stealth (5)"
 		],
-		"immunities": [
-			"poison damage",
-			"poisoned",
-			"frightened"
-		],
-		"resistances": [
-			"necrotic damage"
-		],
+		"immunities": ["poison damage", "poisoned", "frightened"],
+		"resistances": ["necrotic damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "19/35/51 damage plus 8 poison damage. On a strong or critical hit, the target is swallowed if it is Huge or smaller. A swallowed creature is blinded and restrained, and takes 15 acid damage at the start of each of this creature's turns."
 			},
 			{
 				"name": "Constrict",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "18/33/48 damage. On a hit, a creature up to Gargantuan size is grappled and restrained."
 			},
 			{
 				"name": "Tail",
-				"properties": [
-					"reach"
-				],
+				"properties": ["reach"],
 				"text": "17/31/45 damage. On a strong or critical hit, the target is knocked prone."
 			}
 		],
@@ -9491,41 +8241,27 @@
 			"paralyzed",
 			"poisoned"
 		],
-		"resistances": [
-			"physical damage (from non-magical weapons)"
-		],
+		"resistances": ["physical damage (from non-magical weapons)"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "22/41/60 damage. On a strong or critical hit, a creature up to Huge size is swallowed. While swallowed, the creature is blinded and restrained, has total cover against attacks from outside the tarrasque, and takes 18 acid damage at the start of each of the tarrasque's turns."
 			},
 			{
 				"name": "Claw",
-				"properties": [
-					"slash",
-					"reach"
-				],
+				"properties": ["slash", "reach"],
 				"text": "18/33/48 damage."
 			},
 			{
 				"name": "Horns",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "18/33/48 damage."
 			},
 			{
 				"name": "Tail",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "18/33/48 damage. On a strong or critical hit, the target is pushed a short distance and knocked prone."
 			}
 		],
@@ -9609,25 +8345,17 @@
 			"frightened",
 			"poisoned"
 		],
-		"resistances": [
-			"physical damage"
-		],
+		"resistances": ["physical damage"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Titan's Fist",
-				"properties": [
-					"crush",
-					"reach"
-				],
+				"properties": ["crush", "reach"],
 				"text": "20/37/54 damage plus 8 elemental damage (choose type when attacking)."
 			},
 			{
 				"name": "Elemental Storm",
-				"properties": [
-					"very long range",
-					"recharge (d6)"
-				],
+				"properties": ["very long range", "recharge (d6)"],
 				"text": "This creature calls down elemental fury on a point it can see. All creatures within medium range must roll Agility + Athletics vs. TN 16 or take 28 elemental damage (fire, frost, or lightning) and be knocked prone."
 			}
 		],
@@ -9689,12 +8417,7 @@
 		"parry": 16,
 		"dodge": 17,
 		"resist": 18,
-		"skills": [
-			"Arcana (5)",
-			"Insight (5)",
-			"Lore (5)",
-			"Perception (5)"
-		],
+		"skills": ["Arcana (5)", "Insight (5)", "Lore (5)", "Perception (5)"],
 		"immunities": [
 			"psychic",
 			"poison damage",
@@ -9704,31 +8427,22 @@
 			"poisoned",
 			"unconscious"
 		],
-		"resistances": [
-			"all damage except force and radiant"
-		],
+		"resistances": ["all damage except force and radiant"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Mind Shatter",
-				"properties": [
-					"range (long)"
-				],
+				"properties": ["range (long)"],
 				"text": "18/33/48 psychic damage. The target must roll Spirit + Fortitude vs. TN 16 or be stunned until the end of their next turn."
 			},
 			{
 				"name": "Reality Tear",
-				"properties": [
-					"line",
-					"long range"
-				],
+				"properties": ["line", "long range"],
 				"text": "All creatures in the line must roll Agility + Athletics vs. TN 16 or take 20 force damage and be teleported to a random location within medium range."
 			},
 			{
 				"name": "Void Grasp",
-				"properties": [
-					"reach"
-				],
+				"properties": ["reach"],
 				"text": "16/29/42 necrotic damage. On a hit, the target's soul is partially drawn out. They have +1 bane on all rolls until they finish a long rest."
 			}
 		],
@@ -9793,28 +8507,18 @@
 			"Insight (5)",
 			"Perception (5)"
 		],
-		"immunities": [
-			"charmed",
-			"frightened",
-			"poisoned"
-		],
-		"resistances": [
-			"physical damage (from non-magical weapons)"
-		],
+		"immunities": ["charmed", "frightened", "poisoned"],
+		"resistances": ["physical damage (from non-magical weapons)"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Divine Weapon",
-				"properties": [
-					"versatile +2"
-				],
+				"properties": ["versatile +2"],
 				"text": "20/37/54 radiant damage."
 			},
 			{
 				"name": "Smite",
-				"properties": [
-					"range (long)"
-				],
+				"properties": ["range (long)"],
 				"text": "18/33/48 radiant damage. On a strong or critical hit, the target is blinded until the end of their next turn."
 			}
 		],
@@ -9897,17 +8601,12 @@
 		"attacks": [
 			{
 				"name": "Soul Drain",
-				"properties": [
-					"target: vs. Resist"
-				],
+				"properties": ["target: vs. Resist"],
 				"text": "18/33/48 necrotic damage. The target's maximum HP is reduced by the damage dealt until they finish a long rest. If this reduces their max HP to 0, they die and their soul is absorbed."
 			},
 			{
 				"name": "Annihilation Ray",
-				"properties": [
-					"range (very long)",
-					"recharge (d4)"
-				],
+				"properties": ["range (very long)", "recharge (d4)"],
 				"text": "24/44/64 force damage. If this damage reduces the target to 0 HP, the target is disintegrated and cannot be restored except by true resurrection or wish."
 			}
 		],

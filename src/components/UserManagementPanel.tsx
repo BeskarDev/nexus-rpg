@@ -165,7 +165,8 @@ const PasswordResetDialog: React.FC<PasswordResetDialogProps> = ({
 					{userEmail}
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
-					A password reset link will be generated that you can send to the user manually.
+					A password reset link will be generated that you can send to the user
+					manually.
 				</Typography>
 			</DialogContent>
 			<DialogActions>
@@ -648,18 +649,18 @@ export const UserManagementPanel: React.FC = () => {
 																	<VerifiedUserIcon />
 																</IconButton>
 															</Tooltip>
-													)}
-													<Tooltip title="Generate password reset link for this user">
-														<IconButton
-															size="small"
-															onClick={() => {
-																setSelectedUser(user)
-																setResetDialogOpen(true)
-															}}
-														>
-															<LockResetIcon />
-														</IconButton>
-													</Tooltip>
+														)}
+														<Tooltip title="Generate password reset link for this user">
+															<IconButton
+																size="small"
+																onClick={() => {
+																	setSelectedUser(user)
+																	setResetDialogOpen(true)
+																}}
+															>
+																<LockResetIcon />
+															</IconButton>
+														</Tooltip>
 														<Tooltip title="Delete this user permanently">
 															<IconButton
 																size="small"

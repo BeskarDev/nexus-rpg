@@ -101,7 +101,9 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Wait for state update
 			await waitFor(() => {
-				expect(screen.getByText(/1 Combat Art will be printed/i)).toBeInTheDocument()
+				expect(
+					screen.getByText(/1 Combat Art will be printed/i),
+				).toBeInTheDocument()
 			})
 
 			// Second character with the same Power Attack
@@ -148,7 +150,9 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Wait for character's ability to be added
 			await waitFor(() => {
-				expect(screen.getByText(/1 Combat Art will be printed/i)).toBeInTheDocument()
+				expect(
+					screen.getByText(/1 Combat Art will be printed/i),
+				).toBeInTheDocument()
 			})
 
 			// Now also manually select Power Attack from the dropdown
@@ -161,9 +165,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 		it('should allow duplicate spell cards when importing multiple characters with the same spell', async () => {
 			render(<Spells />)
 
-			const textarea = screen.getByPlaceholderText(
-				/paste character json here/i,
-			)
+			const textarea = screen.getByPlaceholderText(/paste character json here/i)
 
 			// First character with Heal spell
 			const character1Json = JSON.stringify({
@@ -212,9 +214,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 		it('should handle multiple characters with overlapping spell lists', async () => {
 			render(<Spells />)
 
-			const textarea = screen.getByPlaceholderText(
-				/paste character json here/i,
-			)
+			const textarea = screen.getByPlaceholderText(/paste character json here/i)
 
 			// Character with both Heal and Fireball
 			const character1Json = JSON.stringify({
@@ -232,7 +232,9 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Wait for both spells to be added
 			await waitFor(() => {
-				expect(screen.getByText(/2 Spells will be printed/i)).toBeInTheDocument()
+				expect(
+					screen.getByText(/2 Spells will be printed/i),
+				).toBeInTheDocument()
 			})
 
 			// Second character with only Heal (overlapping)
@@ -248,7 +250,9 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Should have 3 cards total: Heal (from char1), Fireball (from char1), Heal (from char2)
 			await waitFor(() => {
-				expect(screen.getByText(/3 Spells will be printed/i)).toBeInTheDocument()
+				expect(
+					screen.getByText(/3 Spells will be printed/i),
+				).toBeInTheDocument()
 			})
 		})
 	})
@@ -271,7 +275,9 @@ describe('Duplicate Cards for Multiple Characters', () => {
 			await userEvent.paste(characterJson)
 
 			await waitFor(() => {
-				expect(screen.getByText(/1 Combat Art will be printed/i)).toBeInTheDocument()
+				expect(
+					screen.getByText(/1 Combat Art will be printed/i),
+				).toBeInTheDocument()
 			})
 
 			// Click deselect all
@@ -280,7 +286,9 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Should clear everything
 			await waitFor(() => {
-				expect(screen.getByText(/0 Combat Arts will be printed/i)).toBeInTheDocument()
+				expect(
+					screen.getByText(/0 Combat Arts will be printed/i),
+				).toBeInTheDocument()
 			})
 		})
 	})

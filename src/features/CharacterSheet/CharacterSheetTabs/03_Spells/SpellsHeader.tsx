@@ -50,7 +50,8 @@ export const SpellsHeader: React.FC<SpellsHeaderProps> = ({
 				is text, not a disabled field. */}
 			<MetaBandValue>{magicSkill || '—'}</MetaBandValue>
 			<RuleInfo label="About your magic skill">
-				Your caster tradition, taken from whichever magic skill you have ranks in:
+				Your caster tradition, taken from whichever magic skill you have ranks
+				in:
 				<b> Arcana</b> for arcane spells, <b>Mysticism</b> for mystic ones.
 			</RuleInfo>
 		</MetaBandField>
@@ -88,8 +89,9 @@ export const SpellsHeader: React.FC<SpellsHeaderProps> = ({
 				sx={{ ...metaBandInputSx, width: '3.5rem' }}
 			/>
 			<RuleInfo label="About the spell catalyst">
-				Bonus damage your catalyst adds per success level — counted once at weak,
-				twice at strong and three times at critical, the same way a weapon die is.
+				Bonus damage your catalyst adds per success level — counted once at
+				weak, twice at strong and three times at critical, the same way a weapon
+				die is.
 			</RuleInfo>
 		</MetaBandField>
 

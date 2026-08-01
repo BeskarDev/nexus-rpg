@@ -15,7 +15,9 @@ describe('ListSectionHeader', () => {
 		expect(screen.getByText('Worn')).toBeVisible()
 		expect(screen.getByText('4')).toBeVisible()
 		// The rule is decorative: present in the DOM, hidden from the a11y tree.
-		expect(container.querySelectorAll('[aria-hidden="true"]').length).toBeGreaterThan(0)
+		expect(
+			container.querySelectorAll('[aria-hidden="true"]').length,
+		).toBeGreaterThan(0)
 	})
 
 	it('omits the count when the group does not supply one', () => {
@@ -57,9 +59,10 @@ describe('ListSection', () => {
 		expect(toggle).toHaveAttribute('aria-expanded', 'true')
 
 		await userEvent.click(toggle)
-		expect(
-			screen.getByRole('button', { name: 'Expand Worn' }),
-		).toHaveAttribute('aria-expanded', 'false')
+		expect(screen.getByRole('button', { name: 'Expand Worn' })).toHaveAttribute(
+			'aria-expanded',
+			'false',
+		)
 		// `unmountOnExit` drops the rows once the collapse transition finishes.
 		await waitForElementToBeRemoved(() => screen.queryByText('Bronze Spear'))
 	})

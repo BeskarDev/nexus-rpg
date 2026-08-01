@@ -266,7 +266,9 @@ describe('PasswordResetDialog', () => {
 		await user.click(resetIcons[0])
 
 		await waitFor(() => {
-			expect(screen.getByText('Generate Password Reset Link')).toBeInTheDocument()
+			expect(
+				screen.getByText('Generate Password Reset Link'),
+			).toBeInTheDocument()
 			// Email appears in both table and dialog, so we check for the dialog text
 			expect(
 				screen.getByText(/generate a password reset link for:/i),

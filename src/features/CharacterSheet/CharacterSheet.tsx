@@ -91,16 +91,18 @@ export const CharacterSheet: React.FC = () => {
 							const StatisticsTabComponent = mobileTabsConfig.find(
 								(tab) => tab.label === 'Statistics',
 							)?.component
-							return StatisticsTabComponent ? (
-								<StatisticsTabComponent />
-							) : null
+							return StatisticsTabComponent ? <StatisticsTabComponent /> : null
 						})()}
 					</Box>
 					<Box
 						sx={{
 							flex: 1,
 							minWidth: 0,
-							maxWidth: { md: 'var(--cs-max-width-sm)', lg: 'var(--cs-max-width-md)', xl: 'var(--cs-max-width-xl)' },
+							maxWidth: {
+								md: 'var(--cs-max-width-sm)',
+								lg: 'var(--cs-max-width-md)',
+								xl: 'var(--cs-max-width-xl)',
+							},
 						}}
 					>
 						{/* The bar owns its own overflow now — the wrapper that used to add

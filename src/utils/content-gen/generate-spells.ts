@@ -83,9 +83,18 @@ function renderSpell(spell: SpellRecord): string {
 		(properties ? ` properties=${attr(properties)}` : '') +
 		'>'
 
-	const parts = [openTag, '', `### ${spell.name}`, '', renderNodes(parsed.nodes)]
+	const parts = [
+		openTag,
+		'',
+		`### ${spell.name}`,
+		'',
+		renderNodes(parsed.nodes),
+	]
 	if (heightened) {
-		const hMd = htmlToMarkdownBlocks(spell.heightened, `${spell.name} (heightened)`)
+		const hMd = htmlToMarkdownBlocks(
+			spell.heightened,
+			`${spell.name} (heightened)`,
+		)
 			// A leading "(Rank N)" label becomes a rank cartouche chip.
 			.split('\n\n')
 			.map((line) =>
@@ -101,7 +110,11 @@ function renderSpell(spell: SpellRecord): string {
 	return parts.join('\n')
 }
 
-function renderPage(category: string, spells: SpellRecord[], sidebarPos: number | null): string {
+function renderPage(
+	category: string,
+	spells: SpellRecord[],
+	sidebarPos: number | null,
+): string {
 	const byRank = new Map<number, SpellRecord[]>()
 	for (const s of spells) {
 		const r = Number(s.rank)
@@ -137,7 +150,9 @@ function legacyMdFile(docDir: string, category: string): string {
 function main() {
 	const args = process.argv.slice(2)
 	const check = args.includes('--check')
-	const filters = args.filter((a) => !a.startsWith('--')).map((a) => a.toLowerCase())
+	const filters = args
+		.filter((a) => !a.startsWith('--'))
+		.map((a) => a.toLowerCase())
 
 	let written = 0
 	let stale = 0
@@ -149,7 +164,8 @@ function main() {
 		entries.forEach((raw, i) => {
 			const rec = validateSpellRecord(raw, `${src.json}[${i}]`)
 			const cat = (rec[src.catKey] ?? '').toString()
-			if (!cat) throw new Error(`${src.json}[${i}] (${rec.name}) has no ${src.catKey}`)
+			if (!cat)
+				throw new Error(`${src.json}[${i}] (${rec.name}) has no ${src.catKey}`)
 			if (!byCat.has(cat)) byCat.set(cat, [])
 			byCat.get(cat)!.push(rec)
 		})
@@ -177,7 +193,9 @@ function main() {
 			// Retire the hand-written .md once the .mdx is generated.
 			if (fs.existsSync(legacy)) fs.rmSync(legacy)
 			written++
-			console.log(`wrote ${path.relative(REPO, outFile)} (${spells.length} spells)`)
+			console.log(
+				`wrote ${path.relative(REPO, outFile)} (${spells.length} spells)`,
+			)
 		}
 	}
 

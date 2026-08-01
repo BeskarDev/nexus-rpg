@@ -12,7 +12,9 @@ describe('FieldText', () => {
 		// These inputs had NO accessible name before S11 — CardHeader is a visual
 		// label, not an associated one, so each announced as a bare text box.
 		inField(<FieldText value="" onChange={vi.fn()} />)
-		expect(screen.getByRole('textbox', { name: 'Motivation' })).toBeInTheDocument()
+		expect(
+			screen.getByRole('textbox', { name: 'Motivation' }),
+		).toBeInTheDocument()
 	})
 
 	it('derives the placeholder from the label', () => {
@@ -49,7 +51,9 @@ describe('FieldText', () => {
 			/>,
 			'Folk',
 		)
-		await userEvent.click(screen.getByRole('button', { name: 'Select folk from list' }))
+		await userEvent.click(
+			screen.getByRole('button', { name: 'Select folk from list' }),
+		)
 		expect(onPick).toHaveBeenCalledTimes(1)
 		expect(screen.getByRole('textbox', { name: 'Folk' })).toHaveValue('Akashic')
 	})

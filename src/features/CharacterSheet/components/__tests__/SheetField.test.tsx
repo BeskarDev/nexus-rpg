@@ -13,12 +13,20 @@ describe('SheetField', () => {
 
 	it('is not a trigger when it has no editor and no open handler', () => {
 		render(<SheetField label="Parry" value={8} />)
-		expect(screen.queryByRole('button', { name: /edit/i })).not.toBeInTheDocument()
+		expect(
+			screen.queryByRole('button', { name: /edit/i }),
+		).not.toBeInTheDocument()
 	})
 
 	describe('editor ownership', () => {
 		it('opens its own popover on activation, with no anchor state at the call site', async () => {
-			render(<SheetField label="Parry" value={8} editor={<div>Parry Calculator</div>} />)
+			render(
+				<SheetField
+					label="Parry"
+					value={8}
+					editor={<div>Parry Calculator</div>}
+				/>,
+			)
 			expect(screen.queryByText('Parry Calculator')).not.toBeInTheDocument()
 
 			await userEvent.click(screen.getByRole('button', { name: 'Edit Parry' }))
@@ -47,7 +55,13 @@ describe('SheetField', () => {
 		})
 
 		it('opens on Enter as well as click', async () => {
-			render(<SheetField label="Parry" value={8} editor={<div>Parry Calculator</div>} />)
+			render(
+				<SheetField
+					label="Parry"
+					value={8}
+					editor={<div>Parry Calculator</div>}
+				/>,
+			)
 			screen.getByRole('button', { name: 'Edit Parry' }).focus()
 			await userEvent.keyboard('{Enter}')
 			expect(screen.getByText('Parry Calculator')).toBeInTheDocument()
@@ -67,7 +81,9 @@ describe('SheetField', () => {
 			await userEvent.click(screen.getByRole('button', { name: 'Done' }))
 
 			expect(onEditClose).toHaveBeenCalledTimes(1)
-			expect(screen.queryByRole('button', { name: 'Done' })).not.toBeInTheDocument()
+			expect(
+				screen.queryByRole('button', { name: 'Done' }),
+			).not.toBeInTheDocument()
 		})
 	})
 
@@ -86,7 +102,12 @@ describe('SheetField', () => {
 		it('runs before the editor opens when both are given', async () => {
 			const onEditOpen = vi.fn()
 			render(
-				<SheetField label="Dodge" value={10} onEditOpen={onEditOpen} editor={<div>Dodge Calculator</div>} />,
+				<SheetField
+					label="Dodge"
+					value={10}
+					onEditOpen={onEditOpen}
+					editor={<div>Dodge Calculator</div>}
+				/>,
 			)
 			await userEvent.click(screen.getByRole('button', { name: 'Edit Dodge' }))
 			expect(onEditOpen).toHaveBeenCalledTimes(1)
@@ -100,21 +121,32 @@ describe('SheetField', () => {
 		// `label` makes that unreachable by forgetting a prop.
 		it('derives the edit name from the label', () => {
 			render(<SheetField label="Focus" value={3} editor={<div>x</div>} />)
-			expect(screen.getByRole('button', { name: 'Edit Focus' })).toBeInTheDocument()
+			expect(
+				screen.getByRole('button', { name: 'Edit Focus' }),
+			).toBeInTheDocument()
 		})
 
 		it('lets an explicit editLabel win', () => {
 			render(
-				<SheetField label="STR" value={6} editLabel="Change Strength die" editor={<div>x</div>} />,
+				<SheetField
+					label="STR"
+					value={6}
+					editLabel="Change Strength die"
+					editor={<div>x</div>}
+				/>,
 			)
-			expect(screen.getByRole('button', { name: 'Change Strength die' })).toBeInTheDocument()
+			expect(
+				screen.getByRole('button', { name: 'Change Strength die' }),
+			).toBeInTheDocument()
 		})
 
 		it('derives the gloss name from the label', () => {
 			// `role="note"`, not `button` — RuleInfo opens nothing and changes
 			// nothing, so it deliberately stays out of the tab order.
 			render(<SheetField label="Parry" value={8} info="7 + Fighting" />)
-			expect(screen.getByRole('note', { name: 'About Parry' })).toBeInTheDocument()
+			expect(
+				screen.getByRole('note', { name: 'About Parry' }),
+			).toBeInTheDocument()
 		})
 
 		it('adds no gloss mark when there is no info', () => {
@@ -130,7 +162,15 @@ describe('SheetField', () => {
 		})
 
 		it('lets an explicit width override the named size', () => {
-			render(<SheetField label="Resolve" value={2} size="sm" minWidth="9rem" data-testid="f" />)
+			render(
+				<SheetField
+					label="Resolve"
+					value={2}
+					size="sm"
+					minWidth="9rem"
+					data-testid="f"
+				/>,
+			)
 			expect(screen.getByTestId('f')).toHaveStyle({ minWidth: '9rem' })
 		})
 	})

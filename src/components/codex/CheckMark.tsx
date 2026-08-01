@@ -85,12 +85,16 @@ const svgProps = (size: number, className?: string) => ({
 })
 
 /** The empty socket. */
-export const CheckMarkEmpty: React.FC<CheckMarkProps> = ({ size = 18, className }) => (
-	<svg {...svgProps(size, className)}>{frame(0.55)}</svg>
-)
+export const CheckMarkEmpty: React.FC<CheckMarkProps> = ({
+	size = 18,
+	className,
+}) => <svg {...svgProps(size, className)}>{frame(0.55)}</svg>
 
 /** The socket with its lozenge set in. */
-export const CheckMarkChecked: React.FC<CheckMarkProps> = ({ size = 18, className }) => (
+export const CheckMarkChecked: React.FC<CheckMarkProps> = ({
+	size = 18,
+	className,
+}) => (
 	<svg {...svgProps(size, className)}>
 		<rect {...SOCKET} fill="currentColor" opacity={0.14} />
 		{frame(1)}

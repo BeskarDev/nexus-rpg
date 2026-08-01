@@ -29,11 +29,12 @@ const setup = () => {
 		payload: createCharacterDocument(),
 	})
 
-	const view = () => store.getState().characterSheet.activeCharacter!.statistics.statusEffects
+	const view = () =>
+		store.getState().characterSheet.activeCharacter!.statistics.statusEffects
 
 	const Harness = () => {
-		const effects = store.getState().characterSheet.activeCharacter!.statistics
-			.statusEffects
+		const effects =
+			store.getState().characterSheet.activeCharacter!.statistics.statusEffects
 		return <StatusEffects statusEffects={effects} />
 	}
 
@@ -191,7 +192,9 @@ describe('StatusEffects', () => {
 		it('offers a target to tap when no duration is set', async () => {
 			const { refresh } = setup()
 			await openAddMenu()
-			await userEvent.click(screen.getByRole('button', { name: 'Duration Briefly' }))
+			await userEvent.click(
+				screen.getByRole('button', { name: 'Duration Briefly' }),
+			)
 			await userEvent.click(screen.getByRole('button', { name: /^Prone/ }))
 			refresh()
 
@@ -294,7 +297,9 @@ describe('StatusEffects', () => {
 				await afflict(refresh, /^Burning/)
 				await openIntensityEditor('Burning')
 
-				const field = screen.getByRole('spinbutton', { name: 'Burning intensity' })
+				const field = screen.getByRole('spinbutton', {
+					name: 'Burning intensity',
+				})
 				await userEvent.clear(field)
 				await userEvent.type(field, '12')
 				await userEvent.tab()
@@ -344,7 +349,9 @@ describe('StatusEffects', () => {
 				await afflict(refresh, /^Burning/)
 				await openIntensityEditor('Burning')
 
-				const field = screen.getByRole('spinbutton', { name: 'Burning intensity' })
+				const field = screen.getByRole('spinbutton', {
+					name: 'Burning intensity',
+				})
 				await userEvent.clear(field)
 				await userEvent.tab()
 				refresh()
@@ -400,7 +407,10 @@ describe('StatusEffects', () => {
 	describe('sigil coverage', () => {
 		it('maps every status condition to a mark that exists', () => {
 			for (const type of statusEffectTypeArray) {
-				expect(CONDITION_SIGIL[type], `no sigil mapped for "${type}"`).toBeDefined()
+				expect(
+					CONDITION_SIGIL[type],
+					`no sigil mapped for "${type}"`,
+				).toBeDefined()
 				expect(
 					SIGIL_INNER[CONDITION_SIGIL[type]],
 					`"${type}" maps to "${CONDITION_SIGIL[type]}", which is not a mark`,
@@ -410,7 +420,9 @@ describe('StatusEffects', () => {
 
 		it('maps no condition that the sheet cannot afflict', () => {
 			const known = new Set<string>(statusEffectTypeArray)
-			expect(Object.keys(CONDITION_SIGIL).filter((k) => !known.has(k))).toEqual([])
+			expect(Object.keys(CONDITION_SIGIL).filter((k) => !known.has(k))).toEqual(
+				[],
+			)
 		})
 	})
 
@@ -437,9 +449,9 @@ describe('StatusEffects', () => {
 
 		it('cannot afflict a condition the rules do not have', () => {
 			const known = new Set(canonical)
-			expect(
-				statusEffectTypeArray.filter((name) => !known.has(name)),
-			).toEqual([])
+			expect(statusEffectTypeArray.filter((name) => !known.has(name))).toEqual(
+				[],
+			)
 		})
 	})
 })

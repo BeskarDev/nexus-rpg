@@ -8,8 +8,14 @@ import { AvCard } from '../AvCard'
 import { DodgeCard } from '../DodgeCard'
 import { ParryCard } from '../ParryCard'
 import { ResistCard } from '../ResistCard'
-import { createBasicCharacter, createCharacterDocument } from '../../../../../../tests/utils/character-test-fixtures'
-import { createInitialState, createTestStore } from '../../../../../../tests/utils/character-test-helpers'
+import {
+	createBasicCharacter,
+	createCharacterDocument,
+} from '../../../../../../tests/utils/character-test-fixtures'
+import {
+	createInitialState,
+	createTestStore,
+} from '../../../../../../tests/utils/character-test-helpers'
 
 /**
  * The stat-card behaviour contract (M9 S11, after owner review).
@@ -27,7 +33,10 @@ import { createInitialState, createTestStore } from '../../../../../../tests/uti
  * These are pinned per card rather than asserted once, because the bugs were
  * per-card and a shared helper would have hidden which one regressed.
  */
-const withStore = (ui: React.ReactNode, character = createCharacterDocument(createBasicCharacter())) => {
+const withStore = (
+	ui: React.ReactNode,
+	character = createCharacterDocument(createBasicCharacter()),
+) => {
 	const store = createTestStore({
 		characterSheet: createInitialState({ activeCharacter: character }),
 	})
@@ -75,24 +84,40 @@ describe('stat card behaviour is uniform', () => {
 
 		it('opens its die chooser on the first activation', async () => {
 			renderAttribute()
-			await userEvent.click(screen.getByRole('button', { name: 'Change Strength die' }))
-			expect(await screen.findByRole('menuitem', { name: /d12/ })).toBeInTheDocument()
+			await userEvent.click(
+				screen.getByRole('button', { name: 'Change Strength die' }),
+			)
+			expect(
+				await screen.findByRole('menuitem', { name: /d12/ }),
+			).toBeInTheDocument()
 		})
 
 		it('closes again on Escape, like every other stat card', async () => {
 			renderAttribute()
-			await userEvent.click(screen.getByRole('button', { name: 'Change Strength die' }))
-			expect(await screen.findByRole('menuitem', { name: /d12/ })).toBeInTheDocument()
+			await userEvent.click(
+				screen.getByRole('button', { name: 'Change Strength die' }),
+			)
+			expect(
+				await screen.findByRole('menuitem', { name: /d12/ }),
+			).toBeInTheDocument()
 
 			await userEvent.keyboard('{Escape}')
-			expect(screen.queryByRole('menuitem', { name: /d12/ })).not.toBeInTheDocument()
+			expect(
+				screen.queryByRole('menuitem', { name: /d12/ }),
+			).not.toBeInTheDocument()
 		})
 
 		it('closes after picking a die', async () => {
 			renderAttribute()
-			await userEvent.click(screen.getByRole('button', { name: 'Change Strength die' }))
-			await userEvent.click(await screen.findByRole('menuitem', { name: /d10/ }))
-			expect(screen.queryByRole('menuitem', { name: /d10/ })).not.toBeInTheDocument()
+			await userEvent.click(
+				screen.getByRole('button', { name: 'Change Strength die' }),
+			)
+			await userEvent.click(
+				await screen.findByRole('menuitem', { name: /d10/ }),
+			)
+			expect(
+				screen.queryByRole('menuitem', { name: /d10/ }),
+			).not.toBeInTheDocument()
 		})
 	})
 })

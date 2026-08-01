@@ -19,7 +19,8 @@ describe('the drawn checkbox is the app default', () => {
 		defaultProps?: Record<string, unknown>
 		styleOverrides?: { root?: Record<string, unknown> }
 	}
-	const checkbox = theme.components?.MuiCheckbox as CheckboxOverrides | undefined
+	const checkbox = theme.components?.MuiCheckbox as
+		CheckboxOverrides | undefined
 
 	it.each(['icon', 'checkedIcon', 'indeterminateIcon'])(
 		'wires %s to a drawn mark',
@@ -40,9 +41,12 @@ describe('the drawn checkbox is the app default', () => {
 		// The mark draws in `currentColor` and a menu row's colour is the reading ink,
 		// so this rule is what makes a SET inlay bronze. It replaced an `sx` at the
 		// call site — the last piece of the category menu's styling in feature code.
-		const menuItem = theme.components?.MuiMenuItem as CheckboxOverrides | undefined
+		const menuItem = theme.components?.MuiMenuItem as
+			CheckboxOverrides | undefined
 		expect(
-			menuItem?.styleOverrides?.root?.[`&[aria-checked="true"] .${CHECK_MARK_CLASS}`],
+			menuItem?.styleOverrides?.root?.[
+				`&[aria-checked="true"] .${CHECK_MARK_CLASS}`
+			],
 		).toBeTruthy()
 	})
 })

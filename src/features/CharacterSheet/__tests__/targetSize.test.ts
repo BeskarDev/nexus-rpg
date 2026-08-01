@@ -87,7 +87,9 @@ describe('type comes from the scale, not from literals', () => {
 	it('has no hardcoded sub-body rem font sizes left in the sheet', () => {
 		const files: string[] = []
 		const walk = (dir: string) => {
-			for (const e of readdirSync(join(repoRoot, dir), { withFileTypes: true })) {
+			for (const e of readdirSync(join(repoRoot, dir), {
+				withFileTypes: true,
+			})) {
 				if (e.isDirectory()) walk(join(dir, e.name))
 				else if (e.name.endsWith('.tsx')) files.push(join(dir, e.name))
 			}

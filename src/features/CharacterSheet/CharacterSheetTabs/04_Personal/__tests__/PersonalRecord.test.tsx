@@ -11,7 +11,9 @@ import { PersonalRecord } from '../PersonalRecord'
  * `onChange`, blurring calls `onBlur` — is asserted once against the row renderer. The
  * picker case is new: it is the one row variant that carries a second control.
  */
-const field = (overrides: Partial<Parameters<typeof PersonalRecord>[0]['fields'][0]> = {}) => ({
+const field = (
+	overrides: Partial<Parameters<typeof PersonalRecord>[0]['fields'][0]> = {},
+) => ({
 	label: 'Name',
 	sigil: 'name' as const,
 	value: 'Test Character',

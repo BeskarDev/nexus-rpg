@@ -198,8 +198,32 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 
 	/** Two khopeshes crossed over a grip band — the combat mark. */
 	blades:
-		path(ribbonD([[7, 27], [12, 20], [17.5, 12.5], [22, 8], [26.5, 7.5]], 5.6, 3.4)) +
-		path(ribbonD([[25, 27], [20, 20], [14.5, 12.5], [10, 8], [5.5, 7.5]], 5.6, 3.4)) +
+		path(
+			ribbonD(
+				[
+					[7, 27],
+					[12, 20],
+					[17.5, 12.5],
+					[22, 8],
+					[26.5, 7.5],
+				],
+				5.6,
+				3.4,
+			),
+		) +
+		path(
+			ribbonD(
+				[
+					[25, 27],
+					[20, 20],
+					[14.5, 12.5],
+					[10, 8],
+					[5.5, 7.5],
+				],
+				5.6,
+				3.4,
+			),
+		) +
 		path(boxD(9.5, 21.5, 22.5, 25)),
 
 	/** Sandglass: two vessels through a throat, capped top and bottom. */
@@ -246,7 +270,13 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 				7.5,
 			),
 		) +
-		path(polyD([[17, 3], [28, 7], [17, 10.5]])),
+		path(
+			polyD([
+				[17, 3],
+				[28, 7],
+				[17, 10.5],
+			]),
+		),
 
 	/** Bronze key: lozenge bow, shaft, two wards. */
 	key:
@@ -256,7 +286,13 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 				[24.5, 10],
 				[16, 18],
 				[7.5, 10],
-			]) + polyD([[16, 7], [19, 10], [16, 13], [13, 10]]),
+			]) +
+				polyD([
+					[16, 7],
+					[19, 10],
+					[16, 13],
+					[13, 10],
+				]),
 			true,
 		) +
 		path(boxD(13, 14, 19, 29.5)) +
@@ -286,7 +322,13 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	/** Reed stylus poised over the wedge it has just impressed. */
 	stylus:
 		path(barD([25.5, 6], [13, 18.5], 10, 4.5)) +
-		path(polyD([[11, 16.5], [17, 20.5], [6.5, 25.5]])) +
+		path(
+			polyD([
+				[11, 16.5],
+				[17, 20.5],
+				[6.5, 25.5],
+			]),
+		) +
 		path(wedgeD(29.5, 18.5, 9, 5.5, 180)) +
 		path(wedgeD(29.5, 26.5, 9, 5.5, 180)),
 
@@ -313,8 +355,20 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 		path(boxD(4, 7.5, 28, 10.5)) +
 		path(boxD(14.6, 7.5, 17.4, 26)) +
 		path(boxD(8.5, 26, 23.5, 29.5)) +
-		path(polyD([[2.5, 14], [12.5, 14], [7.5, 21]])) +
-		path(polyD([[19.5, 14], [29.5, 14], [24.5, 21]])),
+		path(
+			polyD([
+				[2.5, 14],
+				[12.5, 14],
+				[7.5, 21],
+			]),
+		) +
+		path(
+			polyD([
+				[19.5, 14],
+				[29.5, 14],
+				[24.5, 21],
+			]),
+		),
 
 	// --- 02 Adventurers ---
 
@@ -344,8 +398,13 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 
 	/** House and hearth: gabled roof over a doorway — where a character is from. */
 	hearth:
-		path(polyD([[16, 3], [30, 14], [2, 14]])) +
-		path(boxD(6, 14, 26, 29.5) + boxD(12, 17.5, 20, 29.5), true),
+		path(
+			polyD([
+				[16, 3],
+				[30, 14],
+				[2, 14],
+			]),
+		) + path(boxD(6, 14, 26, 29.5) + boxD(12, 17.5, 20, 29.5), true),
 
 	/** Round-topped stele carrying a two-band inscription — a character's past. */
 	stele: path(
@@ -390,8 +449,30 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 
 	/** Bull's head with swept horns — raw attributes. */
 	'bull-head':
-		path(ribbonD([[4, 12], [5, 6.5], [10, 4.5], [14, 9]], 3.8, 3.4)) +
-		path(ribbonD([[28, 12], [27, 6.5], [22, 4.5], [18, 9]], 3.8, 3.4)) +
+		path(
+			ribbonD(
+				[
+					[4, 12],
+					[5, 6.5],
+					[10, 4.5],
+					[14, 9],
+				],
+				3.8,
+				3.4,
+			),
+		) +
+		path(
+			ribbonD(
+				[
+					[28, 12],
+					[27, 6.5],
+					[22, 4.5],
+					[18, 9],
+				],
+				3.8,
+				3.4,
+			),
+		) +
 		path(
 			polyD([
 				[9, 9],
@@ -460,7 +541,13 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 			[8, 22.5],
 			[8.5, 14.5],
 			[12, 9.5],
-		]) + polyD([[16, 15], [20, 21], [16, 25.5], [12, 21]]),
+		]) +
+			polyD([
+				[16, 15],
+				[20, 21],
+				[16, 25.5],
+				[12, 21],
+			]),
 		true,
 	),
 
@@ -480,7 +567,17 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 		path(boxD(12.1, 5.5, 15.2, 18)) +
 		path(boxD(16.7, 6.5, 19.8, 18)) +
 		path(boxD(21.3, 10.5, 24.4, 18)) +
-		path(ribbonD([[9.5, 23.5], [5.5, 22], [2.5, 18.5]], 4.2, 3.4)),
+		path(
+			ribbonD(
+				[
+					[9.5, 23.5],
+					[5.5, 22],
+					[2.5, 18.5],
+				],
+				4.2,
+				3.4,
+			),
+		),
 
 	/** A sprig putting out leaves — talents, grown deliberately. */
 	sprig:
@@ -488,7 +585,13 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 		path(leafD([17.6, 15.5], [4.5, 12], 6.4)) +
 		path(leafD([14.4, 20], [27.5, 16.5], 6.4)) +
 		path(leafD([17.6, 25], [5.5, 22], 6)) +
-		path(polyD([[16, 2], [19.5, 8], [12.5, 8]])),
+		path(
+			polyD([
+				[16, 2],
+				[19.5, 8],
+				[12.5, 8],
+			]),
+		),
 
 	// --- 04 Equipment ---
 
@@ -503,7 +606,14 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 			]),
 		) +
 		path(boxD(7.5, 15, 24.5, 19)) +
-		path(polyD([[11.5, 10], [11.5, 4.5], [20.5, 4.5], [20.5, 10]])),
+		path(
+			polyD([
+				[11.5, 10],
+				[11.5, 4.5],
+				[20.5, 4.5],
+				[20.5, 10],
+			]),
+		),
 
 	/** Straight blade, point up, over guard and pommel — weapons. */
 	sword:
@@ -564,8 +674,7 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 				4.6,
 				4.6,
 			),
-		) +
-		path(boxD(15.5, 4.5, 18.5, 27.5)),
+		) + path(boxD(15.5, 4.5, 18.5, 27.5)),
 
 	/** Cut gem, table and crown — magic items. */
 	gem: path(
@@ -576,7 +685,11 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 			[16, 28.5],
 			[3.5, 13],
 		]) +
-			polyD([[12, 11], [20, 11], [16, 17]]),
+			polyD([
+				[12, 11],
+				[20, 11],
+				[16, 17],
+			]),
 		true,
 	),
 
@@ -623,9 +736,32 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 
 	/** Two fangs and the drop falling from them — conditions and afflictions. */
 	'venom-fang':
-		path(polyD([[4.5, 3.5], [14.5, 3.5], [13, 14], [9.5, 21.5], [6, 14]])) +
-		path(polyD([[17.5, 3.5], [27.5, 3.5], [26, 14], [22.5, 21.5], [19, 14]])) +
-		path(blobD([[16, 22], [18.5, 26.5], [16, 29.5], [13.5, 26.5]])),
+		path(
+			polyD([
+				[4.5, 3.5],
+				[14.5, 3.5],
+				[13, 14],
+				[9.5, 21.5],
+				[6, 14],
+			]),
+		) +
+		path(
+			polyD([
+				[17.5, 3.5],
+				[27.5, 3.5],
+				[26, 14],
+				[22.5, 21.5],
+				[19, 14],
+			]),
+		) +
+		path(
+			blobD([
+				[16, 22],
+				[18.5, 26.5],
+				[16, 29.5],
+				[13.5, 26.5],
+			]),
+		),
 
 	/** Broad axe on its haft — combat arts. */
 	axe:
@@ -659,7 +795,13 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	sundial:
 		path(boxD(2.5, 22, 29.5, 25.5)) +
 		path(arcBandD(16, 22, 13.5, 9.5, 180, 360)) +
-		path(polyD([[16, 5], [19.5, 22], [12.5, 22]])),
+		path(
+			polyD([
+				[16, 5],
+				[19.5, 22],
+				[12.5, 22],
+			]),
+		),
 
 	/** Tent pitched for the night — resting. */
 	tent: path(
@@ -667,7 +809,12 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 			[16, 3],
 			[29.5, 28.5],
 			[2.5, 28.5],
-		]) + polyD([[16, 14], [21, 28.5], [11, 28.5]]),
+		]) +
+			polyD([
+				[16, 14],
+				[21, 28.5],
+				[11, 28.5],
+			]),
 		true,
 	),
 
@@ -720,10 +867,33 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	 * streamers — the Assyrian/Egyptian signum, not a banner on a flagpole.
 	 */
 	standard:
-		path(polyD([[9.5, 2.5], [22.5, 2.5], [24, 11], [8, 11]])) +
+		path(
+			polyD([
+				[9.5, 2.5],
+				[22.5, 2.5],
+				[24, 11],
+				[8, 11],
+			]),
+		) +
 		path(boxD(13.9, 11, 18.1, 29.5)) +
-		path(polyD([[8.5, 11], [11.5, 11], [11.5, 19], [10, 21.5], [8.5, 19]])) +
-		path(polyD([[20.5, 11], [23.5, 11], [23.5, 19], [22, 21.5], [20.5, 19]])),
+		path(
+			polyD([
+				[8.5, 11],
+				[11.5, 11],
+				[11.5, 19],
+				[10, 21.5],
+				[8.5, 19],
+			]),
+		) +
+		path(
+			polyD([
+				[20.5, 11],
+				[23.5, 11],
+				[23.5, 19],
+				[22, 21.5],
+				[20.5, 19],
+			]),
+		),
 
 	/** Two profiles turned against each other — social intrigue. */
 	'two-faces':
@@ -757,7 +927,13 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	/** Reed boat under sail — travel. */
 	boat:
 		path(boxD(14.4, 4, 17.6, 25.5)) +
-		path(polyD([[17.4, 5.5], [27, 13], [17.4, 18.5]])) +
+		path(
+			polyD([
+				[17.4, 5.5],
+				[27, 13],
+				[17.4, 18.5],
+			]),
+		) +
 		path(
 			blobD([
 				[3, 19],
@@ -778,12 +954,18 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	orb:
 		path(circleD(16, 13, 8.6) + circleD(12.8, 9.8, 1.9), true) +
 		path(boxD(12.5, 19.5, 19.5, 25.5)) +
-		path(polyD([[9, 25.5], [23, 25.5], [25.5, 29.5], [6.5, 29.5]])),
+		path(
+			polyD([
+				[9, 25.5],
+				[23, 25.5],
+				[25.5, 29.5],
+				[6.5, 29.5],
+			]),
+		),
 
 	/** Four-point radiance — arcane spellcraft. */
 	sparkle:
-		path(starD(16, 16, 14, 5.6, 4, -90)) +
-		path(starD(16, 16, 9, 3.6, 4, -45)),
+		path(starD(16, 16, 14, 5.6, 4, -90)) + path(starD(16, 16, 9, 3.6, 4, -45)),
 
 	/** Interlaced knot — metamagic, spells bent around themselves. */
 	knot: path(
@@ -820,8 +1002,7 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 				4,
 			),
 			true,
-		) +
-		path(circleD(16, 16, 4)),
+		) + path(circleD(16, 16, 4)),
 
 	// --- 08 Creatures ---
 
@@ -839,9 +1020,37 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 				[9, 21],
 			]),
 		) +
-		path(ribbonD([[21, 15], [23.5, 11], [24.5, 8]], 6.5, 4.6)) +
-		path(polyD([[22.5, 5.5], [29.5, 7], [29, 10.5], [24, 11], [21.5, 8.5]])) +
-		path(ribbonD([[8, 16], [4.5, 19], [3, 24]], 3.8, 2.8)) +
+		path(
+			ribbonD(
+				[
+					[21, 15],
+					[23.5, 11],
+					[24.5, 8],
+				],
+				6.5,
+				4.6,
+			),
+		) +
+		path(
+			polyD([
+				[22.5, 5.5],
+				[29.5, 7],
+				[29, 10.5],
+				[24, 11],
+				[21.5, 8.5],
+			]),
+		) +
+		path(
+			ribbonD(
+				[
+					[8, 16],
+					[4.5, 19],
+					[3, 24],
+				],
+				3.8,
+				2.8,
+			),
+		) +
 		path(boxD(8.5, 20, 11.5, 29.5)) +
 		path(boxD(13.5, 20, 16.5, 29.5)) +
 		path(boxD(19.5, 20, 22.5, 29.5)) +
@@ -870,18 +1079,29 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 			]),
 		) +
 		path(boxD(13.6, 17, 18.4, 25)) +
-		path(polyD([[8, 25], [24, 25], [26, 29.5], [6, 29.5]])),
+		path(
+			polyD([
+				[8, 25],
+				[24, 25],
+				[26, 29.5],
+				[6, 29.5],
+			]),
+		),
 
 	/** Name-ring: an oval cartouche closed with its tie — names. */
 	cartouche:
-		path(
-			ellipseD(17.5, 16, 12, 9) + ellipseD(17.5, 16, 7.8, 4.6),
-			true,
-		) + path(boxD(2, 11.5, 5.5, 20.5)),
+		path(ellipseD(17.5, 16, 12, 9) + ellipseD(17.5, 16, 7.8, 4.6), true) +
+		path(boxD(2, 11.5, 5.5, 20.5)),
 
 	/** Temple facade: pediment over a colonnade — settlements. */
 	temple:
-		path(polyD([[16, 4], [29, 11], [3, 11]])) +
+		path(
+			polyD([
+				[16, 4],
+				[29, 11],
+				[3, 11],
+			]),
+		) +
 		path(boxD(4, 11, 28, 13.5)) +
 		path(rowD(6, 26, 13.5, 25, 4, 3)) +
 		path(boxD(2.5, 25, 29.5, 28.5)),
@@ -898,7 +1118,6 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	),
 
 	// --- Character sheet stats -----------------------------------------------
-
 
 	/** A single bead of sweat — Fatigue. */
 	'sweat-drop': path(
@@ -930,7 +1149,14 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 				[8.5, 25.5],
 				[6.5, 17.5],
 			]),
-		) + path(polyD([[23.5, 3.5], [27.5, 7.5], [22.5, 8.5]])),
+		) +
+		path(
+			polyD([
+				[23.5, 3.5],
+				[27.5, 7.5],
+				[22.5, 8.5],
+			]),
+		),
 
 	/** Stacked ring-ingots — Coins. Coinage postdates the setting; wealth was weighed silver. */
 	ingots:
@@ -1003,13 +1229,27 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	/** A battering ram driven along its beam — Pushed. */
 	ram:
 		path(barD([4, 16], [22, 16], 5, 6)) +
-		path(polyD([[21, 9], [29.5, 12.5], [29.5, 19.5], [21, 23]])) +
+		path(
+			polyD([
+				[21, 9],
+				[29.5, 12.5],
+				[29.5, 19.5],
+				[21, 23],
+			]),
+		) +
 		path(boxD(7, 21, 11, 29.5)),
 
 	/** A column toppling off its base — Staggered. */
 	'tilted-column':
 		path(barD([9, 27], [21, 6.5], 6.5, 6.5)) +
-		path(polyD([[16, 2], [28, 6], [26, 11], [15, 8]])) +
+		path(
+			polyD([
+				[16, 2],
+				[28, 6],
+				[26, 11],
+				[15, 8],
+			]),
+		) +
 		path(boxD(3, 26.5, 17, 29.5)),
 
 	/**
@@ -1028,8 +1268,22 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 				[11, 9],
 			]),
 		) +
-		path(polyD([[4, 9], [10, 12], [11.5, 19], [6, 16]])) +
-		path(polyD([[28, 9], [22, 12], [20.5, 19], [26, 16]])) +
+		path(
+			polyD([
+				[4, 9],
+				[10, 12],
+				[11.5, 19],
+				[6, 16],
+			]),
+		) +
+		path(
+			polyD([
+				[28, 9],
+				[22, 12],
+				[20.5, 19],
+				[26, 16],
+			]),
+		) +
 		path(boxD(14, 21, 18, 29.5)),
 
 	/**
@@ -1081,9 +1335,27 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 			]),
 		) +
 		path(circleD(21, 12, 4.8)) +
-		path(polyD([[24, 9.5], [29.5, 12.5], [24, 15.5]])) +
-		path(polyD([[14, 13], [4.5, 6], [11, 18.5]])) +
-		path(polyD([[11.5, 18], [2.5, 25], [14, 24]])),
+		path(
+			polyD([
+				[24, 9.5],
+				[29.5, 12.5],
+				[24, 15.5],
+			]),
+		) +
+		path(
+			polyD([
+				[14, 13],
+				[4.5, 6],
+				[11, 18.5],
+			]),
+		) +
+		path(
+			polyD([
+				[11.5, 18],
+				[2.5, 25],
+				[14, 24],
+			]),
+		),
 
 	/**
 	 * A cowled figure, the face a carved void — Hidden. The shoulders have to be
@@ -1101,7 +1373,14 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 			[3.5, 20],
 			[9.5, 15],
 			[11, 7],
-		]) + polyD([[16, 8.5], [20.5, 13.5], [19.5, 20], [12.5, 20], [11.5, 13.5]]),
+		]) +
+			polyD([
+				[16, 8.5],
+				[20.5, 13.5],
+				[19.5, 20],
+				[12.5, 20],
+				[11.5, 13.5],
+			]),
 		true,
 	),
 
@@ -1112,13 +1391,24 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	 */
 	blindfold:
 		path(
-			polyD([[9, 5], [23, 5], [22, 20], [16, 27], [10, 20]]) +
-				boxD(7, 11, 25, 15.5),
+			polyD([
+				[9, 5],
+				[23, 5],
+				[22, 20],
+				[16, 27],
+				[10, 20],
+			]) + boxD(7, 11, 25, 15.5),
 			true,
 		) +
 		path(boxD(2.5, 11, 9.5, 15.5)) +
 		path(boxD(22.5, 11, 29.5, 15.5)) +
-		path(polyD([[24.5, 15.5], [29.5, 17], [26.5, 24]])),
+		path(
+			polyD([
+				[24.5, 15.5],
+				[29.5, 17],
+				[26.5, 24],
+			]),
+		),
 
 	/**
 	 * An amphora stopper — Silenced. Five motifs went through this one slot: a
@@ -1129,8 +1419,22 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	 * do — the condition's name is always beside them.
 	 */
 	stopper:
-		path(polyD([[4.5, 4], [27.5, 4], [27.5, 11], [4.5, 11]])) +
-		path(polyD([[9, 11], [23, 11], [19.5, 28.5], [12.5, 28.5]])),
+		path(
+			polyD([
+				[4.5, 4],
+				[27.5, 4],
+				[27.5, 11],
+				[4.5, 11],
+			]),
+		) +
+		path(
+			polyD([
+				[9, 11],
+				[23, 11],
+				[19.5, 28.5],
+				[12.5, 28.5],
+			]),
+		),
 
 	/**
 	 * A stone figure on its plinth — Paralyzed. `figure` spreads its limbs; this
@@ -1138,7 +1442,14 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	 */
 	statue:
 		path(circleD(16, 7, 4.2)) +
-		path(polyD([[12, 10.5], [20, 10.5], [21.5, 24], [10.5, 24]])) +
+		path(
+			polyD([
+				[12, 10.5],
+				[20, 10.5],
+				[21.5, 24],
+				[10.5, 24],
+			]),
+		) +
 		path(boxD(6, 24, 26, 29.5)),
 
 	/**
@@ -1148,10 +1459,38 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	 */
 	'fallen-figure':
 		path(circleD(7, 12.5, 4)) +
-		path(polyD([[10.5, 9], [21, 10], [21, 16], [10.5, 16]])) +
-		path(polyD([[19, 10], [24, 10], [27.5, 16.5], [22.5, 16.5]])) +
-		path(polyD([[17.5, 16], [21.5, 16], [24, 23.5], [20, 23.5]])) +
-		path(polyD([[11, 16], [15, 16], [15.5, 23.5], [11.5, 23.5]])) +
+		path(
+			polyD([
+				[10.5, 9],
+				[21, 10],
+				[21, 16],
+				[10.5, 16],
+			]),
+		) +
+		path(
+			polyD([
+				[19, 10],
+				[24, 10],
+				[27.5, 16.5],
+				[22.5, 16.5],
+			]),
+		) +
+		path(
+			polyD([
+				[17.5, 16],
+				[21.5, 16],
+				[24, 23.5],
+				[20, 23.5],
+			]),
+		) +
+		path(
+			polyD([
+				[11, 16],
+				[15, 16],
+				[15.5, 23.5],
+				[11.5, 23.5],
+			]),
+		) +
 		path(boxD(2.5, 26, 29.5, 29.5)),
 
 	/**
@@ -1173,25 +1512,57 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	'hollow-figure':
 		path(ringD(16, 7, 4.8, 2.2), true) +
 		path(
-			polyD([[10.5, 14.2], [21.5, 14.2], [24, 29], [8, 29]]) +
-				polyD([[14, 17.8], [18, 17.8], [19.5, 25.3], [12.5, 25.3]]),
+			polyD([
+				[10.5, 14.2],
+				[21.5, 14.2],
+				[24, 29],
+				[8, 29],
+			]) +
+				polyD([
+					[14, 17.8],
+					[18, 17.8],
+					[19.5, 25.3],
+					[12.5, 25.3],
+				]),
 			true,
 		),
 
 	water:
 		path(
-			ribbonD([[4.5, 9.2], [11, 6.8], [17, 9.2], [23, 6.8], [27.5, 9.2]], 3.4, 3.4),
-		) +
-		path(
 			ribbonD(
-				[[4.5, 17.2], [11, 14.8], [17, 17.2], [23, 14.8], [27.5, 17.2]],
+				[
+					[4.5, 9.2],
+					[11, 6.8],
+					[17, 9.2],
+					[23, 6.8],
+					[27.5, 9.2],
+				],
 				3.4,
 				3.4,
 			),
 		) +
 		path(
 			ribbonD(
-				[[4.5, 25.2], [11, 22.8], [17, 25.2], [23, 22.8], [27.5, 25.2]],
+				[
+					[4.5, 17.2],
+					[11, 14.8],
+					[17, 17.2],
+					[23, 14.8],
+					[27.5, 17.2],
+				],
+				3.4,
+				3.4,
+			),
+		) +
+		path(
+			ribbonD(
+				[
+					[4.5, 25.2],
+					[11, 22.8],
+					[17, 25.2],
+					[23, 22.8],
+					[27.5, 25.2],
+				],
 				3.4,
 				3.4,
 			),
@@ -1292,8 +1663,7 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 				[10, 14.5],
 				[11.5, 9.5],
 			]),
-		) +
-		path(boxD(3.5, 21.5, 28.5, 29.5) + circleD(16, 25.5, 3.6), true),
+		) + path(boxD(3.5, 21.5, 28.5, 29.5) + circleD(16, 25.5, 3.6), true),
 
 	/**
 	 * A skull — necrotic.
@@ -1331,7 +1701,7 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	 * discs and all assigned, so a fourth would be indistinguishable at 13px; a
 	 * beam is the one shape for light that none of them occupy.
 	 */
-	'halo':
+	halo:
 		// A haloed ring — radiant.
 		//
 		// Renamed from `light-shaft` when the object changed: the sigil law names a
@@ -1381,10 +1751,34 @@ export const SIGIL_INNER: Record<SigilName, string> = {
 	 * read as "something came apart".
 	 */
 	burst:
-		path(polyD([[16, 16], [10, 2.5], [19.5, 6]])) +
-		path(polyD([[16, 16], [27, 8], [28.5, 18]])) +
-		path(polyD([[16, 16], [23, 27], [13, 29]])) +
-		path(polyD([[16, 16], [4, 24], [3, 13.5]])) +
+		path(
+			polyD([
+				[16, 16],
+				[10, 2.5],
+				[19.5, 6],
+			]),
+		) +
+		path(
+			polyD([
+				[16, 16],
+				[27, 8],
+				[28.5, 18],
+			]),
+		) +
+		path(
+			polyD([
+				[16, 16],
+				[23, 27],
+				[13, 29],
+			]),
+		) +
+		path(
+			polyD([
+				[16, 16],
+				[4, 24],
+				[3, 13.5],
+			]),
+		) +
 		path(circleD(16, 16, 4)),
 
 	/**

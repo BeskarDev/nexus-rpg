@@ -26,15 +26,17 @@ export function distanceTransform(grid: Grid): Float64Array {
 
 	for (let i = 0; i < d.length; i++) d[i] = mask[i] ? 0 : INF
 
-	const transform1D = (get: (i: number) => number, set: (i: number, val: number) => void) => {
+	const transform1D = (
+		get: (i: number) => number,
+		set: (i: number, val: number) => void,
+	) => {
 		for (let i = 0; i < size; i++) f[i] = get(i)
 		let k = 0
 		v[0] = 0
 		z[0] = -INF
 		z[1] = INF
 		for (let q = 1; q < size; q++) {
-			let s =
-				(f[q] + q * q - (f[v[k]] + v[k] * v[k])) / (2 * q - 2 * v[k])
+			let s = (f[q] + q * q - (f[v[k]] + v[k] * v[k])) / (2 * q - 2 * v[k])
 			while (s <= z[k]) {
 				k--
 				s = (f[q] + q * q - (f[v[k]] + v[k] * v[k])) / (2 * q - 2 * v[k])
@@ -152,7 +154,8 @@ export function coverage(grid: Grid): number {
 /** Ink present in `a` but not in `b`, as a grid — used to isolate what an opening removed. */
 export function difference(a: Grid, b: Grid): Grid {
 	const mask = new Uint8Array(a.mask.length)
-	for (let i = 0; i < mask.length; i++) mask[i] = a.mask[i] && !b.mask[i] ? 1 : 0
+	for (let i = 0; i < mask.length; i++)
+		mask[i] = a.mask[i] && !b.mask[i] ? 1 : 0
 	return { size: a.size, mask }
 }
 
@@ -193,7 +196,11 @@ export function signature(
 		for (let cx = 0; cx < cells; cx++) {
 			let sum = 0
 			let n = 0
-			for (let y = Math.floor(cy * step); y < Math.floor((cy + 1) * step); y++) {
+			for (
+				let y = Math.floor(cy * step);
+				y < Math.floor((cy + 1) * step);
+				y++
+			) {
 				for (
 					let x = Math.floor(cx * step);
 					x < Math.floor((cx + 1) * step);

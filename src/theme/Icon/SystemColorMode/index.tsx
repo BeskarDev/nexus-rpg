@@ -42,7 +42,13 @@ export default function IconSystemColorMode(props: Props): React.ReactNode {
 			aria-hidden="true"
 		>
 			<path d={rays()} fill="currentColor" />
-			<circle cx={C} cy={C} r={R_RING} stroke="currentColor" strokeWidth={RING_W} />
+			<circle
+				cx={C}
+				cy={C}
+				r={R_RING}
+				stroke="currentColor"
+				strokeWidth={RING_W}
+			/>
 			{/* Shadowed half: top to bottom the long way round the left rim. */}
 			<path
 				d={`M${C} ${C - R_FILL} A${R_FILL} ${R_FILL} 0 0 0 ${C} ${C + R_FILL} Z`}

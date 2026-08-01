@@ -7,7 +7,10 @@ import {
 	type TalentRecord,
 } from '@site/src/utils/content-gen/talent-description-parser'
 
-const JSON_FILE = path.resolve(__dirname, '../../src/utils/data/json/talents.json')
+const JSON_FILE = path.resolve(
+	__dirname,
+	'../../src/utils/data/json/talents.json',
+)
 
 const talents: TalentRecord[] = JSON.parse(fs.readFileSync(JSON_FILE, 'utf-8'))
 
@@ -33,7 +36,9 @@ describe('talents content generation', () => {
 
 	it('every rank ladder ascends and stays within 1-5', () => {
 		for (const t of talents) {
-			const ranks = parseTalentDescription(t.description, t.name).ranks.map((r) => r.rank)
+			const ranks = parseTalentDescription(t.description, t.name).ranks.map(
+				(r) => r.rank,
+			)
 			expect(ranks).toEqual([...ranks].sort((a, b) => a - b))
 			expect(new Set(ranks).size).toBe(ranks.length)
 			expect(Math.min(...ranks)).toBeGreaterThanOrEqual(1)
@@ -51,11 +56,16 @@ describe('talents content generation', () => {
 			{ kind: 'prose', text: 'You can take higher ranks out of order.' },
 		])
 		expect(parsed.ranks.map((r) => r.rank)).toEqual([1, 2])
-		expect(parsed.ranks[0].nodes).toEqual([{ kind: 'prose', text: '+2 Focus.' }])
+		expect(parsed.ranks[0].nodes).toEqual([
+			{ kind: 'prose', text: '+2 Focus.' },
+		])
 	})
 
 	it('leaves the preamble empty when the description opens on a rank', () => {
-		const parsed = parseTalentDescription(`${label(1)} Do a thing.`, 'Battle Mage')
+		const parsed = parseTalentDescription(
+			`${label(1)} Do a thing.`,
+			'Battle Mage',
+		)
 		expect(parsed.preamble).toEqual([])
 		expect(parsed.ranks).toHaveLength(1)
 	})
@@ -68,13 +78,20 @@ describe('talents content generation', () => {
 				`<br/><br/>${label(5)} Run air.`,
 			'Supernatural Mobility',
 		)
-		expect(parsed.preamble).toEqual([{ kind: 'prose', text: '*Requires Athletics at rank 4.*' }])
+		expect(parsed.preamble).toEqual([
+			{ kind: 'prose', text: '*Requires Athletics at rank 4.*' },
+		])
 		expect(parsed.ranks.map((r) => r.rank)).toEqual([4, 5])
 	})
 
 	it('tolerates the trailing space the corpus carries inside the label', () => {
-		const parsed = parseTalentDescription('<strong>(Rank 1) </strong>+2 Focus.', 'Spellweaver')
-		expect(parsed.ranks[0].nodes).toEqual([{ kind: 'prose', text: '+2 Focus.' }])
+		const parsed = parseTalentDescription(
+			'<strong>(Rank 1) </strong>+2 Focus.',
+			'Spellweaver',
+		)
+		expect(parsed.ranks[0].nodes).toEqual([
+			{ kind: 'prose', text: '+2 Focus.' },
+		])
 	})
 
 	it('carries Weak/Strong/Critical runs through into the rank they belong to', () => {
@@ -103,24 +120,32 @@ describe('talents content generation', () => {
 	})
 
 	it('throws on a description with no rank sections', () => {
-		expect(() => parseTalentDescription('You gain a thing.', 'No Ranks')).toThrow(
-			/no <strong>\(Rank N\)<\/strong> sections/,
-		)
+		expect(() =>
+			parseTalentDescription('You gain a thing.', 'No Ranks'),
+		).toThrow(/no <strong>\(Rank N\)<\/strong> sections/)
 	})
 
 	it('throws on an empty description', () => {
-		expect(() => parseTalentDescription('   ', 'Blank')).toThrow(/description is empty/)
+		expect(() => parseTalentDescription('   ', 'Blank')).toThrow(
+			/description is empty/,
+		)
 	})
 
 	it('throws on a rank section with no rule text', () => {
 		expect(() =>
-			parseTalentDescription(`${label(1)} Fine.<br/><br/>${label(2)}`, 'Hollow'),
+			parseTalentDescription(
+				`${label(1)} Fine.<br/><br/>${label(2)}`,
+				'Hollow',
+			),
 		).toThrow(/\(Rank 2\) has no rule text/)
 	})
 
 	it('throws on a non-ascending or repeated rank ladder', () => {
 		expect(() =>
-			parseTalentDescription(`${label(3)} c<br/><br/>${label(2)} b`, 'Backwards'),
+			parseTalentDescription(
+				`${label(3)} c<br/><br/>${label(2)} b`,
+				'Backwards',
+			),
 		).toThrow(/must ascend/)
 		expect(() =>
 			parseTalentDescription(`${label(2)} a<br/><br/>${label(2)} b`, 'Repeat'),
@@ -131,7 +156,10 @@ describe('talents content generation', () => {
 		// Each of these silently swallowed a whole rank section before the guard.
 		const corruptions: [string, string][] = [
 			['paren outside the tag', '(<strong>Rank 1) </strong>Do a thing.'],
-			['<br/> swallowed inside the tag', '<strong><br/>(Rank 1)</strong> Do a thing.'],
+			[
+				'<br/> swallowed inside the tag',
+				'<strong><br/>(Rank 1)</strong> Do a thing.',
+			],
 			['stray + inside the tag', '<strong>(Rank 1) +</strong>2 Focus.'],
 			['no emphasis at all', 'Prose.<br/><br/>(Rank 1) Do a thing.'],
 		]
@@ -153,8 +181,8 @@ describe('talents content generation', () => {
 	})
 
 	it('rejects a record with a missing field', () => {
-		expect(() => validateTalentRecord({ name: 'X', description: 'y' }, 'ctx')).toThrow(
-			/"skill requirement" must be a string/,
-		)
+		expect(() =>
+			validateTalentRecord({ name: 'X', description: 'y' }, 'ctx'),
+		).toThrow(/"skill requirement" must be a string/)
 	})
 })

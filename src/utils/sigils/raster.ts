@@ -173,14 +173,7 @@ function arcToCubics(
 		const [ex, ey] = p(th2)
 		const [d1x, d1y] = d(th)
 		const [d2x, d2y] = d(th2)
-		out.push([
-			px + t * d1x,
-			py + t * d1y,
-			ex - t * d2x,
-			ey - t * d2y,
-			ex,
-			ey,
-		])
+		out.push([px + t * d1x, py + t * d1y, ex - t * d2x, ey - t * d2y, ex, ey])
 		px = ex
 		py = ey
 		th = th2
@@ -495,9 +488,7 @@ export function rasterize(
 				let winding = 0
 				for (let i = 0; i < hits.length - 1; i++) {
 					winding += shape.evenOdd ? 1 : hits[i].dir
-					const inside = shape.evenOdd
-						? winding % 2 !== 0
-						: winding !== 0
+					const inside = shape.evenOdd ? winding % 2 !== 0 : winding !== 0
 					if (!inside) continue
 					addSpan(layer, size, row, hits[i].x, hits[i + 1].x, weight)
 				}
@@ -534,6 +525,7 @@ function addSpan(
 /** Threshold a coverage raster into an ink mask. */
 export function toMask(raster: Raster, threshold = 0.5): Uint8Array {
 	const mask = new Uint8Array(raster.data.length)
-	for (let i = 0; i < mask.length; i++) mask[i] = raster.data[i] >= threshold ? 1 : 0
+	for (let i = 0; i < mask.length; i++)
+		mask[i] = raster.data[i] >= threshold ? 1 : 0
 	return mask
 }

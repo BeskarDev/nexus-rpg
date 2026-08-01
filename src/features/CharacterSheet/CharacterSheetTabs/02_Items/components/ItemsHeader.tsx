@@ -98,11 +98,11 @@ export const ItemsHeader: React.FC<ItemsHeaderProps> = ({
 				<MetaBandNote>max {maxCapacity}</MetaBandNote>
 				<RuleInfo label="About load and encumbrance">
 					<>
-						Carrying capacity is ½ STR + 8, plus your carry modifier. At or above it
-						you are <b>encumbered</b>: +1 bane on Strength and Agility rolls for any
-						kind of movement, no Dash Action or Evade Quick Action, and +1 Fatigue
-						whenever you suffer Fatigue during travel. You can never physically
-						carry more than 2 x your carrying capacity.
+						Carrying capacity is ½ STR + 8, plus your carry modifier. At or
+						above it you are <b>encumbered</b>: +1 bane on Strength and Agility
+						rolls for any kind of movement, no Dash Action or Evade Quick
+						Action, and +1 Fatigue whenever you suffer Fatigue during travel.
+						You can never physically carry more than 2 x your carrying capacity.
 					</>
 				</RuleInfo>
 			</MetaBandField>

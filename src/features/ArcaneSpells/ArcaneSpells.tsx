@@ -19,7 +19,7 @@ import { ArcaneSpell } from '@site/src/types/ArcaneSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import arcaneSpellData from '../../utils/data/json/arcane-spells.json';
+import arcaneSpellData from '../../utils/data/json/arcane-spells.json'
 import './arcaneSpellsStyles.css'
 import { ArcaneSpellCard } from './ArcaneSpellCard'
 import { CharacterSelector } from '../PrintingTools'
@@ -171,8 +171,7 @@ export const ArcaneSpells: React.FC = () => {
 					mb: 2,
 					py: 2,
 					px: 3,
-					backgroundColor:
-						'background.default',
+					backgroundColor: 'background.default',
 					borderRadius: '8px',
 				}}
 			>
@@ -208,8 +207,7 @@ export const ArcaneSpells: React.FC = () => {
 							renderValue={(selected) => selected.join(', ')}
 							MenuProps={MenuProps}
 							sx={{
-								backgroundColor:
-									'background.paper',
+								backgroundColor: 'background.paper',
 							}}
 						>
 							{arcaneSpells.map(({ name }) => (

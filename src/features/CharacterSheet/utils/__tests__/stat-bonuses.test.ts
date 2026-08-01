@@ -203,7 +203,12 @@ describe('Stat Bonuses Separation', () => {
 			const initialTalentBonus = 0
 
 			// Initial HP calculation
-			const initialHp = calculateMaxHp(8, 0, initialUserModifier, initialTalentBonus)
+			const initialHp = calculateMaxHp(
+				8,
+				0,
+				initialUserModifier,
+				initialTalentBonus,
+			)
 			expect(initialHp).toBe(23) // 20 + 3 + 0
 
 			// User adds Bulky talent (rank 1)

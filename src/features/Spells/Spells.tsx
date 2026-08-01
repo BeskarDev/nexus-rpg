@@ -107,9 +107,7 @@ export const Spells: React.FC = () => {
 		})
 	}
 
-	const handleSpellTypeFilterChange = (
-		event: SelectChangeEvent<SpellType>,
-	) => {
+	const handleSpellTypeFilterChange = (event: SelectChangeEvent<SpellType>) => {
 		setSpellTypeFilter(event.target.value as SpellType)
 	}
 
@@ -205,8 +203,7 @@ export const Spells: React.FC = () => {
 					mb: 2,
 					py: 2,
 					px: 3,
-					backgroundColor:
-						'background.default',
+					backgroundColor: 'background.default',
 					borderRadius: '8px',
 				}}
 			>
@@ -239,8 +236,7 @@ export const Spells: React.FC = () => {
 							onChange={handleSpellTypeFilterChange}
 							input={<OutlinedInput label="Spell Type" />}
 							sx={{
-								backgroundColor:
-									'background.paper',
+								backgroundColor: 'background.paper',
 							}}
 						>
 							<MenuItem value="all">All Spells</MenuItem>
@@ -258,8 +254,7 @@ export const Spells: React.FC = () => {
 							renderValue={(selected) => selected.join(', ')}
 							MenuProps={MenuProps}
 							sx={{
-								backgroundColor:
-									'background.paper',
+								backgroundColor: 'background.paper',
 							}}
 						>
 							{availableSpells.map(({ name, type }) => (

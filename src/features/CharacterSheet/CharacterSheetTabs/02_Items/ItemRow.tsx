@@ -64,7 +64,9 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 					onAmountChange={(amount) => updateItem({ amount })}
 					onQualityChange={(quality) => updateItem({ quality })}
 					onLocationChange={handleLocationChange}
-					onSlotChange={(slot) => updateItem({ slot: slot as EquipmentSlotType })}
+					onSlotChange={(slot) =>
+						updateItem({ slot: slot as EquipmentSlotType })
+					}
 					onUsesChange={(uses) => updateItem({ uses })}
 					onDurabilityChange={(durability) =>
 						updateItem({ durability: durability as DurabilityDie })

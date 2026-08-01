@@ -16,7 +16,9 @@ const withCompanions = (companions: unknown[]) =>
 describe('migrateCharacterData — companion wounds', () => {
 	it('reads a wounded companion as one wound', () => {
 		const result = migrateCharacterData(
-			withCompanions([{ id: 'a', name: 'Ashfoot', markdown: '', wounded: true }]),
+			withCompanions([
+				{ id: 'a', name: 'Ashfoot', markdown: '', wounded: true },
+			]),
 		)
 		expect(result.companions[0].wounds).toBe(1)
 	})

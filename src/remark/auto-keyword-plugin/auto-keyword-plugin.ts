@@ -3,7 +3,11 @@ import { visitParents } from 'unist-util-visit-parents'
 import { keywords } from './keywords'
 import { processText, InlineNode } from '../shared/tokenize'
 import { getTableCellContext } from '../shared/table-context'
-import { ZONE_GATED_TERMS, isMechanicalZone, inNameElement } from '../shared/zones'
+import {
+	ZONE_GATED_TERMS,
+	isMechanicalZone,
+	inNameElement,
+} from '../shared/zones'
 
 const EXCLUSION_PREFIX = '_'
 
@@ -72,9 +76,7 @@ const autoKeywordPlugin = (options) => {
 
 				// Emits a text node, stripping the opt-out prefix ('_') if present.
 				const toText = (word: string): InlineNode[] => {
-					const value = word.startsWith(EXCLUSION_PREFIX)
-						? word.slice(1)
-						: word
+					const value = word.startsWith(EXCLUSION_PREFIX) ? word.slice(1) : word
 					return [{ type: 'text', value, processed: true }]
 				}
 
@@ -86,10 +88,7 @@ const autoKeywordPlugin = (options) => {
 							// Zone gate: ambiguous common words (light, heavy, close,
 							// huge, ...) link only in a table body cell. In narrative
 							// prose they are flavor, not terms.
-							if (
-								ZONE_GATED_TERMS.has(match) &&
-								!isMechanicalZone(ancestors)
-							) {
+							if (ZONE_GATED_TERMS.has(match) && !isMechanicalZone(ancestors)) {
 								return null
 							}
 
@@ -106,9 +105,7 @@ const autoKeywordPlugin = (options) => {
 								{
 									type: 'link',
 									url: keywordMap.get(match),
-									children: [
-										{ type: 'text', value: match, processed: true },
-									],
+									children: [{ type: 'text', value: match, processed: true }],
 									data: {
 										hProperties: {
 											// No font-size: this used to carry `font-size: large`, a CSS

@@ -64,7 +64,9 @@ export const XpCard: React.FC<XpCardProps> = ({ total, spent }) => {
 				>
 					{spent}
 				</Typography>
-				<Typography sx={{ fontSize: 'var(--nexus-text-xs)', color: 'text.secondary' }}>
+				<Typography
+					sx={{ fontSize: 'var(--nexus-text-xs)', color: 'text.secondary' }}
+				>
 					/ {total}
 				</Typography>
 				<Typography

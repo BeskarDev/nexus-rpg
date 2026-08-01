@@ -8,12 +8,7 @@ import {
 } from '@mui/icons-material'
 
 export type ActionType =
-	| 'Action'
-	| 'Quick Action'
-	| 'Passive'
-	| 'Triggered'
-	| 'Free'
-	| 'Other'
+	'Action' | 'Quick Action' | 'Passive' | 'Triggered' | 'Free' | 'Other'
 
 export const ACTION_TYPES: ActionType[] = [
 	'Action',

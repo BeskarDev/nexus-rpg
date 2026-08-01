@@ -187,8 +187,7 @@ const config = {
 						sidebarId: 'gmToolsSidebar',
 						position: 'right',
 						label: 'GM Tools',
-						className:
-							'navbar-sigil navbar-sigil--key navbar-icon-with-label',
+						className: 'navbar-sigil navbar-sigil--key navbar-icon-with-label',
 						title: 'GM Tools',
 					},
 					{

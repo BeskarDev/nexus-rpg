@@ -78,7 +78,9 @@ describe('CharacterSheetCard', () => {
 				<div>8</div>
 			</CharacterSheetCard>,
 		)
-		expect(screen.getByRole('button', { name: 'Edit Parry' })).toBeInTheDocument()
+		expect(
+			screen.getByRole('button', { name: 'Edit Parry' }),
+		).toBeInTheDocument()
 	})
 
 	it('opens the editor from the keyboard', () => {

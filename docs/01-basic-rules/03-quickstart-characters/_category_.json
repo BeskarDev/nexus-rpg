@@ -1,8 +1,8 @@
 {
-  "label": "🎭 Quickstart Characters",
-  "position": 3,
-  "link": {
-    "type": "doc",
-    "id": "basic-rules/quickstart-characters/overview"
-  }
+	"label": "🎭 Quickstart Characters",
+	"position": 3,
+	"link": {
+		"type": "doc",
+		"id": "basic-rules/quickstart-characters/overview"
+	}
 }

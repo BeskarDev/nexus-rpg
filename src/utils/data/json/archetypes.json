@@ -838,22 +838,22 @@
 			"startingSpells": [
 				{
 					"name": "Arcane Bolt",
-			"rank": 0
-		},
-		{
-			"name": "Arcane Glyph",
-			"rank": 0
-		},
-		{
-			"name": "Arcane Barrier",
-			"rank": 1
-		},
-		{
-			"name": "Conjure Familiar",
-			"rank": 1
+					"rank": 0
+				},
+				{
+					"name": "Arcane Glyph",
+					"rank": 0
+				},
+				{
+					"name": "Arcane Barrier",
+					"rank": 1
+				},
+				{
+					"name": "Conjure Familiar",
+					"rank": 1
+				}
+			]
 		}
-	]
-}
 	},
 	{
 		"name": "Tamer",

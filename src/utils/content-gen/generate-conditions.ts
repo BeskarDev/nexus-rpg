@@ -41,11 +41,14 @@ function fail(context: string, reason: string): never {
 }
 
 function validateCondition(entry: unknown, context: string): ConditionRecord {
-	if (typeof entry !== 'object' || entry === null) fail(context, 'entry is not an object')
+	if (typeof entry !== 'object' || entry === null)
+		fail(context, 'entry is not an object')
 	const e = entry as Record<string, unknown>
 	for (const field of ['name', 'description'] as const) {
-		if (typeof e[field] !== 'string') fail(context, `field "${field}" must be a string`)
-		if ((e[field] as string).trim() === '') fail(context, `field "${field}" is empty`)
+		if (typeof e[field] !== 'string')
+			fail(context, `field "${field}" must be a string`)
+		if ((e[field] as string).trim() === '')
+			fail(context, `field "${field}" is empty`)
 	}
 	// Bullet runs must be split by <br/>. An inline " - " means the entry lost its
 	// line breaks and would silently render as a run-on paragraph. Game content
@@ -95,21 +98,31 @@ function renderCondition(c: ConditionRecord): string {
 
 function renderPage(conditions: ConditionRecord[]): string {
 	const fm = ['---', 'sidebar_position: 4', 'toc_max_heading_level: 2', '---']
-	const blocks = [fm.join('\n'), ...PREAMBLE, ...conditions.map(renderCondition)]
+	const blocks = [
+		fm.join('\n'),
+		...PREAMBLE,
+		...conditions.map(renderCondition),
+	]
 	return blocks.join('\n\n') + '\n'
 }
 
 function main() {
 	const check = process.argv.slice(2).includes('--check')
 	const entries: unknown[] = JSON.parse(fs.readFileSync(JSON_FILE, 'utf-8'))
-	const conditions = entries.map((raw, i) => validateCondition(raw, `conditions.json[${i}]`))
+	const conditions = entries.map((raw, i) =>
+		validateCondition(raw, `conditions.json[${i}]`),
+	)
 	const content = renderPage(conditions)
 
 	if (check) {
-		const current = fs.existsSync(OUT_FILE) ? fs.readFileSync(OUT_FILE, 'utf-8') : null
+		const current = fs.existsSync(OUT_FILE)
+			? fs.readFileSync(OUT_FILE, 'utf-8')
+			: null
 		if (current !== content) {
 			console.error(`STALE: ${path.relative(REPO, OUT_FILE)}`)
-			console.error('content:gen --check found a stale conditions page. Run `bun run content:gen` and commit.')
+			console.error(
+				'content:gen --check found a stale conditions page. Run `bun run content:gen` and commit.',
+			)
 			process.exit(1)
 		}
 		console.log('content:gen --check: conditions page up to date.')
@@ -118,7 +131,9 @@ function main() {
 
 	fs.writeFileSync(OUT_FILE, content)
 	if (fs.existsSync(LEGACY_MD)) fs.rmSync(LEGACY_MD)
-	console.log(`wrote ${path.relative(REPO, OUT_FILE)} (${conditions.length} conditions)`)
+	console.log(
+		`wrote ${path.relative(REPO, OUT_FILE)} (${conditions.length} conditions)`,
+	)
 }
 
 main()

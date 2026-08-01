@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { deepCopy, reorder } from '@site/src/features/CharacterSheet/components/DynamicList/utils'
+import {
+	deepCopy,
+	reorder,
+} from '@site/src/features/CharacterSheet/components/DynamicList/utils'
 import {
 	Ability,
 	CharacterDocument,
@@ -782,9 +785,8 @@ export const {
 			if (existingIndex >= 0) {
 				// Re-afflicting an existing condition re-arms it on the new rung rather
 				// than adding a duplicate row.
-				const existing = state.activeCharacter.statistics.statusEffects[
-					existingIndex
-				]
+				const existing =
+					state.activeCharacter.statistics.statusEffects[existingIndex]
 				existing.active = true
 				if (rung !== undefined) {
 					delete existing.duration

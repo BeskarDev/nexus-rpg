@@ -2,9 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 import Layout from '@theme-original/Admonition/Layout'
 import type { Props } from '@theme/Admonition/Layout'
-import SigilIcon, {
-	SIGIL_SIZE,
-} from '@site/src/components/codex/SigilIcon'
+import SigilIcon, { SIGIL_SIZE } from '@site/src/components/codex/SigilIcon'
 import type { SigilName } from '@site/src/components/codex/sigil-paths'
 
 /**
@@ -44,7 +42,11 @@ const TYPE_SIGILS: Record<string, SigilName> = {
 export default function AdmonitionLayout(props: Props): React.ReactNode {
 	const sigil = TYPE_SIGILS[props.type]
 	const icon = sigil ? (
-		<SigilIcon name={sigil} size={SIGIL_SIZE.callout} className="codex-admonition__sigil" />
+		<SigilIcon
+			name={sigil}
+			size={SIGIL_SIZE.callout}
+			className="codex-admonition__sigil"
+		/>
 	) : (
 		props.icon
 	)

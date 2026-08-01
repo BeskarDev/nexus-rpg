@@ -1,8 +1,8 @@
 {
-  "label": "🏠 Downtime",
-  "position": 4,
-  "link": {
-    "type": "doc",
-    "id": "scenes/downtime/overview"
-  }
+	"label": "🏠 Downtime",
+	"position": 4,
+	"link": {
+		"type": "doc",
+		"id": "scenes/downtime/overview"
+	}
 }

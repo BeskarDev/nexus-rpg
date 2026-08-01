@@ -119,7 +119,10 @@ export const AttributeCard: React.FC<AttributeCardProps> = ({
 								updateAttribute({ value: at as AttributeType })
 								close()
 							}}
-							sx={{ fontSize: 'var(--nexus-text-xs)', justifyContent: 'center' }}
+							sx={{
+								fontSize: 'var(--nexus-text-xs)',
+								justifyContent: 'center',
+							}}
 						>
 							{/* M13 S1 (D2): text alone. The menu used to render the token AND
 								    the `dX` label, stating one value twice in one row. Text won
@@ -127,7 +130,7 @@ export const AttributeCard: React.FC<AttributeCardProps> = ({
 								    level-up, where an unambiguous label beats a shape ladder.
 								    The ladder's job is the at-a-glance comparison across the
 								    four cards, which is where the token stays (see below). */}
-								d{at}
+							d{at}
 						</MenuItem>
 					))}
 				</MenuList>

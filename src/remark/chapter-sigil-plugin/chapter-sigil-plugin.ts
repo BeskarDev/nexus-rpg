@@ -31,7 +31,7 @@ const chapterSigilPlugin = () => {
 
 		const path = file?.path
 		const sigil = path
-			? pageSigilForSourcePath(path) ?? chapterSigilForSourcePath(path)
+			? (pageSigilForSourcePath(path) ?? chapterSigilForSourcePath(path))
 			: undefined
 
 		visitParents(tree, 'heading', (node: any) => {
@@ -61,9 +61,7 @@ const chapterSigilPlugin = () => {
 				children.unshift({
 					type: 'mdxJsxTextElement',
 					name: 'ChapterSigil',
-					attributes: [
-						{ type: 'mdxJsxAttribute', name: 'name', value: sigil },
-					],
+					attributes: [{ type: 'mdxJsxAttribute', name: 'name', value: sigil }],
 					children: [],
 				})
 			}

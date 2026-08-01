@@ -38,9 +38,7 @@ export const QuestAutoRollerWrapper: React.FC = () => {
 		const newResults: string[] = []
 		for (let i = 0; i < count; i++) {
 			const level =
-				partyLevel === 0
-					? Math.floor(Math.random() * 10) + 1
-					: partyLevel
+				partyLevel === 0 ? Math.floor(Math.random() * 10) + 1 : partyLevel
 			newResults.push(generateQuest(selectedCategory, level))
 		}
 		setResults(newResults)
@@ -65,78 +63,45 @@ export const QuestAutoRollerWrapper: React.FC = () => {
 								mb: 2,
 							}}
 						>
-							<FormControl
-								sx={{ minWidth: 160 }}
-								size="small"
-							>
-								<InputLabel id="quest-category-label">
-									Category
-								</InputLabel>
+							<FormControl sx={{ minWidth: 160 }} size="small">
+								<InputLabel id="quest-category-label">Category</InputLabel>
 								<Select
 									labelId="quest-category-label"
 									value={selectedCategory}
 									label="Category"
-									onChange={(e) =>
-										setSelectedCategory(
-											e.target.value,
-										)
-									}
+									onChange={(e) => setSelectedCategory(e.target.value)}
 								>
 									{questGroups.map((g) => (
-										<MenuItem
-											key={g.id}
-											value={g.id}
-										>
+										<MenuItem key={g.id} value={g.id}>
 											{g.label}
 										</MenuItem>
 									))}
 								</Select>
 							</FormControl>
 
-							<FormControl
-								sx={{ minWidth: 140 }}
-								size="small"
-							>
-								<InputLabel id="quest-level-label">
-									Party Level
-								</InputLabel>
+							<FormControl sx={{ minWidth: 140 }} size="small">
+								<InputLabel id="quest-level-label">Party Level</InputLabel>
 								<Select
 									labelId="quest-level-label"
 									value={partyLevel}
 									label="Party Level"
-									onChange={(e) =>
-										setPartyLevel(
-											Number(e.target.value),
-										)
-									}
+									onChange={(e) => setPartyLevel(Number(e.target.value))}
 								>
 									{LEVEL_OPTIONS.map((opt) => (
-										<MenuItem
-											key={opt.value}
-											value={opt.value}
-										>
+										<MenuItem key={opt.value} value={opt.value}>
 											{opt.label}
 										</MenuItem>
 									))}
 								</Select>
 							</FormControl>
 
-							<FormControl
-								sx={{ minWidth: 80 }}
-								size="small"
-							>
-								<InputLabel id="quest-count-label">
-									Count
-								</InputLabel>
+							<FormControl sx={{ minWidth: 80 }} size="small">
+								<InputLabel id="quest-count-label">Count</InputLabel>
 								<Select
 									labelId="quest-count-label"
 									value={count}
 									label="Count"
-									onChange={(e) =>
-										setCount(
-											Number(e.target.value),
-										)
-									}
+									onChange={(e) => setCount(Number(e.target.value))}
 								>
 									{COUNT_OPTIONS.map((n) => (
 										<MenuItem key={n} value={n}>
@@ -146,11 +111,7 @@ export const QuestAutoRollerWrapper: React.FC = () => {
 								</Select>
 							</FormControl>
 
-							<Button
-								variant="contained"
-								color="primary"
-								onClick={handleRoll}
-							>
+							<Button variant="contained" color="primary" onClick={handleRoll}>
 								🎲 Roll
 							</Button>
 						</Box>
@@ -163,18 +124,12 @@ export const QuestAutoRollerWrapper: React.FC = () => {
 									border: '2px solid',
 									borderColor: 'primary.main',
 									borderRadius: 1,
-									backgroundColor:
-										'background.paper',
+									backgroundColor: 'background.paper',
 								}}
 							>
 								{results.map((result, i) => (
-									<Typography
-										key={i}
-										variant="body1"
-										sx={{ mb: 0.5 }}
-									>
-										<strong>{i + 1}.</strong>{' '}
-										{result}
+									<Typography key={i} variant="body1" sx={{ mb: 0.5 }}>
+										<strong>{i + 1}.</strong> {result}
 									</Typography>
 								))}
 							</Box>

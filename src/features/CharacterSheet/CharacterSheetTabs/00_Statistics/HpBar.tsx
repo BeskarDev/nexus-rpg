@@ -91,7 +91,8 @@ export const HpBar: React.FC<HpBarProps> = ({
 						inset: 0,
 						width: `${pct}%`,
 						bgcolor: tone,
-						transition: 'width 0.3s ease-in-out, background-color 0.3s ease-in-out',
+						transition:
+							'width 0.3s ease-in-out, background-color 0.3s ease-in-out',
 					}}
 				/>
 			</Box>

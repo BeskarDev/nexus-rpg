@@ -77,7 +77,8 @@ function fail(context: string, reason: string, offending?: string): never {
  */
 function assertLabelsCanonical(description: string, context: string): void {
 	const mentions = description.match(ANY_RANK_MENTION)?.length ?? 0
-	const canonical = description.match(new RegExp(RANK_LABEL.source, 'g'))?.length ?? 0
+	const canonical =
+		description.match(new RegExp(RANK_LABEL.source, 'g'))?.length ?? 0
 	if (mentions !== canonical)
 		fail(
 			context,
@@ -98,7 +99,10 @@ function assertLabelsCanonical(description: string, context: string): void {
  * @param description the raw JSON description string
  * @param context     a label (talent name) used in error messages
  */
-export function parseTalentDescription(description: string, context = 'talent'): ParsedTalent {
+export function parseTalentDescription(
+	description: string,
+	context = 'talent',
+): ParsedTalent {
 	if (typeof description !== 'string' || description.trim() === '')
 		fail(context, 'description is empty')
 
@@ -111,13 +115,20 @@ export function parseTalentDescription(description: string, context = 'talent'):
 	// Prose above the first label. Parsed through the same path as a rank body so
 	// bullets and emphasis behave identically.
 	const head = description.slice(0, labels[0].index)
-	const preamble = head.trim() === '' ? [] : parseSpellEffect(head, `${context} (preamble)`).nodes
+	const preamble =
+		head.trim() === ''
+			? []
+			: parseSpellEffect(head, `${context} (preamble)`).nodes
 
 	const ranks: TalentRankSection[] = []
 	labels.forEach((label, i) => {
 		const rank = Number(label[1])
 		if (rank < MIN_RANK || rank > MAX_RANK)
-			fail(context, `rank ${rank} is outside ${MIN_RANK}–${MAX_RANK}`, description)
+			fail(
+				context,
+				`rank ${rank} is outside ${MIN_RANK}–${MAX_RANK}`,
+				description,
+			)
 		const prev = ranks[ranks.length - 1]
 		if (prev && rank <= prev.rank)
 			fail(
@@ -126,14 +137,20 @@ export function parseTalentDescription(description: string, context = 'talent'):
 				description,
 			)
 		const start = (label.index as number) + label[0].length
-		const end = i + 1 < labels.length ? (labels[i + 1].index as number) : description.length
+		const end =
+			i + 1 < labels.length
+				? (labels[i + 1].index as number)
+				: description.length
 		const body = description.slice(start, end)
 		if (body.replace(/<[^>]*>/g, '').trim() === '')
 			fail(context, `(Rank ${rank}) has no rule text`, description)
 		// Strict success runs: all 7 talents that use Weak/Strong/Critical use the
 		// full trio, so a gap here means the data lost a line (unlike combat arts,
 		// where partial runs are legitimate).
-		ranks.push({ rank, nodes: parseSpellEffect(body, `${context} (Rank ${rank})`).nodes })
+		ranks.push({
+			rank,
+			nodes: parseSpellEffect(body, `${context} (Rank ${rank})`).nodes,
+		})
 	})
 
 	return { preamble, ranks }
@@ -152,8 +169,12 @@ export interface TalentRecord {
  * the junk `Untitled` row removed in this migration — so a stray empty Notion
  * row can never silently reappear as a blank card.
  */
-export function validateTalentRecord(entry: unknown, context = 'talent'): TalentRecord {
-	if (typeof entry !== 'object' || entry === null) fail(context, 'entry is not an object')
+export function validateTalentRecord(
+	entry: unknown,
+	context = 'talent',
+): TalentRecord {
+	if (typeof entry !== 'object' || entry === null)
+		fail(context, 'entry is not an object')
 	const e = entry as Record<string, unknown>
 	for (const field of ['name', 'skill requirement', 'description'] as const) {
 		if (typeof e[field] !== 'string')
@@ -161,7 +182,10 @@ export function validateTalentRecord(entry: unknown, context = 'talent'): Talent
 		const value = (e[field] as string).trim()
 		if (value === '') fail(context, `field "${field}" is empty`)
 		if (value === '-')
-			fail(context, `field "${field}" is the "-" placeholder (empty Notion row?)`)
+			fail(
+				context,
+				`field "${field}" is the "-" placeholder (empty Notion row?)`,
+			)
 	}
 	return entry as TalentRecord
 }

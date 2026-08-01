@@ -99,7 +99,6 @@ function absorbSkillRanks(nodes: InlineNode[]): InlineNode[] {
 
 const tableChipsPlugin = (options = {}) => {
 	return (tree, file) => {
-
 		visitParents(
 			tree,
 			'text',
@@ -199,10 +198,7 @@ const tableChipsPlugin = (options = {}) => {
 							if (
 								chipInfo.type === 'damage' &&
 								!damageZone &&
-								!hasDamageContext(
-									context.precedingText,
-									context.followingText,
-								)
+								!hasDamageContext(context.precedingText, context.followingText)
 							) {
 								return null
 							}

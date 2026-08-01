@@ -23,7 +23,9 @@ describe('MarkButton', () => {
 		render(<MarkButton glyph="×" label="Remove Draconic" onClick={onClick} />)
 
 		await userEvent.tab()
-		expect(screen.getByRole('button', { name: 'Remove Draconic' })).toHaveFocus()
+		expect(
+			screen.getByRole('button', { name: 'Remove Draconic' }),
+		).toHaveFocus()
 		await userEvent.keyboard('{Enter}')
 		expect(onClick).toHaveBeenCalled()
 	})

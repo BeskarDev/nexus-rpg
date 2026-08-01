@@ -32,17 +32,17 @@ const AttributeField = styled(RoundTextField)({
 	},
 })
 
-	export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
-		// Calculate max HP using the new formula
-		const maxHp = calculateMaxHp(
-			char.statistics.strength.value,
-			char.skills.xp.total,
-			char.statistics.health.maxHpModifier || 0,
-			char.statistics.health.auto || 0,
-		)
+export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
+	// Calculate max HP using the new formula
+	const maxHp = calculateMaxHp(
+		char.statistics.strength.value,
+		char.skills.xp.total,
+		char.statistics.health.maxHpModifier || 0,
+		char.statistics.health.auto || 0,
+	)
 
-		// Group abilities by tag/category
-		const groupedAbilities = char.skills.abilities.reduce(
+	// Group abilities by tag/category
+	const groupedAbilities = char.skills.abilities.reduce(
 		(groups, ability) => {
 			const tag = ability.tag || 'Other'
 			if (!groups[tag]) {
@@ -251,7 +251,9 @@ const AttributeField = styled(RoundTextField)({
 								InputProps={{
 									endAdornment: (
 										<InputAdornment position="end" sx={{ mt: '2px' }}>
-											<Typography variant="body2" sx={{ lineHeight: 1.5 }}>/ 6</Typography>
+											<Typography variant="body2" sx={{ lineHeight: 1.5 }}>
+												/ 6
+											</Typography>
 										</InputAdornment>
 									),
 								}}

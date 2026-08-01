@@ -45,7 +45,9 @@ const TIER_INTROS: Record<number, string> = {
 	10: 'Tier 10 creatures are the pinnacle of mortal-scale threats - legendary beings that reshape the world around them. Encounters with these creatures are campaign-defining events.',
 }
 
-const TIERS = Object.keys(TIER_INTROS).map(Number).sort((a, b) => a - b)
+const TIERS = Object.keys(TIER_INTROS)
+	.map(Number)
+	.sort((a, b) => a - b)
 const CATEGORIES = new Set(['Basic', 'Elite', 'Lord'])
 
 interface StatBlockEntry {
@@ -105,7 +107,13 @@ interface CreatureLoreRecord {
 	tactics?: string
 	treasure?: {
 		scale: string
-		table?: { kind: string; item: string; stats?: string; value?: string; note?: string }[]
+		table?: {
+			kind: string
+			item: string
+			stats?: string
+			value?: string
+			note?: string
+		}[]
 	}
 	organization?: EncounterTemplateRecord[]
 }
@@ -127,7 +135,13 @@ interface EncounterTemplateRecord {
  * describes how much a creature carries relative to what is normal for its tier,
  * without committing to specific loot tables.
  */
-const TREASURE_SCALES = new Set(['None', 'Incidental', 'Standard', 'Rich', 'Hoard'])
+const TREASURE_SCALES = new Set([
+	'None',
+	'Incidental',
+	'Standard',
+	'Rich',
+	'Hoard',
+])
 
 /**
  * Loot categories for treasure-table rows. A closed set so a future hoard
@@ -211,9 +225,25 @@ const LORE_KEYS = new Set([
 	'organization',
 ])
 
-const STRING_FIELDS = ['name', 'type', 'category', 'armor', 'hp', 'av', 'str', 'agi', 'spi', 'mnd'] as const
+const STRING_FIELDS = [
+	'name',
+	'type',
+	'category',
+	'armor',
+	'hp',
+	'av',
+	'str',
+	'agi',
+	'spi',
+	'mnd',
+] as const
 const NUMBER_FIELDS = ['tier', 'parry', 'dodge', 'resist'] as const
-const LIST_FIELDS = ['skills', 'immunities', 'resistances', 'weaknesses'] as const
+const LIST_FIELDS = [
+	'skills',
+	'immunities',
+	'resistances',
+	'weaknesses',
+] as const
 const ENTRY_FIELDS = ['attacks', 'abilities', 'quickActions'] as const
 
 function fail(context: string, reason: string): never {
@@ -221,28 +251,44 @@ function fail(context: string, reason: string): never {
 }
 
 function validateCreature(entry: unknown, context: string): CreatureRecord {
-	if (typeof entry !== 'object' || entry === null) fail(context, 'entry is not an object')
+	if (typeof entry !== 'object' || entry === null)
+		fail(context, 'entry is not an object')
 	const e = entry as Record<string, unknown>
 	for (const field of STRING_FIELDS) {
-		if (typeof e[field] !== 'string') fail(context, `field "${field}" must be a string`)
-		if ((e[field] as string).trim() === '') fail(context, `field "${field}" is empty`)
+		if (typeof e[field] !== 'string')
+			fail(context, `field "${field}" must be a string`)
+		if ((e[field] as string).trim() === '')
+			fail(context, `field "${field}" is empty`)
 	}
 	for (const field of NUMBER_FIELDS) {
-		if (typeof e[field] !== 'number') fail(context, `field "${field}" must be a number`)
+		if (typeof e[field] !== 'number')
+			fail(context, `field "${field}" must be a number`)
 	}
 	for (const field of [...LIST_FIELDS, ...ENTRY_FIELDS]) {
-		if (!Array.isArray(e[field])) fail(context, `field "${field}" must be an array`)
+		if (!Array.isArray(e[field]))
+			fail(context, `field "${field}" must be an array`)
 	}
 	// An unknown tier or category would silently drop the creature from every page.
 	if (!TIERS.includes(e.tier as number))
-		fail(context, `tier ${e.tier} has no page (expected ${TIERS[0]}–${TIERS[TIERS.length - 1]})`)
+		fail(
+			context,
+			`tier ${e.tier} has no page (expected ${TIERS[0]}–${TIERS[TIERS.length - 1]})`,
+		)
 	if (!CATEGORIES.has(e.category as string))
-		fail(context, `unknown category "${e.category}" (expected ${[...CATEGORIES].join(', ')})`)
+		fail(
+			context,
+			`unknown category "${e.category}" (expected ${[...CATEGORIES].join(', ')})`,
+		)
 	// Every published creature states its armor twice: as its own field and inside
 	// the AV parenthetical. The card shows only AV, so guard the redundancy that
 	// justifies that — if they ever diverge, the card would be hiding real data.
-	if (!(e.av as string).toLowerCase().includes((e.armor as string).toLowerCase()))
-		fail(context, `armor "${e.armor}" does not appear in av "${e.av}"; the card shows only AV`)
+	if (
+		!(e.av as string).toLowerCase().includes((e.armor as string).toLowerCase())
+	)
+		fail(
+			context,
+			`armor "${e.armor}" does not appear in av "${e.av}"; the card shows only AV`,
+		)
 	if (e.lore !== undefined) validateLore(e.lore, context)
 	for (const field of ENTRY_FIELDS) {
 		for (const [i, raw] of (e[field] as unknown[]).entries()) {
@@ -268,7 +314,10 @@ function validateLore(raw: unknown, context: string): void {
 	const lore = raw as Record<string, unknown>
 	for (const key of Object.keys(lore)) {
 		if (!LORE_KEYS.has(key))
-			fail(context, `lore has unknown key "${key}" (expected ${[...LORE_KEYS].join(', ')})`)
+			fail(
+				context,
+				`lore has unknown key "${key}" (expected ${[...LORE_KEYS].join(', ')})`,
+			)
 	}
 	// The narrative is the one required part — a lore block with no voice is just
 	// a table, and the other sections are meaningless without it.
@@ -282,7 +331,10 @@ function validateLore(raw: unknown, context: string): void {
 	}
 	if (lore.environment !== undefined) {
 		if (!Array.isArray(lore.environment) || lore.environment.length === 0)
-			fail(context, 'lore.environment must be a non-empty array of terrain terms')
+			fail(
+				context,
+				'lore.environment must be a non-empty array of terrain terms',
+			)
 		let previous = 0
 		for (const term of lore.environment) {
 			if (typeof term !== 'string' || term.trim() === '')
@@ -316,18 +368,29 @@ function validateLore(raw: unknown, context: string): void {
 		// Everything except an empty-handed creature owes a rollable table — the
 		// point of the treasure block is to be usable at the table, not descriptive.
 		if (treasure.scale !== 'None' && treasure.table === undefined)
-			fail(context, `lore.treasure.scale "${treasure.scale}" requires a d6 table`)
+			fail(
+				context,
+				`lore.treasure.scale "${treasure.scale}" requires a d6 table`,
+			)
 		if (treasure.table !== undefined) {
 			if (!Array.isArray(treasure.table) || treasure.table.length !== 6)
-				fail(context, 'lore.treasure.table must have exactly 6 rows (it is rolled on a d6)')
-			for (const [i, raw] of (treasure.table as Record<string, unknown>[]).entries()) {
+				fail(
+					context,
+					'lore.treasure.table must have exactly 6 rows (it is rolled on a d6)',
+				)
+			for (const [i, raw] of (
+				treasure.table as Record<string, unknown>[]
+			).entries()) {
 				if (!TREASURE_KINDS.has(raw?.kind as string))
 					fail(
 						context,
 						`lore.treasure.table[${i}].kind must be one of ${[...TREASURE_KINDS].join(', ')}, got ${JSON.stringify(raw?.kind)}`,
 					)
 				if (typeof raw?.item !== 'string' || (raw.item as string).trim() === '')
-					fail(context, `lore.treasure.table[${i}].item must be a non-empty string`)
+					fail(
+						context,
+						`lore.treasure.table[${i}].item must be a non-empty string`,
+					)
 				// `item` is a NAME now, not a sentence — the numbers live in `stats`
 				// and `value` so they can be found without reading the row.
 				if ((raw.item as string).length > 60)
@@ -344,7 +407,10 @@ function validateLore(raw: unknown, context: string): void {
 	}
 	if (lore.organization !== undefined) {
 		if (!Array.isArray(lore.organization) || lore.organization.length === 0)
-			fail(context, 'lore.organization must be a non-empty array of encounter templates')
+			fail(
+				context,
+				'lore.organization must be a non-empty array of encounter templates',
+			)
 		for (const [i, raw] of lore.organization.entries()) {
 			const template = raw as Record<string, unknown>
 			const where = `lore.organization[${i}]`
@@ -356,15 +422,30 @@ function validateLore(raw: unknown, context: string): void {
 			// one with neither says nothing about how many are met.
 			if (hasCount === hasComposition)
 				fail(context, `${where} needs exactly one of "count" or "composition"`)
-			if (hasCount && (typeof template.count !== 'string' || (template.count as string).trim() === ''))
+			if (
+				hasCount &&
+				(typeof template.count !== 'string' ||
+					(template.count as string).trim() === '')
+			)
 				fail(context, `${where}.count must be a non-empty string`)
 			if (hasComposition) {
-				if (!Array.isArray(template.composition) || template.composition.length === 0)
+				if (
+					!Array.isArray(template.composition) ||
+					template.composition.length === 0
+				)
 					fail(context, `${where}.composition must be a non-empty array`)
-				for (const [j, part] of (template.composition as Record<string, unknown>[]).entries()) {
+				for (const [j, part] of (
+					template.composition as Record<string, unknown>[]
+				).entries()) {
 					for (const key of ['count', 'creature'] as const)
-						if (typeof part?.[key] !== 'string' || (part[key] as string).trim() === '')
-							fail(context, `${where}.composition[${j}].${key} must be a non-empty string`)
+						if (
+							typeof part?.[key] !== 'string' ||
+							(part[key] as string).trim() === ''
+						)
+							fail(
+								context,
+								`${where}.composition[${j}].${key} must be a non-empty string`,
+							)
 				}
 			}
 		}
@@ -434,7 +515,10 @@ function renderBadges(items: string[]): string {
 		.join('')
 }
 
-function renderEntry(entry: StatBlockEntry, kind: (typeof ENTRY_FIELDS)[number]): string {
+function renderEntry(
+	entry: StatBlockEntry,
+	kind: (typeof ENTRY_FIELDS)[number],
+): string {
 	let text = entry.text
 	let head = `<EntryName>${entry.name}</EntryName>`
 	let badges = ''
@@ -457,7 +541,9 @@ function renderEntry(entry: StatBlockEntry, kind: (typeof ENTRY_FIELDS)[number])
 	// A trailing period only when nothing follows the name in the head, so a badge
 	// never sits after a full stop.
 	if (!badges && !ladder) head += '.'
-	const lines = [`- ${head}${badges ? ' ' + badges : ''}${ladder} ${text}`.trimEnd()]
+	const lines = [
+		`- ${head}${badges ? ' ' + badges : ''}${ladder} ${text}`.trimEnd(),
+	]
 	for (const detail of entry.details ?? []) lines.push(`  ${detail}`)
 	return lines.join('\n')
 }
@@ -475,7 +561,10 @@ const SECTION_LABELS: Record<(typeof ENTRY_FIELDS)[number], string> = {
 	quickActions: 'Quick Actions',
 }
 
-function renderCreature(c: CreatureRecord, linkTo: (name: string) => string): string {
+function renderCreature(
+	c: CreatureRecord,
+	linkTo: (name: string) => string,
+): string {
 	const props = [
 		`type=${attr(c.type)}`,
 		`tier={${c.tier}}`,
@@ -490,7 +579,10 @@ function renderCreature(c: CreatureRecord, linkTo: (name: string) => string): st
 		`dodge={${c.dodge}}`,
 		`resist={${c.resist}}`,
 	]
-	const blocks = [`<CreatureStatBlock\n\t${props.join('\n\t')}\n>`, `### ${c.name}`]
+	const blocks = [
+		`<CreatureStatBlock\n\t${props.join('\n\t')}\n>`,
+		`### ${c.name}`,
+	]
 
 	// Lore goes immediately after the heading: the card lifts it out of the body to
 	// render it under the header, and reads it as the first non-heading child.
@@ -506,8 +598,12 @@ function renderCreature(c: CreatureRecord, linkTo: (name: string) => string): st
 				? // Skills stay a plain run: the chips plugin already turns each into a
 					// skill chip and absorbs its rank, so wrapping them would double up.
 					c[field].join(', ')
-				: c[field].map((item) => `<TraitItem>${dropDamageWord(item)}</TraitItem>`).join('')
-		blocks.push(`<StatBlockTrait label="${TRAIT_LABELS[field]}">${items}</StatBlockTrait>`)
+				: c[field]
+						.map((item) => `<TraitItem>${dropDamageWord(item)}</TraitItem>`)
+						.join('')
+		blocks.push(
+			`<StatBlockTrait label="${TRAIT_LABELS[field]}">${items}</StatBlockTrait>`,
+		)
 	}
 
 	for (const field of ENTRY_FIELDS) {
@@ -534,15 +630,22 @@ function slug(name: string): string {
 		.replace(/[\s_]+/g, '-')
 }
 
-function renderLore(lore: CreatureLoreRecord, linkTo: (name: string) => string): string {
+function renderLore(
+	lore: CreatureLoreRecord,
+	linkTo: (name: string) => string,
+): string {
 	const parts: string[] = [lore.narrative.trim()]
 	if (lore.environment || lore.ecology) {
-		const tags = (lore.environment ?? []).map((t) => `<LoreTag>${t}</LoreTag>`).join('')
+		const tags = (lore.environment ?? [])
+			.map((t) => `<LoreTag>${t}</LoreTag>`)
+			.join('')
 		const prose = lore.ecology ? ` ${lore.ecology.trim()}` : ''
 		parts.push(`<LoreSection label="Ecology">${tags}${prose}</LoreSection>`)
 	}
 	if (lore.tactics)
-		parts.push(`<LoreSection label="Tactics">${lore.tactics.trim()}</LoreSection>`)
+		parts.push(
+			`<LoreSection label="Tactics">${lore.tactics.trim()}</LoreSection>`,
+		)
 	if (lore.treasure) {
 		const rows = (lore.treasure.table ?? [])
 			.map((row) => {
@@ -566,7 +669,8 @@ function renderLore(lore: CreatureLoreRecord, linkTo: (name: string) => string):
 					return `<EncounterTemplate count="${t.count}">${t.name}</EncounterTemplate>`
 				// Each member links to their own entry, resolved from the roster.
 				const members = t.composition.map(
-					(part) => `${part.count} [${part.creature}](${linkTo(part.creature)})`,
+					(part) =>
+						`${part.count} [${part.creature}](${linkTo(part.creature)})`,
 				)
 				const joined =
 					members.length > 1
@@ -577,7 +681,9 @@ function renderLore(lore: CreatureLoreRecord, linkTo: (name: string) => string):
 			.join('')
 		parts.push(`<LoreSection label="Organization">${templates}</LoreSection>`)
 	}
-	return ['<CreatureLore>', '', parts.join('\n\n'), '', '</CreatureLore>'].join('\n')
+	return ['<CreatureLore>', '', parts.join('\n\n'), '', '</CreatureLore>'].join(
+		'\n',
+	)
 }
 
 function renderPage(
@@ -587,7 +693,12 @@ function renderPage(
 ): string {
 	// h3 creature names are the only TOC-eligible headings; the h4 section labels
 	// inside each card (Attacks / Abilities) are excluded by the max level.
-	const fm = ['---', `sidebar_position: ${tier + 1}`, 'toc_max_heading_level: 3', '---']
+	const fm = [
+		'---',
+		`sidebar_position: ${tier + 1}`,
+		'toc_max_heading_level: 3',
+		'---',
+	]
 	// The h1 must immediately follow the frontmatter or Docusaurus's content-title
 	// extraction fails and the sidebar label falls back to the lowercase doc id.
 	const blocks = [
@@ -603,7 +714,9 @@ function renderPage(
 function main() {
 	const check = process.argv.slice(2).includes('--check')
 	const entries: unknown[] = JSON.parse(fs.readFileSync(JSON_FILE, 'utf-8'))
-	const creatures = entries.map((raw, i) => validateCreature(raw, `creatures.json[${i}]`))
+	const creatures = entries.map((raw, i) =>
+		validateCreature(raw, `creatures.json[${i}]`),
+	)
 
 	// Cross-references in encounter templates are resolved against the roster, so a
 	// template can never point at a creature that was renamed or never written.
@@ -620,11 +733,14 @@ function main() {
 		const outFile = path.join(DOC_DIR, `tier-${tier}.mdx`)
 		const legacy = path.join(DOC_DIR, `tier-${tier}.md`)
 		const inTier = creatures.filter((c) => c.tier === tier)
-		if (inTier.length === 0) fail(`tier ${tier}`, 'no creatures found for this tier')
+		if (inTier.length === 0)
+			fail(`tier ${tier}`, 'no creatures found for this tier')
 		const content = renderPage(tier, inTier, linkTo)
 
 		if (check) {
-			const current = fs.existsSync(outFile) ? fs.readFileSync(outFile, 'utf-8') : null
+			const current = fs.existsSync(outFile)
+				? fs.readFileSync(outFile, 'utf-8')
+				: null
 			if (current !== content) {
 				stale++
 				console.error(`STALE: ${path.relative(REPO, outFile)}`)
@@ -635,7 +751,9 @@ function main() {
 		fs.writeFileSync(outFile, content)
 		// Retire the hand-written .md once the .mdx is generated.
 		if (fs.existsSync(legacy)) fs.rmSync(legacy)
-		console.log(`wrote ${path.relative(REPO, outFile)} (${inTier.length} creatures)`)
+		console.log(
+			`wrote ${path.relative(REPO, outFile)} (${inTier.length} creatures)`,
+		)
 	}
 
 	if (check) {

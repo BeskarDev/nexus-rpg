@@ -1,6 +1,9 @@
 import { SxProps, Theme } from '@mui/material'
 import React from 'react'
-import type { SheetSigilName, StatSigilName } from '@site/src/components/codex/stat-sigils'
+import type {
+	SheetSigilName,
+	StatSigilName,
+} from '@site/src/components/codex/stat-sigils'
 import type { CardWeight } from '../Card/types'
 
 /**

@@ -66,7 +66,10 @@ export const SigilPip: React.FC<SigilPipProps> = ({
 	/>
 )
 
-export interface PipRowProps extends Omit<SigilPipProps, 'filled' | 'onToggle' | 'label'> {
+export interface PipRowProps extends Omit<
+	SigilPipProps,
+	'filled' | 'onToggle' | 'label'
+> {
 	/** How many pips the row draws. */
 	count: number
 	/** How many are currently filled. */

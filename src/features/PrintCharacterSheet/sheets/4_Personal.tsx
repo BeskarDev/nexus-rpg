@@ -7,40 +7,44 @@ import { useMemo } from 'react'
 
 export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 	// Handle both new and legacy NPC relationship formats
-	const { isNewFormat, groupedRelationships, allies, contacts, rivals } = useMemo<{
-		isNewFormat: boolean
-		groupedRelationships: Map<number, NpcRelationship[]>
-		allies: Relation[]
-		contacts: Relation[]
-		rivals: Relation[]
-	}>(() => {
-		// If using new format
-		if (char.personal.npcRelationships && char.personal.npcRelationships.length > 0) {
-			// Group NPCs by disposition level
-			const grouped = new Map<number, NpcRelationship[]>()
-			char.personal.npcRelationships.forEach((npc) => {
-				if (!grouped.has(npc.disposition)) {
-					grouped.set(npc.disposition, [])
+	const { isNewFormat, groupedRelationships, allies, contacts, rivals } =
+		useMemo<{
+			isNewFormat: boolean
+			groupedRelationships: Map<number, NpcRelationship[]>
+			allies: Relation[]
+			contacts: Relation[]
+			rivals: Relation[]
+		}>(() => {
+			// If using new format
+			if (
+				char.personal.npcRelationships &&
+				char.personal.npcRelationships.length > 0
+			) {
+				// Group NPCs by disposition level
+				const grouped = new Map<number, NpcRelationship[]>()
+				char.personal.npcRelationships.forEach((npc) => {
+					if (!grouped.has(npc.disposition)) {
+						grouped.set(npc.disposition, [])
+					}
+					grouped.get(npc.disposition)!.push(npc)
+				})
+				return {
+					isNewFormat: true,
+					groupedRelationships: grouped,
+					allies: [],
+					contacts: [],
+					rivals: [],
 				}
-				grouped.get(npc.disposition)!.push(npc)
-			})
-			return {
-				isNewFormat: true,
-				groupedRelationships: grouped,
-				allies: [],
-				contacts: [],
-				rivals: [],
 			}
-		}
-		// Fall back to legacy format
-		return {
-			isNewFormat: false,
-			groupedRelationships: new Map(),
-			allies: char.personal.allies || [],
-			contacts: char.personal.contacts || [],
-			rivals: char.personal.rivals || [],
-		}
-	}, [char.personal])
+			// Fall back to legacy format
+			return {
+				isNewFormat: false,
+				groupedRelationships: new Map(),
+				allies: char.personal.allies || [],
+				contacts: char.personal.contacts || [],
+				rivals: char.personal.rivals || [],
+			}
+		}, [char.personal])
 
 	const getDispositionLabel = (disposition: number): string => {
 		if (disposition >= 2) return 'Intimate (+2)'
@@ -56,7 +60,9 @@ export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 	}
 
 	// Sort disposition levels from highest to lowest
-	const sortedDispositions = Array.from(groupedRelationships.keys()).sort((a, b) => b - a)
+	const sortedDispositions = Array.from(groupedRelationships.keys()).sort(
+		(a, b) => b - a,
+	)
 
 	return (
 		<SheetLayout>
@@ -101,17 +107,28 @@ export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 				>
 					{isNewFormat ? (
 						<>
-							<Typography color="text.secondary" variant="caption" sx={{ fontWeight: 'bold' }}>
+							<Typography
+								color="text.secondary"
+								variant="caption"
+								sx={{ fontWeight: 'bold' }}
+							>
 								NPC Relationships
 							</Typography>
 							{sortedDispositions.map((disposition) => {
 								const npcs = groupedRelationships.get(disposition)!
 								return (
 									<Box key={disposition}>
-										<Typography color="text.secondary" variant="caption" sx={{ fontSize: '9px', fontStyle: 'italic' }}>
+										<Typography
+											color="text.secondary"
+											variant="caption"
+											sx={{ fontSize: '9px', fontStyle: 'italic' }}
+										>
 											{getDispositionLabel(disposition)}
 										</Typography>
-										<Box component="ul" sx={{ pl: 3, mb: 0, '& li + li': { mt: 0.5 } }}>
+										<Box
+											component="ul"
+											sx={{ pl: 3, mb: 0, '& li + li': { mt: 0.5 } }}
+										>
 											{npcs.map((npc, index) => (
 												<Typography
 													key={npc.id || `npc-${index}`}

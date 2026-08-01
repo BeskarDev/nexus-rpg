@@ -7,7 +7,11 @@
  * the owner-facing review surface is the dev gallery at `/dev/sigils`.
  */
 import { writeFileSync } from 'node:fs'
-import { SIGIL_INNER, SIGIL_VIEWBOX, SigilName } from '../../components/codex/sigil-paths'
+import {
+	SIGIL_INNER,
+	SIGIL_VIEWBOX,
+	SigilName,
+} from '../../components/codex/sigil-paths'
 import { encodeGrayPng } from './png'
 import { parseSigil, rasterize } from './raster'
 

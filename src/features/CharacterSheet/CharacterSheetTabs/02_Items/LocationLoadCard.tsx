@@ -37,7 +37,9 @@ export const LocationLoadCard: React.FC<LocationLoadCardProps> = ({
 			minWidth="5.5rem"
 			maxWidth="7rem"
 			info="Load capacity for this location"
-			borderColor={currentLoad >= maxLoad && maxLoad > 0 ? loadColor : undefined}
+			borderColor={
+				currentLoad >= maxLoad && maxLoad > 0 ? loadColor : undefined
+			}
 		>
 			{/* Compound value: the carried total is derived and read-only, only the
 			    capacity is editable — so this stays hand-composed rather than

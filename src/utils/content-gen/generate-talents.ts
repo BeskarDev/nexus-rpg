@@ -81,7 +81,10 @@ function rankSpan(ranks: TalentRankSection[], context: string): string {
 	const lo = values[0]
 	const hi = values[values.length - 1]
 	if (values.length !== hi - lo + 1)
-		fail(context, `rank ladder has a gap (${values.join(', ')}), so a span label would mislead`)
+		fail(
+			context,
+			`rank ladder has a gap (${values.join(', ')}), so a span label would mislead`,
+		)
 	return lo === hi ? `${lo}` : `${lo}-${hi}`
 }
 
@@ -107,19 +110,35 @@ function renderTalent(talent: TalentRecord): string {
 	return blocks.join('\n\n')
 }
 
-function renderPage(skill: string, sidebarPosition: number, talents: TalentRecord[]): string {
+function renderPage(
+	skill: string,
+	sidebarPosition: number,
+	talents: TalentRecord[],
+): string {
 	// h3 talent names are the only headings on the page, so the TOC lists them.
-	const fm = ['---', `sidebar_position: ${sidebarPosition}`, 'toc_max_heading_level: 3', '---']
+	const fm = [
+		'---',
+		`sidebar_position: ${sidebarPosition}`,
+		'toc_max_heading_level: 3',
+		'---',
+	]
 	// The h1 must immediately follow the frontmatter or Docusaurus's content-title
 	// extraction fails and the sidebar label falls back to the lowercase doc id.
-	const blocks = [fm.join('\n'), `# ${skill}`, BANNER, ...talents.map(renderTalent)]
+	const blocks = [
+		fm.join('\n'),
+		`# ${skill}`,
+		BANNER,
+		...talents.map(renderTalent),
+	]
 	return blocks.join('\n\n') + '\n'
 }
 
 function main() {
 	const check = process.argv.slice(2).includes('--check')
 	const entries: unknown[] = JSON.parse(fs.readFileSync(JSON_FILE, 'utf-8'))
-	const talents = entries.map((raw, i) => validateTalentRecord(raw, `talents.json[${i}]`))
+	const talents = entries.map((raw, i) =>
+		validateTalentRecord(raw, `talents.json[${i}]`),
+	)
 
 	for (const [i, talent] of talents.entries()) {
 		if (!KNOWN_SKILLS.has(talent['skill requirement']))
@@ -140,7 +159,9 @@ function main() {
 		const content = renderPage(name, sidebarPosition, forSkill)
 
 		if (check) {
-			const current = fs.existsSync(outFile) ? fs.readFileSync(outFile, 'utf-8') : null
+			const current = fs.existsSync(outFile)
+				? fs.readFileSync(outFile, 'utf-8')
+				: null
 			if (current !== content) {
 				stale++
 				console.error(`STALE: ${path.relative(REPO, outFile)}`)
@@ -151,7 +172,9 @@ function main() {
 		fs.writeFileSync(outFile, content)
 		// Retire the hand-written .md once the .mdx is generated.
 		if (fs.existsSync(legacy)) fs.rmSync(legacy)
-		console.log(`wrote ${path.relative(REPO, outFile)} (${forSkill.length} talents)`)
+		console.log(
+			`wrote ${path.relative(REPO, outFile)} (${forSkill.length} talents)`,
+		)
 	}
 
 	if (check) {

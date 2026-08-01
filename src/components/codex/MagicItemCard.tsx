@@ -85,7 +85,9 @@ export default function MagicItemCard({
 		<section className={styles.card}>
 			<CardFrame keystone="gem" />
 			<div className={styles.head}>
-				<h4 className={`${styles.name}${name ? '' : ' ' + styles['name--waiting']}`}>
+				<h4
+					className={`${styles.name}${name ? '' : ' ' + styles['name--waiting']}`}
+				>
 					{name || 'No item yet'}
 				</h4>
 				{quality && <Cartouche compact>{quality}</Cartouche>}

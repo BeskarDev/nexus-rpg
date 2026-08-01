@@ -1,5 +1,10 @@
 import React from 'react'
-import { arcBandD, boxD, circleD, path } from '@site/src/components/codex/sigil-geometry'
+import {
+	arcBandD,
+	boxD,
+	circleD,
+	path,
+} from '@site/src/components/codex/sigil-geometry'
 
 /**
  * The "there is a rule behind this" affordance: a query carved out of a struck
@@ -73,7 +78,10 @@ export interface GlossMarkProps {
 	className?: string
 }
 
-export const GlossMark: React.FC<GlossMarkProps> = ({ size = 13, className }) => (
+export const GlossMark: React.FC<GlossMarkProps> = ({
+	size = 13,
+	className,
+}) => (
 	<svg
 		width={size}
 		height={size}

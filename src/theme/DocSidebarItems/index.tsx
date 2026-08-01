@@ -1,9 +1,7 @@
 import React from 'react'
 import OriginalDocSidebarItems from '@theme-original/DocSidebarItems'
 import { stripLeadingEmoji } from '@site/src/remark/shared/strip-leading-emoji'
-import SigilIcon, {
-	SIGIL_SIZE,
-} from '@site/src/components/codex/SigilIcon'
+import SigilIcon, { SIGIL_SIZE } from '@site/src/components/codex/SigilIcon'
 import {
 	pageSigilForDocId,
 	pageSigilForHref,

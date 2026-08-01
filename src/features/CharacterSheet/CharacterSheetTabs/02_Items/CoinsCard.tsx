@@ -20,8 +20,16 @@ export type CoinsCardProps = {
  * keeps its own bare styling instead of taking the slot — a slot inside a card
  * would be a box inside a box.
  */
-export const CoinsCard: React.FC<CoinsCardProps> = ({ coins, updateCharacter }) => (
-	<SheetField sigil="coins" label="Coins" tone={UI_COLORS.amber} minWidth="8rem">
+export const CoinsCard: React.FC<CoinsCardProps> = ({
+	coins,
+	updateCharacter,
+}) => (
+	<SheetField
+		sigil="coins"
+		label="Coins"
+		tone={UI_COLORS.amber}
+		minWidth="8rem"
+	>
 		<TextField
 			type="number"
 			value={coins}
