@@ -99,7 +99,13 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 						<>
 							<RecordPlate
 								label="Standing"
-								actions={<DeleteButton onDelete={deleteNpc} />}
+								actions={
+									<DeleteButton
+										onDelete={deleteNpc}
+										entityKind="NPC"
+										entityName={draft.name}
+									/>
+								}
 							>
 								<RecordRow sigil="folk" label="Role">
 									<DetailField

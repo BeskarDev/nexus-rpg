@@ -145,6 +145,8 @@ export const AbilityDetails: React.FC<AbilityDetailsProps> = ({
 						</Tooltip>
 						<DeleteButton
 							onDelete={onDelete}
+							entityKind="ability"
+							entityName={title}
 							tooltipText="Delete this ability"
 						/>
 					</>

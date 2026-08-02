@@ -77,6 +77,9 @@ export const PartyMemberItem: React.FC<PartyMemberItemProps> = ({
 							// keeps the confirmation `PartyManagement` puts behind it.
 							<DeleteButton
 								onDelete={onDeleteParty}
+								// `PartyManagement` already puts its own confirmation behind
+								// this, and two dialogs for one press is worse than none.
+								confirm={false}
 								tooltipText="Delete this party"
 							/>
 						) : (

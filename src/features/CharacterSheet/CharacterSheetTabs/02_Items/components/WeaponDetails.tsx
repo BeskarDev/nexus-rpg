@@ -120,7 +120,11 @@ export const WeaponDetails: React.FC<WeaponDetailsProps> = ({
 									onToggle={onToggleQuickRef}
 								/>
 							)}
-							<DeleteButton onDelete={onDelete} />
+							<DeleteButton
+								onDelete={onDelete}
+								entityKind="weapon"
+								entityName={weapon.name}
+							/>
 						</>
 					}
 				>

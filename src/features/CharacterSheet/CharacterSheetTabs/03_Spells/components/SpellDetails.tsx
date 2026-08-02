@@ -93,7 +93,11 @@ export const SpellDetails: React.FC<SpellDetailsProps> = ({
 								onToggle={onToggleQuickRef}
 							/>
 						)}
-						<DeleteButton onDelete={onDelete} />
+						<DeleteButton
+							onDelete={onDelete}
+							entityKind="spell"
+							entityName={spell.name}
+						/>
 					</>
 				}
 			>

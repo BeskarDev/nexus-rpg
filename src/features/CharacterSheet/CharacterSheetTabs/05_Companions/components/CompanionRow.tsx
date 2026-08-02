@@ -169,7 +169,13 @@ export const CompanionRow: React.FC<CompanionRowProps> = ({
 						aside={
 							<RecordPlate
 								label="Record"
-								actions={<DeleteButton onDelete={deleteCompanion} />}
+								actions={
+									<DeleteButton
+										onDelete={deleteCompanion}
+										entityKind="companion"
+										entityName={companion.name}
+									/>
+								}
 							>
 								{/* The name is a PLATE ROW, not its own group (S7, owner review). It was
 							appearing three times in one open row — the summary line, an Identity

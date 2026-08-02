@@ -22,26 +22,30 @@ export interface ConfirmDialogProps {
 }
 
 /**
- * The sheet's confirmation, for the four actions that survived the audit
- * (M13 S8).
+ * The sheet's one confirmation shape (M13 S8).
  *
- * ## Why there are only four
+ * ## Where it is used
  *
- * The sheet deletes on the spot everywhere else — an item, a spell, a companion,
- * an NPC all go without asking, because every one of them can be brought back
- * from the rulebook in two presses and a dialog per deletion is friction charged
- * on every use to insure against a rare mistake. S6 removed the NPC one, S7
- * removed the companion one.
- *
- * A confirmation earns its place only where the thing lost **cannot be
- * reconstructed from the rulebook**:
- *
- * | Where | What is unrecoverable |
+ * | Where | What is lost |
  * |---|---|
+ * | `DeleteButton` | any content entity — ability, weapon, item, spell, NPC, companion |
  * | `CharacterList/DeleteButton` | the character document itself |
  * | `SkillsTab` skill removal | the skill's rank and its accumulated XP (and, for Crafting, every profession under it) |
  * | `QuickRefSection` clear-all | every quick-ref pick at once, gathered across four tabs |
  * | `MagicItemBuilderDialog` close | a multi-step draft the sheet never persisted |
+ *
+ * The first row is new (2026-08-02, owner call) and it reverses the audit this
+ * component was built for. That audit kept confirmations only where the loss
+ * could not be rebuilt from the rulebook, and counted a deleted item as cheap
+ * because the ITEM is in the rulebook. What is actually lost is the player's copy
+ * of it — the rank bought, the quality and durability spent, the location stowed —
+ * and the press that loses it sits in a 24px strip next to two harmless ones.
+ * `DeleteButton`'s docblock carries the full reasoning; it now gates every content
+ * delete on the sheet by construction rather than by call-site discipline.
+ *
+ * What still deletes on the spot is what a player removes SEVERAL TIMES A
+ * SESSION and would curse a dialog for: a status effect, a language, a profession
+ * chip, a quick-ref pin.
  *
  * ## What it is
  *
