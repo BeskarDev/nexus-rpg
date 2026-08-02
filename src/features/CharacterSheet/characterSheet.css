@@ -2463,76 +2463,157 @@ input[type='number'] {
    stopped being is a LIST: it was `ListSection`s of accordion rows, and the whole
    point of a quick reference is not having to open anything.
 
-   A course per action type, cards inside it. Cards rather than rows because a row
-   aligns a corpus by column and there is no corpus here: a handful of entries the
-   player chose, each of which has to be READ.
+   ## The second rethink (owner review 5), which is the shape below
 
-   The card grid is `auto-fill` at a 15rem minimum, so one pinned weapon does not
-   sit alone in a 47rem column and eight of them do not become eight full-width
-   bands. */
+   The first cut answered "not having to open anything" with cards that printed
+   every pinned entry's full rule text at once. Ten pins is ten paragraphs: the
+   board outgrew the screen before it outgrew its usefulness, and a reference you
+   have to SCROLL is not faster than one you have to click.
+
+   So the board spends its space on the two questions in the order they are asked:
+
+   - **Which course?** A strip of glyph tabs, one per action type that has
+     anything on it. Six 24px marks on one line replaces six stacked headed
+     sections, and the answer to "what can I do with my Action" is now one glance
+     plus at most one press.
+   - **Which entry?** Name, rank and the one figure it turns on, one per line.
+     That is what a player scans; the rule text opens under exactly one of them.
+
+   The footprint at rest is the strip plus one line per entry in ONE course,
+   which is roughly what the old board spent on a single card. */
+/* Two gaps were stacked under the board (owner review 9): this margin plus the
+   section wrapper's own 24px, under a list whose last row deliberately drops its
+   rule. Read as a break in the tab rather than as the space between two sections.
+   14px total now, against the 8px the section header keeps above its own list. */
 .character-sheet-page .cs-playboard {
 	display: flex;
 	flex-direction: column;
-	gap: 0.9rem;
-	margin-bottom: 0.75rem;
-}
-.character-sheet-page .cs-playboard__course-head {
-	display: flex;
-	align-items: center;
 	gap: 0.4rem;
-	margin-bottom: 0.4rem;
-	padding-bottom: 3px;
+	margin-bottom: 0.25rem;
+}
+
+/* The strip. A hairline under the whole row rather than a box around each tab —
+   the tabs are marks on a ruled edge, and boxing six of them would put six
+   keylines in a 24px band. */
+.character-sheet-page .cs-playboard__strip {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	gap: 0.15rem;
 	border-bottom: 1px solid
 		color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
-	color: var(--nexus-bronze);
 }
-.character-sheet-page .cs-playboard__course-name {
+.character-sheet-page .cs-playboard__tab {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	/* D4's 24px interactive floor, met by the tab itself rather than by its
+	   glyph — the padding is the target. */
+	min-height: 24px;
+	padding: 0 0.45rem;
+	border: 0;
+	/* The selected tab is a tab on a ruled edge: its underline sits ON the
+	   strip's hairline and overpaints it, which is what joins the tab to the
+	   panel below. */
+	border-bottom: 2px solid transparent;
+	margin-bottom: -1px;
+	background: none;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 55%,
+		var(--ifm-font-color-base)
+	);
+	cursor: pointer;
+}
+.character-sheet-page .cs-playboard__tab:hover {
+	background: color-mix(in srgb, var(--nexus-bronze) 8%, transparent);
+}
+.character-sheet-page .cs-playboard__tab--on {
+	border-bottom-color: var(--nexus-bronze);
+	color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 8%, transparent);
+}
+/* The words, on the selected tab only. Six labels across is the stacked header
+   row this replaced; one label is the reader knowing where they are. */
+.character-sheet-page .cs-playboard__tab-name {
 	font-family: var(--nexus-font-ui);
 	font-weight: 700;
 	font-size: var(--nexus-text-2xs);
 	font-variant-caps: small-caps;
 	letter-spacing: 0.07em;
+	white-space: nowrap;
 }
-.character-sheet-page .cs-playboard__course-count {
+.character-sheet-page .cs-playboard__tab-count {
 	font-family: var(--nexus-font-ui);
 	font-size: var(--nexus-text-3xs);
 	font-variant-numeric: tabular-nums;
-	color: color-mix(
-		in srgb,
-		var(--nexus-bronze) 62%,
-		var(--ifm-font-color-base)
-	);
-}
-.character-sheet-page .cs-playboard__cards {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-	gap: 0.5rem;
+	opacity: 0.85;
 }
 
-/* One play. A bounded plate with a keyline — the sheet's device for "this is a
-   thing you can act on" — and no disclosure of any kind. */
-.character-sheet-page .cs-play-card {
+.character-sheet-page .cs-playboard__panel {
 	display: flex;
 	flex-direction: column;
-	gap: 0.25rem;
-	padding: 0.4rem 0.55rem;
-	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
-	background: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
 }
-.character-sheet-page .cs-play-card__head {
+/* `hidden` on a flex box loses to `display: flex` — the attribute's UA rule is
+   `display: none` at author-origin-beating specificity only in modern engines,
+   and any `display` declaration here defeats it outright. Stated explicitly
+   because the panels stay RENDERED by the theme's disclosure rule, so a lost
+   `hidden` shows all six courses at once. */
+.character-sheet-page .cs-playboard__panel[hidden] {
+	display: none;
+}
+
+/* One play, at rest one line.
+   ==========================================================================
+
+   Ruled rows rather than bounded cards: a card's four keylines are how you say
+   "a thing on its own", and these are siblings in one course being compared. */
+.character-sheet-page .cs-playrow {
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 16%, transparent);
+}
+.character-sheet-page .cs-playrow:last-of-type {
+	border-bottom: 0;
+}
+.character-sheet-page .cs-playrow--open {
+	background: color-mix(in srgb, var(--nexus-bronze) 6%, transparent);
+}
+.character-sheet-page .cs-playrow__head {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+}
+/* The summary IS the disclosure control. The whole line is the target, so no
+   width goes to a chevron and the D4 floor is met by the row's own height. */
+.character-sheet-page .cs-playrow__summary {
+	flex: 1 1 auto;
+	min-width: 0;
 	display: flex;
 	align-items: baseline;
 	gap: 0.4rem;
+	min-height: 24px;
+	padding: 0.1rem 0.15rem;
+	border: 0;
+	background: none;
+	text-align: left;
+	cursor: pointer;
+	color: inherit;
 }
-.character-sheet-page .cs-play-card__name {
-	flex: 1 1 auto;
+.character-sheet-page .cs-playrow__summary:hover .cs-playrow__name {
+	color: var(--nexus-bronze);
+}
+.character-sheet-page .cs-playrow__name {
+	flex: 0 1 auto;
 	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	font-family: var(--nexus-font-ui);
 	font-weight: 600;
 	font-size: var(--nexus-text-sm);
 	line-height: 1.3;
 }
-.character-sheet-page .cs-play-card__rank {
+.character-sheet-page .cs-playrow__rank {
 	flex: 0 0 auto;
 	font-family: var(--nexus-font-ui);
 	font-size: var(--nexus-text-2xs);
@@ -2543,36 +2624,68 @@ input[type='number'] {
 		var(--ifm-font-color-base)
 	);
 }
+/* The figure a play turns on: a weapon's damage, a spell's properties. Pushed to
+   the right edge so a course of rows reads as two columns without a grid, and
+   truncated rather than wrapped — it is the CUE, and the detail has the rest. */
+.character-sheet-page .cs-playrow__figure {
+	flex: 0 1 auto;
+	min-width: 0;
+	margin-left: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 72%,
+		var(--ifm-font-color-base)
+	);
+}
 
-/* Maintenance waits for the pointer.
+/* The lead, where an entry has no figure — which is every ability (owner review
+   7). A name alone does not say whether it is the thing you want; the first words
+   of the rule do.
+
+   It is a MODIFIER of the figure, not a register of its own (owner review 8).
+   The first cut set it in the reading face on the reasoning that a sentence is
+   not a value — true, and irrelevant here, because what the eye is doing is
+   running down ONE right-hand column. Two faces in that column read as two
+   columns. It gives up the tabular numerals (there are no numerals to align) and
+   nothing else.
+
+   The cap is the other half of the same point: unbounded, the lead ran to the
+   full row while a damage string stopped at a third of it, so the column had no
+   edge. 14rem is about where the longest property lists land. */
+.character-sheet-page .cs-playrow__figure--lead {
+	max-width: 14rem;
+	font-variant-numeric: normal;
+}
+
+/* Maintenance waits for the pointer, and re-filing waits for the disclosure.
    ==========================================================================
 
-   Unpinning and re-typing an action are authoring tasks, and they were sitting in
-   every row during combat. Hidden at rest, shown on hover and on focus-within so
-   the keyboard reaches them — the same judgement the row titles and the record
-   plate already take. `visibility` rather than `display`, so the head does not
-   reflow when the pointer arrives. */
-.character-sheet-page .cs-play-card__tools {
+   Unpinning is play-adjacent — it is how the board stays short — so it stays in
+   the head, hidden at rest and shown on hover and on focus-within so the keyboard
+   reaches it. `visibility` rather than `display`, so the head does not reflow when
+   the pointer arrives.
+
+   Re-typing an action moved OUT of the head entirely (owner review 6): it is
+   re-filing, done once, and it was a control sitting in the line a player scans
+   mid-turn. */
+.character-sheet-page .cs-playrow__tools {
 	flex: 0 0 auto;
 	display: flex;
 	align-items: center;
 	gap: 0.15rem;
 	visibility: hidden;
 }
-.character-sheet-page .cs-play-card:hover .cs-play-card__tools,
-.character-sheet-page .cs-play-card:focus-within .cs-play-card__tools {
+.character-sheet-page .cs-playrow:hover .cs-playrow__tools,
+.character-sheet-page .cs-playrow:focus-within .cs-playrow__tools {
 	visibility: visible;
 }
-.character-sheet-page .cs-play-card__retype .MuiSelect-select {
-	display: flex;
-	align-items: center;
-	padding: 2px 18px 2px 2px;
-	min-height: 0;
-	background: none;
-	border: 0;
-}
-.character-sheet-page .cs-play-card__unpin,
-.character-sheet-page .cs-playboard__unpin {
+.character-sheet-page .cs-playrow__unpin {
 	width: 18px;
 	height: 18px;
 	padding: 0;
@@ -2583,35 +2696,56 @@ input[type='number'] {
 		var(--ifm-font-color-base)
 	);
 }
-.character-sheet-page .cs-play-card__unpin:hover,
-.character-sheet-page .cs-playboard__unpin:hover {
+.character-sheet-page .cs-playrow__unpin:hover {
 	color: var(--cs-danger);
 	background: none;
 }
 
-.character-sheet-page .cs-play-card__meta {
+/* The detail: what kind of entry it is, and its rule. One row at a time, so this
+   can be unclamped without the board becoming a wall of prose. */
+.character-sheet-page .cs-playrow__detail {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.25rem;
+	padding: 0.1rem 0.15rem 0.45rem;
+}
+.character-sheet-page .cs-playrow__detail[hidden] {
+	display: none;
+}
+/* Kind and timing on one line above the rule: the two FACTS about the entry that
+   are not its text. The timing happens to be editable, which is why the control
+   is shaped like the chip beside it rather than like a form field. */
+.character-sheet-page .cs-playrow__detail-head {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 0.35rem;
 }
-/* The figure a play turns on: a weapon's damage, a spell's properties. Tabular so
-   a column of cards keeps its numerals on one vertical. */
-.character-sheet-page .cs-play-card__figure {
+.character-sheet-page .cs-playrow__retype {
 	font-family: var(--nexus-font-ui);
-	font-size: var(--nexus-text-xs);
-	font-variant-numeric: tabular-nums;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
 	color: color-mix(
 		in srgb,
-		var(--nexus-bronze) 72%,
+		var(--nexus-bronze) 62%,
 		var(--ifm-font-color-base)
 	);
 }
-/* The rule itself, UNCLAMPED on purpose: clamping puts back the click this whole
-   surface exists to remove. The player controls the height by controlling what
-   they pin. */
-.character-sheet-page .cs-play-card__rule {
-	margin: 0.1rem 0 0;
+.character-sheet-page .cs-playrow__retype .MuiSelect-select {
+	display: flex;
+	align-items: center;
+	padding: 2px 18px 2px 2px;
+	min-height: 0;
+	background: none;
+	border: 0;
+}
+.character-sheet-page .cs-playrow__retype .MuiSelect-icon {
+	color: inherit;
+}
+.character-sheet-page .cs-playrow__rule {
+	margin: 0;
 	font-size: var(--nexus-text-xs);
 	line-height: 1.45;
 	color: color-mix(
@@ -2619,38 +2753,6 @@ input[type='number'] {
 		var(--nexus-bronze) 30%,
 		var(--ifm-font-color-base)
 	);
-}
-
-/* In force: true all the time, never a choice, so named and not spelled out. */
-.character-sheet-page .cs-playboard__inforce {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.3rem;
-}
-.character-sheet-page .cs-playboard__standing {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.15rem;
-	padding: 1px 0.15rem 1px 0.45rem;
-	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 24%, transparent);
-}
-.character-sheet-page .cs-playboard__standing-name {
-	font-family: var(--nexus-font-ui);
-	font-size: var(--nexus-text-xs);
-	color: color-mix(
-		in srgb,
-		var(--nexus-bronze) 40%,
-		var(--ifm-font-color-base)
-	);
-}
-.character-sheet-page .cs-playboard__unpin {
-	visibility: hidden;
-}
-.character-sheet-page .cs-playboard__standing:hover .cs-playboard__unpin,
-.character-sheet-page
-	.cs-playboard__standing:focus-within
-	.cs-playboard__unpin {
-	visibility: visible;
 }
 
 /* M13 S8c — the ability details panel.

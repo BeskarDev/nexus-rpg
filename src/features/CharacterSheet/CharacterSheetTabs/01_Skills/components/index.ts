@@ -1,4 +1,4 @@
-export { QuickRefCard } from './QuickRefCard'
+export { QuickRefEntry } from './QuickRefEntry'
 export { ActionMark, ActionGlyph } from './ActionMark'
 export { AbilitySummary } from './AbilitySummary'
 export { AbilityDetails } from './AbilityDetails'

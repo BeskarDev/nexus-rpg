@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import { Box, Typography, IconButton, Tooltip, Select } from '@mui/material'
+import { Box, Typography, IconButton, Tooltip } from '@mui/material'
 import { Clear } from '@mui/icons-material'
 import {
 	Ability,
@@ -7,21 +7,14 @@ import {
 	Item,
 	Spell,
 	Damage,
-	BaseDamageType,
 } from '../../../../types/Character'
-import { ActionType, ACTION_TYPES } from '../../../../types/ActionType'
+import { ActionType } from '../../../../types/ActionType'
 import { ActionGlyph } from './components/ActionMark'
-import { QuickRefCard } from './components/QuickRefCard'
-import {
-	ConfirmDialog,
-	ListSection,
-	ListSectionHeader,
-	UnifiedListItem,
-} from '../../components'
+import { QuickRefEntry } from './components/QuickRefEntry'
+import { ConfirmDialog, ListSectionHeader } from '../../components'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { characterSheetActions } from '../../characterSheetReducer'
-import { getSkillChipColor } from '../../../../constants/skills'
 
 /** One course of the board: everything you can spend a given action on. */
 type QuickRefCourse = {
@@ -30,11 +23,9 @@ type QuickRefCourse = {
 	items: QuickRefItem[]
 }
 
-/** The board: the choices, in the order a turn spends them, then the standing facts. */
+/** The board: one course per action type that has anything on it. */
 type QuickRefBoard = {
 	courses: QuickRefCourse[]
-	/** Passive and untyped entries — true all the time, never a choice. */
-	inForce: QuickRefItem[]
 }
 
 type QuickRefItem = {
@@ -307,13 +298,15 @@ export const QuickRefSection: React.FC = () => {
 
 			The question this section answers, mid-turn, is "I have one Action and one
 			Quick Action — what are my options?" So the axis stays action type, and the
-			order is the order a turn is spent. What changes is that **a passive is not
-			an option**: it is never taken on a turn, it is simply true. Listing it
-			among the choices padded the menu you are scanning under time pressure with
-			things you cannot pick.
+			order is the order a turn is spent: the two things you spend, then the two
+			that fire on their own, then the two that are simply true.
 
-			`Other` joins it, for the same reason from the other end: an entry whose
-			timing nobody has stated is not a choice you can price.
+			The first cut kept `Passive` and `Other` out of the courses entirely, on
+			the reasoning that a passive is never a CHOICE and so padded the menu. That
+			reasoning survives the tab strip without the amputation — an unselected
+			course costs one 24px glyph, not a screen of entries — and the amputation
+			cost those entries their rule text, which a player still occasionally needs
+			to read.
 		*/
 		const byType = (type: ActionType) =>
 			quickRefItems
@@ -324,19 +317,18 @@ export const QuickRefSection: React.FC = () => {
 
 		const courses: QuickRefCourse[] = (
 			[
-				['Action', 'Action'],
-				['Quick Action', 'Quick Action'],
-				['Triggered', 'Triggered'],
-				['Free', 'Free'],
-			] as [ActionType, string][]
+				'Action',
+				'Quick Action',
+				'Triggered',
+				'Free',
+				'Passive',
+				'Other',
+			] as ActionType[]
 		)
-			.map(([type, title]) => ({ type, title, items: byType(type) }))
+			.map((type) => ({ type, title: type, items: byType(type) }))
 			.filter((course) => course.items.length > 0)
 
-		return {
-			courses,
-			inForce: [...byType('Passive'), ...byType('Other')],
-		}
+		return { courses }
 	}, [
 		abilities,
 		weapons,
@@ -362,9 +354,60 @@ export const QuickRefSection: React.FC = () => {
 			quickRefBoard.courses.reduce(
 				(sum, course) => sum + course.items.length,
 				0,
-			) + quickRefBoard.inForce.length,
+			),
 		[quickRefBoard],
 	)
+
+	/*
+		Which course is open, and which entry inside it.
+
+		Both are LOCAL and neither is persisted. A quick reference is read from wherever
+		the turn left it, and a saved tab would restore yesterday's turn — worse, it
+		would be a character-document write for a glance.
+
+		`openType` is stored as the type rather than an index so a course appearing or
+		emptying does not silently move the selection to a different action; the fallback
+		below covers the case where the selected course empties out entirely (its last
+		entry unpinned, or re-typed onto another course).
+	*/
+	const [openType, setOpenType] = useState<ActionType | null>(null)
+	const [openEntryId, setOpenEntryId] = useState<string | null>(null)
+	const tabRefs = React.useRef<Record<string, HTMLButtonElement | null>>({})
+
+	const activeCourse =
+		quickRefBoard.courses.find((course) => course.type === openType) ??
+		quickRefBoard.courses[0]
+
+	/*
+		Roving focus across the strip, which is what makes it a tablist rather than six
+		buttons wearing the role. Only the selected tab is in the tab order; the arrows
+		move between them, Home and End jump the ends.
+	*/
+	const handleStripKeyDown = (event: React.KeyboardEvent) => {
+		const types = quickRefBoard.courses.map((course) => course.type)
+		const current = types.indexOf(activeCourse?.type)
+		const next = (() => {
+			switch (event.key) {
+				case 'ArrowRight':
+				case 'ArrowDown':
+					return (current + 1) % types.length
+				case 'ArrowLeft':
+				case 'ArrowUp':
+					return (current - 1 + types.length) % types.length
+				case 'Home':
+					return 0
+				case 'End':
+					return types.length - 1
+				default:
+					return -1
+			}
+		})()
+		if (next < 0) return
+		event.preventDefault()
+		setOpenType(types[next])
+		setOpenEntryId(null)
+		tabRefs.current[types[next]]?.focus()
+	}
 
 	const handleClearAll = () => {
 		setConfirmDialogOpen(true)
@@ -407,7 +450,7 @@ export const QuickRefSection: React.FC = () => {
 
 	if (totalSelected === 0) {
 		return (
-			<Box sx={{ mb: 3 }}>
+			<Box sx={{ mb: 1.25 }}>
 				<ListSectionHeader label="Quick Ref" sx={{ mb: 1 }} />
 				<Typography
 					variant="body2"
@@ -422,7 +465,7 @@ export const QuickRefSection: React.FC = () => {
 	}
 
 	return (
-		<Box sx={{ mb: 3 }}>
+		<Box sx={{ mb: 1.25 }}>
 			{/* M13 S3: Quick Ref was two nested bordered-box Accordions — a fourth
 				and fifth list idiom on a sheet that now has one. The groups are
 				`ListSection`s and the entries are ledger rows, so a bookmarked
@@ -441,75 +484,80 @@ export const QuickRefSection: React.FC = () => {
 			/>
 
 			<Box className="cs-playboard">
+				{/* The strip. One glyph per course, its count beside it, and the WORDS
+					only on the selected one — six labels across is the header row the
+					stacked version already was, and the glyph set is the same one the
+					ability rows teach two sections below. */}
+				<Box
+					role="tablist"
+					aria-label="Quick Ref by action type"
+					className="cs-playboard__strip"
+					onKeyDown={handleStripKeyDown}
+				>
+					{quickRefBoard.courses.map((course) => {
+						const selected = course.type === activeCourse?.type
+						return (
+							<Box
+								key={course.type}
+								component="button"
+								type="button"
+								role="tab"
+								id={`cs-playboard-tab-${course.type.replace(/\s+/g, '-')}`}
+								aria-controls={`cs-playboard-panel-${course.type.replace(/\s+/g, '-')}`}
+								aria-selected={selected}
+								aria-label={`${course.title} (${course.items.length})`}
+								tabIndex={selected ? 0 : -1}
+								ref={(node: HTMLButtonElement | null) => {
+									tabRefs.current[course.type] = node
+								}}
+								className={`cs-playboard__tab${selected ? ' cs-playboard__tab--on' : ''}`}
+								onClick={() => {
+									setOpenType(course.type)
+									setOpenEntryId(null)
+								}}
+							>
+								<ActionGlyph actionType={course.type} size={15} />
+								{selected && (
+									<span className="cs-playboard__tab-name">{course.title}</span>
+								)}
+								<span className="cs-playboard__tab-count">
+									{course.items.length}
+								</span>
+							</Box>
+						)
+					})}
+				</Box>
+
+				{/* Every panel stays in the markup and the unselected ones are `hidden`,
+					the theme's disclosure rule — and here it also keeps an entry's open
+					state from being thrown away by a glance at another course. */}
 				{quickRefBoard.courses.map((course) => (
 					<Box
 						key={course.type}
-						component="section"
-						className="cs-playboard__course"
-						aria-label={course.title}
+						role="tabpanel"
+						id={`cs-playboard-panel-${course.type.replace(/\s+/g, '-')}`}
+						aria-labelledby={`cs-playboard-tab-${course.type.replace(/\s+/g, '-')}`}
+						className="cs-playboard__panel"
+						hidden={course.type !== activeCourse?.type}
 					>
-						<Box className="cs-playboard__course-head">
-							<ActionGlyph actionType={course.type} size={15} />
-							<span className="cs-playboard__course-name">{course.title}</span>
-							<span className="cs-playboard__course-count">
-								{course.items.length}
-							</span>
-						</Box>
-						<Box className="cs-playboard__cards">
-							{course.items.map((item) => (
-								<QuickRefCard
-									key={item.id}
-									item={item}
-									onRemove={() => handleRemoveItem(item.id, item.source)}
-									onActionTypeChange={(next) =>
-										handleActionTypeChange(item.id, next)
-									}
-								/>
-							))}
-						</Box>
+						{course.items.map((item) => (
+							<QuickRefEntry
+								key={item.id}
+								item={item}
+								expanded={openEntryId === item.id}
+								onToggle={() =>
+									setOpenEntryId((current) =>
+										current === item.id ? null : item.id,
+									)
+								}
+								onRemove={() => handleRemoveItem(item.id, item.source)}
+								onActionTypeChange={(next) =>
+									handleActionTypeChange(item.id, next)
+								}
+							/>
+						))}
 					</Box>
 				))}
-
-				{quickRefBoard.inForce.length > 0 && (
-					<Box
-						component="section"
-						className="cs-playboard__course cs-playboard__course--quiet"
-						aria-label="In force"
-					>
-						<Box className="cs-playboard__course-head">
-							<ActionGlyph actionType="Passive" size={15} />
-							<span className="cs-playboard__course-name">In force</span>
-							<span className="cs-playboard__course-count">
-								{quickRefBoard.inForce.length}
-							</span>
-						</Box>
-						{/* Standing facts, not choices — so they are named and not spelled
-							out. A passive does not get picked mid-turn, and giving it a card
-							the size of an Action's would pad the menu you are scanning under
-							time pressure with things you cannot take. */}
-						<Box className="cs-playboard__inforce">
-							{quickRefBoard.inForce.map((item) => (
-								<Box key={item.id} className="cs-playboard__standing">
-									<span className="cs-playboard__standing-name">
-										{item.name}
-									</span>
-									<Tooltip title={`Remove ${item.name} from Quick Ref`}>
-										<IconButton
-											size="small"
-											className="cs-playboard__unpin"
-											aria-label={`Remove ${item.name} from Quick Ref`}
-											onClick={() => handleRemoveItem(item.id, item.source)}
-										>
-											<Box component="span" sx={{ fontSize: '0.85em' }}>
-												×
-											</Box>
-										</IconButton>
-									</Tooltip>
-								</Box>
-							))}
-						</Box>
-					</Box>
-				)}
 			</Box>
 
 			<ConfirmDialog
