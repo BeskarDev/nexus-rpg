@@ -7,25 +7,23 @@ import { TreasureAutoRollerWrapper } from '@site/src/components/AutoRoller/Treas
 
 # 🏆 Treasures
 
+What the party found: the kind of thing, what it is made of, and roughly what it is worth.
+
 <TreasureAutoRollerWrapper />
 
-## Random Treasure
+## What a hoard is worth
 
-Either when preparing for a gaming session as the GM or when wanting to randomly determine some treasure during the game, you can use the tables below to get some inspiration. Note that you won’t get only concrete results from these tables, but more so the general category and type of the treasure.
+The value and Quality of treasure follow the adventuring tier it took to reach it. Three
+categories, and the difference between them is what stood in the way:
 
-The general value and Quality of treasure is determined by the required adventuring tier to acquire it. There are three categories of treasure. “Simple Loot” includes the belongings of a single creature of equal strength to the adventuring tier or a smaller reward that might be the result from a discovery during exploration. A “Minor Treasure” is something kept hidden behind a puzzle or lethal trap, or a smaller hoard protected by a group of creature or one especially powerful one. Lastly a “Major Treasure” is something found in a large treasure hoard or a reward for an entire adventure.
+| Category | Where it comes from |
+| --- | --- |
+| **Simple Loot** | Carried by a single creature of the party's own strength, or found in passing during exploration. |
+| **Minor Treasure** | Behind a puzzle, a lethal trap, or a secret. A small hoard guarded by a group, or by one dangerous thing. |
+| **Major Treasure** | The peak of a hoard: a conquered dungeon, a defeated leader, a finished quest. |
 
-### Simple Loot
-
-Something found on individual creatures or in larger amounts in a treasure hoard.
-
-### Minor Treasure
-
-Something found in a treasure chest or other smaller cache of loot. Often requires to complete a puzzle, disarm a trap, or find a secret.
-
-### Major Treasure
-
-Powerful items marking the peak of any treasure hoard, often requiring the conquest of a whole dungeon, defeating a powerful leader, or the completion of a perilous quest.
+These tables give the CATEGORY and TYPE of a treasure rather than a specific object. What it
+turns out to be is yours to decide.
 
 ## Random Treasure by Level
 
@@ -42,12 +40,16 @@ Powerful items marking the peak of any treasure hoard, often requiring the conqu
 | 9 | 1 x Q5 | 1 x Q6, 1 x Q5 | 1 x Q7, 1d3 x Q6, 1d3 x Q5 |
 | 10 | 1d3 x Q5 | 1d3 x Q6, 1d3 x Q5 | 1d3 x Q7, 1d3 x Q6, 1d3 x Q5 |
 
-> Each entry for a reward can be replaced with a higher amount of rewards of one Quality lower (1 → 1d3 → 2d3 → 3d3 → etc.). So you can replace 1 x Q4 with 1d3 x Q3 or 2d3 x Q2 for example.
-Roll for each reward‘s treasure type. You can insteas roll 1d6+6 for one item of the highest available Quality, if you want it to be something other than a valuable.
+> Any reward can be traded down: one item for `1d3` of the next Quality lower, and again from
+> there (1 → 1d3 → 2d3 → 3d3). So `1 x Q4` may become `1d3 x Q3`, or `2d3 x Q2`.
 
-To use these tables, roll 2d12 together. The first result determines the Treasure Type and the second result the specific item of that type. If something doesn’t fit the situation, you may re-roll one or both of the dice until you do (GMs discretion). You can then roll on the respective tables for the result you rolled to know specifically what type of item it is.
+Roll **2d12** for each reward: the first die gives the treasure type, the second the specific
+item of that type. Reroll either die when the result does not fit the situation. To force
+something other than a valuable, roll `1d6+6` instead for one item of the highest Quality
+available.
 
-With these tables you will only roll mundane types of items. It is also up to the GM if a randomly determined treasure should be enchanted or some wonderous item. As a guideline, any treasure of Quality 4 or higher can have magical properties.
+These tables roll **mundane** items only. Whether a given treasure is enchanted is the GM's call,
+and the guideline is Quality 4 or higher.
 
 ## Treasure Value by Quality
 
@@ -64,12 +66,15 @@ With these tables you will only roll mundane types of items. It is also up to th
 
 ## Treasure Types
 
+The tables below are what the roller draws from. They are folded because nothing reads them start to finish — open one to roll it by hand.
+
 Options for determining the treasure type:
 
 - Roll 1d12 for any result.
 - Roll 1d6+6 for a non-valuable result.
 - Roll 1d3+9 for an equippable result.
 
+{/* gen:table:treasureData.treasureTypes#0 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Treasure Type |
 | --- | --- |
@@ -79,9 +84,13 @@ Options for determining the treasure type:
 | 11 | Armor / Shield |
 | 12 | Weapon / Spell Catalyst |
 </RollableTable>
+{/* /gen:table */}
 
 ### Valuables
 
+<TableFold label="Valuables" rows={12}>
+
+{/* gen:table:treasureData.valuables#1 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Valuable |
 | --- | --- |
@@ -98,9 +107,13 @@ Options for determining the treasure type:
 | 11 | Raw Metal / Timber |
 | 12 | Gem |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Utility
 
+{/* gen:table:treasureData.utility#2 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Utility |
 | --- | --- |
@@ -111,9 +124,13 @@ Options for determining the treasure type:
 | 9-10 | Spell Scroll |
 | 11-12 | Knowledge |
 </RollableTable>
+{/* /gen:table */}
 
 ### Wearable
 
+<TableFold label="Wearable" rows={12}>
+
+{/* gen:table:treasureData.wearableSlots#3 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Slot |
 | --- | --- |
@@ -130,9 +147,13 @@ Options for determining the treasure type:
 | 11 | Waist |
 | 12 | Feet |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Armor / Shield
 
+{/* gen:table:treasureData.armorShield#4 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Armor / Shield |
 | --- | --- |
@@ -147,11 +168,15 @@ Options for determining the treasure type:
 | 9 | Breastplate |
 | 10 | Plate Harness |
 </RollableTable>
+{/* /gen:table */}
 
 ### Weapon / Spell Catalyst
 
+<TableFold label="Weapon / Spell Catalyst" rows={12}>
+
+{/* gen:table:treasureData.weaponCatalyst#5 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
-| d10 | Weapon / Spell Catalyst |
+| d12 | Weapon / Spell Catalyst |
 | --- | --- |
 | 1 | Arcane Conduit |
 | 2 | Axe |
@@ -163,7 +188,12 @@ Options for determining the treasure type:
 | 8 | Mystic Talisman |
 | 9 | Polearm |
 | 10 | Thrown |
+| 11 | Wand |
+| 12 | Staff |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ## Valuable Types
 
@@ -173,6 +203,9 @@ Generally roll for each type of valuable by combining results from form + detail
 
 **Coins / Currency**
 
+<TableFold label="Forms and Details — Coins / Currency" rows={12}>
+
+{/* gen:table:treasureData.valuableDetails.Coins / Currency#6 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Form | Detail |
 | --- | --- | --- |
@@ -189,9 +222,15 @@ Generally roll for each type of valuable by combining results from form + detail
 | 11 | Pressed pellets | Commodity formed |
 | 12 | Cylindrical rolls | Temple marks |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Trinket / Charm**
 
+<TableFold label="Forms and Details — Trinket / Charm" rows={12}>
+
+{/* gen:table:treasureData.valuableDetails.Trinket / Charm#7 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Form | Detail |
 | --- | --- | --- |
@@ -208,9 +247,15 @@ Generally roll for each type of valuable by combining results from form + detail
 | 11 | Scented pouch | Lasting fragrance |
 | 12 | Bone set | Mystic runes |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Painting / Pottery**
 
+<TableFold label="Forms and Details — Painting / Pottery" rows={12}>
+
+{/* gen:table:treasureData.valuableDetails.Painting / Pottery#8 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Form | Detail |
 | --- | --- | --- |
@@ -227,9 +272,15 @@ Generally roll for each type of valuable by combining results from form + detail
 | 11 | Stemmed chalice | Never empties |
 | 12 | Mosaic fragment | Grand design |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Statuette / Idol**
 
+<TableFold label="Forms and Details — Statuette / Idol" rows={12}>
+
+{/* gen:table:treasureData.valuableDetails.Statuette / Idol#9 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Form | Detail |
 | --- | --- | --- |
@@ -246,9 +297,15 @@ Generally roll for each type of valuable by combining results from form + detail
 | 11 | Open mouth | Cryptic whispers |
 | 12 | Reclining memorial | Departed honor |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Fabrics / Papyrus**
 
+<TableFold label="Forms and Details — Fabrics / Papyrus" rows={12}>
+
+{/* gen:table:treasureData.valuableDetails.Fabrics / Papyrus#10 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Form | Detail |
 | --- | --- | --- |
@@ -265,9 +322,15 @@ Generally roll for each type of valuable by combining results from form + detail
 | 11 | Prayer flags | Skyward wishes |
 | 12 | Covered book | Mystic script |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Hide / Pelt**
 
+<TableFold label="Forms and Details — Hide / Pelt" rows={12}>
+
+{/* gen:table:treasureData.valuableDetails.Hide / Pelt#11 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Form | Detail |
 | --- | --- | --- |
@@ -284,9 +347,15 @@ Generally roll for each type of valuable by combining results from form + detail
 | 11 | Winter fur | Pristine condition |
 | 12 | Marked pelt | Clan symbols |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Salt / Spice / Dye**
 
+<TableFold label="Forms and Details — Salt / Spice / Dye" rows={12}>
+
+{/* gen:table:treasureData.valuableDetails.Salt / Spice / Dye#12 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Form | Detail |
 | --- | --- | --- |
@@ -303,9 +372,15 @@ Generally roll for each type of valuable by combining results from form + detail
 | 11 | Ritual compound | Sacred rites |
 | 12 | Vial mixture | Guarded recipe |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Oil / Perfume**
 
+<TableFold label="Forms and Details — Oil / Perfume" rows={12}>
+
+{/* gen:table:treasureData.valuableDetails.Oil / Perfume#13 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Form | Detail |
 | --- | --- | --- |
@@ -322,9 +397,15 @@ Generally roll for each type of valuable by combining results from form + detail
 | 11 | Blessing vessel | Divine protection |
 | 12 | Mixing bowl | Substance transformation |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Bone / Scales**
 
+<TableFold label="Forms and Details — Bone / Scales" rows={12}>
+
+{/* gen:table:treasureData.valuableDetails.Bone / Scales#14 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Form | Detail |
 | --- | --- | --- |
@@ -341,9 +422,15 @@ Generally roll for each type of valuable by combining results from form + detail
 | 11 | Knuckle bones | Lucky appearance |
 | 12 | Intact skeleton | Noble bearing |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Beverage / Grain**
 
+<TableFold label="Forms and Details — Beverage / Grain" rows={12}>
+
+{/* gen:table:treasureData.valuableDetails.Beverage / Grain#15 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Form | Detail |
 | --- | --- | --- |
@@ -360,9 +447,15 @@ Generally roll for each type of valuable by combining results from form + detail
 | 11 | Warrior flask | Battle courage |
 | 12 | Ancient containers | Lost peoples |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Raw Metal / Timber**
 
+<TableFold label="Forms and Details — Raw Metal / Timber" rows={12}>
+
+{/* gen:table:treasureData.valuableDetails.Raw Metal / Timber#16 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Form | Detail |
 | --- | --- | --- |
@@ -379,9 +472,15 @@ Generally roll for each type of valuable by combining results from form + detail
 | 11 | Ritual stocks | Ceremony requirement |
 | 12 | Cursed deposits | Handler misfortune |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Gem**
 
+<TableFold label="Forms and Details — Gem" rows={12}>
+
+{/* gen:table:treasureData.valuableDetails.Gem#17 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Form | Detail |
 | --- | --- | --- |
@@ -398,6 +497,9 @@ Generally roll for each type of valuable by combining results from form + detail
 | 11 | Gem dust | Healing powder |
 | 12 | Bundled shards | Divine tears |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Materials
 
@@ -412,6 +514,9 @@ Possible materials are grouped by their source and split into four different qua
 
 **Metals and Minerals**
 
+<TableFold label="Materials — Metals and Minerals" rows={12}>
+
+{/* gen:table:treasureData.qualityMaterials.metalsAndMinerals#18 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Low-Quality | Medium-Quality | High-Quality | Supreme-Quality |
 | --- | --- | --- | --- | --- |
@@ -428,9 +533,15 @@ Possible materials are grouped by their source and split into four different qua
 | 11 | Coal | Nickel | Moon-silver | Dreamweave |
 | 12 | Charcoal | Mercury | Star-touched bronze | Infernal Horn |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Gems**
 
+<TableFold label="Materials — Gems" rows={12}>
+
+{/* gen:table:treasureData.qualityMaterials.gems#19 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Low-Quality | Medium-Quality | High-Quality | Supreme-Quality |
 | --- | --- | --- | --- | --- |
@@ -447,9 +558,15 @@ Possible materials are grouped by their source and split into four different qua
 | 11 | Cloudy quartz | Hematite | Citrine | Leviathan pearl |
 | 12 | Fossil fragments | Malachite | Alexandrite | Heart of the mountain |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Wood and Plants**
 
+<TableFold label="Materials — Wood and Plants" rows={12}>
+
+{/* gen:table:treasureData.qualityMaterials.woodAndPlants#20 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Low-Quality | Medium-Quality | High-Quality | Supreme-Quality |
 | --- | --- | --- | --- | --- |
@@ -466,9 +583,15 @@ Possible materials are grouped by their source and split into four different qua
 | 11 | Twigs | Chestnut | Spirit pine | Druid's blessing |
 | 12 | Cedar shavings | Bamboo | Moon-touched willow | Divine heartwood |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Organics**
 
+<TableFold label="Materials — Organics" rows={12}>
+
+{/* gen:table:treasureData.qualityMaterials.organics#21 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Low-Quality | Medium-Quality | High-Quality | Supreme-Quality |
 | --- | --- | --- | --- | --- |
@@ -485,9 +608,15 @@ Possible materials are grouped by their source and split into four different qua
 | 11 | Feathers | Manticore quills | Gorgon scales | Primordial sinew |
 | 12 | Bone meal | Bulette hide | Celestial feathers | God-beast remnant |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Textiles and Fibers**
 
+<TableFold label="Materials — Textiles and Fibers" rows={12}>
+
+{/* gen:table:treasureData.qualityMaterials.textiles#22 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Low-Quality | Medium-Quality | High-Quality | Supreme-Quality |
 | --- | --- | --- | --- | --- |
@@ -504,9 +633,15 @@ Possible materials are grouped by their source and split into four different qua
 | 11 | Tree bark | Yak wool | Dream silk | Reality thread |
 | 12 | Leather strips | Sheep wool | Shadowsilk | Cosmic thread |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Ceramics**
 
+<TableFold label="Materials — Ceramics" rows={12}>
+
+{/* gen:table:treasureData.qualityMaterials.ceramics#23 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Low-Quality | Medium-Quality | High-Quality | Supreme-Quality |
 | --- | --- | --- | --- | --- |
@@ -523,9 +658,15 @@ Possible materials are grouped by their source and split into four different qua
 | 11 | Rough vessels | Polished ceramic | Spirit-touched ware | Heaven's craft |
 | 12 | Terracotta | Slip-painted ware | Elemental ceramic | God's handiwork |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Spices and Dyes**
 
+<TableFold label="Materials — Spices and Dyes" rows={12}>
+
+{/* gen:table:treasureData.qualityMaterials.spicesAndDyes#24 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Low-Quality | Medium-Quality | High-Quality | Supreme-Quality |
 | --- | --- | --- | --- | --- |
@@ -542,9 +683,15 @@ Possible materials are grouped by their source and split into four different qua
 | 11 | Leaf dyes | Safflower | Ethereal mint | God's seasoning |
 | 12 | Rock dust | Walnut hulls | Void pepper | Immortal spice |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Grain and Beverages**
 
+<TableFold label="Materials — Grain and Beverages" rows={12}>
+
+{/* gen:table:treasureData.qualityMaterials.grainAndBeverages#25 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Low-Quality | Medium-Quality | High-Quality | Supreme-Quality |
 | --- | --- | --- | --- | --- |
@@ -561,9 +708,15 @@ Possible materials are grouped by their source and split into four different qua
 | 11 | Simple bread | Wheat beer | Dwarven stout | Phoenix ale |
 | 12 | Field corn | Barley wine | Nectar wine | Primordial wine |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Oil and Perfumes**
 
+<TableFold label="Materials — Oil and Perfumes" rows={12}>
+
+{/* gen:table:treasureData.qualityMaterials.oilAndPerfumes#26 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Low-Quality | Medium-Quality | High-Quality | Supreme-Quality |
 | --- | --- | --- | --- | --- |
@@ -580,11 +733,17 @@ Possible materials are grouped by their source and split into four different qua
 | 11 | Tallow | Frankincense | Spirit essence | Titan's perfume |
 | 12 | Cooking grease | Amber oil | Void perfume | Divine oil |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ## Utility Types
 
 ### Gear
 
+<TableFold label="Gear" rows={12}>
+
+{/* gen:table:treasureData.utilityDetails.Gear#27 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Item | Style | Trait |
 | --- | --- | --- | --- |
@@ -601,11 +760,17 @@ Possible materials are grouped by their source and split into four different qua
 | 11 | Bundle of Scrolls | Canvas | Knowledgeable |
 | 12 | Bundle of Maps | Waxed | Weatherproof |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Alchemical
 
+<TableFold label="Alchemical" rows={20}>
+
+{/* gen:table:treasureData.utilityDetails.Alchemical#28 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Effect | Form | Delivery |
 | --- | --- | --- | --- |
@@ -630,6 +795,9 @@ Possible materials are grouped by their source and split into four different qua
 | 19 | Signaling | Oil flask | Poured |
 | 20 | Sleep-inducing | Herbal paste | Dissolved |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
@@ -667,6 +835,7 @@ Possible materials are grouped by their source and split into four different qua
 
 Also roll 1d3 to determine the remaining uses of the supply item.
 
+{/* gen:table:treasureData.utilityDetails.Supply#29 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d10 | Item | Style | Trait |
 | --- | --- | --- | --- |
@@ -681,6 +850,7 @@ Also roll 1d3 to determine the remaining uses of the supply item.
 | 9 | Rations (balanced) | Jerky | Energizing |
 | 10 | Rations (luxury) | Spiced | Deluxe |
 </RollableTable>
+{/* /gen:table */}
 
 ---
 
@@ -688,6 +858,9 @@ Also roll 1d3 to determine the remaining uses of the supply item.
 
 For the spell scroll’s effect, roll on the tables in the Random Spell section.
 
+<TableFold label="Spell Scroll" rows={12}>
+
+{/* gen:table:treasureData.utilityDetails.Spell Scroll#30 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Script | Binding |
 | --- | --- | --- |
@@ -704,11 +877,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Concentric runes | Fiber-bound |
 | 12 | Radiant etch | Copper-locked |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Knowledge
 
+<TableFold label="Knowledge" rows={20}>
+
+{/* gen:table:treasureData.utilityDetails.Knowledge#31 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Topic | Style | Format |
 | --- | --- | --- | --- |
@@ -733,11 +912,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 19 | Engineering | Technical | Wax scroll |
 | 20 | Weather Lore | Reports | Clay tablet |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ## Wearable Types
 
 ### Description
 
+<TableFold label="Description" rows={12}>
+
+{/* gen:table:treasureData.wearableDescription#32 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Ornament | Style | Material |
 | --- | --- | --- | --- |
@@ -754,9 +939,13 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Braided Accents | Dyed | Cursed Iron |
 | 12 | Enamel-Inlaid | Braided | Crystal |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Wearable Item
 
+{/* gen:table:treasureData.wearableItems#33 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d6 | Face | Head | Neck | Shoulder | Back | Full Body |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -767,7 +956,9 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 5 | Circlet | Beret | Scarf | Mantlelet | Poncho | Ceremonial Gown |
 | 6 | Faceplate | Crest | Gorget | Shoulder Wrap | Mantle | Vestments |
 </RollableTable>
+{/* /gen:table */}
 
+{/* gen:table:treasureData.wearableItems#34 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d6 | Upper Body | Body Cover | Hands/Fingers | Wrists | Waist | Feet |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -778,11 +969,15 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 5 | Gambeson Shirt | Waistcoat | Rings | Wrist Cuff | Waistband | Moccasins |
 | 6 | Tabard | Formal Vest | Wristwrap | Clasped Bracer | Buckled Belt | Greaves |
 </RollableTable>
+{/* /gen:table */}
 
 ## Armor / Shield
 
 ### Leather
 
+<TableFold label="Leather" rows={12}>
+
+{/* gen:table:treasureData.armorDetails.Leather#35 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -799,11 +994,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Plant-fiber weave | Side-fastened coat | Loose stitching at seams |
 | 12 | Painted-hide | Worn robe | Decorated hem shows wear |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Banded Leather
 
+<TableFold label="Banded Leather" rows={12}>
+
+{/* gen:table:treasureData.armorDetails.Banded Leather#36 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -820,11 +1021,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Laced-horn pieces | Lined jerkin | Shallow cuts along edges |
 | 12 | Bone-wired hide | Vented plates | Smoothed edges |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Chain Mail
 
+<TableFold label="Chain Mail" rows={12}>
+
+{/* gen:table:treasureData.armorDetails.Chain Mail#37 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -841,11 +1048,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Cloth-wrapped chain | Riveted mail tunic | Stained under arms |
 | 12 | Flint-linked mesh | Tiled vest | Irregular outline at hem |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Scale Mail
 
+<TableFold label="Scale Mail" rows={12}>
+
+{/* gen:table:treasureData.armorDetails.Scale Mail#38 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -862,11 +1075,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Bronze-leaf scales | Leaf-scale cuirass | Symbol etched at center |
 | 12 | Chitin-shell plates | Exoskeletal cuirass | Insect-like symmetry |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Helmet
 
+<TableFold label="Helmet" rows={12}>
+
+{/* gen:table:treasureData.armorDetails.Helmet#39 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -883,11 +1102,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Wicker-laced hide | Folded band helm | Feathered back plume |
 | 12 | Lacquered-bronze | Ritual mask helm | Narrow eye slits |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Buckler
 
+<TableFold label="Buckler" rows={12}>
+
+{/* gen:table:treasureData.armorDetails.Buckler#40 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -904,11 +1129,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Smoked-hide | Round shield | Smells faintly of ash |
 | 12 | Sinew-wrapped frame | Wrist guard | Flexible tension |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Light Shield
 
+<TableFold label="Light Shield" rows={12}>
+
+{/* gen:table:treasureData.armorDetails.Light Shield#41 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -925,11 +1156,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Metal-stitched leather | Split-guard shield | Crude seam pattern visible |
 | 12 | Mixed-shell inlay | Decorative shield | Wave-like texture over face |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Heavy Shield
 
+<TableFold label="Heavy Shield" rows={12}>
+
+{/* gen:table:treasureData.armorDetails.Heavy Shield#42 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -946,11 +1183,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Stone-carved front | Sacred slab shield | Echoes when dropped |
 | 12 | Engraved-bronze face | Ceremonial wall shield | Inlaid runes along perimeter |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Breastplate
 
+<TableFold label="Breastplate" rows={12}>
+
+{/* gen:table:treasureData.armorDetails.Breastplate#43 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -967,11 +1210,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Mixed-shell inlay | Mosaic cuirass | Intricate mosaic motif |
 | 12 | Gold-tinted-bronze | Parade cuirass | Decorated with spirals |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Plate Harness
 
+<TableFold label="Plate Harness" rows={12}>
+
+{/* gen:table:treasureData.armorDetails.Plate Harness#44 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -988,6 +1237,9 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Ash-glazed bronze plates | Ritual harness | Symbolic inlays glow softly |
 | 12 | Fossil-embedded plating | Towering plate armor | Echoes with each step |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
@@ -995,6 +1247,9 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 
 ### Axe
 
+<TableFold label="Axe" rows={12}>
+
+{/* gen:table:treasureData.weaponDetails.Axe#45 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -1011,11 +1266,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Fossil-composite | War scythe | Shaft engraved with glyphs |
 | 12 | Metal-forged head | Heavy cleaver | Deep hammer marks |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Blade
 
+<TableFold label="Blade" rows={12}>
+
+{/* gen:table:treasureData.weaponDetails.Blade#46 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -1032,13 +1293,19 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Metal-forged with insets | Macuahuitl | Obsidian chips set in blade |
 | 12 | Precious metal-forged | Twinblade | Split hilt woven with threads |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Bow
 
+<TableFold label="Bow" rows={12}>
+
+{/* gen:table:treasureData.weaponDetails.Bow#47 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
-|  | Material | Form/Variant | Detail |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
 | 1 | Wood-carved | Shortbow | Grip wrapped in tanned leather |
 | 2 | Hardwood-carved | Recurve bow | Limbs etched with runes |
@@ -1053,11 +1320,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Thread-woven | Siege bow | Warm to the touch |
 | 12 | Glassy stone-tipped | Yew longbow | Dark, reflective sheen |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Brawling
 
+<TableFold label="Brawling" rows={12}>
+
+{/* gen:table:treasureData.weaponDetails.Brawling#48 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -1074,11 +1347,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Woven sinew | Chain whip | Links rattle on motion |
 | 12 | Metal-tipped | Spiked chain | Barbs catch faint spark |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Crossbow
 
+<TableFold label="Crossbow" rows={12}>
+
+{/* gen:table:treasureData.weaponDetails.Crossbow#49 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -1095,11 +1374,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Cord-bound | Pistol crossbow | Pitch scent lingers |
 | 12 | Crystal-socketed | Steel-tendon bow | Core faintly glows |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Mace
 
+<TableFold label="Mace" rows={12}>
+
+{/* gen:table:treasureData.weaponDetails.Mace#50 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -1116,10 +1401,16 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Weighted core | Kanabo | Noticeable heft in swing |
 | 12 | Metal-banded | Greatclub | Smash-reinforced at edges |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 ---
 
 ### Polearm
 
+<TableFold label="Polearm" rows={12}>
+
+{/* gen:table:treasureData.weaponDetails.Polearm#51 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -1136,11 +1427,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Cord-bound | Harpoon | Barbed line frays slightly |
 | 12 | Meteor-infused | Podao | Subtle shimmer along edge |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Thrown
 
+<TableFold label="Thrown" rows={12}>
+
+{/* gen:table:treasureData.weaponDetails.Thrown#52 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -1157,11 +1454,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Fossil-weighted | Tossed net | Surface pitted with age |
 | 12 | Chitin-barbed | Kestros | Horn strips wrapped tightly |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Arcane Conduit
 
+<TableFold label="Arcane Conduit" rows={12}>
+
+{/* gen:table:treasureData.weaponDetails.Arcane Conduit#53 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -1178,11 +1481,17 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Crystal-set | Crystal Antenna | Light refracts in facets |
 | 12 | Meteor-infused | Ironroot Branch | Energy crackles along grain |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ### Mystic Talisman
 
+<TableFold label="Mystic Talisman" rows={12}>
+
+{/* gen:table:treasureData.weaponDetails.Mystic Talisman#54 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
@@ -1199,6 +1508,59 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 11 | Wicker-strung | Prayer Tangle | Herb scent drifts subtly |
 | 12 | Stone-studded | Soul Seal | Silent buzz when held |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
+
+### Wand
+
+<TableFold label="Wand" rows={12}>
+
+{/* gen:table:treasureData.weaponDetails.Wand#55 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
+<RollableTable>
+| d12 | Material | Form/Variant | Detail |
+| --- | --- | --- | --- |
+| 1 | Crystal-tipped | Arcane Wand | inner light pulsing |
+| 2 | Bone-carved | Mystic Wand | a warm touch |
+| 3 | Ironwood | Arcane Wand | tiny rune etchings |
+| 4 | Silver-veined | Mystic Wand | a soft humming |
+| 5 | Obsidian-cored | Arcane Wand | a cold, smooth surface |
+| 6 | Coral-tipped | Mystic Wand | sea-polished iridescence |
+| 7 | Meteorite-infused | Arcane Wand | faint crackling along its length |
+| 8 | Antler-wrapped | Mystic Wand | braided cord binding |
+| 9 | Glass-threaded | Arcane Wand | shifting colour refraction |
+| 10 | Chitin-sheathed | Mystic Wand | a soft resonant buzz |
+| 11 | Fossil-veined | Arcane Wand | ancient runes faintly etched |
+| 12 | Shell-inlaid | Mystic Wand | moonlight gleam at the tip |
+</RollableTable>
+{/* /gen:table */}
+
+</TableFold>
+
+### Staff
+
+<TableFold label="Staff" rows={12}>
+
+{/* gen:table:treasureData.weaponDetails.Staff#56 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
+<RollableTable>
+| d12 | Material | Form/Variant | Detail |
+| --- | --- | --- | --- |
+| 1 | Gnarled Darkwood | Arcane Staff | faintly glowing sigils |
+| 2 | Ironwood | Mystic Staff | prayer cord wrappings |
+| 3 | Crystal-capped | Arcane Staff | a pulsing inner light |
+| 4 | Bone-crowned | Mystic Staff | carved faces on the shaft |
+| 5 | Metal-banded | Arcane Staff | runes etched between each ring |
+| 6 | Driftwood | Mystic Staff | a sea-bleached smoothness |
+| 7 | Meteorite-inlaid | Arcane Staff | faint electrical hum at its core |
+| 8 | Antler-forked | Mystic Staff | small spirit fetishes |
+| 9 | Elderwood | Arcane Staff | bark still intact, never quite still |
+| 10 | Stone-headed | Mystic Staff | a polished stone at the crown |
+| 11 | Coral-branched | Arcane Staff | a cold, sea-grown texture |
+| 12 | Fossilised | Mystic Staff | ancient creature bone construction |
+</RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ## Magic Items
 
@@ -1208,6 +1570,7 @@ Upon reaching higher levels, adventurers may find enchanted items instead of mun
 
 For utility items, you can replace the table above with this one for only magic items results.
 
+{/* gen:table:treasureData.magicUtilityTypes#57 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Utility |
 | --- | --- |
@@ -1222,9 +1585,11 @@ For utility items, you can replace the table above with this one for only magic 
 | 11 | Body Part |
 | 12 | Natural |
 </RollableTable>
+{/* /gen:table */}
 
 ### Ammo
 
+{/* gen:table:treasureData.magicUtilitySubtables.Ammo#58 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d6 | Ammo |
 | --- | --- |
@@ -1235,9 +1600,13 @@ For utility items, you can replace the table above with this one for only magic 
 | 5 | Bolt Case |
 | 6 | Quiver |
 </RollableTable>
+{/* /gen:table */}
 
 ### Everyday Object
 
+<TableFold label="Everyday Object" rows={20}>
+
+{/* gen:table:treasureData.magicUtilitySubtables.Everyday Object#59 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Everyday Object 1 | Everyday Object 2 |
 | --- | --- | --- |
@@ -1262,9 +1631,15 @@ For utility items, you can replace the table above with this one for only magic 
 | 19 | Garment | Seal |
 | 20 | Tool | Token |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Container
 
+<TableFold label="Container" rows={12}>
+
+{/* gen:table:treasureData.magicUtilitySubtables.Container#60 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Container 1 | Container 2 |
 | --- | --- | --- |
@@ -1281,9 +1656,13 @@ For utility items, you can replace the table above with this one for only magic 
 | 11 | Flask | Canteen |
 | 12 | Basket | Coop |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Instrument
 
+{/* gen:table:treasureData.magicUtilitySubtables.Instrument#61 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d6 | Instrument 1 | Instrument 2 |
 | --- | --- | --- |
@@ -1294,9 +1673,13 @@ For utility items, you can replace the table above with this one for only magic 
 | 5 | Lyre | Harp |
 | 6 | Lute | Psaltery |
 </RollableTable>
+{/* /gen:table */}
 
 ### Body Part
 
+<TableFold label="Body Part" rows={12}>
+
+{/* gen:table:treasureData.magicUtilitySubtables.Body Part#62 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Body Part 1 | Body Part 2 |
 | --- | --- | --- |
@@ -1313,9 +1696,13 @@ For utility items, you can replace the table above with this one for only magic 
 | 11 | Kidney | Spleen |
 | 12 | Tendon | Sinew |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Natural
 
+{/* gen:table:treasureData.magicUtilitySubtables.Natural#63 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d8 | Natural 1 | Natural 2 |
 | --- | --- | --- |
@@ -1328,11 +1715,13 @@ For utility items, you can replace the table above with this one for only magic 
 | 7 | Amber | Fossil |
 | 8 | Wood | Bark |
 </RollableTable>
+{/* /gen:table */}
 
 ## Magic Item Names
 
 Roll to determine the naming structure for the item.
 
+{/* gen:table:treasureData.magicItemNamingPatterns#64 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d4 | Naming Pattern |
 | --- | --- |
@@ -1341,9 +1730,13 @@ Roll to determine the naming structure for the item.
 | 3 | [Item] of [Noun] |
 | 4 | [Item] of [Adjective] [Noun] |
 </RollableTable>
+{/* /gen:table */}
 
 ### Utility Names
 
+<TableFold label="Utility Names" rows={20}>
+
+{/* gen:table:treasureData.magicItemNames.utility#65 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Adjective 1 | Noun 1 | Adjective 2 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -1368,9 +1761,15 @@ Roll to determine the naming structure for the item.
 | 19 | Fractal | Echo | Stolen | Moment |
 | 20 | Polished | Essence | Sacred | Cycle |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Wearable Names
 
+<TableFold label="Wearable Names" rows={20}>
+
+{/* gen:table:treasureData.magicItemNames.wearable#66 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Adjective 1 | Noun 1 | Adjective 2 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -1395,9 +1794,15 @@ Roll to determine the naming structure for the item.
 | 19 | Silvered | Calling | Ethereal | Sign |
 | 20 | Firekissed | Promise | Duskwoven | Curse |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Armor / Shield Names
 
+<TableFold label="Armor / Shield Names" rows={20}>
+
+{/* gen:table:treasureData.magicItemNames.armor#67 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Adjective 1 | Noun 1 | Adjective 2 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -1422,9 +1827,15 @@ Roll to determine the naming structure for the item.
 | 19 | Chanted | Pact | Stonebound | Memory |
 | 20 | Echoing | Burden | Crimson | Horizon |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Weapon Names
 
+<TableFold label="Weapon Names" rows={20}>
+
+{/* gen:table:treasureData.magicItemNames.weapon#68 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Adjective 1 | Noun 1 | Adjective 2 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -1449,9 +1860,15 @@ Roll to determine the naming structure for the item.
 | 19 | Blackened | Breath | Gilded | Shadow |
 | 20 | Whispercarved | Judgment | Eternal | Flame |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Spell Catalyst Names
 
+<TableFold label="Spell Catalyst Names" rows={20}>
+
+{/* gen:table:treasureData.magicItemNames.spellCatalyst#69 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Adjective 1 | Noun 1 | Adjective 2 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -1476,9 +1893,15 @@ Roll to determine the naming structure for the item.
 | 19 | Starlit | Tear | Mystic | Lash |
 | 20 | Shadow-drawn | Breath | Singing | Coil |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ## Magic Item Effects
 
+<TableFold label="Magic Item Effects" rows={12}>
+
+{/* gen:table:treasureData.magicItemEffects#70 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Effect Type | Primary Function | Trigger / Usage Style | Scope / Target |
 | --- | --- | --- | --- | --- |
@@ -1490,11 +1913,14 @@ Roll to determine the naming structure for the item.
 | 6 | Generation | Creates light, energy, or simple matter | Rechargeable / Hourly | Area Around User |
 | 7 | Erasure | Destroys or disables a thing | On Hit / Touch | Object or Small Area |
 | 8 | Alteration | Transforms materials, forms, or effects | Condition-Based | Touched Creature/Item |
-| 9 | Movement | Enables special travel or repositioning | Bonus Action / Activation | Wielder or Allies |
+| 9 | Movement | Enables special travel or repositioning | Quick Action / Activation | Wielder or Allies |
 | 10 | Sealing | Binds, wards, or traps | Triggered Automatically | Door, Portal, or Target |
 | 11 | Revelation | Exposes truths, detects, or uncovers | At Will or Focused Gaze | Hidden or Magical Thing |
 | 12 | Concealment | Hides, muffles, or misdirects | While Hidden / Still | Wielder or Location |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ## Magic Item Curses
 
@@ -1527,6 +1953,9 @@ Roll to determine the naming structure for the item.
 
 ### Curse Effects
 
+<TableFold label="Curse Effects" rows={12}>
+
+{/* gen:table:treasureData.magicItemCurseEffects#71 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Curse Type | Effect Description | Trigger / Condition | Drawback Scope |
 | --- | --- | --- | --- | --- |
@@ -1543,3 +1972,6 @@ Roll to determine the naming structure for the item.
 | 11 | Enmity | Provokes aggression from certain beings | Passive Aura | Specific Faction/Creature |
 | 12 | False Promise | Functions as a boon, then fails at a key time | When Most Needed | Betrays Trust |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>

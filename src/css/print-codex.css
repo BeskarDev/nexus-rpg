@@ -1,0 +1,264 @@
+/*
+ * THE PRINTED REGISTER (M16 D0, D1)
+ * =================================
+ *
+ * The codex on paper. Every printed artifact — the four character sheets and the
+ * four card families — imports these tokens and adds only its own geometry.
+ *
+ * ## Why this file exists
+ *
+ * Before it, seven features each owned an `@media print` block and the only thing
+ * they agreed on was that they existed. A change to the printed look had to be
+ * made in several places, which is the same as saying there was no printed look.
+ *
+ * ## The four means, and the one prohibition
+ *
+ * Rule weight, wash, type and mark. The owner allowed washes (2026-08-02), so the
+ * register has three of them and no fourth — a wash picked by eye on a monitor
+ * lands somewhere else on paper, and 6% versus 9% is the same grey on most office
+ * hardware.
+ *
+ * The prohibition is what keeps that safe:
+ *
+ *   NO PRINTED FACT MAY DEPEND ON A WASH, A HUE OR A FILL TO BE READ.
+ *
+ * A wash groups. It never encodes. If deleting every wash from a page would lose
+ * information, the page is wrong. This is stricter than "greyscale-safe", and it
+ * is the rule that retires the gold / dark-red / grey creature category icons.
+ *
+ * ## Sizes are in points
+ *
+ * `rem` means nothing to a printer, and it tracks a root font size the reader may
+ * have changed. The card CSS already knew this; the sheet did not.
+ */
+
+:root {
+	/* --- Rule weights ------------------------------------------------------ */
+	--pc-rule-hair: 0.2mm; /* a baseline to write on, a cut mark */
+	--pc-rule-key: 0.35mm; /* a field, a table rule */
+	--pc-rule-frame: 0.6mm; /* the edge of an artifact */
+
+	/* --- Washes. Three, and no fourth. ------------------------------------- */
+	--pc-wash-faint: rgba(0, 0, 0, 0.06); /* alternating rows */
+	--pc-wash: rgba(0, 0, 0, 0.12); /* a group, a heading band */
+	--pc-wash-deep: rgba(0, 0, 0, 0.22); /* a box the hand writes in */
+
+	/* --- Type, in points --------------------------------------------------- */
+	--pc-text-micro: 5.5pt; /* the floor. Nothing is set below this. */
+	--pc-text-fine: 6.5pt; /* small-caps labels, table headings */
+	--pc-text-dense: 8pt; /* list rows */
+	--pc-text-body: 9pt; /* rule text, notes */
+	--pc-text-name: 12pt; /* an entry's name */
+	--pc-text-title: 16pt; /* the character's name */
+
+	--pc-leading-dense: 1.15;
+	--pc-leading-body: 1.3;
+
+	/* --- Ink ---------------------------------------------------------------- */
+	--pc-ink: #000;
+	--pc-ink-soft: #333; /* a label beside its value, never a value */
+}
+
+/*
+ * THE CODEX, IN INK (M16 S3.5, owner review)
+ * ------------------------------------------
+ *
+ * The first pass at the printed sheet banned drawn ornament outright — my call,
+ * in D1, and the owner overruled it: the print must carry the codex theme as
+ * fully as the screen does, only in black and white.
+ *
+ * This block is what makes that cheap. Every ornament, sigil and token in
+ * `src/components/codex/` draws from `--ifm-color-primary`, `--ifm-font-color-base`
+ * and the surface colour, and every sigil is `fill="currentColor"` by law. So
+ * rebinding those three variables on the printed sheet turns the ENTIRE codex
+ * vocabulary — keystones, corner rails, die polygons, stat marks, lozenge
+ * dividers — into black on white, with no print-only copy of any of it.
+ *
+ * That is why the theme's "no per-shape colour" rule earns its keep here: a mark
+ * that had baked its own bronze in would have needed a second version for paper.
+ */
+.pc-sheet {
+	--ifm-color-primary: var(--pc-ink);
+	--ifm-color-primary-dark: var(--pc-ink);
+	--ifm-color-primary-darker: var(--pc-ink);
+	--ifm-color-primary-darkest: var(--pc-ink);
+	--ifm-color-primary-light: var(--pc-ink-soft);
+	--ifm-color-primary-lighter: var(--pc-ink-soft);
+	--ifm-color-primary-lightest: var(--pc-ink-soft);
+	--ifm-font-color-base: var(--pc-ink);
+	--ifm-background-surface-color: #fff;
+	--ifm-hr-background-color: var(--pc-ink);
+	color: var(--pc-ink);
+}
+
+/*
+ * The die polygons, at print size.
+ *
+ * `DieToken` sizes itself in `rem`, which tracks the reader's browser setting
+ * and means nothing to a printer. On paper it is pinned in millimetres, and the
+ * numeral inside it in points, so a d12 is the same mark on every device.
+ *
+ * The numeral is set at the NAME size rather than the fine one: it is the thing
+ * actually read, and the token's own type scales in `em` off this box, so this
+ * one declaration sizes the whole mark.
+ */
+.pc-die > span {
+	width: 10mm;
+	height: 10mm;
+	font-size: var(--pc-text-name);
+}
+
+/*
+ * A die needs no cell. The polygon is already a container, and putting it in a
+ * washed box with a baseline under it draws the same boundary twice — the
+ * mistake the old sheet made with a 3px rounded outline around every value.
+ */
+.pc-stat--die {
+	background: none;
+	border-bottom: none;
+	padding: 0;
+}
+
+/* A sigil beside its label: the mark names the row, the words carry it. */
+.pc-mark-label {
+	display: flex;
+	align-items: center;
+	gap: 0.8mm;
+}
+
+/*
+ * The label voice. Small caps at the fine size with open tracking: the codex's
+ * own, and it costs nothing to print.
+ */
+.pc-label {
+	font-size: var(--pc-text-fine);
+	font-variant-caps: all-small-caps;
+	letter-spacing: 0.06em;
+	color: var(--pc-ink-soft);
+	line-height: 1.1;
+}
+
+/* A field a hand writes in: a wash and a baseline, never a rounded outline. */
+.pc-slot {
+	background: var(--pc-wash-faint);
+	border-bottom: var(--pc-rule-key) solid var(--pc-ink);
+	font-size: var(--pc-text-dense);
+	color: var(--pc-ink);
+	line-height: var(--pc-leading-dense);
+	padding: 0.4mm 0.8mm;
+}
+
+.pc-slot--write {
+	background: var(--pc-wash-deep);
+}
+
+/*
+ * A stat cell: a number read across the table, by someone else, on their turn.
+ *
+ * Centred, at the name size, in a wash deep enough to find without reading. The
+ * hairline under it is what a pencil corrects against when the number changes.
+ */
+.pc-stat {
+	background: var(--pc-wash-faint);
+	border-bottom: var(--pc-rule-key) solid var(--pc-ink);
+	font-size: var(--pc-text-name);
+	line-height: 1.25;
+	text-align: center;
+	color: var(--pc-ink);
+	padding: 0.6mm 0.5mm;
+}
+
+.pc-stat--write {
+	background: var(--pc-wash-deep);
+	min-height: 7mm;
+}
+
+/* The player's own words, and the ruled space for more of them. */
+.pc-prose {
+	font-size: var(--pc-text-dense);
+	line-height: var(--pc-leading-body);
+	color: var(--pc-ink);
+	padding: 0.5mm 1mm;
+}
+
+.pc-prose p,
+.pc-prose ul,
+.pc-prose ol {
+	margin: 0 0 1mm;
+}
+
+.pc-prose li {
+	margin: 0;
+}
+
+/*
+ * The ruled remainder. It emits more lines than fit and this clips them, which
+ * is safe because a blank line carries nothing — see `WriteLines`.
+ */
+.pc-fill {
+	flex-grow: 1;
+	min-height: 0;
+	overflow: hidden;
+}
+
+.pc-writeline {
+	height: 4mm;
+}
+
+.pc-writeline:nth-child(odd) {
+	background: var(--pc-wash-faint);
+}
+
+/* A group: a wash band with a small-caps name, per the theme's first rule — a
+   bare rule used to bind content is the one device the codex never uses. */
+.pc-group__head {
+	background: var(--pc-wash);
+	font-size: var(--pc-text-fine);
+	font-variant-caps: all-small-caps;
+	letter-spacing: 0.06em;
+	padding: 0.4mm 1mm;
+	break-after: avoid;
+}
+
+/* Rows that alternate, so the eye tracks across a wide line without a grid. */
+.pc-row:nth-of-type(even) {
+	background: var(--pc-wash-faint);
+}
+
+/*
+ * What a list says instead of clipping (D3).
+ *
+ * The printed sheet is four pages and a fold, and constraint 1 forbids a fifth.
+ * So a list that overruns cannot flow — but it must never drop rows in silence
+ * either, which is what the fixed-height `overflow: hidden` boxes did.
+ */
+.pc-overflow-note {
+	font-size: var(--pc-text-micro);
+	font-variant-caps: all-small-caps;
+	letter-spacing: 0.06em;
+	color: var(--pc-ink-soft);
+	padding-top: 0.4mm;
+}
+
+/* Marks: line art at full black, no wash behind them, never below 3mm. */
+.pc-mark {
+	width: 3mm;
+	height: 3mm;
+	color: var(--pc-ink);
+	flex: none;
+}
+
+@media print {
+	/*
+	 * Force the washes through. Browsers drop background colour by default, and
+	 * every grouping device in this register is a background — without this the
+	 * printed page loses its structure and keeps only its type.
+	 */
+	.pc-slot,
+	.pc-group__head,
+	.pc-row,
+	.playing-card--card {
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+	}
+}

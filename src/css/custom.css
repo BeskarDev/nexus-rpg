@@ -4,6 +4,10 @@
  * work well for content-centric websites.
  */
 
+/* The printed register (M16): tokens and element rules shared by every printed
+   artifact. Global because the print previews render on screen. */
+@import './print-codex.css';
+
 /* Self-hosted codex fonts (GDPR: no Google Fonts CDN).
    Subsetted to Latin via pyftsubset with smcp/c2sc/onum layout features kept. */
 @font-face {
@@ -506,11 +510,23 @@
 	--nexus-sheet-padding-x: 2rem;
 	--nexus-leading-prose: 1.7;
 
-	/* Character Sheet Layout System */
+	/* Character Sheet Layout System.
+
+	   These are CEILINGS, not widths (M13 S11). The sheet is a two-column desktop
+	   layout — a fixed statistics plate beside a fluid working column — and the
+	   working column fills whatever the viewport gives it up to `--cs-max-width-column`.
+	   The older `sm`/`md`/`lg`/`xl` steps stay for the surfaces that genuinely want
+	   a bound (a prose panel, the meta band), and are no longer applied to the
+	   column itself: on a 1512px laptop that capped the working column at 608px
+	   and left ~450px of the row empty. */
 	--cs-max-width-sm: 25rem; /* Statistics panel, Skills lists */
 	--cs-max-width-md: 38rem; /* Spells tab */
-	--cs-max-width-lg: 47rem; /* Items, Personal, Companions */
+	--cs-max-width-lg: 47rem; /* a bounded reading measure inside a panel */
 	--cs-max-width-xl: 65rem; /* Full-width content */
+	/* What one working column may grow to. Wide enough that a 1512px laptop and a
+	   1920px monitor both fill, bounded so an ultra-wide does not produce a
+	   2000px ledger row nobody can track across. */
+	--cs-max-width-column: 78rem;
 	--cs-max-width-page: 100rem; /* Global max-width for entire sheet on ultra-wide screens */
 	--cs-panel-gap: 1.5rem; /* Gap between panels */
 	--cs-section-gap: 1rem; /* Gap between sections within panels */
@@ -3753,4 +3769,297 @@ article h2::after {
 		var(--ifm-font-color-base)
 	);
 	vertical-align: 0.05em;
+}
+
+/* M14 — the oracle: the GM tools' rolled-table instrument.
+   ==========================================================================
+
+   A random table is a question you ask and an answer you get back. The component
+   this replaced was an MUI `Card` whose FORM was the largest thing in it and whose
+   answer was a plain paragraph underneath — the shape of a settings dialog, on the
+   page a GM uses mid-session with four people waiting.
+
+   The register is the character sheet's, because M13 settled it and a reader who
+   has used the sheet should not have to learn a second vocabulary: keylined plate,
+   small-caps labels, hard corners, bronze ink. */
+.cs-oracle {
+	margin: 0 0 1.5rem;
+	padding: 0.75rem 0.9rem 0.9rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 4%, transparent);
+}
+
+.cs-oracle__bar {
+	display: flex;
+	align-items: flex-end;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+.cs-oracle__field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	flex: 1 1 14rem;
+	min-width: 0;
+}
+.cs-oracle__label {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 75%,
+		var(--ifm-font-color-base)
+	);
+}
+.cs-oracle__select {
+	width: 100%;
+}
+
+/* The roll control: a DIE, and the loudest thing on the page.
+   ==========================================================================
+
+   It was a bronze slab reading `Roll`, which got the hierarchy right and the act
+   wrong — a rolled answer that simply appears has been computed. It is the shared
+   `RollDie` now (tumble, reduced-motion path and all), scaled up from the 1.35rem
+   plate a creature card uses to something a hand returns to without looking, and
+   carrying its word beside the pips. */
+.cs-oracle__roll.cs-oracle__roll {
+	flex: 0 0 auto;
+	width: auto;
+	min-width: 7rem;
+	height: auto;
+	min-height: 2.75rem;
+	padding: 0 1.25rem;
+	gap: 0.5rem;
+	border: 1.5px solid var(--nexus-bronze);
+	border-radius: 0;
+	background: var(--nexus-bronze);
+	color: var(--ifm-background-surface-color);
+}
+.cs-oracle__roll.cs-oracle__roll:hover {
+	background: color-mix(
+		in srgb,
+		var(--nexus-bronze) 85%,
+		var(--ifm-font-color-base)
+	);
+	border-color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 85%,
+		var(--ifm-font-color-base)
+	);
+}
+.cs-oracle__roll-word {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-md);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.09em;
+}
+
+.cs-oracle__caption {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.4rem 1rem;
+	margin-top: 0.5rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 55%,
+		var(--ifm-font-color-base)
+	);
+}
+.cs-oracle__count-field,
+.cs-oracle__switch {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+.cs-oracle__caption-label {
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+}
+.cs-oracle__count .MuiSelect-select {
+	padding: 0 1.25rem 0 0.25rem;
+	min-height: 0;
+	font-size: var(--nexus-text-xs);
+	background: none;
+	border: 0;
+}
+.cs-oracle__switch input {
+	accent-color: var(--nexus-bronze);
+}
+.cs-oracle__clear {
+	margin-left: auto;
+	padding: 0.15rem 0.5rem;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 28%, transparent);
+	background: none;
+	color: inherit;
+	font: inherit;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	cursor: pointer;
+}
+.cs-oracle__clear:hover {
+	background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
+}
+
+/* The answer is the subject of the page, so it is set like one: the display serif
+   at a heading step. A composed paragraph drops to the reading face — the same
+   words at 28px would be a wall. */
+.cs-oracle__answer {
+	margin-top: 0.75rem;
+	padding-top: 0.75rem;
+	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+	min-height: 3rem;
+	display: flex;
+	align-items: center;
+}
+.cs-oracle__struck {
+	margin: 0;
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-2xl);
+	font-weight: 600;
+	line-height: 1.25;
+	letter-spacing: 0.01em;
+}
+.cs-oracle__struck.is-prose {
+	font-family: var(--ifm-font-family-base);
+	font-size: var(--nexus-text-base);
+	font-weight: 400;
+	line-height: 1.55;
+}
+.cs-oracle__empty {
+	font-style: italic;
+	font-size: var(--nexus-text-sm);
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 45%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* The log: what you rolled before, because keeping the third of five is the
+   actual workflow. Quiet by construction — it is context, not the answer. */
+.cs-oracle__log {
+	margin-top: 0.6rem;
+	padding-top: 0.5rem;
+	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 16%, transparent);
+}
+.cs-oracle__log-label {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 60%,
+		var(--ifm-font-color-base)
+	);
+}
+.cs-oracle__log ol {
+	margin: 0.3rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+.cs-oracle__log li {
+	padding: 0.15rem 0;
+	font-size: var(--nexus-text-sm);
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 30%,
+		var(--ifm-font-color-base)
+	);
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
+}
+.cs-oracle__log li:last-child {
+	border-bottom: 0;
+}
+
+/* M14 S3 — the dice-by-hand fold.
+   ==========================================================================
+
+   The data a random table rolls on is not reading matter, and printing 1,266 rows
+   of syllables under the two tables a GM actually reads is why these pages were
+   unusable. The data sits behind this instead, and the fold says what it is for:
+   rolling by hand, away from a screen.
+
+   The panel is rendered and `hidden`, never unmounted — so the rows stay in the
+   static HTML for the search index, for find-in-page, and for print. */
+.table-fold {
+	margin: 0 0 0.75rem;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 24%, transparent);
+}
+.table-fold__summary {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	width: 100%;
+	min-height: 2.25rem;
+	padding: 0 0.6rem;
+	border: 0;
+	background: color-mix(in srgb, var(--ifm-color-primary) 6%, transparent);
+	color: inherit;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	text-align: left;
+	cursor: pointer;
+}
+.table-fold__summary:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+}
+/* The site's own carved caret, pointing down when the panel is open — the same
+   mark and the same rotation the sidebar and the character sheet use. */
+.table-fold__caret {
+	flex: 0 0 auto;
+	width: 9px;
+	height: 9px;
+	background-color: currentColor;
+	-webkit-mask: var(--nexus-caret-glyph) center / contain no-repeat;
+	mask: var(--nexus-caret-glyph) center / contain no-repeat;
+	transform: rotate(-90deg);
+	transition: transform 120ms linear;
+	color: var(--ifm-color-primary);
+}
+.table-fold.is-open .table-fold__caret {
+	transform: rotate(180deg);
+}
+.table-fold__label {
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 78%,
+		var(--ifm-font-color-base)
+	);
+}
+/* What it costs to open, so the reader can price the press. */
+.table-fold__count {
+	margin-left: auto;
+	font-size: var(--nexus-text-3xs);
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 45%,
+		var(--ifm-font-color-base)
+	);
+}
+.table-fold__panel[hidden] {
+	display: none;
+}
+.table-fold__panel > :last-child {
+	margin-bottom: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+	.table-fold__caret {
+		transition: none;
+	}
 }

@@ -101,7 +101,8 @@ export const ItemsTab: React.FC = () => {
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				maxWidth: 'var(--cs-max-width-xl)',
+				// Fills the working column (M13 S11); the column carries the ceiling.
+				maxWidth: '100%',
 			}}
 		>
 			{/* M13 S6: the tab's name, its commands and its purse band are one plate now,

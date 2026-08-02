@@ -1,4 +1,4 @@
-import { ArrowBackIosNew, Download, Save, Upload } from '@mui/icons-material'
+import { Download, Save, Upload } from '@mui/icons-material'
 import {
 	Box,
 	Button,
@@ -34,6 +34,7 @@ import React from 'react'
 import { Character } from '@site/src/types/Character'
 import { useAppSelector } from './hooks/useAppSelector'
 import { UserAvatar } from './UserAvatar'
+import { Chevron } from './components/Chevron'
 import { calculateCharacterLevel } from './utils/calculateCharacterLevel'
 import {
 	createInitialCharacter,
@@ -266,26 +267,28 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 
 	return (
 		<>
-			<Box
-				sx={{
-					position: 'sticky',
-					top: '60px',
-					zIndex: 100,
-					backgroundColor: 'var(--ifm-background-color)',
-					display: 'flex',
-					gap: 2,
-					borderBottom: 1,
-					borderColor: 'divider',
-					alignItems: 'center',
-					py: 1,
-					mb: 2,
-				}}
-			>
+			{/*
+				The sheet's masthead (M13 S13).
+
+				One shape for all three states — the shelf, an open character, and the
+				logged-out visitor — because they are the same band doing the same job:
+				say where you are on the left, offer what you can do here on the right.
+				It was an MUI flex row with `borderColor: 'divider'` (Material's grey,
+				the last of it above the fold) and bare icon buttons with no plate,
+				beside a control strip idiom every section of the sheet already had.
+			*/}
+			<Box className="cs-masthead">
 				{activeCharacterId && (
-					<Link href={window.location.href.split('?')[0]}>
-						<IconButton>
-							<ArrowBackIosNew />
-						</IconButton>
+					/* The way back, as a WORD (M13 S13). It was a bare `<` glyph, which
+						is the browser's own back button drawn twice — and it did not say
+						where back is. */
+					<Link
+						href={window.location.href.split('?')[0]}
+						className="cs-masthead__back"
+						underline="none"
+					>
+						<Chevron size={9} />
+						<span>Characters</span>
 					</Link>
 				)}
 				{/* M9 S8 — the nameplate. The character's name is the page's identity,
@@ -293,22 +296,8 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				    it in the kit's own `Cartouche` (a label register, which is what a
 				    level is). Reused rather than redrawn: its ink-forward color has no
 				    identity hue to preserve here, unlike the stat tiles in PR D. */}
-				<Box
-					sx={{
-						display: 'flex',
-						alignItems: 'center',
-						gap: 1,
-						minWidth: 0,
-					}}
-				>
-					<Typography
-						variant="h6"
-						sx={{
-							whiteSpace: 'nowrap',
-							overflow: 'hidden',
-							textOverflow: 'ellipsis',
-						}}
-					>
+				<Box className="cs-masthead__subject">
+					<Typography component="h1" className="cs-masthead__name">
 						{!activeCharacterId && 'Your Characters'}
 						{activeCharacterId &&
 							activeCharacter &&
@@ -320,7 +309,10 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						</Cartouche>
 					)}
 				</Box>
-				<Box sx={{ display: 'flex', gap: 2, ml: 'auto' }}>
+				{/* `cs-section-actions` is the sheet's control strip: stamped plates,
+					one size, danger ink on hover where it applies. The masthead was the
+					last strip on the page still drawing bare Material glyphs. */}
+				<Box className="cs-masthead__tools cs-section-actions">
 					{!activeCharacterId && (
 						<>
 							<Tooltip
@@ -341,13 +333,17 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 									</IconButton>
 								</span>
 							</Tooltip>
+							{/* Sentence case, not `new character` (M13 S12). Every other
+								command on the sheet is titled — "Build Companion", "Magic Item
+								Builder" — and this is the one thing a reader with no characters
+								yet has to find. */}
 							<Button
 								variant="outlined"
 								size="small"
 								disabled={!userLoggedIn}
 								onClick={handleOpen}
 							>
-								new character
+								New Character
 							</Button>
 						</>
 					)}

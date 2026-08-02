@@ -50,7 +50,8 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 	const configMenuWithClose = configMenu
 		? React.cloneElement(configMenu as React.ReactElement, {
 				onClose: (e: any) => {
-					;(configMenu as any).props?.onClose?.(e)
+					const menu = configMenu as any
+					menu.props?.onClose?.(e)
 				},
 			})
 		: null

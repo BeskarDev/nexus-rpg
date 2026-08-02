@@ -1251,74 +1251,74 @@
 			},
 			{
 				"material": "Dyed-leather",
-				"form": "Tunic",
+				"form": "Leather tunic",
 				"detail": "Water-darkened spots"
 			},
 			{
 				"material": "Felted-textile",
-				"form": "Coat",
+				"form": "Padded coat",
 				"detail": "Fringed edges"
 			},
 			{
 				"material": "Hide-laced",
-				"form": "Tabard",
+				"form": "Hide tabard",
 				"detail": "Smells faintly of smoke"
 			},
 			{
 				"material": "Tanned-hide",
-				"form": "Mantle",
+				"form": "Padded mantle",
 				"detail": "Worn elbow patches"
 			},
 			{
 				"material": "Studded-hide",
-				"form": "Hood coat",
+				"form": "Hooded jerkin",
 				"detail": "Bronze rivets at collar"
 			},
 			{
 				"material": "Boar-hide",
-				"form": "Long tunic",
+				"form": "Split-front tunic",
 				"detail": "Deep creases at seams"
 			},
 			{
 				"material": "Bark-reinforced",
-				"form": "Vest",
+				"form": "Quilted vest",
 				"detail": "Forest-stained fibers"
 			},
 			{
 				"material": "Stuffed-textile",
-				"form": "Short tunic",
+				"form": "Sleeveless tunic",
 				"detail": "Sweat-stained trim"
 			},
 			{
 				"material": "Plant-fiber weave",
-				"form": "Long coat",
+				"form": "Side-fastened coat",
 				"detail": "Loose stitching at seams"
 			},
 			{
 				"material": "Painted-hide",
-				"form": "Robe",
+				"form": "Worn robe",
 				"detail": "Decorated hem shows wear"
 			}
 		],
 		"Banded Leather": [
 			{
 				"material": "Studded-hide",
-				"form": "Cuirass",
+				"form": "Studded cuirass",
 				"detail": "Green-patina studs"
 			},
 			{
 				"material": "Bark-hardened hide",
-				"form": "Lamellar",
+				"form": "Lamellar vest",
 				"detail": "Woven with cord"
 			},
 			{
 				"material": "Riveted-hide",
-				"form": "Ring vest",
+				"form": "Ring-bound vest",
 				"detail": "Shoulder slits for mobility"
 			},
 			{
 				"material": "Horn-laminated hide",
-				"form": "Jerkin",
+				"form": "Layered jerkin",
 				"detail": "Irregular stud pattern"
 			},
 			{
@@ -1328,99 +1328,99 @@
 			},
 			{
 				"material": "Boar-leather",
-				"form": "Mail vest",
+				"form": "Mail-hybrid vest",
 				"detail": "Snapped strap marks"
 			},
 			{
 				"material": "Bronze-reinforced",
-				"form": "Band cuirass",
+				"form": "Banded cuirass",
 				"detail": "Echoes when tapped"
 			},
 			{
 				"material": "Painted-leather",
-				"form": "Band coat",
+				"form": "Paired segments",
 				"detail": "Hand-etched signs"
 			},
 			{
 				"material": "Shell-inlaid hide",
-				"form": "Band armor",
+				"form": "Overlapping bands",
 				"detail": "Ridge over chest"
 			},
 			{
 				"material": "Stone-riveted hide",
-				"form": "Mail coat",
+				"form": "Interlocked mail",
 				"detail": "Pebbled texture"
 			},
 			{
 				"material": "Laced-horn pieces",
-				"form": "Lined coat",
+				"form": "Lined jerkin",
 				"detail": "Shallow cuts along edges"
 			},
 			{
 				"material": "Bone-wired hide",
-				"form": "Plated vest",
+				"form": "Vented plates",
 				"detail": "Smoothed edges"
 			}
 		],
 		"Chain Mail": [
 			{
 				"material": "Twisted-bronze links",
-				"form": "Hauberk",
+				"form": "Mail hauberk",
 				"detail": "Ornate shoulder straps"
 			},
 			{
 				"material": "Bone-plate panels",
-				"form": "Lamellar",
+				"form": "Bone lamellar cuirass",
 				"detail": "Screeched when moved"
 			},
 			{
 				"material": "Horn-segment plates",
-				"form": "Lamellar vest",
+				"form": "Horn lamellar vest",
 				"detail": "Scrimshaw carvings"
 			},
 			{
 				"material": "Layered-textile core",
-				"form": "Tunic",
+				"form": "Reinforced tunic",
 				"detail": "Faded crest patch"
 			},
 			{
 				"material": "Sinew-bound chain",
-				"form": "Cuirass",
+				"form": "Lamellar cuirass",
 				"detail": "Hangs unevenly"
 			},
 			{
 				"material": "Copper-wire links",
-				"form": "Harness",
+				"form": "Plated harness",
 				"detail": "Friction-burnished finish"
 			},
 			{
 				"material": "Lacquered-bone scales",
-				"form": "Ribbed mail",
+				"form": "Ribbed armor",
 				"detail": "Soft clinking sound"
 			},
 			{
 				"material": "Bronze-scale strips",
-				"form": "Scale coat",
+				"form": "Overlapping lamellar",
 				"detail": "Worn around collar"
 			},
 			{
 				"material": "Hardened-horn plates",
-				"form": "Mail coat",
+				"form": "Reinforced mail",
 				"detail": "Dull tone when struck"
 			},
 			{
 				"material": "Coral-embedded links",
-				"form": "Stitched mail",
+				"form": "Stitched cuirass",
 				"detail": "Strange salty scent"
 			},
 			{
 				"material": "Cloth-wrapped chain",
-				"form": "Mail tunic",
+				"form": "Riveted mail tunic",
 				"detail": "Stained under arms"
 			},
 			{
 				"material": "Flint-linked mesh",
-				"form": "Tiled mail",
+				"form": "Tiled vest",
 				"detail": "Irregular outline at hem"
 			}
 		],
@@ -1432,27 +1432,27 @@
 			},
 			{
 				"material": "Wood-slat strips",
-				"form": "Plate vest",
+				"form": "Wood-plate vest",
 				"detail": "Burnt ends at seams"
 			},
 			{
 				"material": "Shell-scale pieces",
-				"form": "Shell armor",
+				"form": "Shell-scale armor",
 				"detail": "Iridescent shine"
 			},
 			{
 				"material": "Bark-scale lamellae",
-				"form": "Lamellar coat",
+				"form": "Bark lamellar coat",
 				"detail": "Peeling texture"
 			},
 			{
 				"material": "Copper-scale plates",
-				"form": "Plate coat",
+				"form": "Ribbed plate vest",
 				"detail": "Rattles slightly when walked"
 			},
 			{
 				"material": "Horn-chip overlays",
-				"form": "Scale coat",
+				"form": "Natural-scale coat",
 				"detail": "Grooved ridges"
 			},
 			{
@@ -1462,39 +1462,39 @@
 			},
 			{
 				"material": "Stone-scale plates",
-				"form": "Slab vest",
+				"form": "Layered slab vest",
 				"detail": "Cracks at joints"
 			},
 			{
 				"material": "Lacquered-wood slats",
-				"form": "Plated coat",
+				"form": "Coated plate armor",
 				"detail": "Smooth surface"
 			},
 			{
 				"material": "Coral-fragment scales",
-				"form": "Lamellar vest",
+				"form": "Marine lamellar vest",
 				"detail": "Faint ocean scent"
 			},
 			{
 				"material": "Bronze-leaf scales",
-				"form": "Leaf cuirass",
+				"form": "Leaf-scale cuirass",
 				"detail": "Symbol etched at center"
 			},
 			{
 				"material": "Chitin-shell plates",
-				"form": "Carapace",
+				"form": "Exoskeletal cuirass",
 				"detail": "Insect-like symmetry"
 			}
 		],
 		"Helmet": [
 			{
 				"material": "Leather-wrapped",
-				"form": "Turban",
+				"form": "Reinforced turban",
 				"detail": "Embroidered trim"
 			},
 			{
 				"material": "Studded-hide",
-				"form": "Hood",
+				"form": "Studded leather hood",
 				"detail": "Bronze ear caps"
 			},
 			{
@@ -1504,7 +1504,7 @@
 			},
 			{
 				"material": "Carved-horn panels",
-				"form": "Open helm",
+				"form": "Open-faced helm",
 				"detail": "High, flared crown"
 			},
 			{
@@ -1514,12 +1514,12 @@
 			},
 			{
 				"material": "Bone-plate segments",
-				"form": "Skullcap",
+				"form": "Skullguard hood",
 				"detail": "Curved dome over brow"
 			},
 			{
 				"material": "Shell-strip layered",
-				"form": "Headwrap",
+				"form": "Layered headwrap",
 				"detail": "Chimed when shaken"
 			},
 			{
@@ -1534,29 +1534,29 @@
 			},
 			{
 				"material": "Fossil-infused metal",
-				"form": "Plate cap",
+				"form": "Domed plate cap",
 				"detail": "Engraved motifs around rim"
 			},
 			{
 				"material": "Wicker-laced hide",
-				"form": "Band helm",
+				"form": "Folded band helm",
 				"detail": "Feathered back plume"
 			},
 			{
 				"material": "Lacquered-bronze",
-				"form": "Mask helm",
+				"form": "Ritual mask helm",
 				"detail": "Narrow eye slits"
 			}
 		],
 		"Buckler": [
 			{
 				"material": "Hardened-leather",
-				"form": "Buckler",
+				"form": "Round buckler",
 				"detail": "Worn hand grip"
 			},
 			{
 				"material": "Bone-slat strips",
-				"form": "Disc buckler",
+				"form": "Bone disc buckler",
 				"detail": "Grooved rim"
 			},
 			{
@@ -1566,7 +1566,7 @@
 			},
 			{
 				"material": "Horn-laminated wood",
-				"form": "Strap buckler",
+				"form": "Strapped shield",
 				"detail": "Glossy finish on exterior"
 			},
 			{
@@ -1586,22 +1586,22 @@
 			},
 			{
 				"material": "Shell-inlaid center",
-				"form": "Small buckler",
+				"form": "Coastal buckler",
 				"detail": "Iridescent center"
 			},
 			{
 				"material": "Bronze-inset wood",
-				"form": "Round disc",
+				"form": "Compact disc buckler",
 				"detail": "Tap rings out when struck"
 			},
 			{
 				"material": "Chitin-fragment",
-				"form": "Chitin buckler",
+				"form": "Organic plate",
 				"detail": "Dull chitin ridges"
 			},
 			{
 				"material": "Smoked-hide",
-				"form": "Shield",
+				"form": "Round shield",
 				"detail": "Smells faintly of ash"
 			},
 			{
@@ -1613,7 +1613,7 @@
 		"Light Shield": [
 			{
 				"material": "Bronze-edged wood",
-				"form": "Teardrop shield",
+				"form": "Tear-drop shield",
 				"detail": "Crest motif engraved"
 			},
 			{
@@ -1623,7 +1623,7 @@
 			},
 			{
 				"material": "Hardened-hide",
-				"form": "Oval shield",
+				"form": "Oval guard",
 				"detail": "Curved to fit forearm"
 			},
 			{
@@ -1633,22 +1633,22 @@
 			},
 			{
 				"material": "Bone-panel laminate",
-				"form": "Long shield",
+				"form": "Tall oval shield",
 				"detail": "Drilled charm holes"
 			},
 			{
 				"material": "Polished-bronze face",
-				"form": "Shield",
+				"form": "Round shield",
 				"detail": "Blinding glint in sunlight"
 			},
 			{
 				"material": "Bark-backed leather",
-				"form": "Leaf shield",
+				"form": "Leaf-shaped shield",
 				"detail": "Smooth, flowing grain"
 			},
 			{
 				"material": "Stone-rimmed wood",
-				"form": "Stone shield",
+				"form": "Obsidian-edge shield",
 				"detail": "Jagged upper ridge"
 			},
 			{
@@ -1663,12 +1663,12 @@
 			},
 			{
 				"material": "Metal-stitched leather",
-				"form": "Split shield",
+				"form": "Split-guard shield",
 				"detail": "Crude seam pattern visible"
 			},
 			{
 				"material": "Mixed-shell inlay",
-				"form": "Wide shield",
+				"form": "Decorative shield",
 				"detail": "Wave-like texture over face"
 			}
 		],
@@ -1685,22 +1685,22 @@
 			},
 			{
 				"material": "Shell-plate overlay",
-				"form": "Wall shield",
+				"form": "Overlapped wall shield",
 				"detail": "Wide, heavy curvature"
 			},
 			{
 				"material": "Bone-bound frame",
-				"form": "Wedge shield",
+				"form": "Wedge-shaped shield",
 				"detail": "Clunky edges along sides"
 			},
 			{
 				"material": "Horn-paneled face",
-				"form": "Guard shield",
+				"form": "Wide wall guard",
 				"detail": "Grooved grip for two hands"
 			},
 			{
 				"material": "Layered-hide & bark",
-				"form": "Oval shield",
+				"form": "Heavy oval shield",
 				"detail": "Extra strap for support"
 			},
 			{
@@ -1710,27 +1710,27 @@
 			},
 			{
 				"material": "Fossil-laminated face",
-				"form": "Slab shield",
+				"form": "Ancient slab shield",
 				"detail": "Dusty to the touch"
 			},
 			{
 				"material": "Chitinous-shell cover",
-				"form": "Beast shield",
+				"form": "Beast-faced shield",
 				"detail": "Insectoid symmetry in design"
 			},
 			{
 				"material": "Ash-core bronze layer",
-				"form": "Plate shield",
+				"form": "Reinforced plate",
 				"detail": "Cross-riveted straps"
 			},
 			{
 				"material": "Stone-carved front",
-				"form": "Sacred shield",
+				"form": "Sacred slab shield",
 				"detail": "Echoes when dropped"
 			},
 			{
 				"material": "Engraved-bronze face",
-				"form": "Carved shield",
+				"form": "Ceremonial wall shield",
 				"detail": "Inlaid runes along perimeter"
 			}
 		],
@@ -1742,7 +1742,7 @@
 			},
 			{
 				"material": "Splinted-wood segments",
-				"form": "Splint mail",
+				"form": "Splint mail tunic",
 				"detail": "Rigid backline visible"
 			},
 			{
@@ -1752,12 +1752,12 @@
 			},
 			{
 				"material": "Embossed-copper plate",
-				"form": "Ornate plate",
+				"form": "Ornamental plate",
 				"detail": "Floral etching details"
 			},
 			{
 				"material": "Horn-slab overlays",
-				"form": "Inset plate",
+				"form": "Inset armor",
 				"detail": "Ridge-banded edges"
 			},
 			{
@@ -1767,17 +1767,17 @@
 			},
 			{
 				"material": "Lacquered-scale cover",
-				"form": "Ridged plate",
+				"form": "Ridged armor",
 				"detail": "Reflects torchlight"
 			},
 			{
 				"material": "Leather-lined metal",
-				"form": "Framed plate",
+				"form": "Framed cuirass",
 				"detail": "Peeling outer layer"
 			},
 			{
 				"material": "Cast-metal plate",
-				"form": "Vented plate",
+				"form": "Vented breastplate",
 				"detail": "Riveted armpit vents"
 			},
 			{
@@ -1792,7 +1792,7 @@
 			},
 			{
 				"material": "Gold-tinted-bronze",
-				"form": "Parade plate",
+				"form": "Parade cuirass",
 				"detail": "Decorated with spirals"
 			}
 		],
@@ -1809,7 +1809,7 @@
 			},
 			{
 				"material": "Horn-ridge overlays",
-				"form": "Yoroi harness",
+				"form": "Ō-yoroi harness",
 				"detail": "Wide shoulder plates"
 			},
 			{
@@ -1819,12 +1819,12 @@
 			},
 			{
 				"material": "Stone-banded strips",
-				"form": "Layered armor",
+				"form": "Layered defense armor",
 				"detail": "Cracks from past battles"
 			},
 			{
 				"material": "Lacquered-copper sheets",
-				"form": "Full plate",
+				"form": "Full body set",
 				"detail": "Reflective under torchlight"
 			},
 			{
@@ -1834,17 +1834,17 @@
 			},
 			{
 				"material": "Wrought-bronze segments",
-				"form": "Full cuirass",
+				"form": "Segmented cuirass",
 				"detail": "Etched face-mask motif"
 			},
 			{
 				"material": "Composite-plate strips",
-				"form": "Ridge armor",
+				"form": "Ridge-overlap armor",
 				"detail": "Imposing silhouette at dawn"
 			},
 			{
 				"material": "Shell-covered overlays",
-				"form": "Carapace",
+				"form": "Carapace armor",
 				"detail": "Smells faintly of the sea"
 			},
 			{
@@ -1854,7 +1854,7 @@
 			},
 			{
 				"material": "Fossil-embedded plating",
-				"form": "Plate armor",
+				"form": "Towering plate armor",
 				"detail": "Echoes with each step"
 			}
 		]
@@ -4146,62 +4146,74 @@
 		{
 			"curseType": "Binding",
 			"effect": "Cannot be removed without a specific ritual",
-			"trigger": "Upon Equipping"
+			"trigger": "Upon Equipping",
+			"scope": "Permanent Until Broken"
 		},
 		{
 			"curseType": "Draining",
 			"effect": "Saps strength, stamina, or magic slowly",
-			"trigger": "Daily While Worn/Used"
+			"trigger": "Daily While Worn/Used",
+			"scope": "Wielder"
 		},
 		{
 			"curseType": "Misfortune",
 			"effect": "Attracts accidents and bad luck",
-			"trigger": "Randomly per rest"
+			"trigger": "Randomly (1/day or per rest)",
+			"scope": "Self and Nearby Allies"
 		},
 		{
 			"curseType": "Madness",
 			"effect": "Causes hallucinations, voices, or visions",
-			"trigger": "Stress or Fear Triggered"
+			"trigger": "Stress or Fear Triggered",
+			"scope": "Mental / Roleplay Focused"
 		},
 		{
 			"curseType": "Marking",
 			"effect": "Emits a faint glow or scent visible to enemies",
-			"trigger": "Constant While Carried"
+			"trigger": "Constant While Carried",
+			"scope": "Detectable by Hostiles"
 		},
 		{
 			"curseType": "Betrayal",
 			"effect": "Turns against the wielder in key moments",
-			"trigger": "On Critical Failure / Crisis"
+			"trigger": "On Critical Failure / Crisis",
+			"scope": "One Use per Day"
 		},
 		{
 			"curseType": "Compulsion",
-			"effect": "Urges the user to perform an act",
-			"trigger": "When Idle or Resting"
+			"effect": "Urges the user to perform an act (e.g., theft)",
+			"trigger": "When Idle or Resting",
+			"scope": "Psychological / Social"
 		},
 		{
 			"curseType": "Wasting",
 			"effect": "Slowly corrupts or decays physical form",
-			"trigger": "Long-Term Exposure"
+			"trigger": "Long-Term Exposure (Days+)",
+			"scope": "Reduces Max HP / Stats"
 		},
 		{
 			"curseType": "Curse Echo",
 			"effect": "Reflects negative effects on the user",
-			"trigger": "When Used Against a Target"
+			"trigger": "When Used Against a Target",
+			"scope": "Mirrored Backlash"
 		},
 		{
 			"curseType": "Hunger",
 			"effect": "Consumes resources, blood, or energy",
-			"trigger": "Must Feed Regularly"
+			"trigger": "Must Feed Regularly",
+			"scope": "Needs Fuel or Sacrifice"
 		},
 		{
 			"curseType": "Enmity",
 			"effect": "Provokes aggression from certain beings",
-			"trigger": "Passive Aura"
+			"trigger": "Passive Aura",
+			"scope": "Specific Faction/Creature"
 		},
 		{
 			"curseType": "False Promise",
 			"effect": "Functions as a boon, then fails at a key time",
-			"trigger": "When Most Needed"
+			"trigger": "When Most Needed",
+			"scope": "Betrays Trust"
 		}
 	]
 }

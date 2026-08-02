@@ -1,13 +1,31 @@
-import { Box, TextField, Typography } from '@mui/material'
 import { SheetLayout } from './SheetLayout'
-import {
-	BaseDamageType,
-	Character,
-	Damage,
-	Weapon,
-} from '@site/src/types/Character'
-import { OutlinedTextfield } from '../PrintCharacterSheet'
+import { Field, Group, Rows } from './SheetPrimitives'
+import { BaseDamageType, Character, Damage } from '@site/src/types/Character'
 
+/**
+ * The Equipment sheet, and the printed register's first proof (M16 S1).
+ *
+ * ## What changed, and why
+ *
+ * It was 307 lines of MUI `TextField`s inside two fixed-height boxes with
+ * `overflowY: 'hidden'`. Two faults came out of that shape, and they are the
+ * same fault:
+ *
+ * - **It clipped in silence.** More weapons than fit meant the rows were simply
+ *   not on the paper, with nothing saying so. An empty table is obvious; a
+ *   truncated one is not.
+ * - **It wasted half the page.** The heights were sized for a maximum nobody
+ *   reaches, so the common character printed 55% white.
+ *
+ * `Rows` answers both: the lists size to their content, and a list that overruns
+ * prints what it dropped rather than losing it.
+ *
+ * ## What was cut
+ *
+ * **Cost, on both tables** (D3). Cost is a shopping number and shopping happens
+ * between sessions, in the app, where the whole catalogue is. Damage and
+ * properties are read every turn; what a staff cost is read once, ever.
+ */
 export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 	const calculateBaseDamage = (base: BaseDamageType) => {
 		switch (base) {
@@ -33,275 +51,91 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 		otherCritical,
 	}: Damage) => {
 		const baseDamage = calculateBaseDamage(base)
-		const weakDamage = baseDamage + weapon + other + otherWeak
-		const strongDamage = baseDamage + weapon * 2 + other + otherStrong
-		const criticalDamage = baseDamage + weapon * 3 + other + otherCritical
-
-		return `${weakDamage}/${strongDamage}/${criticalDamage} (${weapon})`
+		return [
+			baseDamage + weapon + other + otherWeak,
+			baseDamage + weapon * 2 + other + otherStrong,
+			baseDamage + weapon * 3 + other + otherCritical,
+		].join('/')
 	}
 
-	// Sort items: worn first, then carried
-	const sortedItems = [...char.items.items].sort((a, b) => {
-		// Worn items first
-		if (a.location === 'worn' && b.location !== 'worn') return -1
-		if (b.location === 'worn' && a.location !== 'worn') return 1
-		// Then sort alphabetically within each group
-		return a.name.localeCompare(b.name)
-	})
+	// Worn first, then carried, alphabetical within each — the order a player
+	// packs in, which is the order they look for something in.
+	const sortedItems = [...char.items.items]
+		.filter((i) => i.location === 'worn' || i.location === 'carried')
+		.sort((a, b) => {
+			if (a.location === 'worn' && b.location !== 'worn') return -1
+			if (b.location === 'worn' && a.location !== 'worn') return 1
+			return a.name.localeCompare(b.name)
+		})
+
+	const weapons = char.items.weapons.filter((w) => w.location === 'worn')
 
 	return (
 		<SheetLayout>
-			<Box sx={{ display: 'flex', gap: 1 }}>
-				<OutlinedTextfield
-					value={char.items.coins}
+			<div style={{ display: 'flex', gap: '1.5mm' }}>
+				<Field
 					label="Coins"
-					sx={{
-						maxWidth: '10rem',
-						'& input': {
-							py: 1,
-						},
-					}}
+					sigil="coins"
+					value={char.items.coins}
+					write
+					width="24mm"
 				/>
-				<OutlinedTextfield
+				<Field
+					label="Load"
+					sigil="load"
 					value={char.items.encumbrance.currentLoad}
-					label="Current Load"
-					sx={{
-						maxWidth: '6rem',
-						'& input': {
-							py: 1,
-						},
-					}}
+					write
+					width="18mm"
 				/>
-				<OutlinedTextfield
-					size="small"
-					value={char.items.encumbrance.encumberedAt}
+				<Field
 					label="Carry Cap"
-					sx={{
-						maxWidth: '5rem',
-						'& input': {
-							py: 0.5,
-						},
-					}}
+					value={char.items.encumbrance.encumberedAt}
+					width="18mm"
 				/>
-				<OutlinedTextfield
-					size="small"
-					value={char.items.encumbrance.overencumberedAt}
+				<Field
 					label="Max Cap"
-					sx={{
-						maxWidth: '6rem',
-						'& input': {
-							py: 0.5,
-						},
-					}}
+					value={char.items.encumbrance.overencumberedAt}
+					width="14mm"
 				/>
-			</Box>
-			<Box
-				sx={{
-					border: '1px dotted black',
-					borderRadius: '0.5rem',
-					px: 1,
-					height: '32%',
-					overflowY: 'hidden',
-				}}
-			>
-				<Typography color="text.secondary" variant="caption">
-					Weapons
-				</Typography>
-				<Box sx={{ mt: -0.5 }}>
-					{char.items.weapons
-						.filter((w) => w.location === 'worn')
-						.map((weapon, index) => (
-							<Box
-								key={weapon.id}
-								sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}
-							>
-								<TextField
-									size="small"
-									variant="standard"
-									value={weapon.name}
-									label={index == 0 ? 'Name' : ''}
-									sx={{
-										maxWidth: '8rem',
-										mt: 0.5,
-										'& input': { p: 0, fontSize: '10px' },
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={
-										weapon.damage ? printDamageField({ ...weapon.damage }) : ' '
-									}
-									label={index == 0 ? 'Damage' : ''}
-									sx={{
-										maxWidth: '4rem',
-										mt: 0.5,
-										'& input': { p: 0, fontSize: '10px' },
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={weapon.properties}
-									label={index == 0 ? 'Properties' : ''}
-									sx={{
-										maxWidth: '11rem',
-										mt: 0.5,
-										'& input': {
-											p: 0,
-											fontSize: '10px',
-										},
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={weapon.cost}
-									label={index == 0 ? 'Cost' : ''}
-									sx={{
-										maxWidth: '2.5rem',
-										mt: 0.5,
-										'& input': {
-											fontSize: '10px',
-											py: 0,
-											textAlign: 'right',
-										},
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={weapon.load}
-									label={index == 0 ? 'Load' : ''}
-									sx={{
-										maxWidth: '1.5rem',
-										mt: 0.5,
-										'& input': {
-											fontSize: '10px',
-											py: 0,
-											textAlign: 'center',
-										},
-									}}
-								/>
-							</Box>
-						))}
-				</Box>
-			</Box>
-			<Box
-				sx={{
-					border: '1px dotted black',
-					borderRadius: '0.5rem',
-					px: 1,
-					height: '100%',
-					overflowY: 'hidden',
-				}}
-			>
-				<Typography color="text.secondary" variant="caption">
-					Equipment & Items
-				</Typography>
-				<Box sx={{ display: 'flex' }}>
-					<Typography
-						color="text.secondary"
-						variant="caption"
-						sx={{ fontSize: '9px', mr: 9 }}
-					>
-						Name
-					</Typography>
-					<Typography
-						color="text.secondary"
-						variant="caption"
-						sx={{ fontSize: '9px', mr: 1 }}
-					>
-						Location/Slot
-					</Typography>
-					<Typography
-						color="text.secondary"
-						variant="caption"
-						sx={{ fontSize: '9px', mr: 1 }}
-					>
-						Cost
-					</Typography>
-					<Typography
-						color="text.secondary"
-						variant="caption"
-						sx={{ fontSize: '9px' }}
-					>
-						Load
-					</Typography>
-				</Box>
-				<Box
-					sx={{ display: 'flex', rowGap: 0, columnGap: 2, flexWrap: 'wrap' }}
-				>
-					{sortedItems
-						.filter((i) => i.location === 'worn' || i.location === 'carried')
-						.map((item, index) => (
-							<Box
-								key={item.id}
-								sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
-							>
-								<TextField
-									size="small"
-									variant="standard"
-									value={`${item.name} ${item.amount > 1 ? 'x' + item.amount : ''}`}
-									sx={{
-										width: '6.5rem',
-										mt: 0.5,
-										'& .MuiInputBase-root': {
-											pb: 0.5,
-										},
-										'& input': { p: 0, fontSize: '9px' },
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={
-										item.location === 'worn' && item.slot
-											? item.slot
-											: item.location
-									}
-									sx={{
-										maxWidth: '2.5rem',
-										mt: 0.5,
-										'& input': {
-											p: 0,
-											fontSize: '8px',
-											textOverflow: 'ellipsis',
-										},
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={item.cost}
-									sx={{
-										maxWidth: '2rem',
-										mt: 0.5,
-										'& input': {
-											p: 0,
-											fontSize: '8px',
-											textAlign: 'right',
-										},
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={item.load}
-									sx={{
-										maxWidth: '1.5rem',
-										mt: 0.5,
-										'& input': {
-											p: 0,
-											fontSize: '8px',
-											textAlign: 'center',
-										},
-									}}
-								/>
-							</Box>
-						))}
-				</Box>
-			</Box>
+			</div>
+
+			<Group name="Weapons" sigil="sword">
+				<Rows
+					noun="weapons"
+					limit={8}
+					fill
+					columns={[
+						{ label: 'Name', width: '34mm' },
+						{ label: 'Damage', width: '18mm' },
+						{ label: 'Properties', width: '58mm' },
+						{ label: 'Load', width: '8mm', align: 'center' },
+					]}
+					rows={weapons.map((w) => [
+						w.name,
+						w.damage ? printDamageField({ ...w.damage }) : '',
+						w.properties,
+						w.load,
+					])}
+				/>
+			</Group>
+
+			<Group name="Equipment & Items" sigil="pack">
+				<Rows
+					noun="items"
+					limit={31}
+					fill
+					columns={[
+						{ label: 'Name', width: '62mm' },
+						{ label: 'Worn / Carried', width: '40mm' },
+						{ label: 'Load', width: '8mm', align: 'center' },
+					]}
+					rows={sortedItems.map((i) => [
+						`${i.name}${i.amount > 1 ? ` ×${i.amount}` : ''}`,
+						i.location === 'worn' && i.slot ? i.slot : i.location,
+						i.load,
+					])}
+				/>
+			</Group>
 		</SheetLayout>
 	)
 }

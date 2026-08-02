@@ -17,7 +17,11 @@
 
 .ladderSlash {
 	margin: 0 0.1em;
-	color: color-mix(in srgb, var(--ifm-font-color-base) 40%, transparent);
+	/* 70%, not 40% (M13 S10, measured). At 40% the slash sat at 2.31:1 on
+	   parchment and 3.13:1 on obsidian — it is small TEXT, so it owes 4.5:1, and
+	   "it is only a separator" is not an exemption the ratio recognises. 70%
+	   measures 6.0:1 and still reads quieter than the numerals it divides. */
+	color: color-mix(in srgb, var(--ifm-font-color-base) 70%, transparent);
 }
 
 /* Escalating weight across weak → strong → critical, echoing the SuccessLevel

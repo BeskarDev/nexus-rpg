@@ -98,11 +98,20 @@ export const CharacterSheet: React.FC = () => {
 						sx={{
 							flex: 1,
 							minWidth: 0,
-							maxWidth: {
-								md: 'var(--cs-max-width-sm)',
-								lg: 'var(--cs-max-width-md)',
-								xl: 'var(--cs-max-width-xl)',
-							},
+							/*
+								One ceiling, not three breakpoint steps (M13 S11).
+
+								The steps read as responsive and behaved as a cap: MUI's `lg`
+								covers 1200-1536, so a 1512px laptop — the common desktop — got
+								`--cs-max-width-md`, 608px, while the row it sits in was 1480px.
+								~450px of a two-column layout was empty, and the ledger columns
+								that would have used it were squeezed instead.
+
+								A fluid column with one ceiling is the whole fix: it fills 1512
+								and 1920 alike, and stops before an ultra-wide turns a ledger row
+								into something the eye cannot track across.
+							*/
+							maxWidth: 'var(--cs-max-width-column)',
 						}}
 					>
 						{/* The bar owns its own overflow now — the wrapper that used to add

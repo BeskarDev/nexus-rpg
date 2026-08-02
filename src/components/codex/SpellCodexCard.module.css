@@ -9,7 +9,8 @@
 	padding: 1.15rem 1.4rem 1.2rem;
 	/* Outer band — the thicker structural frame. Flat (no bevel/engraving shadow);
 	   depth comes from the concentric inner border below, not lighting. */
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
 	border-radius: 3px;
 	background-color: var(--ifm-background-surface-color);
 }
@@ -18,7 +19,8 @@
 	content: '';
 	position: absolute;
 	inset: 5px;
-	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
 	border-radius: 2px;
 	pointer-events: none;
 }

@@ -123,7 +123,11 @@ export const ListSectionHeader: React.FC<ListSectionHeaderProps> = ({
 					fontVariant: 'small-caps',
 					letterSpacing: '0.08em',
 					lineHeight: 1,
-					color: 'primary.main',
+					// The INK token, not `primary.main` (M13 S10, measured). A 12px
+					// small-caps label in raw bronze sits at 4.48:1 on the header's own
+					// wash — under AA by a hair, on the label that names every section on
+					// the sheet.
+					color: 'var(--cs-bronze-ink, var(--nexus-bronze))',
 					whiteSpace: 'nowrap',
 				}}
 			>

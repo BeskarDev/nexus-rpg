@@ -83,7 +83,12 @@
 .cb-trigger.MuiButton-root:hover {
 	border-color: var(--nexus-bronze);
 	background: var(--cb-wash-strong);
-	color: var(--nexus-bronze);
+	/* Ink, not line — see the plate figure above (M15 S6). */
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
 }
 
 /* ── The dialog shell ──────────────────────────────────────────────────────── */
@@ -219,7 +224,11 @@
 .codex-builder .cb-pane-tab[aria-selected='true'] {
 	border-color: var(--nexus-bronze);
 	background: var(--cb-wash-strong);
-	color: var(--nexus-bronze);
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
 }
 
 @media (min-width: 900px) {
@@ -559,7 +568,16 @@
 	color: var(--cb-ink);
 }
 .codex-builder .cb-plate--on .cb-plate__figure {
-	color: var(--nexus-bronze);
+	/* One step deeper than the keyline bronze (M15 S6, measured). Raw bronze as a
+	   22px figure on the selected plate's own wash reads 4.02:1 in light mode,
+	   which is under AA for text below 24px. Mixing toward `--ifm-font-color-base`
+	   darkens it on parchment and lightens it on obsidian — the same fix M13 S10
+	   made on the character sheet, which never reached these three builders. */
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
 }
 .codex-builder .cb-plate:disabled .cb-plate__figure {
 	color: inherit;
@@ -1011,7 +1029,13 @@
 .codex-builder .cb-actions .cb-verb--primary.MuiButton-root {
 	border: 1.5px solid var(--nexus-bronze);
 	background: var(--cb-wash-strong);
-	color: var(--nexus-bronze);
+	/* Ink, not line (M15 S6): the dialog's one primary verb read 4.38:1 in light
+	   mode — raw bronze on the bronze wash it sits in. */
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
 }
 .codex-builder .cb-actions .cb-verb--primary.MuiButton-root:hover {
 	background: color-mix(in srgb, var(--nexus-bronze) 20%, transparent);
@@ -1057,4 +1081,155 @@
 }
 .codex-builder .cb-row--on .cb-row__num {
 	color: var(--ifm-font-color-base);
+}
+
+/* A labelled field inside a register (M15 S2).
+   ==========================================================================
+
+   The Companion Builder's registers hold rails and ledgers only; the creature
+   builder is the first with plain fields in one — a type, a subtype, a name.
+   They take the sheet's input register (a small-caps label above its control,
+   not Material's floating one) so a reader who has met the character sheet does
+   not learn a second field shape here. */
+.cb-field-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+}
+.cb-field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	flex: 1 1 10rem;
+	min-width: 0;
+}
+.cb-field--wide {
+	flex-basis: 100%;
+}
+.cb-field__label {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 78%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* List entries inside a register (M15 S3).
+   ==========================================================================
+
+   An attack is a name, a damage figure and a note; an ability is a name, a
+   timing and a note. The panel this replaced gave each of those its own labelled
+   `TextField` stacked vertically, so four attacks were a screen of boxes and the
+   one a reader wanted to change was usually off-screen.
+
+   One line per entry, the way every list in this app now reads: the fields sit
+   on a row, the prose drops beneath it, and the whole entry is as tall as what
+   it holds. */
+.cb-entries {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-bottom: 0.6rem;
+}
+.cb-entry {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+.cb-entry--stacked {
+	flex-direction: column;
+	align-items: stretch;
+	gap: 0.3rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
+}
+.cb-entry__line {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+.cb-entry__main {
+	flex: 1 1 8rem;
+	min-width: 0;
+}
+.cb-entry__figure {
+	flex: 0 1 7rem;
+	min-width: 0;
+}
+.cb-entry__kind {
+	flex: 0 1 9rem;
+	min-width: 0;
+}
+.cb-entry__rank {
+	flex: 0 0 4.5rem;
+}
+/* The action type shows its mark beside its name, the same pairing the sheet's
+   ability rows use — a control that teaches a glyph in its menu and then hides
+   it is worse than no glyph (M13 S8c). */
+.cb-entry__action {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+/* Dropping an entry is destructive but trivially redone, so it takes the sheet's
+   quiet-until-hovered treatment rather than a confirmation. */
+.cb-entry__drop {
+	flex: 0 0 auto;
+	width: 1.6rem;
+	height: 1.6rem;
+	padding: 0;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 25%, transparent);
+	background: none;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+	font-size: var(--nexus-text-sm);
+	line-height: 1;
+	cursor: pointer;
+}
+.cb-entry__drop:hover {
+	color: var(--cs-danger, #a33);
+	border-color: currentColor;
+}
+
+.cb-entry__add {
+	align-self: flex-start;
+	padding: 0.2rem 0.6rem;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	background: color-mix(in srgb, var(--ifm-color-primary) 6%, transparent);
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 80%,
+		var(--ifm-font-color-base)
+	);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	cursor: pointer;
+}
+.cb-entry__add:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+}
+
+/* Before the first choice there is no creature to draw. */
+.cb-plate-empty {
+	margin: 0;
+	font-style: italic;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 45%,
+		var(--ifm-font-color-base)
+	);
 }

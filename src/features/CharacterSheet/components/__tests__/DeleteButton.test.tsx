@@ -91,6 +91,10 @@ describe('DeleteButton call sites', () => {
 			const source = fs.readFileSync(file, 'utf8')
 			// The component's own definition, not a use of it.
 			if (file.endsWith('components/DeleteButton.tsx')) return []
+			// `CharacterList` has a DeleteButton of its OWN — a different component
+			// with the character-document confirmation built into it — so a name
+			// match there is not a call site of this one.
+			if (file.includes(`${path.sep}CharacterList${path.sep}`)) return []
 			const matches = [...source.matchAll(/<DeleteButton\b[\s\S]*?\/>/g)]
 			uses.push(...matches.map(() => path.relative(root, file)))
 			return matches

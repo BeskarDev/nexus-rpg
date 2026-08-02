@@ -7,7 +7,8 @@
 	position: relative;
 	margin: 0.85rem 0;
 	padding: 0.65rem 0.95rem 0.7rem;
-	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
 	border-radius: 3px;
 	background-color: var(--ifm-background-surface-color);
 }
@@ -27,10 +28,15 @@
 	margin: 0;
 	padding: 2px 17px 3px;
 	border-top: none;
-	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 46%, transparent);
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 46%, transparent);
 	border-radius: 2px;
 	background: color-mix(in srgb, var(--ifm-color-primary) 11%, transparent);
-	color: color-mix(in srgb, var(--ifm-font-color-base) 80%, var(--ifm-color-primary));
+	color: color-mix(
+		in srgb,
+		var(--ifm-font-color-base) 80%,
+		var(--ifm-color-primary)
+	);
 	font-family: var(--nexus-font-display);
 	/* Several names carry a literal uppercase potency suffix ("bleeding (X)"),
 	   and small-caps only shrinks *lowercase* — leaving that X at full cap height

@@ -15,7 +15,11 @@
 	width: 1.85rem;
 	height: 1.85rem;
 	font-size: var(--nexus-text-xs);
-	color: color-mix(in srgb, var(--ifm-color-primary) 72%, var(--ifm-font-color-base));
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 72%,
+		var(--ifm-font-color-base)
+	);
 }
 
 .die {
@@ -49,7 +53,11 @@
 	font-weight: 700;
 	font-size: 0.84em;
 	font-variant-numeric: tabular-nums;
-	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, var(--ifm-color-primary));
+	color: color-mix(
+		in srgb,
+		var(--ifm-font-color-base) 78%,
+		var(--ifm-color-primary)
+	);
 }
 
 /* Fallback for a value the parser does not recognise — better a plain string than

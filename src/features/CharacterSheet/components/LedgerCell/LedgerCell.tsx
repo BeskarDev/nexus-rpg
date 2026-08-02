@@ -28,6 +28,8 @@ export interface ReadCellProps {
 	/** The one piece of text in a row that carries weight: its name. */
 	strong?: boolean
 	title?: string
+	/** For a consumer that needs to reach one cell from CSS (M13 S12). */
+	className?: string
 }
 
 /**
@@ -63,9 +65,11 @@ export const ReadCell: React.FC<ReadCellProps> = ({
 	muted,
 	strong,
 	title,
+	className,
 }) => (
 	<Typography
 		component="div"
+		className={className}
 		title={title ?? (typeof children === 'string' ? children : undefined)}
 		sx={{
 			minWidth: 0,

@@ -7,12 +7,15 @@ import { SpellAutoRollerWrapper } from '@site/src/components/AutoRoller/SpellAut
 
 # 🪄 Spells
 
+A spell nobody has written yet: its name, its shape, and what it does when it lands.
+
 <SpellAutoRollerWrapper />
 
 ## Step 1: Determine Spell Name Structure
 
 Roll a d4 to determine how your spell will be named:
 
+{/* gen:table:spellData.namingPatterns#0 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d4 | Naming Pattern |
 | --- | --- |
@@ -21,6 +24,7 @@ Roll a d4 to determine how your spell will be named:
 | 3 | [Adjective] [Form] |
 | 4 | [Form] of [Adjective] [Noun] |
 </RollableTable>
+{/* /gen:table */}
 
 ## Step 2: Choose or Roll for School of Magic
 
@@ -28,6 +32,7 @@ Roll a d4 to determine how your spell will be named:
 
 Roll a d6 or choose from the six disciplines of arcane magic:
 
+{/* gen:table:spellData.arcaneSchools#1 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d6 | Disciplines |
 | --- | --- |
@@ -38,11 +43,13 @@ Roll a d6 or choose from the six disciplines of arcane magic:
 | 5 | Telekinetics |
 | 6 | Necromancy |
 </RollableTable>
+{/* /gen:table */}
 
 ### Mystic Spells
 
 Roll a d8 or choose from the eight traditions of mystic magic:
 
+{/* gen:table:spellData.mysticTraditions#2 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d8 | Tradition |
 | --- | --- |
@@ -55,6 +62,7 @@ Roll a d8 or choose from the eight traditions of mystic magic:
 | 7 | Peace |
 | 8 | War |
 </RollableTable>
+{/* /gen:table */}
 
 ## Step 3: Generate Spell Components
 
@@ -68,8 +76,13 @@ Roll a d20 three times on your chosen school's table to determine:
 
 ### Evocation
 
+The tables below are what the roller draws from. They are folded because nothing reads them start to finish — open one to roll it by hand.
+
 *The primal forces that shaped the world in the age of bronze*
 
+<TableFold label="Evocation" rows={20}>
+
+{/* gen:table:spellData.arcaneSchools.0.entries#3 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -94,11 +107,17 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Surge | Wind-swept | Aura |
 | 20 | Torrent | Zephyrous | Burst |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Illusion
 
 *The subtle arts practiced by temple oracles and cunning advisors*
 
+<TableFold label="Illusion" rows={20}>
+
+{/* gen:table:spellData.arcaneSchools.1.entries#4 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -123,11 +142,17 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Wisp | Vaporous | Disguise |
 | 20 | Weave | Verdant | Glamour |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Conjuration
 
 *The magic of summoners and those who breach the barriers between realms*
 
+<TableFold label="Conjuration" rows={20}>
+
+{/* gen:table:spellData.arcaneSchools.2.entries#5 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -152,11 +177,17 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Vortex | Woven | Vortex |
 | 20 | Whisper | Whispering | Pathway |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Telepathy
 
 *The mental arts of seers, prophets, and wise counselors*
 
+<TableFold label="Telepathy" rows={20}>
+
+{/* gen:table:spellData.arcaneSchools.3.entries#6 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -181,11 +212,17 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Whisper | Volatile | Presence |
 | 20 | Word | Whispering | Resonance |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Telekinetics
 
 *The physical manifestation of will, favored by warrior-mages*
 
+<TableFold label="Telekinetics" rows={20}>
+
+{/* gen:table:spellData.arcaneSchools.4.entries#7 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -210,11 +247,17 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Vortex | Unseen | Tremor |
 | 20 | Wave | Violent | Field |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Necromancy
 
 *The forbidden arts practiced in hidden cults and ancient burial grounds*
 
+<TableFold label="Necromancy" rows={20}>
+
+{/* gen:table:spellData.arcaneSchools.5.entries#8 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -239,6 +282,9 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Wail | Withering | Oblivion |
 | 20 | Whisper | Wretched | Bane |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ## Mystic Spells
 
@@ -246,6 +292,9 @@ Roll a d20 three times on your chosen school's table to determine:
 
 *The aspect of divine radiance, revealing hidden truths and banishing darkness*
 
+<TableFold label="Light" rows={20}>
+
+{/* gen:table:spellData.mysticTraditions.0.entries#9 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -270,11 +319,17 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Spark | Revealing | Glimmer |
 | 20 | Torrent | Truthful | Illumination |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Twilight
 
 *The aspect of hidden knowledge, illusions, and the space between waking and sleeping*
 
+<TableFold label="Twilight" rows={20}>
+
+{/* gen:table:spellData.mysticTraditions.1.entries#10 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -299,11 +354,17 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Wisp | Unseen | Lore |
 | 20 | Rune | Faltering | Insight |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Life
 
 *The aspect of growth, healing, and the bonds that unite all living things*
 
+<TableFold label="Life" rows={20}>
+
+{/* gen:table:spellData.mysticTraditions.2.entries#11 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -328,11 +389,17 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Wreath | Wild | Bloom |
 | 20 | Echo | Harmonious | Essence |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Death
 
 *The aspect of endings, decay, and the terror that comes with mortality*
 
+<TableFold label="Death" rows={20}>
+
+{/* gen:table:spellData.mysticTraditions.3.entries#12 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -357,11 +424,17 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Web | Withered | Hush |
 | 20 | Vortex | Withering | Despair |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Nature
 
 *The aspect of the wild world, primal instincts, and the raw power of the untamed earth*
 
+<TableFold label="Nature" rows={20}>
+
+{/* gen:table:spellData.mysticTraditions.4.entries#13 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -386,11 +459,17 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Stone | Burgeoning | Scent |
 | 20 | Vine | Twisted | Growl |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Tempest
 
 *The aspect of violent weather, earth-shaking force, and the raw power of natural disasters*
 
+<TableFold label="Tempest" rows={20}>
+
+{/* gen:table:spellData.mysticTraditions.5.entries#14 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -415,11 +494,17 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Wave | Wind-swept | Squall |
 | 20 | Whisper | Tempestuous | Dust |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Peace
 
 *The aspect of harmony, shelter from harm, and the strength found in unity and compassion*
 
+<TableFold label="Peace" rows={20}>
+
+{/* gen:table:spellData.mysticTraditions.6.entries#15 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -444,11 +529,17 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Veil | Tranquil | Whisper |
 | 20 | Ward | Unburdening | Quietude |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### War
 
 *The aspect of conflict, martial prowess, and the terrible glory found in battle*
 
+<TableFold label="War" rows={20}>
+
+{/* gen:table:spellData.mysticTraditions.7.entries#16 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Form | Adjective | Noun |
 | --- | --- | --- | --- |
@@ -473,6 +564,9 @@ Roll a d20 three times on your chosen school's table to determine:
 | 19 | Strike | Unyielding | Havoc |
 | 20 | Sword | Burning | Gore |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ## Step 4: Generate Spell Effect
 
@@ -480,6 +574,9 @@ After generating your spell name, roll a d12 for each column to determine the me
 
 ### Combined Effects Table
 
+<TableFold label="Combined Effects Table" rows={12}>
+
+{/* gen:table:spellData.effects#17 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Effect | Target | Duration | Range |
 | --- | --- | --- | --- | --- |
@@ -496,3 +593,6 @@ After generating your spell name, roll a d12 for each column to determine the me
 | 11 | Reveal | Object or Structure | Until Dispelled | Regional |
 | 12 | Conceal | Environment | Until Healed | Global |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>

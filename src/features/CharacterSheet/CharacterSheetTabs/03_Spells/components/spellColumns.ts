@@ -48,7 +48,12 @@ const DAMAGE = '7.5rem'
  * weapon's pips are a consequence of use, while casting is the ACTION the row exists
  * for, so it sits where the eye starts.
  */
-export const SPELL_TEMPLATE = `${CAST} ${RANK} minmax(0, 1.4fr) ${TARGET} ${RANGE} minmax(0, 1.2fr) ${DAMAGE}`
+/*
+	Name bounded, properties fluid (M13 S11) — the same call the items ledger makes,
+	for the same reason. Both tracks were `fr`, which split the slack evenly once
+	the column went fluid and left a spell's name floating in ~320px of air.
+*/
+export const SPELL_TEMPLATE = `${CAST} ${RANK} minmax(8rem, 18rem) ${TARGET} ${RANGE} minmax(0, 1fr) ${DAMAGE}`
 
 export type SpellHeading = { label: string; align: 'left' | 'center' }
 

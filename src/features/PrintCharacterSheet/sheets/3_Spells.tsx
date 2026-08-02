@@ -1,12 +1,25 @@
-import { Box, TextField, Typography } from '@mui/material'
 import { SheetLayout } from './SheetLayout'
 import { BaseDamageType, Character, Damage } from '@site/src/types/Character'
-import {
-	CharacterHeaderTextField,
-	OutlinedTextfield,
-	RankIndicator,
-} from '../PrintCharacterSheet'
+import { Field, Group, Rows, Stat } from './SheetPrimitives'
 
+/**
+ * The Spells sheet (M16 S3).
+ *
+ * ## A bug the rebuild removes rather than fixes
+ *
+ * The old table rendered its Damage cell only `{Boolean(spell.dealsDamage) && …}`
+ * — per ROW. So a spell that dealt no damage printed one cell fewer, and every
+ * column to its right shifted left on that line. A table whose columns move
+ * between rows is not a table, and on a printed page there is no hover to
+ * disambiguate it.
+ *
+ * `Rows` takes a column set once and every row fills it, so a spell with no
+ * damage prints an empty Damage cell and the column holds.
+ *
+ * Spell DESCRIPTIONS stay cut (D3): eleven spells of rule text cannot fit on
+ * 133 × 191mm above 5.5pt, and the name plus target, range and properties is
+ * what is actually read mid-turn.
+ */
 export const SpellsSheet: React.FC<{ char: Character }> = ({ char }) => {
 	const calculateBaseDamage = (base: BaseDamageType) => {
 		switch (base) {
@@ -32,192 +45,64 @@ export const SpellsSheet: React.FC<{ char: Character }> = ({ char }) => {
 		otherCritical,
 	}: Damage) => {
 		const baseDamage = calculateBaseDamage(base)
-		const spellCatalystDamage = char.spells.spellCatalystDamage
-		const weakDamage =
-			baseDamage + weapon + spellCatalystDamage + other + otherWeak
-		const strongDamage =
-			baseDamage + weapon * 2 + spellCatalystDamage * 2 + other + otherStrong
-		const criticalDamage =
-			baseDamage + weapon * 3 + spellCatalystDamage * 3 + other + otherCritical
-
-		return `${weakDamage}/${strongDamage}/${criticalDamage}`
+		const catalyst = char.spells.spellCatalystDamage
+		return [
+			baseDamage + weapon + catalyst + other + otherWeak,
+			baseDamage + weapon * 2 + catalyst * 2 + other + otherStrong,
+			baseDamage + weapon * 3 + catalyst * 3 + other + otherCritical,
+		].join('/')
 	}
+
 	return (
 		<SheetLayout>
-			<Box
-				sx={{ display: 'flex', gap: 1, mt: -0.5, mb: -1, alignItems: 'top' }}
-			>
-				<CharacterHeaderTextField
-					value={char.spells.magicSkill}
+			<div style={{ display: 'flex', gap: '1.5mm', alignItems: 'flex-end' }}>
+				<Field
 					label="Magic Skill"
-					sx={{
-						maxWidth: '5rem',
-						'& input': {
-							fontSize: '10px',
-						},
-					}}
+					sigil="magic"
+					value={char.spells.magicSkill}
+					width="28mm"
 				/>
-				<CharacterHeaderTextField
-					size="small"
-					value={char.spells.specialization}
+				<Field
 					label="Disciplines or Traditions"
-					sx={{
-						'& input': {
-							fontSize: '10px',
-						},
-					}}
+					sigil="specialization"
+					value={char.spells.specialization}
+					grow
 				/>
-				<OutlinedTextfield
+				<Stat
+					label="Focus"
+					sigil="focus"
 					value={char.spells.focus.current}
-					label="Current Focus"
-					sx={{
-						maxWidth: '6rem',
-						'& input': {
-							py: 1,
-						},
-					}}
+					write
+					width="18mm"
 				/>
-				<OutlinedTextfield
-					size="small"
-					value={char.spells.focus.total}
-					label="Max. Focus"
-					sx={{
-						maxWidth: '5rem',
-						'& input': {
-							py: 0.5,
-						},
-					}}
+				<Stat label="Max Focus" value={char.spells.focus.total} width="18mm" />
+			</div>
+
+			<Group name="Learned Spells" sigil="scroll">
+				<Rows
+					noun="spells"
+					limit={40}
+					fill
+					columns={[
+						{ label: 'Cost', width: '8mm', align: 'center' },
+						{ label: 'Rank', width: '8mm', align: 'center' },
+						{ label: 'Name', width: '34mm' },
+						{ label: 'Damage', width: '14mm', align: 'center' },
+						{ label: 'Target', width: '14mm' },
+						{ label: 'Range', width: '14mm' },
+						{ label: 'Properties', width: '26mm' },
+					]}
+					rows={char.spells.spells.map((spell) => [
+						spell.cost,
+						spell.rank,
+						spell.name,
+						spell.dealsDamage ? printDamageField({ ...spell.damage }) : '',
+						spell.target,
+						spell.range,
+						spell.properties,
+					])}
 				/>
-			</Box>
-			<Box
-				sx={{
-					border: '1px dotted black',
-					borderRadius: '0.5rem',
-					px: 1,
-					height: '100%',
-					overflowY: 'hidden',
-				}}
-			>
-				<Typography color="text.secondary" variant="caption">
-					Learned Spells
-				</Typography>
-				<Box sx={{ mt: -0.5 }}>
-					{char.spells.spells.map((spell, index) => (
-						<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
-							<Box
-								sx={{
-									display: 'flex',
-									flexDirection: 'column',
-									alignItems: 'center',
-								}}
-							>
-								{index == 0 && (
-									<Typography
-										color="text.secondary"
-										variant="caption"
-										sx={{ fontSize: '9px', mt: 0.5, mb: 0.5 }}
-									>
-										Cost
-									</Typography>
-								)}
-								<RankIndicator
-									sx={{
-										width: 20,
-										height: 20,
-										fontSize: '11px',
-										mt: index == 0 ? -1 : 0,
-									}}
-								>
-									{spell.cost}
-								</RankIndicator>
-							</Box>
-							<TextField
-								size="small"
-								variant="standard"
-								value={spell.rank}
-								label={index == 0 ? 'Rank' : ''}
-								sx={{
-									maxWidth: '1.5rem',
-									'& .MuiInputBase-root': {
-										pb: 0.5,
-									},
-									'& input': { p: 0, fontSize: '9px', textAlign: 'center' },
-								}}
-							/>
-							<TextField
-								size="small"
-								variant="standard"
-								value={spell.name}
-								label={index == 0 ? 'Name' : ''}
-								sx={{
-									'& .MuiInputBase-root': {
-										pb: 0.5,
-									},
-									'& input': { p: 0, fontSize: '9px' },
-								}}
-							/>
-							{Boolean(spell.dealsDamage) && (
-								<TextField
-									size="small"
-									variant="standard"
-									value={printDamageField({ ...spell.damage })}
-									label={index == 0 ? 'Damage' : ''}
-									sx={{
-										maxWidth: '2.5rem',
-										mt: 1,
-										'& .MuiInputBase-root': {
-											pt: 0.2,
-											pb: 0.5,
-										},
-										'& input': { p: 0, fontSize: '8px', textAlign: 'center' },
-									}}
-								/>
-							)}
-							<TextField
-								size="small"
-								variant="standard"
-								value={spell.target}
-								label={index == 0 ? 'Target' : ''}
-								sx={{
-									maxWidth: '2rem',
-									'& .MuiInputBase-root': {
-										pb: 0.5,
-									},
-									'& input': { p: 0, fontSize: '9px' },
-								}}
-							/>
-							<TextField
-								size="small"
-								variant="standard"
-								value={spell.range}
-								label={index == 0 ? 'Range' : ''}
-								sx={{
-									maxWidth: '2.25rem',
-									'& .MuiInputBase-root': {
-										pb: 0.5,
-									},
-									'& input': { p: 0, fontSize: '9px' },
-								}}
-							/>
-							<TextField
-								size="small"
-								variant="standard"
-								value={spell.properties}
-								label={index == 0 ? 'Properties' : ''}
-								sx={{
-									maxWidth: '8rem',
-									mt: 1,
-									'& .MuiInputBase-root': {
-										pt: 0.2,
-										pb: 0.5,
-									},
-									'& input': { p: 0, fontSize: '8px' },
-								}}
-							/>
-						</Box>
-					))}
-				</Box>
-			</Box>
+			</Group>
 		</SheetLayout>
 	)
 }

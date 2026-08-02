@@ -1,4 +1,5 @@
-import { Button, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
+import { RollDie } from './codex/RollDie'
 import React, { useState, useMemo } from 'react'
 
 interface RollableTableProps {
@@ -147,10 +148,11 @@ const RollableTable: React.FC<RollableTableProps> = ({
 			{/* 1) Render the original table unchanged */}
 			<div>{children}</div>
 
-			{/* 2) “Roll” button */}
-			<Button variant="outlined" onClick={handleRoll}>
-				🎲
-			</Button>
+			{/* 2) The roll die. It was `<Button variant="outlined">🎲</Button>` — a
+				Material button carrying a platform EMOJI, which renders as a different
+				die on every operating system, on a site with a drawn sigil set and a
+				drawn die two files away (M14, owner review). */}
+			<RollDie label="Roll on this table" onRoll={handleRoll} />
 
 			{/* 3) Space for showing results */}
 			{Object.keys(results).length > 0 && (

@@ -215,7 +215,8 @@ export const SpellsTab: React.FC = () => {
 							aria-hidden="true"
 							sx={{
 								gridTemplateColumns: spellHeaderTemplate(),
-								maxWidth: 'var(--cs-max-width-lg)',
+								// Fills the working column (M13 S11); the column carries the ceiling.
+								maxWidth: '100%',
 							}}
 						>
 							{SPELL_HEADINGS.map((heading, index) => (

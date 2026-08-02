@@ -1,12 +1,22 @@
-import { Box, TextField, Typography } from '@mui/material'
+import { useMemo } from 'react'
+import parse from 'html-react-parser'
 import { SheetLayout } from './SheetLayout'
 import { Character, NpcRelationship, Relation } from '@site/src/types/Character'
-import { CharacterHeaderTextField } from '../PrintCharacterSheet'
-import parse from 'html-react-parser'
-import { useMemo } from 'react'
+import { Field, Prose } from './SheetPrimitives'
 
+/**
+ * The Personal sheet (M16 S3).
+ *
+ * This page was already the one that worked, because prose is what it is for and
+ * prose does not need a form. So the rebuild is the lightest of the four: the
+ * dotted rounded boxes become wash bands, and the two panels gain RULED LINES.
+ *
+ * The lines are the point. Relationships and notes are what a player adds to
+ * between sessions, and a bordered box of empty white is a worse invitation to
+ * write than a ruled one — which is why every paper form since forms existed has
+ * had them.
+ */
 export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
-	// Handle both new and legacy NPC relationship formats
 	const { isNewFormat, groupedRelationships, allies, contacts, rivals } =
 		useMemo<{
 			isNewFormat: boolean
@@ -15,17 +25,13 @@ export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 			contacts: Relation[]
 			rivals: Relation[]
 		}>(() => {
-			// If using new format
 			if (
 				char.personal.npcRelationships &&
 				char.personal.npcRelationships.length > 0
 			) {
-				// Group NPCs by disposition level
 				const grouped = new Map<number, NpcRelationship[]>()
 				char.personal.npcRelationships.forEach((npc) => {
-					if (!grouped.has(npc.disposition)) {
-						grouped.set(npc.disposition, [])
-					}
+					if (!grouped.has(npc.disposition)) grouped.set(npc.disposition, [])
 					grouped.get(npc.disposition)!.push(npc)
 				})
 				return {
@@ -36,7 +42,6 @@ export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 					rivals: [],
 				}
 			}
-			// Fall back to legacy format
 			return {
 				isNewFormat: false,
 				groupedRelationships: new Map(),
@@ -55,167 +60,78 @@ export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 		return 'Hateful (-3)'
 	}
 
-	const formatNpcRelationship = (npc: NpcRelationship) => {
-		return `${npc.name} (${npc.role}): ${npc.description}`
-	}
-
-	// Sort disposition levels from highest to lowest
 	const sortedDispositions = Array.from(groupedRelationships.keys()).sort(
 		(a, b) => b - a,
 	)
 
+	const legacyList = (label: string, entries: Relation[]) =>
+		entries.length > 0 && (
+			<div style={{ marginBottom: '1mm' }}>
+				<div className="pc-label">{label}</div>
+				{entries.map((entry, index) => (
+					<div key={entry.id || `${label}-${index}`}>{entry.description}</div>
+				))}
+			</div>
+		)
+
 	return (
 		<SheetLayout>
-			<Box sx={{ display: 'flex', gap: 1, mt: -0.5 }}>
-				<CharacterHeaderTextField
-					value={char.personal.motivation}
+			<div style={{ display: 'flex', gap: '1.5mm' }}>
+				<Field
 					label="Motivation"
+					sigil="motivation"
+					value={char.personal.motivation}
+					grow
 				/>
-				<CharacterHeaderTextField
-					size="small"
-					value={char.personal.height}
-					label="Height"
-				/>
-				<CharacterHeaderTextField
-					size="small"
-					value={char.personal.weight}
-					label="Weight"
-				/>
-				<CharacterHeaderTextField
-					size="small"
-					value={char.personal.age}
-					label="Age"
-				/>
-			</Box>
-			<TextField
-				size="small"
-				multiline
-				rows={3}
-				value={char.personal.description}
-				label="Physical Description"
-			/>
-			<Box sx={{ display: 'flex', gap: 1, height: '80%', overflowY: 'hidden' }}>
-				<Box
-					sx={{
-						border: '1px dotted black',
-						borderRadius: '0.5rem',
-						px: 1,
-						height: '100%',
-						width: '50%',
-						overflowY: 'hidden',
-					}}
-				>
-					{isNewFormat ? (
-						<>
-							<Typography
-								color="text.secondary"
-								variant="caption"
-								sx={{ fontWeight: 'bold' }}
-							>
-								NPC Relationships
-							</Typography>
-							{sortedDispositions.map((disposition) => {
-								const npcs = groupedRelationships.get(disposition)!
-								return (
-									<Box key={disposition}>
-										<Typography
-											color="text.secondary"
-											variant="caption"
-											sx={{ fontSize: '9px', fontStyle: 'italic' }}
-										>
+				<Field label="Height" value={char.personal.height} width="16mm" />
+				<Field label="Weight" value={char.personal.weight} width="16mm" />
+				<Field label="Age" value={char.personal.age} width="12mm" />
+			</div>
+
+			<Prose label="Physical Description" sigil="description" weight={1}>
+				{char.personal.description}
+			</Prose>
+
+			<div
+				style={{
+					display: 'flex',
+					gap: '2mm',
+					flexGrow: 3,
+					flexBasis: 0,
+					minHeight: 0,
+					alignItems: 'stretch',
+				}}
+			>
+				<div style={{ width: '50%', display: 'flex', minHeight: 0 }}>
+					<Prose label="NPC Relationships" sigil="figure-pair">
+						{isNewFormat
+							? sortedDispositions.map((disposition) => (
+									<div key={disposition} style={{ marginBottom: '1mm' }}>
+										<div className="pc-label">
 											{getDispositionLabel(disposition)}
-										</Typography>
-										<Box
-											component="ul"
-											sx={{ pl: 3, mb: 0, '& li + li': { mt: 0.5 } }}
-										>
-											{npcs.map((npc, index) => (
-												<Typography
-													key={npc.id || `npc-${index}`}
-													component="li"
-													variant="body2"
-													sx={{ fontSize: '10px' }}
-												>
-													{formatNpcRelationship(npc)}
-												</Typography>
+										</div>
+										{groupedRelationships
+											.get(disposition)!
+											.map((npc, index) => (
+												<div key={npc.id || `npc-${index}`}>
+													{npc.name} ({npc.role}): {npc.description}
+												</div>
 											))}
-										</Box>
-									</Box>
-								)
-							})}
-						</>
-					) : (
-						<>
-							<Typography color="text.secondary" variant="caption">
-								Allies
-							</Typography>
-							<Box component="ul" sx={{ pl: 3, mb: 1, '& li + li': { mt: 1 } }}>
-								{allies.map((ally, index) => (
-									<Typography
-										key={ally.id || `ally-${index}`}
-										component="li"
-										variant="body2"
-										sx={{ fontSize: '10px' }}
-									>
-										{ally.description}
-									</Typography>
-								))}
-							</Box>
-							<Typography color="text.secondary" variant="caption">
-								Contacts
-							</Typography>
-							<Box component="ul" sx={{ pl: 3, mb: 1, '& li + li': { mt: 1 } }}>
-								{contacts.map((contact, index) => (
-									<Typography
-										key={contact.id || `contact-${index}`}
-										component="li"
-										variant="body2"
-										sx={{ fontSize: '10px' }}
-									>
-										{contact.description}
-									</Typography>
-								))}
-							</Box>
-							<Typography color="text.secondary" variant="caption">
-								Rivals
-							</Typography>
-							<Box component="ul" sx={{ pl: 3, mb: 1, '& li + li': { mt: 1 } }}>
-								{rivals.map((rival, index) => (
-									<Typography
-										key={rival.id || `rival-${index}`}
-										component="li"
-										variant="body2"
-										sx={{ fontSize: '10px' }}
-									>
-										{rival.description}
-									</Typography>
-								))}
-							</Box>
-						</>
-					)}
-				</Box>
-				<Box
-					sx={{
-						border: '1px dotted black',
-						borderRadius: '0.5rem',
-						px: 1,
-						width: '50%',
-						height: '100%',
-					}}
-				>
-					<Typography color="text.secondary" variant="caption">
-						Personal Notes
-					</Typography>
-					<Box
-						sx={{
-							height: '95%',
-							fontSize: '10px',
-						}}
-					>
-						{parse(char.personal.notes)}
-					</Box>
-				</Box>
-			</Box>
+									</div>
+								))
+							: [
+									legacyList('Allies', allies),
+									legacyList('Contacts', contacts),
+									legacyList('Rivals', rivals),
+								]}
+					</Prose>
+				</div>
+				<div style={{ width: '50%', display: 'flex', minHeight: 0 }}>
+					<Prose label="Personal Notes" sigil="stylus">
+						{parse(char.personal.notes || '')}
+					</Prose>
+				</div>
+			</div>
 		</SheetLayout>
 	)
 }

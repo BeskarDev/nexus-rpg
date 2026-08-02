@@ -113,7 +113,17 @@ const VARIANT = '6.25rem'
  * A blank track still carries a blank heading, not the column's name: naming a
  * column no row under it fills would be worse than the gap.
  */
-export const LEDGER_TEMPLATE = `minmax(0, 1.3fr) ${VARIANT} minmax(0, 2fr) ${NUM} ${NUM} ${AMOUNT} ${USES}`
+/*
+	The name track is BOUNDED, the properties track is not (M13 S11).
+
+	Both used to be `fr`, which was right when the column was 608px and wrong the
+	moment it became fluid: at 1068px a 1.3fr name track is ~330px, so "Spellbook"
+	sat in a third of a screen of air with its properties stranded on the far side
+	of the gap. Names are short and roughly uniform; properties are the long,
+	variable content. So the name gets a sane band and the SLACK all goes to
+	properties, which is the only track that can spend it on something.
+*/
+export const LEDGER_TEMPLATE = `minmax(8rem, 18rem) ${VARIANT} minmax(0, 1fr) ${NUM} ${NUM} ${AMOUNT} ${USES}`
 
 export const LEDGER_COLUMNS: Record<
 	LedgerShape,

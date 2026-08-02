@@ -7,7 +7,8 @@
 	position: relative;
 	margin: 1.4rem 0;
 	padding: 0.95rem 1.25rem 1rem;
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
 	border-radius: 3px;
 	background-color: var(--ifm-background-surface-color);
 }
@@ -70,10 +71,15 @@
 .weaponTag {
 	margin: 0;
 	padding: 1px 7px;
-	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 34%, transparent);
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 34%, transparent);
 	border-radius: 2px;
 	background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
-	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, var(--ifm-color-primary));
+	color: color-mix(
+		in srgb,
+		var(--ifm-font-color-base) 78%,
+		var(--ifm-color-primary)
+	);
 	font-family: var(--nexus-font-ui);
 	font-variant-caps: small-caps;
 	font-weight: 700;

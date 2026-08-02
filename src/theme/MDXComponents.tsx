@@ -26,6 +26,8 @@ import CreatureStatBlock, {
 import { LozengeDivider, RankChip } from '@site/src/components/codex/ornaments'
 import DocTable from '@site/src/components/codex/DocTable'
 import MdxImage from '@site/src/components/codex/MdxImage'
+import TableFold from '@site/src/components/TableFold'
+import ToolIndex, { ToolEntry } from '@site/src/components/codex/ToolIndex'
 
 /**
  * Global MDX component registry. Extends the Docusaurus defaults with codex
@@ -58,6 +60,11 @@ export default {
 	TreasureTable,
 	TreasureRow,
 	RankChip,
+	// The dice-by-hand fallback the GM tools' data tables sit behind (M14 S3).
+	TableFold,
+	// A section landing page's contents rows (M14 S3).
+	ToolIndex,
+	ToolEntry,
 	// Replace the default `---` thematic break with the ornamental divider.
 	hr: LozengeDivider,
 	// Wrap every markdown table in its stone slab + frieze cornice (M8 S3).

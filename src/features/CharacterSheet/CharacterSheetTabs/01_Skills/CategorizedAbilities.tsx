@@ -216,7 +216,8 @@ export const CategorizedAbilities: React.FC = () => {
 				display: 'flex',
 				flexDirection: 'column',
 				width: '100%',
-				maxWidth: 'var(--cs-max-width-lg)',
+				// Fills the working column (M13 S11); the column carries the ceiling.
+				maxWidth: '100%',
 			}}
 		>
 			{/* Quick Ref Section */}
@@ -402,7 +403,8 @@ export const CategorizedAbilities: React.FC = () => {
 								aria-hidden="true"
 								sx={{
 									gridTemplateColumns: abilityHeaderTemplate(tag),
-									maxWidth: 'var(--cs-max-width-lg)',
+									// Fills the working column (M13 S11); the column carries the ceiling.
+									maxWidth: '100%',
 								}}
 							>
 								{abilityHeadingsFor(tag).map((heading, index) => (

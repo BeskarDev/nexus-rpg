@@ -222,7 +222,7 @@ export const theme: CssVarsThemeOptions = {
 					// One rule here rather than an `sx` per call site — that `sx` was the
 					// last piece of this menu's styling still living in the feature.
 					'&[aria-checked="true"] .cs-check-mark': {
-						color: 'var(--nexus-bronze)',
+						color: 'var(--cs-bronze-ink, var(--nexus-bronze))',
 					},
 					'&[aria-checked="false"] .cs-check-mark': {
 						color:
@@ -245,7 +245,7 @@ export const theme: CssVarsThemeOptions = {
 					fontVariantCaps: 'small-caps',
 					letterSpacing: '0.06em',
 					lineHeight: 1.6,
-					color: 'var(--nexus-bronze)',
+					color: 'var(--cs-bronze-ink, var(--nexus-bronze))',
 				},
 			},
 		},
@@ -370,8 +370,8 @@ export const theme: CssVarsThemeOptions = {
 							warning: 'var(--cs-warning)',
 							error: 'var(--cs-danger)',
 							info: 'var(--cs-info)',
-							primary: 'var(--nexus-bronze)',
-							secondary: 'var(--nexus-bronze)',
+							primary: 'var(--cs-bronze-ink, var(--nexus-bronze))',
+							secondary: 'var(--cs-bronze-ink, var(--nexus-bronze))',
 						}[ownerState.color ?? 'primary'] ?? 'var(--nexus-bronze)',
 				}),
 			},
@@ -380,7 +380,22 @@ export const theme: CssVarsThemeOptions = {
 			defaultProps: {
 				InputLabelProps: { shrink: true },
 				fullWidth: true,
-				margin: 'dense',
+				/*
+					`margin: 'dense'` is gone (M13 S10, measured in the running app).
+
+					M13 planned to reconsider it here because S4d and S5 each paid for it
+					with a local `m: 0` (`metaBandInputSx`, `LocationLoadDisplay`,
+					`AdjustStepper`) — the 8px above and 4px below are meant for a field
+					with a stacked floating label, which this sheet's static-label slot
+					does not have.
+
+					Measuring first found the answer had already changed: every dense
+					field on the sheet computes `margin: 0` today, because the S3 slot
+					rebuild replaced MUI's field root wholesale. The prop was inert — it
+					advertised spacing nothing received, and the three local patches were
+					fighting a rule that no longer fires. Removing it changes no computed
+					margin (verified in the browser, both themes, all six tabs).
+				*/
 				size: 'medium',
 				variant: 'outlined',
 			},
@@ -505,7 +520,7 @@ export const theme: CssVarsThemeOptions = {
 					fontWeight: 700,
 					letterSpacing: '0.06em',
 					lineHeight: 1,
-					color: 'var(--nexus-bronze)',
+					color: 'var(--cs-bronze-ink, var(--nexus-bronze))',
 					// MUI recolours a focused label to the palette primary and an
 					// errored one to red. Bronze IS the primary here, and the slot's own
 					// keyline already carries both states, so the label holds still.
@@ -583,7 +598,7 @@ export const theme: CssVarsThemeOptions = {
 				},
 				icon: {
 					right: 4,
-					color: 'var(--nexus-bronze)',
+					color: 'var(--cs-bronze-ink, var(--nexus-bronze))',
 					fontSize: '1rem',
 				},
 			},

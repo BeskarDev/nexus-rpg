@@ -1,9 +1,14 @@
 import React, { useEffect, useId, useRef, useState } from 'react'
 import styles from './CreatureStatBlock.module.css'
+import { RollDie } from './RollDie'
 import { CardFrame, LozengeDivider, Cartouche } from './ornaments'
 import SigilIcon, { SIGIL_SIZE, SigilName } from './SigilIcon'
 import StatSigil from './StatSigil'
 import { StatSigilName } from './stat-sigils'
+// The trait table lives in a plain module so `sigils:check` can read it: a bun
+// script cannot import this file (React, CSS modules), which is why the
+// "no mark means two things in one card" rule was uncheckable until M13 S9.
+import { CREATURE_TRAIT_SIGIL } from './creature-trait-sigils'
 import DieToken from './DieToken'
 // Moved to its own module in M13 S4d (the character sheet's weapon rows use it
 // too); re-exported here so every existing import and the MDX registration keep
@@ -278,24 +283,6 @@ export interface StatBlockTraitProps {
 	children: React.ReactNode
 }
 
-/** Glyphs for the trait rows, so each is identifiable without reading its label. */
-const TRAIT_GLYPHS: Record<string, SigilName> = {
-	Skills: 'hand',
-	// A shield stops a blow outright; a standing stone weathers it. That is the
-	// Immunities/Resistances distinction, and it keeps Resistances off
-	// `breastplate`, which `stat-sigils.ts` assigns to AV — the two would
-	// otherwise render the same mark twice in one card meaning different things.
-	Immunities: 'shield',
-	Resistances: 'stele',
-	Weaknesses: 'khopesh',
-	// Companions only — no generated creature page emits a Movement row, so this key
-	// is additive (M13 S8). `footprints` is the mark movement wants and is already
-	// **Dodge**, which renders four cells above in the same card; the horse is the
-	// period's own image of pace, and it is the mark the size rail uses for the same
-	// figure, so the trade you choose and the row it lands in carry one glyph.
-	Movement: 'horse',
-}
-
 /**
  * One trait row: a cartouche label and a comma-separated value list.
  *
@@ -305,7 +292,7 @@ const TRAIT_GLYPHS: Record<string, SigilName> = {
  * under the stat panel and read as part of the header block.
  */
 export function StatBlockTrait({ label, children }: StatBlockTraitProps) {
-	const glyph = TRAIT_GLYPHS[label]
+	const glyph = CREATURE_TRAIT_SIGIL[label]
 	return (
 		<div className={styles.trait}>
 			<span className={styles.traitLabel}>
@@ -484,48 +471,7 @@ export interface TreasureTableProps {
  */
 export function TreasureTable({ scale, children }: TreasureTableProps) {
 	const [rolled, setRolled] = useState<number | null>(null)
-	const [face, setFace] = useState(6)
-	const [rolling, setRolling] = useState(false)
-	const timers = useRef<ReturnType<typeof setTimeout>[]>([])
 	const rows = React.Children.toArray(children)
-
-	// Clear any pending shuffle if the card unmounts mid-roll.
-	useEffect(() => () => timers.current.forEach(clearTimeout), [])
-
-	const roll = () => {
-		if (rolling) return
-		const result = 1 + Math.floor(Math.random() * rows.length)
-		// Someone who has asked for less motion gets the answer, not the theatre.
-		const reduced =
-			typeof window !== 'undefined' &&
-			window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
-		if (reduced) {
-			setFace(result)
-			setRolled(result)
-			return
-		}
-		setRolling(true)
-		setRolled(null)
-		// Tumble through faces on an easing-out cadence, so it visibly slows into
-		// its answer instead of stopping dead.
-		const steps = [0, 70, 140, 210, 285, 370, 470]
-		timers.current = steps.map((delay, i) =>
-			setTimeout(() => {
-				if (i < steps.length - 1) {
-					// Never repeat the current face, or a step reads as a dropped frame.
-					setFace((current) => {
-						let next = current
-						while (next === current) next = 1 + Math.floor(Math.random() * 6)
-						return next
-					})
-					return
-				}
-				setFace(result)
-				setRolled(result)
-				setRolling(false)
-			}, delay),
-		)
-	}
 
 	return (
 		<>
@@ -533,18 +479,12 @@ export function TreasureTable({ scale, children }: TreasureTableProps) {
 			    "how much treasure", and hoisting it out of the grid buys the table a
 			    whole column back. */}
 			<span className={styles.loreTag}>{scale}</span>
-			<button
-				type="button"
-				className={`${styles.treasureRoll}${rolling ? ' ' + styles.treasureRolling : ''}`}
-				onClick={roll}
-				disabled={rolling}
-				title="Roll d6 for treasure"
-				aria-label="Roll d6 for treasure"
-			>
-				<DieIcon face={face} />
-			</button>
+			<RollDie
+				label="Roll d6 for treasure"
+				onRoll={() => setRolled(1 + Math.floor(Math.random() * rows.length))}
+			/>
 			<span className={styles.srOnly} role="status">
-				{rolled && !rolling ? `Rolled ${rolled}` : ''}
+				{rolled ? `Rolled ${rolled}` : ''}
 			</span>
 			<span className={styles.treasure}>
 				{rows.map((row, i) => (
@@ -558,68 +498,6 @@ export function TreasureTable({ scale, children }: TreasureTableProps) {
 				))}
 			</span>
 		</>
-	)
-}
-
-/** Pip positions per face, on the icon's 24-unit grid. */
-const DIE_PIPS: Record<number, [number, number][]> = {
-	1: [[12, 12]],
-	2: [
-		[8.5, 8],
-		[15.5, 16],
-	],
-	3: [
-		[8.5, 8],
-		[12, 12],
-		[15.5, 16],
-	],
-	4: [
-		[8.5, 8],
-		[15.5, 8],
-		[8.5, 16],
-		[15.5, 16],
-	],
-	5: [
-		[8.5, 8],
-		[15.5, 8],
-		[12, 12],
-		[8.5, 16],
-		[15.5, 16],
-	],
-	6: [
-		[8.5, 8],
-		[15.5, 8],
-		[8.5, 12],
-		[15.5, 12],
-		[8.5, 16],
-		[15.5, 16],
-	],
-}
-
-/**
- * A struck d6 showing a given face, matching the kit's flat carving.
- *
- * The shell is fixed and only the pips change, so a shuffle animation can never
- * shift the button's size or the row beside it.
- */
-function DieIcon({ face }: { face: number }) {
-	return (
-		<svg
-			width={15}
-			height={15}
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeLinejoin="round"
-			aria-hidden="true"
-		>
-			<rect x={3.5} y={3.5} width={17} height={17} rx={2.5} strokeWidth={1.5} />
-			<g fill="currentColor" stroke="none">
-				{(DIE_PIPS[face] ?? DIE_PIPS[6]).map(([cx, cy]) => (
-					<circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={1.35} />
-				))}
-			</g>
-		</svg>
 	)
 }
 

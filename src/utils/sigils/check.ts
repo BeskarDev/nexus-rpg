@@ -14,6 +14,11 @@
  *               the only mechanical guard on "distinguishable when tiny".
  *   mapping     every PAGE_SIGIL / CHAPTER_SIGIL key resolves to a real doc, and
  *               every mark referenced anywhere exists in SIGIL_INNER.
+ *   surface     no mark carries two meanings IN ONE VIEW (M13 S9, closing F7).
+ *               A mark may legitimately mean two things across the site — the
+ *               eight equipment slots reuse marks on purpose — because a reading
+ *               is judged in place. The creature card is where two tables MEET,
+ *               so it is the one place that needs checking rather than reading.
  */
 import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { resolve } from 'node:path'
@@ -23,6 +28,10 @@ import {
 	SigilName,
 } from '../../components/codex/sigil-paths'
 import { CHAPTER_SIGIL, PAGE_SIGIL } from '../../components/codex/page-sigils'
+import {
+	CARD_STAT_MARKS,
+	CREATURE_TRAIT_SIGIL,
+} from '../../components/codex/creature-trait-sigils'
 import {
 	CAP_BOX,
 	CAP_BOX_SLACK,
@@ -355,6 +364,47 @@ function isReferencedInComponents(name: string): boolean {
 	return new RegExp(`['"\`]${name}['"\`]`).test(componentSources)
 }
 
+// --- surface ---------------------------------------------------------------
+
+/**
+ * One view, one meaning per mark.
+ *
+ * F7's finding was a creature card rendering `breastplate` twice — once as AV in
+ * the figure panel, once as Resistances in the trait rows below it — two
+ * different facts wearing one mark, four rows apart. The fix was a comment. This
+ * is the rule.
+ *
+ * Deliberately scoped to surfaces where two independently-authored tables render
+ * TOGETHER. A site-wide uniqueness rule would be wrong: `figure` is Folk and also
+ * the worn location, `breastplate` is AV and also the body slot, and every one of
+ * those pairs is legal because the two never appear in one list.
+ */
+function checkSurfaces() {
+	const surfaces: { name: string; tables: Record<string, string>[] }[] = [
+		{
+			name: 'creature card',
+			tables: [CARD_STAT_MARKS, CREATURE_TRAIT_SIGIL],
+		},
+	]
+	for (const surface of surfaces) {
+		const meanings = new Map<string, string[]>()
+		for (const table of surface.tables) {
+			for (const [meaning, mark] of Object.entries(table)) {
+				meanings.set(mark, [...(meanings.get(mark) ?? []), meaning])
+			}
+		}
+		for (const [mark, labels] of meanings) {
+			if (labels.length > 1) {
+				fail(
+					mark,
+					'surface/collision',
+					`${surface.name} renders it as ${labels.join(' and ')}`,
+				)
+			}
+		}
+	}
+}
+
 // --- run -------------------------------------------------------------------
 
 function main() {
@@ -381,6 +431,7 @@ function main() {
 	}
 	checkSilhouettes(parsed)
 	checkMapping()
+	checkSurfaces()
 
 	if (!failures.length) {
 		console.log(`sigils:check — ${names.length} marks, all rules pass`)

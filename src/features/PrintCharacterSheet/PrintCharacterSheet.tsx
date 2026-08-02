@@ -1,11 +1,9 @@
 import {
 	Alert,
-	Avatar,
 	Box,
 	Button,
 	Divider,
 	Stack,
-	styled,
 	TextField,
 	Typography,
 	useTheme,
@@ -20,52 +18,6 @@ import { EquipmentSheet } from './sheets/2_Equipment'
 import { SpellsSheet } from './sheets/3_Spells'
 import { PersonalSheet } from './sheets/4_Personal'
 import { CharacterSelector } from '../PrintingTools'
-
-const AttributeField = styled(TextField)({
-	maxWidth: '4.5rem',
-})
-AttributeField.defaultProps = {
-	disabled: true,
-	variant: 'outlined',
-	inputProps: {
-		style: {
-			textAlign: 'center',
-			fontWeight: 'bold',
-			paddingInline: 'auto',
-		},
-	},
-}
-
-export const OutlinedTextfield = styled(TextField)({
-	'& .MuiOutlinedInput-root': {
-		'& .MuiOutlinedInput-notchedOutline': {
-			borderColor: 'black',
-		},
-		'& .MuiInputBase-input.MuiOutlinedInput-input': {
-			textAlign: 'right',
-		},
-	},
-})
-
-export const CharacterHeaderTextField = styled(TextField)({
-	marginTop: 0,
-	'& .MuiInputBase-input.MuiInput-input': {
-		paddingBottom: 0,
-	},
-})
-CharacterHeaderTextField.defaultProps = {
-	size: 'small',
-	variant: 'standard',
-}
-
-export const RankIndicator = styled(Avatar)({
-	width: 24,
-	height: 24,
-	backgroundColor: 'transparent',
-	color: 'black',
-	border: '1px solid black',
-	fontSize: '14px',
-})
 
 export const PrintCharacterSheet: React.FC = () => {
 	const muiTheme = useTheme()

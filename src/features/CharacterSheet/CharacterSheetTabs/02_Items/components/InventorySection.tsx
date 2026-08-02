@@ -165,7 +165,8 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 						gridTemplateColumns: headerTemplate(),
 						// The rows cap at this measure; the header names their columns, so
 						// it has to stop where they stop.
-						maxWidth: 'var(--cs-max-width-lg)',
+						// Fills the working column (M13 S11); the column carries the ceiling.
+						maxWidth: '100%',
 					}}
 				>
 					{/* Keyed by index, not label: the reserved-but-blank tracks (M13 S4d)

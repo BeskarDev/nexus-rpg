@@ -294,7 +294,8 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 							aria-hidden="true"
 							sx={{
 								gridTemplateColumns: partyHeaderTemplate(),
-								maxWidth: 'var(--cs-max-width-lg)',
+								// Fills the working column (M13 S11); the column carries the ceiling.
+								maxWidth: '100%',
 							}}
 						>
 							{PARTY_HEADINGS.map((heading, index) => (

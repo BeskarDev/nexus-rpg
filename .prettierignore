@@ -1,0 +1,10 @@
+# Prettier must not touch the docs (M14, learned the hard way).
+#
+# `bun run format` only targets code files, so this never bit anyone — until an
+# agent ran `prettier --write` on a docs path directly. Prettier parses `.mdx`
+# as JSX and reflows the markdown TABLES inside `<RollableTable>` into a single
+# paragraph of pipes, destroying every rolled table on the page.
+#
+# The rulebook's markdown is content, not code. It is formatted by its authors
+# and by `bun run content:gen`, and neither wants a JSX formatter's opinion.
+docs/

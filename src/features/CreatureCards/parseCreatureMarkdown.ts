@@ -163,9 +163,15 @@ const parseAttacks = (attacksText: string): Attack[] => {
 		// Match: - **Name** (*properties*). damage. Optional description
 		// Example: - **Claws** (*light, slash*). 6/10/14 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.
 		// Handle nested parentheses in properties like (*thrown (close/short)*)
-		const match = line.match(/- \*\*([^*]+)\*\*\s*\((.*?)\)\.\s*(.*)/)
+		//
+		// The properties group is OPTIONAL (M15 S6). It was required, so an attack
+		// with none — `- **Bite**. 5/8/11 damage.` — matched nothing and was dropped
+		// SILENTLY: no card, no warning, the creature simply printed without its
+		// attack. 30 of the 317 attacks in `creatures.json` have no properties,
+		// including the Dog's bite, so this was losing data on ordinary input.
+		const match = line.match(/- \*\*([^*]+)\*\*\s*(?:\((.*?)\))?\.\s*(.*)/)
 		if (match) {
-			const [, name, propertiesText, restOfLine] = match
+			const [, name, propertiesText = '', restOfLine] = match
 			// Remove the asterisks from properties and clean up
 			const cleanProperties = propertiesText
 				.replace(/\*/g, '')

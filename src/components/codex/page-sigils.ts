@@ -98,10 +98,13 @@ export const PAGE_SIGIL: Record<string, SigilName> = {
 	// 10 GM Tools
 	'gm-tools': 'key',
 	'gm-tools/printing/combat-arts': 'axe',
-	'gm-tools/printing/spells': 'sparkle',
+	// Printables take the mark of the ARTEFACT, not the subject: a random-spell
+	// table and a sheet of spell cards are both about spells, and on the GM Tools
+	// contents page they now sit six rows apart in one list (M14 S5).
+	'gm-tools/printing/spells': 'rune',
 	'gm-tools/printing/magic-items': 'gem',
-	'gm-tools/printing/print-character-sheet': 'scroll',
-	'gm-tools/printing/creature-cards': 'paw',
+	'gm-tools/printing/print-character-sheet': 'tablet',
+	'gm-tools/printing/creature-cards': 'skull',
 	'gm-tools/random-tables/random-treasure': 'chalice',
 	'gm-tools/random-tables/random-creature': 'paw',
 	'gm-tools/random-tables/random-spell': 'sparkle',

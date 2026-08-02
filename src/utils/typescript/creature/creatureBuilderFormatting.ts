@@ -64,9 +64,12 @@ export function generateCreatureMarkdown(creature: BuiltCreature): string {
 					? `${attack.damageType} `
 					: ''
 			const desc = attack.description ? ` ${attack.description}` : ''
-			lines.push(
-				`- **${attack.name}** ${props}. ${attack.damage} ${damageType}damage.${desc}`,
-			)
+			// The space belongs to the properties, not to the name (M15 S6). An attack
+			// with none emitted `- **Bite** . 8/12/16 damage.` — a stray space before
+			// the period — and 30 of the 317 attacks in `creatures.json` have no
+			// properties, so this was the common case rather than an edge one.
+			const head = props ? `**${attack.name}** ${props}` : `**${attack.name}**`
+			lines.push(`- ${head}. ${attack.damage} ${damageType}damage.${desc}`)
 		})
 		lines.push('')
 	}

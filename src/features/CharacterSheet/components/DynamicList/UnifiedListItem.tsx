@@ -4,7 +4,7 @@ import {
 	AccordionSummary,
 	Box,
 } from '@mui/material'
-import React, { useState, ReactNode } from 'react'
+import React, { useRef, useState, ReactNode } from 'react'
 import StatSigil from '@site/src/components/codex/StatSigil'
 import type {
 	SheetSigilName,
@@ -55,7 +55,7 @@ export type UnifiedListItemProps = {
 	expanded?: boolean
 	/** Callback when expand state changes */
 	onExpandChange?: (expanded: boolean) => void
-	/** Custom max width (defaults to --cs-max-width-lg) */
+	/** Custom max width (defaults to filling the section) */
 	maxWidth?: string
 	/** Additional styling for the row container */
 	sx?: object
@@ -131,7 +131,12 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 	defaultExpanded = false,
 	expanded: controlledExpanded,
 	onExpandChange,
-	maxWidth = 'var(--cs-max-width-lg)',
+	/*
+		Fills its section (M13 S11). It was capped at 47rem, which on a 1512px
+		laptop stopped every ledger row ~300px short of the section header above
+		it — two right edges where the sheet is meant to describe one.
+	*/
+	maxWidth = '100%',
 	sx,
 	summarySx,
 	summaryClassName,
@@ -151,6 +156,33 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 			setInternalExpanded(newExpanded)
 		}
 		onExpandChange?.(newExpanded)
+	}
+
+	const rowRef = useRef<HTMLDivElement | null>(null)
+
+	/*
+		Escape closes the open row (M13 S10).
+
+		The sheet's other two open-and-close surfaces — dialogs and menus — both
+		close on Escape, and a row that did not was the odd one out: a reader who
+		had opened a panel to read one field had to find the summary again to shut
+		it. It also matters for the keyboard path specifically, where the way back
+		out was Shift+Tab past every control in the panel.
+
+		Focus returns to the summary, or the panel's focus would land on `<body>`
+		and the next Tab would restart at the top of the page.
+
+		Menus and dialogs opened FROM inside a panel are portalled, so their Escape
+		never reaches this handler — closing the menu does not also close the row.
+	*/
+	const handleEscape = (event: React.KeyboardEvent) => {
+		if (event.key !== 'Escape' || !isExpanded) return
+		event.stopPropagation()
+		if (controlledExpanded === undefined) setInternalExpanded(false)
+		onExpandChange?.(false)
+		rowRef.current
+			?.querySelector<HTMLElement>('.MuiAccordionSummary-root')
+			?.focus()
 	}
 
 	const gutter = sigil ? (
@@ -318,6 +350,8 @@ export const UnifiedListItem: React.FC<UnifiedListItemProps> = ({
 	return (
 		<Accordion
 			className="cs-ledger-row"
+			ref={rowRef}
+			onKeyDown={handleEscape}
 			expanded={isExpanded}
 			onChange={handleChange}
 			disableGutters

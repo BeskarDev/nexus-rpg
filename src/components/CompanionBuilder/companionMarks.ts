@@ -42,7 +42,7 @@ export const typeSigil = (type: string): SigilName | undefined =>
  * `footprints` is the mark movement wants and is already **Dodge**, which the same
  * card renders four cells away. The horse is the period's own image of pace, and
  * it reads correctly on a surface whose whole subject is the creature that carries
- * you. Registered for the card in `CreatureStatBlock`'s `TRAIT_GLYPHS`, and used
+ * you. Registered for the card in `creature-trait-sigils.ts`'s `CREATURE_TRAIT_SIGIL`, and used
  * here for the rail, so one glyph covers the trade you choose and the row it lands
  * in.
  *

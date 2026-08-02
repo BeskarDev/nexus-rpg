@@ -78,7 +78,8 @@ export const NpcRelationshipsSection: React.FC<
 					aria-hidden="true"
 					sx={{
 						gridTemplateColumns: npcHeaderTemplate(),
-						maxWidth: 'var(--cs-max-width-lg)',
+						// Fills the working column (M13 S11); the column carries the ceiling.
+						maxWidth: '100%',
 					}}
 				>
 					{NPC_HEADINGS.map((heading, index) => (

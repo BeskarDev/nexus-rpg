@@ -37,7 +37,11 @@
 .name--waiting {
 	font-style: italic;
 	font-weight: 400;
-	color: color-mix(in srgb, var(--ifm-color-primary) 60%, var(--ifm-font-color-base));
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
 }
 /* What the item IS, under its name: category, material, enchantment. */
 .kind {
@@ -49,7 +53,11 @@
 	font-size: var(--nexus-text-xs);
 	font-variant-caps: small-caps;
 	letter-spacing: 0.05em;
-	color: color-mix(in srgb, var(--ifm-color-primary) 60%, var(--ifm-font-color-base));
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
 }
 
 /* ── The tally ─────────────────────────────────────────────────────────────
@@ -71,7 +79,11 @@
 	font-family: var(--nexus-font-ui);
 	font-size: var(--nexus-text-sm);
 	line-height: 1.6;
-	color: color-mix(in srgb, var(--ifm-color-primary) 55%, var(--ifm-font-color-base));
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 55%,
+		var(--ifm-font-color-base)
+	);
 }
 /* A line that contributes nothing is dimmed, never dropped: the sum has to be
    checkable against the rulebook's table line by line. */
@@ -130,7 +142,11 @@
 	font-size: var(--nexus-text-3xs);
 	font-variant-caps: small-caps;
 	letter-spacing: 0.07em;
-	color: color-mix(in srgb, var(--ifm-color-primary) 60%, var(--ifm-font-color-base));
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
 	text-align: center;
 }
 .figureValue {
@@ -158,7 +174,11 @@
 	font-weight: 700;
 	font-variant-caps: small-caps;
 	letter-spacing: 0.08em;
-	color: color-mix(in srgb, var(--ifm-color-primary) 75%, var(--ifm-font-color-base));
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 75%,
+		var(--ifm-font-color-base)
+	);
 }
 .badges {
 	display: flex;
@@ -183,5 +203,9 @@
 	font-size: var(--nexus-text-sm);
 	line-height: 1.4;
 	text-align: center;
-	color: color-mix(in srgb, var(--ifm-color-primary) 60%, var(--ifm-font-color-base));
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
 }

@@ -29,8 +29,17 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
 
 	return (
 		<>
-			<IconButton edge="end" aria-label="delete" onClick={handleOpen}>
-				<Delete />
+			{/* The strip's danger idiom (M13 S12): the plate and glyph take the
+				danger ink on HOVER only, as every other delete on the sheet does. A
+				permanently red bin in a list of four rows is the loudest thing on the
+				page and stops being read at all. */}
+			<IconButton
+				size="small"
+				aria-label={`Delete ${characterName ?? 'character'}`}
+				data-danger="true"
+				onClick={handleOpen}
+			>
+				<Delete fontSize="small" />
 			</IconButton>
 			{/* One confirm shape across the sheet (M13 S8). The `Warning` icon in the
 				title bar and the Yes/No pair are gone: the caution band says the same

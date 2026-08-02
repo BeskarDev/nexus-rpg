@@ -1,0 +1,1707 @@
+[
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 0,
+		"header": ["d12", "Treasure Type"],
+		"file": "treasureData",
+		"path": "treasureTypes",
+		"render": "object-ranged",
+		"cols": ["range", "type"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 1,
+		"header": ["d12", "Valuable"],
+		"file": "treasureData",
+		"path": "valuables",
+		"render": "strings",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 2,
+		"header": ["d12", "Utility"],
+		"file": "treasureData",
+		"path": "utility",
+		"render": "object-ranged",
+		"cols": ["range", "type"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 3,
+		"header": ["d12", "Slot"],
+		"file": "treasureData",
+		"path": "wearableSlots",
+		"render": "strings",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 4,
+		"header": ["d12", "Armor / Shield"],
+		"file": "treasureData",
+		"path": "armorShield",
+		"render": "strings",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 5,
+		"header": ["d12", "Weapon / Spell Catalyst"],
+		"file": "treasureData",
+		"path": "weaponCatalyst",
+		"render": "strings",
+		"cap": false,
+		"bold": false,
+		"note": "The page listed 10 of the 12 entries and rolled d10. Wand and Staff exist in the data and could never be rolled by hand."
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 6,
+		"header": ["d12", "Form", "Detail"],
+		"file": "treasureData",
+		"path": "valuableDetails.Coins / Currency",
+		"render": "object",
+		"cols": ["form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 7,
+		"header": ["d12", "Form", "Detail"],
+		"file": "treasureData",
+		"path": "valuableDetails.Trinket / Charm",
+		"render": "object",
+		"cols": ["form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 8,
+		"header": ["d12", "Form", "Detail"],
+		"file": "treasureData",
+		"path": "valuableDetails.Painting / Pottery",
+		"render": "object",
+		"cols": ["form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 9,
+		"header": ["d12", "Form", "Detail"],
+		"file": "treasureData",
+		"path": "valuableDetails.Statuette / Idol",
+		"render": "object",
+		"cols": ["form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 10,
+		"header": ["d12", "Form", "Detail"],
+		"file": "treasureData",
+		"path": "valuableDetails.Fabrics / Papyrus",
+		"render": "object",
+		"cols": ["form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 11,
+		"header": ["d12", "Form", "Detail"],
+		"file": "treasureData",
+		"path": "valuableDetails.Hide / Pelt",
+		"render": "object",
+		"cols": ["form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 12,
+		"header": ["d12", "Form", "Detail"],
+		"file": "treasureData",
+		"path": "valuableDetails.Salt / Spice / Dye",
+		"render": "object",
+		"cols": ["form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 13,
+		"header": ["d12", "Form", "Detail"],
+		"file": "treasureData",
+		"path": "valuableDetails.Oil / Perfume",
+		"render": "object",
+		"cols": ["form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 14,
+		"header": ["d12", "Form", "Detail"],
+		"file": "treasureData",
+		"path": "valuableDetails.Bone / Scales",
+		"render": "object",
+		"cols": ["form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 15,
+		"header": ["d12", "Form", "Detail"],
+		"file": "treasureData",
+		"path": "valuableDetails.Beverage / Grain",
+		"render": "object",
+		"cols": ["form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 16,
+		"header": ["d12", "Form", "Detail"],
+		"file": "treasureData",
+		"path": "valuableDetails.Raw Metal / Timber",
+		"render": "object",
+		"cols": ["form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 17,
+		"header": ["d12", "Form", "Detail"],
+		"file": "treasureData",
+		"path": "valuableDetails.Gem",
+		"render": "object",
+		"cols": ["form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 18,
+		"header": [
+			"d12",
+			"Low-Quality",
+			"Medium-Quality",
+			"High-Quality",
+			"Supreme-Quality"
+		],
+		"file": "treasureData",
+		"path": "qualityMaterials.metalsAndMinerals",
+		"render": "dict-columns",
+		"keys": ["low", "medium", "high", "supreme"],
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 19,
+		"header": [
+			"d12",
+			"Low-Quality",
+			"Medium-Quality",
+			"High-Quality",
+			"Supreme-Quality"
+		],
+		"file": "treasureData",
+		"path": "qualityMaterials.gems",
+		"render": "dict-columns",
+		"keys": ["low", "medium", "high", "supreme"],
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 20,
+		"header": [
+			"d12",
+			"Low-Quality",
+			"Medium-Quality",
+			"High-Quality",
+			"Supreme-Quality"
+		],
+		"file": "treasureData",
+		"path": "qualityMaterials.woodAndPlants",
+		"render": "dict-columns",
+		"keys": ["low", "medium", "high", "supreme"],
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 21,
+		"header": [
+			"d12",
+			"Low-Quality",
+			"Medium-Quality",
+			"High-Quality",
+			"Supreme-Quality"
+		],
+		"file": "treasureData",
+		"path": "qualityMaterials.organics",
+		"render": "dict-columns",
+		"keys": ["low", "medium", "high", "supreme"],
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 22,
+		"header": [
+			"d12",
+			"Low-Quality",
+			"Medium-Quality",
+			"High-Quality",
+			"Supreme-Quality"
+		],
+		"file": "treasureData",
+		"path": "qualityMaterials.textiles",
+		"render": "dict-columns",
+		"keys": ["low", "medium", "high", "supreme"],
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 23,
+		"header": [
+			"d12",
+			"Low-Quality",
+			"Medium-Quality",
+			"High-Quality",
+			"Supreme-Quality"
+		],
+		"file": "treasureData",
+		"path": "qualityMaterials.ceramics",
+		"render": "dict-columns",
+		"keys": ["low", "medium", "high", "supreme"],
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 24,
+		"header": [
+			"d12",
+			"Low-Quality",
+			"Medium-Quality",
+			"High-Quality",
+			"Supreme-Quality"
+		],
+		"file": "treasureData",
+		"path": "qualityMaterials.spicesAndDyes",
+		"render": "dict-columns",
+		"keys": ["low", "medium", "high", "supreme"],
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 25,
+		"header": [
+			"d12",
+			"Low-Quality",
+			"Medium-Quality",
+			"High-Quality",
+			"Supreme-Quality"
+		],
+		"file": "treasureData",
+		"path": "qualityMaterials.grainAndBeverages",
+		"render": "dict-columns",
+		"keys": ["low", "medium", "high", "supreme"],
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 26,
+		"header": [
+			"d12",
+			"Low-Quality",
+			"Medium-Quality",
+			"High-Quality",
+			"Supreme-Quality"
+		],
+		"file": "treasureData",
+		"path": "qualityMaterials.oilAndPerfumes",
+		"render": "dict-columns",
+		"keys": ["low", "medium", "high", "supreme"],
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 27,
+		"header": ["d12", "Item", "Style", "Trait"],
+		"file": "treasureData",
+		"path": "utilityDetails.Gear",
+		"render": "object",
+		"cols": ["item", "style", "trait"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 28,
+		"header": ["d12", "Effect", "Form", "Delivery"],
+		"file": "treasureData",
+		"path": "utilityDetails.Alchemical",
+		"render": "object",
+		"cols": ["effect", "form", "delivery"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 29,
+		"header": ["d10", "Item", "Style", "Trait"],
+		"file": "treasureData",
+		"path": "utilityDetails.Supply",
+		"render": "object",
+		"cols": ["item", "style", "trait"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 30,
+		"header": ["d12", "Script", "Binding"],
+		"file": "treasureData",
+		"path": "utilityDetails.Spell Scroll",
+		"render": "object",
+		"cols": ["script", "binding"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 31,
+		"header": ["d20", "Topic", "Style", "Format"],
+		"file": "treasureData",
+		"path": "utilityDetails.Knowledge",
+		"render": "object",
+		"cols": ["topic", "style", "format"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 32,
+		"header": ["d12", "Ornament", "Style", "Material"],
+		"file": "treasureData",
+		"path": "wearableDescription",
+		"render": "object",
+		"cols": ["ornament", "style", "material"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 33,
+		"header": ["d6", "Face", "Head", "Neck", "Shoulder", "Back", "Full Body"],
+		"file": "treasureData",
+		"path": "wearableItems",
+		"render": "dict-columns",
+		"keys": ["Face", "Head", "Neck", "Shoulder", "Back", "Full Body"],
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 34,
+		"header": [
+			"d6",
+			"Upper Body",
+			"Body Cover",
+			"Hands/Fingers",
+			"Wrists",
+			"Waist",
+			"Feet"
+		],
+		"file": "treasureData",
+		"path": "wearableItems",
+		"render": "dict-columns",
+		"keys": [
+			"Upper Body",
+			"Body Cover",
+			"Hands/Fingers",
+			"Wrists",
+			"Waist",
+			"Feet"
+		],
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 35,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "armorDetails.Leather",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 36,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "armorDetails.Banded Leather",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 37,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "armorDetails.Chain Mail",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 38,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "armorDetails.Scale Mail",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 39,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "armorDetails.Helmet",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 40,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "armorDetails.Buckler",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 41,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "armorDetails.Light Shield",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 42,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "armorDetails.Heavy Shield",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 43,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "armorDetails.Breastplate",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 44,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "armorDetails.Plate Harness",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 45,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "weaponDetails.Axe",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 46,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "weaponDetails.Blade",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 47,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "weaponDetails.Bow",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false,
+		"note": "The page shipped this table with an EMPTY die column while its eleven siblings all say d12. A header cell nobody filled in."
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 48,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "weaponDetails.Brawling",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 49,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "weaponDetails.Crossbow",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 50,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "weaponDetails.Mace",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 51,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "weaponDetails.Polearm",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 52,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "weaponDetails.Thrown",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 53,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "weaponDetails.Arcane Conduit",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 54,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "weaponDetails.Mystic Talisman",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 55,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "weaponDetails.Wand",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false,
+		"note": "The page had no section for this weapon type at all, though the roller has rolled it since the data existed (M14 S3)."
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 56,
+		"header": ["d12", "Material", "Form/Variant", "Detail"],
+		"file": "treasureData",
+		"path": "weaponDetails.Staff",
+		"render": "object",
+		"cols": ["material", "form", "detail"],
+		"cap": false,
+		"note": "The page had no section for this weapon type at all, though the roller has rolled it since the data existed (M14 S3)."
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 57,
+		"header": ["d12", "Utility"],
+		"file": "treasureData",
+		"path": "magicUtilityTypes",
+		"render": "object-ranged",
+		"cols": ["range", "type"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 58,
+		"header": ["d6", "Ammo"],
+		"file": "treasureData",
+		"path": "magicUtilitySubtables.Ammo",
+		"render": "strings",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 59,
+		"header": ["d20", "Everyday Object 1", "Everyday Object 2"],
+		"file": "treasureData",
+		"path": "magicUtilitySubtables.Everyday Object",
+		"render": "paired",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 60,
+		"header": ["d12", "Container 1", "Container 2"],
+		"file": "treasureData",
+		"path": "magicUtilitySubtables.Container",
+		"render": "paired",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 61,
+		"header": ["d6", "Instrument 1", "Instrument 2"],
+		"file": "treasureData",
+		"path": "magicUtilitySubtables.Instrument",
+		"render": "paired",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 62,
+		"header": ["d12", "Body Part 1", "Body Part 2"],
+		"file": "treasureData",
+		"path": "magicUtilitySubtables.Body Part",
+		"render": "paired",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 63,
+		"header": ["d8", "Natural 1", "Natural 2"],
+		"file": "treasureData",
+		"path": "magicUtilitySubtables.Natural",
+		"render": "paired",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 64,
+		"header": ["d4", "Naming Pattern"],
+		"file": "treasureData",
+		"path": "magicItemNamingPatterns",
+		"render": "strings",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 65,
+		"header": ["d20", "Adjective 1", "Noun 1", "Adjective 2", "Noun 2"],
+		"file": "treasureData",
+		"path": "magicItemNames.utility",
+		"render": "object",
+		"cols": ["adjective1", "noun1", "adjective2", "noun2"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 66,
+		"header": ["d20", "Adjective 1", "Noun 1", "Adjective 2", "Noun 2"],
+		"file": "treasureData",
+		"path": "magicItemNames.wearable",
+		"render": "object",
+		"cols": ["adjective1", "noun1", "adjective2", "noun2"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 67,
+		"header": ["d20", "Adjective 1", "Noun 1", "Adjective 2", "Noun 2"],
+		"file": "treasureData",
+		"path": "magicItemNames.armor",
+		"render": "object",
+		"cols": ["adjective1", "noun1", "adjective2", "noun2"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 68,
+		"header": ["d20", "Adjective 1", "Noun 1", "Adjective 2", "Noun 2"],
+		"file": "treasureData",
+		"path": "magicItemNames.weapon",
+		"render": "object",
+		"cols": ["adjective1", "noun1", "adjective2", "noun2"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 69,
+		"header": ["d20", "Adjective 1", "Noun 1", "Adjective 2", "Noun 2"],
+		"file": "treasureData",
+		"path": "magicItemNames.spellCatalyst",
+		"render": "object",
+		"cols": ["adjective1", "noun1", "adjective2", "noun2"],
+		"cap": false
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 70,
+		"header": [
+			"d12",
+			"Effect Type",
+			"Primary Function",
+			"Trigger / Usage Style",
+			"Scope / Target"
+		],
+		"file": "treasureData",
+		"path": "magicItemEffects",
+		"render": "object",
+		"cols": ["effectType", "function", "trigger", "scope"],
+		"cap": false,
+		"note": "Row 9 said \"Bonus Action\", which is D&D vocabulary. Nexus has Quick Actions, and the data already said so."
+	},
+	{
+		"page": "05-random-treasure.mdx",
+		"index": 71,
+		"header": [
+			"d12",
+			"Curse Type",
+			"Effect Description",
+			"Trigger / Condition",
+			"Drawback Scope"
+		],
+		"file": "treasureData",
+		"path": "magicItemCurseEffects",
+		"render": "object",
+		"cols": ["curseType", "effect", "trigger", "scope"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 0,
+		"header": ["d4", "Naming Pattern"],
+		"file": "spellData",
+		"path": "namingPatterns",
+		"render": "strings",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 1,
+		"header": ["d6", "Disciplines"],
+		"file": "spellData",
+		"path": "arcaneSchools",
+		"render": "object",
+		"cols": ["name"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 2,
+		"header": ["d8", "Tradition"],
+		"file": "spellData",
+		"path": "mysticTraditions",
+		"render": "object",
+		"cols": ["name"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 3,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "arcaneSchools.0.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 4,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "arcaneSchools.1.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 5,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "arcaneSchools.2.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 6,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "arcaneSchools.3.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 7,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "arcaneSchools.4.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 8,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "arcaneSchools.5.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 9,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "mysticTraditions.0.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 10,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "mysticTraditions.1.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 11,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "mysticTraditions.2.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 12,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "mysticTraditions.3.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 13,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "mysticTraditions.4.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 14,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "mysticTraditions.5.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 15,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "mysticTraditions.6.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 16,
+		"header": ["d20", "Form", "Adjective", "Noun"],
+		"file": "spellData",
+		"path": "mysticTraditions.7.entries",
+		"render": "object",
+		"cols": ["form", "adjective", "noun"],
+		"cap": false
+	},
+	{
+		"page": "07-random-spell.mdx",
+		"index": 17,
+		"header": ["d12", "Effect", "Target", "Duration", "Range"],
+		"file": "spellData",
+		"path": "effects",
+		"render": "object",
+		"cols": ["effect", "target", "duration", "range"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 0,
+		"header": ["d8", "Naming Pattern"],
+		"file": "nameData",
+		"path": "namingPatterns",
+		"render": "strings",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 1,
+		"header": ["d6", "Naming Pattern"],
+		"file": "nameData",
+		"path": "familyNamePatterns",
+		"render": "strings",
+		"cap": false,
+		"bold": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 2,
+		"header": ["d50", "Prefix", "Syllable 2", "Syllable 3", "Suffix"],
+		"file": "nameData",
+		"path": "cultures.0.personalNames",
+		"render": "object",
+		"cols": ["prefix", "syllable2", "syllable3", "suffix"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 3,
+		"header": ["d50", "Adjective 1", "Adjective 2", "Noun 1", "Noun 2"],
+		"file": "nameData",
+		"path": "cultures.0.familyNamesInWorld",
+		"render": "gloss",
+		"cols": ["adjective1", "adjective2", "noun1", "noun2"]
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 4,
+		"header": ["d50", "Prefix", "Syllable 2", "Syllable 3", "Suffix"],
+		"file": "nameData",
+		"path": "cultures.1.personalNames",
+		"render": "object",
+		"cols": ["prefix", "syllable2", "syllable3", "suffix"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 5,
+		"header": ["d50", "Adjective 1", "Adjective 2", "Noun 1", "Noun 2"],
+		"file": "nameData",
+		"path": "cultures.1.familyNamesInWorld",
+		"render": "gloss",
+		"cols": ["adjective1", "adjective2", "noun1", "noun2"]
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 6,
+		"header": ["d50", "Prefix", "Syllable 2", "Syllable 3", "Suffix"],
+		"file": "nameData",
+		"path": "cultures.2.personalNames",
+		"render": "object",
+		"cols": ["prefix", "syllable2", "syllable3", "suffix"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 7,
+		"header": ["d50", "Adjective 1", "Adjective 2", "Noun 1", "Noun 2"],
+		"file": "nameData",
+		"path": "cultures.2.familyNamesInWorld",
+		"render": "gloss",
+		"cols": ["adjective1", "adjective2", "noun1", "noun2"]
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 8,
+		"header": ["d50", "Prefix", "Syllable 2", "Syllable 3", "Suffix"],
+		"file": "nameData",
+		"path": "cultures.3.personalNames",
+		"render": "object",
+		"cols": ["prefix", "syllable2", "syllable3", "suffix"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 9,
+		"header": ["d50", "Adjective 1", "Adjective 2", "Noun 1", "Noun 2"],
+		"file": "nameData",
+		"path": "cultures.3.familyNamesInWorld",
+		"render": "gloss",
+		"cols": ["adjective1", "adjective2", "noun1", "noun2"]
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 10,
+		"header": ["d50", "Prefix", "Syllable 2", "Syllable 3", "Suffix"],
+		"file": "nameData",
+		"path": "cultures.4.personalNames",
+		"render": "object",
+		"cols": ["prefix", "syllable2", "syllable3", "suffix"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 11,
+		"header": ["d50", "Adjective 1", "Adjective 2", "Noun 1", "Noun 2"],
+		"file": "nameData",
+		"path": "cultures.4.familyNamesInWorld",
+		"render": "gloss",
+		"cols": ["adjective1", "adjective2", "noun1", "noun2"]
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 12,
+		"header": ["d50", "Prefix", "Syllable 2", "Syllable 3", "Suffix"],
+		"file": "nameData",
+		"path": "cultures.5.personalNames",
+		"render": "object",
+		"cols": ["prefix", "syllable2", "syllable3", "suffix"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 13,
+		"header": ["d50", "Adjective 1", "Adjective 2", "Noun 1", "Noun 2"],
+		"file": "nameData",
+		"path": "cultures.5.familyNamesInWorld",
+		"render": "gloss",
+		"cols": ["adjective1", "adjective2", "noun1", "noun2"]
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 14,
+		"header": ["d50", "Prefix", "Syllable 2", "Syllable 3", "Suffix"],
+		"file": "nameData",
+		"path": "cultures.6.personalNames",
+		"render": "object",
+		"cols": ["prefix", "syllable2", "syllable3", "suffix"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 15,
+		"header": ["d50", "Adjective 1", "Adjective 2", "Noun 1", "Noun 2"],
+		"file": "nameData",
+		"path": "cultures.6.familyNamesInWorld",
+		"render": "gloss",
+		"cols": ["adjective1", "adjective2", "noun1", "noun2"]
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 16,
+		"header": ["d50", "Prefix", "Syllable 2", "Syllable 3", "Suffix"],
+		"file": "nameData",
+		"path": "cultures.7.personalNames",
+		"render": "object",
+		"cols": ["prefix", "syllable2", "syllable3", "suffix"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 17,
+		"header": ["d50", "Adjective 1", "Adjective 2", "Noun 1", "Noun 2"],
+		"file": "nameData",
+		"path": "cultures.7.familyNamesInWorld",
+		"render": "gloss",
+		"cols": ["adjective1", "adjective2", "noun1", "noun2"]
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 18,
+		"header": ["d50", "Prefix", "Syllable 2", "Syllable 3", "Suffix"],
+		"file": "nameData",
+		"path": "cultures.8.personalNames",
+		"render": "object",
+		"cols": ["prefix", "syllable2", "syllable3", "suffix"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 19,
+		"header": ["d50", "Adjective 1", "Adjective 2", "Noun 1", "Noun 2"],
+		"file": "nameData",
+		"path": "cultures.8.familyNamesInWorld",
+		"render": "gloss",
+		"cols": ["adjective1", "adjective2", "noun1", "noun2"]
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 20,
+		"header": ["d50", "Prefix", "Syllable 2", "Syllable 3", "Suffix"],
+		"file": "nameData",
+		"path": "cultures.9.personalNames",
+		"render": "object",
+		"cols": ["prefix", "syllable2", "syllable3", "suffix"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 21,
+		"header": ["d50", "Adjective 1", "Adjective 2", "Noun 1", "Noun 2"],
+		"file": "nameData",
+		"path": "cultures.9.familyNamesInWorld",
+		"render": "gloss",
+		"cols": ["adjective1", "adjective2", "noun1", "noun2"]
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 22,
+		"header": ["d50", "Prefix", "Syllable 2", "Syllable 3", "Suffix"],
+		"file": "nameData",
+		"path": "cultures.10.personalNames",
+		"render": "object",
+		"cols": ["prefix", "syllable2", "syllable3", "suffix"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 23,
+		"header": ["d50", "Adjective 1", "Adjective 2", "Noun 1", "Noun 2"],
+		"file": "nameData",
+		"path": "cultures.10.familyNamesInWorld",
+		"render": "gloss",
+		"cols": ["adjective1", "adjective2", "noun1", "noun2"]
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 24,
+		"header": ["d50", "Prefix", "Syllable 2", "Syllable 3", "Suffix"],
+		"file": "nameData",
+		"path": "cultures.11.personalNames",
+		"render": "object",
+		"cols": ["prefix", "syllable2", "syllable3", "suffix"],
+		"cap": false
+	},
+	{
+		"page": "08-random-name.mdx",
+		"index": 25,
+		"header": ["d50", "Adjective 1", "Adjective 2", "Noun 1", "Noun 2"],
+		"file": "nameData",
+		"path": "cultures.11.familyNamesInWorld",
+		"render": "gloss",
+		"cols": ["adjective1", "adjective2", "noun1", "noun2"]
+	},
+	{
+		"page": "10-random-quests.mdx",
+		"index": 0,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "questData",
+		"path": "locations",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "10-random-quests.mdx",
+		"index": 1,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "questData",
+		"path": "sources",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "10-random-quests.mdx",
+		"index": 2,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "questData",
+		"path": "rumorSubjects",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "10-random-quests.mdx",
+		"index": 3,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "questData",
+		"path": "causes",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "10-random-quests.mdx",
+		"index": 4,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "questData",
+		"path": "patrons",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "10-random-quests.mdx",
+		"index": 5,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "questData",
+		"path": "tasks",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "10-random-quests.mdx",
+		"index": 6,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "questData",
+		"path": "subjects",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "10-random-quests.mdx",
+		"index": 7,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "questData",
+		"path": "complications",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "10-random-quests.mdx",
+		"index": 8,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "questData",
+		"path": "rewards",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "11-social-intrigue.mdx",
+		"index": 0,
+		"header": ["d20", "Occupation"],
+		"file": "npcData",
+		"path": "occupations",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "11-social-intrigue.mdx",
+		"index": 1,
+		"header": ["d20", "Visual Trait"],
+		"file": "npcData",
+		"path": "visualDistinctiveness",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "11-social-intrigue.mdx",
+		"index": 2,
+		"header": ["d20", "Mannerism"],
+		"file": "npcData",
+		"path": "mannerisms",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 0,
+		"header": ["d20", "Geography"],
+		"file": "settlementData",
+		"path": "geography",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 1,
+		"header": ["d20", "Resources"],
+		"file": "settlementData",
+		"path": "resources",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 2,
+		"header": ["d20", "Culture"],
+		"file": "settlementData",
+		"path": "culture",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 3,
+		"header": ["d20", "Government"],
+		"file": "settlementData",
+		"path": "government",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 4,
+		"header": ["d20", "Historical Event"],
+		"file": "settlementData",
+		"path": "historicalEvents",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 5,
+		"header": ["d20", "Threat"],
+		"file": "settlementData",
+		"path": "threats",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 6,
+		"header": ["d20", "Defense"],
+		"file": "settlementData",
+		"path": "defenses",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 7,
+		"header": ["d20", "Law Enforcement"],
+		"file": "settlementData",
+		"path": "lawEnforcement",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 8,
+		"header": ["d20", "Power Player"],
+		"file": "settlementData",
+		"path": "powerPlayers",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 9,
+		"header": ["d20", "Landmark"],
+		"file": "settlementData",
+		"path": "landmarks",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 10,
+		"header": ["d20", "District"],
+		"file": "settlementData",
+		"path": "districts",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 11,
+		"header": ["d20", "Streets"],
+		"file": "settlementData",
+		"path": "streets",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 12,
+		"header": ["d20", "Building"],
+		"file": "settlementData",
+		"path": "buildings.harbor",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 13,
+		"header": ["d20", "Building"],
+		"file": "settlementData",
+		"path": "buildings.market",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 14,
+		"header": ["d20", "Building"],
+		"file": "settlementData",
+		"path": "buildings.temple",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 15,
+		"header": ["d20", "Building"],
+		"file": "settlementData",
+		"path": "buildings.artisan",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 16,
+		"header": ["d20", "Building"],
+		"file": "settlementData",
+		"path": "buildings.garrison",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 17,
+		"header": ["d20", "Building"],
+		"file": "settlementData",
+		"path": "buildings.residential",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 18,
+		"header": ["d20", "Building"],
+		"file": "settlementData",
+		"path": "buildings.slum",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 19,
+		"header": ["d20", "Building"],
+		"file": "settlementData",
+		"path": "buildings.scholarly",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 20,
+		"header": ["d20", "Building"],
+		"file": "settlementData",
+		"path": "buildings.pleasure",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "12-random-settlement.mdx",
+		"index": 21,
+		"header": ["d20", "Building"],
+		"file": "settlementData",
+		"path": "buildings.foreign",
+		"render": "strings",
+		"cap": true,
+		"bold": false
+	},
+	{
+		"page": "13-random-terrain.mdx",
+		"index": 0,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "terrainData",
+		"path": "terrainThemes",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "13-random-terrain.mdx",
+		"index": 1,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "terrainData",
+		"path": "terrainFeatures",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "13-random-terrain.mdx",
+		"index": 2,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "terrainData",
+		"path": "terrainDetails",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "13-random-terrain.mdx",
+		"index": 3,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "terrainData",
+		"path": "supernaturalThemes",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "13-random-terrain.mdx",
+		"index": 4,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "terrainData",
+		"path": "supernaturalFeatures",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "13-random-terrain.mdx",
+		"index": 5,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "terrainData",
+		"path": "supernaturalDetails",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "13-random-terrain.mdx",
+		"index": 6,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "terrainData",
+		"path": "mundaneLocationThemes",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "13-random-terrain.mdx",
+		"index": 7,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "terrainData",
+		"path": "mundaneLocationFeatures",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "13-random-terrain.mdx",
+		"index": 8,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "terrainData",
+		"path": "mundaneLocationDetails",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "13-random-terrain.mdx",
+		"index": 9,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "terrainData",
+		"path": "supernaturalLocationThemes",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "13-random-terrain.mdx",
+		"index": 10,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "terrainData",
+		"path": "supernaturalLocationFeatures",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	},
+	{
+		"page": "13-random-terrain.mdx",
+		"index": 11,
+		"header": ["d66", "1", "2", "3", "4", "5", "6"],
+		"file": "terrainData",
+		"path": "supernaturalLocationDetails",
+		"render": "d66",
+		"cap": false,
+		"bold": true
+	}
+]

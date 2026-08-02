@@ -95,6 +95,19 @@ input[type='number'] {
 	   M9 reached the catalyst card via `--cs-light-blue`; S5 names the register
 	   properly and points the older alias at it, so the three read as one thing
 	   instead of one exception and two accidents. */
+	/* Bronze as INK, one step deeper than bronze as a LINE (M13 S10, measured).
+	   `--nexus-bronze` is right for a keyline or a wash, and it is 4.3-4.9:1 as
+	   small text: the record-plate captions, the 11px field labels and the toggle
+	   marks all sit on faint bronze washes, which close the gap from the other
+	   side and put them under AA. Mixing 12% toward `--ifm-font-color-base`
+	   DARKENS it on parchment and LIGHTENS it on obsidian — one declaration, both
+	   themes — for +0.4 of ratio and a hue nobody can tell from the original.
+	   Text and glyphs take this; borders, washes and fills keep `--nexus-bronze`. */
+	--cs-bronze-ink: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
 	--cs-magic: var(--rune-cyan-text);
 	--cs-light-blue: var(--cs-magic);
 	--cs-grey: var(--ifm-color-emphasis-700);
@@ -324,7 +337,7 @@ input[type='number'] {
 	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
 	border-radius: 0;
 	background: none;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 	font-family: var(--nexus-font-ui);
 	font-size: var(--nexus-text-sm);
 	font-weight: 600;
@@ -333,7 +346,7 @@ input[type='number'] {
 }
 .character-sheet-page .cs-mark-button:hover,
 .cs-tokens .cs-mark-button:hover {
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
 }
 .character-sheet-page .cs-mark-button:focus-visible,
@@ -410,11 +423,11 @@ input[type='number'] {
 	padding: 0;
 	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
 	border-radius: 0;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 }
 .character-sheet-page .cs-section-actions .MuiIconButton-root:hover,
 .cs-tokens .cs-section-actions .MuiIconButton-root:hover {
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
 }
 .character-sheet-page .cs-section-actions .MuiSvgIcon-root,
@@ -439,7 +452,7 @@ input[type='number'] {
    information rather than decoration. */
 .character-sheet-page .cs-section-actions .MuiIconButton-root[data-state='on'],
 .cs-tokens .cs-section-actions .MuiIconButton-root[data-state='on'] {
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
 }
 
@@ -483,7 +496,7 @@ input[type='number'] {
 	padding: 0 0.5rem;
 	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
 	border-radius: 0;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 	font-family: var(--nexus-font-ui);
 	font-size: var(--nexus-text-2xs);
 	font-variant-caps: small-caps;
@@ -492,7 +505,7 @@ input[type='number'] {
 }
 .character-sheet-page .cs-section-actions .MuiButton-root:hover,
 .cs-tokens .cs-section-actions .MuiButton-root:hover {
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
 }
 .character-sheet-page .cs-section-actions .MuiButton-startIcon,
@@ -713,7 +726,7 @@ input[type='number'] {
 	padding: 2px 0.5rem;
 	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
 	background: none;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 	font-family: var(--nexus-font-ui);
 	font-size: var(--nexus-text-2xs);
 	font-variant-caps: small-caps;
@@ -722,18 +735,18 @@ input[type='number'] {
 	cursor: pointer;
 }
 .character-sheet-page .cs-toggle-mark:hover {
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
 }
 .character-sheet-page .cs-toggle-mark[aria-pressed='true'] {
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
 }
 /* The plate alone was read as a command button ("do the static thing") rather than
    as a state. It carries the app's checkbox mark now, so it says the same thing the
    category menu's rows say: an empty socket is off, an inlaid lozenge is on. */
 .character-sheet-page .cs-toggle-mark .cs-check-mark {
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 }
 /* Bare at rest, slot under the pointer — the equation is an inscription first. */
 .character-sheet-page .cs-equation .MuiInputBase-root {
@@ -842,9 +855,13 @@ input[type='number'] {
 	content: '';
 	position: absolute;
 	inset: 1.5px;
+	/* 5%, not 10% (M13 S10, measured). The numeral sits on THIS fill, not on the
+	   keyline above it, and rune-cyan ink on a 10% cyan tint measured 4.33:1 in
+	   light mode — under AA for 15px. Halving the tint clears it without touching
+	   the token, which the docs' magic register also uses. */
 	background: color-mix(
 		in srgb,
-		var(--cs-magic) 10%,
+		var(--cs-magic) 5%,
 		var(--ifm-background-color)
 	);
 	clip-path: inherit;
@@ -965,7 +982,11 @@ input[type='number'] {
 	border-bottom: none;
 	border-radius: 0;
 	background: none;
-	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, transparent);
+	/* 88%, not 78% (M13 S10, measured). An unselected tab is already quieter than
+	   the selected one by its plate, its keyline and its mark — three signals — so
+	   the ink did not have to carry the difference too, and at 78% over the bar's
+	   own bronze wash it measured 3.97:1. */
+	color: color-mix(in srgb, var(--ifm-font-color-base) 96%, transparent);
 	font-family: var(--nexus-font-ui);
 	font-size: var(--nexus-text-base);
 	font-weight: 600;
@@ -1019,9 +1040,9 @@ input[type='number'] {
 }
 
 .character-sheet-page .cs-tabbar__tab[aria-selected='true'] {
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 	background: color-mix(in srgb, var(--nexus-bronze) 16%, transparent);
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 	/* The 7px each side that an inactive plate spends on padding is spent on the mark here. */
 	padding-left: 1.1rem;
 	padding-right: 1.1rem;
@@ -1043,7 +1064,7 @@ input[type='number'] {
 	width: 2.25rem;
 	padding: 0;
 	border: none;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 	font-family: var(--nexus-font-ui);
 	font-size: var(--nexus-text-2xl);
 	font-weight: 700;
@@ -1125,7 +1146,7 @@ input[type='number'] {
 	font-variant-caps: small-caps;
 	letter-spacing: 0.06em;
 	line-height: 1.6;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 }
 .character-sheet-page .cs-record-row,
 .cs-tokens .cs-record-row {
@@ -1305,7 +1326,7 @@ input[type='number'] {
 	font-variant-caps: small-caps;
 	font-weight: 700;
 	letter-spacing: 0.06em;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 	vertical-align: 0.1em;
 }
 
@@ -1378,7 +1399,7 @@ input[type='number'] {
 	font-size: var(--nexus-text-xs);
 	font-variant-caps: small-caps;
 	letter-spacing: 0.06em;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 }
 /* A stat block's table is a ledger: ruled courses, small-caps head, tabular figures. It
    arrives as a plain markdown table, so the register is applied here rather than being
@@ -1395,7 +1416,7 @@ input[type='number'] {
 	font-size: var(--nexus-text-2xs);
 	font-variant-caps: small-caps;
 	letter-spacing: 0.06em;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 	text-align: left;
 	border: 0;
 	border-bottom: 1.5px solid
@@ -1447,14 +1468,14 @@ input[type='number'] {
 }
 .character-sheet-page .cs-portrait__plate:hover,
 .character-sheet-page .cs-portrait__plate:focus-visible {
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 	outline: none;
 }
 /* The drop target says so with a CUT edge — a dashed keyline is the one place a broken
    line is legitimate here, because it means "not yet filled". */
 .character-sheet-page .cs-portrait__plate[data-drag] {
 	border-style: dashed;
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
 }
 .character-sheet-page .cs-portrait__image {
@@ -1501,7 +1522,7 @@ input[type='number'] {
 	font-size: var(--nexus-text-2xs);
 	font-variant-caps: small-caps;
 	letter-spacing: 0.06em;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 }
 
 /* A record row's "choose from the rulebook" control (S6, owner review).
@@ -1527,7 +1548,7 @@ input[type='number'] {
 .character-sheet-page .cs-record-row .MuiIconButton-root:hover {
 	border-color: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
 	background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 }
 
 /* M13 S6 — the tab header plate.
@@ -1621,7 +1642,7 @@ input[type='number'] {
 	   high" report. Small caps make it worse, having no descenders to fill the slack.
 	   One height for both, and the baselines land together. */
 	line-height: 1.4rem;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 	white-space: nowrap;
 }
 /* A value in the band, not a caption beside a label: the ladder's 18px step, and
@@ -1753,11 +1774,11 @@ input[type='number'] {
 	padding: 0;
 	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
 	border-radius: 0;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 }
 .character-sheet-page .cs-meta-band .MuiIconButton-root:hover,
 .cs-tokens .cs-meta-band .MuiIconButton-root:hover {
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
 }
 /* A band FIELD that opens an editor (S5). Bare at rest — a band is a line of facts, and
@@ -1977,7 +1998,7 @@ input[type='number'] {
 	background: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
 }
 .cs-search-dialog .cs-search-field:focus-within {
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 }
 /* Engraved fixture, not an icon button: pressing it does nothing. */
 .cs-search-dialog .cs-search-field__mark {
@@ -1991,7 +2012,7 @@ input[type='number'] {
 	);
 }
 .cs-search-dialog .cs-search-field:focus-within .cs-search-field__mark {
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 }
 .cs-search-dialog .cs-search-field__input {
 	flex: 1 1 auto;
@@ -2268,7 +2289,7 @@ input[type='number'] {
 }
 .cs-search-dialog .cs-search-ledger__head > button:hover,
 .cs-search-dialog .cs-search-ledger__head > button[data-active='true'] {
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 }
 .cs-search-dialog .cs-search-ledger__head > button:focus-visible {
 	outline: 1.5px solid var(--nexus-bronze);
@@ -2375,18 +2396,18 @@ input[type='number'] {
 	font-size: var(--nexus-text-2xs);
 	font-variant-caps: small-caps;
 	letter-spacing: 0.06em;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 	background: none;
 	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
 	border-radius: 0;
 	cursor: pointer;
 }
 .cs-search-dialog .cs-search-toggle:hover {
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
 }
 .cs-search-dialog .cs-search-toggle[aria-pressed='true'] {
-	border-color: var(--nexus-bronze);
+	border-color: var(--cs-bronze-ink);
 	background: color-mix(in srgb, var(--nexus-bronze) 24%, transparent);
 }
 .cs-search-dialog .cs-search-toggle:focus-visible {
@@ -2529,8 +2550,8 @@ input[type='number'] {
 	background: color-mix(in srgb, var(--nexus-bronze) 8%, transparent);
 }
 .character-sheet-page .cs-playboard__tab--on {
-	border-bottom-color: var(--nexus-bronze);
-	color: var(--nexus-bronze);
+	border-bottom-color: var(--cs-bronze-ink);
+	color: var(--cs-bronze-ink);
 	background: color-mix(in srgb, var(--nexus-bronze) 8%, transparent);
 }
 /* The words, on the selected tab only. Six labels across is the stacked header
@@ -2600,7 +2621,7 @@ input[type='number'] {
 	color: inherit;
 }
 .character-sheet-page .cs-playrow__summary:hover .cs-playrow__name {
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 }
 .character-sheet-page .cs-playrow__name {
 	flex: 0 1 auto;
@@ -2939,7 +2960,7 @@ input[type='number'] {
 	font-size: var(--nexus-text-xs);
 	font-variant-caps: small-caps;
 	letter-spacing: 0.06em;
-	color: var(--nexus-bronze);
+	color: var(--cs-bronze-ink);
 }
 .cs-search-dialog .cs-change-row__values {
 	min-width: 0;
@@ -3019,4 +3040,288 @@ input[type='number'] {
 		var(--nexus-bronze) 55%,
 		var(--ifm-font-color-base)
 	);
+}
+
+/* M13 S12 — the character list, on the sheet's own ledger.
+   ==========================================================================
+
+   The list is the FIRST thing a player sees and it was the last list not re-cut:
+   an MUI `List` of `ListItemButton`s with an avatar slot, a `folk · background`
+   subtitle where the rest of the sheet has columns, and the level tag pinned to
+   the far right of a 1400px row, 700px from the name it describes.
+
+   The rows are anchors rather than `UnifiedListItem`s — they navigate, and the
+   primitive's two variants are a disclosure and a choice — so they carry the
+   ledger's look here instead of inheriting it. Everything a reader can perceive
+   is the same: one rule between entries, one grid down the page, one hover wash. */
+.character-sheet-page .cs-character-list {
+	/* CAPPED, unlike the sheet's own tabs (M13 S12, and it is the exception to
+	   S11's "fill the width" rather than a contradiction of it). A tab's ledger
+	   fills its column because its columns hold long, variable content — properties,
+	   damage, rule text. This one holds four short facts: a name, two closed
+	   vocabularies and a numeral. Spread across 1480px it becomes a name at the far
+	   left and a delete bin at the far right with a third of a screen of nothing
+	   between them, which is the stranded-fragment fault this milestone keeps
+	   fixing. Bounded, the row reads as one line about one character. */
+	max-width: 52rem;
+	margin-bottom: 1.5rem;
+}
+
+/* The line: the row's link, plus the delete control that cannot live inside it.
+   The control is positioned over the row's own trailing track rather than sitting
+   beside it, so the anchor keeps the full grid and its columns still land on the
+   heading above. */
+.character-sheet-page .cs-character-line {
+	position: relative;
+}
+.character-sheet-page .cs-character-line__actions {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 2.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.character-sheet-page .cs-character-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	column-gap: 8px;
+	min-height: 44px;
+	padding: 0.25rem 4px;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+	color: inherit;
+	text-decoration: none;
+}
+.character-sheet-page .cs-character-row:hover,
+.character-sheet-page .cs-character-row:focus-visible {
+	background: color-mix(in srgb, var(--nexus-bronze) 8%, transparent);
+	color: inherit;
+	text-decoration: none;
+}
+/* The name is the one thing on this page a reader is looking for, so it takes the
+   display serif — the register the site uses for a NAMED THING (a card title, a
+   creature). Inside the sheet's tabs a row's name stays in the UI face, because
+   there it is one field among nine; here the row IS the name. */
+.character-sheet-page .cs-character-row__name {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-md);
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
+/* The gutter: the character's PORTRAIT, in a keyline plate — square, because every
+   plate on this sheet has hard corners and a round avatar is the single most
+   web-app shape there is.
+
+   The plate is always drawn, whether or not there is a picture in it: it is the
+   portrait SLOT, and an empty slot that keeps its frame reads as a portrait nobody
+   has uploaded yet, while a frame that appears and disappears down a column reads
+   as two different row shapes. Empty, it holds the `folk` mark — a person — rather
+   than the `scroll` the old list used, which means "a character sheet" in the
+   header and the breadcrumb and so identified nobody. */
+.character-sheet-page .cs-character-row__mark {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	width: 100%;
+	height: 1.9rem;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 6%, transparent);
+	color: var(--cs-bronze-ink, var(--nexus-bronze));
+}
+.character-sheet-page .cs-character-row__portrait {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* An empty shelf. One line in the quiet register, not three paragraphs of
+   apology — the same voice the empty Quick Ref course uses. */
+.character-sheet-page .cs-character-empty {
+	padding: 1.25rem 4px;
+	font-size: var(--nexus-text-sm);
+	font-style: italic;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 45%,
+		var(--ifm-font-color-base)
+	);
+}
+.character-sheet-page .cs-character-empty strong {
+	font-style: normal;
+	font-weight: 600;
+	color: var(--cs-bronze-ink, var(--nexus-bronze));
+}
+
+/* M13 S13 — the masthead.
+   ==========================================================================
+
+   The band above everything: the character shelf, an open character, and the
+   logged-out visitor are three states of ONE header doing one job — where you
+   are on the left, what you can do here on the right.
+
+   What it was: an MUI flex row with `borderColor: 'divider'` (Material's grey,
+   and the last of it above the fold), a bare `<` glyph for "back", bare icon
+   buttons with no plate, and a round avatar. Every one of those had already been
+   replaced somewhere below it on the same page. */
+.character-sheet-page .cs-masthead {
+	position: sticky;
+	top: 60px;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.5rem 0;
+	margin-bottom: 1rem;
+	background-color: var(--ifm-background-color);
+	/* Bronze, and 1.5px — the weight the sheet's own keylines carry. A hairline
+	   under a sticky band disappears the moment content scrolls under it. */
+	border-bottom: 1.5px solid
+		color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+}
+
+/* The way back, as a word. A caret alone is the browser's own back button drawn
+   a second time, and it does not say where back goes. */
+.character-sheet-page .cs-masthead__back {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	min-height: var(--nexus-target);
+	padding: 0 0.5rem 0 0.35rem;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 6%, transparent);
+	color: var(--cs-bronze-ink, var(--nexus-bronze));
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	text-decoration: none;
+}
+.character-sheet-page .cs-masthead__back:hover {
+	background: color-mix(in srgb, var(--nexus-bronze) 14%, transparent);
+	color: var(--cs-bronze-ink, var(--nexus-bronze));
+	text-decoration: none;
+}
+/* The caret points the way it travels: LEFT, back to the shelf. `Chevron` is
+   drawn pointing down, so that is -90deg — the same rotation `ListSection` uses
+   for "closed", which is a coincidence of geometry rather than a shared meaning. */
+.character-sheet-page .cs-masthead__back .cs-chevron {
+	transform: rotate(-90deg);
+}
+
+.character-sheet-page .cs-masthead__subject {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	min-width: 0;
+}
+/* The page's identity: a character's name, or the shelf's own title. The display
+   serif at a heading step — the one place on this page the serif belongs, because
+   this is the name of the thing being read. */
+.character-sheet-page .cs-masthead__name {
+	margin: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-xl);
+	font-weight: 600;
+	line-height: 1.2;
+	letter-spacing: 0.01em;
+}
+.character-sheet-page .cs-masthead__tools {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	margin-left: auto;
+}
+
+/* The user plate: square and keylined, like every other plate on this sheet.
+   A round avatar is the single most web-app shape there is, and it was the last
+   circle above the fold. */
+.character-sheet-page .cs-user-plate {
+	width: var(--nexus-target);
+	height: var(--nexus-target);
+	border-radius: 0;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
+	color: var(--cs-bronze-ink, var(--nexus-bronze));
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	font-weight: 600;
+	cursor: pointer;
+}
+.character-sheet-page .cs-user-plate:hover {
+	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+}
+
+/* The masthead's controls run one step larger than a section strip's.
+   ==========================================================================
+
+   `--nexus-target` (24px) is the floor, and it is right INSIDE a dense ruled row
+   where a control sits among values. The masthead is the page's own band: its
+   controls are the only ones on screen before a character is even open, they have
+   no row to be dense with, and at 24px against a 22px name they read as an
+   afterthought. 28px is the same plate, one step up. */
+.character-sheet-page .cs-masthead .cs-section-actions .MuiIconButton-root,
+.character-sheet-page .cs-masthead .cs-section-actions .MuiButton-root,
+.character-sheet-page .cs-masthead .cs-user-plate,
+.character-sheet-page .cs-masthead__back {
+	min-height: 28px;
+}
+.character-sheet-page .cs-masthead .cs-section-actions .MuiIconButton-root,
+.character-sheet-page .cs-masthead .cs-user-plate {
+	width: 28px;
+	height: 28px;
+}
+/* The glyph inside them stays at the strip's reading size: a 24px Material icon in
+   a 28px plate is a glyph wearing the plate rather than sitting in it. */
+.character-sheet-page .cs-masthead .cs-section-actions .MuiSvgIcon-root {
+	font-size: 16px;
+}
+
+/* The account panel — what opens from the user plate (M13 S13).
+   ==========================================================================
+
+   Portalled out of `.character-sheet-page`, so it carries `cs-tokens` and every
+   rule here is written for both scopes. `MuiMenu` already gives it the keyline and
+   the square corners; what it needed was the sheet's own REGISTERS: a caption that
+   says what the panel is, an email that reads as a value rather than as bold body
+   text, and a sign-out that is not permanently red. */
+.cs-tokens .cs-account-panel__caption,
+.character-sheet-page .cs-account-panel__caption {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	line-height: 1;
+	margin-bottom: 0.35rem;
+	color: var(--cs-bronze-ink, var(--nexus-bronze));
+}
+.cs-tokens .cs-account-panel__email,
+.character-sheet-page .cs-account-panel__email {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+	overflow-wrap: anywhere;
+}
+/* Sign out is reversible — the reader has the password. So it is a peer of the
+   rows above it at rest, and only says "this ends the session" under the pointer,
+   the same grammar `DeleteButton` uses for an action that is not. */
+.cs-tokens .cs-account-panel__signout:hover,
+.character-sheet-page .cs-account-panel__signout:hover {
+	color: var(--cs-danger);
+}
+.cs-tokens .cs-account-panel__signout:hover .MuiSvgIcon-root,
+.character-sheet-page .cs-account-panel__signout:hover .MuiSvgIcon-root {
+	color: var(--cs-danger);
 }

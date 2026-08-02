@@ -7,6 +7,8 @@ import { NpcAutoRollerWrapper } from '@site/src/components/AutoRoller/NpcAutoRol
 
 # 🎭 NPCs
 
+Someone to talk to: what they want, how they carry themselves, and where they will not bend.
+
 <NpcAutoRollerWrapper />
 
 Use these tables to quickly build an NPC profile for any scene. Roll once on each table or just pick what fits. For Social Intrigue scenes specifically, see the [Social Intrigue rules](../../06-scenes/07-challenges/01-social-intrigue.md) for how Disposition, Motivations, and Pitfalls work in play.
@@ -15,6 +17,11 @@ Use these tables to quickly build an NPC profile for any scene. Roll once on eac
 
 ## Occupation
 
+The tables below are what the roller draws from. They are folded because nothing reads them start to finish — open one to roll it by hand.
+
+<TableFold label="Occupation" rows={20}>
+
+{/* gen:table:npcData.occupations#0 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Occupation |
 | --- | --- |
@@ -39,11 +46,17 @@ Use these tables to quickly build an NPC profile for any scene. Roll once on eac
 | 19 | Mystic or fortune teller |
 | 20 | Mercenary or sell-sword |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ## Visual Distinctiveness
 
+<TableFold label="Visual Distinctiveness" rows={20}>
+
+{/* gen:table:npcData.visualDistinctiveness#1 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Visual Trait |
 | --- | --- |
@@ -68,11 +81,17 @@ Use these tables to quickly build an NPC profile for any scene. Roll once on eac
 | 19 | A foreign style of dress |
 | 20 | An ever-present tool or weapon on their belt |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
 ## Mannerisms & Voice
 
+<TableFold label="Mannerisms & Voice" rows={20}>
+
+{/* gen:table:npcData.mannerisms#2 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d20 | Mannerism |
 | --- | --- |
@@ -97,6 +116,9 @@ Use these tables to quickly build an NPC profile for any scene. Roll once on eac
 | 19 | Speaks overly formally, even in casual settings |
 | 20 | Sniffs or tastes food and drink before accepting it |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
