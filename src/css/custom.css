@@ -330,6 +330,28 @@
 	--ifm-code-font-size: 95%;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 	--ifm-footer-padding-vertical: var(--ifm-spacing-vertical);
+	/* Infima's own `.container` — the row wrapping sidebar + doc column + TOC on
+	   EVERY page using the default layout — was capping at the stock 1320px
+	   above the `xl` breakpoint and never growing again, on any monitor. That
+	   was the actual "thin strip" bottleneck: the doc column measured ~990px
+	   even at a 3000px-wide viewport, because the row around it had already
+	   hit its ceiling. `--nexus-measure`'s own `clamp()` (see custom.css further
+	   down) can only widen the SHEET within whatever room this leaves it, so
+	   raising the floor here is what gives that clamp something to work with.
+
+	   2000px (up from an interim 1600px) is sized for `<Columns>` (M14): a
+	   two-column spread needs ~72rem (2 × 34.75rem tracks + a 2.5rem gap) of
+	   pure content width, and at 1600px the doc column plateaued at 75rem —
+	   enough to fit ONE `<Columns>` block, but with only ~3rem of margin, which
+	   read as an edge-case squeeze rather than a comfortable default, and left
+	   some data tables (e.g. the Folk page's Age Groups table) still needing
+	   their own internal scrollbar inside a track that narrow.
+
+	   The homepage does not use `.container` (its own module CSS), so this is
+	   scoped to the doc/theme-page layout in practice; if another page reads as
+	   too wide with the wider row, narrow `.container` back down for that page
+	   specifically rather than lowering this. */
+	--ifm-container-width-xl: 2000px;
 	/* Procedural parchment grain: a tiny stitched SVG noise tile, no raster
 	   asset. Consumed by body::before below. */
 	--parchment-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
@@ -503,7 +525,13 @@
 	   ELEMENT's own font, not the body's, so `72ch` on a 28px Cinzel h2 came out
 	   wider than the column and the cap silently did nothing — headings kept
 	   their full 759px while paragraphs wrapped at 576px. An absolute length
-	   resolves identically for every element it is applied to. */
+	   resolves identically for every element it is applied to.
+
+	   42rem here is the FLOOR, not the value in force everywhere. On a doc page
+	   `.theme-doc-markdown` overrides this to a `clamp()` that grows with the
+	   doc column's own width up to 56rem — see that rule for why. This root
+	   value is what the character sheet and any other non-doc consumer of the
+	   token still get untouched. */
 	--nexus-measure: 42rem;
 	/* Horizontal padding on the vellum sheet, published as a token so the sheet's
 	   max-width can be written as measure + padding and the two cannot drift. */
@@ -773,11 +801,83 @@ body::before {
 	background-color: var(--ifm-background-surface-color);
 	padding: 1.5rem var(--nexus-sheet-padding-x);
 	border-radius: 8px;
+	/* Fixed, and deliberately NOT fluid. A `clamp(..., 20cqw, ...)` was tried and
+	   is circular by construction: the only container in scope is `.markdown`,
+	   which IS this element, and this element's `max-width` is derived from the
+	   measure — so the measure depended on a width that depended on the measure.
+	   Browsers resolve that cycle by falling back rather than by erroring, which
+	   is worse than a fixed number: it silently computed a DIFFERENT measure on a
+	   spread page (697.6px) than on a plain one (768px), for no stated reason.
+
+	   48rem is ~96 characters, already past the 66-75 optimum, and going further
+	   is the "92-character line" mistake the measure exists to prevent. A single
+	   column should not absorb a wide monitor at all — the answer to a wide
+	   screen is the SPREAD below, which spends the width on a second column
+	   instead of on a longer line. */
+	--nexus-measure: 48rem;
 	/* The measure cap lives HERE, on the sheet, not on the prose elements — see
 	   the --nexus-measure token for why. Everything the page sets (prose, tables,
 	   cards, code, images) is bounded by the same edge, so the reading flow has
 	   one right margin instead of two. */
 	max-width: calc(var(--nexus-measure) + 2 * var(--nexus-sheet-padding-x));
+}
+
+/* ---------------------------------------------------------------------------
+   The SPREAD page (M14). A page containing a `<Columns>` segment is a book
+   page, not a reading column, so its sheet widens to hold two tracks.
+
+   Keyed off `:has()` rather than front matter so conversion is incremental and
+   costs no ceremony: a page that has not been converted matches nothing here
+   and renders byte-for-byte as it did before. Same idiom as the
+   `:not(:has(.character-sheet-page))` guard above.
+
+   This is what replaces the earlier attempt to have the BLOCK break out of the
+   sheet. That could not work: the sheet is both the vellum surface and the
+   width cap, so a child wider than the sheet is wider than its own background
+   and hangs off the parchment. Widening the sheet is the only version of this
+   that keeps content on its page.
+
+   68rem of content = two 32.75rem tracks + a 2.5rem gap, ~65 characters each.
+   With padding the sheet is 72rem (1152px), which fits the ~75rem doc column a
+   1920px viewport gives (measured, not assumed).
+   --------------------------------------------------------------------------- */
+.theme-doc-markdown:not(:has(.character-sheet-page)):has(.codex-columns) {
+	--nexus-spread-measure: 68rem;
+	max-width: calc(
+		var(--nexus-spread-measure) + 2 * var(--nexus-sheet-padding-x)
+	);
+}
+
+/* On a spread page everything that is NOT a two-column segment stays at the
+   reading measure and is CENTRED in the page.
+
+   Centred is the whole point. The pattern this repo rejected once — capped
+   prose beside uncapped tables — failed because it was left-aligned, so all
+   the slack piled up on one side and the ragged right edge read as broken.
+   Centred, a narrower block sits symmetrically inside the page like a plate in
+   a book's margins, and the two-column segments (which fill the page edge to
+   edge) supply the right edge the eye actually registers. */
+.theme-doc-markdown:has(.codex-columns) > *:not(.codex-columns) {
+	max-width: var(--nexus-measure);
+	/* LEFT-aligned, not centred, and no full-bleed exception for the title or the
+	   banner. Every block on the page starts at the same left margin, so the
+	   heading, the banner plate, the running prose and the left-hand track of a
+	   spread all share one vertical line down the page. Centring the narrower
+	   blocks inset them from that line and made a spread page read as two
+	   different layouts stacked; widening the title and banner to the full spread
+	   made them the odd ones out in the other direction. A book has ONE left
+	   margin, and everything hangs off it. */
+	margin-inline: 0;
+}
+
+/* Inside a segment the measure is the TRACK, not the sheet: the global prose
+   cap is wider than a 32.75rem column and would silently do nothing, but it
+   must still be switched off or a future narrower measure would re-cap a
+   column from the outside. Two classes beat the `.theme-doc-markdown p` cap on
+   specificity, so this holds regardless of stylesheet order — a CSS-module
+   rule at equal specificity would not. */
+.theme-doc-markdown .codex-columns :is(p, ul, ol, dl, blockquote, h2, h3, h4, h5, h6) {
+	max-width: none;
 }
 
 @media (max-width: 996px) {
@@ -912,6 +1012,16 @@ a:hover:not(.navbar__brand):not(.character-sheet-page a) {
    the containment off the page header, breadcrumbs and paginator. */
 .markdown {
 	container: nexus-prose / inline-size;
+}
+
+/* A table is never a figure that sits BESIDE something. `.plate-inline` floats
+   right, and when an entry's prose is shorter than the portrait the float is
+   still live when the table starts, so the table laid out in what was left of
+   the column instead of its full width. Clearing costs a band of whitespace
+   under a short entry and buys a table that is always the same width as every
+   other table on the page. */
+.markdown .codex-table-slab {
+	clear: both;
 }
 
 /* Measure cap on prose. The SHEET is already capped at the measure plus its own

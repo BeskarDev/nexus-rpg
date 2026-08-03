@@ -1,0 +1,133 @@
+/* A two-column segment. It fills the sheet it sits in and nothing more — the
+   SHEET is what widens for a spread page (see `:has(.codex-columns)` in
+   custom.css), so there is no breakout here: no negative margins, no measured
+   width, no JS. That is the whole fix for the block hanging off its own
+   background, because the background belongs to the sheet.
+
+   At the spread sheet's 68rem of content the two tracks come out at 32.75rem
+   each ((68 - 2.5) / 2), which is ~65 characters of Spectral — inside the
+   66-75 print optimum. The measure law therefore holds PER TRACK rather than
+   being suspended for this block. */
+.columns {
+	width: 100%;
+	margin-block: 1.5rem;
+
+	column-count: var(--codex-column-count, 2);
+	/* 2.5rem, and NO column rule. A bare vertical hairline between tracks is the
+	   flat-UI grouping bar the theme rejects everywhere else; separation is the
+	   gap's job. */
+	column-gap: 2.5rem;
+	column-fill: balance;
+
+	/* Kills the whitespace between the inline-block children below. Markdown puts
+	   a newline between every block, and an inline-block honours it as a space.
+	   Each child restores a real size immediately. */
+	font-size: 0;
+}
+
+/* Nothing may be sliced across the fold: a card, a table slab, a plate and a
+   code block are all objects, not text. */
+.columns > * {
+	break-inside: avoid;
+}
+
+/* EVERY child is monolithic, and this is the fix for a whole class of bug.
+   ---------------------------------------------------------------------------
+   Chrome renders each column as a fragmentainer and mishandles
+   absolutely-positioned descendants inside one: decoration is painted into the
+   wrong column, or into a phantom empty fragment left behind by a
+   `break-inside: avoid` block that did not fit. The codex is built on
+   absolutely-positioned ornament, so this surfaced three times from three
+   directions — a blockquote's corner diamonds, a creature card's keystone, an
+   `h2`'s cornice diamond.
+
+   An inline-block cannot be fragmented at all, so there is no second fragment
+   to paint into and no ambiguity about which column a box belongs to.
+   `break-inside: avoid`, `contain: layout`, `overflow: clip` and forcing a
+   stacking context were all tried on the blockquote case and none of them
+   worked; only making the box monolithic did.
+
+   `width: 100%` keeps block-level geometry, `vertical-align: top` keeps the box
+   off the text baseline (which would otherwise leave descender space under it),
+   and the font-size restores what `.columns` zeroed out to kill inter-block
+   whitespace. */
+.columns > * {
+	display: inline-block;
+	width: 100%;
+	vertical-align: top;
+	font-size: var(--nexus-text-base);
+}
+
+/* A heading stranded at the foot of a track is the classic multicol fault.
+   `break-after` is kept for engines that honour it, but Chrome does NOT
+   implement it in multicol — only `break-inside` — so the real guarantee is the
+   `.codex-keep` box the plugin wraps each heading and its section in. */
+.columns :is(h2, h3, h4, h5, h6) {
+	break-after: avoid;
+	margin-top: 0;
+}
+/* The keep-together group inherits `break-inside: avoid` from `.columns > *`.
+   It must not introduce a box of its own otherwise: no margin, so the section
+   spaces itself exactly as it would have unwrapped. */
+.columns > :global(.codex-keep) {
+	margin: 0;
+}
+/* The first heading of a group is the group's own top edge. */
+.columns > :global(.codex-keep) > :is(h2, h3, h4, h5, h6):first-child {
+	margin-top: 0;
+}
+
+/* --- Grid mode: a catalogue of cards ---------------------------------------
+   Row-major placement — first card left, second right, third left — so a
+   reader comparing two entries has them side by side, which is how a
+   catalogue is actually used. Grid also has no fragmentainers at all, which is
+   why the creature keystones are reliable here.
+
+   `align-items: start` keeps a short card from stretching to its row's height;
+   `minmax(0, 1fr)` stops a wide table inside a card from forcing the track
+   wider than half the sheet. */
+.grid {
+	display: grid;
+	grid-template-columns: repeat(var(--codex-column-count, 2), minmax(0, 1fr));
+	/* 1.5rem of row gap is a floor, not a preference: keystones straddle the top
+	   edge of their card and the deepest overhang in the kit is 21px (the rosette
+	   slot; ziggurat and gem are 20.33px). A smaller gap puts an ornament on top
+	   of the card above it. The column gap can be tighter — a card's own keyline
+	   already separates it from its neighbour. */
+	gap: 1.5rem 1.25rem;
+	align-items: start;
+	/* Multicol properties would otherwise still apply to the same element. */
+	column-count: auto;
+	font-size: var(--nexus-text-base);
+}
+/* Grid items are placed, never fragmented, so none of the monolithic
+   scaffolding above applies here. */
+.grid > * {
+	display: block;
+	width: auto;
+}
+
+/* Cards carry a vertical margin of their own, sized to clear their keystone.
+   Inside a grid that margin is double spacing, because it is ADDED to the row
+   gap rather than collapsed into it — so the gap takes over the job entirely.
+
+   Written against the global class and the attribute rather than the module
+   class so it beats a card's own `.card { margin: ... }` on specificity (0,2,0
+   against 0,1,0) regardless of which stylesheet the bundler emits first. */
+:global(.codex-columns[data-layout='grid']) > * {
+	margin-block: 0;
+}
+
+/* One column once a track would stop being readable. `nexus-prose` is the
+   container on `.markdown`, which IS `.theme-doc-markdown` — the sheet itself —
+   so this asks "is my page wide enough to spread", which is the actual
+   question, and it answers it the same way whether the page is narrow because
+   the device is or because the layout is. */
+@container nexus-prose (max-width: 52rem) {
+	.columns {
+		column-count: 1;
+	}
+	.grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}

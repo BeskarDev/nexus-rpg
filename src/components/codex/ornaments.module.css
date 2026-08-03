@@ -538,6 +538,26 @@
 		--plate-rosette: 38px;
 		--plate-chamfer: 10px;
 	}
+
+	/* The banner needed the same step for the same reason, one weight further
+	   down. At 4:1 and a ~350px span the picture is only ~80px tall: the 20px
+	   surround was 26% of the plate's height per side and the 38px rosette was
+	   HALF the height of the artwork it crowns. Ornament-to-picture ratio IS what
+	   a weight is, and at that span the banner's ratio had become the
+	   frontispiece's. It takes the INLINE geometry verbatim rather than a third
+	   set of numbers: that is the weight already drawn for a short span, and 14px
+	   is exactly where its three-lobe corner clears the ~3px lobe floor. */
+	.plate-banner .plateBox {
+		--plate-surround: 14px;
+		--plate-rosette: 26px;
+		--plate-chamfer: 7px;
+	}
+	.plate-banner .plateCornerWide {
+		display: none;
+	}
+	.plate-banner .plateCornerNarrow {
+		display: block;
+	}
 }
 
 /* The derived half of the chain is declared HERE, on the same element the
@@ -709,6 +729,20 @@
 	display: block;
 	width: 100%;
 	height: 100%;
+}
+
+/* The two corner drawings; the narrow one is revealed only by a weight's
+   container-query step-down (see `.plate-banner` below). Both are `block` +
+   full-size so the SVG fills the corner square either way. */
+.plateCornerWide,
+.plateCornerNarrow {
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 0;
+}
+.plateCornerNarrow {
+	display: none;
 }
 
 /* The rosette straddles the plate's OUTER edge, the same relation every card

@@ -10,6 +10,7 @@ const darkCodeTheme = prismThemes.gruvboxMaterialDark
 const autoKeywordPlugin = require('./src/remark/auto-keyword-plugin')
 const tableChipsPlugin = require('./src/remark/table-chips-plugin')
 const chapterSigilPlugin = require('./src/remark/chapter-sigil-plugin')
+const autoColumnsPlugin = require('./src/remark/auto-columns-plugin')
 
 // Load .env into process.env so the Firebase config can be injected into the
 // client bundle at build time (the values are public Firebase web config).
@@ -300,6 +301,10 @@ const config = {
 						chapterSigilPlugin,
 						tableChipsPlugin,
 						autoKeywordPlugin,
+						// LAST: it reparents top-level blocks into <Columns>, and the
+						// plugins above walk the tree by node type, so running it earlier
+						// would bury their targets one level deeper for no benefit.
+						autoColumnsPlugin,
 					],
 				},
 				// The sigil review gallery (`/dev/sigils`) is a development tool: it

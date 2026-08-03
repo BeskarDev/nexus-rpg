@@ -3114,6 +3114,22 @@ input[type='number'] {
 	letter-spacing: 0.02em;
 }
 
+/* Below the ledger's collapse threshold the row is a wrapped flex line, and the
+   NAME is what the reader came for — it takes the whole first line beside the
+   portrait, and folk / background / level wrap under it. `min-width` rather than
+   `flex-basis` because the basis has to survive the shrink: 100% minus the plate
+   and its gap is the widest the name can be without pushing itself to line two. */
+@media (max-width: 44.99rem) {
+	.character-sheet-page .cs-character-row {
+		flex-wrap: wrap;
+		row-gap: 2px;
+	}
+	.character-sheet-page .cs-character-row__name {
+		flex: 1 1 auto;
+		min-width: calc(100% - 1.9rem - 8px);
+	}
+}
+
 /* The gutter: the character's PORTRAIT, in a keyline plate — square, because every
    plate on this sheet has hard corners and a round avatar is the single most
    web-app shape there is.
@@ -3129,7 +3145,13 @@ input[type='number'] {
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
-	width: 100%;
+	/* 1.9rem, not `width: 100%`. The 100% was written for the grid TRACK, which is
+	   1.9rem wide — but the grid only exists above the ledger's collapse
+	   threshold, and below it the row is a flex line where 100% means the whole
+	   row. The portrait took the line and the name had nothing left. The literal
+	   is the same width the track is, so both layouts agree. */
+	flex: 0 0 1.9rem;
+	width: 1.9rem;
 	height: 1.9rem;
 	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
 	background: color-mix(in srgb, var(--nexus-bronze) 6%, transparent);
@@ -3173,7 +3195,7 @@ input[type='number'] {
    replaced somewhere below it on the same page. */
 .character-sheet-page .cs-masthead {
 	position: sticky;
-	top: 60px;
+	top: var(--ifm-navbar-height, 60px);
 	z-index: 100;
 	display: flex;
 	align-items: center;

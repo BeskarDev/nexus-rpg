@@ -112,3 +112,8 @@ export type {
 	MagicItemFigure,
 	MagicItemTallyRow,
 } from './MagicItemCard'
+
+// M14 — the bounded two-column spread. See Columns.tsx for why it is opt-in
+// and height-bounded rather than a page-wide `column-count`.
+export { default as Columns } from './Columns'
+export type { ColumnsProps } from './Columns'

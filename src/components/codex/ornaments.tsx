@@ -1957,6 +1957,23 @@ const PLATE_LOBES: Record<PlateWeight, number> = {
 	figure: 5,
 }
 
+/** Lobe count for a weight's NARROW container step, where it has one.
+ *
+ *  Only `banner` does. Its step-down takes the `inline` geometry (a 14px
+ *  surround) below 640px, and five lobes at 14px puts every lobe under the ~3px
+ *  floor — so the corner has to become the three-lobe redraw, not a scaled copy
+ *  of the five-lobe fan. Lobe count is a prop and a container query cannot reach
+ *  it, so `PlateFrame` renders BOTH drawings for such a weight and the query
+ *  swaps which one is displayed.
+ *
+ *  Absent for every other weight on purpose: `frontispiece` steps to the banner
+ *  geometry but stays at five lobes, `inline` is already the narrow redraw, and
+ *  `figure` has no step. Rendering a second SVG none of them can ever reveal is
+ *  dead weight in the DOM. */
+const PLATE_NARROW_LOBES: Partial<Record<PlateWeight, number>> = {
+	banner: 3,
+}
+
 /** Keystones per weight. `figure` carries a caption cartouche instead.
  *
  *  `frontispiece` carries NONE, which looks backwards for the heaviest weight
@@ -2011,7 +2028,20 @@ export function PlateFrame({
 					key={pos}
 					className={`${styles.plateCorner} ${styles[`plateCorner-${pos}`]}`}
 				>
-					<PalmetteCorner lobes={PLATE_LOBES[weight]} />
+					{PLATE_NARROW_LOBES[weight] === undefined ? (
+						<PalmetteCorner lobes={PLATE_LOBES[weight]} />
+					) : (
+						/* Two drawings, one shown — see PLATE_NARROW_LOBES. A container
+						   query cannot change a prop, so it swaps the whole SVG instead. */
+						<>
+							<span className={styles.plateCornerWide}>
+								<PalmetteCorner lobes={PLATE_LOBES[weight]} />
+							</span>
+							<span className={styles.plateCornerNarrow}>
+								<PalmetteCorner lobes={PLATE_NARROW_LOBES[weight]} />
+							</span>
+						</>
+					)}
 				</span>
 			))}
 			{PLATE_KEYSTONES[weight].map((edge) => (

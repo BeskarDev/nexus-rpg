@@ -83,6 +83,37 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	const [importError, setImportError] = React.useState<string | null>(null)
 	const [activeTab, setActiveTab] = React.useState(0)
 
+	const mastheadRef = React.useRef<HTMLDivElement>(null)
+
+	// The mobile tab bar sticks directly under this band, and its offset used to
+	// be a hard-coded 116px — the navbar plus an ASSUMED 56px masthead. On a
+	// phone the masthead is shorter than that, so the tabs stopped short of it
+	// and scrolling content showed through the gap. Measured, not guessed.
+	React.useEffect(() => {
+		const el = mastheadRef.current
+		if (!el) return
+		const publish = () =>
+			document.documentElement.style.setProperty(
+				'--cs-masthead-h',
+				`${el.getBoundingClientRect().height}px`,
+			)
+		publish()
+		// `no-undef` is off-target here: ResizeObserver is a DOM global the lint
+		// env does not list (see the same guard in SheetTabBar.tsx). Guarded so a
+		// test environment without it loses the measurement, not the render.
+		/* eslint-disable no-undef */
+		const ro =
+			typeof ResizeObserver === 'undefined'
+				? undefined
+				: new ResizeObserver(publish)
+		/* eslint-enable no-undef */
+		ro?.observe(el)
+		return () => {
+			ro?.disconnect()
+			document.documentElement.style.removeProperty('--cs-masthead-h')
+		}
+	}, [])
+
 	// Character creation selection states
 	const [selectedFolk, setSelectedFolk] = React.useState<FolkData | null>(null)
 	const [selectedUpbringing, setSelectedUpbringing] =
@@ -277,7 +308,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				the last of it above the fold) and bare icon buttons with no plate,
 				beside a control strip idiom every section of the sheet already had.
 			*/}
-			<Box className="cs-masthead">
+			<Box className="cs-masthead" ref={mastheadRef}>
 				{activeCharacterId && (
 					/* The way back, as a WORD (M13 S13). It was a bare `<` glyph, which
 						is the browser's own back button drawn twice — and it did not say

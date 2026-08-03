@@ -58,7 +58,7 @@ export const CharacterSheet: React.FC = () => {
 						sx={{
 							mb: 2,
 							position: 'sticky',
-							top: '116px',
+							top: 'calc(var(--ifm-navbar-height, 60px) + var(--cs-masthead-h, 3.5rem))',
 							zIndex: 100,
 							backgroundColor: 'var(--ifm-background-color)',
 						}}

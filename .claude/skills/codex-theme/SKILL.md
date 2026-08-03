@@ -153,22 +153,119 @@ Three rules that go with it:
 - **h4 must stay above body size.** Infima's default h4 is 1rem, which sat *below* the
   reading size. Check any heading level you touch against `--nexus-text-base`.
 
-**Reading measure is `--nexus-measure` (42rem / ~84 characters of Spectral).** It caps the
-whole vellum SHEET — `.theme-doc-markdown` is `max-width: measure + 2 × --nexus-sheet-padding-x`
-— so prose, tables, cards and code all describe **one right edge**. The measure is also still
-applied to prose at any depth, which is what keeps a card's rule text from running to the
-card's full frame width.
+**Reading measure is `--nexus-measure`**, `clamp(42rem, 30rem + 20cqw, 48rem)` on a doc
+sheet. It caps the whole vellum SHEET — `.theme-doc-markdown` is
+`max-width: measure + 2 × --nexus-sheet-padding-x` — so prose, tables, cards and code all
+describe **one right edge**. The measure is also still applied to prose at any depth, which
+is what keeps a card's rule text from running to the card's full frame width.
 
 It got here the hard way. It began at 36rem on the prose elements *only*, with tables and
 cards keeping the full ~813px column, on the theory that a wide figure outdenting past a text
 column is how a printed manual sets one. In practice prose stopped 237px short of every table
 on the page and the ragged edge read as broken. Two standing rules fall out of that:
 
-- **Never cap prose and leave a sibling block uncapped.** Whatever the sheet contains shares
-  its edge.
+- **Never cap prose and leave a sibling block uncapped** *while left-aligning both*. Whatever
+  the sheet contains shares its edge. The failure was **asymmetry** — all the slack piled on
+  one side. A narrower block **centred** in a wider sheet is fine, and is what a spread page
+  does (below).
 - The measure is still the lever for *density*: a 92-character line was what forced the 1.8
   leading that made the whole site read oversized. Fix the measure before reaching for a
   smaller font — but move the sheet with it.
+
+**The ceiling is deliberately low (48rem / ~96 characters).** A single column must not absorb
+a wide monitor; the answer to a wide screen is a second column, not a longer line.
+
+### The spread page
+
+A page containing a `<Columns>` segment is a book page, not a reading column, so its sheet
+widens to `--nexus-spread-measure` (68rem of content = two 32.75rem tracks + a 2.5rem gap,
+~65 characters each — the measure law holds *per track*). Everything that is not a segment
+stays at the measure and is **left-aligned**.
+
+**One left margin, no exceptions.** The title, the banner plate, running prose and a spread's
+left-hand track all start on the same vertical line. Centring the narrower blocks was tried
+and inset them from that line, so the page read as two layouts stacked; full-bleeding the
+title and banner was tried and made *those* the odd ones out instead. A book has one left
+margin and everything hangs off it.
+
+The trigger is `:has(.codex-columns)`, not front matter, so conversion is incremental and an
+unconverted page renders byte-for-byte as before.
+
+### Auto-segmentation
+
+`src/remark/auto-columns-plugin/` wraps content in `<Columns>` at build time, so most pages
+spread without being hand-marked. A run is cut at a `##` heading, a banner, a `<Columns>`, or
+any JSX block.
+
+**The placeable unit is a SECTION** — a heading plus everything under it — not a loose block.
+Each multi-block section is wrapped in a `.codex-keep` box, sections are *packed* into
+spreads, and the browser places whole sections into tracks instead of fragmenting prose
+across them. Three consequences, each learned the hard way:
+
+- **Columns are usually UNEQUAL, and that is correct.** A spread is as tall as its taller
+  section, like a manual's page. Capping a block at half a spread — on the theory that a
+  block taller than one column can't sit in one — was an *invented* constraint, and it tore
+  the magic-item material tables out of the layout instead of pairing them.
+- **`maxColumnLines` is the only height limit that means anything**, because a column is what
+  the screen has to hold. Total height is *not* a test: rejecting tall runs left 156 runs and
+  whole pages (all of Character Creation) in one column, which saves the reader no scrolling
+  and just loses half the page. A run too tall becomes *several* spreads.
+- **Chrome ignores `break-after: avoid` in multicol.** Keep-with-next must therefore be
+  expressed as keep-*together*: the `.codex-keep` box, which `break-inside: avoid` does honour.
+
+**Docusaurus rewrites images before any user remark plugin runs.** `transformImage` turns
+every markdown image into an `mdxJsxTextElement` named `img` whose alt is an *attribute* —
+there is no mdast `image` node left to match. A check written against `image` passes every
+unit test (those parse markdown directly) and matches **nothing in a real build**: banners
+were swept into spreads at one column wide, and the floated-portrait guard silently never
+fired. Read both shapes, and build the JSX shape by hand in tests. The same applies to the
+page `<header>`, which arrives as an `mdxJsxFlowElement`, not a `heading`.
+
+Two traps in the height estimate, both of which silently broke layout:
+
+- **Count hard line breaks.** Table cells carrying a description, a blank line and a rule
+  estimated at 26 lines when they rendered at 56. Ignore `break` nodes and every such table
+  is under-measured by half.
+- Add per-row cell padding; no text measure can see it.
+
+**Everything spreads, including generated content cards.** Only three things still break a
+run: the page `header`, a hand-written `<Columns>` (or the pass would re-enter it), and a
+banner. `breakDepth` is **1**, not 2 — breaking at every `##` predates the section model and
+meant two `##` sections could never pair, so a page whose headings were all `##` stayed
+single-column no matter how much content it held.
+
+Two subtleties in how a section is bound, both load-bearing:
+
+- **Sharing a spread → bind the section whole**, so the browser places one section per track.
+  **Alone in a spread → bind only the heading and `minSectionLines` of its opening**, and let
+  the rest flow. Binding a lone section whole makes it one indivisible box in one track and
+  leaves the other *empty*.
+- A section taller than `2 × maxColumnLines` is cut into several spreads: flowing across two
+  tracks only halves it, so past that it still overruns the screen.
+
+Measure the **placed items**, not the sections, when testing dominance and overflow — every
+child of a spread is `break-inside: avoid`, so each item is atomic once emitted. And do not
+charge the keep-together wrapper the card-frame constant: it is a bare `div`. That single
+overshoot pushed one page (70.8 lines against a 72 limit) out of the layout entirely.
+
+A floated plate still blocks a spread. Escape hatches are front matter `columns: false`, an
+explicit `<Columns>`, and plugin options in `docusaurus.config.js`.
+
+**A block can never "break out" of the sheet.** `.theme-doc-markdown` is *both* the vellum
+surface (background, padding, radius) *and* the width cap, so anything wider than the sheet is
+wider than its own background and hangs off the parchment. This was tried — measuring the doc
+column in JS and pulling wider with negative margins — and it cannot be tuned into working.
+**Widen the sheet instead.**
+
+Two related traps, both hit during that attempt:
+
+- **Bare `cqw`/`cqi` units resolve against the NEAREST container, ignoring names.** Only named
+  `@container <name> (…)` *at-rules* walk past an intervening container. `100cqw` inside the
+  doc flow therefore measures `.markdown`'s own already-capped box, never a wider ancestor.
+- **Infima's `.container` caps the whole page row** at `--ifm-container-width-xl` (stock
+  1320px, here 2000px) and is *stepped*, not fluid — so the doc column plateaus at a fixed
+  width for every viewport above the breakpoint. Widening the sheet is pointless until this is
+  raised, and the plateau is the number to size against. Measure it; don't assume it.
 
 ## Density
 

@@ -31,6 +31,10 @@ The world is home to diverse folk, each with their own unique traits, cultures, 
 
 When creating your adventurer, you may use the following tables to determine your character's age, height, and weight. Roll dice as indicated for each trait, or choose a value within the range provided.
 
+<Columns>
+
+### Physical Traits by Folk
+
 | Folk | Age* | Height (cm) | Weight (kg) |
 | --- | --- | --- | --- |
 | Dwarf | 30 + 2d8 | 115 + 2d6 | 65 + 2d4 x 3 |
@@ -46,9 +50,9 @@ When creating your adventurer, you may use the following tables to determine you
 | Dogfolk | 14 + 2d6 | 160 + 2d8 | 50 + 2d6 x 2 |
 | Satyr | 16 + 2d8 | 160 + 2d8 | 50 + 2d6 x 2 |
 
-* for characters starting at higher levels, you can add an additional die for each level above one.
+\* for characters starting at higher levels, you can add an additional die for each level above one.
 
-### Age Groups per Folk
+### Age Groups by Folk
 
 | Folk | Adulthood* | Middle-Aged | Old | Venerable** |
 | --- | --- | --- | --- | --- |
@@ -65,9 +69,11 @@ When creating your adventurer, you may use the following tables to determine you
 | Dogfolk | 14 | 30 | 45 | 60+ |
 | Satyr | 20 | 45 | 70 | 90+ |
 
-* These ages indicate physical adulthood. Being considered mentally adult differs from culture to culture.
+\* These ages indicate physical adulthood. Being considered mentally adult differs from culture to culture.
 
 ** This roughly indicates the natural life span of each Folk. Depending on good health or the gods’ favour, mortals can surpass this point in age by some years or even decades.
+
+</Columns>
 
 ## Folk
 

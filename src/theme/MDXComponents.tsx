@@ -28,6 +28,7 @@ import DocTable from '@site/src/components/codex/DocTable'
 import MdxImage from '@site/src/components/codex/MdxImage'
 import TableFold from '@site/src/components/TableFold'
 import ToolIndex, { ToolEntry } from '@site/src/components/codex/ToolIndex'
+import Columns from '@site/src/components/codex/Columns'
 
 /**
  * Global MDX component registry. Extends the Docusaurus defaults with codex
@@ -65,6 +66,9 @@ export default {
 	// A section landing page's contents rows (M14 S3).
 	ToolIndex,
 	ToolEntry,
+	// A bounded, height-limited two-column spread (M14). Opt-in per section;
+	// see Columns.tsx for why it is not a page-wide `column-count`.
+	Columns,
 	// Replace the default `---` thematic break with the ornamental divider.
 	hr: LozengeDivider,
 	// Wrap every markdown table in its stone slab + frieze cornice (M8 S3).
