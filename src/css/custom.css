@@ -843,31 +843,80 @@ body::before {
    --------------------------------------------------------------------------- */
 .theme-doc-markdown:not(:has(.character-sheet-page)):has(.codex-columns) {
 	--nexus-spread-measure: 68rem;
+	/* The gutter between tracks. Read by Columns.module.css too, so the prose
+	   track width and the real column gap cannot drift apart. */
+	--nexus-track-gap: 2.5rem;
 	max-width: calc(
 		var(--nexus-spread-measure) + 2 * var(--nexus-sheet-padding-x)
 	);
 }
 
-/* On a spread page everything that is NOT a two-column segment stays at the
-   reading measure and is CENTRED in the page.
+/* A spread page has exactly TWO widths, and every block edge lands on a track
+   edge. This is how a printed two-column manual is set:
 
-   Centred is the whole point. The pattern this repo rejected once — capped
-   prose beside uncapped tables — failed because it was left-aligned, so all
-   the slack piled up on one side and the ragged right edge read as broken.
-   Centred, a narrower block sits symmetrically inside the page like a plate in
-   a book's margins, and the two-column segments (which fill the page edge to
-   edge) supply the right edge the eye actually registers. */
+     - RUNNING TEXT is one track wide, the same measure as the text inside a
+       spread, so a paragraph outside a segment is indistinguishable from one
+       inside it.
+     - EVERYTHING ELSE spans both tracks: the page title, the banner plate,
+       tables, figures, cards. A figure spanning the page is the convention, and
+       a table squeezed into half the page would be worse than useless.
+
+   There used to be a third width here — the old single-column reading measure,
+   48rem — which matched neither a track (30.4rem) nor the page (68rem). It was
+   a leftover from before spreads existed, and it was what made the page read as
+   two layouts stacked: the banner stopped 244px short of the segment below it
+   for no reason a reader could infer.
+
+   Left-aligned, not centred: everything hangs off one left margin, so a
+   one-track block reads as column one of a two-column page rather than as a
+   narrow thing floating in a wide one. */
 .theme-doc-markdown:has(.codex-columns) > *:not(.codex-columns) {
-	max-width: var(--nexus-measure);
-	/* LEFT-aligned, not centred, and no full-bleed exception for the title or the
-	   banner. Every block on the page starts at the same left margin, so the
-	   heading, the banner plate, the running prose and the left-hand track of a
-	   spread all share one vertical line down the page. Centring the narrower
-	   blocks inset them from that line and made a spread page read as two
-	   different layouts stacked; widening the title and banner to the full spread
-	   made them the odd ones out in the other direction. A book has ONE left
-	   margin, and everything hangs off it. */
+	max-width: none;
 	margin-inline: 0;
+}
+
+/* Running text, and the headings that introduce it, sit in ONE track.
+
+   Derived from `100%` — the sheet's ACTUAL content width — and not from
+   `--nexus-spread-measure`. The token is the ideal 68rem, but the sheet is
+   capped by the doc column and is routinely narrower than that; computing from
+   the token gave prose a 524px track beside a real 486px one, which is the very
+   misalignment this section exists to remove. A percentage tracks whatever the
+   sheet actually got. */
+/* The trailing `:not(.codex-columns)` is specificity, not logic — a segment can
+   never be a `<p>`. Without it this is (0,3,1) against the (0,3,0) reset above
+   and LOSES on the class count, so every paragraph silently took the full page
+   width. With it, (0,3,1) beats (0,3,0). */
+.theme-doc-markdown:has(.codex-columns)
+	> :is(p, ul, ol, dl, blockquote, h2, h3, h4, h5, h6):not(.codex-columns) {
+	max-width: calc((100% - var(--nexus-track-gap)) / 2);
+}
+/* ...but a paragraph that is only a BANNER plate is a figure, not text, and
+   spans the page. An MDX image lands inside a paragraph, so without this the
+   banner would be caught by the rule above and held to half the page.
+
+   Scoped to `banner` deliberately. The `inline` weight is a FLOATED portrait
+   that belongs beside its prose; letting it span the page pushed the folk
+   portraits to the far right edge with a track's width of nothing between them
+   and the text they illustrate. Reached through `data-plate-weight`, the stable
+   attribute `ImagePlate` and `PlateShell` both set for exactly this kind of
+   selector — their class names are CSS-module hashes that change between dev
+   and build. */
+.theme-doc-markdown:has(.codex-columns)
+	> p:has([data-plate-weight='banner']) {
+	max-width: none;
+}
+
+/* A floated portrait cannot share a 32.75rem track with readable prose — a
+   300px float leaves about 220px of text, which is three or four words a line.
+   `.plate-inline`'s own container query drops the float below a 40rem column,
+   but it measures the SHEET (68rem on a spread page), so it never fires here
+   even though the real column is half that. On a spread page the plate is a
+   block in the flow instead. */
+.theme-doc-markdown:has(.codex-columns) span[data-plate-weight='inline'] {
+	float: none;
+	width: 100%;
+	margin: 1rem 0;
 }
 
 /* Inside a segment the measure is the TRACK, not the sheet: the global prose

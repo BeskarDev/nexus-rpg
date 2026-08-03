@@ -182,11 +182,30 @@ widens to `--nexus-spread-measure` (68rem of content = two 32.75rem tracks + a 2
 ~65 characters each — the measure law holds *per track*). Everything that is not a segment
 stays at the measure and is **left-aligned**.
 
-**One left margin, no exceptions.** The title, the banner plate, running prose and a spread's
-left-hand track all start on the same vertical line. Centring the narrower blocks was tried
-and inset them from that line, so the page read as two layouts stacked; full-bleeding the
-title and banner was tried and made *those* the odd ones out instead. A book has one left
-margin and everything hangs off it.
+**A spread page has exactly TWO widths, and every block edge lands on a track edge.**
+
+- **One track** — running text and the headings that introduce it, so a paragraph outside a
+  segment is indistinguishable from one inside it.
+- **Both tracks** — the page title, banner plates, tables, figures, cards. A figure spanning
+  the page is the convention, and a table squeezed into half a page is worse than useless.
+
+There is no third width. There used to be: the old single-column reading measure (48rem),
+which matched neither a track (32.75rem) nor the page (68rem), so the banner stopped 244px
+short of the segment below it for no reason a reader could infer. That is what made a spread
+page read as two layouts stacked.
+
+Everything is **left-aligned**, so a one-track block reads as column one of a two-column page
+rather than as a narrow thing floating in a wide one.
+
+Two traps when implementing this:
+
+- **Derive the track from `100%`, not from `--nexus-spread-measure`.** The token is the ideal
+  68rem, but the sheet is capped by the doc column and is routinely narrower — computing from
+  the token gave prose a 524px track beside a real 486px one, recreating the exact
+  misalignment being fixed.
+- **Watch specificity.** The `> *:not(.codex-columns)` reset is (0,3,0) and silently beat the
+  prose rule at (0,2,1), so every paragraph took the full page width. The prose rule carries a
+  redundant `:not(.codex-columns)` purely to reach (0,3,1).
 
 The trigger is `:has(.codex-columns)`, not front matter, so conversion is incremental and an
 unconverted page renders byte-for-byte as before.

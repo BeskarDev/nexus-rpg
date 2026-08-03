@@ -16,7 +16,7 @@
 	/* 2.5rem, and NO column rule. A bare vertical hairline between tracks is the
 	   flat-UI grouping bar the theme rejects everywhere else; separation is the
 	   gap's job. */
-	column-gap: 2.5rem;
+	column-gap: var(--nexus-track-gap, 2.5rem);
 	column-fill: balance;
 
 	/* Kills the whitespace between the inline-block children below. Markdown puts

@@ -2100,6 +2100,12 @@ export function PlateShell({
 }: PlateShellProps) {
 	return (
 		<Tag
+			// A STABLE hook for selectors outside this component, mirroring the one
+			// on the `<img>`. The class names above are CSS-module hashes, so a
+			// selector written against one works in dev and matches nothing in a
+			// production build. The layout needs to tell a page-spanning banner from
+			// a floated portrait — see the spread-page rules in custom.css.
+			data-plate-weight={weight}
 			className={
 				`${styles.plate} ${styles[`plate-${weight}`]} ${styles[`plate-${silhouette}`]}` +
 				(className ? ' ' + className : '')

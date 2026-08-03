@@ -39,8 +39,10 @@ import type { Node } from 'unist'
  *     and leaves the second empty, since every child is `break-inside: avoid`
  *   - `minLines` or taller — splitting six lines into two columns of three is
  *     fussier than leaving it alone
- *   - no floated plate — a 300px portrait floated inside a 32rem track leaves
- *     three words per line, the fault M11 fixed once already at the page level
+ *   - (a floated plate used to be refused here. It no longer is: an inline plate
+ *     does not float on a spread page at all — see the `data-plate-weight`
+ *     rules in custom.css — so the guard was refusing runs for a condition that
+ *     can no longer arise, and it kept every folk entry single-column.)
  *   - no section taller than `maxColumnLines`, which stands on its own at full
  *     sheet width instead: past that a column is taller than the screen and the
  *     reader has to scroll down one track and back up the other
@@ -80,6 +82,21 @@ export interface AutoColumnsOptions {
 	 * to stay intact.
 	 */
 	breakDepth?: number
+	/**
+	 * Depth at or above which a heading that introduces SUBSECTIONS ends the run.
+	 *
+	 * The test is whether the next heading below it is DEEPER, not whether it has
+	 * content of its own. `## Folk` announces twelve `### ` entries; swept into a
+	 * spread it was stranded in a right-hand column with the list it announces
+	 * beginning below on the left. Emptiness was tried first and is NOT the
+	 * signal — a divider often carries a sentence or two of its own before the
+	 * subsections start, and that intro does not make it a section.
+	 *
+	 * A heading whose siblings sit at its OWN depth is an ordinary section and
+	 * must not break, or a page whose headings are all `##` (Cursed Items) has
+	 * nothing left to pair and stays single-column.
+	 */
+	dividerDepth?: number
 	/**
 	 * Characters per line in ONE track. The spread gives each track 32.75rem
 	 * (524px); Spectral averages a bit under 8px per character at the 16px
@@ -125,6 +142,7 @@ export interface AutoColumnsOptions {
 const DEFAULTS: Required<AutoColumnsOptions> = {
 	enabled: true,
 	breakDepth: 1,
+	dividerDepth: 2,
 	charsPerLine: 65,
 	minLines: 12,
 	// ~2 viewports. Tuned against the magic-item materials page, which is the
@@ -608,10 +626,6 @@ export function shouldColumnise(
 	const items = spreadItems(spread, options)
 	if (items.length < Math.max(2, options.minChildren)) return false
 
-	// A floated portrait in a 32rem track is three words a line.
-	if (spread.some((s) => s.nodes.some((n) => plateKind(n) === 'float')))
-		return false
-
 	const total = spread.reduce((sum, s) => sum + s.lines, 0)
 	if (total < options.minLines) return false
 
@@ -731,13 +745,93 @@ const autoColumnsPlugin = (userOptions: AutoColumnsOptions = {}) => {
 			run = []
 		}
 
-		for (const node of children) {
-			if (isBreaker(node, options)) {
+		/**
+		 * Pull a trailing heading and its stub of intro text back off the run, so
+		 * they can be emitted directly above the breaker that follows instead of
+		 * being left in a spread's right-hand column.
+		 *
+		 * `## Character Creation: Physical Traits` on the Folk page is the case:
+		 * the content it introduces is a hand-written `<Columns>`, which is a
+		 * breaker, so the heading was swept into the PREVIOUS spread and rendered
+		 * on the right while its content began below on the left.
+		 *
+		 * Only a STUB moves. A heading with real content under it is a section in
+		 * its own right and belongs in the spread.
+		 */
+		const detachTrailingStub = (): any[] => {
+			let index = -1
+			for (let i = run.length - 1; i >= 0; i--) {
+				if (run[i]?.type === 'heading') {
+					index = i
+					break
+				}
+				if (estimateLines(run[i], options.charsPerLine) > options.minLines) {
+					return []
+				}
+			}
+			if (index === -1) return []
+			const tail = run.slice(index)
+			const lines = tail.reduce(
+				(sum, node) => sum + estimateLines(node, options.charsPerLine),
+				0,
+			)
+			if (lines > options.minLines) return []
+			run.length = index
+			return tail
+		}
+
+		/**
+		 * The depth of the next heading after `from`, or undefined if a breaker
+		 * intervenes or none follows. Non-heading blocks are skipped: a divider
+		 * may introduce its subsections with a sentence or two of its own.
+		 */
+		const nextHeadingDepth = (from: number): number | undefined => {
+			for (let i = from + 1; i < children.length; i++) {
+				const node = children[i]
+				if (node?.type === 'heading') return node.depth
+				if (isBreaker(node, options)) return undefined
+			}
+			return undefined
+		}
+
+		/** A heading that introduces subsections. See `dividerDepth`. */
+		const isDividerHeading = (node: any, index: number): boolean => {
+			if (node?.type !== 'heading' || node.depth > options.dividerDepth)
+				return false
+			const next = nextHeadingDepth(index)
+			return next !== undefined && next > node.depth
+		}
+
+		for (const [index, node] of children.entries()) {
+			if (isDividerHeading(node, index)) {
 				flush()
 				output.push(node)
-			} else {
-				run.push(node)
+				continue
 			}
+			if (!isBreaker(node, options)) {
+				run.push(node)
+				continue
+			}
+
+			// A heading is its own break, so nothing needs carrying past it.
+			// Anything else INTERRUPTS a section, and its heading travels with it.
+			const carried = node?.type === 'heading' ? [] : detachTrailingStub()
+			flush()
+
+			// A hand-written `<Columns>` is never re-wrapped, but its children still
+			// get the keep-together treatment — without it an author's spread has no
+			// protection at all, and a heading inside one is separated from its own
+			// table exactly as the automatic pass used to do.
+			if (node?.type === 'mdxJsxFlowElement' && node.name === 'Columns') {
+				output.push(...carried, {
+					...node,
+					children: toSections(node.children ?? [], options).flatMap((s) =>
+						expandSection(s, options, false),
+					),
+				})
+				continue
+			}
+			output.push(...carried, node)
 		}
 		flush()
 

@@ -31,8 +31,6 @@ The world is home to diverse folk, each with their own unique traits, cultures, 
 
 When creating your adventurer, you may use the following tables to determine your character's age, height, and weight. Roll dice as indicated for each trait, or choose a value within the range provided.
 
-<Columns>
-
 ### Physical Traits by Folk
 
 | Folk | Age* | Height (cm) | Weight (kg) |
@@ -72,8 +70,6 @@ When creating your adventurer, you may use the following tables to determine you
 \* These ages indicate physical adulthood. Being considered mentally adult differs from culture to culture.
 
 ** This roughly indicates the natural life span of each Folk. Depending on good health or the gods’ favour, mortals can surpass this point in age by some years or even decades.
-
-</Columns>
 
 ## Folk
 

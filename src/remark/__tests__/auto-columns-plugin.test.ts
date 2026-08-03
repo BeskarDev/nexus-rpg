@@ -89,11 +89,13 @@ describe('auto-columns bracket heuristic (M14)', () => {
 		expect(spreads(tree).length).toBe(0)
 	})
 
-	it('refuses a run holding a floated portrait', () => {
-		// A 300px float inside a 32rem track leaves three words a line — the
-		// exact fault the plate's own container query fixed at page level.
+	it('spreads a run holding an inline plate — it no longer floats', () => {
+		// This used to be refused, on the grounds that a 300px float in a 32rem
+		// track leaves three words a line. An inline plate does not float on a
+		// spread page any more (see the `data-plate-weight` rules in custom.css),
+		// so refusing here only kept every folk entry single-column.
 		const md = `## Section\n\n${para()}\n\n![folk-img|A dwarf](./img/d.jpeg)\n\n${para()}\n\n${para()}\n`
-		expect(spreads(run(md)).length).toBe(0)
+		expect(spreads(run(md)).length).toBe(1)
 	})
 
 	it('breaks at a banner, which is a full-width band', () => {
@@ -382,14 +384,14 @@ describe('image plates in the shape Docusaurus actually produces (M14)', () => {
 		}
 	})
 
-	it('still blocks a spread on a transformed floated portrait', () => {
+	it('spreads a transformed inline plate too', () => {
 		const tree = build([
 			paraNode(),
 			jsxImage('folk-img|A dwarf'),
 			paraNode(),
 			paraNode(),
 		])
-		expect(sp(tree).length).toBe(0)
+		expect(sp(tree).length).toBe(1)
 	})
 })
 
@@ -538,5 +540,170 @@ describe('a heading whose section is all cards (M14)', () => {
 		const tree = build([h('Curse Effects'), card()])
 		const gridded = JSON.stringify(tree).includes('"grid"')
 		expect(gridded).toBe(false)
+	})
+})
+
+describe('hand-written <Columns> and the headings around it (M14)', () => {
+	const tbl = (rows: number) => ({
+		type: 'table',
+		children: Array.from({ length: rows }, () => ({
+			type: 'tableRow',
+			children: [
+				{ type: 'tableCell', children: [{ type: 'text', value: 'cell value' }] },
+			],
+		})),
+	})
+	const h = (d: number, t: string) => ({
+		type: 'heading',
+		depth: d,
+		children: [{ type: 'text', value: t }],
+	})
+	const p = (n = 200) => ({
+		type: 'paragraph',
+		children: [{ type: 'text', value: 'word '.repeat(n / 5) }],
+	})
+	const build = (children: any[]) => {
+		const tree: any = { type: 'root', children }
+		autoColumnsPlugin()(tree, { path: '/docs/x.md' })
+		return tree
+	}
+	const isKeep = (n: any) =>
+		n?.type === 'mdxJsxFlowElement' &&
+		n.attributes?.some((a: any) => a.value === 'codex-keep')
+
+	it('binds headings inside an author-written <Columns>', () => {
+		// The Folk page fault: `### Age Groups by Folk` sat at the foot of the left
+		// column while its table rendered in the right, because the pass treated a
+		// hand-written spread as opaque and gave it no protection at all.
+		const manual = {
+			type: 'mdxJsxFlowElement',
+			name: 'Columns',
+			attributes: [],
+			children: [h(3, 'Physical Traits'), tbl(12), h(3, 'Age Groups'), tbl(12)],
+		}
+		const tree = build([manual])
+		const out = tree.children[0]
+		expect(out.name).toBe('Columns')
+		// Each heading is now bound to the table under it.
+		const keeps = out.children.filter(isKeep)
+		expect(keeps.length).toBe(2)
+		for (const k of keeps) {
+			expect(k.children[0].type).toBe('heading')
+			expect(k.children.length).toBeGreaterThan(1)
+		}
+	})
+
+	it('never re-wraps an author-written <Columns> in another one', () => {
+		const manual = {
+			type: 'mdxJsxFlowElement',
+			name: 'Columns',
+			attributes: [],
+			children: [h(3, 'A'), tbl(10), h(3, 'B'), tbl(10)],
+		}
+		const tree = build([manual])
+		expect(
+			tree.children.filter(
+				(n: any) => n.type === 'mdxJsxFlowElement' && n.name === 'Columns',
+			).length,
+		).toBe(1)
+	})
+
+	it('keeps a heading above the <Columns> it introduces', () => {
+		// The heading's content is the manual spread, which is a breaker — so the
+		// heading must not be swept into the spread BEFORE it.
+		const manual = {
+			type: 'mdxJsxFlowElement',
+			name: 'Columns',
+			attributes: [],
+			children: [h(3, 'X'), tbl(10)],
+		}
+		const tree = build([
+			p(), p(), p(), p(),
+			h(2, 'Physical Traits'), p(40),
+			manual,
+		])
+		// The MANUAL spread, not the one the pass built from the paragraphs above.
+		const idx = tree.children.findIndex(
+			(n: any) =>
+				n.type === 'mdxJsxFlowElement' &&
+				n.name === 'Columns' &&
+				JSON.stringify(n).includes('"X"'),
+		)
+		const before = tree.children.slice(0, idx)
+		const headingNode = before.reverse().find((n: any) => n.type === 'heading')
+		expect(headingNode?.children[0].value).toBe('Physical Traits')
+		// ...and it is not ALSO buried in the preceding spread.
+		const spread = tree.children.find(
+			(n: any) =>
+				n.type === 'mdxJsxFlowElement' &&
+				n.name === 'Columns' &&
+				JSON.stringify(n).includes('Physical Traits'),
+		)
+		expect(spread).toBeUndefined()
+	})
+})
+
+describe('empty headings divide, headings with content do not (M14)', () => {
+	const h = (d: number, t: string) => ({
+		type: 'heading',
+		depth: d,
+		children: [{ type: 'text', value: t }],
+	})
+	const p = (n = 220) => ({
+		type: 'paragraph',
+		children: [{ type: 'text', value: 'word '.repeat(n / 5) }],
+	})
+	const build = (children: any[]) => {
+		const tree: any = { type: 'root', children }
+		autoColumnsPlugin()(tree, { path: '/docs/x.md' })
+		return tree
+	}
+	const sp = (t: any) =>
+		t.children.filter(
+			(n: any) => n.type === 'mdxJsxFlowElement' && n.name === 'Columns',
+		)
+
+	it('breaks at a `##` that introduces subsections', () => {
+		// The Folk page: `## Folk` is followed straight by `### Dwarf`, so it is a
+		// divider. Swept into the spread above, it was stranded in the right column
+		// while the list it announces began below on the left.
+		const tree = build([
+			p(), p(), p(), p(),
+			h(2, 'Folk'),
+			h(3, 'Dwarf'), p(), p(),
+			h(3, 'Elf'), p(), p(),
+		])
+		const idx = tree.children.findIndex(
+			(n: any) => n.type === 'heading' && n.children[0].value === 'Folk',
+		)
+		expect(idx).toBeGreaterThan(-1)
+		// It is a top-level sibling, not buried inside a spread.
+		for (const s of sp(tree))
+			expect(JSON.stringify(s).includes('"Folk"')).toBe(false)
+	})
+
+	it('breaks at a divider even when it carries its own intro prose', () => {
+		// Emptiness is not the signal — a divider often has a sentence or two
+		// before its subsections start, and that does not make it a section.
+		const tree = build([
+			p(), p(), p(), p(),
+			h(2, 'Folk'), p(40),
+			h(3, 'Dwarf'), p(), p(),
+			h(3, 'Elf'), p(), p(),
+		])
+		for (const s of sp(tree))
+			expect(JSON.stringify(s).includes('"Folk"')).toBe(false)
+	})
+
+	it('does NOT break at a `##` whose siblings are at its own depth', () => {
+		// Cursed Items: every heading is `##` with prose under it. Breaking there
+		// leaves nothing to pair and the page stays single-column.
+		const tree = build([
+			h(2, 'A'), p(), p(),
+			h(2, 'B'), p(), p(),
+			h(2, 'C'), p(), p(),
+		])
+		expect(sp(tree).length).toBeGreaterThan(0)
+		expect(JSON.stringify(sp(tree)).includes('"A"')).toBe(true)
 	})
 })
