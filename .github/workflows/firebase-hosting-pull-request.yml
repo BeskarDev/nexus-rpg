@@ -118,7 +118,7 @@ jobs:
           echo "preview_url=$PREVIEW_URL" >> $GITHUB_OUTPUT
 
       - name: Create GitHub deployment record
-        uses: actions/github-script@v6
+        uses: actions/github-script@v8
         env:
           PREVIEW_URL: ${{ steps.get_preview.outputs.preview_url }}
         with:
@@ -130,6 +130,11 @@ jobs:
               repo: context.repo.repo,
               ref: ref,
               required_contexts: [],
+              // Without this the API merges the base branch into `ref` first and
+              // 409s when that conflicts. The preview is already built and
+              // deployed by this point, so the record must not depend on
+              // whether the PR happens to be mergeable right now.
+              auto_merge: false,
               environment: 'preview',
               transient_environment: true,
               description: 'Firebase preview channel deployment'
