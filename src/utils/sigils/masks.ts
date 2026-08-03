@@ -61,10 +61,21 @@ export function navbarSigilNames(configSource: string): SigilName[] {
 	return unique as SigilName[]
 }
 
+/**
+ * Emitted in Prettier's shape (tabs, one declaration per line) on purpose:
+ * `custom.css` is a Prettier-formatted file, so a compact one-line rule here
+ * would be reflowed by the next `prettier --write` and break `--check` forever.
+ * The generator and the formatter have to agree on the same bytes.
+ */
 export function renderBlock(names: SigilName[]): string {
 	const rules = names.map((name) => {
 		const uri = dataUri(name)
-		return `  .navbar-sigil--${name}::before { -webkit-mask-image: url("${uri}"); mask-image: url("${uri}"); }`
+		return [
+			`.navbar-sigil--${name}::before {`,
+			`\t-webkit-mask-image: url("${uri}");`,
+			`\tmask-image: url("${uri}");`,
+			'}',
+		].join('\n')
 	})
 	return [START, ...rules, END].join('\n')
 }
