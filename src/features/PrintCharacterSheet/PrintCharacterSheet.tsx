@@ -117,7 +117,7 @@ export const PrintCharacterSheet: React.FC = () => {
 				}
 				preview={
 					<Box>
-						{Boolean(char) ? (
+						{char ? (
 							<Box sx={{ display: 'flex', flexWrap: 'wrap' }} ref={componentRef}>
 								<StatisticsSheet char={char} />
 								<EquipmentSheet char={char} />

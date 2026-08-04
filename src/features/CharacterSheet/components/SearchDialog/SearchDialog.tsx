@@ -1,20 +1,18 @@
 import {
-	Box,
-	Button,
-	Checkbox,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogTitle,
-	InputAdornment,
-	TextField,
-	Typography,
+  Box,
+  Button,
+  Checkbox,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Typography
 } from '@mui/material'
-import React, { useState, useMemo, ReactNode } from 'react'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import React, { ReactNode, useMemo, useState } from 'react'
 import { Chevron } from '../Chevron'
-import { MarkButton } from '../MarkButton'
 import { UnifiedListItem } from '../DynamicList'
+import { MarkButton } from '../MarkButton'
 
 export type SearchDialogColumn<T> = {
 	key: keyof T
@@ -295,7 +293,7 @@ export function SearchDialog<T>({
 			const dupes = keys.filter((k) =>
 				seen.has(k) ? true : (seen.add(k), false),
 			)
-			// eslint-disable-next-line no-console
+      
 			console.error(
 				`SearchDialog "${title}": getItemKey is not unique — ${[...new Set(dupes)].join(', ')}. ` +
 					'Rows will render and select incorrectly; key on a field combination that is unique.',
