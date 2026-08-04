@@ -1,17 +1,24 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
 import { MenuItem, Select, TextField } from '@mui/material'
-import { BuilderRegister, GrantLine } from '../builder'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { OFFICIAL_SKILLS } from '../../constants/skills'
+import { ActionMark } from '../../features/CharacterSheet/CharacterSheetTabs/01_Skills/components/ActionMark'
 import { creatureBuilderActions } from '../../features/CreatureBuilder/creatureBuilderReducer'
 import { useCreatureBuilderState } from '../../hooks/useCreatureBuilderState'
-import { ActionMark } from '../../features/CharacterSheet/CharacterSheetTabs/01_Skills/components/ActionMark'
 import { ACTION_TYPES, type ActionType } from '../../types/ActionType'
 import type {
-	CreatureAbility,
-	CreatureAttack,
-	CreatureSkill,
+    AbilityTemplate,
+    AttackTemplate,
+    CreatureAbility,
+    CreatureAttack,
+    CreatureSkill,
 } from '../../types/CreatureBuilder'
-import { OFFICIAL_SKILLS } from '../../constants/skills'
+import abilitiesLibraryData from '../../utils/data/json/creature-abilities-library.json'
+import attacksLibraryData from '../../utils/data/json/creature-attacks-library.json'
+import { getWeaponDamage } from '../../utils/typescript/creature/creatureBuilderCalculations'
+import { BuilderRegister, GrantLine } from '../builder'
+import { LibraryPanel } from './LibraryPanel'
+import { MultiSelectTabs } from './MultiSelectTabs'
 
 /** The damage types a creature's attack can deal, from the rules' own list. */
 const DAMAGE_TYPES = [
@@ -27,6 +34,23 @@ const DAMAGE_TYPES = [
 	'force',
 	'sonic',
 ]
+
+const attacksLibrary = attacksLibraryData as AttackTemplate[]
+const abilitiesLibrary = abilitiesLibraryData as AbilityTemplate[]
+
+const templateToAttack = (t: AttackTemplate): CreatureAttack => ({
+	name: t.name,
+	properties: [],
+	damage: t.damage,
+	damageType: t.damageType,
+	description: t.description,
+})
+
+const templateToAbility = (t: AbilityTemplate): CreatureAbility => ({
+	name: t.name,
+	description: t.description,
+	actionType: t.actionType,
+})
 
 /**
  * The four courses that were 2,780 lines of accordions (M15 S3).
@@ -70,6 +94,14 @@ const emptyAbility: CreatureAbility = {
 export const CreatureTraits: React.FC = () => {
 	const dispatch = useDispatch()
 	const { state, builtCreature } = useCreatureBuilderState()
+	const [showAttackLibrary, setShowAttackLibrary] = useState(false)
+	const [showAbilityLibrary, setShowAbilityLibrary] = useState(false)
+
+	// Compute a tier-appropriate damage placeholder so it updates when tier changes.
+	// Format: weak / strong / critical — each step is +4 above the base.
+	const weaponDamageBase =
+		state.tier > 0 ? getWeaponDamage(state.tier, state.archetype) : 4
+	const damagePlaceholder = `${weaponDamageBase}/${weaponDamageBase + 4}/${weaponDamageBase + 8}`
 
 	const setSkills = (skills: CreatureSkill[]) =>
 		dispatch(creatureBuilderActions.setSkills(skills))
@@ -77,32 +109,6 @@ export const CreatureTraits: React.FC = () => {
 		dispatch(creatureBuilderActions.setAttacks(attacks))
 	const setAbilities = (abilities: CreatureAbility[]) =>
 		dispatch(creatureBuilderActions.setAbilities(abilities))
-
-	/** A comma list the reader types, stored as an array. */
-	const listField = (
-		label: string,
-		value: string[],
-		onChange: (next: string[]) => void,
-		placeholder: string,
-	) => (
-		<label className="cb-field cb-field--wide">
-			<span className="cb-field__label">{label}</span>
-			<TextField
-				value={value.join(', ')}
-				size="small"
-				placeholder={placeholder}
-				onChange={(event) =>
-					onChange(
-						event.target.value
-							.split(',')
-							.map((entry) => entry.trim())
-							.filter(Boolean),
-					)
-				}
-				inputProps={{ 'aria-label': label }}
-			/>
-		</label>
-	)
 
 	return (
 		<>
@@ -258,25 +264,28 @@ export const CreatureTraits: React.FC = () => {
 					</button>
 				</div>
 
-				<div className="cb-field-row">
-					{listField(
-						'Immunities',
-						state.immunities,
-						(next) => dispatch(creatureBuilderActions.setImmunities(next)),
-						'poison, charmed',
-					)}
-					{listField(
-						'Resistances',
-						state.resistances,
-						(next) => dispatch(creatureBuilderActions.setResistances(next)),
-						'frost, physical',
-					)}
-					{listField(
-						'Weaknesses',
-						state.weaknesses,
-						(next) => dispatch(creatureBuilderActions.setWeaknesses(next)),
-						'fire',
-					)}
+				<div className="cb-field-row cb-field-row--column">
+					<MultiSelectTabs
+						label="Immunities"
+						value={state.immunities}
+						onChange={(next) =>
+							dispatch(creatureBuilderActions.setImmunities(next))
+						}
+					/>
+					<MultiSelectTabs
+						label="Resistances"
+						value={state.resistances}
+						onChange={(next) =>
+							dispatch(creatureBuilderActions.setResistances(next))
+						}
+					/>
+					<MultiSelectTabs
+						label="Weaknesses"
+						value={state.weaknesses}
+						onChange={(next) =>
+							dispatch(creatureBuilderActions.setWeaknesses(next))
+						}
+					/>
 				</div>
 			</BuilderRegister>
 
@@ -308,7 +317,7 @@ export const CreatureTraits: React.FC = () => {
 								<TextField
 									value={attack.damage}
 									size="small"
-									placeholder="8/12/16"
+								placeholder={damagePlaceholder}
 									className="cb-entry__figure"
 									onChange={(event) =>
 										setAttacks(
@@ -379,7 +388,28 @@ export const CreatureTraits: React.FC = () => {
 					>
 						Add attack
 					</button>
+					<button
+						type="button"
+						className={`cb-library-toggle${showAttackLibrary ? ' is-open' : ''}`}
+						onClick={() => setShowAttackLibrary(!showAttackLibrary)}
+					>
+						{showAttackLibrary ? '▾ Hide library' : '▸ Browse library'}
+					</button>
 				</div>
+				{showAttackLibrary && (
+					<LibraryPanel<AttackTemplate>
+						entries={attacksLibrary}
+						activeType={state.type}
+						onAdd={(template) =>
+							setAttacks([...state.attacks, templateToAttack(template)])
+						}
+						renderMeta={(t) => (
+							<span>
+								{t.damage} · {t.damageType}
+							</span>
+						)}
+					/>
+				)}
 			</BuilderRegister>
 
 			<BuilderRegister step="X" label="Abilities" note="what else it can do">
@@ -477,7 +507,26 @@ export const CreatureTraits: React.FC = () => {
 					>
 						Add ability
 					</button>
+					<button
+						type="button"
+						className={`cb-library-toggle${showAbilityLibrary ? ' is-open' : ''}`}
+						onClick={() => setShowAbilityLibrary(!showAbilityLibrary)}
+					>
+						{showAbilityLibrary ? '▾ Hide library' : '▸ Browse library'}
+					</button>
 				</div>
+				{showAbilityLibrary && (
+					<LibraryPanel<AbilityTemplate>
+						entries={abilitiesLibrary}
+						activeType={state.type}
+						onAdd={(template) =>
+							setAbilities([...state.abilities, templateToAbility(template)])
+						}
+						renderMeta={(t) => (
+							<span>{t.actionType}</span>
+						)}
+					/>
+				)}
 			</BuilderRegister>
 		</>
 	)

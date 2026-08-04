@@ -10,10 +10,12 @@ const LOG_LIMIT = 24
 /**
  * Short answers are names and read as one; long answers are composed prose.
  * The threshold is a measurement of the corpus rather than a preference: every
- * single-field generator returns well under this, and every composed one runs
- * well over it.
+ * single-field generator returns well under this (e.g. "Kethran", 7 chars;
+ * "Elan al-Dunn", 12 chars), while treasure descriptions and composed results
+ * run well over it (e.g. "bundle of scrolls (painted, durable). (Q3, ~50
+ * coins)", 51 chars).
  */
-const NAMELIKE_LENGTH = 80
+const NAMELIKE_LENGTH = 30
 
 interface AutoRollerGroup {
 	id: string
@@ -115,6 +117,8 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 	const [count, setCount] = useState<number>(1)
 	const [log, setLog] = useState<string[]>([])
 	const [useGerman, setUseGerman] = useState(false)
+	const [highlighted, setHighlighted] = useState(false)
+	const [newCount, setNewCount] = useState(0)
 
 	const handleRoll = () => {
 		const rolled: string[] = []
@@ -122,6 +126,12 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 			rolled.push(generateResult(selectedGroup, useGerman))
 		}
 		setLog((previous) => [...rolled.reverse(), ...previous].slice(0, LOG_LIMIT))
+		setHighlighted(true)
+		setNewCount(count)
+		setTimeout(() => {
+			setHighlighted(false)
+			setNewCount(0)
+		}, 800)
 	}
 
 	const [newest, ...older] = log
@@ -138,7 +148,7 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 			}}
 		>
 			<Box className="cs-oracle__bar">
-				<Box className="cs-oracle__field">
+				<Box className="cs-oracle__field cs-oracle__field--main">
 					<span className="cs-oracle__label">{title}</span>
 					<Select
 						value={selectedGroup}
@@ -228,7 +238,15 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 						Not yet asked. Pick a table and roll.
 					</span>
 				) : (
-					<p className={`cs-oracle__struck${isNamelike ? '' : ' is-prose'}`}>
+					<p
+						className={[
+							'cs-oracle__struck',
+							isNamelike ? null : 'is-prose',
+							highlighted ? 'is-highlighted' : null,
+						]
+							.filter(Boolean)
+							.join(' ')}
+					>
 						{newest}
 					</p>
 				)}
@@ -239,7 +257,12 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 					<span className="cs-oracle__log-label">Earlier</span>
 					<ol>
 						{older.map((entry, index) => (
-							<li key={`${index}-${entry.slice(0, 24)}`}>{entry}</li>
+							<li
+								key={`${index}-${entry.slice(0, 24)}`}
+								className={index < newCount - 1 ? 'is-new' : undefined}
+							>
+								{entry}
+							</li>
 						))}
 					</ol>
 				</Box>

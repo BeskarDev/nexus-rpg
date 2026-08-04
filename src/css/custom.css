@@ -3952,14 +3952,19 @@ article h2::after {
 	display: flex;
 	align-items: flex-end;
 	gap: 0.75rem;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 }
 .cs-oracle__field {
 	display: flex;
 	flex-direction: column;
 	gap: 0.25rem;
-	flex: 1 1 14rem;
-	min-width: 0;
+	flex: 1 1 0;
+	min-width: 6rem;
+}
+/* The main table-select field gets more room than the extra controls. */
+.cs-oracle__field--main {
+	flex: 2 1 0;
+	min-width: 10rem;
 }
 .cs-oracle__label {
 	font-family: var(--nexus-font-ui);
@@ -3975,6 +3980,9 @@ article h2::after {
 }
 .cs-oracle__select {
 	width: 100%;
+}
+.cs-oracle__select .MuiInputBase-root {
+	height: 2.75rem;
 }
 
 /* The roll control: a DIE, and the loudest thing on the page.
@@ -4067,13 +4075,19 @@ article h2::after {
 	background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
 }
 
-/* The answer is the subject of the page, so it is set like one: the display serif
-   at a heading step. A composed paragraph drops to the reading face — the same
-   words at 28px would be a wall. */
+/* The answer is the subject of the page, styled as a stone callout panel:
+   a bronze accent edge, a faint wash, and a full keyline — the same vocabulary
+   as admonitions. A border-top separator was not enough visual weight. */
 .cs-oracle__answer {
 	margin-top: 0.75rem;
-	padding-top: 0.75rem;
-	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+	padding: 0.6rem 0.75rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 35%, transparent);
+	border-left: 3px solid var(--nexus-bronze);
+	background: color-mix(
+		in srgb,
+		var(--nexus-bronze) 8%,
+		var(--ifm-background-surface-color)
+	);
 	min-height: 3rem;
 	display: flex;
 	align-items: center;
@@ -4081,7 +4095,7 @@ article h2::after {
 .cs-oracle__struck {
 	margin: 0;
 	font-family: var(--nexus-font-display);
-	font-size: var(--nexus-text-2xl);
+	font-size: var(--nexus-text-xl);
 	font-weight: 600;
 	line-height: 1.25;
 	letter-spacing: 0.01em;
@@ -4091,6 +4105,15 @@ article h2::after {
 	font-size: var(--nexus-text-base);
 	font-weight: 400;
 	line-height: 1.55;
+}
+/* Highlight the newest result for a moment after rolling. */
+.cs-oracle__struck.is-highlighted {
+	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+	transition: background 0.6s ease-out;
+}
+.cs-oracle__struck:not(.is-highlighted) {
+	background: transparent;
+	transition: background 0.6s ease-out;
 }
 .cs-oracle__empty {
 	font-style: italic;
@@ -4139,6 +4162,15 @@ article h2::after {
 }
 .cs-oracle__log li:last-child {
 	border-bottom: 0;
+}
+/* Briefly highlight newly rolled log items when count > 1. */
+.cs-oracle__log li.is-new {
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+	transition: background 0.6s ease-out;
+}
+.cs-oracle__log li:not(.is-new) {
+	background: transparent;
+	transition: background 0.6s ease-out;
 }
 
 /* M14 S3 — the dice-by-hand fold.
@@ -4221,4 +4253,29 @@ article h2::after {
 	.table-fold__caret {
 		transition: none;
 	}
+}
+
+/* RollableTable — highlighted rows and result box.
+   ==========================================================================
+
+   A rolled row gets a bronze wash so the reader can see which entry the die
+   landed on. The result box below uses the same keyline-and-wash treatment as
+   the oracle plate itself, never a dashed border or inline colour. */
+.rollable-table tr[data-rolled] > td {
+	background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
+}
+.rollable-result {
+	margin-top: 0.75rem;
+	padding: 0.5rem 0.75rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 6%, transparent);
+}
+.rollable-result__line {
+	margin: 0 0 0.25rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	line-height: 1.4;
+}
+.rollable-result__line:last-child {
+	margin-bottom: 0;
 }

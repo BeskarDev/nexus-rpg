@@ -1,21 +1,17 @@
 import {
-	Button,
-	Checkbox,
-	Divider,
-	FormControl,
-	InputLabel,
-	ListItemText,
-	MenuItem,
-	OutlinedInput,
-	Select,
-	SelectChangeEvent,
-	Stack,
-	TextField,
-	Typography,
+    Checkbox,
+    FormControl,
+    InputLabel,
+    ListItemText,
+    MenuItem,
+    OutlinedInput,
+    Select,
+    SelectChangeEvent,
 } from '@mui/material'
+import { MagicItem, MagicItemCategory } from '@site/src/types/MagicItem'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import { MagicItem, MagicItemCategory } from '@site/src/types/MagicItem'
+import { PrintToolShell } from '../PrintingTools'
 import { MagicItemCard } from './MagicItemCard'
 import './magicItemsStyles.css'
 
@@ -38,6 +34,7 @@ export const MagicItems: React.FC = () => {
 	>('all')
 	const [jsonString, setJsonString] = React.useState<string>('')
 	const [parseError, setParseError] = React.useState<string>('')
+	const [showJsonImport, setShowJsonImport] = React.useState(true)
 
 	const handleChange = (event: SelectChangeEvent<typeof selectedItems>) => {
 		const {
@@ -124,124 +121,136 @@ export const MagicItems: React.FC = () => {
 	return (
 		<>
 			<style type="text/css" media="print">
-				{
-					'\
-        @page { size: 192mm 267mm; }\
-      '
-				}
+				{'@page { size: 192mm 267mm; }'}
 			</style>
-			<Stack
-				flexDirection="column"
-				gap={2}
-				sx={{
-					mb: 2,
-					py: 2,
-					px: 3,
-					backgroundColor: 'background.default',
-					borderRadius: '8px',
-				}}
-			>
-				<Typography variant="h6" component="h2">
-					Magic Item Card Printing
-				</Typography>
-				<Typography variant="body2" color="text.secondary">
-					Upload magic items as JSON to print them as cards. Supports single
-					items or arrays of items. Cards will be formatted for easy printing
-					and cutting.
-				</Typography>
-
-				<Divider sx={{ my: 1 }} />
-
-				<TextField
-					multiline
-					minRows={5}
-					maxRows={10}
-					fullWidth
-					label="Upload Magic Items as JSON"
-					value={jsonString}
-					onChange={(event) => handleJsonUpload(event.target.value)}
-					placeholder="Paste JSON here (single item or array)..."
-					helperText={
-						parseError ||
-						'Upload one or more magic items in JSON format. See documentation for format details.'
-					}
-					error={parseError.includes('Failed')}
-				/>
-
-				<Divider sx={{ my: 1 }} />
-
-				<Stack flexDirection="row" gap={1} alignItems="center" flexWrap="wrap">
-					<Button
-						variant="contained"
-						size="large"
-						onClick={handlePrint}
-						disabled={filteredItems.length === 0}
-					>
-						PRINT
-					</Button>
-					<FormControl sx={{ m: 1, width: 150 }}>
-						<InputLabel>Category</InputLabel>
-						<Select
-							value={categoryFilter}
-							onChange={handleCategoryFilterChange}
-							input={<OutlinedInput label="Category" />}
-							sx={{
-								backgroundColor: 'background.paper',
-							}}
-						>
-							<MenuItem value="all">All Categories</MenuItem>
-							<MenuItem value="Weapon">Weapons</MenuItem>
-							<MenuItem value="Wearable">Wearables</MenuItem>
-							<MenuItem value="Consumable">Consumables</MenuItem>
-							<MenuItem value="Spell Scroll">Spell Scrolls</MenuItem>
-						</Select>
-					</FormControl>
-					<FormControl sx={{ m: 1, width: 300 }}>
-						<InputLabel>Magic Items</InputLabel>
-						<Select
-							multiple
-							value={selectedItems}
-							onChange={handleChange}
-							input={<OutlinedInput label="Magic Items" />}
-							renderValue={(selected) => selected.join(', ')}
-							MenuProps={MenuProps}
-							sx={{
-								backgroundColor: 'background.paper',
-							}}
-						>
-							{availableItems.map(({ name, category }) => (
-								<MenuItem key={name} value={name}>
-									<Checkbox checked={selectedItems.indexOf(name) > -1} />
-									<ListItemText primary={name} secondary={category} />
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
-					<Button variant="outlined" size="small" onClick={selectAll}>
-						Select all
-					</Button>
-					<Button variant="outlined" size="small" onClick={deselectAll}>
-						Deselect all
-					</Button>
-				</Stack>
-			</Stack>
-			<Typography variant="subtitle1" sx={{ mb: 2 }}>
-				{filteredItems.length} Magic Item{filteredItems.length !== 1 ? 's' : ''}{' '}
-				will be printed:
-			</Typography>
-			<div className="magic-items--container" ref={componentRef}>
-				{filteredItems.map((item, index) => (
-					<React.Fragment key={item.name}>
-						<MagicItemCard {...item} />
-						{Boolean(index % 9 === 8) && <div className="page-break" />}
-					</React.Fragment>
-				))}
-				{!filteredItems.length && (
-					<Typography variant="body2">
-						Upload magic items above to include them for printing.
-					</Typography>
-				)}
-			</div>
+			<PrintToolShell
+				controlsLabel="Select Items"
+				previewLabel="Preview"
+				controls={
+					<>
+						<div className="pt-section">
+							<div className="pt-section__head">
+								<span className="pt-section__step">I</span>
+								<span className="pt-section__label">Source</span>
+							</div>
+							<button
+								type="button"
+								className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
+								onClick={() => setShowJsonImport(!showJsonImport)}
+								aria-expanded={showJsonImport}
+							>
+								<span className="pt-import-toggle__caret" aria-hidden="true" />
+								Paste magic items JSON
+							</button>
+						<div className={`pt-import-body${showJsonImport ? "" : " is-hidden"}`}>
+							<textarea
+								value={jsonString}
+								onChange={(event) =>
+									handleJsonUpload(event.target.value)
+								}
+								placeholder="Paste magic items JSON here (single item or array)…"
+								aria-label="Magic items JSON import"
+							/>
+							{parseError && (
+								<p style={{ fontSize: 'var(--nexus-text-xs)', margin: '0.25rem 0 0' }}>
+									{parseError}
+								</p>
+							)}
+						</div>
+						</div>
+						<div className="pt-section">
+							<div className="pt-section__head">
+								<span className="pt-section__step">II</span>
+								<span className="pt-section__label">Selection</span>
+							</div>
+							<FormControl size="small" fullWidth sx={{ mb: 0.5 }}>
+								<InputLabel>Category</InputLabel>
+								<Select
+									value={categoryFilter}
+									onChange={handleCategoryFilterChange}
+									input={<OutlinedInput label="Category" />}
+								>
+									<MenuItem value="all">All Categories</MenuItem>
+									<MenuItem value="Weapon">Weapons</MenuItem>
+									<MenuItem value="Wearable">Wearables</MenuItem>
+									<MenuItem value="Consumable">Consumables</MenuItem>
+									<MenuItem value="Spell Scroll">Spell Scrolls</MenuItem>
+								</Select>
+							</FormControl>
+							<FormControl size="small" fullWidth>
+								<InputLabel>Magic Items</InputLabel>
+								<Select
+									multiple
+									value={selectedItems}
+									onChange={handleChange}
+									input={<OutlinedInput label="Magic Items" />}
+									renderValue={(selected) => `${selected.length} selected`}
+									MenuProps={MenuProps}
+								>
+									{availableItems.map(({ name, category }) => (
+										<MenuItem key={name} value={name}>
+											<Checkbox checked={selectedItems.indexOf(name) > -1} />
+											<ListItemText primary={name} secondary={category} />
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+							<div className="pt-select-row">
+								<button
+									type="button"
+									className="pt-verb-quiet"
+									onClick={selectAll}
+								>
+									Select all
+								</button>
+								<button
+									type="button"
+									className="pt-verb-quiet"
+									onClick={deselectAll}
+								>
+									Deselect all
+								</button>
+							</div>
+						</div>
+						<div className="pt-section">
+							<div className="pt-count">
+								<strong>{filteredItems.length}</strong>{' '}
+								{filteredItems.length === 1 ? 'card' : 'cards'} selected
+								{filteredItems.length > 0 && (
+									<>
+										{' '}·{' '}
+										<strong>{Math.ceil(filteredItems.length / 9)}</strong>{' '}
+										{Math.ceil(filteredItems.length / 9) === 1 ? 'sheet' : 'sheets'}
+									</>
+								)}
+							</div>
+							<button
+								type="button"
+								className="pt-print-verb"
+								onClick={handlePrint}
+								disabled={filteredItems.length === 0}
+							>
+								Print
+							</button>
+						</div>
+					</>
+				}
+				preview={
+					<div className="magic-items--container" ref={componentRef}>
+						{filteredItems.map((item, index) => (
+							<React.Fragment key={item.name}>
+								<MagicItemCard {...item} />
+								{Boolean(index % 9 === 8) && <div className="page-break" />}
+							</React.Fragment>
+						))}
+						{!filteredItems.length && (
+							<p className="pt-empty">
+								Paste magic items JSON in the controls panel to preview them here.
+							</p>
+						)}
+					</div>
+				}
+			/>
 		</>
 	)
 }

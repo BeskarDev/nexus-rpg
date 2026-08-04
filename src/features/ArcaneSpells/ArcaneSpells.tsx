@@ -1,28 +1,23 @@
 import {
-	Button,
-	Checkbox,
-	Divider,
-	FormControl,
-	InputLabel,
-	ListItemText,
-	MenuItem,
-	OutlinedInput,
-	Select,
-	SelectChangeEvent,
-	Stack,
-	TextField,
-	Typography,
-	experimental_extendTheme,
+    Checkbox,
+    FormControl,
+    InputLabel,
+    ListItemText,
+    MenuItem,
+    OutlinedInput,
+    Select,
+    SelectChangeEvent,
+    experimental_extendTheme,
 } from '@mui/material'
 import { theme } from '@site/src/hooks/createTheme'
 import { ArcaneSpell } from '@site/src/types/ArcaneSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
-import React, { useMemo, useRef } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import arcaneSpellData from '../../utils/data/json/arcane-spells.json'
-import './arcaneSpellsStyles.css'
+import { CharacterSelector, PrintToolShell } from '../PrintingTools'
 import { ArcaneSpellCard } from './ArcaneSpellCard'
-import { CharacterSelector } from '../PrintingTools'
+import './arcaneSpellsStyles.css'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -51,6 +46,7 @@ export const ArcaneSpells: React.FC = () => {
 		React.useState<string>('')
 	const [selectedCharacter, setSelectedCharacter] =
 		React.useState<CharacterDocument | null>(null)
+	const [showJsonImport, setShowJsonImport] = useState(false)
 
 	const handleChange = (
 		event: SelectChangeEvent<typeof selectedArcaneSpells>,
@@ -158,122 +154,139 @@ export const ArcaneSpells: React.FC = () => {
 	return (
 		<>
 			<style type="text/css" media="print">
-				{
-					'\
-        @page { size: 192mm 267mm; }\
-      '
-				}
+				{'@page { size: 192mm 267mm; }'}
 			</style>
-			<Stack
-				flexDirection="column"
-				gap={2}
-				sx={{
-					mb: 2,
-					py: 2,
-					px: 3,
-					backgroundColor: 'background.default',
-					borderRadius: '8px',
-				}}
-			>
-				<Typography variant="h6" component="h2">
-					Arcane Spell Card Printing
-				</Typography>
-				<Typography variant="body2" color="text.secondary">
-					Select a character from your account or manually choose arcane spells
-					to print. Cards will be formatted for easy printing and cutting.
-				</Typography>
-
-				<Divider sx={{ my: 1 }} />
-
-				<CharacterSelector
-					onCharacterSelect={handleCharacterSelect}
-					label="Load Character's Arcane Spells"
-					helperText="Selecting a character will automatically add their arcane spells to the print list below."
-				/>
-
-				<Divider sx={{ my: 1 }} />
-
-				<Stack flexDirection="row" gap={1} alignItems="center" flexWrap="wrap">
-					<Button variant="contained" size="large" onClick={handlePrint}>
-						PRINT
-					</Button>
-					<FormControl sx={{ m: 1, width: 300 }}>
-						<InputLabel>Arcane Spells</InputLabel>
-						<Select
-							multiple
-							value={selectedArcaneSpells}
-							onChange={handleChange}
-							input={<OutlinedInput label="Arcane Spells" />}
-							renderValue={(selected) => selected.join(', ')}
-							MenuProps={MenuProps}
-							sx={{
-								backgroundColor: 'background.paper',
-							}}
-						>
-							{arcaneSpells.map(({ name }) => (
-								<MenuItem key={name} value={name}>
-									<Checkbox checked={selectedArcaneSpells.indexOf(name) > -1} />
-									<ListItemText primary={name} />
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
-					<Button variant="outlined" size="small" onClick={selectAll}>
-						Select all
-					</Button>
-					<Button variant="outlined" size="small" onClick={deselectAll}>
-						Deselect all
-					</Button>
-				</Stack>
-
-				<Divider sx={{ my: 1 }} />
-
-				<TextField
-					multiline
-					minRows={3}
-					maxRows={5}
-					fullWidth
-					label="Alternative: Import Character as JSON"
-					value={characterJsonString}
-					onChange={(event) => handleCharacterUpload(event.target.value)}
-					placeholder="Paste character JSON here to automatically select their spells..."
-					helperText="You can also paste a character's exported JSON data here as an alternative to selecting a character above."
-				/>
-			</Stack>
-			<Typography variant="subtitle1" sx={{ mb: 2 }}>
-				{filteredArcaneSpells.length} Arcane Spell
-				{filteredArcaneSpells.length !== 1 ? 's' : ''} will be printed
-				{selectedArcaneSpellsList.some((s) => s.characterName) && (
+			<PrintToolShell
+				controlsLabel="Select Spells"
+				previewLabel="Preview"
+				controls={
 					<>
-						{' '}
-						(including duplicates for specific characters - hover over cards to
-						see which character they belong to)
-					</>
-				)}
-				:
-			</Typography>
-			<div className="arcane-spell--container" ref={componentRef}>
-				{filteredArcaneSpells.map((arcaneSpell, index) => (
-					<>
-						<div
-							key={`${arcaneSpell.name}-${arcaneSpell.characterName || 'manual'}-${index}`}
-							title={
-								arcaneSpell.characterName
-									? `For character: ${arcaneSpell.characterName}`
-									: undefined
-							}
-						>
-							<ArcaneSpellCard {...arcaneSpell} />
+						{/* Step I — Source */}
+						<div className="pt-section">
+							<div className="pt-section__head">
+								<span className="pt-section__step">I</span>
+								<span className="pt-section__label">Source</span>
+							</div>
+							<div className="pt-source">
+								<CharacterSelector
+									onCharacterSelect={handleCharacterSelect}
+									label="Load character's arcane spells"
+									helperText="Adds the character's arcane spells to the selection below."
+								/>
+								<button
+									type="button"
+									className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
+									onClick={() => setShowJsonImport(!showJsonImport)}
+									aria-expanded={showJsonImport}
+								>
+									<span className="pt-import-toggle__caret" aria-hidden="true" />
+									Import character as JSON
+								</button>
+								<div className={`pt-import-body${showJsonImport ? "" : " is-hidden"}`}>
+									<textarea
+										value={characterJsonString}
+										onChange={(event) =>
+											handleCharacterUpload(event.target.value)
+										}
+										placeholder="Paste character JSON here…"
+										aria-label="Character JSON import"
+									/>
+								</div>
+							</div>
 						</div>
-						{Boolean(index % 9 === 8) && <div className="page-break" />}
+
+						{/* Step II — Selection */}
+						<div className="pt-section">
+							<div className="pt-section__head">
+								<span className="pt-section__step">II</span>
+								<span className="pt-section__label">Selection</span>
+							</div>
+							<FormControl size="small" fullWidth>
+								<InputLabel>Arcane Spells</InputLabel>
+								<Select
+									multiple
+									value={selectedArcaneSpells}
+									onChange={handleChange}
+									input={<OutlinedInput label="Arcane Spells" />}
+									renderValue={(selected) => `${selected.length} selected`}
+									MenuProps={MenuProps}
+								>
+									{arcaneSpells.map(({ name }) => (
+										<MenuItem key={name} value={name}>
+											<Checkbox
+												checked={selectedArcaneSpells.indexOf(name) > -1}
+											/>
+											<ListItemText primary={name} />
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+							<div className="pt-select-row">
+								<button
+									type="button"
+									className="pt-verb-quiet"
+									onClick={selectAll}
+								>
+									Select all
+								</button>
+								<button
+									type="button"
+									className="pt-verb-quiet"
+									onClick={deselectAll}
+								>
+									Deselect all
+								</button>
+							</div>
+						</div>
+
+						{/* Step III — Count + verb */}
+						<div className="pt-section">
+							<div className="pt-count">
+								{filteredArcaneSpells.length === 1 ? '1 card' : `${filteredArcaneSpells.length} cards`} selected
+								{filteredArcaneSpells.length > 0 && (
+									<>
+										{' '}·{' '}
+										{Math.ceil(filteredArcaneSpells.length / 9) === 1 ? '1 sheet' : `${Math.ceil(filteredArcaneSpells.length / 9)} sheets`}
+									</>
+								)}
+							</div>
+							<button
+								type="button"
+								className="pt-print-verb"
+								onClick={handlePrint}
+								disabled={filteredArcaneSpells.length === 0}
+							>
+								Print
+							</button>
+						</div>
 					</>
-				))}
-				{!filteredArcaneSpells.length && (
-					<Typography variant="body2">
-						Select some Arcane Spells above to include them for printing.
-					</Typography>
-				)}
-			</div>
+				}
+				preview={
+					<div className="arcane-spell--container" ref={componentRef}>
+						{filteredArcaneSpells.map((arcaneSpell, index) => (
+							<React.Fragment
+								key={`${arcaneSpell.name}-${arcaneSpell.characterName || 'manual'}-${index}`}
+							>
+								<div
+									title={
+										arcaneSpell.characterName
+											? `For character: ${arcaneSpell.characterName}`
+											: undefined
+									}
+								>
+									<ArcaneSpellCard {...arcaneSpell} />
+								</div>
+								{Boolean(index % 9 === 8) && <div className="page-break" />}
+							</React.Fragment>
+						))}
+						{!filteredArcaneSpells.length && (
+							<p className="pt-empty">
+								Select arcane spells in the controls panel to preview them here.
+							</p>
+						)}
+					</div>
+				}
+			/>
 		</>
 	)
 }

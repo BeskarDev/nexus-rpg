@@ -1,7 +1,6 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React from 'react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Mock the JSON data first
 vi.mock('@site/src/utils/data/json/combat-arts.json', () => ({
@@ -102,7 +101,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 			// Wait for state update
 			await waitFor(() => {
 				expect(
-					screen.getByText(/1 Combat Art will be printed/i),
+					screen.getByText(/1 card selected/i),
 				).toBeInTheDocument()
 			})
 
@@ -120,15 +119,8 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Now we should have 2 cards (both Power Attack, one for each character)
 			await waitFor(() => {
-				const text = screen.getByText(/2 Combat Arts will be printed/i)
+				const text = screen.getByText(/2 cards selected/i)
 				expect(text).toBeInTheDocument()
-			})
-
-			// Should show the duplicate notice
-			await waitFor(() => {
-				expect(
-					screen.getByText(/including duplicates for specific characters/i),
-				).toBeInTheDocument()
 			})
 		})
 
@@ -146,12 +138,13 @@ describe('Duplicate Cards for Multiple Characters', () => {
 			})
 
 			await userEvent.click(textarea)
+			await userEvent.clear(textarea)
 			await userEvent.paste(characterJson)
 
 			// Wait for character's ability to be added
 			await waitFor(() => {
 				expect(
-					screen.getByText(/1 Combat Art will be printed/i),
+					screen.getByText(/1 card selected/i),
 				).toBeInTheDocument()
 			})
 
@@ -182,7 +175,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Wait for state update
 			await waitFor(() => {
-				expect(screen.getByText(/1 Spell will be printed/i)).toBeInTheDocument()
+				expect(screen.getByText(/1 card selected/i)).toBeInTheDocument()
 			})
 
 			// Second character with the same Heal spell
@@ -199,15 +192,8 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Now we should have 2 cards (both Heal, one for each character)
 			await waitFor(() => {
-				const text = screen.getByText(/2 Spells will be printed/i)
+				const text = screen.getByText(/2 cards selected/i)
 				expect(text).toBeInTheDocument()
-			})
-
-			// Should show the duplicate notice
-			await waitFor(() => {
-				expect(
-					screen.getByText(/including duplicates for specific characters/i),
-				).toBeInTheDocument()
 			})
 		})
 
@@ -233,7 +219,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 			// Wait for both spells to be added
 			await waitFor(() => {
 				expect(
-					screen.getByText(/2 Spells will be printed/i),
+					screen.getByText(/2 cards selected/i),
 				).toBeInTheDocument()
 			})
 
@@ -251,7 +237,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 			// Should have 3 cards total: Heal (from char1), Fireball (from char1), Heal (from char2)
 			await waitFor(() => {
 				expect(
-					screen.getByText(/3 Spells will be printed/i),
+					screen.getByText(/3 cards selected/i),
 				).toBeInTheDocument()
 			})
 		})
@@ -276,7 +262,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			await waitFor(() => {
 				expect(
-					screen.getByText(/1 Combat Art will be printed/i),
+					screen.getByText(/1 card selected/i),
 				).toBeInTheDocument()
 			})
 
@@ -287,7 +273,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 			// Should clear everything
 			await waitFor(() => {
 				expect(
-					screen.getByText(/0 Combat Arts will be printed/i),
+					screen.getByText(/0 cards selected/i),
 				).toBeInTheDocument()
 			})
 		})

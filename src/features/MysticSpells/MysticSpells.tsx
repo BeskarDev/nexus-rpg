@@ -1,30 +1,21 @@
 import {
-	Button,
-	Checkbox,
-	Divider,
-	FormControl,
-	InputLabel,
-	ListItemText,
-	MenuItem,
-	OutlinedInput,
-	Select,
-	SelectChangeEvent,
-	Stack,
-	TextField,
-	ThemeProvider,
-	Typography,
-	experimental_extendTheme,
+    Checkbox,
+    FormControl,
+    InputLabel,
+    ListItemText,
+    MenuItem,
+    OutlinedInput,
+    Select,
+    SelectChangeEvent,
 } from '@mui/material'
-import { theme } from '@site/src/hooks/createTheme'
-import { MysticSpell } from '@site/src/types/MysticSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
+import { MysticSpell } from '@site/src/types/MysticSpell'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import mysticSpellData from '../../utils/data/json/mystic-spells.json'
-import './mysticSpellsStyles.css'
+import { CharacterSelector, PrintToolShell } from '../PrintingTools'
 import { MysticSpellCard } from './MysticSpellCard'
-import { CharacterSelector } from '../PrintingTools'
-import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
+import './mysticSpellsStyles.css'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -43,7 +34,6 @@ type SpellSelection = {
 }
 
 export const MysticSpells: React.FC = () => {
-	const customTheme = experimental_extendTheme()
 	const [selectedMysticSpells, setSelectedMysticSpells] = React.useState<
 		string[]
 	>([])
@@ -53,6 +43,7 @@ export const MysticSpells: React.FC = () => {
 		React.useState<string>('')
 	const [selectedCharacter, setSelectedCharacter] =
 		React.useState<CharacterDocument | null>(null)
+	const [showJsonImport, setShowJsonImport] = React.useState(false)
 
 	const handleChange = (
 		event: SelectChangeEvent<typeof selectedMysticSpells>,
@@ -160,122 +151,141 @@ export const MysticSpells: React.FC = () => {
 	return (
 		<>
 			<style type="text/css" media="print">
-				{
-					'\
-        @page { size: 192mm 267mm; }\
-      '
-				}
+				{'@page { size: 192mm 267mm; }'}
 			</style>
-			<Stack
-				flexDirection="column"
-				gap={2}
-				sx={{
-					mb: 2,
-					py: 2,
-					px: 3,
-					backgroundColor: 'background.default',
-					borderRadius: '8px',
-				}}
-			>
-				<Typography variant="h6" component="h2">
-					Mystic Spell Card Printing
-				</Typography>
-				<Typography variant="body2" color="text.secondary">
-					Select a character from your account or manually choose mystic spells
-					to print. Cards will be formatted for easy printing and cutting.
-				</Typography>
-
-				<Divider sx={{ my: 1 }} />
-
-				<CharacterSelector
-					onCharacterSelect={handleCharacterSelect}
-					label="Load Character's Mystic Spells"
-					helperText="Selecting a character will automatically add their mystic spells to the print list below."
-				/>
-
-				<Divider sx={{ my: 1 }} />
-
-				<Stack flexDirection="row" gap={1} alignItems="center" flexWrap="wrap">
-					<Button variant="contained" size="large" onClick={handlePrint}>
-						PRINT
-					</Button>
-					<FormControl sx={{ m: 1, width: 300 }}>
-						<InputLabel>Mystic Spells</InputLabel>
-						<Select
-							multiple
-							value={selectedMysticSpells}
-							onChange={handleChange}
-							input={<OutlinedInput label="Mystic Spells" />}
-							renderValue={(selected) => selected.join(', ')}
-							MenuProps={MenuProps}
-							sx={{
-								backgroundColor: 'background.paper',
-							}}
-						>
-							{mysticSpells.map(({ name }) => (
-								<MenuItem key={name} value={name}>
-									<Checkbox checked={selectedMysticSpells.indexOf(name) > -1} />
-									<ListItemText primary={name} />
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
-					<Button variant="outlined" size="small" onClick={selectAll}>
-						Select all
-					</Button>
-					<Button variant="outlined" size="small" onClick={deselectAll}>
-						Deselect all
-					</Button>
-				</Stack>
-
-				<Divider sx={{ my: 1 }} />
-
-				<TextField
-					multiline
-					minRows={3}
-					maxRows={5}
-					fullWidth
-					label="Alternative: Import Character as JSON"
-					value={characterJsonString}
-					onChange={(event) => handleCharacterUpload(event.target.value)}
-					placeholder="Paste character JSON here to automatically select their spells..."
-					helperText="You can also paste a character's exported JSON data here as an alternative to selecting a character above."
-				/>
-			</Stack>
-			<Typography variant="subtitle1" sx={{ mb: 2 }}>
-				{filteredMysticSpells.length} Mystic Spell
-				{filteredMysticSpells.length !== 1 ? 's' : ''} will be printed
-				{selectedMysticSpellsList.some((s) => s.characterName) && (
+			<PrintToolShell
+				controlsLabel="Select Spells"
+				previewLabel="Preview"
+				controls={
 					<>
-						{' '}
-						(including duplicates for specific characters - hover over cards to
-						see which character they belong to)
-					</>
-				)}
-				:
-			</Typography>
-			<div className="mystic-spell--container" ref={componentRef}>
-				{filteredMysticSpells.map((mysticSpell, index) => (
-					<>
-						<div
-							key={`${mysticSpell.name}-${mysticSpell.characterName || 'manual'}-${index}`}
-							title={
-								mysticSpell.characterName
-									? `For character: ${mysticSpell.characterName}`
-									: undefined
-							}
-						>
-							<MysticSpellCard {...mysticSpell} />
+						<div className="pt-section">
+							<div className="pt-section__head">
+								<span className="pt-section__step">I</span>
+								<span className="pt-section__label">Source</span>
+							</div>
+							<div className="pt-source">
+								<CharacterSelector
+									onCharacterSelect={handleCharacterSelect}
+									label="Load character's mystic spells"
+									helperText="Adds the character's mystic spells to the selection below."
+								/>
+								<button
+									type="button"
+									className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
+									onClick={() => setShowJsonImport(!showJsonImport)}
+									aria-expanded={showJsonImport}
+								>
+									<span className="pt-import-toggle__caret" aria-hidden="true" />
+									Import character as JSON
+								</button>
+								<div className={`pt-import-body${showJsonImport ? "" : " is-hidden"}`}>
+									<textarea
+										value={characterJsonString}
+										onChange={(event) =>
+											handleCharacterUpload(event.target.value)
+										}
+										placeholder="Paste character JSON here…"
+										aria-label="Character JSON import"
+									/>
+								</div>
+							</div>
 						</div>
-						{Boolean(index % 9 === 8) && <div className="page-break" />}
+						<div className="pt-section">
+							<div className="pt-section__head">
+								<span className="pt-section__step">II</span>
+								<span className="pt-section__label">Selection</span>
+							</div>
+							<FormControl size="small" fullWidth>
+								<InputLabel>Mystic Spells</InputLabel>
+								<Select
+									multiple
+									value={selectedMysticSpells}
+									onChange={handleChange}
+									input={<OutlinedInput label="Mystic Spells" />}
+									renderValue={(selected) => `${selected.length} selected`}
+									MenuProps={MenuProps}
+								>
+									{mysticSpells.map(({ name }) => (
+										<MenuItem key={name} value={name}>
+											<Checkbox
+												checked={selectedMysticSpells.indexOf(name) > -1}
+											/>
+											<ListItemText primary={name} />
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+							<div className="pt-select-row">
+								<button
+									type="button"
+									className="pt-verb-quiet"
+									onClick={selectAll}
+								>
+									Select all
+								</button>
+								<button
+									type="button"
+									className="pt-verb-quiet"
+									onClick={deselectAll}
+								>
+									Deselect all
+								</button>
+							</div>
+						</div>
+						<div className="pt-section">
+							<div className="pt-count">
+								<strong>{filteredMysticSpells.length}</strong>{' '}
+								{filteredMysticSpells.length === 1 ? 'card' : 'cards'} selected
+								{filteredMysticSpells.length > 0 && (
+									<>
+										{' '}
+										·{' '}
+										<strong>
+											{Math.ceil(filteredMysticSpells.length / 9)}
+										</strong>{' '}
+										{Math.ceil(filteredMysticSpells.length / 9) === 1
+											? 'sheet'
+											: 'sheets'}
+									</>
+								)}
+							</div>
+							<button
+								type="button"
+								className="pt-print-verb"
+								onClick={handlePrint}
+								disabled={filteredMysticSpells.length === 0}
+							>
+								Print
+							</button>
+						</div>
 					</>
-				))}
-				{!filteredMysticSpells.length && (
-					<Typography variant="body2">
-						Select some Mystic Spells above to include them for printing.
-					</Typography>
-				)}
-			</div>
+				}
+				preview={
+					<div className="mystic-spell--container" ref={componentRef}>
+						{filteredMysticSpells.map((mysticSpell, index) => (
+							<React.Fragment
+								key={`${mysticSpell.name}-${mysticSpell.characterName || 'manual'}-${index}`}
+							>
+								<div
+									title={
+										mysticSpell.characterName
+											? `For character: ${mysticSpell.characterName}`
+											: undefined
+									}
+								>
+									<MysticSpellCard {...mysticSpell} />
+								</div>
+								{Boolean(index % 9 === 8) && <div className="page-break" />}
+							</React.Fragment>
+						))}
+						{!filteredMysticSpells.length && (
+							<p className="pt-empty">
+								Select mystic spells in the controls panel to preview them here.
+							</p>
+						)}
+					</div>
+				}
+			/>
 		</>
 	)
 }

@@ -1,4 +1,3 @@
-import { Typography } from '@mui/material'
 import { RollDie } from './codex/RollDie'
 import React, { useState, useMemo } from 'react'
 
@@ -21,6 +20,7 @@ const RollableTable: React.FC<RollableTableProps> = ({
 	singleRoll = false,
 }) => {
 	const [results, setResults] = useState<RollResults>({})
+	const [rolledRowIndices, setRolledRowIndices] = useState<Set<number>>(new Set())
 
 	const { dieSize, headers, rows } = useMemo(() => {
 		let dieSize = 0
@@ -117,13 +117,16 @@ const RollableTable: React.FC<RollableTableProps> = ({
 	const handleRoll = () => {
 		if (dieSize <= 0 || rows.length === 0) return
 		const next: RollResults = {}
+		const newIndices = new Set<number>()
 
 		if (singleRoll) {
 			// Roll once for all columns
 			const roll = Math.floor(Math.random() * dieSize) + 1
-			const found = rows.find(
+			const foundIndex = rows.findIndex(
 				({ range }) => roll >= range[0] && roll <= range[1],
 			)
+			if (foundIndex >= 0) newIndices.add(foundIndex)
+			const found = foundIndex >= 0 ? rows[foundIndex] : undefined
 			headers.forEach((header) => {
 				const value = found?.values[header] ?? '—'
 				next[header] = { roll, value }
@@ -132,22 +135,56 @@ const RollableTable: React.FC<RollableTableProps> = ({
 			// Roll each column independently (original behavior)
 			headers.forEach((header) => {
 				const roll = Math.floor(Math.random() * dieSize) + 1
-				const found = rows.find(
+				const foundIndex = rows.findIndex(
 					({ range }) => roll >= range[0] && roll <= range[1],
 				)
-				const value = found?.values[header] ?? '—'
+				if (foundIndex >= 0) newIndices.add(foundIndex)
+				const value = foundIndex >= 0 ? rows[foundIndex].values[header] : '—'
 				next[header] = { roll, value }
 			})
 		}
 
 		setResults(next)
+		setRolledRowIndices(newIndices)
 	}
+
+	/** Clone the table tree adding data-rolled to tbody rows that were hit. */
+	const tableWithHighlights = useMemo(() => {
+		if (rolledRowIndices.size === 0) return children
+
+		const table = React.Children.only(children) as React.ReactElement
+
+		const cloneBodyRows = (tbody: React.ReactElement): React.ReactElement => {
+			let rowIdx = 0
+			const newChildren = React.Children.map(tbody.props.children, (child) => {
+				if (React.isValidElement(child) && child.type === 'tr') {
+					const idx = rowIdx++
+					if (rolledRowIndices.has(idx)) {
+						return React.cloneElement(
+							child as React.ReactElement<Record<string, unknown>>,
+							{ 'data-rolled': true },
+						)
+					}
+				}
+				return child
+			})
+			return React.cloneElement(tbody, {}, newChildren)
+		}
+
+		const newTableChildren = React.Children.map(table.props.children, (child) => {
+			if (React.isValidElement(child) && child.type === 'tbody') {
+				return cloneBodyRows(child as React.ReactElement)
+			}
+			return child
+		})
+
+		return React.cloneElement(table, {}, newTableChildren)
+	}, [children, rolledRowIndices])
 
 	return (
 		<div style={{ marginBottom: '1.5rem' }}>
-			{/* 1) Render the original table unchanged */}
-			<div>{children}</div>
-
+			{/* 1) Render the table; rolled rows get data-rolled for the bronze-wash CSS */}
+			<div className="rollable-table">{tableWithHighlights}</div>
 			{/* 2) The roll die. It was `<Button variant="outlined">🎲</Button>` — a
 				Material button carrying a platform EMOJI, which renders as a different
 				die on every operating system, on a site with a drawn sigil set and a
@@ -156,25 +193,14 @@ const RollableTable: React.FC<RollableTableProps> = ({
 
 			{/* 3) Space for showing results */}
 			{Object.keys(results).length > 0 && (
-				<div
-					style={{
-						marginTop: '0.75rem',
-						padding: '0.75rem',
-						border: '1px dashed #ccc',
-						borderRadius: '4px',
-					}}
-				>
+				<div className="rollable-result">
 					{Object.entries(results).map(([header, { value, roll }]) => (
-						<Typography
-							variant="body2"
-							key={header}
-							style={{ marginBottom: '0.3rem' }}
-						>
+						<p key={header} className="rollable-result__line">
 							<strong>
 								{header} ({roll}):
 							</strong>{' '}
 							{value}
-						</Typography>
+						</p>
 					))}
 				</div>
 			)}

@@ -45,6 +45,7 @@ export const MysticSpellCard: React.FC<MysticSpell> = ({
 						width: 26,
 						height: 26,
 						bgcolor: 'black',
+						color: 'white',
 						alignSelf: 'left',
 						fontWeight: 'bold',
 						lineHeight: 1.25,

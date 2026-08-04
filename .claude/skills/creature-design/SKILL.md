@@ -23,6 +23,9 @@ Creatures are designed on a tier chassis (Tier 0–10, matching adventurer level
 | Damage/healing scaling frameworks | `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6 and §16 |
 | Deep analysis (survivability math, encounter building, ability catalogues) | `docs/analysis/creature-creation-encounter-building-analysis.md` |
 | Creature Builder rule tables (app) | `src/utils/data/json/creature-*.json` (tier stats, sizes, types, archetypes — NOT the roster) |
+| **Attacks library** (Builder pre-sets) | `src/utils/data/json/creature-attacks-library.json` — template attacks by tags (melee/ranged/breath/natural) and `forTypes` hints |
+| **Abilities library** (Builder pre-sets) | `src/utils/data/json/creature-abilities-library.json` — template abilities by tags and `forTypes` hints |
+| **Type defaults** (Builder auto-fill) | `src/utils/data/json/creature-type-defaults.json` — maps creature type+subtype to default attack/ability IDs from the libraries above |
 | **Treasure**: economy, item catalogues, magic-item pricing | [references/treasure-design.md](references/treasure-design.md) — read before writing any loot table |
 
 **Keyword discipline**: only official conditions, durations, and weapon properties — complete lists in [../game-basics.md](../game-basics.md#canonical-keyword-sources). Anything non-official must be spelled out as an exact mechanical effect.

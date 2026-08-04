@@ -70,5 +70,6 @@
 	"githubPullRequests.fileListLayout": "tree",
 	"editor.indentSize": "tabSize",
 	"editor.tabSize": 2,
-	"editor.detectIndentation": false
+	"editor.detectIndentation": false,
+  "github.copilot.chat.edits.temporalContext.enabled": false,
 }

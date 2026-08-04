@@ -1,24 +1,36 @@
+import { MenuItem, Select, TextField } from '@mui/material'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { MenuItem, Select, TextField } from '@mui/material'
-import {
-	BuilderRegister,
-	ChoiceRail,
-	GrantLine,
-	type RailOption,
-} from '../builder'
-import {
-	TIER_NAMES,
-	getAvailableArchetypes,
-	getAvailableSizes,
-	getArchetypeData,
-	getSizeData,
-} from '../../utils/typescript/creature/creatureBuilderCalculations'
-import creatureTypes from '../../utils/data/json/creature-types.json'
-import creatureSubtypes from '../../utils/data/json/creature-subtypes.json'
 import { creatureBuilderActions } from '../../features/CreatureBuilder/creatureBuilderReducer'
 import { useCreatureBuilderState } from '../../hooks/useCreatureBuilderState'
-import type { CreatureCategory } from '../../types/CreatureBuilder'
+import type {
+    AbilityTemplate,
+    AttackTemplate,
+    CreatureCategory,
+    CreatureTypeDefaults,
+} from '../../types/CreatureBuilder'
+import abilitiesLibraryData from '../../utils/data/json/creature-abilities-library.json'
+import attacksLibraryData from '../../utils/data/json/creature-attacks-library.json'
+import creatureSubtypes from '../../utils/data/json/creature-subtypes.json'
+import typeDefaultsData from '../../utils/data/json/creature-type-defaults.json'
+import creatureTypes from '../../utils/data/json/creature-types.json'
+import {
+    TIER_NAMES,
+    getArchetypeData,
+    getAvailableArchetypes,
+    getAvailableSizes,
+    getSizeData,
+} from '../../utils/typescript/creature/creatureBuilderCalculations'
+import {
+    BuilderRegister,
+    ChoiceRail,
+    GrantLine,
+    type RailOption,
+} from '../builder'
+
+const typeDefaults = typeDefaultsData as CreatureTypeDefaults[]
+const attacksLibrary = attacksLibraryData as AttackTemplate[]
+const abilitiesLibrary = abilitiesLibraryData as AbilityTemplate[]
 
 const CATEGORIES: { value: CreatureCategory; note: string }[] = [
 	{ value: 'Basic', note: 'one life pool' },
@@ -56,6 +68,52 @@ const signed = (value: number) => (value > 0 ? `+${value}` : `${value}`)
 export const CreatureCommission: React.FC = () => {
 	const dispatch = useDispatch()
 	const { state } = useCreatureBuilderState()
+
+	// Find matching type defaults for the current type + optional subtype
+	const matchingDefaults = typeDefaults.find(
+		(d) =>
+			d.type === state.type &&
+			(d.subtype === undefined ||
+				d.subtype === '' ||
+				d.subtype === state.subtype),
+	)
+
+	const defaultAttacks = (matchingDefaults?.attacks ?? [])
+		.map((id) => attacksLibrary.find((a) => a.id === id))
+		.filter(Boolean) as AttackTemplate[]
+
+	const defaultAbilities = (matchingDefaults?.abilities ?? [])
+		.map((id) => abilitiesLibrary.find((a) => a.id === id))
+		.filter(Boolean) as AbilityTemplate[]
+
+	const newDefaultAttacks = defaultAttacks.filter(
+		(t) => !state.attacks.some((a) => a.name === t.name),
+	)
+	const newDefaultAbilities = defaultAbilities.filter(
+		(t) => !state.abilities.some((a) => a.name === t.name),
+	)
+
+	const hasNewDefaults =
+		newDefaultAttacks.length > 0 || newDefaultAbilities.length > 0
+
+	const applyDefaults = () => {
+		dispatch(
+			creatureBuilderActions.applyDefaults({
+				attacks: newDefaultAttacks.map((t) => ({
+					name: t.name,
+					properties: [],
+					damage: t.damage,
+					damageType: t.damageType,
+					description: t.description,
+				})),
+				abilities: newDefaultAbilities.map((t) => ({
+					name: t.name,
+					description: t.description,
+					actionType: t.actionType,
+				})),
+			}),
+		)
+	}
 
 	const tierOptions: RailOption[] = Array.from({ length: 11 }, (_, tier) => ({
 		value: tier,
@@ -180,6 +238,24 @@ export const CreatureCommission: React.FC = () => {
 						</Select>
 					</label>
 				</div>
+				{hasNewDefaults && (
+					<div className="cb-defaults-hint">
+						<span className="cb-defaults-hint__text">
+							{newDefaultAttacks.length > 0 && newDefaultAbilities.length > 0
+								? `${state.type} defaults: +${newDefaultAttacks.length} attack${newDefaultAttacks.length > 1 ? 's' : ''}, +${newDefaultAbilities.length} abilit${newDefaultAbilities.length > 1 ? 'ies' : 'y'}`
+								: newDefaultAttacks.length > 0
+									? `${state.type} defaults: +${newDefaultAttacks.length} attack${newDefaultAttacks.length > 1 ? 's' : ''}`
+									: `${state.type} defaults: +${newDefaultAbilities.length} abilit${newDefaultAbilities.length > 1 ? 'ies' : 'y'}`}
+						</span>
+						<button
+							type="button"
+							className="cb-defaults-hint__apply"
+							onClick={applyDefaults}
+						>
+							Apply
+						</button>
+					</div>
+				)}
 			</BuilderRegister>
 
 			<BuilderRegister step="V" label="Archetype" note="how it fights">

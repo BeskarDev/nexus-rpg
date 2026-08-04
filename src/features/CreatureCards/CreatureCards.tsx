@@ -1,29 +1,22 @@
 import {
-	Button,
-	Checkbox,
-	Divider,
-	FormControl,
-	InputLabel,
-	ListItemText,
-	MenuItem,
-	OutlinedInput,
-	Select,
-	SelectChangeEvent,
-	Stack,
-	TextField,
-	Typography,
+    Checkbox,
+    FormControl,
+    InputLabel,
+    ListItemText,
+    MenuItem,
+    OutlinedInput,
+    Select,
+    SelectChangeEvent,
 } from '@mui/material'
-import { theme } from '@site/src/hooks/createTheme'
-import { Creature, Attack, Ability } from '@site/src/types/Creature'
 import { Character, CharacterDocument } from '@site/src/types/Character'
+import { Ability, Attack, Creature } from '@site/src/types/Creature'
 import React, { useMemo, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
+import { CharacterSelector, PrintToolShell } from '../PrintingTools'
 import './creatureCardsStyles.css'
 import { CreatureCompactCard } from './CreatureCompactCard'
 import { CreatureDetailCard } from './CreatureDetailCard'
 import { parseCreatureMarkdown } from './parseCreatureMarkdown'
-import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
-import { CharacterSelector } from '../PrintingTools'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -238,6 +231,8 @@ export const CreatureCards: React.FC = () => {
 		React.useState<string>('')
 	const [selectedCharacter, setSelectedCharacter] =
 		React.useState<CharacterDocument | null>(null)
+	const [showJsonImport, setShowJsonImport] = useState(false)
+	const [showMarkdownPaste, setShowMarkdownPaste] = useState(false)
 
 	const handleMarkdownChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setMarkdownInput(event.target.value)
@@ -466,174 +461,157 @@ export const CreatureCards: React.FC = () => {
 	return (
 		<>
 			<style type="text/css" media="print">
-				{
-					'\
-        @page { size: 192mm 267mm; }\
-      '
-				}
+				{'@page { size: 192mm 267mm; }'}
 			</style>
-			<Stack
-				gap={2}
-				sx={{
-					mb: 2,
-					py: 2,
-					px: 3,
-					backgroundColor: 'background.default',
-					borderRadius: '8px',
-				}}
-			>
-				<Typography variant="h6" component="h2">
-					Creature Card Printing
-				</Typography>
-				<Typography variant="body2" color="text.secondary">
-					Select a character to load their companions, upload a markdown file,
-					or manually paste creature stat blocks to print cards.
-				</Typography>
-
-				<Divider sx={{ my: 1 }} />
-
-				<CharacterSelector
-					onCharacterSelect={handleCharacterSelect}
-					label="Load Character's Companions"
-					helperText="Selecting a character will automatically add their companions to the print list below."
-				/>
-
-				<Divider sx={{ my: 1 }} />
-
-				{/* File Upload */}
-				<Stack flexDirection="row" gap={2} alignItems="center">
-					<input
-						accept=".md,.txt"
-						style={{ display: 'none' }}
-						id="markdown-file-upload"
-						type="file"
-						onChange={handleFileUpload}
-					/>
-					<label htmlFor="markdown-file-upload">
-						<Button variant="outlined" component="span">
-							Upload Markdown File
-						</Button>
-					</label>
-					<Button
-						variant="contained"
-						onClick={handleParseMarkdown}
-						disabled={!markdownInput.trim()}
-					>
-						Parse Creatures
-					</Button>
-				</Stack>
-
-				{/* Markdown Input */}
-				<TextField
-					multiline
-					rows={6}
-					label="Creature Markdown"
-					value={markdownInput}
-					onChange={handleMarkdownChange}
-					placeholder="Paste your creature markdown here or upload a file..."
-					sx={{
-						backgroundColor: 'background.paper',
-					}}
-				/>
-
-				{error && (
-					<Typography color="error" variant="body2">
-						{error}
-					</Typography>
-				)}
-
-				<Divider sx={{ my: 1 }} />
-
-				<TextField
-					multiline
-					minRows={3}
-					maxRows={5}
-					fullWidth
-					label="Alternative: Import Character as JSON"
-					value={characterJsonString}
-					onChange={(event) => handleCharacterUpload(event.target.value)}
-					placeholder="Paste character JSON here to automatically load their companions..."
-					helperText="You can also paste a character's exported JSON data here as an alternative to selecting a character above."
-				/>
-
-				{/* Creature Selection */}
-				{creatures.length > 0 && (
-					<Stack flexDirection="row" gap={1} alignItems="center">
-						<Button variant="contained" size="large" onClick={handlePrint}>
-							PRINT
-						</Button>
-						<FormControl sx={{ minWidth: 300 }}>
-							<InputLabel>Creatures</InputLabel>
-							<Select
-								multiple
-								value={selectedCreatures}
-								onChange={handleCreatureSelectionChange}
-								input={<OutlinedInput label="Creatures" />}
-								renderValue={(selected) => selected.join(', ')}
-								MenuProps={MenuProps}
-								sx={{
-									backgroundColor: 'background.paper',
-								}}
+			<PrintToolShell
+				controlsLabel="Select Creatures"
+				previewLabel="Preview"
+				controls={
+					<>
+						<div className="pt-section">
+							<div className="pt-section__head">
+								<span className="pt-section__step">I</span>
+								<span className="pt-section__label">Source</span>
+							</div>
+							<div className="pt-source">
+								<CharacterSelector
+									onCharacterSelect={handleCharacterSelect}
+									label="Load character's companions"
+									helperText="Adds the character's companion creatures to the list."
+								/>
+								<button
+									type="button"
+									className={`pt-import-toggle${showMarkdownPaste ? ' is-open' : ''}`}
+									onClick={() => setShowMarkdownPaste(!showMarkdownPaste)}
+									aria-expanded={showMarkdownPaste}
+								>
+									<span className="pt-import-toggle__caret" aria-hidden="true" />
+									Paste creature markdown
+								</button>
+								<div className={`pt-import-body${showMarkdownPaste ? "" : " is-hidden"}`}>
+									<textarea
+										value={markdownInput}
+										onChange={(e) => setMarkdownInput(e.target.value)}
+										placeholder="Paste creature stat block markdown here…"
+										aria-label="Creature markdown input"
+									/>
+									<div className="pt-select-row" style={{ marginTop: '0.35rem' }}>
+										<button
+											type="button"
+											className="pt-verb-quiet"
+											onClick={handleParseMarkdown}
+											disabled={!markdownInput.trim()}
+										>
+											Parse creatures
+										</button>
+										<label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', cursor: 'pointer' }}>
+											<input
+												type="file"
+												accept=".md,.txt"
+												style={{ display: 'none' }}
+												onChange={handleFileUpload}
+											/>
+											<span className="pt-verb-quiet">Upload file</span>
+										</label>
+									</div>
+									{error && (
+										<p style={{ color: 'var(--ifm-color-danger)', fontSize: 'var(--nexus-text-xs)', margin: '0.25rem 0 0' }}>
+											{error}
+										</p>
+									)}
+								</div>
+								<button
+									type="button"
+									className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
+									onClick={() => setShowJsonImport(!showJsonImport)}
+									aria-expanded={showJsonImport}
+								>
+									<span className="pt-import-toggle__caret" aria-hidden="true" />
+									Import character as JSON
+								</button>
+								<div className={`pt-import-body${showJsonImport ? "" : " is-hidden"}`}>
+									<textarea
+										value={characterJsonString}
+										onChange={(event) =>
+											handleCharacterUpload(event.target.value)
+										}
+										placeholder="Paste character JSON here…"
+										aria-label="Character JSON import"
+									/>
+								</div>
+							</div>
+						</div>
+						{creatures.length > 0 && (
+							<div className="pt-section">
+								<div className="pt-section__head">
+									<span className="pt-section__step">II</span>
+									<span className="pt-section__label">Selection</span>
+								</div>
+								<FormControl size="small" fullWidth>
+									<InputLabel>Creatures</InputLabel>
+									<Select
+										multiple
+										value={selectedCreatures}
+										onChange={handleCreatureSelectionChange}
+										input={<OutlinedInput label="Creatures" />}
+										renderValue={(selected) => `${selected.length} selected`}
+										MenuProps={MenuProps}
+									>
+										{creatures.map(({ name }) => (
+											<MenuItem key={name} value={name}>
+												<Checkbox checked={selectedCreatures.indexOf(name) > -1} />
+												<ListItemText primary={name} />
+											</MenuItem>
+										))}
+									</Select>
+								</FormControl>
+								<div className="pt-select-row">
+									<button type="button" className="pt-verb-quiet" onClick={selectAll}>Select all</button>
+									<button type="button" className="pt-verb-quiet" onClick={deselectAll}>Deselect all</button>
+								</div>
+							</div>
+						)}
+						<div className="pt-section">
+							<div className="pt-count">
+								{allCards.length > 0 ? (
+									<>
+										<strong>{allCards.length}</strong>{' '}
+										{allCards.length === 1 ? 'card' : 'cards'} selected
+										{' '}·{' '}
+										<strong>{Math.ceil(allCards.length / 9)}</strong>{' '}
+										{Math.ceil(allCards.length / 9) === 1 ? 'sheet' : 'sheets'}
+									</>
+								) : (
+									'No creatures selected'
+								)}
+							</div>
+							<button
+								type="button"
+								className="pt-print-verb"
+								onClick={handlePrint}
+								disabled={allCards.length === 0}
 							>
-								{creatures.map(({ name }) => (
-									<MenuItem key={name} value={name}>
-										<Checkbox checked={selectedCreatures.indexOf(name) > -1} />
-										<ListItemText primary={name} />
-									</MenuItem>
-								))}
-							</Select>
-						</FormControl>
-						<Button variant="outlined" size="small" onClick={selectAll}>
-							Select all
-						</Button>
-						<Button variant="outlined" size="small" onClick={deselectAll}>
-							Deselect all
-						</Button>
-					</Stack>
-				)}
-
-				{/* Card Layout Info */}
-				{creatures.length > 0 && (
-					<Typography variant="body2" color="text.secondary">
-						{
-							filteredCreatures.filter(
-								(c) => getCreatureCardStrategy(c) === 'single',
-							).length
-						}{' '}
-						single cards,{' '}
-						{
-							filteredCreatures.filter(
-								(c) => getCreatureCardStrategy(c) === 'double',
-							).length
-						}{' '}
-						double cards,{' '}
-						{
-							filteredCreatures.filter(
-								(c) => getCreatureCardStrategy(c) === 'triple',
-							).length
-						}{' '}
-						triple cards.
-					</Typography>
-				)}
-			</Stack>
-
-			<Typography variant="subtitle1">
-				{allCards.length} cards will be printed:
-			</Typography>
-
-			<div className="creature-cards--container" ref={componentRef}>
-				{allCards.map((card, index) => (
-					<React.Fragment key={index}>
-						{card}
-						{Boolean(index % 9 === 8) && <div className="page-break" />}
-					</React.Fragment>
-				))}
-				{!allCards.length && (
-					<Typography variant="body2">
-						Upload and parse a markdown file with creature stat blocks to begin.
-					</Typography>
-				)}
-			</div>
+								Print
+							</button>
+						</div>
+					</>
+				}
+				preview={
+					<div className="creature-cards--container" ref={componentRef}>
+						{allCards.map((card, index) => (
+							<React.Fragment key={index}>
+								{card}
+								{Boolean(index % 9 === 8) && <div className="page-break" />}
+							</React.Fragment>
+						))}
+						{!allCards.length && (
+							<p className="pt-empty">
+								Load creatures in the controls panel to preview cards here.
+							</p>
+						)}
+					</div>
+				}
+			/>
 		</>
 	)
 }

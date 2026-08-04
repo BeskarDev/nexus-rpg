@@ -27,6 +27,10 @@ export const SheetLayout: React.FC<BoxProps> = ({ children, ...props }) => {
 				width: '133mm',
 				backgroundColor: 'white',
 				display: 'flex',
+				// Clip the cartouche keystone to the 191mm boundary. Without this,
+				// the keystone overhangs ~2mm above the section and bleeds into
+				// the page margin in print output (M16 constraint 1).
+				overflow: 'hidden',
 				...props.sx,
 			}}
 		>

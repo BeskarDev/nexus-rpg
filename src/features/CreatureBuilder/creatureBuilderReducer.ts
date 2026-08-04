@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {
-	CreatureAttack,
-	CreatureAbility,
-	CreatureCategory,
-	CreatureSkill,
+    CreatureAbility,
+    CreatureAttack,
+    CreatureCategory,
+    CreatureSkill,
 } from '../../types/CreatureBuilder'
 
 export type CreatureBuilderState = {
@@ -165,6 +165,27 @@ export const {
 		},
 		setAbilities: (state, action: PayloadAction<CreatureAbility[]>) => {
 			state.abilities = action.payload
+		},
+		/** Append default attacks and abilities from the library, skipping entries
+		 *  already present by name. Dispatched from CreatureCommission when the
+		 *  user accepts the type-defaults suggestion. */
+		applyDefaults: (
+			state,
+			action: PayloadAction<{
+				attacks: CreatureAttack[]
+				abilities: CreatureAbility[]
+			}>,
+		) => {
+			for (const attack of action.payload.attacks) {
+				if (!state.attacks.some((a) => a.name === attack.name)) {
+					state.attacks.push(attack)
+				}
+			}
+			for (const ability of action.payload.abilities) {
+				if (!state.abilities.some((a) => a.name === ability.name)) {
+					state.abilities.push(ability)
+				}
+			}
 		},
 		resetBuilder: () => initialState,
 	},

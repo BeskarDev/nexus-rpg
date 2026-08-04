@@ -93,6 +93,34 @@ export interface CreatureSkill {
 	rank: number
 }
 
+// ── Library and defaults types ─────────────────────────────────────────────
+
+export interface AttackTemplate {
+	id: string
+	name: string
+	damage: string
+	damageType: string
+	description: string
+	tags: string[]
+	forTypes?: string[]
+}
+
+export interface AbilityTemplate {
+	id: string
+	name: string
+	description: string
+	actionType: string
+	tags: string[]
+	forTypes?: string[]
+}
+
+export interface CreatureTypeDefaults {
+	type: string
+	subtype?: string
+	attacks?: string[]
+	abilities?: string[]
+}
+
 export interface CreatureBuilderState {
 	tier: number | null
 	category: CreatureCategory

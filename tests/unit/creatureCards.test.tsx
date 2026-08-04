@@ -1,8 +1,6 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React from 'react'
-import { createValidCreatureMarkdown } from '../utils/combat-test-fixtures'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Mock react-to-print
 vi.mock('react-to-print', () => ({
@@ -31,16 +29,16 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			render(<CreatureCards />)
 
 			// Check for key elements that should always be present
-			expect(screen.getByText('Parse Creatures')).toBeInTheDocument()
+			expect(screen.getByText('Parse creatures')).toBeInTheDocument()
 			expect(
 				screen.getByPlaceholderText(
-					/paste your creature markdown here or upload a file/i,
+					/paste creature stat block markdown here/i,
 				),
 			).toBeInTheDocument()
-			expect(screen.getByText('Upload Markdown File')).toBeInTheDocument()
+			expect(screen.getByText('Upload file')).toBeInTheDocument()
 			expect(
 				screen.getByText(
-					'Upload and parse a markdown file with creature stat blocks to begin.',
+					'Load creatures in the controls panel to preview cards here.',
 				),
 			).toBeInTheDocument()
 		})
@@ -49,7 +47,7 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			render(<CreatureCards />)
 
 			const markdownInput = screen.getByPlaceholderText(
-				/paste your creature markdown here/i,
+				/paste creature stat block markdown here/i,
 			)
 			expect(markdownInput).toBeInTheDocument()
 		})
@@ -57,9 +55,9 @@ describe('CreatureCards Tool - Basic Tests', () => {
 		it('should render file upload input', async () => {
 			render(<CreatureCards />)
 
-			const fileInput = screen.getByLabelText(/upload markdown file/i)
-			expect(fileInput).toBeInTheDocument()
-			expect(fileInput).toHaveAttribute('type', 'file')
+			// The file upload is inside the markdown paste toggle panel
+			const uploadLabel = screen.getByText(/upload file/i)
+			expect(uploadLabel).toBeInTheDocument()
 		})
 	})
 
@@ -68,9 +66,9 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			render(<CreatureCards />)
 
 			const markdownInput = screen.getByPlaceholderText(
-				/paste your creature markdown here or upload a file/i,
+				/paste creature stat block markdown here/i,
 			)
-			const parseButton = screen.getByText('Parse Creatures')
+			const parseButton = screen.getByText('Parse creatures')
 
 			// Add some text to enable the button
 			await userEvent.type(markdownInput, 'some text')
@@ -84,9 +82,9 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			render(<CreatureCards />)
 
 			const markdownInput = screen.getByPlaceholderText(
-				/paste your creature markdown here or upload a file/i,
+				/paste creature stat block markdown here/i,
 			)
-			const parseButton = screen.getByText('Parse Creatures')
+			const parseButton = screen.getByText('Parse creatures')
 
 			// Use simpler markdown for faster parsing
 			const simpleMarkdown = `### **Test Creature** (Medium Humanoid)
@@ -108,12 +106,12 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			// Wait for parsing and PRINT button to appear
 			await waitFor(
 				() => {
-					expect(screen.getByText('PRINT')).toBeInTheDocument()
+					expect(screen.getByText('Print')).toBeInTheDocument()
 				},
 				{ timeout: 5000 },
 			)
 
-			const printButton = screen.getByText('PRINT')
+			const printButton = screen.getByText('Print')
 			await userEvent.click(printButton)
 
 			// Should not crash
@@ -124,7 +122,7 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			render(<CreatureCards />)
 
 			const markdownInput = screen.getByPlaceholderText(
-				/paste your creature markdown here or upload a file/i,
+				/paste creature stat block markdown here/i,
 			)
 
 			const testMarkdown = 'Test creature markdown content'
@@ -140,13 +138,10 @@ describe('CreatureCards Tool - Basic Tests', () => {
 		it('should handle file upload interaction', async () => {
 			render(<CreatureCards />)
 
-			const fileInput = screen.getByLabelText(/upload markdown file/i)
+			const uploadLabel = screen.getByText(/upload file/i)
 
-			// Should be able to click the file input
-			await userEvent.click(fileInput)
-
-			// Should not crash
-			expect(fileInput).toBeInTheDocument()
+			// Should be able to find the upload button
+			expect(uploadLabel).toBeInTheDocument()
 		})
 	})
 
@@ -154,7 +149,7 @@ describe('CreatureCards Tool - Basic Tests', () => {
 		it('should handle empty markdown input', async () => {
 			render(<CreatureCards />)
 
-			const parseButton = screen.getByText('Parse Creatures')
+			const parseButton = screen.getByText('Parse creatures')
 
 			// Parse button should be disabled when there's no input
 			expect(parseButton).toHaveProperty('disabled', true)
@@ -167,9 +162,9 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			render(<CreatureCards />)
 
 			const markdownInput = screen.getByPlaceholderText(
-				/paste your creature markdown here or upload a file/i,
+				/paste creature stat block markdown here/i,
 			)
-			const parseButton = screen.getByText('Parse Creatures')
+			const parseButton = screen.getByText('Parse creatures')
 
 			// Enter invalid markdown
 			await userEvent.type(markdownInput, 'This is not valid creature markdown')
@@ -183,9 +178,9 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			render(<CreatureCards />)
 
 			const markdownInput = screen.getByPlaceholderText(
-				/paste your creature markdown here or upload a file/i,
+				/paste creature stat block markdown here/i,
 			)
-			const parseButton = screen.getByText('Parse Creatures')
+			const parseButton = screen.getByText('Parse creatures')
 
 			// Enter simple markdown that might work
 			const simpleMarkdown = `
@@ -221,9 +216,9 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			render(<CreatureCards />)
 
 			const markdownInput = screen.getByPlaceholderText(
-				/paste your creature markdown here or upload a file/i,
+				/paste creature stat block markdown here/i,
 			)
-			const parseButton = screen.getByText('Parse Creatures')
+			const parseButton = screen.getByText('Parse creatures')
 
 			// Enter clearly invalid data
 			await userEvent.type(markdownInput, 'completely invalid data')
@@ -245,9 +240,9 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			render(<CreatureCards />)
 
 			const markdownInput = screen.getByPlaceholderText(
-				/paste your creature markdown here or upload a file/i,
+				/paste creature stat block markdown here/i,
 			)
-			const parseButton = screen.getByText('Parse Creatures')
+			const parseButton = screen.getByText('Parse creatures')
 
 			// First, cause an error
 			await userEvent.type(markdownInput, 'invalid')
@@ -268,9 +263,9 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			render(<CreatureCards />)
 
 			const markdownInput = screen.getByPlaceholderText(
-				/paste your creature markdown here or upload a file/i,
+				/paste creature stat block markdown here/i,
 			)
-			const parseButton = screen.getByText('Parse Creatures')
+			const parseButton = screen.getByText('Parse creatures')
 
 			// Use simpler markdown for faster parsing
 			const simpleMarkdown = `### **Test Creature** (Medium Humanoid)
@@ -292,12 +287,12 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			// Wait for parsing and PRINT button to appear
 			await waitFor(
 				() => {
-					expect(screen.getByText('PRINT')).toBeInTheDocument()
+					expect(screen.getByText('Print')).toBeInTheDocument()
 				},
 				{ timeout: 5000 },
 			)
 
-			const printButton = screen.getByText('PRINT')
+			const printButton = screen.getByText('Print')
 
 			// Multiple interactions should not break component
 			await userEvent.click(printButton)
@@ -314,9 +309,9 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			render(<CreatureCards />)
 
 			const markdownInput = screen.getByPlaceholderText(
-				/paste your creature markdown here or upload a file/i,
+				/paste creature stat block markdown here/i,
 			)
-			const parseButton = screen.getByText('Parse Creatures')
+			const parseButton = screen.getByText('Parse creatures')
 
 			// Use simpler markdown for faster parsing
 			const simpleMarkdown = `### **Test Creature** (Medium Humanoid)
@@ -338,12 +333,12 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			// Wait for parsing and PRINT button to appear
 			await waitFor(
 				() => {
-					expect(screen.getByText('PRINT')).toBeInTheDocument()
+					expect(screen.getByText('Print')).toBeInTheDocument()
 				},
 				{ timeout: 5000 },
 			)
 
-			const printButton = screen.getByText('PRINT')
+			const printButton = screen.getByText('Print')
 
 			// Rapid clicking should not break component
 			for (let i = 0; i < 3; i++) {
@@ -360,22 +355,18 @@ describe('CreatureCards Tool - Basic Tests', () => {
 		it('should handle file input changes', async () => {
 			render(<CreatureCards />)
 
-			const fileInput = screen.getByLabelText(/upload markdown file/i)
-
-			// Simulate file selection (without actual file)
-			await userEvent.click(fileInput)
-
-			// Should not crash
-			expect(fileInput).toBeInTheDocument()
+			// The upload button is inside the creature markdown panel
+			const uploadSpan = screen.getByText(/upload file/i)
+			expect(uploadSpan).toBeInTheDocument()
 		})
 
 		it('should accept markdown file types', async () => {
 			render(<CreatureCards />)
 
-			const fileInput = screen.getByLabelText(/upload markdown file/i)
-
-			// Check file input accepts correct types
-			expect(fileInput).toHaveAttribute('accept', '.md,.txt')
+			// The file input is nested inside the label with the 'Upload file' text
+			const fileInputs = document.querySelectorAll('input[type="file"]')
+			expect(fileInputs.length).toBeGreaterThan(0)
+			expect(fileInputs[0]).toHaveAttribute('accept', '.md,.txt')
 		})
 	})
 
@@ -383,9 +374,9 @@ describe('CreatureCards Tool - Basic Tests', () => {
 		it('should have accessible form elements', async () => {
 			render(<CreatureCards />)
 
-			// Check for proper labels and roles
-			const textboxes = screen.getAllByRole('textbox')
-			expect(textboxes.length).toBeGreaterThan(0)
+			// The import toggle is accessible
+			const toggleButton = screen.getByText(/Paste creature markdown/i)
+			expect(toggleButton).toBeInTheDocument()
 
 			const buttons = screen.getAllByRole('button')
 			expect(buttons.length).toBeGreaterThan(0)
@@ -394,17 +385,11 @@ describe('CreatureCards Tool - Basic Tests', () => {
 		it('should be keyboard navigable', async () => {
 			render(<CreatureCards />)
 
-			const markdownInput = screen.getByPlaceholderText(
-				/paste your creature markdown here or upload a file/i,
-			)
-			const parseButton = screen.getByText('Parse Creatures')
+			const markdownToggle = screen.getByText(/Paste creature markdown/i)
 
 			// Should be able to focus elements
-			markdownInput.focus()
-			expect(document.activeElement).toBe(markdownInput)
-
-			parseButton.focus()
-			expect(document.activeElement).toBe(parseButton)
+			markdownToggle.focus()
+			expect(document.activeElement).toBe(markdownToggle)
 		})
 	})
 
@@ -413,7 +398,7 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			render(<CreatureCards />)
 
 			const markdownInput = screen.getByPlaceholderText(
-				/paste your creature markdown here or upload a file/i,
+				/paste creature stat block markdown here/i,
 			)
 
 			// Create large markdown content

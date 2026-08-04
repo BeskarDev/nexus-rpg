@@ -1,28 +1,23 @@
 import {
-	Button,
-	Checkbox,
-	Divider,
-	FormControl,
-	InputLabel,
-	ListItemText,
-	MenuItem,
-	OutlinedInput,
-	Select,
-	SelectChangeEvent,
-	Stack,
-	TextField,
-	Typography,
+    Checkbox,
+    FormControl,
+    InputLabel,
+    ListItemText,
+    MenuItem,
+    OutlinedInput,
+    Select,
+    SelectChangeEvent,
 } from '@mui/material'
 import { ArcaneSpell } from '@site/src/types/ArcaneSpell'
-import { MysticSpell } from '@site/src/types/MysticSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
+import { MysticSpell } from '@site/src/types/MysticSpell'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import arcaneSpellData from '../../utils/data/json/arcane-spells.json'
 import mysticSpellData from '../../utils/data/json/mystic-spells.json'
-import './spellsStyles.css'
+import { CharacterSelector, PrintToolShell } from '../PrintingTools'
 import { SpellCard } from './SpellCard'
-import { CharacterSelector } from '../PrintingTools'
+import './spellsStyles.css'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -58,6 +53,7 @@ export const Spells: React.FC = () => {
 		React.useState<string>('')
 	const [_selectedCharacter, setSelectedCharacter] =
 		React.useState<CharacterDocument | null>(null)
+	const [showJsonImport, setShowJsonImport] = React.useState(false)
 
 	// Combine both spell lists with type information
 	const allSpells: UnifiedSpell[] = useMemo(() => {
@@ -190,140 +186,135 @@ export const Spells: React.FC = () => {
 	return (
 		<>
 			<style type="text/css" media="print">
-				{
-					'\
-        @page { size: 192mm 267mm; }\
-      '
-				}
+				{'@page { size: 192mm 267mm; }'}
 			</style>
-			<Stack
-				flexDirection="column"
-				gap={2}
-				sx={{
-					mb: 2,
-					py: 2,
-					px: 3,
-					backgroundColor: 'background.default',
-					borderRadius: '8px',
-				}}
-			>
-				<Typography variant="h6" component="h2">
-					Spell Card Printing
-				</Typography>
-				<Typography variant="body2" color="text.secondary">
-					Select a character from your account or manually choose spells to
-					print. Cards will be formatted for easy printing and cutting.
-				</Typography>
-
-				<Divider sx={{ my: 1 }} />
-
-				<CharacterSelector
-					onCharacterSelect={handleCharacterSelect}
-					label="Load Character's Spells"
-					helperText="Selecting a character will automatically add their spells to the print list below."
-				/>
-
-				<Divider sx={{ my: 1 }} />
-
-				<Stack flexDirection="row" gap={1} alignItems="center" flexWrap="wrap">
-					<Button variant="contained" size="large" onClick={handlePrint}>
-						PRINT
-					</Button>
-					<FormControl sx={{ m: 1, width: 150 }}>
-						<InputLabel>Spell Type</InputLabel>
-						<Select
-							value={spellTypeFilter}
-							onChange={handleSpellTypeFilterChange}
-							input={<OutlinedInput label="Spell Type" />}
-							sx={{
-								backgroundColor: 'background.paper',
-							}}
-						>
-							<MenuItem value="all">All Spells</MenuItem>
-							<MenuItem value="arcane">Arcane Only</MenuItem>
-							<MenuItem value="mystic">Mystic Only</MenuItem>
-						</Select>
-					</FormControl>
-					<FormControl sx={{ m: 1, width: 300 }}>
-						<InputLabel>Spells</InputLabel>
-						<Select
-							multiple
-							value={selectedSpells}
-							onChange={handleChange}
-							input={<OutlinedInput label="Spells" />}
-							renderValue={(selected) => selected.join(', ')}
-							MenuProps={MenuProps}
-							sx={{
-								backgroundColor: 'background.paper',
-							}}
-						>
-							{availableSpells.map(({ name, type }) => (
-								<MenuItem key={name} value={name}>
-									<Checkbox checked={selectedSpells.indexOf(name) > -1} />
-									<ListItemText
-										primary={name}
-										secondary={type === 'arcane' ? 'Arcane' : 'Mystic'}
+			<PrintToolShell
+				controlsLabel="Select Spells"
+				previewLabel="Preview"
+				controls={
+					<>
+						<div className="pt-section">
+							<div className="pt-section__head">
+								<span className="pt-section__step">I</span>
+								<span className="pt-section__label">Source</span>
+							</div>
+							<div className="pt-source">
+								<CharacterSelector
+									onCharacterSelect={handleCharacterSelect}
+									label="Load character's spells"
+									helperText="Adds the character's spells to the selection below."
+								/>
+								<button
+									type="button"
+									className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
+									onClick={() => setShowJsonImport(!showJsonImport)}
+									aria-expanded={showJsonImport}
+								>
+									<span className="pt-import-toggle__caret" aria-hidden="true" />
+									Import character as JSON
+								</button>
+								<div className={`pt-import-body${showJsonImport ? "" : " is-hidden"}`}>
+									<textarea
+										value={characterJsonString}
+										onChange={(event) =>
+											handleCharacterUpload(event.target.value)
+										}
+										placeholder="Paste character JSON here…"
+										aria-label="Character JSON import"
 									/>
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
-					<Button variant="outlined" size="small" onClick={selectAll}>
-						Select all
-					</Button>
-					<Button variant="outlined" size="small" onClick={deselectAll}>
-						Deselect all
-					</Button>
-				</Stack>
-
-				<Divider sx={{ my: 1 }} />
-
-				<TextField
-					multiline
-					minRows={3}
-					maxRows={5}
-					fullWidth
-					label="Alternative: Import Character as JSON"
-					value={characterJsonString}
-					onChange={(event) => handleCharacterUpload(event.target.value)}
-					placeholder="Paste character JSON here to automatically select their spells..."
-					helperText="You can also paste a character's exported JSON data here as an alternative to selecting a character above."
-				/>
-			</Stack>
-			<Typography variant="subtitle1" sx={{ mb: 2 }}>
-				{filteredSpells.length} Spell{filteredSpells.length !== 1 ? 's' : ''}{' '}
-				will be printed
-				{selectedSpellsList.some((s) => s.characterName) && (
-					<>
-						{' '}
-						(including duplicates for specific characters - hover over cards to
-						see which character they belong to)
-					</>
-				)}
-				:
-			</Typography>
-			<div className="spell--container" ref={componentRef}>
-				{filteredSpells.map((spell, index) => (
-					<>
-						<div
-							key={`${spell.name}-${spell.characterName || 'manual'}-${index}`}
-							title={
-								spell.characterName
-									? `For character: ${spell.characterName}`
-									: undefined
-							}
-						>
-							<SpellCard {...spell} />
+								</div>
+							</div>
 						</div>
-						{Boolean(index % 9 === 8) && <div className="page-break" />}
+						<div className="pt-section">
+							<div className="pt-section__head">
+								<span className="pt-section__step">II</span>
+								<span className="pt-section__label">Selection</span>
+							</div>
+							<FormControl size="small" fullWidth sx={{ mb: 0.5 }}>
+								<InputLabel>Spell Type</InputLabel>
+								<Select
+									value={spellTypeFilter}
+									onChange={handleSpellTypeFilterChange}
+									input={<OutlinedInput label="Spell Type" />}
+								>
+									<MenuItem value="all">All Spells</MenuItem>
+									<MenuItem value="arcane">Arcane Only</MenuItem>
+									<MenuItem value="mystic">Mystic Only</MenuItem>
+								</Select>
+							</FormControl>
+							<FormControl size="small" fullWidth>
+								<InputLabel>Spells</InputLabel>
+								<Select
+									multiple
+									value={selectedSpells}
+									onChange={handleChange}
+									input={<OutlinedInput label="Spells" />}
+									renderValue={(selected) => `${selected.length} selected`}
+									MenuProps={MenuProps}
+								>
+									{availableSpells.map(({ name, type }) => (
+										<MenuItem key={name} value={name}>
+											<Checkbox checked={selectedSpells.indexOf(name) > -1} />
+											<ListItemText
+												primary={name}
+												secondary={type === 'arcane' ? 'Arcane' : 'Mystic'}
+											/>
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+							<div className="pt-select-row">
+								<button type="button" className="pt-verb-quiet" onClick={selectAll}>Select all</button>
+								<button type="button" className="pt-verb-quiet" onClick={deselectAll}>Deselect all</button>
+							</div>
+						</div>
+						<div className="pt-section">
+							<div className="pt-count">
+								{filteredSpells.length === 1 ? '1 card' : `${filteredSpells.length} cards`} selected
+								{filteredSpells.length > 0 && (
+									<>
+										{' '}·{' '}
+										{Math.ceil(filteredSpells.length / 9) === 1 ? '1 sheet' : `${Math.ceil(filteredSpells.length / 9)} sheets`}
+									</>
+								)}
+							</div>
+							<button
+								type="button"
+								className="pt-print-verb"
+								onClick={handlePrint}
+								disabled={filteredSpells.length === 0}
+							>
+								Print
+							</button>
+						</div>
 					</>
-				))}
-				{!filteredSpells.length && (
-					<Typography variant="body2">
-						Select some spells above to include them for printing.
-					</Typography>
-				)}
-			</div>
+				}
+				preview={
+					<div className="spell--container" ref={componentRef}>
+						{filteredSpells.map((spell, index) => (
+							<React.Fragment
+								key={`${spell.name}-${spell.characterName || 'manual'}-${index}`}
+							>
+								<div
+									title={
+										spell.characterName
+											? `For character: ${spell.characterName}`
+											: undefined
+									}
+								>
+									<SpellCard {...spell} />
+								</div>
+								{Boolean(index % 9 === 8) && <div className="page-break" />}
+							</React.Fragment>
+						))}
+						{!filteredSpells.length && (
+							<p className="pt-empty">
+								Select spells in the controls panel to preview them here.
+							</p>
+						)}
+					</div>
+				}
+			/>
 		</>
 	)
 }

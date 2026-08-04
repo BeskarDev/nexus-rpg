@@ -16,9 +16,24 @@ const EXCLUSION_PREFIX = '_'
  * If you want to exclude a keyword from being a link, prefix it with an
  * underscore (_). Context heuristics (headings/bold/table-header suppression,
  * zone gating, first-occurrence-per-page) keep flavor uses from linking.
+ *
+ * Options:
+ *   disableInPaths — path fragments (as strings) that opt a whole file out of
+ *   keyword linking. Any file whose absolute path contains one of these strings
+ *   is skipped entirely. Useful for pages like the random-tables section where
+ *   table cells contain creature names, item names and place names that would
+ *   otherwise spuriously match RPG keywords.
  */
-const autoKeywordPlugin = (options) => {
-	return (tree) => {
+const autoKeywordPlugin = (options: { disableInPaths?: string[] } = {}) => {
+	return (tree: Node, file: { path?: string }) => {
+		// Path-based opt-out: if the file path matches any disableInPaths fragment,
+		// skip the entire page. This is cleaner than per-table front-matter because
+		// it covers all content on those pages without requiring MDX-level edits.
+		const filePath = file?.path ?? ''
+		if (options.disableInPaths?.some((fragment) => filePath.includes(fragment))) {
+			return
+		}
+
 		// Track which keyword terms have already been linked on this page, so a
 		// term links only on its FIRST occurrence. Common words used as keywords
 		// (e.g. "light", "close", "reach") otherwise link dozens of times on a

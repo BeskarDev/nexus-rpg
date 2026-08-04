@@ -73,10 +73,10 @@
 	font-variant-caps: small-caps;
 	letter-spacing: 0.06em;
 	line-height: 1;
-	padding: 0.45rem 0.9rem;
-	border: 1.5px solid var(--cb-line-strong);
+	padding: 0.6rem 1.2rem;
+	border: 1.5px solid var(--nexus-bronze);
 	border-radius: 0;
-	background: var(--cb-wash);
+	background: var(--cb-wash-strong);
 	color: var(--cb-ink);
 	text-transform: none;
 }
@@ -163,11 +163,14 @@
 }
 
 @media (min-width: 900px) {
-	/* Now the rails and the grant line stay pinned and only the list moves. */
+	/* Now the rails and the grant line stay pinned and only the list moves.
+	   The commission uses overflow-y: auto so the full column is reachable when
+	   content exceeds the available height (e.g. the Creature Builder's many
+	   registers). The ledger inside cb-register--grow still scrolls on its own. */
 	.codex-builder .cb-commission {
 		display: flex;
 		flex-direction: column;
-		overflow: hidden;
+		overflow-y: auto;
 	}
 	.codex-builder .cb-register--grow {
 		display: flex;
@@ -318,7 +321,7 @@
 	background: color-mix(in srgb, var(--nexus-bronze) 3%, transparent);
 }
 .codex-builder .cb-register + .cb-register {
-	margin-top: 0.75rem;
+	margin-top: 1.25rem;
 }
 /* The nameplate sits ON the panel's top edge — pulled up by half its height, with
    the panel's own background punched out behind it, so the keyline appears to run
@@ -519,8 +522,8 @@
 	align-items: center;
 	justify-content: flex-start;
 	gap: 2px;
-	min-height: 48px;
-	padding: 5px 2px 4px;
+	min-height: 40px;
+	padding: 3px 2px 3px;
 	border: 1.5px solid var(--cb-line-strong);
 	border-radius: 0;
 	background: var(--ifm-background-surface-color);
@@ -559,9 +562,9 @@
 	justify-content: center;
 	/* Reserved so the tier numerals and the size lozenges sit on one baseline and
 	   the two rails line up as a pair. */
-	min-height: 20px;
+	min-height: 16px;
 	font-family: var(--nexus-font-display);
-	font-size: var(--nexus-text-xl);
+	font-size: var(--nexus-text-lg);
 	font-weight: 600;
 	font-variant-numeric: tabular-nums;
 	line-height: 1;
@@ -1232,4 +1235,292 @@
 		var(--ifm-color-primary) 45%,
 		var(--ifm-font-color-base)
 	);
+}
+
+/* ── Type defaults hint (M15) ───────────────────────────────────────────────
+   When the selected creature type has pre-defined attacks or abilities,
+   a quiet hint appears in the Kind register offering to apply them.
+   It is a readout (no keyline) paired with one pressable verb. */
+.cb-defaults-hint {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-top: 0.4rem;
+	padding: 0.3rem 0.5rem;
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+}
+.cb-defaults-hint__text {
+	flex: 1 1 auto;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.04em;
+	color: var(--cb-ink-quiet);
+}
+.cb-defaults-hint__apply {
+	flex: 0 0 auto;
+	padding: 0.15rem 0.6rem;
+	border: 1px solid var(--cb-line-strong);
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	color: var(--cb-ink);
+	cursor: pointer;
+}
+.cb-defaults-hint__apply:hover {
+	background: var(--cb-wash-strong);
+	color: var(--nexus-bronze);
+}
+
+/* ── Multi-select tab picker (M15) ─────────────────────────────────────────
+   The immunity / resistance / weakness fields now use a tabbed chip-picker
+   instead of a comma-separated text input.
+   Three tabs: Damage Types · Conditions · Other (free text). */
+.cb-multi-tabs {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	margin-bottom: 0.5rem;
+}
+
+.cb-multi-tabs__strip {
+	display: flex;
+	gap: 0;
+	border: 1px solid var(--cb-line);
+	background: var(--cb-wash);
+}
+.cb-multi-tabs__tab {
+	flex: 1 1 0;
+	padding: 0.25rem 0.5rem;
+	border: 0;
+	border-right: 1px solid var(--cb-line);
+	background: transparent;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	color: var(--cb-ink-quiet);
+	cursor: pointer;
+	text-align: center;
+}
+.cb-multi-tabs__tab:last-child {
+	border-right: 0;
+}
+.cb-multi-tabs__tab:hover {
+	background: var(--cb-wash-strong);
+	color: var(--cb-ink);
+}
+.cb-multi-tabs__tab.is-active {
+	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+	color: color-mix(in srgb, var(--nexus-bronze) 80%, var(--ifm-font-color-base));
+}
+
+.cb-multi-tabs__panel {
+	padding: 0.4rem 0;
+}
+.cb-multi-tabs__other {
+	display: flex;
+	gap: 0.5rem;
+	align-items: flex-end;
+}
+.cb-multi-tabs__other-add {
+	flex: 0 0 auto;
+	padding: 0.25rem 0.7rem;
+	border: 1px solid var(--cb-line-strong);
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	color: var(--cb-ink);
+	cursor: pointer;
+}
+.cb-multi-tabs__other-add:hover {
+	background: var(--cb-wash-strong);
+}
+
+/* Grid of toggleable chips inside a tab panel. */
+.cb-multi-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+}
+.cb-multi-chip {
+	padding: 0.2rem 0.55rem;
+	border: 1px solid var(--cb-line);
+	background: transparent;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--cb-ink-quiet);
+	cursor: pointer;
+}
+.cb-multi-chip:hover {
+	border-color: var(--cb-line-strong);
+	color: var(--cb-ink);
+	background: var(--cb-wash);
+}
+.cb-multi-chip.is-selected {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+	color: color-mix(in srgb, var(--nexus-bronze) 80%, var(--ifm-font-color-base));
+}
+
+/* Current selections — the combined sorted list shown below all tabs. */
+.cb-multi-current {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.3rem;
+	min-height: 1.75rem;
+	padding: 0.25rem 0.4rem;
+	border: 1px solid var(--cb-line);
+	background: var(--cb-wash);
+}
+.cb-multi-current__label {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	color: var(--cb-ink-quiet);
+	margin-right: 0.25rem;
+}
+/* Items inside the current-selections row — pressable to remove. */
+.cb-multi-current__item {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.2rem;
+	padding: 0.1rem 0.45rem;
+	border: 1px solid var(--cb-line-strong);
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--cb-ink);
+	cursor: pointer;
+}
+.cb-multi-current__item:hover {
+	border-color: var(--cs-danger, #a33);
+	color: var(--cs-danger, #a33);
+}
+
+/* ── Attack / Ability library panel (M15) ───────────────────────────────────
+   A compact searchable browser above the "Add" button.
+   The toggle button shows/hides the panel. */
+.cb-library-toggle {
+	align-self: flex-start;
+	padding: 0.2rem 0.6rem;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	background: color-mix(in srgb, var(--ifm-color-primary) 6%, transparent);
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 80%,
+		var(--ifm-font-color-base)
+	);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	cursor: pointer;
+}
+.cb-library-toggle:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+}
+.cb-library-toggle.is-open {
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+	border-color: var(--nexus-bronze);
+	color: color-mix(in srgb, var(--nexus-bronze) 80%, var(--ifm-font-color-base));
+}
+
+.codex-builder .cb-library {
+	margin: 0.5rem 0;
+	border: 1px solid var(--cb-line);
+	background: var(--cb-wash);
+}
+.codex-builder .cb-library__filters {
+	padding: 0.4rem 0.5rem;
+	border-bottom: 1px solid var(--cb-line);
+}
+.codex-builder .cb-library__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.3rem;
+	margin-top: 0.3rem;
+}
+.codex-builder .cb-library__entries {
+	max-height: 240px;
+	overflow-y: auto;
+}
+.codex-builder .cb-library__entry {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	padding: 0.4rem 0.5rem;
+	border-bottom: 1px solid color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.codex-builder .cb-library__entry:last-child {
+	border-bottom: 0;
+}
+.codex-builder .cb-library__entry--fit {
+	background: color-mix(in srgb, var(--nexus-bronze) 6%, transparent);
+}
+.codex-builder .cb-library__entry-info {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.codex-builder .cb-library__entry-name {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-weight: 700;
+	color: var(--ifm-font-color-base);
+}
+.codex-builder .cb-library__entry-meta {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--cb-ink-quiet);
+	margin-top: 0.1rem;
+}
+.codex-builder .cb-library__entry-desc {
+	font-size: var(--nexus-text-xs);
+	color: var(--cb-ink-quiet);
+	margin-top: 0.15rem;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.codex-builder .cb-library__add {
+	flex: 0 0 auto;
+	padding: 0.2rem 0.55rem;
+	border: 1px solid var(--cb-line-strong);
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--cb-ink);
+	cursor: pointer;
+	white-space: nowrap;
+}
+.codex-builder .cb-library__add:hover {
+	background: var(--cb-wash-strong);
+	border-color: var(--nexus-bronze);
+	color: var(--nexus-bronze);
+}
+.codex-builder .cb-library__empty {
+	padding: 0.75rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-style: italic;
+	color: var(--cb-ink-quiet);
+	text-align: center;
 }

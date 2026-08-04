@@ -1,0 +1,138 @@
+[
+	{
+		"id": "pack-tactics",
+		"name": "Pack Tactics",
+		"description": "This creature gains +1 boon on attack rolls when at least one ally is adjacent to the target.",
+		"actionType": "Passive",
+		"tags": ["universal", "passive", "combat"],
+		"forTypes": ["Beast", "Humanoid"]
+	},
+	{
+		"id": "keen-senses",
+		"name": "Keen Senses",
+		"description": "This creature has +1 boon on rolls to perceive hidden or invisible creatures and can sense creatures by smell and sound within a short distance.",
+		"actionType": "Passive",
+		"tags": ["universal", "passive", "senses"],
+		"forTypes": ["Beast", "Dragon"]
+	},
+	{
+		"id": "darkvision",
+		"name": "Darkvision",
+		"description": "This creature can see in complete darkness as if it were dim light. Magical darkness still blocks their vision.",
+		"actionType": "Passive",
+		"tags": ["universal", "passive", "senses"],
+		"forTypes": ["Undead", "Humanoid"]
+	},
+	{
+		"id": "amphibious",
+		"name": "Amphibious",
+		"description": "This creature can breathe both air and water and moves without penalty in aquatic environments.",
+		"actionType": "Passive",
+		"tags": ["universal", "passive", "movement"],
+		"forTypes": ["Beast", "Monstrosity"]
+	},
+	{
+		"id": "undead-nature",
+		"name": "Undead Nature",
+		"description": "This creature does not need to breathe, eat, drink, or sleep. It is immune to poison and the Poisoned condition, and it does not age. Effects that require a living target have no effect on it.",
+		"actionType": "Passive",
+		"tags": ["undead", "passive"],
+		"forTypes": ["Undead"]
+	},
+	{
+		"id": "night-vision",
+		"name": "Night Vision",
+		"description": "This creature sees perfectly in dim light and darkness out to a short distance, treating them as if in normal light.",
+		"actionType": "Passive",
+		"tags": ["goblinoid", "humanoid", "passive", "senses"],
+		"forTypes": ["Humanoid"]
+	},
+	{
+		"id": "quick-escape",
+		"name": "Quick Escape",
+		"description": "When this creature moves away from an enemy, it does not provoke Opportunity Attacks. If it starts its turn adjacent to two or more enemies, it may take a free Disengage action.",
+		"actionType": "Passive",
+		"tags": ["goblinoid", "passive", "movement"],
+		"forTypes": ["Humanoid"]
+	},
+	{
+		"id": "death-roll",
+		"name": "Death Roll",
+		"description": "When this creature successfully Grapples a target, it immediately rolls and twists, dealing its bite damage and applying Bleeding (3) to the target.",
+		"actionType": "Reaction",
+		"tags": ["beast", "combat", "grapple"],
+		"forTypes": ["Beast"]
+	},
+	{
+		"id": "multiattack",
+		"name": "Multiattack",
+		"description": "This creature makes two attacks in a single Action.",
+		"actionType": "Action",
+		"tags": ["universal", "combat"],
+		"forTypes": ["Beast", "Humanoid", "Dragon"]
+	},
+	{
+		"id": "regeneration",
+		"name": "Regeneration",
+		"description": "At the start of each of this creature's turns, they regain hit points equal to their tier. This regeneration is suppressed until the end of their next turn if they took radiant or fire damage on the previous turn.",
+		"actionType": "Passive",
+		"tags": ["universal", "passive", "healing"],
+		"forTypes": ["Monstrosity", "Undead"]
+	},
+	{
+		"id": "savage-momentum",
+		"name": "Savage Momentum",
+		"description": "When this creature reduces a target to 0 HP, they may immediately move up to a short distance and make one additional attack as a free action.",
+		"actionType": "Reaction",
+		"tags": ["universal", "combat"],
+		"forTypes": ["Beast", "Humanoid", "Dragon"]
+	},
+	{
+		"id": "web-spit",
+		"name": "Web Spit",
+		"description": "Range: Short. This creature fires a sticky mass of webbing at one target. The target must succeed on a hard Agility + Athletics test or become Restrained until they or an ally uses an Action to break free (hard Strength + Athletics test).",
+		"actionType": "Action",
+		"tags": ["ranged", "restraint", "spider"],
+		"forTypes": ["Beast", "Monstrosity"]
+	},
+	{
+		"id": "breath-weapon-fire",
+		"name": "Breath Weapon (Fire)",
+		"description": "This creature exhales fire in a cone (medium area). Each creature in the area must succeed on a medium Agility + Athletics test or take fire damage equal to 3 × the creature's tier. On a success, they take half damage. This ability recharges at the start of the creature's turn on a roll of 5 or 6 on a d6.",
+		"actionType": "Action",
+		"tags": ["dragon", "fire", "area", "breath"],
+		"forTypes": ["Dragon"]
+	},
+	{
+		"id": "breath-weapon-frost",
+		"name": "Breath Weapon (Frost)",
+		"description": "This creature exhales a blast of frost in a cone (medium area). Each creature in the area must succeed on a medium Strength + Fortitude test or take frost damage equal to 3 × the creature's tier and become Slowed. On a success, they take half damage and are not Slowed. This ability recharges at the start of the creature's turn on a roll of 5 or 6 on a d6.",
+		"actionType": "Action",
+		"tags": ["dragon", "frost", "area", "breath"],
+		"forTypes": ["Dragon"]
+	},
+	{
+		"id": "stone-gaze",
+		"name": "Stone Gaze",
+		"description": "As an Action, this creature fixes their gaze upon one creature they can see within a short distance. The target must succeed on a hard Spirit + Willpower test or be Paralyzed until the end of their next turn.",
+		"actionType": "Action",
+		"tags": ["gaze", "paralysis"],
+		"forTypes": ["Monstrosity"]
+	},
+	{
+		"id": "ethereal-movement",
+		"name": "Ethereal Movement",
+		"description": "This creature can move through solid objects and creatures as if they were difficult terrain, but cannot end their turn inside a solid object.",
+		"actionType": "Passive",
+		"tags": ["undead", "passive", "movement"],
+		"forTypes": ["Undead"]
+	},
+	{
+		"id": "frightful-presence",
+		"name": "Frightful Presence",
+		"description": "When this creature becomes visible to creatures within a medium distance, each creature must succeed on a hard Spirit + Willpower test or become Frightened for 1 minute. A creature that succeeds is immune to this ability for 24 hours.",
+		"actionType": "Passive",
+		"tags": ["dragon", "undead", "fear", "passive"],
+		"forTypes": ["Dragon", "Undead"]
+	}
+]

@@ -113,6 +113,8 @@ Options for determining the treasure type:
 
 ### Utility
 
+<TableFold label="Utility" rows={6}>
+
 {/* gen:table:treasureData.utility#2 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Utility |
@@ -125,6 +127,8 @@ Options for determining the treasure type:
 | 11-12 | Knowledge |
 </RollableTable>
 {/* /gen:table */}
+
+</TableFold>
 
 ### Wearable
 
@@ -153,6 +157,8 @@ Options for determining the treasure type:
 
 ### Armor / Shield
 
+<TableFold label="Armor / Shield" rows={10}>
+
 {/* gen:table:treasureData.armorShield#4 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Armor / Shield |
@@ -169,6 +175,8 @@ Options for determining the treasure type:
 | 10 | Plate Harness |
 </RollableTable>
 {/* /gen:table */}
+
+</TableFold>
 
 ### Weapon / Spell Catalyst
 
@@ -803,6 +811,8 @@ Possible materials are grouped by their source and split into four different qua
 
 ### Tool
 
+<TableFold label="Tool (d20)" rows={20}>
+
 <RollableTable>
 | d20 | Item | Style | Trait |
 | --- | --- | --- | --- |
@@ -829,11 +839,15 @@ Possible materials are grouped by their source and split into four different qua
 
 </RollableTable>
 
+</TableFold>
+
 ---
 
 ### Supply
 
 Also roll 1d3 to determine the remaining uses of the supply item.
+
+<TableFold label="Supply (d10)" rows={10}>
 
 {/* gen:table:treasureData.utilityDetails.Supply#29 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
@@ -851,6 +865,8 @@ Also roll 1d3 to determine the remaining uses of the supply item.
 | 10 | Rations (luxury) | Spiced | Deluxe |
 </RollableTable>
 {/* /gen:table */}
+
+</TableFold>
 
 ---
 
@@ -945,6 +961,8 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 
 ### Wearable Item
 
+<TableFold label="Wearable Items (d6)" rows={6}>
+
 {/* gen:table:treasureData.wearableItems#33 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d6 | Face | Head | Neck | Shoulder | Back | Full Body |
@@ -970,6 +988,8 @@ For the spell scroll’s effect, roll on the tables in the Random Spell section.
 | 6 | Tabard | Formal Vest | Wristwrap | Clasped Bracer | Buckled Belt | Greaves |
 </RollableTable>
 {/* /gen:table */}
+
+</TableFold>
 
 ## Armor / Shield
 
@@ -1570,6 +1590,8 @@ Upon reaching higher levels, adventurers may find enchanted items instead of mun
 
 For utility items, you can replace the table above with this one for only magic items results.
 
+<TableFold label="Magical Utility Types (d12)" rows={10}>
+
 {/* gen:table:treasureData.magicUtilityTypes#57 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d12 | Utility |
@@ -1587,7 +1609,11 @@ For utility items, you can replace the table above with this one for only magic 
 </RollableTable>
 {/* /gen:table */}
 
+</TableFold>
+
 ### Ammo
+
+<TableFold label="Ammo (d6)" rows={6}>
 
 {/* gen:table:treasureData.magicUtilitySubtables.Ammo#58 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
@@ -1601,6 +1627,8 @@ For utility items, you can replace the table above with this one for only magic 
 | 6 | Quiver |
 </RollableTable>
 {/* /gen:table */}
+
+</TableFold>
 
 ### Everyday Object
 
@@ -1662,6 +1690,8 @@ For utility items, you can replace the table above with this one for only magic 
 
 ### Instrument
 
+<TableFold label="Instrument (d6)" rows={6}>
+
 {/* gen:table:treasureData.magicUtilitySubtables.Instrument#61 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d6 | Instrument 1 | Instrument 2 |
@@ -1674,6 +1704,8 @@ For utility items, you can replace the table above with this one for only magic 
 | 6 | Lute | Psaltery |
 </RollableTable>
 {/* /gen:table */}
+
+</TableFold>
 
 ### Body Part
 
@@ -1702,6 +1734,8 @@ For utility items, you can replace the table above with this one for only magic 
 
 ### Natural
 
+<TableFold label="Natural (d8)" rows={8}>
+
 {/* gen:table:treasureData.magicUtilitySubtables.Natural#63 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d8 | Natural 1 | Natural 2 |
@@ -1716,6 +1750,8 @@ For utility items, you can replace the table above with this one for only magic 
 | 8 | Wood | Bark |
 </RollableTable>
 {/* /gen:table */}
+
+</TableFold>
 
 ## Magic Item Names
 
@@ -1926,6 +1962,8 @@ Roll to determine the naming structure for the item.
 
 ### Is The Item Cursed
 
+<TableFold label="Is The Item Cursed (d12)" rows={7}>
+
 <RollableTable singleRoll>
 | d12 | Curse Status | Description / Twist |
 | --- | --- | --- |
@@ -1938,7 +1976,11 @@ Roll to determine the naming structure for the item.
 | 12 | Blessed / Ward-Bound | The item is protected against curses — perhaps even repels cursed beings. |
 </RollableTable>
 
+</TableFold>
+
 ### Curse Signs
+
+<TableFold label="Curse Signs (d6)" rows={6}>
 
 <RollableTable singleRoll>
 | d6 | Sign of a Curse | Description (Flavor & Clue) |
@@ -1951,6 +1993,7 @@ Roll to determine the naming structure for the item.
 | 6 | Disrupted Sleep | After keeping the item overnight, the user has vivid nightmares or restless sleep. |
 </RollableTable>
 
+</TableFold>
 ### Curse Effects
 
 <TableFold label="Curse Effects" rows={12}>
