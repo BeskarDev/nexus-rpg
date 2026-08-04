@@ -1,12 +1,12 @@
 import {
-    Checkbox,
-    FormControl,
-    InputLabel,
-    ListItemText,
-    MenuItem,
-    OutlinedInput,
-    Select,
-    SelectChangeEvent,
+	Checkbox,
+	FormControl,
+	InputLabel,
+	ListItemText,
+	MenuItem,
+	OutlinedInput,
+	Select,
+	SelectChangeEvent,
 } from '@mui/material'
 import { ArcaneSpell } from '@site/src/types/ArcaneSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
@@ -15,7 +15,15 @@ import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import arcaneSpellData from '../../utils/data/json/arcane-spells.json'
 import mysticSpellData from '../../utils/data/json/mystic-spells.json'
-import { CharacterSelector, PrintToolShell } from '../PrintingTools'
+import {
+	CARD_PAGE,
+	CARD_PAGE_MARGIN,
+	CARD_SIZE,
+	CharacterSelector,
+	itemsPerPage,
+	PrintPages,
+	PrintToolShell,
+} from '../PrintingTools'
 import { SpellCard } from './SpellCard'
 import './spellsStyles.css'
 
@@ -183,6 +191,13 @@ export const Spells: React.FC = () => {
 		setSelectedSpellsList([])
 	}
 
+	// From the card and page geometry, not a hand-written 9 — the same call the
+	// preview paginates by, so the stated count and the drawn pages cannot drift.
+	const sheetCount = Math.ceil(
+		filteredSpells.length /
+			itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
+	)
+
 	return (
 		<>
 			<style type="text/css" media="print">
@@ -209,11 +224,18 @@ export const Spells: React.FC = () => {
 									className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
 									onClick={() => setShowJsonImport(!showJsonImport)}
 									aria-expanded={showJsonImport}
+									aria-controls="pt-import-spells"
 								>
-									<span className="pt-import-toggle__caret" aria-hidden="true" />
+									<span
+										className="pt-import-toggle__caret"
+										aria-hidden="true"
+									/>
 									Import character as JSON
 								</button>
-								<div className={`pt-import-body${showJsonImport ? "" : " is-hidden"}`}>
+								<div
+									id="pt-import-spells"
+									className={`pt-import-body${showJsonImport ? '' : ' is-hidden'}`}
+								>
 									<textarea
 										value={characterJsonString}
 										onChange={(event) =>
@@ -264,17 +286,32 @@ export const Spells: React.FC = () => {
 								</Select>
 							</FormControl>
 							<div className="pt-select-row">
-								<button type="button" className="pt-verb-quiet" onClick={selectAll}>Select all</button>
-								<button type="button" className="pt-verb-quiet" onClick={deselectAll}>Deselect all</button>
+								<button
+									type="button"
+									className="pt-verb-quiet"
+									onClick={selectAll}
+								>
+									Select all
+								</button>
+								<button
+									type="button"
+									className="pt-verb-quiet"
+									onClick={deselectAll}
+								>
+									Deselect all
+								</button>
 							</div>
 						</div>
 						<div className="pt-section">
 							<div className="pt-count">
-								{filteredSpells.length === 1 ? '1 card' : `${filteredSpells.length} cards`} selected
+								{filteredSpells.length === 1
+									? '1 card'
+									: `${filteredSpells.length} cards`}{' '}
+								selected
 								{filteredSpells.length > 0 && (
 									<>
-										{' '}·{' '}
-										{Math.ceil(filteredSpells.length / 9) === 1 ? '1 sheet' : `${Math.ceil(filteredSpells.length / 9)} sheets`}
+										{' '}
+										· {sheetCount === 1 ? '1 sheet' : `${sheetCount} sheets`}
 									</>
 								)}
 							</div>
@@ -290,12 +327,20 @@ export const Spells: React.FC = () => {
 					</>
 				}
 				preview={
-					<div className="spell--container" ref={componentRef}>
-						{filteredSpells.map((spell, index) => (
-							<React.Fragment
-								key={`${spell.name}-${spell.characterName || 'manual'}-${index}`}
-							>
+					<div ref={componentRef}>
+						<PrintPages
+							page={CARD_PAGE}
+							item={CARD_SIZE}
+							margin={CARD_PAGE_MARGIN}
+							empty={
+								<p className="pt-empty">
+									Select spells in the controls panel to preview them here.
+								</p>
+							}
+						>
+							{filteredSpells.map((spell, index) => (
 								<div
+									key={`${spell.name}-${spell.characterName || 'manual'}-${index}`}
 									title={
 										spell.characterName
 											? `For character: ${spell.characterName}`
@@ -304,14 +349,8 @@ export const Spells: React.FC = () => {
 								>
 									<SpellCard {...spell} />
 								</div>
-								{Boolean(index % 9 === 8) && <div className="page-break" />}
-							</React.Fragment>
-						))}
-						{!filteredSpells.length && (
-							<p className="pt-empty">
-								Select spells in the controls panel to preview them here.
-							</p>
-						)}
+							))}
+						</PrintPages>
 					</div>
 				}
 			/>

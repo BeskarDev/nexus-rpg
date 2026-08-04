@@ -23,12 +23,34 @@ Creatures are designed on a tier chassis (Tier 0–10, matching adventurer level
 | Damage/healing scaling frameworks | `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6 and §16 |
 | Deep analysis (survivability math, encounter building, ability catalogues) | `docs/analysis/creature-creation-encounter-building-analysis.md` |
 | Creature Builder rule tables (app) | `src/utils/data/json/creature-*.json` (tier stats, sizes, types, archetypes — NOT the roster) |
-| **Attacks library** (Builder pre-sets) | `src/utils/data/json/creature-attacks-library.json` — template attacks by tags (melee/ranged/breath/natural) and `forTypes` hints |
+| **Attacks library** (Builder pre-sets) | `src/utils/data/json/creature-attacks-library.json` — template attacks by tags (melee/ranged/breath/natural) and `forTypes` hints. **An entry stores `weaponDamage` (a modifier on the tier's baseline) and an optional `baseAttribute`, never a damage figure** — see below |
 | **Abilities library** (Builder pre-sets) | `src/utils/data/json/creature-abilities-library.json` — template abilities by tags and `forTypes` hints |
 | **Type defaults** (Builder auto-fill) | `src/utils/data/json/creature-type-defaults.json` — maps creature type+subtype to default attack/ability IDs from the libraries above |
 | **Treasure**: economy, item catalogues, magic-item pricing | [references/treasure-design.md](references/treasure-design.md) — read before writing any loot table |
 
 **Keyword discipline**: only official conditions, durations, and weapon properties — complete lists in [../game-basics.md](../game-basics.md#canonical-keyword-sources). Anything non-official must be spelled out as an exact mechanical effect.
+
+### Attack damage is derived, never written down
+
+An attack's damage is computed from the creature's tier, in exactly one place, by
+`formatDamageString(base, tierWeaponDamage + attack.weaponDamage)`:
+
+- The three figures are **weak / strong / critical** and are `base + wd`, `base + 2wd`,
+  `base + 3wd` — a **constant step**, and the step *is* the tier's weapon damage. It runs
+  2, 2, 4, 4, 5, 7, 9, 10, 11, 15, 15 across tiers 0–10 in `creatures.json`.
+- `base` comes from the attribute die named by `baseAttribute` (`STR`/`AGI`/`SPI`/`MND`).
+  Omit it for an attack that is pure weapon damage, such as a breath weapon.
+- `weaponDamage` is a **modifier**, not a figure: a heavy or slow attack sits above the
+  tier baseline, a light or ranged one below it.
+
+**Never write a literal damage figure into a library entry.** The library did, and a
+tier-9 dragon picked up a tier-2 bite: the entry froze at whatever tier its author had in
+mind. The same rule is why `CreatureAttack.damage` is an *override* channel — empty means
+"the tier decides", and it is only set when a specific creature genuinely departs from the
+chassis.
+
+A fixed `+4` step is the other recurring error. It is right at one tier and wrong at the
+other ten: at tier 9 it promises 15/19/23 where the creature data says 18/33/48.
 
 ## Design Principles
 

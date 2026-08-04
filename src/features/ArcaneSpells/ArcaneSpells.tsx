@@ -1,13 +1,13 @@
 import {
-    Checkbox,
-    FormControl,
-    InputLabel,
-    ListItemText,
-    MenuItem,
-    OutlinedInput,
-    Select,
-    SelectChangeEvent,
-    experimental_extendTheme,
+	Checkbox,
+	FormControl,
+	InputLabel,
+	ListItemText,
+	MenuItem,
+	OutlinedInput,
+	Select,
+	SelectChangeEvent,
+	experimental_extendTheme,
 } from '@mui/material'
 import { theme } from '@site/src/hooks/createTheme'
 import { ArcaneSpell } from '@site/src/types/ArcaneSpell'
@@ -15,7 +15,15 @@ import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import arcaneSpellData from '../../utils/data/json/arcane-spells.json'
-import { CharacterSelector, PrintToolShell } from '../PrintingTools'
+import {
+	CARD_PAGE,
+	CARD_PAGE_MARGIN,
+	CARD_SIZE,
+	CharacterSelector,
+	itemsPerPage,
+	PrintPages,
+	PrintToolShell,
+} from '../PrintingTools'
 import { ArcaneSpellCard } from './ArcaneSpellCard'
 import './arcaneSpellsStyles.css'
 
@@ -151,6 +159,13 @@ export const ArcaneSpells: React.FC = () => {
 		setSelectedArcaneSpellsList([])
 	}
 
+	// From the card and page geometry rather than a hand-written 9 — the same
+	// call the preview paginates by, so the count and the pages cannot drift.
+	const sheetCount = Math.ceil(
+		filteredArcaneSpells.length /
+			itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
+	)
+
 	return (
 		<>
 			<style type="text/css" media="print">
@@ -178,11 +193,18 @@ export const ArcaneSpells: React.FC = () => {
 									className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
 									onClick={() => setShowJsonImport(!showJsonImport)}
 									aria-expanded={showJsonImport}
+									aria-controls="pt-import-arcane-spells"
 								>
-									<span className="pt-import-toggle__caret" aria-hidden="true" />
+									<span
+										className="pt-import-toggle__caret"
+										aria-hidden="true"
+									/>
 									Import character as JSON
 								</button>
-								<div className={`pt-import-body${showJsonImport ? "" : " is-hidden"}`}>
+								<div
+									id="pt-import-arcane-spells"
+									className={`pt-import-body${showJsonImport ? '' : ' is-hidden'}`}
+								>
 									<textarea
 										value={characterJsonString}
 										onChange={(event) =>
@@ -242,11 +264,14 @@ export const ArcaneSpells: React.FC = () => {
 						{/* Step III — Count + verb */}
 						<div className="pt-section">
 							<div className="pt-count">
-								{filteredArcaneSpells.length === 1 ? '1 card' : `${filteredArcaneSpells.length} cards`} selected
+								{filteredArcaneSpells.length === 1
+									? '1 card'
+									: `${filteredArcaneSpells.length} cards`}{' '}
+								selected
 								{filteredArcaneSpells.length > 0 && (
 									<>
-										{' '}·{' '}
-										{Math.ceil(filteredArcaneSpells.length / 9) === 1 ? '1 sheet' : `${Math.ceil(filteredArcaneSpells.length / 9)} sheets`}
+										{' '}
+										· {sheetCount === 1 ? '1 sheet' : `${sheetCount} sheets`}
 									</>
 								)}
 							</div>
@@ -262,12 +287,21 @@ export const ArcaneSpells: React.FC = () => {
 					</>
 				}
 				preview={
-					<div className="arcane-spell--container" ref={componentRef}>
-						{filteredArcaneSpells.map((arcaneSpell, index) => (
-							<React.Fragment
-								key={`${arcaneSpell.name}-${arcaneSpell.characterName || 'manual'}-${index}`}
-							>
+					<div ref={componentRef}>
+						<PrintPages
+							page={CARD_PAGE}
+							item={CARD_SIZE}
+							margin={CARD_PAGE_MARGIN}
+							empty={
+								<p className="pt-empty">
+									Select arcane spells in the controls panel to preview them
+									here.
+								</p>
+							}
+						>
+							{filteredArcaneSpells.map((arcaneSpell, index) => (
 								<div
+									key={`${arcaneSpell.name}-${arcaneSpell.characterName || 'manual'}-${index}`}
 									title={
 										arcaneSpell.characterName
 											? `For character: ${arcaneSpell.characterName}`
@@ -276,14 +310,8 @@ export const ArcaneSpells: React.FC = () => {
 								>
 									<ArcaneSpellCard {...arcaneSpell} />
 								</div>
-								{Boolean(index % 9 === 8) && <div className="page-break" />}
-							</React.Fragment>
-						))}
-						{!filteredArcaneSpells.length && (
-							<p className="pt-empty">
-								Select arcane spells in the controls panel to preview them here.
-							</p>
-						)}
+							))}
+						</PrintPages>
 					</div>
 				}
 			/>

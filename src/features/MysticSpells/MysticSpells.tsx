@@ -1,19 +1,27 @@
 import {
-    Checkbox,
-    FormControl,
-    InputLabel,
-    ListItemText,
-    MenuItem,
-    OutlinedInput,
-    Select,
-    SelectChangeEvent,
+	Checkbox,
+	FormControl,
+	InputLabel,
+	ListItemText,
+	MenuItem,
+	OutlinedInput,
+	Select,
+	SelectChangeEvent,
 } from '@mui/material'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import { MysticSpell } from '@site/src/types/MysticSpell'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import mysticSpellData from '../../utils/data/json/mystic-spells.json'
-import { CharacterSelector, PrintToolShell } from '../PrintingTools'
+import {
+	CARD_PAGE,
+	CARD_PAGE_MARGIN,
+	CARD_SIZE,
+	CharacterSelector,
+	itemsPerPage,
+	PrintPages,
+	PrintToolShell,
+} from '../PrintingTools'
 import { MysticSpellCard } from './MysticSpellCard'
 import './mysticSpellsStyles.css'
 
@@ -148,6 +156,13 @@ export const MysticSpells: React.FC = () => {
 		setSelectedMysticSpellsList([])
 	}
 
+	// From the card and page geometry rather than a hand-written 9 — the same
+	// call the preview paginates by, so the count and the pages cannot drift.
+	const sheetCount = Math.ceil(
+		filteredMysticSpells.length /
+			itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
+	)
+
 	return (
 		<>
 			<style type="text/css" media="print">
@@ -174,11 +189,18 @@ export const MysticSpells: React.FC = () => {
 									className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
 									onClick={() => setShowJsonImport(!showJsonImport)}
 									aria-expanded={showJsonImport}
+									aria-controls="pt-import-mystic-spells"
 								>
-									<span className="pt-import-toggle__caret" aria-hidden="true" />
+									<span
+										className="pt-import-toggle__caret"
+										aria-hidden="true"
+									/>
 									Import character as JSON
 								</button>
-								<div className={`pt-import-body${showJsonImport ? "" : " is-hidden"}`}>
+								<div
+									id="pt-import-mystic-spells"
+									className={`pt-import-body${showJsonImport ? '' : ' is-hidden'}`}
+								>
 									<textarea
 										value={characterJsonString}
 										onChange={(event) =>
@@ -239,13 +261,8 @@ export const MysticSpells: React.FC = () => {
 								{filteredMysticSpells.length > 0 && (
 									<>
 										{' '}
-										·{' '}
-										<strong>
-											{Math.ceil(filteredMysticSpells.length / 9)}
-										</strong>{' '}
-										{Math.ceil(filteredMysticSpells.length / 9) === 1
-											? 'sheet'
-											: 'sheets'}
+										· <strong>{sheetCount}</strong>{' '}
+										{sheetCount === 1 ? 'sheet' : 'sheets'}
 									</>
 								)}
 							</div>
@@ -261,12 +278,21 @@ export const MysticSpells: React.FC = () => {
 					</>
 				}
 				preview={
-					<div className="mystic-spell--container" ref={componentRef}>
-						{filteredMysticSpells.map((mysticSpell, index) => (
-							<React.Fragment
-								key={`${mysticSpell.name}-${mysticSpell.characterName || 'manual'}-${index}`}
-							>
+					<div ref={componentRef}>
+						<PrintPages
+							page={CARD_PAGE}
+							item={CARD_SIZE}
+							margin={CARD_PAGE_MARGIN}
+							empty={
+								<p className="pt-empty">
+									Select mystic spells in the controls panel to preview them
+									here.
+								</p>
+							}
+						>
+							{filteredMysticSpells.map((mysticSpell, index) => (
 								<div
+									key={`${mysticSpell.name}-${mysticSpell.characterName || 'manual'}-${index}`}
 									title={
 										mysticSpell.characterName
 											? `For character: ${mysticSpell.characterName}`
@@ -275,14 +301,8 @@ export const MysticSpells: React.FC = () => {
 								>
 									<MysticSpellCard {...mysticSpell} />
 								</div>
-								{Boolean(index % 9 === 8) && <div className="page-break" />}
-							</React.Fragment>
-						))}
-						{!filteredMysticSpells.length && (
-							<p className="pt-empty">
-								Select mystic spells in the controls panel to preview them here.
-							</p>
-						)}
+							))}
+						</PrintPages>
 					</div>
 				}
 			/>

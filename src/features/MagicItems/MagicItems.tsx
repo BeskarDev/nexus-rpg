@@ -1,17 +1,24 @@
 import {
-    Checkbox,
-    FormControl,
-    InputLabel,
-    ListItemText,
-    MenuItem,
-    OutlinedInput,
-    Select,
-    SelectChangeEvent,
+	Checkbox,
+	FormControl,
+	InputLabel,
+	ListItemText,
+	MenuItem,
+	OutlinedInput,
+	Select,
+	SelectChangeEvent,
 } from '@mui/material'
 import { MagicItem, MagicItemCategory } from '@site/src/types/MagicItem'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import { PrintToolShell } from '../PrintingTools'
+import {
+	CARD_PAGE,
+	CARD_PAGE_MARGIN,
+	CARD_SIZE,
+	itemsPerPage,
+	PrintPages,
+	PrintToolShell,
+} from '../PrintingTools'
 import { MagicItemCard } from './MagicItemCard'
 import './magicItemsStyles.css'
 
@@ -118,6 +125,12 @@ export const MagicItems: React.FC = () => {
 		setSelectedItems(availableItems.map((item) => item.name))
 	const deselectAll = () => setSelectedItems([])
 
+	// From the card and page geometry rather than a hand-written 9 — the same
+	// call the preview paginates by, so the count and the pages cannot drift.
+	const sheetCount = Math.ceil(
+		filteredItems.length / itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
+	)
+
 	return (
 		<>
 			<style type="text/css" media="print">
@@ -138,25 +151,32 @@ export const MagicItems: React.FC = () => {
 								className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
 								onClick={() => setShowJsonImport(!showJsonImport)}
 								aria-expanded={showJsonImport}
+								aria-controls="pt-import-magic-items"
 							>
 								<span className="pt-import-toggle__caret" aria-hidden="true" />
 								Paste magic items JSON
 							</button>
-						<div className={`pt-import-body${showJsonImport ? "" : " is-hidden"}`}>
-							<textarea
-								value={jsonString}
-								onChange={(event) =>
-									handleJsonUpload(event.target.value)
-								}
-								placeholder="Paste magic items JSON here (single item or array)…"
-								aria-label="Magic items JSON import"
-							/>
-							{parseError && (
-								<p style={{ fontSize: 'var(--nexus-text-xs)', margin: '0.25rem 0 0' }}>
-									{parseError}
-								</p>
-							)}
-						</div>
+							<div
+								id="pt-import-magic-items"
+								className={`pt-import-body${showJsonImport ? '' : ' is-hidden'}`}
+							>
+								<textarea
+									value={jsonString}
+									onChange={(event) => handleJsonUpload(event.target.value)}
+									placeholder="Paste magic items JSON here (single item or array)…"
+									aria-label="Magic items JSON import"
+								/>
+								{parseError && (
+									<p
+										style={{
+											fontSize: 'var(--nexus-text-xs)',
+											margin: '0.25rem 0 0',
+										}}
+									>
+										{parseError}
+									</p>
+								)}
+							</div>
 						</div>
 						<div className="pt-section">
 							<div className="pt-section__head">
@@ -218,9 +238,9 @@ export const MagicItems: React.FC = () => {
 								{filteredItems.length === 1 ? 'card' : 'cards'} selected
 								{filteredItems.length > 0 && (
 									<>
-										{' '}·{' '}
-										<strong>{Math.ceil(filteredItems.length / 9)}</strong>{' '}
-										{Math.ceil(filteredItems.length / 9) === 1 ? 'sheet' : 'sheets'}
+										{' '}
+										· <strong>{sheetCount}</strong>{' '}
+										{sheetCount === 1 ? 'sheet' : 'sheets'}
 									</>
 								)}
 							</div>
@@ -236,18 +256,22 @@ export const MagicItems: React.FC = () => {
 					</>
 				}
 				preview={
-					<div className="magic-items--container" ref={componentRef}>
-						{filteredItems.map((item, index) => (
-							<React.Fragment key={item.name}>
-								<MagicItemCard {...item} />
-								{Boolean(index % 9 === 8) && <div className="page-break" />}
-							</React.Fragment>
-						))}
-						{!filteredItems.length && (
-							<p className="pt-empty">
-								Paste magic items JSON in the controls panel to preview them here.
-							</p>
-						)}
+					<div ref={componentRef}>
+						<PrintPages
+							page={CARD_PAGE}
+							item={CARD_SIZE}
+							margin={CARD_PAGE_MARGIN}
+							empty={
+								<p className="pt-empty">
+									Paste magic items JSON in the controls panel to preview them
+									here.
+								</p>
+							}
+						>
+							{filteredItems.map((item) => (
+								<MagicItemCard key={item.name} {...item} />
+							))}
+						</PrintPages>
 					</div>
 				}
 			/>

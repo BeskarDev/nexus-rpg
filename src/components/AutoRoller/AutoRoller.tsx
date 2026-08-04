@@ -1,6 +1,6 @@
 import { Box, MenuItem, Select } from '@mui/material'
 import { RollDie } from '@site/src/components/codex/RollDie'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const COUNT_OPTIONS = [1, 2, 3, 5, 10]
 
@@ -120,6 +120,16 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 	const [highlighted, setHighlighted] = useState(false)
 	const [newCount, setNewCount] = useState(0)
 
+	/** Held so a roll that is still fading can be cancelled — both when the next
+	 *  roll restarts it and when the component unmounts mid-fade. */
+	const fadeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+	useEffect(
+		() => () => {
+			if (fadeTimer.current !== null) clearTimeout(fadeTimer.current)
+		},
+		[],
+	)
+
 	const handleRoll = () => {
 		const rolled: string[] = []
 		for (let i = 0; i < count; i += 1) {
@@ -128,9 +138,11 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 		setLog((previous) => [...rolled.reverse(), ...previous].slice(0, LOG_LIMIT))
 		setHighlighted(true)
 		setNewCount(count)
-		setTimeout(() => {
+		if (fadeTimer.current !== null) clearTimeout(fadeTimer.current)
+		fadeTimer.current = setTimeout(() => {
 			setHighlighted(false)
 			setNewCount(0)
+			fadeTimer.current = null
 		}, 800)
 	}
 

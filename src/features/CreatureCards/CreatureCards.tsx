@@ -1,18 +1,26 @@
 import {
-    Checkbox,
-    FormControl,
-    InputLabel,
-    ListItemText,
-    MenuItem,
-    OutlinedInput,
-    Select,
-    SelectChangeEvent,
+	Checkbox,
+	FormControl,
+	InputLabel,
+	ListItemText,
+	MenuItem,
+	OutlinedInput,
+	Select,
+	SelectChangeEvent,
 } from '@mui/material'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import { Ability, Attack, Creature } from '@site/src/types/Creature'
 import React, { useMemo, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import { CharacterSelector, PrintToolShell } from '../PrintingTools'
+import {
+	CARD_PAGE,
+	CARD_PAGE_MARGIN,
+	CARD_SIZE,
+	CharacterSelector,
+	itemsPerPage,
+	PrintPages,
+	PrintToolShell,
+} from '../PrintingTools'
 import './creatureCardsStyles.css'
 import { CreatureCompactCard } from './CreatureCompactCard'
 import { CreatureDetailCard } from './CreatureDetailCard'
@@ -458,6 +466,12 @@ export const CreatureCards: React.FC = () => {
 		return cards
 	}, [filteredCreatures])
 
+	// From the card and page geometry rather than a hand-written 9 — the same
+	// call the preview paginates by, so the count and the pages cannot drift.
+	const sheetCount = Math.ceil(
+		allCards.length / itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
+	)
+
 	return (
 		<>
 			<style type="text/css" media="print">
@@ -484,18 +498,28 @@ export const CreatureCards: React.FC = () => {
 									className={`pt-import-toggle${showMarkdownPaste ? ' is-open' : ''}`}
 									onClick={() => setShowMarkdownPaste(!showMarkdownPaste)}
 									aria-expanded={showMarkdownPaste}
+									aria-controls="pt-import-creature-markdown"
 								>
-									<span className="pt-import-toggle__caret" aria-hidden="true" />
+									<span
+										className="pt-import-toggle__caret"
+										aria-hidden="true"
+									/>
 									Paste creature markdown
 								</button>
-								<div className={`pt-import-body${showMarkdownPaste ? "" : " is-hidden"}`}>
+								<div
+									id="pt-import-creature-markdown"
+									className={`pt-import-body${showMarkdownPaste ? '' : ' is-hidden'}`}
+								>
 									<textarea
 										value={markdownInput}
 										onChange={(e) => setMarkdownInput(e.target.value)}
 										placeholder="Paste creature stat block markdown here…"
 										aria-label="Creature markdown input"
 									/>
-									<div className="pt-select-row" style={{ marginTop: '0.35rem' }}>
+									<div
+										className="pt-select-row"
+										style={{ marginTop: '0.35rem' }}
+									>
 										<button
 											type="button"
 											className="pt-verb-quiet"
@@ -504,7 +528,14 @@ export const CreatureCards: React.FC = () => {
 										>
 											Parse creatures
 										</button>
-										<label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', cursor: 'pointer' }}>
+										<label
+											style={{
+												display: 'inline-flex',
+												alignItems: 'center',
+												gap: '0.3rem',
+												cursor: 'pointer',
+											}}
+										>
 											<input
 												type="file"
 												accept=".md,.txt"
@@ -515,7 +546,13 @@ export const CreatureCards: React.FC = () => {
 										</label>
 									</div>
 									{error && (
-										<p style={{ color: 'var(--ifm-color-danger)', fontSize: 'var(--nexus-text-xs)', margin: '0.25rem 0 0' }}>
+										<p
+											style={{
+												color: 'var(--ifm-color-danger)',
+												fontSize: 'var(--nexus-text-xs)',
+												margin: '0.25rem 0 0',
+											}}
+										>
 											{error}
 										</p>
 									)}
@@ -525,11 +562,18 @@ export const CreatureCards: React.FC = () => {
 									className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
 									onClick={() => setShowJsonImport(!showJsonImport)}
 									aria-expanded={showJsonImport}
+									aria-controls="pt-import-creature-json"
 								>
-									<span className="pt-import-toggle__caret" aria-hidden="true" />
+									<span
+										className="pt-import-toggle__caret"
+										aria-hidden="true"
+									/>
 									Import character as JSON
 								</button>
-								<div className={`pt-import-body${showJsonImport ? "" : " is-hidden"}`}>
+								<div
+									id="pt-import-creature-json"
+									className={`pt-import-body${showJsonImport ? '' : ' is-hidden'}`}
+								>
 									<textarea
 										value={characterJsonString}
 										onChange={(event) =>
@@ -559,15 +603,29 @@ export const CreatureCards: React.FC = () => {
 									>
 										{creatures.map(({ name }) => (
 											<MenuItem key={name} value={name}>
-												<Checkbox checked={selectedCreatures.indexOf(name) > -1} />
+												<Checkbox
+													checked={selectedCreatures.indexOf(name) > -1}
+												/>
 												<ListItemText primary={name} />
 											</MenuItem>
 										))}
 									</Select>
 								</FormControl>
 								<div className="pt-select-row">
-									<button type="button" className="pt-verb-quiet" onClick={selectAll}>Select all</button>
-									<button type="button" className="pt-verb-quiet" onClick={deselectAll}>Deselect all</button>
+									<button
+										type="button"
+										className="pt-verb-quiet"
+										onClick={selectAll}
+									>
+										Select all
+									</button>
+									<button
+										type="button"
+										className="pt-verb-quiet"
+										onClick={deselectAll}
+									>
+										Deselect all
+									</button>
 								</div>
 							</div>
 						)}
@@ -576,10 +634,9 @@ export const CreatureCards: React.FC = () => {
 								{allCards.length > 0 ? (
 									<>
 										<strong>{allCards.length}</strong>{' '}
-										{allCards.length === 1 ? 'card' : 'cards'} selected
-										{' '}·{' '}
-										<strong>{Math.ceil(allCards.length / 9)}</strong>{' '}
-										{Math.ceil(allCards.length / 9) === 1 ? 'sheet' : 'sheets'}
+										{allCards.length === 1 ? 'card' : 'cards'} selected ·{' '}
+										<strong>{sheetCount}</strong>{' '}
+										{sheetCount === 1 ? 'sheet' : 'sheets'}
 									</>
 								) : (
 									'No creatures selected'
@@ -597,18 +654,19 @@ export const CreatureCards: React.FC = () => {
 					</>
 				}
 				preview={
-					<div className="creature-cards--container" ref={componentRef}>
-						{allCards.map((card, index) => (
-							<React.Fragment key={index}>
-								{card}
-								{Boolean(index % 9 === 8) && <div className="page-break" />}
-							</React.Fragment>
-						))}
-						{!allCards.length && (
-							<p className="pt-empty">
-								Load creatures in the controls panel to preview cards here.
-							</p>
-						)}
+					<div ref={componentRef}>
+						<PrintPages
+							page={CARD_PAGE}
+							item={CARD_SIZE}
+							margin={CARD_PAGE_MARGIN}
+							empty={
+								<p className="pt-empty">
+									Load creatures in the controls panel to preview cards here.
+								</p>
+							}
+						>
+							{allCards}
+						</PrintPages>
 					</div>
 				}
 			/>

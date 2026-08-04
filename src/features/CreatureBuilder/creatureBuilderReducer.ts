@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {
-    CreatureAbility,
-    CreatureAttack,
-    CreatureCategory,
-    CreatureSkill,
+	CreatureAbility,
+	CreatureAttack,
+	CreatureCategory,
+	CreatureSkill,
 } from '../../types/CreatureBuilder'
 
 export type CreatureBuilderState = {

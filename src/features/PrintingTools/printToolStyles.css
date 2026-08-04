@@ -162,8 +162,15 @@
 	transform: rotate(-90deg);
 	transition: transform 100ms linear;
 }
+/* 180deg, matching `.table-fold__caret` — an open disclosure points DOWN at its
+   panel everywhere else on the site, and `rotate(0deg)` pointed it up. */
 .pt-import-toggle.is-open .pt-import-toggle__caret {
-	transform: rotate(0deg);
+	transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+	.pt-import-toggle__caret {
+		transition: none;
+	}
 }
 .pt-import-body {
 	margin-top: 0.35rem;
@@ -266,4 +273,90 @@
 	);
 	text-align: center;
 	font-size: var(--nexus-text-sm);
+}
+
+/* ── Printed pages, previewed as paper ───────────────────────────────────────
+   The preview shows the actual sheets that will come out of the printer, each
+   drawn at its true millimetre size and scaled down by `PrintPages`. */
+.pt-pages {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+.pt-page {
+	margin: 0;
+	position: relative;
+}
+/* The paper. White in BOTH themes, deliberately: it is a picture of a physical
+   sheet, so it does not follow the reader's dark mode any more than the paper
+   in the tray does. */
+/* The paper's edge is drawn with `outline` at a negative offset, NOT a border.
+   A border sits inside the box and takes 3px out of a page whose content area
+   is already exact — that alone was enough to wrap the second sheet section
+   onto its own row. An outline draws in the same place and costs no layout.
+   (The theme allows this: a negative-offset outline is a flat keyline.) */
+.pt-page__paper {
+	transform-origin: top left;
+	background: #fff;
+	outline: 1.5px solid var(--pt-line);
+	outline-offset: -1.5px;
+	overflow: hidden;
+}
+/* The bed holds exactly what `itemsPerPage` counted, so it must not add a
+   millimetre of its own.
+
+   It carried `gap: 1px`, copied from the old card containers. That is invisible
+   on a card page (3 × 63mm = 189mm inside 190mm, so 2px of gap still fits) and
+   fatal on the character sheet: two 133mm sections need 266mm and the bed IS
+   266mm, so one pixel of gap wrapped the second section onto a row that
+   `overflow: hidden` then cut off. Every page showed one sheet instead of two.
+
+   Items are `flex: 0 0 auto` for the same reason — a shrinkable item silently
+   resizes to hide an overflow instead of revealing it, which is what made the
+   sections come out at different widths. If something does not fit now, it
+   visibly does not fit, and `itemsPerPage` is what needs correcting. */
+.pt-page__bed {
+	display: grid;
+	grid-auto-rows: min-content;
+	justify-items: start;
+	align-content: start;
+	gap: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+.pt-page__bed > * {
+	flex: 0 0 auto;
+	box-sizing: border-box;
+}
+.pt-page__label {
+	margin-top: 0.35rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	color: var(--pt-ink-quiet);
+}
+
+/* In print the framing gets out of the way and the page box IS the page: true
+   size, no scale, no caption, and a break after each one. */
+@media print {
+	.pt-pages {
+		display: block;
+		gap: 0;
+	}
+	.pt-page {
+		height: auto !important;
+	}
+	.pt-page__paper {
+		transform: none !important;
+		outline: 0;
+		break-after: page;
+	}
+	.pt-page:last-child .pt-page__paper {
+		break-after: auto;
+	}
+	.pt-page__label {
+		display: none;
+	}
 }

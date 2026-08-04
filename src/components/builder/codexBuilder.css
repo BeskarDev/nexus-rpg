@@ -1069,6 +1069,9 @@
 	.codex-builder .cb-flash {
 		animation: none;
 	}
+	.cb-library-toggle__caret {
+		transition: none;
+	}
 }
 
 /* A numeric cell in a ledger row — right-aligned tabular figures, so a column of
@@ -1415,6 +1418,9 @@
    The toggle button shows/hides the panel. */
 .cb-library-toggle {
 	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
 	padding: 0.2rem 0.6rem;
 	border: 1px solid
 		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
@@ -1437,6 +1443,21 @@
 	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
 	border-color: var(--nexus-bronze);
 	color: color-mix(in srgb, var(--nexus-bronze) 80%, var(--ifm-font-color-base));
+}
+/* Same drawn caret the table folds use, masked from `--nexus-caret-glyph` and
+   tinted by `currentColor` so it tracks the toggle's own ink in both themes. */
+.cb-library-toggle__caret {
+	flex: 0 0 auto;
+	width: 9px;
+	height: 9px;
+	background-color: currentColor;
+	-webkit-mask: var(--nexus-caret-glyph) center / contain no-repeat;
+	mask: var(--nexus-caret-glyph) center / contain no-repeat;
+	transform: rotate(-90deg);
+	transition: transform 120ms linear;
+}
+.cb-library-toggle.is-open .cb-library-toggle__caret {
+	transform: rotate(180deg);
 }
 
 .codex-builder .cb-library {

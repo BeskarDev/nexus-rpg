@@ -63,6 +63,19 @@ type Spec = {
 	cap?: boolean
 	bold?: boolean
 	note?: string
+	/**
+	 * Roll ONE die for the whole row instead of one per column.
+	 *
+	 * The default (per column) is right for the common shape, where each column is
+	 * its own generator and the point is to mix them — a Shape with someone else's
+	 * Adaption. Set this only when the extra columns DESCRIBE the first one, so
+	 * that pairing "Binding" with another curse's effect would be nonsense.
+	 *
+	 * The test is the roller in `generators.ts`: a table whose fields it draws with
+	 * one `pick()` over whole objects is `singleRoll`; a table it builds from
+	 * several `pickField()` calls is not.
+	 */
+	singleRoll?: boolean
 }
 
 function fail(context: string, reason: string): never {
@@ -172,8 +185,12 @@ function renderTable(spec: Spec, rows: string[][]): string {
 				`row has ${row.length} cells, header has ${width}`,
 			)
 	}
+	// `paired` follows from the rendering, so it is not a spec field: a paired
+	// table IS one list shown two-up, and the component has to roll it as such.
+	const attr =
+		spec.render === 'paired' ? ' paired' : spec.singleRoll ? ' singleRoll' : ''
 	return [
-		'<RollableTable>',
+		`<RollableTable${attr}>`,
 		`| ${spec.header.join(' | ')} |`,
 		`| ${spec.header.map(() => '---').join(' | ')} |`,
 		...rows.map((row) => `| ${row.join(' | ')} |`),
@@ -181,6 +198,13 @@ function renderTable(spec: Spec, rows: string[][]): string {
 	].join('\n')
 }
 
+// Deliberately the BARE tag only. A generated page is mapped positionally — the
+// nth match takes the nth spec — so this pattern defines which tables the
+// registry must account for. `stripMarkers` normalises a generated
+// `<RollableTable singleRoll>` back to the bare tag before this runs, which is
+// what lets a whole-row spec round-trip; a HAND-authored `singleRoll` table on
+// the same page keeps its attribute and stays outside the count, which is how
+// the two curse tables on the treasure page have always been treated.
 const TABLE_RE =
 	/<RollableTable>\n\|[^\n]*\n\|[ \-|]*\n(?:\|[^\n]*\n)*<\/RollableTable>/g
 
@@ -214,9 +238,20 @@ function loadData(file: string): unknown {
 }
 
 function stripMarkers(source: string): string {
-	return source
-		.replace(/\{\/\* gen:table:[^\n]*\*\/\}\n/g, '')
-		.replace(/\{\/\* \/gen:table \*\/\}\n/g, '')
+	return (
+		source
+			// A generated table may open `<RollableTable singleRoll>` or
+			// `<RollableTable paired>`. Reset it to the bare tag so `TABLE_RE` finds
+			// it again on the next run. The MARKER is what identifies it as generated
+			// — a hand-authored table with an attribute has none, so it is left alone
+			// and stays out of the positional mapping.
+			.replace(
+				/\{\/\* gen:table:[^\n]*\*\/\}\n<RollableTable [a-zA-Z]+>/g,
+				'<RollableTable>',
+			)
+			.replace(/\{\/\* gen:table:[^\n]*\*\/\}\n/g, '')
+			.replace(/\{\/\* \/gen:table \*\/\}\n/g, '')
+	)
 }
 
 function main() {

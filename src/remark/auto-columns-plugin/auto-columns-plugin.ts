@@ -243,6 +243,12 @@ function plateKind(node: any): 'banner' | 'float' | undefined {
  * blocks against each other well enough to reject the runs that would read
  * badly.
  */
+/**
+ * What a collapsed `TableFold` costs: its summary row — label, row count and
+ * caret — inside a keyline with padding. Two lines, not the table it holds.
+ */
+const FOLD_LINES = 2
+
 export function estimateLines(node: any, charsPerLine: number): number {
 	const wrap = (len: number, width = charsPerLine) =>
 		Math.max(1, Math.ceil(len / width))
@@ -275,9 +281,7 @@ export function estimateLines(node: any, charsPerLine: number): number {
 			return (
 				rows.reduce(
 					(sum: number, row: any) =>
-						sum +
-						(wrap(textLength(row)) + breakCount(row)) * 0.85 +
-						0.5,
+						sum + (wrap(textLength(row)) + breakCount(row)) * 0.85 + 0.5,
 					0,
 				) + 1.5
 			)
@@ -298,6 +302,16 @@ export function estimateLines(node: any, charsPerLine: number): number {
 		// node type and differ by an order of magnitude, and now that cards are
 		// placed into columns the packing has to tell them apart.
 		case 'mdxJsxFlowElement': {
+			// A `TableFold` renders COLLAPSED — `useState(false)` — so on the page it
+			// is one summary row (label, row count, caret), not the table inside it.
+			// Measuring its contents charged a 20-row table for all 20 rows, which
+			// pushed every run past `maxColumnLines` and rejected it: the two pages
+			// that are almost nothing but folds, Random Names (24) and Random
+			// Settlement (22), came out as one long column with 0 and 1 spreads.
+			// The rows only cost anything once the reader presses the fold, and the
+			// browser reflows for that on its own.
+			if (node.name === 'TableFold') return FOLD_LINES
+
 			const inner = (node.children ?? []).reduce(
 				(sum: number, child: any) => sum + estimateLines(child, charsPerLine),
 				0,
@@ -426,10 +440,7 @@ export function toSections(
 	options: Required<AutoColumnsOptions>,
 ): Section[] {
 	const linesOf = (nodes: any[]) =>
-		nodes.reduce(
-			(sum, n) => sum + estimateLines(n, options.charsPerLine),
-			0,
-		)
+		nodes.reduce((sum, n) => sum + estimateLines(n, options.charsPerLine), 0)
 	const sections: Section[] = []
 
 	for (let i = 0; i < run.length; i++) {
@@ -600,7 +611,10 @@ export function expandSection(
 
 	// Alone: bind the smallest opening that satisfies `minSectionLines`.
 	let take = 1
-	while (take < nodes.length && linesOf(nodes.slice(0, take)) < options.minSectionLines) {
+	while (
+		take < nodes.length &&
+		linesOf(nodes.slice(0, take)) < options.minSectionLines
+	) {
 		take++
 	}
 	if (take >= nodes.length) return [keepNode(nodes)]

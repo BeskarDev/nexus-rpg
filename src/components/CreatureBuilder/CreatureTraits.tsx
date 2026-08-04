@@ -7,18 +7,23 @@ import { creatureBuilderActions } from '../../features/CreatureBuilder/creatureB
 import { useCreatureBuilderState } from '../../hooks/useCreatureBuilderState'
 import { ACTION_TYPES, type ActionType } from '../../types/ActionType'
 import type {
-    AbilityTemplate,
-    AttackTemplate,
-    CreatureAbility,
-    CreatureAttack,
-    CreatureSkill,
+	AbilityTemplate,
+	AttackTemplate,
+	CreatureAbility,
+	CreatureAttack,
+	CreatureSkill,
 } from '../../types/CreatureBuilder'
 import abilitiesLibraryData from '../../utils/data/json/creature-abilities-library.json'
 import attacksLibraryData from '../../utils/data/json/creature-attacks-library.json'
-import { getWeaponDamage } from '../../utils/typescript/creature/creatureBuilderCalculations'
+import {
+	calculateBaseDamage,
+	formatDamageString,
+	getWeaponDamage,
+} from '../../utils/typescript/creature/creatureBuilderCalculations'
 import { BuilderRegister, GrantLine } from '../builder'
 import { LibraryPanel } from './LibraryPanel'
 import { MultiSelectTabs } from './MultiSelectTabs'
+import { templateToAbility, templateToAttack } from './templates'
 
 /** The damage types a creature's attack can deal, from the rules' own list. */
 const DAMAGE_TYPES = [
@@ -37,20 +42,6 @@ const DAMAGE_TYPES = [
 
 const attacksLibrary = attacksLibraryData as AttackTemplate[]
 const abilitiesLibrary = abilitiesLibraryData as AbilityTemplate[]
-
-const templateToAttack = (t: AttackTemplate): CreatureAttack => ({
-	name: t.name,
-	properties: [],
-	damage: t.damage,
-	damageType: t.damageType,
-	description: t.description,
-})
-
-const templateToAbility = (t: AbilityTemplate): CreatureAbility => ({
-	name: t.name,
-	description: t.description,
-	actionType: t.actionType,
-})
 
 /**
  * The four courses that were 2,780 lines of accordions (M15 S3).
@@ -97,11 +88,27 @@ export const CreatureTraits: React.FC = () => {
 	const [showAttackLibrary, setShowAttackLibrary] = useState(false)
 	const [showAbilityLibrary, setShowAbilityLibrary] = useState(false)
 
-	// Compute a tier-appropriate damage placeholder so it updates when tier changes.
-	// Format: weak / strong / critical — each step is +4 above the base.
-	const weaponDamageBase =
-		state.tier > 0 ? getWeaponDamage(state.tier, state.archetype) : 4
-	const damagePlaceholder = `${weaponDamageBase}/${weaponDamageBase + 4}/${weaponDamageBase + 8}`
+	// The damage the tier will produce if this field is left empty, so the
+	// placeholder is a preview of the real answer rather than a hint.
+	//
+	// It used a fixed +4 step (`d/d+4/d+8`), which matches the rules at exactly
+	// one tier. The step IS the tier's weapon damage — it runs 2, 2, 4, 4, 5, 7,
+	// 9, 10, 11, 15, 15 across tiers 0–10 in `creatures.json` — so the placeholder
+	// promised 15/19/23 at tier 9 where the creature data says 18/33/48. Same
+	// function as the builder and the CLI now, so all three agree by construction.
+	const damagePlaceholder = formatDamageString(
+		0,
+		getWeaponDamage(state.tier, state.archetype),
+	)
+
+	/** The creature's current attribute dice, for previewing a library entry's
+	 *  damage at this tier. */
+	const attributeDice: Record<string, string> = {
+		STR: builtCreature?.str ?? '',
+		AGI: builtCreature?.agi ?? '',
+		SPI: builtCreature?.spi ?? '',
+		MND: builtCreature?.mnd ?? '',
+	}
 
 	const setSkills = (skills: CreatureSkill[]) =>
 		dispatch(creatureBuilderActions.setSkills(skills))
@@ -317,7 +324,7 @@ export const CreatureTraits: React.FC = () => {
 								<TextField
 									value={attack.damage}
 									size="small"
-								placeholder={damagePlaceholder}
+									placeholder={damagePlaceholder}
 									className="cb-entry__figure"
 									onChange={(event) =>
 										setAttacks(
@@ -388,28 +395,44 @@ export const CreatureTraits: React.FC = () => {
 					>
 						Add attack
 					</button>
+					{/* The caret is the drawn glyph the rest of the site folds with, not a
+						`▸`/`▾` text arrow: those render as a different mark on every
+						platform, the same reason the emoji die was retired. */}
 					<button
 						type="button"
 						className={`cb-library-toggle${showAttackLibrary ? ' is-open' : ''}`}
+						aria-expanded={showAttackLibrary}
+						aria-controls="cb-attack-library"
 						onClick={() => setShowAttackLibrary(!showAttackLibrary)}
 					>
-						{showAttackLibrary ? '▾ Hide library' : '▸ Browse library'}
+						<span className="cb-library-toggle__caret" aria-hidden="true" />
+						{showAttackLibrary ? 'Hide library' : 'Browse library'}
 					</button>
 				</div>
-				{showAttackLibrary && (
+				<div id="cb-attack-library" hidden={!showAttackLibrary}>
 					<LibraryPanel<AttackTemplate>
 						entries={attacksLibrary}
 						activeType={state.type}
 						onAdd={(template) =>
 							setAttacks([...state.attacks, templateToAttack(template)])
 						}
+						// The figure this entry would produce AT THE CURRENT TIER, so the
+						// reader is choosing between real numbers rather than modifiers.
 						renderMeta={(t) => (
 							<span>
-								{t.damage} · {t.damageType}
+								{formatDamageString(
+									t.baseAttribute
+										? calculateBaseDamage(
+												attributeDice[t.baseAttribute.toUpperCase()] ?? '',
+											)
+										: 0,
+									getWeaponDamage(state.tier, state.archetype) + t.weaponDamage,
+								)}{' '}
+								· {t.damageType}
 							</span>
 						)}
 					/>
-				)}
+				</div>
 			</BuilderRegister>
 
 			<BuilderRegister step="X" label="Abilities" note="what else it can do">
@@ -510,23 +533,24 @@ export const CreatureTraits: React.FC = () => {
 					<button
 						type="button"
 						className={`cb-library-toggle${showAbilityLibrary ? ' is-open' : ''}`}
+						aria-expanded={showAbilityLibrary}
+						aria-controls="cb-ability-library"
 						onClick={() => setShowAbilityLibrary(!showAbilityLibrary)}
 					>
-						{showAbilityLibrary ? '▾ Hide library' : '▸ Browse library'}
+						<span className="cb-library-toggle__caret" aria-hidden="true" />
+						{showAbilityLibrary ? 'Hide library' : 'Browse library'}
 					</button>
 				</div>
-				{showAbilityLibrary && (
+				<div id="cb-ability-library" hidden={!showAbilityLibrary}>
 					<LibraryPanel<AbilityTemplate>
 						entries={abilitiesLibrary}
 						activeType={state.type}
 						onAdd={(template) =>
 							setAbilities([...state.abilities, templateToAbility(template)])
 						}
-						renderMeta={(t) => (
-							<span>{t.actionType}</span>
-						)}
+						renderMeta={(t) => <span>{t.actionType}</span>}
 					/>
-				)}
+				</div>
 			</BuilderRegister>
 		</>
 	)

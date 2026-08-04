@@ -4,28 +4,29 @@ import { useDispatch } from 'react-redux'
 import { creatureBuilderActions } from '../../features/CreatureBuilder/creatureBuilderReducer'
 import { useCreatureBuilderState } from '../../hooks/useCreatureBuilderState'
 import type {
-    AbilityTemplate,
-    AttackTemplate,
-    CreatureCategory,
-    CreatureTypeDefaults,
+	AbilityTemplate,
+	AttackTemplate,
+	CreatureCategory,
+	CreatureTypeDefaults,
 } from '../../types/CreatureBuilder'
 import abilitiesLibraryData from '../../utils/data/json/creature-abilities-library.json'
 import attacksLibraryData from '../../utils/data/json/creature-attacks-library.json'
 import creatureSubtypes from '../../utils/data/json/creature-subtypes.json'
 import typeDefaultsData from '../../utils/data/json/creature-type-defaults.json'
 import creatureTypes from '../../utils/data/json/creature-types.json'
+import { templateToAbility, templateToAttack } from './templates'
 import {
-    TIER_NAMES,
-    getArchetypeData,
-    getAvailableArchetypes,
-    getAvailableSizes,
-    getSizeData,
+	TIER_NAMES,
+	getArchetypeData,
+	getAvailableArchetypes,
+	getAvailableSizes,
+	getSizeData,
 } from '../../utils/typescript/creature/creatureBuilderCalculations'
 import {
-    BuilderRegister,
-    ChoiceRail,
-    GrantLine,
-    type RailOption,
+	BuilderRegister,
+	ChoiceRail,
+	GrantLine,
+	type RailOption,
 } from '../builder'
 
 const typeDefaults = typeDefaultsData as CreatureTypeDefaults[]
@@ -99,18 +100,8 @@ export const CreatureCommission: React.FC = () => {
 	const applyDefaults = () => {
 		dispatch(
 			creatureBuilderActions.applyDefaults({
-				attacks: newDefaultAttacks.map((t) => ({
-					name: t.name,
-					properties: [],
-					damage: t.damage,
-					damageType: t.damageType,
-					description: t.description,
-				})),
-				abilities: newDefaultAbilities.map((t) => ({
-					name: t.name,
-					description: t.description,
-					actionType: t.actionType,
-				})),
+				attacks: newDefaultAttacks.map(templateToAttack),
+				abilities: newDefaultAbilities.map(templateToAbility),
 			}),
 		)
 	}

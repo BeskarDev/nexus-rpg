@@ -2,13 +2,34 @@ import { Box } from '@mui/material'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import { CharacterSelector, PrintToolShell } from '../PrintingTools'
+import {
+	CharacterSelector,
+	itemsPerPage,
+	PrintPages,
+	PrintToolShell,
+	SHEET_PAGE,
+	SHEET_PAGE_MARGIN,
+	SHEET_SECTION,
+} from '../PrintingTools'
 import { emptyCharacter } from './assets/emptyCharacter'
 import './printCharacterSheetStyles.css'
 import { StatisticsSheet } from './sheets/1_Statistics'
 import { EquipmentSheet } from './sheets/2_Equipment'
 import { SpellsSheet } from './sheets/3_Spells'
 import { PersonalSheet } from './sheets/4_Personal'
+
+/** The four sections, in print order. Named once so the stated count, the
+ *  preview and the printed output all come from the same list. */
+const SHEETS = [
+	{ key: 'statistics', Sheet: StatisticsSheet },
+	{ key: 'equipment', Sheet: EquipmentSheet },
+	{ key: 'spells', Sheet: SpellsSheet },
+	{ key: 'personal', Sheet: PersonalSheet },
+] as const
+
+const sheetPageCount = Math.ceil(
+	SHEETS.length / itemsPerPage(SHEET_PAGE, SHEET_SECTION, SHEET_PAGE_MARGIN),
+)
 
 export const PrintCharacterSheet: React.FC = () => {
 	const [characterJsonString, setCharacterJsonString] =
@@ -77,11 +98,18 @@ export const PrintCharacterSheet: React.FC = () => {
 									className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
 									onClick={() => setShowJsonImport(!showJsonImport)}
 									aria-expanded={showJsonImport}
+									aria-controls="pt-import-character-sheet"
 								>
-									<span className="pt-import-toggle__caret" aria-hidden="true" />
+									<span
+										className="pt-import-toggle__caret"
+										aria-hidden="true"
+									/>
 									Import character as JSON
 								</button>
-								<div className={`pt-import-body${showJsonImport ? "" : " is-hidden"}`}>
+								<div
+									id="pt-import-character-sheet"
+									className={`pt-import-body${showJsonImport ? '' : ' is-hidden'}`}
+								>
 									<textarea
 										value={characterJsonString}
 										onChange={(event) =>
@@ -97,8 +125,11 @@ export const PrintCharacterSheet: React.FC = () => {
 							<div className="pt-count">
 								{char ? (
 									<>
-										<strong>{char.personal?.name || 'Unnamed character'}</strong>{' '}
-										— 4 sheets, 2 pages
+										<strong>
+											{char.personal?.name || 'Unnamed character'}
+										</strong>{' '}
+										— {SHEETS.length} sheets, {sheetPageCount}{' '}
+										{sheetPageCount === 1 ? 'page' : 'pages'}
 									</>
 								) : (
 									'No character selected'
@@ -116,23 +147,27 @@ export const PrintCharacterSheet: React.FC = () => {
 					</>
 				}
 				preview={
-					<Box>
-						{char ? (
-							<Box sx={{ display: 'flex', flexWrap: 'wrap' }} ref={componentRef}>
-								<StatisticsSheet char={char} />
-								<EquipmentSheet char={char} />
-								<SpellsSheet char={char} />
-								<PersonalSheet char={char} />
-							</Box>
-						) : (
-							<p className="pt-empty">
-								Select a character in the controls panel to preview their sheet here.
-							</p>
-						)}
+					<Box ref={componentRef}>
+						<PrintPages
+							page={SHEET_PAGE}
+							item={SHEET_SECTION}
+							margin={SHEET_PAGE_MARGIN}
+							empty={
+								<p className="pt-empty">
+									Select a character in the controls panel to preview their
+									sheet here.
+								</p>
+							}
+						>
+							{char
+								? SHEETS.map(({ key, Sheet }) => (
+										<Sheet key={key} char={char} />
+									))
+								: []}
+						</PrintPages>
 					</Box>
 				}
 			/>
 		</Box>
 	)
 }
-

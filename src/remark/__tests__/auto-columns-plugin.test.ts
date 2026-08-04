@@ -2,6 +2,9 @@ import { describe, it, expect } from 'vitest'
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import autoColumnsPlugin from '../auto-columns-plugin'
+// The directory's `index.ts` re-exports only the default, so the named helper
+// comes from the module itself.
+import { estimateLines } from '../auto-columns-plugin/auto-columns-plugin'
 
 /**
  * The bracket heuristic (M14). These lock the RULES rather than the estimates:
@@ -26,7 +29,9 @@ const spreads = (tree: any) =>
 const para = (n = 200) => 'word '.repeat(Math.ceil(n / 5)).trim()
 
 const table = (rows: number) =>
-	['| A | B |', '| --- | --- |', ...Array(rows).fill('| one | two |')].join('\n')
+	['| A | B |', '| --- | --- |', ...Array(rows).fill('| one | two |')].join(
+		'\n',
+	)
 
 describe('auto-columns bracket heuristic (M14)', () => {
 	it('splits a run of several mid-sized blocks', () => {
@@ -85,7 +90,9 @@ describe('auto-columns bracket heuristic (M14)', () => {
 	})
 
 	it('refuses a run one block dominates, which cannot balance', () => {
-		const tree = run(`## Section\n\n${table(40)}\n\n${para(30)}\n\n${para(30)}\n`)
+		const tree = run(
+			`## Section\n\n${table(40)}\n\n${para(30)}\n\n${para(30)}\n`,
+		)
 		expect(spreads(tree).length).toBe(0)
 	})
 
@@ -173,7 +180,9 @@ describe('auto-columns bracket heuristic (M14)', () => {
 	})
 
 	it('never reaches inside a hand-written <Columns>', () => {
-		const tree = run(`## S\n\n${para()}\n\n${para()}\n\n${para()}\n\n${para()}\n`)
+		const tree = run(
+			`## S\n\n${para()}\n\n${para()}\n\n${para()}\n\n${para()}\n`,
+		)
 		const before = JSON.stringify(spreads(tree)[0])
 		// Feeding the output back through must be a fixed point.
 		autoColumnsPlugin()(tree, { path: '/docs/x.md' })
@@ -208,10 +217,16 @@ describe('auto-columns bracket heuristic (M14)', () => {
 			name: 'TalentCard',
 			attributes: [],
 			children: [
-				{ type: 'paragraph', children: [{ type: 'text', value: 'x'.repeat(n) }] },
+				{
+					type: 'paragraph',
+					children: [{ type: 'text', value: 'x'.repeat(n) }],
+				},
 			],
 		})
-		const tree: any = { type: 'root', children: [card(300), card(300), card(300)] }
+		const tree: any = {
+			type: 'root',
+			children: [card(300), card(300), card(300)],
+		}
 		autoColumnsPlugin()(tree, { path: '/docs/x.md' })
 		const sp = tree.children.filter(
 			(n: any) => n.type === 'mdxJsxFlowElement' && n.name === 'Columns',
@@ -224,8 +239,18 @@ describe('auto-columns bracket heuristic (M14)', () => {
 		const tree: any = {
 			type: 'root',
 			children: [
-				{ type: 'mdxJsxFlowElement', name: 'header', attributes: [], children: [] },
-				{ type: 'mdxJsxFlowElement', name: 'Columns', attributes: [], children: [] },
+				{
+					type: 'mdxJsxFlowElement',
+					name: 'header',
+					attributes: [],
+					children: [],
+				},
+				{
+					type: 'mdxJsxFlowElement',
+					name: 'Columns',
+					attributes: [],
+					children: [],
+				},
 			],
 		}
 		autoColumnsPlugin()(tree, { path: '/docs/x.md' })
@@ -265,7 +290,8 @@ describe('keeping a heading with its section (M14)', () => {
 			if (group.children[0].type !== 'heading') continue
 			const lines = group.children.reduce(
 				(s: number, n: any) =>
-					s + Math.max(1, Math.ceil((n.children?.[0]?.value?.length ?? 0) / 65)),
+					s +
+					Math.max(1, Math.ceil((n.children?.[0]?.value?.length ?? 0) / 65)),
 				0,
 			)
 			expect(lines).toBeGreaterThanOrEqual(4)
@@ -401,7 +427,10 @@ describe('card catalogues use grid placement (M14)', () => {
 		name: 'CreatureStatBlock',
 		attributes: [],
 		children: [
-			{ type: 'paragraph', children: [{ type: 'text', value: name.repeat(n / 4) }] },
+			{
+				type: 'paragraph',
+				children: [{ type: 'text', value: name.repeat(n / 4) }],
+			},
 		],
 	})
 	const build = (nodes: any[]) => {
@@ -455,7 +484,10 @@ describe('a heading is never severed from its card (M14)', () => {
 		name: 'RollableTable',
 		attributes: [],
 		children: [
-			{ type: 'paragraph', children: [{ type: 'text', value: 'x'.repeat(1200) }] },
+			{
+				type: 'paragraph',
+				children: [{ type: 'text', value: 'x'.repeat(1200) }],
+			},
 		],
 	})
 	const heading = (t: string) => ({
@@ -476,9 +508,14 @@ describe('a heading is never severed from its card (M14)', () => {
 		const tree: any = {
 			type: 'root',
 			children: [
-				heading('A'), p(), p(),
-				heading('B'), p(), p(),
-				heading('Curse Effects'), card(),
+				heading('A'),
+				p(),
+				p(),
+				heading('B'),
+				p(),
+				p(),
+				heading('Curse Effects'),
+				card(),
 			],
 		}
 		autoColumnsPlugin()(tree, { path: '/docs/x.md' })
@@ -494,7 +531,9 @@ describe('a heading is never severed from its card (M14)', () => {
 					n?.type === 'heading' && n.children?.[0]?.value === 'Curse Effects'
 				if (isH) {
 					const next = nodes[i + 1]
-					return next?.type === 'mdxJsxFlowElement' && next.name === 'RollableTable'
+					return (
+						next?.type === 'mdxJsxFlowElement' && next.name === 'RollableTable'
+					)
 				}
 				return Array.isArray(n?.children) ? findPair(n.children) : false
 			})
@@ -508,7 +547,10 @@ describe('a heading whose section is all cards (M14)', () => {
 		name: 'SpellCodexCard',
 		attributes: [],
 		children: [
-			{ type: 'paragraph', children: [{ type: 'text', value: 'x'.repeat(500) }] },
+			{
+				type: 'paragraph',
+				children: [{ type: 'text', value: 'x'.repeat(500) }],
+			},
 		],
 	})
 	const h = (t: string) => ({
@@ -549,7 +591,10 @@ describe('hand-written <Columns> and the headings around it (M14)', () => {
 		children: Array.from({ length: rows }, () => ({
 			type: 'tableRow',
 			children: [
-				{ type: 'tableCell', children: [{ type: 'text', value: 'cell value' }] },
+				{
+					type: 'tableCell',
+					children: [{ type: 'text', value: 'cell value' }],
+				},
 			],
 		})),
 	})
@@ -618,8 +663,12 @@ describe('hand-written <Columns> and the headings around it (M14)', () => {
 			children: [h(3, 'X'), tbl(10)],
 		}
 		const tree = build([
-			p(), p(), p(), p(),
-			h(2, 'Physical Traits'), p(40),
+			p(),
+			p(),
+			p(),
+			p(),
+			h(2, 'Physical Traits'),
+			p(40),
 			manual,
 		])
 		// The MANUAL spread, not the one the pass built from the paragraphs above.
@@ -668,10 +717,17 @@ describe('empty headings divide, headings with content do not (M14)', () => {
 		// divider. Swept into the spread above, it was stranded in the right column
 		// while the list it announces began below on the left.
 		const tree = build([
-			p(), p(), p(), p(),
+			p(),
+			p(),
+			p(),
+			p(),
 			h(2, 'Folk'),
-			h(3, 'Dwarf'), p(), p(),
-			h(3, 'Elf'), p(), p(),
+			h(3, 'Dwarf'),
+			p(),
+			p(),
+			h(3, 'Elf'),
+			p(),
+			p(),
 		])
 		const idx = tree.children.findIndex(
 			(n: any) => n.type === 'heading' && n.children[0].value === 'Folk',
@@ -686,10 +742,18 @@ describe('empty headings divide, headings with content do not (M14)', () => {
 		// Emptiness is not the signal — a divider often has a sentence or two
 		// before its subsections start, and that does not make it a section.
 		const tree = build([
-			p(), p(), p(), p(),
-			h(2, 'Folk'), p(40),
-			h(3, 'Dwarf'), p(), p(),
-			h(3, 'Elf'), p(), p(),
+			p(),
+			p(),
+			p(),
+			p(),
+			h(2, 'Folk'),
+			p(40),
+			h(3, 'Dwarf'),
+			p(),
+			p(),
+			h(3, 'Elf'),
+			p(),
+			p(),
 		])
 		for (const s of sp(tree))
 			expect(JSON.stringify(s).includes('"Folk"')).toBe(false)
@@ -699,11 +763,62 @@ describe('empty headings divide, headings with content do not (M14)', () => {
 		// Cursed Items: every heading is `##` with prose under it. Breaking there
 		// leaves nothing to pair and the page stays single-column.
 		const tree = build([
-			h(2, 'A'), p(), p(),
-			h(2, 'B'), p(), p(),
-			h(2, 'C'), p(), p(),
+			h(2, 'A'),
+			p(),
+			p(),
+			h(2, 'B'),
+			p(),
+			p(),
+			h(2, 'C'),
+			p(),
+			p(),
 		])
 		expect(sp(tree).length).toBeGreaterThan(0)
 		expect(JSON.stringify(sp(tree)).includes('"A"')).toBe(true)
+	})
+})
+
+/**
+ * A `TableFold` is measured as what it RENDERS, which is a collapsed summary
+ * row — not as the table it holds.
+ *
+ * Charging it for its contents is what kept the random-tables pages in one
+ * column: a 20-row table inside a fold measured ~20+ lines, so a handful of
+ * folds blew past `maxColumnLines` and every run was refused. Random Names, a
+ * page that is 24 folds and little else, came out with zero spreads.
+ */
+describe('auto-columns — collapsed TableFold (M14 review)', () => {
+	/** The JSX shape a real build produces, built by hand: a `TableFold` whose
+	 *  child is the long table it hides. */
+	const fold = (rows: number) => ({
+		type: 'mdxJsxFlowElement',
+		name: 'TableFold',
+		attributes: [{ type: 'mdxJsxAttribute', name: 'label', value: 'Names' }],
+		children: [remark().use(remarkGfm).parse(table(rows)).children[0]],
+	})
+
+	it('costs the same whether it hides 5 rows or 50', () => {
+		expect(estimateLines(fold(5), 65)).toBe(estimateLines(fold(50), 65))
+	})
+
+	it('costs far less than the table it holds', () => {
+		const rows = 40
+		const bare = estimateLines(
+			remark().use(remarkGfm).parse(table(rows)).children[0],
+			65,
+		)
+		expect(estimateLines(fold(rows), 65)).toBeLessThan(bare / 5)
+	})
+
+	it('lets a run of folds form a spread instead of being refused', () => {
+		const tree: any = {
+			type: 'root',
+			children: [
+				{ type: 'heading', depth: 2, children: [{ type: 'text', value: 'A' }] },
+				...Array.from({ length: 12 }, () => fold(30)),
+			],
+		}
+		autoColumnsPlugin()(tree, { path: '/docs/x.md' })
+		expect(spreads(tree).length).toBeGreaterThan(0)
 	})
 })

@@ -3,27 +3,81 @@ import React, { useState, useMemo } from 'react'
 
 interface RollableTableProps {
 	children: React.ReactNode
-	singleRoll?: boolean // If true, roll once and apply to all columns; if false, roll each column independently
+	/**
+	 * Roll ONE die for the whole row instead of one die per column.
+	 *
+	 * **Per column is the default and the common case.** Most multi-column tables
+	 * here are several generators printed side by side — Shape, Head Attribute,
+	 * Body Attribute, Adaption — and the whole point is to mix them, so that a
+	 * Shape meets another row's Adaption. Rolling those as a row just reads the
+	 * table back to the reader.
+	 *
+	 * Set `singleRoll` only when the later columns DESCRIBE the first: a curse and
+	 * its effect, a disposition and its modifier, a result and the penance it
+	 * demands. There, pairing row 1's name with row 7's effect is nonsense.
+	 *
+	 * The tie-breaker is `AutoRoller/generators.ts`, which must agree with the
+	 * hand-rolled table on the same page: a table the roller draws with one
+	 * `pick()` over whole objects is `singleRoll`; one it assembles from several
+	 * `pickField()` calls is not.
+	 */
+	singleRoll?: boolean
+	/**
+	 * The table is ONE list laid out as two columns, not two columns of results.
+	 *
+	 * `generate-random-tables.ts`'s `paired` rendering splits a list of 2N entries
+	 * into N rows of two, purely so a 40-entry list is not 40 rows long — and the
+	 * roller draws from the flat list with a single `pick()`. So the answer is one
+	 * cell out of 2N, reached by rolling d2N: the first N land in column one, the
+	 * rest in column two.
+	 *
+	 * Without this the table rolled its two columns independently and handed back
+	 * two unrelated items when the reader wanted one.
+	 */
+	paired?: boolean
 }
+
+/*
+ * A press of the die resolves one of three ways:
+ *
+ * - per column (default) — one die per column; the columns are separate
+ *   generators and the point is to mix them.
+ * - whole row (`singleRoll`) — one die; the later columns describe the first.
+ * - one CELL — a `d66` grid (d6 row × d6 column) or a `paired` list (d2N over
+ *   the flat list). Neither was representable before, and both were broken.
+ */
 
 interface TableRow {
 	range: [number, number] // Inclusive
 	values: Record<string, string>
+	/** Index of this row among the tbody's `tr` children.
+	 *
+	 * NOT the same as the index in `rows`: a `tr` whose first cell does not parse
+	 * as a die range, or that is short a column, is skipped during parsing but is
+	 * still rendered. Highlighting by `rows` index therefore lights up the wrong
+	 * line on any table carrying a spanning or note row. */
+	domIndex: number
 }
 
 interface RollResults {
-	[header: string]: { value: string; roll: number }
+	/** `roll` is the figure to SHOW, so a d66 can print "34" rather than 3 and 4. */
+	[header: string]: { value: string; roll: string }
 }
+
+/** Rendered `tr` index → the `td` indices within it that the die landed on. */
+type RolledCells = Map<number, Set<number>>
 
 const RollableTable: React.FC<RollableTableProps> = ({
 	children,
 	singleRoll = false,
+	paired = false,
 }) => {
 	const [results, setResults] = useState<RollResults>({})
-	const [rolledRowIndices, setRolledRowIndices] = useState<Set<number>>(new Set())
+	const [rolledCells, setRolledCells] = useState<RolledCells>(new Map())
 
-	const { dieSize, headers, rows } = useMemo(() => {
+	const { dieSize, headers, rows, isD66 } = useMemo(() => {
 		let dieSize = 0
+		let isD66 = false
 		const headers: string[] = []
 		const rows: TableRow[] = []
 
@@ -72,8 +126,17 @@ const RollableTable: React.FC<RollableTableProps> = ({
 		ths.forEach((th, i) => {
 			const text = getText(th).trim()
 			if (i === 0) {
-				const match = text.match(/d(\d+)/i)
-				if (match) dieSize = parseInt(match[1], 10)
+				// `d66` is TWO d6 read as tens-and-units, not a 66-sided die. Taken
+				// literally by the `/d(\d+)/` below it gave `dieSize = 66` on a table
+				// with six rows, so 60 of every 66 presses matched no row and every
+				// column came back "—". Every quest and terrain table is one of these.
+				if (/^d66$/i.test(text)) {
+					isD66 = true
+					dieSize = 6
+				} else {
+					const match = text.match(/d(\d+)/i)
+					if (match) dieSize = parseInt(match[1], 10)
+				}
 			} else {
 				headers.push(text)
 			}
@@ -89,7 +152,7 @@ const RollableTable: React.FC<RollableTableProps> = ({
 				) as React.ReactElement[])
 			: []
 
-		rowElems.forEach((row) => {
+		rowElems.forEach((row, domIndex) => {
 			const tds = React.Children.toArray(row.props.children).filter(
 				(c) => React.isValidElement(c) && c.type === 'td',
 			) as React.ReactElement[]
@@ -108,78 +171,164 @@ const RollableTable: React.FC<RollableTableProps> = ({
 					cellIndex < tds.length ? getText(tds[cellIndex]).trim() : '—'
 			}
 
-			rows.push({ range: [from, to], values })
+			rows.push({ range: [from, to], values, domIndex })
 		})
 
-		return { dieSize, headers, rows }
+		return { dieSize, headers, rows, isD66 }
 	}, [children])
+
+	/**
+	 * What to call a single-cell answer, since its column heading is a coordinate
+	 * rather than a name: `1`…`6` on a d66 grid, and a layout suffix on a paired
+	 * list ("Everyday Object 1" is not a different thing from "Everyday Object 2").
+	 */
+	const label = useMemo(() => {
+		if (paired && headers.length > 0)
+			return headers[0].replace(/\s*\d+$/, '').trim() || 'Result'
+		return 'Result'
+	}, [paired, headers])
 
 	const handleRoll = () => {
 		if (dieSize <= 0 || rows.length === 0) return
 		const next: RollResults = {}
-		const newIndices = new Set<number>()
+		const cells: RolledCells = new Map()
 
-		if (singleRoll) {
-			// Roll once for all columns
-			const roll = Math.floor(Math.random() * dieSize) + 1
-			const foundIndex = rows.findIndex(
+		/** Light one cell. Column 0 is the die-range cell, so a header at index
+		 *  `i` is column `i + 1`. */
+		const mark = (domIndex: number, column: number) => {
+			const set = cells.get(domIndex) ?? new Set<number>()
+			set.add(column)
+			cells.set(domIndex, set)
+		}
+
+		const d = (sides: number) => Math.floor(Math.random() * sides) + 1
+
+		if (isD66) {
+			// Two d6: the first picks the row, the second the column. One cell.
+			const rowDie = d(6)
+			const colDie = d(Math.min(6, headers.length))
+			const found = rows.find(
+				({ range }) => rowDie >= range[0] && rowDie <= range[1],
+			)
+			const header = headers[colDie - 1]
+			next[label] = {
+				roll: `${rowDie}${colDie}`,
+				value: found?.values[header] ?? '—',
+			}
+			if (found) {
+				mark(found.domIndex, colDie)
+				mark(found.domIndex, 0)
+			}
+		} else if (paired) {
+			// One list of 2N shown as N rows of two. Roll d2N over the flat list: the
+			// first N are column one, the rest column two.
+			const perColumn = rows.length
+			const roll = d(perColumn * 2)
+			const column = roll > perColumn ? 2 : 1
+			const rowNumber = roll > perColumn ? roll - perColumn : roll
+			const found = rows.find(
+				({ range }) => rowNumber >= range[0] && rowNumber <= range[1],
+			)
+			const header = headers[column - 1]
+			next[label] = {
+				roll: String(roll),
+				value: found?.values[header] ?? '—',
+			}
+			if (found) {
+				mark(found.domIndex, column)
+				mark(found.domIndex, 0)
+			}
+		} else if (singleRoll) {
+			// One roll drives every column, so the whole row is the answer.
+			const roll = d(dieSize)
+			const found = rows.find(
 				({ range }) => roll >= range[0] && roll <= range[1],
 			)
-			if (foundIndex >= 0) newIndices.add(foundIndex)
-			const found = foundIndex >= 0 ? rows[foundIndex] : undefined
-			headers.forEach((header) => {
+			headers.forEach((header, i) => {
 				const value = found?.values[header] ?? '—'
-				next[header] = { roll, value }
+				next[header] = { roll: String(roll), value }
+				if (found) mark(found.domIndex, i + 1)
 			})
+			if (found) mark(found.domIndex, 0)
 		} else {
-			// Roll each column independently (original behavior)
-			headers.forEach((header) => {
-				const roll = Math.floor(Math.random() * dieSize) + 1
-				const foundIndex = rows.findIndex(
+			// Each column rolls its own die, so the columns land on DIFFERENT rows.
+			// Only the cell that was actually drawn may light up — washing the whole
+			// `tr` (as this did for one commit) claims every column hit that row.
+			headers.forEach((header, i) => {
+				const roll = d(dieSize)
+				const found = rows.find(
 					({ range }) => roll >= range[0] && roll <= range[1],
 				)
-				if (foundIndex >= 0) newIndices.add(foundIndex)
-				const value = foundIndex >= 0 ? rows[foundIndex].values[header] : '—'
-				next[header] = { roll, value }
+				next[header] = {
+					roll: String(roll),
+					value: found?.values[header] ?? '—',
+				}
+				if (found) {
+					mark(found.domIndex, i + 1)
+					// The range cell too, so the reader can see which number was drawn.
+					mark(found.domIndex, 0)
+				}
 			})
 		}
 
 		setResults(next)
-		setRolledRowIndices(newIndices)
+		setRolledCells(cells)
 	}
 
-	/** Clone the table tree adding data-rolled to tbody rows that were hit. */
+	/** Clone the table tree, tagging the individual `td`s the die landed on with
+	 *  `data-rolled` for the bronze wash. */
 	const tableWithHighlights = useMemo(() => {
-		if (rolledRowIndices.size === 0) return children
+		if (rolledCells.size === 0) return children
 
 		const table = React.Children.only(children) as React.ReactElement
+
+		const cloneRowCells = (
+			row: React.ReactElement,
+			columns: Set<number>,
+		): React.ReactElement => {
+			let cellIdx = 0
+			const newCells = React.Children.map(row.props.children, (cell) => {
+				if (React.isValidElement(cell) && cell.type === 'td') {
+					const column = cellIdx++
+					if (columns.has(column)) {
+						return React.cloneElement(
+							cell as React.ReactElement<Record<string, unknown>>,
+							{ 'data-rolled': true },
+						)
+					}
+				}
+				return cell
+			})
+			return React.cloneElement(row, {}, newCells)
+		}
 
 		const cloneBodyRows = (tbody: React.ReactElement): React.ReactElement => {
 			let rowIdx = 0
 			const newChildren = React.Children.map(tbody.props.children, (child) => {
 				if (React.isValidElement(child) && child.type === 'tr') {
-					const idx = rowIdx++
-					if (rolledRowIndices.has(idx)) {
-						return React.cloneElement(
-							child as React.ReactElement<Record<string, unknown>>,
-							{ 'data-rolled': true },
-						)
-					}
+					// Counted over `tr` children only — the same index space the parse
+					// pass records as `domIndex`.
+					const columns = rolledCells.get(rowIdx++)
+					if (columns)
+						return cloneRowCells(child as React.ReactElement, columns)
 				}
 				return child
 			})
 			return React.cloneElement(tbody, {}, newChildren)
 		}
 
-		const newTableChildren = React.Children.map(table.props.children, (child) => {
-			if (React.isValidElement(child) && child.type === 'tbody') {
-				return cloneBodyRows(child as React.ReactElement)
-			}
-			return child
-		})
+		const newTableChildren = React.Children.map(
+			table.props.children,
+			(child) => {
+				if (React.isValidElement(child) && child.type === 'tbody') {
+					return cloneBodyRows(child as React.ReactElement)
+				}
+				return child
+			},
+		)
 
 		return React.cloneElement(table, {}, newTableChildren)
-	}, [children, rolledRowIndices])
+	}, [children, rolledCells])
 
 	return (
 		<div style={{ marginBottom: '1.5rem' }}>

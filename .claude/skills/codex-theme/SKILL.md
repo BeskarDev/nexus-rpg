@@ -49,10 +49,17 @@ alignment long before three cards get uncomfortable.
 **Never use a straight rule as a grouping device.** A keyline is right as a *frame or
 border on a container*. A bare `border-left` or long rule used to bind, group or accent
 content reads as flat digital UI chrome against carved stone, and it has been rejected
-three separate times: the spell card's 3px left accent bar, `TalentCard`'s per-rung
-"ladder rail", and `CreatureStatBlock`'s section left-bar.
+**four** separate times: the spell card's 3px left accent bar, `TalentCard`'s per-rung
+"ladder rail", `CreatureStatBlock`'s section left-bar, and the oracle answer plate's
+`border-left: 3px solid var(--nexus-bronze)`.
 
 **To group content: a background wash, spacing, or a carved SVG ornament. Never a bar.**
+
+The fourth one is instructive, because it arrived reasoned rather than careless: the
+commit called it "the same vocabulary as admonitions." An admonition is not the licence —
+the theme's own admonitions carry a *type sigil* (`src/theme/Admonition/Layout`), and it
+is the sigil doing the work, not an edge. If a panel needs more presence than a wash,
+give it a mark, not a thicker side.
 
 ## Flat, always
 

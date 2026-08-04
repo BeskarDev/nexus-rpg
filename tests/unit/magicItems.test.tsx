@@ -37,7 +37,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 		it('should render the JSON import field', async () => {
 			render(<MagicItems />)
 
-			const importField = screen.getByPlaceholderText(/paste magic items json here/i)
+			const importField = screen.getByPlaceholderText(
+				/paste magic items json here/i,
+			)
 			expect(importField).toBeInTheDocument()
 		})
 
@@ -90,7 +92,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 		it('should handle valid single item JSON input', async () => {
 			render(<MagicItems />)
 
-			const textarea = screen.getByPlaceholderText(/paste magic items json here/i)
+			const textarea = screen.getByPlaceholderText(
+				/paste magic items json here/i,
+			)
 
 			const testJson = JSON.stringify({
 				name: 'Test Sword',
@@ -114,7 +118,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 		it('should handle valid array JSON input', async () => {
 			render(<MagicItems />)
 
-			const textarea = screen.getByPlaceholderText(/paste magic items json here/i)
+			const textarea = screen.getByPlaceholderText(
+				/paste magic items json here/i,
+			)
 
 			const testJson = JSON.stringify([
 				{
@@ -149,7 +155,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 		it('should handle invalid JSON input gracefully', async () => {
 			render(<MagicItems />)
 
-			const textarea = screen.getByPlaceholderText(/paste magic items json here/i)
+			const textarea = screen.getByPlaceholderText(
+				/paste magic items json here/i,
+			)
 
 			await userEvent.click(textarea)
 			await userEvent.type(textarea, 'invalid json text')
@@ -161,7 +169,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 		it('should validate required fields', async () => {
 			render(<MagicItems />)
 
-			const textarea = screen.getByPlaceholderText(/paste magic items json here/i)
+			const textarea = screen.getByPlaceholderText(
+				/paste magic items json here/i,
+			)
 
 			// Missing required fields
 			const testJson = JSON.stringify({
@@ -182,7 +192,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 			render(<MagicItems />)
 
 			// First load some items
-			const textarea = screen.getByPlaceholderText(/paste magic items json here/i)
+			const textarea = screen.getByPlaceholderText(
+				/paste magic items json here/i,
+			)
 			const testJson = JSON.stringify([
 				{
 					name: 'Test Sword',
@@ -217,7 +229,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 		it('should handle empty JSON input', async () => {
 			render(<MagicItems />)
 
-			const textarea = screen.getByPlaceholderText(/paste magic items json here/i)
+			const textarea = screen.getByPlaceholderText(
+				/paste magic items json here/i,
+			)
 
 			await userEvent.click(textarea)
 			await userEvent.clear(textarea)
@@ -229,7 +243,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 		it('should handle malformed JSON arrays', async () => {
 			render(<MagicItems />)
 
-			const textarea = screen.getByPlaceholderText(/paste magic items json here/i)
+			const textarea = screen.getByPlaceholderText(
+				/paste magic items json here/i,
+			)
 
 			await userEvent.click(textarea)
 			await userEvent.paste('[invalid')
@@ -260,7 +276,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 		it('should enable print button after loading items', async () => {
 			render(<MagicItems />)
 
-			const textarea = screen.getByPlaceholderText(/paste magic items json here/i)
+			const textarea = screen.getByPlaceholderText(
+				/paste magic items json here/i,
+			)
 			const printButton = screen.getByText('Print')
 
 			// Initially disabled
@@ -293,7 +311,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 		it('should handle all item categories', async () => {
 			render(<MagicItems />)
 
-			const textarea = screen.getByPlaceholderText(/paste magic items json here/i)
+			const textarea = screen.getByPlaceholderText(
+				/paste magic items json here/i,
+			)
 
 			const categories = ['Weapon', 'Wearable', 'Consumable', 'Spell Scroll']
 			const items = categories.map((category, index) => ({
@@ -318,7 +338,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 		it('should handle optional fields correctly', async () => {
 			render(<MagicItems />)
 
-			const textarea = screen.getByPlaceholderText(/paste magic items json here/i)
+			const textarea = screen.getByPlaceholderText(
+				/paste magic items json here/i,
+			)
 
 			const itemWithOptionalFields = {
 				name: 'Complete Weapon',
@@ -373,7 +395,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 		it('should handle large JSON data efficiently', async () => {
 			render(<MagicItems />)
 
-			const textarea = screen.getByPlaceholderText(/paste magic items json here/i)
+			const textarea = screen.getByPlaceholderText(
+				/paste magic items json here/i,
+			)
 
 			// Create 50 items
 			const manyItems = Array.from({ length: 50 }, (_, i) => ({

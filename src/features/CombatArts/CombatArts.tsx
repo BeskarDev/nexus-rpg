@@ -1,19 +1,27 @@
 import {
-    Checkbox,
-    FormControl,
-    InputLabel,
-    ListItemText,
-    MenuItem,
-    OutlinedInput,
-    Select,
-    SelectChangeEvent,
+	Checkbox,
+	FormControl,
+	InputLabel,
+	ListItemText,
+	MenuItem,
+	OutlinedInput,
+	Select,
+	SelectChangeEvent,
 } from '@mui/material'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import { CombatArt } from '@site/src/types/CombatArt'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import combatArtsData from '../../utils/data/json/combat-arts.json'
-import { CharacterSelector, PrintToolShell } from '../PrintingTools'
+import {
+	CARD_PAGE,
+	CARD_PAGE_MARGIN,
+	CARD_SIZE,
+	CharacterSelector,
+	itemsPerPage,
+	PrintPages,
+	PrintToolShell,
+} from '../PrintingTools'
 import { CombatArtCard } from './CombatArtCard'
 import './combatArtStyles.css'
 
@@ -157,6 +165,13 @@ export const CombatArts: React.FC = () => {
 		setSelectedCombatArtsList([])
 	}
 
+	// From the card and page geometry rather than a hand-written 9 — the same
+	// call the preview paginates by, so the count and the pages cannot drift.
+	const sheetCount = Math.ceil(
+		filteredCombatArts.length /
+			itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
+	)
+
 	return (
 		<>
 			<style type="text/css" media="print">
@@ -183,6 +198,7 @@ export const CombatArts: React.FC = () => {
 									className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
 									onClick={() => setShowJsonImport(!showJsonImport)}
 									aria-expanded={showJsonImport}
+									aria-controls="pt-import-combat-arts"
 								>
 									<span
 										className="pt-import-toggle__caret"
@@ -190,7 +206,10 @@ export const CombatArts: React.FC = () => {
 									/>
 									Import character as JSON
 								</button>
-								<div className={`pt-import-body${showJsonImport ? "" : " is-hidden"}`}>
+								<div
+									id="pt-import-combat-arts"
+									className={`pt-import-body${showJsonImport ? '' : ' is-hidden'}`}
+								>
 									<textarea
 										value={characterJsonString}
 										onChange={(event) =>
@@ -246,12 +265,14 @@ export const CombatArts: React.FC = () => {
 						</div>
 						<div className="pt-section">
 							<div className="pt-count">
-								{filteredCombatArts.length === 1 ? '1 card' : `${filteredCombatArts.length} cards`} selected
+								{filteredCombatArts.length === 1
+									? '1 card'
+									: `${filteredCombatArts.length} cards`}{' '}
+								selected
 								{filteredCombatArts.length > 0 && (
 									<>
 										{' '}
-										·{' '}
-										{Math.ceil(filteredCombatArts.length / 9) === 1 ? '1 sheet' : `${Math.ceil(filteredCombatArts.length / 9)} sheets`}
+										· {sheetCount === 1 ? '1 sheet' : `${sheetCount} sheets`}
 									</>
 								)}
 							</div>
@@ -267,12 +288,20 @@ export const CombatArts: React.FC = () => {
 					</>
 				}
 				preview={
-					<div className="combat-art--container" ref={componentRef}>
-						{filteredCombatArts.map((combatArt, index) => (
-							<React.Fragment
-								key={`${combatArt.name}-${combatArt.characterName || 'manual'}-${index}`}
-							>
+					<div ref={componentRef}>
+						<PrintPages
+							page={CARD_PAGE}
+							item={CARD_SIZE}
+							margin={CARD_PAGE_MARGIN}
+							empty={
+								<p className="pt-empty">
+									Select combat arts in the controls panel to preview them here.
+								</p>
+							}
+						>
+							{filteredCombatArts.map((combatArt, index) => (
 								<div
+									key={`${combatArt.name}-${combatArt.characterName || 'manual'}-${index}`}
 									title={
 										combatArt.characterName
 											? `For character: ${combatArt.characterName}`
@@ -281,14 +310,8 @@ export const CombatArts: React.FC = () => {
 								>
 									<CombatArtCard {...combatArt} />
 								</div>
-								{Boolean(index % 9 === 8) && <div className="page-break" />}
-							</React.Fragment>
-						))}
-						{!filteredCombatArts.length && (
-							<p className="pt-empty">
-								Select combat arts in the controls panel to preview them here.
-							</p>
-						)}
+							))}
+						</PrintPages>
 					</div>
 				}
 			/>

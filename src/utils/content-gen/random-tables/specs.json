@@ -798,6 +798,7 @@
 		"render": "object",
 		"cols": ["effectType", "function", "trigger", "scope"],
 		"cap": false,
+		"singleRoll": true,
 		"note": "Row 9 said \"Bonus Action\", which is D&D vocabulary. Nexus has Quick Actions, and the data already said so."
 	},
 	{
@@ -814,7 +815,8 @@
 		"path": "magicItemCurseEffects",
 		"render": "object",
 		"cols": ["curseType", "effect", "trigger", "scope"],
-		"cap": false
+		"cap": false,
+		"singleRoll": true
 	},
 	{
 		"page": "07-random-spell.mdx",
