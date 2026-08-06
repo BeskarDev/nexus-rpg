@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import parse from 'html-react-parser'
 import { SheetLayout } from './SheetLayout'
 import { Character, NpcRelationship, Relation } from '@site/src/types/Character'
-import { Field, Prose } from './SheetPrimitives'
+import { Band, Field, Prose } from './SheetPrimitives'
 
 /**
  * The Personal sheet (M16 S3).
@@ -15,6 +15,15 @@ import { Field, Prose } from './SheetPrimitives'
  * between sessions, and a bordered box of empty white is a worse invitation to
  * write than a ruled one — which is why every paper form since forms existed has
  * had them.
+ *
+ * ## M17 S5
+ *
+ * This is the one page D3's ban on general-purpose write-lines does NOT reach:
+ * elsewhere they were filler standing in for content that had nowhere to go, and
+ * here they are the surface a hand actually writes on. So the slice only tightens
+ * the space: the four identity fields become one carved band instead of a loose
+ * unnamed row, and the physical description gives a larger share of the page to
+ * the two panels that are actually added to during play.
  */
 export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 	const { isNewFormat, groupedRelationships, allies, contacts, rivals } =
@@ -64,9 +73,11 @@ export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 		(a, b) => b - a,
 	)
 
+	// Keyed on its own label: the three calls below sit in an array literal, so
+	// without one React warns and the list has no stable identity.
 	const legacyList = (label: string, entries: Relation[]) =>
 		entries.length > 0 && (
-			<div style={{ marginBottom: '1mm' }}>
+			<div key={label} style={{ marginBottom: '1mm' }}>
 				<div className="pc-label">{label}</div>
 				{entries.map((entry, index) => (
 					<div key={entry.id || `${label}-${index}`}>{entry.description}</div>
@@ -75,18 +86,31 @@ export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 		)
 
 	return (
-		<SheetLayout>
-			<div style={{ display: 'flex', gap: '1.5mm' }}>
+		<SheetLayout crest="personal">
+			{/* "Personal Information" says what the block is; "The Person" was a
+				flourish (owner review). The band takes `figure` so it does not repeat
+				the motivation star its own first cell carries. */}
+			<Band name="Personal Information" sigil="figure">
 				<Field
 					label="Motivation"
 					sigil="motivation"
 					value={char.personal.motivation}
 					grow
 				/>
-				<Field label="Height" value={char.personal.height} width="16mm" />
-				<Field label="Weight" value={char.personal.weight} width="16mm" />
-				<Field label="Age" value={char.personal.age} width="12mm" />
-			</div>
+				<Field
+					label="Height"
+					sigil="height"
+					value={char.personal.height}
+					width="18mm"
+				/>
+				<Field
+					label="Weight"
+					sigil="weight"
+					value={char.personal.weight}
+					width="18mm"
+				/>
+				<Field label="Age" sigil="age" value={char.personal.age} width="14mm" />
+			</Band>
 
 			<Prose label="Physical Description" sigil="description" weight={1}>
 				{char.personal.description}
@@ -96,7 +120,7 @@ export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 				style={{
 					display: 'flex',
 					gap: '2mm',
-					flexGrow: 3,
+					flexGrow: 4,
 					flexBasis: 0,
 					minHeight: 0,
 					alignItems: 'stretch',

@@ -52,7 +52,7 @@ Two rules keep the exception from leaking:
 
 ## Iron is taboo, not merely absent
 
-Iron exists and is **cursed**. The vault (`(12) 🗝️ Artefakte/Materialien/Metalle/Eisen.md`) has
+Iron exists and is **cursed**. The vault (`12 Dinge/Materialien/Metalle/Eisen.md`) has
 it as *Fluchstein*: an anti-spiritual taboo metal that repels spirits and attracts monsters,
 blocks divine and primal magic, forbidden in temples, legislated against by kings, used chiefly
 by the Urduk and the sorcerer-kings, or to shackle and mask captive mystics. So an iron tool in
@@ -78,8 +78,9 @@ clothing** — garments have their own trap, in [art-folk.md](art-folk.md) § A 
 
 ## Magic is ordinary, and nobody in the picture marvels at it
 
-The setting's governing writing rule is **magical naturalism** (`(01) 🌍
-Weltübersicht/Design-Dokument.md`, revised 2026-02-27, naming *Morrowind* as the model):
+The setting's governing writing rule is **magical naturalism**
+(`01 Weltübersicht/Design-Dokument.md` in the vault, revised 2026-02-27, naming *Morrowind* as
+the model):
 *"Magic in Nexus is not an exception, it is nature… Inhabitants of this world do not marvel at
 magical flora, fauna or phenomena. They use them, occasionally fear them."*
 

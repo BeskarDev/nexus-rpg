@@ -304,10 +304,7 @@ const config = {
 						// there contain creature names, place names and item fragments that
 						// match RPG keywords (e.g. "Fire", "Large") but are flavor text,
 						// not mechanical terms.
-						[
-							autoKeywordPlugin,
-							{ disableInPaths: ['/01-random-tables/'] },
-						],
+						[autoKeywordPlugin, { disableInPaths: ['/01-random-tables/'] }],
 						// LAST: it reparents top-level blocks into <Columns>, and the
 						// plugins above walk the tree by node type, so running it earlier
 						// would bury their targets one level deeper for no benefit.

@@ -23,14 +23,23 @@ export const CARD_PAGE_MARGIN = 1
 /**
  * The character sheet's geometry — a different sheet in a different orientation.
  *
- * Two 133 × 191mm sections side by side, which is what `@page { size: 267mm
- * 192mm; margin: 0.5mm }` in `printCharacterSheetStyles.css` is sized for. The
- * four sheets therefore make two pages, and there is no slack: see
- * `SheetLayout`'s `KEYSTONE_CLEARANCE`.
+ * **A4 landscape at full bleed, two exact A5 halves** (M17 D1). 2 × 148.5 = 297
+ * with nothing left over, so the fold is the page centre and the four sheets
+ * make two pages.
+ *
+ * This replaces a nonstandard 267 × 192mm page holding two 133 × 191mm sections
+ * at a 0.5mm margin. That size existed to survive an unknown printer's
+ * unprintable edge; the print target is now fixed (Chrome → Print to PDF,
+ * margins none, M17 D0), so there is no edge to survive and the sheet gets the
+ * ~25% of content area it was giving away.
+ *
+ * There is still no slack — an exact tiling never has any — so the keystone's
+ * overhang still comes out of the inner margin: see `SheetLayout`'s
+ * `KEYSTONE_CLEARANCE`.
  */
-export const SHEET_PAGE: Millimetres = { width: 267, height: 192 }
-export const SHEET_SECTION: Millimetres = { width: 133, height: 191 }
-export const SHEET_PAGE_MARGIN = 0.5
+export const SHEET_PAGE: Millimetres = { width: 297, height: 210 }
+export const SHEET_SECTION: Millimetres = { width: 148.5, height: 210 }
+export const SHEET_PAGE_MARGIN = 0
 
 /**
  * How many items the browser will actually fit on one printed page.
@@ -104,7 +113,7 @@ function usePaperScale(paperWidthMm: number) {
 export interface PrintPagesProps {
 	/** The sheet size, matching the tool's own `@page` rule. */
 	page: Millimetres
-	/** One printed item — a 63 × 88mm card, a 133 × 191mm sheet section. */
+	/** One printed item — a 63 × 88mm card, a 148.5 × 210mm sheet section. */
 	item: Millimetres
 	/** The `@page` margin in mm, which the items do not get to use. */
 	margin?: number
@@ -160,10 +169,10 @@ export const PrintPages: React.FC<PrintPagesProps> = ({
 							transform: `scale(${scale})`,
 						}}
 					>
-						{/* An explicit grid, not flow. The sheet page fits its two 133mm
-							sections into 266mm of printable width EXACTLY, so leaving the
+						{/* An explicit grid, not flow. The sheet page fits its two 148.5mm
+							sections into 297mm of printable width EXACTLY, so leaving the
 							placement to `flex-wrap` meant the 1.5px paper keyline plus
-							sub-pixel rounding of `133mm` was enough to push the second
+							sub-pixel rounding of `148.5mm` was enough to push the second
 							section onto a row of its own, where `overflow: hidden` then
 							cut it. The column count is already known here — the same
 							number the pagination used — so it is stated rather than

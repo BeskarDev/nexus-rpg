@@ -52,7 +52,9 @@ export function LibraryPanel<T extends BaseEntry>({
 		<div className="cb-library">
 			<div className="cb-library__filters">
 				<div className="cb-search">
-					<span className="cb-search__mark" aria-hidden="true">⌕</span>
+					<span className="cb-search__mark" aria-hidden="true">
+						⌕
+					</span>
 					<input
 						className="cb-search__input"
 						value={search}
@@ -94,8 +96,7 @@ export function LibraryPanel<T extends BaseEntry>({
 					<div className="cb-empty">No entries match.</div>
 				) : (
 					filtered.map((entry) => {
-						const isGoodFit =
-							activeType && entry.forTypes?.includes(activeType)
+						const isGoodFit = activeType && entry.forTypes?.includes(activeType)
 						return (
 							<div
 								key={entry.id}

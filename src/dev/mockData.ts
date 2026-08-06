@@ -1,4 +1,4 @@
-import { Character, CharacterDocument } from '../types/Character'
+import { Character, CharacterDocument, Damage } from '../types/Character'
 import { doc } from 'firebase/firestore'
 import { db } from '@site/src/config/firebase'
 import { PartyInfo } from '@site/src/types/Party'
@@ -806,6 +806,32 @@ export const createOutdatedMockCharacter = (): CharacterDocument => {
  * ability categories, all six action types, talent ranks 1 to 5, skills that are
  * and are not trained, and a Quick Ref spanning all four kinds it can hold.
  *
+ * ## It also has to fill the PRINTED sheet (M17)
+ *
+ * The printed sheet is four A5 pages with hard limits, and every one of those
+ * limits is a claim about the worst case — twelve skills is a game rule (M17 D2),
+ * five weapons is what a character carries in the extreme, twenty-four carried
+ * items is what page two measurably holds. A claim like that is only worth
+ * anything if something exercises it, and M17 had to build a throwaway JSON
+ * fixture to do the measuring because no mock character came close: nine skills,
+ * ONE weapon, three items, no equipment slot assigned anywhere, four spells.
+ *
+ * The throwaway is now here instead, so the next person to touch the printed
+ * layout can see the worst case by picking a character rather than by writing
+ * one. Everith is therefore sized to the sheet's stated maxima:
+ *
+ * | Block | Sheet's limit | Everith |
+ * |---|---|---|
+ * | Skills | fixed 12-row grid (D2) | 12, so the grid has no empty place |
+ * | Abilities | two columns, balanced | 30 across all four categories |
+ * | Weapons | 5 rows reserved | 5 |
+ * | Worn slots | 8 slots, one panel | all 8 filled |
+ * | Carried | 24 rows, then the note | 24, so the block ends exactly at its limit |
+ * | Spells | 40 rows | 11 |
+ *
+ * One attribute is `wounded` and both HP and fatigue are part-spent, because
+ * those are the three places the sheet prints a state rather than a number.
+ *
  * ## Built on the first character, not beside it
  *
  * It spreads `createMockCharacter()` and replaces only what it is testing. A
@@ -930,7 +956,376 @@ export const createReviewMockCharacter = (): CharacterDocument => {
 			tag: 'Other',
 			actionType: 'Free',
 		},
+		/*
+			Everything below is BULK (M17). The twelve above cover the categories,
+			action types and talent ranks the screen sheet is reviewed for; these
+			take the count to thirty, which is what the printed sheet's two-column
+			ability block has to survive. Without them the block printed a third
+			full and the layout was never actually tested.
+
+			They are still real abilities rather than "Ability 13" — a column of
+			numbered placeholders tells you nothing about how names of a realistic
+			length set, which is the only thing this block's layout depends on.
+		*/
+		{
+			id: generateId(),
+			title: 'Shield Wall',
+			description:
+				'While adjacent to an ally with a shield, both gain +1 Parry.',
+			tag: 'Combat Art',
+			actionType: 'Passive',
+		},
+		{
+			id: generateId(),
+			title: 'Whirling Guard',
+			description: 'Attack every adjacent creature at one bane.',
+			tag: 'Combat Art',
+			actionType: 'Action',
+		},
+		{
+			id: generateId(),
+			title: 'Second Wind',
+			description: 'Once per rest, recover HP equal to your Strength die.',
+			tag: 'Combat Art',
+			actionType: 'Quick Action',
+		},
+		{
+			id: generateId(),
+			title: 'Disarming Strike',
+			description:
+				'On a strong hit, the target drops one held item of your choice.',
+			tag: 'Combat Art',
+			actionType: 'Action',
+		},
+		{
+			id: generateId(),
+			title: 'Braced Stance',
+			description:
+				'While you have not moved this turn, ignore the first push effect against you.',
+			tag: 'Combat Art',
+			actionType: 'Free',
+		},
+		{
+			id: generateId(),
+			title: 'Opening Feint',
+			description:
+				'When you win initiative, one ally gains a boon on their first attack.',
+			tag: 'Combat Art',
+			actionType: 'Triggered',
+		},
+		{
+			id: generateId(),
+			title: 'Careful Hands',
+			description: 'Gain a boon on Crafting rolls made with proper tools.',
+			tag: 'Talent',
+			actionType: 'Passive',
+			rank: 1,
+			skill: 'Crafting',
+		},
+		{
+			id: generateId(),
+			title: 'Field Surgeon',
+			description: 'Treat a wound outside a rest once per scene.',
+			tag: 'Talent',
+			actionType: 'Action',
+			rank: 2,
+			skill: 'Education',
+		},
+		{
+			id: generateId(),
+			title: 'Sure Footing',
+			description: 'Ignore difficult terrain caused by loose ground.',
+			tag: 'Talent',
+			actionType: 'Passive',
+			rank: 1,
+			skill: 'Athletics',
+		},
+		{
+			id: generateId(),
+			title: 'Read the Room',
+			description:
+				'Once per scene, ask the GM one question about a creature you can see.',
+			tag: 'Talent',
+			actionType: 'Quick Action',
+			rank: 2,
+			skill: 'Insight',
+		},
+		{
+			id: generateId(),
+			title: "Scribe's Memory",
+			description:
+				'Recall the contents of any text you have read this session.',
+			tag: 'Talent',
+			actionType: 'Free',
+			rank: 3,
+			skill: 'Lore',
+		},
+		{
+			id: generateId(),
+			title: 'Iron Stomach',
+			description: 'Gain a boon on Fortitude rolls against ingested poison.',
+			tag: 'Talent',
+			actionType: 'Passive',
+			rank: 1,
+			skill: 'Fortitude',
+		},
+		{
+			id: generateId(),
+			title: 'Ley Sense',
+			description: 'Sense the nearest active ley line within a mile.',
+			tag: 'Talent',
+			actionType: 'Action',
+			rank: 4,
+			skill: 'Arcana',
+		},
+		{
+			id: generateId(),
+			title: 'Nightsight',
+			description: 'You take no bane for dim light on Perception rolls.',
+			tag: 'Folk',
+			actionType: 'Passive',
+		},
+		{
+			id: generateId(),
+			title: 'Desert Born',
+			description: 'You need half as much water as others do.',
+			tag: 'Folk',
+			actionType: 'Passive',
+		},
+		{
+			id: generateId(),
+			title: 'Ancestral Tongue',
+			description: 'You can read the older Akashic script without a roll.',
+			tag: 'Folk',
+			actionType: 'Free',
+		},
+		{
+			id: generateId(),
+			title: 'Caravan Passage',
+			description:
+				'Any Akashic caravan will carry you a day’s travel without payment.',
+			tag: 'Other',
+			actionType: 'Other',
+		},
+		{
+			id: generateId(),
+			title: 'Debt of the Reeds',
+			description:
+				'Once per session, call in the favour Nin-shara owes you for a mundane resource.',
+			tag: 'Other',
+			actionType: 'Free',
+		},
+		{
+			id: generateId(),
+			title: 'Archivist’s Standing',
+			description:
+				'Any Akashic archive will admit you to its open shelves without a writ.',
+			tag: 'Other',
+			actionType: 'Other',
+		},
 	]
+
+	/*
+		THE PRINTED SHEET'S WORST CASE (M17)
+		------------------------------------
+
+		Everything from here to the `return` exists to fill the four printed pages
+		to the limits they claim to hold. The base character has one weapon, three
+		items and no equipment slot assigned anywhere, which is why M17 had to
+		measure against a throwaway JSON fixture instead.
+
+		Written as tuples mapped into the full shape rather than as sixty object
+		literals: the sheet's layout depends on the NAMES and the counts, and the
+		remaining fields are the same boilerplate every time. Spelling each one out
+		would add ~600 lines in which the two things that matter are invisible.
+	*/
+
+	const damage = (base: Damage['base'], weapon: number): Damage => ({
+		base,
+		weapon,
+		other: 0,
+		otherWeak: 0,
+		otherStrong: 0,
+		otherCritical: 0,
+		type: 'physical',
+		staticDamage: false,
+	})
+
+	// Five: what a character carries in the extreme case, which is what the
+	// printed weapons block reserves (M17 F3).
+	const weapons: Character['items']['weapons'] = (
+		[
+			["Scholar's Staff", 'STR', 3, 'reach, two-handed, arcane catalyst', 2],
+			['Bronze Shortsword', 'AGI', 3, 'light, parrying', 1],
+			['Hunting Bow', 'AGI', 4, 'ranged, two-handed, ammunition', 2],
+			['Bronze Dagger', 'AGI', 2, 'light, concealable, thrown', 1],
+			['Sling', 'AGI', 2, 'ranged, ammunition, quiet', 1],
+		] as const
+	).map(([name, base, dice, properties, load]) => ({
+		id: generateId(),
+		name,
+		damage: damage(base as Damage['base'], dice),
+		properties,
+		description: '',
+		cost: 25,
+		load,
+		location: 'worn' as const,
+		uses: 0,
+		durability: 'd8' as const,
+	}))
+
+	// All eight slots, so the printed slot panel has no empty place — the panel's
+	// whole argument is that an empty slot is VISIBLE, and a fixture that leaves
+	// six of them blank never tests the full case (M17 F4).
+	const wornItems: Character['items']['items'] = (
+		[
+			['head', 'Bronze Helm', ['+1 AV'], 1, 30],
+			['neck', 'Torc of the Nine Reeds', ['heirloom'], 0, 120],
+			['back', 'Wolfskin Cloak', ['warm', 'concealing'], 1, 25],
+			['body', 'Scale Hauberk', ['+3 AV', 'noisy'], 3, 180],
+			['hands', 'Scribe’s Bracers', ['+1 Crafting'], 0, 40],
+			['ring', 'Signet of Kesh', ['authority'], 0, 90],
+			['waist', 'War Belt', ['2 quick slots'], 1, 20],
+			['feet', 'Marching Boots', ['long march'], 1, 15],
+		] as const
+	).map(([slot, name, properties, load, cost]) => ({
+		id: generateId(),
+		// Real properties, loads and costs: the printed worn panel gained a second
+		// line for exactly these, and a fixture of empty arrays would have left it
+		// looking correct while proving nothing (M17, owner review).
+		name,
+		properties: [...properties],
+		slot,
+		cost,
+		load,
+		container: 'worn' as const,
+		amount: 1,
+		location: 'worn' as const,
+		uses: 0,
+		durability: 'd6' as const,
+	}))
+
+	/*
+		One worn thing with NO slot, because the panel has to place it.
+		The printed sheet used to sweep these into carried inventory and mark them
+		with a location glyph; they now get their own cell after the eight.
+	*/
+	const unslottedWorn: Character['items']['items'] = [
+		{
+			id: generateId(),
+			name: 'Cord of Prayer Beads',
+			properties: ['devotional'],
+			slot: '' as const,
+			cost: 8,
+			load: 0,
+			container: 'worn' as const,
+			amount: 1,
+			location: 'worn' as const,
+			uses: 0,
+			durability: 'd4' as const,
+		},
+	]
+
+	/*
+		Twenty-four, which is exactly what page two holds (M17). Sized to the limit
+		rather than under it on purpose: at 25 the block prints its overflow note,
+		so this fixture sits on the boundary where the next item added is the one
+		that has to be reported rather than shown.
+	*/
+	const carriedItems: Character['items']['items'] = (
+		[
+			['Spellbook', 1],
+			['Alchemy Kit', 2],
+			['Rope, 15 m', 3],
+			['Waterskin', 1],
+			['Rations', 2],
+			['Whetstone', 1],
+			['Tinderbox', 1],
+			['Bedroll', 2],
+			['Healing Draught', 1],
+			['Oil Flask', 1],
+			['Grappling Hook', 2],
+			['Bandages', 1],
+			['Chalk', 1],
+			['Iron Spikes', 2],
+			['Lantern', 2],
+			['Trail Bread', 1],
+			['Salt Pouch', 1],
+			['Fishing Line', 1],
+			['Sewing Kit', 1],
+			['Wax Tablet', 1],
+			['Bronze Mirror', 1],
+			['Antitoxin', 1],
+			['Signal Horn', 1],
+			['Cook Pot', 2],
+		] as const
+	).map(([name, load], index) => ({
+		id: generateId(),
+		name,
+		properties: [],
+		cost: 2 + (index % 5) * 3,
+		load,
+		container: 'backpack' as const,
+		// A few stacks, so the printed `×3` suffix has something to render.
+		amount: index % 7 === 0 ? 3 : 1,
+		location: 'carried' as const,
+		// The wear track prints as three pips, so the fixture has to show all four
+		// of its states — untouched, part-worn, and fully used up.
+		uses: index % 4,
+		durability: 'd6' as const,
+	}))
+
+	// Eleven, over four ranks, some dealing damage and some not — the printed
+	// spell table's Damage column is empty for the latter, which is the case the
+	// M16 rebuild fixed and nothing had covered since.
+	const spells: Character['spells']['spells'] = (
+		[
+			['Mage Light', 0, 0, 'special', 'touch', false],
+			['Magic Missile', 1, 2, 'Dodge', 'medium', true],
+			['Ember Lash', 1, 2, 'Dodge', 'short', true],
+			['Stone Skin', 2, 3, 'self', 'self', false],
+			['Gale Step', 1, 2, 'self', 'self', false],
+			['Scrying Bowl', 2, 3, 'special', 'self', false],
+			['Chain Lightning', 4, 5, 'Dodge', 'long', true],
+			['Ward of Salt', 3, 4, 'special', 'close', false],
+			['Sand Veil', 2, 2, 'self', 'close', false],
+			['Molten Grasp', 3, 4, 'Parry', 'melee', true],
+			['Read Omens', 2, 3, 'special', 'self', false],
+		] as const
+	).map(([name, rank, cost, target, range, dealsDamage]) => ({
+		id: generateId(),
+		name,
+		rank,
+		cost,
+		target: target as Character['spells']['spells'][number]['target'],
+		range: range as Character['spells']['spells'][number]['range'],
+		properties: 'concentrate',
+		dealsDamage,
+		damage: damage('MND', 4),
+		effect: '',
+	}))
+
+	/*
+		Twelve skills, because twelve is a GAME RULE and the printed block is a
+		fixed twelve-row grid built on it (M17 D2). The base character has nine, so
+		the grid printed with three empty places and the full case was untested.
+	*/
+	const skills: Character['skills']['skills'] = (
+		[
+			['Arcana', 4, 20],
+			['Athletics', 2, 6],
+			['Crafting', 2, 6],
+			['Education', 3, 12],
+			['Fighting', 2, 6],
+			['Fortitude', 2, 6],
+			['Influence', 1, 2],
+			['Insight', 3, 12],
+			['Lore', 3, 12],
+			['Perception', 2, 6],
+			['Stealth', 1, 2],
+			['Survival', 1, 2],
+		] as const
+	).map(([name, rank, xp]) => ({ id: generateId(), name, rank, xp }))
 
 	return {
 		...base,
@@ -943,10 +1338,25 @@ export const createReviewMockCharacter = (): CharacterDocument => {
 			name: 'Everith Fullsheet',
 			playerName: 'Developer Review',
 			description:
-				'Built for reviewing the sheet rather than for playing: every ability category, every action type, talent ranks 1 to 5, and a populated Quick Ref.',
+				'Built for reviewing the sheet rather than for playing: every ability category, every action type, talent ranks 1 to 5, a populated Quick Ref, and enough of everything to fill all four printed pages to their stated limits.',
+		},
+		/*
+			The three values the printed sheet renders as a STATE rather than as a
+			number: a wounded attribute prints the word under its die, and current HP
+			and fatigue are the write-fields a player pencils over during play. All
+			three were at their default on the base character, so none of them had
+			ever printed.
+		*/
+		statistics: {
+			...base.statistics,
+			strength: { ...base.statistics.strength, wounded: true },
+			health: { ...base.statistics.health, current: 18, temp: 4 },
+			fatigue: { ...base.statistics.fatigue, current: 2 },
 		},
 		skills: {
 			...base.skills,
+			xp: { total: 92, spend: 92 },
+			skills,
 			abilities,
 			/*
 				Pinned across all four kinds, so every branch of the Quick Ref grouping
@@ -961,10 +1371,38 @@ export const createReviewMockCharacter = (): CharacterDocument => {
 					ids.darkvision,
 					ids.heirloom,
 				],
-				weapons: base.items.weapons.slice(0, 2).map((weapon) => weapon.id),
-				items: base.items.items.slice(0, 2).map((item) => item.id),
-				spells: base.spells.spells.slice(0, 2).map((spell) => spell.id),
+				/*
+					Pinned against the arrays this character actually ends up with, not
+					against `base`'s. The ids are regenerated per call, so pinning
+					`base.items.weapons` while the returned character carries `weapons`
+					is a Quick Ref that silently holds nothing — the same failure the
+					`ids` object above exists to avoid.
+				*/
+				weapons: weapons.slice(0, 2).map((weapon) => weapon.id),
+				items: carriedItems.slice(0, 2).map((item) => item.id),
+				spells: spells.slice(0, 2).map((spell) => spell.id),
 			},
+		},
+		items: {
+			...base.items,
+			coins: 482,
+			// Sized to the kit above, so the printed Load / Encumbered / Max cells
+			// read as a character who is genuinely near their limit.
+			encumbrance: {
+				...base.items.encumbrance,
+				currentLoad: 38,
+				encumberedAt: 40,
+				overencumberedAt: 60,
+			},
+			weapons,
+			items: [...wornItems, ...unslottedWorn, ...carriedItems],
+		},
+		spells: {
+			...base.spells,
+			specialization: 'Evocation, Divination',
+			focus: { total: 18, current: 11 },
+			spellCatalystDamage: 1,
+			spells,
 		},
 	}
 }

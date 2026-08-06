@@ -71,5 +71,5 @@
 	"editor.indentSize": "tabSize",
 	"editor.tabSize": 2,
 	"editor.detectIndentation": false,
-  "github.copilot.chat.edits.temporalContext.enabled": false,
+	"github.copilot.chat.edits.temporalContext.enabled": false
 }

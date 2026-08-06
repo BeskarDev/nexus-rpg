@@ -135,7 +135,9 @@ export const MultiSelectTabs: React.FC<MultiSelectTabsProps> = ({
 									addCustom()
 								}
 							}}
-							inputProps={{ 'aria-label': `Custom ${label.toLowerCase()} value` }}
+							inputProps={{
+								'aria-label': `Custom ${label.toLowerCase()} value`,
+							}}
 						/>
 						<button
 							type="button"

@@ -8,8 +8,13 @@ arcane, warm gold is mystic, never blended** — is in [art-direction.md](art-di
 
 ## Every god has a canon depiction
 
-Source of truth: `(02) 🪐 Kosmologie/Pantheons/Atakhet/` — `_index.md` for structure, one file per
-god for iconography, each with a `## Darstellung` section written to be drawn. **Never invent a
+Source of truth: `02 Kosmologie/Pantheons/Atakhet/` in the worldbuilding vault — `_index.md` for
+structure, one file per god for iconography, each with a `## Darstellung` section written to be
+drawn. **The Atakhet pantheon is one of several**: the vault also holds Ghahar, Urduk, Südlicher
+Urwald and Vulkaninseln under `02 Kosmologie/Pantheons/`, each with its own gods and its own
+`## Darstellung`. The table in this file is the Atakhet cast because that is what the rulebook
+illustrates; for any other pantheon read its own folder and never carry Atakhet iconography
+across. **Never invent a
 god, a divine attribute or a temple rite**, and never reach for the real-world Egyptian version:
 the mystic-penance plate carried an Egyptian *psychostasia* (the heart weighed against Ma'at's
 feather), which is a real-world afterlife judgement, is about the dead rather than about a mystic

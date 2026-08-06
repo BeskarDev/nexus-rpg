@@ -31,9 +31,7 @@ describe('CreatureCards Tool - Basic Tests', () => {
 			// Check for key elements that should always be present
 			expect(screen.getByText('Parse creatures')).toBeInTheDocument()
 			expect(
-				screen.getByPlaceholderText(
-					/paste creature stat block markdown here/i,
-				),
+				screen.getByPlaceholderText(/paste creature stat block markdown here/i),
 			).toBeInTheDocument()
 			expect(screen.getByText('Upload file')).toBeInTheDocument()
 			expect(

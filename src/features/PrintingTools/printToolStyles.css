@@ -307,8 +307,8 @@
 
    It carried `gap: 1px`, copied from the old card containers. That is invisible
    on a card page (3 × 63mm = 189mm inside 190mm, so 2px of gap still fits) and
-   fatal on the character sheet: two 133mm sections need 266mm and the bed IS
-   266mm, so one pixel of gap wrapped the second section onto a row that
+   fatal on the character sheet: two 148.5mm sections need 297mm and the bed IS
+   297mm, so one pixel of gap wrapped the second section onto a row that
    `overflow: hidden` then cut off. Every page showed one sheet instead of two.
 
    Items are `flex: 0 0 auto` for the same reason — a shrinkable item silently

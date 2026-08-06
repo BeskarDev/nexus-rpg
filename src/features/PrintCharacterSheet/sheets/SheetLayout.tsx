@@ -1,48 +1,72 @@
 import { Box, BoxProps } from '@mui/material'
-import { CardFrame } from '@site/src/components/codex/ornaments'
+import { SheetFrame, SheetCrest, SHEET_CONTENT_INSET_MM } from './SheetFrame'
 
 /**
- * One printed page of the character sheet: 133 × 191mm, four to a landscape
- * sheet, folded. **Those dimensions do not move** (M16 constraint 1) — so
- * anything that needs room, such as the keystone's overhang, has to take it out
- * of the inner margins. See `KEYSTONE_CLEARANCE`.
+ * One printed page of the character sheet: **148.5 × 210mm, an exact A5 half**,
+ * four to an A4 landscape sheet, folded (M17 D1).
  *
- * ## The codex frame (M16 S3.5, owner review)
+ * This grew from 133 × 191mm. That number was not derived from the fold — it was
+ * sized to survive an unknown printer's unprintable edge, and M16 froze it as
+ * inviolable for exactly that reason. The print target is now fixed (Chrome →
+ * Print to PDF, margins none, M17 D0), so there is no unknown printer and no
+ * edge: two sheets tile the A4 landscape page with nothing left over.
  *
- * The first pass drew a plain keyline here and argued that ornament costs ink
- * for nothing. The owner's correction: the print must carry the codex as fully
- * as the screen does, in black and white.
+ * ## The frame is the sheet's own, not a card's (owner review)
  *
- * So the page takes `CardFrame keystone="sheet"` — the cartouche keystone and
- * matching corner rails that M9 gave the character sheet — and `.pc-sheet`
- * rebinds the theme's colour variables to ink, which turns every ornament,
- * sigil and die polygon inside it black on white without a print-only copy of
- * any of them.
+ * M16 dressed the page in `CardFrame keystone="sheet"` — the four diamond corner
+ * rails and cartouche keystone the theme gives a content card in the rules docs.
+ * That was the fastest way to make the print carry the codex, and the owner's
+ * objection to it is right: the character sheet is not a card inside a chapter,
+ * it is the artifact, and it was wearing borrowed clothes.
+ *
+ * `SheetFrame` replaces it with a surround drawn for this page and nothing else —
+ * two hairline keylines with a braid rail running between them on all four edges,
+ * a lotus where it turns each corner, and a crest naming which of the four sheets
+ * this is. See that file for why the run is line and only the five focal points
+ * carry mass, and for why it is drawn at 1:1 rather than through the kit's tiled
+ * machinery.
+ *
+ * ## Two problems the new frame simply removes
+ *
+ * The old keystone hung ABOVE the frame's top edge, and the section is exactly
+ * the printable height, so its overhang had to be bought out of the top margin
+ * (`KEYSTONE_CLEARANCE`, 4.5mm against 2mm on the other three sides). Get that
+ * wrong and the cartouche is amputated at the section boundary — the M16 clipping
+ * bug, which was "fixed" once with `overflow: hidden` and had to be fixed again
+ * properly.
+ *
+ * The new crest sits ON the top register, inside the sheet. Nothing overhangs, so
+ * there is no clearance to buy, no asymmetric margin, and nothing to clip. The
+ * inset is uniform on all four sides and the page is symmetrical for the first
+ * time.
  */
-/**
- * Head room the cartouche keystone needs above the inner frame's top border.
- *
- * `.cartoucheKeystone` sits at `top: -15.75px`, and 15.75px is 4.17mm at the
- * CSS 96dpi that print also uses. The section is EXACTLY the printable height —
- * `@page` is 267 × 192mm at 0.5mm margins, so two 133 × 191mm sections fill it
- * with nothing to spare — which means that clearance has to come out of the top
- * margin. There is no slack anywhere else to borrow it from.
- *
- * With the uniform `2mm` this used to carry, the ornament stuck 2.17mm out of
- * the section and off the page. That was "fixed" with `overflow: hidden`, which
- * does not fix it: it amputates the keystone at the section boundary and prints
- * a half cartouche. Give it the room instead.
- */
-const KEYSTONE_CLEARANCE = '4.5mm'
 
-export const SheetLayout: React.FC<BoxProps> = ({ children, ...props }) => {
+/**
+ * Where the content starts, measured from the trim.
+ *
+ * IMPORTED from `SheetFrame` rather than restated. The frame is drawn in absolute
+ * millimetres, so if the register's thickness moves this has to move with it and
+ * there is no layout system that will catch the mismatch. It moved twice — once
+ * when the register went from one course to three, and again when pass 4 replaced
+ * those three courses of mass with line and gave 3.5mm per side back (+7mm of
+ * content in each dimension). Both times a hand-kept copy of the number was the
+ * thing that had to be remembered.
+ */
+const CONTENT_INSET = `${SHEET_CONTENT_INSET_MM}mm`
+
+export const SheetLayout: React.FC<BoxProps & { crest: SheetCrest }> = ({
+	children,
+	crest,
+	...props
+}) => {
 	return (
 		<Box
 			{...props}
 			className="pc-sheet"
 			sx={{
-				height: '191mm',
-				width: '133mm',
+				position: 'relative',
+				height: '210mm',
+				width: '148.5mm',
 				backgroundColor: 'white',
 				display: 'flex',
 				// Deliberately NOT `overflow: hidden`. Clipping here is what hid the
@@ -51,22 +75,22 @@ export const SheetLayout: React.FC<BoxProps> = ({ children, ...props }) => {
 				...props.sx,
 			}}
 		>
+			{/* The surround spans the whole sheet at 1:1, so it sits under the content
+				rather than around it — which is what lets the register run edge to edge
+				without the content box having to reserve a border. */}
+			<SheetFrame crest={crest} />
 			<Box
 				sx={{
 					position: 'relative',
-					m: '2mm',
-					mt: KEYSTONE_CLEARANCE,
-					p: '3mm',
+					p: CONTENT_INSET,
 					flexGrow: 1,
-					border: 'var(--pc-rule-frame) solid var(--pc-ink)',
-					backgroundColor: 'white',
 					display: 'flex',
 					flexDirection: 'column',
 					gap: '2mm',
 					minHeight: 0,
+					minWidth: 0,
 				}}
 			>
-				<CardFrame keystone="sheet" />
 				{children}
 			</Box>
 		</Box>

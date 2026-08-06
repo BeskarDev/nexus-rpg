@@ -177,9 +177,9 @@ describe('image plate ornaments (M11)', () => {
 		// Four corner SLOTS, each carrying two drawings at this weight: the banner
 		// swaps to a three-lobe redraw under its narrow container step, and a
 		// container query cannot change a React prop, so both ship and CSS picks.
-		expect(container.querySelectorAll('span[class*="plateCorner-"]').length).toBe(
-			4,
-		)
+		expect(
+			container.querySelectorAll('span[class*="plateCorner-"]').length,
+		).toBe(4)
 		const corners = container.querySelectorAll('svg[viewBox="0 0 48 48"]')
 		expect(corners.length).toBe(8)
 		// CSS rotate() transposes an SVG's axes (ornament-craft §5). The four
@@ -231,9 +231,9 @@ describe('image plate ornaments (M11)', () => {
 	it('the plate frame draws four corners, four runs and its own keystone', async () => {
 		const { PlateFrame } = await import('@site/src/components/codex')
 		const { container } = render(<PlateFrame weight="banner" />)
-		expect(container.querySelectorAll('span[class*="plateCorner-"]').length).toBe(
-			4,
-		)
+		expect(
+			container.querySelectorAll('span[class*="plateCorner-"]').length,
+		).toBe(4)
 		// Eight drawings in four slots: the banner is the one weight with a narrow
 		// container step that needs a different lobe count (see PLATE_NARROW_LOBES).
 		expect(container.querySelectorAll('svg[viewBox="0 0 48 48"]').length).toBe(

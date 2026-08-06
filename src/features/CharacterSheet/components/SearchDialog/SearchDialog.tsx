@@ -1,12 +1,12 @@
 import {
-  Box,
-  Button,
-  Checkbox,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Typography
+	Box,
+	Button,
+	Checkbox,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogTitle,
+	Typography,
 } from '@mui/material'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import React, { ReactNode, useMemo, useState } from 'react'
@@ -293,7 +293,7 @@ export function SearchDialog<T>({
 			const dupes = keys.filter((k) =>
 				seen.has(k) ? true : (seen.add(k), false),
 			)
-      
+
 			console.error(
 				`SearchDialog "${title}": getItemKey is not unique — ${[...new Set(dupes)].join(', ')}. ` +
 					'Rows will render and select incorrectly; key on a field combination that is unique.',

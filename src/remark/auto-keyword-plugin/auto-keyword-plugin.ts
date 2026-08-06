@@ -30,7 +30,9 @@ const autoKeywordPlugin = (options: { disableInPaths?: string[] } = {}) => {
 		// skip the entire page. This is cleaner than per-table front-matter because
 		// it covers all content on those pages without requiring MDX-level edits.
 		const filePath = file?.path ?? ''
-		if (options.disableInPaths?.some((fragment) => filePath.includes(fragment))) {
+		if (
+			options.disableInPaths?.some((fragment) => filePath.includes(fragment))
+		) {
 			return
 		}
 

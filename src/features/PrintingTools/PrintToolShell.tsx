@@ -28,9 +28,7 @@ export const PrintToolShell: React.FC<PrintToolShellProps> = ({
 	controlsLabel = 'Select',
 	previewLabel = 'Preview',
 }) => {
-	const [activeTab, setActiveTab] = useState<'controls' | 'preview'>(
-		'controls',
-	)
+	const [activeTab, setActiveTab] = useState<'controls' | 'preview'>('controls')
 
 	return (
 		<div className="pt-shell">

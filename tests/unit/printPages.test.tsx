@@ -38,7 +38,7 @@ describe('itemsPerPage', () => {
 		expect(itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN)).toBe(9)
 	})
 
-	it('fits two 133×191mm sections on the landscape sheet page', () => {
+	it('fits two 148.5×210mm A5 halves on the A4 landscape sheet page', () => {
 		expect(itemsPerPage(SHEET_PAGE, SHEET_SECTION, SHEET_PAGE_MARGIN)).toBe(2)
 	})
 
@@ -114,8 +114,8 @@ describe('PrintPages', () => {
 	})
 
 	it('lays the bed out as an explicit grid, never leaving it to flow', () => {
-		// Two 133mm sections fit 266mm of printable width EXACTLY, so flow could
-		// be tipped into wrapping by a keyline or a sub-pixel rounding of `133mm`
+		// Two 148.5mm sections fit 297mm of printable width EXACTLY, so flow could
+		// be tipped into wrapping by a keyline or a sub-pixel rounding of `148.5mm`
 		// — which is what put one section per page and clipped the other.
 		const { container } = render(
 			<PrintPages

@@ -100,9 +100,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Wait for state update
 			await waitFor(() => {
-				expect(
-					screen.getByText(/1 card selected/i),
-				).toBeInTheDocument()
+				expect(screen.getByText(/1 card selected/i)).toBeInTheDocument()
 			})
 
 			// Second character with the same Power Attack
@@ -143,9 +141,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Wait for character's ability to be added
 			await waitFor(() => {
-				expect(
-					screen.getByText(/1 card selected/i),
-				).toBeInTheDocument()
+				expect(screen.getByText(/1 card selected/i)).toBeInTheDocument()
 			})
 
 			// Now also manually select Power Attack from the dropdown
@@ -218,9 +214,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Wait for both spells to be added
 			await waitFor(() => {
-				expect(
-					screen.getByText(/2 cards selected/i),
-				).toBeInTheDocument()
+				expect(screen.getByText(/2 cards selected/i)).toBeInTheDocument()
 			})
 
 			// Second character with only Heal (overlapping)
@@ -236,9 +230,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Should have 3 cards total: Heal (from char1), Fireball (from char1), Heal (from char2)
 			await waitFor(() => {
-				expect(
-					screen.getByText(/3 cards selected/i),
-				).toBeInTheDocument()
+				expect(screen.getByText(/3 cards selected/i)).toBeInTheDocument()
 			})
 		})
 	})
@@ -261,9 +253,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 			await userEvent.paste(characterJson)
 
 			await waitFor(() => {
-				expect(
-					screen.getByText(/1 card selected/i),
-				).toBeInTheDocument()
+				expect(screen.getByText(/1 card selected/i)).toBeInTheDocument()
 			})
 
 			// Click deselect all
@@ -272,9 +262,7 @@ describe('Duplicate Cards for Multiple Characters', () => {
 
 			// Should clear everything
 			await waitFor(() => {
-				expect(
-					screen.getByText(/0 cards selected/i),
-				).toBeInTheDocument()
+				expect(screen.getByText(/0 cards selected/i)).toBeInTheDocument()
 			})
 		})
 	})

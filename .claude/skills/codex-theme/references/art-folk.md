@@ -6,9 +6,13 @@ rules in [art-direction.md](art-direction.md) outrank everything here.
 
 ## Cultures come from the worldbuilding vault, not from `docs/`
 
-The source of truth is `/Users/rm-aclue/git/personal/nexus-rpg-vault/(05) 🏛️ Kulturen/` —
-`Kulturen/<Name>.md` for a culture, `Völker/<Volk>.md` for the folk's baseline anatomy. Read the
-`updated:` field; several entries were revised in 2026 and the docs have not caught up.
+The source of truth is `/Users/rm-aclue/git/personal/nexus-rpg-vault/` — `07 Kulturen/<Name>.md`
+for a culture, `06 Völker/<Volk>.md` for the folk's baseline anatomy. Read the `updated:` field;
+several entries were revised in 2026 and the docs have not caught up.
+
+**Paths, not names, went stale here.** The vault renumbered and dropped the emoji from its folder
+names (`(05) 🏛️ Kulturen` → `07 Kulturen`); the emoji now lives in the `title:` frontmatter. If a
+path in these files does not resolve, list the vault root before assuming the content moved.
 
 **The culture tables in `docs/02-adventurers/01-folk.md` are stale in at least seven places.**
 The costliest: the docs give the *dwarves* astronomy, while the vault moved it to the *hune* and
@@ -17,6 +21,23 @@ entirely different species in the vault — Burrin gnomes are meerkat-like and f
 humans, and goblins are the scavenger and scrap-trade caste rather than scouts. Check the vault
 before every folk or culture plate; the full divergence list is in
 `.drafts/nexus-docusaurus-theme/milestone-12-art-regeneration.md` § Log.
+
+## This file's cast table covers the desert, not the world
+
+The rulebook's art is set in and around Atakhet, so the cast table below is the **desert**
+line-up. The vault carries twelve folk and fifty-odd cultures across seven continents, and none
+of the others are described here.
+
+For a subject outside the desert — a Vornheimr of the frozen north, a Hoshien of the eastern mist
+realms, a Tiefenzwerg of the underworld — the look is sourced the same way but from that
+culture's own vault page: named garments, ornament and bearing out of `07 Kulturen/<Name>.md`
+plus the baseline anatomy from `06 Völker/<Volk>.md`. The traps in this file (species noun, bare
+garment noun, beast-folk anatomy, costume parity) are general and still apply; only the table is
+regional.
+
+Two things stay fixed wherever the subject lives: the Bronze Age material world of
+[art-setting.md](art-setting.md), and the ban list — with the one licensed exception it names for
+the eastern realms.
 
 ## Folk belong in the banners too, and they read by silhouette
 
@@ -83,7 +104,7 @@ the hydraulics, the bronze, and the roller-spider chitin worked by dedicated chi
 guilds, which covers armour material better than a furnace does.
 
 **"Kesheret" is a place, not a people.** It is the Red Land — dune seas, canyons, tar pits and
-rock savanna (`(03) 🗺️ Geographie/Regionen/Kesheret.md`). "A Kesheret artificer" is a category
+rock savanna (`03 Geographie/Regionen/Kesheret.md`). "A Kesheret artificer" is a category
 error that put a whole plate in the wrong subject: the sorcerer-princes are a **political
 entity** ruling a **culturally Sefkari** population, so their figure clause is a Sefkari one with
 a robe and veil over it. The **Kerbei** also live in Kesheret, in the ruins, and are a different
