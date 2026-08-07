@@ -65,6 +65,26 @@ bun run creature:build # Creature builder CLI
 - Never commit temporary test scripts or standalone summary docs in the project root.
 - **Never run `git commit` or `git push`.** All version control operations are done manually by the owner. Finish edits, verify docs and JSON agree, then stop — never attempt to stage or commit.
 
+## CI must be clean, always
+
+**Leave every CI check green before finishing, including failures you did not cause.** A pre-existing error is still a red build, and "not my change" is not a reason to leave it. If a check is red when you arrive, fix it as part of the work and say so in your report.
+
+The PR workflow gates all of these (`.github/workflows/firebase-hosting-pull-request.yml`):
+
+```bash
+bun run lint          # 0 errors. Warnings are tolerated, but don't introduce a new
+                      # KIND of warning; matching an established pattern is fine
+                      # (every content-gen script trips no-console the same way)
+bun run tsc:check
+bun run test:coverage
+bun run content:check # generated MDX matches its JSON
+bun run sigils:check
+bun run sigils:masks --check
+bun run build         # also fails on broken links; treat SSG warnings as defects
+```
+
+`bun run build` prints broken anchors and HTML-minifier diagnostics as "non-critical". They are still defects and still get fixed — a nested `<a>` usually means the auto-keyword plugin linkified text already inside a link.
+
 ## Content Pipeline
 
 Two directions, plus a publication flow for new designs:

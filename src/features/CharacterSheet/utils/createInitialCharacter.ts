@@ -539,9 +539,9 @@ export const createInitialCharacter = (
 		''
 
 	type ArchetypeSpellInfo = { name: string; rank: number }
-	const startingSpells: ArchetypeSpellInfo[] = (spellData?.options ?? []).flatMap(
-		(o) => o.spells,
-	)
+	const startingSpells: ArchetypeSpellInfo[] = (
+		spellData?.options ?? []
+	).flatMap((o) => o.spells)
 
 	// Under `devotion` the character takes ONE option's set; under `balance`
 	// both options are open and spells are chosen freely across them (M22 D5).
@@ -573,9 +573,9 @@ export const createInitialCharacter = (
 		? recommendedArts
 				.map(({ name }) => findCombatArtByName(name))
 				.filter((art): art is NonNullable<typeof art> => art != null)
-		: uniqueRank1Skills.filter(
-					(s) => s === 'Fighting' || s === 'Archery',
-			  ).flatMap((skillName) => findCombatArtsForSkill(skillName, 2))
+		: uniqueRank1Skills
+				.filter((s) => s === 'Fighting' || s === 'Archery')
+				.flatMap((skillName) => findCombatArtsForSkill(skillName, 2))
 	combatArts.forEach((art) => {
 		abilities.push({
 			id: uuidv4(),

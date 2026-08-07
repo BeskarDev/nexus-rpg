@@ -317,7 +317,10 @@ Healing and Control grow further through the wearable expansion candidates (of M
 | **1/scene/target** | Prevents stacking on one enemy | Tracking complexity; weak in boss fights | Debuff riders (stun, bleed) |
 | **1/journey, 1/intrigue** | Matches the subsystem's own clock | Only meaningful inside that subsystem | Travel and social effects |
 
-## Appendix E: Re-Evaluation Changelog (v1 → 2026-07-19)
+## Appendix E: Re-Evaluation Changelog
+
+Covers v1 through 2026-07-19. The parenthetical version range used to sit in this
+heading, which put it in the generated anchor and broke the link from the summary above.
 
 **Systems context updates**
 - Deferral notes resolved: materials analysis, alchemy analysis + published Field Alchemy, published curses subsystem.

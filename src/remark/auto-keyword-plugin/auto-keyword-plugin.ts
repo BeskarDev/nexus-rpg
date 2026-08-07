@@ -7,6 +7,7 @@ import {
 	ZONE_GATED_TERMS,
 	isMechanicalZone,
 	inNameElement,
+	inLinkElement,
 } from '../shared/zones'
 
 const EXCLUSION_PREFIX = '_'
@@ -73,6 +74,9 @@ const autoKeywordPlugin = (options: { disableInPaths?: string[] } = {}) => {
 					// Entry names moved from `**bold**` into their own JSX element (see
 					// inNameElement), which took them out of the `strong` guard.
 					inNameElement(ancestors as any) ||
+					// A component that renders its own <a>: remark cannot see that
+					// anchor, so the `link` guard above never fires (see zones.ts).
+					inLinkElement(ancestors as any) ||
 					parent.name === 'strong' ||
 					node.type !== 'text' ||
 					node.processed // Skip nodes that are already processed
