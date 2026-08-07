@@ -10,10 +10,18 @@
  *    over a photo is the streaming-service pattern; it also forced every card
  *    below it to sit on an opaque fill to stay legible, so the artwork spent
  *    most of its area being covered up.
- * 2. Hierarchy. Three thresholds carry weight, the ten chapters became a ruled
- *    INDEX with descriptions. A contents page is what a codex actually opens
- *    with, and it tells a newcomer what is inside each chapter, which a grid of
- *    ten naked labels cannot.
+ * 2. Hierarchy, in one descending run: frontispiece, a numbered sequence of
+ *    three ways in, then the ten chapters as a ruled INDEX with descriptions.
+ *    A contents page is what a codex actually opens with, and it tells a
+ *    newcomer what is inside each chapter, which a grid of ten naked labels
+ *    cannot.
+ *
+ *    The three ways in were a ROW OF TILES for one revision. It was themed
+ *    correctly and still read as a marketing landing page, because a triptych
+ *    of icon-title-blurb boxes IS that pattern regardless of what is drawn
+ *    inside them. They are now ruled rows with a hanging ordinal, in the same
+ *    vocabulary as the index below and one weight above it — a sequence, not
+ *    three doors side by side.
  * 3. Flat throughout — no radius above 3px, no shadows, no scrims. Mass and
  *    keylines do the separating.
  */
@@ -28,7 +36,8 @@
 
 .plate {
 	position: relative;
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
 	border-radius: 2px;
 	background-color: var(--ifm-background-surface-color);
 	text-align: center;
@@ -171,60 +180,78 @@
 	margin-bottom: 0;
 }
 
-/* --- Thresholds ----------------------------------------------------------- */
+/* --- Begin here ----------------------------------------------------------
+   The same ruled-row vocabulary as the contents index, one weight up: a
+   hanging arabic ordinal (the chapters take roman), a larger mark and a larger
+   label. Weight separates the two lists, not a box around one of them. */
 
-.thresholds {
+.steps {
+	margin-top: 2.75rem;
+}
+
+.stepList {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.stepItem {
+	margin: 0;
+	padding: 0;
+}
+
+.stepRow {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 1rem;
-	margin-top: 2.25rem;
-}
-
-.threshold {
-	display: flex;
-	flex-direction: column;
+	grid-template-columns: 2.4rem 2.1rem 1fr;
 	align-items: center;
-	gap: 0.6rem;
-	padding: 1.5rem 1.25rem 1.35rem;
+	gap: 0 0.85rem;
+	padding: 0.9rem 0.5rem;
+	text-decoration: none;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+	transition: background-color 0.2s ease;
+}
+
+.stepRow:hover {
+	text-decoration: none;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 8%,
+		transparent
+	);
+}
+
+.stepNumeral {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-2xl);
+	line-height: 1;
 	text-align: center;
-	text-decoration: none;
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
-	border-radius: 2px;
-	background-color: color-mix(
-		in srgb,
-		var(--ifm-color-primary) 5%,
-		var(--ifm-background-surface-color)
-	);
-	/* A negative-offset outline is the kit's one legitimate flat second keyline
-	   (SKILL.md); these carry it and the index rows do not, which is most of
-	   what separates a threshold from a contents entry. */
-	outline: 1px solid color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
-	outline-offset: -5px;
-	transition:
-		border-color 0.2s ease,
-		background-color 0.2s ease;
+	color: color-mix(in srgb, var(--ifm-color-primary) 55%, transparent);
 }
 
-.threshold:hover {
-	text-decoration: none;
-	border-color: var(--ifm-color-primary);
-	background-color: color-mix(
-		in srgb,
-		var(--ifm-color-primary) 11%,
-		var(--ifm-background-surface-color)
-	);
-}
-
-.thresholdSigil {
+.stepSigil {
 	line-height: 0;
 	color: var(--ifm-color-primary);
 }
 
-.thresholdBlurb {
-	max-width: 22ch;
+.stepText {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+	min-width: 0;
+}
+
+.stepLabel {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-xl);
+	letter-spacing: 0.01em;
+	color: var(--ifm-heading-color);
+}
+
+.stepBlurb {
 	font-size: var(--nexus-text-sm);
-	line-height: 1.5;
-	color: color-mix(in srgb, var(--ifm-font-color-base) 78%, transparent);
+	line-height: 1.45;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 75%, transparent);
 }
 
 /* --- Contents index ------------------------------------------------------- */
@@ -326,7 +353,8 @@
 .colophon {
 	margin-top: 3rem;
 	padding: 1.25rem 1.5rem 1.4rem;
-	border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
 	border-radius: 2px;
 	background-color: color-mix(
 		in srgb,
@@ -355,8 +383,8 @@
 }
 
 /* --- Narrow ---------------------------------------------------------------
-   The index collapses to one column before the thresholds do: two columns of
-   ruled rows lose their alignment long before three cards get uncomfortable. */
+   The contents index collapses to one column first: two columns of ruled rows
+   lose their alignment well before a single-column list needs anything. */
 
 @media screen and (max-width: 996px) {
 	.indexList {
@@ -384,11 +412,16 @@
 		padding: 3.5rem 1.6rem 1.5rem;
 	}
 
-	.thresholds {
-		grid-template-columns: 1fr;
+	.stepRow {
+		grid-template-columns: 1.8rem 1.7rem 1fr;
+		gap: 0 0.6rem;
 	}
 
-	.thresholdBlurb {
-		max-width: none;
+	.stepNumeral {
+		font-size: var(--nexus-text-lg);
+	}
+
+	.stepLabel {
+		font-size: var(--nexus-text-md);
 	}
 }

@@ -28,30 +28,45 @@ interface Entry {
 }
 
 /**
- * The three ways in. A visitor landing here is one of exactly three people —
- * someone deciding whether to read the game, someone about to make a character,
- * or someone about to run it — and the old page answered none of them: it
- * offered ten equally-weighted chapter tiles and left the choice to guesswork.
- * These sit above the contents on purpose.
+ * The three ways in, as a NUMBERED SEQUENCE rather than a row of tiles.
+ *
+ * Three equally-weighted boxes carrying icon-title-blurb is the marketing
+ * feature-card shape no matter what is drawn inside them, and it was the last
+ * piece of web-app composition left on this page. A codex does not offer three
+ * doors side by side; it says "first read this, then do that". So these are
+ * ruled rows with a hanging ordinal, at a heavier weight than the contents
+ * index below.
+ *
+ * Every blurb names things that are actually on the page it links to. An
+ * earlier pass wrote them from a general idea of what an RPG landing page
+ * promises and sent a GM looking for encounter budgets and a bestiary in GM
+ * Tools, where neither lives. If a linked page's contents change, these change
+ * with it.
  */
-const THRESHOLDS: Entry[] = [
+const THRESHOLDS: (Entry & { numeral: string })[] = [
 	{
+		numeral: '1',
 		label: 'Learn the Game',
 		href: '/docs/basic-rules/how-to-roll',
 		sigil: 'casting-sticks',
-		blurb: 'One attribute die, one skill, one target number. Start here.',
+		blurb:
+			'Attribute die + 1d6 + skill rank against a target number, success levels, boons and banes.',
 	},
 	{
+		numeral: '2',
 		label: 'Make a Character',
 		href: '/docs/basic-rules/character-creation',
 		sigil: 'stylus',
-		blurb: 'Folk, upbringing, background, and the skills that shape them.',
+		blurb:
+			'Nine steps: attributes, folk, upbringing, background, relations, personality, skills and gear.',
 	},
 	{
+		numeral: '3',
 		label: 'Run a Table',
 		href: '/docs/gm-tools/index',
 		sigil: 'key',
-		blurb: 'Encounter budgets, random tables, and the bestiary.',
+		blurb:
+			'Oracles for treasure, creatures, settlements and NPCs, printable cards, and a creature builder.',
 	},
 ]
 
@@ -253,17 +268,32 @@ export default function Home(): React.ReactNode {
 					</div>
 				</header>
 
-				{/* --- Where to start --------------------------------------------- */}
-				<nav className={styles.thresholds} aria-label="Where to start">
-					{THRESHOLDS.map((t) => (
-						<Link key={t.href} to={t.href} className={styles.threshold}>
-							<span className={styles.thresholdSigil} aria-hidden="true">
-								<SigilIcon name={t.sigil} size={SIGIL_SIZE.tile} />
-							</span>
-							<Cartouche>{t.label}</Cartouche>
-							<span className={styles.thresholdBlurb}>{t.blurb}</span>
-						</Link>
-					))}
+				{/* --- Where to start ------------------------------------------------
+				    A numbered sequence, not a tile row. Heavier than the contents
+				    index below (bigger ordinal, bigger label, larger mark) so the two
+				    lists are not mistaken for each other. */}
+				<nav className={styles.steps} aria-label="Where to start">
+					<h2 className={styles.sectionHeading}>
+						<Cartouche glyph="footprints">Begin Here</Cartouche>
+					</h2>
+					<ol className={styles.stepList}>
+						{THRESHOLDS.map((t) => (
+							<li key={t.href} className={styles.stepItem}>
+								<Link to={t.href} className={styles.stepRow}>
+									<span className={styles.stepNumeral} aria-hidden="true">
+										{t.numeral}
+									</span>
+									<span className={styles.stepSigil} aria-hidden="true">
+										<SigilIcon name={t.sigil} size={SIGIL_SIZE.tile} />
+									</span>
+									<span className={styles.stepText}>
+										<span className={styles.stepLabel}>{t.label}</span>
+										<span className={styles.stepBlurb}>{t.blurb}</span>
+									</span>
+								</Link>
+							</li>
+						))}
+					</ol>
 				</nav>
 
 				{/* --- Contents ---------------------------------------------------- */}
