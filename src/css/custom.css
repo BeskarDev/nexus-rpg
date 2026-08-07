@@ -875,7 +875,7 @@ body::before {
 	margin-inline: 0;
 }
 
-/* Running text, and the headings that introduce it, sit in ONE track.
+/* Running text sits in ONE track.
 
    Derived from `100%` — the sheet's ACTUAL content width — and not from
    `--nexus-spread-measure`. The token is the ideal 68rem, but the sheet is
@@ -888,8 +888,27 @@ body::before {
    and LOSES on the class count, so every paragraph silently took the full page
    width. With it, (0,3,1) beats (0,3,0). */
 .theme-doc-markdown:has(.codex-columns)
-	> :is(p, ul, ol, dl, blockquote, h2, h3, h4, h5, h6):not(.codex-columns) {
+	> :is(p, ul, ol, dl):not(.codex-columns) {
 	max-width: calc((100% - var(--nexus-track-gap)) / 2);
+}
+
+/* ...but a HEADING and a CALLOUT are page furniture, not running text, and they
+   span both tracks even when they sit outside a segment.
+
+   Both carry full-bleed decoration that a half-width box truncates in a way a
+   reader reads as a bug rather than as a measure: an `h2`'s cornice is a rule
+   fading rightwards across the page (S9), and a blockquote's frame is drawn by
+   its own `::before`/`::after` corner diamonds. Held to one track, the cornice
+   stopped dead at the gutter and the intro callout on How To Roll sat in the
+   left column with the whole right half of the sheet empty beside it — a
+   heading or a callout is what OPENS a spread, so it has to be as wide as the
+   spread it opens.
+
+   Only the top-level ones. Inside a `.codex-columns` the track IS the page, and
+   the rule at the end of this section already lifts the cap there. */
+.theme-doc-markdown:has(.codex-columns)
+	> :is(blockquote, h2, h3, h4, h5, h6):not(.codex-columns) {
+	max-width: none;
 }
 /* ...but a paragraph that is only a BANNER plate is a figure, not text, and
    spans the page. An MDX image lands inside a paragraph, so without this the

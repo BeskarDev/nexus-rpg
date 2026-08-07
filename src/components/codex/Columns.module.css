@@ -23,6 +23,27 @@
 	   a newline between every block, and an inline-block honours it as a space.
 	   Each child restores a real size immediately. */
 	font-size: 0;
+
+	/* THE fix for a two-box spread rendering as one column.
+	   ------------------------------------------------------------------------
+	   Every child is an inline-block (see below), so to the fragmenter each one
+	   is a LINE BOX, not a block. Orphans and widows are therefore live here,
+	   and both default to 2: a column break must leave >= 2 lines behind and
+	   carry >= 2 lines forward. A spread built from exactly two sections has
+	   exactly two line boxes, so its ONE break opportunity is illegal and the
+	   browser drops both into the first track with the second standing empty.
+
+	   That is precisely the shape the packing aims for — one section left, one
+	   right — so the most deliberate spreads on a page were the ones that
+	   failed, while their four- and five-box neighbours worked and made the
+	   fault look like a content quirk. ("Rolling for Untrained Skills" +
+	   "Re-rolling Tests" on How To Roll, owner, 2026-08-07.)
+
+	   1 is the honest value regardless: these "lines" are whole sections, and
+	   a rule about not stranding one line of a paragraph has no meaning for
+	   them. `break-inside: avoid` is what actually protects a box. */
+	orphans: 1;
+	widows: 1;
 }
 
 /* Nothing may be sliced across the fold: a card, a table slab, a plate and a
