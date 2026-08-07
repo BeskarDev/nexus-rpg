@@ -59,11 +59,54 @@ const ONE_CARD: Cuts = [0]
  * because the report arrives from a layout effect BEFORE the card releases its
  * count.
  */
-export function useSpillPlan(): SpillPlan {
+export function useSpillPlan(liveKeys?: readonly string[]): SpillPlan {
 	const [state, setState] = React.useState<PlanState>({
 		cuts: {},
 		oversize: [],
 	})
+
+	// A stable signature, because the caller builds a fresh array every render.
+	const liveSignature = liveKeys?.join('\u0000')
+	// `undefined` means "not scoped": the plan then answers for every key it
+	// holds, which is what a bare `useSpillPlan()` in a unit test expects.
+	const live = React.useMemo(
+		// Keyed on the signature, not on the array: the caller builds a fresh one
+		// every render, and a new Set each time would re-run the prune effect
+		// forever.
+		() => (liveKeys === undefined ? undefined : new Set(liveKeys)),
+		[liveSignature],
+	)
+
+	/**
+	 * Retire the keys the caller has stopped asking for (M21 D5, F7).
+	 *
+	 * The plan used to sum the cuts of every key it had ever seen, so
+	 * deselecting an entry left its continuation in the total — the tool said
+	 * "4 printed (1 continuation)" over a four-card deck of four entries, which
+	 * is a contradiction on its face. M20 patched it inside one tool; this is
+	 * the shared answer.
+	 *
+	 * Pruning rather than merely filtering the counts is deliberate: a key whose
+	 * CONTENT changed under the same name must re-measure from scratch, and cuts
+	 * only ever grow, so a stale cut from a longer body would over-split the
+	 * shorter one that replaced it.
+	 */
+	React.useEffect(() => {
+		if (live === undefined) return
+		setState((current) => {
+			const staleCuts = Object.keys(current.cuts).filter(
+				(key) => !live.has(key),
+			)
+			const staleOversize = current.oversize.filter((key) => !live.has(key))
+			if (staleCuts.length === 0 && staleOversize.length === 0) return current
+			const cuts = { ...current.cuts }
+			staleCuts.forEach((key) => delete cuts[key])
+			return {
+				cuts,
+				oversize: current.oversize.filter((key) => live.has(key)),
+			}
+		})
+	}, [live])
 
 	const report = React.useCallback(
 		(key: string, start: number, result: FitResult) => {
@@ -100,14 +143,24 @@ export function useSpillPlan(): SpillPlan {
 		[state.cuts],
 	)
 
+	// Counted against the keys the caller is asking for RIGHT NOW, not against
+	// every key the plan has ever seen (D5). Filtered here as well as pruned in
+	// the effect, so the count is already honest on the render that drops a key
+	// rather than one render later.
 	const continuations = React.useMemo(
 		() =>
-			Object.values(state.cuts).reduce(
-				(total, cuts) => total + cuts.length - 1,
+			Object.entries(state.cuts).reduce(
+				(total, [key, cuts]) =>
+					live && !live.has(key) ? total : total + cuts.length - 1,
 				0,
 			),
-		[state.cuts],
+		[state.cuts, live],
 	)
 
-	return { partsFor, report, continuations, oversize: state.oversize }
+	const oversize = React.useMemo(
+		() => (live ? state.oversize.filter((key) => live.has(key)) : state.oversize),
+		[state.oversize, live],
+	)
+
+	return { partsFor, report, continuations, oversize }
 }

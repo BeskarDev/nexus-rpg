@@ -219,16 +219,26 @@ export const Spells: React.FC = () => {
 	// The spill runs BEFORE pagination (M18 D3, trap 11): a spell that becomes
 	// two cards after the grid is computed lands on the wrong page and pushes
 	// everything after it. `printedCards` is the final child list.
-	const spillPlan = useSpillPlan()
+	// The plan is told which keys are live, so deselecting a spell retires its
+	// cut instead of leaving it in the continuation count (M21 D5).
+	const planKeys = useMemo(
+		() =>
+			filteredSpells.map(
+				(spell, index) =>
+					`${spell.id}-${spell.characterName || 'manual'}-${index}`,
+			),
+		[filteredSpells],
+	)
+	const spillPlan = useSpillPlan(planKeys)
 	const printedCards = useMemo(
 		() =>
 			filteredSpells.flatMap((spell, index) => {
-				const planKey = `${spell.id}-${spell.characterName || 'manual'}-${index}`
+				const planKey = planKeys[index]
 				return spillPlan
 					.partsFor(planKey)
 					.map((part) => ({ spell, planKey, part }))
 			}),
-		[filteredSpells, spillPlan.partsFor],
+		[filteredSpells, planKeys, spillPlan.partsFor],
 	)
 
 	// From the card and page geometry, not a hand-written 9 — the same call the

@@ -170,16 +170,26 @@ export const ArcaneSpells: React.FC = () => {
 	// The spill runs BEFORE pagination (M18 D3, trap 11): a spell that becomes
 	// two cards after the grid is computed lands on the wrong page and pushes
 	// everything after it. `printedCards` is the final child list.
-	const spillPlan = useSpillPlan()
+	// The plan is told which keys are live, so deselecting a spell retires its
+	// cut instead of leaving it in the continuation count (M21 D5).
+	const planKeys = useMemo(
+		() =>
+			filteredArcaneSpells.map(
+				(spell, index) =>
+					`${spell.name}-${spell.characterName || 'manual'}-${index}`,
+			),
+		[filteredArcaneSpells],
+	)
+	const spillPlan = useSpillPlan(planKeys)
 	const printedCards = useMemo(
 		() =>
 			filteredArcaneSpells.flatMap((spell, index) => {
-				const planKey = `${spell.name}-${spell.characterName || 'manual'}-${index}`
+				const planKey = planKeys[index]
 				return spillPlan
 					.partsFor(planKey)
 					.map((part) => ({ spell, planKey, part }))
 			}),
-		[filteredArcaneSpells, spillPlan.partsFor],
+		[filteredArcaneSpells, planKeys, spillPlan.partsFor],
 	)
 
 	// From the card and page geometry rather than a hand-written 9 — the same

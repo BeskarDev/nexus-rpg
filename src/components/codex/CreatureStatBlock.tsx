@@ -10,6 +10,16 @@ import { StatSigilName } from './stat-sigils'
 // "no mark means two things in one card" rule was uncheckable until M13 S9.
 import { CREATURE_TRAIT_SIGIL } from './creature-trait-sigils'
 import DieToken from './DieToken'
+/**
+ * The AV and HP splits, and the abbreviations for the AV parenthetical.
+ *
+ * Shared with the PRINTED creature card, which needs exactly the same two
+ * (M21 D3) — copying them would have been the three-spell-cards mistake again.
+ * Only the four armor categories that account for 138 of the 150 creatures get a
+ * short form; the dozen compound cases ("heavy + helmet + shield") are left in
+ * full and simply wrap.
+ */
+import { armorAbbr, splitAv, splitHp } from './creatureStats'
 // Moved to its own module in M13 S4d (the character sheet's weapon rows use it
 // too); re-exported here so every existing import and the MDX registration keep
 // resolving from where they always did.
@@ -43,49 +53,6 @@ interface Figure {
 	note?: string
 }
 
-/**
- * Abbreviations for the AV parenthetical, so the armor category rides beside the
- * numeral instead of taking a line of its own.
- *
- * Only the four categories that account for 138 of the 150 creatures get a short
- * form. The dozen compound cases ("heavy + helmet + shield") are left in full and
- * simply wrap — inventing cryptic abbreviations for a handful of one-offs trades a
- * real reading cost for a cosmetic win.
- */
-const ARMOR_ABBR: Record<string, string> = {
-	light: 'L',
-	heavy: 'H',
-	'natural light': 'NAT L',
-	'natural heavy': 'NAT H',
-}
-
-/**
- * Split `"0 (natural light)"` into its number and its parenthetical.
- *
- * AV is the one stat whose value is not a bare number — it runs to 35 characters
- * against 2 for a defense. Left inline it forced the whole band to size for its
- * longest member. Split, the numeral joins the other figures and the qualifier
- * drops to a note line.
- */
-function splitAv(av: string): { value: string; note?: string } {
-	const match = av.trim().match(/^(\S+)\s*\((.+)\)$/)
-	return match ? { value: match[1], note: match[2] } : { value: av.trim() }
-}
-
-/**
- * Split a life-pool HP value (`"3x100"`) into pool count and pool size.
- *
- * Elite and Lord creatures fight through several pools in sequence, so the count
- * is a structural fact about the fight, not a multiplier to be read as one
- * number. Rendered as pips beside the pool size.
- */
-function splitHp(hp: string): { value: string; pools: number } {
-	const match = hp.trim().match(/^(\d+)\s*[x×]\s*(\d+)$/i)
-	return match
-		? { value: match[2], pools: Number(match[1]) }
-		: { value: hp.trim(), pools: 1 }
-}
-
 /** One stat: glyph, big value, small label under it. */
 function StatFigure({
 	label,
@@ -94,7 +61,7 @@ function StatFigure({
 	note,
 	pools = 1,
 }: Figure & { pools?: number }) {
-	const abbr = note ? (ARMOR_ABBR[note.toLowerCase()] ?? note) : undefined
+	const abbr = note ? armorAbbr(note) : undefined
 	return (
 		<div className={styles.figure}>
 			<div className={styles.figureValue}>

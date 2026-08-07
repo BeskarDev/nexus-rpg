@@ -74,4 +74,47 @@ describe('useSpillPlan', () => {
 		// 24 cards → 26 printed (2 continuations), the line D3 asks the tools for.
 		expect(result.current.continuations).toBe(2)
 	})
+
+	// M21 D5 / F7 — the plan used to sum every key it had ever seen.
+	describe('live keys', () => {
+		it('drops a key that stops being asked for from both counts', () => {
+			const { result, rerender } = renderHook(
+				({ keys }: { keys: string[] }) => useSpillPlan(keys),
+				{ initialProps: { keys: ['a', 'b'] } },
+			)
+			act(() => result.current.report('a', 0, spillsAfter(2)))
+			act(() => result.current.report('b', 0, spillsAfter(0)))
+			expect(result.current.continuations).toBe(1)
+			expect(result.current.oversize).toEqual(['b'])
+
+			rerender({ keys: ['c'] })
+			expect(result.current.continuations).toBe(0)
+			expect(result.current.oversize).toEqual([])
+		})
+
+		it('does not carry old cuts into a key whose content changed under it', () => {
+			// The tools put the content in the key, but a key that merely LEAVES and
+			// returns must re-measure: cuts only grow, so a stale cut from a longer
+			// body would over-split the shorter one that replaced it.
+			const { result, rerender } = renderHook(
+				({ keys }: { keys: string[] }) => useSpillPlan(keys),
+				{ initialProps: { keys: ['talent#0'] } },
+			)
+			act(() => result.current.report('talent#0', 0, spillsAfter(4)))
+			expect(result.current.partsFor('talent#0')).toHaveLength(2)
+
+			rerender({ keys: ['other#0'] })
+			rerender({ keys: ['talent#0'] })
+			expect(result.current.partsFor('talent#0')).toEqual([
+				{ start: 0, end: undefined, part: 1, totalParts: 1 },
+			])
+			expect(result.current.continuations).toBe(0)
+		})
+
+		it('answers for every key it holds when the caller passes none', () => {
+			const { result } = renderHook(() => useSpillPlan())
+			act(() => result.current.report('a', 0, spillsAfter(2)))
+			expect(result.current.continuations).toBe(1)
+		})
+	})
 })

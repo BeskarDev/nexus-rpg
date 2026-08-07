@@ -60,17 +60,18 @@ describe('parseCreatureMarkdown', () => {
 		expect(bite?.damage).toContain('5/8/11')
 	})
 
-	it('reads abilities alongside the attacks', () => {
+	it('splits an ability’s timing out of its name', () => {
 		/*
-			Note what this asserts: the parser keeps the action type INSIDE the name
-			(`Ambush (Quick Action)`) rather than splitting it into a field, which is
-			why a printed card reads `Death Roll (Action): …`. That is existing
-			behaviour and the cards depend on it, so this test pins it rather than
-			arguing with it — but it is the reason a creature's timing cannot be
-			styled separately on a card today.
+			This test used to pin the OPPOSITE, and said so: the parser kept the
+			action type inside the name (`Ambush (Quick Action)`), and the comment
+			noted that this was the reason a creature's timing could not be styled
+			separately on a card. M21 made the timing a card device — a qualifier
+			slab — so the split is now part of the contract rather than a wish.
 		*/
-		expect(creature.abilities.map((ability) => ability.name)).toContain(
-			'Ambush (Quick Action)',
+		const ambush = creature.abilities.find(
+			(ability) => ability.name === 'Ambush',
 		)
+		expect(ambush).toBeDefined()
+		expect(ambush?.qualifier).toBe('Quick Action')
 	})
 })

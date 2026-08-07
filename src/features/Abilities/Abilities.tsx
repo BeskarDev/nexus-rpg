@@ -208,16 +208,24 @@ export const Abilities: React.FC = () => {
 	// it. The ladder mode is in the key because switching it changes the body,
 	// and a plan's cuts only ever grow — stale cuts from the longer body would
 	// over-split the shorter one.
-	const spillPlan = useSpillPlan()
+	const planKeys = useMemo(
+		() =>
+			printedEntries.map(
+				({ entry }, index) =>
+					`${entry.id}#${index}#${ownedRanksOnly ? 'owned' : 'full'}`,
+			),
+		[printedEntries, ownedRanksOnly],
+	)
+	const spillPlan = useSpillPlan(planKeys)
 	const printedCards = useMemo(
 		() =>
 			printedEntries.flatMap(({ entry, body }, index) => {
-				const planKey = `${entry.id}#${index}#${ownedRanksOnly ? 'owned' : 'full'}`
+				const planKey = planKeys[index]
 				return spillPlan
 					.partsFor(planKey)
 					.map((part) => ({ entry, body, planKey, part }))
 			}),
-		[printedEntries, ownedRanksOnly, spillPlan.partsFor],
+		[printedEntries, planKeys, spillPlan.partsFor],
 	)
 
 	// From the card and page geometry, not a hand-written 9 — the same call the
@@ -227,25 +235,18 @@ export const Abilities: React.FC = () => {
 	)
 
 	/**
-	 * How much extra paper the spill has cost, counted from the DECK rather than
-	 * from the plan.
+	 * The plan's own numbers, now that it retires the keys it is no longer asked
+	 * for (M21 D5).
 	 *
-	 * `spillPlan.continuations` sums the cuts of every key it has ever been told
-	 * about, and a key is never retired — so deselecting an entry, or flipping
-	 * the rank toggle (which changes the key by design), leaves its cut in the
-	 * total. Measured: toggling the trim on took the deck to four cards and the
-	 * plan still said "4 printed (1 continuation)", which is a contradiction on
-	 * its face. The difference between what prints and what was selected cannot
-	 * go stale, because both sides are recomputed from the current deck.
-	 *
-	 * Same for the oversize list: it is filtered to the keys actually on screen.
+	 * This used to be counted from the deck here instead — `printedCards.length
+	 * - deckEntries.length` — because `continuations` summed the cuts of every
+	 * key the plan had ever seen and never retired one, so deselecting an entry
+	 * or flipping the rank toggle (which changes the key by design) left its cut
+	 * in the total. M20 patched that in this file and deferred the real fix;
+	 * `useSpillPlan` takes the live keys now, so there is one answer again.
 	 */
-	const continuations = Math.max(0, printedCards.length - deckEntries.length)
-	const liveKeys = useMemo(
-		() => new Set(printedCards.map((card) => card.planKey)),
-		[printedCards],
-	)
-	const oversize = spillPlan.oversize.filter((key) => liveKeys.has(key))
+	const continuations = spillPlan.continuations
+	const oversize = spillPlan.oversize
 
 	// One character's deck is named after them; a mixed or unattributed deck is
 	// not about a person, so it is left unnamed rather than named after whoever

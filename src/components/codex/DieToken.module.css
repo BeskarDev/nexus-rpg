@@ -12,9 +12,19 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 1.85rem;
-	height: 1.85rem;
-	font-size: var(--nexus-text-xs);
+	/* M21 D2 — the box is a variable so a caller can scale the whole mark. The
+	   printed creature card sets it in millimetres; 1.85rem stays the screen's
+	   size, and the inner type is a fraction of it (12px of 29.6px) so the
+	   default renders byte-for-byte as it did. */
+	width: var(--die-token-size, 1.85rem);
+	height: var(--die-token-size, 1.85rem);
+	/* The numeral's share of the box. A caller that shrinks the token has to be
+	   able to hold the NUMBER above its own reading floor — the printed card sets
+	   0.52, because at the screen's 0.405 a card-scale token was a polygon with an
+	   illegible speck in it (owner, 2026-08-07). */
+	font-size: calc(
+		var(--die-token-size, 1.85rem) * var(--die-token-numeral, 0.405)
+	);
 	color: color-mix(
 		in srgb,
 		var(--ifm-color-primary) 72%,
@@ -48,7 +58,11 @@
 .modifier {
 	position: absolute;
 	right: -0.75em;
-	bottom: -0.1em;
+	/* Centred on the numeral's line, not hung off the polygon's foot: at card
+	   scale a `-1` hung low read as a separate mark BELOW the die rather than as
+	   part of the value (owner, 2026-08-07). `--die-token-modifier-y` keeps the
+	   screen's own placement available to any caller that wants it back. */
+	bottom: var(--die-token-modifier-y, -0.1em);
 	font-family: var(--nexus-font-ui);
 	font-weight: 700;
 	font-size: 0.84em;

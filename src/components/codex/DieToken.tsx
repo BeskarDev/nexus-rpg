@@ -8,6 +8,16 @@ export interface DieTokenProps {
 	/** An attribute value as written in the data: `d4`, `d8`, `d4-1`, `d12+2`. */
 	value: string
 	className?: string
+	/**
+	 * The token's box, as any CSS length. Defaults to the screen's `1.85rem`, so
+	 * no existing consumer moves.
+	 *
+	 * The size was hard-coded until M21 D2, which put die tokens on the PRINTED
+	 * creature card: 1.85rem is ~29.6px against a 53mm measure, roughly four
+	 * times what a card can spend on one of four attributes. The numeral and the
+	 * modifier size in `em` off this box, so the whole mark scales as one.
+	 */
+	size?: string
 }
 
 /**
@@ -52,19 +62,19 @@ function polygon(sides: number, r: number, rotate = 0, dy = 0): string {
  * so orientation is the only thing telling them apart — a point-up d6 read as a
  * second diamond and the two were indistinguishable at a glance.
  */
-export default function DieToken({ value, className }: DieTokenProps) {
+export default function DieToken({ value, className, size }: DieTokenProps) {
 	const match = value.trim().match(/^d(\d+)\s*([+-]\s*\d+)?$/i)
 	// Unrecognised values render as plain text rather than a wrong shape.
 	if (!match) return <span className={styles.plain}>{value}</span>
 
-	const size = Number(match[1])
+	const dieSize = Number(match[1])
 	const modifier = match[2]?.replace(/\s+/g, '') ?? ''
-	const index = DIE_SIDES.indexOf(size as (typeof DIE_SIDES)[number])
+	const index = DIE_SIDES.indexOf(dieSize as (typeof DIE_SIDES)[number])
 	// 3,4,5,6 sides for d4/d6/d10/d12; the d8 is the rhombus (see the note above).
 	const shape = [3, 4, 0, 5, 6][index] ?? 0
 	// Only the d6 is rotated, to sit flat-top and read as a square rather than as
 	// a second diamond beside the d8.
-	const rotate = size === 6 ? Math.PI / 4 : 0
+	const rotate = dieSize === 6 ? Math.PI / 4 : 0
 	/**
 	 * Per-shape corrections so the five tokens read as ONE SIZE (S5, owner review).
 	 *
@@ -75,11 +85,18 @@ export default function DieToken({ value, className }: DieTokenProps) {
 	 * `polygon` instead of a radius change, because widening a triangle to match a
 	 * hexagon's area would make it overrun the token box.
 	 */
-	const radius = size === 6 ? 10.6 : 10.5
-	const dy = size === 4 ? 1.6 : 0
+	const radius = dieSize === 6 ? 10.6 : 10.5
+	const dy = dieSize === 4 ? 1.6 : 0
 
 	return (
-		<span className={`${styles.token}${className ? ' ' + className : ''}`}>
+		<span
+			className={`${styles.token}${className ? ' ' + className : ''}`}
+			style={
+				size
+					? ({ '--die-token-size': size } as React.CSSProperties)
+					: undefined
+			}
+		>
 			<svg
 				className={styles.die}
 				viewBox="0 0 24 24"
@@ -98,7 +115,7 @@ export default function DieToken({ value, className }: DieTokenProps) {
 					/>
 				)}
 			</svg>
-			<span className={styles.numeral}>{size}</span>
+			<span className={styles.numeral}>{dieSize}</span>
 			{modifier && <span className={styles.modifier}>{modifier}</span>}
 			<span className={styles.srOnly}>{value}</span>
 		</span>

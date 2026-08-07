@@ -263,7 +263,13 @@ export const MagicItems: React.FC = () => {
 	// call the preview paginates by, so the count and the pages cannot drift.
 	// The spill runs BEFORE pagination (M18 D3, trap 11): a card that becomes
 	// two children after the grid is computed lands on the wrong page.
-	const spillPlan = useSpillPlan()
+	// The plan is told which keys are live, so deselecting an item retires its
+	// cut instead of leaving it in the continuation count (M21 D5).
+	const planKeys = useMemo(
+		() => filteredItems.map((entry) => entry.key),
+		[filteredItems],
+	)
+	const spillPlan = useSpillPlan(planKeys)
 	const printedCards = useMemo(
 		() =>
 			filteredItems.flatMap((entry) =>

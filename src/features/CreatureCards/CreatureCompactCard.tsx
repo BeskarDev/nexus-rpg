@@ -32,10 +32,7 @@ export const CreatureCompactCard: React.FC<CreatureCompactCardProps> = ({
 
 	return (
 		<BaseCreatureCard
-			name={creature.name}
-			tier={creature.tier}
-			category={creature.category}
-			type={creature.type}
+			creature={creature}
 			part={part}
 			totalParts={totalParts}
 			fitKey={`${JSON.stringify(creature)}|${start}|${end ?? ''}`}

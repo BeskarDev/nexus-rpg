@@ -177,16 +177,26 @@ export const CombatArts: React.FC = () => {
 	// call the preview paginates by, so the count and the pages cannot drift.
 	// The spill runs BEFORE pagination (M18 D3, trap 11): a card that becomes
 	// two children after the grid is computed lands on the wrong page.
-	const spillPlan = useSpillPlan()
+	// The plan is told which keys are live, so deselecting an art retires its
+	// cut instead of leaving it in the continuation count (M21 D5).
+	const planKeys = useMemo(
+		() =>
+			filteredCombatArts.map(
+				(combatArt, index) =>
+					`${combatArt.name}-${combatArt.characterName || 'manual'}-${index}`,
+			),
+		[filteredCombatArts],
+	)
+	const spillPlan = useSpillPlan(planKeys)
 	const printedCards = useMemo(
 		() =>
 			filteredCombatArts.flatMap((combatArt, index) => {
-				const planKey = `${combatArt.name}-${combatArt.characterName || 'manual'}-${index}`
+				const planKey = planKeys[index]
 				return spillPlan
 					.partsFor(planKey)
 					.map((part) => ({ combatArt, planKey, part }))
 			}),
-		[filteredCombatArts, spillPlan.partsFor],
+		[filteredCombatArts, planKeys, spillPlan.partsFor],
 	)
 
 	const sheetCount = Math.ceil(

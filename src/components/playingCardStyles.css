@@ -43,6 +43,11 @@
 
 	/* An entry's name. 12pt is the sheet's page; this is a 53mm measure. */
 	--pc-text-name: 10pt;
+
+	/* The damage ladder's W/S/C ticks, quieted for paper (owner, 2026-08-07).
+	   They key the three numbers; at the screen's size they competed with them. */
+	--ladder-tick-size: 0.46em;
+	--ladder-tick-rise: 0.34em;
 }
 
 /*
@@ -243,6 +248,21 @@
 	color: var(--pc-ink);
 }
 
+/*
+ * A tier NUMERAL inside a small-caps tag.
+ *
+ * `font-variant-caps: small-caps` sets a digit at small-cap height too, so `T0`
+ * read as the word "To" and `T5 Lord` as "Ts Lord" (owner, 2026-08-07). Full
+ * caps, tabular figures, and a hair of space after the T: two glyphs of
+ * different heights cannot be mistaken for a word.
+ */
+.pc-card__tier-num {
+	font-variant-caps: normal;
+	font-variant-numeric: tabular-nums;
+	font-weight: 700;
+	margin-left: 0.06em;
+}
+
 /* The part mark on a spilled card, riding with the name. */
 .pc-card__part {
 	font-size: var(--pc-text-micro);
@@ -388,6 +408,62 @@
 }
 
 /*
+ * The same list, riding on a text line rather than under one (M21 D3).
+ *
+ * A creature entry's qualifier and an attack's properties sit between the name
+ * and its text, so a block of them would cost a line per entry on the deck with
+ * the least room to spare. Inline, they cost nothing.
+ */
+.pc-slabs--inline {
+	display: inline-flex;
+	vertical-align: baseline;
+	margin-top: 0;
+	gap: 0.4mm;
+	margin-left: 0.4mm;
+}
+
+/*
+ * An inline slab must fit INSIDE the line box it sits on.
+ *
+ * Measured: at `--pc-text-micro` with the block slab's own padding, the line
+ * carrying a qualifier stood 5px taller than its siblings — an entry's first
+ * line inflated on all 402 abilities in the deck, which is height taken out of
+ * the rules text and paid for in cards.
+ *
+ * So the size is in `em` here rather than a fixed token: it scales with the
+ * fitted body it rides on, which is the one case on a card where a fixed point
+ * size is wrong (the body's size is not known until the search settles).
+ */
+.pc-slabs--inline .pc-slab {
+	/* 0.62, not 0.72: at the larger size a `PASSIVE` beside a name read as loudly
+	   as the name itself, and three of them on a card competed with the rules
+	   text they qualify (owner, 2026-08-07). */
+	/* Sized and spaced exactly as the trait chips are (owner, 2026-08-07): a
+	   qualifier and an immunity are the same kind of small stamped fact, and two
+	   sizes for one register is just an inconsistency a reader notices. */
+	font-size: var(--pc-text-micro);
+	line-height: 1.15;
+	/* Same construction as the chips it is sized with: a stated height, centred
+	   contents, and `vertical-align: middle` so a row of them lines up by box
+	   rather than by baseline. */
+	display: inline-flex;
+	align-items: center;
+	vertical-align: middle;
+	height: 1.5em;
+	padding: 0 0.22em;
+	/*
+	 * NO bottom margin, unlike the trait chips it is sized with.
+	 *
+	 * A trait chip sits in a run of its own kind, where the margin is what gives
+	 * a wrapped second row its air. A property slab sits INSIDE a sentence, and
+	 * an inline-block's bottom margin grows the line box it is in — measured, it
+	 * stood the first line of every entry 5px taller than the lines under it,
+	 * which is 402 inflated lines across the deck and reads as broken leading.
+	 */
+	margin-bottom: 0;
+}
+
+/*
  * A SLAB: one item of a list, one inlaid stone.
  *
  * `concentrate, ritual (minutes)` and `Axe, Blade, Mace, Polearm` are lists of
@@ -419,14 +495,32 @@
  * section without spending a type size on it.
  */
 .pc-card__section {
-	margin: 0.6mm 0 0.3mm;
+	/* Tight on purpose. The band is two hairlines and the label between them, and
+	   every millimetre of air around it repeats on three sections of every card:
+	   measured, the first draft's 0.45em top margin was worth 21px a card. */
+	margin: 0.28em 0 0.16em;
+	padding: 0.04em 0;
 	font-size: var(--pc-text-micro);
 	line-height: 1.1;
 	font-variant-caps: small-caps;
 	letter-spacing: 0.05em;
 	font-weight: 600;
 	color: var(--pc-ink);
+	/* RULED TOP AND BOTTOM (owner, 2026-08-07). Under-ruled alone, the label read
+	   as the last line of the section ABOVE it rather than the first of its own —
+	   on a card carrying Attacks, Special Abilities and Quick Actions, a reader
+	   could not see where one block ended. Two hairlines close together make the
+	   label a band, which is a boundary; one hairline under it is an underline,
+	   which is emphasis. The first section on a card drops its top rule, since
+	   the head's own edge is already there. */
+	border-top: var(--pc-rule-hair) solid var(--pc-ink);
 	border-bottom: var(--pc-rule-hair) solid var(--pc-ink);
+}
+
+.pc-card__content > .pc-card__section:first-child {
+	margin-top: 0;
+	border-top: none;
+	padding-top: 0;
 }
 
 /*
@@ -482,54 +576,378 @@
 }
 
 /*
- * A creature's numbers (M18 F4, densified 2026-08-07).
+ * THE CREATURE'S NINE NUMBERS (M21 D2, recut).
  *
- * Nine stats used to take five lines: two per row, wrapping, with a 1.15em mark
- * on each. On a 53mm measure that pushed the actual rules text down the card
- * and left `Resist` alone on a line of its own (owner). They are a grid now,
- * one row per group — vitals, attributes, defenses — with the column count
- * stated per row so the cells line up instead of wrapping where they land.
+ * What stood here was three grid rows of `[sigil] LABEL value`, in the order
+ * vitals, attributes, defenses — a re-flow of the markdown TABLE the docs stat
+ * block replaced, rather than a compression of that block. Two things changed.
  *
- * The marks are the project's own stat sigils, the same ones the screen's
- * creature stat block uses (`StatSigil`, M16 constraint 2). Solid `currentColor`
- * silhouettes, told apart by shape and never by colour (constraint 3), and cut
- * to 0.85em here: at a card's size the mark is a cue beside its label, not a
- * figure in its own right.
+ * **The order is the docs block's**: defenses, vitals, attributes. That is the
+ * order a GM asks the questions in, and it is the one part of `CreatureStatBlock`
+ * that was designed rather than inherited.
+ *
+ * **The visible label is gone from all nine** (owner, Q1). A mark REPLACES the
+ * label at these sizes — the pattern file's own rule, written for the spell
+ * card's target and range and never applied here. The word stays as `srOnly`
+ * text in `.pc-cell__name`.
+ *
+ * The panel sits in the shell's HEADER slot, so it is NOT fitted (layout law 6)
+ * and every row must be free to wrap between its cells rather than overflow
+ * (laws 2, 3). Flex with `flex-wrap`, never a fixed-column grid — a grid cannot
+ * wrap, and a stat that does not fit would be clipped in silence.
+ *
+ * Keyline to group, never a wash and never a bar: the panel is a frame on a
+ * container, which is the one legitimate use of a rule.
  */
-.pc-stat-row {
-	display: grid;
-	grid-template-columns: repeat(var(--pc-stat-cols, 2), auto);
+.pc-statpanel {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4mm;
+	margin-top: 0.5mm;
+	padding: 0.5mm 0.8mm;
+	border: var(--pc-rule-hair) solid var(--pc-ink);
+	font-size: var(--pc-text-fine);
+	line-height: 1.05;
+	color: var(--pc-ink);
+
+	/* The die tokens' box. Sized so the NUMERAL inside it clears the card's 6.5pt
+	   reading floor: at 3mm the polygons were decorative and the numbers inside
+	   them could not be read at all (owner, 2026-08-07). See `--die-token-size`. */
+	--die-token-size: 4.2mm;
+	--die-token-numeral: 0.55;
+	/* The modifier (`d4-1`) centred on the die's own centre line rather than hung
+	   off its foot — see `DieToken.module.css`. */
+	--die-token-modifier-y: 0.4em;
+}
+
+/*
+ * A ROW of the panel, and the SUB-GROUPS inside it.
+ *
+ * The nine numbers ran together as one undifferentiated line for a revision, and
+ * that is the fault the docs stat block had already fixed: defenses answer "what
+ * do I roll against?" and vitals "how long does it last?", so a reader has to be
+ * able to see where one question ends and the other begins.
+ *
+ * The fence is a keyline between two groups — the one place a rule earns its
+ * keep in this theme, because it is a BOUNDARY between panels rather than a bar
+ * dropped in to bind related items together. Same reasoning, and the same
+ * device, as `CreatureStatBlock.module.css`.
+ */
+.pc-statpanel__row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	/* Defenses anchor LEFT, vitals anchor RIGHT (owner, 2026-08-07). The two
+	   groups then sit at the panel's own edges, so the fence between them lands
+	   in the middle of the line rather than wherever the defenses happened to
+	   stop — the same reason a ledger rules its columns at fixed positions. */
 	justify-content: space-between;
-	column-gap: 1mm;
+	column-gap: 1.4mm;
+	row-gap: 0.3mm;
 }
 
-/* The four attributes, then the three defenses. Stated rather than wrapped. */
-.pc-stat-row--quad {
-	--pc-stat-cols: 4;
+.pc-statpanel__group {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	align-self: stretch;
+	column-gap: 1.2mm;
+	row-gap: 0.3mm;
 }
 
-.pc-stat-row--triple {
-	--pc-stat-cols: 3;
+/* Every group after the first in a row is fenced off from the one before it. */
+.pc-statpanel__group + .pc-statpanel__group {
+	padding-left: 1.4mm;
+	border-left: var(--pc-rule-hair) solid var(--pc-ink);
 }
 
-.pc-stat-cell {
+/* The attributes take the panel's second row and spread across it: four polygons
+   are read as a ladder, and a ladder needs even spacing to be one. */
+.pc-statpanel__group--dice {
+	column-gap: 1.4mm;
+	/* A die's modifier (`d4-1`) hangs outside the polygon by design, so the last
+	   token in the row needs room for it or the `-1` is clipped by the panel's
+	   own edge. */
+	padding-right: 1.6mm;
+}
+
+/*
+ * A FIGURE: the mark, then the value. The pair never wraps inside itself — a
+ * cell that wraps its own value stacked `vs.` above `Resist` and turned two
+ * facts into five lines (layout law 3).
+ */
+.pc-figure {
 	display: inline-flex;
-	align-items: baseline;
-	gap: 0.15em;
+	align-items: center;
+	gap: 0.2em;
 	white-space: nowrap;
 }
 
-.pc-stat-cell__sigil {
-	flex: none;
-	/* Baseline alignment on an inline SVG puts the mark's foot on the line and
-	   its mass above it; nudged so it sits with the numeral instead. */
-	transform: translateY(0.1em);
+.pc-figure--die {
+	gap: 0;
 }
 
-.pc-stat-cell__label {
+.pc-figure__mark {
+	flex: none;
+}
+
+.pc-figure__value {
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+}
+
+/* The defenses lead and are set larger — they answer the first question asked of
+   any creature, and the docs block sets them the same way. */
+.pc-statpanel__group--defenses .pc-figure__value {
+	font-size: 1.3em;
+}
+
+/*
+ * The life-pool pips. An Elite or Lord creature fights through several pools in
+ * sequence, so the count is a fact about the shape of the fight — printed as
+ * pips beside the pool size rather than as the literal `2x50` the card used to
+ * carry (D3).
+ *
+ * Solid squares: a hollow pip at this size fills in on a photocopier, and the
+ * count has to survive a flattened copy.
+ */
+/*
+ * The life-pool COUNT — `×3`, not three drawn pips (owner, 2026-08-07).
+ *
+ * Pips have to be counted before they can be read, and three of them cost more
+ * of the line than the numeral does. This is the panel's own argument about
+ * labels, applied to its own ornament.
+ */
+.pc-figure__pools {
+	margin-left: 0.15em;
+	font-size: 0.82em;
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	color: var(--pc-ink);
+}
+
+/*
+ * The armor category, riding beside the AV numeral instead of inside it.
+ *
+ * AV is the one stat whose value is not a bare number — `0 (natural light)` is
+ * 17 characters against 2 for a defense, and inline it sized the whole row. The
+ * short forms are two letters at most (`NL`, not `NAT L`) so the tag is the same
+ * width whichever category a creature carries.
+ */
+.pc-figure__armor {
+	margin-left: 0.3mm;
+	padding: 0 0.4mm;
+	border: var(--pc-rule-hair) solid var(--pc-ink);
+	font-size: 0.78em;
+	line-height: 1.25;
 	font-variant-caps: small-caps;
-	letter-spacing: 0.04em;
-	font-weight: 600;
+	letter-spacing: 0.03em;
+	color: var(--pc-ink);
+}
+
+/*
+ * A TRAIT ROW — skills, immunities, resistances, weaknesses.
+ *
+ * The docs stat block gives each row a labelled cartouche and turns its VALUES
+ * into chips, so a GM scans the list rather than reading a comma sentence. The
+ * card printed `**Skills:** Fighting (0), Perception (1)` instead — the one row
+ * type where the two surfaces disagreed about what the content even was (owner,
+ * 2026-08-07). They agree now; only the medium differs.
+ */
+.pc-trait {
+	margin-bottom: 0.12em;
+}
+
+.pc-trait__label {
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	font-weight: 700;
+	white-space: nowrap;
+	color: var(--pc-ink);
+}
+
+.pc-trait__glyph {
+	flex: none;
+	margin-right: 0.15em;
+	transform: translateY(0.12em);
+}
+
+.pc-trait__values {
+	display: inline;
+}
+
+/* A trait row's own leading. The chips' bottom margin already separates a
+   wrapped row from the one above it, so this only has to stop the label's line
+   from closing up — measured, 1.5 here cost the deck 6 cards over 1.3 and bought
+   nothing a reader could see. */
+.pc-trait {
+	line-height: 1.3;
+}
+
+/*
+ * AN INK CHIP.
+ *
+ * On screen these carry a hue and a wash. On paper nothing has a hue to spend,
+ * so the identity is the SILHOUETTE and the keyline — and a clipped shape cannot
+ * take a `border`, so the outline is two flat layers: an ink face beneath, the
+ * paper inset a hairline over it. Exactly the construction `CardTag` uses, which
+ * is exactly the construction the site's plugin chips use.
+ *
+ * Sized in `em` off the fitted body, because a trait row is body text: a fixed
+ * point size here would refuse to shrink with the text it sits in and would be
+ * the one thing on the card the autofit could not pay for.
+ */
+.pc-chip {
+	position: relative;
+	/*
+	 * A FLEX BOX WITH A STATED HEIGHT, and both halves of that matter (owner,
+	 * 2026-08-07).
+	 *
+	 * As an `inline-block` the chip's height came from the line box of whatever
+	 * text was in it, so a value with a descender stood taller than one without
+	 * and its label sat off centre — visibly inconsistent from chip to chip along
+	 * one row. `align-items: center` against a stated height centres the label by
+	 * construction, whatever glyphs it happens to contain.
+	 *
+	 * `vertical-align: middle` is the row half: baseline alignment lined the
+	 * chips up by their TEXT, so a chip carrying a rank divider (a taller box)
+	 * hung lower than its neighbours. Middle aligns the boxes to each other.
+	 */
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	height: 1.5em;
+	/* The bottom margin is what gives WRAPPED rows of chips air between them: an
+	   inline-block's margin grows the line box it sits in, so this is the only
+	   lever that separates row two from row one (owner, 2026-08-07). */
+	margin: 0 0.28em 0.18em 0;
+	padding: 0 0.22em;
+	/*
+	 * `--pc-text-micro` — the size the section labels are set at (owner,
+	 * 2026-08-07). Three passes at an `em` fraction of the body all read too
+	 * large, because the body is often at 8pt or 9pt and a proportion of that is
+	 * not small. The card already sets its stamped register at this token:
+	 * `.pc-slab` and `.pc-card__section` are both micro, so a chip joining them
+	 * is the register being consistent rather than a new size.
+	 */
+	font-size: var(--pc-text-micro);
+	line-height: 1.15;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.02em;
+	/*
+	 * WRAPPING, not `nowrap` (owner review, 2026-08-07).
+	 *
+	 * `physical damage (from non-magical weapons)` is a single trait value 41
+	 * characters long. Held on one line it ran straight off the card — and
+	 * layout law 1 is exactly this: anything in the measured box that cannot
+	 * wrap overflows at EVERY type size, so the search reports the whole card as
+	 * over budget and the text is lost rather than shrunk.
+	 *
+	 * A clipped shape wraps fine: the polygon clips the chip's box, and a
+	 * two-line box is still a box.
+	 */
+	white-space: normal;
+	max-width: 100%;
+	color: var(--pc-ink);
+	background: currentColor;
+}
+
+/*
+ * A chip long enough to wrap gives up the fixed height rather than clipping its
+ * second line — `physical damage (from non-magical weapons)` is two lines wide
+ * on a 53mm measure, and a stated height would cut it (layout law 1's sibling:
+ * never let a box in the measured column hide its own content).
+ */
+.pc-chip--wide {
+	height: auto;
+	padding: 0.12em 0.22em;
+}
+
+.pc-chip__face {
+	position: absolute;
+	inset: var(--pc-rule-hair, 0.2mm);
+	background: var(--pc-paper, #fff);
+	clip-path: inherit;
+}
+
+.pc-chip__label {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	/* Optical, not geometric: small caps have no descenders, so a box centred on
+	   the em square reads a hair high. */
+	padding-top: 0.06em;
+}
+
+/* A named proficiency: the theme's BANNER, pointed at both ends. The horizontal
+   padding has to clear the points, or the label sits on top of them. */
+.pc-chip--skill {
+	--pc-chip-point: 0.34em;
+	margin-right: 0.2em;
+	padding: 0 0.5em;
+	clip-path: polygon(
+		0 50%,
+		var(--pc-chip-point) 0,
+		calc(100% - var(--pc-chip-point)) 0,
+		100% 50%,
+		calc(100% - var(--pc-chip-point)) 100%,
+		var(--pc-chip-point) 100%
+	);
+}
+
+/* The rank absorbed into its tag, behind a struck divider, so `Athletics 3`
+   reads as a name and a rank rather than as one label — as the chips plugin
+   already sets it on screen. */
+.pc-chip__rank {
+	/* The divider is struck through the WHOLE tag, not just the text: stretched
+	   to the chip's height it reads as a rule dividing two fields, which is what
+	   it is. */
+	align-self: stretch;
+	display: inline-flex;
+	align-items: center;
+	margin-left: 0.3em;
+	padding-left: 0.3em;
+	border-left: var(--pc-rule-hair) solid var(--pc-ink);
+	font-weight: 700;
+	/* Small caps set a DIGIT at small-cap height too, so rank 0 printed as `O`
+	   and rank 1 as `I` — the same fault as the tier numeral (owner,
+	   2026-08-07). Full caps and tabular figures, everywhere a number sits
+	   inside a small-caps device. */
+	font-variant-caps: normal;
+	font-variant-numeric: tabular-nums;
+}
+
+/* A damage type or condition: the CUT-CORNER TESSERA, the theme's inlaid stone
+   chip. A different silhouette from the skill banner on purpose — two devices
+   are only distinct on paper if their outlines are. */
+.pc-chip--trait {
+	--pc-chip-cut: 0.28em;
+	clip-path: polygon(
+		var(--pc-chip-cut) 0,
+		calc(100% - var(--pc-chip-cut)) 0,
+		100% var(--pc-chip-cut),
+		100% calc(100% - var(--pc-chip-cut)),
+		calc(100% - var(--pc-chip-cut)) 100%,
+		var(--pc-chip-cut) 100%,
+		0 calc(100% - var(--pc-chip-cut)),
+		0 var(--pc-chip-cut)
+	);
+}
+
+/*
+ * An attack's sub-list — the Beholder Spawn's eye rays, the one consumer in the
+ * corpus. Indented under the attack it belongs to, as the docs generator
+ * renders it, and inside the fitted region so it shrinks with the text.
+ */
+.pc-details {
+	margin: 0.2em 0 0;
+	padding-left: 1.2em;
+	list-style: none;
+}
+
+.pc-details > li {
+	text-indent: -0.8em;
 }
 
 /*
@@ -556,11 +974,38 @@
 	line-height: var(--pc-leading-dense);
 }
 
-/* The markup inside a parsed `effect` inherits the fitted size — a `<ul>` or a
-   `<strong>` that kept its own is a line the search cannot shrink. */
-.pc-card .pc-fit * {
+/*
+ * The markup inside a parsed `effect` inherits the fitted size — a `<ul>` or a
+ * `<strong>` that kept its own is a line the search cannot shrink.
+ *
+ * IT IS NOT `*`, AND THAT MATTERS (owner review, 2026-08-07). `.pc-card .pc-fit
+ * *` is (0,2,0) — the universal selector adds nothing to specificity — so it TIED
+ * with every two-class rule in this file and won on source order, being further
+ * down. Three separate rounds of "make the chips smaller" changed nothing on the
+ * card for that reason: the size was being set and then silently overwritten,
+ * and only the padding I happened to change alongside it moved anything.
+ *
+ * So the reset names what it is actually for — the tags a body's markup arrives
+ * as — and leaves the card's own stamped devices alone. A chip, a slab and a
+ * damage ladder's tick each declare a size on purpose.
+ */
+.pc-card .pc-fit :is(p, ul, ol, li, strong, em, b, i, span:not([class]), div) {
 	font-size: inherit;
 	line-height: inherit;
+}
+
+/*
+ * THE STAMPED REGISTER INSIDE A FITTED BODY.
+ *
+ * Chips, slabs and the ladder's success ticks are all set at the size the
+ * section labels are — `--pc-text-micro`, which is what the owner asked for and
+ * what the card already used for `.pc-slab` and `.pc-card__section`. Declared
+ * here, after the reset above, so the two cannot fight again.
+ */
+.pc-card .pc-fit .pc-chip,
+.pc-card .pc-fit .pc-slab {
+	font-size: var(--pc-text-micro);
+	line-height: 1.15;
 }
 
 /*

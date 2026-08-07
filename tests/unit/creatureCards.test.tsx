@@ -34,9 +34,11 @@ describe('CreatureCards Tool - Basic Tests', () => {
 				screen.getByPlaceholderText(/paste creature stat block markdown here/i),
 			).toBeInTheDocument()
 			expect(screen.getByText('Upload file')).toBeInTheDocument()
+			// The empty preview names the catalogue now: it is the deck's primary
+			// source, not the paste box (M21 D1).
 			expect(
 				screen.getByText(
-					'Load creatures in the controls panel to preview cards here.',
+					'Pick creatures from the catalogue in the controls panel to preview cards here.',
 				),
 			).toBeInTheDocument()
 		})

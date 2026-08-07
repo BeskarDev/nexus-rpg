@@ -53,8 +53,12 @@
 	font-family: var(--nexus-font-ui);
 	font-variant-caps: small-caps;
 	font-weight: 700;
-	font-size: 0.62em;
-	vertical-align: 0.35em;
+	/* Variable so the PRINTED card can quiet it: at 0.62em on a 53mm measure the
+	   superscript W/S/C read as loudly as the numbers they key, and there are
+	   three of them on every attack (owner, 2026-08-07). The screen keeps its
+	   value, so nothing in the docs or on the sheet moves. */
+	font-size: var(--ladder-tick-size, 0.62em);
+	vertical-align: var(--ladder-tick-rise, 0.35em);
 	color: color-mix(
 		in srgb,
 		var(--ifm-color-primary) 78%,

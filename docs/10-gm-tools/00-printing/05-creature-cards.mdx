@@ -2,10 +2,19 @@
 sidebar_position: 5
 title: 🎴 Creature Cards
 description: Print creature stat blocks as cards for tabletop play
+# The tool runs its own two-column layout — controls left, preview right — and
+# it needs the full page to do it (see the magic item tool's note).
+columns: false
 ---
 
 import { CreatureCards } from '@site/src/features/CreatureCards'
 
 # 🎴 Creature Cards
+
+Print any creature in the bestiary as a card. The whole catalogue is in the tool, so preparing an encounter no longer means copying a stat block out of the docs and pasting it back in. Use the **tier** and **category** filters to find what you need, then pick creatures one at a time.
+
+Two other sources sit beside the catalogue: **load a character's companions**, and **paste creature markdown** for something written in your own notes.
+
+Each card carries the creature's defenses, hit points with life-pool pips, armor value and its four attribute dice, then its traits, attacks, abilities and quick actions. A creature too long for one card continues onto a second, which repeats the name and its part mark so a card found loose on the table still says what it belongs to.
 
 <CreatureCards />

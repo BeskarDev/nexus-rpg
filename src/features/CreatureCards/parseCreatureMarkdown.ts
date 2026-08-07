@@ -1,4 +1,10 @@
 import { Creature, Attack, Ability } from '@site/src/types/Creature'
+import {
+	parseEntryHead,
+	toAbility,
+	toAttack,
+	type ParsedEntryHead,
+} from './creatureEntryText'
 
 export const parseCreatureMarkdown = (markdown: string): Creature[] => {
 	const creatures: Creature[] = []
@@ -153,117 +159,55 @@ const parseCommaSeparatedList = (text: string): string[] => {
 		.filter((item) => item.length > 0)
 }
 
-const parseAttacks = (attacksText: string): Attack[] => {
-	const attacks: Attack[] = []
-	const lines = attacksText.split('\n').filter((line) => line.trim())
+/**
+ * The entries of one section, with their indented sub-lines kept.
+ *
+ * Rewritten in M21 (owner review): the old pair of parsers demanded a period
+ * AFTER the closing `**` of a name, so the Floating Eye companion's
+ * `- **Eye Rays.** Roll once per eye ray…` matched nothing and the whole attack
+ * was dropped with no warning — and its four numbered rays with it. They also
+ * put the entry's whole first sentence in `Attack.damage`, which is why that
+ * companion's bite printed as a broken ladder reading `12 / 17 / 22 damage.`
+ *
+ * Both faults were one fault: this file had its own idea of an entry's shape.
+ * The shape lives in `creatureEntryText` now and the JSON adapter builds the
+ * same one, so a card renders one contract rather than guessing between two.
+ */
+const parseEntries = (
+	text: string,
+): { head: ParsedEntryHead; details: string[] }[] => {
+	const entries: { head: ParsedEntryHead; details: string[] }[] = []
+	for (const line of text.split('\n')) {
+		if (!line.trim()) continue
+		const indented = /^\s{2,}/.test(line)
+		const trimmed = line.trim()
 
-	for (const line of lines) {
-		if (!line.trim().startsWith('- **')) continue
-
-		// Match: - **Name** (*properties*). damage. Optional description
-		// Example: - **Claws** (*light, slash*). 6/10/14 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.
-		// Handle nested parentheses in properties like (*thrown (close/short)*)
-		//
-		// The properties group is OPTIONAL (M15 S6). It was required, so an attack
-		// with none — `- **Bite**. 5/8/11 damage.` — matched nothing and was dropped
-		// SILENTLY: no card, no warning, the creature simply printed without its
-		// attack. 30 of the 317 attacks in `creatures.json` have no properties,
-		// including the Dog's bite, so this was losing data on ordinary input.
-		const match = line.match(/- \*\*([^*]+)\*\*\s*(?:\((.*?)\))?\.\s*(.*)/)
-		if (match) {
-			const [, name, propertiesText = '', restOfLine] = match
-			// Remove the asterisks from properties and clean up
-			const cleanProperties = propertiesText
-				.replace(/\*/g, '')
-				.split(',')
-				.map((p) => p.trim())
-				.filter((p) => p.length > 0)
-
-			// Split the rest into damage and description
-			// Look for the first sentence ending with period that could be damage
-			const sentences = restOfLine.split(/\.(?:\s|$)/)
-			const damage = sentences[0] + '.'
-			const description = sentences.slice(1).join('. ').trim()
-
-			attacks.push({
-				name: name.trim(),
-				properties: cleanProperties,
-				damage: damage.trim(),
-				description: description || undefined,
-			})
+		// An indented line — `  1. **Dazing Ray.** …`, `  - *Fireball*` — belongs to
+		// the entry above it. The builder writes multi-outcome attacks and spell
+		// lists that way, and the old loop treated the first one as the end of the
+		// section, so everything after it was lost (M13 S8 fixed that for the sheet;
+		// the print tool kept its own copy of the bug).
+		if (indented && entries.length > 0) {
+			// A bullet marker needs its SPACE to be one. `^[-*]\s*` ate the first
+			// asterisk of `**1. Dazing Ray.**`, so the companion's eye rays printed
+			// as `*1. Dazing Ray.*` — italic, with the orphaned closing `*` still
+			// visible on the card (owner, 2026-08-07). A numbered marker is kept:
+			// the ray's number is part of what the entry says.
+			entries[entries.length - 1].details.push(
+				trimmed.replace(/^[-*+][^\S\n]+/, ''),
+			)
+			continue
 		}
+		if (!trimmed.startsWith('- ')) continue
+		const head = parseEntryHead(trimmed)
+		if (head) entries.push({ head, details: [] })
+		else console.warn('Unparsed creature entry line:', trimmed)
 	}
-
-	return attacks
+	return entries
 }
 
-const parseAbilities = (abilitiesText: string): Ability[] => {
-	const abilities: Ability[] = []
-	const lines = abilitiesText.split('\n').filter((line) => line.trim())
+const parseAttacks = (attacksText: string): Attack[] =>
+	parseEntries(attacksText).map(({ head, details }) => toAttack(head, details))
 
-	let currentAbility: Ability | null = null
-	let spells: string[] = []
-
-	for (const line of lines) {
-		const trimmedLine = line.trim()
-
-		// Check if this is a spell line (indented with 2 or more spaces and starts with -)
-		if (currentAbility && line.match(/^\s{2,}- /)) {
-			// Extract spell and add it to the spells array
-			const spellMatch = trimmedLine.match(/^- (.+)/)
-			if (spellMatch) {
-				spells.push(spellMatch[1].trim())
-			}
-			continue
-		}
-
-		// Check if this is a main ability line
-		if (!trimmedLine.startsWith('- **')) {
-			continue
-		}
-
-		// Save the previous ability if we were building one
-		if (currentAbility) {
-			// Add spells as comma-separated list if any
-			if (spells.length > 0) {
-				currentAbility.description += `\n${spells.join(', ')}`
-				spells = [] // Reset for next ability
-			}
-			abilities.push(currentAbility)
-			currentAbility = null
-		}
-
-		// Handle abilities with recharge: - **Name** (Recharge d6). description
-		let match = trimmedLine.match(/- \*\*([^*]+)\*\*\s*\(([^)]+)\)\.\s*(.+)/)
-		if (match) {
-			const [, name, recharge, description] = match
-			currentAbility = {
-				name: name.trim(),
-				description: description.trim(),
-				recharge: recharge.trim(),
-			}
-			continue
-		}
-
-		// Handle regular abilities: - **Name.** description
-		match = trimmedLine.match(/- \*\*([^*]+)\*\*\s*(.+)/)
-		if (match) {
-			const [, name, description] = match
-			currentAbility = {
-				name: name.trim().replace(/\.$/, ''), // Remove trailing period from name
-				description: description.trim(),
-			}
-		}
-	}
-
-	// Don't forget to add the last ability
-	if (currentAbility) {
-		// Add spells as comma-separated list if any
-		if (spells.length > 0) {
-			currentAbility.description += `\n${spells.join(', ')}`
-		}
-		abilities.push(currentAbility)
-	}
-
-	return abilities
-}
+const parseAbilities = (abilitiesText: string): Ability[] =>
+	parseEntries(abilitiesText).map(({ head, details }) => toAbility(head, details))

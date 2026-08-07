@@ -47,13 +47,18 @@ describe('parseCreatureMarkdown', () => {
 		// A greedy abilities section used to run to the end of the block, so every
 		// quick action was printed unlabeled among the passives.
 		//
-		// Note the app parser leaves the qualifier inside the ability NAME, where
-		// `creatures.json` splits it into a separate `qualifier` field. That
-		// divergence is pre-existing and deliberate here: this test pins the print
-		// tool's own behaviour, not the JSON schema.
+		// The divergence this test used to pin — the app parser leaving the
+		// qualifier inside the ability NAME while `creatures.json` splits it into
+		// its own field — is gone (M21). Two sources with two shapes is what
+		// printed a companion's bite as a broken damage ladder, so both paths
+		// build one contract now (`creatureEntryText`).
 		expect(creature.abilities.map((a) => a.name)).toEqual([
-			'Thick Hide (Passive)',
-			'Rampage (Elite Trigger)',
+			'Thick Hide',
+			'Rampage',
+		])
+		expect(creature.abilities.map((a) => a.qualifier)).toEqual([
+			'Passive',
+			'Elite Trigger',
 		])
 		expect(creature.quickActions.map((a) => a.name)).toEqual([
 			'Stomp',
