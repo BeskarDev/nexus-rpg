@@ -323,3 +323,80 @@ element, a heavier haft), never by thickening a limb past what the object would 
 **Practical loop.** Draw → `bun run sigils:check` (it names the mark and the rule, and for a
 gap failure the two nearest points) → `bun run sigils:sheet` and look at the 14px column →
 review in `/dev/sigils` in both themes. Do not trust the path data; the law is about ink.
+
+## 15. Organic motifs: an ARCH reads, a sweep does not
+
+Learned drawing the folk palm (M20 S4), which failed twice before it read as a palm at all. Both
+failures were the same mistake wearing different clothes, and neither was visible in the path data —
+only in a render.
+
+**Equal lengths on an even angular sweep is a rosette, whatever you draw the elements as.** Seven
+fronds of near-equal length across ±76° came out a starburst. Radial symmetry is a stronger signal
+than leaf shape, so it wins, and the mark collides with every other radial mark in the kit.
+
+**A straight tapered spike is a succulent leaf, not a frond.** Grading the lengths fixed the sweep
+and the next cut read as an agave. What separates a palm, a willow, a plume or a wing from a
+starburst is CURVATURE: the element climbs away from its root and falls.
+
+So for anything meant to read as growing:
+
+- **Grade the lengths hard.** A central element at half the outermost length, not at 90% of it.
+- **Sweep past the horizontal** on the outermost pair, so the crown is wider than it is tall.
+- **Draw each element as a ribbon offset around a curved spine** (a sampled quadratic, with a width
+  profile that swells near the root and converges to a point), never as a straight chord to the tip.
+  A chord cannot arch, however you angle it.
+- **Give it a visible stem or trunk.** A crown springing from a point on the border line is a
+  rosette again.
+
+**Preview at the real sizes before wiring it in.** Author the geometry in a throwaway script that
+emits the SVG at each size the mark will ship at, side by side — the palm ran at 400 / 180 / 91 /
+56px. Both failures were obvious in one glance at 400px and invisible in the code, and a mark on a
+printed card is ~56px, where only the silhouette survives.
+
+**Corollary to §8, paid for three times in one ornament.** Leaf scars on the trunk, hanging date
+clusters, and the coping line the sibling keystones carve into their flanking courses were all drawn
+and all cut: each lands near 1px on a printed card. The coping was the instructive one — it did not
+vanish, it *inverted*, hollowing solid courses into keyline rulers. A carve is only legal where the
+mass around it can afford to lose it at the SMALLEST size the mark ships at.
+
+## 16. Put the structure in the OUTLINE, not the interior
+
+The rule §15's palm found by accident and the `Other` keystone proved on purpose (M20 S4).
+
+An ornament in this kit ships from ~300px on a screen card down to ~52px on a printed one. **Interior
+detail is the first thing to go, and the silhouette is the last.** So a mark whose structure lives
+inside its outline has nothing left at the small end, however good it looks at the large one.
+
+That is what condemned the cartouche as the `Other` mark. Rendered beside the ziggurat and the palm
+at 300 / 120 / 52px it failed four ways, and only the last is fatal:
+
+- Two semicircular caps — the one rounded silhouette in a kit whose rule is that carved stone has
+  vertices.
+- It does not span the top edge. Its siblings step out to the frame on flanking courses; it is one
+  blob on a bar that stops.
+- Its band is a single uniform tube — §1's bent-wire failure at a larger gauge.
+- **A ring plus three ticks is all interior.** By 52px it is a featureless pill. The palm and the
+  ziggurat are an arching crown and a stepped triangle, and both still read.
+
+Diagnosing this is mechanical: **render the candidate beside two marks you already trust, at every
+size it ships at, and look at the smallest row first.** If it is a blob there, no amount of interior
+work saves it.
+
+When a motif's structure is irreducibly interior, the choice is not "redraw it harder" — a cartouche
+fixed for all four faults stops being a cartouche. **Move the meaning to an object that can carry
+it.** `Other` went from a name-ring to a votive stele: still "a record set in stone for one person",
+but now a shape with a profile.
+
+### The corollary: check what silhouette space is free
+
+Before drawing, list what the kit already occupies. Ours was all horizontal — a spread disc, crossed
+blades, a stepped triangle, a broad head, a faceted point, an arching crown. **A narrow upright was
+unclaimed**, so the stele is told apart at 52px by orientation alone, which is the cheapest
+distinctness there is.
+
+### And weigh it against its siblings, not against itself
+
+The first stele was correct and still wrong: a thin contour beside two dense masses, nearly gone by
+52px. Ornament weight is relative. Set the candidate next to the marks it will share a deck with and
+match their mass — for the stele that meant a contour at 2.4 units instead of 1.5, three heavy
+inscription rules instead of four thin ones, and thicker ground courses.

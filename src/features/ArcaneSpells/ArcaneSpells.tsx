@@ -14,15 +14,22 @@ import { ArcaneSpell } from '@site/src/types/ArcaneSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
+import {
+	useAutofitPending,
+	useSpillPlan,
+	whenAutofitSettled,
+} from '@site/src/components/autofit'
 import arcaneSpellData from '../../utils/data/json/arcane-spells.json'
 import {
 	CARD_PAGE,
 	CARD_PAGE_MARGIN,
 	CARD_SIZE,
 	CharacterSelector,
+	deckDocumentTitle,
 	itemsPerPage,
 	PrintPages,
 	PrintToolShell,
+	usePagePrintStyle,
 } from '../PrintingTools'
 import { ArcaneSpellCard } from './ArcaneSpellCard'
 import './arcaneSpellsStyles.css'
@@ -128,9 +135,10 @@ export const ArcaneSpells: React.FC = () => {
 	}
 
 	const componentRef = useRef()
-	const handlePrint = useReactToPrint({
-		content: () => componentRef.current,
-	})
+	// Trap 2: a print that opens before the cards have settled prints the
+	// pre-fit layout, and the dialog blocks the session, so there is no second
+	// chance to get it right (M18 D2).
+	const settlingCards = useAutofitPending()
 	const arcaneSpells: ArcaneSpell[] = arcaneSpellData
 
 	const filteredArcaneSpells = useMemo(() => {
@@ -159,18 +167,57 @@ export const ArcaneSpells: React.FC = () => {
 		setSelectedArcaneSpellsList([])
 	}
 
+	// The spill runs BEFORE pagination (M18 D3, trap 11): a spell that becomes
+	// two cards after the grid is computed lands on the wrong page and pushes
+	// everything after it. `printedCards` is the final child list.
+	const spillPlan = useSpillPlan()
+	const printedCards = useMemo(
+		() =>
+			filteredArcaneSpells.flatMap((spell, index) => {
+				const planKey = `${spell.name}-${spell.characterName || 'manual'}-${index}`
+				return spillPlan
+					.partsFor(planKey)
+					.map((part) => ({ spell, planKey, part }))
+			}),
+		[filteredArcaneSpells, spillPlan.partsFor],
+	)
+
 	// From the card and page geometry rather than a hand-written 9 — the same
 	// call the preview paginates by, so the count and the pages cannot drift.
 	const sheetCount = Math.ceil(
-		filteredArcaneSpells.length /
-			itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
+		printedCards.length / itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
 	)
+
+	// One character's deck is named after them; a mixed or unattributed deck is
+	// not about a person, so it is left unnamed rather than named after whoever
+	// happened to be first.
+	const printSubject = useMemo(() => {
+		const names = new Set(
+			filteredArcaneSpells
+				.map((entry) => entry.characterName)
+				.filter((name): name is string => Boolean(name)),
+		)
+		return names.size === 1 ? [...names][0] : undefined
+	}, [filteredArcaneSpells])
+
+	const handlePrint = useReactToPrint({
+		content: () => componentRef.current,
+		onBeforeGetContent: whenAutofitSettled,
+		// Chrome names the PDF after `document.title`, so without this every deck
+		// this site prints lands in the download folder as "Nexus RPG".
+		documentTitle: deckDocumentTitle({
+			kind: 'arcane-spells',
+			count: printedCards.length,
+			subject: printSubject,
+		}),
+	})
+
+	// A document-level rule, so it goes in the document head — never in the
+	// flow, where a `<style>` printed itself on the page as text (M19).
+	usePagePrintStyle('@page { size: 192mm 267mm; }')
 
 	return (
 		<>
-			<style type="text/css" media="print">
-				{'@page { size: 192mm 267mm; }'}
-			</style>
 			<PrintToolShell
 				controlsLabel="Select Spells"
 				previewLabel="Preview"
@@ -268,6 +315,18 @@ export const ArcaneSpells: React.FC = () => {
 									? '1 card'
 									: `${filteredArcaneSpells.length} cards`}{' '}
 								selected
+								{/* A spill that doubles a spell's paper is stated, not
+								    silent (M18 D3). */}
+								{spillPlan.continuations > 0 && (
+									<>
+										{' '}
+										→ {printedCards.length} printed (
+										{spillPlan.continuations === 1
+											? '1 continuation'
+											: `${spillPlan.continuations} continuations`}
+										)
+									</>
+								)}
 								{filteredArcaneSpells.length > 0 && (
 									<>
 										{' '}
@@ -279,9 +338,11 @@ export const ArcaneSpells: React.FC = () => {
 								type="button"
 								className="pt-print-verb"
 								onClick={handlePrint}
-								disabled={filteredArcaneSpells.length === 0}
+								disabled={
+									filteredArcaneSpells.length === 0 || settlingCards > 0
+								}
 							>
-								Print
+								{settlingCards > 0 ? 'Fitting cards…' : 'Print'}
 							</button>
 						</div>
 					</>
@@ -299,16 +360,25 @@ export const ArcaneSpells: React.FC = () => {
 								</p>
 							}
 						>
-							{filteredArcaneSpells.map((arcaneSpell, index) => (
+							{printedCards.map(({ spell, planKey, part }) => (
 								<div
-									key={`${arcaneSpell.name}-${arcaneSpell.characterName || 'manual'}-${index}`}
+									key={`${planKey}#${part.part}`}
 									title={
-										arcaneSpell.characterName
-											? `For character: ${arcaneSpell.characterName}`
+										spell.characterName
+											? `For character: ${spell.characterName}`
 											: undefined
 									}
 								>
-									<ArcaneSpellCard {...arcaneSpell} />
+									<ArcaneSpellCard
+										{...spell}
+										start={part.start}
+										end={part.end}
+										part={part.part}
+										totalParts={part.totalParts}
+										onFitted={(result) =>
+											spillPlan.report(planKey, part.start, result)
+										}
+									/>
 								</div>
 							))}
 						</PrintPages>

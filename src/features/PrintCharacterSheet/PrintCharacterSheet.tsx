@@ -7,6 +7,8 @@ import {
 	itemsPerPage,
 	PrintPages,
 	PrintToolShell,
+	usePagePrintStyle,
+	sheetDocumentTitle,
 	SHEET_PAGE,
 	SHEET_PAGE_MARGIN,
 	SHEET_SECTION,
@@ -68,18 +70,14 @@ export const PrintCharacterSheet: React.FC = () => {
 
 	const componentRef = useRef()
 	const handlePrint = useReactToPrint({
-		documentTitle: char?.personal.name + '-character-sheet',
+		// It read `undefined-character-sheet` with no character loaded, and a
+		// blank sheet printed for the table is a real use.
+		documentTitle: sheetDocumentTitle(char?.personal.name),
 		content: () => componentRef.current,
 	})
 
 	return (
 		<Box>
-			{/* The same page box the stylesheet declares, derived from the same
-				constants rather than typed a second time — the two copies of this
-				rule drifted apart once already (M17 S1). */}
-			<style type="text/css" media="print">
-				{`@page { size: ${SHEET_PAGE.width}mm ${SHEET_PAGE.height}mm; margin: ${SHEET_PAGE_MARGIN}mm; }`}
-			</style>
 			<PrintToolShell
 				controlsLabel="Select Character"
 				previewLabel="Preview"

@@ -13,6 +13,11 @@ import { Character, CharacterDocument } from '@site/src/types/Character'
 import { MysticSpell } from '@site/src/types/MysticSpell'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
+import {
+	useAutofitPending,
+	useSpillPlan,
+	whenAutofitSettled,
+} from '@site/src/components/autofit'
 import arcaneSpellData from '../../utils/data/json/arcane-spells.json'
 import mysticSpellData from '../../utils/data/json/mystic-spells.json'
 import {
@@ -20,9 +25,11 @@ import {
 	CARD_PAGE_MARGIN,
 	CARD_SIZE,
 	CharacterSelector,
+	deckDocumentTitle,
 	itemsPerPage,
 	PrintPages,
 	PrintToolShell,
+	usePagePrintStyle,
 } from '../PrintingTools'
 import { SpellCard } from './SpellCard'
 import './spellsStyles.css'
@@ -41,13 +48,21 @@ const MenuProps = {
 type SpellType = 'all' | 'arcane' | 'mystic'
 
 type UnifiedSpell = {
+	/**
+	 * `arcane:Acid Splash`. Five spell names exist in BOTH lists — Acid Splash,
+	 * Chain Lightning, Cone of Cold, Haste, True Strike — as genuinely different
+	 * spells with a discipline and a tradition of their own. Selecting by name
+	 * resolved both entries to whichever came first, so "Select all" printed the
+	 * arcane one twice and the mystic one never (owner, 2026-08-07).
+	 */
+	id: string
 	name: string
 	type: 'arcane' | 'mystic'
 	category: string // discipline or tradition
 } & (ArcaneSpell | MysticSpell)
 
 type SpellSelection = {
-	name: string
+	id: string
 	characterName?: string
 }
 
@@ -68,6 +83,7 @@ export const Spells: React.FC = () => {
 		const arcane: UnifiedSpell[] = (arcaneSpellData as ArcaneSpell[]).map(
 			(spell) => ({
 				...spell,
+				id: `arcane:${spell.name}`,
 				type: 'arcane' as const,
 				category: spell.discipline,
 			}),
@@ -75,6 +91,7 @@ export const Spells: React.FC = () => {
 		const mystic: UnifiedSpell[] = (mysticSpellData as MysticSpell[]).map(
 			(spell) => ({
 				...spell,
+				id: `mystic:${spell.name}`,
 				type: 'mystic' as const,
 				category: spell.tradition,
 			}),
@@ -91,22 +108,20 @@ export const Spells: React.FC = () => {
 		const {
 			target: { value },
 		} = event
-		const spells = typeof value === 'string' ? value.split(',') : value
-		setSelectedSpells(spells)
+		const ids = typeof value === 'string' ? value.split(',') : value
+		setSelectedSpells(ids)
 		// Update the list to match manual selections (no character attribution)
 		setSelectedSpellsList((prev) => {
 			// Keep character-attributed selections
 			const characterSelections = prev.filter((s) => s.characterName)
 			// Add manual selections without duplicates in the manual category
-			const manualSelections = spells
-				.filter(
-					(name) => !prev.some((s) => s.name === name && !s.characterName),
-				)
-				.map((name) => ({ name }))
+			const manualSelections = ids
+				.filter((id) => !prev.some((s) => s.id === id && !s.characterName))
+				.map((id) => ({ id }))
 			// Remove manual selections that are no longer in the selected list
 			const filteredManual = prev
 				.filter((s) => !s.characterName)
-				.filter((s) => spells.includes(s.name))
+				.filter((s) => ids.includes(s.id))
 			return [...characterSelections, ...filteredManual, ...manualSelections]
 		})
 	}
@@ -119,17 +134,23 @@ export const Spells: React.FC = () => {
 		setSelectedCharacter(character)
 		if (character) {
 			const characterName = character.personal.name
-			const characterSpellNames =
+			// A character names its spells; the deck selects them by id. Where a
+			// name exists in both lists the arcane one wins, which is what the
+			// tool did before ids existed.
+			const characterSpellIds = (
 				character.spells?.spells?.map((spell) => spell.name) || []
+			)
+				.map((name) => allSpells.find((spell) => spell.name === name)?.id)
+				.filter((id): id is string => Boolean(id))
 			// Add character's spells to the list with character attribution
 			setSelectedSpellsList((prev) => [
 				...prev,
-				...characterSpellNames.map((name) => ({ name, characterName })),
+				...characterSpellIds.map((id) => ({ id, characterName })),
 			])
 			// Also update the selected spells for the dropdown
 			setSelectedSpells((prev) => {
 				const existingSpells = new Set(prev)
-				characterSpellNames.forEach((name) => existingSpells.add(name))
+				characterSpellIds.forEach((id) => existingSpells.add(id))
 				return Array.from(existingSpells)
 			})
 		}
@@ -141,17 +162,20 @@ export const Spells: React.FC = () => {
 			if (jsonString.trim()) {
 				const character: Character = JSON.parse(jsonString)
 				const characterName = character.personal?.name || 'Uploaded Character'
-				const characterSpellNames =
+				const characterSpellIds = (
 					character.spells?.spells?.map((spell) => spell.name) || []
+				)
+					.map((name) => allSpells.find((spell) => spell.name === name)?.id)
+					.filter((id): id is string => Boolean(id))
 				// Add character's spells to the list with character attribution
 				setSelectedSpellsList((prev) => [
 					...prev,
-					...characterSpellNames.map((name) => ({ name, characterName })),
+					...characterSpellIds.map((id) => ({ id, characterName })),
 				])
 				// Also update the selected spells for the dropdown
 				setSelectedSpells((prev) => {
 					const existingSpells = new Set(prev)
-					characterSpellNames.forEach((name) => existingSpells.add(name))
+					characterSpellIds.forEach((id) => existingSpells.add(id))
 					return Array.from(existingSpells)
 				})
 			}
@@ -161,14 +185,15 @@ export const Spells: React.FC = () => {
 	}
 
 	const componentRef = useRef()
-	const handlePrint = useReactToPrint({
-		content: () => componentRef.current,
-	})
+	// Trap 2: a print that opens before the cards have settled prints the
+	// pre-fit layout, and the dialog blocks the session, so there is no second
+	// chance to get it right (M18 D2).
+	const settlingCards = useAutofitPending()
 
 	const filteredSpells = useMemo(() => {
 		return selectedSpellsList
 			.map((selection) => {
-				const spell = availableSpells.find((s) => s.name === selection.name)
+				const spell = availableSpells.find((s) => s.id === selection.id)
 				if (!spell) return null
 				return { ...spell, characterName: selection.characterName }
 			})
@@ -178,11 +203,11 @@ export const Spells: React.FC = () => {
 	}, [availableSpells, selectedSpellsList])
 
 	const selectAll = () => {
-		setSelectedSpells(availableSpells.map((spell) => spell.name))
+		setSelectedSpells(availableSpells.map((spell) => spell.id))
 		// Add all spells as manual selections (no character attribution)
 		setSelectedSpellsList((prev) => {
 			const characterSelections = prev.filter((s) => s.characterName)
-			const allSpells = availableSpells.map((spell) => ({ name: spell.name }))
+			const allSpells = availableSpells.map((spell) => ({ id: spell.id }))
 			return [...characterSelections, ...allSpells]
 		})
 	}
@@ -191,18 +216,57 @@ export const Spells: React.FC = () => {
 		setSelectedSpellsList([])
 	}
 
+	// The spill runs BEFORE pagination (M18 D3, trap 11): a spell that becomes
+	// two cards after the grid is computed lands on the wrong page and pushes
+	// everything after it. `printedCards` is the final child list.
+	const spillPlan = useSpillPlan()
+	const printedCards = useMemo(
+		() =>
+			filteredSpells.flatMap((spell, index) => {
+				const planKey = `${spell.id}-${spell.characterName || 'manual'}-${index}`
+				return spillPlan
+					.partsFor(planKey)
+					.map((part) => ({ spell, planKey, part }))
+			}),
+		[filteredSpells, spillPlan.partsFor],
+	)
+
 	// From the card and page geometry, not a hand-written 9 — the same call the
 	// preview paginates by, so the stated count and the drawn pages cannot drift.
 	const sheetCount = Math.ceil(
-		filteredSpells.length /
-			itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
+		printedCards.length / itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
 	)
+
+	// One character's deck is named after them; a mixed or unattributed deck is
+	// not about a person, so it is left unnamed rather than named after whoever
+	// happened to be first.
+	const printSubject = useMemo(() => {
+		const names = new Set(
+			filteredSpells
+				.map((entry) => entry.characterName)
+				.filter((name): name is string => Boolean(name)),
+		)
+		return names.size === 1 ? [...names][0] : undefined
+	}, [filteredSpells])
+
+	const handlePrint = useReactToPrint({
+		content: () => componentRef.current,
+		onBeforeGetContent: whenAutofitSettled,
+		// Chrome names the PDF after `document.title`, so without this every deck
+		// this site prints lands in the download folder as "Nexus RPG".
+		documentTitle: deckDocumentTitle({
+			kind: 'spells',
+			count: printedCards.length,
+			subject: printSubject,
+		}),
+	})
+
+	// A document-level rule, so it goes in the document head — never in the
+	// flow, where a `<style>` printed itself on the page as text (M19).
+	usePagePrintStyle('@page { size: 192mm 267mm; }')
 
 	return (
 		<>
-			<style type="text/css" media="print">
-				{'@page { size: 192mm 267mm; }'}
-			</style>
 			<PrintToolShell
 				controlsLabel="Select Spells"
 				previewLabel="Preview"
@@ -274,9 +338,14 @@ export const Spells: React.FC = () => {
 									renderValue={(selected) => `${selected.length} selected`}
 									MenuProps={MenuProps}
 								>
-									{availableSpells.map(({ name, type }) => (
-										<MenuItem key={name} value={name}>
-											<Checkbox checked={selectedSpells.indexOf(name) > -1} />
+									{/* Keyed and valued by ID, not by name: five spell names exist in
+									    BOTH lists, and selecting by name resolved both of them to
+									    whichever came first. The selection state moved to ids and this
+									    menu did not, so every manual pick resolved to nothing: empty
+									    preview, dead print button (owner, 2026-08-07). */}
+									{availableSpells.map(({ id, name, type }) => (
+										<MenuItem key={id} value={id}>
+											<Checkbox checked={selectedSpells.indexOf(id) > -1} />
 											<ListItemText
 												primary={name}
 												secondary={type === 'arcane' ? 'Arcane' : 'Mystic'}
@@ -308,20 +377,40 @@ export const Spells: React.FC = () => {
 									? '1 card'
 									: `${filteredSpells.length} cards`}{' '}
 								selected
+								{/* A spill that doubles a spell's paper is stated, not
+								    silent (M18 D3): a whole discipline spilling is a
+								    content signal and belongs in front of the owner. */}
+								{spillPlan.continuations > 0 && (
+									<>
+										{' '}
+										→ {printedCards.length} printed (
+										{spillPlan.continuations === 1
+											? '1 continuation'
+											: `${spillPlan.continuations} continuations`}
+										)
+									</>
+								)}
 								{filteredSpells.length > 0 && (
 									<>
 										{' '}
 										· {sheetCount === 1 ? '1 sheet' : `${sheetCount} sheets`}
 									</>
 								)}
+								{spillPlan.oversize.length > 0 && (
+									<div className="pt-count__warning">
+										{spillPlan.oversize.length} entr
+										{spillPlan.oversize.length === 1 ? 'y' : 'ies'} will not fit
+										on a card even split — the rules text is over budget.
+									</div>
+								)}
 							</div>
 							<button
 								type="button"
 								className="pt-print-verb"
 								onClick={handlePrint}
-								disabled={filteredSpells.length === 0}
+								disabled={filteredSpells.length === 0 || settlingCards > 0}
 							>
-								Print
+								{settlingCards > 0 ? 'Fitting cards…' : 'Print'}
 							</button>
 						</div>
 					</>
@@ -338,16 +427,25 @@ export const Spells: React.FC = () => {
 								</p>
 							}
 						>
-							{filteredSpells.map((spell, index) => (
+							{printedCards.map(({ spell, planKey, part }) => (
 								<div
-									key={`${spell.name}-${spell.characterName || 'manual'}-${index}`}
+									key={`${planKey}#${part.part}`}
 									title={
 										spell.characterName
 											? `For character: ${spell.characterName}`
 											: undefined
 									}
 								>
-									<SpellCard {...spell} />
+									<SpellCard
+										{...spell}
+										start={part.start}
+										end={part.end}
+										part={part.part}
+										totalParts={part.totalParts}
+										onFitted={(result) =>
+											spillPlan.report(planKey, part.start, result)
+										}
+									/>
 								</div>
 							))}
 						</PrintPages>

@@ -16,6 +16,10 @@ Two references carry the depth of the build side:
 - **[references/component-patterns.md](references/component-patterns.md)** — the React /
   MDX / remark-plugin traps that silently break content. Read before building a card or
   a generator.
+- **[references/printed-card-craft.md](references/printed-card-craft.md)** — the 63 × 88mm
+  printed cards. Ink instead of bronze, keyline instead of wash, points instead of `rem`,
+  and the layout laws the measured autofit imposes on any card's markup. Read before
+  touching `PlayingCard`, `playingCardStyles.css`, or a print card under `src/features/`.
 
 The illustration brief is split across eight files so a task pays only for the concern it
 touches, and **[references/art-direction.md](references/art-direction.md)** is the hub. Read
@@ -321,6 +325,7 @@ which silently re-inflates every gap you just closed.
 | Ornament kit | `src/components/codex/ornaments.tsx` + `.module.css` |
 | Sigils | `src/components/codex/sigil-paths.ts` (geometry) + `sigil-geometry.ts` (drawing primitives) + `page-sigils.ts` (doc → mark). Rules: `references/ornament-craft.md` § Sigils |
 | Sigil tooling | `bun run sigils:check` (design law, in CI) · `bun run sigils:masks [--check]` (navbar mask block in `custom.css`, in CI) · `bun run sigils:sheet [out.png]` (contact sheet) · `/dev/sigils` (dev-only review gallery) |
+| Printed card shell + geometry | `src/components/PlayingCard.tsx` + `playingCardStyles.css`; the fit engine in `src/components/autofit/`. Rules: `references/printed-card-craft.md` |
 | Global MDX registration | `src/theme/MDXComponents.tsx` — a generated component MUST be registered here; also where markdown intrinsics are remapped (`hr` → `LozengeDivider`, `table` → `DocTable`) |
 | Theme swizzles (all wrappers) | `src/theme/` — `Admonition/Layout` (type sigil), `Footer/Layout` (colophon crest + wordmark), `DocSidebarItems`, `DocBreadcrumbs` |
 | Chips, global tokens, bullets | `src/css/custom.css` |

@@ -76,8 +76,14 @@
  *
  * That is why the theme's "no per-shape colour" rule earns its keep here: a mark
  * that had baked its own bronze in would have needed a second version for paper.
+ *
+ * Both printed artifacts take it: the sheet (`.pc-sheet`) and the card
+ * (`.pc-card`, M18 D1). What follows the rebinding is the SHEET's own type
+ * scale, and that stays on the sheet — a card is 63 × 88mm and has none of the
+ * room the argument below rests on.
  */
-.pc-sheet {
+.pc-sheet,
+.pc-card {
 	--ifm-color-primary: var(--pc-ink);
 	--ifm-color-primary-dark: var(--pc-ink);
 	--ifm-color-primary-darker: var(--pc-ink);
@@ -93,7 +99,9 @@
 	   so the token it names is rebound here with the rest of them. */
 	--nexus-bronze: var(--pc-ink);
 	color: var(--pc-ink);
+}
 
+.pc-sheet {
 	/*
 	 * THE SHEET'S TYPE SCALE (M17, owner review 2026-08-06)
 	 * ----------------------------------------------------
@@ -699,7 +707,7 @@
 	.pc-row,
 	.pc-marked__head,
 	.pc-writeline,
-	.playing-card--card {
+	.pc-card {
 		-webkit-print-color-adjust: exact;
 		print-color-adjust: exact;
 	}

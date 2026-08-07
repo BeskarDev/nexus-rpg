@@ -12,8 +12,8 @@
 	/* viewBox is 96, sized so the px/unit ratio (~0.79) is unchanged: the diamond
 	   boss keeps its rendered size and the extra units go to rail reach. Every
 	   card family uses this one size — rail LENGTH is what varies, per family. */
-	width: 76px;
-	height: 76px;
+	width: calc(76px * var(--ornament-scale, 1));
+	height: calc(76px * var(--ornament-scale, 1));
 }
 .corner-tl {
 	top: -1px;
@@ -40,9 +40,9 @@
 .wingedDisc {
 	position: absolute;
 	left: 50%;
-	top: -14.1px;
-	width: 94px;
-	height: 23.5px;
+	top: calc(-14.1px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(94px * var(--ornament-scale, 1));
+	height: calc(23.5px * var(--ornament-scale, 1));
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }
@@ -51,9 +51,9 @@
 .serpentKeystone {
 	position: absolute;
 	left: 50%;
-	top: -13.4px;
-	width: 86px;
-	height: 26.9px;
+	top: calc(-13.4px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(86px * var(--ornament-scale, 1));
+	height: calc(26.9px * var(--ornament-scale, 1));
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }
@@ -64,9 +64,9 @@
 .khopeshKeystone {
 	position: absolute;
 	left: 50%;
-	top: -15.9px;
-	width: 78px;
-	height: 26.7px;
+	top: calc(-15.9px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(78px * var(--ornament-scale, 1));
+	height: calc(26.7px * var(--ornament-scale, 1));
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }
@@ -77,9 +77,9 @@
 .bullKeystone {
 	position: absolute;
 	left: 50%;
-	top: -18.13px;
-	width: 87px;
-	height: 27.19px;
+	top: calc(-18.13px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(87px * var(--ornament-scale, 1));
+	height: calc(27.19px * var(--ornament-scale, 1));
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }
@@ -93,9 +93,9 @@
 .zigguratKeystone {
 	position: absolute;
 	left: 50%;
-	top: -20.33px;
-	width: 88px;
-	height: 27.24px;
+	top: calc(-20.33px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(88px * var(--ornament-scale, 1));
+	height: calc(27.24px * var(--ornament-scale, 1));
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }
@@ -107,9 +107,9 @@
 .cartoucheKeystone {
 	position: absolute;
 	left: 50%;
-	top: -15.75px;
-	width: 84px;
-	height: 23.63px;
+	top: calc(-15.75px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(84px * var(--ornament-scale, 1));
+	height: calc(23.63px * var(--ornament-scale, 1));
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }
@@ -775,9 +775,9 @@
 .rosetteKeystoneSlot {
 	position: absolute;
 	left: 50%;
-	top: -21px;
-	width: 42px;
-	height: 42px;
+	top: calc(-21px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(42px * var(--ornament-scale, 1));
+	height: calc(42px * var(--ornament-scale, 1));
 	transform: translateX(-50%);
 	line-height: 0;
 	color: var(--ifm-color-primary);
@@ -797,9 +797,43 @@
 .gemKeystone {
 	position: absolute;
 	left: 50%;
-	top: -20.33px;
-	width: 88px;
-	height: 27.24px;
+	top: calc(-20.33px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(88px * var(--ornament-scale, 1));
+	height: calc(27.24px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
+/* Votive-stele keystone (the `Other` ability family, M20 S4). Same 100x30 box and
+   border line as the palm, so the two new marks are in scale with each other and
+   with the ziggurat; see the palm's note for why the rendered height is pinned
+   at 27.24px rather than derived from the wider viewBox. */
+.steleKeystone {
+	position: absolute;
+	left: 50%;
+	top: calc(-20.52px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(90.8px * var(--ornament-scale, 1));
+	height: calc(27.24px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
+/* Sacred-palm keystone (folk, M20 S4). viewBox is 100x30 with the border line at
+   y=22.6 — a wider, taller box than its siblings, because a palm's crown has to
+   be wider than it is tall over a visible trunk or the mark reads as a starburst
+   (ornament-craft §3: grow the box, never shrink the motif).
+
+   The RENDERED height is still 27.24px, the same as the ziggurat and the gem,
+   which is what keeps the family in scale with the rest and — the load-bearing
+   part — holds the overhang at 20.52px rather than the 23.7px a uniform
+   px-per-unit would have given. `.pc-card__inner` reserves 4.2mm of rail plus
+   4.5mm of mark under its 9mm top padding, and at the card's 0.62 scale a taller
+   mark would have run into the card's own name line.
+   width = 100 * (27.24/30) keeps the aspect; top = 22.6/30 of the height. */
+.palmKeystone {
+	position: absolute;
+	left: 50%;
+	top: calc(-20.52px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(90.8px * var(--ornament-scale, 1));
+	height: calc(27.24px * var(--ornament-scale, 1));
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }

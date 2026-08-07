@@ -2,6 +2,9 @@ import { describe, it, expect } from 'vitest'
 import { createReviewMockCharacter, getMockCharacters } from '../mockData'
 import { ABILITY_TAGS } from '@site/src/types/AbilityTag'
 import { ACTION_TYPES } from '@site/src/types/ActionType'
+import talentData from '@site/src/utils/data/json/talents.json'
+import combatArtData from '@site/src/utils/data/json/combat-arts.json'
+import folkData from '@site/src/utils/data/json/folk.json'
 
 /**
  * The review fixture covers what it claims to (M13 S8c).
@@ -180,5 +183,106 @@ describe('the review character', () => {
 		const ids = all.map((character) => character.docId)
 		expect(ids).toContain('mock-character-review')
 		expect(new Set(ids).size).toBe(ids.length)
+	})
+})
+
+/**
+ * The fixture's abilities have to be REAL CONTENT (M20).
+ *
+ * Everything above asserts SHAPE — the categories, the counts, the action types.
+ * All of it stayed green while the thirty abilities were invented one-liners,
+ * which is how three faults survived: talents summarised to one sentence (so a
+ * deck printing the real rank ladder looked like it was losing text), three
+ * combat arts carrying action types no combat art can have, and a
+ * `personal.folk` of `Akashic` — not a folk, not a culture, and in no document
+ * under `docs/`.
+ *
+ * Shape is not enough for a fixture whose job is to show the real thing. These
+ * assert the CONTENT.
+ */
+describe('the review character is built from the catalogues', () => {
+	const talents = new Map(
+		(
+			talentData as {
+				name: string
+				'skill requirement': string
+				description: string
+			}[]
+		).map((talent) => [talent.name, talent]),
+	)
+	const arts = new Map(
+		(combatArtData as { name: string; effect: string }[]).map((art) => [
+			art.name,
+			art,
+		]),
+	)
+	const folk = (
+		folkData as {
+			name: string
+			abilities: { name: string; description: string }[]
+		}[]
+	).find((entry) => entry.name === review.personal.folk)
+
+	it('names a folk that exists', () => {
+		expect(
+			folk,
+			`personal.folk "${review.personal.folk}" is not in folk.json`,
+		).toBeDefined()
+	})
+
+	it('copies every talent verbatim, ladder and skill requirement included', () => {
+		const rows = abilities.filter((ability) => ability.tag === 'Talent')
+		expect(rows.length).toBeGreaterThan(0)
+		rows.forEach((ability) => {
+			const talent = talents.get(ability.title)
+			expect(talent, `"${ability.title}" is not in talents.json`).toBeDefined()
+			// The WHOLE ladder, because that is what `buildTalentFields` copies onto
+			// a real character (M20 F3).
+			expect(ability.description, ability.title).toBe(talent!.description)
+			// One talent drops its skill on purpose, for the unassigned case. Any
+			// other must carry the catalogue's own requirement.
+			if (ability.skill) {
+				expect(ability.skill, ability.title).toBe(talent!['skill requirement'])
+			}
+		})
+	})
+
+	it('copies every combat art verbatim, and every one of them is an Action', () => {
+		const rows = abilities.filter((ability) => ability.tag === 'Combat Art')
+		expect(rows.length).toBeGreaterThan(0)
+		rows.forEach((ability) => {
+			const art = arts.get(ability.title)
+			expect(art, `"${ability.title}" is not in combat-arts.json`).toBeDefined()
+			expect(ability.description, ability.title).toBe(art!.effect)
+			// Every art in the corpus is a rider on an attack, so no combat art can
+			// be Passive, Free or Triggered however convenient that is for coverage.
+			expect(ability.actionType, ability.title).toBe('Action')
+		})
+	})
+
+	it("copies the folk's own abilities verbatim", () => {
+		const rows = abilities.filter((ability) => ability.tag === 'Folk')
+		expect(rows.length).toBeGreaterThan(0)
+		rows.forEach((ability) => {
+			const source = folk!.abilities.find(
+				(entry) => entry.name === ability.title,
+			)
+			expect(
+				source,
+				`"${ability.title}" is not an ability of ${folk!.name}`,
+			).toBeDefined()
+			expect(ability.description, ability.title).toBe(source!.description)
+		})
+	})
+
+	it('leaves only Other hand-written, which has no catalogue and never will', () => {
+		// M20 F2: the sheet's free-text bucket. Nothing generates it, so nothing
+		// can be checked against — that is what the bucket IS, not a gap.
+		const rows = abilities.filter((ability) => ability.tag === 'Other')
+		expect(rows.length).toBeGreaterThan(0)
+		rows.forEach((ability) => {
+			expect(talents.has(ability.title)).toBe(false)
+			expect(arts.has(ability.title)).toBe(false)
+		})
 	})
 })

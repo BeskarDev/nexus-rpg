@@ -102,6 +102,10 @@ export const PAGE_SIGIL: Record<string, SigilName> = {
 	// table and a sheet of spell cards are both about spells, and on the GM Tools
 	// contents page they now sit six rows apart in one list (M14 S5).
 	'gm-tools/printing/spells': 'rune',
+	// The sprig is the talents chapter's mark, and a talent is what most of this
+	// deck is — the artefact rule above still holds, since the deck's subject is
+	// the talent ladder rather than a chapter of rules about it.
+	'gm-tools/printing/abilities': 'sprig',
 	'gm-tools/printing/magic-items': 'gem',
 	'gm-tools/printing/print-character-sheet': 'tablet',
 	'gm-tools/printing/creature-cards': 'skull',

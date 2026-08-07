@@ -101,8 +101,14 @@
 	font-size: var(--nexus-text-base);
 }
 /* Grid items are placed, never fragmented, so none of the monolithic
-   scaffolding above applies here. */
-.grid > * {
+   scaffolding above applies here.
+
+   `:not(style, script, link)` is not defensive tidying: a `<style>` element in
+   the flow inherits `display: block` from this rule, which beats the user
+   agent's `display: none`, and the print tools' `@page` rule printed itself on
+   the page as literal text (owner, 2026-08-07). Anything the browser is
+   supposed to keep invisible must stay invisible. */
+.grid > *:not(style, script, link) {
 	display: block;
 	width: auto;
 }

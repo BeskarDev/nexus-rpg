@@ -138,7 +138,7 @@
 			},
 			{
 				"name": "Small Stature",
-				"description": "You are of small size. This grants you the following effects:"
+				"description": "You are of small size. This grants you the following effects:\n\n- You gain +1 boon on Agility rolls to hide or move stealthily.\n- You can only wield versatile weapons two-handed and don't add a bonus to weapon damage from it.\n- Increase the Strength requirement for heavy weapons you wield by +1d (max. d12)."
 			}
 		],
 		"languages": ["Gnomish"]
@@ -178,7 +178,7 @@
 		"abilities": [
 			{
 				"name": "Giant's Blood",
-				"description": "+2 HP. You also gain the following effects:"
+				"description": "+2 HP. You also gain the following effects:\n\n- Add +2 to your carrying capacity.\n- Decrease the Strength requirement for heavy weapons you wield by -1d (min. d4)."
 			},
 			{
 				"name": "Stoic Mind",
@@ -259,7 +259,7 @@
 			},
 			{
 				"name": "Small Stature",
-				"description": "You are of small size. This grants you the following effects:"
+				"description": "You are of small size. This grants you the following effects:\n\n- You gain +1 boon on Agility rolls to hide or move stealthily.\n- You can only wield versatile weapons two-handed and don't add a bonus to weapon damage from it.\n- Increase the Strength requirement for heavy weapons you wield by +1d (max. d12)."
 			}
 		],
 		"languages": ["Goblin"]
@@ -419,7 +419,7 @@
 		"abilities": [
 			{
 				"name": "Giant's Blood",
-				"description": "+2 HP. You also gain the following effects:"
+				"description": "+2 HP. You also gain the following effects:\n\n- Add +2 to your carrying capacity.\n- Decrease the Strength requirement for heavy weapons you wield by -1d (min. d4)."
 			},
 			{
 				"name": "Horns",
@@ -462,11 +462,11 @@
 		"abilities": [
 			{
 				"name": "Keen Senses",
-				"description": "You have an extraordinary sense of smell and hearing. You gain +1 boon on Spirit + Perception rolls. You can detect the presence and general direction of living creatures within close range by scent alone, even if you can't see them, as long as air can reach you from their location."
+				"description": "You have an extraordinary sense of smell and hearing. You gain +1 boon Perception rolls based on smell. You can detect the presence and general direction of creatures within close range by scent alone, even if you can't see them, as long as air can reach you from their location. Weather or other environmental factors may hinder this ability."
 			},
 			{
 				"name": "Pack Loyalty",
-				"description": "When an ally within close range is hit by an attack, you can use your Quick Action to move close towards them unprovoked. You can use this ability once between turns."
+				"description": "While you are close to an ally, you can choose to gain +1 boon on a melee attack and that ally also briefly gains +1 boon on their next melee attack against the same target. You can use this ability once per scene."
 			},
 			{
 				"name": "Bite",

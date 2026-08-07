@@ -13,3 +13,11 @@ export {
 	SHEET_PAGE_MARGIN,
 } from './PrintPages'
 export type { Millimetres } from './PrintPages'
+export {
+	deckDocumentTitle,
+	sheetDocumentTitle,
+	slug,
+	isoDate,
+} from './printDocumentTitle'
+export type { DeckTitleOptions } from './printDocumentTitle'
+export { usePagePrintStyle } from './usePagePrintStyle'

@@ -806,6 +806,30 @@ export const createOutdatedMockCharacter = (): CharacterDocument => {
  * ability categories, all six action types, talent ranks 1 to 5, skills that are
  * and are not trained, and a Quick Ref spanning all four kinds it can hold.
  *
+ * ## Its abilities are REAL CONTENT (M20)
+ *
+ * Every Combat Art, Talent and Folk ability is the catalogue's own entry, copied
+ * verbatim from `combat-arts.json`, `talents.json` and `folk.json` — name, rules
+ * text and, for a talent, the whole rank ladder, which is exactly what
+ * `buildTalentFields` puts on a real character.
+ *
+ * They were thirty invented one-liners, and a fixture that invents its content
+ * cannot test the thing it exists to test. Three consequences, all found at
+ * once: the talents' one-line summaries made the new ability deck and the
+ * sheet's own description field look like they were LOSING text; three combat
+ * arts claimed `Passive`, `Free` and `Triggered`, which no combat art in the
+ * corpus can be, since every one of them is a rider on an attack; and
+ * `personal.folk` was `Akashic` — not a folk, not a culture, and in no document
+ * under `docs/` — so the folk block could never be checked against anything.
+ *
+ * `Other` stays hand-written, and that is not an oversight: it is the sheet's
+ * free-text bucket for a patron's boon or a GM ruling, it has no catalogue, and
+ * it never will (M20 F2).
+ *
+ * The folk is the Gnome, chosen rather than defaulted: `Small Stature` is the
+ * one folk ability carrying a BULLET LIST, so the fixture exercises the encoding
+ * that broke when `folk.json`'s truncations were repaired.
+ *
  * ## It also has to fill the PRINTED sheet (M17)
  *
  * The printed sheet is four A5 pages with hard limits, and every one of those
@@ -849,99 +873,281 @@ export const createReviewMockCharacter = (): CharacterDocument => {
 	*/
 	const ids = {
 		cleave: generateId(),
-		riposte: generateId(),
-		surge: generateId(),
-		lore: generateId(),
-		darkvision: generateId(),
-		stoneblood: generateId(),
-		contact: generateId(),
-		heirloom: generateId(),
+		manaShield: generateId(),
+		spellblade: generateId(),
+		shadowSlip: generateId(),
+		scentOfIllusions: generateId(),
+		guildContact: generateId(),
+		heirloomSeal: generateId(),
 	}
 
 	const abilities: Character['skills']['abilities'] = [
-		// Combat Arts — the section that had one row.
+		/*
+			COMBAT ARTS — ten from `combat-arts.json`, verbatim (M20).
+
+			They were invented rules text until now, and three of them claimed action
+			types a combat art cannot have. Every art in the corpus is a rider on an
+			attack, so every one of these is an `Action`; the other five action types
+			come from the talents and the folk below, where they are true.
+
+			Chosen against the weapons Everith actually carries — a two-handed staff,
+			a shortsword, a dagger, a bow and a sling — so the sheet reads as one
+			character rather than as a list of unrelated rows.
+		*/
 		{
 			id: ids.cleave,
-			title: 'Cleaving Blow',
+			title: 'Cleave',
 			description:
-				'Spend a boon on a melee hit to strike a second adjacent creature for half damage.',
+				"Your attack with a two-handed melee weapon hits up to 2 additional creatures in your weapon's reach. On a hit, subtract your weapon damage once from the total damage you deal against each target.",
 			tag: 'Combat Art',
 			actionType: 'Action',
 		},
 		{
-			id: ids.riposte,
-			title: 'Riposte',
+			id: generateId(),
+			title: 'Feint',
 			description:
-				'When a melee attack against you misses, you may immediately attack that creature.',
+				'If you don’t move during your turn, you gain +1 boon on the attack with a non-heavy melee weapon.',
 			tag: 'Combat Art',
-			actionType: 'Triggered',
+			actionType: 'Action',
 		},
 		{
 			id: generateId(),
-			title: 'Measured Guard',
-			description: 'While you have not moved this turn, gain +1 Parry.',
+			title: 'Precise Strike',
+			description:
+				'You suffer +1 bane on the attack with a pierce melee weapon.<br/><strong>Weak.</strong> Ignore 1/2 AV (rounded up).<br/><strong>Strong. </strong>Ignore 1/2 AV (rounded up) and add 1/4 x Agility to damage.<br/><strong>Critical.</strong> Ignore 1/2 AV (rounded up) and add 1/2 x Agility to damage.',
 			tag: 'Combat Art',
-			actionType: 'Passive',
-		},
-		// Talents — ranks 1 to 5, and one with no skill so the unassigned case shows.
-		{
-			id: ids.surge,
-			title: 'Adrenaline Surge',
-			description:
-				'While you have taken damage since your last turn, gain a boon on your next Strength roll.',
-			tag: 'Talent',
-			actionType: 'Quick Action',
-			rank: 1,
-			skill: 'Fortitude',
+			actionType: 'Action',
 		},
 		{
-			id: ids.lore,
-			title: 'Ancient Knowledge',
+			id: generateId(),
+			title: 'Quick Lunge',
 			description:
-				'Gain +2 boons when recalling information about historical events or civilizations.',
-			tag: 'Talent',
-			actionType: 'Passive',
-			rank: 3,
-			skill: 'Lore',
+				'Your attack with a pierce melee weapon targets the enemy’s Dodge instead of Parry. They can’t use a Quick Action in response to this attack.',
+			tag: 'Combat Art',
+			actionType: 'Action',
 		},
+		{
+			id: generateId(),
+			title: 'Aimed Shot',
+			description:
+				'If you don’t move during your turn, you gain +1 boon on the attack.',
+			tag: 'Combat Art',
+			actionType: 'Action',
+		},
+		{
+			id: generateId(),
+			title: 'Barrage',
+			description:
+				'You can roll another attack with a non-heavy ranged weapon, but suffer +1 bane on it.',
+			tag: 'Combat Art',
+			actionType: 'Action',
+		},
+		{
+			id: generateId(),
+			title: 'Volley',
+			description:
+				"Your attack with a non-heavy ranged weapon hits up to 2 additional creatures in your weapon's reach. On a hit, subtract your weapon damage once from the total damage you deal against each target.",
+			tag: 'Combat Art',
+			actionType: 'Action',
+		},
+		{
+			id: generateId(),
+			title: 'Pinning Shot',
+			description:
+				'<strong>Weak.</strong> The target’s Movement briefly becomes 0.<br/><strong>Strong.</strong> The target is briefly restrained.<br/><strong>Critical.</strong> The target is restrained for a short duration. They can roll Strength + Athletics at the end of their turns to regain their Movement.',
+			tag: 'Combat Art',
+			actionType: 'Action',
+		},
+		{
+			id: generateId(),
+			title: 'Precise Shot',
+			description:
+				'You suffer +1 bane on the attack with a ranged weapon.<br/><strong>Weak.</strong> Ignore 1/2 AV (rounded up).<br/><strong>Strong. </strong>Ignore 1/2 AV (rounded up) and add 1/4 x Agility to damage.<br/><strong>Critical.</strong> Ignore 1/2 AV (rounded up) and add 1/2 x Agility to damage.',
+			tag: 'Combat Art',
+			actionType: 'Action',
+		},
+		{
+			id: generateId(),
+			title: 'Disarming Shot',
+			description:
+				'Immediately after this attack, use the Disarm action against the same target. You can only choose a one-handed item the target holds, that isn’t a shield. Roll Strength/Agility + Archery for the disarm instead. For a non-light item, you suffer +1 bane on your roll.',
+			tag: 'Combat Art',
+			actionType: 'Action',
+		},
+		/*
+			TALENTS — twelve from `talents.json`, with the WHOLE rank ladder in the
+			description, because that is exactly what `buildTalentFields` copies onto a
+			real character (M20 F3). A one-line summary here made the ability deck and
+			the sheet's description field both look like they were losing text.
+
+			Ranks 1 to 5 are all present, and every `skill` is the talent's own
+			`skill requirement` — except the last one, which drops it on purpose.
+		*/
 		{
 			id: generateId(),
 			title: 'Arcane Spell Knowledge',
 			description:
-				'You can take higher ranks for this talent without having taken its lower ranks provided your Arcana also has the required rank.',
+				'You can take higher ranks for this talent without having taken its lower ranks provided your Arcana also has the required rank.<br/><br/><strong>(Rank 1)</strong> +2 Focus. Learn two rank 0 or 1 spells for any of your disciplines, or adopt a new discipline and learn one new rank 0 spell for it. You can choose this Talent multiple times.<br/><br/><strong>(Rank 2) </strong>+2 Focus.<strong> </strong>Learn two rank 2 or lower spells for any of your disciplines. You can choose this Talent multiple times.<br/><br/><strong>(Rank 3)</strong> +2 Focus.<strong> </strong>Learn two rank 3 or lower spells for any of your disciplines. You can choose this Talent multiple times.<br/><br/><strong>(Rank 4) </strong>+2 Focus. Learn two rank 4 or lower spells for any of your disciplines. You can choose this Talent multiple times.<br/><br/><strong>(Rank 5) </strong>+2 Focus. Learn two rank 5 or lower spells for any of your disciplines. You can choose this Talent multiple times.',
 			tag: 'Talent',
 			actionType: 'Passive',
 			rank: 5,
 			skill: 'Arcana',
 		},
 		{
-			id: generateId(),
-			title: 'Unfiled Knack',
+			id: ids.manaShield,
+			title: 'Mana Shield',
 			description:
-				'A talent with no skill assigned, so the unassigned case and the talent-point warning both have something to report.',
+				'<strong>(Rank 1)</strong> When you successfully cast an arcane spell of rank 1 or higher, a barrier of arcane force forms around you. Whenever you take damage, the barrier absorbs it instead, up to a total of twice the cast spell’s rank. Once it has absorbed that much damage, it fades. Forming a new barrier replaces the old one only if the new barrier’s absorption is higher. The barrier also fades after a short break.<br/><br/><strong>(Rank 2)</strong> When you successfully cast an arcane spell of rank 1 or higher while your barrier holds, you can choose to increase the barrier’s remaining absorption by the spell’s rank instead of forming a new barrier.<br/><br/><strong>(Rank 3)</strong> Once per scene, when you take damage while your barrier holds, you can choose to have the barrier absorb all of that damage. The barrier then fades.',
+			tag: 'Talent',
+			actionType: 'Triggered',
+			rank: 3,
+			skill: 'Arcana',
+		},
+		{
+			id: ids.spellblade,
+			title: 'Spellblade',
+			description:
+				"<strong>(Rank 1)</strong> By spending your Quick Action and 2 additional Focus on top of the spell's normal casting cost, you can cast any of your arcane rank 0 spells that target a single creature vs. one of their Defenses as a strike spell. Casting the spell still uses your Action as normal. The spell gains the strike property and its range becomes that of the weapon used.<br/><br/><strong>(Rank 2)</strong> You can also cast your arcane rank 1 spells this way. Once per scene, when the attack of one of your strike spells fails, you can reroll the attack.<br/><br/><strong>(Rank 3)</strong> You can also cast your arcane rank 2 spells this way. Your strike spells cost -2 Focus (min. 0).",
+			tag: 'Talent',
+			actionType: 'Quick Action',
+			rank: 1,
+			skill: 'Arcana',
+		},
+		{
+			id: generateId(),
+			title: 'Spellbreaker',
+			description:
+				"<strong>(Rank 1)</strong> When a spell or another magical effect rolls against your Resist, you can use your Quick Action and spend 2 Focus to raise counter-sigils, gaining +2 Resist against that roll. You can spend another 2 Focus for the same effect against further magical effects until your next turn without using another Quick Action.<br/><br/><strong>(Rank 2)</strong> When a creature you can see within medium range casts a spell, you can use your Quick Action and spend 2 Focus to disrupt their casting. They suffer +1 bane on the roll to cast it.<br/><br/><strong>(Rank 3)</strong> Once per scene, when you disrupt a creature's casting, you can attempt to break the spell entirely instead of only hindering it. Roll Mind + Arcana vs. the caster's Resist plus the spell's rank. On a success, the spell fails and has no effect.",
+			tag: 'Talent',
+			actionType: 'Triggered',
+			rank: 2,
+			skill: 'Arcana',
+		},
+		{
+			id: generateId(),
+			title: 'Magical Sense',
+			description:
+				"<strong>(Rank 1)</strong> Your senses are attuned to the presence of magic. As a Quick Action, you can roll Spirit + Lore to detect whether any magical effects (traps, wards, lingering magic, …), creatures (spellcasters, magical beasts, extraplanar creatures, …), or items are present within your close range. On a success, you sense the rough position, presence (faint, moderate, strong, overwhelming) and general type (arcane or mystical) of each source of magic that is not hidden behind solid walls or other obstructions.<br/>This ability lasts briefly or for a short duration if you use your Spell Concentration on it.<br/><br/><strong>(Rank 2) </strong>You gain the following abilities:<br/>- Your Magical Sense ability extends to short range.<br/>- When you use your Magical Sense ability, you can attempt to focus your senses on one creature in range with a magical presence. Roll Spirit + Lore vs. their Resist. On a success, pick once for each SL (one for weak, two for strong, three for critical): Magical Ability, Resistance, Weakness, Immunity (you can choose the same type multiple times). If you chose something the target doesn’t have, choose again. You learn about one property of the chosen type for each pick (GM’s choice).<br/>You can use this ability once per individual creature.<br/><br/><strong>(Rank 3)</strong> You gain the following abilities:<br/>- Your Magical Sense ability extends to medium range.<br/>- While you use your Magical Sense ability, you gain +1 Resist and +1 boon on any Spirit rolls that target one or more of the magical sources.<br/><br/><strong>(Rank 4)</strong> You gain the following abilities:<br/>- Your Magical Sense ability extends to long range.<br/>- When you sense sources of magic, you also learn each source's specific discipline or tradition, and whether its power is of rank 1 or lower, rank 2 to 3, or rank 4 or higher.<br/>- Your Magical Sense ability lasts for a short duration without using your Spell Concentration on it.",
+			tag: 'Talent',
+			actionType: 'Quick Action',
+			rank: 4,
+			skill: 'Lore',
+		},
+		{
+			id: generateId(),
+			title: 'Methodical Research',
+			description:
+				"<strong>(Rank 1)</strong> You keep a body of ongoing Research, a pool of points up to a maximum equal to your Education. You gain Research in two ways:<br/>- During downtime, when you undertake the Research activity, you gain 1 Research on a weak success, 2 on a strong success, or 3 on a critical success, on top of the information you learn.<br/>- During an adventure, you can spend one use of a Bundle of Scrolls to gain 1 Research.<br/>Spending Research requires no action, but you can only spend Research once between your turns. You can spend 1 Research when you or an ally within short range makes an Education, Lore, or Nature roll to grant +1 boon on it.<br/><br/><strong>(Rank 2)</strong> You gain the following ways to spend Research:<br/>- Spend 1 Research to put your knowledge to work on a device or obstacle. You or an ally within short range gains +1 boon on a roll to disarm, pick, operate, or bypass a trap, lock, ward, or mechanism.<br/>- Spend 1 Research when you or an ally within short range fails an Education or Lore roll to recall or research something. They still uncover a minor but useful clue, the GM's choice: a partial fact, a pointer to another source, or a dead end now known to avoid.<br/><br/><strong>(Rank 3)</strong> You gain the following abilities:<br/>- When you gain Research from the downtime Research activity, you gain 1 additional Research, even on a failure.<br/>- Spend 2 Research when you or an ally within short range faces a creature, hazard, mechanism, or phenomenon. They gain +1 boon on their next roll to overcome or exploit it, and the GM tells you one of the following about it, your choice: a weakness to exploit (such as a damage type it is vulnerable to), a danger to expect (such as an attack it favors or what triggers it), or a way to handle it (such as how to disable, bypass, or calm it).",
+			tag: 'Talent',
+			actionType: 'Passive',
+			rank: 3,
+			skill: 'Education',
+		},
+		{
+			id: generateId(),
+			title: 'Empath',
+			description:
+				'<strong>(Rank 1)</strong> When you roll Insight about the emotional state, personality, or life circumstances of another intelligent creature, you can re-roll the test once per scene.<br/><br/><strong>(Rank 2)</strong> You can use your Quick Action during your turn to roll Spirit + Insight vs. Resist against a creature you can see.<br/>On a success, you use your insights into the creature’s emotional state, personality, or life circumstances to predict their behaviour. You briefly gain +1 boon on any rolls targeting them and they suffer +1 bane on any roll targeting you. On a success, you can also roll for this ability again on your following turns without using your Quick Action. On a failure, the target is immune against this ability for the rest of the scene.<br/><br/><strong>(Rank 3)</strong> When you roll Insight about the emotional state, personality, or life circumstances of another intelligent creature, you gain +1 boon on the roll.',
+			tag: 'Talent',
+			actionType: 'Passive',
+			rank: 3,
+			skill: 'Insight',
+		},
+		{
+			id: generateId(),
+			title: 'Sense of Deduction',
+			description:
+				'<strong>(Rank 1) </strong>When you roll Insight to investigate a chain of events, the responsible entity of an event, the time an event took place, or who might know more about an event, you can re-roll the test once per scene.<br/><br/><strong>(Rank 2) </strong>While investigating a chain of events, the responsible entity of an event, the time an event took place, or who might know more about an event, you can choose to make an assessment about that topic. The GM will tell you if your assessment is generally true or false without any more nuance. You can use this ability once per scene.<br/><br/><strong>(Rank 3)</strong> When you use your Sense of Deduction ability to make an assessment, you can re-use this ability multiple times per scene until you make a false assessment.',
+			tag: 'Talent',
+			actionType: 'Passive',
+			rank: 2,
+			skill: 'Insight',
+		},
+		{
+			id: generateId(),
+			title: 'Keen Observer',
+			description:
+				'<strong>(Rank 1)</strong> When you roll Perception to investigate a scene, track a trail, or keep watch for danger, you can re-roll the test once per scene.<br/><br/><strong>(Rank 2)</strong> Once per challenge, when you succeed on a Perception roll during the challenge, you read the situation and the GM points out one of the following, your choice:<br/>- an obstacle ahead (ignore the consequence of your next failure)<br/>- an opening to press (+1 boon on your next roll toward the challenge)<br/>- a misstep to catch (remove one pending consequence from an earlier failure)<br/><br/><strong>(Rank 3)</strong> When you achieve a critical success on a Perception roll during a challenge, choose one: reduce the challenge die by an additional 1, or negate one pending consequence.',
+			tag: 'Talent',
+			actionType: 'Passive',
+			rank: 2,
+			skill: 'Perception',
+		},
+		{
+			id: generateId(),
+			title: 'Adrenaline Surge',
+			description:
+				'<strong>(Rank 1) </strong>While you have taken damage or spent HP since the end of your last turn, you are surged. When you become surged, you gain +1 boon on the next attack roll or Strength roll you make while surged.<br/><br/><strong>(Rank 2)</strong> While surged, you also gain the following effects:<br/>- When you hit with the attack you spend your surge boon on, it deals +2 damage (situational bonus).<br/>- At the start of your turn, you can end the dazed, weakened, or frightened condition on yourself.<br/><br/><strong>(Rank 3)</strong> You gain the following abilities:<br/>- The damage bonus on your surge boon attack increases to +4.<br/>- Once per scene, when an enemy within your melee range damages you, you can use your Quick Action to immediately make one melee attack against them.',
+			tag: 'Talent',
+			actionType: 'Passive',
+			rank: 1,
+			skill: 'Fortitude',
+		},
+		{
+			id: ids.shadowSlip,
+			title: 'Shadow Slip',
+			description:
+				'<strong>(Rank 1)</strong> While you wear no heavy armor, once per scene, when a creature you can see makes a melee attack against you, you can use your Quick Action to slip aside at the last moment. You gain +2 to the targeted Defense against that attack (situational bonus).<br/><br/><strong>(Rank 2)</strong> When an attack affected by your Shadow Slip ability misses you, you can spend 1 unprovoked Movement.<br/><br/><strong>(Rank 3)</strong> When an attack affected by your Shadow Slip ability misses you, and there is cover, concealment, or darkness within short distance for you to slip into, the attacker loses track of you for just that moment. You can immediately take the Hide action against them as a free action.',
+			tag: 'Talent',
+			actionType: 'Free',
+			rank: 1,
+			skill: 'Stealth',
+		},
+		// The unassigned case: a real talent with its skill deliberately left off,
+		// so the sheet's "no skill" branch and the talent-point warning both have
+		// something to report.
+		{
+			id: generateId(),
+			title: 'General Education',
+			description:
+				'<strong>(Rank 1) </strong>Once per scene, when you roll for an expert skill you haven’t learned using Mind, you don’t suffer the +1 bane for it being an untrained skill for you.<br/><br/><strong>(Rank 2)</strong> You gain the following abilities:<br/>- You no longer suffer the +1 bane for rolling untrained expert skills using Mind.<br/>- Once per scene, when you roll for any expert skill using Mind, you can choose to add your Education instead of the other expert skill.<br/><br/><strong>(Rank 3)</strong> When you roll Mind + Education, you gain +1 boon on the roll.',
 			tag: 'Talent',
 			actionType: 'Other',
 			rank: 2,
 		},
-		// Folk — a section that never rendered at all.
+		/*
+			FOLK — the Gnome's three abilities from `folk.json`, verbatim, and
+			`personal.folk` says Gnome to match (M20).
+
+			It used to say `Akashic`, which is not a folk, not a culture, and appears
+			nowhere in `docs/` — so the folk block could never be checked against
+			anything. The Gnome earns the slot: `Small Stature` is the one folk ability
+			that carries a BULLET LIST, which is the encoding that broke when the
+			truncations in `folk.json` were repaired, so the review character now
+			exercises it on both the sheet and the printed card.
+		*/
 		{
-			id: ids.darkvision,
-			title: 'Darkvision',
-			description: 'You see in dim light as though it were bright light.',
+			id: generateId(),
+			title: 'Natural Empath',
+			description:
+				'You can read the surface thoughts and emotions of any close creature by rolling Spirit + Insight. You can also project your feelings to a creature close to you, allowing you to communicate simple ideas with animals and other creatures. You also intuitively know how many living creatures are close to you and their general direction.',
+			tag: 'Folk',
+			actionType: 'Action',
+		},
+		{
+			id: ids.scentOfIllusions,
+			title: 'Scent of Illusions',
+			description:
+				'You can instinctively make out illusions and invisible things. You gain +1 boon on Spirit rolls to identify magical falsehoods and illusions and impose +1 bane on rolls to fool you with falsehoods or illusions.',
 			tag: 'Folk',
 			actionType: 'Passive',
 		},
 		{
-			id: ids.stoneblood,
-			title: 'Stoneblood',
+			id: generateId(),
+			title: 'Small Stature',
 			description:
-				'Once per rest, reduce the damage of one physical attack by 3.',
+				"You are of small size. This grants you the following effects:\n\n- You gain +1 boon on Agility rolls to hide or move stealthily.\n- You can only wield versatile weapons two-handed and don't add a bonus to weapon damage from it.\n- Increase the Strength requirement for heavy weapons you wield by +1d (max. d12).",
 			tag: 'Folk',
-			actionType: 'Free',
+			actionType: 'Passive',
 		},
-		// Other — likewise.
+		/*
+			OTHER — the only group with no catalogue and never will have one: it is
+			the sheet's free-text bucket for a patron's boon, a curse or a GM ruling
+			(M20 F2). So these stay hand-written, and they are the ONLY hand-written
+			abilities left on this character.
+		*/
 		{
-			id: ids.contact,
+			id: ids.guildContact,
 			title: 'Guild Contact',
 			description:
 				'You know someone in most cities who will trade information for a favour.',
@@ -949,161 +1155,18 @@ export const createReviewMockCharacter = (): CharacterDocument => {
 			actionType: 'Other',
 		},
 		{
-			id: ids.heirloom,
+			id: ids.heirloomSeal,
 			title: 'Heirloom Seal',
 			description:
-				'Presenting the seal to an Akashic official grants one boon on the first Influence roll.',
+				'Presenting the seal to a Ghahar magistrate grants one boon on the first Influence roll of an audience.',
 			tag: 'Other',
 			actionType: 'Free',
 		},
-		/*
-			Everything below is BULK (M17). The twelve above cover the categories,
-			action types and talent ranks the screen sheet is reviewed for; these
-			take the count to thirty, which is what the printed sheet's two-column
-			ability block has to survive. Without them the block printed a third
-			full and the layout was never actually tested.
-
-			They are still real abilities rather than "Ability 13" — a column of
-			numbered placeholders tells you nothing about how names of a realistic
-			length set, which is the only thing this block's layout depends on.
-		*/
 		{
 			id: generateId(),
-			title: 'Shield Wall',
+			title: 'Sefkari Caravan Passage',
 			description:
-				'While adjacent to an ally with a shield, both gain +1 Parry.',
-			tag: 'Combat Art',
-			actionType: 'Passive',
-		},
-		{
-			id: generateId(),
-			title: 'Whirling Guard',
-			description: 'Attack every adjacent creature at one bane.',
-			tag: 'Combat Art',
-			actionType: 'Action',
-		},
-		{
-			id: generateId(),
-			title: 'Second Wind',
-			description: 'Once per rest, recover HP equal to your Strength die.',
-			tag: 'Combat Art',
-			actionType: 'Quick Action',
-		},
-		{
-			id: generateId(),
-			title: 'Disarming Strike',
-			description:
-				'On a strong hit, the target drops one held item of your choice.',
-			tag: 'Combat Art',
-			actionType: 'Action',
-		},
-		{
-			id: generateId(),
-			title: 'Braced Stance',
-			description:
-				'While you have not moved this turn, ignore the first push effect against you.',
-			tag: 'Combat Art',
-			actionType: 'Free',
-		},
-		{
-			id: generateId(),
-			title: 'Opening Feint',
-			description:
-				'When you win initiative, one ally gains a boon on their first attack.',
-			tag: 'Combat Art',
-			actionType: 'Triggered',
-		},
-		{
-			id: generateId(),
-			title: 'Careful Hands',
-			description: 'Gain a boon on Crafting rolls made with proper tools.',
-			tag: 'Talent',
-			actionType: 'Passive',
-			rank: 1,
-			skill: 'Crafting',
-		},
-		{
-			id: generateId(),
-			title: 'Field Surgeon',
-			description: 'Treat a wound outside a rest once per scene.',
-			tag: 'Talent',
-			actionType: 'Action',
-			rank: 2,
-			skill: 'Education',
-		},
-		{
-			id: generateId(),
-			title: 'Sure Footing',
-			description: 'Ignore difficult terrain caused by loose ground.',
-			tag: 'Talent',
-			actionType: 'Passive',
-			rank: 1,
-			skill: 'Athletics',
-		},
-		{
-			id: generateId(),
-			title: 'Read the Room',
-			description:
-				'Once per scene, ask the GM one question about a creature you can see.',
-			tag: 'Talent',
-			actionType: 'Quick Action',
-			rank: 2,
-			skill: 'Insight',
-		},
-		{
-			id: generateId(),
-			title: "Scribe's Memory",
-			description:
-				'Recall the contents of any text you have read this session.',
-			tag: 'Talent',
-			actionType: 'Free',
-			rank: 3,
-			skill: 'Lore',
-		},
-		{
-			id: generateId(),
-			title: 'Iron Stomach',
-			description: 'Gain a boon on Fortitude rolls against ingested poison.',
-			tag: 'Talent',
-			actionType: 'Passive',
-			rank: 1,
-			skill: 'Fortitude',
-		},
-		{
-			id: generateId(),
-			title: 'Ley Sense',
-			description: 'Sense the nearest active ley line within a mile.',
-			tag: 'Talent',
-			actionType: 'Action',
-			rank: 4,
-			skill: 'Arcana',
-		},
-		{
-			id: generateId(),
-			title: 'Nightsight',
-			description: 'You take no bane for dim light on Perception rolls.',
-			tag: 'Folk',
-			actionType: 'Passive',
-		},
-		{
-			id: generateId(),
-			title: 'Desert Born',
-			description: 'You need half as much water as others do.',
-			tag: 'Folk',
-			actionType: 'Passive',
-		},
-		{
-			id: generateId(),
-			title: 'Ancestral Tongue',
-			description: 'You can read the older Akashic script without a roll.',
-			tag: 'Folk',
-			actionType: 'Free',
-		},
-		{
-			id: generateId(),
-			title: 'Caravan Passage',
-			description:
-				'Any Akashic caravan will carry you a day’s travel without payment.',
+				'Any Sefkari caravan will carry you a day of travel without payment.',
 			tag: 'Other',
 			actionType: 'Other',
 		},
@@ -1117,9 +1180,9 @@ export const createReviewMockCharacter = (): CharacterDocument => {
 		},
 		{
 			id: generateId(),
-			title: 'Archivist’s Standing',
+			title: 'Open Shelves',
 			description:
-				'Any Akashic archive will admit you to its open shelves without a writ.',
+				'The archive of your old academy admits you to its open shelves without a writ.',
 			tag: 'Other',
 			actionType: 'Other',
 		},
@@ -1275,6 +1338,191 @@ export const createReviewMockCharacter = (): CharacterDocument => {
 		durability: 'd6' as const,
 	}))
 
+	/*
+		THE STASH — one card of every shape (M19 S4).
+
+		Everith exists to exercise the printed SHEET at its limits; this block
+		exercises the printed CARDS, which are a different artifact with different
+		edge cases. Both live on one character so a reviewer picks a name rather
+		than assembling a fixture.
+
+		Deliberately at `location: 'storage'`. The sheet's equipment page reads
+		`worn` and `carried` only, so a stash is invisible to it — which is what
+		keeps this addition from breaking the page-two claim that Everith carries
+		EXACTLY the 24 items the block holds before it starts reporting overflow.
+		The card tool reads every location, so it sees all of them.
+
+		Between them these cover: every category the inference can reach, quality
+		absent / low / rare, properties none / one / many, rules text from
+		`description` and from `special`, a body long enough to spill to a
+		continuation card, a name long enough to wrap, and — the one that matters —
+		an item whose `uses: 3` is a DAMAGE state that must never print as three
+		charges.
+	*/
+	const stash = (
+		[
+			// [name, properties, description, special, quality, load, cost, uses]
+			[
+				'Scroll of Ember Lash',
+				[],
+				'Casts *Ember Lash* at rank 2 without spending focus. The scroll burns to ash as the spell resolves.',
+				'',
+				3,
+				0,
+				150,
+				0,
+			],
+			[
+				'Wand of Sparks',
+				['4 charges'],
+				'Spend a charge to cast *Mage Light*, or three to cast *Ember Lash* at rank 1.',
+				'',
+				4,
+				0,
+				900,
+				0,
+			],
+			[
+				'Staff of the Reed Marshes',
+				['two-handed', 'arcane catalyst', 'reach'],
+				'While held, water counts as open ground for your movement, and you may cast *Sand Veil* once per rest without spending focus. The staff remembers every marsh it has walked.',
+				'',
+				5,
+				2,
+				2400,
+				0,
+			],
+			[
+				'Bronze Buckler of the Ninth Reed',
+				['+1 AV', 'parrying'],
+				'Once per combat, when an attack would hit you, the buckler turns it aside and you take no damage from it.',
+				'',
+				6,
+				1,
+				3200,
+				0,
+			],
+			[
+				'Barbed Arrows',
+				['piercing'],
+				'',
+				'A hit deals +1 damage and the target bleeds until they spend an action to pull the barb free.',
+				4,
+				0,
+				45,
+				0,
+			],
+			[
+				'Storm Lantern',
+				[],
+				'Never gutters in wind or rain. Its light cannot be seen from more than a short distance away, which is why smugglers pay for them.',
+				'',
+				0,
+				1,
+				400,
+				0,
+			],
+			[
+				'Draught of the Long March',
+				['consumable'],
+				'Drink to ignore one level of fatigue for a medium duration. When it ends, gain one level of fatigue.',
+				'',
+				3,
+				0,
+				120,
+				0,
+			],
+			[
+				'Ingot of Sky Iron',
+				['crafting material'],
+				'Metal fallen from the sky, worked only at a forge hot enough to shame a smith. A weapon forged from it counts as one quality higher against creatures of the dark.',
+				'',
+				6,
+				2,
+				5000,
+				0,
+			],
+			[
+				'The Weeping Crown of Ninsun-Who-Waited',
+				['heirloom', 'attunement', 'cursed'],
+				'While worn, you know the direction of the nearest creature that has wept in the last day, and you may speak with them once across any distance.<br/>The crown weeps with them. You take a bane on all Spirit rolls while it is on your head, and it cannot be removed until the creature you last spoke to is at peace or dead.<br/>Ninsun waited nine years at the gate of a city that had already fallen. The crown has not stopped since.',
+				'',
+				8,
+				1,
+				40000,
+				0,
+			],
+			[
+				'Notched Bronze Khopesh',
+				['slash'],
+				'Taken from a tomb guard and never repaired. It still cuts, and the notches catch.',
+				'',
+				4,
+				2,
+				300,
+				// A DAMAGE state, not charges. The card must print nothing for this,
+				// and there is a unit test named for the trap (M19 F2, D3).
+				3,
+			],
+		] as const
+	).map(
+		([name, properties, description, special, quality, load, cost, uses]) => ({
+			id: generateId(),
+			name,
+			properties: [...properties],
+			description,
+			special,
+			quality: (quality ||
+				undefined) as Character['items']['items'][number]['quality'],
+			load,
+			cost,
+			container: 'backpack' as const,
+			amount: 1,
+			location: 'storage' as const,
+			uses,
+			durability: 'd8' as const,
+		}),
+	)
+
+	/*
+		Two stashed WEAPONS, because a weapon becomes a card by a different path:
+		its properties are one string rather than an array, and its category is
+		never inferred. One carries rules text and one does not, so the tool's
+		candidate rule has a weapon on each side of it.
+	*/
+	const treasureWeapons: Character['items']['weapons'] = [
+		{
+			id: generateId(),
+			name: 'Ashen Khopesh',
+			damage: damage('STR', 4),
+			properties: 'slash, versatile',
+			description:
+				'On a strong hit the blade sheds embers, and the target takes +2 fire damage until the end of their next turn.',
+			cost: 1350,
+			load: 2,
+			location: 'storage' as const,
+			uses: 0,
+			durability: 'd10' as const,
+			quality: 5,
+		},
+		{
+			id: generateId(),
+			// No description: the candidate rule must leave this one out of the deck
+			// until the reviewer asks to see everything (D4, D6).
+			name: 'Spare Bronze Dagger',
+			damage: damage('AGI', 2),
+			properties: 'light, thrown',
+			description: '',
+			cost: 20,
+			load: 1,
+			location: 'storage' as const,
+			uses: 0,
+			durability: 'd6' as const,
+		},
+	]
+
+	const treasureItems: Character['items']['items'] = stash
+
 	// Eleven, over four ranks, some dealing damage and some not — the printed
 	// spell table's Damage column is empty for the latter, which is the case the
 	// M16 rebuild fixed and nothing had covered since.
@@ -1337,8 +1585,13 @@ export const createReviewMockCharacter = (): CharacterDocument => {
 			...base.personal,
 			name: 'Everith Fullsheet',
 			playerName: 'Developer Review',
+			// A real folk, so the Folk abilities below can be `folk.json`'s own and
+			// the ability deck's folk card has something true to be titled from
+			// (M20 F6). It said `Akashic`, which is not a folk, not a culture, and
+			// is in no document in `docs/`.
+			folk: 'Gnome',
 			description:
-				'Built for reviewing the sheet rather than for playing: every ability category, every action type, talent ranks 1 to 5, a populated Quick Ref, and enough of everything to fill all four printed pages to their stated limits.',
+				'Built for reviewing the sheet rather than for playing: every ability category, every action type, talent ranks 1 to 5, a populated Quick Ref, and enough of everything to fill all four printed pages to their stated limits. Its abilities are the real entries from talents.json, combat-arts.json and folk.json.',
 		},
 		/*
 			The three values the printed sheet renders as a STATE rather than as a
@@ -1357,6 +1610,8 @@ export const createReviewMockCharacter = (): CharacterDocument => {
 			...base.skills,
 			xp: { total: 92, spend: 92 },
 			skills,
+			// The folk's own language, since the folk is now a real one.
+			languages: ['Tradespeak', 'Gnomish', 'Draconic'],
 			abilities,
 			/*
 				Pinned across all four kinds, so every branch of the Quick Ref grouping
@@ -1365,11 +1620,11 @@ export const createReviewMockCharacter = (): CharacterDocument => {
 			*/
 			quickRefSelections: {
 				abilities: [
-					ids.cleave,
-					ids.riposte,
-					ids.surge,
-					ids.darkvision,
-					ids.heirloom,
+					ids.cleave, // Action
+					ids.manaShield, // Triggered
+					ids.spellblade, // Quick Action
+					ids.scentOfIllusions, // Passive
+					ids.shadowSlip, // Free
 				],
 				/*
 					Pinned against the arrays this character actually ends up with, not
@@ -1394,8 +1649,13 @@ export const createReviewMockCharacter = (): CharacterDocument => {
 				encumberedAt: 40,
 				overencumberedAt: 60,
 			},
-			weapons,
-			items: [...wornItems, ...unslottedWorn, ...carriedItems],
+			weapons: [...weapons, ...treasureWeapons],
+			items: [
+				...wornItems,
+				...unslottedWorn,
+				...carriedItems,
+				...treasureItems,
+			],
 		},
 		spells: {
 			...base.spells,

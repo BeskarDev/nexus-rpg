@@ -12,15 +12,22 @@ import { Character, CharacterDocument } from '@site/src/types/Character'
 import { CombatArt } from '@site/src/types/CombatArt'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
+import {
+	useAutofitPending,
+	useSpillPlan,
+	whenAutofitSettled,
+} from '@site/src/components/autofit'
 import combatArtsData from '../../utils/data/json/combat-arts.json'
 import {
 	CARD_PAGE,
 	CARD_PAGE_MARGIN,
 	CARD_SIZE,
 	CharacterSelector,
+	deckDocumentTitle,
 	itemsPerPage,
 	PrintPages,
 	PrintToolShell,
+	usePagePrintStyle,
 } from '../PrintingTools'
 import { CombatArtCard } from './CombatArtCard'
 import './combatArtStyles.css'
@@ -134,9 +141,10 @@ export const CombatArts: React.FC = () => {
 	}
 
 	const componentRef = useRef()
-	const handlePrint = useReactToPrint({
-		content: () => componentRef.current,
-	})
+	// Trap 2: a print that opens before the cards have settled prints the
+	// pre-fit layout, and the dialog blocks the session, so there is no second
+	// chance to get it right (M18 D2).
+	const settlingCards = useAutofitPending()
 	const combatArts: CombatArt[] = combatArtsData
 
 	const filteredCombatArts = useMemo(() => {
@@ -167,16 +175,54 @@ export const CombatArts: React.FC = () => {
 
 	// From the card and page geometry rather than a hand-written 9 — the same
 	// call the preview paginates by, so the count and the pages cannot drift.
-	const sheetCount = Math.ceil(
-		filteredCombatArts.length /
-			itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
+	// The spill runs BEFORE pagination (M18 D3, trap 11): a card that becomes
+	// two children after the grid is computed lands on the wrong page.
+	const spillPlan = useSpillPlan()
+	const printedCards = useMemo(
+		() =>
+			filteredCombatArts.flatMap((combatArt, index) => {
+				const planKey = `${combatArt.name}-${combatArt.characterName || 'manual'}-${index}`
+				return spillPlan
+					.partsFor(planKey)
+					.map((part) => ({ combatArt, planKey, part }))
+			}),
+		[filteredCombatArts, spillPlan.partsFor],
 	)
+
+	const sheetCount = Math.ceil(
+		printedCards.length / itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
+	)
+
+	// One character's deck is named after them; a mixed or unattributed deck is
+	// not about a person, so it is left unnamed rather than named after whoever
+	// happened to be first.
+	const printSubject = useMemo(() => {
+		const names = new Set(
+			filteredCombatArts
+				.map((entry) => entry.characterName)
+				.filter((name): name is string => Boolean(name)),
+		)
+		return names.size === 1 ? [...names][0] : undefined
+	}, [filteredCombatArts])
+
+	const handlePrint = useReactToPrint({
+		content: () => componentRef.current,
+		onBeforeGetContent: whenAutofitSettled,
+		// Chrome names the PDF after `document.title`, so without this every deck
+		// this site prints lands in the download folder as "Nexus RPG".
+		documentTitle: deckDocumentTitle({
+			kind: 'combat-arts',
+			count: printedCards.length,
+			subject: printSubject,
+		}),
+	})
+
+	// A document-level rule, so it goes in the document head — never in the
+	// flow, where a `<style>` printed itself on the page as text (M19).
+	usePagePrintStyle('@page { size: 192mm 267mm; }')
 
 	return (
 		<>
-			<style type="text/css" media="print">
-				{'@page { size: 192mm 267mm; }'}
-			</style>
 			<PrintToolShell
 				controlsLabel="Select Arts"
 				previewLabel="Preview"
@@ -269,6 +315,18 @@ export const CombatArts: React.FC = () => {
 									? '1 card'
 									: `${filteredCombatArts.length} cards`}{' '}
 								selected
+								{/* A spill that doubles a card's paper is stated, not
+								    silent (M18 D3). */}
+								{spillPlan.continuations > 0 && (
+									<>
+										{' '}
+										→ {printedCards.length} printed (
+										{spillPlan.continuations === 1
+											? '1 continuation'
+											: `${spillPlan.continuations} continuations`}
+										)
+									</>
+								)}
 								{filteredCombatArts.length > 0 && (
 									<>
 										{' '}
@@ -280,9 +338,9 @@ export const CombatArts: React.FC = () => {
 								type="button"
 								className="pt-print-verb"
 								onClick={handlePrint}
-								disabled={filteredCombatArts.length === 0}
+								disabled={filteredCombatArts.length === 0 || settlingCards > 0}
 							>
-								Print
+								{settlingCards > 0 ? 'Fitting cards…' : 'Print'}
 							</button>
 						</div>
 					</>
@@ -299,16 +357,25 @@ export const CombatArts: React.FC = () => {
 								</p>
 							}
 						>
-							{filteredCombatArts.map((combatArt, index) => (
+							{printedCards.map(({ combatArt, planKey, part }) => (
 								<div
-									key={`${combatArt.name}-${combatArt.characterName || 'manual'}-${index}`}
+									key={`${planKey}#${part.part}`}
 									title={
 										combatArt.characterName
 											? `For character: ${combatArt.characterName}`
 											: undefined
 									}
 								>
-									<CombatArtCard {...combatArt} />
+									<CombatArtCard
+										{...combatArt}
+										start={part.start}
+										end={part.end}
+										part={part.part}
+										totalParts={part.totalParts}
+										onFitted={(result) =>
+											spillPlan.report(planKey, part.start, result)
+										}
+									/>
 								</div>
 							))}
 						</PrintPages>

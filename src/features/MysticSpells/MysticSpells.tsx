@@ -12,15 +12,22 @@ import { Character, CharacterDocument } from '@site/src/types/Character'
 import { MysticSpell } from '@site/src/types/MysticSpell'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
+import {
+	useAutofitPending,
+	useSpillPlan,
+	whenAutofitSettled,
+} from '@site/src/components/autofit'
 import mysticSpellData from '../../utils/data/json/mystic-spells.json'
 import {
 	CARD_PAGE,
 	CARD_PAGE_MARGIN,
 	CARD_SIZE,
 	CharacterSelector,
+	deckDocumentTitle,
 	itemsPerPage,
 	PrintPages,
 	PrintToolShell,
+	usePagePrintStyle,
 } from '../PrintingTools'
 import { MysticSpellCard } from './MysticSpellCard'
 import './mysticSpellsStyles.css'
@@ -125,9 +132,10 @@ export const MysticSpells: React.FC = () => {
 	}
 
 	const componentRef = useRef()
-	const handlePrint = useReactToPrint({
-		content: () => componentRef.current,
-	})
+	// Trap 2: a print that opens before the cards have settled prints the
+	// pre-fit layout, and the dialog blocks the session, so there is no second
+	// chance to get it right (M18 D2).
+	const settlingCards = useAutofitPending()
 	const mysticSpells: MysticSpell[] = mysticSpellData
 
 	const filteredMysticSpells = useMemo(() => {
@@ -156,18 +164,57 @@ export const MysticSpells: React.FC = () => {
 		setSelectedMysticSpellsList([])
 	}
 
+	// The spill runs BEFORE pagination (M18 D3, trap 11): a spell that becomes
+	// two cards after the grid is computed lands on the wrong page and pushes
+	// everything after it. `printedCards` is the final child list.
+	const spillPlan = useSpillPlan()
+	const printedCards = useMemo(
+		() =>
+			filteredMysticSpells.flatMap((spell, index) => {
+				const planKey = `${spell.name}-${spell.characterName || 'manual'}-${index}`
+				return spillPlan
+					.partsFor(planKey)
+					.map((part) => ({ spell, planKey, part }))
+			}),
+		[filteredMysticSpells, spillPlan.partsFor],
+	)
+
 	// From the card and page geometry rather than a hand-written 9 — the same
 	// call the preview paginates by, so the count and the pages cannot drift.
 	const sheetCount = Math.ceil(
-		filteredMysticSpells.length /
-			itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
+		printedCards.length / itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
 	)
+
+	// One character's deck is named after them; a mixed or unattributed deck is
+	// not about a person, so it is left unnamed rather than named after whoever
+	// happened to be first.
+	const printSubject = useMemo(() => {
+		const names = new Set(
+			filteredMysticSpells
+				.map((entry) => entry.characterName)
+				.filter((name): name is string => Boolean(name)),
+		)
+		return names.size === 1 ? [...names][0] : undefined
+	}, [filteredMysticSpells])
+
+	const handlePrint = useReactToPrint({
+		content: () => componentRef.current,
+		onBeforeGetContent: whenAutofitSettled,
+		// Chrome names the PDF after `document.title`, so without this every deck
+		// this site prints lands in the download folder as "Nexus RPG".
+		documentTitle: deckDocumentTitle({
+			kind: 'mystic-spells',
+			count: printedCards.length,
+			subject: printSubject,
+		}),
+	})
+
+	// A document-level rule, so it goes in the document head — never in the
+	// flow, where a `<style>` printed itself on the page as text (M19).
+	usePagePrintStyle('@page { size: 192mm 267mm; }')
 
 	return (
 		<>
-			<style type="text/css" media="print">
-				{'@page { size: 192mm 267mm; }'}
-			</style>
 			<PrintToolShell
 				controlsLabel="Select Spells"
 				previewLabel="Preview"
@@ -258,6 +305,18 @@ export const MysticSpells: React.FC = () => {
 							<div className="pt-count">
 								<strong>{filteredMysticSpells.length}</strong>{' '}
 								{filteredMysticSpells.length === 1 ? 'card' : 'cards'} selected
+								{/* A spill that doubles a spell's paper is stated, not
+								    silent (M18 D3). */}
+								{spillPlan.continuations > 0 && (
+									<>
+										{' '}
+										→ <strong>{printedCards.length}</strong> printed (
+										{spillPlan.continuations === 1
+											? '1 continuation'
+											: `${spillPlan.continuations} continuations`}
+										)
+									</>
+								)}
 								{filteredMysticSpells.length > 0 && (
 									<>
 										{' '}
@@ -270,9 +329,11 @@ export const MysticSpells: React.FC = () => {
 								type="button"
 								className="pt-print-verb"
 								onClick={handlePrint}
-								disabled={filteredMysticSpells.length === 0}
+								disabled={
+									filteredMysticSpells.length === 0 || settlingCards > 0
+								}
 							>
-								Print
+								{settlingCards > 0 ? 'Fitting cards…' : 'Print'}
 							</button>
 						</div>
 					</>
@@ -290,16 +351,25 @@ export const MysticSpells: React.FC = () => {
 								</p>
 							}
 						>
-							{filteredMysticSpells.map((mysticSpell, index) => (
+							{printedCards.map(({ spell, planKey, part }) => (
 								<div
-									key={`${mysticSpell.name}-${mysticSpell.characterName || 'manual'}-${index}`}
+									key={`${planKey}#${part.part}`}
 									title={
-										mysticSpell.characterName
-											? `For character: ${mysticSpell.characterName}`
+										spell.characterName
+											? `For character: ${spell.characterName}`
 											: undefined
 									}
 								>
-									<MysticSpellCard {...mysticSpell} />
+									<MysticSpellCard
+										{...spell}
+										start={part.start}
+										end={part.end}
+										part={part.part}
+										totalParts={part.totalParts}
+										onFitted={(result) =>
+											spillPlan.report(planKey, part.start, result)
+										}
+									/>
 								</div>
 							))}
 						</PrintPages>

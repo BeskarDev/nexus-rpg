@@ -110,6 +110,88 @@ function usePaperScale(paperWidthMm: number) {
 	return { ref, scale }
 }
 
+/**
+ * Where to cut, drawn on the paper itself.
+ *
+ * The cards tile the page edge to edge with NO gutter — nine 63 × 88mm cells at
+ * a 1mm margin — so every cut line is a cell boundary and there is nowhere
+ * outside the grid to put a conventional crop mark. The page used to be readable
+ * anyway because each card sat on a grey field, and dropping that field to save
+ * ink (rightly) took the only guide with it (owner, 2026-08-07).
+ *
+ * So the marks go WHERE THE INK IS ALLOWED TO BE: short ticks at the page edges
+ * and small crosses at the interior corners, both hairline. Deliberately not a
+ * full grid — a continuous rule along a cut line prints on the trimmed edge of
+ * two cards whenever the blade wanders, and a blade always wanders. A tick at
+ * each end of the line is enough to lay a ruler on, and leaves the 2.3mm cut
+ * allowance inside each cell clean.
+ */
+function TrimMarks({
+	page,
+	item,
+	margin,
+	perRow,
+	perColumn,
+}: {
+	page: Millimetres
+	item: Millimetres
+	margin: number
+	perRow: number
+	perColumn: number
+}) {
+	// Every cut line, in millimetres from the page's own corner.
+	const columns = Array.from(
+		{ length: perRow + 1 },
+		(_, index) => margin + index * item.width,
+	)
+	const rows = Array.from(
+		{ length: perColumn + 1 },
+		(_, index) => margin + index * item.height,
+	)
+	// Long enough to see and to align a ruler against, short enough to stay in
+	// the margin and the corners.
+	const TICK = 3
+	const CROSS = 1.6
+
+	return (
+		<svg
+			className="pt-page__trim"
+			viewBox={`0 0 ${page.width} ${page.height}`}
+			preserveAspectRatio="none"
+			aria-hidden="true"
+		>
+			{/* 0.25mm: a hairline still, but a printer's dot is ~0.08mm and a 0.2mm
+			    line came back from the laser as an interrupted grey. A cut guide
+			    that is faint on paper is not a guide. */}
+			<g stroke="currentColor" strokeWidth={0.25} shapeRendering="crispEdges">
+				{columns.map((x) => (
+					<React.Fragment key={`c${x}`}>
+						<path d={`M${x} 0 V${TICK}`} />
+						<path d={`M${x} ${page.height - TICK} V${page.height}`} />
+					</React.Fragment>
+				))}
+				{rows.map((y) => (
+					<React.Fragment key={`r${y}`}>
+						<path d={`M0 ${y} H${TICK}`} />
+						<path d={`M${page.width - TICK} ${y} H${page.width}`} />
+					</React.Fragment>
+				))}
+				{/* The interior corners: a cross a blade can be centred on, so a cut
+				    can be checked halfway down the sheet rather than only at its
+				    edges. */}
+				{rows.slice(1, -1).map((y) =>
+					columns.slice(1, -1).map((x) => (
+						<React.Fragment key={`x${x}:${y}`}>
+							<path d={`M${x - CROSS} ${y} H${x + CROSS}`} />
+							<path d={`M${x} ${y - CROSS} V${y + CROSS}`} />
+						</React.Fragment>
+					)),
+				)}
+			</g>
+		</svg>
+	)
+}
+
 export interface PrintPagesProps {
 	/** The sheet size, matching the tool's own `@page` rule. */
 	page: Millimetres
@@ -119,6 +201,13 @@ export interface PrintPagesProps {
 	margin?: number
 	/** Shown in place of the pages when there is nothing selected. */
 	empty?: React.ReactNode
+	/**
+	 * Draw trim marks where the paper has to be cut (M19, owner-reported).
+	 *
+	 * Only meaningful when a page holds more than one item; a page that IS the
+	 * artifact has nothing to trim.
+	 */
+	cutMarks?: boolean
 	children: React.ReactNode
 }
 
@@ -142,9 +231,10 @@ export const PrintPages: React.FC<PrintPagesProps> = ({
 	item,
 	margin = 0,
 	empty,
+	cutMarks = true,
 	children,
 }) => {
-	const { perRow, perPage } = pageGrid(page, item, margin)
+	const { perRow, perColumn, perPage } = pageGrid(page, item, margin)
 	const pages = paginate(children, perPage)
 	const { ref, scale } = usePaperScale(page.width)
 
@@ -177,6 +267,15 @@ export const PrintPages: React.FC<PrintPagesProps> = ({
 							cut it. The column count is already known here — the same
 							number the pagination used — so it is stated rather than
 							rediscovered. */}
+						{cutMarks && perPage > 1 && (
+							<TrimMarks
+								page={page}
+								item={item}
+								margin={margin}
+								perRow={perRow}
+								perColumn={perColumn}
+							/>
+						)}
 						<div
 							className="pt-page__bed"
 							style={{

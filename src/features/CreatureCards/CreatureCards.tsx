@@ -13,17 +13,23 @@ import { Ability, Attack, Creature } from '@site/src/types/Creature'
 import React, { useMemo, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import {
+	useAutofitPending,
+	useSpillPlan,
+	whenAutofitSettled,
+} from '@site/src/components/autofit'
+import {
 	CARD_PAGE,
 	CARD_PAGE_MARGIN,
 	CARD_SIZE,
 	CharacterSelector,
+	deckDocumentTitle,
 	itemsPerPage,
 	PrintPages,
 	PrintToolShell,
+	usePagePrintStyle,
 } from '../PrintingTools'
 import './creatureCardsStyles.css'
 import { CreatureCompactCard } from './CreatureCompactCard'
-import { CreatureDetailCard } from './CreatureDetailCard'
 import { parseCreatureMarkdown } from './parseCreatureMarkdown'
 
 const ITEM_HEIGHT = 48
@@ -38,197 +44,20 @@ const MenuProps = {
 }
 
 /**
- * The ability list for the multi-card (detail) layouts: real abilities followed by
- * the creature's quick actions.
+ * How many cards a creature needs is MEASURED, not counted (M18 D3, S4).
  *
- * Quick actions used to arrive already merged into `abilities` because the markdown
- * parser's abilities section ran greedily to the end of the block. Now that they
- * are parsed as their own list, the detail layouts have to re-merge them or they
- * would silently vanish from printed multi-card creatures — and the layout
- * strategy would under-count content and pick too few cards.
+ * What stood here was a 190-line layout strategy: `getCreatureCardStrategy`
+ * picked one, two or three cards by adding up the lengths of a creature's
+ * skills, attacks and abilities against thresholds of 700 and 400 characters,
+ * and `splitAttacks` / `splitAbilities` chunked them at 900 and 700. It was the
+ * type ladder's mistake one level up — character count was no more a proxy for
+ * "how many cards" than for "what size type" (F1) — and it decided the card
+ * count before anything had been laid out, so a creature that fitted got two
+ * cards and a creature that did not got its text clipped anyway (F4).
  *
- * Tagging each with `recharge: 'Quick Action'` is enough to label them: both
- * `DetailCardContent` and `CreatureAbilityCard` already render that field in
- * parentheses after the name, so they are no longer indistinguishable from
- * passives the way the old merge left them.
+ * The creature is now one card's worth of blocks (`creatureBlocks`), and the
+ * measured spill splits it where it actually stops fitting.
  */
-const detailAbilities = (creature: Creature): Ability[] => [
-	...creature.abilities,
-	...creature.quickActions.map((quickAction) => ({
-		...quickAction,
-		recharge: quickAction.recharge ?? 'Quick Action',
-	})),
-]
-
-// Determine how many cards a creature needs and what type
-const getCreatureCardStrategy = (
-	creature: Creature,
-): 'single' | 'double' | 'triple' => {
-	const abilitiesForLayout = detailAbilities(creature)
-	const totalAbilities = abilitiesForLayout.length
-	const totalAttacks = creature.attacks.length
-
-	// Calculate actual content lengths for more accurate assessment
-	const abilityContentLength = getContentLength(abilitiesForLayout)
-	const attackContentLength = getAttackContentLength(creature.attacks)
-	const statsLength =
-		creature.skills.join(' ').length +
-		creature.immunities.join(' ').length +
-		creature.resistances.join(' ').length +
-		creature.weaknesses.join(' ').length
-
-	// Single card: Can fit everything with moderate font scaling
-	// More conservative to prevent clipping
-	const totalContentForSingle =
-		statsLength + attackContentLength + abilityContentLength
-	if (
-		totalAbilities <= 3 &&
-		totalAttacks <= 2 &&
-		totalContentForSingle <= 700
-	) {
-		return 'single'
-	}
-
-	// Double card: Stats + attacks on first card, abilities on second
-	// With improved font scaling, we can allow more content on stats+attacks card
-	const firstCardContent = statsLength + attackContentLength
-	if (firstCardContent <= 600) {
-		return 'double'
-	}
-
-	// Triple card: Stats only, attacks separate, abilities separate
-	return 'triple'
-}
-
-// Estimate content length with better accuracy for rendered height
-const getContentLength = (abilities: Ability[]): number => {
-	return abilities.reduce((total, ability) => {
-		const nameLength = ability.name.length
-		const rechargeLength = ability.recharge ? ability.recharge.length : 0
-		const descriptionLength = ability.description.length
-
-		// More accurate overhead accounting for actual line wrapping and spacing
-		// Each ability has: name line, description (potentially wrapped), margin
-		const baseOverhead = 20 // Account for formatting, line breaks, margins
-		const wrappingFactor = Math.ceil(descriptionLength / 50) * 5 // Estimate line wrapping
-
-		return (
-			total +
-			nameLength +
-			rechargeLength +
-			descriptionLength +
-			baseOverhead +
-			wrappingFactor
-		)
-	}, 0)
-}
-
-const getAttackContentLength = (attacks: Attack[]): number => {
-	return attacks.reduce((total, attack) => {
-		const nameLength = attack.name.length
-		const propertiesLength =
-			attack.properties.length > 0 ? attack.properties.join(', ').length : 0
-		const damageLength = attack.damage.length
-		const descriptionLength = attack.description ? attack.description.length : 0
-
-		// More accurate overhead accounting for actual line wrapping and spacing
-		// Attacks often have more complex formatting with properties and descriptions
-		const baseOverhead = attack.description ? 25 : 15
-		const wrappingFactor = attack.description
-			? Math.ceil(attack.description.length / 45) * 6
-			: 0
-
-		return (
-			total +
-			nameLength +
-			propertiesLength +
-			damageLength +
-			descriptionLength +
-			baseOverhead +
-			wrappingFactor
-		)
-	}, 0)
-}
-
-// Split abilities into chunks with balanced approach - scale font first, then split
-const splitAbilities = (abilities: Ability[]): Ability[][] => {
-	if (abilities.length === 0) return []
-
-	// Check if all abilities can fit using content measurement
-	// Slightly more conservative to prevent clipping
-	const totalContentLength = getContentLength(abilities)
-
-	// Middle ground: Allow good amount of content but split before clipping
-	if (totalContentLength <= 1200) {
-		return [abilities] // No splitting needed - font scaling can handle this
-	}
-
-	// If splitting is needed, create chunks that are readable at smaller font sizes
-	const chunks: Ability[][] = []
-	let currentChunk: Ability[] = []
-	let currentChunkLength = 0
-
-	for (const ability of abilities) {
-		const abilityLength = getContentLength([ability])
-
-		// Split when chunk would cause clipping even with font scaling
-		if (currentChunkLength + abilityLength > 1000 && currentChunk.length > 0) {
-			chunks.push(currentChunk)
-			currentChunk = [ability]
-			currentChunkLength = abilityLength
-		} else {
-			currentChunk.push(ability)
-			currentChunkLength += abilityLength
-		}
-	}
-
-	// Add the last chunk if it has any abilities
-	if (currentChunk.length > 0) {
-		chunks.push(currentChunk)
-	}
-
-	return chunks
-}
-
-// Split attacks into chunks with balanced approach - scale font first, then split
-const splitAttacks = (attacks: Attack[]): Attack[][] => {
-	if (attacks.length === 0) return []
-
-	// Check if all attacks can fit using content measurement
-	// Slightly more conservative to prevent clipping
-	const totalContentLength = getAttackContentLength(attacks)
-
-	// Middle ground: Allow good amount of content but split before clipping
-	if (totalContentLength <= 900) {
-		return [attacks] // No splitting needed - font scaling can handle this
-	}
-
-	// If splitting is needed, create chunks that are readable at smaller font sizes
-	const chunks: Attack[][] = []
-	let currentChunk: Attack[] = []
-	let currentChunkLength = 0
-
-	for (const attack of attacks) {
-		const attackLength = getAttackContentLength([attack])
-
-		// Split when chunk would cause clipping even with font scaling
-		if (currentChunkLength + attackLength > 700 && currentChunk.length > 0) {
-			chunks.push(currentChunk)
-			currentChunk = [attack]
-			currentChunkLength = attackLength
-		} else {
-			currentChunk.push(attack)
-			currentChunkLength += attackLength
-		}
-	}
-
-	// Add the last chunk if it has any attacks
-	if (currentChunk.length > 0) {
-		chunks.push(currentChunk)
-	}
-
-	return chunks
-}
 
 export const CreatureCards: React.FC = () => {
 	const [markdownInput, setMarkdownInput] = useState<string>('')
@@ -351,9 +180,10 @@ export const CreatureCards: React.FC = () => {
 	}
 
 	const componentRef = useRef()
-	const handlePrint = useReactToPrint({
-		content: () => componentRef.current,
-	})
+	// Trap 2: a print that opens before the cards have settled prints the
+	// pre-fit layout, and the dialog blocks the session, so there is no second
+	// chance to get it right (M18 D2).
+	const settlingCards = useAutofitPending()
 
 	const filteredCreatures = useMemo(
 		() =>
@@ -365,106 +195,31 @@ export const CreatureCards: React.FC = () => {
 		setSelectedCreatures(creatures.map((creature) => creature.name))
 	const deselectAll = () => setSelectedCreatures([])
 
-	// Generate cards with dynamic layout based on complexity
-	const allCards = useMemo(() => {
-		const cards: JSX.Element[] = []
-
-		filteredCreatures.forEach((creature) => {
-			const strategy = getCreatureCardStrategy(creature)
-
-			if (strategy === 'single') {
-				// Single card with all content
-				cards.push(
-					<CreatureCompactCard key={`${creature.name}-single`} {...creature} />,
-				)
-			} else if (strategy === 'double') {
-				// Two cards: stats + attacks on first, abilities on second
-				cards.push(
-					<CreatureCompactCard
-						key={`${creature.name}-main`}
-						{...creature}
-						abilities={[]} // No abilities on main card for double strategy
-					/>,
-				)
-
-				// Always create abilities card(s) for double strategy
-				if (detailAbilities(creature).length > 0) {
-					const abilityChunks = splitAbilities(detailAbilities(creature))
-					abilityChunks.forEach((abilityChunk, chunkIndex) => {
-						cards.push(
-							<CreatureDetailCard
-								key={`${creature.name}-abilities-${chunkIndex}`}
-								creatureName={creature.name}
-								tier={creature.tier}
-								cardType="abilities"
-								abilities={abilityChunk}
-								partNumber={
-									abilityChunks.length > 1 ? chunkIndex + 1 : undefined
-								}
-								totalParts={
-									abilityChunks.length > 1 ? abilityChunks.length : undefined
-								}
-							/>,
-						)
-					})
-				}
-			} else {
-				// Triple cards: stats only, attacks separate, abilities separate
-				cards.push(
-					<CreatureCompactCard
-						key={`${creature.name}-stats`}
-						{...creature}
-						attacks={[]} // Stats only - no attacks or abilities
-						abilities={[]}
-					/>,
-				)
-
-				if (creature.attacks.length > 0) {
-					const attackChunks = splitAttacks(creature.attacks)
-					attackChunks.forEach((attackChunk, chunkIndex) => {
-						cards.push(
-							<CreatureDetailCard
-								key={`${creature.name}-attacks-${chunkIndex}`}
-								creatureName={creature.name}
-								tier={creature.tier}
-								cardType="attacks"
-								attacks={attackChunk}
-								partNumber={
-									attackChunks.length > 1 ? chunkIndex + 1 : undefined
-								}
-								totalParts={
-									attackChunks.length > 1 ? attackChunks.length : undefined
-								}
-							/>,
-						)
-					})
-				}
-
-				if (detailAbilities(creature).length > 0) {
-					const abilityChunks = splitAbilities(detailAbilities(creature))
-					abilityChunks.forEach((abilityChunk, chunkIndex) => {
-						cards.push(
-							<CreatureDetailCard
-								key={`${creature.name}-abilities-${chunkIndex}`}
-								creatureName={creature.name}
-								tier={creature.tier}
-								cardType="abilities"
-								abilities={abilityChunk}
-								partNumber={
-									abilityChunks.length > 1 ? chunkIndex + 1 : undefined
-								}
-								totalParts={
-									abilityChunks.length > 1 ? abilityChunks.length : undefined
-								}
-							/>,
-						)
-					})
-				}
-			}
-		})
-
-		return cards
-	}, [filteredCreatures])
+	// The spill runs BEFORE pagination (M18 D3, trap 11). A creature is one
+	// card's worth of blocks; a creature with more than that becomes two
+	// children here, before `PrintPages` computes the grid.
+	const spillPlan = useSpillPlan()
+	const allCards = useMemo(
+		() =>
+			filteredCreatures.flatMap((creature) =>
+				spillPlan
+					.partsFor(creature.name)
+					.map((part) => (
+						<CreatureCompactCard
+							key={`${creature.name}#${part.part}`}
+							{...creature}
+							start={part.start}
+							end={part.end}
+							part={part.part}
+							totalParts={part.totalParts}
+							onFitted={(result) =>
+								spillPlan.report(creature.name, part.start, result)
+							}
+						/>
+					)),
+			),
+		[filteredCreatures, spillPlan.partsFor],
+	)
 
 	// From the card and page geometry rather than a hand-written 9 — the same
 	// call the preview paginates by, so the count and the pages cannot drift.
@@ -472,11 +227,23 @@ export const CreatureCards: React.FC = () => {
 		allCards.length / itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
 	)
 
+	const handlePrint = useReactToPrint({
+		content: () => componentRef.current,
+		onBeforeGetContent: whenAutofitSettled,
+		// Chrome names the PDF after `document.title`, so a session's opponents
+		// and a player's spell deck used to download under the same name.
+		documentTitle: deckDocumentTitle({
+			kind: 'creatures',
+			count: allCards.length,
+		}),
+	})
+
+	// A document-level rule, so it goes in the document head — never in the
+	// flow, where a `<style>` printed itself on the page as text (M19).
+	usePagePrintStyle('@page { size: 192mm 267mm; }')
+
 	return (
 		<>
-			<style type="text/css" media="print">
-				{'@page { size: 192mm 267mm; }'}
-			</style>
 			<PrintToolShell
 				controlsLabel="Select Creatures"
 				previewLabel="Preview"
@@ -634,8 +401,18 @@ export const CreatureCards: React.FC = () => {
 								{allCards.length > 0 ? (
 									<>
 										<strong>{allCards.length}</strong>{' '}
-										{allCards.length === 1 ? 'card' : 'cards'} selected ·{' '}
-										<strong>{sheetCount}</strong>{' '}
+										{allCards.length === 1 ? 'card' : 'cards'} printed
+										{spillPlan.continuations > 0 && (
+											<>
+												{' '}
+												(
+												{spillPlan.continuations === 1
+													? '1 continuation'
+													: `${spillPlan.continuations} continuations`}
+												)
+											</>
+										)}{' '}
+										· <strong>{sheetCount}</strong>{' '}
 										{sheetCount === 1 ? 'sheet' : 'sheets'}
 									</>
 								) : (
@@ -646,9 +423,9 @@ export const CreatureCards: React.FC = () => {
 								type="button"
 								className="pt-print-verb"
 								onClick={handlePrint}
-								disabled={allCards.length === 0}
+								disabled={allCards.length === 0 || settlingCards > 0}
 							>
-								Print
+								{settlingCards > 0 ? 'Fitting cards…' : 'Print'}
 							</button>
 						</div>
 					</>

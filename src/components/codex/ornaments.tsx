@@ -58,6 +58,8 @@ export type CodexVariant =
 	| 'plate'
 	| 'sheet'
 	| 'gem'
+	| 'palm'
+	| 'stele'
 
 const SURFACE = 'var(--ifm-background-surface-color)'
 
@@ -103,6 +105,16 @@ const RAIL_LEN: Record<CodexVariant, { edge: number; side: number }> = {
 	// figure band and rule text, so it is at least as deep as a combat art; the
 	// default 55-unit side reach is already validated at that depth.
 	gem: { edge: 92, side: 55 },
+	// M20 S4 — the folk family. Its only card today is the 63 × 88mm printed
+	// folk card, which is deeper than every screen card these reaches were
+	// measured against, so the spell family's defaults hold with room over. A
+	// family with NO entry here silently falls back to the winged reaches, which
+	// is why this is stated rather than left out.
+	palm: { edge: 92, side: 55 },
+	// M20 — the `Other` family. Same case as the palm: its only card is the
+	// 63 × 88mm printed one, which is deeper than every screen card these reaches
+	// were measured against.
+	stele: { edge: 92, side: 55 },
 }
 
 const n = (v: number) => v.toFixed(2)
@@ -393,6 +405,102 @@ function CornerRail({ variant, len }: { variant: CodexVariant; len: number }) {
 					stroke={SURFACE}
 					strokeWidth={0.55}
 				/>
+			</>
+		)
+	}
+	if (variant === 'palm') {
+		// M20 — the folk family: a low plinth ending in a fixed-size palm shoot,
+		// the keystone's crown seen from the side.
+		//
+		// Deliberately NOT the plate family's palmette. Both are vegetal, and two
+		// symmetric five-lobe fans in one kit would read as one motif at rail
+		// scale — so this is three lobes, all sweeping FORWARD and UP off a calyx
+		// knot, which is a growing thing rather than a formal ornament and is told
+		// apart from the fan by asymmetry alone.
+		//
+		// Every lobe rises off the border line (−y): rail detail must never
+		// project inward into the content panel.
+		//
+		// Fixed terminal, variable shaft (§4), so the long top rail and the short
+		// side rail carry the identical shoot.
+		const SHOOT = 15
+		const b = len - SHOOT
+		const cx = b + 3
+		const halfW = 1.35
+		// Angles measured from +x, negative being up off the edge. Forward-leaning
+		// on purpose: a shoot bends the way the rail runs.
+		const lobes = [
+			{ a: (-22 * Math.PI) / 180, r: 11.6 },
+			{ a: (-56 * Math.PI) / 180, r: 12.4 },
+			{ a: (-92 * Math.PI) / 180, r: 8.8 },
+		].map(({ a, r }) => {
+			const pt = (rr: number, w: number) =>
+				`${n(cx + rr * Math.cos(a) - w * Math.sin(a))} ${n(6 + rr * Math.sin(a) + w * Math.cos(a))}`
+			return (
+				`M${pt(1.2, 0)} ` +
+				`C${pt(1.2 + r * 0.26, halfW)},${pt(1.2 + r * 0.68, halfW * 0.68)},${pt(1.2 + r, 0)} ` +
+				`C${pt(1.2 + r * 0.68, -halfW * 0.68)},${pt(1.2 + r * 0.26, -halfW)},${pt(1.2, 0)} Z`
+			)
+		})
+		return (
+			<>
+				<path
+					d={`M13 5.3 L${n(b)} 5.3 L${n(b)} 6.7 L13 6.7 Z`}
+					fill="currentColor"
+					stroke="none"
+				/>
+				{/* the two collar ticks near the butt, the rhythm every rail carries */}
+				<path d="M18 4.3 L18 7.7 M22.5 4.3 L22.5 7.7" strokeWidth={0.8} />
+				<g fill="currentColor" stroke="none">
+					{lobes.map((d) => (
+						<path key={d} d={d} />
+					))}
+					{/* the calyx the lobes spring from */}
+					<circle cx={cx} cy={6} r={2.2} />
+				</g>
+				{/* one carved tick across the calyx, stopping short of its silhouette */}
+				<path
+					d={`M${n(cx - 1)} 6 L${n(cx + 1)} 6`}
+					stroke={SURFACE}
+					strokeWidth={0.5}
+				/>
+			</>
+		)
+	}
+	if (variant === 'stele') {
+		// M20 — the `Other` family: a low plinth ending in a fixed-size boundary
+		// marker, the keystone's stele shrunk to a terminal.
+		//
+		// It is the only rail terminal in the kit that stands UP off the rail
+		// rather than running along it, which is the same thing that separates its
+		// keystone from the rest: everything else here is a horizontal mass.
+		const MARKER = 15
+		const b = len - MARKER
+		const cx = b + 7.5
+		const hw = 2.5
+		const top = 6 - 7.4
+		return (
+			<>
+				<path
+					d={`M13 5.3 L${n(b)} 5.3 L${n(b)} 6.7 L13 6.7 Z`}
+					fill="currentColor"
+					stroke="none"
+				/>
+				{/* the two collar ticks near the butt, the rhythm every rail carries */}
+				<path d="M18 4.3 L18 7.7 M22.5 4.3 L22.5 7.7" strokeWidth={0.8} />
+				<g fill="currentColor" stroke="none">
+					{/* the shaft, standing on the rail */}
+					<path
+						d={`M${n(cx - hw)} ${n(top + 1.9)} L${n(cx + hw)} ${n(top + 1.9)} L${n(cx + hw)} 6.8 L${n(cx - hw)} 6.8 Z`}
+					/>
+					{/* the cornice cap, in two courses like the keystone's */}
+					<path
+						d={`M${n(cx - hw - 1.5)} ${n(top + 0.9)} L${n(cx + hw + 1.5)} ${n(top + 0.9)} L${n(cx + hw + 1.5)} ${n(top + 1.9)} L${n(cx - hw - 1.5)} ${n(top + 1.9)} Z`}
+					/>
+					<path
+						d={`M${n(cx - hw - 0.4)} ${n(top)} L${n(cx + hw + 0.4)} ${n(top)} L${n(cx + hw + 0.4)} ${n(top + 0.9)} L${n(cx - hw - 0.4)} ${n(top + 0.9)} Z`}
+					/>
+				</g>
 			</>
 		)
 	}
@@ -1173,6 +1281,289 @@ function CartoucheKeystone() {
 	)
 }
 
+/**
+ * A sacred palm — the date palm as tree of life, the Mesopotamian and Egyptian
+ * sign for descent and lineage — as the keystone for the FOLK family (M20 D3).
+ *
+ * Folk is a new content family and had no mark. The palm was chosen because a
+ * folk card is about where a character comes from, and because it survives the
+ * only test that matters on a photocopier: **its silhouette**. A raised crown on
+ * a bare stalk is unmistakable against the winged disc (flat spread), the
+ * khopeshes (an X), the ziggurat (a stepped triangle), the bull (a broad mass
+ * with two crescents), the gem (a faceted point) and the cartouche (a ring).
+ *
+ * The nearest neighbour is the image plate's rosette, and the two are separated
+ * by construction rather than by detail: a rosette is radially symmetric about
+ * a point ON the border line; this is a crown lifted clear of it on a trunk.
+ *
+ * ## Craft
+ *
+ * viewBox is 100 × 30 with the border line at y = 22.6 — GROWN from the 84 × 26
+ * its siblings use rather than shrinking the motif into it (§3). A palm's crown
+ * has to be wider than it is tall over a visible trunk, and there is no way to
+ * get 20 units of frond reach either side of a 5-unit trunk inside the old box.
+ *
+ * **Two failed cuts are worth keeping, because both were about the frond.** The
+ * first swept seven equal-length leaves through ±76° and read as a STARBURST:
+ * equal lengths on an even sweep is a radial pattern, which is a rosette however
+ * you draw it. Grading the lengths fixed the sweep but not the leaves, and the
+ * second cut read as an AGAVE — because a straight tapered spike is a succulent
+ * leaf, and a palm frond ARCHES. What makes the mark a palm is curvature: each
+ * frond is a quadratic spine that climbs out of the crown and falls, drawn as an
+ * offset ribbon around that spine rather than as a chord to its tip.
+ *
+ * Solid struck mass throughout (§1), and with NO carved detail at all. Three
+ * things were tried and cut for the same reason — leaf scars on the trunk,
+ * hanging date clusters, and the coping line its sibling keystones carve into
+ * their flanking courses. At 0.9px per unit a 2-unit feature is ~1.1px on a
+ * printed card, which §8 calls texture rather than anatomy, and the coping in
+ * particular hollowed the courses out into keyline rulers. What carries the
+ * reading is the silhouette: an arching crown, a trunk, and two stepped ground
+ * courses.
+ *
+ * Every frond is generated for both sides from ONE outward-measured spine, so
+ * the mark is mirror-symmetric by construction (§6) rather than by matched
+ * coordinates.
+ */
+function PalmKeystone() {
+	const BASE = 22.6
+	const CX = 50
+	const CROWN_Y = 13.4
+
+	/**
+	 * The crown, as a quadratic spine per frond: `[controlX, controlY, tipX,
+	 * tipY]` relative to the crown node, with +x measured OUTWARD and −y up.
+	 *
+	 * The grading is the design. The innermost pair stands nearly upright, the
+	 * outermost falls past the crown's own height, and the spear splits the
+	 * difference at the top — which is what turns a sweep into an arch.
+	 */
+	const CROWN: [number, number, number, number][] = [
+		[4.0, -9.8, 7.5, -11.4],
+		[10.5, -7.5, 17.0, -4.4],
+		[13.5, -1.5, 19.5, 4.6],
+	]
+	/** The central spear, drawn once — it is its own mirror. */
+	const SPEAR: [number, number, number, number] = [0, -8.5, 0, -12.6]
+
+	/**
+	 * One frond: a ribbon offset around the spine, sampled rather than
+	 * hand-authored.
+	 *
+	 * The width profile swells to full a quarter of the way out and converges to
+	 * nothing at the tip — a frond ends in a point, like every other terminal in
+	 * this kit (§3), and it is widest where it leaves the crown's mass.
+	 */
+	const frond = (
+		side: number,
+		[c1x, c1y, tx, ty]: [number, number, number, number],
+	) => {
+		const p0 = [CX, CROWN_Y]
+		const p1 = [CX + side * c1x, CROWN_Y + c1y]
+		const p2 = [CX + side * tx, CROWN_Y + ty]
+		const STEPS = 16
+		const left: string[] = []
+		const right: string[] = []
+		for (let i = 0; i <= STEPS; i++) {
+			const t = i / STEPS
+			const u = 1 - t
+			const x = u * u * p0[0] + 2 * u * t * p1[0] + t * t * p2[0]
+			const y = u * u * p0[1] + 2 * u * t * p1[1] + t * t * p2[1]
+			const dx = 2 * u * (p1[0] - p0[0]) + 2 * t * (p2[0] - p1[0])
+			const dy = 2 * u * (p1[1] - p0[1]) + 2 * t * (p2[1] - p1[1])
+			const m = Math.hypot(dx, dy) || 1
+			const w =
+				t < 0.24
+					? 0.9 + (2.2 - 0.9) * (t / 0.24)
+					: 2.2 * (1 - (t - 0.24) / 0.76) ** 0.85
+			left.push(`${n(x - (dy / m) * w)} ${n(y + (dx / m) * w)}`)
+			right.push(`${n(x + (dy / m) * w)} ${n(y - (dx / m) * w)}`)
+		}
+		return `M${left.join(' L')} L${right.reverse().join(' L')} Z`
+	}
+
+	const fronds = [
+		frond(1, SPEAR),
+		...CROWN.flatMap((spine) => [-1, 1].map((side) => frond(side, spine))),
+	]
+
+	// Two stepped ground courses out to the frame edges — the device the ziggurat
+	// and the gem already use to span the top edge, so the new family joins the
+	// kit instead of floating in the middle of it. Generated outward from the
+	// centre, mirrored by construction (§6).
+	const courses = [
+		{ inner: 3, outer: 23, top: 19.0 },
+		{ inner: 23, outer: 44, top: 20.5 },
+	].flatMap(({ inner, outer, top }) =>
+		[-1, 1].map(
+			(side) =>
+				`M${n(CX + side * inner)} ${n(top)} L${n(CX + side * outer)} ${n(top)} ` +
+				`L${n(CX + side * outer)} ${n(BASE)} L${n(CX + side * inner)} ${n(BASE)} Z`,
+		),
+	)
+
+	return (
+		<svg
+			className={styles.palmKeystone}
+			viewBox="0 0 100 30"
+			fill="none"
+			stroke="currentColor"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			{/* Opaque backing along the border line only, so the card's top border
+			    stops at the ornament instead of running through the courses. */}
+			<path
+				d={`M2 ${n(BASE - 1.2)} L98 ${n(BASE - 1.2)} L98 ${n(BASE + 1.2)} L2 ${n(BASE + 1.2)} Z`}
+				fill={SURFACE}
+				stroke="none"
+			/>
+			<g fill="currentColor" stroke="none">
+				{courses.map((d) => (
+					<path key={d} d={d} />
+				))}
+				{/* The trunk: a slight taper, base to crown. */}
+				<path
+					d={`M${n(CX - 2.4)} ${n(BASE)} L${n(CX - 1.6)} ${n(CROWN_Y + 1.8)} L${n(CX + 1.6)} ${n(CROWN_Y + 1.8)} L${n(CX + 2.4)} ${n(BASE)} Z`}
+				/>
+				{/* The crownshaft: the collar the fronds spring from, so the crown
+				    grows out of a crown rather than out of a point. */}
+				<path
+					d={`M${n(CX - 3.7)} ${n(CROWN_Y + 0.2)} L${n(CX + 3.7)} ${n(CROWN_Y + 0.2)} L${n(CX + 3.0)} ${n(CROWN_Y + 2.4)} L${n(CX - 3.0)} ${n(CROWN_Y + 2.4)} Z`}
+				/>
+				{fronds.map((d) => (
+					<path key={d} d={d} />
+				))}
+			</g>
+		</svg>
+	)
+}
+
+/**
+ * An inscribed VOTIVE STELE — a standing stone carrying a record — as the
+ * keystone for the `Other` family (M20 S4, owner review).
+ *
+ * ## Why a new mark rather than the cartouche
+ *
+ * D3 gave `Other` the character sheet's own `sheet` cartouche, on the argument
+ * that inventing a motif for "miscellaneous" invents meaning, whereas the
+ * cartouche says the true thing: this came off someone's sheet and exists
+ * nowhere else. **The argument was right and the DRAWING was not** — the owner
+ * called it simplistic beside the ziggurat and the palm, and rendering the three
+ * side by side at 300 / 120 / 52px showed exactly why:
+ *
+ * - It is the one rounded silhouette in a kit whose stated rule is that carved
+ *   stone has vertices. Two semicircular caps on a stadium.
+ * - It does not span the top edge. Its siblings all step out to the frame on
+ *   flanking courses; the cartouche is one blob on a bar that stops.
+ * - Its band is a single uniform tube, which is rule 1's bent-wire failure at a
+ *   larger gauge.
+ * - **All of its structure is INTERIOR** — a ring plus three ticks. That is the
+ *   fatal one: interior detail is the first thing to go, so by 52px (the card's
+ *   own scale) it is a featureless pill. The palm and the ziggurat both carry
+ *   their structure in the OUTLINE, and both still read there.
+ *
+ * A cartouche redrawn to fix all four stops being a cartouche. So the meaning
+ * moves to an object that can carry it: a stele is a record set in stone for one
+ * person, which is what an `Other` ability is. The sheet family keeps its
+ * cartouche untouched.
+ *
+ * ## Craft
+ *
+ * **Vertical, and that is the whole design.** Every other keystone in the kit is
+ * a wide horizontal mass — the disc spreads, the khopeshes cross, the ziggurat
+ * steps, the bull broadens, the palm arches. A narrow upright is therefore told
+ * apart by outline alone at any size, which is the only test that survives a
+ * photocopier.
+ *
+ * The shaft is a bold contour around a light panel (§1's stated exception) so
+ * the mark is not one solid black post, and the inscription is INK on that panel
+ * rather than a carve out of a mass — a carve inverts at card scale, as the
+ * palm's flanking coping did; ink just fades. The rules are left-aligned with a
+ * ragged right because that is what writing looks like; four centred even bars
+ * read as a menu glyph.
+ */
+function SteleKeystone() {
+	const BASE = 22.6
+	const CX = 50
+	/** The shaft: taller than it is wide, on purpose. */
+	const HW = 9.0
+	const TOP = 4.8
+	/**
+	 * The contour's weight, and it is doing real work: at 1.5 the mark read as
+	 * thin lines beside the palm and the ziggurat, both of which are dense
+	 * masses, and by 52px it had all but vanished while they still held.
+	 */
+	const WALL = 2.4
+	const CAP = [
+		{ hw: 12.2, t: 2.4, b: 4.8 },
+		{ hw: 9.6, t: 1.1, b: 2.4 },
+	]
+
+	const box = (hw: number, t: number, b: number) =>
+		`M${n(CX - hw)} ${n(t)} L${n(CX + hw)} ${n(t)} L${n(CX + hw)} ${n(b)} L${n(CX - hw)} ${n(b)} Z`
+
+	const left = CX - HW + WALL + 1.2
+	// Three rather than four, and heavier: a rule thinner than the contour around
+	// it reads as noise inside the panel rather than as writing on it.
+	const rules = [
+		[9.4, 9.6],
+		[13.0, 7.6],
+		[16.6, 9.6],
+	].map(
+		([y, w]) =>
+			`M${n(left)} ${n(y)} L${n(left + w)} ${n(y)} ` +
+			`L${n(left + w)} ${n(y + 1.6)} L${n(left)} ${n(y + 1.6)} Z`,
+	)
+
+	// The flanking courses start at the shaft's own edge, so the stele stands ON
+	// the ground rather than in a notch cut through it.
+	const courses = [
+		{ inner: HW, outer: 25, top: 18.4 },
+		{ inner: 25, outer: 44, top: 20.2 },
+	].flatMap(({ inner, outer, top }) =>
+		[-1, 1].map(
+			(side) =>
+				`M${n(CX + side * inner)} ${n(top)} L${n(CX + side * outer)} ${n(top)} ` +
+				`L${n(CX + side * outer)} ${n(BASE)} L${n(CX + side * inner)} ${n(BASE)} Z`,
+		),
+	)
+
+	return (
+		<svg
+			className={styles.steleKeystone}
+			viewBox="0 0 100 30"
+			fill="none"
+			stroke="currentColor"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			{/* Opaque backing along the border line only, so the card's top border
+			    stops at the ornament instead of running through the courses. */}
+			<path
+				d={`M2 ${n(BASE - 1.2)} L98 ${n(BASE - 1.2)} L98 ${n(BASE + 1.2)} L2 ${n(BASE + 1.2)} Z`}
+				fill={SURFACE}
+				stroke="none"
+			/>
+			<g fill="currentColor" stroke="none">
+				{courses.map((d) => (
+					<path key={d} d={d} />
+				))}
+				<path
+					d={`${box(HW, TOP, BASE)} ${box(HW - WALL, TOP + WALL, BASE)}`}
+					fillRule="evenodd"
+				/>
+				{rules.map((d) => (
+					<path key={d} d={d} />
+				))}
+				{CAP.map(({ hw, t, b }) => (
+					<path key={t} d={box(hw, t, b)} />
+				))}
+			</g>
+		</svg>
+	)
+}
+
 export interface CardFrameProps {
 	/**
 	 * Which card family this is. Selects both the top-edge keystone and the
@@ -1199,6 +1590,8 @@ const KEYSTONES = {
 	plate: RosetteKeystone,
 	sheet: CartoucheKeystone,
 	gem: GemKeystone,
+	palm: PalmKeystone,
+	stele: SteleKeystone,
 } as const
 
 /**
@@ -1219,6 +1612,23 @@ export function CardFrame({
 				<Corner key={pos} pos={pos} variant={keystone} />
 			))}
 			{cornersOnly ? null : <Keystone />}
+		</div>
+	)
+}
+
+/**
+ * The keystone alone, with no corners and no frame (M18, owner review).
+ *
+ * The printed card keeps its own torn-parchment edge, so it wants the family
+ * mark without the diamond corners that come with `CardFrame`. Same drawing,
+ * same `--ornament-scale` / `--ornament-overhang` controls; the caller supplies
+ * the positioning context.
+ */
+export function Keystone({ variant = 'winged' }: { variant?: CodexVariant }) {
+	const Mark = KEYSTONES[variant]
+	return (
+		<div className={styles.frame} aria-hidden="true">
+			<Mark />
 		</div>
 	)
 }
@@ -1747,9 +2157,18 @@ export function RosetteMark({
  * is what actually distinguishes a cut stone from a lozenge. The facets stop
  * short of the silhouette (§1) so the stone does not read as segmented.
  *
- * The flanking courses are the ziggurat's device, reused on purpose: they are how
- * a keystone spans the top edge instead of floating on it, and stepping them down
- * away from the centre keeps the mass graded rather than abrupt.
+ * **The flanks are the stone's own light** (owner, 2026-08-07). They were stepped
+ * courses first, then a merlon rhythm, and both were the same mistake asked twice:
+ * decorating the space beside the stone instead of saying anything with it. A
+ * setting says "this stone is mounted", which is true of any jewellery — what
+ * makes an object MAGIC is that it radiates.
+ *
+ * So the flanks are glints, thrown from the stone and diminishing outward. A
+ * four-point glint is two crossed lozenges, which keeps the whole mark inside the
+ * kit's diamond family rather than importing a star from somewhere else, and the
+ * decreasing sizes read as light falling off with distance instead of as a row of
+ * shapes. Nothing joins them: a connecting rule would tie them to the frame and
+ * they would stop being emanation and start being a fence.
  */
 function GemKeystone() {
 	// The border line. Everything above it overhangs the card.
@@ -1771,25 +2190,56 @@ function GemKeystone() {
 			strokeLinejoin="round"
 			aria-hidden="true"
 		>
-			{/* Opaque backing along the border line only, so the card's top border
-			    stops at the ornament instead of running through the setting (§2). */}
+			{/* Opaque backing along the border line, under the STONE only (§2).
+			    It used to span the whole viewBox, which was right while a setting
+			    ran edge to edge; with the flanks now floating free, a full-width
+			    mask would punch a gap in the card's border and fill it with
+			    nothing. */}
 			<path
-				d="M2 18.2 L82 18.2 L82 20.6 L2 20.6 Z"
+				d={`M${n(GIRDLE_L - 1)} 18.2 L${n(GIRDLE_R + 1)} 18.2 L${n(GIRDLE_R + 1)} 20.6 L${n(GIRDLE_L - 1)} 20.6 Z`}
 				fill={SURFACE}
 				stroke="none"
 			/>
 
-			{/* The setting: stepped courses out to the frame edges, stepping down away
-			    from the stone. */}
+			{/*
+			 * The stone's light: three glints a side, thrown outward and falling off.
+			 *
+			 * Generated OUTWARD from the centre and mirrored by construction (§6) —
+			 * the first flanking braid in this kit referenced a global x and came out
+			 * at unrelated phases on the two sides.
+			 *
+			 * Each glint is a four-point star with concave waists, which is two
+			 * crossed lozenges: the kit's own shape, elaborated rather than replaced.
+			 * The waist is what separates a glint from a plus sign — straight-sided
+			 * points read as a cross at this size.
+			 *
+			 * They ride slightly ABOVE the base line and drop as they recede, so the
+			 * three read as one arc of light leaving the stone rather than as a row.
+			 */}
 			<g fill="currentColor" stroke="none">
-				<path
-					d={`M17.5 16.6 L${n(GIRDLE_L)} 16.6 L${n(GIRDLE_L)} ${n(BASE)} L17.5 ${n(BASE)} Z`}
-				/>
-				<path d={`M4 17.6 L17.5 17.6 L17.5 ${n(BASE)} L4 ${n(BASE)} Z`} />
-				<path
-					d={`M${n(GIRDLE_R)} 16.6 L66.5 16.6 L66.5 ${n(BASE)} L${n(GIRDLE_R)} ${n(BASE)} Z`}
-				/>
-				<path d={`M66.5 17.6 L80 17.6 L80 ${n(BASE)} L66.5 ${n(BASE)} Z`} />
+				{[
+					{ out: 9.5, r: 3.9, lift: 5.2 },
+					{ out: 18.5, r: 2.6, lift: 3.4 },
+					{ out: 25.5, r: 1.6, lift: 2.0 },
+				].map(({ out, r, lift }, beat) =>
+					[-1, 1].map((side) => {
+						const cx = side < 0 ? GIRDLE_L - out : GIRDLE_R + out
+						const cy = BASE - lift
+						// The waist: how far the concave sides pull in between points.
+						const w = r * 0.3
+						return (
+							<path
+								key={`${beat}:${side}`}
+								d={
+									`M${n(cx)} ${n(cy - r)} L${n(cx + w)} ${n(cy - w)} ` +
+									`L${n(cx + r)} ${n(cy)} L${n(cx + w)} ${n(cy + w)} ` +
+									`L${n(cx)} ${n(cy + r)} L${n(cx - w)} ${n(cy + w)} ` +
+									`L${n(cx - r)} ${n(cy)} L${n(cx - w)} ${n(cy - w)} Z`
+								}
+							/>
+						)
+					}),
+				)}
 			</g>
 
 			{/* The stone itself — one solid mass, carved back out below (§1). */}
