@@ -13,7 +13,7 @@ Talents are special abilities that enhance your character's capabilities in spec
 - **Earning Talent Points**: Every **2 XP** you spend in a skill grants **1 talent point** for talents tied to that skill. Your **character level** limits how much XP you can put into any single skill.
 - **Spending Talent Points**: Each talent rank costs **1 talent point**. Higher ranks of the same talent must be purchased in order (Rank 1 → Rank 2 → Rank 3).
 - **Eligibility**: You can only buy a talent if you meet its **skill rank requirement** and you have enough talent points **from that same skill**.
-- **Specialization**: Talents deepen your focus within a skill—pick the talents that match your playstyle and party needs.
+- **Specialization**: Talents deepen your focus within a skill. Pick the talents that match your playstyle and party needs.
 - **Example**: At level 1 you can spend up to 2 XP in a skill (1 talent point = Rank 1 talent). Hitting level 2 raises the per-skill cap to 4 XP, letting you afford a second talent rank once your skill rank allows it.
 
 ## Talent Categories by Skill

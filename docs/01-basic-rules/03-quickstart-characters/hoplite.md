@@ -24,9 +24,9 @@ Role: Tank / Controller
 
 **Rank 1 Skills:**
 
-- **Fighting** – *Polearm Mastery (Rank 1)* – Opportunity attacks when enemies approach
-- **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
-- **Influence** – *Leading Presence (Rank 1)* – Allies near you gain boons to Initiative and vs fear
+- **Fighting**. *Polearm Mastery (Rank 1)*. Opportunity attacks when enemies approach
+- **Athletics**. *Fast Stride (Rank 1)*. Use Dash as Quick Action
+- **Influence**. *Leading Presence (Rank 1)*. Allies near you gain boons to Initiative and vs fear
 
 **Rank 0 Skills:** Fortitude, Perception, Insight †, Archery
 
@@ -36,8 +36,8 @@ Note: † Customized skill (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Charge** – Move and shove while attacking
-- **Defensive Strike** – Gain Defend Action effects on hit
+- **Charge**. Move and shove while attacking
+- **Defensive Strike**. Gain Defend Action effects on hit
 
 **Equipment**
 

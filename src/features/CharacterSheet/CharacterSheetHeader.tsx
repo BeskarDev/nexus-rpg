@@ -566,8 +566,8 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 											)}
 
 											{/* Companion Selection (if archetype has Animal Companion talent) */}
-											{selectedArchetype?.recommendedTalents?.includes(
-												'Animal Companion',
+											{selectedArchetype?.recommendedTalents?.some(
+												(t) => t.name === 'Animal Companion',
 											) &&
 												selectedArchetype?.recommendedCompanions &&
 												selectedArchetype.recommendedCompanions.length > 0 && (
@@ -608,8 +608,8 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 												)}
 
 											{/* Familiar Selection (if archetype has Conjure Familiar spell) */}
-											{selectedArchetype?.spellData?.startingSpells?.some(
-												(spell) => spell.name === 'Conjure Familiar',
+											{selectedArchetype?.spellData?.options?.some((o) =>
+												o.spells.some((s) => s.name === 'Conjure Familiar'),
 											) &&
 												selectedArchetype?.recommendedFamiliars &&
 												selectedArchetype.recommendedFamiliars.length > 0 && (

@@ -60,8 +60,8 @@ Feel free to customize these examples to match your vision or use them as-is for
 **Adjusting Attributes**
 While each example shows recommended attributes, you can swap the d8 and d4 to create different flavors:
 
-- **Agile Fighter:** d8 AGI, d4 MND – Focus on light armor and quick weapons
-- **Strong Archer:** d8 STR, d4 MND – Use heavy bows and thrown weapons
+- **Agile Fighter:** d8 AGI, d4 MND-Focus on light armor and quick weapons
+- **Strong Archer:** d8 STR, d4 MND-Use heavy bows and thrown weapons
 
 **Skill Variations**
 The 3 rank 1 skills define your starting capabilities, but the 4 rank 0 skills show growth potential. Different rank 0 skills support varied secondary roles. Consider your party composition when selecting skills.

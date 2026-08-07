@@ -24,9 +24,9 @@ Role: Tank / Support
 
 **Rank 1 Skills:**
 
-- **Fighting** – *Heavy Armor Mastery (Rank 1)* – Ignore movement penalty from heavy armor
-- **Mysticism** – *Mystic Champion (Rank 1)* – Infuse a rank 0 mystic spell into a weapon attack
-- **Influence** – *Leading Presence (Rank 1)* – Allies near you gain boons to Initiative and vs fear
+- **Fighting**. *Heavy Armor Mastery (Rank 1)*. Ignore movement penalty from heavy armor
+- **Mysticism**. *Mystic Champion (Rank 1)*. Infuse a rank 0 mystic spell into a weapon attack
+- **Influence**. *Leading Presence (Rank 1)*. Allies near you gain boons to Initiative and vs fear
 
 **Rank 0 Skills:** Fortitude, Insight, Lore, Perception †
 
@@ -36,8 +36,8 @@ Note: † Customized skill (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Defensive Strike** – Gain Defend Action effects on hit
-- **Terrifying Strike** – Frighten enemies with divine presence
+- **Defensive Strike**. Gain Defend Action effects on hit
+- **Terrifying Strike**. Frighten enemies with divine presence
 
 **Equipment**
 
@@ -51,7 +51,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 **Spells**
 
-**Tradition:** Choose Light (truth/justice) or War (combat prowess) — using Devotion (one tradition; 3 spells per rank)
+**Tradition:** Choose Light (truth/justice) or War (combat prowess). Using Devotion (one tradition, 3 spells per rank)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 4 + 2 = 6
 
 **Starting Spells (choose one tradition and take 3 spells at rank 0 and 3 spells at rank 1):**

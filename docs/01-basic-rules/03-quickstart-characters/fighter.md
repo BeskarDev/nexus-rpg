@@ -24,9 +24,9 @@ Role: Tank / Striker
 
 **Rank 1 Skills:**
 
-- **Fighting** – *Shield Mastery (Rank 1)* – Reduce enemy attack Success Level with Quick Action
-- **Athletics** – *Stand your Ground (Rank 1)* – Resist being knocked prone or pushed with Quick Action
-- **Fortitude** – *Second Wind (Rank 1)* – Regain HP with Quick Action once per scene
+- **Fighting**. *Shield Mastery (Rank 1)*. Reduce enemy attack Success Level with Quick Action
+- **Athletics**. *Stand your Ground (Rank 1)*. Resist being knocked prone or pushed with Quick Action
+- **Fortitude**. *Second Wind (Rank 1)*. Regain HP with Quick Action once per scene
 
 **Rank 0 Skills:** Influence †, Perception, Insight †, Archery
 
@@ -36,8 +36,8 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Defensive Strike** – Gain Defend Action effects on hit
-- **Charge** – Move and shove while attacking
+- **Defensive Strike**. Gain Defend Action effects on hit
+- **Charge**. Move and shove while attacking
 
 **Equipment**
 

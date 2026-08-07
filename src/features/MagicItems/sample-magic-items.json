@@ -71,7 +71,7 @@
 		"load": "1",
 		"uses": "1 (single use)",
 		"description": "A pale red brew that tingles like desert air on the tongue. The liquid seems to absorb heat from its surroundings, remaining cool even in scorching environments.",
-		"effect": "As an Action or by skipping all Movement this turn, you can drink this potion to gain the following benefits for a medium duration (1 hour): You suffer no penalties from extreme heat or hot environments; You gain resistance to fire damage; You gain +2 boons on rolls to resist inhaled poisons or toxic fumes. After drinking this potion, it is fully spent."
+		"effect": "As an Action or by skipping all Movement this turn, you can drink this potion to gain the following benefits for a medium duration (1 hour): You suffer no penalties from extreme heat or hot environments. You gain resistance to fire damage. You gain +2 boons on rolls to resist inhaled poisons or toxic fumes. After drinking this potion, it is fully spent."
 	},
 	{
 		"name": "Shadowpath Essence",
@@ -82,7 +82,7 @@
 		"load": "1",
 		"uses": "1 (single use)",
 		"description": "A black-violet shimmering liquid that slides down the throat like shadow itself. Drinking it feels like becoming one with darkness.",
-		"effect": "As an Action or by skipping all Movement this turn, you can drink this potion to gain the following benefits for a short duration (10 minutes): You gain +2 boons on Stealth rolls; You can move through dim light or darkness without leaving tracks or making sound from your footsteps; You gain +1 boon on Agility rolls to move quietly or avoid detection. After drinking this potion, it is fully spent."
+		"effect": "As an Action or by skipping all Movement this turn, you can drink this potion to gain the following benefits for a short duration (10 minutes): You gain +2 boons on Stealth rolls. You can move through dim light or darkness without leaving tracks or making sound from your footsteps. You gain +1 boon on Agility rolls to move quietly or avoid detection. After drinking this potion, it is fully spent."
 	},
 	{
 		"name": "Potion of Stable Steps",
@@ -93,7 +93,7 @@
 		"load": "1",
 		"uses": "1 (single use)",
 		"description": "A golden, slightly grainy potion made from mineralized sands. Each sip feels like gaining the stability of stone beneath your feet.",
-		"effect": "As an Action or by skipping all Movement this turn, you can drink this potion to gain the following benefits for a short duration (10 minutes): You gain +1 Movement per turn; You gain +2 boons on Athletics or Agility rolls to balance, jump, climb, or maintain footing on unstable surfaces; You automatically succeed on rolls to avoid falling prone from difficult terrain (mundane sources only). After drinking this potion, it is fully spent."
+		"effect": "As an Action or by skipping all Movement this turn, you can drink this potion to gain the following benefits for a short duration (10 minutes): You gain +1 Movement per turn. You gain +2 boons on Athletics or Agility rolls to balance, jump, climb, or maintain footing on unstable surfaces. You automatically succeed on rolls to avoid falling prone from difficult terrain (mundane sources only). After drinking this potion, it is fully spent."
 	},
 	{
 		"name": "Scroll of Protection from Evil",
@@ -105,7 +105,7 @@
 		"craftingTime": "1 week",
 		"spellEffect": "This scroll contains the mystic spell Ward Against Evil (custom spell based on Protection from Influence). When cast, roll Spirit + Mysticism (d10 + 2 if you lack Mysticism skill).",
 		"description": "This scroll contains the mystic spell Ward Against Evil.",
-		"effect": "Ward Against Evil (Rank 2): Target Self or one creature within close range. Duration Short duration (10 minutes). On a success, the target gains the following benefits: Immunity to being charmed, frightened, or possessed; Resistance to necrotic and psychic damage; Fiends (demons, devils) and undead have +2 banes on all attacks against the target; The target gains +2 boons on rolls to resist demonic corruption or influence. After reading this scroll aloud, it turns to dust."
+		"effect": "Ward Against Evil (Rank 2): Target Self or one creature within close range. Duration Short duration (10 minutes). On a success, the target gains the following benefits: Immunity to being charmed, frightened, or possessed. Resistance to necrotic and psychic damage. Fiends (demons, devils) and undead have +2 banes on all attacks against the target. The target gains +2 boons on rolls to resist demonic corruption or influence. After reading this scroll aloud, it turns to dust."
 	},
 	{
 		"name": "Scroll of Detect Magic",
@@ -117,7 +117,7 @@
 		"craftingTime": "1 day",
 		"spellEffect": "This scroll contains the arcane spell Detect Magic (based on existing Arcana detection magic). When cast, roll Mind + Arcana (d8 + 1 if you lack Arcana skill).",
 		"description": "This scroll contains the arcane spell Detect Magic.",
-		"effect": "Detect Magic (Rank 1): Target Self. Duration Short duration (10 minutes). On a success, you sense the presence and location of magic within medium range. You can use an Action on subsequent turns to study one creature, object, or area within range to learn: Whether it is magical; The type of magic (arcane, mystic, or specific tradition/discipline); The general purpose or effect of the magic (illusion, enchantment, corruption, etc.); Whether the magic is active or dormant. This spell can penetrate most barriers but is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt. After reading this scroll aloud, it turns to dust."
+		"effect": "Detect Magic (Rank 1): Target Self. Duration Short duration (10 minutes). On a success, you sense the presence and location of magic within medium range. You can use an Action on subsequent turns to study one creature, object, or area within range to learn: Whether it is magical. The type of magic (arcane, mystic, or specific tradition/discipline). The general purpose or effect of the magic (illusion, enchantment, corruption, etc.). Whether the magic is active or dormant. This spell can penetrate most barriers but is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt. After reading this scroll aloud, it turns to dust."
 	},
 	{
 		"name": "Scroll of Feather Fall",

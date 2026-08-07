@@ -24,9 +24,9 @@ Role: Striker / Utility
 
 **Rank 1 Skills:**
 
-- **Fighting** – *Blade Mastery (Rank 1)* – Switch between pierce/slash properties
-- **Stealth** – *Assassination (Rank 1)* – On your first hit from stealth each scene, increase SL by 1 (max. critical)
-- **Streetwise** – *Jack of All Trades (Rank 1)* – Add Streetwise to any one roll once per scene
+- **Fighting**. *Blade Mastery (Rank 1)*. Switch between pierce/slash properties
+- **Stealth**. *Assassination (Rank 1)*, On your first hit from stealth each scene, increase SL by 1 (max. critical)
+- **Streetwise**. *Jack of All Trades (Rank 1)*. Add Streetwise to any one roll once per scene
 
 **Rank 0 Skills:** Insight, Perception, Athletics †, Influence †
 
@@ -36,8 +36,8 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Feint** – Gain +1 boon when not moving with non-heavy weapons
-- **Evasive Strike** – Gain Retreat Action effects on hit
+- **Feint**. Gain +1 boon when not moving with non-heavy weapons
+- **Evasive Strike**. Gain Retreat Action effects on hit
 
 **Equipment**
 

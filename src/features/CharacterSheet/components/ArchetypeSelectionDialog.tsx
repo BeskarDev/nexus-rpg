@@ -28,23 +28,33 @@ export type ArchetypeData = {
 		MND: number
 	}
 	suggestedSkills: string
-	recommendedTalents: string[]
-	recommendedCombatArts?: string[]
+	/** Name plus the one-line gloss the docs page prints beside it (M22 D2). */
+	recommendedTalents: Array<{ name: string; gloss: string }>
+	recommendedCombatArts?: Array<{ name: string; gloss: string }>
 	recommendedCompanions?: string[]
 	recommendedFamiliars?: string[]
-	startingEquipment: string[]
+	/**
+	 * Catalogue references, not display strings (M22 D4). `item` is the name as
+	 * it appears in `weapons.json` / `armor.json` / `equipment.json`, verbatim,
+	 * so cost and load resolve rather than being restated.
+	 */
+	startingEquipment: Array<{ item: string; quantity?: number; note?: string }>
+	/** The standard-gear toolkit this archetype picks. Costs 0, load already counted. */
+	toolkit?: string
 	upbringing: string
 	background: string
 	spellData?: {
 		magicSkill: string
-		specialization: string
-		traditions?: string[]
-		disciplines?: string[]
-		startingSpells: Array<{
+		/**
+		 * `balance` — both options are open and spells are chosen freely across
+		 * them. `devotion` — pick ONE option and take its set whole (M22 D5).
+		 * Flattening the two is what made a Champion start with all 12 spells.
+		 */
+		mode: 'balance' | 'devotion'
+		options: Array<{
 			name: string
-			rank: number
-			tradition?: string
-			discipline?: string
+			blurb?: string
+			spells: Array<{ name: string; rank: number }>
 		}>
 	}
 }

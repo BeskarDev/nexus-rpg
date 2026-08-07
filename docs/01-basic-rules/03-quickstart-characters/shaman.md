@@ -24,9 +24,9 @@ Role: Support / Controller
 
 **Rank 1 Skills:**
 
-- **Mysticism** – *Divine Sense (Rank 1)* – Sense spirits/undead and hallowed or cursed auras
-- **Nature** – *Field Medic (Rank 1)* – Save the dying; treat wounds quickly during delves
-- **Lore** – *Consult the Myths (Rank 1)* – Re‑roll Lore about supernatural topics once per scene
+- **Mysticism**. *Divine Sense (Rank 1)*. Sense spirits/undead and hallowed or cursed auras
+- **Nature**. *Field Medic (Rank 1)*. Save the dying. Treat wounds quickly during delves
+- **Lore**. *Consult the Myths (Rank 1)*. Re‑roll Lore about supernatural topics once per scene
 
 **Rank 0 Skills:** Insight, Survival, Perception †, Influence †
 
@@ -44,7 +44,7 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 **Spells**
 
-**Tradition:** Death (ancestors/curses) and Life (blessings/community) — using Balance (two traditions; freely choose spells from either)
+**Tradition:** Death (ancestors/curses) and Life (blessings/community). Using Balance (two traditions, freely choose spells from either)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
 **Starting Spells (2 from two traditions at rank 0-1):**

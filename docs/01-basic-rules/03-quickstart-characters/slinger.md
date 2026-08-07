@@ -24,9 +24,9 @@ Role: Striker
 
 **Rank 1 Skills:**
 
-- **Archery** – *Expert Slinger (Rank 1)* – Supply checks for thrown bundles: roll twice, take higher
-- **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
-- **Stealth** – *Devious Tactics (Rank 1)* – Use Distract as a Quick Action; set up openings
+- **Archery**. *Expert Slinger (Rank 1)*. Supply checks for thrown bundles: roll twice, take higher
+- **Athletics**. *Fast Stride (Rank 1)*. Use Dash as Quick Action
+- **Stealth**. *Devious Tactics (Rank 1)*. Use Distract as a Quick Action. Set up openings
 
 **Rank 0 Skills:** Survival, Perception, Insight †, Nature
 
@@ -36,8 +36,8 @@ Note: † Customized skill (not from upbringing/background suggestions)
 
 As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. Recommended:
 
-- **Aimed Shot** – Gain +1 boon when not moving
-- **Power Shot** – Add Strength to damage
+- **Aimed Shot**. Gain +1 boon when not moving
+- **Power Shot**. Add Strength to damage
 
 **Equipment**
 

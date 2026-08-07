@@ -24,9 +24,9 @@ Role: Support / Tank
 
 **Rank 1 Skills:**
 
-- **Mysticism** – *Divine Rites (Rank 1)* – Regain half your Focus during a short break, limited uses per day
-- **Fighting** – *Shield Mastery (Rank 1)* – Reduce enemy attack Success Level with Quick Action
-- **Lore** – *Consult the Myths (Rank 1)* – Re‑roll Lore about supernatural topics once per scene
+- **Mysticism**. *Divine Rites (Rank 1)*. Regain half your Focus during a short break, limited uses per day
+- **Fighting**. *Shield Mastery (Rank 1)*. Reduce enemy attack Success Level with Quick Action
+- **Lore**. *Consult the Myths (Rank 1)*. Re‑roll Lore about supernatural topics once per scene
 
 **Rank 0 Skills:** Influence, Insight, Fortitude †, Education
 
@@ -36,8 +36,8 @@ Note: † Customized skill (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Defensive Strike** – Gain Defend Action effects on hit
-- **Exhilarating Strike** – Heal nearby allies on hit
+- **Defensive Strike**. Gain Defend Action effects on hit
+- **Exhilarating Strike**. Heal nearby allies on hit
 
 **Equipment**
 
@@ -51,7 +51,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 **Spells**
 
-**Tradition:** Choose Life (healing) or Peace (protection) — using Devotion (one tradition; 3 spells per rank)
+**Tradition:** Choose Life (healing) or Peace (protection). Using Devotion (one tradition, 3 spells per rank)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 4 + 2 = 6
 
 **Starting Spells (choose one tradition and take 3 spells at rank 0-1):**

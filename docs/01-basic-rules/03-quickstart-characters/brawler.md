@@ -24,9 +24,9 @@ Role: Striker / Controller
 
 **Rank 1 Skills:**
 
-- **Fighting** – *Pugilist (Rank 1)* – Unarmed and brawling control; treat fists and brawling weapons as reliable tools in a scrap
-- **Fortitude** – *Hard to Kill (Rank 1)* – Shrug off punishment and stay standing in ugly brawls
-- **Streetwise** – *Thug Tactics (Rank 1)* – Gain boons when ganging up or fighting dirty in tight quarters
+- **Fighting**. *Pugilist (Rank 1)*. Unarmed and brawling control. Treat fists and brawling weapons as reliable tools in a scrap
+- **Fortitude**. *Hard to Kill (Rank 1)*. Shrug off punishment and stay standing in ugly brawls
+- **Streetwise**. *Thug Tactics (Rank 1)*. Gain boons when ganging up or fighting dirty in tight quarters
 
 **Rank 0 Skills:** Influence, Perception, Stealth †, Insight †
 
@@ -36,8 +36,8 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended for brawling weapons:
 
-- **Disarm** – Knock weapons from enemy hands to tilt the exchange
-- **Snare** – Clinch and restrain with chain, whip, or grappling setups
+- **Disarm**. Knock weapons from enemy hands to tilt the exchange
+- **Snare**. Clinch and restrain with chain, whip, or grappling setups
 
 **Equipment**
 
@@ -53,7 +53,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 Close distance and take away your opponent’s best options. Use Fast Stride to enter clinch range, Disarm to strip weapons, and Snare to tie down priority targets while your allies dogpile. Pugilist keeps your hands and brawling tools effective even when you’re unarmed or improvised. Thug Tactics rewards advantage creation and teamwork in scrappy fights.
 
-**Advancement:** Raise Fighting 2–3 for more control arts (Supreme Disarm) and improved damage lines; add Fortitude for toughness and recovery, and consider Streetwise 2 for better gang-up play. A spiked chain or whip can extend your control footprint once your technique improves.
+**Advancement:** Raise Fighting 2-3 for more control arts (Supreme Disarm) and improved damage lines. Add Fortitude for toughness and recovery, and consider Streetwise 2 for better gang-up play. A spiked chain or whip can extend your control footprint once your technique improves.
 
 [Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 

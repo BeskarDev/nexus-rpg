@@ -21,7 +21,7 @@ Note: † Customized skill (not from upbringing/background suggestions)
 
 **Spells**
 
-**Tradition:** Twilight (illusion/dreams) and Peace (calming/travel) — using Balance (two traditions; freely choose spells from either)
+**Tradition:** Twilight (illusion/dreams) and Peace (calming/travel). Using Balance (two traditions, freely choose spells from either)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
 **Starting Spells (2 from two traditions at rank 0-1):**
@@ -37,15 +37,15 @@ If you choose Animal Companion, use the companion base stat block with Tier equa
 
 Suggested traits:
 
-- Bear — Tough frontline with knockdown/grapple options and an intimidating roar.
-- Bird — Fast flying scout with keen eyes and dive attack bursts.
-- Constrictor Snake — Grapple and restrain to lock down priority targets.
+- Bear. Tough frontline with knockdown/grapple options and an intimidating roar.
+- Bird. Fast flying scout with keen eyes and dive attack bursts.
+- Constrictor Snake. Grapple and restrain to lock down priority targets.
 
 **Playstyle & Advancement**
 
-The Bard shines in social scenes and soft control. Use performance‑flavored rank 0 spells with Master of Principles to land key effects reliably; Calming Influence and veils shape tempo before blades are drawn. Inspire Ally fuels allies’ key rolls (and damage), while Eloquent Talker keeps you dominant in parley. You can still carry a shortsword, but your magic and words are your real weapons.
+The Bard shines in social scenes and soft control. Use performance‑flavored rank 0 spells with Master of Principles to land key effects reliably. Calming Influence and veils shape tempo before blades are drawn. Inspire Ally fuels allies’ key rolls (and damage), while Eloquent Talker keeps you dominant in parley. You can still carry a shortsword, but your magic and words are your real weapons.
 
-**Advancement:** Raise Mysticism 2–3 to expand spells and reliability (Communal Practices next if you want multi‑target flexibility). Boost Influence 2–3 for stronger team support (Leading Presence is a great pick). Add Education/Lore for cultural/magical knowledge, and optionally Stealth for infiltration and stagecraft.
+**Advancement:** Raise Mysticism 2-3 to expand spells and reliability (Communal Practices next if you want multi‑target flexibility). Boost Influence 2-3 for stronger team support (Leading Presence is a great pick). Add Education/Lore for cultural/magical knowledge, and optionally Stealth for infiltration and stagecraft.
 
 [Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 

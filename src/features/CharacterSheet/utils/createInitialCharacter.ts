@@ -134,6 +134,17 @@ const findEquipment = (itemName: string) => {
 }
 
 /**
+ * Whether an item is ammunition. `Supply` also covers rations, torches and
+ * crafting materials, none of which a weapon grants, so those are excluded by
+ * name rather than the category being trusted on its own.
+ */
+const isAmmunition = (itemName: string) => {
+	const entry = findEquipment(itemName)
+	if (entry?.category !== 'Supply') return false
+	return !/Rations|Torch|Materials/i.test(entry.name)
+}
+
+/**
  * Finds a talent by name in the talents database
  */
 const findTalent = (talentName: string) => {
@@ -433,7 +444,7 @@ export const createInitialCharacter = (
 		archetype?.recommendedTalents &&
 		Array.isArray(archetype.recommendedTalents)
 	) {
-		archetype.recommendedTalents.forEach((talentName) => {
+		archetype.recommendedTalents.forEach(({ name: talentName }) => {
 			const talent = findTalent(talentName)
 			if (talent) {
 				abilities.push({
@@ -520,32 +531,26 @@ export const createInitialCharacter = (
 
 	// Determine spell path (discipline/tradition) selection
 	const spellData = archetype?.spellData
-	const availableSpellPaths =
-		(spellData?.traditions && spellData.traditions.length
-			? spellData.traditions
-			: spellData?.disciplines && spellData.disciplines.length
-				? spellData.disciplines
-				: []) || []
+	const availableSpellPaths = (spellData?.options ?? []).map((o) => o.name)
 
 	const chosenSpellPath =
 		availableSpellPaths.find((path) => path === selectedSpellPath) ||
 		availableSpellPaths[0] ||
 		''
 
-	type ArchetypeSpellInfo = {
-		name: string
-		rank: number
-		tradition?: string
-		discipline?: string
-	}
-	const startingSpells: ArchetypeSpellInfo[] = spellData?.startingSpells ?? []
+	type ArchetypeSpellInfo = { name: string; rank: number }
+	const startingSpells: ArchetypeSpellInfo[] = (spellData?.options ?? []).flatMap(
+		(o) => o.spells,
+	)
 
-	const filteredStartingSpells = startingSpells.filter((spell) => {
-		const spellPath = spell.tradition || spell.discipline
-		if (!chosenSpellPath || !availableSpellPaths.length) return true
-		if (spellPath) return spellPath === chosenSpellPath
-		return true
-	})
+	// Under `devotion` the character takes ONE option's set; under `balance`
+	// both options are open and spells are chosen freely across them (M22 D5).
+	// Passing everything through is what started a Champion with all 12 spells.
+	const filteredStartingSpells =
+		spellData?.mode === 'devotion' && chosenSpellPath
+			? (spellData.options.find((o) => o.name === chosenSpellPath)?.spells ??
+				startingSpells)
+			: startingSpells
 
 	const dedupedStartingSpells = filteredStartingSpells.reduce<
 		ArchetypeSpellInfo[]
@@ -557,28 +562,29 @@ export const createInitialCharacter = (
 		return acc
 	}, [])
 
-	// Add combat arts for Fighting or Archery rank 1 skills
-	uniqueRank1Skills.forEach((skillName) => {
-		if (skillName === 'Fighting' || skillName === 'Archery') {
-			const combatArts =
-				archetype?.recommendedCombatArts &&
-				archetype.recommendedCombatArts.length
-					? archetype.recommendedCombatArts
-							.map((artName) => findCombatArtByName(artName))
-							.filter((art): art is NonNullable<typeof art> => art != null)
-							.slice(0, 2)
-					: findCombatArtsForSkill(skillName, 2)
-			combatArts.forEach((art) => {
-				abilities.push({
-					id: uuidv4(),
-					title: art.name,
-					description: sanitizeAbilityDescription(
-						`**${art.category}** (${art.weapons})\n\n${art.effect}`,
-					),
-					tag: 'Combat Art' as const,
-				})
-			})
-		}
+	// Add combat arts. The count is a rule, not a preference: two per weapon
+	// skill at rank 1 and one at rank 0, summed over Fighting and Archery
+	// (02-character-creation.md, M22 D9). The archetype's recommendations
+	// already hold exactly that many, so they are taken whole — the previous
+	// code sliced them to 2 INSIDE a per-rank-1-skill loop, which dropped the
+	// rank-0 skill's art and double-pushed for anyone with both at rank 1.
+	const recommendedArts = archetype?.recommendedCombatArts ?? []
+	const combatArts = recommendedArts.length
+		? recommendedArts
+				.map(({ name }) => findCombatArtByName(name))
+				.filter((art): art is NonNullable<typeof art> => art != null)
+		: uniqueRank1Skills.filter(
+					(s) => s === 'Fighting' || s === 'Archery',
+			  ).flatMap((skillName) => findCombatArtsForSkill(skillName, 2))
+	combatArts.forEach((art) => {
+		abilities.push({
+			id: uuidv4(),
+			title: art.name,
+			description: sanitizeAbilityDescription(
+				`**${art.category}** (${art.weapons})\n\n${art.effect}`,
+			),
+			tag: 'Combat Art' as const,
+		})
 	})
 
 	// Process archetype starting equipment
@@ -591,13 +597,19 @@ export const createInitialCharacter = (
 		Array.isArray(archetype.startingEquipment) &&
 		includeStartingGear
 	) {
-		archetype.startingEquipment.forEach((equipmentName) => {
-			// Parse quantity notation to get the actual item name
-			let actualName = equipmentName
-			const quantityMatch = equipmentName.match(/^(.+?)\s+x(\d+)$/i)
-			if (quantityMatch) {
-				actualName = quantityMatch[1].trim()
-			}
+		// "Selecting a weapon requiring ammunition gives you one unit of that
+		// ammunition for free" (02-character-creation.md). One unit only, and
+		// only when the kit actually carries an `ammo` weapon (M22 F12).
+		const carriesAmmoWeapon = archetype.startingEquipment.some(({ item }) =>
+			findWeapon(item)?.properties?.includes('ammo'),
+		)
+		let freeAmmoTaken = false
+
+		archetype.startingEquipment.forEach(({ item: actualName, quantity }) => {
+			// The reference carries the catalogue name and the count separately
+			// (M22 D4), so nothing has to be parsed back out of a display string.
+			const equipmentName =
+				quantity && quantity > 1 ? `${actualName} x${quantity}` : actualName
 
 			// Check if it's likely a weapon by checking weapons database with the parsed name
 			const weaponData = findWeapon(actualName)
@@ -612,7 +624,16 @@ export const createInitialCharacter = (
 				const item = createItemFromName(equipmentName)
 				if (item) {
 					archetypeItems.push(item)
-					equipmentCost += item.cost * item.amount
+					const isFreeAmmo =
+						carriesAmmoWeapon &&
+						!freeAmmoTaken &&
+						(quantity ?? 1) === 1 &&
+						isAmmunition(actualName)
+					if (isFreeAmmo) {
+						freeAmmoTaken = true
+					} else {
+						equipmentCost += item.cost * item.amount
+					}
 				}
 			}
 		})
@@ -655,6 +676,19 @@ export const createInitialCharacter = (
 	const agilityValue = (archetype?.attributes.AGI || 6) as 4 | 6 | 8 | 10 | 12
 	const spiritValue = (archetype?.attributes.SPI || 6) as 4 | 6 | 8 | 10 | 12
 	const mindValue = (archetype?.attributes.MND || 6) as 4 | 6 | 8 | 10 | 12
+
+	// Focus pool: (governing attribute − 2) + (2 × magic skill rank). Arcana is
+	// governed by Mind, Mysticism by Spirit.
+	const magicSkillName =
+		spellData?.magicSkill ||
+		(uniqueRank1Skills.includes('Arcana')
+			? 'Arcana'
+			: uniqueRank1Skills.includes('Mysticism')
+				? 'Mysticism'
+				: '')
+	const focusPool = magicSkillName
+		? (magicSkillName === 'Arcana' ? mindValue : spiritValue) - 2 + 2
+		: 0
 
 	// Calculate initial HP (12 base + strength value)
 	const initialHp = 12 + strengthValue
@@ -877,31 +911,14 @@ export const createInitialCharacter = (
 				: [],
 		},
 		spells: {
-			magicSkill:
-				spellData?.magicSkill ||
-				(uniqueRank1Skills.includes('Arcana')
-					? 'Arcana'
-					: uniqueRank1Skills.includes('Mysticism')
-						? 'Mysticism'
-						: ''),
-			specialization:
-				chosenSpellPath ||
-				spellData?.specialization ||
-				spellData?.magicSkill ||
-				'',
+			magicSkill: magicSkillName,
+			specialization: chosenSpellPath || spellData?.magicSkill || '',
 			focus: {
-				total:
-					spellData ||
-					uniqueRank1Skills.includes('Arcana') ||
-					uniqueRank1Skills.includes('Mysticism')
-						? spiritValue - 2 + 2 // (Spirit - 2) + (2 × Magic Skill Rank 1) = Spirit - 2 + 2
-						: 0,
-				current:
-					spellData ||
-					uniqueRank1Skills.includes('Arcana') ||
-					uniqueRank1Skills.includes('Mysticism')
-						? spiritValue - 2 + 2
-						: 0,
+				// (governing attribute − 2) + (2 × magic skill rank 1). Arcana runs
+				// off Mind and Mysticism off Spirit — this used Spirit for both,
+				// which gave every Arcana caster the wrong pool (M22 F11).
+				total: focusPool,
+				current: focusPool,
 				auto: 0,
 			},
 			spellCatalystDamage: 0,
@@ -929,7 +946,7 @@ export const createInitialCharacter = (
 
 	// Add companion if archetype has Animal Companion talent and a companion is selected
 	if (
-		archetype?.recommendedTalents?.includes('Animal Companion') &&
+		archetype?.recommendedTalents?.some((t) => t.name === 'Animal Companion') &&
 		selectedCompanion
 	) {
 		const companionTraitName = selectedCompanion

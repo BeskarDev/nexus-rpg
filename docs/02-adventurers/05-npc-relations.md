@@ -40,7 +40,7 @@ Authorities hold positions of power, law, or governance. They could be nobles, g
 
 ### **4. Scholar**
 
-Scholars are seekers of knowledge—whether academic, religious, or medical. They could be priests, healers, historians, or shamans who value study and wisdom above all else. They help uncover mysteries, cure diseases, or provide guidance based on ancient knowledge or lore.
+Scholars are seekers of knowledge, whether academic, religious, or medical. They could be priests, healers, historians, or shamans who value study and wisdom above all else. They help uncover mysteries, cure diseases, or provide guidance based on ancient knowledge or lore.
 
 - **Intimate or friendly disposition** They can offer you valuable knowledge, healing, or insight into mysteries, helping you make critical decisions or understand deeper truths about the world.
 - **Indifferent or suspicious disposition** They may provide minimal advice or healing, focusing more on their own work than on your personal journey. They offer little emotional investment or guidance.
@@ -56,7 +56,7 @@ Scoundrels are those who thrive in the shadows, relying on trickery, deceit, and
 
 ### **6. Seeker**
 
-Seekers are individuals driven by a quest—whether for knowledge, wealth, or personal expression. They might be merchants, guides, entertainers, or anyone seeking something they don’t yet possess. They are often open to new ideas, and their work connects the players to the wider world.
+Seekers are individuals driven by a quest, whether for knowledge, wealth, or personal expression. They might be merchants, guides, entertainers, or anyone seeking something they don’t yet possess. They are often open to new ideas, and their work connects the players to the wider world.
 
 - **Intimate or friendly disposition** They can offer you useful supplies, guidance, or information in exchange for a shared interest or mutual benefit. Their connections might open doors elsewhere for you.
 - **Indifferent or suspicious disposition** They do their business or provide basic services without much warmth, seeing you as just another customer or traveler. There’s little personal investment on their part.
@@ -64,7 +64,7 @@ Seekers are individuals driven by a quest—whether for knowledge, wealth, or pe
 
 ## Disposition
 
-Each relationship with an NPC is measured by their disposition toward your adventurers. This disposition can shift over time based on your actions, favors exchanged, or promises kept or broken. When you fulfill a major quest for an NPC, their disposition might improve; when you betray their trust, it might deteriorate.
+Each relationship with an NPC is measured by their disposition toward your adventurers. This disposition can shift over time based on your actions, favors exchanged, or promises kept or broken. When you fulfill a major quest for an NPC, their disposition might improve, when you betray their trust, it might deteriorate.
 
 | Level | Disposition | Description |
 | --- | --- | --- |
@@ -96,7 +96,7 @@ When making social interaction tests with NPCs, apply their disposition modifier
 > Example: Sephi the Seer needs information about ancient temple ruins from a local scholar. The scholar is friendly toward Sephi due to their shared respect for knowledge. Normally, extracting this specific information would be a medium Difficulty Influence test (TN 8), but the scholar's friendly disposition reduces the Difficulty by one step to easy (TN 6). Sephi rolls their Mind (d8) + Influence (d6), needing only a 6 to succeed.
 > Later, Sephi approaches a hostile temple guardian to gain entry to a restricted archive. The base difficulty would be Medium (TN 8), but the guardian's hostile disposition increases it by two steps to Very Hard (TN 12). Even with Sephi's Mind (d8) + Influence (d6), this will be a challenging test.
 
-Remember that even the most favorable NPCs will not endlessly provide assistance without reciprocation. Relationships require maintenance—favors must be returned, respect must be shown, and cultural protocols must be observed. Repeatedly exploiting an NPC's goodwill can turn even an intimate ally into a suspicious acquaintance or worse.
+Remember that even the most favorable NPCs will not endlessly provide assistance without reciprocation. Relationships require maintenance. Favors must be returned, respect must be shown, and cultural protocols must be observed. Repeatedly exploiting an NPC's goodwill can turn even an intimate ally into a suspicious acquaintance or worse.
 
 ## Building Your Network
 

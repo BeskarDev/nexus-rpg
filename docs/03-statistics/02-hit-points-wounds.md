@@ -22,7 +22,7 @@ Talents may provide additional HP, but your total HP from all sources cannot exc
 
 ### Temporary HP
 
-Some abilities grant temporary HP—a secondary pool drawn from first when taking damage. Unlike regular HP, temporary HP doesn't replenish during short rests and vanishes once depleted.
+Some abilities grant temporary HP, a secondary pool drawn from first when taking damage. Unlike regular HP, temporary HP doesn't replenish during short rests and vanishes once depleted.
 
 When gaining temporary HP from multiple sources, only the highest value applies.
 
@@ -42,8 +42,8 @@ You naturally recover 1 point of Fatigue after a night’s rest or all of your F
 
 ## Wounds
 
-> "In the grand markets of Sikatha, duels rarely end in death. A skilled combatant knows when to yield, and the victors understand that a living rival returned to their clan for ransom brings more wealth than a corpse. Even the fiercest warriors of the northern steppes follow this wisdom—only beasts and the truly desperate fight to the last breath."
-> — *Sansar the Thief, explaining customs to foreign merchants*
+> "In the grand markets of Sikatha, duels rarely end in death. A skilled combatant knows when to yield, and the victors understand that a living rival returned to their clan for ransom brings more wealth than a corpse. Even the fiercest warriors of the northern steppes follow this wisdom. Only beasts and the truly desperate fight to the last breath."
+> *Sansar the Thief, explaining customs to foreign merchants*
 
 While HP measures short-term endurance, Wounds reflect lasting damage to your body. An adventurer can sustain up to three Wounds before facing death.
 
@@ -73,7 +73,7 @@ Additionally, when taking damage:
 
 > Note: Attacks dealing multiple instances of damage from a single roll still inflict only one Wound. Additional Wounds occur only when damage thresholds are surpassed.
 
-> Example: Nagkhan the Sorcerer (22 max HP) is struck by a temple guardian's blade while at 0 HP. The attack deals 25 damage—more than Nagkhan's maximum HP—resulting in two Wounds total: one for being hit at 0 HP, and one for exceeding their maximum HP threshold.
+> Example: Nagkhan the Sorcerer (22 max HP) is struck by a temple guardian's blade while at 0 HP. The attack deals 25 damage, more than Nagkhan's maximum HP, resulting in two Wounds total: one for being hit at 0 HP, and one for exceeding their maximum HP threshold.
 
 ### Treating Wounds
 
@@ -87,15 +87,15 @@ To permanently remove a treated Wound, succeed on a hard Strength + Fortitude ro
 
 ### Dying
 
-When you suffer your third Wound, you begin dying. Roll a d4—the result indicates both how many turns remain before death and the difficulty of stabilization attempts. Reduce this count by 1 on each of your subsequent turns. While dying, you remain unconscious and helpless—any successful attack against you causes immediate death.
+When you suffer your third Wound, you begin dying. Roll a d4. The result indicates both how many turns remain before death and the difficulty of stabilization attempts. Reduce this count by 1 on each of your subsequent turns. While dying, you remain unconscious and helpless. Any successful attack against you causes immediate death.
 
 Allies may attempt to save you on their turns. With appropriate medical supplies, another creature can make a Spirit + Nature roll vs hard Difficulty (TN 10) to stabilize you.
 
 Any successful stabilization roll immediately stops you from dying, though you remain unconscious with your current Wounds. A critical success also restores 1 HP, bringing you back to consciousness.
 
-> Example: Arzhag the Warrior is struck down in battle against a temple guardian, suffering their third Wound. They begin dying and roll a 3 on their d4. On Arzhag's next turn, this count reduces to 2. Sansar rushes to their side and makes a Spirit + Nature roll with their healer's kit vs. hard Difficulty (TN 10). Despite the difficulty, Sansar succeeds! Arzhag is stabilized—no longer dying but still unconscious with three Wounds. Had Sansar achieved a critical success, Arzhag would have regained 1 HP and consciousness.
+> Example: Arzhag the Warrior is struck down in battle against a temple guardian, suffering their third Wound. They begin dying and roll a 3 on their d4. On Arzhag's next turn, this count reduces to 2. Sansar rushes to their side and makes a Spirit + Nature roll with their healer's kit vs. hard Difficulty (TN 10). Despite the difficulty, Sansar succeeds! Arzhag is stabilized, no longer dying but still unconscious with three Wounds. Had Sansar achieved a critical success, Arzhag would have regained 1 HP and consciousness.
 
-Regaining HP while dying has no effect on your dying condition—proper medical attention is required.
+Regaining HP while dying has no effect on your dying condition. Proper medical attention is required.
 
 ## Diseases
 

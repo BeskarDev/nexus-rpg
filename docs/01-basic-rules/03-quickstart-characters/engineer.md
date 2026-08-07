@@ -24,9 +24,9 @@ Role: Support / Utility
 
 **Rank 1 Skills:**
 
-- **Crafting** – *Quick Construction (Rank 1)* – Improvise items during exploration
-- **Education** – *General Education (Rank 1)* – No bane on untrained expert skills
-- **Archery** – *Expert Slinger (Rank 1)* – Re-roll Supply checks for thrown weapons
+- **Crafting**. *Quick Construction (Rank 1)*. Improvise items during exploration
+- **Education**. *General Education (Rank 1)*, No bane on untrained expert skills
+- **Archery**. *Expert Slinger (Rank 1)*. Re-roll Supply checks for thrown weapons
 
 **Rank 0 Skills:** Lore †, Perception, Fortitude, Streetwise †
 
@@ -36,8 +36,8 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. Recommended:
 
-- **Aimed Shot** – Gain +1 boon when not moving
-- **Volley** – Hit multiple enemies with thrown weapons
+- **Aimed Shot**. Gain +1 boon when not moving
+- **Volley**. Hit multiple enemies with thrown weapons
 
 **Equipment**
 

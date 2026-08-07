@@ -6,13 +6,13 @@ sidebar_position: 1
 
 ![banner-img](/img/banner/scenes-banner.png)
 
-Every session unfolds through a series of **scenes** — distinct moments of tension, decision, and consequence. Each scene has a clear goal and some obstacle standing in the way, and it plays out at a **time scale** that reflects the pace of the action: a desperate battle plays out second by second, while an overland journey is measured in days.
+Every session unfolds through a series of **scenes**. Distinct moments of tension, decision, and consequence. Each scene has a clear goal and some obstacle standing in the way, and it plays out at a **time scale** that reflects the pace of the action: a desperate battle plays out second by second, while an overland journey is measured in days.
 
-Time scales tell everyone at the table how much time each action takes, keeping the fiction grounded and the pacing sharp. The GM doesn't need to enforce scene boundaries rigidly — they are a tool for framing the story, not a strict procedural requirement.
+Time scales tell everyone at the table how much time each action takes, keeping the fiction grounded and the pacing sharp. The GM doesn't need to enforce scene boundaries rigidly. They are a tool for framing the story, not a strict procedural requirement.
 
 ## Scenes
 
-A scene begins when the adventurers face a situation with a clear goal and ends once that goal is achieved, made impossible, or the group can step back and reassess. A battle, a tense negotiation, a dangerous descent through a ruin — each is its own scene with its own rhythm. Scenes don't have to be called out explicitly; they emerge naturally from play.
+A scene begins when the adventurers face a situation with a clear goal and ends once that goal is achieved, made impossible, or the group can step back and reassess. A battle, a tense negotiation, a dangerous descent through a ruin. Each is its own scene with its own rhythm. Scenes don't have to be called out explicitly. They emerge naturally from play.
 
 > **How do I know when a scene begins or ends?**
 > A scene begins once the adventurers encounter a specific situation with a specific goal they want to achieve or avert. The scene ends once that goal is reached or is made impossible. In other words, once the adventurers have the option to take a break and re-evaluate their next steps, a previous scene has probably ended.
@@ -24,9 +24,9 @@ Each scene operates in exactly one of the following time scales. Each Action the
 
 | **Time Scale** | **One Action** | **Examples of Actions** |
 | --- | --- | --- |
-| Encounter | 5–10 seconds | Attack, cast a spell, dash, use an item |
-| Delving | 5–10 minutes | Search a room, pick a lock, disable a trap, move to the next room |
-| Exploration | 2–4 hours | Navigate a stretch of wilderness, track a creature, set up camp |
+| Encounter | 5-10 seconds | Attack, cast a spell, dash, use an item |
+| Delving | 5-10 minutes | Search a room, pick a lock, disable a trap, move to the next room |
+| Exploration | 2-4 hours | Navigate a stretch of wilderness, track a creature, set up camp |
 | Travel | ~1 day | Hike a full day's route, forage/hunt for the day, rest and resupply |
 | Downtime | ~1 week | Craft an item, research a topic, train a skill, gather rumors |
 
@@ -70,7 +70,7 @@ When a dice timer hits 0, roll **1d6** on the scene's event table to determine w
 | **d6** | **Category** | **What It Means** |
 | --- | --- | --- |
 | 1 | **Threat** | An encounter or direct danger. Roll on an encounter table or introduce a hostile force. |
-| 2 | **Wear and Tear** | Equipment or resources degrade. Each adventurer must choose one item they possess. Items that track Durability require a Durability check; other items lose 1 use. |
+| 2 | **Wear and Tear** | Equipment or resources degrade. Each adventurer must choose one item they possess. Items that track Durability require a Durability check. Other items lose 1 use. |
 | 3 | **Resource Drain** | A key resource is consumed or tested. Roll a Supply check or suffer 1 Fatigue. Ammo, light source, rations, extreme climate, or overexertion. |
 | 4 | **Shift** | The environment or situation changes, introducing some lasting effect. Terrain, weather, conditions, or NPC behavior. |
 | 5 | **Traces** | A clue or sign of what lies ahead. Foreshadowing, tracks, sounds, or useful information. |

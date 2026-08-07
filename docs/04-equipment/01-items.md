@@ -178,7 +178,7 @@ The Durability dies listed above are representative of the mundane form of the i
 
 | Durability Die | Failure Range |
 | --- | --- |
-| d4–d12 | 1–3 |
-| d12+1 | 1–2 |
+| d4-d12 | 1-3 |
+| d12+1 | 1-2 |
 | d12+2 | 1 |
 | d12+3 | Indestructible (no check unless stated) |

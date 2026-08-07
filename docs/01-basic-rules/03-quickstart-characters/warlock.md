@@ -24,9 +24,9 @@ Role: Striker / Controller
 
 **Rank 1 Skills:**
 
-- **Arcana** – *Master of Fundamentals (Rank 1)* – Re-roll rank 0 spell tests once per scene
-- **Lore** – *Arcane Spell Knowledge (Rank 1)* – Know +1 additional Arcana spell per rank
-- **Insight** – *Piercing Look (Rank 1)* – Re‑roll Insight to detect lies or motives once per scene
+- **Arcana**. *Master of Fundamentals (Rank 1)*. Re-roll rank 0 spell tests once per scene
+- **Lore**. *Arcane Spell Knowledge (Rank 1)*. Know +1 additional Arcana spell per rank
+- **Insight**. *Piercing Look (Rank 1)*. Re‑roll Insight to detect lies or motives once per scene
 
 **Rank 0 Skills:** Fortitude †, Influence, Stealth †, Perception †
 

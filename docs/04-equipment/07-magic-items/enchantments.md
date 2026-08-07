@@ -22,7 +22,7 @@ Removing an enchantment is difficult and often destroys the item.
 
 > **Stacking**
 >
-> If multiple equipped items provide the same enchantment effect, only the highest effect applies. This covers passive and stat effects; active abilities that require an Action or Quick Action are not blocked by this rule. Example: boots of reflexes +1 and cloak of reflexes +2 both grant Dodge — only the +2 applies.
+> If multiple equipped items provide the same enchantment effect, only the highest effect applies. This covers passive and stat effects. Active abilities that require an Action or Quick Action are not blocked by this rule. Example: boots of reflexes +1 and cloak of reflexes +2 both grant Dodge. Only the +2 applies.
 
 > **Prefix vs. Suffix**
 >
@@ -35,7 +35,7 @@ Removing an enchantment is difficult and often destroys the item.
 
 > **Scaling by Quality**
 >
-> Each enchantment lists the Qualities where it appears; numeric variables scale with Quality. For example, "of Protection" at Q4 = +1 AV, Q5 = +2 AV, Q6 = +3 AV. Note that some enchantments are not available for all tiers of Quality.
+> Each enchantment lists the Qualities where it appears. Numeric variables scale with Quality. For example, "of Protection" at Q4 = +1 AV, Q5 = +2 AV, Q6 = +3 AV. Note that some enchantments are not available for all tiers of Quality.
 
 ### Ammo Enchantments
 

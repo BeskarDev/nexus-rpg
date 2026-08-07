@@ -24,9 +24,9 @@ Role: Striker / Controller
 
 **Rank 1 Skills:**
 
-- **Fighting** – *Pugilist (Rank 1)* – Unarmed attacks deal 2 weapon damage, +1 Parry
-- **Athletics** – *Grappler (Rank 1)* – Grapple on hit with unarmed/brawling weapons
-- **Fortitude** – *Body of Bronze (Rank 1)* – +2 HP, +1+Fortitude AV while unarmored
+- **Fighting**. *Pugilist (Rank 1)*. Unarmed attacks deal 2 weapon damage, +1 Parry
+- **Athletics**. *Grappler (Rank 1)*. Grapple on hit with unarmed/brawling weapons
+- **Fortitude**. *Body of Bronze (Rank 1)*. +2 HP, +1+Fortitude AV while unarmored
 
 **Rank 0 Skills:** Insight, Perception, Mysticism †, Education
 
@@ -36,8 +36,8 @@ Note: † Customized skill (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Choking Grip** – Restrain grappled targets
-- **Knockout** – Stun enemies with crush attacks
+- **Choking Grip**. Restrain grappled targets
+- **Knockout**. Stun enemies with crush attacks
 
 **Equipment**
 

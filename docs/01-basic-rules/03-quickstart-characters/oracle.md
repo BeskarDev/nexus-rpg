@@ -24,9 +24,9 @@ Role: Support / Utility
 
 **Rank 1 Skills:**
 
-- **Mysticism** – *Divine Sense (Rank 1)* – Sense spirits/undead and hallowed or cursed auras
-- **Lore** – *Consult the Myths (Rank 1)* – Re‑roll Lore about supernatural topics once per scene
-- **Insight** – *Piercing Look (Rank 1)* – Re‑roll Insight to detect lies or motives once per scene
+- **Mysticism**. *Divine Sense (Rank 1)*. Sense spirits/undead and hallowed or cursed auras
+- **Lore**. *Consult the Myths (Rank 1)*. Re‑roll Lore about supernatural topics once per scene
+- **Insight**. *Piercing Look (Rank 1)*. Re‑roll Insight to detect lies or motives once per scene
 
 **Rank 0 Skills:** Education, Perception †, Influence, Stealth †
 
@@ -44,7 +44,7 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 **Spells**
 
-**Tradition:** Twilight (dreams/fate) and Light (truth/revelation) — using Balance (two traditions; freely choose spells from either)
+**Tradition:** Twilight (dreams/fate) and Light (truth/revelation). Using Balance (two traditions, freely choose spells from either)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
 **Starting Spells (2 from two traditions at rank 0-1):**

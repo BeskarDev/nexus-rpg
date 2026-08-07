@@ -84,8 +84,8 @@ No adventurer exists in isolation. You begin the game with three significant con
 
 Every adventurer is shaped not only by where they came from, but by what drives them and what they cannot escape. Choose one **Motivation** and one **Vice** to define the twin forces that pull your character forward and drag them astray.
 
-- **Motivation:** your core drive; the purpose that pushes you beyond safety and comfort.
-- **Vice:** your defining flaw; the compulsion or weakness that will betray you at the worst moment.
+- **Motivation:** your core drive. The purpose that pushes you beyond safety and comfort.
+- **Vice:** your defining flaw. The compulsion or weakness that will betray you at the worst moment.
 
 Both can be invoked during play to gain Resolve. The GM can invoke your Vice to offer you a reward for indulging in it. See the Resolve section for details.
 
@@ -187,9 +187,9 @@ Remember that the journey of an adventurer is never complete. There are always n
 
 ## Level 1 → Early Progression (Quick Example)
 
-- Session rewards: typically **1 XP each session**; milestone sessions may grant **2 XP**
+- Session rewards: typically **1 XP each session**. Milestone sessions may grant **2 XP**
 - Spending XP: after a session or downtime, allocate XP to skills (respect your level’s max XP per skill)
-- Level gating: total XP spent determines your **character level**; level sets the max XP you can invest in any single skill
+- Level gating: total XP spent determines your **character level**. Level sets the max XP you can invest in any single skill
 - Example: After 4 sessions, you earned **4 XP**
   - Spend **2 XP** to raise **Athletics** to rank 1 → you gain **1 talent point** for Athletics
   - Spend **2 XP** to raise **Stealth** to rank 1 → another **1 talent point** for Stealth

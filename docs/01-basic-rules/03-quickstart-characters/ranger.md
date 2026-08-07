@@ -24,9 +24,9 @@ Role: Striker / Utility
 
 **Rank 1 Skills:**
 
-- **Archery** – *Sharpshooter (Rank 1)* – Ignore the first bane from attacking beyond normal range
-- **Survival** – *Relentless Tracker (Rank 1)* – Re‑roll Survival to follow/identify tracks once per scene
-- **Nature** – *Animal Companion (Rank 1)* – Control an animal companion (Tier ≤ Nature)
+- **Archery**. *Sharpshooter (Rank 1)*. Ignore the first bane from attacking beyond normal range
+- **Survival**. *Relentless Tracker (Rank 1)*. Re‑roll Survival to follow/identify tracks once per scene
+- **Nature**. *Animal Companion (Rank 1)*. Control an animal companion (Tier ≤ Nature)
 
 **Rank 0 Skills:** Insight †, Perception, Stealth †, Fighting
 
@@ -36,8 +36,8 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. Recommended:
 
-- **Aimed Shot** – Gain +1 boon when not moving
-- **Precise Shot** – Ignore armor and add Agility to damage
+- **Aimed Shot**. Gain +1 boon when not moving
+- **Precise Shot**. Ignore armor and add Agility to damage
 
 **Equipment**
 
@@ -57,9 +57,9 @@ Use the companion base stat block with Tier equal to your Nature rank (see the M
 
 Suggested traits:
 
-- Dog — Loyal tracker with pack tactics and reliable grapples.
-- Bird — Fast flying scout with keen eyes and dive attack bursts.
-- Bear — Tough frontline with knockdown/grapple options and an intimidating roar.
+- Dog. Loyal tracker with pack tactics and reliable grapples.
+- Bird. Fast flying scout with keen eyes and dive attack bursts.
+- Bear. Tough frontline with knockdown/grapple options and an intimidating roar.
 
 **Playstyle & Advancement**
 

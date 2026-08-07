@@ -24,9 +24,9 @@ Role: Striker
 
 **Rank 1 Skills:**
 
-- **Arcana** – *Mana Shield (Rank 1)* – On casting an arcane spell, gain AV (2 + spell rank) briefly
-- **Lore** – *Magical Sense (Rank 1)* – Gain boons against magic; intuit resistances and weaknesses
-- **Education** – *General Education (Rank 1)* – No bane on untrained expert skills with Mind
+- **Arcana**. *Mana Shield (Rank 1)*, On casting an arcane spell, gain AV (2 + spell rank) briefly
+- **Lore**. *Magical Sense (Rank 1)*. Gain boons against magic. Intuit resistances and weaknesses
+- **Education**. *General Education (Rank 1)*, No bane on untrained expert skills with Mind
 
 **Rank 0 Skills:** Insight, Perception, Stealth †, Influence
 

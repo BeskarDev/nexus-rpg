@@ -24,9 +24,9 @@ Role: Striker / Tank
 
 **Rank 1 Skills:**
 
-- **Fighting** – *Heavy Weapon Mastery (Rank 1)* – No bane on Brutal Strike with heavy weapons
-- **Athletics** – *Bulky (Rank 1)* – +2 HP and +2 carrying capacity
-- **Fortitude** – *Battle Rage (Rank 1)* – Enter rage for combat bonuses
+- **Fighting**. *Heavy Weapon Mastery (Rank 1)*, No bane on Brutal Strike with heavy weapons
+- **Athletics**. *Bulky (Rank 1)*. +2 HP and +2 carrying capacity
+- **Fortitude**. *Battle Rage (Rank 1)*. Enter rage for combat bonuses
 
 **Rank 0 Skills:** Survival, Perception, Nature, Stealth †
 
@@ -36,8 +36,8 @@ Note: † Customized skill (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Brutal Strike** – Deal extra Strength damage with heavy weapons (no bane thanks to Heavy Weapon Mastery!)
-- **Cleave** – Hit multiple enemies with your greataxe
+- **Brutal Strike**. Deal extra Strength damage with heavy weapons (no bane thanks to Heavy Weapon Mastery!)
+- **Cleave**. Hit multiple enemies with your greataxe
 
 **Equipment**
 

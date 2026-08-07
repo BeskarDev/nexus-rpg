@@ -24,9 +24,9 @@ Role: Support / Controller
 
 **Rank 1 Skills:**
 
-- **Mysticism** – *Shape Changer (Rank 1)* – Transform into animal forms
-- **Nature** – *Animal Companion (Rank 1)* – Control an animal companion (Tier ≤ Nature)
-- **Survival** – *Wilderness Expert (Rank 1)* – Excel at finding food and resources
+- **Mysticism**. *Shape Changer (Rank 1)*. Transform into animal forms
+- **Nature**. *Animal Companion (Rank 1)*. Control an animal companion (Tier ≤ Nature)
+- **Survival**. *Wilderness Expert (Rank 1)*. Excel at finding food and resources
 
 **Rank 0 Skills:** Lore, Insight, Perception †, Athletics †
 
@@ -45,7 +45,7 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 **Spells**
 
-**Tradition:** Nature (earth/animals/plants) and Tempest (storms/elements) — using Balance (two traditions; freely choose spells from either)
+**Tradition:** Nature (earth/animals/plants) and Tempest (storms/elements). Using Balance (two traditions, freely choose spells from either)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
 **Starting Spells (2 from two traditions at rank 0-1):**
@@ -61,9 +61,9 @@ Use the companion base stat block with Tier equal to your Nature rank (see the M
 
 Suggested traits:
 
-- Bear — Tough frontline with knockdown/grapple options and an intimidating roar.
-- Bird — Fast flying scout with keen eyes and dive attack bursts.
-- Constrictor Snake — Grapple and restrain to lock down priority targets.
+- Bear. Tough frontline with knockdown/grapple options and an intimidating roar.
+- Bird. Fast flying scout with keen eyes and dive attack bursts.
+- Constrictor Snake. Grapple and restrain to lock down priority targets.
 
 **Playstyle & Advancement**
 

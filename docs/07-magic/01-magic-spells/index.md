@@ -135,7 +135,7 @@ Mystic Traditions are grouped up into opposing ideals. Most practitioners of mys
 
 *hurricanes, earthquakes, thunderstorms, sandstorms, floods*
 
-- Embrace change and upheaval as necessary forces in the world. Stagnation is death; transformation is life.
+- Embrace change and upheaval as necessary forces in the world. Stagnation is death. Transformation is life.
 - Strike decisively when action is required, with the sudden force of lightning. Hesitation weakens purpose.
 - Test boundaries and challenge the established order. What cannot withstand the storm was never meant to stand.
 
@@ -153,7 +153,7 @@ Mystic Traditions are grouped up into opposing ideals. Most practitioners of mys
 
 - Hone your skills and strengthen your resolve daily. Complacency has no place in the warrior's heart.
 - Honor worthy opponents and fight with dignity. Victory without honor is merely conquest.
-- Know when to unleash your fury and when to sheathe your weapon. War without purpose is mere destruction; war with purpose is transformation.
+- Know when to unleash your fury and when to sheathe your weapon. War without purpose is mere destruction. War with purpose is transformation.
 
 **Offerings**
 

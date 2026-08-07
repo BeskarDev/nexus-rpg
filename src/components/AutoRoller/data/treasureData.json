@@ -4135,12 +4135,12 @@
 		}
 	],
 	"magicItemCurseSigns": [
-		"Unsettling sensation — a chill, nausea, or static prickle",
-		"Subtle resistance — feels heavier or vibrates faintly",
-		"Whispered echo — a faint voice no one else hears",
-		"Strange reaction — fire sputters, animals shy away, shadows bend",
-		"Unnatural aura — unstable, flickering magical signature",
-		"Disrupted sleep — vivid nightmares or restless sleep"
+		"Unsettling sensation, a chill, nausea, or static prickle",
+		"Subtle resistance, feels heavier or vibrates faintly",
+		"Whispered echo, a faint voice no one else hears",
+		"Strange reaction, fire sputters, animals shy away, shadows bend",
+		"Unnatural aura, unstable and flickering magical signature",
+		"Disrupted sleep, vivid nightmares or restless sleep"
 	],
 	"magicItemCurseEffects": [
 		{

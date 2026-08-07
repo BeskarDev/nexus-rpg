@@ -35,11 +35,11 @@ List a few **skills** that are obvious fits for the challenge but still leave ro
 
 **Step 5: Define Consequences**
 
-Customize what happens on failures or blunders. Consequences can either occur directly after the failed roll (e.g. falling from a roof during a chase) or at the end when the challenge resolves (e.g. how many guards wait at the town's exit — more failures mean more guards).
+Customize what happens on failures or blunders. Consequences can either occur directly after the failed roll (e.g. falling from a roof during a chase) or at the end when the challenge resolves (e.g. how many guards wait at the town's exit, more failures mean more guards).
 
 ### Running a Challenge
 
-Challenges don't use strict Initiative like combat scenes. Adventurers take their turns in any order they choose; once everyone has acted, a new round begins.
+Challenges don't use strict Initiative like combat scenes. Adventurers take their turns in any order they choose. Once everyone has acted, a new round begins.
 
 On their turn, each adventurer announces an intended action and works with the GM to choose an **Attribute + Skill** combination to roll for. The action can be an explicit ability from a talent or spell, or a purely narrative choice not directly covered by the rules. Each adventurer may use any individual skill only **once** during the entire challenge, encouraging creative problem-solving and varied approaches.
 
@@ -54,7 +54,7 @@ A challenge uses a single die (or multiple dice for compound challenges) placed 
 - A **failure** or **blunder** adds a **consequence** immediately after the roll or at the end of the challenge.
 - When the die reaches **0**, the challenge is completed. Resolve any open **consequences**.
 
-The die is a visible, shared tracker — both the GM and players can see exactly how much progress remains.
+The die is a visible, shared tracker, both the GM and players can see exactly how much progress remains.
 
 > **Example**: A d6 chase challenge starts at 6. The ranger rolls a strong success and the die drops from 6 to 5. Next, the rogue rolls a critical success and the die drops from 5 to 3. Four more successes (or two critical successes) to go before finishing the challenge.
 
@@ -126,7 +126,7 @@ Streetwise (know the layout), Perception (spot weaknesses), Fighting (overpower 
 **Consequences**
 
 - **Alarm Triggered.** The guards go on high alert. TN increases by 2 for all remaining rolls.
-- **Exit Cut Off.** One route is blocked; the group must find another way.
+- **Exit Cut Off.** One route is blocked. The group must find another way.
 - **Lost Gear.** One piece of equipment is dropped and can't be recovered until after the challenge.
 - **Injury.** A misstep or guard's blow deals 1d6 damage to one adventurer.
 - **Caught (Blunder).** A character is seized or cornered and can't act until rescued by an ally.
@@ -163,10 +163,10 @@ Social Intrigue uses additional parameters, **Interest**, **Patience**, **Motiva
 
 **Additional Parameters**
 
-- **Interest** (TN modifier): NPC disposition modifier + request alignment modifier. Positive Interest reduces the TN; negative Interest raises it. Changes when players appeal to Motivations (+1) or trigger Pitfalls (−1).
-- **Patience** (challenge die): A d4–d8 representing how long the NPC will engage. The die advances on every roll, success or failure, rather than only on successes. A small die means a short, decisive conversation.
-- **Motivations**: 2–3 GM-facing notes on what the NPC desires, fears, or values. Appealing to a Motivation raises Interest.
-- **Pitfalls**: 1–2 GM-facing notes on what offends or alarms the NPC. Triggering a Pitfall lowers Interest.
+- **Interest** (TN modifier): NPC disposition modifier + request alignment modifier. Positive Interest reduces the TN. Negative Interest raises it. Changes when players appeal to Motivations (+1) or trigger Pitfalls (−1).
+- **Patience** (challenge die): A d4-d8 representing how long the NPC will engage. The die advances on every roll, success or failure, rather than only on successes. A small die means a short, decisive conversation.
+- **Motivations**: 2-3 GM-facing notes on what the NPC desires, fears, or values. Appealing to a Motivation raises Interest.
+- **Pitfalls**: 1-2 GM-facing notes on what offends or alarms the NPC. Triggering a Pitfall lowers Interest.
 
 **Primary Skills**
 
@@ -204,4 +204,4 @@ Insight (connect disparate clues), Perception (notice overlooked details), Stree
 - **Misinterpreted Clue.** The group acts on false information until the error is uncovered.
 - **Damaged Evidence.** A fragile document or artifact is destroyed. One piece of information is permanently lost.
 - **Attracted Attention.** Asking the wrong questions draws scrutiny. A hostile faction sends someone to interfere.
-- **Dangerous Knowledge (Blunder).** The character stumbles onto something forbidden — a cursed inscription or a trap left by the original author. They suffer 1d6 psychic damage or gain a short-duration curse.
+- **Dangerous Knowledge (Blunder).** The character stumbles onto something forbidden, a cursed inscription or a trap left by the original author. They suffer 1d6 psychic damage or gain a short-duration curse.

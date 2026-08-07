@@ -11,7 +11,7 @@
 	{
 		"id": "bone",
 		"name": "Bone",
-		"description": "Sourced from beasts or humanoids. Lightweight but brittle; breaks under strong impacts.",
+		"description": "Sourced from beasts or humanoids. Lightweight but brittle. Breaks under strong impacts.",
 		"qualityTiers": [1],
 		"properties": "1/2 item cost. The item gains the fragile property.",
 		"applicableCategories": [
@@ -132,7 +132,7 @@
 	{
 		"id": "hardwood",
 		"name": "Hardwood",
-		"description": "Dense, seasoned wood. Durable and shock-absorbent; used for bows, clubs, and shields.",
+		"description": "Dense, seasoned wood. Durable and shock-absorbent. Used for bows, clubs, and shields.",
 		"qualityTiers": [2],
 		"properties": "",
 		"applicableCategories": [
@@ -164,7 +164,7 @@
 	{
 		"id": "leather",
 		"name": "Leather",
-		"description": "Treated animal skin. Flexible, provides basic protection; common for light armor.",
+		"description": "Treated animal skin. Flexible, provides basic protection. Common for light armor.",
 		"qualityTiers": [2],
 		"properties": "",
 		"applicableCategories": ["light-armor", "wearable"],
@@ -247,7 +247,7 @@
 	{
 		"id": "dwarf-steel",
 		"name": "Dwarf-Steel",
-		"description": "Silver-colored alloy that radiates slight warmth. Imported from dwarven desert strongholds. Formula is a guarded secret; known for durability and excellent heat resistance.",
+		"description": "Silver-colored alloy that radiates slight warmth. Imported from dwarven desert strongholds. Formula is a guarded secret. Known for durability and excellent heat resistance.",
 		"qualityTiers": [3, 4],
 		"properties": "Any: Once per day, you can re-roll a Durability check for this item. Heavy Armor: You don't suffer a penalty for wearing heavy armor in extreme climates.",
 		"applicableCategories": [
@@ -273,7 +273,7 @@
 	{
 		"id": "hardwood-q3",
 		"name": "Hardwood",
-		"description": "Dense, seasoned wood. Durable and shock-absorbent; used for bows, clubs, and shields.",
+		"description": "Dense, seasoned wood. Durable and shock-absorbent. Used for bows, clubs, and shields.",
 		"qualityTiers": [3],
 		"properties": "",
 		"applicableCategories": [
@@ -322,7 +322,7 @@
 	{
 		"id": "leather-q3",
 		"name": "Leather",
-		"description": "Treated animal skin. Flexible, provides basic protection; common for light armor.",
+		"description": "Treated animal skin. Flexible, provides basic protection. Common for light armor.",
 		"qualityTiers": [3],
 		"properties": "",
 		"applicableCategories": ["light-armor", "wearable"],
@@ -423,7 +423,7 @@
 	{
 		"id": "hardwood-q4",
 		"name": "Hardwood",
-		"description": "Dense, seasoned wood. Durable and shock-absorbent; used for bows, clubs, and shields.",
+		"description": "Dense, seasoned wood. Durable and shock-absorbent. Used for bows, clubs, and shields.",
 		"qualityTiers": [4],
 		"properties": "",
 		"applicableCategories": [
@@ -455,7 +455,7 @@
 	{
 		"id": "leather-q4",
 		"name": "Leather",
-		"description": "Treated animal skin. Flexible, provides basic protection; common for light armor.",
+		"description": "Treated animal skin. Flexible, provides basic protection. Common for light armor.",
 		"qualityTiers": [4],
 		"properties": "",
 		"applicableCategories": ["light-armor", "wearable"],
@@ -559,7 +559,7 @@
 	{
 		"id": "hardwood-q5",
 		"name": "Hardwood",
-		"description": "Dense, seasoned wood. Durable and shock-absorbent; used for bows, clubs, and shields.",
+		"description": "Dense, seasoned wood. Durable and shock-absorbent. Used for bows, clubs, and shields.",
 		"qualityTiers": [5],
 		"properties": "",
 		"applicableCategories": [
@@ -591,7 +591,7 @@
 	{
 		"id": "leather-q5",
 		"name": "Leather",
-		"description": "Treated animal skin. Flexible, provides basic protection; common for light armor.",
+		"description": "Treated animal skin. Flexible, provides basic protection. Common for light armor.",
 		"qualityTiers": [5],
 		"properties": "",
 		"applicableCategories": ["light-armor", "wearable"],
@@ -627,7 +627,7 @@
 	{
 		"id": "mithril",
 		"name": "Mithril",
-		"description": "Lightweight, silvery metal. High durability with very low weight; ideal for fast fighters.",
+		"description": "Lightweight, silvery metal. High durability with very low weight. Ideal for fast fighters.",
 		"qualityTiers": [5, 6],
 		"properties": "Armor/Shield: -1 load (min. 0). Reduce the item's rigid property by 1 (min. 0).",
 		"applicableCategories": ["light-armor", "heavy-armor", "shield", "helmet"],
@@ -714,7 +714,7 @@
 	{
 		"id": "hardwood-q6",
 		"name": "Hardwood",
-		"description": "Dense, seasoned wood. Durable and shock-absorbent; used for bows, clubs, and shields.",
+		"description": "Dense, seasoned wood. Durable and shock-absorbent. Used for bows, clubs, and shields.",
 		"qualityTiers": [6],
 		"properties": "",
 		"applicableCategories": [
@@ -746,7 +746,7 @@
 	{
 		"id": "leather-q6",
 		"name": "Leather",
-		"description": "Treated animal skin. Flexible, provides basic protection; common for light armor.",
+		"description": "Treated animal skin. Flexible, provides basic protection. Common for light armor.",
 		"qualityTiers": [6],
 		"properties": "",
 		"applicableCategories": ["light-armor", "wearable"],
@@ -883,7 +883,7 @@
 	{
 		"id": "hardwood-q7",
 		"name": "Hardwood",
-		"description": "Dense, seasoned wood. Durable and shock-absorbent; used for bows, clubs, and shields.",
+		"description": "Dense, seasoned wood. Durable and shock-absorbent. Used for bows, clubs, and shields.",
 		"qualityTiers": [7],
 		"properties": "",
 		"applicableCategories": [
@@ -928,7 +928,7 @@
 	{
 		"id": "leather-q7",
 		"name": "Leather",
-		"description": "Treated animal skin. Flexible, provides basic protection; common for light armor.",
+		"description": "Treated animal skin. Flexible, provides basic protection. Common for light armor.",
 		"qualityTiers": [7],
 		"properties": "",
 		"applicableCategories": ["light-armor", "wearable"],
@@ -1008,7 +1008,7 @@
 	{
 		"id": "hardwood-q8",
 		"name": "Hardwood",
-		"description": "Dense, seasoned wood. Durable and shock-absorbent; used for bows, clubs, and shields.",
+		"description": "Dense, seasoned wood. Durable and shock-absorbent. Used for bows, clubs, and shields.",
 		"qualityTiers": [8],
 		"properties": "",
 		"applicableCategories": [
@@ -1040,7 +1040,7 @@
 	{
 		"id": "leather-q8",
 		"name": "Leather",
-		"description": "Treated animal skin. Flexible, provides basic protection; common for light armor.",
+		"description": "Treated animal skin. Flexible, provides basic protection. Common for light armor.",
 		"qualityTiers": [8],
 		"properties": "",
 		"applicableCategories": ["light-armor", "wearable"],

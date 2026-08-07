@@ -24,9 +24,9 @@ Role: Striker
 
 **Rank 1 Skills:**
 
- **Fighting** – *Defensive Dueling (Rank 1)* – +1 Parry while wielding a single non‑heavy melee weapon and no shield
- **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
- **Stealth** – *Devious Tactics (Rank 1)* – Use Distract as a Quick Action; feint via misdirection
+ **Fighting**. *Defensive Dueling (Rank 1)*. +1 Parry while wielding a single non‑heavy melee weapon and no shield
+ **Athletics**. *Fast Stride (Rank 1)*. Use Dash as Quick Action
+ **Stealth**. *Devious Tactics (Rank 1)*. Use Distract as a Quick Action. Feint via misdirection
 
 **Rank 0 Skills:** Influence, Perception, Streetwise †, Education †
 
@@ -36,8 +36,8 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Feint** – Gain +1 boon when not moving
-- **Precise Strike** – Ignore armor and add Agility to damage
+- **Feint**. Gain +1 boon when not moving
+- **Precise Strike**. Ignore armor and add Agility to damage
 
 **Equipment**
 

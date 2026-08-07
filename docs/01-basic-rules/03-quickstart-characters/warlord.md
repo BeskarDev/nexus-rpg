@@ -24,9 +24,9 @@ Role: Support / Controller
 
 **Rank 1 Skills:**
 
-- **Fighting** – *Shield Mastery (Rank 1)* – Reduce enemy attack Success Level with Quick Action
-- **Influence** – *Leading Presence (Rank 1)* – Allies near you gain boons to Initiative and vs fear
-- **Education** – *Commander (Rank 1)* – Grant allies movement or boons as Quick Action
+- **Fighting**. *Shield Mastery (Rank 1)*. Reduce enemy attack Success Level with Quick Action
+- **Influence**. *Leading Presence (Rank 1)*. Allies near you gain boons to Initiative and vs fear
+- **Education**. *Commander (Rank 1)*. Grant allies movement or boons as Quick Action
 
 **Rank 0 Skills:** Fortitude, Insight, Perception, Athletics †
 
@@ -36,8 +36,8 @@ Note: † Customized skill (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Exhilarating Strike** – Heal nearby allies on hit
-- **Defensive Strike** – Gain Defend Action effects on hit
+- **Exhilarating Strike**. Heal nearby allies on hit
+- **Defensive Strike**. Gain Defend Action effects on hit
 
 **Equipment**
 

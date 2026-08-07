@@ -4491,7 +4491,7 @@
 					{
 						"kind": "Relic",
 						"item": "Canopic jars and name-scroll",
-						"value": "—",
+						"value": "-",
 						"note": "Names the tomb's owner, their titles, and the heirs who sealed them in. Worthless to sell, decisive to anyone tracing the dynasty."
 					}
 				]
@@ -7824,7 +7824,7 @@
 			{
 				"name": "World Shaper",
 				"qualifier": "Lord Trigger",
-				"text": "When this creature loses a life pool, the terrain within long range transforms. Choose one: (1) Lava pools erupt, creating difficult terrain that deals 10 fire damage to any creature entering or starting its turn there; (2) Fire tornadoes appear, randomly moving and dealing 15 fire damage to creatures in their path; (3) The air becomes superheated, causing all creatures except this one to take 5 fire damage at the start of their turns."
+				"text": "When this creature loses a life pool, the terrain within long range transforms. Choose one: (1) Lava pools erupt, creating difficult terrain that deals 10 fire damage to any creature entering or starting its turn there. (2) Fire tornadoes appear, randomly moving and dealing 15 fire damage to creatures in their path. (3) The air becomes superheated, causing all creatures except this one to take 5 fire damage at the start of their turns."
 			}
 		],
 		"quickActions": [
@@ -7997,7 +7997,7 @@
 			{
 				"name": "Dread Mastery",
 				"qualifier": "Lord Trigger",
-				"text": "When this creature loses a life pool, it unleashes ancient magic. Choose one: (1) All undead within long range heal 20 HP and gain +2 to all attack rolls; (2) All living creatures within medium range must save vs. TN 15 or be paralyzed until the end of their next turn; (3) This creature immediately casts two spells."
+				"text": "When this creature loses a life pool, it unleashes ancient magic. Choose one: (1) All undead within long range heal 20 HP and gain +2 to all attack rolls. (2) All living creatures within medium range must save vs. TN 15 or be paralyzed until the end of their next turn. (3) This creature immediately casts two spells."
 			}
 		],
 		"quickActions": [
@@ -8388,7 +8388,7 @@
 			{
 				"name": "Primordial Awakening",
 				"qualifier": "Lord Trigger",
-				"text": "When this creature loses a life pool, reality warps around it. Choose one: (1) Elemental pillars erupt in a long radius, each dealing 12 damage of a random elemental type to creatures within close range; (2) This creature summons two Huge elementals of its choice; (3) All spells and magical effects within very long range are dispelled."
+				"text": "When this creature loses a life pool, reality warps around it. Choose one: (1) Elemental pillars erupt in a long radius, each dealing 12 damage of a random elemental type to creatures within close range. (2) This creature summons two Huge elementals of its choice. (3) All spells and magical effects within very long range are dispelled."
 			}
 		],
 		"quickActions": [
@@ -8470,7 +8470,7 @@
 			{
 				"name": "Reality Unravels",
 				"qualifier": "Lord Trigger",
-				"text": "When this creature loses a life pool, the fabric of reality frays around it. All creatures within medium range must roll Mind + Fortitude vs. TN 16 or suffer one of the following effects (roll d4): (1) teleported to a random location within long range; (2) aged 1d10 years; (3) have one spell or ability forgotten until they finish a long rest; (4) gain a short-term madness."
+				"text": "When this creature loses a life pool, the fabric of reality frays around it. All creatures within medium range must roll Mind + Fortitude vs. TN 16 or suffer one of the following effects (roll d4): (1) teleported to a random location within long range. (2) aged 1d10 years. (3) have one spell or ability forgotten until they finish a long rest. (4) gain a short-term madness."
 			}
 		],
 		"quickActions": [
@@ -8639,7 +8639,7 @@
 			{
 				"name": "Transcendent Undeath",
 				"qualifier": "Lord Trigger",
-				"text": "When this creature loses a life pool, choose one: (1) All creatures within medium range must save vs. TN 16 or be paralyzed for a short duration while this creature drains their life essence, healing 30 HP; (2) This creature casts Time Stop without using a spell slot; (3) This creature summons 1d6 wights and 2d6 wraiths."
+				"text": "When this creature loses a life pool, choose one: (1) All creatures within medium range must save vs. TN 16 or be paralyzed for a short duration while this creature drains their life essence, healing 30 HP. (2) This creature casts Time Stop without using a spell slot. (3) This creature summons 1d6 wights and 2d6 wraiths."
 			}
 		],
 		"quickActions": [

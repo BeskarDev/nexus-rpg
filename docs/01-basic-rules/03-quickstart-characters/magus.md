@@ -24,9 +24,9 @@ Role: Striker / Hybrid
 
 **Rank 1 Skills:**
 
-- **Arcana** – *Battle Mage (Rank 1)* – Quick Action arcane barrier adds Arcana to Parry/Dodge
-- **Fighting** – *Blade Mastery (Rank 1)* – Switch between pierce/slash properties
-- **Education** – *General Education (Rank 1)* – No bane on untrained expert skills when using Mind
+- **Arcana**. *Battle Mage (Rank 1)*. Quick Action arcane barrier adds Arcana to Parry/Dodge
+- **Fighting**. *Blade Mastery (Rank 1)*. Switch between pierce/slash properties
+- **Education**. *General Education (Rank 1)*, No bane on untrained expert skills when using Mind
 
 **Rank 0 Skills:** Lore, Perception †, Insight, Streetwise
 
@@ -36,8 +36,8 @@ Note: † Customized skill (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Feint** – Gain +1 boon when not moving
-- **Precise Strike** – Ignore armor and add Agility to damage
+- **Feint**. Gain +1 boon when not moving
+- **Precise Strike**. Ignore armor and add Agility to damage
 
 **Equipment**
 
@@ -54,7 +54,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 **Discipline:** Evocation (elemental) or Telekinetics (force)
 **Focus Pool:** (Mind-2) + (2×Arcana) = 6 + 2 = 8
 
-**Starting Spells (choose one discipline; take 2 rank 0 + 2 rank 1):**
+**Starting Spells (choose one discipline, take 2 rank 0 + 2 rank 1):**
 
 - **Evocation:**
   - Rank 0: Flickering Flame, Frost Snap

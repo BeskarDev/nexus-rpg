@@ -24,9 +24,9 @@ Role: Striker / Controller
 
 **Rank 1 Skills:**
 
-- **Fighting** – *Heavy Weapon Mastery (Rank 1)* – No bane on Brutal Strike with heavy weapons
-- **Athletics** – *Grappler (Rank 1)* – Grapple on hit with unarmed/brawling weapons
-- **Influence** – *Leading Presence (Rank 1)* – Allies near you gain boons to Initiative and vs fear
+- **Fighting**. *Heavy Weapon Mastery (Rank 1)*, No bane on Brutal Strike with heavy weapons
+- **Athletics**. *Grappler (Rank 1)*. Grapple on hit with unarmed/brawling weapons
+- **Influence**. *Leading Presence (Rank 1)*. Allies near you gain boons to Initiative and vs fear
 
 **Rank 0 Skills:** Fortitude, Perception, Streetwise †, Stealth †
 
@@ -36,8 +36,8 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Brutal Strike** – Deal extra Strength damage with heavy weapons
-- **Cleave** – Hit multiple foes with a sweeping two‑handed strike
+- **Brutal Strike**. Deal extra Strength damage with heavy weapons
+- **Cleave**. Hit multiple foes with a sweeping two‑handed strike
 
 **Equipment**
 
@@ -51,7 +51,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 **Playstyle & Advancement**
 
-The Gladiator is perfect for players who want flashy, high‑impact melee with crowd‑pleasing finishers. Use Grappler for clinches and showy takedowns, then unleash Brutal Strike for big single‑target hits or Cleave to cut through multiple foes. Work the battlefield—and the audience—while rallying allies with Leading Presence.
+The Gladiator is perfect for players who want flashy, high‑impact melee with crowd‑pleasing finishers. Use Grappler for clinches and showy takedowns, then unleash Brutal Strike for big single‑target hits or Cleave to cut through multiple foes. Work the battlefield, and the audience, while rallying allies with Leading Presence.
 
 **Advancement:** Increase Fighting to rank 2-3 for more Combat Arts, raise Athletics for better control and mobility, add Fortitude for resilience, and consider Shield Mastery or additional performance/social talents.
 

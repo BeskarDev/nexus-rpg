@@ -107,13 +107,13 @@ When an item you are wearing, carrying, or wielding is at risk of damage, the GM
 
 To make a Durability check, roll the item’s Durability die:
 
-- On a **1–3**, **spend 1 use** for the item
-- On a **4+**, nothing happens—the item holds up
+- On a **1-3**, **spend 1 use** for the item
+- On a **4+**, nothing happens. The item holds up
 
 If you lose the **third and final use**, the item becomes **damaged** (with reduced effectiveness, detailed under Weapon and Armor Properties). If you lose another use while the item is damaged, it becomes **broken** and unusable until repaired.
 
 > Example:
-> Arzhag’s bronze shield is struck by a golem. It’s a heavy metal item, so he rolls a **d8**. The result is a **2**—within the failure range—so the shield loses 1 use.
+> Arzhag’s bronze shield is struck by a golem. It’s a heavy metal item, so he rolls a **d8**. The result is a **2**, within the failure range, so the shield loses 1 use.
 
 ### Supply Checks
 
@@ -121,7 +121,7 @@ Supplies are treated like bundled items (rations, torches, arrows, crafting mate
 
 To make a Supply check, roll the supply's **Durability die**, typically based on the bundle type (usually **d6**, but could vary by quality or scarcity):
 
-- On a **1–3**, **spend 1 use** for your supply
+- On a **1-3**, **spend 1 use** for your supply
 - On a **4+**, no relevant change in your supply
 
 When all 3 uses are spent, that supply is **depleted**.
@@ -138,6 +138,6 @@ Some situations call for unique checks that don’t involve a TN but instead hav
 >
 > • On a **1**, they freeze in fear and can’t act
 >
-> • On **2–5**, they flee in panic
+> • On **2-5**, they flee in panic
 >
 > • On a **6**, they act normally but suffer **+1 bane** on all rolls involving their fears
