@@ -1,5 +1,9 @@
 import React from 'react'
-import { Experimental_CssVarsProvider, experimental_extendTheme, CssBaseline } from '@mui/material'
+import {
+	Experimental_CssVarsProvider,
+	experimental_extendTheme,
+	CssBaseline,
+} from '@mui/material'
 import { theme } from '@site/src/hooks/createTheme'
 import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
 import { Spells } from './Spells'

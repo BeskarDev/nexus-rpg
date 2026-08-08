@@ -9,3 +9,3341 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
 	-moz-appearance: textfield;
 }
+
+/* M9 S0+S1 — the sheet's own UI-semantic palette, scoped to this page so it
+   never leaks into the doc reading surface (nothing on a doc page needs an
+   "attribute hue" or a "resolve resource color"). Every color here is read as
+   small-caption TEXT on a card surface (see StatCard.tsx, CardHeader.tsx).
+   Every value is measured >=4.5:1 against both the sheet's paper
+   (#f7f0e4 / #211a15) and default (#f2eadc / #16120f) backgrounds in both
+   modes. The per-skill colors (--cs-skill-*) are NOT declared here — they're
+   global, in custom.css, alongside the --nexus-skill-* identity tokens they
+   derive from, so embedded doc-page tools (CreatureAdvancedSettings.tsx) read
+   the exact same per-skill color the sheet does (M9 F2). */
+/* M13 S1 — `.cs-tokens` carries the same block for PORTALED sheet surfaces.
+   MUI renders every Menu/Popover into a container at document.body, which is
+   outside `.character-sheet-page`, so a token declared only on the page element
+   resolved to nothing inside an editor popover. That is not a subtle
+   degradation: `background-color: var(--cs-success)` with no value paints
+   nothing, so the HP meter inside the HP editor rendered as an empty trough
+   while the identical component on the card rendered green.
+
+   Deliberately a second selector rather than moving the block to `:root`:
+   custom properties are inert until used, so global declaration would be
+   visually safe, but M9 scoped these on purpose ("nothing on a doc page needs
+   an attribute hue") and a portal bug is not a reason to reverse that. The
+   popover opts in instead — see `SheetField`. */
+.character-sheet-page,
+.cs-tokens {
+	/* Attributes (D3): four distinguishable hues, jewel-derived, each mixed
+	   toward the reading ink so one declaration tracks both modes. */
+	--cs-attr-strength: color-mix(
+		in oklab,
+		var(--nexus-jewel-carnelian),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-attr-agility: color-mix(
+		in oklab,
+		var(--nexus-jewel-emerald),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-attr-spirit: color-mix(
+		in oklab,
+		var(--nexus-jewel-amethyst),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-attr-mind: color-mix(
+		in oklab,
+		var(--nexus-jewel-lapis),
+		var(--ifm-font-color-base) 15%
+	);
+
+	/* UI semantic colors (replaces utils/colors.ts UI_COLORS Material palette). */
+	--cs-danger: color-mix(
+		in oklab,
+		var(--nexus-alert-danger),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-success: color-mix(
+		in oklab,
+		var(--nexus-jewel-emerald),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-info: color-mix(
+		in oklab,
+		var(--nexus-jewel-lapis),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-warning: color-mix(
+		in oklab,
+		var(--nexus-alert-warning),
+		var(--ifm-font-color-base) 20%
+	);
+	--cs-purple: color-mix(
+		in oklab,
+		var(--nexus-jewel-amethyst),
+		var(--ifm-font-color-base) 15%
+	);
+	--cs-amber: color-mix(
+		in oklab,
+		var(--nexus-bronze),
+		var(--ifm-font-color-base) 15%
+	);
+	/* The magic register (M13 S5). The README's rule is that rune-cyan appears only
+	   where the content is magical, and the Spells tab is the whole of that on this
+	   sheet: the focus pool, the catalyst, and the cast control that spends focus.
+	   M9 reached the catalyst card via `--cs-light-blue`; S5 names the register
+	   properly and points the older alias at it, so the three read as one thing
+	   instead of one exception and two accidents. */
+	/* Bronze as INK, one step deeper than bronze as a LINE (M13 S10, measured).
+	   `--nexus-bronze` is right for a keyline or a wash, and it is 4.3-4.9:1 as
+	   small text: the record-plate captions, the 11px field labels and the toggle
+	   marks all sit on faint bronze washes, which close the gap from the other
+	   side and put them under AA. Mixing 12% toward `--ifm-font-color-base`
+	   DARKENS it on parchment and LIGHTENS it on obsidian — one declaration, both
+	   themes — for +0.4 of ratio and a hue nobody can tell from the original.
+	   Text and glyphs take this; borders, washes and fills keep `--nexus-bronze`. */
+	--cs-bronze-ink: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
+	--cs-magic: var(--rune-cyan-text);
+	--cs-light-blue: var(--cs-magic);
+	--cs-grey: var(--ifm-color-emphasis-700);
+	--cs-grey-blue: var(--ifm-color-emphasis-700);
+	--cs-resolve: color-mix(
+		in oklab,
+		var(--nexus-jewel-amethyst),
+		var(--ifm-font-color-base) 30%
+	);
+}
+
+/* M9 S3 — corner rivets for StatCard's small tiles. The codex kit's full
+   CardFrame (keystone + corner rails) is sized for real cards (ornament-craft
+   §9 wants ~16px clearance above for the overhang); a StatCard is as narrow as
+   3.5rem (56px) and stacks with almost no gap, so it gets the lighter
+   register instead — the same flat sunk-diamond rivet already used by
+   ornaments.module.css's RankChip, reused here as plain CSS rather than
+   importing the codex module for four dots. */
+.character-sheet-page .cs-rivet {
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	background-color: color-mix(in srgb, var(--nexus-bronze) 55%, transparent);
+	transform: rotate(45deg);
+	pointer-events: none;
+}
+.character-sheet-page .cs-rivet-tl {
+	top: 2px;
+	left: 2px;
+}
+.character-sheet-page .cs-rivet-tr {
+	top: 2px;
+	right: 2px;
+}
+.character-sheet-page .cs-rivet-br {
+	bottom: 2px;
+	right: 2px;
+}
+.character-sheet-page .cs-rivet-bl {
+	bottom: 2px;
+	left: 2px;
+}
+
+/* M9 S9 — the replacement for a re-decided M8 exclusion.
+   custom.css excludes sheet links from BOTH the universal hover treatments: the
+   rune-cyan color (`a:hover:not(.character-sheet-page a)`) and the glow pulse
+   (`.character-sheet-page a:hover { animation: none }`). Both exclusions stand
+   after review — cyan is magic-only and a character link is not magic, and a
+   pulsing link in a mid-play tool is noise — but together they left sheet links
+   with NO hover feedback at all, which is a lost affordance, not a design
+   choice. Restored here in the sheet's own register: a flat ink shift, no
+   motion.
+
+   NOT plain `var(--nexus-bronze)` — measured, a sheet link already RESTS at
+   exactly that value (rgb(138,90,43) in light), so the hover was a no-op. Mixing
+   toward the reading ink deepens it in light mode and brightens it in dark from
+   the one declaration, per the milestone's every-hue-mixes-toward-the-ink rule. */
+.character-sheet-page a:hover {
+	color: color-mix(
+		in oklab,
+		var(--nexus-bronze),
+		var(--ifm-font-color-base) 40%
+	);
+}
+
+/* M13 S3 — the sheet's chip, `SheetChip`.
+   ==========================================================================
+
+   The sheet had no chip of its own: skills, professions, languages, talent
+   skills and NPC roles were all MUI `Chip`, which is a rounded pill with a
+   solid or outlined fill. The codex answer is the opposite — identity lives in
+   the INK, never in a colour mass — and the doc pages already implement it in
+   four carved silhouettes (custom.css § Per-family silhouettes). This is that
+   construction as a sheet component, so a skill on a rules page and the same
+   skill on the character sheet read as the same stamp.
+
+   Why not just reuse `.chip`: those classes are produced by the table-chips
+   remark plugin for generated doc markup. They carry `pointer-events: none`
+   (a doc chip is never a control), a `--chip-fill` variant per hue rather than
+   a passed value, and `vertical-align`/`top` corrections tuned for sitting in a
+   line of Spectral prose. None of that is true inside a flex row on the sheet,
+   and widening them to cover both surfaces would be a site-wide restyle to
+   serve one tab. The GEOMETRY is shared deliberately; the mechanics are not. */
+.character-sheet-page .cs-chip,
+.cs-tokens .cs-chip {
+	/* The identity hue. A caller passes a `--cs-skill-*` (or any colour); the
+	   default is the structural bronze, for chips with no identity of their own
+	   such as a language. */
+	--cs-chip-ink: var(--nexus-bronze);
+	/* What the outline's middle is punched back out to. A clipped shape cannot
+	   take a `border`, so the keyline is a filled silhouette with the surface
+	   inset 1.5px on top of it — which means this must MATCH whatever the chip
+	   sits on. Sheet lists sit on the page, so that is the default; a chip
+	   placed on a washed surface passes its own. */
+	--cs-chip-surface: var(--ifm-background-color);
+	/* The outline's colour, for both silhouettes. See the banner keyline below
+	   for why it is held back from full strength. */
+	--cs-chip-keyline: color-mix(
+		in srgb,
+		color-mix(in srgb, var(--cs-chip-ink) 45%, var(--nexus-bronze)) 55%,
+		transparent
+	);
+
+	position: relative;
+	isolation: isolate;
+	display: inline-flex;
+	align-items: center;
+	max-width: 100%;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-weight: 500;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.03em;
+	line-height: 1.35;
+	color: var(--cs-chip-ink);
+	border-radius: 0;
+	white-space: nowrap;
+}
+
+/* Banner — pointed at both ends. The doc set's `skill` silhouette, and it
+   carries the same meaning here: a NAMED PROFICIENCY. Skills, crafting
+   professions and languages are all that, so they all take it. */
+.character-sheet-page .cs-chip--banner,
+.cs-tokens .cs-chip--banner {
+	--cs-chip-shape: polygon(
+		7px 0,
+		calc(100% - 7px) 0,
+		100% 50%,
+		calc(100% - 7px) 100%,
+		7px 100%,
+		0 50%
+	);
+	padding: 2px 12px;
+	/* No horizontal margin. The doc chips carry one because they sit inline in a
+	   line of prose; every sheet chip sits in a flex container that supplies its
+	   own `gap`, and the margin only broke the chip's left edge out of alignment
+	   with the section header above it. */
+	margin: 0;
+}
+
+/* Plate — a hard square, the doc set's `attribute` silhouette. For a chip that
+   states a VALUE rather than names a proficiency. Unclipped, so it takes a real
+   border — at 1.5px, to match the weight of the bezel layer the clipped
+   silhouettes get. */
+.character-sheet-page .cs-chip--plate,
+.cs-tokens .cs-chip--plate {
+	border: 1.5px solid var(--cs-chip-keyline);
+	padding: 2px 6px;
+}
+
+.character-sheet-page .cs-chip--banner::before,
+.character-sheet-page .cs-chip--banner::after,
+.cs-tokens .cs-chip--banner::before,
+.cs-tokens .cs-chip--banner::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	clip-path: var(--cs-chip-shape);
+}
+/* The keyline: a trace of the identity hue over bronze, which sharpens identity
+   at hairline width without reintroducing any colour mass.
+
+   Held at 55% opacity, unlike the doc chips' full-strength line. A doc chip
+   appears once or twice in a paragraph; the sheet stacks nine to sixteen of them
+   down one column, directly above the ledger rules, and at full strength the
+   outlines read as a grid drawn over the list. One declaration, so both
+   silhouettes and both colour modes track it. */
+.character-sheet-page .cs-chip--banner::before,
+.cs-tokens .cs-chip--banner::before {
+	background: var(--cs-chip-keyline);
+	z-index: -2;
+}
+/* The surface, inset, punching the middle back out to leave an outline. */
+.character-sheet-page .cs-chip--banner::after,
+.cs-tokens .cs-chip--banner::after {
+	inset: 1.5px;
+	background: var(--cs-chip-surface);
+	z-index: -1;
+}
+
+/* The chip's own label, which is the part that may have to give up width. */
+.character-sheet-page .cs-chip__label,
+.cs-tokens .cs-chip__label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* A value absorbed into the chip behind a struck divider, so "Athletics 3"
+   reads as name + rank rather than as one long label. Identical to the doc
+   chips' `.chip__rank`. */
+.character-sheet-page .cs-chip__value,
+.cs-tokens .cs-chip__value {
+	margin-left: 5px;
+	padding-left: 5px;
+	border-left: 1px solid color-mix(in srgb, currentColor 40%, transparent);
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+}
+
+/* M13 S3 — `MarkButton`: the sheet's one-glyph controls, add and remove.
+
+   `+` and `×` name INTERACTIONS, and the sign list has no depiction for an
+   interaction (S1) — the same reason `GlossMark` and `Chevron` are drawn outside
+   `sigil-paths.ts`. These two are the most universally pre-learned signs there
+   are, which is what earns the exemption rather than merely needing it.
+
+   Round 2 (owner review): the first pass was a bare 1.35em glyph at 0.65 opacity
+   and it was, correctly, called tiny and too subtle. This tool is used on a
+   phone mid-fight — a 14px hint is not a tap target. It is a STAMPED PLATE now:
+   a bronze keyline square, full-strength ink, 1.9rem on a mouse and 2.4rem on a
+   touch pointer (which is a real device query, not a width breakpoint — a tablet
+   needs the bigger target at desktop width). The plate also gives the glyph a
+   reason to be square rather than a stray character in a row of text. */
+.character-sheet-page .cs-mark-button,
+.cs-tokens .cs-mark-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	/* M13 S3.5: sized by the shared interactive floor, so this control and every
+	   MUI IconButton beside it are one size — S4d dropped the token's touch step,
+	   and the glyph bump that rode along with it, so a control strip reads the same
+	   on a phone as on a laptop. */
+	width: var(--nexus-target);
+	height: var(--nexus-target);
+	padding: 0;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	border-radius: 0;
+	background: none;
+	color: var(--cs-bronze-ink);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	font-weight: 600;
+	line-height: 1;
+	cursor: pointer;
+}
+.character-sheet-page .cs-mark-button:hover,
+.cs-tokens .cs-mark-button:hover {
+	border-color: var(--cs-bronze-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.character-sheet-page .cs-mark-button:focus-visible,
+.cs-tokens .cs-mark-button:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: 2px;
+}
+
+/* Inside a chip there is no plate: the chip IS the plate, and a box inside a box
+   is the thing this theme spends its time removing. The control takes the chip's
+   own ink, because it belongs to the thing it removes — but it keeps a real tap
+   target, which is why it is sized rather than inheriting `1em`. */
+.character-sheet-page .cs-chip .cs-mark-button,
+.cs-tokens .cs-chip .cs-mark-button {
+	/* On the shared floor like every other control. This DOES make the chip grow
+	   to contain it — a chip is ~28px tall on a mouse and ~48px on a finger — and
+	   that is the correct trade: an exemption here was the only one in the sheet,
+	   it was 2px short of AA, and "the chip is small" is not a reason a player
+	   should miss the control that deletes their language. */
+	width: var(--nexus-target);
+	height: var(--nexus-target);
+	margin-left: 3px;
+	margin-right: -7px;
+	border: none;
+	color: inherit;
+	/* The GLYPH grows, the BOX does not. `×` occupies about half its em, so it
+	   was rendering at ~7px inside a 21.6px control — the tap target was already
+	   fine and only the mark was hard to see. Raising the box instead would have
+	   grown the chip, since this control is what sets the chip's height. */
+	font-size: var(--nexus-text-lg);
+	line-height: 0;
+	opacity: 0.85;
+}
+.character-sheet-page .cs-chip .cs-mark-button:hover,
+.cs-tokens .cs-chip .cs-mark-button:hover {
+	background: none;
+	opacity: 1;
+}
+
+/* M13 S3 (owner review) — one register for a section header's controls.
+
+   A single header could hold a bordered 32px MUI IconButton, a bare Material
+   icon at a different size, and a drawn `MarkButton` — three visual weights for
+   controls that are peers. They are all the same stamped plate now, matching
+   `MarkButton` exactly, so a header reads as one control strip whether a given
+   button carries a drawn glyph or a Material verb.
+
+   Levelled here rather than at each call site: nineteen call sites cannot be
+   trusted to remember a shared `sx`, and this is the same lever `createTheme`
+   is for the rest of the sheet. */
+/* Every control in a strip is the same box on the same line (S5, owner review). The
+   Spells header mixed `MarkButton` (a drawn plate) with three `IconButton`s carrying
+   Material glyphs at their own default sizes, so the four sat at four heights. The
+   strip states the box and the glyph size for whatever is in it. */
+.character-sheet-page .cs-section-actions,
+.cs-tokens .cs-section-actions {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	line-height: 1;
+}
+.character-sheet-page .cs-section-actions > *,
+.cs-tokens .cs-section-actions > * {
+	flex: 0 0 auto;
+}
+.character-sheet-page .cs-section-actions .MuiIconButton-root,
+.cs-tokens .cs-section-actions .MuiIconButton-root {
+	/* M13 S3.5: sized by the shared interactive floor, so this control and every
+	   MUI IconButton beside it are one size — S4d dropped the token's touch step,
+	   and the glyph bump that rode along with it, so a control strip reads the same
+	   on a phone as on a laptop. */
+	width: var(--nexus-target);
+	height: var(--nexus-target);
+	padding: 0;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	border-radius: 0;
+	color: var(--cs-bronze-ink);
+}
+.character-sheet-page .cs-section-actions .MuiIconButton-root:hover,
+.cs-tokens .cs-section-actions .MuiIconButton-root:hover {
+	border-color: var(--cs-bronze-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.character-sheet-page .cs-section-actions .MuiSvgIcon-root,
+.cs-tokens .cs-section-actions .MuiSvgIcon-root {
+	font-size: 0.95rem;
+}
+/* The one control in a strip that DESTROYS something says so on hover: the plate
+   and its glyph go to the danger ink. At rest it is a peer of the others — a
+   delete that is permanently red is an alarm you stop seeing, and it would be the
+   loudest thing in a details panel of quiet fields (M13 S4d). */
+.character-sheet-page
+	.cs-section-actions
+	.MuiIconButton-root[data-danger='true']:hover,
+.cs-tokens .cs-section-actions .MuiIconButton-root[data-danger='true']:hover {
+	border-color: var(--cs-danger);
+	background: color-mix(in srgb, var(--cs-danger) 12%, transparent);
+	color: var(--cs-danger);
+}
+
+/* A control that is also a STATE says so by filling its plate, not by being the
+   only one with a border. `data-state` marks the ones where the difference is
+   information rather than decoration. */
+.character-sheet-page .cs-section-actions .MuiIconButton-root[data-state='on'],
+.cs-tokens .cs-section-actions .MuiIconButton-root[data-state='on'] {
+	border-color: var(--cs-bronze-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+}
+
+/* M13 S3.5 — the Statistics plate is a READOUT, and it was set smaller than the
+   prose it sits beside.
+   ==========================================================================
+
+   Measured before this slice: every card label 11px, the attribute die numeral
+   12px, HP and the four defences 15.2px. The most-consulted number in the game —
+   the attribute die you roll on every single check — rendered two pixels smaller
+   than the body text of the rules page the sheet is embedded in.
+
+   The cause was the plate's 388px column: eleven cards were fitted to a fixed
+   narrow measure by shrinking their contents. So this raises the type AND lets
+   the plate take more width, because doing the first alone just moves the
+   problem into wrapping.
+
+   Small caps are the reason the labels read even smaller than they measure:
+   `font-variant-caps` renders at roughly cap height, so an 11px small-caps label
+   has about the optical presence of 8px text. The label register moves one step;
+   the VALUES move further, because a label is read once and a value every
+   round. */
+.character-sheet-page .cs-die-token {
+	width: 2.35rem;
+	height: 2.35rem;
+	font-size: var(--nexus-text-sm);
+}
+
+/* M13 S4 (owner review) — a labelled command in a section header.
+   ==========================================================================
+
+   "Magic Item Builder" was a stock MUI outlined `Button`: 4px radius, sentence
+   case, its own type size, its own height. Beside a row of 24px stamped keyline
+   plates it read as a control borrowed from a different application. It is the
+   same plate as its neighbours now, only wider because it carries a word — the
+   register is the plate, the difference is the content. */
+.character-sheet-page .cs-section-actions .MuiButton-root,
+.cs-tokens .cs-section-actions .MuiButton-root {
+	min-height: var(--nexus-target);
+	height: var(--nexus-target);
+	padding: 0 0.5rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	border-radius: 0;
+	color: var(--cs-bronze-ink);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+}
+.character-sheet-page .cs-section-actions .MuiButton-root:hover,
+.cs-tokens .cs-section-actions .MuiButton-root:hover {
+	border-color: var(--cs-bronze-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.character-sheet-page .cs-section-actions .MuiButton-startIcon,
+.cs-tokens .cs-section-actions .MuiButton-startIcon {
+	margin-right: 4px;
+	margin-left: 0;
+}
+
+/* M13 S4 (owner review) — the ledger's COLUMN HEADER.
+   ==========================================================================
+
+   An inventory row carried its own label on every cell, so a list of four items
+   printed "Name / Properties / Location / Cost / Load / Amount / Uses" four
+   times. That is a form repeated N times; a ledger names its columns once at the
+   top and then rules the entries under them.
+
+   The labels are not deleted — they are still rendered on every field and still
+   name it in the accessibility tree — they are visually hidden while the column
+   header is carrying the same words. `display: none` would have taken the
+   accessible name with it, which is why this is a clip rather than a hide.
+
+   Below `--cs-ledger-collapse` there is no room for seven columns, so the header
+   is dropped and the per-field labels come back: the wrapped-with-labels layout
+   is the correct one on a phone, and it is what the rows already do. */
+.character-sheet-page .cs-ledger-cols {
+	--cs-ledger-collapse: 45rem;
+}
+
+@media (min-width: 45rem) {
+	/* Scoped to the ROW, not the section: the details panel lives inside the same
+	   `.cs-ledger-cols` container and its fields are the only place several of
+	   these values can be edited — hiding their labels left a panel of unnamed
+	   boxes. The column header replaces labels for the summary line only. */
+	.character-sheet-page
+		.cs-ledger-cols
+		.cs-ledger-row-grid
+		.MuiInputLabel-root {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+	.character-sheet-page .cs-ledger-cols .cs-ledger-head {
+		display: grid;
+	}
+	.character-sheet-page .cs-ledger-cols .cs-ledger-row-grid {
+		display: grid !important;
+		align-items: center;
+	}
+	/* A field in a grid cell fills its column: the row's alignment is the
+	   column's job now, not each field's own `maxWidth`. */
+	.character-sheet-page .cs-ledger-cols .cs-ledger-row-grid > * {
+		max-width: none !important;
+		min-width: 0 !important;
+		width: 100%;
+	}
+}
+
+/* Hidden until the columns exist. */
+.character-sheet-page .cs-ledger-head {
+	display: none;
+	align-items: end;
+	/* 4px matches `AccordionSummary`'s `px: 0.5`; the row's own grid starts there,
+	   so the header must too or every column is four pixels out. */
+	padding: 0 4px 2px;
+	column-gap: 8px;
+}
+.character-sheet-page .cs-ledger-head > span {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	line-height: 1;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 78%,
+		var(--ifm-font-color-base)
+	);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* M13 S4d — the inscription: a prose field with no box.
+   ==========================================================================
+
+   A name, a properties list and a description were three framed slots stacked in a
+   framed group. The frames were the fault: this is the line that says what the
+   thing IS, and a form field is the wrong register for it. Bare on the panel, slot
+   under the pointer.
+
+   The name reads a step larger than the rest — it is the panel's subject. Not the
+   display serif, though: that was tried and the owner's report was immediate, and
+   correct. A serif at 18px inside a 15px UI panel reads as a different DOCUMENT
+   having been pasted in, and the sheet's own hierarchy is built out of weight and
+   size within one face. */
+.character-sheet-page .cs-inscription .MuiInputBase-root {
+	background-color: transparent;
+	border-color: transparent;
+}
+.character-sheet-page
+	.cs-inscription:hover
+	.MuiInputBase-root:not(.Mui-disabled),
+.character-sheet-page .cs-inscription .MuiInputBase-root.Mui-focused {
+	background-color: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	border-color: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+}
+/* The name reads at the sheet's own size in semibold — NOT a step up (S4d, owner
+   review). The panel belongs to one document and one type scale; the emphasis a
+   subject line needs is weight, not scale. */
+.character-sheet-page .cs-inscription--name .MuiInputBase-input {
+	font-weight: 600;
+}
+/* Prose is flush left. `SheetInput` centres its value because it was built for a
+   stat tile, and a centred name in a left-aligned panel reads as a caption. */
+.character-sheet-page .cs-inscription .MuiInputBase-input {
+	text-align: left;
+}
+/* The one prose field that keeps its edge at rest: an empty multi-line block with
+   no keyline is indistinguishable from empty panel, and this is the field most
+   often empty. `minHeight` rather than rows so it grows with its content and does
+   not reserve three blank lines the way MUI's `minRows` did. */
+.character-sheet-page .cs-inscription--block .MuiInputBase-root {
+	border-color: color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+	align-items: flex-start;
+	padding: 2px 6px;
+}
+.character-sheet-page .cs-inscription--block .MuiInputBase-input {
+	line-height: 1.45;
+}
+
+/* M13 S4d — the damage equation.
+   ==========================================================================
+
+   See `DamageEquation` for why the weapon's damage stopped being a form. The
+   styling's whole job is to make it read as a printed formula: the result at
+   headline size, drawn operators between the terms, the term names as captions
+   UNDER their controls (a caption above each was what made nine boxes look like
+   nine unrelated fields), and everything bare until the pointer arrives. */
+.character-sheet-page .cs-equation {
+	/* Two courses: the sum, then its per-level adjustments. It was a wrapping row
+	   holding a result, an `=` and the terms, which is why the terms wrapped and the
+	   operators fell at line ends (S4d, owner review). */
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	padding: 0.5rem 0.75rem;
+	background: color-mix(in srgb, var(--nexus-bronze) 4%, transparent);
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 26%, transparent);
+}
+/* The operators sit on the SLOTS' line, not on the labels' — an `+` floating level
+   with the captions reads as part of the label above it. */
+.character-sheet-page .cs-equation__operator {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-dense);
+	align-self: flex-end;
+	padding-bottom: 3px;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+.character-sheet-page .cs-equation__terms {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	gap: 0.35rem 0.6rem;
+}
+/* The terms shrink before they wrap: four short slots on one line is the entire
+   point of the layout, so a narrow panel takes narrower slots first and only wraps
+   when they genuinely cannot fit. */
+.character-sheet-page .cs-equation__term {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+.character-sheet-page .cs-equation__term .MuiTextField-root {
+	min-width: 0;
+}
+/* The per-level line sits under the sum and reads quieter than it: these are
+   adjustments to the result, not terms of the equation. */
+.character-sheet-page .cs-equation__levels .cs-toggle-mark {
+	margin-left: auto;
+}
+.character-sheet-page .cs-equation__levels {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.35rem 0.75rem;
+	flex: 1 1 100%;
+	padding-top: 0.35rem;
+	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 14%, transparent);
+}
+.character-sheet-page .cs-equation__level {
+	display: flex;
+	align-items: flex-end;
+}
+.character-sheet-page .cs-equation__level[data-disabled] {
+	opacity: 0.45;
+}
+/* A labelled either/or switch — see `ToggleMark`. It says its state by filling its
+   plate, the same idiom the section headers' toggles use, and carries the app's
+   checkbox mark so on/off reads the way the category menus teach it. Was written
+   inline for `static` and copied for `deals damage`; one class, one component. */
+.character-sheet-page .cs-toggle-mark {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	align-self: center;
+	min-height: var(--nexus-target);
+	padding: 2px 0.5rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	background: none;
+	color: var(--cs-bronze-ink);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	cursor: pointer;
+}
+.character-sheet-page .cs-toggle-mark:hover {
+	border-color: var(--cs-bronze-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.character-sheet-page .cs-toggle-mark[aria-pressed='true'] {
+	border-color: var(--cs-bronze-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+}
+/* The plate alone was read as a command button ("do the static thing") rather than
+   as a state. It carries the app's checkbox mark now, so it says the same thing the
+   category menu's rows say: an empty socket is off, an inlaid lozenge is on. */
+.character-sheet-page .cs-toggle-mark .cs-check-mark {
+	color: var(--cs-bronze-ink);
+}
+/* Bare at rest, slot under the pointer — the equation is an inscription first. */
+.character-sheet-page .cs-equation .MuiInputBase-root {
+	background-color: transparent;
+	border-color: transparent;
+}
+.character-sheet-page .cs-equation .MuiInputBase-root:hover:not(.Mui-disabled),
+.character-sheet-page .cs-equation .MuiInputBase-root.Mui-focused {
+	background-color: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	border-color: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+}
+.character-sheet-page .cs-equation .MuiInputBase-input {
+	text-align: center;
+}
+
+/* M13 S4e — a section BEGINS somewhere.
+   ==========================================================================
+
+   See `ListSection` for the reasoning: the ruled heading carried the grouping on a
+   wide window, and on a phone — where every row wraps onto two or three lines — six
+   sections separated by one hairline read as one long list with labels sprinkled in
+   it. The heading sits on a wash, and the space between sections is larger than the
+   space between rows within one, which is what makes the boundary legible. */
+/* The two gaps, balanced (S4e, owner review). The band's own breathing room is what
+   makes it read as a heading rather than as a strip pressed against the column header
+   under it — 2px was flush. The gap DOWN to the next section then does less work and
+   costs less: the wash already says where a section starts, so the space between
+   sections only has to be visibly larger than the space inside one, not large. */
+.character-sheet-page .cs-list-section {
+	margin-bottom: 0.6rem;
+}
+.character-sheet-page .cs-section-head {
+	padding: 5px 8px;
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+	margin-bottom: 0.4rem;
+}
+/* Below the ledger breakpoint the rows are the tallest they get and the boundary has
+   the most work to do, so it gets more room. */
+@media (max-width: 45rem) {
+	.character-sheet-page .cs-list-section {
+		margin-bottom: 1rem;
+	}
+	.character-sheet-page .cs-section-head {
+		background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
+		margin-bottom: 0.5rem;
+	}
+}
+
+/* M13 S5 — the cast rune: the spell row's one control.
+   ==========================================================================
+
+   Two revisions. It started as a 32px MUI `Avatar` with a hand-written keyframe
+   pulsing a Material-blue box-shadow every five seconds — a depth effect the theme
+   forbids, in a hue it does not own, firing on a timer. I replaced that with a plain
+   stamped plate in the magic register, and the owner's report was correct: cyan alone
+   made it *tinted*, not *magical*, and nothing about a flat square says press me.
+
+   So it is a RUNE rather than a plate. Three things do that, and each one is a device
+   the theme already sanctions:
+
+   1. **A cut-corner tessera silhouette** (`clip-path`) — the damage chips' own shape
+      language, and the one silhouette in the set that reads as an inlaid stone rather
+      than a UI button. A clipped shape cannot take a border, so the keyline is the
+      two-layer trick the chips use: a cyan-filled backing, with the surface inset 1.5px
+      on top punching the middle out.
+   2. **Glow, not shadow.** README/M3 makes rune-cyan glow the site's one legitimate
+      lighting effect and derives every glow from `--rune-cyan-glow`. This is that,
+      applied to the mark's ink and its edge — a lit rune, not a raised button.
+   3. **A pulse that says "live", gated on `prefers-reduced-motion`.** Slow (4s) and
+      shallow, because it sits in a list a player is reading; it brightens on hover and
+      sinks on press, so the affordance is in the interaction and not only in the idle
+      state. */
+.character-sheet-page .cs-cast {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: calc(var(--nexus-target) + 6px);
+	min-height: calc(var(--nexus-target) + 6px);
+	padding: 0;
+	border: none;
+	background: color-mix(in srgb, var(--cs-magic) 60%, transparent);
+	/* The tessera: a stone chip with its corners cut, as the damage chips are cut. */
+	clip-path: polygon(
+		5px 0,
+		calc(100% - 5px) 0,
+		100% 5px,
+		100% calc(100% - 5px),
+		calc(100% - 5px) 100%,
+		5px 100%,
+		0 calc(100% - 5px),
+		0 5px
+	);
+	color: var(--cs-magic);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-dense);
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+	cursor: pointer;
+	animation: cs-rune-pulse 4s ease-in-out infinite;
+}
+/* The inset surface that turns the filled tessera into a keyline one. */
+.character-sheet-page .cs-cast::before {
+	content: '';
+	position: absolute;
+	inset: 1.5px;
+	/* 5%, not 10% (M13 S10, measured). The numeral sits on THIS fill, not on the
+	   keyline above it, and rune-cyan ink on a 10% cyan tint measured 4.33:1 in
+	   light mode — under AA for 15px. Halving the tint clears it without touching
+	   the token, which the docs' magic register also uses. */
+	background: color-mix(
+		in srgb,
+		var(--cs-magic) 5%,
+		var(--ifm-background-color)
+	);
+	clip-path: inherit;
+	z-index: -1;
+}
+.character-sheet-page .cs-cast:hover {
+	background: var(--cs-magic);
+	text-shadow: 0 0 8px
+		color-mix(in srgb, var(--rune-cyan-glow) 70%, transparent);
+	animation: none;
+}
+.character-sheet-page .cs-cast:active {
+	background: var(--cs-magic);
+}
+.character-sheet-page .cs-cast:active::before {
+	background: color-mix(
+		in srgb,
+		var(--cs-magic) 26%,
+		var(--ifm-background-color)
+	);
+}
+.character-sheet-page .cs-cast:focus-visible {
+	outline: 2px solid var(--cs-magic);
+	outline-offset: 2px;
+}
+/* A lit rune breathes. `text-shadow` on the numeral and a tightening of the ink, not a
+   box-shadow on the plate — the light comes off the mark, which is what makes it read
+   as an inscription with something behind it rather than a button with a halo. */
+@keyframes cs-rune-pulse {
+	0%,
+	100% {
+		text-shadow: 0 0 3px
+			color-mix(in srgb, var(--rune-cyan-glow) 30%, transparent);
+	}
+	50% {
+		text-shadow: 0 0 9px
+			color-mix(in srgb, var(--rune-cyan-glow) 75%, transparent);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.character-sheet-page .cs-cast {
+		animation: none;
+		text-shadow: 0 0 5px
+			color-mix(in srgb, var(--rune-cyan-glow) 45%, transparent);
+	}
+}
+
+/* M13 S4e — the tab bar: a rail of inscribed nameplates.
+   ==========================================================================
+
+   See `SheetTabBar` for why this is not MUI `Tabs`. The look, in one line: the bar
+   sits ON a keyline rail, and the selected plate BREAKS that rail, because the panel
+   you are reading is continuous with its own label. Everything else follows from
+   that — an unselected plate is a keyline with no fill, the selected one takes the
+   bronze wash and loses its bottom edge, and nothing moves by a pixel between the
+   two states (the rail is a background gradient on the container, not a border on
+   the plates, so a plate can cover it without changing size). */
+.character-sheet-page .cs-tabbar {
+	position: relative;
+	display: flex;
+	align-items: stretch;
+	min-width: 0;
+}
+/* The rail. A background line rather than a `border-bottom`, so the selected plate
+   can sit on top of it and interrupt it. */
+.character-sheet-page .cs-tabbar::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 2px;
+	background: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	pointer-events: none;
+}
+.character-sheet-page .cs-tabbar__scroll {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+	/* A flick lands ON a plate instead of halfway through one. */
+	scroll-snap-type: x proximity;
+	scrollbar-width: none;
+}
+.character-sheet-page .cs-tabbar__scroll::-webkit-scrollbar {
+	display: none;
+}
+.character-sheet-page .cs-tabbar__rail {
+	display: flex;
+	align-items: flex-end;
+	gap: 3px;
+	/* `max-content` so the plates keep their natural width and the bar scrolls,
+	   rather than the labels compressing to fit and every tab becoming unreadable at
+	   once — which is the failure mode of letting a tab row shrink. */
+	min-width: max-content;
+	padding: 0 2px;
+}
+/* The plates are the sheet's primary navigation and were sized like secondary
+   chrome — 14px labels in a 32px plate, which on a phone is a small target for the
+   control you use most (S4e, owner review). One step up the ladder, a real 44px
+   plate, and enough side padding that the label is not touching its own keyline. */
+.character-sheet-page .cs-tabbar__tab {
+	scroll-snap-align: center;
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	/* `relative` for every plate, not just the selected one: the mark is positioned against it,
+	   and it must sit in the same place whichever state the plate is in. */
+	position: relative;
+	min-height: calc(var(--nexus-target) + 20px);
+	/* The extra 7px per side is HALF the mark's footprint (a 7px lozenge plus a 7px gap).
+	   An inactive plate has no mark in flow, so it pays for it in padding instead and ends up
+	   exactly as wide as the active one — see the note on the mark below. */
+	padding: 0 calc(1.1rem + 7px);
+	border: 1.5px solid transparent;
+	border-bottom: none;
+	border-radius: 0;
+	background: none;
+	/* 88%, not 78% (M13 S10, measured). An unselected tab is already quieter than
+	   the selected one by its plate, its keyline and its mark — three signals — so
+	   the ink did not have to carry the difference too, and at 78% over the bar's
+	   own bronze wash it measured 3.97:1. */
+	color: color-mix(in srgb, var(--ifm-font-color-base) 96%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-base);
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	white-space: nowrap;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.character-sheet-page .cs-tabbar__tab:hover {
+	background: color-mix(in srgb, var(--nexus-bronze) 8%, transparent);
+	color: var(--ifm-font-color-base);
+}
+.character-sheet-page .cs-tabbar__tab:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: -1.5px;
+}
+/* The lozenge is drawn on EVERY plate and inked only on the active one.
+   --------------------------------------------------------------------------
+
+   Showing it only when selected added its width plus a gap to that plate, so every
+   label after it slid sideways as you changed tabs (S4e, owner review). Reserving
+   the space on all seven costs 12px per plate and buys a bar where nothing moves
+   when the selection does — the same rule the ledger's reserved column tracks and
+   the focus keyline already follow. */
+/* The mark is IN FLOW beside the label, and the plate's width does not change (S7, owner review
+   round 3).
+   
+   Three attempts on the same 7px, and the requirements only look contradictory:
+   
+   1. S4e reserved the mark's width on one side of every plate. Nothing reflowed, and every label
+      sat half a mark right of its plate's centre.
+   2. Mirroring it with a second reserved gutter centred the label and still read wrong: the mark
+      hung off the left of a centred word, so the active plate looked unbalanced.
+   3. Absolutely positioning it in the padding centred the label perfectly and left the mark
+      crowded against the plate's edge, which is the owner's screenshot.
+   
+   What a reader actually wants centred is the **mark and the label together**, as one group. So
+   the mark is a normal flex child again — and the width is held by ARITHMETIC rather than by
+   reserved space: the mark's footprint is 7px plus a 7px gap, and an inactive plate carries
+   exactly half of that (7px) in extra padding on each side. Active and inactive plates are the
+   same width to the pixel, the group is centred in both, and nothing moves when the selection
+   changes. */
+.character-sheet-page .cs-tabbar__tab[aria-selected='true']::before {
+	content: '';
+	flex: 0 0 auto;
+	width: 7px;
+	height: 7px;
+	margin-right: 7px;
+	background: var(--nexus-bronze);
+	transform: rotate(45deg);
+}
+
+.character-sheet-page .cs-tabbar__tab[aria-selected='true'] {
+	border-color: var(--cs-bronze-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 16%, transparent);
+	color: var(--cs-bronze-ink);
+	/* The 7px each side that an inactive plate spends on padding is spent on the mark here. */
+	padding-left: 1.1rem;
+	padding-right: 1.1rem;
+	/* Covers the rail below it: the selected plate and its panel are one surface. */
+	margin-bottom: -2px;
+	padding-bottom: 2px;
+	z-index: 1;
+}
+
+.character-sheet-page .cs-tabbar__edge {
+	position: absolute;
+	top: 0;
+	bottom: 2px;
+	z-index: 2;
+	display: none;
+	align-items: center;
+	/* Wide enough to be a target rather than a hint: this is the control a player
+	   uses when they cannot see the tab they want. */
+	width: 2.25rem;
+	padding: 0;
+	border: none;
+	color: var(--cs-bronze-ink);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xl);
+	font-weight: 700;
+	line-height: 1;
+	cursor: pointer;
+}
+.character-sheet-page .cs-tabbar__edge[data-shown] {
+	display: flex;
+}
+.character-sheet-page .cs-tabbar__edge--start {
+	left: 0;
+	justify-content: flex-start;
+	padding-left: 2px;
+	background: linear-gradient(
+		to right,
+		var(--ifm-background-color) 45%,
+		transparent
+	);
+}
+.character-sheet-page .cs-tabbar__edge--end {
+	right: 0;
+	justify-content: flex-end;
+	padding-right: 2px;
+	background: linear-gradient(
+		to left,
+		var(--ifm-background-color) 45%,
+		transparent
+	);
+}
+.character-sheet-page .cs-tabbar__edge:hover {
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* M13 S4d — the record plate: an entity's facts as an inscribed ledger.
+   ==========================================================================
+
+   See `RecordPlate` for the reasoning. The rules here are the ones that make a
+   column of facts read as a column: a shared label width so every value starts at
+   the same x, hairline courses between rows so the eye can track across a wide
+   plate, and bare controls that only show their slot under the pointer.
+
+   The courses are the ONE place a horizontal rule is legitimate in this theme —
+   they are not grouping anything, they are the ruling of a ledger, which is why
+   the ledger rows themselves carry one too. */
+.character-sheet-page .cs-record-plate,
+.cs-tokens .cs-record-plate {
+	background: color-mix(in srgb, var(--nexus-bronze) 4%, transparent);
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 26%, transparent);
+	padding: 0.25rem 0.5rem;
+	/* Fills the panel's height so its bottom edge lands with the last thing in the
+	   left column. The plate and the equation are the two framed blocks in the panel,
+	   and two frames that stop a few pixels apart read as a mistake rather than as two
+	   independent lengths of content (S4d, owner review). */
+	height: 100%;
+}
+.character-sheet-page .cs-record-plate__head,
+.cs-tokens .cs-record-plate__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	padding-bottom: 3px;
+	/* The plate's heaviest rule, matching the section break inside it: the caption
+	   names the whole plate, so its rule cannot be lighter than one that separates two
+	   halves of the plate's body (S4d, owner review). */
+	border-bottom: 1.5px solid
+		color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
+	margin-bottom: 2px;
+}
+.character-sheet-page .cs-record-plate__caption,
+.cs-tokens .cs-record-plate__caption {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	line-height: 1.6;
+	color: var(--cs-bronze-ink);
+}
+.character-sheet-page .cs-record-row,
+.cs-tokens .cs-record-row {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	min-height: var(--nexus-target);
+	padding: 1px 0;
+}
+.character-sheet-page .cs-record-row + .cs-record-row,
+.cs-tokens .cs-record-row + .cs-record-row {
+	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+/* The one heavier course: above it the facts describe the ITEM, below it they
+   describe this copy of it. A ledger marks a change of subject by ruling harder,
+   not by growing a second heading. */
+.character-sheet-page .cs-record-row--section,
+.cs-tokens .cs-record-row--section {
+	border-top: 1.5px solid
+		color-mix(in srgb, var(--nexus-bronze) 40%, transparent) !important;
+	margin-top: 2px;
+	padding-top: 3px;
+}
+/* One label measure for the whole plate, so every value in it starts at the same
+   x — that shared edge is the entire reason a column of facts scans as a column. */
+.character-sheet-page .cs-record-row__label,
+.cs-tokens .cs-record-row__label {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	flex: 0 0 6.5rem;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	line-height: 1.2;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 82%,
+		var(--ifm-font-color-base)
+	);
+	white-space: nowrap;
+}
+/* Every value is flush RIGHT and every label flush left (S4d, owner review). The
+   first pass right-aligned figures and left-aligned words, on the theory that a
+   right-aligned word reads as a failed number — but the plate's whole argument is
+   ONE column edge to scan down, and splitting it by content type gave the plate two
+   ragged edges instead of one clean one. A word in the figures column is a smaller
+   problem than a plate that does not line up. */
+.character-sheet-page .cs-record-row__value,
+.cs-tokens .cs-record-row__value {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.character-sheet-page .cs-record-row__value .MuiInputBase-input {
+	text-align: right;
+}
+/* A select renders its value in a div with room reserved for the caret, so the
+   text needs the caret's width as padding to sit on the same edge as a number. */
+.character-sheet-page .cs-record-row__value .MuiSelect-select {
+	text-align: right;
+	padding-right: 22px;
+}
+/* A fact is read far more often than it is edited, so at rest it is text on the
+   plate; the slot appears under the pointer. Same judgement as the row titles and
+   the meta band, stated here for the inputs a plate holds. */
+.character-sheet-page .cs-record-row .MuiInputBase-root {
+	background-color: transparent;
+	border-color: transparent;
+	min-height: calc(var(--nexus-target) - 4px);
+}
+.character-sheet-page
+	.cs-record-row:hover
+	.MuiInputBase-root:not(.Mui-disabled),
+.character-sheet-page .cs-record-row .MuiInputBase-root.Mui-focused {
+	background-color: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	border-color: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+}
+.character-sheet-page .cs-record-row .MuiTextField-root {
+	margin: 0;
+}
+
+/* M13 S7 (owner review) — the unsaved-notes nudge.
+   ==========================================================================
+
+   Party notes do not autosave: they are shared, so a write is a deliberate act. That makes
+   "you have not saved yet" the one state on this sheet worth an ANIMATION rather than a
+   colour — the status line already says it in words, and a word in a strip is easy to read
+   past when you are typing.
+
+   The pulse is on the plate's own keyline and wash, not a shadow or a scale: nothing moves,
+   nothing casts light, and the row it sits in does not reflow. 2s is slow enough to read as
+   "still pending" rather than as an alarm, and it stops the moment the state clears because
+   it is bound to the strip's `data-state`.
+
+   Gated on `prefers-reduced-motion`, where the plate simply holds the lit end of the cycle —
+   the reminder survives, the motion does not. */
+/* Two registers of "look at this", and the difference is whether the state is
+   something YOU did (M13 S3, 2026-08-01).
+
+   `pending` — an action of yours is outstanding and one press finishes it: notes
+   you have typed but not shared, content that has drifted from the rulebook. It
+   pulses.
+
+   `alert` — a standing condition worth knowing about that no single press
+   resolves: talent points left unspent, a skill overspent. Same warning ink, no
+   motion. A strip where every flagged control pulses is a strip with an alarm in
+   it, and the reader stops reading any of them.
+
+   Both replaced `color="warning"`, which drew MUI's Material orange: the palette
+   was never retuned past `MuiLinearProgress`, so these were the last controls on
+   the sheet inking themselves from Material rather than from `--cs-warning`. */
+.character-sheet-page
+	.cs-section-actions
+	.MuiIconButton-root[data-state='alert'],
+.cs-tokens .cs-section-actions .MuiIconButton-root[data-state='alert'] {
+	border-color: var(--cs-warning);
+	color: var(--cs-warning);
+	background: color-mix(in srgb, var(--cs-warning) 10%, transparent);
+}
+/* The strip's generic hover is a bronze wash at lower specificity than the rule
+   above, so without this an alerting control is the one control in the strip that
+   does not answer the pointer. Deeper wash in its own ink, not bronze. */
+.character-sheet-page
+	.cs-section-actions
+	.MuiIconButton-root[data-state='alert']:hover,
+.cs-tokens .cs-section-actions .MuiIconButton-root[data-state='alert']:hover {
+	border-color: var(--cs-warning);
+	background: color-mix(in srgb, var(--cs-warning) 22%, transparent);
+}
+.character-sheet-page
+	.cs-section-actions
+	.MuiIconButton-root[data-state='pending'],
+.cs-tokens .cs-section-actions .MuiIconButton-root[data-state='pending'] {
+	border-color: var(--cs-warning);
+	color: var(--cs-warning);
+	animation: cs-save-pulse 2s ease-in-out infinite;
+}
+@keyframes cs-save-pulse {
+	0%,
+	100% {
+		background: color-mix(in srgb, var(--cs-warning) 6%, transparent);
+		border-color: color-mix(in srgb, var(--cs-warning) 45%, transparent);
+	}
+	50% {
+		background: color-mix(in srgb, var(--cs-warning) 22%, transparent);
+		border-color: var(--cs-warning);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.character-sheet-page
+		.cs-section-actions
+		.MuiIconButton-root[data-state='pending'],
+	.cs-tokens .cs-section-actions .MuiIconButton-root[data-state='pending'] {
+		animation: none;
+		background: color-mix(in srgb, var(--cs-warning) 18%, transparent);
+	}
+}
+
+/* M13 S7 — "this row is you".
+   ==========================================================================
+
+   The party list marked the current member with `bgcolor: action.hover`, which is the same
+   wash this sheet uses for HOVER everywhere else — so your own row looked permanently
+   hovered, and hovering it said nothing. A word in the small-caps register instead: it
+   states the fact rather than implying it, and it leaves the hover wash meaning hover. */
+.character-sheet-page .cs-you {
+	margin-left: 0.4rem;
+	padding: 0 4px;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	color: var(--cs-bronze-ink);
+	vertical-align: 0.1em;
+}
+
+/* M13 S7 — a section's own status line, and the "nothing here yet" note.
+   ==========================================================================
+
+   The party notes reported their state with three `Typography` captions in warning, info
+   and success, guarded by the same two booleans — three elements to say one thing, reading
+   as a legend rather than as a status. One line, one data attribute, one ink. */
+.character-sheet-page .cs-notes-state {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--ifm-color-emphasis-600);
+	padding: 0 2px 4px;
+}
+.character-sheet-page .cs-notes-state[data-state='unsaved'] {
+	color: var(--cs-warning);
+}
+.character-sheet-page .cs-notes-state[data-state='behind'] {
+	color: var(--cs-info);
+}
+.character-sheet-page .cs-notes-state[data-state='saved'] {
+	color: var(--cs-success);
+}
+/* An empty state is a sentence on the stone, not a Material `Alert` with an info roundel
+   and a tinted panel — the sheet has three of those and they are the loudest thing on a
+   page that has nothing in it. */
+.character-sheet-page .cs-empty-note {
+	padding: 0.75rem 1rem;
+	border: 1.5px dashed color-mix(in srgb, var(--nexus-bronze) 26%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 3%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-dense);
+	color: var(--ifm-color-emphasis-700);
+}
+
+/* M13 S7 — a companion's rendered stat block.
+   ==========================================================================
+
+   The markdown a companion holds is usually a table pasted from the Companion Builder, and
+   `ReactMarkdown` renders it into the doc's own element set — which inside the sheet means
+   Infima's reading-column rhythm (16px body, 1rem paragraph margins, a full-width table)
+   landing in a details panel built at 15px. This is that block, retuned to the sheet's
+   density: the same job every codex card does for its own rule text. */
+.character-sheet-page .cs-statblock {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-dense);
+	line-height: 1.45;
+}
+.character-sheet-page .cs-statblock > *:first-child {
+	margin-top: 0;
+}
+.character-sheet-page .cs-statblock p,
+.character-sheet-page .cs-statblock ul,
+.character-sheet-page .cs-statblock ol {
+	margin: 0 0 0.35rem;
+}
+.character-sheet-page .cs-statblock li > p {
+	margin: 0;
+}
+.character-sheet-page .cs-statblock h1,
+.character-sheet-page .cs-statblock h2,
+.character-sheet-page .cs-statblock h3,
+.character-sheet-page .cs-statblock h4,
+.character-sheet-page .cs-statblock h5 {
+	margin: 0.5rem 0 0.25rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--cs-bronze-ink);
+}
+/* A stat block's table is a ledger: ruled courses, small-caps head, tabular figures. It
+   arrives as a plain markdown table, so the register is applied here rather than being
+   pasted in by whoever generated it. */
+.character-sheet-page .cs-statblock table {
+	width: 100%;
+	display: table;
+	border-collapse: collapse;
+	margin: 0 0 0.35rem;
+	font-variant-numeric: tabular-nums;
+}
+.character-sheet-page .cs-statblock th {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--cs-bronze-ink);
+	text-align: left;
+	border: 0;
+	border-bottom: 1.5px solid
+		color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
+	padding: 2px 6px;
+	background: none;
+}
+.character-sheet-page .cs-statblock td {
+	border: 0;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+	padding: 2px 6px;
+	background: none;
+}
+.character-sheet-page .cs-statblock tr:last-child td {
+	border-bottom: none;
+}
+
+/* M13 S6 (owner review) — the character portrait.
+   ==========================================================================
+
+   Was a circular MUI `Paper` with `elevation` (a drop shadow this theme forbids), a
+   Material camera glyph, a red circular delete badge in `error.main`, and two lines of
+   caption beneath — one naming it, one stating the file limits. A raised circle is every
+   web app's avatar; a portrait in a codex is a framed plate.
+
+   Hard vertices, corner rivets, keyline and wash — the same container the tab header
+   uses, at the record's own height so the two columns end level. Its empty state draws
+   the `folk` mark (a figure: what is missing) rather than a camera, because the sheet has
+   a mark for "a person" and no reason to borrow one for "a photograph". */
+.character-sheet-page .cs-portrait {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	flex: 0 0 auto;
+}
+.character-sheet-page .cs-portrait__plate {
+	position: relative;
+	width: 9.5rem;
+	height: 9.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4px;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 34%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
+	cursor: pointer;
+	overflow: hidden;
+}
+.character-sheet-page .cs-portrait__plate:hover,
+.character-sheet-page .cs-portrait__plate:focus-visible {
+	border-color: var(--cs-bronze-ink);
+	outline: none;
+}
+/* The drop target says so with a CUT edge — a dashed keyline is the one place a broken
+   line is legitimate here, because it means "not yet filled". */
+.character-sheet-page .cs-portrait__plate[data-drag] {
+	border-style: dashed;
+	border-color: var(--cs-bronze-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.character-sheet-page .cs-portrait__image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+.character-sheet-page .cs-portrait__empty {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.35rem;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	text-align: center;
+}
+.character-sheet-page .cs-portrait__busy {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: color-mix(in srgb, var(--ifm-background-color) 65%, transparent);
+}
+/* The caption line: what it is, the gloss that explains the limits, and the remove mark
+   when there is something to remove. */
+.character-sheet-page .cs-portrait__strip {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+.character-sheet-page .cs-portrait__label {
+	flex: 1 1 auto;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--cs-bronze-ink);
+}
+
+/* A record row's "choose from the rulebook" control (S6, owner review).
+   --------------------------------------------------------------------------
+
+   Was a Material pencil in a bare `IconButton`: the last pen icon on the sheet, and a
+   pencil means "edit" where this opens a LIST — the field beside it is already editable
+   by typing in it. A bronze mark on the row's own line instead, keylined on hover like
+   every other quiet control here, drawn as the scroll the codex already uses to mean "the
+   book" (the character list and the sheet header both carry it). */
+.character-sheet-page .cs-record-row .MuiIconButton-root {
+	width: var(--nexus-target);
+	height: var(--nexus-target);
+	padding: 0;
+	border: 1.5px solid transparent;
+	border-radius: 0;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 75%,
+		var(--ifm-font-color-base)
+	);
+}
+.character-sheet-page .cs-record-row .MuiIconButton-root:hover {
+	border-color: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
+	color: var(--cs-bronze-ink);
+}
+
+/* M13 S6 — the tab header plate.
+   ==========================================================================
+
+   The container the Personal tab's per-field ornament became — at the second attempt.
+   Round one wrapped it in `CardFrame` (cartouche keystone + four corner rails), which at
+   a tab's full width drew a metre of filigree across the top of the sheet. An ornament
+   sized for a spell card is not sized for a 1200px strip. The plate keeps the idea and
+   drops the dose: four rivets, a keyline, a wash. `position: relative` because the rivets
+   are positioned against it.
+
+   No title either — the tab bar directly above already names the tab, and a page title is
+   something a document needs and a tool does not. The plate holds the band and the tab's
+   commands, side by side. */
+.character-sheet-page .cs-tab-header {
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.5rem 1rem;
+	padding: 0.5rem 0.75rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 34%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
+	margin-bottom: 0.75rem;
+}
+.character-sheet-page .cs-tab-header__body {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+/* Inside the plate the band has no frame of its own: it is already inside the tab's
+   container, and a bounded band within a bounded plate is the box-in-a-box this theme
+   spends its time removing. It keeps its type sizes and its line box. */
+.character-sheet-page .cs-tab-header .cs-meta-band {
+	padding: 0;
+	border: none;
+	background: none;
+	outline: none;
+	margin-bottom: 0;
+}
+
+/* M13 S4d (owner review) — the meta band.
+   ==========================================================================
+
+   A bounded line of facts ABOUT a thing, above the thing itself. Two ranks:
+   `primary` for a tab's own facts (the Items purse strip — coins, load, carry
+   mod) and `--sub` for a section's (mount / storage name and capacity).
+
+   It began as the purse strip alone. Coins and load were the same weight as a
+   location's meta line and the owner's report was that you look straight past
+   them — they are not peers of a row label, they are the two numbers the whole
+   tab is about. Promoting them meant a bounded band, and once the sub-header
+   needed the same thing the styling and the markup both got a name:
+   `MetaBand` in components/MetaBand, this block, one idiom at two ranks.
+
+   Grouping is a WASH plus a keyline frame, per the theme's standing rule — the
+   fields inside are separated by space alone, because a vertical rule between
+   them would be exactly the bar-as-grouping-device that has been rejected three
+   times. `outline` at a negative offset is the sanctioned flat second keyline and
+   does the work an inlaid border would in stone; there is no bevel anywhere. */
+.character-sheet-page .cs-meta-band,
+.cs-tokens .cs-meta-band {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 1.5rem;
+	padding: 0.5rem 0.75rem;
+	margin-bottom: 0.75rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 42%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	outline: 1px solid color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+	outline-offset: -4px;
+}
+/* The band's own label register. It borrowed `cs-section-meta__label` for one
+   slice, and inheriting that class's bottom RULE under a frame the band already
+   has gave the line two edges. That class is gone now — the band replaced its only
+   two consumers, so the caption-line register no longer exists on the sheet. */
+.character-sheet-page .cs-meta-band__label,
+.cs-tokens .cs-meta-band__label {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	/* The label and the value share a line box IN PIXELS, not a ratio (S5, owner
+	   review). `line-height: 1.2` on a 12px label and on an 18px value makes two boxes
+	   14.4px and 21.6px tall; centring those centres each text inside its own box and
+	   leaves the label's BASELINE above the value's, which is exactly the "labels sit too
+	   high" report. Small caps make it worse, having no descenders to fill the slack.
+	   One height for both, and the baselines land together. */
+	line-height: 1.4rem;
+	color: var(--cs-bronze-ink);
+	white-space: nowrap;
+}
+/* A value in the band, not a caption beside a label: the ladder's 18px step, and
+   tabular so a coin count does not shift its own label when it changes. The label
+   grows a rung with it — 11px small caps under an 18px numeral reads as a footnote
+   on the number rather than as its name. */
+/* A mark beside small caps needs an optical lift, not geometric centring (S5, owner
+   review). Small caps have no descenders, so their glyphs occupy the TOP of their line
+   box — a sigil centred in that box lands visibly below the letters beside it. The lift
+   is in `em` so it tracks whatever size the rank sets. Stated for the label rather than
+   for `StatSigil`, because a mark centred against full-height text (a row title, a menu
+   item) is correct as-is; it is the small-caps pairing that needs it. */
+.character-sheet-page .cs-meta-band__label svg,
+.cs-tokens .cs-meta-band__label svg,
+.cs-tokens .cs-record-row__label svg,
+.character-sheet-page .cs-record-row__label svg,
+.character-sheet-page .cs-section-head svg {
+	position: relative;
+	top: -0.06em;
+}
+
+.character-sheet-page .cs-meta-band__value,
+.cs-tokens .cs-meta-band__value {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-md);
+	font-variant-numeric: tabular-nums;
+	line-height: 1.4rem;
+}
+.character-sheet-page .cs-meta-band .cs-meta-band__value input,
+.cs-tokens .cs-meta-band .cs-meta-band__value input {
+	font-size: var(--nexus-text-md);
+	font-weight: 700;
+}
+
+/* The sub-header: the same band, one rank down (S4d, owner review).
+   --------------------------------------------------------------------------
+
+   "On Mount" and "In Storage" open with the same kind of line — what the section
+   is called and what it is carrying — and it had the same two faults the purse
+   strip had: the pieces did not share a line box, and nothing bounded them.
+
+   It is the same idiom rather than a second one, quieted by three steps and no
+   new ideas: the values drop to the 15px scan step instead of 18px, the labels
+   stay at 11px, and the inset second keyline is dropped — that inlaid edge is
+   what marks the purse as the tab's opening statement, so it must not appear on
+   a line subordinate to it. The wash and the keyline are lighter for the same
+   reason.
+
+   It is also CAPPED at the ledger's measure, where the purse runs the full width.
+   That is the fix for the other half of the report: with the two groups pushed
+   apart in a 1049px-wide row, "Load 0 / 0" ended up ~600px from the name it
+   belongs to and read as an unrelated fragment. Bounded at the same measure the
+   rows use, its right edge lands where the ledger's own numeric columns end. */
+.character-sheet-page .cs-meta-band--sub,
+.cs-tokens .cs-meta-band--sub {
+	max-width: var(--cs-max-width-lg);
+	/* One line at every width. The band holds a name and a load reading, and the
+	   load reading is `nowrap` — so the name field is the only thing that can absorb a
+	   narrower viewport, and it can only do that if nothing in it has an intrinsic
+	   minimum. See `metaBandInputSx` (S4e). */
+	flex-wrap: nowrap;
+	gap: 0 1rem;
+	padding: 0.3rem 0.625rem;
+	margin-bottom: 0.5rem;
+	border-color: color-mix(in srgb, var(--nexus-bronze) 26%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 4%, transparent);
+	outline: none;
+}
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__value,
+.cs-tokens .cs-meta-band--sub .cs-meta-band__value,
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__value input,
+.cs-tokens .cs-meta-band--sub .cs-meta-band__value input {
+	font-size: var(--nexus-text-dense);
+}
+/* The sub rank's values are 15px rather than 18px, so its shared line box is shorter.
+   Stated per rank rather than derived, because a rank IS its type sizes. */
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__label,
+.cs-tokens .cs-meta-band--sub .cs-meta-band__label,
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__value,
+.cs-tokens .cs-meta-band--sub .cs-meta-band__value,
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__note,
+.cs-tokens .cs-meta-band--sub .cs-meta-band__note,
+.character-sheet-page .cs-meta-band--sub .MuiInputBase-input,
+.cs-tokens .cs-meta-band--sub .MuiInputBase-input {
+	line-height: 1.2rem;
+}
+.character-sheet-page .cs-meta-band--sub .cs-meta-band__label,
+.cs-tokens .cs-meta-band--sub .cs-meta-band__label {
+	font-size: var(--nexus-text-2xs);
+}
+/* The location's NAME is prose, not a figure: same line box and size as a value,
+   but no tabular figures and a text weight, or "Kesh's mule" reads as a total. */
+.character-sheet-page .cs-meta-band__text input,
+.cs-tokens .cs-meta-band__text input {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-dense);
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+/* One line box for everything in the band.
+   --------------------------------------------------------------------------
+
+   The band holds four KINDS of thing — a small-caps label with an inline sigil, a
+   plain 18px numeral, an 18px numeral inside a text field, and an 11px qualifier
+   ("max 22") — and `align-items: center` only lines those up if their line boxes
+   agree. They did not: a field carries MUI's own input padding and line-height on
+   top of the glyphs, so the numeral inside one sat lower than the numeral beside
+   it, and the small-caps labels floated between the two.
+
+   Fixed by making every line box the same 1.2 and stripping the field's vertical
+   padding, so centring has identical boxes to centre. Optical centring by hand
+   (a `translateY` on one item) was the alternative and is not one: it would have
+   to be re-tuned for every font-size in the band. */
+.character-sheet-page .cs-meta-band,
+.cs-tokens .cs-meta-band,
+.character-sheet-page .cs-meta-band > *,
+.cs-tokens .cs-meta-band > * {
+	align-items: center;
+}
+/* A control inside a band wears the strip's stamped plate — the band holds facts and
+   the occasional verb, and a verb here should look like a verb anywhere else on the
+   sheet (S5). */
+.character-sheet-page .cs-meta-band .MuiIconButton-root,
+.cs-tokens .cs-meta-band .MuiIconButton-root {
+	width: var(--nexus-target);
+	height: var(--nexus-target);
+	padding: 0;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	border-radius: 0;
+	color: var(--cs-bronze-ink);
+}
+.character-sheet-page .cs-meta-band .MuiIconButton-root:hover,
+.cs-tokens .cs-meta-band .MuiIconButton-root:hover {
+	border-color: var(--cs-bronze-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+/* A band FIELD that opens an editor (S5). Bare at rest — a band is a line of facts, and
+   framing one of them would claim it is a different kind of fact — with the slot's own
+   hover wash to say it is live. Same gesture as an HP card: click the pool, get the
+   pool's editor.
+
+   The `all: unset`-style reset is deliberate and load-bearing: this is a `button`, so
+   without it the UA paints a light grey face and drops the flex gap, which is exactly
+   what shipped when the rule below was written into a stale selector and matched
+   nothing. */
+.character-sheet-page .cs-band-trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	min-width: 0;
+	padding: 2px 6px;
+	border: 1.5px solid transparent;
+	border-radius: 0;
+	background: none;
+	background-color: transparent;
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+	appearance: none;
+}
+.character-sheet-page .cs-band-trigger:hover {
+	border-color: color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	background-color: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+}
+.character-sheet-page .cs-band-trigger:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: -1.5px;
+}
+
+.character-sheet-page .cs-meta-band .MuiInputBase-input,
+.cs-tokens .cs-meta-band .MuiInputBase-input {
+	padding-top: 0;
+	padding-bottom: 0;
+	line-height: 1.4rem;
+}
+
+/* M13 S4 (owner review) — the doc reading column's list indent does NOT apply to
+   the sheet's lists.
+
+   `custom.css` sets `.theme-doc-markdown ul { padding-left: 1.4rem }` for the
+   bronze diamond bullets, with a comment saying it is scoped away from the
+   character sheet. It is not: the sheet is rendered inside an MDX page, so it is
+   inside `.theme-doc-markdown`, and every `DynamicList` — which is a `<ul>` —
+   was indented 22px. Invisible until S4 put a column header above one and the
+   two did not line up.
+
+   Undone here rather than in `DynamicList`'s `sx`, because an `sx` class loses to
+   a two-class selector; this needs the extra specificity to win, and CSS is where
+   that argument belongs. */
+.theme-doc-markdown .character-sheet-page ul.MuiList-root {
+	padding-left: 0;
+}
+
+/* M13 S4b — a ledger row is one line on a mouse.
+   ==========================================================================
+
+   Rows measured 53px, mostly because every value sat in its own bordered slot
+   whether or not it could be edited. With the read-only values un-boxed (D5) the
+   row only has to be as tall as its one remaining control (the uses pips — S4d
+   made amount read-only too), and the interactive floor already answers what that
+   is. So this is `--nexus-target` plus the row's own padding, one value on every
+   pointer since S4d dropped the token's touch step. */
+@media (min-width: 45rem) {
+	.character-sheet-page .cs-ledger-cols .MuiAccordionSummary-root {
+		min-height: calc(var(--nexus-target) + 10px);
+		padding-top: 0;
+	}
+	.character-sheet-page .cs-ledger-cols .MuiAccordionSummary-root.Mui-expanded {
+		min-height: calc(var(--nexus-target) + 10px);
+	}
+	/* The list's own gap is what remains of the old spacing; the engraved rule on
+	   each row is the separator now, so the gap only has to keep the rules from
+	   touching their neighbour's content. */
+	.character-sheet-page .cs-ledger-cols .MuiList-root {
+		gap: 0;
+	}
+	.character-sheet-page .cs-ledger-cols .MuiListItem-root {
+		align-items: center;
+	}
+}
+
+/* M13 S4b — the column name, carried by the cell, below the ledger breakpoint.
+   ==========================================================================
+
+   Un-boxing the read-only cells removed their `<label>` along with their border,
+   which is right at desktop width because the column header names them. On a
+   phone the header is gone and the row has wrapped, and a cell with no label is
+   a bare number — "light armor, +1 AV — 25 0". So each read cell carries its
+   column's name and shows it exactly where the header cannot. */
+.character-sheet-page .cs-cell-label,
+.cs-search-dialog .cs-cell-label {
+	margin-right: 0.4rem;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 78%,
+		var(--ifm-font-color-base)
+	);
+}
+@media (min-width: 45rem) {
+	.character-sheet-page .cs-ledger-cols .cs-ledger-row-grid .cs-cell-label {
+		display: none;
+	}
+}
+
+/* M13 S4b — the floating label's reserved space, reclaimed.
+   ==========================================================================
+
+   MUI puts `margin-top: 16px` on any input that follows a `<label>`, to leave
+   room for the label to float down over the field. S3.5 made every label static,
+   so that reservation has been dead space on every labelled field on the sheet
+   ever since — 16px each, and it is what kept an otherwise 24px inventory row at
+   40px.
+
+   Undone here rather than in `createTheme.ts`, after three attempts there did
+   nothing: the rule lives inside InputBase's root styled component as
+   `'label + &'`, not in a `formControl` slot, so a slot override emits CSS that
+   matches nothing, and a root-slot override ties on specificity with MUI's own
+   and loses on order. A two-class selector wins outright and says why. */
+.character-sheet-page label + .MuiInputBase-root {
+	margin-top: 0;
+}
+
+/* M13 S8 — the search dialog's ledger.
+   ==========================================================================
+
+   The five search dialogs shared one `SearchDialog` (then named `GenericSearchDialog`, and living under `02_Items/`), and that component
+   rendered a MUI `Table`: sticky header, checkbox column, `TableSortLabel`, hover
+   rows. It was the sheet's LAST list idiom that was not the ledger — F6's actual
+   cost, which was never that the dialogs disagreed with each other (they already
+   shared a component) but that all five together disagreed with every tab behind
+   them.
+
+   Scoped under `.cs-search-dialog` rather than `.character-sheet-page` because a
+   MUI dialog portals to `<body>`, outside the page element every other rule here
+   hangs off. The paper carries `.cs-tokens` for the same reason — that is the
+   established escape hatch (`FocusField`, `StatusEffects`) and it is what makes
+   `--cs-*` resolve out here at all. */
+
+/* One scroller, never two (M13 S8b, F11.4).
+   ==========================================================================
+
+   MUI's `scroll="paper"` puts `overflow-y: auto` on `DialogContent`, and the
+   ledger inside it carried `max-height: min(52vh, 28rem)` with its own
+   `overflow-y`. Two scrollers, nested: the outer one moved the search field and
+   the filters away while the inner one moved the rows, and which one answered the
+   wheel depended on where the pointer happened to be. S8b's expanding rows made it
+   worse — an opened talent ladder is several times taller than the clamped cell it
+   replaced.
+
+   The Magic Item Builder was fixed for exactly this in S8 ("no body scroll at any
+   width; the scrolling happens as deep inside it as it can") and the fix was never
+   carried back to the dialog family beside it. This is that fix.
+
+   The paper is a flex column that owns its height. Title and actions are fixed
+   courses, the content is the flexible one, and inside it everything except the
+   ROWS is fixed too — so the search field, the filters, the meta line and the
+   column header all stay put and exactly one thing under the pointer moves.
+
+   `min-height: 0` on every flexible ancestor: a flex item's default minimum is its
+   content, so without it the rows push the column taller instead of scrolling
+   inside it. That is the whole trick and it is invisible when missing. */
+.cs-search-dialog.MuiPaper-root {
+	display: flex;
+	flex-direction: column;
+}
+/* Not on the full-screen paper: MUI sets `height: 100%` there and a max-height of
+   `calc(100% - 64px)` would leave a gap it has deliberately removed. */
+.cs-search-dialog.MuiPaper-root:not(.MuiDialog-paperFullScreen) {
+	max-height: calc(100% - 64px);
+}
+.cs-search-dialog .MuiDialogTitle-root,
+.cs-search-dialog .MuiDialogActions-root {
+	flex: 0 0 auto;
+}
+.cs-search-dialog .MuiDialogContent-root {
+	flex: 1 1 auto;
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+	/* The content no longer scrolls; the rows do. */
+	overflow: hidden;
+}
+.cs-search-dialog .MuiDialogContent-root > *:not(.cs-search-ledger) {
+	flex: 0 0 auto;
+}
+
+/* The carved search field — a bare input in a keylined plate (F11.5).
+   ==========================================================================
+
+   It was a MUI `TextField`, and the builder shell's own docblock says why that had
+   to go: restyling one means fighting the notched-outline machinery, a `<fieldset>`
+   with a legend gap and a hairline in Material's grey. The builder called it "the
+   one place a Material component still showed through the dialog"; this was the
+   same place, on the surface a player opens most.
+
+   A sheet-scoped twin of `.cb-search` rather than a shared class: a portalled paper
+   cannot reach `.codex-builder`'s stylesheet. */
+.cs-search-dialog .cs-search-field {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	margin-bottom: 0.75rem;
+	padding: 0 0.5rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
+}
+.cs-search-dialog .cs-search-field:focus-within {
+	border-color: var(--cs-bronze-ink);
+}
+/* Engraved fixture, not an icon button: pressing it does nothing. */
+.cs-search-dialog .cs-search-field__mark {
+	flex: 0 0 auto;
+	width: 14px;
+	height: 14px;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+.cs-search-dialog .cs-search-field:focus-within .cs-search-field__mark {
+	color: var(--cs-bronze-ink);
+}
+.cs-search-dialog .cs-search-field__input {
+	flex: 1 1 auto;
+	min-width: 0;
+	height: 34px;
+	border: 0;
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	color: var(--ifm-font-color-base);
+}
+.cs-search-dialog .cs-search-field__input:focus {
+	outline: none;
+}
+.cs-search-dialog .cs-search-field__input::placeholder {
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 62%,
+		var(--ifm-font-color-base)
+	);
+	opacity: 1;
+}
+
+/* The filter strip: the caller's controls in a washed band, so the things that
+   NARROW the list are visibly one group and visibly not part of it. */
+.cs-search-dialog .cs-search-filters {
+	/* One control height for the whole band, so the boxes in it are the same box.
+	   The same rule `.cs-section-actions` states for a header strip (S5, owner
+	   review) — a strip whose controls are four heights is four decisions nobody
+	   made. */
+	--cs-filter-control: 2.25rem;
+
+	display: flex;
+	flex-wrap: wrap;
+	/* Align the CONTROLS, not the stacks (S8b, owner review).
+	   A labelled `FormControl` is two parts — a static label ABOVE its slot — while
+	   a toggle is one box. Centring the taller stack against the shorter box is
+	   what dropped the select below the toggles beside it; the bottom edge is the
+	   one thing all of them genuinely share. */
+	align-items: flex-end;
+	gap: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	margin-bottom: 0.5rem;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
+}
+/* Bottom-aligning is only half of it: two boxes that end on the same line but are
+   different heights still read as misaligned at the top. Both are stated here
+   rather than left to their own content, because one is a MUI input sized by its
+   15px value and the other a stamp sized by its 11px small caps — they have no
+   reason to agree on their own. */
+.cs-search-dialog .cs-search-filters .MuiInputBase-root,
+.cs-search-dialog .cs-search-toggle {
+	height: var(--cs-filter-control);
+	box-sizing: border-box;
+}
+/* Giving the slot a height does not place what is inside it (owner review).
+   ==========================================================================
+
+   The boxes lined up and the select's value still sat high in its own box. A
+   select renders its value as a `div` carrying the theme's `3px 8px` — vertical
+   padding that positioned the text when the box was content-sized, and became a
+   top offset the moment the box was told to be 36px.
+
+   So the placement is stated rather than inherited: the value box fills the slot
+   and centres its own line. Deterministic instead of depending on which of MUI's
+   several `align-items` declarations wins, which is what the first attempt was
+   quietly relying on. An `<input>` centres its own text in its content box, so it
+   needs the height and the zeroed padding but not the flex. */
+.cs-search-dialog .cs-search-filters .MuiInputBase-root {
+	align-items: center;
+}
+.cs-search-dialog .cs-search-filters .MuiSelect-select {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	box-sizing: border-box;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.cs-search-dialog .cs-search-filters .MuiInputBase-input {
+	height: 100%;
+	box-sizing: border-box;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+/* Chosen values, as the stamps they are everywhere else on the sheet.
+   ==========================================================================
+
+   The skill filter printed `Athletics, Stealth` as plain text in the slot and as
+   `ListItemText` in the menu, so one control named a skill in a register nothing
+   else on the sheet uses for one. Chips in both places now.
+
+   `nowrap` because the slot is a fixed 36px: a wrapped second line would be
+   clipped rather than shown. The caller truncates to two and prints the overflow
+   count instead, so what is hidden is stated rather than cut off silently. */
+.cs-search-dialog .cs-filter-chips {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+	min-width: 0;
+	overflow: hidden;
+	flex-wrap: nowrap;
+}
+.cs-search-dialog .cs-filter-chips__more {
+	flex: 0 0 auto;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+/* A menu row is the chip plus its checkbox and nothing else, so the row's own
+   text metrics stop mattering — without this the `MuiMenuItem` line-height
+   reserves space for a text run that is not there. */
+.cs-tokens .MuiMenuItem-root .cs-chip {
+	margin-left: 0.15rem;
+}
+
+/* And `MuiTextField`'s sitewide `margin: 'dense'` — 8px above, 4px below — would
+   otherwise lift the two cost fields in the Equipment and Weapon bands off the
+   line everything else just agreed on. Neutralised here because bottom-alignment
+   makes that stray 4px visible for the first time; the sitewide default is still
+   wrong and is S10's item, not this one's. */
+.cs-search-dialog .cs-search-filters .MuiFormControl-root {
+	margin: 0;
+}
+
+/* The meta line: what is in front of you, and the one control acting on all of
+   it. The count is a reading, so it is a bare numeral in the UI face — not a
+   badge, which is what a Material list would have put here. */
+.cs-search-dialog .cs-search-meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	min-height: 1.75rem;
+}
+.cs-search-dialog .cs-search-meta__count {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* The ledger itself. It scrolls; the column header does not, so the tracks stay
+   named while the reader moves through 200 rows. */
+.cs-search-dialog .cs-search-ledger {
+	/* The flexible course of the content column, and the only one. */
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+}
+.cs-search-dialog .cs-search-ledger__head,
+.cs-search-dialog .cs-search-empty {
+	flex: 0 0 auto;
+}
+.cs-search-dialog .cs-search-ledger__rows {
+	/* The one scroller in the dialog. `max-height` is gone: it was a second,
+	   viewport-relative cap fighting the paper's own, and with the frame now a
+	   flex column the rows simply take what is left. */
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow-y: auto;
+	/* An overflow container is its own scroll root, so the header's bottom rule is
+	   the only edge it needs; a border here would double it. */
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+}
+
+/* The columns exist only where they fit.
+   ==========================================================================
+
+   A dialog is `maxWidth="md"` and `fullWidth`, so on a phone it is the phone —
+   about 400px of usable measure for six named tracks. Below the breakpoint the
+   header is dropped and each row falls back to `UnifiedListItem`'s own wrapping
+   flex line, which is exactly what the tab ledgers do below `.cs-ledger-cols`.
+   Above it, one declaration feeds both the header and every row from the custom
+   property the dialog sets, so the two cannot drift. */
+.cs-search-dialog .cs-search-ledger__head {
+	display: none;
+}
+/* Below the breakpoint a row wraps onto two or three lines, and a selection mark
+   centred against the whole of that lands beside the DESCRIPTION rather than
+   beside the name it marks. Aligned to the first line instead, with the lift back
+   to centre restored once the row is one line again. */
+@media (max-width: 699.98px) {
+	.cs-search-dialog .cs-ledger-row--choice {
+		align-items: flex-start;
+		padding-top: 6px;
+		padding-bottom: 6px;
+	}
+}
+@media (min-width: 700px) {
+	/* `.cs-refresh-row` is the refresh dialog's summary line. It reads the same
+	   custom property rather than declaring a second grid, because the two
+	   dialogs are one idiom — a ledger in a portalled paper — and the only thing
+	   that differs between them is what the tracks hold. */
+	.cs-search-dialog .cs-search-row,
+	.cs-search-dialog .cs-refresh-row {
+		display: grid;
+		grid-template-columns: var(--cs-search-cols);
+		column-gap: 8px;
+		align-items: center;
+	}
+	.cs-search-dialog .cs-search-ledger__head {
+		grid-template-columns: var(--cs-search-head-cols);
+	}
+	/* Above the breakpoint the header names every track, so a per-cell label
+	   would print the name twice. Same rule `.cs-ledger-cols` applies on the tab
+	   ledgers, restated here because that one is keyed to the page's width and
+	   this one to the dialog's. */
+	.cs-search-dialog .cs-cell-label {
+		display: none;
+	}
+}
+
+/* The column header, in the same small-caps register `.cs-ledger-head` gives the
+   tabs. Not that class: it is display:none outside `.cs-ledger-cols`, a media
+   query keyed to the sheet page's width, and this one is keyed to the dialog's. */
+@media (min-width: 700px) {
+	.cs-search-dialog .cs-search-ledger__head {
+		display: grid;
+	}
+}
+.cs-search-dialog .cs-search-ledger__head {
+	align-items: end;
+	column-gap: 8px;
+	/* 4px matches the selectable row's own `px: 0.5`, so the two grids start at
+	   the same x. */
+	padding: 0 4px 3px;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
+}
+.cs-search-dialog .cs-search-ledger__head > span,
+.cs-search-dialog .cs-search-ledger__head > button {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	line-height: 1;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 78%,
+		var(--ifm-font-color-base)
+	);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+/* A sortable heading is a real button — `TableSortLabel` was a span with a click
+   handler and a Material arrow. Stripped to the heading it already is, so sorting
+   is available to the keyboard without the column looking like a control. */
+.cs-search-dialog .cs-search-ledger__head > button {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+.cs-search-dialog .cs-search-ledger__head > button:hover,
+.cs-search-dialog .cs-search-ledger__head > button[data-active='true'] {
+	color: var(--cs-bronze-ink);
+}
+.cs-search-dialog .cs-search-ledger__head > button:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: 2px;
+}
+
+/* Nothing matched. A line that names the constraint, and the control that lifts
+   it — bounded by the same rules the rows would have sat between, so the list
+   does not appear to have vanished along with its contents. */
+.cs-search-dialog .cs-search-empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 2rem 1rem;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+}
+.cs-search-dialog .cs-search-empty__line {
+	margin: 0;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-dense);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.04em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 62%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* M13 S8 — the refresh dialog's notice and its diff plate.
+   ==========================================================================
+
+   `RefreshUpdatesDialog` was the last hand-built list on the sheet: an MUI
+   `Accordion` per entry with a Material `ExpandMore`, a `FormControlLabel`
+   wrapping a checkbox, an `info` chip, and a `<Table>` of changes inked from
+   `error.main` / `success.main`. It sits on the ledger row now; what is left here
+   is the two registers that row needs. */
+
+/* The caution band. Not an MUI `Alert`: a filled severity box is Material's voice,
+   and this warning is about an action that cannot be undone, which the sheet
+   already has an ink for (`--cs-warning`, the pending-save strip). Bounded and
+   keylined like the meta band, so it reads as part of the dialog rather than as a
+   notification pasted into it. */
+.cs-search-dialog .cs-dialog-notice {
+	margin-bottom: 0.75rem;
+	padding: 0.5rem 0.75rem;
+	border: 1.5px solid color-mix(in srgb, var(--cs-warning) 55%, transparent);
+	background: color-mix(in srgb, var(--cs-warning) 8%, transparent);
+	font-size: var(--nexus-text-dense);
+	line-height: 1.5;
+}
+
+/* M13 S8b — the standing marks, and the toggles that filter on them.
+   ==========================================================================
+
+   F11.2: every import dialog was handed the character and threw it away, so a
+   player browsing 148 talents was told nothing about which they already hold or
+   which their skills reach. These are the two answers, in the row and in the
+   filter band. */
+
+/* "have" / "rank 5" beside the name. The small-caps caption register, NOT a chip:
+   a chip is a value or a named proficiency, and this is an annotation the dialog
+   is making about the reader's own sheet. It sits inline after the name so it
+   reads as part of the name's line rather than as a column. */
+.cs-search-dialog .cs-standing {
+	margin-left: 0.4rem;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	white-space: nowrap;
+	vertical-align: 0.05em;
+}
+/* Owned is not a warning. It is a fact about a list you are browsing on purpose —
+   a second copy of a torch is a legitimate thing to want — so it takes the quiet
+   bronze the reading-only registers use. */
+.cs-search-dialog .cs-standing--owned {
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+/* Out of reach IS a caution: the rules say no, and choosing it anyway puts
+   something on the sheet the character may not use. */
+.cs-search-dialog .cs-standing--blocked {
+	color: var(--cs-warning);
+}
+
+/* The standing toggles. One binary fact each, so a stamp that is pressed or not,
+   never a dropdown hiding its own state. Same construction as the section
+   header's control plates: keyline means pressable, and the pressed state fills
+   rather than merely darkening. */
+.cs-search-dialog .cs-search-toggle {
+	/* The floor, for a toggle outside the band. Inside it the band states one
+	   height for every control in the row and that wins on specificity. */
+	min-height: var(--nexus-target);
+	padding: 0 0.55rem;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--cs-bronze-ink);
+	background: none;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	border-radius: 0;
+	cursor: pointer;
+}
+.cs-search-dialog .cs-search-toggle:hover {
+	border-color: var(--cs-bronze-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.cs-search-dialog .cs-search-toggle[aria-pressed='true'] {
+	border-color: var(--cs-bronze-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 24%, transparent);
+}
+.cs-search-dialog .cs-search-toggle:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: 2px;
+}
+
+/* The whole of the entry, once the row is opened (F11.1).
+   ==========================================================================
+
+   Read on purpose rather than scanned, so this is the ONE place in the dialog
+   that leaves the dense ledger register and takes the reading one: body size, the
+   reading serif, and capped at the codex measure. Left uncapped it would run the
+   full width of an `md` dialog — about 130 characters, half again past the 84 the
+   rest of the site sets its prose to. */
+.cs-search-dialog .cs-search-details {
+	max-width: var(--nexus-measure);
+	padding: 0.25rem 0 0.5rem;
+	font-size: var(--nexus-text-sm);
+	line-height: 1.55;
+	/* `sanitizeHtml` returns the rulebook's `<br/>` runs as newlines, and a talent
+	   that lists three ranks is unreadable as one paragraph. */
+	white-space: pre-line;
+}
+
+/* The prose cell's lead, in a ledger row (M13 S8b, owner review).
+   ==========================================================================
+
+   It was `sanitizeHtml(value)` under `white-space: pre-line`, and `sanitizeHtml`
+   turns every `<br/>` into a newline — so a talent's `<br/><br/>` rank breaks
+   spent one or two of the three clamped lines on BLANK SPACE. The row looked
+   airy and said a third of what it had room for.
+
+   Flowed as one paragraph now (`entrySummary`), and clamped to two lines rather
+   than three: two full lines of words carry more than three ragged ones, and it
+   takes a row's height back on a list of 148. The quiet reading ink, because this
+   is a gloss under a name — the name is what the row is scanned for. */
+.cs-search-dialog .cs-entry-summary {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	font-size: var(--nexus-text-xs);
+	line-height: 1.4;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 62%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* The facts band inside a details panel (M13 S8b, owner review).
+   ==========================================================================
+
+   `--sub` was cut for the mount and storage lines: TWO fields, `nowrap`, and
+   capped at the ledger's measure so a wide window could not fling the load away
+   from the coins. An item panel puts FIVE in it, inside a dialog that is the phone
+   at 430px, where `nowrap` overflows rather than folding. It wraps here.
+
+   The measure cap goes too — `.cs-entry-prose` already caps this panel, and two
+   caps on one box is the narrower one silently winning. */
+.cs-search-dialog .cs-entry-prose .cs-meta-band--sub {
+	max-width: none;
+	flex-wrap: wrap;
+	gap: 0.15rem 1rem;
+}
+
+/* M13 S8c — the Quick Ref play board.
+   ==========================================================================
+
+   Rethought from its purpose (owner brief). The section answers one question
+   mid-turn — "I have one Action and one Quick Action, what are my options?" — so
+   the axis stays action type and the order is the order a turn is spent. What it
+   stopped being is a LIST: it was `ListSection`s of accordion rows, and the whole
+   point of a quick reference is not having to open anything.
+
+   ## The second rethink (owner review 5), which is the shape below
+
+   The first cut answered "not having to open anything" with cards that printed
+   every pinned entry's full rule text at once. Ten pins is ten paragraphs: the
+   board outgrew the screen before it outgrew its usefulness, and a reference you
+   have to SCROLL is not faster than one you have to click.
+
+   So the board spends its space on the two questions in the order they are asked:
+
+   - **Which course?** A strip of glyph tabs, one per action type that has
+     anything on it. Six 24px marks on one line replaces six stacked headed
+     sections, and the answer to "what can I do with my Action" is now one glance
+     plus at most one press.
+   - **Which entry?** Name, rank and the one figure it turns on, one per line.
+     That is what a player scans; the rule text opens under exactly one of them.
+
+   The footprint at rest is the strip plus one line per entry in ONE course,
+   which is roughly what the old board spent on a single card. */
+/* Two gaps were stacked under the board (owner review 9): this margin plus the
+   section wrapper's own 24px, under a list whose last row deliberately drops its
+   rule. Read as a break in the tab rather than as the space between two sections.
+   14px total now, against the 8px the section header keeps above its own list. */
+.character-sheet-page .cs-playboard {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	margin-bottom: 0.25rem;
+}
+
+/* The strip. A hairline under the whole row rather than a box around each tab —
+   the tabs are marks on a ruled edge, and boxing six of them would put six
+   keylines in a 24px band. */
+.character-sheet-page .cs-playboard__strip {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	gap: 0.15rem;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+}
+.character-sheet-page .cs-playboard__tab {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	/* D4's 24px interactive floor, met by the tab itself rather than by its
+	   glyph — the padding is the target. */
+	min-height: 24px;
+	padding: 0 0.45rem;
+	border: 0;
+	/* The selected tab is a tab on a ruled edge: its underline sits ON the
+	   strip's hairline and overpaints it, which is what joins the tab to the
+	   panel below. */
+	border-bottom: 2px solid transparent;
+	margin-bottom: -1px;
+	background: none;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 55%,
+		var(--ifm-font-color-base)
+	);
+	cursor: pointer;
+}
+.character-sheet-page .cs-playboard__tab:hover {
+	background: color-mix(in srgb, var(--nexus-bronze) 8%, transparent);
+}
+.character-sheet-page .cs-playboard__tab--on {
+	border-bottom-color: var(--cs-bronze-ink);
+	color: var(--cs-bronze-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 8%, transparent);
+}
+/* The words, on the selected tab only. Six labels across is the stacked header
+   row this replaced; one label is the reader knowing where they are. */
+.character-sheet-page .cs-playboard__tab-name {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	white-space: nowrap;
+}
+.character-sheet-page .cs-playboard__tab-count {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-variant-numeric: tabular-nums;
+	opacity: 0.85;
+}
+
+.character-sheet-page .cs-playboard__panel {
+	display: flex;
+	flex-direction: column;
+}
+/* `hidden` on a flex box loses to `display: flex` — the attribute's UA rule is
+   `display: none` at author-origin-beating specificity only in modern engines,
+   and any `display` declaration here defeats it outright. Stated explicitly
+   because the panels stay RENDERED by the theme's disclosure rule, so a lost
+   `hidden` shows all six courses at once. */
+.character-sheet-page .cs-playboard__panel[hidden] {
+	display: none;
+}
+
+/* One play, at rest one line.
+   ==========================================================================
+
+   Ruled rows rather than bounded cards: a card's four keylines are how you say
+   "a thing on its own", and these are siblings in one course being compared. */
+.character-sheet-page .cs-playrow {
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 16%, transparent);
+}
+.character-sheet-page .cs-playrow:last-of-type {
+	border-bottom: 0;
+}
+.character-sheet-page .cs-playrow--open {
+	background: color-mix(in srgb, var(--nexus-bronze) 6%, transparent);
+}
+.character-sheet-page .cs-playrow__head {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+}
+/* The summary IS the disclosure control. The whole line is the target, so no
+   width goes to a chevron and the D4 floor is met by the row's own height. */
+.character-sheet-page .cs-playrow__summary {
+	flex: 1 1 auto;
+	min-width: 0;
+	display: flex;
+	align-items: baseline;
+	gap: 0.4rem;
+	min-height: 24px;
+	padding: 0.1rem 0.15rem;
+	border: 0;
+	background: none;
+	text-align: left;
+	cursor: pointer;
+	color: inherit;
+}
+.character-sheet-page .cs-playrow__summary:hover .cs-playrow__name {
+	color: var(--cs-bronze-ink);
+}
+.character-sheet-page .cs-playrow__name {
+	flex: 0 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-family: var(--nexus-font-ui);
+	font-weight: 600;
+	font-size: var(--nexus-text-sm);
+	line-height: 1.3;
+}
+.character-sheet-page .cs-playrow__rank {
+	flex: 0 0 auto;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+/* The figure a play turns on: a weapon's damage, a spell's properties. Pushed to
+   the right edge so a course of rows reads as two columns without a grid, and
+   truncated rather than wrapped — it is the CUE, and the detail has the rest. */
+.character-sheet-page .cs-playrow__figure {
+	flex: 0 1 auto;
+	min-width: 0;
+	margin-left: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 72%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* The lead, where an entry has no figure — which is every ability (owner review
+   7). A name alone does not say whether it is the thing you want; the first words
+   of the rule do.
+
+   It is a MODIFIER of the figure, not a register of its own (owner review 8).
+   The first cut set it in the reading face on the reasoning that a sentence is
+   not a value — true, and irrelevant here, because what the eye is doing is
+   running down ONE right-hand column. Two faces in that column read as two
+   columns. It gives up the tabular numerals (there are no numerals to align) and
+   nothing else.
+
+   The cap is the other half of the same point: unbounded, the lead ran to the
+   full row while a damage string stopped at a third of it, so the column had no
+   edge. 14rem is about where the longest property lists land. */
+.character-sheet-page .cs-playrow__figure--lead {
+	max-width: 14rem;
+	font-variant-numeric: normal;
+}
+
+/* Maintenance waits for the pointer, and re-filing waits for the disclosure.
+   ==========================================================================
+
+   Unpinning is play-adjacent — it is how the board stays short — so it stays in
+   the head, hidden at rest and shown on hover and on focus-within so the keyboard
+   reaches it. `visibility` rather than `display`, so the head does not reflow when
+   the pointer arrives.
+
+   Re-typing an action moved OUT of the head entirely (owner review 6): it is
+   re-filing, done once, and it was a control sitting in the line a player scans
+   mid-turn. */
+.character-sheet-page .cs-playrow__tools {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 0.15rem;
+	visibility: hidden;
+}
+.character-sheet-page .cs-playrow:hover .cs-playrow__tools,
+.character-sheet-page .cs-playrow:focus-within .cs-playrow__tools {
+	visibility: visible;
+}
+.character-sheet-page .cs-playrow__unpin {
+	width: 18px;
+	height: 18px;
+	padding: 0;
+	border-radius: 0;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+.character-sheet-page .cs-playrow__unpin:hover {
+	color: var(--cs-danger);
+	background: none;
+}
+
+/* The detail: what kind of entry it is, and its rule. One row at a time, so this
+   can be unclamped without the board becoming a wall of prose. */
+.character-sheet-page .cs-playrow__detail {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.25rem;
+	padding: 0.1rem 0.15rem 0.45rem;
+}
+.character-sheet-page .cs-playrow__detail[hidden] {
+	display: none;
+}
+/* Kind and timing on one line above the rule: the two FACTS about the entry that
+   are not its text. The timing happens to be editable, which is why the control
+   is shaped like the chip beside it rather than like a form field. */
+.character-sheet-page .cs-playrow__detail-head {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+}
+.character-sheet-page .cs-playrow__retype {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 62%,
+		var(--ifm-font-color-base)
+	);
+}
+.character-sheet-page .cs-playrow__retype .MuiSelect-select {
+	display: flex;
+	align-items: center;
+	padding: 2px 18px 2px 2px;
+	min-height: 0;
+	background: none;
+	border: 0;
+}
+.character-sheet-page .cs-playrow__retype .MuiSelect-icon {
+	color: inherit;
+}
+.character-sheet-page .cs-playrow__rule {
+	margin: 0;
+	font-size: var(--nexus-text-xs);
+	line-height: 1.45;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 30%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* M13 S8c — the ability details panel.
+   ==========================================================================
+
+   The expanded-row pattern's anatomy: prose on the left, the record plate on the
+   right, both ending on the same line. Same two-column split the item and spell
+   panels take, so a reader who has opened one has opened all three.
+
+   Below the ledger breakpoint the plate drops under the prose rather than
+   squeezing beside it — a 15rem plate next to a 15rem inscription is two columns
+   of neither. */
+.character-sheet-page .cs-ability-panel {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	width: 100%;
+	align-items: stretch;
+}
+.character-sheet-page .cs-ability-panel__prose {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	/* Grows, but never past the reading measure: a description is prose and a
+	   1000px line of it is unreadable however much room the panel has. */
+	flex: 1 1 18rem;
+	min-width: 0;
+	max-width: var(--nexus-measure);
+}
+/* Each field is its own height (owner review).
+   ==========================================================================
+
+   `Inscription` sets `flex: <grow> 1 12rem`, and every one of its other consumers
+   is a flex ROW where that 12rem is a sensible minimum WIDTH. This column is the
+   first vertical one, and there the same declaration is a **12rem minimum
+   HEIGHT** — which is the ~190px of blank space under the name and under the
+   description.
+
+   Passing `grow={0}` fixed only half of it: that stops the box expanding to fill
+   the column, and leaves the basis reserving the space anyway. `flex: 0 0 auto`
+   is the whole answer — each field takes exactly the height its content needs, and
+   the multiline description grows through its own `minRows`/`maxRows` rather than
+   through the flexbox. */
+.character-sheet-page .cs-ability-panel__prose > * {
+	flex: 0 0 auto;
+}
+@media (max-width: 45rem) {
+	.character-sheet-page .cs-ability-panel .cs-record-plate {
+		flex: 1 1 100%;
+	}
+}
+
+/* M13 S8b — the entry's own prose, with the structure the JSON carries.
+   ==========================================================================
+
+   Scoped to `.cs-entry-prose` rather than to the dialog, because this is not a
+   dialog thing: the Skills tab's ability panel is the next surface owed it, and
+   the third rule of this milestone's portal traps is that a block written for one
+   scope gets found by a second one a week later. */
+.cs-entry-prose {
+	max-width: var(--nexus-measure);
+	font-size: var(--nexus-text-sm);
+	line-height: 1.55;
+}
+.cs-entry-prose .cs-entry-prose__para {
+	margin: 0 0 0.45rem;
+}
+.cs-entry-prose .cs-entry-prose__para:last-child {
+	margin-bottom: 0;
+}
+/* The bronze diamond, third sizing of it (owner review).
+   ==========================================================================
+
+   The docs column draws 7px at 16-17px type; `.cs-companion-card` recut it to 5px
+   at 15px, because a marker that holds its absolute size while the text shrinks
+   around it reads as oversized. This panel reads at 14px, so 5px again — the
+   companion card's size, not the doc column's.
+
+   Centred on the first LINE BOX, not on an em (the S8 correction): an em is the
+   type size while the mark has to centre on the LEADING, which is 1.55 here. The
+   `em` form is the fallback for engines without `lh`; the `lh` form wins where it
+   is understood. */
+.cs-entry-prose .cs-entry-prose__list {
+	margin: 0 0 0.45rem;
+	padding-left: 0.95rem;
+	list-style: none;
+}
+.cs-entry-prose .cs-entry-prose__list li {
+	position: relative;
+	margin: 0 0 0.15rem;
+}
+.cs-entry-prose .cs-entry-prose__list li::before {
+	content: '';
+	position: absolute;
+	left: -0.95rem;
+	top: calc(0.5em * 1.55 - 2.5px);
+	top: calc(0.5lh - 2.5px);
+	width: 5px;
+	height: 5px;
+	transform: rotate(45deg);
+	background-color: var(--ifm-color-primary);
+}
+/* A rule that spans every rank sits above the ladder, separated by the ledger
+   hairline rather than by a heading — 16 of the 148 talents have one, and a
+   sub-heading over a single sentence is more chrome than the split needs. */
+.cs-entry-prose .cs-entry-prose__preamble {
+	padding-bottom: 0.45rem;
+	margin-bottom: 0.1rem;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+}
+
+/* One rung of the ladder. The rank marker is a small-caps label in its own
+   measure and the text runs beside it — the same course construction the record
+   plate uses, so a talent's ranks and an item's facts read as one carving.
+
+   Ruled between rungs, NOT barred down the side: a keyline is a frame, and a bar
+   used to bind content is the correction this theme has made more often than any
+   other (the spell card's accent, TalentCard's own ladder rail, the creature
+   block's section bar). */
+.cs-entry-prose .cs-talent-rung {
+	display: flex;
+	gap: 0.75rem;
+	padding: 0.4rem 0;
+}
+.cs-entry-prose .cs-talent-rung + .cs-talent-rung {
+	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+}
+.cs-entry-prose .cs-talent-rung__mark {
+	flex: 0 0 3.75rem;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	/* Against the first LINE of the rule text, not the middle of a rung that may
+	   run four lines — a marker centred on a tall block marks the wrong line, the
+	   same fault S8 fixed for the selection mark on a wrapped row. */
+	line-height: 1.55;
+	white-space: nowrap;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 82%,
+		var(--ifm-font-color-base)
+	);
+}
+.cs-entry-prose .cs-talent-rung__text {
+	min-width: 0;
+	flex: 1 1 auto;
+}
+
+/* The entry's name — the fact the row is scanned for, so it takes the row-title
+   register rather than a bare `fontWeight: 600` in the reading serif. */
+.cs-search-dialog .cs-refresh-row__name {
+	font-family: var(--nexus-font-ui);
+	font-weight: 600;
+	font-size: var(--nexus-text-dense);
+	line-height: 1.3;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* The diff, as courses of a record plate: field name left, the two values right.
+   One label measure down the column, like every other plate on the sheet. */
+.cs-search-dialog .cs-change-plate {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.cs-search-dialog .cs-change-row {
+	display: grid;
+	grid-template-columns: 8rem minmax(0, 1fr);
+	gap: 0.5rem;
+	padding: 0.25rem 0;
+	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+}
+.cs-search-dialog .cs-change-row:first-of-type {
+	border-top: 0;
+}
+.cs-search-dialog .cs-change-row__label {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--cs-bronze-ink);
+}
+.cs-search-dialog .cs-change-row__values {
+	min-width: 0;
+}
+/* The value you have now: struck, dimmed, and in the sheet's own danger ink rather
+   than MUI's `error.main`. Dimmed because what a diff wants said loudest is the
+   value you are moving TO — the old one is context, not an alarm. */
+.cs-search-dialog .cs-change-row__before {
+	font-size: var(--nexus-text-xs);
+	white-space: pre-wrap;
+	text-decoration: line-through;
+	color: var(--cs-danger);
+	opacity: 0.75;
+}
+.cs-search-dialog .cs-change-row__after {
+	font-size: var(--nexus-text-xs);
+	white-space: pre-wrap;
+	color: var(--cs-success);
+}
+
+/* The confirm's verb, in the danger ink (M13 S8).
+   ==========================================================================
+
+   Three of the four confirms used MUI's `color="error"`, which FILLS the button
+   with the Material red. Filling was tried here too and failed in dark mode for a
+   reason worth recording: `--cs-danger` is mixed toward the reading ink, which is
+   bone in dark mode, so the fill comes out a pale salmon and no text colour sits
+   comfortably on it.
+
+   So it is a plate in the danger ink rather than a block of it — keyline, faint
+   wash, danger-coloured label. That is the same construction `DeleteButton`'s
+   hover state already uses, it holds contrast in both modes because the ink is the
+   TEXT, and it still outranks Cancel, which carries no plate at all. */
+.cs-search-dialog .cs-confirm-danger.MuiButton-contained {
+	background: color-mix(in srgb, var(--cs-danger) 14%, transparent);
+	border: 1.5px solid var(--cs-danger);
+	color: var(--cs-danger);
+	font-weight: 700;
+}
+.cs-search-dialog .cs-confirm-danger.MuiButton-contained:hover {
+	background: color-mix(in srgb, var(--cs-danger) 26%, transparent);
+}
+
+/* M13 S3 (second pass) — the talent-points dialog.
+   ==========================================================================
+
+   It was an inline MUI dialog with a 10px coloured CIRCLE per skill: a block of
+   saturated colour carrying identity, and the only round shape in the whole set.
+   Both are things this theme rules out by name. It reads the record plate now,
+   which is why those rules gained a `.cs-tokens` scope — a portalled dialog is
+   outside `.character-sheet-page`, the same trap `.cs-companion-card` fell into
+   in S8. */
+
+/* The plate fills its container inside a details panel, where it is one of two
+   framed blocks that must end on the same line. Here it is one of three stacked
+   plates, so it takes its content's height instead. */
+.cs-talent-points .cs-record-plate {
+	height: auto;
+}
+/* The label slot is a fixed 6.5rem measure on the sheet, where every row is named
+   by one small-caps word. Here the name is a CHIP, whose silhouette needs its
+   points and whose text is a full skill name — so the measure grows and stops
+   forcing the tally off the right edge. */
+.cs-talent-points .cs-record-row__label {
+	flex: 0 0 auto;
+}
+/* The rule the points come from, in the quiet register. Not the caution band:
+   `--cs-warning` is reserved for a loss that cannot be undone, and this is simply
+   how the system works. */
+.cs-talent-points .cs-talent-points__rule {
+	margin: 0 0 0.75rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	line-height: 1.55;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 55%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* M13 S12 — the character list, on the sheet's own ledger.
+   ==========================================================================
+
+   The list is the FIRST thing a player sees and it was the last list not re-cut:
+   an MUI `List` of `ListItemButton`s with an avatar slot, a `folk · background`
+   subtitle where the rest of the sheet has columns, and the level tag pinned to
+   the far right of a 1400px row, 700px from the name it describes.
+
+   The rows are anchors rather than `UnifiedListItem`s — they navigate, and the
+   primitive's two variants are a disclosure and a choice — so they carry the
+   ledger's look here instead of inheriting it. Everything a reader can perceive
+   is the same: one rule between entries, one grid down the page, one hover wash. */
+.character-sheet-page .cs-character-list {
+	/* CAPPED, unlike the sheet's own tabs (M13 S12, and it is the exception to
+	   S11's "fill the width" rather than a contradiction of it). A tab's ledger
+	   fills its column because its columns hold long, variable content — properties,
+	   damage, rule text. This one holds four short facts: a name, two closed
+	   vocabularies and a numeral. Spread across 1480px it becomes a name at the far
+	   left and a delete bin at the far right with a third of a screen of nothing
+	   between them, which is the stranded-fragment fault this milestone keeps
+	   fixing. Bounded, the row reads as one line about one character. */
+	max-width: 52rem;
+	margin-bottom: 1.5rem;
+}
+
+/* The line: the row's link, plus the delete control that cannot live inside it.
+   The control is positioned over the row's own trailing track rather than sitting
+   beside it, so the anchor keeps the full grid and its columns still land on the
+   heading above. */
+.character-sheet-page .cs-character-line {
+	position: relative;
+}
+.character-sheet-page .cs-character-line__actions {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 2.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.character-sheet-page .cs-character-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	column-gap: 8px;
+	min-height: 44px;
+	padding: 0.25rem 4px;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+	color: inherit;
+	text-decoration: none;
+}
+.character-sheet-page .cs-character-row:hover,
+.character-sheet-page .cs-character-row:focus-visible {
+	background: color-mix(in srgb, var(--nexus-bronze) 8%, transparent);
+	color: inherit;
+	text-decoration: none;
+}
+/* The name is the one thing on this page a reader is looking for, so it takes the
+   display serif — the register the site uses for a NAMED THING (a card title, a
+   creature). Inside the sheet's tabs a row's name stays in the UI face, because
+   there it is one field among nine; here the row IS the name. */
+.character-sheet-page .cs-character-row__name {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-md);
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
+/* Below the ledger's collapse threshold the row is a wrapped flex line, and the
+   NAME is what the reader came for — it takes the whole first line beside the
+   portrait, and folk / background / level wrap under it. `min-width` rather than
+   `flex-basis` because the basis has to survive the shrink: 100% minus the plate
+   and its gap is the widest the name can be without pushing itself to line two. */
+@media (max-width: 44.99rem) {
+	.character-sheet-page .cs-character-row {
+		flex-wrap: wrap;
+		row-gap: 2px;
+	}
+	.character-sheet-page .cs-character-row__name {
+		flex: 1 1 auto;
+		min-width: calc(100% - 1.9rem - 8px);
+	}
+}
+
+/* The gutter: the character's PORTRAIT, in a keyline plate — square, because every
+   plate on this sheet has hard corners and a round avatar is the single most
+   web-app shape there is.
+
+   The plate is always drawn, whether or not there is a picture in it: it is the
+   portrait SLOT, and an empty slot that keeps its frame reads as a portrait nobody
+   has uploaded yet, while a frame that appears and disappears down a column reads
+   as two different row shapes. Empty, it holds the `folk` mark — a person — rather
+   than the `scroll` the old list used, which means "a character sheet" in the
+   header and the breadcrumb and so identified nobody. */
+.character-sheet-page .cs-character-row__mark {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	/* 1.9rem, not `width: 100%`. The 100% was written for the grid TRACK, which is
+	   1.9rem wide — but the grid only exists above the ledger's collapse
+	   threshold, and below it the row is a flex line where 100% means the whole
+	   row. The portrait took the line and the name had nothing left. The literal
+	   is the same width the track is, so both layouts agree. */
+	flex: 0 0 1.9rem;
+	width: 1.9rem;
+	height: 1.9rem;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 6%, transparent);
+	color: var(--cs-bronze-ink, var(--nexus-bronze));
+}
+.character-sheet-page .cs-character-row__portrait {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* An empty shelf. One line in the quiet register, not three paragraphs of
+   apology — the same voice the empty Quick Ref course uses. */
+.character-sheet-page .cs-character-empty {
+	padding: 1.25rem 4px;
+	font-size: var(--nexus-text-sm);
+	font-style: italic;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 45%,
+		var(--ifm-font-color-base)
+	);
+}
+.character-sheet-page .cs-character-empty strong {
+	font-style: normal;
+	font-weight: 600;
+	color: var(--cs-bronze-ink, var(--nexus-bronze));
+}
+
+/* M13 S13 — the masthead.
+   ==========================================================================
+
+   The band above everything: the character shelf, an open character, and the
+   logged-out visitor are three states of ONE header doing one job — where you
+   are on the left, what you can do here on the right.
+
+   What it was: an MUI flex row with `borderColor: 'divider'` (Material's grey,
+   and the last of it above the fold), a bare `<` glyph for "back", bare icon
+   buttons with no plate, and a round avatar. Every one of those had already been
+   replaced somewhere below it on the same page. */
+.character-sheet-page .cs-masthead {
+	position: sticky;
+	top: var(--ifm-navbar-height, 60px);
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.5rem 0;
+	margin-bottom: 1rem;
+	background-color: var(--ifm-background-color);
+	/* Bronze, and 1.5px — the weight the sheet's own keylines carry. A hairline
+	   under a sticky band disappears the moment content scrolls under it. */
+	border-bottom: 1.5px solid
+		color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+}
+
+/* The way back, as a word. A caret alone is the browser's own back button drawn
+   a second time, and it does not say where back goes. */
+.character-sheet-page .cs-masthead__back {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	min-height: var(--nexus-target);
+	padding: 0 0.5rem 0 0.35rem;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 6%, transparent);
+	color: var(--cs-bronze-ink, var(--nexus-bronze));
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	text-decoration: none;
+}
+.character-sheet-page .cs-masthead__back:hover {
+	background: color-mix(in srgb, var(--nexus-bronze) 14%, transparent);
+	color: var(--cs-bronze-ink, var(--nexus-bronze));
+	text-decoration: none;
+}
+/* The caret points the way it travels: LEFT, back to the shelf. `Chevron` is
+   drawn pointing down, so that is -90deg — the same rotation `ListSection` uses
+   for "closed", which is a coincidence of geometry rather than a shared meaning. */
+.character-sheet-page .cs-masthead__back .cs-chevron {
+	transform: rotate(-90deg);
+}
+
+.character-sheet-page .cs-masthead__subject {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	min-width: 0;
+}
+/* The page's identity: a character's name, or the shelf's own title. The display
+   serif at a heading step — the one place on this page the serif belongs, because
+   this is the name of the thing being read. */
+.character-sheet-page .cs-masthead__name {
+	margin: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-xl);
+	font-weight: 600;
+	line-height: 1.2;
+	letter-spacing: 0.01em;
+}
+.character-sheet-page .cs-masthead__tools {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	margin-left: auto;
+}
+
+/* The user plate: square and keylined, like every other plate on this sheet.
+   A round avatar is the single most web-app shape there is, and it was the last
+   circle above the fold. */
+.character-sheet-page .cs-user-plate {
+	width: var(--nexus-target);
+	height: var(--nexus-target);
+	border-radius: 0;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 45%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
+	color: var(--cs-bronze-ink, var(--nexus-bronze));
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	font-weight: 600;
+	cursor: pointer;
+}
+.character-sheet-page .cs-user-plate:hover {
+	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+}
+
+/* The masthead's controls run one step larger than a section strip's.
+   ==========================================================================
+
+   `--nexus-target` (24px) is the floor, and it is right INSIDE a dense ruled row
+   where a control sits among values. The masthead is the page's own band: its
+   controls are the only ones on screen before a character is even open, they have
+   no row to be dense with, and at 24px against a 22px name they read as an
+   afterthought. 28px is the same plate, one step up. */
+.character-sheet-page .cs-masthead .cs-section-actions .MuiIconButton-root,
+.character-sheet-page .cs-masthead .cs-section-actions .MuiButton-root,
+.character-sheet-page .cs-masthead .cs-user-plate,
+.character-sheet-page .cs-masthead__back {
+	min-height: 28px;
+}
+.character-sheet-page .cs-masthead .cs-section-actions .MuiIconButton-root,
+.character-sheet-page .cs-masthead .cs-user-plate {
+	width: 28px;
+	height: 28px;
+}
+/* The glyph inside them stays at the strip's reading size: a 24px Material icon in
+   a 28px plate is a glyph wearing the plate rather than sitting in it. */
+.character-sheet-page .cs-masthead .cs-section-actions .MuiSvgIcon-root {
+	font-size: 16px;
+}
+
+/* The account panel — what opens from the user plate (M13 S13).
+   ==========================================================================
+
+   Portalled out of `.character-sheet-page`, so it carries `cs-tokens` and every
+   rule here is written for both scopes. `MuiMenu` already gives it the keyline and
+   the square corners; what it needed was the sheet's own REGISTERS: a caption that
+   says what the panel is, an email that reads as a value rather than as bold body
+   text, and a sign-out that is not permanently red. */
+.cs-tokens .cs-account-panel__caption,
+.character-sheet-page .cs-account-panel__caption {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	line-height: 1;
+	margin-bottom: 0.35rem;
+	color: var(--cs-bronze-ink, var(--nexus-bronze));
+}
+.cs-tokens .cs-account-panel__email,
+.character-sheet-page .cs-account-panel__email {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+	overflow-wrap: anywhere;
+}
+/* Sign out is reversible — the reader has the password. So it is a peer of the
+   rows above it at rest, and only says "this ends the session" under the pointer,
+   the same grammar `DeleteButton` uses for an action that is not. */
+.cs-tokens .cs-account-panel__signout:hover,
+.character-sheet-page .cs-account-panel__signout:hover {
+	color: var(--cs-danger);
+}
+.cs-tokens .cs-account-panel__signout:hover .MuiSvgIcon-root,
+.character-sheet-page .cs-account-panel__signout:hover .MuiSvgIcon-root {
+	color: var(--cs-danger);
+}

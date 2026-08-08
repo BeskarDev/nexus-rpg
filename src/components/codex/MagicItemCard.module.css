@@ -1,0 +1,211 @@
+/* The magic item card (M13 S8).
+   ==========================================================================
+
+   A single frame with the set-stone keystone. NOT the spell card's nested
+   concentric border — that is the mark of primacy and is reserved to it.
+
+   `margin-top` is 1.75rem rather than the family's usual 1.4rem: the gem keystone
+   overhangs 20.3px, the same as the ziggurat, and the default clearance would sit
+   it ~2px off whatever is stacked above (ornament-craft §9). */
+.card {
+	position: relative;
+	margin: 1.75rem 0 1.25rem;
+	padding: 0.85rem 1rem 0.9rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 55%, transparent);
+	background: var(--ifm-background-surface-color);
+}
+
+/* ── The head ──────────────────────────────────────────────────────────────
+   The name in the display face, and the quality as an inlaid nameplate on the
+   right. */
+.head {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+.name {
+	margin: 0;
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-lg);
+	font-weight: 600;
+	line-height: 1.15;
+	color: var(--ifm-font-color-base);
+}
+.name--waiting {
+	font-style: italic;
+	font-weight: 400;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+}
+/* What the item IS, under its name: category, material, enchantment. */
+.kind {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+	margin: 0.15rem 0 0;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* ── The tally ─────────────────────────────────────────────────────────────
+   The one calculation the card exists to show. Ruled courses, one label measure,
+   every figure flush right, and a heavier rule where the sum begins.
+
+   A readout, so no keyline of its own — a flat wash, the same distinction the
+   builder shell makes between what you press and what you read. */
+.tally {
+	margin: 0.6rem 0 0;
+	padding: 0.4rem 0.55rem;
+	background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
+}
+.tallyRow {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.75rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	line-height: 1.6;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 55%,
+		var(--ifm-font-color-base)
+	);
+}
+/* A line that contributes nothing is dimmed, never dropped: the sum has to be
+   checkable against the rulebook's table line by line. */
+.tallyNil {
+	opacity: 0.55;
+}
+.tallyTotal {
+	margin-top: 0.25rem;
+	padding-top: 0.25rem;
+	border-top: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 55%, transparent);
+	font-size: var(--nexus-text-md);
+	font-weight: 700;
+	color: var(--ifm-font-color-base);
+}
+.tallyLabel {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+	min-width: 0;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.04em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.tallyValue {
+	flex: 0 0 auto;
+	font-variant-numeric: tabular-nums;
+}
+
+/* ── The figure band ───────────────────────────────────────────────────────
+   What the item does in play, as a bounded readout. */
+.figures {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(4.5rem, 1fr));
+	gap: 0.4rem;
+	margin-top: 0.6rem;
+	padding: 0.45rem 0.5rem;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	background: color-mix(in srgb, var(--ifm-color-primary) 4%, transparent);
+}
+.figure {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1px;
+	min-width: 0;
+}
+.figureLabel {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+	text-align: center;
+}
+.figureValue {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.15rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-lg);
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	line-height: 1.15;
+	color: var(--ifm-font-color-base);
+}
+
+/* ── Courses of prose ──────────────────────────────────────────────────────
+   Properties as badges, the rule text as inscription. */
+.course {
+	margin-top: 0.6rem;
+}
+.courseName {
+	display: block;
+	margin-bottom: 0.2rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 75%,
+		var(--ifm-font-color-base)
+	);
+}
+.badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem;
+}
+.prose {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	line-height: 1.45;
+	color: var(--ifm-font-color-base);
+	white-space: pre-wrap;
+}
+
+/* Nothing chosen yet. */
+.waiting {
+	margin: 0.5rem 0 0;
+	padding: 0.9rem 0.7rem;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 28%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	line-height: 1.4;
+	text-align: center;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+}

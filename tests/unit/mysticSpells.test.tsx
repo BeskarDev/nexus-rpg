@@ -1,7 +1,6 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React from 'react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Mock the JSON data first
 vi.mock('@site/src/utils/data/json/mystic-spells.json', () => ({
@@ -58,7 +57,7 @@ describe('MysticSpells Tool - Basic Tests', () => {
 			render(<MysticSpells />)
 
 			// Check for key elements
-			expect(screen.getByText('PRINT')).toBeInTheDocument()
+			expect(screen.getByText('Print')).toBeInTheDocument()
 			expect(screen.getByText('Select all')).toBeInTheDocument()
 			expect(screen.getByText('Deselect all')).toBeInTheDocument()
 		})
@@ -105,7 +104,7 @@ describe('MysticSpells Tool - Basic Tests', () => {
 		it('should handle print button click', async () => {
 			render(<MysticSpells />)
 
-			const printButton = screen.getByText('PRINT')
+			const printButton = screen.getByText('Print')
 			await userEvent.click(printButton)
 
 			// Should not crash
@@ -161,7 +160,7 @@ describe('MysticSpells Tool - Basic Tests', () => {
 
 			const selectAllButton = screen.getByText('Select all')
 			const deselectAllButton = screen.getByText('Deselect all')
-			const printButton = screen.getByText('PRINT')
+			const printButton = screen.getByText('Print')
 
 			// Rapid interactions should not break component
 			await userEvent.click(selectAllButton)
@@ -197,18 +196,16 @@ describe('MysticSpells Tool - Basic Tests', () => {
 			render(<MysticSpells />)
 
 			// Should render without errors when dealing with tradition-based spells
-			const printButton = screen.getByText('PRINT')
+			const printButton = screen.getByText('Print')
 			expect(printButton).toBeInTheDocument()
 		})
 
 		it('should render mystic spell card structure', async () => {
 			render(<MysticSpells />)
 
-			// Should have mystic-specific UI elements
-			const mysticSpellsText = screen.getByText(
-				/mystic spells will be printed/i,
-			)
-			expect(mysticSpellsText).toBeInTheDocument()
+			// Should have a count display
+			const countDisplay = screen.getByText(/cards selected/i)
+			expect(countDisplay).toBeInTheDocument()
 		})
 	})
 
@@ -216,9 +213,9 @@ describe('MysticSpells Tool - Basic Tests', () => {
 		it('should have accessible form elements', async () => {
 			render(<MysticSpells />)
 
-			// Check for proper labels and roles
-			const textarea = screen.getByRole('textbox')
-			expect(textarea).toBeInTheDocument()
+			// The JSON import toggle is always accessible
+			const importToggle = screen.getByText('Import character as JSON')
+			expect(importToggle).toBeInTheDocument()
 
 			const buttons = screen.getAllByRole('button')
 			expect(buttons.length).toBeGreaterThan(0)
@@ -227,15 +224,11 @@ describe('MysticSpells Tool - Basic Tests', () => {
 		it('should be keyboard navigable', async () => {
 			render(<MysticSpells />)
 
-			const textarea = screen.getByPlaceholderText(/paste character json here/i)
-			const printButton = screen.getByText('PRINT')
+			const importToggle = screen.getByText('Import character as JSON')
 
 			// Should be able to focus elements
-			textarea.focus()
-			expect(document.activeElement).toBe(textarea)
-
-			printButton.focus()
-			expect(document.activeElement).toBe(printButton)
+			importToggle.focus()
+			expect(document.activeElement).toBe(importToggle)
 		})
 	})
 })

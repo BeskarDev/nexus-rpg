@@ -1,57 +1,33 @@
 import React, { useMemo, useState } from 'react'
-import {
-	Typography,
-	Chip,
-	Box,
-	FormControl,
-	InputLabel,
-	Select,
-	MenuItem,
-	TextField,
-	Button,
-	Checkbox,
-	ListItemText,
-	InputAdornment,
-} from '@mui/material'
-import { AttachMoney, ArrowDownward, ArrowUpward } from '@mui/icons-material'
+import { Typography, TextField, Button } from '@mui/material'
+import { SheetChip } from '../../../components'
 import { parseCostValue } from './costUtils'
-import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
+import type { SearchDialogColumn } from '../../../components'
+import {
+	SearchDialog,
+	FilterSelect,
+	entrySummary,
+	EntryProse,
+	MetaBand,
+	MetaBandField,
+	MetaBandLabel,
+	MetaBandValue,
+} from '../../../components'
 import weaponsData from '../../../../../utils/data/json/weapons.json'
 import {
 	Weapon,
 	CharacterDocument,
-	BaseDamageType,
 	DamageType,
 } from '../../../../../types/Character'
 import { QualityTier } from '../utils/magicItemsConfig'
+import { getBaseDamageType } from '../utils/weaponDamage'
 
-// Function to get color for weapon types
-const getWeaponTypeColor = (
-	type: string,
-): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
-	switch (type) {
-		case 'Axe':
-			return 'error'
-		case 'Blade':
-			return 'primary'
-		case 'Bow':
-			return 'success'
-		case 'Brawling':
-			return 'warning'
-		case 'Crossbow':
-			return 'info'
-		case 'Mace':
-			return 'secondary'
-		case 'Polearm':
-			return 'error'
-		case 'Shield':
-			return 'info'
-		case 'Thrown':
-			return 'warning'
-		default:
-			return 'secondary'
-	}
-}
+/**
+ * `getWeaponTypeColor` is gone (M13 S8) — see the note in `EquipmentSearchDialog`.
+ * It mapped nine weapon types onto MUI's semantic palette, twice over: axe and
+ * polearm were both `error`, crossbow and shield were both `info`. A hue that does
+ * not even distinguish its own members is not an identity system.
+ */
 
 export type WeaponSearchDialogProps = {
 	open: boolean
@@ -127,48 +103,42 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 		setCostMax('')
 	}
 
-	// Helper function to determine the base damage type for a weapon
-	const getBaseDamageType = (weapon: WeaponData): BaseDamageType => {
-		const weaponType = weapon.type.toLowerCase()
-		const properties = weapon.properties.toLowerCase()
+	/*
+		Where each weapon stands against this character's purse and pack (F11.2).
 
-		// Check if it's a ranged weapon type
-		const isRanged =
-			weaponType === 'bow' ||
-			weaponType === 'crossbow' ||
-			weaponType === 'thrown' ||
-			properties.includes('thrown') ||
-			properties.includes('range')
+		`character` was declared and never read here. Two facts the dialog was
+		already holding:
 
-		const isThrown = weaponType === 'thrown' || properties.includes('thrown')
-		const isAgile = properties.includes('agile')
-
-		const strValue = character.statistics.strength.value
-		const agiValue = character.statistics.agility.value
-
-		// Special case: thrown ranged weapons use STR if it's higher than AGI
-		if (isRanged && isThrown) {
-			return strValue > agiValue ? 'STR' : 'AGI'
+		- **owned** — the sheet already carries one by this name. Not a bar: a second
+		  torch is a legitimate thing to want, which is why it is `owned` and not
+		  `blocked`.
+		- **cost** — `items.coins` against the entry's price. `parseCostValue` is the
+		  same reader the Min/Max filter uses, so "affordable" here and "under 50"
+		  there cannot disagree. An entry with no parseable price (a `-`) is never
+		  barred: unknown is not the same as unaffordable.
+	*/
+	const standingOf = useMemo(() => {
+		const coins = character.items?.coins ?? 0
+		const owned = new Set(
+			(character.items?.weapons ?? []).map((entry) =>
+				entry.name.trim().toLowerCase(),
+			),
+		)
+		return (weapon: WeaponData) => {
+			const price = parseCostValue(String(weapon.cost ?? ''))
+			return {
+				owned: owned.has(weapon.name.trim().toLowerCase()),
+				blocked:
+					price !== null && price > coins ? `costs ${weapon.cost}` : undefined,
+			}
 		}
-
-		// Other ranged weapons always use AGI
-		if (isRanged) {
-			return 'AGI'
-		}
-
-		// Agile weapons use AGI if character has higher AGI than STR
-		if (isAgile) {
-			return agiValue > strValue ? 'AGI' : 'STR'
-		}
-
-		// Default to STR for melee weapons
-		return 'STR'
-	}
+	}, [character.items?.coins, character.items?.weapons])
 
 	const columns: SearchDialogColumn<WeaponData>[] = [
 		{
 			key: 'name',
 			label: 'Name',
+			width: 'minmax(0, 1.3fr)',
 			render: (value, weapon) => (
 				<>
 					<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
@@ -183,22 +153,16 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 		{
 			key: 'type',
 			label: 'Type',
-			render: (value) => (
-				<Chip
-					label={value}
-					size="small"
-					variant="outlined"
-					color={getWeaponTypeColor(value)}
-					sx={{ fontSize: '0.75rem' }}
-				/>
-			),
+			width: '8rem',
+			render: (value) => <SheetChip>{value}</SheetChip>,
 		},
 		{
 			key: 'damage',
 			label: 'Dmg',
 			align: 'center',
+			width: '4.5rem',
 			render: (value, weapon) => {
-				const baseDamage = getBaseDamageType(weapon)
+				const baseDamage = getBaseDamageType(weapon.type)
 				return (
 					<>
 						<Typography variant="body2">{value}</Typography>
@@ -217,30 +181,24 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 			key: 'load',
 			label: 'Load',
 			align: 'center',
+			width: '3rem',
 			render: (value) => <Typography variant="body2">{value}</Typography>,
 		},
 		{
 			key: 'cost',
 			label: 'Cost',
 			align: 'center',
+			width: '4rem',
 			render: (value) => <Typography variant="body2">{value}</Typography>,
 		},
 		{
 			key: 'properties',
 			label: 'Properties',
 			sortable: false,
+			width: 'minmax(0, 1.5fr)',
 			render: (value) => (
-				<Typography
-					variant="caption"
-					sx={{
-						display: '-webkit-box',
-						WebkitLineClamp: 2,
-						WebkitBoxOrient: 'vertical',
-						overflow: 'hidden',
-						lineHeight: 1.2,
-					}}
-				>
-					{value}
+				<Typography component="span" className="cs-entry-summary">
+					{entrySummary(String(value ?? ''))}
 				</Typography>
 			),
 		},
@@ -253,7 +211,7 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 				id: crypto.randomUUID(),
 				name: weapon.name,
 				damage: {
-					base: getBaseDamageType(weapon),
+					base: getBaseDamageType(weapon.type),
 					weapon: parseInt(weapon.damage) || 0,
 					other: 0,
 					otherWeak: 0,
@@ -278,123 +236,113 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 			title="Search Weapons"
 			data={filteredWeapons as WeaponData[]}
 			columns={columns}
-			searchFields={['name', 'type', 'properties']}
+			// Every column is searchable (F11.6). Damage, load and cost were all shown
+			// and none of them were searched, so "6/9/12" found nothing.
+			searchFields={['name', 'type', 'damage', 'load', 'cost', 'properties']}
 			selectedItems={selectedWeapons}
 			onSelectionChange={setSelectedWeapons}
 			onImport={handleImport}
 			getItemKey={(weapon) => weapon.name}
 			importButtonText="Import"
 			searchPlaceholder="Search by name, type, or properties..."
+			itemNoun="weapon"
+			getStanding={standingOf}
+			// A band, not a plate (owner review). `RecordPlate` is the sheet's shape
+			// for an entity's facts when there are eight of them and half take a
+			// control; here there are five short read-only values, and five ruled
+			// courses at a 6.5rem label measure is a tall sparse column for
+			// "Load 1, Cost 25". `MetaBand` is the same facts as one bounded line
+			// that wraps — the idiom the Items tab's purse strip already uses, one
+			// rank down. No separators between fields: a vertical rule there is the
+			// bar-as-grouping-device this theme has rejected three times.
+			renderDetails={(weapon: WeaponData) => (
+				<div className="cs-entry-prose">
+					<MetaBand variant="sub">
+						<MetaBandField>
+							<MetaBandLabel>Type</MetaBandLabel>
+							<MetaBandValue>{weapon.type}</MetaBandValue>
+						</MetaBandField>
+						<MetaBandField>
+							<MetaBandLabel>Quality</MetaBandLabel>
+							<MetaBandValue>{weapon.quality}</MetaBandValue>
+						</MetaBandField>
+						<MetaBandField>
+							<MetaBandLabel>Damage</MetaBandLabel>
+							<MetaBandValue>{weapon.damage}</MetaBandValue>
+						</MetaBandField>
+						<MetaBandField>
+							<MetaBandLabel sigil="load">Load</MetaBandLabel>
+							<MetaBandValue>{weapon.load}</MetaBandValue>
+						</MetaBandField>
+						<MetaBandField>
+							<MetaBandLabel sigil="coins">Cost</MetaBandLabel>
+							<MetaBandValue>{weapon.cost}</MetaBandValue>
+						</MetaBandField>
+					</MetaBand>
+					{weapon.properties && (
+						<p className="cs-entry-prose__para">
+							<strong>Properties.</strong>{' '}
+							{entrySummary(String(weapon.properties))}
+						</p>
+					)}
+				</div>
+			)}
+			// Alphabetical. It opened in JSON authoring order until now (F11.6).
+			defaultSort={{ key: 'name' }}
 			filters={
-				<Box
-					sx={{
-						display: 'flex',
-						flexWrap: 'wrap',
-						gap: 1,
-						alignItems: 'center',
-					}}
-				>
-					<FormControl size="small" sx={{ minWidth: '10rem' }}>
-						<InputLabel id="weapon-quality-filter-label">Quality</InputLabel>
-						<Select
-							multiple
-							labelId="weapon-quality-filter-label"
-							value={qualityFilter}
-							label="Quality"
-							onChange={(event) =>
-								setQualityFilter(event.target.value as string[])
-							}
-							renderValue={(selected) =>
-								selected.length ? selected.join(', ') : 'All qualities'
-							}
-						>
-							{qualityOptions.map((quality) => (
-								<MenuItem key={quality} value={quality}>
-									<Checkbox checked={qualityFilter.indexOf(quality) > -1} />
-									<ListItemText primary={quality} />
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
+				<>
+					<FilterSelect
+						label="Quality"
+						allLabel="All qualities"
+						options={qualityOptions}
+						value={qualityFilter}
+						onChange={setQualityFilter}
+						minWidth="10rem"
+					/>
 
-					<FormControl size="small" sx={{ minWidth: '10rem' }}>
-						<InputLabel id="weapon-type-filter-label">Weapon Type</InputLabel>
-						<Select
-							multiple
-							labelId="weapon-type-filter-label"
-							value={typeFilter}
-							label="Weapon Type"
-							onChange={(event) => setTypeFilter(event.target.value as string[])}
-							renderValue={(selected) =>
-								selected.length ? selected.join(', ') : 'All types'
-							}
-						>
-							{typeOptions.map((type) => (
-								<MenuItem key={type} value={type}>
-									<Checkbox checked={typeFilter.indexOf(type) > -1} />
-									<ListItemText primary={type} />
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
+					<FilterSelect
+						label="Weapon Type"
+						allLabel="All types"
+						options={typeOptions}
+						value={typeFilter}
+						onChange={setTypeFilter}
+						minWidth="10rem"
+					/>
 
+					{/* Three Material icons retired here (M13 S8), as in the equipment
+						dialog: a dollar sign for a currency the setting does not have, and
+						two arrows restating "Min" and "Max". */}
 					<TextField
-						label="Min"
+						label="Min cost"
 						size="small"
 						type="number"
 						value={costMin}
 						onChange={(event) => setCostMin(event.target.value)}
 						sx={{ width: '7rem' }}
-						InputProps={{
-							startAdornment: (
-								<InputAdornment position="start">
-									<AttachMoney fontSize="small" />
-								</InputAdornment>
-							),
-							endAdornment: (
-								<InputAdornment position="end">
-									<ArrowDownward fontSize="small" />
-								</InputAdornment>
-							),
-						}}
 					/>
 					<TextField
-						label="Max"
+						label="Max cost"
 						size="small"
 						type="number"
 						value={costMax}
 						onChange={(event) => setCostMax(event.target.value)}
 						sx={{ width: '7rem' }}
-						InputProps={{
-							startAdornment: (
-								<InputAdornment position="start">
-									<AttachMoney fontSize="small" />
-								</InputAdornment>
-							),
-							endAdornment: (
-								<InputAdornment position="end">
-									<ArrowUpward fontSize="small" />
-								</InputAdornment>
-							),
-						}}
 					/>
 
-					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-						<Button
-							variant="text"
-							size="small"
-							onClick={resetFilters}
-							disabled={
-								!qualityFilter.length &&
-								!typeFilter.length &&
-								!costMin &&
-								!costMax
-							}
-							>
-							Clear filters
-						</Button>
-					</Box>
-				</Box>
+					<Button
+						variant="text"
+						size="small"
+						onClick={resetFilters}
+						disabled={
+							!qualityFilter.length &&
+							!typeFilter.length &&
+							!costMin &&
+							!costMax
+						}
+					>
+						Clear filters
+					</Button>
+				</>
 			}
 		/>
 	)

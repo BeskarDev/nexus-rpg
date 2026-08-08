@@ -3,7 +3,7 @@ import { CharacterSheetReducerState } from '../characterSheetReducer'
 import { Skill } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
 import { Ability } from '@site/src/types/Character'
-import { reorder } from '@site/src/components/DynamicList/utils'
+import { reorder } from '@site/src/features/CharacterSheet/components/DynamicList/utils'
 
 export const skillsActions = {
 	addNewSkill: (state: CharacterSheetReducerState) => {

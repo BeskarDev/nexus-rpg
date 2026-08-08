@@ -1,0 +1,20 @@
+[
+	{
+		"type": "Undead",
+		"abilities": ["undead-nature", "darkvision"]
+	},
+	{
+		"type": "Humanoid",
+		"subtype": "goblinoid",
+		"abilities": ["night-vision", "quick-escape"]
+	},
+	{
+		"type": "Beast",
+		"attacks": ["bite", "claw-swipe"]
+	},
+	{
+		"type": "Dragon",
+		"attacks": ["bite", "claw-swipe"],
+		"abilities": ["keen-senses", "frightful-presence", "breath-weapon-fire"]
+	}
+]

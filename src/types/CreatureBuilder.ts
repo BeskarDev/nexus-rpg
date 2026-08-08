@@ -93,6 +93,45 @@ export interface CreatureSkill {
 	rank: number
 }
 
+// ── Library and defaults types ─────────────────────────────────────────────
+
+export interface AttackTemplate {
+	id: string
+	name: string
+	/**
+	 * How hard this attack hits RELATIVE to the tier's baseline weapon damage, not
+	 * a damage figure.
+	 *
+	 * A literal here (it used to read `"8/12/16"`) freezes the entry at whatever
+	 * tier it was written for, so a tier-9 dragon picked up a tier-2 bite. The
+	 * figure is computed from the creature's tier when the attack is rendered.
+	 */
+	weaponDamage: number
+	/** Whose die adds its base damage: `STR`, `AGI`, `SPI`, `MND`. Omit for an
+	 *  attack that is pure weapon damage, such as a breath weapon. */
+	baseAttribute?: string
+	damageType: string
+	description: string
+	tags: string[]
+	forTypes?: string[]
+}
+
+export interface AbilityTemplate {
+	id: string
+	name: string
+	description: string
+	actionType: string
+	tags: string[]
+	forTypes?: string[]
+}
+
+export interface CreatureTypeDefaults {
+	type: string
+	subtype?: string
+	attacks?: string[]
+	abilities?: string[]
+}
+
 export interface CreatureBuilderState {
 	tier: number | null
 	category: CreatureCategory

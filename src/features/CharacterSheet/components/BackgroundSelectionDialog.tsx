@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Typography, Chip, Box } from '@mui/material'
+import { Typography, Box } from '@mui/material'
+import { SheetChip } from './SheetChip'
+import { entrySummary } from './EntryProse'
 import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
@@ -32,6 +34,7 @@ export const BackgroundSelectionDialog: React.FC<
 		{
 			key: 'name',
 			label: 'Background',
+			width: 'minmax(0, 1fr)',
 			render: (value, background) => (
 				<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
 					{background.name}
@@ -42,18 +45,10 @@ export const BackgroundSelectionDialog: React.FC<
 			key: 'description',
 			label: 'Description',
 			sortable: false,
+			width: 'minmax(0, 2fr)',
 			render: (value, background) => (
-				<Typography
-					variant="caption"
-					sx={{
-						display: '-webkit-box',
-						WebkitLineClamp: 3,
-						WebkitBoxOrient: 'vertical',
-						overflow: 'hidden',
-						lineHeight: 1.2,
-					}}
-				>
-					{background.description}
+				<Typography component="span" className="cs-entry-summary">
+					{entrySummary(String(background.description ?? ''))}
 				</Typography>
 			),
 		},
@@ -61,25 +56,13 @@ export const BackgroundSelectionDialog: React.FC<
 			key: 'suggested skills',
 			label: 'Suggested Skills',
 			sortable: false,
+			width: 'minmax(0, 1.2fr)',
 			render: (value, background) => (
-				<Box>
+				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
 					{background['suggested skills'].split(', ').map((skill, index) => (
-						<Chip
-							key={index}
-							label={skill.trim()}
-							size="small"
-							variant="outlined"
-							sx={{
-								fontSize: '0.7rem',
-								mb: 0.25,
-								mr: 0.25,
-								borderColor: getSkillChipColor(skill.trim()),
-								color: getSkillChipColor(skill.trim()),
-								'&:hover': {
-									backgroundColor: getSkillChipColor(skill.trim()) + '20',
-								},
-							}}
-						/>
+						<SheetChip key={index} tone={getSkillChipColor(skill.trim())}>
+							{skill.trim()}
+						</SheetChip>
 					))}
 				</Box>
 			),
@@ -88,6 +71,7 @@ export const BackgroundSelectionDialog: React.FC<
 			key: 'starting item',
 			label: 'Starting Item',
 			sortable: false,
+			width: 'minmax(0, 1fr)',
 			render: (value, background) => (
 				<Typography
 					variant="caption"
@@ -132,6 +116,9 @@ export const BackgroundSelectionDialog: React.FC<
 			onConfirm={handleConfirm}
 			getItemKey={(background) => background.name}
 			confirmButtonText="Select Background"
+			// Alphabetical rather than the JSON's authoring order (F11.6).
+			defaultSort={{ key: 'name' }}
+			itemNoun="background"
 			searchPlaceholder="Search by name, description, skills, or starting item..."
 		/>
 	)

@@ -4,7 +4,7 @@
 		"role": "Striker / Utility",
 		"description": "A precise poisoner-healer who uses a silent blowpipe, weapon poisons, and salves. Supports the party with field medicine and clever alchemical prep.",
 		"bestFor": "Bombs, potions, devices",
-		"primarySkills": ["Archery", "Crafting", "Education"],
+		"primarySkills": ["Archery", "Crafting", "Nature"],
 		"attributes": {
 			"STR": 4,
 			"AGI": 8,
@@ -12,20 +12,52 @@
 			"MND": 6
 		},
 		"suggestedSkills": "Archery, Crafting, Nature, Lore, Perception, Insight, Education",
+		"upbringing": "Artisanal",
+		"background": "Apothecary",
 		"recommendedTalents": [
-			"Disciplined Archer",
-			"Peak Performance",
-			"Field Medic"
+			{
+				"name": "Disciplined Archer",
+				"gloss": "Re-roll one ranged attack per scene"
+			},
+			{
+				"name": "Peak Performance",
+				"gloss": "Pre‑buff one weapon or ammo: +1 weapon damage or +2 ammo damage until next rest"
+			},
+			{
+				"name": "Field Medic",
+				"gloss": "Better stabilize/treat injuries, quick battlefield care"
+			}
 		],
-		"recommendedCombatArts": ["Aimed Shot", "Precise Shot"],
+		"recommendedCombatArts": [
+			{
+				"name": "Aimed Shot",
+				"gloss": "Gain +1 boon when you don’t move"
+			},
+			{
+				"name": "Precise Shot",
+				"gloss": "Ignore armor and add Agility to damage"
+			}
+		],
 		"startingEquipment": [
-			"Blowpipe",
-			"Leather Armor",
-			"Weapon Poison (weak)",
-			"Healing Salve (simple)"
+			{
+				"item": "Blowpipe"
+			},
+			{
+				"item": "Blowdarts (d8)"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Weapon Poison (weak)"
+			},
+			{
+				"item": "Healing Salve (simple)"
+			}
 		],
-		"upbringing": "Apprenticed",
-		"background": "Apothecary"
+		"toolkit": "Brewer‘s Tools",
+		"playstyle": "The Apothecary rewards patience, setup, and smart resource use. Open from stealth with the silent blowpipe. Coat darts with Weapon Poison and use the blowpipe property to multiply the poison’s damage on strong/critical hits. Peak Performance lets you boost your darts (ammo) for +2 damage the whole day, turning small hits into meaningful chip. Field Medic makes you the team’s on‑site healer for stabilizing and treating injuries. Use Aimed Shot to land reliable first strikes and Precise Shot to punch through armor when needed.",
+		"advancement": "Raise Archery 2-3 for more Combat Arts and consistency (Sharpshooter or Rapid Shot next). Push Nature 2-3 to deepen triage and wilderness sourcing, and Crafting 2-3 for stronger prep (Efficient Worker, Artisan, or Peak Performance 2). Add Lore for formula lore and Education for scholarly support. Consider Stealth later to exploit blowpipe ambushes with Assassination synergy."
 	},
 	{
 		"name": "Bard",
@@ -40,41 +72,67 @@
 			"MND": 6
 		},
 		"suggestedSkills": "Mysticism, Influence, Education, Survival, Perception, Nature, Stealth",
-		"recommendedTalents": [
-			"Master of Principles",
-			"Inspire Ally",
-			"Eloquent Talker"
-		],
-		"startingEquipment": [
-			"Shortsword",
-			"Spell Catalyst (Mystic Talisman)",
-			"Musical Instrument toolkit"
-		],
 		"upbringing": "Agricultural",
 		"background": "Bard",
+		"recommendedTalents": [
+			{
+				"name": "Master of Principles",
+				"gloss": "Re-roll a mystic rank 0 spell test once per scene"
+			},
+			{
+				"name": "Inspire Ally",
+				"gloss": "Quick Action: give an ally +1 boon on their next test"
+			},
+			{
+				"name": "Eloquent Talker",
+				"gloss": "Roll Education in place of Influence to persuade"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Shortsword"
+			},
+			{
+				"item": "Spell Catalyst (Mystic Talisman)"
+			}
+		],
+		"toolkit": "Musical Instrument",
 		"spellData": {
 			"magicSkill": "Mysticism",
-			"specialization": "Twilight, Peace",
-			"traditions": ["Twilight", "Peace"],
-			"startingSpells": [
+			"mode": "balance",
+			"options": [
 				{
-					"name": "Obscuring Veil",
-					"rank": 0
+					"name": "Twilight",
+					"spells": [
+						{
+							"name": "Obscuring Veil",
+							"rank": 0
+						},
+						{
+							"name": "Cloak of Night",
+							"rank": 1
+						}
+					],
+					"blurb": "illusion/dreams"
 				},
 				{
-					"name": "Calming Influence",
-					"rank": 0
-				},
-				{
-					"name": "Cloak of Night",
-					"rank": 1
-				},
-				{
-					"name": "Blessing of Peace",
-					"rank": 1
+					"name": "Peace",
+					"spells": [
+						{
+							"name": "Calming Influence",
+							"rank": 0
+						},
+						{
+							"name": "Blessing of Peace",
+							"rank": 1
+						}
+					],
+					"blurb": "calming/travel"
 				}
 			]
-		}
+		},
+		"playstyle": "The Bard shines in social scenes and soft control. Use performance‑flavored rank 0 spells with Master of Principles to land key effects reliably. Calming Influence and veils shape tempo before blades are drawn. Inspire Ally fuels allies’ key rolls (and damage), while Eloquent Talker keeps you dominant in parley. You can still carry a shortsword, but your magic and words are your real weapons.",
+		"advancement": "Raise Mysticism 2-3 to expand spells and reliability (Communal Practices next if you want multi‑target flexibility). Boost Influence 2-3 for stronger team support (Leading Presence is a great pick). Add Education/Lore for cultural/magical knowledge, and optionally Stealth for infiltration and stagecraft. If you want an animal companion, raise Nature to rank 1 and spend its talent on Animal Companion: nothing in your starting build grants one."
 	},
 	{
 		"name": "Barbarian",
@@ -89,16 +147,49 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Fighting, Athletics, Fortitude, Survival, Perception, Nature, Stealth",
-		"recommendedTalents": ["Heavy Weapon Mastery", "Bulky", "Battle Rage"],
-		"recommendedCombatArts": ["Brutal Strike", "Cleave"],
-		"startingEquipment": [
-			"Greataxe",
-			"Leather Armor",
-			"Javelins",
-			"Healing Salve (weak)"
-		],
 		"upbringing": "Agricultural",
-		"background": "Barbarian"
+		"background": "Barbarian",
+		"recommendedTalents": [
+			{
+				"name": "Heavy Weapon Mastery",
+				"gloss": "No bane on Brutal Strike with heavy weapons"
+			},
+			{
+				"name": "Bulky",
+				"gloss": "+2 HP and +2 carrying capacity"
+			},
+			{
+				"name": "Battle Rage",
+				"gloss": "Enter rage for combat bonuses"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Brutal Strike",
+				"gloss": "Deal extra Strength damage with heavy weapons (no bane thanks to Heavy Weapon Mastery!)"
+			},
+			{
+				"name": "Cleave",
+				"gloss": "Hit multiple enemies with your greataxe"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Greataxe"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Javelin"
+			},
+			{
+				"item": "Healing Salve (weak)"
+			}
+		],
+		"toolkit": "Climber‘s Kit",
+		"playstyle": "The Barbarian is perfect for players who want to deal massive damage and play aggressively, accepting risk for reward. Battle Rage provides combat bonuses while Heavy Weapon Mastery makes Brutal Strike attacks deadly without suffering banes. Bulky gives you extra HP to survive when rage runs out. Avoid heavy armor to maintain rage effectiveness. Use Cleave to hit multiple foes and Brutal Strike for single-target devastation.",
+		"advancement": "Increase Battle Rage ranks for greater power, raise Fighting and Fortitude to rank 2-3 for more Combat Arts and resilience, add Survival for wilderness expertise, and consider Hard to Kill for survivability."
 	},
 	{
 		"name": "Brawler",
@@ -113,16 +204,49 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Fighting, Fortitude, Streetwise, Influence, Perception, Stealth, Insight",
-		"recommendedTalents": ["Pugilist", "Hard to Kill", "Thug Tactics"],
-		"recommendedCombatArts": ["Disarm", "Snare"],
-		"startingEquipment": [
-			"Cestus x2",
-			"Leather Armor",
-			"Healer's Kit",
-			"Paralyzing Poison (weak)"
-		],
 		"upbringing": "Slums",
-		"background": "Tavern Fighter"
+		"background": "Tavern Fighter",
+		"recommendedTalents": [
+			{
+				"name": "Pugilist",
+				"gloss": "Unarmed and brawling control. Treat fists and brawling weapons as reliable tools in a scrap"
+			},
+			{
+				"name": "Hard to Kill",
+				"gloss": "Shrug off punishment and stay standing in ugly brawls"
+			},
+			{
+				"name": "Thug Tactics",
+				"gloss": "Gain boons when ganging up or fighting dirty in tight quarters"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Disarm",
+				"gloss": "Knock weapons from enemy hands to tilt the exchange"
+			},
+			{
+				"name": "Snare",
+				"gloss": "Clinch and restrain with chain, whip, or grappling setups"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Cestus",
+				"quantity": 2
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Healer‘s Kit"
+			},
+			{
+				"item": "Paralyzing Poison (weak)"
+			}
+		],
+		"playstyle": "Close distance and take away your opponent’s best options. Use Fast Stride to enter clinch range, Disarm to strip weapons, and Snare to tie down priority targets while your allies dogpile. Pugilist keeps your hands and brawling tools effective even when you’re unarmed or improvised. Thug Tactics rewards advantage creation and teamwork in scrappy fights.",
+		"advancement": "Raise Fighting 2-3 for more control arts (Supreme Disarm) and improved damage lines. Add Fortitude for toughness and recovery, and consider Streetwise 2 for better gang-up play. A spiked chain or whip can extend your control footprint once your technique improves."
 	},
 	{
 		"name": "Champion",
@@ -137,86 +261,112 @@
 			"MND": 6
 		},
 		"suggestedSkills": "Fighting, Mysticism, Influence, Fortitude, Insight, Lore, Perception",
-		"recommendedTalents": [
-			"Heavy Armor Mastery",
-			"Mystic Champion",
-			"Leading Presence"
-		],
-		"recommendedCombatArts": ["Defensive Strike", "Terrifying Strike"],
-		"startingEquipment": [
-			"Longsword",
-			"Light Shield",
-			"Spell Catalyst (Mystic Talisman)"
-		],
 		"upbringing": "Monastic",
 		"background": "Sacred Warrior",
+		"recommendedTalents": [
+			{
+				"name": "Heavy Armor Mastery",
+				"gloss": "Ignore movement penalty from heavy armor"
+			},
+			{
+				"name": "Mystic Champion",
+				"gloss": "Infuse a rank 0 mystic spell into a weapon attack"
+			},
+			{
+				"name": "Leading Presence",
+				"gloss": "Allies near you gain boons to Initiative and vs fear"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Defensive Strike",
+				"gloss": "Gain Defend Action effects on hit"
+			},
+			{
+				"name": "Terrifying Strike",
+				"gloss": "Frighten enemies with divine presence"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Longsword"
+			},
+			{
+				"item": "Light Shield"
+			},
+			{
+				"item": "Spell Catalyst (Mystic Talisman)"
+			}
+		],
+		"toolkit": "Mason‘s Tools",
 		"spellData": {
 			"magicSkill": "Mysticism",
-			"specialization": "Light, War",
-			"traditions": ["Light", "War"],
-			"startingSpells": [
+			"mode": "devotion",
+			"options": [
 				{
-					"name": "Dazzling Light",
-					"rank": 0,
-					"tradition": "Light"
+					"name": "Light",
+					"spells": [
+						{
+							"name": "Dazzling Light",
+							"rank": 0
+						},
+						{
+							"name": "Detect Lies",
+							"rank": 0
+						},
+						{
+							"name": "Illuminated Sight",
+							"rank": 0
+						},
+						{
+							"name": "Radiant Burst",
+							"rank": 1
+						},
+						{
+							"name": "Radiant Weapon",
+							"rank": 1
+						},
+						{
+							"name": "Protect from Influence",
+							"rank": 1
+						}
+					],
+					"blurb": "truth/justice"
 				},
 				{
-					"name": "Detect Lies",
-					"rank": 0,
-					"tradition": "Light"
-				},
-				{
-					"name": "Illuminated Sight",
-					"rank": 0,
-					"tradition": "Light"
-				},
-				{
-					"name": "Radiant Burst",
-					"rank": 1,
-					"tradition": "Light"
-				},
-				{
-					"name": "Radiant Weapon",
-					"rank": 1,
-					"tradition": "Light"
-				},
-				{
-					"name": "Protect from Influence",
-					"rank": 1,
-					"tradition": "Light"
-				},
-				{
-					"name": "Battle Surge",
-					"rank": 0,
-					"tradition": "War"
-				},
-				{
-					"name": "Mighty Strike",
-					"rank": 0,
-					"tradition": "War"
-				},
-				{
-					"name": "Spectral Slash",
-					"rank": 0,
-					"tradition": "War"
-				},
-				{
-					"name": "Heroic Weapon",
-					"rank": 1,
-					"tradition": "War"
-				},
-				{
-					"name": "War Cry",
-					"rank": 1,
-					"tradition": "War"
-				},
-				{
-					"name": "Curse of War",
-					"rank": 1,
-					"tradition": "War"
+					"name": "War",
+					"spells": [
+						{
+							"name": "Battle Surge",
+							"rank": 0
+						},
+						{
+							"name": "Mighty Strike",
+							"rank": 0
+						},
+						{
+							"name": "Spectral Slash",
+							"rank": 0
+						},
+						{
+							"name": "Heroic Weapon",
+							"rank": 1
+						},
+						{
+							"name": "War Cry",
+							"rank": 1
+						},
+						{
+							"name": "Curse of War",
+							"rank": 1
+						}
+					],
+					"blurb": "combat prowess"
 				}
 			]
-		}
+		},
+		"playstyle": "The Champion is perfect for players who want to be a holy warrior combining divine magic with frontline tanking. Use Mystic Champion to infuse spells into melee attacks and support allies. Heavy Armor Mastery will be crucial once you upgrade to scale or plate mail. Leading Presence makes you a natural party leader. Use Defensive Strike to stay alive and Terrifying Strike to control enemies.",
+		"advancement": "Save coins to upgrade to Scale Mail (250) or Breastplate (750) and eventually Plate Harness (2,500), increase Fighting and Mysticism to rank 2-3 for more Combat Arts and spells, raise Fortitude for survivability, consider Shield Mastery or more divine-focused talents."
 	},
 	{
 		"name": "Duelist",
@@ -231,20 +381,49 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Fighting, Athletics, Stealth, Influence, Perception, Streetwise, Education",
-		"recommendedTalents": [
-			"Defensive Dueling",
-			"Fast Stride",
-			"Devious Tactics"
-		],
-		"recommendedCombatArts": ["Feint", "Precise Strike"],
-		"startingEquipment": [
-			"Shortsword",
-			"Throwing Knives",
-			"Leather Armor",
-			"Healing Salve (weak)"
-		],
 		"upbringing": "Militaristic",
-		"background": "Officer"
+		"background": "Officer",
+		"recommendedTalents": [
+			{
+				"name": "Defensive Dueling",
+				"gloss": "+1 Parry while wielding a single non‑heavy melee weapon and no shield"
+			},
+			{
+				"name": "Fast Stride",
+				"gloss": "Use Dash as Quick Action"
+			},
+			{
+				"name": "Devious Tactics",
+				"gloss": "Use Distract as a Quick Action. Feint via misdirection"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Feint",
+				"gloss": "Gain +1 boon when not moving"
+			},
+			{
+				"name": "Precise Strike",
+				"gloss": "Ignore armor and add Agility to damage"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Shortsword"
+			},
+			{
+				"item": "Throwing Knife"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Healing Salve (weak)"
+			}
+		],
+		"toolkit": "Disguise Kit",
+		"playstyle": "The Duelist is perfect for players who prefer agility and precision over brute force. Control distance with Fast Stride, use Feint to open defenses, and land Precise Strikes when it counts.",
+		"advancement": "Increase Fighting and Athletics to rank 2-3, add Stealth or Influence depending on intrigue vs. street play, and consider Defensive Dueling or Riposte."
 	},
 	{
 		"name": "Druid",
@@ -259,43 +438,87 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Mysticism, Nature, Survival, Lore, Insight, Perception, Athletics",
-		"recommendedTalents": [
-			"Shape Changer",
-			"Animal Companion",
-			"Wilderness Expert"
-		],
-		"startingEquipment": [
-			"Quarterstaff",
-			"Spell Catalyst (Mystic Talisman)",
-			"Leather Armor",
-			"Healing Salve (simple) x2"
-		],
 		"upbringing": "Shamanistic",
 		"background": "Druid",
+		"recommendedTalents": [
+			{
+				"name": "Shape Changer",
+				"gloss": "Transform into animal forms"
+			},
+			{
+				"name": "Animal Companion",
+				"gloss": "Control an animal companion (Tier ≤ Nature)"
+			},
+			{
+				"name": "Wilderness Expert",
+				"gloss": "Excel at finding food and resources"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Quarterstaff"
+			},
+			{
+				"item": "Spell Catalyst (Mystic Talisman)"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Healing Salve (simple)"
+			}
+		],
+		"toolkit": "Brewer‘s Tools",
 		"spellData": {
 			"magicSkill": "Mysticism",
-			"specialization": "Nature, Tempest",
-			"traditions": ["Nature", "Tempest"],
-			"startingSpells": [
+			"mode": "balance",
+			"options": [
 				{
-					"name": "Bestial Adaptation",
-					"rank": 0
+					"name": "Nature",
+					"spells": [
+						{
+							"name": "Bestial Adaptation",
+							"rank": 0
+						},
+						{
+							"name": "Lashing Vine",
+							"rank": 0
+						},
+						{
+							"name": "Mesh of Vines",
+							"rank": 1
+						}
+					],
+					"blurb": "earth/animals/plants"
 				},
 				{
-					"name": "Lashing Vine",
-					"rank": 0
-				},
-				{
-					"name": "Mesh of Vines",
-					"rank": 1
-				},
-				{
-					"name": "Lightning Javelin",
-					"rank": 1
+					"name": "Tempest",
+					"spells": [
+						{
+							"name": "Lightning Javelin",
+							"rank": 1
+						}
+					],
+					"blurb": "storms/elements"
 				}
 			]
 		},
-		"recommendedCompanions": ["Bear", "Bird", "Constrictor Snake"]
+		"recommendedCompanions": [
+			{
+				"name": "Bear",
+				"gloss": "Tough frontline with knockdown and grapple options and an intimidating roar."
+			},
+			{
+				"name": "Bird",
+				"gloss": "Fast flying scout with keen eyes and dive attack bursts."
+			},
+			{
+				"name": "Constrictor Snake",
+				"gloss": "Grapple and restrain to lock down priority targets."
+			}
+		],
+		"playstyle": "The Druid is perfect for players who want to blend with nature, shapeshift, and command elemental forces. Shape Changer provides incredible versatility, while Animal Companion gives you a loyal ally. Use nature magic to control the battlefield and support allies. Wilderness Expert makes wilderness travel easier for the whole party.",
+		"advancement": "Increase Mysticism to rank 2-3 for more powerful spells and Shape Changer options, raise Nature and Survival for wilderness mastery, add Lore for deeper nature knowledge, and consider more shapeshifting or elemental talents."
 	},
 	{
 		"name": "Engineer",
@@ -310,19 +533,52 @@
 			"MND": 6
 		},
 		"suggestedSkills": "Crafting, Education, Archery, Lore, Perception, Fortitude, Streetwise",
+		"upbringing": "Artisanal",
+		"background": "Artisan",
 		"recommendedTalents": [
-			"Quick Construction",
-			"General Education",
-			"Expert Slinger"
+			{
+				"name": "Quick Construction",
+				"gloss": "Improvise items during exploration"
+			},
+			{
+				"name": "General Education",
+				"gloss": "No bane on untrained expert skills"
+			},
+			{
+				"name": "Expert Slinger",
+				"gloss": "Re-roll Supply checks for thrown weapons"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Aimed Shot",
+				"gloss": "Gain +1 boon when not moving"
+			},
+			{
+				"name": "Volley",
+				"gloss": "Hit multiple enemies with thrown weapons"
+			}
 		],
 		"startingEquipment": [
-			"Sling",
-			"Throwing Knives",
-			"Leather Armor",
-			"Acid Vial"
+			{
+				"item": "Sling"
+			},
+			{
+				"item": "Throwing Stones (d6)"
+			},
+			{
+				"item": "Throwing Knife"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Acid Vial"
+			}
 		],
-		"upbringing": "Apprenticed",
-		"background": "Artisan"
+		"toolkit": "Carpenter‘s Tools",
+		"playstyle": "The Engineer is perfect for players who enjoy battlefield problem‑solving and logistics. Use Quick Construction to bolster defenses, create tools, and set simple traps. Deliver devices at range with Expert Slinger and support allies by shaping the field.",
+		"advancement": "Increase Crafting to rank 2-3 for stronger builds, add Education and Perception for planning and scouting, raise Archery or Fighting depending on preferred delivery method, and consider Efficient Worker or Artisan talents."
 	},
 	{
 		"name": "Fighter",
@@ -337,15 +593,54 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Fighting, Athletics, Fortitude, Influence, Perception, Insight, Archery",
-		"recommendedTalents": [
-			"Shield Mastery",
-			"Stand your Ground",
-			"Second Wind"
-		],
-		"recommendedCombatArts": ["Defensive Strike", "Charge"],
-		"startingEquipment": ["Longsword", "Light Shield", "Leather Armor"],
 		"upbringing": "Militaristic",
-		"background": "Soldier"
+		"background": "Soldier",
+		"recommendedTalents": [
+			{
+				"name": "Shield Mastery",
+				"gloss": "Reduce enemy attack Success Level with Quick Action"
+			},
+			{
+				"name": "Stand your Ground",
+				"gloss": "Resist being knocked prone or pushed with Quick Action"
+			},
+			{
+				"name": "Second Wind",
+				"gloss": "Regain HP with Quick Action once per scene"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Defensive Strike",
+				"gloss": "Gain Defend Action effects on hit"
+			},
+			{
+				"name": "Charge",
+				"gloss": "Move and shove while attacking"
+			},
+			{
+				"name": "Aimed Shot",
+				"gloss": "Gain +1 boon on a thrown attack when you don’t move"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Longsword"
+			},
+			{
+				"item": "Light Shield"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Javelin",
+				"note": "thrown opener for the Archery rank 0 art"
+			}
+		],
+		"toolkit": "Adventuring Gear",
+		"playstyle": "The Fighter is perfect for players who want straightforward, effective combat with tactical depth. Use your shield to protect allies and your versatile longsword to adapt to situations. Stand your Ground keeps you in position while Second Wind provides survivability when needed. Combat Arts like Defensive Strike and Charge give you tactical options for different situations.",
+		"advancement": "Increase Fighting and Fortitude to rank 2-3 for more Combat Arts and resilience, add Influence for battlefield command, consider Heavy Armor Mastery or more shield-focused talents."
 	},
 	{
 		"name": "Gladiator",
@@ -360,19 +655,46 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Fighting, Athletics, Influence, Fortitude, Perception, Streetwise, Stealth",
-		"recommendedTalents": [
-			"Heavy Weapon Mastery",
-			"Grappler",
-			"Leading Presence"
-		],
-		"recommendedCombatArts": ["Brutal Strike", "Cleave"],
-		"startingEquipment": [
-			"Greatsword",
-			"Leather Armor",
-			"Healing Salve (weak)"
-		],
 		"upbringing": "Militaristic",
-		"background": "Entertainer"
+		"background": "Entertainer",
+		"recommendedTalents": [
+			{
+				"name": "Heavy Weapon Mastery",
+				"gloss": "No bane on Brutal Strike with heavy weapons"
+			},
+			{
+				"name": "Grappler",
+				"gloss": "Grapple on hit with unarmed/brawling weapons"
+			},
+			{
+				"name": "Leading Presence",
+				"gloss": "Allies near you gain boons to Initiative and vs fear"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Brutal Strike",
+				"gloss": "Deal extra Strength damage with heavy weapons"
+			},
+			{
+				"name": "Cleave",
+				"gloss": "Hit multiple foes with a sweeping two‑handed strike"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Greatsword"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Healing Salve (weak)"
+			}
+		],
+		"toolkit": "Disguise Kit",
+		"playstyle": "The Gladiator is perfect for players who want flashy, high‑impact melee with crowd‑pleasing finishers. Use Grappler for clinches and showy takedowns, then unleash Brutal Strike for big single‑target hits or Cleave to cut through multiple foes. Work the battlefield, and the audience, while rallying allies with Leading Presence.",
+		"advancement": "Increase Fighting to rank 2-3 for more Combat Arts, raise Athletics for better control and mobility, add Fortitude for resilience, and consider Shield Mastery or additional performance/social talents."
 	},
 	{
 		"name": "Hoplite",
@@ -387,15 +709,53 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Fighting, Athletics, Influence, Fortitude, Perception, Insight, Archery",
-		"recommendedTalents": [
-			"Polearm Mastery",
-			"Fast Stride",
-			"Leading Presence"
-		],
-		"recommendedCombatArts": ["Charge", "Defensive Strike"],
-		"startingEquipment": ["Spear", "Light Shield", "Leather Armor", "Javelins"],
 		"upbringing": "Militaristic",
-		"background": "Soldier"
+		"background": "Soldier",
+		"recommendedTalents": [
+			{
+				"name": "Polearm Mastery",
+				"gloss": "Opportunity attacks when enemies approach"
+			},
+			{
+				"name": "Fast Stride",
+				"gloss": "Use Dash as Quick Action"
+			},
+			{
+				"name": "Leading Presence",
+				"gloss": "Allies near you gain boons to Initiative and vs fear"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Charge",
+				"gloss": "Move and shove while attacking"
+			},
+			{
+				"name": "Defensive Strike",
+				"gloss": "Gain Defend Action effects on hit"
+			},
+			{
+				"name": "Pinning Shot",
+				"gloss": "A hit with a thrown javelin drops the target’s Movement to 0"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Spear"
+			},
+			{
+				"item": "Light Shield"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Javelin"
+			}
+		],
+		"toolkit": "Carpenter‘s Tools",
+		"playstyle": "The Hoplite is perfect for players who enjoy tactical positioning, defensive play, and Bronze Age military aesthetics. Control space with reach weapons and hold formation with allies. Polearm Mastery punishes enemies who approach, while Fast Stride allows repositioning. Leading Presence helps coordinate your unit. Use Charge for aggressive pushes and Defensive Strike to hold the line.",
+		"advancement": "Increase Fighting to rank 2-3 for more Combat Arts, raise Athletics and Influence for tactical command, add Fortitude for resilience, consider Shield Mastery or Protective Stance, and save for heavier armor (Scale Mail 250 coins)."
 	},
 	{
 		"name": "Magus",
@@ -410,64 +770,97 @@
 			"MND": 8
 		},
 		"suggestedSkills": "Arcana, Fighting, Education, Lore, Perception, Insight, Streetwise",
-		"recommendedTalents": ["Battle Mage", "Blade Mastery", "General Education"],
-		"recommendedCombatArts": ["Feint", "Precise Strike"],
-		"startingEquipment": [
-			"Longsword",
-			"Spell Catalyst (Arcane Conduit)",
-			"Smith's Tools toolkit",
-			"Wooden Face Mask",
-			"Acid Vial x3"
-		],
 		"upbringing": "Scholar",
 		"background": "Renegade Mage",
+		"recommendedTalents": [
+			{
+				"name": "Battle Mage",
+				"gloss": "Quick Action arcane barrier adds Arcana to Parry/Dodge"
+			},
+			{
+				"name": "Blade Mastery",
+				"gloss": "Switch between pierce/slash properties"
+			},
+			{
+				"name": "General Education",
+				"gloss": "No bane on untrained expert skills when using Mind"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Feint",
+				"gloss": "Gain +1 boon when not moving"
+			},
+			{
+				"name": "Precise Strike",
+				"gloss": "Ignore armor and add Agility to damage"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Longsword"
+			},
+			{
+				"item": "Spell Catalyst (Arcane Conduit)"
+			},
+			{
+				"item": "Acid Vial",
+				"quantity": 3
+			}
+		],
+		"toolkit": "Smith‘s Tools",
 		"spellData": {
 			"magicSkill": "Arcana",
-			"specialization": "Evocation, Telekinetics",
-			"disciplines": ["Evocation", "Telekinetics"],
-			"startingSpells": [
+			"mode": "devotion",
+			"options": [
 				{
-					"name": "Flickering Flame",
-					"rank": 0,
-					"discipline": "Evocation"
+					"name": "Evocation",
+					"spells": [
+						{
+							"name": "Flickering Flame",
+							"rank": 0
+						},
+						{
+							"name": "Frost Snap",
+							"rank": 0
+						},
+						{
+							"name": "Chromatic Orb",
+							"rank": 1
+						},
+						{
+							"name": "Flaming Weapon",
+							"rank": 1
+						}
+					],
+					"blurb": "elemental"
 				},
 				{
-					"name": "Frost Snap",
-					"rank": 0,
-					"discipline": "Evocation"
-				},
-				{
-					"name": "Chromatic Orb",
-					"rank": 1,
-					"discipline": "Evocation"
-				},
-				{
-					"name": "Flaming Weapon",
-					"rank": 1,
-					"discipline": "Evocation"
-				},
-				{
-					"name": "Phantom Pull",
-					"rank": 0,
-					"discipline": "Telekinetics"
-				},
-				{
-					"name": "Phantom Push",
-					"rank": 0,
-					"discipline": "Telekinetics"
-				},
-				{
-					"name": "Pressure Orb",
-					"rank": 1,
-					"discipline": "Telekinetics"
-				},
-				{
-					"name": "Reflective Barrier",
-					"rank": 1,
-					"discipline": "Telekinetics"
+					"name": "Telekinetics",
+					"spells": [
+						{
+							"name": "Phantom Pull",
+							"rank": 0
+						},
+						{
+							"name": "Phantom Push",
+							"rank": 0
+						},
+						{
+							"name": "Pressure Orb",
+							"rank": 1
+						},
+						{
+							"name": "Reflective Barrier",
+							"rank": 1
+						}
+					],
+					"blurb": "force"
 				}
 			]
-		}
+		},
+		"playstyle": "The Magus is perfect for players who want to combine melee combat with spellcasting in a hybrid warrior-mage. Blend swordplay with arcane magic. Battle Mage provides magical defense while you fight in melee. Blade Mastery gives combat versatility. Use spells to enhance your combat effectiveness. Use Feint for reliable attacks and Precise Strike against armored foes.",
+		"advancement": "Increase Arcana and Fighting equally to rank 2-3 for more spells and Combat Arts, take Spellblade talent at higher ranks, add Lore for magical knowledge, and consider Battle Mage rank 2 for casting with Mind."
 	},
 	{
 		"name": "Monk",
@@ -482,15 +875,51 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Fighting, Athletics, Fortitude, Insight, Perception, Mysticism, Education",
-		"recommendedTalents": ["Pugilist", "Grappler", "Body of Bronze"],
-		"startingEquipment": [
-			"Quarterstaff",
-			"Healing Salve (potent)",
-			"Healing Salve (simple) x2",
-			"Rope"
-		],
 		"upbringing": "Monastic",
-		"background": "Monk"
+		"background": "Monk",
+		"recommendedTalents": [
+			{
+				"name": "Pugilist",
+				"gloss": "Unarmed attacks deal 2 weapon damage, +1 Parry"
+			},
+			{
+				"name": "Grappler",
+				"gloss": "Grapple on hit with unarmed/brawling weapons"
+			},
+			{
+				"name": "Body of Bronze",
+				"gloss": "+2 HP, +1+Fortitude AV while unarmored"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Choking Grip",
+				"gloss": "Restrain grappled targets"
+			},
+			{
+				"name": "Knockout",
+				"gloss": "Stun enemies with crush attacks"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Quarterstaff",
+				"note": "backup weapon"
+			},
+			{
+				"item": "Healing Salve (potent)"
+			},
+			{
+				"item": "Healing Salve (simple)",
+				"quantity": 2
+			},
+			{
+				"item": "Rope (Hemp)"
+			}
+		],
+		"toolkit": "Weaver‘s Tools",
+		"playstyle": "The Monk is perfect for players who want to fight without weapons or armor, using martial arts and grappling. Fight with fists and feet, using Grappler to control enemies and Body of Bronze for defense without armor. Pugilist makes unarmed strikes effective weapons. Your high mobility and control make you a disruptive force. Use Choking Grip to restrain dangerous foes and Knockout to take out heavily armored enemies.",
+		"advancement": "Increase Fighting and Athletics to rank 2-3 for more Combat Arts and grappling options, raise Fortitude for more toughness, add Insight for reading opponents, and consider Martial Artist or more unarmed talents."
 	},
 	{
 		"name": "Oracle",
@@ -505,42 +934,71 @@
 			"MND": 6
 		},
 		"suggestedSkills": "Mysticism, Lore, Insight, Education, Perception, Influence, Stealth",
-		"recommendedTalents": [
-			"Divine Sense",
-			"Consult the Myths",
-			"Piercing Look"
-		],
-		"recommendedCombatArts": ["Defensive Strike", "Exhilarating Strike"],
-		"startingEquipment": [
-			"Quarterstaff",
-			"Spell Catalyst (Mystic Talisman)",
-			"Healing Salve (simple) x3"
-		],
 		"upbringing": "Monastic",
 		"background": "Philosopher",
+		"recommendedTalents": [
+			{
+				"name": "Divine Sense",
+				"gloss": "Sense spirits/undead and hallowed or cursed auras"
+			},
+			{
+				"name": "Consult the Myths",
+				"gloss": "Re‑roll Lore about supernatural topics once per scene"
+			},
+			{
+				"name": "Piercing Look",
+				"gloss": "Re‑roll Insight to detect lies or motives once per scene"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Quarterstaff"
+			},
+			{
+				"item": "Spell Catalyst (Mystic Talisman)"
+			},
+			{
+				"item": "Healing Salve (simple)",
+				"quantity": 3
+			}
+		],
+		"toolkit": "Painter‘s Supplies",
 		"spellData": {
 			"magicSkill": "Mysticism",
-			"specialization": "Twilight, Light",
-			"traditions": ["Twilight", "Light"],
-			"startingSpells": [
+			"mode": "balance",
+			"options": [
 				{
-					"name": "Dark Sight",
-					"rank": 0
+					"name": "Twilight",
+					"spells": [
+						{
+							"name": "Dark Sight",
+							"rank": 0
+						},
+						{
+							"name": "Whisper of Dreams",
+							"rank": 1
+						}
+					],
+					"blurb": "dreams/fate"
 				},
 				{
-					"name": "Detect Lies",
-					"rank": 0
-				},
-				{
-					"name": "Whisper of Dreams",
-					"rank": 1
-				},
-				{
-					"name": "Blessing of Light",
-					"rank": 1
+					"name": "Light",
+					"spells": [
+						{
+							"name": "Detect Lies",
+							"rank": 0
+						},
+						{
+							"name": "Blessing of Light",
+							"rank": 1
+						}
+					],
+					"blurb": "truth/revelation"
 				}
 			]
-		}
+		},
+		"playstyle": "The Oracle is perfect for players who enjoy support roles, being the party's guide, and themes of fate and prophecy. Use foresight and divination to guide allies and avoid danger. Piercing Look helps you understand others while your spells provide warnings and revelations. Divine Sense adds mystical perception beyond the mortal veil. Combine illusions from Twilight with revelations from Light for versatile support.",
+		"advancement": "Increase Mysticism and Lore to rank 2-3 for more powerful spells and deeper knowledge, raise Insight for better intuition, learn more divination and revelation spells, add Education for broader knowledge, and consider prophecy-themed talents."
 	},
 	{
 		"name": "Priest",
@@ -555,56 +1013,88 @@
 			"MND": 6
 		},
 		"suggestedSkills": "Mysticism, Fighting, Lore, Influence, Insight, Fortitude, Education",
-		"recommendedTalents": [
-			"Divine Rites",
-			"Shield Mastery",
-			"Consult the Myths"
-		],
-		"recommendedCombatArts": ["Defensive Strike", "Exhilarating Strike"],
-		"startingEquipment": [
-			"Mace",
-			"Light Shield",
-			"Spell Catalyst (Mystic Talisman)"
-		],
 		"upbringing": "Monastic",
 		"background": "Priest",
+		"recommendedTalents": [
+			{
+				"name": "Divine Rites",
+				"gloss": "Regain half your Focus during a short break, limited uses per day"
+			},
+			{
+				"name": "Shield Mastery",
+				"gloss": "Reduce enemy attack Success Level with Quick Action"
+			},
+			{
+				"name": "Consult the Myths",
+				"gloss": "Re‑roll Lore about supernatural topics once per scene"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Defensive Strike",
+				"gloss": "Gain Defend Action effects on hit"
+			},
+			{
+				"name": "Exhilarating Strike",
+				"gloss": "Heal nearby allies on hit"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Mace"
+			},
+			{
+				"item": "Light Shield"
+			},
+			{
+				"item": "Spell Catalyst (Mystic Talisman)"
+			}
+		],
+		"toolkit": "Cook‘s Utensils",
 		"spellData": {
 			"magicSkill": "Mysticism",
-			"specialization": "Life, Peace",
-			"traditions": ["Life", "Peace"],
-			"startingSpells": [
+			"mode": "devotion",
+			"options": [
 				{
-					"name": "Restore Life",
-					"rank": 0,
-					"tradition": "Life"
+					"name": "Life",
+					"spells": [
+						{
+							"name": "Restore Life",
+							"rank": 0
+						},
+						{
+							"name": "Life Shield",
+							"rank": 0
+						},
+						{
+							"name": "Healing Touch",
+							"rank": 1
+						}
+					],
+					"blurb": "healing"
 				},
 				{
-					"name": "Life Shield",
-					"rank": 0,
-					"tradition": "Life"
-				},
-				{
-					"name": "Healing Touch",
-					"rank": 1,
-					"tradition": "Life"
-				},
-				{
-					"name": "Aura of Sanctuary",
-					"rank": 0,
-					"tradition": "Peace"
-				},
-				{
-					"name": "Calming Influence",
-					"rank": 0,
-					"tradition": "Peace"
-				},
-				{
-					"name": "Blessing of Peace",
-					"rank": 1,
-					"tradition": "Peace"
+					"name": "Peace",
+					"spells": [
+						{
+							"name": "Aura of Sanctuary",
+							"rank": 0
+						},
+						{
+							"name": "Calming Influence",
+							"rank": 0
+						},
+						{
+							"name": "Blessing of Peace",
+							"rank": 1
+						}
+					],
+					"blurb": "protection"
 				}
 			]
-		}
+		},
+		"playstyle": "The Priest is perfect for players who want to support allies with healing and protection while remaining combat-effective. Balance divine magic with frontline fighting. Heal and protect allies while holding the line with shield and mace. Divine Rites helps you recover Focus between fights. Use Defensive Strike to stay alive and Exhilarating Strike to keep allies in the fight.",
+		"advancement": "Increase Mysticism to rank 2-3 for more powerful spells, raise Fighting for better combat effectiveness and more Combat Arts, add Influence for religious authority, and consider Armor of the Faithful for unarmored defense builds."
 	},
 	{
 		"name": "Ranger",
@@ -619,22 +1109,70 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Archery, Survival, Nature, Insight, Perception, Stealth, Fighting",
-		"recommendedTalents": [
-			"Sharpshooter",
-			"Relentless Tracker",
-			"Animal Companion"
-		],
-		"recommendedCombatArts": ["Aimed Shot", "Precise Shot"],
-		"startingEquipment": [
-			"Longbow",
-			"Arrows d8",
-			"Shortsword",
-			"Leather Armor",
-			"Healing Salve (weak)"
-		],
 		"upbringing": "Nomadic",
 		"background": "Ranger",
-		"recommendedCompanions": ["Dog", "Bird", "Bear"]
+		"recommendedTalents": [
+			{
+				"name": "Sharpshooter",
+				"gloss": "Ignore the first bane from attacking beyond normal range"
+			},
+			{
+				"name": "Relentless Tracker",
+				"gloss": "Re‑roll Survival to follow/identify tracks once per scene"
+			},
+			{
+				"name": "Animal Companion",
+				"gloss": "Control an animal companion (Tier ≤ Nature)"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Aimed Shot",
+				"gloss": "Gain +1 boon when not moving"
+			},
+			{
+				"name": "Precise Shot",
+				"gloss": "Ignore armor and add Agility to damage"
+			},
+			{
+				"name": "Evasive Strike",
+				"gloss": "A melee hit grants the Retreat Action, breaking back to range"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Longbow"
+			},
+			{
+				"item": "Arrows (d6)"
+			},
+			{
+				"item": "Shortsword"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Healing Salve (weak)"
+			}
+		],
+		"toolkit": "Navigator‘s Tools",
+		"recommendedCompanions": [
+			{
+				"name": "Dog",
+				"gloss": "Loyal tracker with pack tactics and reliable grapples."
+			},
+			{
+				"name": "Bird",
+				"gloss": "Fast flying scout with keen eyes and dive attack bursts."
+			},
+			{
+				"name": "Bear",
+				"gloss": "Tough frontline with knockdown and grapple options and an intimidating roar."
+			}
+		],
+		"playstyle": "The Ranger is perfect for players who enjoy ranged combat, wilderness survival, and having an animal companion. Strike from distance with precision while your animal companion provides tactical support. Sharpshooter allows effective long-range attacks, and Survival expertise makes you invaluable during wilderness travel. Use Aimed Shot for reliable damage and Precise Shot when facing armored foes.",
+		"advancement": "Increase Archery to rank 2-3 for more Combat Arts and damage, raise Survival and Nature for wilderness mastery, add Perception for better awareness, and consider Disciplined Archer or Rapid Shot talents."
 	},
 	{
 		"name": "Rogue",
@@ -649,20 +1187,50 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Fighting, Stealth, Streetwise, Insight, Perception, Athletics, Influence",
-		"recommendedTalents": [
-			"Blade Mastery",
-			"Assassination",
-			"Jack of All Trades"
-		],
-		"recommendedCombatArts": ["Feint", "Evasive Strike"],
-		"startingEquipment": [
-			"Shortsword",
-			"Throwing Knives",
-			"Leather Armor",
-			"Weapon Poison (weak) x2"
-		],
 		"upbringing": "Criminal",
-		"background": "Spy"
+		"background": "Spy",
+		"recommendedTalents": [
+			{
+				"name": "Blade Mastery",
+				"gloss": "Switch between pierce/slash properties"
+			},
+			{
+				"name": "Assassination",
+				"gloss": "On your first hit from stealth each scene, increase SL by 1 (max. critical)"
+			},
+			{
+				"name": "Jack of All Trades",
+				"gloss": "Add Streetwise to any one roll once per scene"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Feint",
+				"gloss": "Gain +1 boon when not moving with non-heavy weapons"
+			},
+			{
+				"name": "Evasive Strike",
+				"gloss": "Gain Retreat Action effects on hit"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Shortsword"
+			},
+			{
+				"item": "Throwing Knife"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Weapon Poison (weak)",
+				"quantity": 2
+			}
+		],
+		"toolkit": "Disguise Kit",
+		"playstyle": "The Rogue is perfect for players who enjoy stealth, infiltration, skill-based challenges, and being the party's scout. Rely on stealth, surprise, and precision strikes. Use Assassination to open with a stronger first hit from stealth, then keep the pressure on. Jack of All Trades keeps you adaptable in and out of cities. Blade Mastery gives you versatility in combat. Use Feint for reliable attacks and Evasive Strike to retreat safely.",
+		"advancement": "Increase Stealth and Fighting to rank 2-3 for more options and Combat Arts, add Insight for reading people, consider Defensive Dueling or Riposte, and learn social skills for infiltration."
 	},
 	{
 		"name": "Shaman",
@@ -677,38 +1245,71 @@
 			"MND": 6
 		},
 		"suggestedSkills": "Mysticism, Nature, Lore, Insight, Survival, Perception, Influence",
-		"recommendedTalents": ["Divine Sense", "Field Medic", "Consult the Myths"],
-		"recommendedCombatArts": ["Defensive Strike", "Terrifying Strike"],
-		"startingEquipment": [
-			"Short Spear",
-			"Spell Catalyst (Mystic Talisman)",
-			"Healing Salve (simple) x3"
-		],
 		"upbringing": "Shamanistic",
 		"background": "Shaman",
+		"recommendedTalents": [
+			{
+				"name": "Divine Sense",
+				"gloss": "Sense spirits/undead and hallowed or cursed auras"
+			},
+			{
+				"name": "Field Medic",
+				"gloss": "Save the dying. Treat wounds quickly during delves"
+			},
+			{
+				"name": "Consult the Myths",
+				"gloss": "Re‑roll Lore about supernatural topics once per scene"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Short Spear"
+			},
+			{
+				"item": "Spell Catalyst (Mystic Talisman)"
+			},
+			{
+				"item": "Healing Salve (simple)",
+				"quantity": 3
+			}
+		],
+		"toolkit": "Weaver‘s Tools",
 		"spellData": {
 			"magicSkill": "Mysticism",
-			"specialization": "Death, Life",
-			"traditions": ["Death", "Life"],
-			"startingSpells": [
+			"mode": "balance",
+			"options": [
 				{
-					"name": "Chill Touch",
-					"rank": 0
+					"name": "Death",
+					"spells": [
+						{
+							"name": "Chill Touch",
+							"rank": 0
+						},
+						{
+							"name": "Blood Shards",
+							"rank": 1
+						}
+					],
+					"blurb": "ancestors/curses"
 				},
 				{
-					"name": "Restore Life",
-					"rank": 0
-				},
-				{
-					"name": "Blood Shards",
-					"rank": 1
-				},
-				{
-					"name": "Healing Touch",
-					"rank": 1
+					"name": "Life",
+					"spells": [
+						{
+							"name": "Restore Life",
+							"rank": 0
+						},
+						{
+							"name": "Healing Touch",
+							"rank": 1
+						}
+					],
+					"blurb": "blessings/community"
 				}
 			]
-		}
+		},
+		"playstyle": "The Shaman is perfect for players who enjoy spiritual themes, supporting through blessings, and connecting with ancestral powers. Bridge the physical and spirit worlds, calling on ancestors for aid. Use blessings to empower allies and curses to weaken enemies. Divine Sense and Field Medic make you invaluable to your community.",
+		"advancement": "Increase Mysticism to rank 2-3 for more powerful spells, raise Lore for deeper spiritual knowledge, add Insight for reading people and spirits, and consider more spirit-themed talents."
 	},
 	{
 		"name": "Slinger",
@@ -723,17 +1324,53 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Archery, Athletics, Stealth, Survival, Perception, Insight, Nature",
-		"recommendedTalents": ["Expert Slinger", "Fast Stride", "Devious Tactics"],
-		"recommendedCombatArts": ["Aimed Shot", "Power Shot"],
-		"startingEquipment": [
-			"Sling",
-			"Throwing Stones (d6)",
-			"Javelins",
-			"Leather Armor",
-			"Healing Salve (simple) x2"
-		],
 		"upbringing": "Nomadic",
-		"background": "Hunter"
+		"background": "Hunter",
+		"recommendedTalents": [
+			{
+				"name": "Expert Slinger",
+				"gloss": "Supply checks for thrown bundles: roll twice, take higher"
+			},
+			{
+				"name": "Fast Stride",
+				"gloss": "Use Dash as Quick Action"
+			},
+			{
+				"name": "Devious Tactics",
+				"gloss": "Use Distract as a Quick Action. Set up openings"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Aimed Shot",
+				"gloss": "Gain +1 boon when not moving"
+			},
+			{
+				"name": "Power Shot",
+				"gloss": "Add Strength to damage"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Sling"
+			},
+			{
+				"item": "Throwing Stones (d6)"
+			},
+			{
+				"item": "Javelin"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Healing Salve (simple)",
+				"quantity": 2
+			}
+		],
+		"toolkit": "Climber‘s Kit",
+		"playstyle": "The Slinger is perfect for players who want a mobile, hit-and-run playstyle with simple but effective ranged combat. Harass enemies from short range then reposition with Fast Stride. Expert Slinger makes your thrown bundles more reliable so your javelins keep flying. Devious Tactics lets you create distractions as a Quick Action to set up safe shots. Use Aimed Shot for reliable damage and Power Shot for finishing blows.",
+		"advancement": "Increase Archery to rank 2-3 for more Combat Arts and damage, raise Athletics for mobility, add Survival for scouting, and consider Rapid Shot or more mobility talents."
 	},
 	{
 		"name": "Sorcerer",
@@ -748,39 +1385,68 @@
 			"MND": 8
 		},
 		"suggestedSkills": "Arcana, Lore, Education, Insight, Perception, Stealth, Influence",
-		"recommendedTalents": ["Mana Shield", "Magical Sense", "General Education"],
-		"recommendedCombatArts": ["Defensive Strike", "Charge"],
-		"startingEquipment": [
-			"Quarterstaff",
-			"Spell Catalyst (Arcane Conduit)",
-			"Leather Armor",
-			"Acid Vial x2"
-		],
 		"upbringing": "Cult",
 		"background": "Sorcerer",
+		"recommendedTalents": [
+			{
+				"name": "Mana Shield",
+				"gloss": "On casting an arcane spell, gain AV (2 + spell rank) briefly"
+			},
+			{
+				"name": "Magical Sense",
+				"gloss": "Gain boons against magic. Intuit resistances and weaknesses"
+			},
+			{
+				"name": "General Education",
+				"gloss": "No bane on untrained expert skills with Mind"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Quarterstaff"
+			},
+			{
+				"item": "Spell Catalyst (Arcane Conduit)"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Acid Vial",
+				"quantity": 2
+			}
+		],
+		"toolkit": "Smith‘s Tools",
 		"spellData": {
 			"magicSkill": "Arcana",
-			"specialization": "Evocation",
-			"disciplines": ["Evocation"],
-			"startingSpells": [
+			"mode": "devotion",
+			"options": [
 				{
-					"name": "Flickering Flame",
-					"rank": 0
-				},
-				{
-					"name": "Frost Snap",
-					"rank": 0
-				},
-				{
-					"name": "Chromatic Orb",
-					"rank": 1
-				},
-				{
-					"name": "Elemental Ward",
-					"rank": 1
+					"name": "Evocation",
+					"spells": [
+						{
+							"name": "Flickering Flame",
+							"rank": 0
+						},
+						{
+							"name": "Frost Snap",
+							"rank": 0
+						},
+						{
+							"name": "Chromatic Orb",
+							"rank": 1
+						},
+						{
+							"name": "Elemental Ward",
+							"rank": 1
+						}
+					],
+					"blurb": "direct damage"
 				}
 			]
-		}
+		},
+		"playstyle": "The Sorcerer is perfect for players who want to deal massive magical damage and control the battlefield through spells. Unleash raw arcane power with devastating offensive spells. Mana Shield protects you when enemies get close. Your high Focus pool lets you cast many spells per scene.",
+		"advancement": "Increase Arcana to rank 2-3 for more powerful spells and additional spells known, add Insight for better awareness, consider Spellweaver or Inexhaustible Mind talents, and learn spell combinations that work together."
 	},
 	{
 		"name": "Swashbuckler",
@@ -795,15 +1461,48 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Fighting, Stealth, Streetwise, Insight, Perception, Athletics, Influence",
-		"recommendedTalents": ["Dual Wielder", "Devious Tactics", "Swashbuckler"],
-		"recommendedCombatArts": ["Feint", "Disarm"],
-		"startingEquipment": [
-			"Shortsword x2",
-			"Leather Armor",
-			"Weapon Poison (weak) x2"
-		],
 		"upbringing": "Criminal",
-		"background": "Thug"
+		"background": "Thug",
+		"recommendedTalents": [
+			{
+				"name": "Dual Wielder",
+				"gloss": "No banes when attacking with two light melee weapons"
+			},
+			{
+				"name": "Devious Tactics",
+				"gloss": "Use Distract as a Quick Action. Set up openings"
+			},
+			{
+				"name": "Swashbuckler",
+				"gloss": "+2 HP, on a hit with a light melee weapon, target can’t use Quick Actions against you this turn"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Feint",
+				"gloss": "Gain +1 boon when not moving with non-heavy weapons"
+			},
+			{
+				"name": "Disarm",
+				"gloss": "Attempt to disarm immediately after this attack"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Shortsword",
+				"quantity": 2
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Weapon Poison (weak)",
+				"quantity": 2
+			}
+		],
+		"toolkit": "Disguise Kit",
+		"playstyle": "The Swashbuckler thrives on movement, misdirection, and momentum. Use Devious Tactics to set up openings, then strike with dual light blades. Dual Wielder removes the usual banes for two-weapon attacks. Swashbuckler shuts down enemy Quick Actions after you hit, letting you press the attack without fear of counters. Use Feint for reliable advantage and Disarm to punish weaponed foes. Coat blades with poison for nasty burst when needed.",
+		"advancement": "Raise Fighting to rank 2-3 for more Combat Arts (Supreme Feint, Quick Lunge, or Riposte). Boost Stealth for better scene control or pick Streetwise: Thug Tactics if you prefer gang-up brawling. Consider Defensive Dueling if you pivot to single-blade finesse. Add Fortitude for toughness and Influence for swagger-driven social play."
 	},
 	{
 		"name": "Summoner",
@@ -818,42 +1517,82 @@
 			"MND": 8
 		},
 		"suggestedSkills": "Arcana, Lore, Insight, Education, Perception, Influence, Mysticism",
-		"recommendedTalents": [
-			"Master of Fundamentals",
-			"Magical Sense",
-			"Piercing Look"
-		],
-		"startingEquipment": [
-			"Quarterstaff",
-			"Spell Catalyst (Arcane Conduit)",
-			"Healing Salve (simple)"
-		],
 		"upbringing": "Scholar",
 		"background": "Renegade Mage",
-		"recommendedFamiliars": ["Bat", "Cat", "Rat", "Spider"],
+		"recommendedTalents": [
+			{
+				"name": "Master of Fundamentals",
+				"gloss": "Re‑roll one arcane rank 0 spell per scene"
+			},
+			{
+				"name": "Magical Sense",
+				"gloss": "Boons vs. magic. Intuit resistances and weaknesses"
+			},
+			{
+				"name": "Piercing Look",
+				"gloss": "Re‑roll Insight vs. lies/motives once per scene"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Quarterstaff"
+			},
+			{
+				"item": "Spell Catalyst (Arcane Conduit)"
+			},
+			{
+				"item": "Healing Salve (simple)"
+			}
+		],
+		"toolkit": "Smith‘s Tools",
 		"spellData": {
 			"magicSkill": "Arcana",
-			"specialization": "Conjuration",
-			"disciplines": ["Conjuration"],
-			"startingSpells": [
+			"mode": "devotion",
+			"options": [
 				{
-					"name": "Arcane Bolt",
-			"rank": 0
+					"name": "Conjuration",
+					"spells": [
+						{
+							"name": "Arcane Bolt",
+							"rank": 0
+						},
+						{
+							"name": "Arcane Glyph",
+							"rank": 0
+						},
+						{
+							"name": "Arcane Barrier",
+							"rank": 1
+						},
+						{
+							"name": "Conjure Familiar",
+							"rank": 1
+						}
+					],
+					"blurb": "summoning/glyphs"
+				}
+			]
 		},
-		{
-			"name": "Arcane Glyph",
-			"rank": 0
-		},
-		{
-			"name": "Arcane Barrier",
-			"rank": 1
-		},
-		{
-			"name": "Conjure Familiar",
-			"rank": 1
-		}
-	]
-}
+		"recommendedFamiliars": [
+			{
+				"name": "Bat",
+				"gloss": "Flying scout with echolocation and a poisoning bite."
+			},
+			{
+				"name": "Cat",
+				"gloss": "Stealthy skirmisher for cramped spaces."
+			},
+			{
+				"name": "Rat",
+				"gloss": "Climbing scout with keen scent and a bleeding bite."
+			},
+			{
+				"name": "Spider",
+				"gloss": "Web control once per scene for restraint."
+			}
+		],
+		"playstyle": "The Summoner controls tempo with glyphs and durable constructs while adding bodies to the field. Use Arcane Glyph for traps and Arcane Barrier for cover and lanes. Master of Fundamentals keeps cantrips reliable. Conjure Familiar gives you a versatile scout and support ally early. Later, Summon Aberration adds real battlefield presence.",
+		"advancement": "Raise Arcana 2-3 for more spells and Focus. Consider Inexhaustible Mind or Spellweaver. Add Lore for arcane theory and Insight for reading foes. After your familiar, look to Summon Aberration and utility control like Arcane Eye."
 	},
 	{
 		"name": "Tamer",
@@ -868,19 +1607,69 @@
 			"MND": 4
 		},
 		"suggestedSkills": "Fighting, Nature, Athletics, Survival, Perception, Insight, Streetwise",
-		"recommendedTalents": ["Pugilist", "Animal Companion", "Fast Stride"],
-		"recommendedCombatArts": ["Disarm", "Snare"],
-		"startingEquipment": [
-			"Whip",
-			"Leather Armor",
-			"Club",
-			"Rope (Hemp)",
-			"Healer's Kit",
-			"Draft Horse"
-		],
 		"upbringing": "Hunter-gatherer",
 		"background": "Farmhand",
-		"recommendedCompanions": ["Dog", "Cat", "Boar"]
+		"recommendedTalents": [
+			{
+				"name": "Pugilist",
+				"gloss": "Unarmed and brawling control pairs with whips and grapples"
+			},
+			{
+				"name": "Animal Companion",
+				"gloss": "Control an animal companion (Tier ≤ Nature)"
+			},
+			{
+				"name": "Fast Stride",
+				"gloss": "Use Dash as a Quick Action for better kiting and positioning"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Disarm",
+				"gloss": "Attempt to disarm immediately after this attack"
+			},
+			{
+				"name": "Snare",
+				"gloss": "Grapple and restrain with your weapon on a hit"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Whip"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Club"
+			},
+			{
+				"item": "Rope (Hemp)"
+			},
+			{
+				"item": "Healer‘s Kit"
+			},
+			{
+				"item": "Healing Salve (weak)"
+			}
+		],
+		"toolkit": "Adventuring Gear",
+		"recommendedCompanions": [
+			{
+				"name": "Dog",
+				"gloss": "Loyal tracker with pack tactics and reliable grapples."
+			},
+			{
+				"name": "Cat",
+				"gloss": "Stealthy scout with pounce and knockdown."
+			},
+			{
+				"name": "Boar",
+				"gloss": "Durable frontline that can gore on a charge."
+			}
+		],
+		"playstyle": "The Tamer locks lanes and creates openings for their animal. Use Fast Stride to kite. Disarm to strip threats. Snare to pin priority targets so your companion can maul them. Pugilist improves your baseline brawl control with whips and grapples. Your companion is your second body. Set up flanks and force bad choices.",
+		"advancement": "Raise Nature 2-3 to deepen companion options. Fighting 2-3 for more Combat Arts (Supreme Disarm, Flurry). Add Athletics or Survival for mobility and fieldcraft. Consider Field Medic from Nature for downtime care."
 	},
 	{
 		"name": "Warlock",
@@ -895,67 +1684,90 @@
 			"MND": 8
 		},
 		"suggestedSkills": "Arcana, Lore, Insight, Influence, Perception, Stealth, Fortitude",
-		"recommendedTalents": [
-			"Master of Fundamentals",
-			"Arcane Spell Knowledge",
-			"Piercing Look"
-		],
-		"startingEquipment": [
-			"Quarterstaff",
-			"Spell Catalyst (Arcane Conduit)",
-			"Leather Armor",
-			"Disguise Kit toolkit",
-			"Paralyzing Poison (weak) x2"
-		],
 		"upbringing": "Cult",
 		"background": "Pact-Bound",
+		"recommendedTalents": [
+			{
+				"name": "Master of Fundamentals",
+				"gloss": "Re-roll rank 0 spell tests once per scene"
+			},
+			{
+				"name": "Arcane Spell Knowledge",
+				"gloss": "Know +1 additional Arcana spell per rank"
+			},
+			{
+				"name": "Piercing Look",
+				"gloss": "Re‑roll Insight to detect lies or motives once per scene"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Quarterstaff"
+			},
+			{
+				"item": "Spell Catalyst (Arcane Conduit)"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Paralyzing Poison (weak)",
+				"quantity": 2
+			}
+		],
+		"toolkit": "Disguise Kit",
 		"spellData": {
 			"magicSkill": "Arcana",
-			"specialization": "Telepathy, Necromancy",
-			"disciplines": ["Telepathy", "Necromancy"],
-			"startingSpells": [
+			"mode": "devotion",
+			"options": [
 				{
-					"name": "Mental Link",
-					"rank": 0,
-					"discipline": "Telepathy"
+					"name": "Telepathy",
+					"spells": [
+						{
+							"name": "Mental Link",
+							"rank": 0
+						},
+						{
+							"name": "Mind Blast",
+							"rank": 0
+						},
+						{
+							"name": "Attack Thoughts",
+							"rank": 1
+						},
+						{
+							"name": "Subtle Suggestion",
+							"rank": 1
+						}
+					],
+					"blurb": "mind control"
 				},
 				{
-					"name": "Mind Blast",
-					"rank": 0,
-					"discipline": "Telepathy"
-				},
-				{
-					"name": "Attack Thoughts",
-					"rank": 1,
-					"discipline": "Telepathy"
-				},
-				{
-					"name": "Subtle Suggestion",
-					"rank": 1,
-					"discipline": "Telepathy"
-				},
-				{
-					"name": "Drain Life",
-					"rank": 0,
-					"discipline": "Necromancy"
-				},
-				{
-					"name": "Enfeebling Grasp",
-					"rank": 0,
-					"discipline": "Necromancy"
-				},
-				{
-					"name": "Ray of Lethargy",
-					"rank": 1,
-					"discipline": "Necromancy"
-				},
-				{
-					"name": "Grasp of Decay",
-					"rank": 1,
-					"discipline": "Necromancy"
+					"name": "Necromancy",
+					"spells": [
+						{
+							"name": "Drain Life",
+							"rank": 0
+						},
+						{
+							"name": "Enfeebling Grasp",
+							"rank": 0
+						},
+						{
+							"name": "Ray of Lethargy",
+							"rank": 1
+						},
+						{
+							"name": "Grasp of Decay",
+							"rank": 1
+						}
+					],
+					"blurb": "life drain"
 				}
 			]
-		}
+		},
+		"playstyle": "The Warlock is perfect for players who enjoy morally complex characters with manipulative magic and dark themes. Wield eldritch powers through a dark pact. Use mind control, curses, and drain effects to control enemies. Piercing Look helps you understand and manipulate others. Master of Fundamentals ensures your rank 0 spells remain reliable.",
+		"advancement": "Increase Arcana to rank 2-3 for more powerful spells and additional spells known, raise Lore for deeper occult knowledge, add Fortitude for resilience against backlash, and consider Spellweaver for Metamagic Arts."
 	},
 	{
 		"name": "Warlord",
@@ -970,15 +1782,48 @@
 			"MND": 6
 		},
 		"suggestedSkills": "Fighting, Influence, Education, Fortitude, Insight, Perception, Athletics",
-		"recommendedTalents": ["Shield Mastery", "Leading Presence", "Commander"],
-		"recommendedCombatArts": ["Exhilarating Strike", "Defensive Strike"],
-		"startingEquipment": [
-			"Longsword",
-			"Light Shield",
-			"Leather Armor",
-			"Healing Salve (weak)"
-		],
 		"upbringing": "Militaristic",
-		"background": "Officer"
+		"background": "Officer",
+		"recommendedTalents": [
+			{
+				"name": "Shield Mastery",
+				"gloss": "Reduce enemy attack Success Level with Quick Action"
+			},
+			{
+				"name": "Leading Presence",
+				"gloss": "Allies near you gain boons to Initiative and vs fear"
+			},
+			{
+				"name": "Commander",
+				"gloss": "Grant allies movement or boons as Quick Action"
+			}
+		],
+		"recommendedCombatArts": [
+			{
+				"name": "Exhilarating Strike",
+				"gloss": "Heal nearby allies on hit"
+			},
+			{
+				"name": "Defensive Strike",
+				"gloss": "Gain Defend Action effects on hit"
+			}
+		],
+		"startingEquipment": [
+			{
+				"item": "Longsword"
+			},
+			{
+				"item": "Light Shield"
+			},
+			{
+				"item": "Leather"
+			},
+			{
+				"item": "Healing Salve (weak)"
+			}
+		],
+		"toolkit": "Navigator‘s Tools",
+		"playstyle": "The Warlord is perfect for players who want to lead the party tactically, enhancing allies rather than focusing on personal combat. Command the battlefield through tactical positioning and support. Commander lets you reposition allies or grant them advantages. Leading Presence makes you a natural leader. Shield Mastery protects you while you direct the battle. Use Exhilarating Strike to heal allies and Defensive Strike to stay alive while commanding.",
+		"advancement": "Increase Fighting and Influence to rank 2-3 for more Combat Arts and leadership abilities, raise Education for tactical options, add Fortitude for survivability, and consider more command-focused talents."
 	}
 ]

@@ -1,8 +1,8 @@
 {
-  "label": "🧿 Mystic Spells",
-  "position": 4,
-  "link": {
-    "type": "doc",
-    "id": "magic/mystic-spells/overview"
-  }
+	"label": "🧿 Mystic Spells",
+	"position": 4,
+	"link": {
+		"type": "doc",
+		"id": "magic/mystic-spells/overview"
+	}
 }

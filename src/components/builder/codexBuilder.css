@@ -1,0 +1,1547 @@
+/* The codex builder shell — chrome shared by every builder dialog (M13 S8).
+   ==========================================================================
+
+   Two builders use this: the **Companion Builder** and the **Magic Item Builder**.
+   Both are the same kind of tool — a few dependent choices on the left, the thing
+   they produce on the right — and both mount in two places: inside the character
+   sheet, and bare on a docs page.
+
+   ## Why a shared file, and not a copy
+
+   It was written for the Companion Builder first. When the Magic Item Builder came
+   to be rebuilt on the same composition, copying it was the obvious move and the
+   wrong one: the milestone already records what copy-then-diverge costs, in the two
+   meta bands that drifted apart in S4d. So the chrome moved here and the companion
+   file kept only what is genuinely about companions.
+
+   ## Why it cannot use the sheet's classes
+
+   A builder renders in TWO places: inside the character sheet, and bare on a docs
+   page. `characterSheet.css` is imported by `CharacterSheetWrapper` only, and nearly
+   every rule in it is scoped under `.character-sheet-page` — an element that does
+   not exist on a docs page, and that a MUI dialog portals OUT of even on the sheet.
+   So `RecordPlate`, `SheetChip` and the rest would render as unstyled markup in
+   both contexts.
+
+   Everything here is therefore built on the GLOBAL codex tokens in `custom.css`
+   (`--nexus-bronze`, `--nexus-font-*`, `--nexus-text-*`, `--ifm-*`), which resolve
+   anywhere on the site. The shapes are the sheet's — the stamped plate, the ledger
+   row, the record course, the banner chip — because a reader should not be able to
+   tell that two stylesheets were involved.
+
+   ## The two rules that carry the whole look
+
+   1. **A keyline means you can press it.** Every control (plate, ledger row, chip,
+      pane tab, verb) is a 1.5px keylined shape sitting on the page SURFACE. Every
+      readout (a grant line, an equation, a source block) is a flat wash with NO
+      keyline. The first pass lacked this and the readouts read as more buttons.
+   2. **Flat throughout**: keylines, washes and inlaid marks. No shadow, no radius,
+      and no bare rule used to GROUP anything — a keyline here is always a
+      container's own border or a caption's underline. */
+
+.codex-builder {
+	--cb-line: color-mix(in srgb, var(--nexus-bronze) 32%, transparent);
+	--cb-line-strong: color-mix(in srgb, var(--nexus-bronze) 60%, transparent);
+	--cb-wash: color-mix(in srgb, var(--nexus-bronze) 6%, transparent);
+	--cb-wash-strong: color-mix(in srgb, var(--nexus-bronze) 13%, transparent);
+	--cb-ink: color-mix(
+		in srgb,
+		var(--nexus-bronze) 72%,
+		var(--ifm-font-color-base)
+	);
+	--cb-ink-quiet: color-mix(
+		in srgb,
+		var(--nexus-bronze) 46%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* ── The trigger ────────────────────────────────────────────────────────────
+   A command plate, not a Material outlined button: it opens a separate tool, and
+   it has to read the same on a docs page (in prose) as on the sheet (in a control
+   strip). Small caps in the UI face, one keyline, no radius.
+
+   On the SHEET this rule mostly loses, and is meant to: `.cs-section-actions
+   .MuiButton-root` is a three-class selector and wins, which puts the trigger in
+   the same stamped plate as the "Add companion" mark beside it. That rule matches
+   nothing on a docs page, so this is what the docs page gets — the same register,
+   one type step larger because it stands alone in prose rather than in a strip. */
+.cb-trigger.MuiButton-root {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	line-height: 1;
+	padding: 0.6rem 1.2rem;
+	border: 1.5px solid var(--nexus-bronze);
+	border-radius: 0;
+	background: var(--cb-wash-strong);
+	color: var(--cb-ink);
+	text-transform: none;
+}
+.cb-trigger.MuiButton-root:hover {
+	border-color: var(--nexus-bronze);
+	background: var(--cb-wash-strong);
+	/* Ink, not line — see the plate figure above (M15 S6). */
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* ── The dialog shell ──────────────────────────────────────────────────────── */
+/* Scrolling: nothing moves that does not have to.
+   ==========================================================================
+
+   MUI's `scroll="paper"` puts `overflow-y: auto` on `DialogContent`, and this
+   dialog has no `DialogContent` — its body is a two-column grid, not a stack of
+   prose. So the paper is a flex column that owns its own height, with the head and
+   the action bar as fixed courses.
+
+   The first fix made the whole BODY the scroller, which was still one scrollbar for
+   two unrelated things: browsing thirty-four creatures scrolled the stat block away,
+   and a long stat block scrolled the tier rail away.
+
+   There is no body scroll at any width now. The dialog is a fixed frame and the
+   scrolling happens as deep inside it as it can:
+
+   - the **creature ledger** scrolls, because it is the only unbounded list here.
+     The two rails and the tier's grant line above it stay pinned;
+   - the **preview column** scrolls, because a stat block's attacks and abilities
+     run long.
+
+   Nothing nests: exactly one scroller is ever under the pointer, and neither of
+   them can move the other.
+
+   Below the breakpoint the two columns cannot sit side by side, so they become two
+   PANES behind a tab rail rather than a stack — see `.cb-panes`. The frame stays
+   fixed there too; only the visible pane scrolls. */
+.codex-builder.MuiPaper-root {
+	display: flex;
+	flex-direction: column;
+	max-height: calc(100% - 64px);
+	border: 1.5px solid var(--cb-line-strong);
+	border-radius: 0;
+	background-image: none;
+}
+.codex-builder .cb-head,
+.codex-builder .cb-actions {
+	flex: 0 0 auto;
+}
+.codex-builder .cb-body {
+	flex: 1 1 auto;
+	min-height: 0;
+	/* The grid row may not exceed its track, or `overflow: hidden` clips instead of
+	   the columns scrolling. */
+	grid-template-rows: minmax(0, 1fr);
+	overflow: hidden;
+}
+/* Each pane scrolls as ONE thing. This is the mobile arrangement and the base
+   case; the desktop block below pushes the commission's scroll further down, into
+   the creature ledger, once there is room to pin the rails above it.
+
+   The first attempt made `.cb-commission` a flex column at every width with the
+   ledger as the growing scroller. On a phone that clipped: the two rails, the
+   grant line and three captions already exceed the pane, the rails cannot shrink
+   below their content, and the column had no `overflow` of its own — so
+   everything below the fold, the creature list included, was cut off by the
+   body's `overflow: hidden` with no way to reach it. */
+.codex-builder .cb-commission,
+.codex-builder .cb-result {
+	min-height: 0;
+	overflow-y: auto;
+	/* Clearance for what OVERHANGS the top of a pane: the register nameplate is
+	   pulled up onto its panel's edge by 0.6rem, and the stat card's keystone rides
+	   above its frame. A scroll container clips at its own padding box, so without
+	   this the first caption in each pane is sliced off — which is exactly the
+	   keystone-clearance rule the ornament kit already states, met here by the
+	   scroller instead of by a margin. The body's top padding is reduced by the same
+	   amount, so nothing moved. */
+	padding-top: 0.6rem;
+}
+
+@media (min-width: 900px) {
+	/* Now the rails and the grant line stay pinned and only the list moves.
+	   The commission uses overflow-y: auto so the full column is reachable when
+	   content exceeds the available height (e.g. the Creature Builder's many
+	   registers). The ledger inside cb-register--grow still scrolls on its own. */
+	.codex-builder .cb-commission {
+		display: flex;
+		flex-direction: column;
+		overflow-y: auto;
+	}
+	.codex-builder .cb-register--grow {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+		min-height: 0;
+	}
+	.codex-builder .cb-ledger__rows {
+		flex: 1 1 auto;
+		min-height: 6rem;
+		overflow-y: auto;
+	}
+}
+
+/* ── The panes, below the breakpoint ────────────────────────────────────────
+   A phone cannot show the commission and the result at once, and stacking them
+   costs the thing the layout was built for: you dial a tier and watch the card
+   answer. Stacked, the card is a screen and a half below the rail that changes it,
+   so the feedback is gone either way — and it costs a long scroll on top.
+
+   Two panes behind a rail instead. The feedback that survives is the commission
+   line in the dialog head, which names what you have asked for so far and is
+   visible from both panes; the card itself is one press away.
+
+   The rail is `tablist` markup at every width and simply not displayed above the
+   breakpoint, where both panes are on screen and there is nothing to switch. */
+.codex-builder .cb-panes {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 3px;
+	/* The body's own 1rem gap is set for two columns a metre apart; under a tab
+	   rail it reads as a hole. Pulled back to the rail's own rhythm. */
+	margin-bottom: -0.6rem;
+}
+.codex-builder .cb-pane-tab {
+	min-height: 34px;
+	padding: 0.35rem 0.5rem;
+	/* A control, so the plate treatment: page surface, 1.5px keyline. */
+	border: 1.5px solid var(--cb-line-strong);
+	border-radius: 0;
+	background: var(--ifm-background-surface-color);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--cb-ink-quiet);
+	cursor: pointer;
+}
+.codex-builder .cb-pane-tab:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: 1px;
+}
+.codex-builder .cb-pane-tab[aria-selected='true'] {
+	border-color: var(--nexus-bronze);
+	background: var(--cb-wash-strong);
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
+}
+
+@media (min-width: 900px) {
+	.codex-builder .cb-panes {
+		display: none;
+	}
+}
+@media (max-width: 899.98px) {
+	.codex-builder .cb-body {
+		/* The rail takes its own row; the visible pane takes the rest. */
+		grid-template-rows: auto minmax(0, 1fr);
+	}
+	.codex-builder .cb-body[data-pane='build'] .cb-result,
+	.codex-builder .cb-body[data-pane='preview'] .cb-commission {
+		display: none;
+	}
+}
+
+.codex-builder .cb-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.25rem 1rem;
+	padding: 0.75rem 1rem 0.6rem;
+	border-bottom: 1px solid var(--cb-line);
+}
+.codex-builder .cb-head__title {
+	margin: 0;
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-lg);
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: var(--ifm-font-color-base);
+}
+/* The commission, stated as a line rather than left implicit in three controls:
+   what you have asked for so far, or the one thing still missing. */
+.codex-builder .cb-head__line {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	color: var(--cb-ink-quiet);
+}
+.codex-builder .cb-head__line b {
+	font-weight: 700;
+	color: var(--cb-ink);
+}
+
+.codex-builder .cb-body {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 1rem;
+	/* Top padding is 0.25rem, not 0.85rem: the panes add 0.6rem of their own for
+	   the nameplate overhang. */
+	padding: 0.25rem 1rem 1rem;
+}
+@media (min-width: 900px) {
+	.codex-builder .cb-body {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		/* NOT `align-items: start`, which is what this was while the body itself
+		   scrolled. A start-aligned item is sized to its CONTENT, so each column
+		   would grow past the `minmax(0, 1fr)` track and be clipped by the body's
+		   `overflow: hidden` instead of scrolling inside it. Stretch — the default —
+		   is what gives the columns a definite height to scroll within. */
+		align-items: stretch;
+	}
+}
+
+/* ── A register: one decision, in its own carved panel ─────────────────────
+   Three underlined captions over three sets of hairline boxes was not enough
+   separation (owner review): the panel, the controls in it and the readout under
+   them were all one keyline weight on one background, so nothing said where a
+   decision started or which parts of it could be pressed.
+
+   Two devices carry it now, and they are applied everywhere in this file:
+
+   1. **A register is a bounded panel** — a wash and a keyline of its own, with the
+      caption riding ON its top edge as an inlaid nameplate rather than floating
+      above it. Three panels, three decisions, legible before a word is read.
+   2. **A keyline means you can press it.** Every control here (plate, ledger row,
+      chip, verb) is a keylined shape on the page surface. Every readout (the tier
+      grant, the defense equation) is a flat wash with NO keyline. That one
+      distinction is what the previous pass lacked — the grant line was keylined
+      exactly like the plates above it and read as six more buttons. */
+.codex-builder .cb-register {
+	padding: 0 0.5rem 0.5rem;
+	border: 1px solid var(--cb-line);
+	background: color-mix(in srgb, var(--nexus-bronze) 3%, transparent);
+}
+.codex-builder .cb-register + .cb-register {
+	margin-top: 1.25rem;
+}
+/* The nameplate sits ON the panel's top edge — pulled up by half its height, with
+   the panel's own background punched out behind it, so the keyline appears to run
+   through it. A carved plaque set into a wall, not a heading over a box. */
+.codex-builder .cb-register__caption {
+	display: flex;
+	align-items: baseline;
+	gap: 0.4rem;
+	width: fit-content;
+	max-width: 100%;
+	margin: -0.6rem 0 0.45rem;
+	padding: 0.1rem 0.5rem;
+	border: 1px solid var(--cb-line-strong);
+	background: var(--ifm-background-surface-color);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	color: var(--cb-ink);
+}
+/* The step's numeral, inlaid before its name. A codex numbers its courses; it
+   also tells a first-time reader that these three things happen in an order. */
+.codex-builder .cb-register__step {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	color: var(--nexus-bronze);
+}
+/* A settled decision, collapsed to its answer.
+   ==========================================================================
+
+   Only builders with several long lists use this. One unbounded list can simply
+   grow (the Companion Builder's creatures); three cannot all be open at once
+   without the column becoming a stack of scrollbars. So a register that has been
+   answered states its answer and gets out of the way, and the one being decided
+   takes the height — the expanded-row pattern applied to a decision.
+
+   The summary is a real button: reopening is a press, and it has to be reachable
+   from the keyboard. */
+.codex-builder .cb-register--closed {
+	padding-bottom: 0.35rem;
+}
+.codex-builder .cb-register__summary {
+	display: flex;
+	/* Centred, not baseline: the `Change` control is a padded keylined box now, and
+	   seating a box on a text baseline hangs its lower half below the answer. */
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	width: 100%;
+	padding: 0.1rem 0.15rem;
+	border: 0;
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	color: var(--ifm-font-color-base);
+	text-align: left;
+	cursor: pointer;
+}
+.codex-builder .cb-register__summary:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: 2px;
+}
+.codex-builder .cb-register__answer {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.codex-builder .cb-register__answer b {
+	font-weight: 700;
+}
+/* Closed but unanswered — a fact about the register, not an answer, so it takes the
+   quiet ink the locked reason does. */
+.codex-builder .cb-register__answer--none {
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--cb-ink-quiet);
+}
+/* A keyline, after all (owner review).
+   It was a bare small-caps word on the theory that the whole summary row is the
+   control and a second bordered shape inside it would claim there are two. In use
+   that reads as a caption, not as a way back into a decision — and this dialog's
+   own rule is that A KEYLINE MEANS PRESSABLE, so the one thing the reader must
+   press to reopen a settled register cannot be the one control without one.
+   The row stays clickable; this is the affordance that says so. */
+.codex-builder .cb-register__change {
+	flex: 0 0 auto;
+	padding: 0.1rem 0.45rem;
+	border: 1.5px solid var(--cb-line-strong);
+	background: var(--ifm-background-surface-color);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	color: var(--cb-ink);
+}
+.codex-builder .cb-register__summary:hover .cb-register__change,
+.codex-builder .cb-register__summary:focus-visible .cb-register__change {
+	border-color: var(--nexus-bronze);
+	background: var(--cb-wash-strong);
+}
+
+/* A decision that cannot be made yet — the register is SHOWN and says why, for the
+   same reason the size rail shows the sizes a tier cannot reach: a dependency you
+   can see is a rule you learn, where a register that appears only once it is
+   satisfied just looks like the dialog growing. A readout, so no keyline. */
+.codex-builder .cb-locked {
+	margin: 0;
+	padding: 0.5rem 0.1rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--cb-ink-quiet);
+}
+
+/* A ledger's column names, in the small-caps register the sheet's ledgers use.
+   Sticky, so the tracks stay named while the list moves under them. */
+.codex-builder .cb-ledger__head {
+	display: grid;
+	grid-template-columns: var(
+		--cb-row-cols,
+		15px minmax(6rem, 1fr) minmax(0, 1.4fr)
+	);
+	align-items: end;
+	gap: 0.5rem;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	padding: 2px 6px 3px;
+	background: var(--ifm-background-surface-color);
+	border-bottom: 1px solid var(--cb-line-strong);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--cb-ink);
+}
+.codex-builder .cb-ledger__head > span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* A row the rules forbid: flattened, and not pressable. */
+.codex-builder .cb-row:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+.codex-builder .cb-row:disabled:hover {
+	background: transparent;
+}
+
+.codex-builder .cb-register__note {
+	font-weight: 400;
+	font-variant-caps: normal;
+	letter-spacing: 0;
+	font-size: var(--nexus-text-3xs);
+	color: var(--cb-ink-quiet);
+}
+
+/* ── The rails: tier and size as stamped plates ─────────────────────────────
+   Direct selection, not a dropdown. A dropdown hides both the range of the choice
+   and its consequence; the whole point of tier and size is that they are LADDERS
+   with a stated grant at each step, and a rail says that on its face.
+
+   A plate at rest sits on the page SURFACE with a 1.5px keyline — a raised stone
+   tile you press. It was a hairline box on transparent before, which is the same
+   treatment the captions and the readouts had and read as a label rather than a
+   control. Selected takes the full bronze keyline, a bronze wash, bronze ink on
+   the figure and an inlaid lozenge whose space is reserved on every plate, so
+   nothing moves when the selection does. */
+.codex-builder .cb-rail {
+	display: grid;
+	gap: 4px;
+}
+.codex-builder .cb-rail--tier,
+.codex-builder .cb-rail--quality {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (min-width: 560px) {
+	.codex-builder .cb-rail--tier,
+	.codex-builder .cb-rail--quality {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+	}
+}
+.codex-builder .cb-rail--size {
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.codex-builder .cb-plate {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 2px;
+	min-height: 40px;
+	padding: 3px 2px 3px;
+	border: 1.5px solid var(--cb-line-strong);
+	border-radius: 0;
+	background: var(--ifm-background-surface-color);
+	font-family: var(--nexus-font-ui);
+	color: var(--cb-ink-quiet);
+	cursor: pointer;
+	text-align: center;
+}
+.codex-builder .cb-plate:hover:not(:disabled) {
+	border-color: var(--nexus-bronze);
+	background: var(--cb-wash);
+	color: var(--cb-ink);
+}
+.codex-builder .cb-plate:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: 2px;
+}
+/* A plate the rules forbid: flattened back onto the panel, keyline dropped to a
+   hairline. It is still shown, because a cap you can see is a rule you learn —
+   but it must not read as pressable. */
+.codex-builder .cb-plate:disabled {
+	border-color: var(--cb-line);
+	border-width: 1px;
+	background: transparent;
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+.codex-builder .cb-plate--on {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 16%, transparent);
+	color: var(--ifm-font-color-base);
+}
+.codex-builder .cb-plate__figure {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* Reserved so the tier numerals and the size lozenges sit on one baseline and
+	   the two rails line up as a pair. */
+	min-height: 16px;
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-lg);
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+	color: var(--cb-ink);
+}
+.codex-builder .cb-plate--on .cb-plate__figure {
+	/* One step deeper than the keyline bronze (M15 S6, measured). Raw bronze as a
+	   22px figure on the selected plate's own wash reads 4.02:1 in light mode,
+	   which is under AA for text below 24px. Mixing toward `--ifm-font-color-base`
+	   darkens it on parchment and lightens it on obsidian — the same fix M13 S10
+	   made on the character sheet, which never reached these three builders. */
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
+}
+.codex-builder .cb-plate:disabled .cb-plate__figure {
+	color: inherit;
+}
+/* The size rail's figure is a LOZENGE THAT GROWS, not a numeral — the two rails
+   are otherwise five and six identical boxes in a column and read as one control
+   repeated. A mark that gets physically bigger from Tiny to Huge states the axis
+   carvedly, in the theme's own shape vocabulary, without a word or a hue. */
+.codex-builder .cb-scale {
+	display: block;
+	width: var(--cb-scale);
+	height: var(--cb-scale);
+	transform: rotate(45deg);
+	background: currentColor;
+}
+.codex-builder .cb-plate__name {
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	line-height: 1.1;
+}
+.codex-builder .cb-plate--on .cb-plate__name {
+	font-weight: 700;
+}
+/* The trade a size makes, on the plate that makes it: three signed figures, so
+   "Huge parries better and dodges worse" is legible BEFORE the press rather than
+   discoverable by watching the defenses move afterwards. */
+.codex-builder .cb-plate__trade {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.28rem;
+	font-size: var(--nexus-text-3xs);
+	font-variant-numeric: tabular-nums;
+	letter-spacing: 0.02em;
+	line-height: 1.1;
+	white-space: nowrap;
+	opacity: 0.85;
+}
+.codex-builder .cb-trade__part {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.1rem;
+}
+/* The reserved lozenge: an inlaid mark under the selected plate only, its space
+   held on every plate. */
+.codex-builder .cb-plate__mark {
+	width: 5px;
+	height: 5px;
+	margin-top: 2px;
+	transform: rotate(45deg);
+	background: transparent;
+}
+.codex-builder .cb-plate--on .cb-plate__mark {
+	background: var(--nexus-bronze);
+}
+
+/* The grant line: what the chosen tier actually buys, read straight off the
+   rulebook's tier table — the same information the docs page prints as a
+   six-column table, one column at a time.
+
+   A READOUT, and styled as one: no keyline, a flat wash, an engraved hairline
+   above it to seat it under the rail. It carried a full keyline before and was
+   indistinguishable from the six plates it sits beneath. */
+.codex-builder .cb-grant {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.1rem 0.85rem;
+	margin: 0.5rem -0.5rem -0.5rem;
+	padding: 0.35rem 0.5rem;
+	border-top: 1px solid var(--cb-line);
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+}
+.codex-builder .cb-grant__pair {
+	display: flex;
+	align-items: baseline;
+	gap: 0.3rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+}
+.codex-builder .cb-grant__label {
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--cb-ink-quiet);
+}
+.codex-builder .cb-grant__value {
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	color: var(--ifm-font-color-base);
+}
+
+/* ── The creature ledger ────────────────────────────────────────────────────
+   Thirty-four creatures behind a `<Select>` was a list pretending to be a field:
+   no search, no way to see what a creature DOES before choosing it, and a coloured
+   dot per type carrying the only classification. It is a ledger now — filter, type
+   marks, and the creature's own skills on its row. */
+.codex-builder .cb-ledger__filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.4rem;
+	margin-bottom: 0.4rem;
+}
+/* The search field, as a carved control rather than a Material outline (owner
+   review). It was a MUI `TextField`, and restyling it meant fighting the
+   notched-outline machinery — a `<fieldset>` with a legend gap, a hairline in
+   Material's grey, a 40px box the type sat lost inside. It was the one place in
+   this dialog a Material component still showed through.
+
+   A bare `<input>` in a keylined plate instead, built like every other control
+   here: the page surface, a 1.5px bronze keyline, no radius, the UI face. The mark
+   is `eye` — to search is to look — and it sits INSIDE the keyline as an engraved
+   fixture rather than as an icon button, because pressing it does nothing. */
+.codex-builder .cb-search {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+	flex: 1 1 9rem;
+	min-width: 7rem;
+	padding: 0 0.4rem;
+	border: 1.5px solid var(--cb-line-strong);
+	background: var(--ifm-background-surface-color);
+}
+.codex-builder .cb-search:focus-within {
+	border-color: var(--nexus-bronze);
+}
+.codex-builder .cb-search__mark {
+	flex: 0 0 auto;
+	color: var(--cb-ink-quiet);
+}
+.codex-builder .cb-search:focus-within .cb-search__mark {
+	color: var(--nexus-bronze);
+}
+.codex-builder .cb-search__input {
+	flex: 1 1 auto;
+	min-width: 0;
+	height: 30px;
+	border: 0;
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	color: var(--ifm-font-color-base);
+}
+.codex-builder .cb-search__input:focus {
+	outline: none;
+}
+.codex-builder .cb-search__input::placeholder {
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--cb-ink-quiet);
+	opacity: 1;
+}
+/* Clearing is a real press, so it is a real button — shown only when there is
+   something to clear. Its space is not reserved: the field is elastic, so nothing
+   jumps when it appears. */
+.codex-builder .cb-search__clear {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	line-height: 1;
+	color: var(--cb-ink-quiet);
+	cursor: pointer;
+}
+.codex-builder .cb-search__clear:hover {
+	color: var(--nexus-bronze);
+}
+.codex-builder .cb-search__clear:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: 1px;
+}
+
+/* Bounded by its rules at every width; whether it is also the SCROLLER depends on
+   the breakpoint — above 900px it takes whatever height the rails leave (see the
+   scroll block at the head of this file), below it the whole pane scrolls and this
+   just flows. */
+.codex-builder .cb-ledger__rows {
+	border-top: 1px solid var(--cb-line-strong);
+	border-bottom: 1px solid var(--cb-line-strong);
+}
+
+.codex-builder .cb-row {
+	display: grid;
+	/*
+		The tracks come from the LIST, not from this file: a creature row is
+		mark / name / skills, a base-item row is mark / name / quality / cost / load /
+		properties. One template fed by a custom property, the way the search dialog's
+		columns are fed by `--cs-search-cols`, so a second list does not mean a second
+		copy of this rule.
+	*/
+	grid-template-columns: var(
+		--cb-row-cols,
+		15px minmax(6rem, 1fr) minmax(0, 1.4fr)
+	);
+	align-items: center;
+	gap: 0.5rem;
+	width: 100%;
+	min-height: 26px;
+	padding: 3px 6px;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	font-family: var(--nexus-font-ui);
+	color: var(--ifm-font-color-base);
+	cursor: pointer;
+	text-align: left;
+}
+.codex-builder .cb-row + .cb-row {
+	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 15%, transparent);
+}
+.codex-builder .cb-row:hover {
+	background: var(--cb-wash);
+}
+.codex-builder .cb-row:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: -2px;
+}
+.codex-builder .cb-row--on {
+	background: var(--cb-wash-strong);
+	box-shadow: none;
+}
+.codex-builder .cb-row__mark {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--cb-ink-quiet);
+}
+.codex-builder .cb-row--on .cb-row__mark {
+	color: var(--nexus-bronze);
+}
+.codex-builder .cb-row__name {
+	font-size: var(--nexus-text-dense);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.codex-builder .cb-row--on .cb-row__name {
+	font-weight: 700;
+}
+.codex-builder .cb-row__skills {
+	font-size: var(--nexus-text-xs);
+	color: var(--cb-ink-quiet);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Nothing matched: the constraint that emptied the list, named, with the control
+   that lifts it — the S8 empty-state rule. */
+.codex-builder .cb-empty {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 1.25rem 0.75rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.04em;
+	color: var(--cb-ink-quiet);
+}
+
+/* ── Chips: a type is a mark and a word, never a block of colour ────────────
+   The eight hardcoded hexes this replaces (`Animal: '#48A06C'`, …) were the same
+   fault S8 deleted from the search dialogs: a saturated fill laid over carved
+   stone. Identity is carried by the type's SIGIL and its name; the chip itself is
+   structural bronze, pointed at both ends like every other named-category chip on
+   the site. */
+.codex-builder .cb-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.22rem;
+	position: relative;
+	height: 16px;
+	margin: 0 5px;
+	padding: 0 3px;
+	border-top: 1px solid var(--cb-line-strong);
+	border-bottom: 1px solid var(--cb-line-strong);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	line-height: 1;
+	color: var(--cb-ink);
+	white-space: nowrap;
+}
+.codex-builder .cb-chip::before,
+.codex-builder .cb-chip::after {
+	content: '';
+	position: absolute;
+	top: -1px;
+	width: 0;
+	height: 0;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+}
+.codex-builder .cb-chip::before {
+	left: -5px;
+	border-right: 5px solid var(--cb-line-strong);
+}
+.codex-builder .cb-chip::after {
+	right: -5px;
+	border-left: 5px solid var(--cb-line-strong);
+}
+
+/* The type filters are the same chip, made pressable. */
+.codex-builder button.cb-chip {
+	background: transparent;
+	cursor: pointer;
+}
+.codex-builder button.cb-chip:hover {
+	color: var(--nexus-bronze);
+}
+.codex-builder button.cb-chip:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: 2px;
+}
+.codex-builder button.cb-chip[aria-pressed='true'] {
+	background: var(--cb-wash-strong);
+	color: var(--nexus-bronze);
+}
+
+/* ── The preview ────────────────────────────────────────────────────────────
+
+   The preview is `CreatureStatBlock` — the codex's own creature card, the same
+   component the creature pages and the Companions tab render. It brings its own
+   CSS module, so there is almost nothing to say here.
+
+   The first pass built a bespoke plate instead (a figure band, two courses of
+   ruled cells, prose courses) and that was the mistake: it made a FOURTH rendering
+   of one artifact. What survives is the one line that is genuinely the builder's
+   and not the card's — the arithmetic behind the defense band, which is
+   scaffolding for the act of building rather than part of the published block, and
+   so is deliberately outside the card's frame. */
+/* A readout, so no keyline — the same rule the tier grant follows. */
+.codex-builder .cb-equation {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.15rem 0.4rem;
+	margin: 0.45rem 0 0;
+	padding: 0.3rem 0.5rem;
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-numeric: tabular-nums;
+	letter-spacing: 0.02em;
+	color: var(--cb-ink-quiet);
+}
+.codex-builder .cb-equation__name {
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--cb-ink);
+}
+/* The key, pushed to the end of the line: what the three figures in each group
+   are. Stated once rather than repeated per defense. */
+.codex-builder .cb-equation__key {
+	margin-left: auto;
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	opacity: 0.85;
+}
+
+/* ── The markdown source ────────────────────────────────────────────────────
+   Not a second tab competing with the preview. The preview IS the companion; the
+   source is the export mechanism, so it is a disclosure under the plate. Kept
+   rendered and `hidden` rather than unmounted, per the sheet's disclosure rule. */
+.codex-builder .cb-source {
+	margin-top: 0.7rem;
+}
+.codex-builder .cb-source__toggle {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+	min-height: 24px;
+	padding: 0 0.2rem;
+	border: 0;
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--cb-ink);
+	cursor: pointer;
+}
+.codex-builder .cb-source__toggle:hover {
+	color: var(--nexus-bronze);
+}
+.codex-builder .cb-source__toggle:focus-visible {
+	outline: 1.5px solid var(--nexus-bronze);
+	outline-offset: 2px;
+}
+/* No cap and no scroll of its own: it sits inside the preview column, which
+   already scrolls, and a scrollbar inside a scrollbar is the thing the frame was
+   arranged to avoid. It wraps, so there is no horizontal overflow either. */
+.codex-builder .cb-source__body {
+	margin: 0.3rem 0 0;
+	padding: 0.5rem 0.6rem;
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	font-size: var(--nexus-text-xs);
+	line-height: 1.4;
+	white-space: pre-wrap;
+}
+
+/* ── The verbs ─────────────────────────────────────────────────────────────── */
+.codex-builder .cb-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.6rem 1rem;
+	border-top: 1px solid var(--cb-line);
+}
+.codex-builder .cb-actions__spacer {
+	flex: 1 1 auto;
+}
+.codex-builder .cb-actions .MuiButton-root {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	min-height: 32px;
+	padding: 0.3rem 0.8rem;
+	border-radius: 0;
+	text-transform: none;
+}
+.codex-builder .cb-actions .cb-verb--quiet.MuiButton-root {
+	border: 1.5px solid var(--cb-line-strong);
+	color: var(--cb-ink-quiet);
+	background: var(--ifm-background-surface-color);
+}
+.codex-builder .cb-actions .cb-verb--quiet.MuiButton-root:hover {
+	border-color: var(--cb-line-strong);
+	color: var(--cb-ink);
+	background: var(--cb-wash);
+}
+.codex-builder .cb-actions .cb-verb--primary.MuiButton-root {
+	border: 1.5px solid var(--nexus-bronze);
+	background: var(--cb-wash-strong);
+	/* Ink, not line (M15 S6): the dialog's one primary verb read 4.38:1 in light
+	   mode — raw bronze on the bronze wash it sits in. */
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
+}
+.codex-builder .cb-actions .cb-verb--primary.MuiButton-root:hover {
+	background: color-mix(in srgb, var(--nexus-bronze) 20%, transparent);
+}
+.codex-builder .cb-actions .MuiButton-root.Mui-disabled {
+	opacity: 0.4;
+}
+
+/* The one moment of motion: a copy confirming itself. Reduced-motion readers get
+   the same word without the fade. */
+.codex-builder .cb-flash {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--nexus-bronze);
+	animation: cb-flash-in 180ms ease-out;
+}
+@keyframes cb-flash-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.codex-builder .cb-flash {
+		animation: none;
+	}
+	.cb-library-toggle__caret {
+		transition: none;
+	}
+}
+
+/* A numeric cell in a ledger row — right-aligned tabular figures, so a column of
+   costs can be scanned as a column. */
+.codex-builder .cb-row__num {
+	font-size: var(--nexus-text-xs);
+	font-variant-numeric: tabular-nums;
+	text-align: right;
+	color: var(--cb-ink-quiet);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.codex-builder .cb-row--on .cb-row__num {
+	color: var(--ifm-font-color-base);
+}
+
+/* A labelled field inside a register (M15 S2).
+   ==========================================================================
+
+   The Companion Builder's registers hold rails and ledgers only; the creature
+   builder is the first with plain fields in one — a type, a subtype, a name.
+   They take the sheet's input register (a small-caps label above its control,
+   not Material's floating one) so a reader who has met the character sheet does
+   not learn a second field shape here. */
+.cb-field-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+}
+.cb-field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	flex: 1 1 10rem;
+	min-width: 0;
+}
+.cb-field--wide {
+	flex-basis: 100%;
+}
+.cb-field__label {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 78%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* List entries inside a register (M15 S3).
+   ==========================================================================
+
+   An attack is a name, a damage figure and a note; an ability is a name, a
+   timing and a note. The panel this replaced gave each of those its own labelled
+   `TextField` stacked vertically, so four attacks were a screen of boxes and the
+   one a reader wanted to change was usually off-screen.
+
+   One line per entry, the way every list in this app now reads: the fields sit
+   on a row, the prose drops beneath it, and the whole entry is as tall as what
+   it holds. */
+.cb-entries {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-bottom: 0.6rem;
+}
+.cb-entry {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+.cb-entry--stacked {
+	flex-direction: column;
+	align-items: stretch;
+	gap: 0.3rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
+}
+.cb-entry__line {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+.cb-entry__main {
+	flex: 1 1 8rem;
+	min-width: 0;
+}
+.cb-entry__figure {
+	flex: 0 1 7rem;
+	min-width: 0;
+}
+.cb-entry__kind {
+	flex: 0 1 9rem;
+	min-width: 0;
+}
+.cb-entry__rank {
+	flex: 0 0 4.5rem;
+}
+/* The action type shows its mark beside its name, the same pairing the sheet's
+   ability rows use — a control that teaches a glyph in its menu and then hides
+   it is worse than no glyph (M13 S8c). */
+.cb-entry__action {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+/* Dropping an entry is destructive but trivially redone, so it takes the sheet's
+   quiet-until-hovered treatment rather than a confirmation. */
+.cb-entry__drop {
+	flex: 0 0 auto;
+	width: 1.6rem;
+	height: 1.6rem;
+	padding: 0;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 25%, transparent);
+	background: none;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+	font-size: var(--nexus-text-sm);
+	line-height: 1;
+	cursor: pointer;
+}
+.cb-entry__drop:hover {
+	color: var(--cs-danger, #a33);
+	border-color: currentColor;
+}
+
+.cb-entry__add {
+	align-self: flex-start;
+	padding: 0.2rem 0.6rem;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	background: color-mix(in srgb, var(--ifm-color-primary) 6%, transparent);
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 80%,
+		var(--ifm-font-color-base)
+	);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	cursor: pointer;
+}
+.cb-entry__add:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+}
+
+/* Before the first choice there is no creature to draw. */
+.cb-plate-empty {
+	margin: 0;
+	font-style: italic;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 45%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* ── Type defaults hint (M15) ───────────────────────────────────────────────
+   When the selected creature type has pre-defined attacks or abilities,
+   a quiet hint appears in the Kind register offering to apply them.
+   It is a readout (no keyline) paired with one pressable verb. */
+.cb-defaults-hint {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-top: 0.4rem;
+	padding: 0.3rem 0.5rem;
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+}
+.cb-defaults-hint__text {
+	flex: 1 1 auto;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.04em;
+	color: var(--cb-ink-quiet);
+}
+.cb-defaults-hint__apply {
+	flex: 0 0 auto;
+	padding: 0.15rem 0.6rem;
+	border: 1px solid var(--cb-line-strong);
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	color: var(--cb-ink);
+	cursor: pointer;
+}
+.cb-defaults-hint__apply:hover {
+	background: var(--cb-wash-strong);
+	color: var(--nexus-bronze);
+}
+
+/* ── Multi-select tab picker (M15) ─────────────────────────────────────────
+   The immunity / resistance / weakness fields now use a tabbed chip-picker
+   instead of a comma-separated text input.
+   Three tabs: Damage Types · Conditions · Other (free text). */
+.cb-multi-tabs {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	margin-bottom: 0.5rem;
+}
+
+.cb-multi-tabs__strip {
+	display: flex;
+	gap: 0;
+	border: 1px solid var(--cb-line);
+	background: var(--cb-wash);
+}
+.cb-multi-tabs__tab {
+	flex: 1 1 0;
+	padding: 0.25rem 0.5rem;
+	border: 0;
+	border-right: 1px solid var(--cb-line);
+	background: transparent;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	color: var(--cb-ink-quiet);
+	cursor: pointer;
+	text-align: center;
+}
+.cb-multi-tabs__tab:last-child {
+	border-right: 0;
+}
+.cb-multi-tabs__tab:hover {
+	background: var(--cb-wash-strong);
+	color: var(--cb-ink);
+}
+.cb-multi-tabs__tab.is-active {
+	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+	color: color-mix(in srgb, var(--nexus-bronze) 80%, var(--ifm-font-color-base));
+}
+
+.cb-multi-tabs__panel {
+	padding: 0.4rem 0;
+}
+.cb-multi-tabs__other {
+	display: flex;
+	gap: 0.5rem;
+	align-items: flex-end;
+}
+.cb-multi-tabs__other-add {
+	flex: 0 0 auto;
+	padding: 0.25rem 0.7rem;
+	border: 1px solid var(--cb-line-strong);
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	color: var(--cb-ink);
+	cursor: pointer;
+}
+.cb-multi-tabs__other-add:hover {
+	background: var(--cb-wash-strong);
+}
+
+/* Grid of toggleable chips inside a tab panel. */
+.cb-multi-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+}
+.cb-multi-chip {
+	padding: 0.2rem 0.55rem;
+	border: 1px solid var(--cb-line);
+	background: transparent;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--cb-ink-quiet);
+	cursor: pointer;
+}
+.cb-multi-chip:hover {
+	border-color: var(--cb-line-strong);
+	color: var(--cb-ink);
+	background: var(--cb-wash);
+}
+.cb-multi-chip.is-selected {
+	border-color: var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+	color: color-mix(in srgb, var(--nexus-bronze) 80%, var(--ifm-font-color-base));
+}
+
+/* Current selections — the combined sorted list shown below all tabs. */
+.cb-multi-current {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.3rem;
+	min-height: 1.75rem;
+	padding: 0.25rem 0.4rem;
+	border: 1px solid var(--cb-line);
+	background: var(--cb-wash);
+}
+.cb-multi-current__label {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	color: var(--cb-ink-quiet);
+	margin-right: 0.25rem;
+}
+/* Items inside the current-selections row — pressable to remove. */
+.cb-multi-current__item {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.2rem;
+	padding: 0.1rem 0.45rem;
+	border: 1px solid var(--cb-line-strong);
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--cb-ink);
+	cursor: pointer;
+}
+.cb-multi-current__item:hover {
+	border-color: var(--cs-danger, #a33);
+	color: var(--cs-danger, #a33);
+}
+
+/* ── Attack / Ability library panel (M15) ───────────────────────────────────
+   A compact searchable browser above the "Add" button.
+   The toggle button shows/hides the panel. */
+.cb-library-toggle {
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.2rem 0.6rem;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	background: color-mix(in srgb, var(--ifm-color-primary) 6%, transparent);
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 80%,
+		var(--ifm-font-color-base)
+	);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	cursor: pointer;
+}
+.cb-library-toggle:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+}
+.cb-library-toggle.is-open {
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+	border-color: var(--nexus-bronze);
+	color: color-mix(in srgb, var(--nexus-bronze) 80%, var(--ifm-font-color-base));
+}
+/* Same drawn caret the table folds use, masked from `--nexus-caret-glyph` and
+   tinted by `currentColor` so it tracks the toggle's own ink in both themes. */
+.cb-library-toggle__caret {
+	flex: 0 0 auto;
+	width: 9px;
+	height: 9px;
+	background-color: currentColor;
+	-webkit-mask: var(--nexus-caret-glyph) center / contain no-repeat;
+	mask: var(--nexus-caret-glyph) center / contain no-repeat;
+	transform: rotate(-90deg);
+	transition: transform 120ms linear;
+}
+.cb-library-toggle.is-open .cb-library-toggle__caret {
+	transform: rotate(180deg);
+}
+
+.codex-builder .cb-library {
+	margin: 0.5rem 0;
+	border: 1px solid var(--cb-line);
+	background: var(--cb-wash);
+}
+.codex-builder .cb-library__filters {
+	padding: 0.4rem 0.5rem;
+	border-bottom: 1px solid var(--cb-line);
+}
+.codex-builder .cb-library__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.3rem;
+	margin-top: 0.3rem;
+}
+.codex-builder .cb-library__entries {
+	max-height: 240px;
+	overflow-y: auto;
+}
+.codex-builder .cb-library__entry {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	padding: 0.4rem 0.5rem;
+	border-bottom: 1px solid color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+}
+.codex-builder .cb-library__entry:last-child {
+	border-bottom: 0;
+}
+.codex-builder .cb-library__entry--fit {
+	background: color-mix(in srgb, var(--nexus-bronze) 6%, transparent);
+}
+.codex-builder .cb-library__entry-info {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.codex-builder .cb-library__entry-name {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-weight: 700;
+	color: var(--ifm-font-color-base);
+}
+.codex-builder .cb-library__entry-meta {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--cb-ink-quiet);
+	margin-top: 0.1rem;
+}
+.codex-builder .cb-library__entry-desc {
+	font-size: var(--nexus-text-xs);
+	color: var(--cb-ink-quiet);
+	margin-top: 0.15rem;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.codex-builder .cb-library__add {
+	flex: 0 0 auto;
+	padding: 0.2rem 0.55rem;
+	border: 1px solid var(--cb-line-strong);
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--cb-ink);
+	cursor: pointer;
+	white-space: nowrap;
+}
+.codex-builder .cb-library__add:hover {
+	background: var(--cb-wash-strong);
+	border-color: var(--nexus-bronze);
+	color: var(--nexus-bronze);
+}
+.codex-builder .cb-library__empty {
+	padding: 0.75rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-style: italic;
+	color: var(--cb-ink-quiet);
+	text-align: center;
+}

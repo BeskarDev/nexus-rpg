@@ -37,7 +37,7 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 
 **Synergy gaps (updated 2026-07-16)**: field setup and lasting extenders are excellent; the construct-payoff line landed partially — *Force Surge* (R2, published in P7) covers the R2 force payoff (the old *Grinding Walls* seed was rejected in its favor), and **Binding Seal** (R5, published) caps the containment line. Still seeds (R3): *Hail of Splinters* (wall bites the funneled), *Seal the Cage* (anyone's hold → lasting force containment).
 
-## Current Spell Inventory (41 published spells)
+## Current Spell Inventory (40 published spells)
 
 *Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
@@ -47,7 +47,7 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | 1 | 9 | Alarm, Arcane Barrier, Arcane Deflection, Conjure Familiar, Hale of Blades, Infuse Item, Mage Armor, Magic Missiles, Spatial Echo |
 | 2 | 9 | Arcane Circle, Arcane Eye, Arcane Lock, Eldritch Tendrils, Fabricate, Force Surge, Phase Step, Summon Aberration, Web |
 | 3 | 8 | Arcane Blast, Astral Gate, Banishment, Burst of Tendrils, Dimension Door, Distant Eye, Magic Missile Barrage, Wall of Force |
-| 4 | 5 | Arcane Empowerment, Astral Body, Disintegrate, Force Cage, Teleportation Circle |
+| 4 | 4 | Arcane Empowerment, Disintegrate, Force Cage, Teleportation Circle |
 | 5 | 4 | Arcane Genesis, Binding Seal, Planar Gateway, Subjugation |
 
 ### Trait × Rank Coverage Matrix

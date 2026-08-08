@@ -186,7 +186,7 @@ export const UserMenu: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 	}
 
 	return (
-		<Box sx={{ minWidth: 280, p: 2 }}>
+		<Box className="cs-account-panel" sx={{ minWidth: 280, p: 2 }}>
 			<EditNameDialog
 				open={editDialogOpen}
 				currentName={playerName}
@@ -196,10 +196,11 @@ export const UserMenu: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 
 			{/* User Info Section */}
 			<Box sx={{ mb: 2 }}>
-				<Typography variant="subtitle2" color="text.secondary" gutterBottom>
-					Logged in as
+				{/* Caption register, as every plate on the sheet labels its contents. */}
+				<Typography className="cs-account-panel__caption">
+					Signed in as
 				</Typography>
-				<Typography variant="body2" sx={{ fontWeight: 'bold', mb: 1 }}>
+				<Typography className="cs-account-panel__email">
 					{currentUser.email}
 				</Typography>
 
@@ -239,27 +240,23 @@ export const UserMenu: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 
 			{/* Menu Options */}
 			<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-				<MenuItem
-					onClick={() => setEditDialogOpen(true)}
-					disabled={loading}
-					sx={{ borderRadius: 1 }}
-				>
+				<MenuItem onClick={() => setEditDialogOpen(true)} disabled={loading}>
 					<ListItemIcon>
 						<EditIcon fontSize="small" />
 					</ListItemIcon>
-					<ListItemText primary="Edit Player Name" />
+					<ListItemText primary="Edit player name" />
 				</MenuItem>
 
 				{isAdmin && (
 					<>
-						<MenuItem onClick={handleAdminClick} sx={{ borderRadius: 1 }}>
+						<MenuItem onClick={handleAdminClick}>
 							<ListItemIcon>
 								<AdminIcon fontSize="small" />
 							</ListItemIcon>
 							<ListItemText primary="Admin Panel" />
 						</MenuItem>
 
-						<MenuItem sx={{ borderRadius: 1, cursor: 'default' }} disableRipple>
+						<MenuItem sx={{ cursor: 'default' }} disableRipple>
 							<ListItemIcon>
 								<VisibilityIcon fontSize="small" />
 							</ListItemIcon>
@@ -280,14 +277,15 @@ export const UserMenu: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 
 				<Divider sx={{ my: 1 }} />
 
-				<MenuItem
-					onClick={handleLogout}
-					sx={{ borderRadius: 1, color: 'error.main' }}
-				>
+				{/* Danger ink on HOVER only (M13 S13), the same rule every delete on
+					the sheet follows: a permanently red row is an alarm you stop
+					reading, and sign-out is not destructive — it is reversible with the
+					password the reader already has. */}
+				<MenuItem onClick={handleLogout} className="cs-account-panel__signout">
 					<ListItemIcon>
-						<LogoutIcon fontSize="small" color="error" />
+						<LogoutIcon fontSize="small" />
 					</ListItemIcon>
-					<ListItemText primary="Logout" />
+					<ListItemText primary="Sign out" />
 				</MenuItem>
 			</Box>
 		</Box>

@@ -1,48 +1,31 @@
 import React, { useMemo, useState } from 'react'
-import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
-	Box,
-	Button,
-	Typography,
-	Chip,
-	IconButton,
-	Tooltip,
-	Dialog,
-	DialogTitle,
-	DialogContent,
-	DialogActions,
-	DialogContentText,
-	FormControl,
-	InputLabel,
-	Select,
-	MenuItem,
-} from '@mui/material'
-import { ExpandMore, Clear, Bookmark } from '@mui/icons-material'
+import { Box, Typography, IconButton, Tooltip } from '@mui/material'
+import { Clear } from '@mui/icons-material'
 import {
 	Ability,
 	Weapon,
 	Item,
 	Spell,
 	Damage,
-	BaseDamageType,
 } from '../../../../types/Character'
-import {
-	ActionType,
-	ACTION_TYPES,
-	getActionTypeIcon,
-} from '../../../../types/ActionType'
-import { SectionHeader } from '../../CharacterSheet'
+import { ActionType } from '../../../../types/ActionType'
+import { ActionGlyph } from './components/ActionMark'
+import { QuickRefEntry } from './components/QuickRefEntry'
+import { ConfirmDialog, ListSectionHeader } from '../../components'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { characterSheetActions } from '../../characterSheetReducer'
-import { getSkillChipColor } from '../../../../constants/skills'
 
-type QuickRefGroup = {
+/** One course of the board: everything you can spend a given action on. */
+type QuickRefCourse = {
+	type: ActionType
 	title: string
-	icon: React.ReactNode
 	items: QuickRefItem[]
+}
+
+/** The board: one course per action type that has anything on it. */
+type QuickRefBoard = {
+	courses: QuickRefCourse[]
 }
 
 type QuickRefItem = {
@@ -86,6 +69,16 @@ export const QuickRefSection: React.FC = () => {
 		[activeCharacter.spells.spells],
 	)
 
+	/*
+		Bound as locals so the memo below can actually depend on them.
+
+		`calculateDamageDisplay` reaches through `activeCharacter` for both, which
+		reads fine and left the memo unable to name what it uses — so every damage
+		string froze at whatever the attributes were when the section mounted.
+	*/
+	const statistics = activeCharacter.statistics
+	const spellCatalystDamage = activeCharacter.spells.spellCatalystDamage
+
 	// Helper function to calculate actual damage values
 	const calculateDamageDisplay = (
 		damage: Damage,
@@ -94,13 +87,13 @@ export const QuickRefSection: React.FC = () => {
 		const baseDamage = (() => {
 			switch (damage.base) {
 				case 'STR':
-					return activeCharacter.statistics.strength.value / 2
+					return statistics.strength.value / 2
 				case 'AGI':
-					return activeCharacter.statistics.agility.value / 2
+					return statistics.agility.value / 2
 				case 'SPI':
-					return activeCharacter.statistics.spirit.value / 2
+					return statistics.spirit.value / 2
 				case 'MND':
-					return activeCharacter.statistics.mind.value / 2
+					return statistics.mind.value / 2
 				case '':
 					return 0
 				default:
@@ -108,30 +101,24 @@ export const QuickRefSection: React.FC = () => {
 			}
 		})()
 
-		const spellCatalystDamage =
-			type === 'spell' ? activeCharacter.spells.spellCatalystDamage : 0
+		const catalyst = type === 'spell' ? spellCatalystDamage : 0
 
 		if (damage.staticDamage) {
-			const staticValue =
-				baseDamage + damage.weapon + spellCatalystDamage + damage.other
+			const staticValue = baseDamage + damage.weapon + catalyst + damage.other
 			return `${staticValue} ${damage.type}`
 		} else {
 			const weakDamage =
-				baseDamage +
-				damage.weapon +
-				spellCatalystDamage +
-				damage.other +
-				damage.otherWeak
+				baseDamage + damage.weapon + catalyst + damage.other + damage.otherWeak
 			const strongDamage =
 				baseDamage +
 				damage.weapon * 2 +
-				spellCatalystDamage * 2 +
+				catalyst * 2 +
 				damage.other +
 				damage.otherStrong
 			const criticalDamage =
 				baseDamage +
 				damage.weapon * 3 +
-				spellCatalystDamage * 3 +
+				catalyst * 3 +
 				damage.other +
 				damage.otherCritical
 			return `${weakDamage}/${strongDamage}/${criticalDamage} ${damage.type}`
@@ -139,39 +126,16 @@ export const QuickRefSection: React.FC = () => {
 	}
 
 	// Helper function to get category color, ensuring no duplicates
-	const getCategoryColor = (
-		category: string,
-		sourceType: 'ability' | 'weapon' | 'item' | 'spell',
-	): string => {
-		// For abilities, use skill colors based on category
-		if (sourceType === 'ability') {
-			switch (category) {
-				case 'Talent':
-					return getSkillChipColor('Fighting') // Brown
-				case 'Combat Art':
-					return getSkillChipColor('Athletics') // Green
-				case 'Folk':
-					return getSkillChipColor('Influence') // Gold
-				case 'Background':
-					return getSkillChipColor('Education') // Blue
-				default:
-					return getSkillChipColor('Insight') // Light blue
-			}
-		}
+	/*
+		`getCategoryColor` is gone (M13 S8c).
 
-		// For other types, use distinct colors that don't conflict with ability categories
-		switch (sourceType) {
-			case 'weapon':
-				return getSkillChipColor('Fortitude') // Red (distinct from all other categories)
-			case 'item':
-				return getSkillChipColor('Crafting') // Gray
-			case 'spell':
-				return getSkillChipColor('Arcana') // Purple
-			default:
-				return getSkillChipColor('Perception') // Medium blue
-		}
-	}
-	// Function to determine action type for dynamic items, checking overrides first
+		It mapped a CONTENT KIND onto a SKILL colour — weapon to Fortitude red, item
+		to Crafting grey, Talent to Fighting brown, Combat Art to Athletics green —
+		so the board painted eight kinds in eight learned skill hues that had nothing
+		to do with them. That is the "four local palettes, none of which encoded
+		anything" fault S8 deleted from the search dialogs, still living here. The
+		kind is a structural-bronze `SheetChip` on the card now.
+	*/
 	const determineActionType = (
 		item: Weapon | Item | Spell | Ability,
 	): ActionType => {
@@ -235,7 +199,7 @@ export const QuickRefSection: React.FC = () => {
 	}
 
 	// Get selected items organized by action type
-	const quickRefGroups = useMemo((): QuickRefGroup[] => {
+	const quickRefBoard = useMemo((): QuickRefBoard => {
 		const selectedAbilities = abilities.filter((ability) =>
 			quickRefSelections.abilities.includes(ability.id),
 		)
@@ -257,7 +221,20 @@ export const QuickRefSection: React.FC = () => {
 				description: ability.description,
 				source: 'ability' as const,
 				sourceCategory: ability.tag || 'Ability', // Show category instead of generic "Ability"
-				actionType: ability.actionType,
+				// M13 S3: `|| 'Other'` is not cosmetic. Abilities predating the
+				// actionType field store it as undefined, which matched none of the six
+				// buckets below, so a bookmarked ability was counted in the Quick Ref
+				// header and then rendered nowhere — the section claimed "1" over an
+				// empty list. `AbilityRow` already defaults the same way for display,
+				// so this makes the grouping agree with what the row shows.
+				// The override FIRST, as every other kind already does. Writing it
+				// and not reading it made the card's action-type control inert on
+				// abilities alone — it moved the ability nowhere while appearing to
+				// work, because the grouping below read `ability.actionType` direct.
+				actionType:
+					quickRefSelections.actionTypeOverrides?.[ability.id] ||
+					ability.actionType ||
+					'Other',
 				rank: ability.rank,
 			})),
 			...selectedWeapons.map((weapon) => {
@@ -271,7 +248,11 @@ export const QuickRefSection: React.FC = () => {
 					source: 'weapon' as const,
 					sourceCategory: 'Weapon',
 					actionType: determineActionType(weapon),
-					properties: weapon.properties ? (Array.isArray(weapon.properties) ? weapon.properties : [weapon.properties]) : undefined,
+					properties: weapon.properties
+						? Array.isArray(weapon.properties)
+							? weapon.properties
+							: [weapon.properties]
+						: undefined,
 					damage: damageStr,
 				}
 			}),
@@ -282,7 +263,11 @@ export const QuickRefSection: React.FC = () => {
 				source: 'item' as const,
 				sourceCategory: 'Item',
 				actionType: determineActionType(item),
-				properties: item.properties ? (Array.isArray(item.properties) ? item.properties : [item.properties]) : undefined,
+				properties: item.properties
+					? Array.isArray(item.properties)
+						? item.properties
+						: [item.properties]
+					: undefined,
 			})),
 			...selectedSpells.map((spell) => {
 				const damageStr =
@@ -297,84 +282,132 @@ export const QuickRefSection: React.FC = () => {
 					sourceCategory: 'Spell',
 					actionType: determineActionType(spell),
 					rank: spell.rank,
-					properties: spell.properties ? (Array.isArray(spell.properties) ? spell.properties : [spell.properties]) : undefined,
+					properties: spell.properties
+						? Array.isArray(spell.properties)
+							? spell.properties
+							: [spell.properties]
+						: undefined,
 					damage: damageStr,
 				}
 			}),
 		]
 
-		// Group by action type
-		const actions = quickRefItems.filter((item) => item.actionType === 'Action')
-		const quickActions = quickRefItems.filter(
-			(item) => item.actionType === 'Quick Action',
+		/*
+			The board, not a list of groups (M13 S8c, owner brief: rethink from first
+			principles for gameable UX).
+
+			The question this section answers, mid-turn, is "I have one Action and one
+			Quick Action — what are my options?" So the axis stays action type, and the
+			order is the order a turn is spent: the two things you spend, then the two
+			that fire on their own, then the two that are simply true.
+
+			The first cut kept `Passive` and `Other` out of the courses entirely, on
+			the reasoning that a passive is never a CHOICE and so padded the menu. That
+			reasoning survives the tab strip without the amputation — an unselected
+			course costs one 24px glyph, not a screen of entries — and the amputation
+			cost those entries their rule text, which a player still occasionally needs
+			to read.
+		*/
+		const byType = (type: ActionType) =>
+			quickRefItems
+				.filter((item) => item.actionType === type)
+				// A stable read order. `sort` mutates, so this sorts the filtered copy
+				// rather than the array every other course is drawn from.
+				.sort((a, b) => a.name.localeCompare(b.name))
+
+		const courses: QuickRefCourse[] = (
+			[
+				'Action',
+				'Quick Action',
+				'Triggered',
+				'Free',
+				'Passive',
+				'Other',
+			] as ActionType[]
 		)
-		const passiveAbilities = quickRefItems.filter(
-			(item) => item.actionType === 'Passive',
-		)
-		const triggered = quickRefItems.filter(
-			(item) => item.actionType === 'Triggered',
-		)
-		const free = quickRefItems.filter((item) => item.actionType === 'Free')
-		const other = quickRefItems.filter((item) => item.actionType === 'Other')
+			.map((type) => ({ type, title: type, items: byType(type) }))
+			.filter((course) => course.items.length > 0)
 
-		const groups: QuickRefGroup[] = []
+		return { courses }
+	}, [
+		abilities,
+		weapons,
+		items,
+		spells,
+		quickRefSelections,
+		// `calculateDamageDisplay` reads both, so a raised attribute or a new
+		// catalyst has to recompute the strings. Without them a weapon kept the
+		// damage it had when the section first rendered.
+		statistics,
+		spellCatalystDamage,
+	])
 
-		if (actions.length > 0) {
-			groups.push({
-				title: 'Actions',
-				icon: getActionTypeIcon('Action'),
-				items: actions.sort((a, b) => a.name.localeCompare(b.name)),
-			})
-		}
+	/*
+		Counted from what RESOLVED, not from what is pinned.
 
-		if (quickActions.length > 0) {
-			groups.push({
-				title: 'Quick Actions',
-				icon: getActionTypeIcon('Quick Action'),
-				items: quickActions.sort((a, b) => a.name.localeCompare(b.name)),
-			})
-		}
+		A pinned id whose ability or item has since been deleted renders no card and
+		still counted here, so the header could claim 9 over a board of 7 with
+		nothing to explain the difference.
+	*/
+	const totalSelected = useMemo(
+		() =>
+			quickRefBoard.courses.reduce(
+				(sum, course) => sum + course.items.length,
+				0,
+			),
+		[quickRefBoard],
+	)
 
-		if (triggered.length > 0) {
-			groups.push({
-				title: 'Triggered',
-				icon: getActionTypeIcon('Triggered'),
-				items: triggered.sort((a, b) => a.name.localeCompare(b.name)),
-			})
-		}
+	/*
+		Which course is open, and which entry inside it.
 
-		if (free.length > 0) {
-			groups.push({
-				title: 'Free',
-				icon: getActionTypeIcon('Free'),
-				items: free.sort((a, b) => a.name.localeCompare(b.name)),
-			})
-		}
+		Both are LOCAL and neither is persisted. A quick reference is read from wherever
+		the turn left it, and a saved tab would restore yesterday's turn — worse, it
+		would be a character-document write for a glance.
 
-		if (passiveAbilities.length > 0) {
-			groups.push({
-				title: 'Passive',
-				icon: getActionTypeIcon('Passive'),
-				items: passiveAbilities.sort((a, b) => a.name.localeCompare(b.name)),
-			})
-		}
+		`openType` is stored as the type rather than an index so a course appearing or
+		emptying does not silently move the selection to a different action; the fallback
+		below covers the case where the selected course empties out entirely (its last
+		entry unpinned, or re-typed onto another course).
+	*/
+	const [openType, setOpenType] = useState<ActionType | null>(null)
+	const [openEntryId, setOpenEntryId] = useState<string | null>(null)
+	const tabRefs = React.useRef<Record<string, HTMLButtonElement | null>>({})
 
-		if (other.length > 0) {
-			groups.push({
-				title: 'Other',
-				icon: getActionTypeIcon('Other'),
-				items: other.sort((a, b) => a.name.localeCompare(b.name)),
-			})
-		}
+	const activeCourse =
+		quickRefBoard.courses.find((course) => course.type === openType) ??
+		quickRefBoard.courses[0]
 
-		return groups
-	}, [abilities, weapons, items, spells, quickRefSelections])
-
-	const totalSelected =
-		quickRefSelections.abilities.length +
-		quickRefSelections.weapons.length +
-		quickRefSelections.items.length +
-		(quickRefSelections.spells?.length || 0)
+	/*
+		Roving focus across the strip, which is what makes it a tablist rather than six
+		buttons wearing the role. Only the selected tab is in the tab order; the arrows
+		move between them, Home and End jump the ends.
+	*/
+	const handleStripKeyDown = (event: React.KeyboardEvent) => {
+		const types = quickRefBoard.courses.map((course) => course.type)
+		const current = types.indexOf(activeCourse?.type)
+		const next = (() => {
+			switch (event.key) {
+				case 'ArrowRight':
+				case 'ArrowDown':
+					return (current + 1) % types.length
+				case 'ArrowLeft':
+				case 'ArrowUp':
+					return (current - 1 + types.length) % types.length
+				case 'Home':
+					return 0
+				case 'End':
+					return types.length - 1
+				default:
+					return -1
+			}
+		})()
+		if (next < 0) return
+		event.preventDefault()
+		setOpenType(types[next])
+		setOpenEntryId(null)
+		tabRefs.current[types[next]]?.focus()
+	}
 
 	const handleClearAll = () => {
 		setConfirmDialogOpen(true)
@@ -417,8 +450,8 @@ export const QuickRefSection: React.FC = () => {
 
 	if (totalSelected === 0) {
 		return (
-			<Box sx={{ mb: 3 }}>
-				<SectionHeader>Quick Ref</SectionHeader>
+			<Box sx={{ mb: 1.25 }}>
+				<ListSectionHeader label="Quick Ref" sx={{ mb: 1 }} />
 				<Typography
 					variant="body2"
 					color="text.secondary"
@@ -432,261 +465,111 @@ export const QuickRefSection: React.FC = () => {
 	}
 
 	return (
-		<Box sx={{ mb: 3 }}>
-			<Box
-				sx={{
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'space-between',
-					mb: 2,
-				}}
-			>
-				<SectionHeader sx={{ mb: 0 }}>Quick Ref</SectionHeader>
-				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-					<Typography variant="caption" color="text.secondary">
-						{totalSelected} selected
-					</Typography>
+		<Box sx={{ mb: 1.25 }}>
+			{/* M13 S3: Quick Ref was two nested bordered-box Accordions — a fourth
+				and fifth list idiom on a sheet that now has one. The groups are
+				`ListSection`s and the entries are ledger rows, so a bookmarked
+				ability here and the same ability in its own category read alike. */}
+			<ListSectionHeader
+				label="Quick Ref"
+				count={totalSelected}
+				sx={{ mb: 1 }}
+				actions={
 					<Tooltip title="Clear all Quick Ref selections">
 						<IconButton size="small" onClick={handleClearAll}>
-							<Clear fontSize="small" />
+							<Clear fontSize="inherit" />
 						</IconButton>
 					</Tooltip>
+				}
+			/>
+
+			<Box className="cs-playboard">
+				{/* The strip. One glyph per course, its count beside it, and the WORDS
+					only on the selected one — six labels across is the header row the
+					stacked version already was, and the glyph set is the same one the
+					ability rows teach two sections below. */}
+				<Box
+					role="tablist"
+					aria-label="Quick Ref by action type"
+					className="cs-playboard__strip"
+					onKeyDown={handleStripKeyDown}
+				>
+					{quickRefBoard.courses.map((course) => {
+						const selected = course.type === activeCourse?.type
+						return (
+							<Box
+								key={course.type}
+								component="button"
+								type="button"
+								role="tab"
+								id={`cs-playboard-tab-${course.type.replace(/\s+/g, '-')}`}
+								aria-controls={`cs-playboard-panel-${course.type.replace(/\s+/g, '-')}`}
+								aria-selected={selected}
+								aria-label={`${course.title} (${course.items.length})`}
+								tabIndex={selected ? 0 : -1}
+								ref={(node: HTMLButtonElement | null) => {
+									tabRefs.current[course.type] = node
+								}}
+								className={`cs-playboard__tab${selected ? ' cs-playboard__tab--on' : ''}`}
+								onClick={() => {
+									setOpenType(course.type)
+									setOpenEntryId(null)
+								}}
+							>
+								<ActionGlyph actionType={course.type} size={15} />
+								{selected && (
+									<span className="cs-playboard__tab-name">{course.title}</span>
+								)}
+								<span className="cs-playboard__tab-count">
+									{course.items.length}
+								</span>
+							</Box>
+						)
+					})}
 				</Box>
+
+				{/* Every panel stays in the markup and the unselected ones are `hidden`,
+					the theme's disclosure rule — and here it also keeps an entry's open
+					state from being thrown away by a glance at another course. */}
+				{quickRefBoard.courses.map((course) => (
+					<Box
+						key={course.type}
+						role="tabpanel"
+						id={`cs-playboard-panel-${course.type.replace(/\s+/g, '-')}`}
+						aria-labelledby={`cs-playboard-tab-${course.type.replace(/\s+/g, '-')}`}
+						className="cs-playboard__panel"
+						hidden={course.type !== activeCourse?.type}
+					>
+						{course.items.map((item) => (
+							<QuickRefEntry
+								key={item.id}
+								item={item}
+								expanded={openEntryId === item.id}
+								onToggle={() =>
+									setOpenEntryId((current) =>
+										current === item.id ? null : item.id,
+									)
+								}
+								onRemove={() => handleRemoveItem(item.id, item.source)}
+								onActionTypeChange={(next) =>
+									handleActionTypeChange(item.id, next)
+								}
+							/>
+						))}
+					</Box>
+				))}
 			</Box>
 
-			{quickRefGroups.map((group, index) => (
-				<Accordion
-					key={group.title}
-					defaultExpanded={index === 0}
-					disableGutters
-					sx={{
-						flexGrow: 1,
-						mt: 0,
-						mr: 1,
-						width: '100%',
-						boxShadow: 'none',
-						border: '1px solid',
-						borderColor: 'divider',
-					}}
-				>
-					<AccordionSummary
-						expandIcon={<ExpandMore />}
-						sx={{
-							gap: 1,
-							pt: 0,
-							px: 1,
-							flexDirection: 'row-reverse',
-							'& .MuiAccordionSummary-content': {
-								display: 'block',
-							},
-						}}
-					>
-						<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-							{group.icon}
-							<Typography variant="subtitle2" fontWeight="bold">
-								{group.title}
-							</Typography>
-							<Chip
-								label={group.items.length}
-								size="small"
-								sx={{ ml: 1, minWidth: 20, height: 20 }}
-							/>
-						</Box>
-					</AccordionSummary>
-					<AccordionDetails sx={{ pt: 0, px: 1 }}>
-						<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-							{group.items.map((item) => (
-								<Accordion
-									key={item.id}
-									disableGutters
-									sx={{
-										flexGrow: 1,
-										mt: 0,
-										mr: 1,
-										width: '100%',
-										boxShadow: 'none',
-										border: '1px solid',
-										borderColor: 'divider',
-									}}
-								>
-									<AccordionSummary
-										expandIcon={<ExpandMore />}
-										sx={{
-											gap: 1,
-											pt: 0,
-											px: 1,
-											flexDirection: 'row-reverse',
-											'& .MuiAccordionSummary-content': {
-												display: 'block',
-											},
-										}}
-									>
-										<Box
-											sx={{
-												display: 'flex',
-												alignItems: 'center',
-												gap: 1,
-												flexWrap: 'wrap',
-											}}
-										>
-											<Typography
-												variant="subtitle2"
-												fontWeight="bold"
-												sx={{ flexGrow: 1 }}
-											>
-												{item.name}
-											{item.rank !== undefined && item.rank !== null && item.rank >= 0 && item.rank <= 5 && (
-												<Typography
-													component="span"
-													sx={{
-														color: 'text.secondary',
-														fontSize: '1.15em',
-														ml: 1,
-													}}
-												>
-													{['⓪', '①', '②', '③', '④', '⑤'][item.rank]}
-													</Typography>
-												)}
-											</Typography>
-											<Chip
-												label={item.sourceCategory || item.source}
-												size="small"
-												variant="outlined"
-												sx={{
-													textTransform: 'capitalize',
-													backgroundColor:
-														getCategoryColor(
-															item.sourceCategory || item.source,
-															item.source,
-														) + '20',
-													borderColor: getCategoryColor(
-														item.sourceCategory || item.source,
-														item.source,
-													),
-													color: getCategoryColor(
-														item.sourceCategory || item.source,
-														item.source,
-													),
-													flexShrink: 0,
-													fontSize: '0.75rem',
-												}}
-											/>
-										</Box>
-									</AccordionSummary>
-									<AccordionDetails sx={{ p: 1, pt: 0 }}>
-										<Box
-											sx={{
-												display: 'flex',
-												flexDirection: 'column',
-												gap: 0.5,
-											}}
-										>
-											{/* Properties caption for items, weapons, and spells */}
-											{item.properties && (
-												<Typography
-													variant="caption"
-													color="text.secondary"
-													sx={{ fontStyle: 'italic' }}
-												>
-													Properties: {item.properties}
-												</Typography>
-											)}
-											{/* Damage caption for weapons and spells */}
-											{item.damage && (
-												<Typography
-													variant="caption"
-													color="text.secondary"
-													sx={{ fontStyle: 'italic' }}
-												>
-													Damage: {item.damage}
-												</Typography>
-											)}
-											{/* Description */}
-											{item.description && (
-												<Typography variant="body2" color="text.secondary">
-													{item.description}
-												</Typography>
-											)}
-											{/* Action Type Dropdown and Remove from Quick Ref button */}
-											<Box
-												sx={{
-													display: 'flex',
-													gap: 1,
-													mt: 1,
-													alignItems: 'center',
-													justifyContent: 'end',
-												}}
-											>
-												<FormControl size="small" sx={{ width: '9.5rem' }}>
-													<InputLabel id={`quick-ref-action-type-${item.id}`}>
-														Action Type
-													</InputLabel>
-													<Select
-														labelId={`quick-ref-action-type-${item.id}`}
-														value={item.actionType || 'Action'}
-														label="Action Type"
-														onChange={(event) => {
-															const newActionType = event.target
-																.value as ActionType
-															handleActionTypeChange(item.id, newActionType)
-														}}
-													>
-														{ACTION_TYPES.map((type) => (
-															<MenuItem key={type} value={type}>
-																<Box
-																	sx={{
-																		display: 'flex',
-																		alignItems: 'center',
-																		gap: 1,
-																	}}
-																>
-																	{getActionTypeIcon(type)}
-																	{type}
-																</Box>
-															</MenuItem>
-														))}
-													</Select>
-												</FormControl>
-
-												<Tooltip title="Remove from Quick Ref">
-													<IconButton
-														size="small"
-														onClick={() =>
-															handleRemoveItem(item.id, item.source)
-														}
-														sx={{
-															color: 'primary.main',
-														}}
-													>
-														<Bookmark />
-													</IconButton>
-												</Tooltip>
-											</Box>
-										</Box>
-									</AccordionDetails>
-								</Accordion>
-							))}
-						</Box>
-					</AccordionDetails>
-				</Accordion>
-			))}
-
-			{/* Confirmation Dialog for Clear All */}
-			<Dialog open={confirmDialogOpen} onClose={handleCancelClear}>
-				<DialogTitle>Clear All Quick References</DialogTitle>
-				<DialogContent>
-					<DialogContentText>
-						Are you sure you want to clear all Quick Reference selections? This
-						action cannot be undone.
-					</DialogContentText>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={handleCancelClear}>Cancel</Button>
-					<Button onClick={handleConfirmClear} color="error" autoFocus>
-						Clear All
-					</Button>
-				</DialogActions>
-			</Dialog>
+			<ConfirmDialog
+				open={confirmDialogOpen}
+				title="Clear all quick references"
+				confirmLabel="Clear all"
+				onConfirm={handleConfirmClear}
+				onCancel={handleCancelClear}
+			>
+				This drops every quick-reference pick at once, across all tabs. This
+				cannot be undone.
+			</ConfirmDialog>
 		</Box>
 	)
 }

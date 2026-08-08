@@ -1,15 +1,7 @@
 import React, { useState, useRef } from 'react'
-import {
-	Box,
-	Avatar,
-	IconButton,
-	Typography,
-	CircularProgress,
-	Tooltip,
-	Alert,
-	Paper,
-} from '@mui/material'
-import { PhotoCamera, Delete, CloudUpload } from '@mui/icons-material'
+import { Alert, Box, CircularProgress, Typography } from '@mui/material'
+import StatSigil from '@site/src/components/codex/StatSigil'
+import { MarkButton, RuleInfo } from '../../components'
 import { logger } from '../../utils'
 
 interface ProfilePictureUploadProps {
@@ -170,166 +162,110 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 		}
 	}
 
-	const handleDelete = (event: React.MouseEvent) => {
-		event.preventDefault()
-		event.stopPropagation() // Prevent triggering the upload click and Docusaurus handlers
-		onProfilePictureUpdate('')
-		setCurrentImage('') // Update local state immediately for instant feedback
-	}
-
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'center',
-				gap: 1,
-			}}
-		>
-			<Box sx={{ position: 'relative' }}>
-				<Paper
-					elevation={dragOver ? 4 : 1}
-					sx={{
-						width: 100,
-						height: 100,
-						borderRadius: '50%',
-						cursor: uploading ? 'default' : 'pointer',
-						border: dragOver ? '2px dashed' : '2px solid',
-						borderColor: dragOver ? 'primary.main' : 'divider',
-						transition: 'all 0.2s ease-in-out',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-						backgroundColor: dragOver ? 'action.hover' : 'transparent',
-						overflow: 'hidden',
-						'&:hover': {
-							borderColor: uploading ? 'divider' : 'primary.main',
-							backgroundColor: uploading ? 'transparent' : 'action.hover',
-						},
-					}}
-					onClick={handleClick}
-					onDrop={handleDrop}
-					onDragOver={handleDragOver}
-					onDragLeave={handleDragLeave}
-				>
-					{currentImage ? (
-						<>
-							<Avatar
-								src={currentImage}
-								sx={{
-									width: 96,
-									height: 96,
-									cursor: uploading ? 'default' : 'pointer',
-									// Prevent Docusaurus image zoom by removing the data-zoom-src attribute
-									'& img': {
-										'data-zoom-src': 'none',
-										cursor: uploading ? 'default' : 'pointer !important',
-										'&:hover': {
-											cursor: uploading ? 'default' : 'pointer !important',
-										},
-									},
-								}}
-								imgProps={
-									{
-										// Prevent image from being treated as zoomable by Docusaurus
-										draggable: false,
-										style: {
-											cursor: uploading ? 'default' : 'pointer',
-										},
-									} as any
-								}
-							/>
-							{currentImage && !uploading && (
-								<IconButton
-									onClick={handleDelete}
-									sx={{
-										position: 'absolute',
-										top: -8,
-										right: -8,
-										backgroundColor: 'error.main',
-										color: 'white',
-										width: 24,
-										height: 24,
-										'&:hover': {
-											backgroundColor: 'error.dark',
-										},
-									}}
-									size="small"
-								>
-									<Delete sx={{ fontSize: 14 }} />
-								</IconButton>
-							)}
-						</>
-					) : (
-						<Box
-							sx={{
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'center',
-								gap: 0.5,
-								color: 'text.secondary',
-							}}
-						>
-							{dragOver ? (
-								<CloudUpload sx={{ fontSize: 32 }} />
-							) : (
-								<PhotoCamera sx={{ fontSize: 32 }} />
-							)}
-							<Typography
-								variant="caption"
-								sx={{ fontSize: '0.65rem', textAlign: 'center' }}
-							>
-								{dragOver ? 'Drop here' : 'Click or drag'}
-							</Typography>
-						</Box>
-					)}
-				</Paper>
+		/*
+			M13 S6 (owner review) — the portrait as a PLATE.
+			
+			It was a 100px circular MUI `Paper` with `elevation` (a drop shadow, which this
+			theme forbids outright), a Material camera glyph, a red circular delete badge
+			pinned to its corner in `error.main` with white ink, and two lines of caption
+			underneath — one naming it and one stating the file limits. Four things wrong at
+			once: a raised circle is the avatar idiom of every web app, the shadow is a
+			banned effect, the badge was the only stock-Material-red control left on the
+			sheet, and the limits are setup trivia occupying permanent space beside a
+			character's face.
+			
+			It is a framed plate now: hard vertices, corner rivets, keyline and wash, sized
+			to the record beside it. Empty, it draws the `folk` mark — a figure, which is
+			what is missing — over its own instruction. The limits moved into the gloss the
+			whole sheet uses for "explain this", and the delete is the standard mark button.
+		*/
+		<Box className="cs-portrait">
+			<Box
+				className="cs-portrait__plate"
+				data-drag={dragOver || undefined}
+				role="button"
+				tabIndex={0}
+				aria-label={
+					currentImage ? 'Replace character portrait' : 'Add character portrait'
+				}
+				onClick={handleClick}
+				onKeyDown={(event) => {
+					if (event.key === 'Enter' || event.key === ' ') {
+						event.preventDefault()
+						fileInputRef.current?.click()
+					}
+				}}
+				onDrop={handleDrop}
+				onDragOver={handleDragOver}
+				onDragLeave={handleDragLeave}
+			>
+				<span className="cs-rivet cs-rivet-tl" aria-hidden="true" />
+				<span className="cs-rivet cs-rivet-tr" aria-hidden="true" />
+				<span className="cs-rivet cs-rivet-br" aria-hidden="true" />
+				<span className="cs-rivet cs-rivet-bl" aria-hidden="true" />
+
+				{currentImage ? (
+					<img
+						className="cs-portrait__image"
+						src={currentImage}
+						alt="Character portrait"
+						draggable={false}
+					/>
+				) : (
+					<Box className="cs-portrait__empty">
+						<StatSigil name="folk" size={30} />
+						<span>{dragOver ? 'Drop to set' : 'Click or drag'}</span>
+					</Box>
+				)}
 
 				{uploading && (
-					<CircularProgress
-						size={104}
-						sx={{
-							position: 'absolute',
-							top: -2,
-							left: -2,
-							zIndex: 1,
+					<Box className="cs-portrait__busy">
+						<CircularProgress size={28} />
+					</Box>
+				)}
+			</Box>
+
+			<Box className="cs-portrait__strip">
+				<Typography component="span" className="cs-portrait__label">
+					Portrait
+				</Typography>
+				{/* The file limits are setup trivia — they belong behind the sheet's own
+					"explain this" mark rather than printed under every character's face. */}
+				<RuleInfo label="About the portrait">
+					A JPG, PNG or WebP up to 500KB. It is resized to 200x200 and stored
+					with the character, so it travels with the sheet rather than living on
+					a host that can go away.
+				</RuleInfo>
+				{currentImage && !uploading && (
+					<MarkButton
+						glyph="×"
+						label="Remove portrait"
+						onClick={() => {
+							onProfilePictureUpdate('')
+							setCurrentImage('')
 						}}
 					/>
 				)}
-
-				<input
-					ref={fileInputRef}
-					type="file"
-					accept=".jpg,.jpeg,.png,.webp"
-					onChange={handleFileUpload}
-					style={{ display: 'none' }}
-					disabled={uploading}
-				/>
 			</Box>
+
+			<input
+				ref={fileInputRef}
+				type="file"
+				accept=".jpg,.jpeg,.png,.webp"
+				onChange={handleFileUpload}
+				style={{ display: 'none' }}
+				disabled={uploading}
+			/>
 
 			{error && (
 				<Alert
 					severity="error"
-					sx={{ mt: 1, fontSize: '0.75rem', maxWidth: '200px' }}
+					sx={{ fontSize: 'var(--nexus-text-xs)', maxWidth: '12rem' }}
 				>
 					{error}
 				</Alert>
 			)}
-
-			<Typography
-				variant="caption"
-				color="text.secondary"
-				sx={{ textAlign: 'center' }}
-			>
-				Character Portrait
-			</Typography>
-			<Typography
-				variant="caption"
-				color="text.secondary"
-				sx={{ textAlign: 'center', fontSize: '0.65rem' }}
-			>
-				Max 500KB • Auto-resized to 200×200
-			</Typography>
 		</Box>
 	)
 }

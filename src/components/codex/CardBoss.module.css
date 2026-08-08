@@ -1,0 +1,91 @@
+/*
+ * The focus cost, as a carved boss (M18 S4).
+ *
+ * It was a solid black disc with a white numeral — the one filled mass on a card
+ * otherwise built from keylines, and the theme's flat law says material
+ * character comes from keyline borders and inlaid motifs, never from a slab.
+ * It also said nothing: a bare number in a circle names no stat.
+ *
+ * The mark is the kit's LOZENGE, the same diamond the card frame's corner bosses
+ * and the divider are built from, given a second hairline inside it — the
+ * concentric treatment the ornament kit reserves for a focal mark. Nothing new
+ * was drawn (M18 D6).
+ *
+ * Everything is in `em` and `currentColor`, so the token scales with the header
+ * it sits in and inks with the card.
+ */
+.token {
+	position: relative;
+	flex: none;
+	display: inline-grid;
+	place-items: center;
+	/* The diamond's diagonal is what the numeral sits across, so the box is
+	   generous relative to the type it holds. */
+	/* Cut twice: 2.6em made the head the tallest thing on the card, and 1.9em
+	   still reached across the frame's outline. A boss is an anchor, not a
+	   figure. */
+	width: 1.6em;
+	height: 1.6em;
+	line-height: 1;
+}
+
+/*
+ * The two keylines. A rotated square rather than an SVG: it is one flat shape,
+ * it stays crisp at any size, and the numeral inside stays upright.
+ */
+.frame,
+.frame::after {
+	position: absolute;
+	inset: 0;
+	border: var(--pc-rule-key, 0.35mm) solid currentColor;
+	transform: rotate(45deg);
+}
+
+.frame::after {
+	content: '';
+	/* Close to the outer keyline, so the pair reads as one carved boss with a
+	   engraved margin rather than as two diamonds with a gap between them. */
+	inset: 0.13em;
+	border-width: var(--pc-rule-hair, 0.2mm);
+	/* The inner keyline is already inside a rotated parent. */
+	transform: none;
+}
+
+/*
+ * The numeral, optically centred rather than box-centred.
+ *
+ * `place-items: center` centres the text BOX, and a digit does not sit in the
+ * middle of its box: it stands on the baseline and leaves the descender space
+ * empty, so a box-centred numeral reads high — visibly so inside a diamond,
+ * where the eye has four converging edges to judge it against (owner,
+ * 2026-08-07).
+ *
+ * Absolute centring plus a nudge down puts the digit's own mass in the middle.
+ * `letter-spacing: 0` because the card's head sets tracking on its labels and a
+ * two-digit cost would otherwise sit off to the left by half of it.
+ */
+.value {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -46%);
+	font-weight: 700;
+	font-variant-numeric: lining-nums tabular-nums;
+	letter-spacing: 0;
+	line-height: 1;
+	/* Sits inside the diamond's waist, which is narrower than its box. */
+	font-size: 0.9em;
+}
+
+/* A label, so the numeral is never a bare number with no stat attached. */
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}

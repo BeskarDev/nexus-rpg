@@ -1,7 +1,5 @@
 import {
-	Button,
 	Checkbox,
-	Divider,
 	FormControl,
 	InputLabel,
 	ListItemText,
@@ -9,22 +7,30 @@ import {
 	OutlinedInput,
 	Select,
 	SelectChangeEvent,
-	Stack,
-	TextField,
-	ThemeProvider,
-	Typography,
-	useTheme,
 } from '@mui/material'
-import { theme } from '@site/src/hooks/createTheme'
-import { CombatArt } from '@site/src/types/CombatArt'
 import { Character, CharacterDocument } from '@site/src/types/Character'
+import { CombatArt } from '@site/src/types/CombatArt'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import combatArtsData from '../../utils/data/json/combat-arts.json';
+import {
+	useAutofitPending,
+	useSpillPlan,
+	whenAutofitSettled,
+} from '@site/src/components/autofit'
+import combatArtsData from '../../utils/data/json/combat-arts.json'
+import {
+	CARD_PAGE,
+	CARD_PAGE_MARGIN,
+	CARD_SIZE,
+	CharacterSelector,
+	deckDocumentTitle,
+	itemsPerPage,
+	PrintPages,
+	PrintToolShell,
+	usePagePrintStyle,
+} from '../PrintingTools'
 import { CombatArtCard } from './CombatArtCard'
 import './combatArtStyles.css'
-import { CharacterSelector } from '../PrintingTools'
-import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -43,7 +49,6 @@ type CombatArtSelection = {
 }
 
 export const CombatArts: React.FC = () => {
-	const muiTheme = useTheme()
 	const [selectedCombatArts, setSelectedCombatArts] = React.useState<string[]>(
 		[],
 	)
@@ -54,6 +59,7 @@ export const CombatArts: React.FC = () => {
 		React.useState<string>('')
 	const [selectedCharacter, setSelectedCharacter] =
 		React.useState<CharacterDocument | null>(null)
+	const [showJsonImport, setShowJsonImport] = React.useState(false)
 
 	const handleChange = (
 		event: SelectChangeEvent<typeof selectedCombatArts>,
@@ -70,8 +76,7 @@ export const CombatArts: React.FC = () => {
 			// Add manual selections without duplicates in the manual category
 			const manualSelections = arts
 				.filter(
-					(name) =>
-						!prev.some((s) => s.name === name && !s.characterName),
+					(name) => !prev.some((s) => s.name === name && !s.characterName),
 				)
 				.map((name) => ({ name }))
 			// Remove manual selections that are no longer in the selected list
@@ -90,7 +95,7 @@ export const CombatArts: React.FC = () => {
 				character.skills?.abilities?.map((ability) => ability.title) || []
 			// Filter to only include abilities that exist in the combat arts data
 			const validCombatArts = characterAbilityNames.filter((name) =>
-				combatArts.some((ca) => ca.name === name)
+				combatArts.some((ca) => ca.name === name),
 			)
 			// Add character's combat arts to the list with character attribution
 			setSelectedCombatArtsList((prev) => [
@@ -116,7 +121,7 @@ export const CombatArts: React.FC = () => {
 					character.skills?.abilities?.map((ability) => ability.title) || []
 				// Filter to only include abilities that exist in the combat arts data
 				const validCombatArts = characterAbilityNames.filter((name) =>
-					combatArts.some((ca) => ca.name === name)
+					combatArts.some((ca) => ca.name === name),
 				)
 				// Add character's combat arts to the list with character attribution
 				setSelectedCombatArtsList((prev) => [
@@ -136,9 +141,10 @@ export const CombatArts: React.FC = () => {
 	}
 
 	const componentRef = useRef()
-	const handlePrint = useReactToPrint({
-		content: () => componentRef.current,
-	})
+	// Trap 2: a print that opens before the cards have settled prints the
+	// pre-fit layout, and the dialog blocks the session, so there is no second
+	// chance to get it right (M18 D2).
+	const settlingCards = useAutofitPending()
 	const combatArts: CombatArt[] = combatArtsData
 
 	const filteredCombatArts = useMemo(() => {
@@ -167,127 +173,225 @@ export const CombatArts: React.FC = () => {
 		setSelectedCombatArtsList([])
 	}
 
+	// From the card and page geometry rather than a hand-written 9 — the same
+	// call the preview paginates by, so the count and the pages cannot drift.
+	// The spill runs BEFORE pagination (M18 D3, trap 11): a card that becomes
+	// two children after the grid is computed lands on the wrong page.
+	// The plan is told which keys are live, so deselecting an art retires its
+	// cut instead of leaving it in the continuation count (M21 D5).
+	const planKeys = useMemo(
+		() =>
+			filteredCombatArts.map(
+				(combatArt, index) =>
+					`${combatArt.name}-${combatArt.characterName || 'manual'}-${index}`,
+			),
+		[filteredCombatArts],
+	)
+	const spillPlan = useSpillPlan(planKeys)
+	const printedCards = useMemo(
+		() =>
+			filteredCombatArts.flatMap((combatArt, index) => {
+				const planKey = planKeys[index]
+				return spillPlan
+					.partsFor(planKey)
+					.map((part) => ({ combatArt, planKey, part }))
+			}),
+		[filteredCombatArts, planKeys, spillPlan.partsFor],
+	)
+
+	const sheetCount = Math.ceil(
+		printedCards.length / itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN),
+	)
+
+	// One character's deck is named after them; a mixed or unattributed deck is
+	// not about a person, so it is left unnamed rather than named after whoever
+	// happened to be first.
+	const printSubject = useMemo(() => {
+		const names = new Set(
+			filteredCombatArts
+				.map((entry) => entry.characterName)
+				.filter((name): name is string => Boolean(name)),
+		)
+		return names.size === 1 ? [...names][0] : undefined
+	}, [filteredCombatArts])
+
+	const handlePrint = useReactToPrint({
+		content: () => componentRef.current,
+		onBeforeGetContent: whenAutofitSettled,
+		// Chrome names the PDF after `document.title`, so without this every deck
+		// this site prints lands in the download folder as "Nexus RPG".
+		documentTitle: deckDocumentTitle({
+			kind: 'combat-arts',
+			count: printedCards.length,
+			subject: printSubject,
+		}),
+	})
+
+	// A document-level rule, so it goes in the document head — never in the
+	// flow, where a `<style>` printed itself on the page as text (M19).
+	usePagePrintStyle('@page { size: 192mm 267mm; }')
+
 	return (
 		<>
-			<style type="text/css" media="print">
-				{
-					'\
-        @page { size: 192mm 267mm; }\
-      '
-				}
-			</style>
-			<Stack
-				flexDirection="column"
-				gap={2}
-				sx={{
-					mb: 2,
-					py: 2,
-					px: 3,
-					backgroundColor:
-						muiTheme.palette.mode === 'dark' ? '#1e1e1e' : 'white',
-					borderRadius: '8px',
-				}}
-			>
-				<Typography variant="h6" component="h2">
-					Combat Art Card Printing
-				</Typography>
-				<Typography variant="body2" color="text.secondary">
-					Select a character from your account or manually choose combat arts to
-					print. Cards will be formatted for easy printing and cutting.
-				</Typography>
-
-				<Divider sx={{ my: 1 }} />
-
-				<CharacterSelector
-					onCharacterSelect={handleCharacterSelect}
-					label="Load Character's Combat Arts"
-					helperText="Selecting a character will automatically add their combat arts to the print list below."
-				/>
-
-				<Divider sx={{ my: 1 }} />
-
-				<Stack flexDirection="row" gap={1} alignItems="center" flexWrap="wrap">
-					<Button variant="contained" size="large" onClick={handlePrint}>
-						PRINT
-					</Button>
-					<FormControl sx={{ m: 1, width: 300 }}>
-						<InputLabel>Combat Arts</InputLabel>
-						<Select
-							multiple
-							value={selectedCombatArts}
-							onChange={handleChange}
-							input={<OutlinedInput label="Combat Arts" />}
-							renderValue={(selected) => selected.join(', ')}
-							MenuProps={MenuProps}
-							sx={{
-								backgroundColor:
-									muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
-							}}
-						>
-							{combatArts.map(({ name }) => (
-								<MenuItem key={name} value={name}>
-									<Checkbox checked={selectedCombatArts.indexOf(name) > -1} />
-									<ListItemText primary={name} />
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
-					<Button variant="outlined" size="small" onClick={selectAll}>
-						Select all
-					</Button>
-					<Button variant="outlined" size="small" onClick={deselectAll}>
-						Deselect all
-					</Button>
-				</Stack>
-
-				<Divider sx={{ my: 1 }} />
-
-				<TextField
-					multiline
-					minRows={3}
-					maxRows={5}
-					fullWidth
-					label="Alternative: Import Character as JSON"
-					value={characterJsonString}
-					onChange={(event) => handleCharacterUpload(event.target.value)}
-					placeholder="Paste character JSON here to automatically select matching abilities..."
-					helperText="You can also paste a character's exported JSON data here as an alternative to selecting a character above."
-				/>
-			</Stack>
-			<Typography variant="subtitle1" sx={{ mb: 2 }}>
-				{filteredCombatArts.length} Combat Art
-				{filteredCombatArts.length !== 1 ? 's' : ''} will be printed
-				{selectedCombatArtsList.some((s) => s.characterName) && (
+			<PrintToolShell
+				controlsLabel="Select Arts"
+				previewLabel="Preview"
+				controls={
 					<>
-						{' '}
-						(including duplicates for specific characters - hover over cards to
-						see which character they belong to)
+						<div className="pt-section">
+							<div className="pt-section__head">
+								<span className="pt-section__step">I</span>
+								<span className="pt-section__label">Source</span>
+							</div>
+							<div className="pt-source">
+								<CharacterSelector
+									onCharacterSelect={handleCharacterSelect}
+									label="Load character's combat arts"
+									helperText="Adds the character's combat arts to the selection below."
+								/>
+								<button
+									type="button"
+									className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
+									onClick={() => setShowJsonImport(!showJsonImport)}
+									aria-expanded={showJsonImport}
+									aria-controls="pt-import-combat-arts"
+								>
+									<span
+										className="pt-import-toggle__caret"
+										aria-hidden="true"
+									/>
+									Import character as JSON
+								</button>
+								<div
+									id="pt-import-combat-arts"
+									className={`pt-import-body${showJsonImport ? '' : ' is-hidden'}`}
+								>
+									<textarea
+										value={characterJsonString}
+										onChange={(event) =>
+											handleCharacterUpload(event.target.value)
+										}
+										placeholder="Paste character JSON here…"
+										aria-label="Character JSON import"
+									/>
+								</div>
+							</div>
+						</div>
+						<div className="pt-section">
+							<div className="pt-section__head">
+								<span className="pt-section__step">II</span>
+								<span className="pt-section__label">Selection</span>
+							</div>
+							<FormControl size="small" fullWidth>
+								<InputLabel>Combat Arts</InputLabel>
+								<Select
+									multiple
+									value={selectedCombatArts}
+									onChange={handleChange}
+									input={<OutlinedInput label="Combat Arts" />}
+									renderValue={(selected) => `${selected.length} selected`}
+									MenuProps={MenuProps}
+								>
+									{combatArts.map(({ name }) => (
+										<MenuItem key={name} value={name}>
+											<Checkbox
+												checked={selectedCombatArts.indexOf(name) > -1}
+											/>
+											<ListItemText primary={name} />
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+							<div className="pt-select-row">
+								<button
+									type="button"
+									className="pt-verb-quiet"
+									onClick={selectAll}
+								>
+									Select all
+								</button>
+								<button
+									type="button"
+									className="pt-verb-quiet"
+									onClick={deselectAll}
+								>
+									Deselect all
+								</button>
+							</div>
+						</div>
+						<div className="pt-section">
+							<div className="pt-count">
+								{filteredCombatArts.length === 1
+									? '1 card'
+									: `${filteredCombatArts.length} cards`}{' '}
+								selected
+								{/* A spill that doubles a card's paper is stated, not
+								    silent (M18 D3). */}
+								{spillPlan.continuations > 0 && (
+									<>
+										{' '}
+										→ {printedCards.length} printed (
+										{spillPlan.continuations === 1
+											? '1 continuation'
+											: `${spillPlan.continuations} continuations`}
+										)
+									</>
+								)}
+								{filteredCombatArts.length > 0 && (
+									<>
+										{' '}
+										· {sheetCount === 1 ? '1 sheet' : `${sheetCount} sheets`}
+									</>
+								)}
+							</div>
+							<button
+								type="button"
+								className="pt-print-verb"
+								onClick={handlePrint}
+								disabled={filteredCombatArts.length === 0 || settlingCards > 0}
+							>
+								{settlingCards > 0 ? 'Fitting cards…' : 'Print'}
+							</button>
+						</div>
 					</>
-				)}
-				:
-			</Typography>
-			<div className="combat-art--container" ref={componentRef}>
-				{filteredCombatArts.map((combatArt, index) => (
-					<>
-						<div
-							key={`${combatArt.name}-${combatArt.characterName || 'manual'}-${index}`}
-							title={
-								combatArt.characterName
-									? `For character: ${combatArt.characterName}`
-									: undefined
+				}
+				preview={
+					<div ref={componentRef}>
+						<PrintPages
+							page={CARD_PAGE}
+							item={CARD_SIZE}
+							margin={CARD_PAGE_MARGIN}
+							empty={
+								<p className="pt-empty">
+									Select combat arts in the controls panel to preview them here.
+								</p>
 							}
 						>
-							<CombatArtCard {...combatArt} />
-						</div>
-						{Boolean(index % 9 === 8) && <div className="page-break" />}
-					</>
-				))}
-				{!filteredCombatArts.length && (
-					<Typography variant="body2">
-						Select some Combat Arts above to include them for printing.
-					</Typography>
-				)}
-			</div>
+							{printedCards.map(({ combatArt, planKey, part }) => (
+								<div
+									key={`${planKey}#${part.part}`}
+									title={
+										combatArt.characterName
+											? `For character: ${combatArt.characterName}`
+											: undefined
+									}
+								>
+									<CombatArtCard
+										{...combatArt}
+										start={part.start}
+										end={part.end}
+										part={part.part}
+										totalParts={part.totalParts}
+										onFitted={(result) =>
+											spillPlan.report(planKey, part.start, result)
+										}
+									/>
+								</div>
+							))}
+						</PrintPages>
+					</div>
+				}
+			/>
 		</>
 	)
 }

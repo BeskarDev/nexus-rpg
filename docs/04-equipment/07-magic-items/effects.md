@@ -4,26 +4,28 @@ sidebar_position: 2
 
 # Magic Item Effects
 
-## Magic Item Effects
+![banner-img](/img/banner/magic-effects-banner.png)
 
-### Magic Weapons and Spell Catalysts
+## Magic Weapons and Spell Catalysts
 
 Magic weapons and spell catalysts increase their weapon or spell damage by +1 for each step above their original Quality respectively and increases their innate Durability. The following table describes the exact bonuses magic weapons and spell catalysts gain. Quality 3 is a special case, where the items count as non-magical masterworks but follow the same principle.
 
 | Quality | Weapon/Spell Damage | Durability |
 | --- | --- | --- |
-| 3* | +1/+0* | - |
+| 3* | +1 | - |
 | 4 | +1 | +1d |
 | 5 | +2 | +1d |
 | 6 | +3 | +2d |
 | 7 | +4 | +2d |
 | 8 | +5 | +3d |
 
+> \* A Quality 3 weapon or spell catalyst gains **+1 damage** and no Durability step. It grants **no AV bonus**, because armor, shields, and helmets only start gaining one at Quality 4.
+
 > Weapons which are already Quality 3 in their mundane form can also be made as masterwork versions for the extra cost but only to gain access to a masterwork property. Such weapons **don’t** get an increase to their weapon damage as their base form is already of the same Quality.
 
-### Magic Armor, Shields, and Helmets
+## Magic Armor, Shields, and Helmets
 
-Masterwork armor, shields, and helmets increase their defensive capabilities with increased Quality. These higher Quality pieces are only available at minimum Quality 4 in contrast to weapons.
+Masterwork armor, shields, and helmets increase their defensive capabilities with increased Quality. These higher Quality pieces are only available at minimum Quality 4 in contrast to weapons. A Quality 3 piece is a masterwork with **no AV bonus**.
 
 > Shields are treated as both weapons and armor for the benefits of masterwork items. This means that a Quality 4 light shield will both increase it’s weapon damage from 2 to 3 and it’s AV bonus from 1 to 2. Bucklers also gain the magic item AV bonus, although they don’t grant one in their mundane form.
 
@@ -35,7 +37,7 @@ Masterwork armor, shields, and helmets increase their defensive capabilities wit
 | 7 | +4 | +2d |
 | 8 | +5 | +3d |
 
-### Magic Ammo
+## Magic Ammo
 
 Ranged attacks with magic ammo deal extra damage on a hit. This bonus does not count towards weapon damage but gives a flat damage bonus depending on it's Quality. Magic ammo names include the bonus suffix (e.g., "Arrows +2" for Q4).
 
@@ -50,7 +52,7 @@ Magic ammo comes as units of supply, the same way mundane ammo does. The excepti
 | 7 | +5 |
 | 8 | +6 |
 
-#### Enchanted Ammo
+### Enchanted Ammo
 
 In contrast to weapons and armor, magic ammo normally doesn‘t have an enchantment. You can still buy or craft enchanted pieces of ammo, but they come in individual pieces per use. So one item slot for enchanted ammo with up to three uses represents up to three physical pieces of that ammo. Usually, once such a piece of ammo has successfully hit it‘s target or otherwise activated it‘s enchantment, it is destroyed and you have to spend 1 use for it.
 
@@ -58,7 +60,7 @@ In contrast to weapons and armor, magic ammo normally doesn‘t have an enchantm
 >
 > Enchanted ammo still gains the same damage bonus for it‘s Quality as regular magic ammo.
 
-### Spell Scrolls
+## Spell Scrolls
 
 Spell scrolls contain sacred words or ancient arcane symbols written with magical ink. These magical inscriptions contain single uses of specific spells, which any intelligent creature can read aloud to invoke the spell's effect, after which the scroll turns to dust.
 
@@ -88,7 +90,7 @@ Spell scrolls contain sacred words or ancient arcane symbols written with magica
 |  |  |  |  | | | 7 | Peace |
 |  |  |  |  | | | 8 | War |
 
-### Magic Wands
+## Magic Wands
 
 Wands are single-spell magical implements that function as spell catalysts. Each wand holds exactly one spell and uses a charge-based system.
 
@@ -108,7 +110,7 @@ Wands are single-spell magical implements that function as spell catalysts. Each
 | 7 (Superior) | 4 | d12 | +4 | 16 | +4 |
 | 8 (Supreme) | 5 | d12 | +5 | 20 | +5 |
 
-### Magic Staffs
+## Magic Staffs
 
 Staffs are multi-spell magical implements for advanced spellcasters. Each staff holds multiple spells and uses a charge-based system. You must have the correct magic skill (Arcana or Mysticism) for the staff's spells to use them.
 
@@ -128,7 +130,7 @@ Staffs are multi-spell magical implements for advanced spellcasters. Each staff 
 | 7 (Superior) | 4 | d12 | +4 | 24 | 5 | +4 |
 | 8 (Supreme) | 5 | d12 | +5 | 30 | 6 | +5 |
 
-# Materials & Enchantments
+## Materials & Enchantments
 
 Every magic item must be crafted from a material, and may optionally have an enchantment applied to it.
 

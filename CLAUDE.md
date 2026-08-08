@@ -34,7 +34,7 @@ bun run creature:build # Creature builder CLI
 | `src/types/Character.ts` | Central TypeScript type definitions |
 | `src/utils/scripts/` | Python content pipeline: `notion-import/`, `converters/`, `transformers/` |
 | `spec/` | Technical feature specs for the app (currently mostly Notion-import work) |
-| `.claude/skills/` | Design + workflow skills (spell-design, talent-design, creature-design, magic-item-design, notion-sync) |
+| `.claude/skills/` | Design + workflow skills (spell-design, talent-design, creature-design, magic-item-design, character-design, notion-sync) and `codex-theme` for the site's visual language and codex components |
 | `.github/instructions/` | Legacy Copilot instructions — superseded by CLAUDE.md and skills, kept as pointer stubs |
 
 ## Game Design Work
@@ -65,6 +65,26 @@ bun run creature:build # Creature builder CLI
 - Never commit temporary test scripts or standalone summary docs in the project root.
 - **Never run `git commit` or `git push`.** All version control operations are done manually by the owner. Finish edits, verify docs and JSON agree, then stop — never attempt to stage or commit.
 
+## CI must be clean, always
+
+**Leave every CI check green before finishing, including failures you did not cause.** A pre-existing error is still a red build, and "not my change" is not a reason to leave it. If a check is red when you arrive, fix it as part of the work and say so in your report.
+
+The PR workflow gates all of these (`.github/workflows/firebase-hosting-pull-request.yml`):
+
+```bash
+bun run lint          # 0 errors. Warnings are tolerated, but don't introduce a new
+                      # KIND of warning; matching an established pattern is fine
+                      # (every content-gen script trips no-console the same way)
+bun run tsc:check
+bun run test:coverage
+bun run content:check # generated MDX matches its JSON
+bun run sigils:check
+bun run sigils:masks --check
+bun run build         # also fails on broken links; treat SSG warnings as defects
+```
+
+`bun run build` prints broken anchors and HTML-minifier diagnostics as "non-critical". They are still defects and still get fixed — a nested `<a>` usually means the auto-keyword plugin linkified text already inside a link.
+
 ## Content Pipeline
 
 Two directions, plus a publication flow for new designs:
@@ -73,6 +93,23 @@ Two directions, plus a publication flow for new designs:
 
 **Docs → Notion (sync back)**: the `notion-sync` skill pushes doc changes to the Notion workspace (non-1:1 page mapping, changelog).
 
-**New game content (design skills → production)**: after the owner approves a design as production-ready, publish it to all its surfaces — docs markdown, the matching app JSON in `src/utils/data/json/` (edited directly; consumed by search dialogs and builder tools), and Notion via `notion-sync`. Each design skill's **Publication Pipeline** section states exactly which surfaces its content type touches and the formats.
+**JSON → docs (generated content)**: five content types are now **JSON-canonical** — the app JSON is the source of truth and their docs pages are generated from it:
+
+| Content | Canonical JSON | Generated pages |
+|---|---|---|
+| Spells | `arcane-spells.json`, `mystic-spells.json` | `docs/07-magic/{02-arcane,04-mystic}-spells/*.mdx` |
+| Conditions | `conditions.json` | `docs/05-combat/04-conditions.mdx` |
+| Combat arts | `combat-arts.json` | `docs/05-combat/05-combat-arts/*.mdx` |
+| Talents | `talents.json` | `docs/03-statistics/06-talents/*.mdx` |
+| Creatures | `creatures.json` | `docs/08-creatures/03-creatures/tier-*.mdx` |
+
+```bash
+bun run content:gen     # regenerate all five from JSON
+bun run content:check   # staleness gate — CI fails on hand-edited or stale MDX
+```
+
+**Never hand-edit those `.mdx` files.** They carry a do-not-edit banner and `content:check` runs in PR CI. Edit the JSON and regenerate: one edit updates both surfaces in the same commit, so docs and JSON agree by construction rather than by discipline. The generators shape-check as they go and **fail the build** on malformed data instead of papering over it.
+
+**New game content (design skills → production)**: after the owner approves a design as production-ready, publish it to its surfaces. For the five types above that means the canonical JSON, then `content:gen`, then Notion via `notion-sync`. Content that is NOT generated (magic items, equipment, rules chapters) is still authored as markdown directly. Each design skill's **Publication Pipeline** section states exactly which surfaces its content type touches and the formats.
 
 Notion is a co-source of truth — significant rule changes in `/docs/` must be synced.

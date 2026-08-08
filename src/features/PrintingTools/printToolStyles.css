@@ -1,0 +1,494 @@
+/* Print tool shell — codex-themed controls + preview layout (M16 S4).
+   ==========================================================================
+
+   Five print surfaces share this shell. The screen side of each tool is a
+   commission: source → selection → count → verb. The preview is the artifact
+   as it will print.
+
+   D6 (M16): one stated path per tool — source, then selection, then the verb.
+   The verb sits after the choices it commits, never before them. */
+
+/* ── Shell layout ────────────────────────────────────────────────────────── */
+.pt-shell {
+	--pt-line: color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+	--pt-wash: color-mix(in srgb, var(--nexus-bronze) 5%, transparent);
+	--pt-ink: color-mix(
+		in srgb,
+		var(--nexus-bronze) 72%,
+		var(--ifm-font-color-base)
+	);
+	--pt-ink-quiet: color-mix(
+		in srgb,
+		var(--nexus-bronze) 46%,
+		var(--ifm-font-color-base)
+	);
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
+/* Desktop: controls on left, preview scrolls on right in a sticky panel. */
+@media (min-width: 900px) {
+	.pt-shell {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 1.5rem;
+	}
+	.pt-controls {
+		flex: 0 0 340px;
+		position: sticky;
+		top: 1rem;
+		max-height: calc(100vh - 3rem);
+		overflow-y: auto;
+	}
+	.pt-preview {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+}
+
+/* Mobile: tab strip to switch between controls and preview. */
+.pt-tabs {
+	display: flex;
+	border: 1.5px solid var(--pt-line);
+	margin-bottom: 0.75rem;
+}
+.pt-tab {
+	flex: 1 1 0;
+	padding: 0.4rem 0.6rem;
+	border: 0;
+	border-right: 1px solid var(--pt-line);
+	background: var(--pt-wash);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	color: var(--pt-ink-quiet);
+	cursor: pointer;
+	text-align: center;
+}
+.pt-tab:last-child {
+	border-right: 0;
+}
+.pt-tab.is-active {
+	background: color-mix(in srgb, var(--nexus-bronze) 15%, transparent);
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 82%,
+		var(--ifm-font-color-base)
+	);
+}
+@media (min-width: 900px) {
+	.pt-tabs {
+		display: none;
+	}
+	/* On desktop both panes always visible; remove any hide/show from mobile tabs. */
+	.pt-controls,
+	.pt-preview {
+		display: block !important;
+	}
+}
+
+/* ── Control panel ───────────────────────────────────────────────────────── */
+.pt-controls {
+	border: 1.5px solid var(--pt-line);
+	background: var(--pt-wash);
+}
+
+.pt-section {
+	padding: 0.65rem 0.8rem;
+}
+.pt-section + .pt-section {
+	border-top: 1px solid var(--pt-line);
+}
+
+.pt-section__head {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 0.45rem;
+}
+.pt-section__label {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.09em;
+	color: var(--pt-ink-quiet);
+}
+.pt-section__step {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-3xs);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--pt-ink-quiet);
+	opacity: 0.6;
+}
+
+/* ── Source row (character selector) ───────────────────────────────────── */
+.pt-source {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+/* ── JSON import disclosure ─────────────────────────────────────────────── */
+.pt-import-toggle {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.25rem 0;
+	border: 0;
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--pt-ink-quiet);
+	cursor: pointer;
+}
+.pt-import-toggle:hover {
+	color: var(--pt-ink);
+}
+.pt-import-toggle__caret {
+	width: 8px;
+	height: 8px;
+	background-color: currentColor;
+	-webkit-mask: var(--nexus-caret-glyph) center / contain no-repeat;
+	mask: var(--nexus-caret-glyph) center / contain no-repeat;
+	transform: rotate(-90deg);
+	transition: transform 100ms linear;
+}
+/* 180deg, matching `.table-fold__caret` — an open disclosure points DOWN at its
+   panel everywhere else on the site, and `rotate(0deg)` pointed it up. */
+.pt-import-toggle.is-open .pt-import-toggle__caret {
+	transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+	.pt-import-toggle__caret {
+		transition: none;
+	}
+}
+.pt-import-body {
+	margin-top: 0.35rem;
+}
+.pt-import-body textarea {
+	width: 100%;
+	min-height: 4rem;
+	padding: 0.4rem 0.5rem;
+	border: 1px solid var(--pt-line);
+	background: var(--ifm-background-surface-color);
+	font-family: var(--nexus-font-mono, monospace);
+	font-size: var(--nexus-text-xs);
+	color: var(--ifm-font-color-base);
+	resize: vertical;
+	box-sizing: border-box;
+}
+
+/* Collapsed state using CSS class so DOM is still accessible for tests.
+   (The `hidden` attribute would prevent userEvent interactions in tests.) */
+.pt-import-body.is-hidden {
+	display: none;
+}
+
+/* ── Selection controls ─────────────────────────────────────────────────── */
+.pt-select-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+	align-items: center;
+	margin-top: 0.35rem;
+}
+.pt-verb-quiet {
+	padding: 0.2rem 0.6rem;
+	border: 1px solid var(--pt-line);
+	background: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: var(--pt-ink-quiet);
+	cursor: pointer;
+}
+.pt-verb-quiet:hover {
+	border-color: var(--nexus-bronze);
+	color: var(--pt-ink);
+	background: color-mix(in srgb, var(--nexus-bronze) 8%, transparent);
+}
+
+/*
+ * A TOGGLE that changes what the deck prints, not what it shows (M20 S2).
+ *
+ * Not MUI's `Switch`. A switch is a rounded pill that slides a filled knob, and
+ * it is three tells of a web app on carved stone at once — the radius, the
+ * saturated block of fill and the motion — the same three `CheckMark` was drawn
+ * to remove from the checkboxes (M13 S4d). This reuses that mark: a native
+ * checkbox for the semantics and the keyboard, a carved socket with a bronze
+ * lozenge set in it for the state.
+ *
+ * The input is visually hidden rather than `display: none`, so it keeps focus
+ * and the label keeps driving it; the socket carries the focus ring.
+ */
+.pt-toggle {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	margin-top: 0.6rem;
+	cursor: pointer;
+}
+
+.pt-toggle__input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.pt-toggle__mark {
+	flex: none;
+	/* Nudged onto the label's cap height rather than its line box, so the socket
+	   sits with the words instead of above them. */
+	margin-top: 0.05rem;
+	color: var(--pt-ink-quiet);
+	line-height: 0;
+}
+
+.pt-toggle__input:checked + .pt-toggle__mark {
+	color: var(--nexus-bronze);
+}
+
+.pt-toggle__input:focus-visible + .pt-toggle__mark {
+	outline: 2px solid var(--nexus-bronze);
+	outline-offset: 2px;
+}
+
+.pt-toggle__text {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--pt-ink);
+}
+
+/* What the toggle actually costs, in the count line's voice: a reader should
+   not have to flip it to find out what it does. */
+.pt-toggle__note {
+	display: block;
+	margin-top: 0.1rem;
+	font-variant-caps: normal;
+	letter-spacing: 0;
+	color: var(--pt-ink-quiet);
+}
+
+/* ── Count line ─────────────────────────────────────────────────────────── */
+.pt-count {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--pt-ink-quiet);
+	padding: 0.35rem 0;
+}
+.pt-count strong {
+	font-weight: 700;
+	color: var(--pt-ink);
+}
+
+/*
+ * An entry whose FIRST block will not fit on a card of its own (M18 D3).
+ *
+ * Not a layout failure to hide: the split has already done everything it is
+ * allowed to do, and what is left is rules text over budget. It belongs in
+ * front of the owner, which is why it reads as prose rather than as an error.
+ */
+.pt-count__warning {
+	margin-top: 0.35rem;
+	font-variant-caps: normal;
+	letter-spacing: 0;
+	text-transform: none;
+	color: var(--pt-ink);
+}
+
+/* ── Print verb ─────────────────────────────────────────────────────────── */
+.pt-print-verb {
+	display: block;
+	width: 100%;
+	padding: 0.55rem 1rem;
+	border: 1.5px solid var(--nexus-bronze);
+	background: color-mix(in srgb, var(--nexus-bronze) 14%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.09em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 82%,
+		var(--ifm-font-color-base)
+	);
+	cursor: pointer;
+	text-align: center;
+}
+.pt-print-verb:hover {
+	background: color-mix(in srgb, var(--nexus-bronze) 22%, transparent);
+}
+.pt-print-verb:disabled,
+.pt-print-verb[disabled] {
+	opacity: 0.4;
+	cursor: default;
+}
+
+/* Empty state in the preview */
+.pt-empty {
+	padding: 2rem 1rem;
+	font-style: italic;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 40%,
+		var(--ifm-font-color-base)
+	);
+	text-align: center;
+	font-size: var(--nexus-text-sm);
+}
+
+/* ── Printed pages, previewed as paper ───────────────────────────────────────
+   The preview shows the actual sheets that will come out of the printer, each
+   drawn at its true millimetre size and scaled down by `PrintPages`. */
+.pt-pages {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+.pt-page {
+	margin: 0;
+	position: relative;
+}
+/* The paper. White in BOTH themes, deliberately: it is a picture of a physical
+   sheet, so it does not follow the reader's dark mode any more than the paper
+   in the tray does. */
+/* The paper's edge is drawn with `outline` at a negative offset, NOT a border.
+   A border sits inside the box and takes 3px out of a page whose content area
+   is already exact — that alone was enough to wrap the second sheet section
+   onto its own row. An outline draws in the same place and costs no layout.
+   (The theme allows this: a negative-offset outline is a flat keyline.) */
+.pt-page__paper {
+	transform-origin: top left;
+	background: #fff;
+	outline: 1.5px solid var(--pt-line);
+	outline-offset: -1.5px;
+	overflow: hidden;
+}
+/* The bed holds exactly what `itemsPerPage` counted, so it must not add a
+   millimetre of its own.
+
+   It carried `gap: 1px`, copied from the old card containers. That is invisible
+   on a card page (3 × 63mm = 189mm inside 190mm, so 2px of gap still fits) and
+   fatal on the character sheet: two 148.5mm sections need 297mm and the bed IS
+   297mm, so one pixel of gap wrapped the second section onto a row that
+   `overflow: hidden` then cut off. Every page showed one sheet instead of two.
+
+   Items are `flex: 0 0 auto` for the same reason — a shrinkable item silently
+   resizes to hide an overflow instead of revealing it, which is what made the
+   sections come out at different widths. If something does not fit now, it
+   visibly does not fit, and `itemsPerPage` is what needs correcting. */
+/*
+ * Trim marks: hairline ink over the paper, under the cards.
+ *
+ * `pointer-events: none` and no background — it is a guide, not a surface. The
+ * colour is the register's ink so it prints as a line rather than as a grey the
+ * printer may or may not honour.
+ */
+.pt-page__trim {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	color: var(--pc-ink, #000);
+	pointer-events: none;
+	/*
+	 * ABOVE the cards, not under them (owner, 2026-08-07).
+	 *
+	 * Every card paints its own white paper, and nine of them tile the page edge
+	 * to edge — so marks drawn beneath were covered by the very cards they exist
+	 * to separate, and only the four page-edge ticks survived.
+	 *
+	 * Painting over a card is safe here BY CONSTRUCTION: a mark sits on a cell
+	 * boundary, and each card holds its deckle 2.3 / 2.6mm inside that boundary
+	 * as the cut allowance. The marks land in that white band, which is the one
+	 * part of a card the scissors are allowed to take.
+	 */
+	z-index: 2;
+}
+
+.pt-page__bed {
+	display: grid;
+	grid-auto-rows: min-content;
+	justify-items: start;
+	align-content: start;
+	gap: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+.pt-page__bed > * {
+	flex: 0 0 auto;
+	box-sizing: border-box;
+}
+.pt-page__label {
+	margin-top: 0.35rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	color: var(--pt-ink-quiet);
+}
+
+/* In print the framing gets out of the way and the page box IS the page: true
+   size, no scale, no caption, and a break after each one. */
+@media print {
+	.pt-pages {
+		display: block;
+		gap: 0;
+	}
+	.pt-page {
+		height: auto !important;
+	}
+	.pt-page__paper {
+		transform: none !important;
+		outline: 0;
+		break-after: page;
+	}
+	.pt-page:last-child .pt-page__paper {
+		break-after: auto;
+	}
+	.pt-page__label {
+		display: none;
+	}
+}
+
+/*
+ * A quiet verb on a line of its own — the magic item tool's "show all items",
+ * which states what the candidate rule is holding back (M19 D4).
+ */
+.pt-verb-quiet--block {
+	display: block;
+	width: 100%;
+	margin-top: 0.35rem;
+	text-align: left;
+}
+
+/* A column of controls rather than a row: one per item, each labelled. */
+.pt-select-row--stack {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	margin-top: 0.5rem;
+}

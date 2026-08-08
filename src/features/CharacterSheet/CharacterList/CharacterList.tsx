@@ -1,34 +1,45 @@
-import {
-	ListAlt,
-	ChevronLeft,
-	ChevronRight,
-	Expand,
-	ExpandMore,
-} from '@mui/icons-material'
-import {
-	Avatar,
-	Box,
-	Collapse,
-	IconButton,
-	Link,
-	List,
-	ListItem,
-	ListItemAvatar,
-	ListItemButton,
-	ListItemText,
-	Typography, // Import Typography for headers
-} from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import React, { useState, useEffect } from 'react'
 import { CharacterDocument } from '../../../types/Character'
-import { DeleteButton } from './DeleteButton'
-import { calculateCharacterLevel } from '../utils/calculateCharacterLevel'
+import { ListSection } from '../components'
+import { CharacterRow } from './CharacterRow'
+import { CHARACTER_HEADINGS, CHARACTER_TEMPLATE } from './characterColumns'
 
 export interface CharacterListProps {
 	characters: CharacterDocument[]
 	handleDeleteCharacter: (char: CharacterDocument) => Promise<void>
 }
 
+/**
+ * The character list, as the sheet's own ledger (M13 S12).
+ *
+ * ## What it was, and why it was left behind
+ *
+ * M9 S8 made this a CONTENTS PAGE rather than a tile grid, which was the right
+ * call and is still the shape: ruled rows, a mark, a name, a line saying what is
+ * inside. Then M13 re-cut every list on the sheet ITSELF — one row primitive, one
+ * section primitive, ruled column headings, cells that align down a page — and
+ * this list, being one screen earlier in the journey, kept the M9 construction.
+ *
+ * The result was the first thing a player sees not matching anything after it: a
+ * MUI `List` of `ListItemButton`s with a circular-avatar slot, a
+ * `folk · background` subtitle in place of columns, and the level as a cartouche
+ * pinned to the far right of a 1400px row — 700px from the name it describes,
+ * which is the same stranded-fragment fault S4e fixed on the load band.
+ *
+ * ## What it is
+ *
+ * The same four facts as columns: **Name, Folk, Background, Level**, under the
+ * same ruled headings every tab uses, with the same `ReadCell`s. The admin's
+ * per-player grouping is `ListSection` — the sheet's one section primitive, with
+ * its count and its carved caret — instead of a hand-rolled header with a
+ * Material chevron pair.
+ *
+ * The empty state stops apologising in three paragraphs and says the one thing a
+ * reader needs, in the quiet register the rest of the sheet uses for an empty
+ * course.
+ */
 export const CharacterList: React.FC<CharacterListProps> = ({
 	characters,
 	handleDeleteCharacter,
@@ -55,160 +66,105 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 		}
 	}, [characters.length, isAdmin, viewAsAdmin, currentUser])
 
-	const buildCharacterName = (char: CharacterDocument) =>
-		`${char.personal.name} (${char.personal.folk} ${char.personal.background}, Level ${calculateCharacterLevel(char.skills.xp.spend)})`
-
 	const togglePlayerExpanded = (playerName: string) => {
 		setExpandedPlayers((prev) => {
-			const newSet = new Set(prev)
-			if (newSet.has(playerName)) {
-				newSet.delete(playerName)
+			const next = new Set(prev)
+			if (next.has(playerName)) {
+				next.delete(playerName)
 			} else {
-				newSet.add(playerName)
+				next.add(playerName)
 			}
-			return newSet
+			return next
 		})
 	}
 
-	// Show empty state if no characters
+	/** By name, so a player's shelf reads in one order however it arrived. */
+	const byName = (a: CharacterDocument, b: CharacterDocument) =>
+		(a.personal.name || '').localeCompare(b.personal.name || '')
+
+	/* The ledger's column header, decorative — every cell carries its own label
+	   below the breakpoint, where the columns collapse and the header is gone. */
+	const headings = (
+		<Box
+			className="cs-ledger-head"
+			aria-hidden="true"
+			sx={{ gridTemplateColumns: CHARACTER_TEMPLATE, maxWidth: '100%' }}
+		>
+			{CHARACTER_HEADINGS.map((heading, index) => (
+				<span
+					key={heading.label || `blank-${index}`}
+					style={{ textAlign: heading.align }}
+				>
+					{heading.label}
+				</span>
+			))}
+		</Box>
+	)
+
+	const rows = (list: CharacterDocument[]) =>
+		[...list]
+			.sort(byName)
+			.map((char) => (
+				<CharacterRow
+					key={char.docId}
+					character={char}
+					onDelete={() => handleDeleteCharacter(char)}
+				/>
+			))
+
 	if (characters.length === 0) {
 		return (
-			<Box
-				sx={{
-					textAlign: 'center',
-					py: 6,
-					px: 2,
-				}}
-			>
-				<Typography variant="h6" gutterBottom>
-					No Characters Yet
-				</Typography>
-				<Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-					Get started by creating your first character!
-				</Typography>
-				<Typography variant="body2" color="text.secondary">
-					Click the <strong>"New Character"</strong> button above to choose
-					between creating a quickstart character or building one from scratch.
+			<Box className="cs-character-list cs-ledger-cols">
+				<Typography className="cs-character-empty">
+					No characters yet. <strong>New character</strong> above starts one,
+					either from a quickstart or from scratch.
 				</Typography>
 			</Box>
 		)
 	}
 
-	return (
-		<List>
-			{isAdmin && viewAsAdmin
-				? // Group characters by playerName if the user is an admin viewing as admin
-					Object.entries(
-						characters.reduce(
-							(groups, char) => {
-								const playerName = char.personal.playerName || 'Unknown Player'
-								if (!groups[playerName]) {
-									groups[playerName] = []
-								}
-								groups[playerName].push(char)
-								return groups
-							},
-							{} as Record<string, CharacterDocument[]>,
-						),
-					)
-						.sort(([a], [b]) => a.localeCompare(b)) // Sort playerName alphabetically
-						.map(([playerName, playerCharacters]) => {
-							const isExpanded = expandedPlayers.has(playerName)
-							return (
-								<React.Fragment key={playerName}>
-									<Box
-										sx={{
-											display: 'flex',
-											alignItems: 'center',
-											mt: 2,
-											mb: 1,
-											cursor: 'pointer',
-											'&:hover': {
-												backgroundColor: 'action.hover',
-											},
-											borderRadius: 1,
-											px: 1,
-											py: 0.5,
-										}}
-										onClick={() => togglePlayerExpanded(playerName)}
-									>
-										<IconButton size="small" sx={{ mr: 0.5 }}>
-											{isExpanded ? <ExpandMore /> : <ChevronRight />}
-										</IconButton>
-										<Typography variant="subtitle2">
-											{playerName} ({playerCharacters.length})
-										</Typography>
-									</Box>
-									<Collapse in={isExpanded} timeout="auto" unmountOnExit>
-										{playerCharacters
-											.sort((a, b) =>
-												buildCharacterName(a).localeCompare(
-													buildCharacterName(b),
-												),
-											) // Sort characters alphabetically by name
-											.map((char) => (
-												<ListItem
-													key={char.docId}
-													secondaryAction={
-														<DeleteButton
-															handleDeleteCharacter={() =>
-																handleDeleteCharacter(char)
-															}
-															characterName={char.personal.name}
-														/>
-													}
-												>
-													<Link
-														href={`${window.location.href.split('?')[0]}?id=${char.collectionId}-${char.docId}`}
-														sx={{ width: '100%', textDecoration: 'none' }}
-													>
-														<ListItemButton sx={{ borderRadius: 30, mr: 2 }}>
-															<ListItemAvatar>
-																<Avatar src={char.personal.profilePicture}>
-																	<ListAlt />
-																</Avatar>
-															</ListItemAvatar>
-															<ListItemText
-																primary={buildCharacterName(char)}
-																sx={{ textDecoration: 'none' }}
-															/>
-														</ListItemButton>
-													</Link>
-												</ListItem>
-											))}
-									</Collapse>
-								</React.Fragment>
-							)
-						})
-				: // Render characters normally if the user is not an admin
-					characters.map((char) => (
-						<ListItem
-							key={char.docId}
-							secondaryAction={
-							<DeleteButton
-								handleDeleteCharacter={() => handleDeleteCharacter(char)}
-								characterName={char.personal.name}
-							/>
-							}
+	if (isAdmin && viewAsAdmin) {
+		const byPlayer = characters.reduce(
+			(groups, char) => {
+				const playerName = char.personal.playerName || 'Unknown Player'
+				groups[playerName] = [...(groups[playerName] ?? []), char]
+				return groups
+			},
+			{} as Record<string, CharacterDocument[]>,
+		)
+
+		return (
+			<Box className="cs-character-list">
+				{Object.entries(byPlayer)
+					.sort(([a], [b]) => a.localeCompare(b))
+					.map(([playerName, playerCharacters]) => (
+						<ListSection
+							key={playerName}
+							label={playerName}
+							count={playerCharacters.length}
+							className="cs-ledger-cols"
+							collapsible
+							expanded={expandedPlayers.has(playerName)}
+							onExpandedChange={() => togglePlayerExpanded(playerName)}
 						>
-							<Link
-								href={`${window.location.href.split('?')[0]}?id=${char.collectionId}-${char.docId}`}
-								sx={{ width: '100%', textDecoration: 'none' }}
-							>
-								<ListItemButton sx={{ borderRadius: 30, mr: 2 }}>
-									<ListItemAvatar>
-										<Avatar src={char.personal.profilePicture}>
-											<ListAlt />
-										</Avatar>
-									</ListItemAvatar>
-									<ListItemText
-										primary={buildCharacterName(char)}
-										sx={{ textDecoration: 'none' }}
-									/>
-								</ListItemButton>
-							</Link>
-						</ListItem>
+							{headings}
+							{rows(playerCharacters)}
+						</ListSection>
 					))}
-		</List>
+			</Box>
+		)
+	}
+
+	return (
+		<Box className="cs-character-list">
+			<ListSection
+				label="Characters"
+				count={characters.length}
+				className="cs-ledger-cols"
+			>
+				{headings}
+				{rows(characters)}
+			</ListSection>
+		</Box>
 	)
 }

@@ -328,8 +328,12 @@ describe('Character Sheet Functional Integration Tests', () => {
 			{ timeout: 10000 },
 		)
 
-		// Character has comprehensive stats: attributes, health, fatigue, AV, and skills
-		expect(container.textContent).toContain('Fighting (Rank 3)')
+		// Character has comprehensive stats: attributes, health, fatigue, AV, and
+		// skills. M13 S3: a skill renders as one `SheetChip` with its rank absorbed
+		// behind a struck divider, so the row's text is "Fighting" then "3" — the
+		// word "Rank" is carried by the divider now, not spelled out.
+		expect(container.textContent).toContain('Fighting')
+		expect(container.textContent).toContain('Fighting3')
 		expect(container.firstChild).toBeDefined()
 	})
 

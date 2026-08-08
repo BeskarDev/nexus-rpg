@@ -3,9 +3,6 @@ import {
 	Box,
 	Button,
 	TextField,
-	Typography,
-	List,
-	Paper,
 	Alert,
 	Dialog,
 	DialogTitle,
@@ -16,11 +13,24 @@ import {
 	IconButton,
 	Tooltip,
 } from '@mui/material'
-import { Add, ContentCopy } from '@mui/icons-material'
+import { ContentCopy } from '@mui/icons-material'
 import { PartyInfo } from '@site/src/types/Party'
 import { logger } from '../../../utils'
 import { PartyMemberItem } from './PartyMemberItem'
 import { PartyNameCard } from '../PartyNameCard'
+import {
+	ListSection,
+	MarkButton,
+	MetaBand,
+	MetaBandField,
+	MetaBandLabel,
+	MetaBandNote,
+	MetaBandValue,
+	RuleInfo,
+	metaBandInputClass,
+	metaBandInputSx,
+} from '../../../components'
+import { PARTY_HEADINGS, partyHeaderTemplate } from './partyColumns'
 
 export interface PartyManagementProps {
 	characterId: string
@@ -172,106 +182,128 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 	}
 
 	return (
-		<Box sx={{ mb: 3 }}>
-			{/* Character ID Display */}
-			<Paper sx={{ p: 2, mb: 2 }}>
-				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-					<Typography variant="body2" color="text.secondary">
-						Character ID:
-					</Typography>
-					<Typography
-						component="code"
-						sx={{
-							fontFamily: 'monospace',
-							bgcolor: (theme) =>
-								theme.palette.mode === 'dark' ? 'grey.800' : 'grey.100',
-							px: 1,
-							py: 0.5,
-							borderRadius: 0.5,
-							flexGrow: 1,
-						}}
-					>
-						{characterId}
-					</Typography>
-					<Tooltip title="Copy Character ID">
-						<IconButton size="small" onClick={handleCopyCharacterId}>
-							<ContentCopy fontSize="small" />
-						</IconButton>
-					</Tooltip>
-				</Box>
-			</Paper>
-
-			{/* Party Creation or Management */}
+		<Box sx={{ mb: 1.5 }}>
+			{/*
+				M13 S7 — the party's facts as a BAND, its members as a ledger.
+				
+				What this replaced: three stacked MUI `Paper` panels. One held the character's
+				own id in a `grey.800 / grey.100` monospace block — the last
+				`palette.mode === 'dark' ? … : …` conditional on the sheet, which is the exact
+				pattern M9 D3 replaced with mode-tracking tokens everywhere else. One held the
+				party name card, an "Invite New Member" heading, a labelled id field and an
+				outlined Add button. One held a `subtitle2` count over a MUI `List`.
+				
+				They are one meta band (the party's name, its size, your id) and one
+				`ListSection` of rows. The invite field lives in the section's control strip
+				beside the verb that uses it, because an id you paste and a button you press are
+				one action and were two panels apart.
+			*/}
 			{!partyInfo ? (
-				<Paper sx={{ p: 2 }}>
-					<Typography variant="h6" sx={{ mb: 2 }}>
-						Create Adventuring Party
-					</Typography>
-					<Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+				<Box className="cs-empty-note" sx={{ display: 'grid', gap: 1 }}>
+					<span>
+						A party shares one page of notes. Create one and invite the other
+						players by character id — yours is <code>{characterId}</code>.
+					</span>
+					<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
 						<TextField
-							label="Party Name"
-							value={partyName}
-							onChange={(e) => setPartyName(e.target.value)}
+							className={metaBandInputClass.text}
+							variant="standard"
 							size="small"
-							fullWidth
+							value={partyName}
+							onChange={(event) => setPartyName(event.target.value)}
+							placeholder="Party name"
 							disabled={loading}
+							inputProps={{ 'aria-label': 'Party name' }}
+							sx={{ ...metaBandInputSx, flex: '1 1 12rem', maxWidth: '18rem' }}
 						/>
-						<Button
-							variant="contained"
+						<MarkButton
+							glyph="+"
+							label="Create party"
 							onClick={handleCreateParty}
-							disabled={!partyName.trim() || loading}
-							startIcon={<Add />}
-						>
-							Create
-						</Button>
-					</Box>
-					<Alert severity="info">
-						Create a party to share notes and coordinate with other players.
-						Once created, you can invite others by sharing character IDs.
-					</Alert>
-				</Paper>
-			) : (
-				<Paper sx={{ p: 2 }}>
-					{/* Party Name Card */}
-					<Box sx={{ mb: 2 }}>
-						<PartyNameCard
-							partyName={partyInfo.party.name}
-							onSave={handleUpdatePartyName}
-							loading={loading}
 						/>
 					</Box>
-
-					{/* Add Member Section */}
-					<Box sx={{ mb: 3 }}>
-						<Typography variant="subtitle2" sx={{ mb: 1 }}>
-							Invite New Member
-						</Typography>
-						<Box sx={{ display: 'flex', gap: 1 }}>
-							<TextField
-								label="Character ID"
-								value={newMemberCharacterId}
-								onChange={(e) => setNewMemberCharacterId(e.target.value)}
-								size="small"
-								fullWidth
-								disabled={loading}
-								placeholder="user-id-character-id"
+				</Box>
+			) : (
+				<>
+					<MetaBand>
+						<MetaBandField>
+							<MetaBandLabel sigil="party">Party</MetaBandLabel>
+							<PartyNameCard
+								partyName={partyInfo.party.name}
+								onSave={handleUpdatePartyName}
+								loading={loading}
 							/>
-							<Button
-								variant="outlined"
-								onClick={handleAddMember}
-								disabled={!newMemberCharacterId.trim() || loading}
-								startIcon={<Add />}
-							>
-								Add
-							</Button>
-						</Box>
-					</Box>
+						</MetaBandField>
+						<MetaBandField nowrap>
+							<MetaBandLabel sigil="folk">Members</MetaBandLabel>
+							<MetaBandValue>{partyInfo.members.length}</MetaBandValue>
+						</MetaBandField>
+						<MetaBandField nowrap>
+							<MetaBandLabel sigil="name">Your ID</MetaBandLabel>
+							<MetaBandNote>{characterId}</MetaBandNote>
+							<Tooltip title="Copy your character id">
+								<IconButton
+									size="small"
+									onClick={handleCopyCharacterId}
+									aria-label="Copy your character id"
+								>
+									<ContentCopy fontSize="inherit" />
+								</IconButton>
+							</Tooltip>
+						</MetaBandField>
+					</MetaBand>
 
-					{/* Party Members */}
-					<Typography variant="subtitle2" sx={{ mb: 1 }}>
-						Party Members ({partyInfo.members.length})
-					</Typography>
-					<List sx={{ p: 0 }}>
+					<ListSection
+						label="Party Members"
+						count={partyInfo.members.length}
+						collapsible
+						defaultExpanded
+						className="cs-ledger-cols"
+						info={
+							<RuleInfo label="About party members">
+								Invite a player by pasting their character id — they can copy it
+								from their own Party tab. Removing a member only unlinks them
+								from the party; their character is untouched.
+							</RuleInfo>
+						}
+						actions={
+							<>
+								<TextField
+									className={metaBandInputClass.text}
+									variant="standard"
+									size="small"
+									value={newMemberCharacterId}
+									onChange={(event) =>
+										setNewMemberCharacterId(event.target.value)
+									}
+									placeholder="character id"
+									disabled={loading}
+									inputProps={{ 'aria-label': 'Character id to invite' }}
+									sx={{ ...metaBandInputSx, width: '11rem' }}
+								/>
+								<MarkButton
+									glyph="+"
+									label="Invite member"
+									onClick={handleAddMember}
+								/>
+							</>
+						}
+					>
+						<Box
+							className="cs-ledger-head"
+							aria-hidden="true"
+							sx={{
+								gridTemplateColumns: partyHeaderTemplate(),
+								// Fills the working column (M13 S11); the column carries the ceiling.
+								maxWidth: '100%',
+							}}
+						>
+							{PARTY_HEADINGS.map((heading, index) => (
+								<span key={index} style={{ textAlign: heading.align }}>
+									{heading.label}
+								</span>
+							))}
+						</Box>
 						{partyInfo.members.map((member) => (
 							<PartyMemberItem
 								key={member.characterId}
@@ -281,28 +313,28 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 								onLeaveParty={() =>
 									showConfirmDialog(
 										'Leave Party',
-										'Are you sure you want to leave this party? This cannot be undone.',
+										'Leave this party? Its shared notes stay with the other members.',
 										onLeaveParty,
 									)
 								}
 								onDeleteParty={() =>
 									showConfirmDialog(
 										'Delete Party',
-										'Are you sure you want to delete this party? This will permanently remove all party data including shared notes.',
+										'Delete this party? Its shared notes are removed permanently.',
 										onDeleteParty,
 									)
 								}
 								onRemoveMember={() =>
 									showConfirmDialog(
 										'Remove Member',
-										`Are you sure you want to remove ${member.name} from the party?`,
+										`Remove ${member.name} from the party?`,
 										() => onRemoveMember(member.characterId),
 									)
 								}
 							/>
 						))}
-					</List>
-				</Paper>
+					</ListSection>
+				</>
 			)}
 
 			{/* Confirmation Dialog */}

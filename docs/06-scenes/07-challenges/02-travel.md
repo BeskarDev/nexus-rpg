@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # 🧭 Travel
 
-![banner-img](/img/banner/scenes-banner.png)
+![banner-img](/img/banner/travel-banner.png)
 
 Travel covers multi-day overland journeys between known locations. It is a specialized application of the [Challenge rules](./00-overview.md), built for situations where the party must navigate dangerous terrain, manage supplies, and deal with the unpredictable hazards of the road.
 
@@ -53,7 +53,7 @@ The travel system uses the same concept of **Challenge Dice** as introduced in t
 
 Choose a challenge die representing the length of the journey. For very long journeys, use multiple consecutive challenge dice for individual segments of the journey (split by terrain type for example).
 
-With an average of 2 progress per day, each challenge die takes roughly **half its maximum value in days** to complete. Good rolls shorten the journey; bad terrain and failed rolls extend it.
+With an average of 2 progress per day, each challenge die takes roughly **half its maximum value in days** to complete. Good rolls shorten the journey. Bad terrain and failed rolls extend it.
 
 | **Challenge Die** | **Avg. Days** |
 | --- | --- |
@@ -221,7 +221,7 @@ The Navigator determines how much progress the party makes each day and how unsc
 | --- | --- |
 | Blunder | Resolve both consequences |
 | Failure | Choose one consequence |
-| Weak Success | — |
+| Weak Success | - |
 | Strong Success | Choose one bonus |
 | Critical Success | Choose two bonuses |
 
@@ -378,7 +378,7 @@ These tables are for GM reference during play.
 | 1 | **Encounter** | Roll on a region-appropriate encounter table. |
 | 2 | **Wear and Tear** | Each adventurer chooses one item: make a Durability check if tracked, otherwise lose 1 use. |
 | 3 | **Rations Run Low** | Each party member rolls a Supply Check for their rations. |
-| 4 | **Weather Event** | Adverse weather sets in (fog, wind, extreme heat or cold, storms, etc.) with one of the following effects: Navigator and Scout each suffer +1 bane on their rolls; After each daily event, each party member rolls Strength + Fortitude vs. the travel difficulty or suffers 1 Fatigue; roll Supply Checks for rations twice and take the lower result. Each additional Weather Event result stacks (choose the same or different effects): +1 further bane on Navigation and Scouting; Fatigue roll Difficulty increased by one step; +1d for Supply checks, take lowest. Rolling Ambient resets all weather penalties. |
+| 4 | **Weather Event** | Adverse weather sets in (fog, wind, extreme heat or cold, storms, etc.) with one of the following effects: Navigator and Scout each suffer +1 bane on their rolls. After each daily event, each party member rolls Strength + Fortitude vs. the travel difficulty or suffers 1 Fatigue. Roll Supply Checks for rations twice and take the lower result. Each additional Weather Event result stacks (choose the same or different effects): +1 further bane on Navigation and Scouting. Fatigue roll Difficulty increased by one step. +1d for Supply checks, take lowest. Rolling Ambient resets all weather penalties. |
 | 5 | **Traces** | GM shares one detail about the route ahead: nearby hazard, resource, or travelers. |
 | 6 | **Ambient** | No mechanical effect. Resets all active Weather Event penalties. |
 
@@ -392,7 +392,7 @@ Roll 1d6 for the category, then 1d6 on the matching sub-table.
 | 2 | **Awe-Inspiring Vista** | Each party member regains 1 Resolve. Roll on sub-table for flavor. |
 | 3 | **Hidden Shortcut** | Navigator gains +1 boon on next Navigation roll. Roll on sub-table for flavor. |
 | 4 | **Suspicious Shelter** | Shelter for tonight + a small bonus. Roll on sub-table. |
-| 5 | **Warning Signs** | GM pre-rolls the next Travel Event and reveals the category. Party chooses: prepare (+1 boon on related rolls) or detour (skip the event, –1 progress). Roll on sub-table for flavor. |
+| 5 | **Warning Signs** | GM pre-rolls the next Travel Event and reveals the category. Party chooses: prepare (+1 boon on related rolls) or detour (skip the event, -1 progress). Roll on sub-table for flavor. |
 | 6 | **Travelers** | NPC encounter. Roll on sub-table. |
 
 #### Hidden Treasure
@@ -400,10 +400,10 @@ Roll 1d6 for the category, then 1d6 on the matching sub-table.
 | 1d6 | Situation |
 | --- | --- |
 | 1 | A creature guards a cache near its lair. Drive it off or sneak past to claim it. |
-| 2 | An abandoned merchant's wagon still loaded with goods. Looting it costs –1 progress today. |
+| 2 | An abandoned merchant's wagon still loaded with goods. Looting it costs-1 progress today. |
 | 3 | A trapped chest in a ruin. Mind + Crafting vs. travel difficulty to open safely. Failure: 2d6 damage. |
 | 4 | Valuable ore or herbs in a precarious spot. Agility + Athletics vs. travel difficulty to harvest safely. Failure: 1d6 damage. |
-| 5 | A dead adventurer's pack: 1d4 simple rations (d4) and 2d6 × 10 coins. Fresh predator signs nearby — looting risks an encounter. |
+| 5 | A dead adventurer's pack: 1d4 simple rations (d4) and 2d6 × 10 coins. Fresh predator signs nearby. Looting risks an encounter. |
 | 6 | A shrine offering worth 3d6 × 10 coins. Taking it may trigger local hostility or a curse (+1 bane on Resist until next rest). |
 
 #### Awe-Inspiring Vista
@@ -444,11 +444,11 @@ Roll 1d6 for the category, then 1d6 on the matching sub-table.
 | 1d6 | Evidence |
 | --- | --- |
 | 1 | Fresh claw marks on trees or rocks, growing larger along the trail. |
-| 2 | Abandoned camp — scattered gear, cold ashes, drag marks. |
+| 2 | Abandoned camp. Scattered gear, cold ashes, drag marks. |
 | 3 | Warning cairns. Recognized with Mind + Education or Lore vs. travel difficulty. |
 | 4 | Circling carrion birds ahead. |
 | 5 | A crude warning carved by previous travelers. |
-| 6 | Unnatural silence — no birds, insects, or animal movement. |
+| 6 | Unnatural silence, no birds, insects, or animal movement. |
 
 #### Travelers
 
@@ -456,7 +456,7 @@ Roll 1d6 for the category, then 1d6 on the matching sub-table.
 | --- | --- |
 | 1 | Merchant. Can buy or trade supplies at standard prices. |
 | 2 | Soldiers or patrol. Reveal one upcoming checkpoint or danger zone. |
-| 3 | Hermit or sage. Navigator gains +1 boon on next Navigation roll; asks for a meal or small favor. |
-| 4 | Fellow adventurers. Auto-succeed on shelter tonight; exchange regional rumors. |
+| 3 | Hermit or sage. Navigator gains +1 boon on next Navigation roll. Asks for a meal or small favor. |
+| 4 | Fellow adventurers. Auto-succeed on shelter tonight. Exchange regional rumors. |
 | 5 | Refugees. Reveal the next Travel Event result. |
-| 6 | Suspicious individual or group. Intentions unclear — trade, help, or bandit scouts (GM's call). |
+| 6 | Suspicious individual or group. Intentions unclear. Trade, help, or bandit scouts (GM's call). |

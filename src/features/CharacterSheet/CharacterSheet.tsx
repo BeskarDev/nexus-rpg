@@ -1,19 +1,8 @@
-import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
+import { Box, Typography, styled } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useDeviceSize } from './utils/useDeviceSize'
 import { mobileTabsConfig, desktopTabsConfig, getTabComponent } from './utils'
-
-export const AttributeField = styled(TextField)({
-	maxWidth: '5rem',
-})
-AttributeField.defaultProps = {
-	size: 'medium',
-	inputProps: {
-		sx: {
-			textAlign: 'center',
-		},
-	},
-}
+import { SheetTabBar } from './components'
 
 export const SectionHeader = styled(Typography)(({ theme }) => ({
 	marginBottom: `${theme.spacing(0.75)} `,
@@ -50,7 +39,7 @@ export const CharacterSheet: React.FC = () => {
 		}
 	}, [isMobile])
 
-	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+	const handleTabChange = (newValue: number) => {
 		setActiveTab(newValue)
 	}
 
@@ -63,28 +52,22 @@ export const CharacterSheet: React.FC = () => {
 		>
 			{isMobile && (
 				<>
+					{/* Sticky: seven tabs on a phone are how you move around the sheet, and
+						they must not scroll away under a long list. */}
 					<Box
 						sx={{
 							mb: 2,
-							display: 'flex',
-							justifyContent: 'center',
 							position: 'sticky',
-							top: '116px',
+							top: 'calc(var(--ifm-navbar-height, 60px) + var(--cs-masthead-h, 3.5rem))',
 							zIndex: 100,
 							backgroundColor: 'var(--ifm-background-color)',
 						}}
 					>
-						<Tabs
+						<SheetTabBar
+							tabs={mobileTabsConfig}
 							value={activeTab}
 							onChange={handleTabChange}
-							variant="scrollable"
-							scrollButtons={false}
-							allowScrollButtonsMobile
-						>
-							{mobileTabsConfig.map((tab) => (
-								<Tab key={tab.id} id={tab.id} label={tab.label} />
-							))}
-						</Tabs>
+						/>
 					</Box>
 					{(() => {
 						const TabComponent = getTabComponent(activeTab, true)
@@ -108,37 +91,37 @@ export const CharacterSheet: React.FC = () => {
 							const StatisticsTabComponent = mobileTabsConfig.find(
 								(tab) => tab.label === 'Statistics',
 							)?.component
-							return StatisticsTabComponent ? (
-								<StatisticsTabComponent />
-							) : null
+							return StatisticsTabComponent ? <StatisticsTabComponent /> : null
 						})()}
 					</Box>
 					<Box
 						sx={{
 							flex: 1,
 							minWidth: 0,
-							maxWidth: { md: 'var(--cs-max-width-sm)', lg: 'var(--cs-max-width-md)', xl: 'var(--cs-max-width-xl)' },
+							/*
+								One ceiling, not three breakpoint steps (M13 S11).
+
+								The steps read as responsive and behaved as a cap: MUI's `lg`
+								covers 1200-1536, so a 1512px laptop — the common desktop — got
+								`--cs-max-width-md`, 608px, while the row it sits in was 1480px.
+								~450px of a two-column layout was empty, and the ledger columns
+								that would have used it were squeezed instead.
+
+								A fluid column with one ceiling is the whole fix: it fills 1512
+								and 1920 alike, and stops before an ultra-wide turns a ledger row
+								into something the eye cannot track across.
+							*/
+							maxWidth: 'var(--cs-max-width-column)',
 						}}
 					>
-						<Box
-							sx={{
-								overflowX: 'auto',
-								WebkitOverflowScrolling: 'touch',
-								mb: 2,
-							}}
-						>
-							<Tabs
+						{/* The bar owns its own overflow now — the wrapper that used to add
+							`overflow-x: auto` around MUI's `Tabs` is gone with it. */}
+						<Box sx={{ mb: 2 }}>
+							<SheetTabBar
+								tabs={desktopTabsConfig}
 								value={activeTab}
 								onChange={handleTabChange}
-								variant="scrollable"
-								scrollButtons={false}
-								allowScrollButtonsMobile
-								sx={{ minWidth: 'max-content' }}
-							>
-								{desktopTabsConfig.map((tab) => (
-									<Tab key={tab.id} id={tab.id} label={tab.label} />
-								))}
-							</Tabs>
+							/>
 						</Box>
 						{(() => {
 							const TabComponent = getTabComponent(activeTab, false)

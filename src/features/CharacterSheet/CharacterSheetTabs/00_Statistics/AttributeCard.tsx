@@ -1,18 +1,19 @@
-import { HeartBroken, HeartBrokenOutlined } from '@mui/icons-material'
-import { Box, Checkbox, MenuItem, Tooltip } from '@mui/material'
+import { MenuItem, MenuList } from '@mui/material'
+import { SheetField, SigilPip } from '../../components'
+import DieToken from '@site/src/components/codex/DieToken'
 import {
 	Attribute,
 	AttributeType,
 	attributeTypeArray,
 } from '@site/src/types/Character'
 import React from 'react'
-import { AttributeField } from '../../CharacterSheet'
-import { CharacterSheetCard, CardHeader } from '../../components'
+import type { StatSigilName } from '@site/src/components/codex/stat-sigils'
 
 export type AttributeCardProps = {
 	attribute: Attribute
 	label: string
-	icon: React.ReactNode
+	/** M9 S11: the mark is data now, not a rendered node — SheetField draws it. */
+	sigil: StatSigilName
 	updateAttribute: (update: Partial<Attribute>) => void
 	totalWounds: number
 	color: string
@@ -67,7 +68,7 @@ export const getAttributeAbbr = (label: string) => {
 export const AttributeCard: React.FC<AttributeCardProps> = ({
 	attribute,
 	label,
-	icon,
+	sigil,
 	updateAttribute,
 	totalWounds,
 	color,
@@ -85,75 +86,75 @@ export const AttributeCard: React.FC<AttributeCardProps> = ({
 
 	const abbr = getAttributeAbbr(label)
 	const isWounded = attribute.wounded
-
 	return (
-		<CharacterSheetCard
-			minWidth="4rem"
+		<SheetField
+			label={abbr}
+			sigil={sigil}
+			tone={color}
+			// M9 S6: a column inside the attribute plate, which supplies the single
+			// frame for all four. A wounded attribute still draws its own red keyline
+			// (borderColor), since that is state rather than decoration.
+			weight="column"
+			editLabel={`Change ${label} die`}
+			minWidth="3.5rem"
 			maxWidth="5rem"
-			tooltip={getAttributeDescription(label)}
-			sx={{
-				flex: '1 1 auto',
-				transition: 'border-color 0.2s ease-in-out',
-				'&:hover': {
-					borderColor: isWounded ? undefined : color,
-				},
-			}}
+			info={`${getAttributeDescription(label)} — Wound: ${getWoundTooltip(label)}`}
+			infoLabel={`About ${label}`}
+			sx={{ flex: '1 1 auto' }}
 			borderColor={isWounded ? 'error.main' : undefined}
-			header={<CardHeader icon={icon} label={abbr} color={color} />}
+			editorWidth="6rem"
+			// M9 S11: the die chooser is now SheetField's own popover rather than a
+			// MUI `Select` rendered as the value. The Select looked identical but
+			// behaved differently from every other stat card — it owned its own open
+			// state, so a click outside could close it and immediately re-open it via
+			// the card's trigger, and it was the one editor on the sheet that did not
+			// dismiss like the rest. One popover implementation, one behaviour.
+			editor={(close) => (
+				<MenuList sx={{ p: 0 }}>
+					{attributeTypeArray.map((at) => (
+						<MenuItem
+							key={at}
+							selected={at === attribute.value}
+							onClick={() => {
+								updateAttribute({ value: at as AttributeType })
+								close()
+							}}
+							sx={{
+								fontSize: 'var(--nexus-text-xs)',
+								justifyContent: 'center',
+							}}
+						>
+							{/* M13 S1 (D2): text alone. The menu used to render the token AND
+								    the `dX` label, stating one value twice in one row. Text won
+								    here because a menu is a list of choices read once at
+								    level-up, where an unambiguous label beats a shape ladder.
+								    The ladder's job is the at-a-glance comparison across the
+								    four cards, which is where the token stays (see below). */}
+							d{at}
+						</MenuItem>
+					))}
+				</MenuList>
+			)}
 			footer={
-				<Tooltip title={getWoundTooltip(label)} placement="bottom">
-					<Checkbox
-						size="small"
-						icon={<HeartBrokenOutlined sx={{ fontSize: '0.8rem' }} />}
-						checkedIcon={
-							<HeartBroken color="error" sx={{ fontSize: '0.8rem' }} />
-						}
-						checked={attribute.wounded}
-						disabled={!attribute.wounded && totalWounds >= 3}
-						onChange={handleWoundChange}
-						sx={{ p: 0, mt: 0 }}
-					/>
-				</Tooltip>
+				// The vessel of life, intact, then split: the same jar the HP card
+				// carries, cracked through once the attribute is wounded.
+				<SigilPip
+					sigil="wound"
+					emptySigil="hp"
+					tone="error.main"
+					size="0.8rem"
+					filled={attribute.wounded}
+					disabled={!attribute.wounded && totalWounds >= 3}
+					onToggle={handleWoundChange}
+					label={`${label} wound`}
+					sx={{ p: 0, mt: 0 }}
+				/>
 			}
 		>
-			<AttributeField
-				select
-				value={attribute.value}
-				onChange={(event) =>
-					updateAttribute({
-						value: Number(event.target.value) as AttributeType,
-					})
-				}
-				variant="standard"
-				InputProps={{
-					disableUnderline: true,
-					sx: {
-						ml: 1.5,
-						mr: -1.5,
-						fontWeight: 'bold',
-						fontSize: '0.95rem',
-						textAlign: 'center',
-						justifyContent: 'center',
-						'& .MuiSelect-select': {
-							py: 0,
-							pr: '16px',
-							textAlign: 'center',
-						},
-					},
-				}}
-				sx={{
-					maxWidth: '3.5rem',
-					'& .MuiInput-root': {
-						justifyContent: 'center',
-					},
-				}}
-			>
-				{attributeTypeArray.map((at) => (
-					<MenuItem key={at} value={at} sx={{ fontSize: '0.75rem' }}>
-						d{at}
-					</MenuItem>
-				))}
-			</AttributeField>
-		</CharacterSheetCard>
+			{/* The die token IS the read state: the polygon's side count encodes the
+			    die size, so a glance across four columns reads the spread in a way
+			    four same-face numerals cannot. */}
+			<DieToken value={`d${attribute.value}`} className="cs-die-token" />
+		</SheetField>
 	)
 }

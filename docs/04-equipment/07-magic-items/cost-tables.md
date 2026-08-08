@@ -31,12 +31,12 @@ Base cost for crafting magic items by quality tier. All magic items are Quality 
 
 | Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor |
 | --- | --- | --- | --- | --- | --- |
-| **3** (Masterwork) | +50 coins | +300 coins | +500 coins | +500 coins | +1,000 coins |
-| **4** (Lesser Magic) | +150 coins | +1,000 coins | +1,500 coins | +1,500 coins | +3,000 coins |
-| **5** (Potent Magic) | +500 coins | +3,000 coins | +5,000 coins | +5,000 coins | +10,000 coins |
-| **6** (Greater Magic) | +1,500 coins | +10,000 coins | +15,000 coins | +15,000 coins | +30,000 coins |
-| **7** (Superior Magic) | +5,000 coins | +30,000 coins | +50,000 coins | +50,000 coins | +100,000 coins |
-| **8** (Supreme Magic) | +15,000 coins | +100,000 coins | +150,000 coins | +150,000 coins | +300,000 coins |
+| **3** (complex) | +50 coins | +300 coins | +500 coins | +500 coins | +1,000 coins |
+| **4** (formidable) | +150 coins | +1,000 coins | +1,500 coins | +1,500 coins | +3,000 coins |
+| **5** (exceptional) | +500 coins | +3,000 coins | +5,000 coins | +5,000 coins | +10,000 coins |
+| **6** (epic) | +1,500 coins | +10,000 coins | +15,000 coins | +15,000 coins | +30,000 coins |
+| **7** (legendary) | +5,000 coins | +30,000 coins | +50,000 coins | +50,000 coins | +100,000 coins |
+| **8** (mythical) | +15,000 coins | +100,000 coins | +150,000 coins | +150,000 coins | +300,000 coins |
 
 ### Special Material Extra Cost
 
@@ -44,12 +44,12 @@ Optional upgrade to use a specific named magical material (Chitin, Mithril, Drag
 
 | Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor | Wearable |
 | --- | --- | --- | --- | --- | --- | --- |
-| **3** (Masterwork) | +25 coins | +150 coins | +250 coins | +250 coins | +500 coins | +150 coins |
-| **4** (Lesser Magic) | +75 coins | +500 coins | +750 coins | +750 coins | +1,500 coins | +500 coins |
-| **5** (Potent Magic) | +250 coins | +1,500 coins | +2,500 coins | +2,500 coins | +5,000 coins | +1,500 coins |
-| **6** (Greater Magic) | +750 coins | +5,000 coins | +7,500 coins | +7,500 coins | +15,000 coins | +5,000 coins |
-| **7** (Superior Magic) | +2,500 coins | +15,000 coins | +25,000 coins | +25,000 coins | +50,000 coins | +15,000 coins |
-| **8** (Supreme Magic) | +7,500 coins | +50,000 coins | +75,000 coins | +75,000 coins | +150,000 coins | +50,000 coins |
+| **3** (complex) | +25 coins | +150 coins | +250 coins | +250 coins | +500 coins | +150 coins |
+| **4** (formidable) | +75 coins | +500 coins | +750 coins | +750 coins | +1,500 coins | +500 coins |
+| **5** (exceptional) | +250 coins | +1,500 coins | +2,500 coins | +2,500 coins | +5,000 coins | +1,500 coins |
+| **6** (epic) | +750 coins | +5,000 coins | +7,500 coins | +7,500 coins | +15,000 coins | +5,000 coins |
+| **7** (legendary) | +2,500 coins | +15,000 coins | +25,000 coins | +25,000 coins | +50,000 coins | +15,000 coins |
+| **8** (mythical) | +7,500 coins | +50,000 coins | +75,000 coins | +75,000 coins | +150,000 coins | +50,000 coins |
 
 ### Enchantment Cost
 
@@ -57,11 +57,10 @@ Optional enchantments for a magic item which provide powerful effects or passive
 
 | Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor | Wearable |
 | --- | --- | --- | --- | --- | --- | --- |
-| **3** (Masterwork) | +50 coins | +300 coins | +500 coins | +500 coins | +1,000 coins | +300 coins |
-| **4** (Lesser Magic) | +150 coins | +1,000 coins | +1,500 coins | +1,500 coins | +3,000 coins | +1,000 coins |
-| **5** (Potent Magic) | +500 coins | +3,000 coins | +5,000 coins | +5,000 coins | +10,000 coins | +3,000 coins |
-| **6** (Greater Magic) | +1,500 coins | +10,000 coins | +15,000 coins | +15,000 coins | +30,000 coins | +10,000 coins |
-| **7** (Superior Magic) | +5,000 coins | +30,000 coins | +50,000 coins | +50,000 coins | +100,000 coins | +30,000 coins |
-| **8** (Supreme Magic) | +15,000 coins | +100,000 coins | +150,000 coins | +150,000 coins | +300,000 coins | +100,000 coins |
-| **8** (Supreme Magic) | +15,000 coins | +100,000 coins | +150,000 coins | +150,000 coins | +300,000 coins | +75,000 coins |
+| **3** (complex) | +50 coins | +300 coins | +500 coins | +500 coins | +1,000 coins | +300 coins |
+| **4** (formidable) | +150 coins | +1,000 coins | +1,500 coins | +1,500 coins | +3,000 coins | +1,000 coins |
+| **5** (exceptional) | +500 coins | +3,000 coins | +5,000 coins | +5,000 coins | +10,000 coins | +3,000 coins |
+| **6** (epic) | +1,500 coins | +10,000 coins | +15,000 coins | +15,000 coins | +30,000 coins | +10,000 coins |
+| **7** (legendary) | +5,000 coins | +30,000 coins | +50,000 coins | +50,000 coins | +100,000 coins | +30,000 coins |
+| **8** (mythical) | +15,000 coins | +100,000 coins | +150,000 coins | +150,000 coins | +300,000 coins | +100,000 coins |
 

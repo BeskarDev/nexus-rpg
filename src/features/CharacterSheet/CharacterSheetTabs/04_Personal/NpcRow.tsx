@@ -1,285 +1,235 @@
+import React, { useEffect, useState } from 'react'
+import { Box, MenuItem, Typography } from '@mui/material'
+import { UnifiedListItem } from '@site/src/features/CharacterSheet/components/DynamicList'
 import {
-	Box,
-	IconButton,
-	TextField,
-	TextFieldProps,
-	MenuItem,
-	Accordion,
-	AccordionSummary,
-	AccordionDetails,
-	Chip,
-	Dialog,
-	DialogTitle,
-	DialogContent,
-	DialogContentText,
-	DialogActions,
-	Button,
-	Tooltip,
-} from '@mui/material'
-import React, { useState } from 'react'
-
-import { Delete, ExpandMore } from '@mui/icons-material'
+	DeleteButton,
+	DetailField,
+	DetailsGroup,
+	DetailsPanel,
+	Inscription,
+	RecordPlate,
+	RecordRow,
+} from '@site/src/features/CharacterSheet/components'
 import {
-	NpcRelationship,
-	npcRoleArray,
-	npcDispositionArray,
-	NpcRole,
 	NpcDisposition,
+	NpcRelationship,
+	NpcRole,
+	npcDispositionArray,
+	npcRoleArray,
 } from '@site/src/types/Character'
-
-// Role descriptions from the documentation
-const roleDescriptions: Record<NpcRole, string> = {
-	Adventurer:
-		'Adventurers are those who live for excitement, danger, and the thrill of exploration or combat. They might be mercenaries, bounty hunters, treasure hunters, outlaws, or wanderers who often take on high-risk tasks.',
-	Artisan:
-		'Artisans are skilled crafters or builders, masters of their trade. They might be blacksmiths, carpenters, weavers, or architects who shape the world with their hands.',
-	Authority:
-		'Authorities hold positions of power, law, or governance. They could be nobles, guards, judges, or anyone who wields social or political influence.',
-	Scholar:
-		'Scholars are seekers of knowledge—whether academic, religious, or medical. They could be priests, healers, historians, or shamans who value study and wisdom above all else.',
-	Scoundrel:
-		'Scoundrels are those who thrive in the shadows, relying on trickery, deceit, and manipulation to get what they want. They could be thieves, con artists, spies, or anyone with a hidden agenda.',
-	Seeker:
-		"Seekers are individuals driven by a quest—whether for knowledge, wealth, or personal expression. They might be merchants, guides, entertainers, or anyone seeking something they don't yet possess.",
-}
-
-// Disposition descriptions from the documentation
-const dispositionDescriptions: Record<NpcDisposition, string> = {
-	[-3]: 'Actively despises the adventurer and will work to undermine them even at personal cost.',
-	[-2]: "Opposes the adventurer's goals and requires significant persuasion or leverage to cooperate.",
-	[-1]: 'Distrusts the adventurer but may be convinced to assist for appropriate compensation.',
-	[0]: 'Has no strong feelings toward the adventurer and interacts purely transactionally.',
-	[1]: 'Views the adventurer favorably and is willing to offer modest assistance or discount.',
-	[2]: 'Considers the adventurer as family, close friend, or honored ally and offers substantial support.',
-}
+import { NPC_TEMPLATE } from './npcColumns'
+import {
+	NPC_DISPOSITION_DESCRIPTION,
+	NPC_ROLE_DESCRIPTION,
+	npcDispositionLabel,
+	npcDispositionTone,
+} from './npcRules'
 
 export type NpcRowProps = {
 	npcRelationship: NpcRelationship
 	updateNpc: (update: Partial<NpcRelationship>) => void
 	deleteNpc: () => void
-} & Omit<TextFieldProps, 'value' | 'onChange'>
-
-const getDispositionColor = (
-	disposition: NpcDisposition,
-): 'success' | 'info' | 'default' | 'warning' | 'error' => {
-	if (disposition === 2) return 'success'
-	if (disposition === 1) return 'info'
-	if (disposition === 0) return 'default'
-	if (disposition === -1) return 'warning'
-	return 'error'
 }
 
-const getDispositionLabel = (disposition: NpcDisposition): string => {
-	const item = npcDispositionArray.find((d) => d.value === disposition)
-	return item
-		? `${item.label} (${disposition >= 0 ? '+' : ''}${disposition})`
-		: 'Unknown'
-}
-
-const getRoleDescription = (role: NpcRole): string => {
-	return roleDescriptions[role] || 'No description available.'
-}
-
-const getDispositionDescription = (disposition: NpcDisposition): string => {
-	return dispositionDescriptions[disposition] || 'No description available.'
-}
-
+/**
+ * One relationship, as a ledger row that opens into its record (M13 S6).
+ *
+ * ## What it was
+ *
+ * A wrapping flex summary holding an editable name field, two MUI `Chip`s in Material
+ * palette colours, and a delete button that opened a confirmation `Dialog`. Four faults,
+ * three of them ones every other tab has already had fixed:
+ *
+ * - **The row was a form** — the name was editable in the summary while role, disposition
+ *   and description were edited in the details, so one NPC had two editing surfaces.
+ * - **The chips carried Material colours** (`color="success"`, `color="error"`) rather than
+ *   the sheet's alert inks, and they were the only stock-palette chips left on the sheet.
+ * - **The rules were trapped in tooltips.** Each role and disposition has a published
+ *   description, and the only way to read one was to hover a chip — invisible on a phone,
+ *   and unavailable in the panel where you actually choose the value.
+ * - **Delete asked twice.** A confirmation dialog for one row of freeform notes, where
+ *   every other list on the sheet deletes on the spot.
+ *
+ * ## What it is
+ *
+ * Read cells on the shared four-track grid, and a details panel on the S4d expanded-row
+ * pattern: the record plate for role and disposition (each with its rules text under the
+ * select that sets it), an inscription for the notes. Disposition reads `friendly +1` in
+ * the sheet's own alert ink, which is the same vocabulary encumbrance and wear use.
+ */
 export const NpcRow: React.FC<NpcRowProps> = ({
 	npcRelationship,
 	updateNpc,
 	deleteNpc,
-	...props
 }) => {
-	const [localData, setLocalData] = useState(npcRelationship)
-	const [expanded, setExpanded] = useState(false)
-	const [confirmDelete, setConfirmDelete] = useState(false)
-
-	const handleFieldUpdate = (field: keyof NpcRelationship, value: any) => {
-		const updatedData = { ...localData, [field]: value }
-		setLocalData(updatedData)
-		updateNpc({ [field]: value })
-	}
-
-	const handleDescriptionBlur = () => {
-		updateNpc({ description: localData.description })
-	}
-
-	const handleDeleteClick = (e: React.MouseEvent) => {
-		e.stopPropagation()
-		setConfirmDelete(true)
-	}
-
-	const handleConfirmDelete = () => {
-		deleteNpc()
-		setConfirmDelete(false)
-	}
-
-	const handleCancelDelete = () => {
-		setConfirmDelete(false)
-	}
+	const [draft, setDraft] = useState(npcRelationship)
+	// Keep the draft in step when the record changes underneath — a reorder, or another
+	// device's write arriving.
+	useEffect(() => setDraft(npcRelationship), [npcRelationship])
 
 	return (
-		<>
-			<Accordion
-				expanded={expanded}
-				onChange={(_, isExpanded) => setExpanded(isExpanded)}
-				disableGutters
-				sx={{ flexGrow: 1, mt: 0, mr: 1, width: '100%' }}
-			>
-				<AccordionSummary
-					expandIcon={<ExpandMore />}
-					sx={{
-						gap: 1,
-						pt: 0,
-						px: 1,
-						flexDirection: 'row-reverse',
-						'& .MuiAccordionSummary-content': {
-							display: 'block',
-						},
-					}}
-				>
-					<Box
-						sx={{
-							display: 'flex',
-							alignItems: 'center',
-							gap: 1,
-							flexWrap: 'wrap',
-						}}
+		<UnifiedListItem
+			summaryClassName="cs-ledger-row-grid"
+			summarySx={{ gridTemplateColumns: NPC_TEMPLATE, columnGap: 1 }}
+			summaryContent={
+				<>
+					<Cell label="Name" strong>
+						{npcRelationship.name || 'Unnamed'}
+					</Cell>
+					<Cell label="Role" muted>
+						{npcRelationship.role}
+					</Cell>
+					<Cell
+						label="Disposition"
+						tone={npcDispositionTone(npcRelationship.disposition)}
 					>
-						<TextField
-							size="small"
-							variant="standard"
-							value={localData.name || 'Unnamed NPC'}
-							onChange={(e) => handleFieldUpdate('name', e.target.value)}
+						{npcDispositionLabel(npcRelationship.disposition)}
+					</Cell>
+					<Cell label="Notes" muted>
+						{npcRelationship.description}
+					</Cell>
+				</>
+			}
+			detailsContent={
+				<DetailsPanel
+					// Wider than the default: this aside carries rules PROSE under the selects,
+					// not just figures.
+					asideWidth="24rem"
+					aside={
+						<>
+							<RecordPlate
+								label="Standing"
+								actions={
+									<DeleteButton
+										onDelete={deleteNpc}
+										entityKind="NPC"
+										entityName={draft.name}
+									/>
+								}
+							>
+								<RecordRow sigil="folk" label="Role">
+									<DetailField
+										select
+										value={draft.role}
+										onChange={(event) =>
+											updateNpc({ role: event.target.value as NpcRole })
+										}
+										width="8rem"
+										inputProps={{ 'aria-label': 'Role' }}
+									>
+										{npcRoleArray.map((role) => (
+											<MenuItem key={role} value={role}>
+												{role}
+											</MenuItem>
+										))}
+									</DetailField>
+								</RecordRow>
+								<RecordRow sigil="party" label="Disposition">
+									<DetailField
+										select
+										value={draft.disposition}
+										onChange={(event) =>
+											updateNpc({
+												disposition: Number(
+													event.target.value,
+												) as NpcDisposition,
+											})
+										}
+										width="8rem"
+										inputProps={{ 'aria-label': 'Disposition' }}
+									>
+										{npcDispositionArray.map((entry) => (
+											<MenuItem key={entry.value} value={entry.value}>
+												{npcDispositionLabel(entry.value)}
+											</MenuItem>
+										))}
+									</DetailField>
+								</RecordRow>
+							</RecordPlate>
+							{/* The rules text, where the value is chosen rather than behind a hover.
+							Both descriptions are published and neither is guessable from the word
+							alone — "Seeker" and "disposition +1" are not self-explaining. */}
+							<DetailsGroup label="What that means" sigil="description">
+								<Gloss>
+									<b>{draft.role}.</b> {NPC_ROLE_DESCRIPTION[draft.role]}
+								</Gloss>
+								<Gloss>
+									<b>{npcDispositionLabel(draft.disposition)}.</b>{' '}
+									{NPC_DISPOSITION_DESCRIPTION[draft.disposition]}
+								</Gloss>
+							</DetailsGroup>
+						</>
+					}
+				>
+					<DetailsGroup label="Who they are" sigil="name">
+						<Inscription
+							subject
+							grow={2}
 							label="Name"
-							sx={{
-								flexGrow: 1,
-								flexShrink: 1,
-								maxWidth: '12rem',
-							}}
-						/>
-						<Tooltip title={getRoleDescription(localData.role)} arrow>
-							<Chip
-								size="small"
-								label={localData.role}
-								variant="outlined"
-								sx={{
-									minWidth: '4rem',
-									flexShrink: 0,
-									fontSize: '0.75rem',
-								}}
-							/>
-						</Tooltip>
-						<Tooltip
-							title={getDispositionDescription(localData.disposition)}
-							arrow
-						>
-							<Chip
-								size="small"
-								label={getDispositionLabel(localData.disposition)}
-								color={getDispositionColor(localData.disposition)}
-								variant="outlined"
-								sx={{
-									flexShrink: 0,
-									fontSize: '0.75rem',
-									maxWidth: { xs: '6rem', sm: 'none' },
-								}}
-							/>
-						</Tooltip>
-						<IconButton
-							size="small"
-							edge="end"
-							aria-label="delete"
-							onClick={handleDeleteClick}
-							sx={{ flexShrink: 0, ml: 'auto' }}
-						>
-							<Delete />
-						</IconButton>
-					</Box>
-				</AccordionSummary>
-				<AccordionDetails>
-					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-						<Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-							<TextField
-								select
-								label="Role"
-								value={localData.role}
-								onChange={(e) =>
-									handleFieldUpdate('role', e.target.value as NpcRole)
-								}
-								sx={{ minWidth: '8rem' }}
-								size="small"
-							>
-								{npcRoleArray.map((role) => (
-									<MenuItem key={role} value={role}>
-										{role}
-									</MenuItem>
-								))}
-							</TextField>
-							<TextField
-								select
-								label="Disposition"
-								value={localData.disposition}
-								onChange={(e) =>
-									handleFieldUpdate(
-										'disposition',
-										parseInt(e.target.value) as NpcDisposition,
-									)
-								}
-								sx={{ minWidth: '10rem' }}
-								size="small"
-							>
-								{npcDispositionArray.map((disp) => (
-									<MenuItem key={disp.value} value={disp.value}>
-										{disp.label} ({disp.value >= 0 ? '+' : ''}
-										{disp.value})
-									</MenuItem>
-								))}
-							</TextField>
-						</Box>
-						<TextField
-							multiline
-							minRows={2}
-							maxRows={6}
-							label="Description"
-							value={localData.description}
-							onChange={(e) =>
-								setLocalData((prev) => ({
-									...prev,
-									description: e.target.value,
-								}))
+							value={draft.name}
+							onChange={(event) =>
+								setDraft((npc) => ({ ...npc, name: event.target.value }))
 							}
-							onBlur={handleDescriptionBlur}
-							placeholder="Describe this NPC and your relationship with them..."
-							sx={{ width: '100%' }}
-							size="small"
+							onBlur={() => updateNpc({ name: draft.name })}
 						/>
-					</Box>
-				</AccordionDetails>
-			</Accordion>
-
-			{/* Delete Confirmation Dialog */}
-			<Dialog
-				open={confirmDelete}
-				onClose={handleCancelDelete}
-				aria-labelledby="delete-dialog-title"
-			>
-				<DialogTitle id="delete-dialog-title">
-					Delete NPC Relationship
-				</DialogTitle>
-				<DialogContent>
-					<DialogContentText>
-						Are you sure you want to delete your relationship with "
-						{localData.name || 'this NPC'}"? This action cannot be undone.
-					</DialogContentText>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={handleCancelDelete}>Cancel</Button>
-					<Button onClick={handleConfirmDelete} color="error" autoFocus>
-						Delete
-					</Button>
-				</DialogActions>
-			</Dialog>
-		</>
+						<Inscription
+							block
+							multiline
+							maxRows={8}
+							label="How you know them"
+							value={draft.description}
+							onChange={(event) =>
+								setDraft((npc) => ({ ...npc, description: event.target.value }))
+							}
+							onBlur={() => updateNpc({ description: draft.description })}
+							sx={{ flex: '1 1 100%' }}
+						/>
+					</DetailsGroup>
+				</DetailsPanel>
+			}
+		/>
 	)
 }
+
+/** One read cell of the NPC row. */
+const Cell: React.FC<{
+	children: React.ReactNode
+	label: string
+	muted?: boolean
+	strong?: boolean
+	tone?: string
+}> = ({ children, label, muted, strong, tone }) => (
+	<Typography
+		component="div"
+		title={typeof children === 'string' ? children : undefined}
+		sx={{
+			minWidth: 0,
+			overflow: 'hidden',
+			textOverflow: 'ellipsis',
+			whiteSpace: 'nowrap',
+			fontSize: 'var(--nexus-text-dense)',
+			...(muted && { color: 'text.secondary' }),
+			...(strong && { fontWeight: 600 }),
+			...(tone && tone !== 'inherit' && { color: tone }),
+		}}
+	>
+		<span className="cs-cell-label">{label}</span>
+		{children}
+	</Typography>
+)
+
+/** A line of published rules text, in the register a gloss reads in. */
+const Gloss: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+	<Typography
+		component="p"
+		sx={{
+			flex: '1 1 100%',
+			m: 0,
+			fontSize: 'var(--nexus-text-xs)',
+			lineHeight: 1.45,
+			color: 'text.secondary',
+		}}
+	>
+		{children}
+	</Typography>
+)

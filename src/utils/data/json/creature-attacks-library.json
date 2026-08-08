@@ -1,0 +1,140 @@
+[
+	{
+		"id": "bite",
+		"name": "Bite",
+		"damageType": "physical",
+		"description": "A vicious bite that tears flesh. On a Strong or Critical hit, the target is Bleeding (2).",
+		"tags": ["melee", "natural", "beast"],
+		"forTypes": ["Beast", "Dragon", "Monstrosity"],
+		"weaponDamage": 0,
+		"baseAttribute": "STR"
+	},
+	{
+		"id": "claw-swipe",
+		"name": "Claw Swipe",
+		"damageType": "physical",
+		"description": "A raking strike with sharp claws.",
+		"tags": ["melee", "natural", "beast"],
+		"forTypes": ["Beast", "Dragon"],
+		"weaponDamage": 0,
+		"baseAttribute": "AGI"
+	},
+	{
+		"id": "tail-sweep",
+		"name": "Tail Sweep",
+		"damageType": "physical",
+		"description": "A sweeping tail strike targeting all creatures in reach. Targets must succeed on a medium Agility + Athletics test or be knocked Prone.",
+		"tags": ["melee", "natural", "area", "beast"],
+		"forTypes": ["Beast", "Dragon"],
+		"weaponDamage": 0,
+		"baseAttribute": "STR"
+	},
+	{
+		"id": "gore",
+		"name": "Gore",
+		"damageType": "physical",
+		"description": "A charge with horns or tusks. On a Critical hit, the target is Grappled.",
+		"tags": ["melee", "natural", "beast"],
+		"forTypes": ["Beast"],
+		"weaponDamage": 1,
+		"baseAttribute": "STR"
+	},
+	{
+		"id": "stomp",
+		"name": "Stomp",
+		"damageType": "physical",
+		"description": "A crushing stomp against a prone or smaller creature.",
+		"tags": ["melee", "natural", "beast"],
+		"forTypes": ["Beast", "Giant"],
+		"weaponDamage": 1,
+		"baseAttribute": "STR"
+	},
+	{
+		"id": "sword-strike",
+		"name": "Sword Strike",
+		"damageType": "physical",
+		"description": "A direct strike with a sword.",
+		"tags": ["melee", "weapon", "humanoid"],
+		"forTypes": ["Humanoid"],
+		"weaponDamage": 0,
+		"baseAttribute": "STR"
+	},
+	{
+		"id": "spear-thrust",
+		"name": "Spear Thrust",
+		"damageType": "physical",
+		"description": "A thrusting attack with a spear that can be made at close range.",
+		"tags": ["melee", "weapon", "humanoid", "reach"],
+		"forTypes": ["Humanoid"],
+		"weaponDamage": 0,
+		"baseAttribute": "STR"
+	},
+	{
+		"id": "arrow-shot",
+		"name": "Arrow Shot",
+		"damageType": "physical",
+		"description": "A ranged attack with a bow.",
+		"tags": ["ranged", "weapon", "humanoid"],
+		"forTypes": ["Humanoid"],
+		"weaponDamage": -1,
+		"baseAttribute": "AGI"
+	},
+	{
+		"id": "dagger-stab",
+		"name": "Dagger Stab",
+		"damageType": "physical",
+		"description": "A quick stab with a dagger. On a Strong or Critical hit, the target is Bleeding (1).",
+		"tags": ["melee", "weapon", "humanoid", "quick"],
+		"forTypes": ["Humanoid"],
+		"weaponDamage": -1,
+		"baseAttribute": "AGI"
+	},
+	{
+		"id": "poison-sting",
+		"name": "Poison Sting",
+		"damageType": "poison",
+		"description": "A venomous sting. On a Strong or Critical hit, the target is Poisoned.",
+		"tags": ["melee", "natural", "poison"],
+		"forTypes": ["Beast", "Monstrosity"],
+		"weaponDamage": -1,
+		"baseAttribute": "AGI"
+	},
+	{
+		"id": "venomous-bite",
+		"name": "Venomous Bite",
+		"damageType": "physical",
+		"description": "A bite that injects venom. On a Critical hit, the target is Poisoned and takes an additional 4 poison damage at the start of their next turn.",
+		"tags": ["melee", "natural", "poison", "beast"],
+		"forTypes": ["Beast", "Monstrosity"],
+		"weaponDamage": 0,
+		"baseAttribute": "STR"
+	},
+	{
+		"id": "fire-breath",
+		"name": "Fire Breath",
+		"damageType": "fire",
+		"description": "Exhales a cone of flame targeting all creatures in a medium area in front of the creature. Affected targets may roll Agility + Athletics (TN 10) to halve the damage.",
+		"tags": ["ranged", "natural", "area", "fire", "breath"],
+		"forTypes": ["Dragon"],
+		"weaponDamage": 1
+	},
+	{
+		"id": "frost-breath",
+		"name": "Frost Breath",
+		"damageType": "frost",
+		"description": "Exhales a blast of freezing air in a medium area. On a Strong or Critical hit, targets are Slowed. Affected targets may roll Agility + Athletics (TN 10) to halve the damage.",
+		"tags": ["ranged", "natural", "area", "frost", "breath"],
+		"forTypes": ["Dragon"],
+		"weaponDamage": 1
+	},
+	{
+		"id": "thunder-slam",
+		"name": "Thunder Slam",
+		"damageType": "physical",
+		"description": "Slams the ground with tremendous force, releasing a shockwave. All creatures within a close distance must succeed on a medium Strength + Fortitude test or be knocked Prone.",
+		"tags": ["melee", "natural", "area"],
+		"forTypes": ["Giant", "Construct"],
+		"weaponDamage": 1,
+		"baseAttribute": "STR"
+	}
+]

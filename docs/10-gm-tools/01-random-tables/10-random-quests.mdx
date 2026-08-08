@@ -7,26 +7,28 @@ import { QuestAutoRollerWrapper } from '@site/src/components/AutoRoller/QuestAut
 
 # 📜 Quest Hooks
 
+A reason to go: who asks, what they want, and what they are not telling you.
+
 <QuestAutoRollerWrapper />
 
 ## Overview
 
 Use this tool to generate random **rumors**, **quest hooks**, and **adventuring jobs** for your game. Select a category and party level, then roll to produce a ready-to-use adventure lead with appropriate reward scaling.
 
-- **Rumor:** Vague hearsay — unverified, possibly exaggerated, and open to interpretation. Seeds player-driven exploration.
-- **Quest Hook:** A confirmed problem posted publicly — on a notice board, announced by a crier, or declared at a temple.
+- **Rumor:** Vague hearsay. Unverified, possibly exaggerated, and open to interpretation. Seeds player-driven exploration.
+- **Quest Hook:** A confirmed problem posted publicly, on a notice board, announced by a crier, or declared at a temple.
 - **Job:** A direct commission from a patron with a specific task and negotiated pay.
 
 ### How to Use
 
-1. **Choose a category** — Rumor, Quest Hook, or Job.
-2. **Set the party level** — determines reward scope, coin range, and treasure quality. Use "Random" for variety.
-3. **Roll** — the generator fills all blanks from the tables below and calculates reward values.
-4. **Add campaign detail** — replace abstract fragments with specific names, creatures, and places from your setting.
+1. **Choose a category**. Rumor, Quest Hook, or Job.
+2. **Set the party level**. Determines reward scope, coin range, and treasure quality. Use "Random" for variety.
+3. **Roll**. The generator fills all blanks from the tables below and calculates reward values.
+4. **Add campaign detail**. Replace abstract fragments with specific names, creatures, and places from your setting.
 
 ### Generating Multiple Leads
 
-During a scene — an evening at an inn, a visit to the town square, or a meeting with a contact — generate several leads at once. Roll one of each category for three leads with different levels of detail and commitment. Mix tier brackets for variety:
+During a scene, an evening at an inn, a visit to the town square, or a meeting with a contact, generate several leads at once. Roll one of each category for three leads with different levels of detail and commitment. Mix tier brackets for variety:
 
 - A **Local rumor** that seems minor but hints at something larger.
 - A **Provincial quest hook** matching the party's power level.
@@ -50,11 +52,11 @@ The party's level determines the scope of the adventure lead and the value of an
 
 | Party Level | Scope | Coin Reward | Treasure Quality | Travel Time |
 |---|---|---|---|---|
-| 1–2 | Local (village, neighbourhood) | 25–250 | Q1–Q3 | Hours |
-| 3–4 | Regional (district, trade route) | 100–750 | Q2–Q4 | Days |
-| 5–6 | Provincial (city-state, province) | 250–2,500 | Q3–Q5 | A week |
-| 7–8 | National (kingdom, major faction) | 750–7,500 | Q4–Q6 | Weeks |
-| 9–10 | Legendary (world-shaping, mythic) | 2,500–25,000 | Q5–Q7 | A season |
+| 1-2 | Local (village, neighbourhood) | 25-250 | Q1-Q3 | Hours |
+| 3-4 | Regional (district, trade route) | 100-750 | Q2-Q4 | Days |
+| 5-6 | Provincial (city-state, province) | 250-2,500 | Q3-Q5 | A week |
+| 7-8 | National (kingdom, major faction) | 750-7,500 | Q4-Q6 | Weeks |
+| 9-10 | Legendary (world-shaping, mythic) | 2,500-25,000 | Q5-Q7 | A season |
 
 ---
 
@@ -75,15 +77,18 @@ After assembling the seed, adjust the coin reward from the level-scaling table:
 
 ## Reference Tables
 
-The tables below list every entry the generator draws from. Each is a d66 grid (roll 2d6 — first die = row, second die = column) for manual use at the table.
+The tables below list every entry the generator draws from. Each is a d66 grid (roll 2d6, first die = row, second die = column) for manual use at the table.
 
 ### Location (d66)
 
 *Used by: Rumors, Quest Hooks, Jobs.*
 
+<TableFold label="Location (d66)" rows={36}>
+
+{/* gen:table:questData.locations#0 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d66 | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **1** | crumbling ruins | a narrow pass | a low-lying hollow | an old tower | a worked-out dig | disputed ground |
 | **2** | ancient tunnels | a trade path | exposed foundations | a barren expanse | a water's edge | a stone monument |
 | **3** | a place of worship | an overgrown enclosure | a high ridge | a deep ravine | a crossroads | a walled compound |
@@ -91,12 +96,18 @@ The tables below list every entry the generator draws from. Each is a d66 grid (
 | **5** | a contested crossing | a sheltered hollow | a gathering place | the boundary stones | a sunken structure | broken ground |
 | **6** | a burial site | a waypoint | a collapsed passage | a hidden valley | a flooded depth | the open wilds |
 </RollableTable>
+{/* /gen:table */}
 
-### Source (d66) — Rumors only
+</TableFold>
 
+### Source (d66). Rumors only
+
+<TableFold label="Source (d66)" rows={36}>
+
+{/* gen:table:questData.sources#1 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d66 | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **1** | a passing trader | a local herder | a drunk labourer | a wandering beggar | a caravan guard | an elderly scribe |
 | **2** | a local fisher | a displaced villager | a temple servant | a child at play | a retired warrior | a foreign wanderer |
 | **3** | a road warden | a midwife | a potter at market | a ditch digger | a night watchman | a grain merchant |
@@ -104,14 +115,20 @@ The tables below list every entry the generator draws from. Each is a d66 grid (
 | **5** | a tanner | a street sweeper | a well keeper | a wandering priest | a hunter | a field worker |
 | **6** | a ferryman | a grave keeper | a bread seller | a travelling bard | a camp follower | a returning scout |
 </RollableTable>
+{/* /gen:table */}
 
-### Rumor Subject (d66) — Rumors only
+</TableFold>
+
+### Rumor Subject (d66). Rumors only
 
 *What was observed or experienced.*
 
+<TableFold label="Rumor Subject (d66)" rows={36}>
+
+{/* gen:table:questData.rumorSubjects#2 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d66 | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **1** | strange lights have appeared | eerie sounds can be heard | animals have been fleeing | people have been vanishing | the water has turned foul | an old marker was uncovered |
 | **2** | armed strangers were spotted | a broken seal was found | goods have gone missing | a sickness is spreading | the ground has been trembling | ghostly figures were seen |
 | **3** | plants are withering | a foul smell lingers | smoke rises from nowhere | tracks of something large appeared | a wall has collapsed | chanting was heard at night |
@@ -119,14 +136,20 @@ The tables below list every entry the generator draws from. Each is a d66 grid (
 | **5** | a landmark has changed | a herd has gone silent | a dark stain is spreading | a new crack split the earth | stones have been shifting | a dead tree is bleeding sap |
 | **6** | livestock are born wrong | the ground is scorched | a cold spot has formed | a hum rises from below | unseasonal fog has rolled in | a ring of scorched earth appeared |
 </RollableTable>
+{/* /gen:table */}
 
-### Cause (d66) — Rumors only
+</TableFold>
+
+### Cause (d66). Rumors only
 
 *The suspected explanation.*
 
+<TableFold label="Cause (d66)" rows={36}>
+
+{/* gen:table:questData.causes#3 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d66 | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **1** | a bold predator | grave robbers | a lingering curse | a secret cult | bandits in hiding | restless dead |
 | **2** | smugglers | a failing ward | a local feud | poison from below | an outsider's meddling | something unearthed |
 | **3** | a rogue sorcerer | old traps waking | a broken oath | a polluted offering | a blighted spirit | a collapsing ruin |
@@ -134,12 +157,18 @@ The tables below list every entry the generator draws from. Each is a d66 grid (
 | **5** | forbidden rites | a tainted spring | an old debt called in | a cracked seal stone | a wounded beast | a desecrated shrine |
 | **6** | a territorial spirit | a hidden camp | foreign agents | stolen relics | a withered blessing | something waking below |
 </RollableTable>
+{/* /gen:table */}
 
-### Patron (d66) — Jobs only
+</TableFold>
 
+### Patron (d66). Jobs only
+
+<TableFold label="Patron (d66)" rows={36}>
+
+{/* gen:table:questData.patrons#4 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d66 | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **1** | a wealthy trader | a former soldier | a disgraced priest | a guild master | an acting magistrate | a tribal elder |
 | **2** | a foreign envoy | a port overseer | a noble's servant | a watch captain | a master artisan | a caravan leader |
 | **3** | a widowed land owner | a clan matriarch | a debt collector | a quarry boss | a court scribe | a healer in need |
@@ -147,12 +176,18 @@ The tables below list every entry the generator draws from. Each is a d66 grid (
 | **5** | a war veteran | a merchant's heir | a wandering scholar | a frontier warden | a tax collector | a brew master |
 | **6** | a council elder | a grieving parent | a spy master | a property holder | an estate overseer | a besieged commander |
 </RollableTable>
+{/* /gen:table */}
 
-### Task (d66) — Quest Hooks, Jobs
+</TableFold>
 
+### Task (d66). Quest Hooks, Jobs
+
+<TableFold label="Task (d66)" rows={36}>
+
+{/* gen:table:questData.tasks#5 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d66 | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **1** | track down | investigate | recover | safely escort | explore | defend |
 | **2** | capture | deliver | clear out | negotiate with | rescue | scout ahead of |
 | **3** | secure | drive off | contain | search for | guard | survey |
@@ -160,12 +195,18 @@ The tables below list every entry the generator draws from. Each is a d66 grid (
 | **5** | break through to | map out | harvest from | sabotage | reclaim | silence |
 | **6** | seal away | lure from | free | uncover | repel | retrieve |
 </RollableTable>
+{/* /gen:table */}
 
-### Subject (d66) — Quest Hooks, Jobs
+</TableFold>
 
+### Subject (d66). Quest Hooks, Jobs
+
+<TableFold label="Subject (d66)" rows={36}>
+
+{/* gen:table:questData.subjects#6 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d66 | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **1** | a dangerous creature | a band of raiders | a stolen relic | a missing person | a cursed object | a rival faction |
 | **2** | a spreading blight | restless dead | hidden contraband | a collapsed passage | a rogue construct | a hostile spirit |
 | **3** | a sacred artefact | a fugitive | poisoned supplies | armed strangers | an ancient seal | a wounded survivor |
@@ -173,12 +214,18 @@ The tables below list every entry the generator draws from. Each is a d66 grid (
 | **5** | a sealed chamber | an infestation | a foreign agent | plague carriers | a broken ward | an occupied ruin |
 | **6** | a blood feud | a ritual site | mysterious remains | a cornered outlaw | displaced people | a corrupted guardian |
 </RollableTable>
+{/* /gen:table */}
 
-### Complication (d66) — Quest Hooks, Jobs
+</TableFold>
 
+### Complication (d66). Quest Hooks, Jobs
+
+<TableFold label="Complication (d66)" rows={36}>
+
+{/* gen:table:questData.complications#7 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d66 | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **1** | a rival seeks it too | the threat is worse than told | the ground is treacherous | a spy aids the enemy | the foe may be justified | old traps still function |
 | **2** | time is running out | local powers refuse aid | the season is harsh | success angers the powerful | innocents are at risk | it masks something larger |
 | **3** | the employer is dishonest | the site is already claimed | an ally turns coat | a sacred law bars entry | the target is defended | the route is watched |
@@ -186,12 +233,18 @@ The tables below list every entry the generator draws from. Each is a d66 grid (
 | **5** | the true enemy is hidden | deception is required | the subject resists | the area is accursed | aid comes with a price | a powerful figure is tied to it |
 | **6** | the law forbids it | failure brings ruin | old loyalties conflict | the employer has enemies | the truth is unpleasant | another task clashes |
 </RollableTable>
+{/* /gen:table */}
 
-### Reward (d66) — Quest Hooks, Jobs
+</TableFold>
 
+### Reward (d66). Quest Hooks, Jobs
+
+<TableFold label="Reward (d66)" rows={36}>
+
+{/* gen:table:questData.rewards#8 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d66 | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **1** | coin payment | coin plus salvage | a share of findings | supplies or materials | a favour owed | standing with a group |
 | **2** | legal protection | a crafted item | access to records | safe lodging | a trade claim | a rare-material item |
 | **3** | coin plus remedies | passage or transport | a debt forgiven | a letter of introduction | a land grant | a trained animal |
@@ -199,6 +252,9 @@ The tables below list every entry the generator draws from. Each is a d66 grid (
 | **5** | coin up front | an apprenticeship | a route or map | a title or rank | livestock or herd | a protective ward |
 | **6** | a patron's protection | a name cleared | workshop access | a peace accord | a captive released | a relic fragment |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ---
 
@@ -216,14 +272,14 @@ The tables below list every entry the generator draws from. Each is a d66 grid (
 
 Each table is a d66 grid (36 entries). To add new content:
 
-1. Create a **themed variant** of any table — scoped to an environment, faction, or tone — and swap it in at the GM's discretion.
+1. Create a **themed variant** of any table, scoped to an environment, faction, or tone, and swap it in at the GM's discretion.
 2. New variant tables use the same d66 grid format and follow the entry guidelines below.
 
 ### Entry Guidelines
 
 - Name *types*, never specific names or places.
-- Keep entries to a short phrase (2–5 words).
-- Avoid geographic assumptions — "a water's edge" not "the harbour."
+- Keep entries to a short phrase (2-5 words).
+- Avoid geographic assumptions. "a water's edge" not "the harbour."
 - Ensure any entry works when combined with any entry from another table.
 - Match the ancient-world sword-and-sorcery tone.
 
@@ -239,12 +295,12 @@ Each table is a d66 grid (36 entries). To add new content:
 
 ### Quest Hook Example
 
-> **Seed:** *"Wanted: track down a dangerous creature at a gathering place. Warning: a spy aids the enemy. Reward: coin payment — 500 coins (Q4 treasure, Provincial scope)."*
+> **Seed:** *"Wanted: track down a dangerous creature at a gathering place. Warning: a spy aids the enemy. Reward: coin payment. 500 coins (Q4 treasure, Provincial scope)."*
 >
 > **GM adds detail (Level 5, Provincial):** A monstrous predator has been attacking a seasonal market crossroads. Someone in the merchant camp is luring the beast to rival stalls. The provincial governor posts a 500-coin bounty.
 
 ### Job Example
 
-> **Seed:** *"A guild master wants you to recover forbidden materials at ancient tunnels, but the employer is dishonest. On success: coin payment — 300 coins (Q3 treasure, Regional scope)."*
+> **Seed:** *"A guild master wants you to recover forbidden materials at ancient tunnels, but the employer is dishonest. On success: coin payment. 300 coins (Q3 treasure, Regional scope)."*
 >
-> **GM adds detail (Level 4, Regional):** An alchemist guild elder hires the party to retrieve reagents from tunnels beneath a collapsed workshop. She claims they are hers by right — in truth, they were confiscated by the city for being dangerous. She offers 300 coins but will deny involvement if the party is caught.
+> **GM adds detail (Level 4, Regional):** An alchemist guild elder hires the party to retrieve reagents from tunnels beneath a collapsed workshop. She claims they are hers by right, in truth, they were confiscated by the city for being dangerous. She offers 300 coins but will deny involvement if the party is caught.

@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit'
 import { CharacterSheetReducerState } from '../characterSheetReducer'
 import { Spell } from '@site/src/types/Character'
-import { reorder } from '@site/src/components/DynamicList/utils'
+import { reorder } from '@site/src/features/CharacterSheet/components/DynamicList/utils'
 
 export const spellsActions = {
 	addNewSpell: (state: CharacterSheetReducerState) => {

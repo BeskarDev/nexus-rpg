@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useFieldDraft } from '../../hooks/useFieldDraft'
 import { Ability } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
 import { ActionType } from '@site/src/types/ActionType'
-import { UnifiedListItem } from '@site/src/components/DynamicList'
+import { UnifiedListItem } from '@site/src/features/CharacterSheet/components/DynamicList'
 import { AbilitySummary, AbilityDetails } from './components'
+import { abilityTemplateFor } from './components/abilityColumns'
 
 export type AbilityRowProps = {
 	title: string
@@ -36,24 +38,31 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	isInQuickRef = false,
 	onToggleQuickRef,
 }) => {
-	const [title, setTitle] = useState(initialTitle)
-	const [description, setDescription] = useState(initialDescription)
+	// M9 S11: title and description are the two fields that edit locally and
+	// commit on blur, so they take the shared `useFieldDraft` (which also
+	// re-seeds them when the ability changes externally — the "refresh from
+	// rulebook" bulk update — instead of the row keeping stale mounted values).
+	const title = useFieldDraft(initialTitle, (value) =>
+		updateAbility({ title: value }),
+	)
+	const description = useFieldDraft(initialDescription, (value) =>
+		updateAbility({ description: value }),
+	)
+
+	// The remaining three are NOT drafts: each commits immediately on change and
+	// keeps a local mirror only so the control reflects the choice at once. They
+	// keep their own sync effect rather than being forced into the draft shape.
 	const [actionType, setActionType] = useState<ActionType>(
 		initialActionType || 'Other',
 	)
 	const [rank, setRank] = useState<number>(initialRank || 1)
 	const [skill, setSkill] = useState<string | undefined>(initialSkill)
 
-	// Sync local edit state when the ability changes externally (e.g. the
-	// "refresh from rulebook" bulk update), otherwise the row keeps showing
-	// the stale values it was mounted with.
 	useEffect(() => {
-		setTitle(initialTitle)
-		setDescription(initialDescription)
 		setActionType(initialActionType || 'Other')
 		setRank(initialRank || 1)
 		setSkill(initialSkill)
-	}, [initialTitle, initialDescription, initialActionType, initialRank, initialSkill])
+	}, [initialActionType, initialRank, initialSkill])
 
 	const handleActionTypeChange = (newActionType: ActionType) => {
 		setActionType(newActionType)
@@ -72,20 +81,23 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 
 	return (
 		<UnifiedListItem
+			summaryClassName="cs-ledger-row-grid"
+			summarySx={{ gridTemplateColumns: abilityTemplateFor(tag), columnGap: 1 }}
 			summaryContent={
 				<AbilitySummary
-					title={title}
+					title={title.value}
 					actionType={actionType}
 					tag={tag}
 					rank={rank}
 					skill={skill}
-					onTitleChange={setTitle}
-					onTitleBlur={() => updateAbility({ title })}
 				/>
 			}
 			detailsContent={
 				<AbilityDetails
-					description={description}
+					title={title.value}
+					onTitleChange={title.onChange}
+					onTitleBlur={title.onBlur}
+					description={description.value}
 					actionType={actionType}
 					tag={tag}
 					rank={rank}
@@ -93,8 +105,8 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 					availableTags={availableTags}
 					abilityId={abilityId}
 					isInQuickRef={isInQuickRef}
-					onDescriptionChange={setDescription}
-					onDescriptionBlur={() => updateAbility({ description })}
+					onDescriptionChange={description.onChange}
+					onDescriptionBlur={description.onBlur}
 					onActionTypeChange={handleActionTypeChange}
 					onRankChange={handleRankChange}
 					onSkillChange={handleSkillChange}
@@ -103,11 +115,6 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 					onToggleQuickRef={onToggleQuickRef}
 				/>
 			}
-			reverseIcon={false}
-			summarySx={{
-				pl: 0,
-				alignItems: 'center',
-			}}
 		/>
 	)
 }

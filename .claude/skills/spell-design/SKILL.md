@@ -13,7 +13,8 @@ Spells belong to one of 14 schools: 6 **arcane disciplines** (Mind + Arcana, tra
 
 | What | Where |
 |------|-------|
-| Published spells | `docs/07-magic/02-arcane-spells/*.md`, `docs/07-magic/04-mystic-spells/*.md` |
+| **Canonical spell data** | `src/utils/data/json/{arcane,mystic}-spells.json` — **edit here, never in the docs** |
+| Published spells | `docs/07-magic/02-arcane-spells/*.mdx`, `04-mystic-spells/*.mdx` — **generated, do not hand-edit** |
 | Spell properties | `docs/07-magic/05-spell-properties.md` |
 | **Conditions** (official keyword list) | `docs/05-combat/04-conditions.md` |
 | **Effect durations** (briefly/short/medium/long/very long) | `docs/06-scenes/02-effect-durations.md` |
@@ -54,7 +55,18 @@ Before finalizing any spell with social, legal, economic, informational, or logi
 
 ## Designer Principles
 
-**Binding rules distilled from owner feedback — [references/designer-principles.md](references/designer-principles.md) is the index.** 82+ principles, split by concern into files under `references/principles/` (power budget, scope/setting, SL & Heighten, school identity, AoE/zones/targeting, wording, GM-facing, conditions). Scan the index, then read only the concern file(s) matching your task — never load all files cold. The most frequently violated, always worth knowing: spells assist, never bypass (1); SL scales magnitude, not effect type (2); heighten, don't duplicate (3); limits live in the fiction, not game structure (12); effect text states the general application first, exceptions after (15); a flat single-success effect is often correct, especially for utility (24); optional modifiers belong on Heighten, never on SL (25); Heighten cascades through every remaining rank up to R5 (26); validate against talents and subsystems, not just other spells (27); ground info-gathering tiers in the real anatomy of what is examined (28); GM-facing effects give the GM parameters to move within, never open-ended "GM decides" (29); refer to creatures as they/their, never it/its (30); never scale the tier cap on Heighten (31); every Heighten rank restates all inherited effects, not just the delta (32); weigh worldbuilding implications as an explicit balance axis, keep setting-shaping magic rare, constraining, and circumventable (33); physical is the default damage type, never write it out (41); placed-hazard zones cast against a fixed TN (Target column), with the entering creature rolling its save vs. your Resist in the effect text (42); recurring zone/aura damage is flat and rank-scaled, never Weak/Strong/Critical (44).
+**Binding rules distilled from owner feedback — [references/designer-principles.md](references/designer-principles.md) is the index.** 97 principles, split by concern into files under `references/principles/` (power budget, scope/setting, SL & Heighten, school identity, AoE/zones/targeting, wording, GM-facing, conditions).
+
+**Scan the index, then read only the concern file(s) matching your task — never load all files cold.** The index carries a one-line hook for every principle, so it is enough to tell you which file you need. These eight are the ones worth knowing before you open anything:
+
+- **(1)** Spells assist, never bypass.
+- **(2)** Success Levels scale magnitude, never effect type.
+- **(3)** Heighten, don't duplicate — a higher-rank version of an existing concept is a Heighten entry, not a new spell.
+- **(12)** Limits live in the fiction, not in game structure.
+- **(24)** A flat single-success effect is often the right answer, especially for utility.
+- **(26, 32)** Heighten cascades through every remaining rank to R5, and each rank restates all inherited effects rather than just the delta.
+- **(29)** GM-facing effects hand the GM bounded parameters, never open-ended "GM decides".
+- **(30, 41)** Creatures are they/their, never it/its. Physical is the default damage type — never write it out.
 
 ## Pitfalls
 
@@ -104,13 +116,13 @@ Before finalizing any spell with social, legal, economic, informational, or logi
 
 ## Publication Pipeline
 
-Every new design starts life in a draft document under the repo-root `.drafts/` directory (step 5). A spell stays a draft until the owner explicitly approves it as production-ready. On approval, publish to **all three surfaces** (then optionally delete or archive the draft file):
+Every new design starts life in a draft document under the repo-root `.drafts/` directory (step 5). A spell stays a draft until the owner explicitly approves it as production-ready. On approval, publish (then optionally delete or archive the draft file):
 
-1. **Docs** — insert into the school's file (`docs/07-magic/02-arcane-spells/<discipline>.md` or `04-mystic-spells/<tradition>.md`), matching the existing per-spell format exactly: `### Name` heading, the 5-column mini-table (`**Rank** | **Focus** | **Target** | **Range** | **Properties**`), then the `**Effect** <br/>` block with `<strong>Weak./Strong./Critical.</strong>` inline HTML. Keep rank order within the file. ⚠️ Never insert bare `>` lines between spells — they are legacy Notion-import artifacts that render as ugly empty callouts on the wiki (systematically purged 2026-07-10; a Heightened block is a single `> **Heightened** ...` line, then a blank line, then the next `###` heading directly).
-2. **App JSON** — append to `src/utils/data/json/arcane-spells.json` or `mystic-spells.json` (consumed by the spell search dialogs and spell list pages). Match the existing schema (`name, discipline/tradition, rank, focus, target, range, properties, effect, heightened`) and HTML conventions (`<br/>`, `<strong>`). ⚠️ Do NOT run the legacy `convert-tables.sh` regeneration — it's deprecated and sources from Notion exports, not docs; edit the JSON directly. ⚠️ For edits to existing entries, use surgical string replacement — never parse + re-serialize the whole file (reformats every line, drowns the real diff).
+1. **`src/utils/data/json/arcane-spells.json`** or **`mystic-spells.json`** — add the record. **This is the only file you author by hand.** Match the existing schema (`name, discipline/tradition, rank, focus, target, range, properties, effect, heightened`) and its HTML conventions: `effect` is one string of leading prose, then `<br/><strong>Weak.</strong> …<br/><strong>Strong.</strong> …<br/><strong>Critical.</strong> …`, with `-` as the empty value for `properties` / `heightened`. The generator **fails the build** on any effect it cannot split into a clean weak→strong→critical run, so a malformed entry is caught rather than silently mangled. ⚠️ For edits to existing entries, use surgical string replacement — never parse + re-serialize the whole file (reformats every line, drowns the real diff).
+2. **`bun run content:gen`** — regenerates the discipline/tradition `.mdx` pages from the JSON. Never edit those files: they carry a do-not-edit banner, and `bun run content:check` runs in CI and fails on any hand-edit or missed regeneration.
 3. **Notion** — push via the `notion-sync` skill (handles the doc→page mapping and the changelog entry). Can be batched: multiple approved spells in one sync session.
 
-Finally verify docs and JSON agree (same spell text in both), then commit docs + JSON together.
+Then verify: `bun run content:check` clean and `bun run build` green. Docs and JSON agree **by construction** now — one JSON edit plus `content:gen` updates both surfaces in the same commit, so there is nothing to reconcile by hand.
 
 ## Designer Feedback Loop
 

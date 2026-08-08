@@ -1,24 +1,22 @@
-import { Add, HelpOutline, Delete } from '@mui/icons-material'
+import {
+	ConfirmDialog,
+	MarkButton,
+	SheetChip,
+	SheetInput,
+} from '../../components'
 import {
 	Box,
 	Button,
-	Chip,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogContentText,
-	DialogTitle,
 	FormControl,
-	IconButton,
 	InputLabel,
 	MenuItem,
 	Select,
-	Tooltip,
+	Typography,
 } from '@mui/material'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useForm, Controller, UseFormReturn } from 'react-hook-form'
 import { CharacterDocument } from '../../../../types/Character'
-import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { ListSectionHeader, RuleInfo, UnifiedListItem } from '../../components'
 
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
@@ -30,6 +28,7 @@ import {
 	OFFICIAL_SKILLS,
 	OFFICIAL_PROFESSIONS,
 	getSkillChipColor,
+	getProfessionChipColor,
 } from '../../../../constants/skills'
 import {
 	ALL_LANGUAGES,
@@ -77,119 +76,127 @@ const SkillXpRow: React.FC<{
 		trigger,
 	} = skillsForm
 
+	// M13 S3 (F4): a skill has no details panel and never had one, so it takes
+	// the ledger row's non-expanding variant. This is the row F4 meant: the
+	// `SkillRow.tsx` it named has no importers and is not what the tab renders.
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				alignItems: 'center',
-				gap: 1,
-				width: '100%',
-			}}
-		>
-			<Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
-				<Chip
-					label={
-						<Box sx={{ display: 'flex', alignItems: 'center' }}>
-							<Box
-								sx={{
-									width: 8,
-									height: 8,
-									borderRadius: '50%',
-									backgroundColor: getSkillChipColor(skill.name),
-									flexShrink: 0,
-									marginRight: '8px',
-								}}
-							/>
-							{`${skill.name} (Rank ${skillRank})`}
-						</Box>
-					}
-					variant="outlined"
-					sx={{
-						flex: 1,
-						justifyContent: 'flex-start',
-						'& .MuiChip-label': {
-							fontWeight: 500,
-							paddingLeft: '12px',
-							paddingRight: '12px',
-							width: '100%',
-							justifyContent: 'flex-start',
-						},
-					}}
-				/>
-			</Box>
-			<Controller
-				name={skill.name}
-				control={control}
-				rules={{
-					validate: (value) => {
-						try {
-							// Calculate current total spent XP from all skills in the form
-							const formValues = skillsForm.getValues()
-							const currentTotalSpentXp = Object.values(formValues).reduce(
-								(sum, xp) => sum + (xp || 0),
-								0,
-							)
-
-							// Validate this skill's XP against the current total
-							createSkillXpSchema(currentTotalSpentXp, skill.xp).validateSync(
-								value,
-							)
-							return true
-						} catch (err: any) {
-							return err.message
-						}
-					},
-				}}
-				render={({ field, fieldState }) => (
-					<AttributeField
-						{...field}
-						size="small"
-						type="number"
-						onChange={async (e) => {
-							const newValue = Number(e.target.value)
-							field.onChange(newValue)
-							updateSkill(skill.name, { xp: newValue })
-							// Trigger validation on all skills to revalidate with new total
-							await trigger()
-						}}
-						error={!!fieldState.error}
-						helperText={fieldState.error?.message || ''}
-						FormHelperTextProps={{
-							sx: { display: 'none' },
-						}}
-						label="XP"
+		<UnifiedListItem
+			summarySx={{ gap: 1, flexWrap: 'nowrap' }}
+			summaryContent={
+				<>
+					{/* M13 S3: the skill is one carved stamp, not a row of parts. It was an
+				outlined MUI `Chip` stretched to fill the row (a box competing with the
+				row's own rule), then briefly a legend dot plus two loose labels. Both
+				said "web app". `SheetChip` puts the identity in the INK and absorbs the
+				rank behind a struck divider, which is the exact device the doc pages
+				use for the same skill — so `Athletics 3` reads the same in the rules
+				and on the sheet. */}
+					<Box
 						sx={{
-							width: '60px',
-							flexShrink: 0,
-							'& .MuiInputBase-input': {
-								padding: '4px 6px',
-								fontSize: '0.75rem',
-								textAlign: 'center',
-							},
-							'& .MuiInputLabel-root': {
-								fontSize: '0.7rem',
-							},
-						}}
-					/>
-				)}
-			/>
-			<Box sx={{ flexShrink: 0 }}>
-				<Tooltip title="Delete Skill">
-					<IconButton
-						size="small"
-						onClick={() => handleSkillDeletion(skill.name)}
-						sx={{
-							color: 'text.secondary',
-							'&:hover': {
-								color: 'error.main',
-							},
+							display: 'flex',
+							alignItems: 'center',
+							flexGrow: 1,
+							minWidth: 0,
 						}}
 					>
-						<Delete fontSize="small" />
-					</IconButton>
-				</Tooltip>
-			</Box>
-		</Box>
+						<SheetChip tone={getSkillChipColor(skill.name)} value={skillRank}>
+							{skill.name}
+						</SheetChip>
+					</Box>
+					<Controller
+						name={skill.name}
+						control={control}
+						rules={{
+							validate: (value) => {
+								try {
+									// Calculate current total spent XP from all skills in the form
+									const formValues = skillsForm.getValues()
+									const currentTotalSpentXp = Object.values(formValues).reduce(
+										(sum, xp) => sum + (xp || 0),
+										0,
+									)
+
+									// Validate this skill's XP against the current total
+									createSkillXpSchema(
+										currentTotalSpentXp,
+										skill.xp,
+									).validateSync(value)
+									return true
+								} catch (err: any) {
+									return err.message
+								}
+							},
+						}}
+						render={({ field, fieldState }) => (
+							/* M13 S3 (owner review): the XP field was a stacked MUI field — a
+						floating "XP" label above a boxed input — so it stood a whole label
+						taller than the chip beside it and nothing on the row shared a
+						line. It is one line now: the label sits BESIDE the value in the
+						same small-caps register the section headers use, and the engraved
+						baseline runs under the numeral alone, which is the only part that
+						is editable. */
+							<Box
+								sx={{
+									flexShrink: 0,
+									display: 'flex',
+									alignItems: 'baseline',
+									gap: 0.5,
+								}}
+							>
+								<Typography
+									component="span"
+									sx={{
+										fontFamily: 'var(--nexus-font-ui)',
+										fontSize: 'var(--nexus-text-2xs)',
+										fontVariant: 'small-caps',
+										letterSpacing: '0.06em',
+										lineHeight: 1,
+										color: 'text.secondary',
+									}}
+								>
+									XP
+								</Typography>
+								<SheetInput
+									{...field}
+									size="small"
+									type="number"
+									variant="standard"
+									onChange={async (e) => {
+										const newValue = Number(e.target.value)
+										field.onChange(newValue)
+										updateSkill(skill.name, { xp: newValue })
+										// Trigger validation on all skills to revalidate with new total
+										await trigger()
+									}}
+									error={!!fieldState.error}
+									helperText={fieldState.error?.message || ''}
+									FormHelperTextProps={{ sx: { display: 'none' } }}
+									inputProps={{ 'aria-label': `${skill.name} XP` }}
+									sx={{
+										width: '2.75rem',
+										m: 0,
+										'& .MuiInputBase-input': {
+											p: 0,
+											fontFamily: 'var(--nexus-font-ui)',
+											fontSize: 'var(--nexus-text-xs)',
+											fontVariantNumeric: 'tabular-nums',
+											textAlign: 'center',
+										},
+									}}
+								/>
+							</Box>
+						)}
+					/>
+					{/* Remove is remove: the same `×` the chips in this column carry, not a
+				Material trash can two rows below one. */}
+					<MarkButton
+						glyph="×"
+						label={`Delete ${skill.name}`}
+						onClick={() => handleSkillDeletion(skill.name)}
+					/>
+				</>
+			}
+		/>
 	)
 }
 
@@ -314,7 +321,11 @@ export const SkillsTab: React.FC = () => {
 				},
 			})
 		}
-	}, [activeCharacter.skills.abilities, activeCharacter.statistics.av.armor, skills])
+	}, [
+		activeCharacter.skills.abilities,
+		activeCharacter.statistics.av.armor,
+		skills,
+	])
 
 	// Get available skills (not yet selected)
 	const availableSkills = useMemo(() => {
@@ -457,27 +468,42 @@ export const SkillsTab: React.FC = () => {
 			{/* Left Column: XP, Skills, Professions, Languages */}
 			<Box sx={{ mb: 2 }}>
 				{/* XP Section */}
-				<Box sx={{ mx: 'auto', display: 'flex', justifyContent: 'flex-start', mb: 2 }}>
+				<Box
+					sx={{
+						mx: 'auto',
+						display: 'flex',
+						justifyContent: 'flex-start',
+						mb: 2,
+					}}
+				>
 					<XpCard total={xp.total} spent={spendXP} />
 				</Box>
 
 				{/* Skills Section */}
-				<Box sx={{ display: 'flex', alignItems: 'center', mb: 1, gap: 1 }}>
-					<SectionHeader sx={{ mb: 0 }}>Skills</SectionHeader>
-					{canAddSkills && availableSkills.length > 0 && (
-						<Tooltip title="Add Skill">
-							<IconButton
-								size="small"
+				<ListSectionHeader
+					label="Skills"
+					count={skills.length}
+					sx={{ mb: 1 }}
+					/* The rank ladder is a RULE, so it hangs on the sheet's gloss mark
+						like every other rules clarification rather than on a Material help
+						icon that appeared nowhere else — and it goes in the header's `info`
+						slot, which sits before the controls. */
+					info={
+						<RuleInfo label="About skill ranks">
+							0-1 XP (rank 0), 2-5 XP (rank 1), 6-11 XP (rank 2), 12-19 XP (rank
+							3), 20-29 XP (rank 4), 30 XP (rank 5)
+						</RuleInfo>
+					}
+					actions={
+						canAddSkills && availableSkills.length > 0 ? (
+							<MarkButton
+								glyph="+"
+								label="Add Skill"
 								onClick={() => setShowSkillDropdown(!showSkillDropdown)}
-							>
-								<Add fontSize="small" />
-							</IconButton>
-						</Tooltip>
-					)}
-					<Tooltip title="0-1 XP (rank 0), 2-5 XP (rank 1), 6-11 XP (rank 2), 12-19 XP (rank 3), 20-29 XP (rank 4), 30 XP (rank 5)">
-						<HelpOutline fontSize="small" />
-					</Tooltip>
-				</Box>
+							/>
+						) : undefined
+					}
+				/>
 
 				{/* Skills Dropdown */}
 				{showSkillDropdown && canAddSkills && availableSkills.length > 0 && (
@@ -497,8 +523,10 @@ export const SkillsTab: React.FC = () => {
 					</FormControl>
 				)}
 
-				{/* Selected Skills as Chips */}
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 1 }}>
+				{/* Selected Skills as ledger rows. No gap: the rows carry their own
+					engraved rule, and a gap between them would separate each rule from
+					the row it belongs to. */}
+				<Box sx={{ display: 'flex', flexDirection: 'column', mb: 1 }}>
 					{skills
 						.slice()
 						.sort((a, b) => a.name.localeCompare(b.name))
@@ -540,21 +568,22 @@ export const SkillsTab: React.FC = () => {
 				{/* Professions Section */}
 				{hasCraftingSkill && (
 					<Box sx={{ mt: 1 }}>
-						<Box sx={{ display: 'flex', alignItems: 'center', mb: 1, gap: 1 }}>
-							<SectionHeader sx={{ mb: 0 }}>Crafting Professions</SectionHeader>
-							{availableProfessions.length > 0 && (
-								<Tooltip title="Add Profession">
-									<IconButton
-										size="small"
+						<ListSectionHeader
+							label="Crafting Professions"
+							count={professions.length}
+							sx={{ mb: 1 }}
+							actions={
+								availableProfessions.length > 0 ? (
+									<MarkButton
+										glyph="+"
+										label="Add Profession"
 										onClick={() =>
 											setShowProfessionDropdown(!showProfessionDropdown)
 										}
-									>
-										<Add fontSize="small" />
-									</IconButton>
-								</Tooltip>
-							)}
-						</Box>
+									/>
+								) : undefined
+							}
+						/>
 
 						{/* Professions Dropdown */}
 						{showProfessionDropdown && availableProfessions.length > 0 && (
@@ -574,24 +603,29 @@ export const SkillsTab: React.FC = () => {
 							</FormControl>
 						)}
 
-						{/* Selected Professions as Chips */}
-						<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+						{/* Selected professions. Banner silhouette like the skills above —
+							a profession IS a named proficiency, and it already aliases its
+							parent skill's identity hue (`getProfessionChipColor`), so the
+							two clouds read as one family. */}
+						<Box
+							sx={{
+								display: 'flex',
+								flexWrap: 'wrap',
+								alignItems: 'center',
+								gap: 1,
+							}}
+						>
 							{professions
 								.slice()
 								.sort((a, b) => a.localeCompare(b))
 								.map((profession) => (
-									<Chip
+									<SheetChip
 										key={profession}
-										label={profession}
-										variant="outlined"
-										onDelete={() => removeProfession(profession)}
-										sx={{
-											'& .MuiChip-label': {
-												fontWeight: 500,
-												// Remove custom padding to use default MUI padding
-											},
-										}}
-									/>
+										tone={getProfessionChipColor(profession)}
+										onRemove={() => removeProfession(profession)}
+									>
+										{profession}
+									</SheetChip>
 								))}
 						</Box>
 					</Box>
@@ -599,19 +633,20 @@ export const SkillsTab: React.FC = () => {
 
 				{/* Languages Section */}
 				<Box sx={{ mt: 1 }}>
-					<Box sx={{ display: 'flex', alignItems: 'center', mb: 1, gap: 1 }}>
-						<SectionHeader sx={{ mb: 0 }}>Languages</SectionHeader>
-						{availableLanguages.length > 0 && (
-							<Tooltip title="Add Language">
-								<IconButton
-									size="small"
+					<ListSectionHeader
+						label="Languages"
+						count={languages.length}
+						sx={{ mb: 1 }}
+						actions={
+							availableLanguages.length > 0 ? (
+								<MarkButton
+									glyph="+"
+									label="Add Language"
 									onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
-								>
-									<Add fontSize="small" />
-								</IconButton>
-							</Tooltip>
-						)}
-					</Box>
+								/>
+							) : undefined
+						}
+					/>
 
 					{/* Languages Dropdown */}
 					{showLanguageDropdown && availableLanguages.length > 0 && (
@@ -631,8 +666,19 @@ export const SkillsTab: React.FC = () => {
 						</FormControl>
 					)}
 
-					{/* Selected Languages as Chips */}
-					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+					{/* Selected languages. Same banner, but no identity hue: a language has
+						no skill behind it, so it inks in the structural bronze the chip
+						defaults to. Tradespeak is the one everybody has and cannot drop,
+						which is now said by it having no remove control rather than by
+						being 100 units bolder than its neighbours. */}
+					<Box
+						sx={{
+							display: 'flex',
+							flexWrap: 'wrap',
+							alignItems: 'center',
+							gap: 1,
+						}}
+					>
 						{languages
 							.slice()
 							.sort((a, b) => {
@@ -642,22 +688,14 @@ export const SkillsTab: React.FC = () => {
 								return a.localeCompare(b)
 							})
 							.map((language) => (
-								<Chip
+								<SheetChip
 									key={language}
-									label={language}
-									variant="outlined"
 									{...(language !== DEFAULT_LANGUAGE && {
-										onDelete: () => removeLanguage(language),
+										onRemove: () => removeLanguage(language),
 									})}
-									sx={{
-										'& .MuiChip-label': {
-											fontWeight: 500,
-											...(language === DEFAULT_LANGUAGE && {
-												fontWeight: 600, // Make Tradespeak slightly bolder
-											}),
-										},
-									}}
-								/>
+								>
+									{language}
+								</SheetChip>
 							))}
 					</Box>
 				</Box>
@@ -670,36 +708,24 @@ export const SkillsTab: React.FC = () => {
 			</Box>
 			{/* End Right Column */}
 
-			{/* Skill Deletion Confirmation Dialog */}
-			<Dialog
+			{/* Kept by the S8 confirm audit, unlike the item / spell / companion
+				deletions the sheet does on the spot: a skill takes its RANK and its
+				accumulated XP with it, and Crafting takes every profession under it —
+				none of which can be rebuilt from the rulebook. */}
+			<ConfirmDialog
 				open={skillToDelete !== null}
-				onClose={cancelSkillDeletion}
-				aria-labelledby="delete-skill-dialog-title"
-				aria-describedby="delete-skill-dialog-description"
+				title="Remove skill"
+				confirmLabel="Remove skill"
+				onConfirm={confirmSkillDeletion}
+				onCancel={cancelSkillDeletion}
 			>
-				<DialogTitle id="delete-skill-dialog-title">
-					Confirm Skill Deletion
-				</DialogTitle>
-				<DialogContent>
-					<DialogContentText id="delete-skill-dialog-description">
-						Are you sure you want to remove the <strong>{skillToDelete}</strong>{' '}
-						skill?
-						{skillToDelete === 'Crafting' && professions.length > 0 && (
-							<span> This will also remove all selected professions.</span>
-						)}
-					</DialogContentText>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={cancelSkillDeletion}>Cancel</Button>
-					<Button
-						onClick={confirmSkillDeletion}
-						color="error"
-						variant="contained"
-					>
-						Delete
-					</Button>
-				</DialogActions>
-			</Dialog>
+				Removing <strong>{skillToDelete}</strong> discards its rank and its
+				accumulated XP.
+				{skillToDelete === 'Crafting' && professions.length > 0 && (
+					<> Every profession under it goes with it.</>
+				)}{' '}
+				This cannot be undone.
+			</ConfirmDialog>
 		</Box>
 	)
 }

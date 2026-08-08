@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
-import { Box, TextField, IconButton, Tooltip } from '@mui/material'
-import { Groups, Edit, Save, Cancel } from '@mui/icons-material'
-import { CharacterSheetCard, CardHeader } from '../../components'
-import { UI_COLORS } from '../../../../utils/colors'
+import React, { useEffect, useState } from 'react'
+import { TextField } from '@mui/material'
+import { metaBandInputClass, metaBandInputSx } from '../../components'
 
 interface PartyNameCardProps {
 	partyName: string
@@ -10,107 +8,64 @@ interface PartyNameCardProps {
 	loading?: boolean
 }
 
+/**
+ * The party's name, as a band field (M13 S7).
+ *
+ * ## What it was
+ *
+ * A `CharacterSheetCard` with its own `party` sigil header and an explicit **edit mode**: a
+ * pencil to enter it, then a `Save` and a `Cancel` — three Material icons and a mode, for
+ * one line of text. Its own card, too, sitting inside a `Paper` inside the party panel.
+ *
+ * ## What it is
+ *
+ * The field itself, inside the party's meta band, committing on blur like every other text
+ * field on this sheet. The band supplies the label and the mark, so this component is now
+ * only the thing a card was wrapping: an input and the async write behind it.
+ *
+ * The local draft is what makes the blur-commit honest — the write is a network call, so the
+ * field has to keep showing what you typed while it is in flight, and has to fall back to
+ * the stored name if it fails.
+ */
 export const PartyNameCard: React.FC<PartyNameCardProps> = ({
 	partyName,
 	onSave,
 	loading = false,
 }) => {
-	const [isEditing, setIsEditing] = useState(false)
-	const [editedName, setEditedName] = useState(partyName)
+	const [draft, setDraft] = useState(partyName)
+	useEffect(() => setDraft(partyName), [partyName])
 
-	const handleEdit = () => {
-		setEditedName(partyName)
-		setIsEditing(true)
-	}
-
-	const handleSave = async () => {
-		if (!editedName.trim()) return
-		await onSave(editedName.trim())
-		setIsEditing(false)
-	}
-
-	const handleCancel = () => {
-		setIsEditing(false)
-		setEditedName(partyName)
+	const commit = async () => {
+		const next = draft.trim()
+		if (!next || next === partyName) {
+			setDraft(partyName)
+			return
+		}
+		try {
+			await onSave(next)
+		} catch {
+			// The write failed and `PartyManagement` has already reported it; the field
+			// falls back to what the party actually holds rather than showing a name that
+			// was never saved.
+			setDraft(partyName)
+		}
 	}
 
 	return (
-		<CharacterSheetCard
-			header={<CardHeader icon={<Groups />} label="Party" color={UI_COLORS.greyBlue} />}
-			tooltip="Adventuring party name"
-			minWidth="12rem"
-			maxWidth="20rem"
-		>
-			{isEditing ? (
-				<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, width: '100%' }}>
-					<TextField
-						variant="standard"
-						size="small"
-						value={editedName}
-						onChange={(e) => setEditedName(e.target.value)}
-						disabled={loading}
-						autoFocus
-						InputProps={{
-							disableUnderline: true,
-							sx: {
-								fontSize: '0.95rem',
-								fontWeight: 'bold',
-								flex: 1,
-								'& input': {
-									textAlign: 'center',
-									p: 0.5,
-								},
-							},
-						}}
-						sx={{ flex: 1 }}
-					/>
-					<Tooltip title="Save">
-						<IconButton
-							onClick={handleSave}
-							disabled={!editedName.trim() || loading}
-							color="primary"
-							size="small"
-							sx={{ p: 0.25 }}
-						>
-							<Save sx={{ fontSize: '1rem' }} />
-						</IconButton>
-					</Tooltip>
-					<Tooltip title="Cancel">
-						<IconButton
-							onClick={handleCancel}
-							disabled={loading}
-							size="small"
-							sx={{ p: 0.25 }}
-						>
-							<Cancel sx={{ fontSize: '1rem' }} />
-						</IconButton>
-					</Tooltip>
-				</Box>
-			) : (
-				<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, width: '100%' }}>
-					<Box
-						sx={{
-							flex: 1,
-							fontSize: '0.95rem',
-							fontWeight: 'bold',
-							textAlign: 'center',
-							py: 0.5,
-						}}
-					>
-						{partyName}
-					</Box>
-					<Tooltip title="Edit party name">
-						<IconButton
-							onClick={handleEdit}
-							disabled={loading}
-							size="small"
-							sx={{ p: 0.25 }}
-						>
-							<Edit sx={{ fontSize: '1rem' }} />
-						</IconButton>
-					</Tooltip>
-				</Box>
-			)}
-		</CharacterSheetCard>
+		<TextField
+			className={metaBandInputClass.text}
+			variant="standard"
+			size="small"
+			value={draft}
+			disabled={loading}
+			onChange={(event) => setDraft(event.target.value)}
+			onBlur={commit}
+			onKeyDown={(event) => {
+				if (event.key === 'Enter') (event.target as HTMLInputElement).blur()
+				if (event.key === 'Escape') setDraft(partyName)
+			}}
+			inputProps={{ 'aria-label': 'Party name' }}
+			sx={{ ...metaBandInputSx, flex: '1 1 8rem', maxWidth: '16rem' }}
+		/>
 	)
 }

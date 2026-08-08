@@ -1,76 +1,68 @@
-import { TextField } from '@mui/material'
 import React from 'react'
+import { Box } from '@mui/material'
+import DamageSigil from '@site/src/components/codex/DamageSigil'
+import { DamageLadder } from '@site/src/components/codex/DamageLadder'
 import { Weapon } from '@site/src/types/Character'
-import { AttributeField } from '@site/src/features/CharacterSheet/CharacterSheet'
-import { DamageFields } from '../../DamageFields'
+import { NameCell, ReadCell, UsesCell } from './LedgerCell'
 
 export type WeaponSummaryProps = {
 	weapon: Weapon
-	onNameChange: (name: string) => void
-	onNameBlur: () => void
-	onDamageUpdate: (update: Partial<Weapon['damage']>) => void
-	onPropertiesChange: (properties: string) => void
-	onPropertiesBlur: () => void
+	/** The computed numbers alone — the type is rendered as its own mark. */
+	damage: string
+	onUsesChange: (uses: number) => void
 }
 
 /**
- * WeaponSummary - The collapsed summary view for a weapon row.
+ * The collapsed view of a weapon (M13 S4b).
+ *
+ * Two things changed beyond the read/edit split. The damage cell was a disabled
+ * field with a **gear icon opening a second popover** — a nested disclosure
+ * inside a row that already expands, and the only one of its kind on the sheet.
+ * The damage editor is in the details panel now, where the rest of the weapon is
+ * defined. And `cost` / `load` / `amount` used to be details-only on a weapon
+ * while being summary fields on an item: the same three values on opposite faces
+ * in adjacent sections of one tab. They follow one rule now.
  */
 export const WeaponSummary: React.FC<WeaponSummaryProps> = ({
 	weapon,
-	onNameChange,
-	onNameBlur,
-	onDamageUpdate,
-	onPropertiesChange,
-	onPropertiesBlur,
-}) => {
-	return (
-		<>
-			<TextField
-				size="small"
-				variant="standard"
-				value={weapon.name}
-				onChange={(event) => onNameChange(event.target.value)}
-				onBlur={onNameBlur}
-				label="Name"
-				sx={{
-					maxWidth: { sm: '10rem', xs: '7.5rem' },
-				}}
-			/>
-			<DamageFields
-				type="weapon"
-				damage={weapon.damage}
-				updateDamage={onDamageUpdate}
-			/>
-			<TextField
-				size="small"
-				variant="standard"
-				value={weapon.properties}
-				onChange={(event) => onPropertiesChange(event.target.value)}
-				onBlur={onPropertiesBlur}
-				label="Properties"
-				sx={{ maxWidth: '14rem' }}
-			/>
-			<AttributeField
-				disabled
-				size="small"
-				variant="standard"
-				value={`${3 - (weapon.uses || 0)}/3`}
-				label="Uses"
-				sx={{
-					maxWidth: '2.5rem',
-				}}
-				InputProps={{
-					sx: {
-						color:
-							(weapon.uses || 0) === 3
-								? 'error.main'
-								: (weapon.uses || 0) === 2
-									? 'warning.main'
-									: 'text.primary',
-					},
-				}}
-			/>
-		</>
-	)
-}
+	damage,
+	onUsesChange,
+}) => (
+	<>
+		<NameCell>{weapon.name}</NameCell>
+		{/* M13 S4d: the same `DamageLadder` a creature's attack uses. It was plain
+			`6/9/12` text here, so one notation had two treatments in one app — the
+			player's own weapon read as a slash-run while the monster's attack was
+			graded weak/strong/critical. The type mark goes in the ladder's `children`
+			slot, which is where the docs put the damage chip: same slot, same job.
+			`DamageSigil` keeps the type's name in the accessibility tree — the word is
+			hidden from sight, never from a screen reader. */}
+		<Box sx={{ display: 'flex', alignItems: 'center', minWidth: 0 }}>
+			<span className="cs-cell-label">Damage</span>
+			<DamageLadder values={damage}>
+				<DamageSigil type={weapon.damage.type} size={14} />
+			</DamageLadder>
+		</Box>
+		<ReadCell label="Properties" muted title={weapon.properties}>
+			{weapon.properties}
+		</ReadCell>
+		{/* Cost and load are on a weapon too, and the shared template gives them a
+			column here whether or not this section fills it — so fill it. This is the
+			"one rule for cost/load/amount" the doc comment above promises, finally
+			true on both faces. */}
+		<ReadCell label="Cost" align="center">
+			{weapon.cost ?? 0}
+		</ReadCell>
+		<ReadCell label="Load" align="center">
+			{weapon.load ?? 0}
+		</ReadCell>
+		<ReadCell label="Amount" align="center">
+			{weapon.amount ?? 0}
+		</ReadCell>
+		<UsesCell
+			uses={weapon.uses || 0}
+			onChange={onUsesChange}
+			name={weapon.name}
+		/>
+	</>
+)

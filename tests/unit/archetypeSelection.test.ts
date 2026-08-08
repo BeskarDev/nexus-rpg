@@ -1,7 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import { createInitialCharacter } from '@site/src/features/CharacterSheet/utils/createInitialCharacter'
 import type { ArchetypeData } from '@site/src/features/CharacterSheet/components'
-import archetypesJson from '@site/src/utils/data/json/archetypes.json';
+import archetypesJson from '@site/src/utils/data/json/archetypes.json'
+import weaponsJson from '@site/src/utils/data/json/weapons.json'
+import armorJson from '@site/src/utils/data/json/armor.json'
+import equipmentJson from '@site/src/utils/data/json/equipment.json'
 
 describe('Archetype Selection', () => {
 	it('should load all 25 archetypes from JSON', () => {
@@ -20,6 +23,20 @@ describe('Archetype Selection', () => {
 			expect(archetype).toHaveProperty('suggestedSkills')
 			expect(archetype).toHaveProperty('recommendedTalents')
 			expect(archetype).toHaveProperty('startingEquipment')
+			expect(archetype).toHaveProperty('playstyle')
+			expect(archetype).toHaveProperty('advancement')
+
+			// M22 D2: a talent carries the gloss its docs page prints beside it
+			archetype.recommendedTalents.forEach((talent) => {
+				expect(talent.name).toBeTruthy()
+				expect(talent.gloss).toBeTruthy()
+			})
+
+			// M22 D4: equipment is a catalogue reference, never a display string
+			archetype.startingEquipment.forEach((entry) => {
+				expect(entry.item).toBeTruthy()
+				expect(entry.item).not.toMatch(/\sx\d+$/)
+			})
 
 			// Validate attributes
 			expect(archetype.attributes).toHaveProperty('STR')
@@ -177,6 +194,83 @@ describe('Archetype Selection', () => {
 		keyArchetypes.forEach((name) => {
 			expect(archetypeNames).toContain(name)
 		})
+	})
+
+	it('should resolve every equipment reference against the catalogues', () => {
+		// M22 F5: nine names resolved to nothing before the migration, so the
+		// sheet silently created no item for them.
+		const catalogue = new Set([
+			...weaponsJson.map((w) => w.name),
+			...armorJson.map((a) => a.name),
+			...equipmentJson.map((e) => e.name),
+		])
+		archetypesJson.forEach((archetype) => {
+			archetype.startingEquipment.forEach((entry) => {
+				expect(
+					catalogue.has(entry.item),
+					`${archetype.name}: unresolved item "${entry.item}"`,
+				).toBe(true)
+			})
+			if (archetype.toolkit) {
+				expect(
+					catalogue.has(archetype.toolkit),
+					`${archetype.name}: unresolved toolkit "${archetype.toolkit}"`,
+				).toBe(true)
+			}
+		})
+	})
+
+	it('should recommend exactly the number of combat arts the rules grant', () => {
+		// M22 D9 / 02-character-creation.md: two per weapon skill at rank 1, one
+		// at rank 0, summed over Fighting and Archery.
+		archetypesJson.forEach((archetype) => {
+			const suggested = archetype.suggestedSkills
+				.split(',')
+				.map((s) => s.trim())
+			const required = (['Fighting', 'Archery'] as const)
+				.filter((skill) => suggested.includes(skill))
+				.reduce(
+					(sum, skill) =>
+						sum + (archetype.primarySkills.includes(skill) ? 2 : 1),
+					0,
+				)
+			expect(
+				archetype.recommendedCombatArts?.length ?? 0,
+				`${archetype.name} should recommend ${required} combat arts`,
+			).toBe(required)
+		})
+	})
+
+	it('should give a devotion caster only its chosen option, not every option', () => {
+		// M22 F7: the flattened array started a Champion with all 12 spells.
+		const champion: ArchetypeData = archetypesJson.find(
+			(a) => a.name === 'Champion',
+		) as ArchetypeData
+
+		const character = createInitialCharacter('Test Champion', 'Test Player', {
+			archetype: champion,
+			selectedSpellPath: 'War',
+		})
+
+		const names = character.spells.spells.map((s) => s.name)
+		expect(champion.spellData?.mode).toBe('devotion')
+		expect(names).toContain('Battle Surge')
+		expect(names).not.toContain('Dazzling Light')
+		expect(names.length).toBe(6)
+	})
+
+	it('should size an Arcana focus pool off Mind, not Spirit', () => {
+		// M22 F11: every Arcana caster got a Spirit-based pool.
+		const sorcerer: ArchetypeData = archetypesJson.find(
+			(a) => a.name === 'Sorcerer',
+		) as ArchetypeData
+
+		const character = createInitialCharacter('Test Sorcerer', 'Test Player', {
+			archetype: sorcerer,
+		})
+
+		// Sorcerer is MND d8, SPI d6 — (8 - 2) + 2 = 8
+		expect(character.spells.focus.total).toBe(8)
 	})
 
 	it('should create familiar for Summoner with Conjure Familiar spell', () => {

@@ -1,69 +1,79 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { DurabilityDie, Weapon } from '../../../../types/Character'
 import { ItemLocation } from '../../../../types/ItemLocation'
-import { UnifiedListItem } from '@site/src/components/DynamicList'
+import { UnifiedListItem } from '@site/src/features/CharacterSheet/components/DynamicList'
+import { useAppSelector } from '../../hooks/useAppSelector'
+import { calculateDamageValue } from '../../utils/calculateDamageDisplay'
+import { LEDGER_TEMPLATE } from './components/ledgerColumns'
 import { WeaponSummary, WeaponDetails } from './components'
 
 export type WeaponRowProps = {
-weapon: Weapon
-updateWeapon: (update: Partial<Weapon>) => void
-deleteWeapon: () => void
-isInQuickRef?: boolean
-onToggleQuickRef?: (weaponId: string) => void
+	weapon: Weapon
+	updateWeapon: (update: Partial<Weapon>) => void
+	deleteWeapon: () => void
+	isInQuickRef?: boolean
+	onToggleQuickRef?: (weaponId: string) => void
 }
 
 export const WeaponRow: React.FC<WeaponRowProps> = ({
-weapon: initialWeapon,
-updateWeapon,
-deleteWeapon,
-isInQuickRef = false,
-onToggleQuickRef,
+	weapon,
+	updateWeapon,
+	deleteWeapon,
+	isInQuickRef = false,
+	onToggleQuickRef,
 }) => {
-const [weapon, setWeapon] = useState<Weapon>(initialWeapon)
+	const character = useAppSelector(
+		(state) => state.characterSheet.activeCharacter,
+	)
 
-return (
-<UnifiedListItem
-summaryContent={
-<WeaponSummary
-weapon={{ ...weapon, uses: initialWeapon.uses, damage: initialWeapon.damage }}
-onNameChange={(name) => setWeapon((w) => ({ ...w, name }))}
-onNameBlur={() => updateWeapon({ name: weapon.name })}
-onDamageUpdate={(update) =>
-updateWeapon({ damage: { ...initialWeapon.damage, ...update } })
-}
-onPropertiesChange={(properties) =>
-setWeapon((w) => ({ ...w, properties }))
-}
-onPropertiesBlur={() => updateWeapon({ properties: weapon.properties })}
-/>
-}
-detailsContent={
-<WeaponDetails
-weapon={initialWeapon}
-onDescriptionChange={(description) =>
-setWeapon((w) => ({ ...w, description }))
-}
-onDescriptionBlur={() =>
-updateWeapon({ description: weapon.description })
-}
-onCostChange={(cost) => updateWeapon({ cost })}
-onLoadChange={(load) => updateWeapon({ load })}
-onAmountChange={(amount) => updateWeapon({ amount })}
-onQualityChange={(quality) => updateWeapon({ quality })}
-onLocationChange={(location) =>
-updateWeapon({ location: location as ItemLocation })
-}
-onMountInfoChange={(mountInfo) => updateWeapon({ mountInfo })}
-onStorageInfoChange={(storageInfo) => updateWeapon({ storageInfo })}
-onUsesChange={(uses) => updateWeapon({ uses })}
-onDurabilityChange={(durability) =>
-updateWeapon({ durability: durability as DurabilityDie })
-}
-onDelete={deleteWeapon}
-isInQuickRef={isInQuickRef}
-onToggleQuickRef={onToggleQuickRef}
-/>
-}
-/>
-)
+	// M13 S4b: no local draft state left. Every field the row used to edit locally
+	// and commit on blur — name, properties — moved into the details panel, which
+	// owns its own drafts; the two the row keeps commit immediately on change.
+	return (
+		<UnifiedListItem
+			/* The row's cells sit on the section's shared column tracks, so a list
+				reads down its columns instead of each row re-declaring its own. The
+				`display: grid` is switched on by the ledger media query in
+				characterSheet.css; below it this template is inert and the row wraps. */
+			summaryClassName="cs-ledger-row-grid"
+			summarySx={{
+				gridTemplateColumns: LEDGER_TEMPLATE,
+				columnGap: 1,
+			}}
+			summaryContent={
+				<WeaponSummary
+					weapon={weapon}
+					damage={calculateDamageValue(weapon.damage, 'weapon', character)}
+					onUsesChange={(uses) => updateWeapon({ uses })}
+				/>
+			}
+			detailsContent={
+				<WeaponDetails
+					weapon={weapon}
+					onNameChange={(name) => updateWeapon({ name })}
+					onPropertiesChange={(properties) => updateWeapon({ properties })}
+					onDescriptionChange={(description) => updateWeapon({ description })}
+					onDamageUpdate={(update) =>
+						updateWeapon({ damage: { ...weapon.damage, ...update } })
+					}
+					onCostChange={(cost) => updateWeapon({ cost })}
+					onLoadChange={(load) => updateWeapon({ load })}
+					onAmountChange={(amount) => updateWeapon({ amount })}
+					onQualityChange={(quality) => updateWeapon({ quality })}
+					onLocationChange={(location) =>
+						updateWeapon({ location: location as ItemLocation })
+					}
+					onMountInfoChange={(mountInfo) => updateWeapon({ mountInfo })}
+					onStorageInfoChange={(storageInfo) => updateWeapon({ storageInfo })}
+					onUsesChange={(uses) => updateWeapon({ uses })}
+					onDurabilityChange={(durability) =>
+						updateWeapon({ durability: durability as DurabilityDie })
+					}
+					onDelete={deleteWeapon}
+					isInQuickRef={isInQuickRef}
+					onToggleQuickRef={onToggleQuickRef}
+				/>
+			}
+		/>
+	)
 }

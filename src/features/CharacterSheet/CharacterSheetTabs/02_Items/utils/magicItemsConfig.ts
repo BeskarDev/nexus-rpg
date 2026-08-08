@@ -68,13 +68,23 @@ export type BaseItem = {
 }
 
 // Quality tier labels for magic items (Q3-Q8)
+/**
+ * The builder's own labels, in the published descriptors (S4d).
+ *
+ * They read "Masterwork", "Lesser Magic", "Potent Magic", "Greater Magic",
+ * "Superior Magic", "Supreme Magic" — words that appear nowhere in the rules. The
+ * equipment chapter's Quality table is the source, and it names every rating for
+ * items in general, not for magic items specifically: a Q4 rope is *formidable*, not
+ * "Lesser Magic". Same words as `itemQuality.ts`, which covers the full Q1-Q8 range;
+ * this map stays restricted to Q3+ because the builder's cost tables are.
+ */
 export const qualityTierLabels: Record<QualityTier, string> = {
-	3: 'Q3 (Masterwork)',
-	4: 'Q4 (Lesser Magic)',
-	5: 'Q5 (Potent Magic)',
-	6: 'Q6 (Greater Magic)',
-	7: 'Q7 (Superior Magic)',
-	8: 'Q8 (Supreme Magic)',
+	3: 'Q3 (complex)',
+	4: 'Q4 (formidable)',
+	5: 'Q5 (exceptional)',
+	6: 'Q6 (epic)',
+	7: 'Q7 (legendary)',
+	8: 'Q8 (mythical)',
 }
 
 /**
@@ -591,13 +601,49 @@ export type WandStaffTierData = {
 	staffSpellCapacity: number
 }
 
-export const wandStaffTierTable: Record<4 | 5 | 6 | 7 | 8, WandStaffTierData> = {
-	4: { spellRank: 1, attributeDie: 'd8', skillBonus: 1, wandCharges: 4, staffCharges: 6, staffSpellCapacity: 3 },
-	5: { spellRank: 2, attributeDie: 'd10', skillBonus: 2, wandCharges: 8, staffCharges: 12, staffSpellCapacity: 3 },
-	6: { spellRank: 3, attributeDie: 'd10', skillBonus: 3, wandCharges: 12, staffCharges: 18, staffSpellCapacity: 4 },
-	7: { spellRank: 4, attributeDie: 'd12', skillBonus: 4, wandCharges: 16, staffCharges: 24, staffSpellCapacity: 5 },
-	8: { spellRank: 5, attributeDie: 'd12', skillBonus: 5, wandCharges: 20, staffCharges: 30, staffSpellCapacity: 6 },
-}
+export const wandStaffTierTable: Record<4 | 5 | 6 | 7 | 8, WandStaffTierData> =
+	{
+		4: {
+			spellRank: 1,
+			attributeDie: 'd8',
+			skillBonus: 1,
+			wandCharges: 4,
+			staffCharges: 6,
+			staffSpellCapacity: 3,
+		},
+		5: {
+			spellRank: 2,
+			attributeDie: 'd10',
+			skillBonus: 2,
+			wandCharges: 8,
+			staffCharges: 12,
+			staffSpellCapacity: 3,
+		},
+		6: {
+			spellRank: 3,
+			attributeDie: 'd10',
+			skillBonus: 3,
+			wandCharges: 12,
+			staffCharges: 18,
+			staffSpellCapacity: 4,
+		},
+		7: {
+			spellRank: 4,
+			attributeDie: 'd12',
+			skillBonus: 4,
+			wandCharges: 16,
+			staffCharges: 24,
+			staffSpellCapacity: 5,
+		},
+		8: {
+			spellRank: 5,
+			attributeDie: 'd12',
+			skillBonus: 5,
+			wandCharges: 20,
+			staffCharges: 30,
+			staffSpellCapacity: 6,
+		},
+	}
 
 /**
  * Get the max spell rank for a wand or staff at a given quality tier.
@@ -621,6 +667,22 @@ export function getWandCharges(quality: QualityTier): number {
 export function getStaffCharges(quality: QualityTier): number {
 	if (quality < 4) return 0
 	return wandStaffTierTable[quality as 4 | 5 | 6 | 7 | 8].staffCharges
+}
+
+/**
+ * The roll a wand or staff is invoked with, when the reader is not using their own
+ * spellcasting roll (magic-items ▸ effects, "Casting from a Wand"/"from a Staff").
+ *
+ * The table has carried these two columns all along and nothing read them, so the
+ * builder priced a wand without ever saying what it rolls — which is the one thing
+ * you need at the table to use it (M13 S8, rules audit).
+ */
+export function getWandStaffRoll(
+	quality: QualityTier,
+): { attributeDie: string; skillBonus: number } | null {
+	if (quality < 4) return null
+	const tier = wandStaffTierTable[quality as 4 | 5 | 6 | 7 | 8]
+	return { attributeDie: tier.attributeDie, skillBonus: tier.skillBonus }
 }
 
 /**
@@ -746,29 +808,38 @@ export function getDurabilityDie(
 /**
  * Generate item name with material, enchantment, and bonus suffix.
  * Format: [prefix] [material] [base item] [+X] [suffix]
+ *
+ * `appearance` is the cultural weapon or armor type the reader picked (see
+ * `culturalVariants.ts`). It substitutes for the base item's own name and changes
+ * nothing else, which is exactly what the equipment chapter says it does: "you can
+ * choose a different appearance for specific weapon types without changing their
+ * game mechanics". A *Bronze Longsword* and a *Bronze Bastard Sword* are the same
+ * item priced the same way.
  */
 export function generateItemName(
 	baseItem: BaseItem,
 	material: SpecialMaterial | null,
 	enchantment: Enchantment | null,
 	quality: QualityTier,
+	appearance?: string | null,
 ): string {
-	let name = baseItem.name
+	const itemName = appearance || baseItem.name
+	let name = itemName
 
 	// Add material and enchantment
 	if (material && enchantment) {
 		if (enchantment.type === 'prefix') {
-			name = `${enchantment.name} ${material.name} ${baseItem.name}`
+			name = `${enchantment.name} ${material.name} ${itemName}`
 		} else {
-			name = `${material.name} ${baseItem.name} ${enchantment.name}`
+			name = `${material.name} ${itemName} ${enchantment.name}`
 		}
 	} else if (material) {
-		name = `${material.name} ${baseItem.name}`
+		name = `${material.name} ${itemName}`
 	} else if (enchantment) {
 		if (enchantment.type === 'prefix') {
-			name = `${enchantment.name} ${baseItem.name}`
+			name = `${enchantment.name} ${itemName}`
 		} else {
-			name = `${baseItem.name} ${enchantment.name}`
+			name = `${itemName} ${enchantment.name}`
 		}
 	}
 

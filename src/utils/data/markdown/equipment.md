@@ -75,7 +75,7 @@ Name | Quality | Category | Load | Cost | Description
 **Formidable Materials (d6)** | 4 | Supply | 1 | 750 | A lavishly adorned satchel containing formidable crafting materials, such as shimmering dragonhide, ethereal mooncloth, dwarf-steel ingots, electrum wire, and silken spider thread imbued with magical properties. Has a d6 Supply die.
 **Adventuring Gear** | 2 | Toolkit | 1 | 50 | Contains a crowbar, a hammer, a shovel, chalk, a wooden pole, and spikes. Spend 1 use to produce one specific item from the list.
 **Brewer‘s Tools** | 2 | Toolkit | 1 | 50 | Contains a large glass jug, a quantity of hops, a siphon, and several feet of tubing. Spend 1 use to produce one specific item from the list.
-**Carpenter‘ Tools** | 2 | Toolkit | 1 | 50 | Contains a saw, a hammer, nails, a hatchet, a square, a ruler, an adze, a plane, and a chisel. Spend 1 use to produce one specific item from the list.
+**Carpenter‘s Tools** | 2 | Toolkit | 1 | 50 | Contains a saw, a hammer, nails, a hatchet, a square, a ruler, an adze, a plane, and a chisel. Spend 1 use to produce one specific item from the list.
 **Climber‘s Kit** | 2 | Toolkit | 1 | 50 | Contains pitons, boot tips, gloves, and a harness. Spend 1 use to produce one specific item from the list.
 **Cook‘s Utensils** | 2 | Toolkit | 1 | 50 | Contains a metal pot, knives, forks, a stirring spoon, and a ladle. Spend 1 use to produce one specific item from the list.
 **Disguise Kit** | 2 | Toolkit | 1 | 50 | Contains cosmetics, hair dye, small props, and a few different pieces of clothing. Spend 1 use to produce one specific item from the list.

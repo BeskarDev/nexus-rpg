@@ -1,0 +1,11 @@
+.runeHeading {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.glyph {
+	display: inline-flex;
+	flex: 0 0 auto;
+	line-height: 0;
+}

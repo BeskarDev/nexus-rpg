@@ -1,75 +1,427 @@
 /**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
+ * Homepage — the codex frontispiece.
+ *
+ * The page it replaced was themed but composed as a web app: a full-viewport
+ * photographic backdrop with translucent black rounded panels and drop shadows
+ * floating on top of it, then ten equally-weighted chapter tiles. Three things
+ * changed, and they are the reason the rules below look the way they do:
+ *
+ * 1. The art is an inlaid PLATE inside a frame, not a backdrop. A scrim panel
+ *    over a photo is the streaming-service pattern; it also forced every card
+ *    below it to sit on an opaque fill to stay legible, so the artwork spent
+ *    most of its area being covered up.
+ * 2. Hierarchy, in one descending run: frontispiece, a numbered sequence of
+ *    three ways in, then the ten chapters as a ruled INDEX with descriptions.
+ *    A contents page is what a codex actually opens with, and it tells a
+ *    newcomer what is inside each chapter, which a grid of ten naked labels
+ *    cannot.
+ *
+ *    The three ways in were a ROW OF TILES for one revision. It was themed
+ *    correctly and still read as a marketing landing page, because a triptych
+ *    of icon-title-blurb boxes IS that pattern regardless of what is drawn
+ *    inside them. They are now ruled rows with a hanging ordinal, in the same
+ *    vocabulary as the index below and one weight above it — a sequence, not
+ *    three doors side by side.
+ * 3. Flat throughout — no radius above 3px, no shadows, no scrims. Mass and
+ *    keylines do the separating.
  */
 
-.heroBanner {
-  padding: 2rem 6rem;
-  text-align: center;
-  overflow: hidden;
-  min-height: calc(100vh - 60px);
+.page {
+	max-width: 66rem;
+	margin: 0 auto;
+	padding: 2.5rem 1.5rem 4rem;
 }
 
-.heroContainer {
-  padding: 1rem 2rem 0.5rem;
-  background-color: rgba(0,0,0,0.5);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-  color: white;
+/* --- Frontispiece --------------------------------------------------------- */
+
+.plate {
+	position: relative;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	border-radius: 2px;
+	background-color: var(--ifm-background-surface-color);
+	text-align: center;
 }
 
-.contentContainer {
-  padding: 1rem 2rem 0.5rem;
-  background-color: rgba(184, 129, 12, 0.8);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-  color: white;
-  margin-top: 3rem;
-  margin-inline: auto;
-  text-align: left;
+/* M11 S4 — the mat and its four corner rivets are gone, replaced by
+   `<ImagePlate weight="frontispiece">`. The hero's crop, its keyline and its
+   dark-theme knock-back all moved into the plate component, so the homepage no
+   longer carries a private copy of any of them.
+
+   The MEDALLION stayed. It is the site's central eye-catcher, so the frame gave
+   way instead: the frontispiece weight drops both rosette keystones and runs a
+   lighter surround than any other plate. Nothing else on the page may sit at the
+   art's lower edge.
+
+   Two more things the plate deliberately does NOT take over: the flanking
+   pillars and the diamond corner bosses belong to `.plateBody`, the stone panel
+   under the art. They frame the TITLE, not the landscape. */
+
+/* The crest's positioning context. It has to wrap the plate rather than be the
+   plate, because the medallion hangs off the ART's lower edge and `.plate` is
+   the art plus a body of unknown length. */
+.plateArtWrap {
+	position: relative;
 }
+
+/* The centrepiece boss, straddling the plate's lower rule.
+
+   The opaque backing (ornament-craft §2) is a DISC, not a padded rectangle: a
+   rectangle blanks a straight run of the keyline and leaves a visible notch
+   either side of the mark, whereas a disc lets the rule run in and stop against
+   the boss, which is how a real one is set. Sized to hug the ray tips (the
+   medallion's ink reaches 48/50 of its box) so the rule terminates on metal —
+   any more and the spare halo of stone reads as a sticker laid on the picture.
+
+   Above the frame overlay (`z-index: 2`) so the disc punches through the merlon
+   run rather than being carved by it. */
+.plateCrest {
+	position: absolute;
+	z-index: 3;
+	left: 50%;
+	bottom: -44px;
+	width: 88px;
+	height: 88px;
+	transform: translateX(-50%);
+	border-radius: 50%;
+	background-color: var(--ifm-background-surface-color);
+	color: var(--ifm-color-primary);
+}
+
+.plateCrest svg {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* The hero's crop ratio. It lives on the page, not in the plate component,
+   because it is art direction for THIS picture and it changes with the
+   viewport (see the 768px block below). The plate supplies `object-fit: cover`
+   and the object-position; the ratio is ours. */
+.heroCrop {
+	aspect-ratio: 3 / 1;
+}
+
+/* The stone panel below the art carries the cover ornament — diamond corner
+   bosses and flanking pillars, the kit's heaviest framing, reserved for surfaces
+   that stand alone. It goes HERE and not on the plate as a whole because the
+   plate's upper half is the picture: bronze rails laid across a painting read as
+   clutter, and the ornament's job is to frame the title, not the landscape. */
+/* Top padding clears the medallion, which hangs 46px below the art's rule and so
+   reaches 32px past the mat into this panel. Anything under ~3.5rem and the
+   title collides with the corona. */
+.plateBody {
+	position: relative;
+	padding: 3.75rem 2.75rem 2.25rem;
+}
+
+/* Flanking pillars: a double vertical rail capped by short lintels, mirroring
+   TabletFrame's. Written out here rather than reached for by reusing the whole
+   TabletFrame, which brings its own padding, background and frieze bands and
+   would have fought the plate on all three. */
+.platePillar {
+	position: absolute;
+	top: 16px;
+	bottom: 16px;
+	width: 3px;
+	border-left: 1px solid currentColor;
+	border-right: 1px solid currentColor;
+	color: color-mix(in srgb, var(--ifm-color-primary) 62%, transparent);
+	pointer-events: none;
+}
+
+.platePillarLeft {
+	left: 9px;
+}
+
+.platePillarRight {
+	right: 9px;
+}
+
+.platePillar::before,
+.platePillar::after {
+	content: '';
+	position: absolute;
+	left: -3px;
+	right: -3px;
+	height: 1px;
+	background: currentColor;
+}
+
+.platePillar::before {
+	top: -5px;
+}
+
+.platePillar::after {
+	bottom: -5px;
+}
+
+.title {
+	margin: 0;
+	font-family: var(--nexus-font-display);
+	/* Fluid rather than a breakpoint step, matching the h1 treatment in
+	   custom.css; one size above it because this is the site's only masthead. */
+	font-size: clamp(2.5rem, 6vw, 4rem);
+	line-height: 1.05;
+	letter-spacing: 0.02em;
+	color: var(--ifm-heading-color);
+}
+
+.standfirst {
+	max-width: var(--nexus-measure);
+	margin: 0 auto 0.9rem;
+	font-size: var(--nexus-text-md);
+	line-height: var(--nexus-leading-prose);
+	color: var(--ifm-font-color-base);
+}
+
+.standfirst:last-child {
+	margin-bottom: 0;
+}
+
+/* --- Begin here ----------------------------------------------------------
+   The same ruled-row vocabulary as the contents index, one weight up: a
+   hanging arabic ordinal (the chapters take roman), a larger mark and a larger
+   label. Weight separates the two lists, not a box around one of them. */
+
+.steps {
+	margin-top: 2.75rem;
+}
+
+.stepList {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.stepItem {
+	margin: 0;
+	padding: 0;
+}
+
+.stepRow {
+	display: grid;
+	grid-template-columns: 2.4rem 2.1rem 1fr;
+	align-items: center;
+	gap: 0 0.85rem;
+	padding: 0.9rem 0.5rem;
+	text-decoration: none;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+	transition: background-color 0.2s ease;
+}
+
+.stepRow:hover {
+	text-decoration: none;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 8%,
+		transparent
+	);
+}
+
+.stepNumeral {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-2xl);
+	line-height: 1;
+	text-align: center;
+	color: color-mix(in srgb, var(--ifm-color-primary) 55%, transparent);
+}
+
+.stepSigil {
+	line-height: 0;
+	color: var(--ifm-color-primary);
+}
+
+.stepText {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+	min-width: 0;
+}
+
+.stepLabel {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-xl);
+	letter-spacing: 0.01em;
+	color: var(--ifm-heading-color);
+}
+
+.stepBlurb {
+	font-size: var(--nexus-text-sm);
+	line-height: 1.45;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 75%, transparent);
+}
+
+/* --- Contents index ------------------------------------------------------- */
+
+.contents {
+	margin-top: 3rem;
+}
+
+.sectionHeading {
+	margin: 0 0 1.1rem;
+	text-align: center;
+	/* The Cartouche carries the type; the h2 is structure only, so it must not
+	   also apply the display face and heading size on top of it. */
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: 1;
+}
+
+.indexList {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0 2.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.indexItem {
+	margin: 0;
+	padding: 0;
+}
+
+.indexRow {
+	display: grid;
+	grid-template-columns: 2.2rem 1.75rem 1fr;
+	align-items: baseline;
+	gap: 0 0.5rem;
+	/* Fill the grid cell so the two rows of a pair are the same height and their
+	   rules line up across the gutter. Without this, one column's description
+	   wrapping to a second line pushes its rule out of register with the other,
+	   and a contents page whose rules do not align reads as broken. */
+	height: 100%;
+	padding: 0.7rem 0.4rem;
+	text-decoration: none;
+	/* A hairline between rows: a border on a container, which is the allowed use
+	   of a rule (SKILL.md) — the same treatment the doc tables use for row
+	   separation, not a bar used to group. */
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 18%, transparent);
+	transition: background-color 0.2s ease;
+}
+
+.indexRow:hover {
+	text-decoration: none;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 8%,
+		transparent
+	);
+}
+
+.indexNumeral {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-sm);
+	letter-spacing: 0.04em;
+	color: color-mix(in srgb, var(--ifm-color-primary) 75%, transparent);
+}
+
+/* Sits on the LABEL's line, not the row's centre — centring it over a two-line
+   entry drops it visibly below its own title. */
+.indexSigil {
+	align-self: start;
+	margin-top: 0.1rem;
+	line-height: 0;
+	color: var(--ifm-color-primary);
+}
+
+.indexText {
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+}
+
+.indexLabel {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-md);
+	letter-spacing: 0.01em;
+	color: var(--ifm-heading-color);
+}
+
+.indexBlurb {
+	font-size: var(--nexus-text-sm);
+	line-height: 1.45;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 72%, transparent);
+}
+
+/* --- Colophon ------------------------------------------------------------- */
+
+.colophon {
+	margin-top: 3rem;
+	padding: 1.25rem 1.5rem 1.4rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
+	border-radius: 2px;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 5%,
+		var(--ifm-background-surface-color)
+	);
+}
+
+.colophonHeading {
+	margin: 0 0 0.7rem;
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: 1;
+}
+
+.colophon p {
+	max-width: var(--nexus-measure);
+	margin-bottom: 0.6rem;
+	font-size: var(--nexus-text-sm);
+	line-height: 1.6;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 82%, transparent);
+}
+
+.colophon p:last-child {
+	margin-bottom: 0;
+}
+
+/* --- Narrow ---------------------------------------------------------------
+   The contents index collapses to one column first: two columns of ruled rows
+   lose their alignment well before a single-column list needs anything. */
 
 @media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+	.indexList {
+		grid-template-columns: 1fr;
+		gap: 0;
+	}
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@media screen and (max-width: 768px) {
+	.page {
+		padding: 1.5rem 1rem 3rem;
+	}
 
-a.card {
-  padding: 1.5rem 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  background-color: var(--ifm-navbar-background-color);
-  transition: 0.3s;
-  cursor: pointer;
-  text-align: center;
-  min-width: 5rem;
-  width: 20rem;
-  flex-grow: 1;
-  text-decoration: none;
-}
+	/* A 3:1 band in a phone column is a letterbox slot, so the crop tightens.
+	   This is the one piece of the old hero worth keeping verbatim. */
+	.heroCrop {
+		aspect-ratio: 2 / 1;
+	}
 
-a.card:hover {
-  background: var(--ifm-color-emphasis-200);
-}
+	/* Side padding cannot drop below the pillars (9px out, 3px wide) plus room to
+	   breathe, or the first character of every line sits on the rail. The top
+	   padding used to clear the hanging medallion; it now clears the plate's own
+	   bottom rosette, which straddles the join at the same place. */
+	.plateBody {
+		padding: 3.5rem 1.6rem 1.5rem;
+	}
 
-a.card h2 {
-  color: var(--ifm-navbar-link-color);
-  margin: 0;
-  text-decoration: none;
-}
+	.stepRow {
+		grid-template-columns: 1.8rem 1.7rem 1fr;
+		gap: 0 0.6rem;
+	}
 
-a.card:hover h2 {
-  color: var(--ifm-navbar-link-hover-color);
-  text-decoration: none;
-}
+	.stepNumeral {
+		font-size: var(--nexus-text-lg);
+	}
 
-a.card:active {
-  transform: scale(0.9);
+	.stepLabel {
+		font-size: var(--nexus-text-md);
+	}
 }

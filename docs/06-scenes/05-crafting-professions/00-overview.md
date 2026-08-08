@@ -4,7 +4,7 @@ sidebar_position: 0
 
 # 🔨 Crafting Professions
 
-![banner-img](/img/banner/crafting-banner.png)
+![banner-img](/img/banner/crafting-professions-banner.png)
 
 You can learn different crafting professions which expand your character‘s toolkit beyond just their skills. Professions can be used to craft items, or earn an income.
 

@@ -1,0 +1,38 @@
+/*
+ * The printed card's divider (M18 S4).
+ *
+ * A hairline on each side of a hollow diamond — the kit's own lozenge, the same
+ * shape the card frame's corner bosses, the site's list bullets and the check
+ * mark are built from. It replaces a bare `<hr>`: a straight rule was the one
+ * piece of card furniture with no relation to the ornament language around it.
+ *
+ * Everything is `currentColor` and every length is in `em`, so the divider inks
+ * with the card and shrinks with the type the autofit settles on. A divider that
+ * kept a fixed size would grow relative to the text on a dense card, which is
+ * exactly where there is least room for it.
+ */
+.rule {
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
+	color: var(--pc-ink, currentColor);
+	line-height: 0;
+}
+
+.rule::before,
+.rule::after {
+	content: '';
+	flex: 1 1 auto;
+	height: 0;
+	border-top: var(--pc-rule-hair, 0.2mm) solid currentColor;
+}
+
+/*
+ * The diamond sits ON the rule, so the rules must not run under it — the corner
+ * boss follows the same law, drawing its backing before the rails so the frame
+ * never crosses the mark.
+ */
+.lozenge {
+	flex: 0 0 auto;
+	display: block;
+}

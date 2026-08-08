@@ -1,0 +1,339 @@
+import Link from '@docusaurus/Link'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import type { SigilName } from '@site/src/components/codex'
+import {
+	CardFrame,
+	Cartouche,
+	FriezeDivider,
+	ImagePlate,
+	LozengeDivider,
+	SIGIL_SIZE,
+	SigilIcon,
+	SolarMedallion,
+} from '@site/src/components/codex'
+import homeBanner from '@site/static/img/banner/home-banner.png'
+import Layout from '@theme/Layout'
+import React from 'react'
+
+import styles from './index.module.css'
+
+/** Year the project started, for the colophon's "in development since" line. */
+const PROJECT_START_YEAR = 2020
+
+interface Entry {
+	label: string
+	href: string
+	sigil: SigilName
+	blurb: string
+}
+
+/**
+ * The three ways in, as a NUMBERED SEQUENCE rather than a row of tiles.
+ *
+ * Three equally-weighted boxes carrying icon-title-blurb is the marketing
+ * feature-card shape no matter what is drawn inside them, and it was the last
+ * piece of web-app composition left on this page. A codex does not offer three
+ * doors side by side; it says "first read this, then do that". So these are
+ * ruled rows with a hanging ordinal, at a heavier weight than the contents
+ * index below.
+ *
+ * Every blurb names things that are actually on the page it links to. An
+ * earlier pass wrote them from a general idea of what an RPG landing page
+ * promises and sent a GM looking for encounter budgets and a bestiary in GM
+ * Tools, where neither lives. If a linked page's contents change, these change
+ * with it.
+ */
+const THRESHOLDS: (Entry & { numeral: string })[] = [
+	{
+		numeral: '1',
+		label: 'Learn the Game',
+		href: '/docs/basic-rules/how-to-roll',
+		sigil: 'casting-sticks',
+		blurb:
+			'Attribute die + 1d6 + skill rank against a target number, success levels, boons and banes.',
+	},
+	{
+		numeral: '2',
+		label: 'Make a Character',
+		href: '/docs/basic-rules/character-creation',
+		sigil: 'stylus',
+		blurb:
+			'Nine steps: attributes, folk, upbringing, background, relations, personality, skills and gear.',
+	},
+	{
+		numeral: '3',
+		label: 'Run a Table',
+		href: '/docs/gm-tools/index',
+		sigil: 'key',
+		blurb:
+			'Oracles for treasure, creatures, settlements and NPCs, printable cards, and a creature builder.',
+	},
+]
+
+/**
+ * The book proper, in reading order. Numerals are the index's own ordinals and
+ * match the chapter folders for I-VIII; GM Tools and the character sheet are
+ * deliberately NOT numbered and sit below the divider, because they are tools
+ * rather than chapters of the rules.
+ *
+ * Each entry's sigil is its mark from the shared SigilIcon set, so the navbar,
+ * this index and the docs chapter markers all carry one identity. Hrefs mirror
+ * the landing doc each navbar item resolves to; if one moves, update it here.
+ */
+const CHAPTERS: (Entry & { numeral: string })[] = [
+	{
+		numeral: 'I',
+		label: 'Basic Rules',
+		href: '/docs/basic-rules/how-to-roll',
+		sigil: 'sun',
+		blurb: 'Rolling dice, success levels, character creation and progression.',
+	},
+	{
+		numeral: 'II',
+		label: 'Adventurers',
+		href: '/docs/adventurers/folk',
+		sigil: 'ziggurat',
+		blurb: 'Folk, languages, upbringing, background and ties to the world.',
+	},
+	{
+		numeral: 'III',
+		label: 'Statistics',
+		href: '/docs/statistics/attributes',
+		sigil: 'tablet',
+		blurb: 'Attributes, hit points, defenses, resolve, skills and talents.',
+	},
+	{
+		numeral: 'IV',
+		label: 'Equipment',
+		href: '/docs/equipment/items',
+		sigil: 'anvil',
+		blurb: 'Gear and coin, weapons and armor, and magic items.',
+	},
+	{
+		numeral: 'V',
+		label: 'Combat',
+		href: '/docs/combat/combat-scenes',
+		sigil: 'blades',
+		blurb: 'Combat scenes, attacking, movement, conditions and combat arts.',
+	},
+	{
+		numeral: 'VI',
+		label: 'Scenes',
+		href: '/docs/scenes/scenes-time-intervals',
+		sigil: 'hourglass',
+		blurb: 'Time intervals, resting, downtime, crafting and challenges.',
+	},
+	{
+		numeral: 'VII',
+		label: 'Magic',
+		href: '/docs/magic/magic-spells/',
+		sigil: 'rune',
+		blurb: 'Arcane and mystic spells, metamagic arts and spell properties.',
+	},
+	{
+		numeral: 'VIII',
+		label: 'Creatures',
+		href: '/docs/creatures/mounts-companions/',
+		sigil: 'serpent',
+		blurb: 'Mounts and companions, creature rules and the bestiary.',
+	},
+]
+
+const TOOLS: Entry[] = [
+	{
+		label: 'GM Tools',
+		href: '/docs/gm-tools/index',
+		sigil: 'key',
+		blurb: 'Random tables, builder tools and printable sheets.',
+	},
+	{
+		label: 'Character Sheet',
+		href: '/docs/character-sheet/character-sheet',
+		sigil: 'scroll',
+		blurb: 'The interactive sheet, saved to your account.',
+	},
+]
+
+function IndexRow({
+	entry,
+	numeral,
+}: {
+	entry: Entry
+	numeral?: string
+}): React.ReactNode {
+	return (
+		<li className={styles.indexItem}>
+			<Link to={entry.href} className={styles.indexRow}>
+				<span className={styles.indexNumeral} aria-hidden="true">
+					{numeral ?? ''}
+				</span>
+				<span className={styles.indexSigil} aria-hidden="true">
+					<SigilIcon name={entry.sigil} size={SIGIL_SIZE.indexRow} />
+				</span>
+				<span className={styles.indexText}>
+					<span className={styles.indexLabel}>{entry.label}</span>
+					<span className={styles.indexBlurb}>{entry.blurb}</span>
+				</span>
+			</Link>
+		</li>
+	)
+}
+
+export default function Home(): React.ReactNode {
+	const { siteConfig } = useDocusaurusContext()
+	const years = new Date().getFullYear() - PROJECT_START_YEAR
+
+	return (
+		<Layout
+			title="Home"
+			description="Nexus RPG is a sword and sorcery tabletop roleplaying game in an age of bronze. A few cities hold out, the ruins are older than memory, and the gods expect their due. Build an adventurer out of skills and talents, read the rules, and run a table."
+		>
+			{/* A landmark, not a div: Layout provides no <main>, and the skip link
+			    needs somewhere to land. */}
+			<main className={styles.page}>
+				{/* --- Frontispiece: the title plate --------------------------------
+				    The banner is an inlaid PLATE inside the frame, not a full-bleed
+				    backdrop with translucent boxes floating on it. */}
+				<header className={styles.plate}>
+					{/* The art sits in a carved SURROUND (M11 S4), replacing the mat and
+					    its four corner rivets — that was a picture with fasteners at its
+					    corners rather than a framed picture.
+
+					    The medallion STAYS. It is the site's central eye-catcher, and the
+					    frame is subordinate to it: the frontispiece weight carries no
+					    rosette keystones at all and runs a lighter surround than the other
+					    plates, precisely so this one mark reads as the centrepiece. */}
+					<div className={styles.plateArtWrap}>
+						<ImagePlate
+							as="div"
+							weight="frontispiece"
+							src={homeBanner}
+							alt="A Bronze Age river valley beneath high cliffs"
+							// Native 2.36:1, shown at 3:1 so the art cannot set the page's
+							// height. The ratio lives in the stylesheet because it tightens
+							// on narrow screens, where a 3:1 band is a letterbox slot.
+							//
+							// `crop` is what overrides the weight's own ratio, which is why
+							// the hero passes it and a banner does not — a banner is cropped
+							// by `.img-banner`'s 4:1 and only supplies `cropPosition`.
+							crop
+							cropPosition="center 62%"
+							imgClassName={styles.heroCrop}
+						/>
+						<span className={styles.plateCrest} aria-hidden="true">
+							<SolarMedallion size={88} />
+						</span>
+					</div>
+					<div className={styles.plateBody}>
+						<CardFrame cornersOnly />
+						<span
+							className={`${styles.platePillar} ${styles.platePillarLeft}`}
+							aria-hidden="true"
+						/>
+						<span
+							className={`${styles.platePillar} ${styles.platePillarRight}`}
+							aria-hidden="true"
+						/>
+						<h1 className={styles.title}>{siteConfig.title}</h1>
+						{/* No epigraph line. The prose below now opens by naming the game,
+						    so a small-caps "sword and sorcery in the age of bronze" two
+						    lines above it was the same sentence twice. The divider carries
+						    the step from display face to body on its own. */}
+						<LozengeDivider compact />
+						{/* Answers two questions in two paragraphs: what is this, and how
+						    does it play. Four drafts got here, and the failures are worth
+						    keeping so they are not repeated:
+
+						    - Metaphor first ("civilization is a handful of bonfires in a
+						      long night") asks the reader to decode an image before they
+						      know what they are reading. A first line has to orient.
+						    - Meta narration ("steel is unknown") is a fact about the rules
+						      wearing a costume.
+						    - Negative framing ("there are no classes") defines the game
+						      against an assumption the reader may not hold.
+						    - Description without a hook. Long subordinate clauses read as
+						      setting notes rather than an invitation.
+
+						    Hence: name the game, then short declaratives with concrete
+						    nouns, then what a session actually feels like. */}
+						<p className={styles.standfirst}>
+							Nexus RPG is sword and sorcery in an age of bronze. A few cities
+							hold out. Past their walls the land is unruled, the ruins are
+							older than memory, and the gods are awake and expect their due.
+						</p>
+						<p className={styles.standfirst}>
+							Build your adventurer out of skills and the talents that grow from
+							them, and be anyone you like.
+						</p>
+					</div>
+				</header>
+
+				{/* --- Where to start ------------------------------------------------
+				    A numbered sequence, not a tile row. Heavier than the contents
+				    index below (bigger ordinal, bigger label, larger mark) so the two
+				    lists are not mistaken for each other. */}
+				<nav className={styles.steps} aria-label="Where to start">
+					<h2 className={styles.sectionHeading}>
+						<Cartouche glyph="footprints">Begin Here</Cartouche>
+					</h2>
+					<ol className={styles.stepList}>
+						{THRESHOLDS.map((t) => (
+							<li key={t.href} className={styles.stepItem}>
+								<Link to={t.href} className={styles.stepRow}>
+									<span className={styles.stepNumeral} aria-hidden="true">
+										{t.numeral}
+									</span>
+									<span className={styles.stepSigil} aria-hidden="true">
+										<SigilIcon name={t.sigil} size={SIGIL_SIZE.tile} />
+									</span>
+									<span className={styles.stepText}>
+										<span className={styles.stepLabel}>{t.label}</span>
+										<span className={styles.stepBlurb}>{t.blurb}</span>
+									</span>
+								</Link>
+							</li>
+						))}
+					</ol>
+				</nav>
+
+				{/* --- Contents ---------------------------------------------------- */}
+				<section className={styles.contents} aria-labelledby="contents-heading">
+					<h2 className={styles.sectionHeading} id="contents-heading">
+						<Cartouche glyph="scroll">Contents</Cartouche>
+					</h2>
+					<ol className={styles.indexList}>
+						{CHAPTERS.map((c) => (
+							<IndexRow key={c.href} entry={c} numeral={c.numeral} />
+						))}
+					</ol>
+
+					<FriezeDivider compact />
+
+					<h2 className={styles.sectionHeading} id="tools-heading">
+						<Cartouche glyph="hammer">At the Table</Cartouche>
+					</h2>
+					<ul className={styles.indexList} aria-labelledby="tools-heading">
+						{TOOLS.map((t) => (
+							<IndexRow key={t.href} entry={t} />
+						))}
+					</ul>
+				</section>
+
+				{/* --- Colophon ----------------------------------------------------- */}
+				<aside className={styles.colophon}>
+					<h2 className={styles.colophonHeading}>
+						<Cartouche glyph="hourglass">Still Being Written</Cartouche>
+					</h2>
+					<p>
+						The rules are incomplete and everything here is subject to change.
+					</p>
+					<p>
+						Nexus RPG is a single-person passion project, {years} years in the
+						making. Only a small group of friends has played it regularly, so
+						not every rule or character option has been thoroughly playtested.
+					</p>
+				</aside>
+			</main>
+		</Layout>
+	)
+}

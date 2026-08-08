@@ -16,18 +16,35 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
 			data-testid={testId}
 		>
 			{icon && (
-				<Box sx={{ fontSize: '0.7rem', color, display: 'flex', '& svg': { fontSize: 'inherit' } }}>
+				<Box
+					sx={{
+						fontSize: 'var(--nexus-text-xs)',
+						color,
+						display: 'flex',
+						'& svg': { fontSize: 'inherit' },
+					}}
+				>
 					{icon}
 				</Box>
 			)}
+			{/* M9 S3: the codex kit's cartouche label register (small-caps, UI font)
+				without its bordered nameplate box — that box hardcodes an
+				ink-forward color with no per-instance override, which would lose
+				the attribute/skill identity hue this label carries, and its padding
+				doesn't fit a StatCard's ~3.5rem width. */}
 			<Typography
 				variant="caption"
 				sx={{
+					fontFamily: 'var(--nexus-font-ui)',
 					fontWeight: 700,
-					fontSize: '0.65rem',
+					// M13 S3.5: one step up, from 11px. Small caps render at about cap
+					// height, so this label had roughly the optical presence of 8px text
+					// — on the surface a player scans mid-fight, beside body copy set at
+					// 14. It stays a step below the value it names.
+					fontSize: 'var(--nexus-text-xs)',
 					color,
-					textTransform: 'uppercase',
-					letterSpacing: '0.5px',
+					fontVariant: 'small-caps',
+					letterSpacing: '0.04em',
 				}}
 			>
 				{label}

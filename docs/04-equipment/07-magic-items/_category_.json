@@ -1,8 +1,8 @@
 {
-  "label": "💎 Magic Items",
-  "position": 7,
-  "link": {
-    "type": "doc",
-    "id": "equipment/magic-items/overview"
-  }
+	"label": "💎 Magic Items",
+	"position": 7,
+	"link": {
+		"type": "doc",
+		"id": "equipment/magic-items/overview"
+	}
 }

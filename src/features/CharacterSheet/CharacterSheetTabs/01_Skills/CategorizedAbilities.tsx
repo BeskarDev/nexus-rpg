@@ -1,40 +1,28 @@
+import { Autorenew, Build, Search, SwapVert } from '@mui/icons-material'
+import StatSigil from '@site/src/components/codex/StatSigil'
 import {
-	AddCircle,
-	Autorenew,
-	ExpandMore,
-	Build,
-	Search,
-	WarningAmberOutlined,
-	SwapVert,
-} from '@mui/icons-material'
-import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
 	Box,
-	Chip,
 	IconButton,
 	Tooltip,
 	Menu,
 	MenuItem,
 	FormControlLabel,
 	Checkbox,
-	Typography,
-	Dialog,
-	DialogTitle,
-	DialogContent,
-	DialogContentText,
-	DialogActions,
-	Button,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 import { DropResult } from '@hello-pangea/dnd'
 import { Ability } from '../../../../types/Character'
-import { SectionHeader } from '../../CharacterSheet'
 import { ABILITY_TAGS, AbilityTag } from '../../../../types/AbilityTag'
 
-import { DynamicList } from '@site/src/components/DynamicList'
-import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
+import {
+	ListSection,
+	ListSectionHeader,
+	MarkButton,
+	SheetChip,
+} from '../../components'
+import { getSkillChipColor } from '../../../../constants/skills'
+import { DynamicList } from '@site/src/features/CharacterSheet/components/DynamicList'
+import { DynamicListItem } from '@site/src/features/CharacterSheet/components/DynamicList/DynamicListItem'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
@@ -43,7 +31,11 @@ import { TalentsSearchDialog } from '../02_Items/SearchDialog/TalentsSearchDialo
 import { AbilityRow } from './AbilityRow'
 import { QuickRefSection } from './QuickRefSection'
 import { getTalentPointSummaries } from '../../utils/calculateTalentPoints'
-import { getSkillChipColor } from '../../../../constants/skills'
+import { TalentPointsDialog } from './components'
+import {
+	abilityHeadingsFor,
+	abilityHeaderTemplate,
+} from './components/abilityColumns'
 import { calculateCharacterLevel } from '../../utils/calculateCharacterLevel'
 import { calculateMaxXpPerSkill } from '../../utils/validation'
 import { RefreshUpdatesDialog } from '../../components/RefreshUpdatesDialog'
@@ -82,8 +74,7 @@ export const CategorizedAbilities: React.FC = () => {
 	}
 
 	const totalSpentXp =
-		xp?.spend ??
-		trainedSkills.reduce((sum, skill) => sum + (skill.xp || 0), 0)
+		xp?.spend ?? trainedSkills.reduce((sum, skill) => sum + (skill.xp || 0), 0)
 	const characterLevel = calculateCharacterLevel(totalSpentXp)
 	const maxXpPerSkill = calculateMaxXpPerSkill(totalSpentXp)
 
@@ -91,16 +82,24 @@ export const CategorizedAbilities: React.FC = () => {
 		() => getTalentPointSummaries(trainedSkills, abilities),
 		[trainedSkills, abilities],
 	)
-	const missingTalentSummaries = talentSummaries.filter(
-		(summary) => summary.missing > 0,
-	)
-	const overspentTalentSummaries = talentSummaries.filter(
+	/*
+		What the header's alert is for.
+
+		It used to fire on unspent points ALONE, which left the one state that is
+		actually wrong — more points committed than the skill has earned — with no
+		surface anywhere on the sheet. `overspentTalentSummaries` was computed for
+		it and never read, and `missingTalentSummaries` was a second binding for
+		the same rows as `openTalentSummaries`. Both are gone; the dialog does its
+		own grouping from the full list.
+	*/
+	const hasOverspentTalents = talentSummaries.some(
 		(summary) => summary.overspent > 0,
 	)
-	const openTalentSummaries = talentSummaries.filter(
+	const hasOpenTalentPoints = talentSummaries.some(
 		(summary) => summary.available > summary.spent,
 	)
-	const showTalentNotice = openTalentSummaries.length > 0
+	const showTalentNotice =
+		hasOverspentTalents || hasOpenTalentPoints || unassignedSpent > 0
 
 	const abilitiesByTag = useMemo(() => {
 		const grouped: Record<AbilityTag, Ability[]> = {
@@ -217,28 +216,28 @@ export const CategorizedAbilities: React.FC = () => {
 				display: 'flex',
 				flexDirection: 'column',
 				width: '100%',
-				maxWidth: 'var(--cs-max-width-lg)',
+				// Fills the working column (M13 S11); the column carries the ceiling.
+				maxWidth: '100%',
 			}}
 		>
 			{/* Quick Ref Section */}
 			<QuickRefSection />
 
-			{/* Header with category settings menu */}
-			<Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-				<SectionHeader sx={{ mb: 0 }}>Abilities</SectionHeader>
-				<Tooltip title="toggle ability categories">
-					<IconButton
-						size="small"
-						onClick={handleSettingsMenuOpen}
-						sx={{
-							border: '1px solid',
-							borderColor: 'divider',
-						}}
-					>
-						<Build fontSize="inherit" />
-					</IconButton>
-				</Tooltip>
-
+			{/* M13 S3: the tab's own heading, on the shared ruled header. It carries
+				no count — it is the title of the whole list, and the per-tag headers
+				below it are what have quantities. */}
+			<ListSectionHeader
+				label="Abilities"
+				sx={{ mb: 1 }}
+				actions={
+					<Tooltip title="toggle ability categories">
+						<IconButton size="small" onClick={handleSettingsMenuOpen}>
+							<Build fontSize="inherit" />
+						</IconButton>
+					</Tooltip>
+				}
+			/>
+			<Box>
 				<Menu
 					anchorEl={settingsMenuAnchor}
 					open={Boolean(settingsMenuAnchor)}
@@ -278,77 +277,49 @@ export const CategorizedAbilities: React.FC = () => {
 				}
 
 				return (
-					<Accordion key={tag} defaultExpanded sx={{ flexGrow: 1 }}>
-						<AccordionSummary expandIcon={<ExpandMore />}>
-							<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-								<SectionHeader sx={{ mb: 0 }}>{tag}</SectionHeader>
-								{tag === 'Talent' && openTalentSummaries.length > 0 && (
-									<Tooltip title="Spend your talent points!">
-										<IconButton
-											size="small"
-											color="warning"
-											onClick={(event) => {
-												event.stopPropagation()
-												setIsTalentInfoDialogOpen(true)
-											}}
-											sx={{
-												border: '1px solid',
-												borderColor: 'divider',
-											}}
-										>
-											<WarningAmberOutlined fontSize="inherit" />
-										</IconButton>
-									</Tooltip>
-								)}
-								<Tooltip title={reorderMode[tag] ? 'Exit reorder mode' : 'Reorder abilities'}>
-									<IconButton
-										size="small"
-										onClick={(event) => {
-											event.stopPropagation()
-											toggleReorderMode(tag)
-										}}
-										sx={{
-											border: '1px solid',
-											borderColor: reorderMode[tag] ? 'primary.main' : 'divider',
-											color: reorderMode[tag] ? 'primary.main' : 'inherit',
-										}}
-									>
-										<SwapVert fontSize="inherit" />
-									</IconButton>
-								</Tooltip>
-								<IconButton
-									onClick={(event) => {
-										addNewAbility(tag)
-										event.stopPropagation()
-									}}
-								>
-									<AddCircle />
-								</IconButton>
-								{tag === 'Combat Art' && (
-									<Tooltip title="Search Combat Arts from database">
-										<IconButton
-											size="small"
-											onClick={(event) => {
-												setIsCombatArtsDialogOpen(true)
-												event.stopPropagation()
-											}}
-											sx={{ ml: -1 }}
-										>
-											<Search />
-										</IconButton>
-									</Tooltip>
-								)}
+					<ListSection
+						key={tag}
+						label={tag}
+						count={tagAbilities.length}
+						className="cs-ledger-cols"
+						collapsible
+						defaultExpanded
+						actions={
+							/* Two registers, and the order says which is which (owner call).
+								A section's OWN tools come first — talent points, refresh from
+								the rulebook — then the three verbs every section has: reorder,
+								add, search. Refresh used to sit last, so the one control that
+								appears on a single tag was on the far side of the three that
+								appear on all of them, and the strip's shape changed per tag
+								with no rule behind where anything sat. */
+							<>
 								{tag === 'Talent' && (
-									<Tooltip title="Search Talents from database">
+									<Tooltip
+										title={
+											showTalentNotice
+												? 'Spend your talent points'
+												: 'Talent points'
+										}
+									>
+										{/* The ledger's doorway, always present — the dialog now
+											reports the SETTLED state too, so a reader who has
+											nothing to spend still has something to check. The
+											warning ink is the alert; the control is not.
+
+											The mark is the ziggurat (`xp`), which is both where
+											talent points come from and the TalentCard's own
+											keystone, rather than Material's warning triangle.
+
+											`alert`, not `pending`: unspent points are a standing
+											condition, not an outstanding action of yours, and no
+											single press resolves them. Warning ink, no motion. */}
 										<IconButton
 											size="small"
-											onClick={(event) => {
-												setIsTalentsDialogOpen(true)
-												event.stopPropagation()
-											}}
-											sx={{ ml: -1 }}
+											data-state={showTalentNotice ? 'alert' : undefined}
+											aria-label="Talent points"
+											onClick={() => setIsTalentInfoDialogOpen(true)}
 										>
-											<Search />
+											<StatSigil name="xp" size="1em" />
 										</IconButton>
 									</Tooltip>
 								)}
@@ -360,61 +331,130 @@ export const CategorizedAbilities: React.FC = () => {
 												: 'Talents are up to date'
 										}
 									>
+										{/* `pending`, so it pulses: talents have drifted from the
+											rulebook and one press reconciles them. Same device the
+											party notes' unsaved-changes control uses, because it is
+											the same kind of state — an action of yours is
+											outstanding, and a colour alone is read past. */}
 										<IconButton
 											size="small"
-											onClick={(event) => {
-												setIsTalentRefreshDialogOpen(true)
-												event.stopPropagation()
-											}}
-											sx={{ ml: -1 }}
-											color={talentUpdates.length ? 'warning' : 'default'}
+											onClick={() => setIsTalentRefreshDialogOpen(true)}
+											data-state={talentUpdates.length ? 'pending' : undefined}
+											aria-label={
+												talentUpdates.length
+													? `Refresh talents — ${talentUpdates.length} out of date`
+													: 'Refresh talents'
+											}
 										>
-											<Autorenew />
+											<Autorenew fontSize="inherit" />
 										</IconButton>
 									</Tooltip>
 								)}
-							</Box>
-						</AccordionSummary>
-						<AccordionDetails>
-							<DynamicList
-								droppableId={`abilities-${tag}`}
-								onDragEnd={onAbilityReorder(tag)}
-							>
-								{tagAbilities.map((ability, index) => (
-									<DynamicListItem
-										key={ability.id}
-										id={ability.id}
-										index={index}
-										showDragHandle={reorderMode[tag]}
-										sx={{ alignItems: 'center' }}
+								<Tooltip
+									title={
+										reorderMode[tag] ? 'Exit reorder mode' : 'Reorder abilities'
+									}
+								>
+									{/* The one control in a header that keeps a box, because here
+										the border is INFORMATION: it says reorder mode is on. Off,
+										it drops to the same bare bronze as its neighbours. */}
+									<IconButton
+										size="small"
+										data-state={reorderMode[tag] ? 'on' : 'off'}
+										onClick={() => toggleReorderMode(tag)}
 									>
-										<AbilityRow
-											key={ability.id}
-											title={ability.title}
-											description={ability.description}
-											tag={ability.tag}
-											actionType={ability.actionType}
-											rank={ability.rank}
-											skill={ability.skill}
-											availableTags={[...ABILITY_TAGS]}
-											updateAbility={(update) =>
-												updateAbility(update, ability.id)
-											}
-											moveToCategory={(newTag) =>
-												moveAbilityToCategory(ability.id, newTag)
-											}
-											deleteAbility={() => deleteAbility(ability)}
-											abilityId={ability.id}
-											isInQuickRef={quickRefSelections.abilities.includes(
-												ability.id,
-											)}
-											onToggleQuickRef={toggleQuickRef}
-										/>
-									</DynamicListItem>
+										<SwapVert fontSize="inherit" />
+									</IconButton>
+								</Tooltip>
+								<MarkButton
+									glyph="+"
+									label={`Add ${tag}`}
+									onClick={() => addNewAbility(tag)}
+								/>
+								{tag === 'Combat Art' && (
+									<Tooltip title="Search Combat Arts from database">
+										<IconButton
+											size="small"
+											onClick={() => setIsCombatArtsDialogOpen(true)}
+										>
+											<Search fontSize="inherit" />
+										</IconButton>
+									</Tooltip>
+								)}
+								{tag === 'Talent' && (
+									<Tooltip title="Search Talents from database">
+										<IconButton
+											size="small"
+											onClick={() => setIsTalentsDialogOpen(true)}
+										>
+											<Search fontSize="inherit" />
+										</IconButton>
+									</Tooltip>
+								)}
+							</>
+						}
+					>
+						{/* The ledger's column header — decorative, since every cell still
+							carries its own label below the breakpoint for the accessibility
+							tree and for a wrapped row. */}
+						{tagAbilities.length > 0 && (
+							<Box
+								className="cs-ledger-head"
+								aria-hidden="true"
+								sx={{
+									gridTemplateColumns: abilityHeaderTemplate(tag),
+									// Fills the working column (M13 S11); the column carries the ceiling.
+									maxWidth: '100%',
+								}}
+							>
+								{abilityHeadingsFor(tag).map((heading, index) => (
+									<span
+										key={heading.label || `mark-${index}`}
+										style={{ textAlign: heading.align }}
+									>
+										{heading.label}
+									</span>
 								))}
-							</DynamicList>
-						</AccordionDetails>
-					</Accordion>
+							</Box>
+						)}
+						<DynamicList
+							droppableId={`abilities-${tag}`}
+							onDragEnd={onAbilityReorder(tag)}
+						>
+							{tagAbilities.map((ability, index) => (
+								<DynamicListItem
+									key={ability.id}
+									id={ability.id}
+									index={index}
+									showDragHandle={reorderMode[tag]}
+									sx={{ alignItems: 'center' }}
+								>
+									<AbilityRow
+										key={ability.id}
+										title={ability.title}
+										description={ability.description}
+										tag={ability.tag}
+										actionType={ability.actionType}
+										rank={ability.rank}
+										skill={ability.skill}
+										availableTags={[...ABILITY_TAGS]}
+										updateAbility={(update) =>
+											updateAbility(update, ability.id)
+										}
+										moveToCategory={(newTag) =>
+											moveAbilityToCategory(ability.id, newTag)
+										}
+										deleteAbility={() => deleteAbility(ability)}
+										abilityId={ability.id}
+										isInQuickRef={quickRefSelections.abilities.includes(
+											ability.id,
+										)}
+										onToggleQuickRef={toggleQuickRef}
+									/>
+								</DynamicListItem>
+							))}
+						</DynamicList>
+					</ListSection>
 				)
 			})}
 
@@ -447,63 +487,46 @@ export const CategorizedAbilities: React.FC = () => {
 				onClose={() => setIsTalentRefreshDialogOpen(false)}
 				title="Refresh talents from rulebook"
 				itemNoun="talent"
+				metaColumns={[
+					{ label: 'Skill', width: 'minmax(0, 1fr)' },
+					{ label: 'Rank', width: '3.5rem' },
+				]}
 				entries={talentUpdates.map((u) => ({
 					id: u.id,
 					name: u.name,
-					sublabel: u.sublabel,
+					meta: [
+						/* A skill is named by a chip everywhere else on this tab, and the
+							dialog is about to overwrite the field that names it. */
+						u.skill ? (
+							<SheetChip
+								key="skill"
+								tone={getSkillChipColor(u.skill)}
+								surface="var(--ifm-background-surface-color)"
+							>
+								{u.skill}
+							</SheetChip>
+						) : (
+							'—'
+						),
+						u.rank ? String(u.rank) : '—',
+					],
 					changes: u.changes,
 				}))}
 				onConfirm={applyTalentUpdates}
 			/>
 
-			<Dialog
-				open={showTalentNotice && isTalentInfoDialogOpen}
+			<TalentPointsDialog
+				open={isTalentInfoDialogOpen}
 				onClose={() => setIsTalentInfoDialogOpen(false)}
-				maxWidth="xs"
-				fullWidth
-			>
-				<DialogTitle>Talent points</DialogTitle>
-				<DialogContent>
-					<DialogContentText sx={{ mb: 1 }}>
-						Every 2 XP spent in a skill grants 1 talent point for that skill&apos;s
-						talents. Level {characterLevel} (max {maxXpPerSkill} XP per skill).
-					</DialogContentText>
-					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-						{openTalentSummaries.map((summary) => {
-							const open = Math.max(summary.available - summary.spent, 0)
-							const text = `${summary.spent}/${summary.available} TP used`
-							return (
-								<Box
-									key={`tp-${summary.skill}`}
-									sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}
-								>
-									<Box
-										component="span"
-										sx={{
-											width: 10,
-											height: 10,
-											borderRadius: '50%',
-											bgcolor: getSkillChipColor(summary.skill),
-										}}
-									/>
-									<Typography variant="body2">
-										{summary.skill}: {text}
-									</Typography>
-								</Box>
-							)
-						})}
-						{unassignedSpent > 0 && (
-							<Typography variant="body2">
-								Assign skills to {unassignedSpent} untagged talent point
-								{unassignedSpent > 1 ? 's' : ''}.
-							</Typography>
-						)}
-					</Box>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={() => setIsTalentInfoDialogOpen(false)}>Close</Button>
-				</DialogActions>
-			</Dialog>
+				summaries={talentSummaries}
+				unassignedSpent={unassignedSpent}
+				characterLevel={characterLevel}
+				maxXpPerSkill={maxXpPerSkill}
+				onBrowseTalents={() => {
+					setIsTalentInfoDialogOpen(false)
+					setIsTalentsDialogOpen(true)
+				}}
+			/>
 		</Box>
 	)
 }

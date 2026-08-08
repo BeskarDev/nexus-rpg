@@ -8,13 +8,21 @@ export interface ChipMapping {
 }
 
 export const chipMappings: ChipMapping = {
-	// Damage Types (9 total) - Vibrant saturated colors
+	// Damage Types — all 11 in the published table (docs/05-combat/02-attacking.md
+	// § Damage Types). `physical` and `force` were missing: physical is the DEFAULT
+	// type, so rules prose omits it ("6/9/12 damage" is physical damage), and it had
+	// never needed a chip. Creature stat blocks are the exception — a resistance or
+	// weakness has to name the type explicitly, and `physical` is the third most
+	// common one there (27 uses), so it was the one entry left unstyled in a row of
+	// chips.
 	acid: { color: 'acid-vibrant', type: 'damage' },
 	blast: { color: 'blast-vibrant', type: 'damage' },
 	fire: { color: 'fire-vibrant', type: 'damage' },
+	force: { color: 'force-vibrant', type: 'damage' },
 	frost: { color: 'frost-vibrant', type: 'damage' },
 	lightning: { color: 'lightning-vibrant', type: 'damage' },
 	necrotic: { color: 'necrotic-vibrant', type: 'damage' },
+	physical: { color: 'physical-vibrant', type: 'damage' },
 	poison: { color: 'poison-vibrant', type: 'damage' },
 	psychic: { color: 'psychic-vibrant', type: 'damage' },
 	radiant: { color: 'radiant-vibrant', type: 'damage' },

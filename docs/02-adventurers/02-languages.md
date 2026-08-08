@@ -8,7 +8,7 @@ sidebar_position: 2
 
 > "Words are the rivers that connect our minds, yet each tongue flows differently through the lands. Learn them well, for to speak in another's language is to glimpse the world through their eyes."
 
-You can learn to speak, write, and read various languages throughout the known world—from the common tongues used in bustling trade cities to ancient and forgotten scripts found in crumbling ruins beneath the sands.
+You can learn to speak, write, and read various languages throughout the known world, from the common tongues used in bustling trade cities to ancient and forgotten scripts found in crumbling ruins beneath the sands.
 
 Adventurers learn additional languages depending on their Mind attribute or through talents acquired during their journeys.
 

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { Box, Typography, TextField } from '@mui/material'
-import { FitnessCenter } from '@mui/icons-material'
-import { CharacterSheetCard, CardHeader } from '../../components'
+import React from 'react'
+import { Box, TextField, Typography } from '@mui/material'
+import { SheetField } from '../../components'
+import { useFieldDraft } from '../../hooks/useFieldDraft'
 import { UI_COLORS } from '../../../../utils/colors'
 
 export type LocationLoadCardProps = {
@@ -26,32 +26,32 @@ export const LocationLoadCard: React.FC<LocationLoadCardProps> = ({
 	maxLoad,
 	onMaxLoadChange,
 }) => {
-	// Local state to prevent focus loss during typing
-	const [localMaxLoad, setLocalMaxLoad] = useState(maxLoad)
-
-	// Update local state when props change
-	useEffect(() => {
-		setLocalMaxLoad(maxLoad)
-	}, [maxLoad])
-
+	const draft = useFieldDraft(maxLoad, onMaxLoadChange)
 	const loadColor = getLoadColor(currentLoad, maxLoad)
 
 	return (
-		<CharacterSheetCard
-			header={<CardHeader icon={<FitnessCenter />} label="Load" color={loadColor} />}
+		<SheetField
+			label="Load"
+			sigil="load"
+			tone={loadColor}
 			minWidth="5.5rem"
 			maxWidth="7rem"
-			tooltip="Load capacity for this location"
-			borderColor={currentLoad >= maxLoad && maxLoad > 0 ? loadColor : undefined}
+			info="Load capacity for this location"
+			borderColor={
+				currentLoad >= maxLoad && maxLoad > 0 ? loadColor : undefined
+			}
 		>
+			{/* Compound value: the carried total is derived and read-only, only the
+			    capacity is editable — so this stays hand-composed rather than
+			    becoming a `FieldText`, which models a single editable value. */}
 			<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'baseline' }}>
 				<Typography
 					sx={{
 						fontWeight: 'bold',
-						fontSize: '0.95rem',
+						fontSize: 'var(--nexus-text-lg)',
 						lineHeight: 1.2,
 						color: 'text.primary',
-            ml: 2,
+						ml: 2,
 					}}
 				>
 					{currentLoad}
@@ -63,15 +63,16 @@ export const LocationLoadCard: React.FC<LocationLoadCardProps> = ({
 					type="number"
 					size="small"
 					variant="standard"
-					value={localMaxLoad}
-					onChange={(event) => setLocalMaxLoad(Number(event.target.value))}
-					onBlur={() => onMaxLoadChange(localMaxLoad)}
+					value={draft.value}
+					onChange={(event) => draft.onChange(Number(event.target.value))}
+					onBlur={draft.onBlur}
+					inputProps={{ 'aria-label': 'Load capacity' }}
 					InputProps={{
 						disableUnderline: true,
-						inputProps: { min: 0 },
+						inputProps: { min: 0, 'aria-label': 'Load capacity' },
 						sx: {
 							fontWeight: 'bold',
-							fontSize: '0.95rem',
+							fontSize: 'var(--nexus-text-lg)',
 							color: 'text.primary',
 							'& input': {
 								textAlign: 'center',
@@ -83,6 +84,6 @@ export const LocationLoadCard: React.FC<LocationLoadCardProps> = ({
 					}}
 				/>
 			</Box>
-		</CharacterSheetCard>
+		</SheetField>
 	)
 }

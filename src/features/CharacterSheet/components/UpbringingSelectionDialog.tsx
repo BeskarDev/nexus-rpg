@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Typography, Chip, Box } from '@mui/material'
+import { Typography, Box } from '@mui/material'
+import { SheetChip } from './SheetChip'
+import { entrySummary } from './EntryProse'
 import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
@@ -31,6 +33,7 @@ export const UpbringingSelectionDialog: React.FC<
 		{
 			key: 'name',
 			label: 'Upbringing',
+			width: 'minmax(0, 1fr)',
 			render: (value, upbringing) => (
 				<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
 					{upbringing.name}
@@ -41,18 +44,10 @@ export const UpbringingSelectionDialog: React.FC<
 			key: 'description',
 			label: 'Description',
 			sortable: false,
+			width: 'minmax(0, 2.4fr)',
 			render: (value, upbringing) => (
-				<Typography
-					variant="caption"
-					sx={{
-						display: '-webkit-box',
-						WebkitLineClamp: 3,
-						WebkitBoxOrient: 'vertical',
-						overflow: 'hidden',
-						lineHeight: 1.2,
-					}}
-				>
-					{upbringing.description}
+				<Typography component="span" className="cs-entry-summary">
+					{entrySummary(String(upbringing.description ?? ''))}
 				</Typography>
 			),
 		},
@@ -60,25 +55,13 @@ export const UpbringingSelectionDialog: React.FC<
 			key: 'suggested skills',
 			label: 'Suggested Skills',
 			sortable: false,
+			width: 'minmax(0, 1.2fr)',
 			render: (value, upbringing) => (
-				<Box>
+				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
 					{upbringing['suggested skills'].split(', ').map((skill, index) => (
-						<Chip
-							key={index}
-							label={skill.trim()}
-							size="small"
-							variant="outlined"
-							sx={{
-								fontSize: '0.7rem',
-								mb: 0.25,
-								mr: 0.25,
-								borderColor: getSkillChipColor(skill.trim()),
-								color: getSkillChipColor(skill.trim()),
-								'&:hover': {
-									backgroundColor: getSkillChipColor(skill.trim()) + '20',
-								},
-							}}
-						/>
+						<SheetChip key={index} tone={getSkillChipColor(skill.trim())}>
+							{skill.trim()}
+						</SheetChip>
 					))}
 				</Box>
 			),
@@ -110,6 +93,9 @@ export const UpbringingSelectionDialog: React.FC<
 			onConfirm={handleConfirm}
 			getItemKey={(upbringing) => upbringing.name}
 			confirmButtonText="Select Upbringing"
+			// Alphabetical rather than the JSON's authoring order (F11.6).
+			defaultSort={{ key: 'name' }}
+			itemNoun="upbringing"
 			searchPlaceholder="Search by name, description, or suggested skills..."
 		/>
 	)

@@ -1,0 +1,75 @@
+/* A section's contents page — ruled rows, a mark, a name, a line (M14 S3). */
+.index {
+	list-style: none;
+	margin: 0 0 2rem;
+	padding: 0;
+	border-top: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+}
+
+/* The docs column draws a diamond before every `li`, which is right for prose and
+   wrong here: these rows already carry their own mark. */
+.entry::before {
+	display: none !important;
+}
+
+.entry {
+	margin: 0;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+}
+
+/* The whole row is the target. A contents page is navigation, and a reader
+   aiming for a five-word link in a wide row is the fault the sheet's ledger rows
+   fixed in M13. */
+.row {
+	display: grid;
+	grid-template-columns: 1.75rem minmax(8rem, 14rem) minmax(0, 1fr);
+	align-items: baseline;
+	gap: 0.35rem 0.75rem;
+	padding: 0.55rem 0.4rem;
+	color: inherit;
+	text-decoration: none;
+}
+.row:hover,
+.row:focus-visible {
+	background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
+	color: inherit;
+	text-decoration: none;
+}
+
+.mark {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	color: var(--ifm-color-primary);
+}
+
+/* The name takes the display serif: on a contents page the name IS the row. */
+.name {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-md);
+	font-weight: 600;
+	letter-spacing: 0.01em;
+}
+
+.blurb {
+	font-size: var(--nexus-text-sm);
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 30%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* Below the measure the three tracks stop being columns: the mark keeps the name
+   company and the line drops beneath them both. */
+@media (max-width: 42rem) {
+	.row {
+		grid-template-columns: 1.75rem minmax(0, 1fr);
+	}
+	.blurb {
+		grid-column: 2;
+	}
+}

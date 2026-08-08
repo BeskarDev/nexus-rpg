@@ -7,10 +7,13 @@ import { NameAutoRollerWrapper } from '@site/src/components/AutoRoller/NameAutoR
 
 # 𑗊 Names
 
+A name for anyone in the world, in the manner of the culture they were born to.
+
 <NameAutoRollerWrapper />
 
 Depending on the culture, combine different prefixes with syllables and suffixes. First off, determine the structure and length of the name.
 
+{/* gen:table:nameData.namingPatterns#0 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d8 | Naming Pattern |
 | --- | --- |
@@ -23,9 +26,11 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 7 | [Prefix] + [Syllable 3] + [Suffix] |
 | 8 | [Prefix] + [Syllable 2] + [Syllable 3] + [Suffix] |
 </RollableTable>
+{/* /gen:table */}
 
 **Family Names**
 
+{/* gen:table:nameData.familyNamePatterns#1 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d6 | Naming Pattern |
 | --- | --- |
@@ -36,14 +41,20 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 5 | [Noun 1] + [Noun 2] |
 | 6 | [Noun 2] + [Noun 1] |
 </RollableTable>
+{/* /gen:table */}
 
 
 ## Dwarf
 
 ### Ghahar
 
+The tables below are what the roller draws from. They are folded because nothing reads them start to finish. Open one to roll it by hand.
+
 **Personal Name**
 
+<TableFold label="Ghahar — Personal Name" rows={50}>
+
+{/* gen:table:nameData.cultures.0.personalNames#2 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Prefix | Syllable 2 | Syllable 3 | Suffix |
 | --- | --- | --- | --- | --- |
@@ -98,9 +109,15 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Kal- | -ta | -zur | -at |
 | 50 | Mud- | -gir | -an | -esh |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Family Name**
 
+<TableFold label="Ghahar — Family Name" rows={50}>
+
+{/* gen:table:nameData.cultures.0.familyNamesInWorld#3 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Adjective 1 | Adjective 2 | Noun 1 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -155,11 +172,17 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Kabru (Thick) | Dannu (Stiff) | Sikkatu (Bolt) | Tamhu (Clasp) |
 | 50 | Shipr (Rune) | Raksu (Bound) | Kakku (Sigil) | Shimtu (Mark) |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Mahruk
 
 **Personal Name**
 
+<TableFold label="Mahruk — Personal Name" rows={50}>
+
+{/* gen:table:nameData.cultures.1.personalNames#4 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Prefix | Syllable 2 | Syllable 3 | Suffix |
 | --- | --- | --- | --- | --- |
@@ -214,9 +237,15 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Tin- | -ar | -ak | -on |
 | 50 | Lak- | -ish | -ra | -el |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Family Name**
 
+<TableFold label="Mahruk — Family Name" rows={50}>
+
+{/* gen:table:nameData.cultures.1.familyNamesInWorld#5 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Adjective 1 | Adjective 2 | Noun 1 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -271,6 +300,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Arokh (Long) | Rahok (Far) | Masa (Voyage) | Hof (Shore) |
 | 50 | Barzel (Iron) | Masreq (Forge) | Sadan (Anvil) | Nitzots (Spark) |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 
 ## Elf
@@ -279,6 +311,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 
 **Personal Name**
 
+<TableFold label="Anutep — Personal Name" rows={50}>
+
+{/* gen:table:nameData.cultures.2.personalNames#6 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Prefix | Syllable 2 | Syllable 3 | Suffix |
 | --- | --- | --- | --- | --- |
@@ -333,9 +368,15 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Djed- | -kha | -un | -ir |
 | 50 | Sat- | -hor | -en | -pa |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Family Name**
 
+<TableFold label="Anutep — Family Name" rows={50}>
+
+{/* gen:table:nameData.cultures.2.familyNamesInWorld#7 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Adjective 1 | Adjective 2 | Noun 1 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -390,6 +431,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Hekenu (Musk) | Nedjem (Sweet) | Merhet (Oil) | Antyw (Balm) |
 | 50 | Rwdt (Sandstone) | Desher (Tawny) | Djam (Lintel) | Ared (Step) |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 
 ## Gnome
@@ -398,6 +442,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 
 **Personal Name**
 
+<TableFold label="Burrin — Personal Name" rows={50}>
+
+{/* gen:table:nameData.cultures.3.personalNames#8 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Prefix | Syllable 2 | Syllable 3 | Suffix |
 | --- | --- | --- | --- | --- |
@@ -452,9 +499,15 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Gam- | -zi | -lu | -ya |
 | 50 | Huz- | -bar | -mi | -ti |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Family Name**
 
+<TableFold label="Burrin — Family Name" rows={50}>
+
+{/* gen:table:nameData.cultures.3.familyNamesInWorld#9 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Adjective 1 | Adjective 2 | Noun 1 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -509,6 +562,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Esir (Pitch) | Kukku (Dark) | Esir (Tar) | Kish (Seal) |
 | 50 | Gi (Quill) | Sig (Fine) | Dub (Scroll) | Sim (Ink) |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 
 ## Hune
@@ -517,6 +573,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 
 **Personal Name**
 
+<TableFold label="Hataar — Personal Name" rows={50}>
+
+{/* gen:table:nameData.cultures.4.personalNames#10 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Prefix | Syllable 2 | Syllable 3 | Suffix |
 | --- | --- | --- | --- | --- |
@@ -571,9 +630,15 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Tar- | -ka | -nal | -as |
 | 50 | Halpa- | -zi | -wa | -ti |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Family Name**
 
+<TableFold label="Hataar — Family Name" rows={50}>
+
+{/* gen:table:nameData.cultures.4.familyNamesInWorld#11 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Adjective 1 | Adjective 2 | Noun 1 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -628,6 +693,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Aish (Salt) | Nakki (Bitter) | Hapa (Lake) | Kunna (Crust) |
 | 50 | Taru (Oak) | Teshub (Strong) | Taru (Beam) | Ishtar (Brace) |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 
 ## Orc
@@ -636,6 +704,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 
 **Personal Name**
 
+<TableFold label="Orgon — Personal Name" rows={50}>
+
+{/* gen:table:nameData.cultures.5.personalNames#12 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Prefix | Syllable 2 | Syllable 3 | Suffix |
 | --- | --- | --- | --- | --- |
@@ -690,9 +761,15 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Agr- | -on | -tos | -ax |
 | 50 | Tha- | -ler | -on | -os |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Family Name**
 
+<TableFold label="Orgon — Family Name" rows={50}>
+
+{/* gen:table:nameData.cultures.5.familyNamesInWorld#13 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Adjective 1 | Adjective 2 | Noun 1 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -747,6 +824,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Akron (Peak) | Hypsos (High) | Koryphé (Summit) | Nephos (Cloud) |
 | 50 | Dory (Spear) | Makros (Long) | Kontos (Shaft) | Aichme (Point) |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 
 ## Goblin
@@ -755,6 +835,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 
 **Personal Name**
 
+<TableFold label="Snikrez — Personal Name" rows={50}>
+
+{/* gen:table:nameData.cultures.6.personalNames#14 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Prefix | Syllable 2 | Syllable 3 | Suffix |
 | --- | --- | --- | --- | --- |
@@ -809,9 +892,15 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Trig- | -sh | -nak | -ul |
 | 50 | Wrig- | -zob | -gag | -n |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Family Name**
 
+<TableFold label="Snikrez — Family Name" rows={50}>
+
+{/* gen:table:nameData.cultures.6.familyNamesInWorld#15 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Adjective 1 | Adjective 2 | Noun 1 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -866,6 +955,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Gob (Spit) | Drib (Wet) | Glob (Glob) | Splot (Splat) |
 | 50 | Krust (Bark) | Grit (Rough) | Tangle (Knot) | Prik (Burr) |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 
 ## Human
@@ -874,6 +966,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 
 **Personal Name**
 
+<TableFold label="Khatok — Personal Name" rows={50}>
+
+{/* gen:table:nameData.cultures.7.personalNames#16 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Prefix | Syllable 2 | Syllable 3 | Suffix |
 | --- | --- | --- | --- | --- |
@@ -928,9 +1023,15 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Dag- | -er | -ba | -sh |
 | 50 | Ruk- | -mu | -don | -ar |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Family Name**
 
+<TableFold label="Khatok — Family Name" rows={50}>
+
+{/* gen:table:nameData.cultures.7.familyNamesInWorld#17 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Adjective 1 | Adjective 2 | Noun 1 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -985,6 +1086,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Ko'mir (Charcoal) | Qorong'u (Dark) | Tutun (Smoke) | Kul (Ash) |
 | 50 | Arqon (Rope) | Uzun (Long) | Arqon (Lasso) | Tugun (Knot) |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 
 ## Lionfolk
@@ -993,6 +1097,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 
 **Personal Name**
 
+<TableFold label="Jakhaari — Personal Name" rows={50}>
+
+{/* gen:table:nameData.cultures.8.personalNames#18 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Prefix | Syllable 2 | Syllable 3 | Suffix |
 | --- | --- | --- | --- | --- |
@@ -1047,9 +1154,15 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Gala- | -rou | -po | -fa |
 | 50 | Namu- | -ne | -da | -bi |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Family Name**
 
+<TableFold label="Jakhaari — Family Name" rows={50}>
+
+{/* gen:table:nameData.cultures.8.familyNamesInWorld#19 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Adjective 1 | Adjective 2 | Noun 1 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -1104,11 +1217,17 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | San (Thunder) | Diben (Dark) | Sankaba (Cloud) | Buru (Crack) |
 | 50 | Misi (Ox) | Bole (Broad) | Tulu (Horn) | Golo (Hide) |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 ### Saghal
 
 **Personal Name**
 
+<TableFold label="Saghal — Personal Name" rows={50}>
+
+{/* gen:table:nameData.cultures.9.personalNames#20 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Prefix | Syllable 2 | Syllable 3 | Suffix |
 | --- | --- | --- | --- | --- |
@@ -1163,9 +1282,15 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Phyx- | -la | -ryn | -is |
 | 50 | Dyn- | -stryk | -al | -os |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Family Name**
 
+<TableFold label="Saghal — Family Name" rows={50}>
+
+{/* gen:table:nameData.cultures.9.familyNamesInWorld#21 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Adjective 1 | Adjective 2 | Noun 1 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -1220,6 +1345,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Fungi (Mushroom) | Pallid (Pale) | Spor (Spore) | Pile (Cap) |
 | 50 | Eburn (Tusk) | Curv (Curved) | Eburn (Ivory) | Cusp (Point) |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 
 ## Lizardfolk
@@ -1228,6 +1356,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 
 **Personal Name**
 
+<TableFold label="Vaashk — Personal Name" rows={50}>
+
+{/* gen:table:nameData.cultures.10.personalNames#22 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Prefix | Syllable 2 | Syllable 3 | Suffix |
 | --- | --- | --- | --- | --- |
@@ -1282,9 +1413,15 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | T'vrex- | -kol | -gn | -ak |
 | 50 | Ghriss- | -th | -ol | -ix |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Family Name**
 
+<TableFold label="Vaashk — Family Name" rows={50}>
+
+{/* gen:table:nameData.cultures.10.familyNamesInWorld#23 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Adjective 1 | Adjective 2 | Noun 1 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -1339,6 +1476,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Shek (Grit) | Grash (Rough) | Shek (Sand) | Shek (Grain) |
 | 50 | G'rass (Cypress) | Groth (Ancient) | Krath (Trunk) | G'rass (Root) |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 
 ## Minotaur
@@ -1347,6 +1487,9 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 
 **Personal Name**
 
+<TableFold label="Minokos — Personal Name" rows={50}>
+
+{/* gen:table:nameData.cultures.11.personalNames#24 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Prefix | Syllable 2 | Syllable 3 | Suffix |
 | --- | --- | --- | --- | --- |
@@ -1401,9 +1544,15 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Neo- | -pho | -los | -on |
 | 50 | Ism- | -ae | -ros | -os |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>
 
 **Family Name**
 
+<TableFold label="Minokos — Family Name" rows={50}>
+
+{/* gen:table:nameData.cultures.11.familyNamesInWorld#25 — from the roller data by `bun run content:gen`. Do not edit: change the JSON. */}
 <RollableTable>
 | d50 | Adjective 1 | Adjective 2 | Noun 1 | Noun 2 |
 | --- | --- | --- | --- | --- |
@@ -1458,3 +1607,6 @@ Depending on the culture, combine different prefixes with syllables and suffixes
 | 49 | Elektron (Amber) | Thermon (Warm) | Rhetinion (Resin) | Phoson (Glow) |
 | 50 | Akron (Peak) | Hypson (High) | Koryphaion (Summit) | Nephon (Cloud) |
 </RollableTable>
+{/* /gen:table */}
+
+</TableFold>

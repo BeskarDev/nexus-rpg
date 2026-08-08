@@ -188,7 +188,9 @@ describe('Character Sheet Reducer', () => {
 				expectCompanionMigrated(state.activeCharacter!.companions)
 				expect(state.activeCharacter!.companions[0].currentHP).toBe(0)
 				expect(state.activeCharacter!.companions[0].maxHP).toBe(0)
-				expect(state.activeCharacter!.companions[0].wounded).toBe(false)
+				// `wounds`, not `wounded`, since M13 S7 — a companion has two Health Marks, so
+				// the flag became a 0-2 count.
+				expect(state.activeCharacter!.companions[0].wounds).toBe(0)
 			})
 
 			it('should recalculate skill ranks from XP', () => {

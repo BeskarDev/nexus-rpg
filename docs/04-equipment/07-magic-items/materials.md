@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # Special Materials
 
+![banner-img](/img/banner/magic-materials-banner.png)
+
 ## Materials
 
 All items are crafted from materials that determine their construction, durability, and appearance.
@@ -30,7 +32,7 @@ Crude makeshift items for tribes without better materials.
 
 | d8 | Material | Properties |
 | --- | --- | --- |
-| 1 | **Bone** | *Sourced from beasts or humanoids. Lightweight but brittle; breaks under strong impacts.*<br/><br/>The item gains the fragile property. |
+| 1 | **Bone** | *Sourced from beasts or humanoids. Lightweight but brittle. Breaks under strong impacts.*<br/><br/>The item gains the fragile property. |
 | 2 | **Copper** | *Soft reddish metal. Easy to shape, but poor durability for weapons or armor.*<br/><br/>The item gains the fragile property. |
 | 3 | **Fresh Wood** | *Cut from living trees without drying or treatment. Warps easily and lacks strength.*<br/><br/>The item gains the fragile property. |
 | 4 | **Stone** | *Rough, heavy, and crude. Can be shaped into tools or weapons, but prone to chipping.*<br/><br/>The item gains the fragile property. |
@@ -47,8 +49,8 @@ Standard materials available at all quality tiers.
 | --- | --- | --- |
 | 1 | **Brass** | *Yellow-gold alloy. Decorative and corrosion-resistant, but not ideal for combat use.* **No mechanical effect.** |
 | 2 | **Bronze** | *Standard metal for tools and weapons. Balanced in strength, weight, and workability.* **No mechanical effect.** |
-| 3 | **Hardwood** | *Dense, seasoned wood. Durable and shock-absorbent; used for bows, clubs, and shields.* **No mechanical effect.** |
-| 4 | **Leather** | *Treated animal skin. Flexible, provides basic protection; common for light armor.* **No mechanical effect.** |
+| 3 | **Hardwood** | *Dense, seasoned wood. Durable and shock-absorbent. Used for bows, clubs, and shields.* **No mechanical effect.** |
+| 4 | **Leather** | *Treated animal skin. Flexible, provides basic protection. Common for light armor.* **No mechanical effect.** |
 | 5 | **Horn** | *Solid, curved keratin. Used for weapon hilts, tips, and decorative armor parts.* **No mechanical effect.** |
 | 6 | **Hide** | *Thick, untreated skin. Tougher than leather, but less flexible.* **No mechanical effect.** |
 | 7 | **Antler** | *Hard and naturally curved. Effective for piercing weapons or rugged tools.* **No mechanical effect.** |
@@ -67,7 +69,7 @@ Unusual, monster-based, or mildly magical materials. Quite rare and often region
 | 5 | **Giant Spider Silk** | *Collected from giant spiders bred for strength. Threads are extremely strong and light. Can be woven into flexible armor or restraint gear.*<br/><br/>Light Armor: -1 load (min. 0). |
 | 6 | **Silverroot** | *Root of the sacred Silverleaf Oak, threaded with silvery veins. The sap is poisonous to the cursed creatures of the night. Can be imbued into weapons with effects against those creatures.*<br/><br/>Weapon/Ammo: +1 boon on attacks against lycanthropes and undead creatures. |
 | 7 | **Runebark** | *Tree bark with natural ancient patterns. Slightly magical and resists some spell effects.*<br/><br/>Armor/Shield: Once per scene, gain resistance to a single spell's damage. |
-| 8 | **Dwarf-Steel** | *Silver-colored alloy that radiates slight warmth. Imported from dwarven desert strongholds. Formula is a guarded secret; known for durability and excellent heat resistance.*<br/><br/>Any: Once per day, you can re-roll a Durability check for this item.<br/>Heavy Armor: You don't suffer a penalty for wearing heavy armor in extreme climates. |
+| 8 | **Dwarf-Steel** | *Silver-colored alloy that radiates slight warmth. Imported from dwarven desert strongholds. Formula is a guarded secret. Known for durability and excellent heat resistance.*<br/><br/>Any: Once per day, you can re-roll a Durability check for this item.<br/>Heavy Armor: You don't suffer a penalty for wearing heavy armor in extreme climates. |
 | 9 | **Darkwood** | *Dark wood with a mix of red and basalt layers that is much lighter than normal wood and resistant like metal. Often used for wooden weapons or shields. Has no effect on weapons only partially made of wood.*<br/><br/>Weapon/Shield/Ammo: -1 load (min. 0). |
 | 10 | **Wyrmhide** | *Thick hide from lesser draconic creatures. Offers slight protection against elemental damage.*<br/><br/>Armor/Shield: Once per scene, gain resistance against any single damage source dealing acid, fire, frost, lightning, or poison damage. |
 
@@ -83,7 +85,7 @@ Epic materials with potent magical properties. Rare and sought-after, these are 
 | 4 | **Dragon Scales** | *Large scales from dragons. Extremely durable and elementally attuned.* |
 | 5 | **Deep Iron** | *Heavy ore from deep underground. Strong against both physical and magical attacks.* |
 | 6 | **Phantom-Silk** | *Made from spectral spider silk. Very light, hard to detect, and partially intangible.* |
-| 7 | **Mithril** | *Lightweight, silvery metal. High durability with very low weight; ideal for fast fighters.*<br/><br/>Armor/Shield: -1 load (min. 0). Reduce the item's rigid property by 1 (min. 0). |
+| 7 | **Mithril** | *Lightweight, silvery metal. High durability with very low weight. Ideal for fast fighters.*<br/><br/>Armor/Shield: -1 load (min. 0). Reduce the item's rigid property by 1 (min. 0). |
 | 8 | **Solarite** | *Red-gold crystal found on celestial mountain peaks. Mixed with bronze in a ritual to create a glowing, heat-reactive alloy. Generates intense heat when moved quickly.* |
 | 9 | **Lunarite** | *Deep blue crystal found in underworld caverns. Absorbs magical energy. Used in armor to resist spells or in restraints to suppress magic.* |
 | 10 | **Adamantite** | *Extremely hard and dense metal. Almost impossible to break or bend.* |

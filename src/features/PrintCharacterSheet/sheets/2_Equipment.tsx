@@ -1,12 +1,86 @@
-import { Box, TextField, Typography } from '@mui/material'
 import { SheetLayout } from './SheetLayout'
+import {
+	Band,
+	Group,
+	Pips,
+	Rows,
+	SlotPanel,
+	SplitRows,
+	Stat,
+} from './SheetPrimitives'
+import type { SigilSlot, WornSlot } from './SheetPrimitives'
 import {
 	BaseDamageType,
 	Character,
 	Damage,
-	Weapon,
+	EquipmentSlotType,
+	Item,
 } from '@site/src/types/Character'
-import { OutlinedTextfield } from '../PrintCharacterSheet'
+
+/**
+ * The Equipment sheet, and the printed register's first proof (M16 S1, M17 S3).
+ *
+ * ## What M16 changed, and why
+ *
+ * It was 307 lines of MUI `TextField`s inside two fixed-height boxes with
+ * `overflowY: 'hidden'`. Two faults came out of that shape, and they are the
+ * same fault:
+ *
+ * - **It clipped in silence.** More weapons than fit meant the rows were simply
+ *   not on the paper, with nothing saying so. An empty table is obvious; a
+ *   truncated one is not.
+ * - **It wasted half the page.** The heights were sized for a maximum nobody
+ *   reaches, so the common character printed 55% white.
+ *
+ * `Rows` answers both: the lists size to their content, and a list that overruns
+ * prints what it dropped rather than losing it.
+ *
+ * ## What M17 rebuilt
+ *
+ * One table held everything a character owned, with the body slot collapsed into
+ * a text column — so "what am I wearing on my hands?" was answered by reading a
+ * whole list instead of by looking at one place, and an EMPTY slot could not be
+ * stated at all. It becomes three blocks: weapons sized for five, a worn slot
+ * panel, and carried inventory.
+ *
+ * ## What the owner's review changed
+ *
+ * - **Worn kit lives in the worn panel, all of it.** Anything worn WITHOUT a
+ *   slot assigned used to fall through into carried inventory, marked with a
+ *   location glyph to explain itself. That is the wrong answer to the right
+ *   question: it is worn, so it belongs in the worn block, and the panel grows
+ *   past its eight fixed slots to hold it. With no worn kit left in the carried
+ *   list, that list's location column had nothing left to say and is gone.
+ * - **Both blocks say more.** A worn slot carries its item's properties, load
+ *   and cost on a second line; a carried row carries its wear track and its cost.
+ * - **Carried runs in two tracks**, which doubles the block from 24 rows to 48
+ *   in the same height (`SplitRows`).
+ *
+ * ## What is still cut
+ *
+ * Weapon cost (M16 D3). A weapon's damage and properties are read every turn and
+ * its price is read once, ever — and unlike an item's, it does not fit beside
+ * three columns that are all read more often.
+ */
+
+/**
+ * The eight worn slots, in the order a person is dressed, each with the mark it
+ * already carries on the digital sheet.
+ */
+const WORN_SLOTS: {
+	slot: Exclude<EquipmentSlotType, ''>
+	label: string
+	sigil: SigilSlot
+}[] = [
+	{ slot: 'head', label: 'Head', sigil: 'slot-head' },
+	{ slot: 'neck', label: 'Neck', sigil: 'slot-neck' },
+	{ slot: 'back', label: 'Back', sigil: 'slot-back' },
+	{ slot: 'body', label: 'Body', sigil: 'slot-body' },
+	{ slot: 'hands', label: 'Hands', sigil: 'slot-hands' },
+	{ slot: 'ring', label: 'Ring', sigil: 'slot-ring' },
+	{ slot: 'waist', label: 'Waist', sigil: 'slot-waist' },
+	{ slot: 'feet', label: 'Feet', sigil: 'slot-feet' },
+]
 
 export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 	const calculateBaseDamage = (base: BaseDamageType) => {
@@ -33,275 +107,164 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 		otherCritical,
 	}: Damage) => {
 		const baseDamage = calculateBaseDamage(base)
-		const weakDamage = baseDamage + weapon + other + otherWeak
-		const strongDamage = baseDamage + weapon * 2 + other + otherStrong
-		const criticalDamage = baseDamage + weapon * 3 + other + otherCritical
-
-		return `${weakDamage}/${strongDamage}/${criticalDamage} (${weapon})`
+		return [
+			baseDamage + weapon + other + otherWeak,
+			baseDamage + weapon * 2 + other + otherStrong,
+			baseDamage + weapon * 3 + other + otherCritical,
+		].join('/')
 	}
 
-	// Sort items: worn first, then carried
-	const sortedItems = [...char.items.items].sort((a, b) => {
-		// Worn items first
-		if (a.location === 'worn' && b.location !== 'worn') return -1
-		if (b.location === 'worn' && a.location !== 'worn') return 1
-		// Then sort alphabetically within each group
-		return a.name.localeCompare(b.name)
-	})
+	const label = (item: { name: string; amount: number }) =>
+		`${item.name}${item.amount > 1 ? ` ×${item.amount}` : ''}`
+
+	const properties = (item: Item) =>
+		Array.isArray(item.properties)
+			? item.properties.join(', ')
+			: (item.properties ?? '')
+
+	const worn = char.items.items.filter((i) => i.name && i.location === 'worn')
+
+	/*
+	 * The panel is the eight slots, PLUS a place for anything worn that has no
+	 * slot assigned (owner review).
+	 *
+	 * More than one thing in a slot is legal — two rings, a ring and a signet —
+	 * so they share the place rather than one of them silently winning it. An
+	 * unslotted item gets its own cell under the generic worn figure, which is
+	 * honest: the app knows it is worn and does not know where.
+	 */
+	const slots: WornSlot[] = [
+		...WORN_SLOTS.map(({ slot, label: slotLabel, sigil }) => {
+			const inSlot = worn.filter((i) => i.slot === slot)
+			return {
+				key: slot,
+				label: slotLabel,
+				sigil,
+				item: inSlot.map(label).join(', '),
+				properties: inSlot.map(properties).filter(Boolean).join(', '),
+				load: inSlot.reduce((sum, i) => sum + (i.load ?? 0), 0),
+				cost: inSlot.reduce((sum, i) => sum + (i.cost ?? 0), 0),
+			}
+		}),
+		...worn
+			.filter((i) => !i.slot)
+			.map((i) => ({
+				key: i.id,
+				label: 'Worn',
+				sigil: 'location-worn' as SigilSlot,
+				item: label(i),
+				properties: properties(i),
+				load: i.load,
+				cost: i.cost,
+			})),
+	]
+
+	// Only the pack. Everything worn is in the panel above, which is what let the
+	// location column go.
+	const carried = [...char.items.items]
+		.filter((i) => i.name && i.location === 'carried')
+		.sort((a, b) => a.name.localeCompare(b.name))
+
+	/*
+	 * A nameless weapon is an empty row of the app's editor, not a weapon. The
+	 * blank sheet ships with eight of them, so an unfiltered list against a limit
+	 * of five printed "+ 3 more weapons — see the app" on a character who owns
+	 * none (M17 S3).
+	 */
+	const weapons = char.items.weapons.filter(
+		(w) => w.name && w.location === 'worn',
+	)
 
 	return (
-		<SheetLayout>
-			<Box sx={{ display: 'flex', gap: 1 }}>
-				<OutlinedTextfield
-					value={char.items.coins}
+		<SheetLayout crest="equipment">
+			{/* `scales` is what weighs a load, and it is not a mark any of this
+				band's own cells carry (owner review). */}
+			<Band name="Inventory & Load" sigil="scales">
+				<Stat
 					label="Coins"
-					sx={{
-						maxWidth: '10rem',
-						'& input': {
-							py: 1,
-						},
-					}}
+					sigil="coins"
+					value={char.items.coins}
+					width="22mm"
 				/>
-				<OutlinedTextfield
+				<Stat
+					label="Load"
+					sigil="load"
 					value={char.items.encumbrance.currentLoad}
-					label="Current Load"
-					sx={{
-						maxWidth: '6rem',
-						'& input': {
-							py: 1,
-						},
-					}}
+					width="18mm"
 				/>
-				<OutlinedTextfield
-					size="small"
+				<Stat
+					label="Encumbered At"
 					value={char.items.encumbrance.encumberedAt}
-					label="Carry Cap"
-					sx={{
-						maxWidth: '5rem',
-						'& input': {
-							py: 0.5,
-						},
-					}}
+					width="24mm"
 				/>
-				<OutlinedTextfield
-					size="small"
+				<Stat
+					label="Max Load"
 					value={char.items.encumbrance.overencumberedAt}
-					label="Max Cap"
-					sx={{
-						maxWidth: '6rem',
-						'& input': {
-							py: 0.5,
-						},
-					}}
+					width="20mm"
 				/>
-			</Box>
-			<Box
-				sx={{
-					border: '1px dotted black',
-					borderRadius: '0.5rem',
-					px: 1,
-					height: '32%',
-					overflowY: 'hidden',
-				}}
-			>
-				<Typography color="text.secondary" variant="caption">
-					Weapons
-				</Typography>
-				<Box sx={{ mt: -0.5 }}>
-					{char.items.weapons
-						.filter((w) => w.location === 'worn')
-						.map((weapon, index) => (
-							<Box
-								key={weapon.id}
-								sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}
-							>
-								<TextField
-									size="small"
-									variant="standard"
-									value={weapon.name}
-									label={index == 0 ? 'Name' : ''}
-									sx={{
-										maxWidth: '8rem',
-										mt: 0.5,
-										'& input': { p: 0, fontSize: '10px' },
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={
-										weapon.damage ? printDamageField({ ...weapon.damage }) : ' '
-									}
-									label={index == 0 ? 'Damage' : ''}
-									sx={{
-										maxWidth: '4rem',
-										mt: 0.5,
-										'& input': { p: 0, fontSize: '10px' },
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={weapon.properties}
-									label={index == 0 ? 'Properties' : ''}
-									sx={{
-										maxWidth: '11rem',
-										mt: 0.5,
-										'& input': {
-											p: 0,
-											fontSize: '10px',
-										},
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={weapon.cost}
-									label={index == 0 ? 'Cost' : ''}
-									sx={{
-										maxWidth: '2.5rem',
-										mt: 0.5,
-										'& input': {
-											fontSize: '10px',
-											py: 0,
-											textAlign: 'right',
-										},
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={weapon.load}
-									label={index == 0 ? 'Load' : ''}
-									sx={{
-										maxWidth: '1.5rem',
-										mt: 0.5,
-										'& input': {
-											fontSize: '10px',
-											py: 0,
-											textAlign: 'center',
-										},
-									}}
-								/>
-							</Box>
-						))}
-				</Box>
-			</Box>
-			<Box
-				sx={{
-					border: '1px dotted black',
-					borderRadius: '0.5rem',
-					px: 1,
-					height: '100%',
-					overflowY: 'hidden',
-				}}
-			>
-				<Typography color="text.secondary" variant="caption">
-					Equipment & Items
-				</Typography>
-				<Box sx={{ display: 'flex' }}>
-					<Typography
-						color="text.secondary"
-						variant="caption"
-						sx={{ fontSize: '9px', mr: 9 }}
-					>
-						Name
-					</Typography>
-					<Typography
-						color="text.secondary"
-						variant="caption"
-						sx={{ fontSize: '9px', mr: 1 }}
-					>
-						Location/Slot
-					</Typography>
-					<Typography
-						color="text.secondary"
-						variant="caption"
-						sx={{ fontSize: '9px', mr: 1 }}
-					>
-						Cost
-					</Typography>
-					<Typography
-						color="text.secondary"
-						variant="caption"
-						sx={{ fontSize: '9px' }}
-					>
-						Load
-					</Typography>
-				</Box>
-				<Box
-					sx={{ display: 'flex', rowGap: 0, columnGap: 2, flexWrap: 'wrap' }}
-				>
-					{sortedItems
-						.filter((i) => i.location === 'worn' || i.location === 'carried')
-						.map((item, index) => (
-							<Box
-								key={item.id}
-								sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
-							>
-								<TextField
-									size="small"
-									variant="standard"
-									value={`${item.name} ${item.amount > 1 ? 'x' + item.amount : ''}`}
-									sx={{
-										width: '6.5rem',
-										mt: 0.5,
-										'& .MuiInputBase-root': {
-											pb: 0.5,
-										},
-										'& input': { p: 0, fontSize: '9px' },
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={
-										item.location === 'worn' && item.slot
-											? item.slot
-											: item.location
-									}
-									sx={{
-										maxWidth: '2.5rem',
-										mt: 0.5,
-										'& input': {
-											p: 0,
-											fontSize: '8px',
-											textOverflow: 'ellipsis',
-										},
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={item.cost}
-									sx={{
-										maxWidth: '2rem',
-										mt: 0.5,
-										'& input': {
-											p: 0,
-											fontSize: '8px',
-											textAlign: 'right',
-										},
-									}}
-								/>
-								<TextField
-									size="small"
-									variant="standard"
-									value={item.load}
-									sx={{
-										maxWidth: '1.5rem',
-										mt: 0.5,
-										'& input': {
-											p: 0,
-											fontSize: '8px',
-											textAlign: 'center',
-										},
-									}}
-								/>
-							</Box>
-						))}
-				</Box>
-			</Box>
+			</Band>
+
+			<Group name="Weapons" sigil="sword">
+				<Rows
+					noun="weapons"
+					/* The owner carries three, five in the extreme case (F3). The old
+					   eight was a page budget pretending to be a rule. */
+					limit={5}
+					reserve={5}
+					track
+					columns={[
+						{ label: 'Name', width: '36mm' },
+						{ label: 'Damage', width: '20mm' },
+						{ label: 'Properties', width: '54mm' },
+						{ label: 'Load', width: '8mm', align: 'center' },
+					]}
+					rows={weapons.map((w) => [
+						w.name,
+						w.damage ? printDamageField({ ...w.damage }) : '',
+						w.properties,
+						w.load,
+					])}
+				/>
+			</Group>
+
+			<Group name="Worn" sigil="location-worn">
+				<SlotPanel slots={slots} />
+			</Group>
+
+			<Group name="Carried" sigil="pack">
+				<SplitRows
+					noun="items"
+					/*
+					 * Two tracks of 24 (owner review). The single-track block held 24 and
+					 * was measured against the page; splitting it doubles the count in the
+					 * same height, so the limit doubles with it.
+					 */
+					limit={48}
+					track
+					columns={[
+						{ label: 'Name', width: '29mm' },
+						{ label: 'Uses', width: '11mm', align: 'center' },
+						{ label: 'Load', width: '7mm', align: 'center' },
+						{ label: 'Cost', width: '9mm', align: 'right' },
+					]}
+					rows={carried.map((i) => [
+						label(i),
+						/* The wear track, as the same three jars the digital ledger and the
+						   attribute wounds use — no new mark, and one idiom for "this is
+						   being used up" across the whole artifact. */
+						<Pips
+							key={i.id}
+							count={3}
+							filled={i.uses ?? 0}
+							sigil="wound"
+							emptySigil="hp"
+							size="2.6mm"
+						/>,
+						i.load,
+						i.cost ? `${i.cost}c` : '',
+					])}
+				/>
+			</Group>
 		</SheetLayout>
 	)
 }

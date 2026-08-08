@@ -1,0 +1,95 @@
+/* DieToken — an attribute die as a polygon whose side count encodes the die size.
+   See DieToken.tsx for why shape beats a label here. Tokens only. */
+
+/* M13 S3.5 — the token's own dimensions and its inner type are now driven from
+   ONE place, so a consumer can scale the whole mark by overriding this rule
+   alone. The rendered defaults are unchanged; what changed is that `.numeral`
+   and `.modifier` size in `em` off this box instead of reaching for the global
+   scale independently, which meant a caller who grew the polygon got a
+   same-sized numeral rattling around inside it. */
+.token {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	/* M21 D2 — the box is a variable so a caller can scale the whole mark. The
+	   printed creature card sets it in millimetres; 1.85rem stays the screen's
+	   size, and the inner type is a fraction of it (12px of 29.6px) so the
+	   default renders byte-for-byte as it did. */
+	width: var(--die-token-size, 1.85rem);
+	height: var(--die-token-size, 1.85rem);
+	/* The numeral's share of the box. A caller that shrinks the token has to be
+	   able to hold the NUMBER above its own reading floor — the printed card sets
+	   0.52, because at the screen's 0.405 a card-scale token was a polygon with an
+	   illegible speck in it (owner, 2026-08-07). */
+	font-size: calc(
+		var(--die-token-size, 1.85rem) * var(--die-token-numeral, 0.405)
+	);
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 72%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.die {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* The numeral sits inside the polygon. Nudged down a hair because every shape in
+   the ladder is point-up, so the optical centre of the enclosed area is below the
+   geometric centre of the bounding box. */
+.numeral {
+	position: relative;
+	top: 0.08em;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: 1em;
+	font-variant-numeric: tabular-nums;
+	color: var(--ifm-font-color-base);
+}
+
+/* A modifier (d4-1, d12+2) rides outside the polygon: cramming it inside would
+   force the numeral down to an unreadable size, and it is a separate fact from
+   the die anyway. */
+.modifier {
+	position: absolute;
+	right: -0.75em;
+	/* Centred on the numeral's line, not hung off the polygon's foot: at card
+	   scale a `-1` hung low read as a separate mark BELOW the die rather than as
+	   part of the value (owner, 2026-08-07). `--die-token-modifier-y` keeps the
+	   screen's own placement available to any caller that wants it back. */
+	bottom: var(--die-token-modifier-y, -0.1em);
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: 0.84em;
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--ifm-font-color-base) 78%,
+		var(--ifm-color-primary)
+	);
+}
+
+/* Fallback for a value the parser does not recognise — better a plain string than
+   a confidently wrong shape. */
+.plain {
+	font-size: var(--nexus-text-dense);
+	font-variant-numeric: tabular-nums;
+}
+
+/* The full value ("d4-1") for screen readers: sighted users get shape + numeral +
+   modifier, which is not a sensible reading order in the accessibility tree. */
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}

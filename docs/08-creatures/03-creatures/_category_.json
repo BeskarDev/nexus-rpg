@@ -1,8 +1,8 @@
 {
-  "label": "🐻 Creatures",
-  "position": 3,
-  "link": {
-    "type": "doc",
-    "id": "creatures/creatures/overview"
-  }
+	"label": "🐻 Creatures",
+	"position": 3,
+	"link": {
+		"type": "doc",
+		"id": "creatures/creatures/overview"
+	}
 }

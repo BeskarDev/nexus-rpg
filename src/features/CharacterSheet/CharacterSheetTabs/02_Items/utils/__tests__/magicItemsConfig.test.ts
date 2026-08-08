@@ -197,10 +197,10 @@ describe('MagicItemsConfig - Wand & Staff Functions', () => {
 
 	it('Wand and Staff base items exist in spell-catalyst category', () => {
 		const catalysts = baseItems['spell-catalyst']
-		const arcaneWand = catalysts.find(i => i.name === 'Arcane Wand')
-		const mysticWand = catalysts.find(i => i.name === 'Mystic Wand')
-		const arcaneStaff = catalysts.find(i => i.name === 'Arcane Staff')
-		const mysticStaff = catalysts.find(i => i.name === 'Mystic Staff')
+		const arcaneWand = catalysts.find((i) => i.name === 'Arcane Wand')
+		const mysticWand = catalysts.find((i) => i.name === 'Mystic Wand')
+		const arcaneStaff = catalysts.find((i) => i.name === 'Arcane Staff')
+		const mysticStaff = catalysts.find((i) => i.name === 'Mystic Staff')
 
 		expect(arcaneWand).toBeDefined()
 		expect(mysticWand).toBeDefined()
@@ -215,8 +215,10 @@ describe('MagicItemsConfig - Wand & Staff Functions', () => {
 	})
 
 	it('Q4 arcane wand cost = 75 + 1,000 = 1,075 coins (no material/enchantment)', () => {
-		const wand = baseItems['spell-catalyst'].find(i => i.name === 'Arcane Wand')!
-		const bronze = specialMaterials.find(m => m.name === 'Bronze')!
+		const wand = baseItems['spell-catalyst'].find(
+			(i) => i.name === 'Arcane Wand',
+		)!
+		const bronze = specialMaterials.find((m) => m.name === 'Bronze')!
 		const totalCost = calculateMagicItemCost(wand, 4, bronze, null)
 		expect(totalCost).toBe(1075)
 	})

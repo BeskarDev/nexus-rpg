@@ -1,4 +1,8 @@
-import { Spell, targetTypeArray, rangeTypeArray } from '../../../types/Character'
+import {
+	Spell,
+	targetTypeArray,
+	rangeTypeArray,
+} from '../../../types/Character'
 import { sanitizeHtml } from '../../../utils/typescript/htmlSanitizer'
 import { parseDamageFromEffect } from '../../../utils/typescript/spellDamageParser'
 import arcaneSpellsData from '../../../utils/data/json/arcane-spells.json'

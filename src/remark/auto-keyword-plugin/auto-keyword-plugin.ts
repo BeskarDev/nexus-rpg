@@ -3,7 +3,12 @@ import { visitParents } from 'unist-util-visit-parents'
 import { keywords } from './keywords'
 import { processText, InlineNode } from '../shared/tokenize'
 import { getTableCellContext } from '../shared/table-context'
-import { ZONE_GATED_TERMS, isMechanicalZone } from '../shared/zones'
+import {
+	ZONE_GATED_TERMS,
+	isMechanicalZone,
+	inNameElement,
+	inLinkElement,
+} from '../shared/zones'
 
 const EXCLUSION_PREFIX = '_'
 
@@ -12,9 +17,26 @@ const EXCLUSION_PREFIX = '_'
  * If you want to exclude a keyword from being a link, prefix it with an
  * underscore (_). Context heuristics (headings/bold/table-header suppression,
  * zone gating, first-occurrence-per-page) keep flavor uses from linking.
+ *
+ * Options:
+ *   disableInPaths — path fragments (as strings) that opt a whole file out of
+ *   keyword linking. Any file whose absolute path contains one of these strings
+ *   is skipped entirely. Useful for pages like the random-tables section where
+ *   table cells contain creature names, item names and place names that would
+ *   otherwise spuriously match RPG keywords.
  */
-const autoKeywordPlugin = (options) => {
-	return (tree) => {
+const autoKeywordPlugin = (options: { disableInPaths?: string[] } = {}) => {
+	return (tree: Node, file: { path?: string }) => {
+		// Path-based opt-out: if the file path matches any disableInPaths fragment,
+		// skip the entire page. This is cleaner than per-table front-matter because
+		// it covers all content on those pages without requiring MDX-level edits.
+		const filePath = file?.path ?? ''
+		if (
+			options.disableInPaths?.some((fragment) => filePath.includes(fragment))
+		) {
+			return
+		}
+
 		// Track which keyword terms have already been linked on this page, so a
 		// term links only on its FIRST occurrence. Common words used as keywords
 		// (e.g. "light", "close", "reach") otherwise link dozens of times on a
@@ -49,6 +71,12 @@ const autoKeywordPlugin = (options) => {
 							ancestor.type === 'link' ||
 							ancestor.type === 'strong',
 					) ||
+					// Entry names moved from `**bold**` into their own JSX element (see
+					// inNameElement), which took them out of the `strong` guard.
+					inNameElement(ancestors as any) ||
+					// A component that renders its own <a>: remark cannot see that
+					// anchor, so the `link` guard above never fires (see zones.ts).
+					inLinkElement(ancestors as any) ||
 					parent.name === 'strong' ||
 					node.type !== 'text' ||
 					node.processed // Skip nodes that are already processed
@@ -69,9 +97,7 @@ const autoKeywordPlugin = (options) => {
 
 				// Emits a text node, stripping the opt-out prefix ('_') if present.
 				const toText = (word: string): InlineNode[] => {
-					const value = word.startsWith(EXCLUSION_PREFIX)
-						? word.slice(1)
-						: word
+					const value = word.startsWith(EXCLUSION_PREFIX) ? word.slice(1) : word
 					return [{ type: 'text', value, processed: true }]
 				}
 
@@ -83,10 +109,7 @@ const autoKeywordPlugin = (options) => {
 							// Zone gate: ambiguous common words (light, heavy, close,
 							// huge, ...) link only in a table body cell. In narrative
 							// prose they are flavor, not terms.
-							if (
-								ZONE_GATED_TERMS.has(match) &&
-								!isMechanicalZone(ancestors)
-							) {
+							if (ZONE_GATED_TERMS.has(match) && !isMechanicalZone(ancestors)) {
 								return null
 							}
 
@@ -103,13 +126,19 @@ const autoKeywordPlugin = (options) => {
 								{
 									type: 'link',
 									url: keywordMap.get(match),
-									children: [
-										{ type: 'text', value: match, processed: true },
-									],
+									children: [{ type: 'text', value: match, processed: true }],
 									data: {
 										hProperties: {
+											// No font-size: this used to carry `font-size: large`, a CSS
+											// ABSOLUTE keyword pinned at 18px that neither inherited nor
+											// scaled. In body text it ran ~7% over the surrounding prose,
+											// and inside any compact container (badges, stat bands, trait
+											// rows) it blew the layout apart — three separate components
+											// had grown `font-size: inherit !important` resets to undo it.
+											// Keywords now take the size of whatever they sit in; small
+											// caps alone carries the emphasis.
 											style:
-												'font-variant: small-caps; text-transform: lowercase; font-size: large;',
+												'font-variant: small-caps; text-transform: lowercase;',
 										},
 									},
 									processed: true,

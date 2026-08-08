@@ -1,0 +1,66 @@
+/*
+ * A CLASSIFICATION TAG: what kind of thing this card is (M18 S4).
+ *
+ * `T2 Elite`, `Supreme`. Two shapes were tried and rejected before this one: a
+ * keyline rectangle, which was indistinguishable from the slabs listing a
+ * spell's properties or an art's weapons, and a nameplate ruled top and bottom
+ * with end bars, which the owner called too basic in shape — at 5.5pt it is a
+ * rectangle with slightly different proportions.
+ *
+ * This is the theme's BANNER silhouette, the one its skill chips use for a named
+ * proficiency: a hexagonal tag pointed at both ends. Pointed against flat is a
+ * difference the eye makes instantly and a photocopier cannot lose.
+ *
+ * A clipped shape cannot take a border, so the keyline is two flat layers — an
+ * ink face beneath, the paper inset over it — which is exactly how the site's
+ * plugin chips are built. Nothing here is a bevel or a shadow (the theme's flat
+ * law); it is two silhouettes, one inside the other.
+ */
+.tag {
+	--card-tag-point: 0.9mm;
+	position: relative;
+	flex: none;
+	display: inline-block;
+	padding: 0.55mm 1.6mm;
+	font-size: var(--pc-text-micro);
+	line-height: 1;
+	letter-spacing: 0.06em;
+	font-variant-caps: small-caps;
+	white-space: nowrap;
+	color: var(--pc-ink);
+	background: currentColor;
+	clip-path: polygon(
+		0 50%,
+		var(--card-tag-point) 0,
+		calc(100% - var(--card-tag-point)) 0,
+		100% 50%,
+		calc(100% - var(--card-tag-point)) 100%,
+		var(--card-tag-point) 100%
+	);
+}
+
+/* The paper face, inset by the keyline: what turns the silhouette into an
+   outline. Its inset IS the line's weight, which is how a clipped shape carries
+   one at all — a `border` cannot follow a `clip-path`. */
+.face {
+	position: absolute;
+	inset: var(--pc-rule-hair, 0.2mm);
+	background: var(--pc-paper, #fff);
+	clip-path: inherit;
+}
+
+.label {
+	position: relative;
+}
+
+/*
+ * ONE WEIGHT, for every classification (owner, 2026-08-07).
+ *
+ * Elite, Lord, Supreme and a Q6 relic had a heavier keyline than the rest — the
+ * remains of an inked variant that was itself too loud. Two weights of the same
+ * shape do not read as a distinction, they read as an inconsistency: at 5.5pt
+ * nobody measures a keyline, they just notice that the tags do not match.
+ *
+ * The word carries the fact, as it has to on a mono printer anyway (constraint
+ * 3), so rarity needed no second channel here at all.
+ */

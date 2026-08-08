@@ -20,7 +20,9 @@ export const getTalentPointSummaries = (
 	skills: Skill[],
 	abilities: Ability[],
 ): TalentPointCalculation => {
-	const talentAbilities = abilities.filter((ability) => ability.tag === 'Talent')
+	const talentAbilities = abilities.filter(
+		(ability) => ability.tag === 'Talent',
+	)
 
 	const unassignedSpent = talentAbilities
 		.filter((talent) => !talent.skill)

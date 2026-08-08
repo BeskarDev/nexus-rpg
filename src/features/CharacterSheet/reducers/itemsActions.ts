@@ -2,7 +2,7 @@ import { PayloadAction } from '@reduxjs/toolkit'
 import { CharacterSheetReducerState } from '../characterSheetReducer'
 import { Item, Weapon, DurabilityDie } from '@site/src/types/Character'
 import { ItemLocation } from '@site/src/types/ItemLocation'
-import { reorder } from '@site/src/components/DynamicList/utils'
+import { reorder } from '@site/src/features/CharacterSheet/components/DynamicList/utils'
 import { getDurabilityForItem } from '../CharacterSheetTabs/02_Items/utils/durabilityUtils'
 
 export const itemsActions = {

@@ -101,20 +101,12 @@ export const ItemsTab: React.FC = () => {
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				maxWidth: 'var(--cs-max-width-xl)',
+				// Fills the working column (M13 S11); the column carries the ceiling.
+				maxWidth: '100%',
 			}}
 		>
-			{/* Header with coins and load info */}
-			<ItemsHeader
-				coins={coins}
-				currentLoad={currentLoad}
-				carryCapacity={carryCapacity}
-				maxCapacity={maxCapacity}
-				carryModifier={encumbrance.carryModifier}
-				updateCharacter={updateCharacter}
-			/>
-
-			{/* Header with settings menu */}
+			{/* M13 S6: the tab's name, its commands and its purse band are one plate now,
+				so the band is passed INTO the header rather than following it. */}
 			<ItemsSettingsMenu
 				itemLocationVisibility={itemLocationVisibility}
 				settingsMenuAnchor={settingsMenuAnchor}
@@ -122,6 +114,16 @@ export const ItemsTab: React.FC = () => {
 				onSettingsMenuClose={handleSettingsMenuClose}
 				onToggleLocationVisibility={toggleLocationVisibility}
 				onOpenMagicItemBuilder={() => setMagicItemBuilderOpen(true)}
+				header={
+					<ItemsHeader
+						coins={coins}
+						currentLoad={currentLoad}
+						carryCapacity={carryCapacity}
+						maxCapacity={maxCapacity}
+						carryModifier={encumbrance.carryModifier}
+						updateCharacter={updateCharacter}
+					/>
+				}
 			/>
 
 			{/* Weapons Section */}

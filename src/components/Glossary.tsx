@@ -42,9 +42,9 @@ export default function Glossary(): React.JSX.Element {
 	const sorted = useMemo(
 		() =>
 			[...glossary].sort((a, b) =>
-				a.term.localeCompare(b.term, undefined, { sensitivity: 'base' })
+				a.term.localeCompare(b.term, undefined, { sensitivity: 'base' }),
 			),
-		[]
+		[],
 	)
 
 	const filtered = useMemo(() => {
@@ -54,7 +54,7 @@ export default function Glossary(): React.JSX.Element {
 			(e) =>
 				e.term.toLowerCase().includes(lower) ||
 				e.summary.toLowerCase().includes(lower) ||
-				e.origin.toLowerCase().includes(lower)
+				e.origin.toLowerCase().includes(lower),
 		)
 	}, [filter, sorted])
 

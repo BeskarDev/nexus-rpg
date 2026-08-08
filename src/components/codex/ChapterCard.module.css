@@ -1,0 +1,55 @@
+/* Carries the shared CardFrame (corner marks), so it must be a positioning
+   context. Flat throughout — the earlier drop shadows and lift-on-hover read as
+   a generic web card; the material read now comes from the keyline, the bronze
+   wash and the carved corners. */
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	padding: 1.75rem 1.5rem;
+	min-width: 5rem;
+	width: 18rem;
+	flex-grow: 1;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 2px;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
+	background: color-mix(
+		in srgb,
+		var(--nexus-bronze) 4%,
+		var(--ifm-card-background-color, var(--ifm-background-surface-color))
+	);
+	transition:
+		border-color 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.card:hover {
+	border-color: var(--nexus-bronze);
+	background: color-mix(
+		in srgb,
+		var(--nexus-bronze) 10%,
+		var(--ifm-card-background-color, var(--ifm-background-surface-color))
+	);
+	text-decoration: none;
+}
+
+.sigil {
+	color: var(--nexus-bronze);
+	line-height: 0;
+	transition: color 0.2s ease;
+}
+
+.card:hover .sigil {
+	color: var(--ifm-color-primary);
+}
+
+.label {
+	font-family: var(--nexus-font-display, var(--ifm-heading-font-family));
+	font-size: var(--nexus-text-lg);
+	letter-spacing: 0.02em;
+	color: var(--ifm-heading-color);
+}

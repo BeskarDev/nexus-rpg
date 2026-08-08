@@ -1,0 +1,852 @@
+/* Reusable ornament kit — see ornaments.tsx. Tokens only. */
+
+/* --- Card frame: diamond corners + mid-edge bosses --- */
+.frame {
+	position: absolute;
+	inset: 0;
+	color: var(--ifm-color-primary);
+	pointer-events: none;
+}
+.corner {
+	position: absolute;
+	/* viewBox is 96, sized so the px/unit ratio (~0.79) is unchanged: the diamond
+	   boss keeps its rendered size and the extra units go to rail reach. Every
+	   card family uses this one size — rail LENGTH is what varies, per family. */
+	width: calc(76px * var(--ornament-scale, 1));
+	height: calc(76px * var(--ornament-scale, 1));
+}
+.corner-tl {
+	top: -1px;
+	left: -1px;
+}
+.corner-tr {
+	top: -1px;
+	right: -1px;
+	transform: rotate(90deg);
+}
+.corner-br {
+	bottom: -1px;
+	right: -1px;
+	transform: rotate(180deg);
+}
+.corner-bl {
+	bottom: -1px;
+	left: -1px;
+	transform: rotate(270deg);
+}
+/* viewBox is 120x30 with the disc/border line at y=18 — deliberately off-centre,
+   so the corona gets headroom above the wings without the ornament hanging
+   further into the card. Top offset is 18/30 of the rendered height. */
+.wingedDisc {
+	position: absolute;
+	left: 50%;
+	top: calc(-14.1px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(94px * var(--ornament-scale, 1));
+	height: calc(23.5px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
+/* Serpent keystone — narrower + a touch smaller than the winged disc, so the
+   condition cards read as subordinate. */
+.serpentKeystone {
+	position: absolute;
+	left: 50%;
+	top: calc(-13.4px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(86px * var(--ornament-scale, 1));
+	height: calc(26.9px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
+/* Crossed-khopesh keystone (combat arts) — the widest of the three, since the
+   crossed-swords silhouette needs vertical spread to read as weapons rather than
+   a flourish. viewBox is 76x26 with the border line at y=15.5, so the top offset
+   is 15.5/26 of the rendered height. */
+.khopeshKeystone {
+	position: absolute;
+	left: 50%;
+	top: calc(-15.9px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(78px * var(--ornament-scale, 1));
+	height: calc(26.7px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
+/* Horned-bull keystone (creature stat blocks). viewBox is 96x30 with the border
+   line at y=20, so top = 20/30 of the rendered height. Sized between the ziggurat
+   and the winged disc: the horns need width to read as a bull rather than a mask,
+   but the head must not tower over a card that already carries a dense stat band. */
+.bullKeystone {
+	position: absolute;
+	left: 50%;
+	top: calc(-18.13px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(87px * var(--ornament-scale, 1));
+	height: calc(27.19px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
+/* Stepped-ziggurat keystone (talents). viewBox is 84x26 with the base/border line
+   at y=19.4, so 19.4/26 of the rendered height sits above the card edge — the
+   tower rises out of the frame and only the base course reads inside it.
+   height = 26 * (88/84) keeps the scale uniform; top = 19.4/26 of that height.
+   This is by far the tallest keystone (20.3px of overhang against the khopesh's
+   15.9px), which is why the talent card carries a larger top margin — see
+   TalentCard.module.css. */
+.zigguratKeystone {
+	position: absolute;
+	left: 50%;
+	top: calc(-20.33px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(88px * var(--ornament-scale, 1));
+	height: calc(27.24px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
+/* Cartouche keystone (character sheet, M9). viewBox is 96x27 with the border
+   line at y=18, so top = -(18/27) of the rendered height. Sized between the
+   khopesh and the bull: the ring needs height to read as a closed loop rather
+   than a bar, but the sheet is a working tool, not the primary content, so it
+   stays lighter than the talent/bull weight. */
+.cartoucheKeystone {
+	position: absolute;
+	left: 50%;
+	top: calc(-15.75px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(84px * var(--ornament-scale, 1));
+	height: calc(23.63px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
+
+/* --- Lozenge divider --- */
+.divider {
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+	margin: 1.75rem 0;
+	color: color-mix(in srgb, var(--ifm-color-primary) 72%, transparent);
+}
+.dividerCompact {
+	margin: 0.5rem 0;
+}
+/* Solid at the central lozenge, fading OUT to nothing at the frame edges. */
+.divider::before,
+.divider::after {
+	content: '';
+	flex: 1 1 auto;
+	height: 1px;
+}
+.divider::before {
+	background: linear-gradient(to right, transparent, currentColor);
+}
+.divider::after {
+	background: linear-gradient(to right, currentColor, transparent);
+}
+.lozenge {
+	flex: 0 0 auto;
+	width: 22px;
+	height: 12px;
+}
+
+/* --- Rank seal: FLAT bronze plaque with sunk corner rivets, for the card header.
+   No bevel/shadow (all UI stays flat); the plaque read comes from a flat keyline
+   border + four inlaid corner rivets. --- */
+.rankSeal {
+	--rivet: color-mix(in srgb, var(--ifm-color-primary) 42%, #000 58%);
+	position: relative;
+	display: inline-flex;
+	align-items: baseline;
+	gap: 0.4rem;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	padding: 4px 17px;
+	border-radius: 2px;
+	color: var(--ifm-background-surface-color);
+	background-color: var(--ifm-color-primary);
+	/* Flat keyline. */
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 45%, #000 55%);
+	white-space: nowrap;
+	vertical-align: middle;
+}
+/* Four sunk diamond rivets, one per corner — flat, no shadow. */
+.rivet {
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	background-color: var(--rivet);
+	transform: rotate(45deg);
+}
+.rivet-tl {
+	top: 3px;
+	left: 4px;
+}
+.rivet-tr {
+	top: 3px;
+	right: 4px;
+}
+.rivet-br {
+	bottom: 3px;
+	right: 4px;
+}
+.rivet-bl {
+	bottom: 3px;
+	left: 4px;
+}
+.rankSealWord {
+	font-size: var(--nexus-text-2xs);
+	opacity: 0.82;
+}
+.rankSealNum {
+	font-size: var(--nexus-text-base);
+	font-weight: 700;
+	line-height: 1;
+}
+
+/* --- Rank chip: quiet inline prefix inside Heightened rule text --- */
+.rankChip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.22rem;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	font-size: var(--nexus-text-xs);
+	letter-spacing: 0.04em;
+	color: var(--ifm-background-surface-color);
+	background-color: var(--ifm-color-primary);
+	white-space: nowrap;
+	vertical-align: middle;
+}
+.rankChipCompact {
+	padding: 0 6px;
+	border-radius: 2px;
+	box-shadow: inset 0 0 0 1px
+		color-mix(in srgb, var(--ifm-color-primary) 55%, #000 45%);
+	/* Nudge onto the text baseline when inline in a Heightened line. */
+	position: relative;
+	top: -0.05em;
+	margin-right: 0.1rem;
+}
+.rankWord {
+	font-size: 0.92em;
+}
+
+/* ============================================================================
+ * M7 — Amonkhet ornament expansion. Tokens only; currentColor; both themes.
+ * ========================================================================== */
+
+/* --- Cartouche: engraved tapered nameplate --- */
+/* A carved stone nameplate — rigid rectilinear body (crisp 2px corners, matching
+   the card frames), with an inset vertical end-bar at each short edge standing in
+   for the cartouche's terminal knot. Not a pill: the architectural geometry, not a
+   button. */
+.cartouche {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.32rem;
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.045em;
+	font-size: var(--nexus-text-xs);
+	line-height: 1;
+	padding: 3px 13px;
+	border-radius: 2px;
+	/* Ink-forward text keeps AA; the bronze lives in the border + faint fill. */
+	color: color-mix(
+		in srgb,
+		var(--ifm-font-color-base) 82%,
+		var(--ifm-color-primary)
+	);
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
+	vertical-align: middle;
+	white-space: nowrap;
+}
+/* Terminal end-bars: a hairline set in from each short edge. */
+.cartouche::before,
+.cartouche::after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	bottom: 3px;
+	width: 1px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
+}
+.cartouche::before {
+	left: 5px;
+}
+.cartouche::after {
+	right: 5px;
+}
+.cartoucheCompact {
+	gap: 0.26rem;
+	font-size: var(--nexus-text-2xs);
+	padding: 2px 11px;
+}
+.cartoucheCompact::before {
+	left: 4px;
+}
+.cartoucheCompact::after {
+	right: 4px;
+}
+.cartoucheGlyph {
+	color: var(--ifm-color-primary);
+	opacity: 0.85;
+}
+.cartoucheText {
+	display: inline-block;
+}
+
+/* --- Merlon-course frieze (divider segment + cornice band) --- */
+/* One repeat-x mask tile; currentColor fills it, so it tints in both themes and
+   tiles seamlessly (only the ground course crosses a tile edge). The tile itself
+   is `--nexus-frieze-tile` in custom.css — the navbar, footer and table cornices
+   reuse it at this same 12px height, so it lives in one place and every band on
+   the site is the same band. The 108px segment below is exactly six 18px
+   repeats; keep it a multiple of 18 so the run ends on a whole merlon. */
+.friezeSeg,
+.friezeCornice {
+	background-color: currentColor;
+	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 12px;
+	mask: var(--nexus-frieze-tile) repeat-x center / auto 12px;
+}
+.friezeDivider {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	margin: 1.75rem 0;
+	color: color-mix(in srgb, var(--ifm-color-primary) 72%, transparent);
+}
+.friezeDivider::before,
+.friezeDivider::after {
+	content: '';
+	flex: 1 1 auto;
+	height: 1px;
+}
+.friezeDivider::before {
+	background: linear-gradient(to right, transparent, currentColor);
+}
+.friezeDivider::after {
+	background: linear-gradient(to right, currentColor, transparent);
+}
+.friezeSeg {
+	flex: 0 0 auto;
+	width: 108px;
+	height: 12px;
+}
+.friezeCornice {
+	height: 12px;
+	color: color-mix(in srgb, var(--ifm-color-primary) 78%, transparent);
+}
+.friezeCornice-bottom {
+	transform: scaleY(-1);
+}
+
+/* --- Jewel accent: inlaid beveled gem, KEY glyphs only --- */
+.jewel {
+	display: inline-block;
+	flex: 0 0 auto;
+	vertical-align: middle;
+	box-shadow:
+		inset 0 0 0 1px color-mix(in srgb, #000 32%, transparent),
+		inset 1px 1px 1.5px color-mix(in srgb, #fff 45%, transparent);
+}
+.jewel-lozenge {
+	transform: rotate(45deg);
+	border-radius: 1px;
+}
+.jewel-disc {
+	border-radius: 50%;
+}
+.jewel-lapis {
+	background-color: var(--nexus-jewel-lapis);
+}
+.jewel-carnelian {
+	background-color: var(--nexus-jewel-carnelian);
+}
+.jewel-emerald {
+	background-color: var(--nexus-jewel-emerald);
+}
+
+/* --- Sun-disc section marker (wingless) --- */
+.sunDisc {
+	display: inline-block;
+	vertical-align: middle;
+	color: var(--ifm-color-primary);
+}
+
+/* The great solar medallion. Carved in the surface colour, so it only reads on
+   `--ifm-background-surface-color` — see the component doc. */
+.solarMedallion {
+	display: block;
+	color: var(--ifm-color-primary);
+}
+
+/* --- Tablet frame: heavy STANDALONE container (pillars + keystone + cornices) --- */
+.tablet {
+	position: relative;
+	margin: 1.9rem 0;
+	padding: 1.5rem 2rem;
+	background-color: var(--ifm-background-surface-color);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 48%, transparent);
+	border-radius: 3px;
+}
+.tabletFrame {
+	position: absolute;
+	inset: 0;
+	color: var(--ifm-color-primary);
+	pointer-events: none;
+}
+/* Flanking pillars — a double vertical rail inset from each side edge, capped by
+   short lintels top and bottom. Standalone framing, never on stacked cards. */
+.pillar {
+	position: absolute;
+	top: 12px;
+	bottom: 12px;
+	width: 3px;
+	border-left: 1px solid currentColor;
+	border-right: 1px solid currentColor;
+	opacity: 0.75;
+}
+.pillarLeft {
+	left: 5px;
+}
+.pillarRight {
+	right: 5px;
+}
+.pillar::before,
+.pillar::after {
+	content: '';
+	position: absolute;
+	left: -3px;
+	right: -3px;
+	height: 1px;
+	background: currentColor;
+}
+.pillar::before {
+	top: -4px;
+}
+.pillar::after {
+	bottom: -4px;
+}
+/* Solar-disc keystone, seated over the top edge on the surface color. */
+.tabletKeystone {
+	position: absolute;
+	left: 50%;
+	top: -14px;
+	transform: translateX(-50%);
+	padding: 0 5px;
+	line-height: 0;
+	background-color: var(--ifm-background-surface-color);
+}
+.tabletBody {
+	margin: 0.6rem 0;
+}
+.tabletBody > :first-child {
+	margin-top: 0;
+}
+.tabletBody > :last-child {
+	margin-bottom: 0;
+}
+
+/* --- Trail braid: the twisted-cord connector between breadcrumb crumbs --- */
+.trailBraid {
+	display: block;
+	flex: 0 0 auto;
+	color: color-mix(in srgb, var(--ifm-color-primary) 55%, transparent);
+}
+
+/* ============================================================================
+ * M11 — Image plates. Geometry lives here as ONE derived chain, so the drawn
+ * corner (ornaments.tsx, `PalmetteCorner`) meets the edge runs at every weight
+ * without per-weight tuning:
+ *
+ *   course    = surround / 2
+ *   gap       = surround * 0.0714   (run to inner keyline)
+ *   run inset = surround - gap - course = surround * 0.4286
+ *
+ * Because all three are FRACTIONS of the surround, the tile unit works out to
+ * exactly one corner-viewBox unit at every weight, which is what lets a single
+ * 48-unit corner drawing serve a 28px surround and a 14px one. Change the 0.5
+ * or the 0.0714 and PC_GROUND / PC_CREST in ornaments.tsx must move with them.
+ * ========================================================================== */
+
+.plate {
+	position: relative;
+	display: block;
+	margin: 0;
+	/* The plate is its own query container so the weight step-down below keys off
+	   the PLATE's width rather than the viewport's. A frontispiece inside a 430px
+	   column is over-ornamented whether that column is a phone or a narrow well
+	   in a wide window, and only a container query catches both. */
+	container-type: inline-size;
+	/* Banner weight is the default; the others override the surround and the
+	   rosette, and everything else follows. */
+	--plate-surround: 20px;
+	--plate-rosette: 38px;
+	--plate-chamfer: 10px;
+	--plate-keyline: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 48%,
+		transparent
+	);
+	color: var(--ifm-color-primary);
+}
+
+/* Ornament does NOT scale linearly with the plate: a frontispiece corner on a
+   300px portrait is most of the portrait. The inline weight is a redraw (fewer,
+   fatter palmette lobes; no rosette spurs), not a `transform: scale()`. */
+/* Lighter than the 28px it started at. The frontispiece is the ONE plate whose
+   page hangs its own crest on it (the homepage's `SolarMedallion`), so the frame
+   has to yield: at 28px with a rosette on each edge it was the loudest thing on
+   the page and the medallion had to fight it. A border, not a centrepiece. */
+.plate-frontispiece {
+	--plate-surround: 24px;
+	--plate-rosette: 52px;
+	--plate-chamfer: 12px;
+}
+.plate-inline {
+	--plate-surround: 14px;
+	--plate-rosette: 26px;
+	--plate-chamfer: 7px;
+}
+
+/* Ornament-craft §10 applied to the frame: frieze weight is a function of SPAN,
+   and a weight is a choice of ornament-to-picture ratio, not an absolute size.
+   The frontispiece's 28px surround and 52px rosette are drawn for a ~1100px run;
+   at 430px the same numbers eat the picture — a 4.03:1 banner is only ~93px of
+   art there, so the surround alone is 60% of the plate's height. Below the
+   threshold the frontispiece takes the BANNER geometry, which is the weight that
+   reads correctly at that span. It is a step, not a scale: the corner and the
+   rosette are the same drawings at both, and the derived chain above keeps the
+   runs meeting the corners at either size with no per-weight tuning.
+
+   The override lands on `.plateBox`, not `.plate`: a query container cannot
+   style itself, and every consumer of these tokens (shell, runs, corners,
+   keystones) is inside the box.
+
+   20px is the FLOOR, not an arbitrary step: the corner is drawn with five
+   palmette lobes at this weight, and the `inline` redraw exists because five
+   lobes on a 14px surround puts every lobe under the ~3px floor. Lobe count is
+   a React prop and cannot change inside a container query, so the step may not
+   go below the smallest surround five lobes survive. */
+@container (max-width: 640px) {
+	.plate-frontispiece .plateBox {
+		--plate-surround: 20px;
+		--plate-rosette: 38px;
+		--plate-chamfer: 10px;
+	}
+
+	/* The banner needed the same step for the same reason, one weight further
+	   down. At 4:1 and a ~350px span the picture is only ~80px tall: the 20px
+	   surround was 26% of the plate's height per side and the 38px rosette was
+	   HALF the height of the artwork it crowns. Ornament-to-picture ratio IS what
+	   a weight is, and at that span the banner's ratio had become the
+	   frontispiece's. It takes the INLINE geometry verbatim rather than a third
+	   set of numbers: that is the weight already drawn for a short span, and 14px
+	   is exactly where its three-lobe corner clears the ~3px lobe floor. */
+	.plate-banner .plateBox {
+		--plate-surround: 14px;
+		--plate-rosette: 26px;
+		--plate-chamfer: 7px;
+	}
+	.plate-banner .plateCornerWide {
+		display: none;
+	}
+	.plate-banner .plateCornerNarrow {
+		display: block;
+	}
+}
+
+/* The derived half of the chain is declared HERE, on the same element the
+   container query overrides `--plate-surround` on. A custom property is
+   substituted where it is DECLARED, so `--plate-course` written on `.plate`
+   would freeze against `.plate`'s surround and the step-down would move the
+   corners without moving the runs. Declared on `.plateBox`, both halves resolve
+   against whichever surround won on this element. */
+/* `display: block` on every box below because they are all `<span>`s: an MDX
+   image lands inside a `<p>`, where a `<div>` would be closed out by the HTML
+   parser and break hydration. See `PlateShell`'s `as` prop. */
+.plateBox {
+	position: relative;
+	display: block;
+	--plate-course: calc(var(--plate-surround) / 2);
+	--plate-run-inset: calc(var(--plate-surround) * 0.4286);
+	padding: var(--plate-surround);
+}
+
+/* --- The shell: two flat layers, never a border -----------------------------
+   A clipped shape cannot take a `border`, so the keyline is a bronze-filled box
+   with the surface colour inset 1.5px above it punching the middle out. The
+   rectangular silhouette uses the identical construction so the two read at the
+   same weight — the only difference between them is the clip. */
+.plateShell {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background-color: var(--plate-keyline);
+}
+.plateShellInner {
+	position: absolute;
+	inset: 1.5px;
+	background-color: var(--ifm-background-surface-color);
+}
+
+/* D4 (b): the SURROUND is chamfered; the picture inside stays a full rectangle.
+   Clipping the artwork was rejected — what an arch or an ogee eats varies
+   unpredictably with the picture, and the artwork varies per page. */
+.plate-mitred .plateShell {
+	clip-path: polygon(
+		var(--plate-chamfer) 0,
+		calc(100% - var(--plate-chamfer)) 0,
+		100% var(--plate-chamfer),
+		100% calc(100% - var(--plate-chamfer)),
+		calc(100% - var(--plate-chamfer)) 100%,
+		var(--plate-chamfer) 100%,
+		0 calc(100% - var(--plate-chamfer)),
+		0 var(--plate-chamfer)
+	);
+}
+/* The inner layer's chamfer shrinks with its inset so the keyline keeps an even
+   width around the mitre instead of thickening at the 45°. */
+.plate-mitred .plateShellInner {
+	--c: calc(var(--plate-chamfer) - 0.6px);
+	clip-path: polygon(
+		var(--c) 0,
+		calc(100% - var(--c)) 0,
+		100% var(--c),
+		100% calc(100% - var(--c)),
+		calc(100% - var(--c)) 100%,
+		var(--c) 100%,
+		0 calc(100% - var(--c)),
+		0 var(--c)
+	);
+}
+
+/* The picture, inlaid behind its own keyline. A plain border is legitimate
+   here: it is the border OF a container, not a bar used to group. */
+.plateWell {
+	position: relative;
+	display: block;
+	z-index: 1;
+	border: 1.5px solid var(--plate-keyline);
+	line-height: 0;
+	font-size: 0;
+}
+.plateWell > img {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 0;
+}
+
+/* --- The surround ornament ------------------------------------------------- */
+.plateFrame {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	color: var(--ifm-color-primary);
+	pointer-events: none;
+}
+
+/* The four merlon runs. `center` on both axes so the inevitable partial tile is
+   cut EQUALLY at both ends — a symmetric cut reads as intentional, a single
+   orphan at one end reads as a bug. */
+.plateRun {
+	position: absolute;
+	background-color: currentColor;
+}
+.plateRun-top,
+.plateRun-bottom {
+	left: var(--plate-surround);
+	right: var(--plate-surround);
+	height: var(--plate-course);
+	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto
+		var(--plate-course);
+	mask: var(--nexus-frieze-tile) repeat-x center / auto var(--plate-course);
+}
+.plateRun-top {
+	top: var(--plate-run-inset);
+}
+/* Ground must face the picture on all four sides. Reflection is safe (it is not
+   a transposition), so the bottom run is the same tile flipped — the trick
+   `.friezeCornice-bottom` already uses. */
+.plateRun-bottom {
+	bottom: var(--plate-run-inset);
+	transform: scaleY(-1);
+}
+/* The side runs take the TRANSPOSED tile with `repeat-y`, not a rotation: a
+   rotated `repeat-x` band transposes the repeat axis and the tile aspect at
+   once, and the run's length here is the plate's height, which no CSS length
+   can name. See `--nexus-frieze-tile-v` in custom.css. */
+.plateRun-left,
+.plateRun-right {
+	top: var(--plate-surround);
+	bottom: var(--plate-surround);
+	width: var(--plate-course);
+	-webkit-mask: var(--nexus-frieze-tile-v) repeat-y center / var(--plate-course)
+		auto;
+	mask: var(--nexus-frieze-tile-v) repeat-y center / var(--plate-course) auto;
+}
+.plateRun-left {
+	left: var(--plate-run-inset);
+}
+.plateRun-right {
+	right: var(--plate-run-inset);
+	transform: scaleX(-1);
+}
+
+/* Corner squares are exactly the surround wide, so the corner drawing's viewBox
+   IS the corner square and its constants can be fractions of the surround. */
+.plateCorner {
+	position: absolute;
+	width: var(--plate-surround);
+	height: var(--plate-surround);
+	line-height: 0;
+}
+.plateCorner-tl {
+	top: 0;
+	left: 0;
+}
+.plateCorner-tr {
+	top: 0;
+	right: 0;
+	transform: rotate(90deg);
+}
+.plateCorner-br {
+	bottom: 0;
+	right: 0;
+	transform: rotate(180deg);
+}
+.plateCorner-bl {
+	bottom: 0;
+	left: 0;
+	transform: rotate(270deg);
+}
+.palmetteCorner {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+/* The two corner drawings; the narrow one is revealed only by a weight's
+   container-query step-down (see `.plate-banner` below). Both are `block` +
+   full-size so the SVG fills the corner square either way. */
+.plateCornerWide,
+.plateCornerNarrow {
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 0;
+}
+.plateCornerNarrow {
+	display: none;
+}
+
+/* The rosette straddles the plate's OUTER edge, the same relation every card
+   keystone has to its card's top border. Radial symmetry is what lets the same
+   mark sit on the bottom edge of the frontispiece without being upside down. */
+.plateKeystone {
+	position: absolute;
+	left: 50%;
+	width: var(--plate-rosette);
+	height: var(--plate-rosette);
+	transform: translateX(-50%);
+	line-height: 0;
+}
+.plateKeystone-top {
+	top: calc(var(--plate-rosette) / -2);
+}
+.plateKeystone-bottom {
+	bottom: calc(var(--plate-rosette) / -2);
+}
+.rosetteMark {
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: var(--ifm-color-primary);
+}
+
+/* The rosette as a CardFrame keystone (the D2 `rails` construction), matching
+   the sizing convention of its siblings: the mark straddles the card's top
+   border, so half its height sits above the edge. */
+.rosetteKeystoneSlot {
+	position: absolute;
+	left: 50%;
+	top: calc(-21px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(42px * var(--ornament-scale, 1));
+	height: calc(42px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	line-height: 0;
+	color: var(--ifm-color-primary);
+}
+
+.plateCaption {
+	margin-top: 0.6rem;
+	text-align: center;
+	line-height: 1.4;
+}
+/* Set-stone keystone (magic items, M13 S8). viewBox is 84x26 with the border line
+   at y=19.4, so 19.4/26 of the rendered height sits above the card edge. Same
+   geometry contract as the ziggurat, which it shares its flanking courses with:
+   height = 26 * (88/84) keeps the scale uniform, top = 19.4/26 of that height.
+   Overhang is 20.3px, so a card using this family needs its `margin-top` raised
+   to match — see the ziggurat note above. */
+.gemKeystone {
+	position: absolute;
+	left: 50%;
+	top: calc(-20.33px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(88px * var(--ornament-scale, 1));
+	height: calc(27.24px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
+/* Votive-stele keystone (the `Other` ability family, M20 S4). Same 100x30 box and
+   border line as the palm, so the two new marks are in scale with each other and
+   with the ziggurat; see the palm's note for why the rendered height is pinned
+   at 27.24px rather than derived from the wider viewBox. */
+.steleKeystone {
+	position: absolute;
+	left: 50%;
+	top: calc(-20.52px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(90.8px * var(--ornament-scale, 1));
+	height: calc(27.24px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
+/* City-gate keystone (quickstart archetypes, M22 S3). Same 100x30 box and ground
+   line as the palm and the stele, so the three newest marks are in scale with
+   each other and with the ziggurat — and so the overhang stays at 20.52px, which
+   is what the card's raised `margin-top` is sized against. */
+.gateKeystone {
+	position: absolute;
+	left: 50%;
+	top: calc(-20.52px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(90.8px * var(--ornament-scale, 1));
+	height: calc(27.24px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
+/* Sacred-palm keystone (folk, M20 S4). viewBox is 100x30 with the border line at
+   y=22.6 — a wider, taller box than its siblings, because a palm's crown has to
+   be wider than it is tall over a visible trunk or the mark reads as a starburst
+   (ornament-craft §3: grow the box, never shrink the motif).
+
+   The RENDERED height is still 27.24px, the same as the ziggurat and the gem,
+   which is what keeps the family in scale with the rest and — the load-bearing
+   part — holds the overhang at 20.52px rather than the 23.7px a uniform
+   px-per-unit would have given. `.pc-card__inner` reserves 4.2mm of rail plus
+   4.5mm of mark under its 9mm top padding, and at the card's 0.62 scale a taller
+   mark would have run into the card's own name line.
+   width = 100 * (27.24/30) keeps the aspect; top = 22.6/30 of the height. */
+.palmKeystone {
+	position: absolute;
+	left: 50%;
+	top: calc(-20.52px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(90.8px * var(--ornament-scale, 1));
+	height: calc(27.24px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}

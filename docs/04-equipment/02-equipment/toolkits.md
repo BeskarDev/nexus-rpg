@@ -10,7 +10,7 @@ sidebar_position: 7
 | --- | --- | --- | --- | --- |
 | 2 | Adventuring Gear | 1 | 50 | Contains a crowbar, a hammer, a shovel, chalk, a wooden pole, and spikes. Spend 1 use to produce one specific item from the list. |
 | 2 | Brewer‘s Tools | 1 | 50 | Contains a large glass jug, a quantity of hops, a siphon, and several feet of tubing. Spend 1 use to produce one specific item from the list. |
-| 2 | Carpenter‘ Tools | 1 | 50 | Contains a saw, a hammer, nails, a hatchet, a square, a ruler, an adze, a plane, and a chisel. Spend 1 use to produce one specific item from the list. |
+| 2 | Carpenter‘s Tools | 1 | 50 | Contains a saw, a hammer, nails, a hatchet, a square, a ruler, an adze, a plane, and a chisel. Spend 1 use to produce one specific item from the list. |
 | 2 | Climber‘s Kit | 1 | 50 | Contains pitons, boot tips, gloves, and a harness. Spend 1 use to produce one specific item from the list. |
 | 2 | Cook‘s Utensils | 1 | 50 | Contains a metal pot, knives, forks, a stirring spoon, and a ladle. Spend 1 use to produce one specific item from the list. |
 | 2 | Disguise Kit | 1 | 50 | Contains cosmetics, hair dye, small props, and a few different pieces of clothing. Spend 1 use to produce one specific item from the list. |

@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # 🗣️ Social Intrigue
 
+![banner-img](/img/banner/social-intrigue-banner.png)
+
 Social Intrigue covers the messy, back-and-forth work of negotiation, persuasion, deception, and alliance-building. It is a specialized application of the [Challenge rules](./00-overview.md), built for situations where a single skill roll is not enough and the NPC's stance needs to be tracked over time.
 
 This page adds the social-specific layer on top: **Interest**, **Patience**, **Motivations**, and **Pitfalls**.
@@ -47,7 +49,7 @@ Combine two modifiers to find the starting value:
 
 Starting Interest equals the Disposition modifier plus the Request Alignment modifier. If the result is −2 or lower, the NPC refuses without a challenge.
 
-**Applying Interest to TN.** Subtract the current Interest value from the base challenge TN. Positive Interest lowers the TN; negative Interest raises it.
+**Applying Interest to TN.** Subtract the current Interest value from the base challenge TN. Positive Interest lowers the TN. Negative Interest raises it.
 
 > **Example.** Base TN 10 (Hard). Interest +2 gives an effective TN of 8. Interest −1 gives an effective TN of 11.
 
@@ -68,7 +70,7 @@ Starting Interest equals the Disposition modifier plus the Request Alignment mod
 | d6 | 6 | A willing NPC with competing interests |
 | d8 | 8 | A deliberate NPC who prefers to take their time |
 
-Unlike standard challenges, the die advances by 1 on **every roll**, success or failure alike. A critical success advances it by 2. Failures and blunders still add consequences as normal; they simply don't pause the clock.
+Unlike standard challenges, the die advances by 1 on **every roll**, success or failure alike. A critical success advances it by 2. Failures and blunders still add consequences as normal. They simply don't pause the clock.
 
 A small die means a short, high-pressure negotiation. The NPC will make up their mind quickly, and the party needs to build Interest fast. A larger die gives more room to maneuver, discover Motivations, and recover from mistakes.
 
@@ -86,7 +88,7 @@ Motivations and Pitfalls are GM-facing notes that give the NPC a recognizable pe
 
 A Motivation is something the NPC genuinely cares about: a desire, a fear, a bond, or a deeply held value. When an adventurer makes a successful appeal that speaks to a Motivation, Interest increases by +1.
 
-Prepare 2–3 Motivations per NPC. Examples:
+Prepare 2-3 Motivations per NPC. Examples:
 
 - *Desire: Profit.* Coin matters above most things. Generous payment or clear financial gain gets this NPC's attention.
 - *Fear: Public disgrace.* Losing face in front of the community is a genuine nightmare. Offering discretion and a way to avoid embarrassment goes a long way.
@@ -99,7 +101,7 @@ Motivations can be discovered through successful Insight, Education, or Lore rol
 
 A Pitfall is something that offends, threatens, or alarms the NPC. Stumbling into one, even by accident, lowers Interest by −1.
 
-Prepare 1–2 Pitfalls per NPC. Examples:
+Prepare 1-2 Pitfalls per NPC. Examples:
 
 - *Threat: Mentioning their past crimes.* Anything that sounds like leverage will shut this NPC down fast.
 - *Insult: Underestimating their expertise.* They take pride in what they do. Dismissing the difficulty of the task stings.
@@ -116,7 +118,7 @@ When the challenge die reaches 0, the NPC decides. The outcome depends on the fi
 | --- | --- |
 | +3 or higher | **Full success.** The NPC agrees fully and willingly. |
 | +1 to +2 | **Partial success.** The NPC agrees with conditions or a reduced scope. |
-| 0 | **Failure.** The NPC declines; they weren't convinced. |
+| 0 | **Failure.** The NPC declines. They weren't convinced. |
 | −1 or lower | **Breakdown.** The NPC refuses and may become hostile. |
 
 If Interest drops to −2 or lower at any point mid-challenge, the intrigue ends in a Breakdown immediately. Don't wait for the die to run out.

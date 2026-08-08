@@ -1,0 +1,59 @@
+---
+sidebar_position: 4
+title: 🎴 Magic Items
+description: Print magic item cards for tabletop play
+# The tool runs its own two-column layout, controls left, preview right, and
+# it needs the full page to do it. Auto-columns paired it with the JSON
+# disclosure below into two tracks, which halved the tool to 469px, dropped it
+# under its own 900px breakpoint, and stacked the preview beneath the controls.
+columns: false
+---
+
+import { MagicItems } from '@site/src/features/MagicItems'
+
+# 🎴 Magic Items
+
+<MagicItems />
+
+<details>
+<summary>Pasting your own items: the JSON format</summary>
+
+Only needed for items that do not exist on a character sheet, a design you are testing, or a hoard written up in advance. Anything a character already carries can be loaded from the character selector above.
+
+Magic items are pasted as JSON objects with the following structure:
+
+```json
+{
+	"name": "Item Name",
+	"category": "Weapon|Ammo|Armor|Shield|Wearable|Consumable|Spell Scroll|Wand|Staff|Utility|Material|Artifact",
+	"quality": 4,
+	"type": "Item type (include bonuses like 'dagger +1') or equipment slot (like head, neck, etc.)",
+	"material": "Material (optional, should match table entry from magic item rules)",
+	"cost": 1350,
+	"load": 1,
+	"description": "Complete item description including all effects, enchantments, and notes",
+
+	// Optional fields depending on category
+	"properties": "item properties (such as properties for weapons)",
+	"uses": 1,
+}
+```
+
+To print several at once, paste them as a JSON array:
+
+```json
+[
+  {
+    "name": "First Item",
+    "category": "Weapon",
+    ...
+  },
+  {
+    "name": "Second Item",
+    "category": "Wearable",
+    ...
+  }
+]
+```
+
+</details>

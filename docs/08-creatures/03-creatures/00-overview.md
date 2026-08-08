@@ -4,6 +4,8 @@ sidebar_position: 0
 
 # 🐻 Creatures
 
+![banner-img](/img/banner/creatures-banner.png)
+
 The following sections contain creature stat blocks for use by the GM. A creature stat block contains all the information necessary to run a creature as a character.
 
 For how to create your own creatures, see [Creature Rules](../02-creature-rules.md).

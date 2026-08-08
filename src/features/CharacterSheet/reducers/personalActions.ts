@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit'
 import { CharacterSheetReducerState } from '../characterSheetReducer'
 import { Companion } from '@site/src/types/Character'
-import { reorder } from '@site/src/components/DynamicList/utils'
+import { reorder } from '@site/src/features/CharacterSheet/components/DynamicList/utils'
 
 export const personalActions = {
 	addNewCompanion: (state: CharacterSheetReducerState) => {

@@ -1,14 +1,7 @@
-import { Delete, Warning } from '@mui/icons-material'
-import {
-	Button,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogContentText,
-	DialogTitle,
-	IconButton,
-} from '@mui/material'
+import { Delete } from '@mui/icons-material'
+import { IconButton } from '@mui/material'
 import React from 'react'
+import { ConfirmDialog } from '../components/ConfirmDialog'
 
 export type DeleteButtonProps = {
 	handleDeleteCharacter: () => void
@@ -36,48 +29,33 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
 
 	return (
 		<>
-			<IconButton edge="end" aria-label="delete" onClick={handleOpen}>
-				<Delete />
-			</IconButton>
-			<Dialog
-				open={open}
-				onClose={handleAbort}
-				aria-labelledby="alert-dialog-title"
-				aria-describedby="alert-dialog-description"
+			{/* The strip's danger idiom (M13 S12): the plate and glyph take the
+				danger ink on HOVER only, as every other delete on the sheet does. A
+				permanently red bin in a list of four rows is the loudest thing on the
+				page and stops being read at all. */}
+			<IconButton
+				size="small"
+				aria-label={`Delete ${characterName ?? 'character'}`}
+				data-danger="true"
+				onClick={handleOpen}
 			>
-				<DialogTitle
-					id="alert-dialog-title"
-					sx={{
-						borderBottom: 1,
-						borderColor: 'divider',
-						mb: 2,
-						display: 'flex',
-						alignItems: 'center',
-						gap: 1,
-					}}
-				>
-					<Warning />
-					{'Remove Character'}
-				</DialogTitle>
-				<DialogContent>
-					<DialogContentText id="alert-dialog-description">
-						{characterName
-							? `Are you sure you want to delete "${characterName}"?`
-							: 'Are you sure you want to delete that character?'}
-					</DialogContentText>
-				</DialogContent>
-				<DialogActions sx={{ p: 2 }}>
-					<Button onClick={handleAbort}>No</Button>
-					<Button
-						variant="contained"
-						color="error"
-						onClick={handleConfirm}
-						autoFocus
-					>
-						Yes
-					</Button>
-				</DialogActions>
-			</Dialog>
+				<Delete fontSize="small" />
+			</IconButton>
+			{/* One confirm shape across the sheet (M13 S8). The `Warning` icon in the
+				title bar and the Yes/No pair are gone: the caution band says the same
+				thing in the sheet's own register, and a named verb says what the press
+				does without the reader having to have read the question. */}
+			<ConfirmDialog
+				open={open}
+				title="Remove character"
+				confirmLabel="Delete character"
+				onConfirm={handleConfirm}
+				onCancel={handleAbort}
+			>
+				{characterName
+					? `Deleting “${characterName}” removes the character permanently. This cannot be undone.`
+					: 'Deleting this character removes it permanently. This cannot be undone.'}
+			</ConfirmDialog>
 		</>
 	)
 }

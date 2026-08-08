@@ -2,7 +2,7 @@
 
 > **Scope:** Enchantment categories, options, scaling, gaps, the slotless utility item space, and special materials (added 2026-07-19). Successor to `docs/analysis/enchantments-magic-items-analysis.md` (converted to this folder structure and fully re-evaluated on 2026-07-19). Per-category design catalogs live in the [catalogs/](catalogs/weapons.md) folder.
 >
-> **References:** [Enchantments](../../04-equipment/07-magic-items/enchantments.md) | [Cost Tables](../../04-equipment/07-magic-items/cost-tables.md) | [Effects](../../04-equipment/07-magic-items/effects.md) | [Materials](../../04-equipment/07-magic-items/materials.md) | [Curses](../../04-equipment/07-magic-items/curses.mdx) | [Travel](../../06-scenes/07-challenges/02-travel.md) | [Social Intrigue](../../06-scenes/07-challenges/01-social-intrigue.md) | [Field Alchemy](../../06-scenes/05-crafting-professions/01-field-alchemy.md) | [Harvesting](../../06-scenes/06-harvesting-creature-parts.md) | [Conditions](../../05-combat/04-conditions.md)
+> **References:** [Enchantments](../../04-equipment/07-magic-items/enchantments.md) | [Cost Tables](../../04-equipment/07-magic-items/cost-tables.md) | [Effects](../../04-equipment/07-magic-items/effects.md) | [Materials](../../04-equipment/07-magic-items/materials.md) | [Curses](../../04-equipment/07-magic-items/curses.mdx) | [Travel](../../06-scenes/07-challenges/02-travel.md) | [Social Intrigue](../../06-scenes/07-challenges/01-social-intrigue.md) | [Field Alchemy](../../06-scenes/05-crafting-professions/01-field-alchemy.md) | [Harvesting](../../06-scenes/06-harvesting-creature-parts.md) | [Conditions](../../05-combat/04-conditions.mdx)
 >
 > **Related analyses:** [Materials Mechanical Effects](../materials-mechanical-effects-analysis.md) | [Alchemy & Potion Crafting](../alchemy-crafting-system.md) | [Non-Magical Equipment](../equipment/non-magical-equipment-analysis.md) | [Spell System](../spells/SPELL_SYSTEM_ANALYSIS.md) (§6 damage, §15B acid, §16 healing)
 >
@@ -317,7 +317,10 @@ Healing and Control grow further through the wearable expansion candidates (of M
 | **1/scene/target** | Prevents stacking on one enemy | Tracking complexity; weak in boss fights | Debuff riders (stun, bleed) |
 | **1/journey, 1/intrigue** | Matches the subsystem's own clock | Only meaningful inside that subsystem | Travel and social effects |
 
-## Appendix E: Re-Evaluation Changelog (v1 → 2026-07-19)
+## Appendix E: Re-Evaluation Changelog
+
+Covers v1 through 2026-07-19. The parenthetical version range used to sit in this
+heading, which put it in the generated anchor and broke the link from the summary above.
 
 **Systems context updates**
 - Deferral notes resolved: materials analysis, alchemy analysis + published Field Alchemy, published curses subsystem.

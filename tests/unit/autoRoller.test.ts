@@ -304,7 +304,10 @@ describe('AutoRoller Data Integrity', () => {
 		})
 
 		it('should have 12 entries per quality column in each material category', () => {
-			const materials = treasureData.qualityMaterials as Record<string, Record<string, string[]>>
+			const materials = treasureData.qualityMaterials as Record<
+				string,
+				Record<string, string[]>
+			>
 			for (const [category, tiers] of Object.entries(materials)) {
 				expect(tiers.low).toHaveLength(12)
 				expect(tiers.medium).toHaveLength(12)
@@ -321,10 +324,13 @@ describe('AutoRoller Data Integrity', () => {
 		})
 
 		it('should have magic utility types with 10 entries', () => {
-			const types = treasureData.magicUtilityTypes as { range: string; type: string }[]
+			const types = treasureData.magicUtilityTypes as {
+				range: string
+				type: string
+			}[]
 			expect(types).toBeDefined()
 			expect(types).toHaveLength(10)
-			const typeNames = types.map(t => t.type)
+			const typeNames = types.map((t) => t.type)
 			expect(typeNames).toContain('Alchemical')
 			expect(typeNames).toContain('Spell Scroll')
 			expect(typeNames).toContain('Ammo')
@@ -338,7 +344,10 @@ describe('AutoRoller Data Integrity', () => {
 		})
 
 		it('should have magic utility subtables for non-trivial types', () => {
-			const subtables = treasureData.magicUtilitySubtables as Record<string, string[]>
+			const subtables = treasureData.magicUtilitySubtables as Record<
+				string,
+				string[]
+			>
 			expect(subtables).toBeDefined()
 			expect(subtables['Ammo'].length).toBe(6)
 			expect(subtables['Everyday Object'].length).toBeGreaterThanOrEqual(20)
@@ -352,19 +361,33 @@ describe('AutoRoller Data Integrity', () => {
 			const patterns = treasureData.magicItemNamingPatterns as string[]
 			expect(patterns).toBeDefined()
 			expect(patterns).toHaveLength(4)
-			patterns.forEach(p => {
+			patterns.forEach((p) => {
 				expect(p).toContain('[Item]')
 			})
 		})
 
 		it('should have magic item name tables for all categories', () => {
-			const names = treasureData.magicItemNames as Record<string, { adjective1: string; noun1: string; adjective2: string; noun2: string }[]>
+			const names = treasureData.magicItemNames as Record<
+				string,
+				{
+					adjective1: string
+					noun1: string
+					adjective2: string
+					noun2: string
+				}[]
+			>
 			expect(names).toBeDefined()
-			const categories = ['utility', 'wearable', 'armor', 'weapon', 'spellCatalyst']
-			categories.forEach(cat => {
+			const categories = [
+				'utility',
+				'wearable',
+				'armor',
+				'weapon',
+				'spellCatalyst',
+			]
+			categories.forEach((cat) => {
 				expect(names[cat]).toBeDefined()
 				expect(names[cat]).toHaveLength(20)
-				names[cat].forEach(entry => {
+				names[cat].forEach((entry) => {
 					expect(entry.adjective1).toBeTruthy()
 					expect(entry.noun1).toBeTruthy()
 					expect(entry.adjective2).toBeTruthy()
@@ -374,10 +397,15 @@ describe('AutoRoller Data Integrity', () => {
 		})
 
 		it('should have 12 magic item effects', () => {
-			const effects = treasureData.magicItemEffects as { effectType: string; function: string; trigger: string; scope: string }[]
+			const effects = treasureData.magicItemEffects as {
+				effectType: string
+				function: string
+				trigger: string
+				scope: string
+			}[]
 			expect(effects).toBeDefined()
 			expect(effects).toHaveLength(12)
-			effects.forEach(e => {
+			effects.forEach((e) => {
 				expect(e.effectType).toBeTruthy()
 				expect(e.function).toBeTruthy()
 				expect(e.trigger).toBeTruthy()
@@ -386,7 +414,10 @@ describe('AutoRoller Data Integrity', () => {
 		})
 
 		it('should have 12 magic item curse statuses', () => {
-			const statuses = treasureData.magicItemCurseStatus as { status: string; description: string }[]
+			const statuses = treasureData.magicItemCurseStatus as {
+				status: string
+				description: string
+			}[]
 			expect(statuses).toBeDefined()
 			expect(statuses).toHaveLength(12)
 		})
@@ -398,10 +429,14 @@ describe('AutoRoller Data Integrity', () => {
 		})
 
 		it('should have 12 magic item curse effects', () => {
-			const curses = treasureData.magicItemCurseEffects as { curseType: string; effect: string; trigger: string }[]
+			const curses = treasureData.magicItemCurseEffects as {
+				curseType: string
+				effect: string
+				trigger: string
+			}[]
 			expect(curses).toBeDefined()
 			expect(curses).toHaveLength(12)
-			curses.forEach(c => {
+			curses.forEach((c) => {
 				expect(c.curseType).toBeTruthy()
 				expect(c.effect).toBeTruthy()
 				expect(c.trigger).toBeTruthy()
@@ -764,9 +799,7 @@ describe('AutoRoller Generators', () => {
 		})
 
 		it('should return unknown for invalid type', () => {
-			expect(generateChallenge('invalid')).toBe(
-				'Unknown challenge type',
-			)
+			expect(generateChallenge('invalid')).toBe('Unknown challenge type')
 		})
 
 		it('should roll each challenge column independently', () => {
@@ -979,7 +1012,7 @@ describe('AutoRoller Generators', () => {
 			}
 			expect(costs.length).toBe(100)
 			// All costs should be in the expected range — no bimodal low (60-240) or high (1000+) outliers
-			costs.forEach(c => {
+			costs.forEach((c) => {
 				expect(c).toBeGreaterThanOrEqual(400)
 				expect(c).toBeLessThanOrEqual(600)
 			})
@@ -1007,7 +1040,8 @@ describe('AutoRoller Generators', () => {
 
 		it('rollMagicConsumableCost supply costs should be less than consumable costs on average', () => {
 			// x0.25 supply items should cost about half of x0.5 consumable items
-			let supplyTotal = 0, consumableTotal = 0
+			let supplyTotal = 0,
+				consumableTotal = 0
 			const N = 200
 			for (let i = 0; i < N; i++) {
 				supplyTotal += rollMagicConsumableCost(4, 0.25)
@@ -1051,14 +1085,14 @@ describe('AutoRoller Generators', () => {
 			}
 			expect(costs.length).toBe(100)
 			// All costs must be in one of the two valid ranges
-			costs.forEach(c => {
+			costs.forEach((c) => {
 				const inLowBand = c >= 1135 && c <= 1315
 				const inHighBand = c >= 2135 && c <= 2315
 				expect(inLowBand || inHighBand).toBe(true)
 			})
 			// With 100 samples at 50% both bands should appear
-			expect(costs.filter(c => c >= 2000).length).toBeGreaterThan(0)
-			expect(costs.filter(c => c < 2000).length).toBeGreaterThan(0)
+			expect(costs.filter((c) => c >= 2000).length).toBeGreaterThan(0)
+			expect(costs.filter((c) => c < 2000).length).toBeGreaterThan(0)
 		})
 
 		it('staff Q4 output cost should reflect 50% enchantment chance (bimodal)', () => {
@@ -1071,14 +1105,14 @@ describe('AutoRoller Generators', () => {
 				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
 			}
 			expect(costs.length).toBe(100)
-			costs.forEach(c => {
+			costs.forEach((c) => {
 				const inLowBand = c >= 1660 && c <= 1840
 				const inHighBand = c >= 3160 && c <= 3340
 				expect(inLowBand || inHighBand).toBe(true)
 			})
 			// With 100 samples at 50% both bands should appear
-			expect(costs.filter(c => c >= 3000).length).toBeGreaterThan(0)
-			expect(costs.filter(c => c < 3000).length).toBeGreaterThan(0)
+			expect(costs.filter((c) => c >= 3000).length).toBeGreaterThan(0)
+			expect(costs.filter((c) => c < 3000).length).toBeGreaterThan(0)
 		})
 
 		it('wand output should include Max rank and Charges but NOT "Spell catalyst"', () => {
@@ -1115,7 +1149,7 @@ describe('AutoRoller Generators', () => {
 			}
 			expect(costs.length).toBe(200)
 			// Q1 with x0.5: range 5-20 (never up at 40 which would be x1.0)
-			costs.forEach(c => {
+			costs.forEach((c) => {
 				expect(c).toBeGreaterThanOrEqual(5)
 				expect(c).toBeLessThanOrEqual(20)
 			})
@@ -1130,7 +1164,7 @@ describe('AutoRoller Generators', () => {
 				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
 			}
 			expect(costs.length).toBe(100)
-			costs.forEach(c => {
+			costs.forEach((c) => {
 				expect(c).toBeGreaterThanOrEqual(50)
 				expect(c).toBeLessThanOrEqual(200)
 			})
@@ -1147,7 +1181,7 @@ describe('AutoRoller Generators', () => {
 				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
 			}
 			expect(costs.length).toBe(200)
-			costs.forEach(c => {
+			costs.forEach((c) => {
 				expect(c).toBeGreaterThanOrEqual(2)
 				expect(c).toBeLessThanOrEqual(10)
 			})
@@ -1162,7 +1196,7 @@ describe('AutoRoller Generators', () => {
 				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
 			}
 			expect(costs.length).toBe(100)
-			costs.forEach(c => {
+			costs.forEach((c) => {
 				expect(c).toBeGreaterThanOrEqual(25)
 				expect(c).toBeLessThanOrEqual(100)
 			})
@@ -1170,11 +1204,16 @@ describe('AutoRoller Generators', () => {
 
 		it('mundane Supply costs should be less than Gear costs of same quality', () => {
 			// Supply x0.25 < Gear x0.5 — supply is cheaper than other utilities
-			let supplyTotal = 0, gearTotal = 0
+			let supplyTotal = 0,
+				gearTotal = 0
 			const N = 100
 			for (let i = 0; i < N; i++) {
-				const s = generateTreasure('utility', 2, 'Supply').match(/~([\d,]+) coins/)
-				const g = generateTreasure('utility', 2, 'Gear').match(/~([\d,]+) coins/)
+				const s = generateTreasure('utility', 2, 'Supply').match(
+					/~([\d,]+) coins/,
+				)
+				const g = generateTreasure('utility', 2, 'Gear').match(
+					/~([\d,]+) coins/,
+				)
 				if (s) supplyTotal += parseInt(s[1].replace(/,/g, ''), 10)
 				if (g) gearTotal += parseInt(g[1].replace(/,/g, ''), 10)
 			}
@@ -1213,7 +1252,7 @@ describe('AutoRoller Generators', () => {
 			}
 			expect(costs.length).toBe(100)
 			// All should be in the permanent-enchanted range (not bimodal low)
-			costs.forEach(c => {
+			costs.forEach((c) => {
 				expect(c).toBeGreaterThanOrEqual(1060)
 				expect(c).toBeLessThanOrEqual(1240)
 			})
@@ -1252,7 +1291,8 @@ describe('AutoRoller Generators', () => {
 				expect(result).not.toContain('Base:')
 				// All utility types use sub-table columns (e.g., "rope (hemp, durable)" or
 				// "papyrus scroll on plants (field notes)") — never bare type names
-				if (result.includes('(') && result.includes(')')) foundFormattedItem = true
+				if (result.includes('(') && result.includes(')'))
+					foundFormattedItem = true
 			}
 			// Every utility type should produce a formatted description with parentheses
 			expect(foundFormattedItem).toBe(true)
@@ -1272,17 +1312,35 @@ describe('AutoRoller Generators', () => {
 
 		it('should include actual weapon names from game data when quality is provided', () => {
 			const knownWeapons = [
-				'battleaxe', 'hatchet', 'greataxe', 'throwing axe',
-				'shortsword', 'longsword', 'broadsword', 'greatsword', 'scimitar',
-				'shortbow', 'longbow', 'mace', 'maul', 'club',
-				'spear', 'glaive', 'javelin', 'quarterstaff',
-				'sling', 'blowpipe', 'whip', 'cestus',
-				'arcane conduit', 'mystic talisman',
+				'battleaxe',
+				'hatchet',
+				'greataxe',
+				'throwing axe',
+				'shortsword',
+				'longsword',
+				'broadsword',
+				'greatsword',
+				'scimitar',
+				'shortbow',
+				'longbow',
+				'mace',
+				'maul',
+				'club',
+				'spear',
+				'glaive',
+				'javelin',
+				'quarterstaff',
+				'sling',
+				'blowpipe',
+				'whip',
+				'cestus',
+				'arcane conduit',
+				'mystic talisman',
 			]
 			let foundKnown = false
 			for (let i = 0; i < 50; i++) {
 				const result = generateTreasure('weapon', 3).toLowerCase()
-				if (knownWeapons.some(w => result.includes(w))) {
+				if (knownWeapons.some((w) => result.includes(w))) {
 					foundKnown = true
 					break
 				}
@@ -1390,7 +1448,9 @@ describe('AutoRoller Generators', () => {
 			expect(treasureData.weaponCatalyst).not.toContain('Arrows')
 			expect(treasureData.weaponCatalyst).not.toContain('Bolts')
 			// Supply sub-table should contain Arrows and Bolts
-			const supply = (treasureData.utilityDetails as Record<string, unknown[]>)['Supply']
+			const supply = (treasureData.utilityDetails as Record<string, unknown[]>)[
+				'Supply'
+			]
 			const items = supply.map((e: unknown) => (e as { item: string }).item)
 			expect(items).toContain('Arrows')
 			expect(items).toContain('Bolts')
@@ -1555,7 +1615,12 @@ describe('AutoRoller Generators', () => {
 			for (let i = 0; i < 200; i++) {
 				const result = generateTreasure('utility', 4)
 				// Alchemical Q4+ items should have an em-dash with the alchemical description
-				if (result.startsWith('✦') && result.includes(' — ') && result.includes('(') && !foundAlchemicalDesc) {
+				if (
+					result.startsWith('✦') &&
+					result.includes(' — ') &&
+					result.includes('(') &&
+					!foundAlchemicalDesc
+				) {
 					foundAlchemicalDesc = true
 				}
 				if (foundAlchemicalDesc && foundScrollDesc) break
@@ -1588,7 +1653,11 @@ describe('AutoRoller Generators', () => {
 				if (result.includes('cursed:') && result.includes('sign:')) {
 					foundCurse = true
 				}
-				if (result.includes('cursed legacy:') || result.includes('false curse:') || result.includes('blessed / ward-bound:')) {
+				if (
+					result.includes('cursed legacy:') ||
+					result.includes('false curse:') ||
+					result.includes('blessed / ward-bound:')
+				) {
 					foundFlavorText = true
 				}
 				if (foundCurse && foundFlavorText) break
@@ -1600,11 +1669,11 @@ describe('AutoRoller Generators', () => {
 
 		it('should include magic item effects in the output', () => {
 			const effects = treasureData.magicItemEffects as { effectType: string }[]
-			const effectTypes = effects.map(e => e.effectType.toLowerCase())
+			const effectTypes = effects.map((e) => e.effectType.toLowerCase())
 			let foundEffect = false
 			for (let i = 0; i < 50; i++) {
 				const result = generateTreasure('utility', 4).toLowerCase()
-				if (effectTypes.some(e => result.includes(e))) {
+				if (effectTypes.some((e) => result.includes(e))) {
 					foundEffect = true
 					break
 				}
@@ -1662,8 +1731,10 @@ describe('AutoRoller Generators', () => {
 				if (lowMatch) lowLevelCoins.push(parseInt(lowMatch[1]))
 				if (highMatch) highLevelCoins.push(parseInt(highMatch[1]))
 			}
-			const avgLow = lowLevelCoins.reduce((a, b) => a + b, 0) / lowLevelCoins.length
-			const avgHigh = highLevelCoins.reduce((a, b) => a + b, 0) / highLevelCoins.length
+			const avgLow =
+				lowLevelCoins.reduce((a, b) => a + b, 0) / lowLevelCoins.length
+			const avgHigh =
+				highLevelCoins.reduce((a, b) => a + b, 0) / highLevelCoins.length
 			expect(avgHigh).toBeGreaterThan(avgLow)
 		})
 
@@ -1792,7 +1863,9 @@ describe('AutoRoller Generators', () => {
 			// Run multiple times to verify motivations are distinct
 			for (let i = 0; i < 20; i++) {
 				const result = generateNpc('full')
-				const motivMatch = result.match(/Motivated by (.+?) and (.+?)\. Pitfall/)
+				const motivMatch = result.match(
+					/Motivated by (.+?) and (.+?)\. Pitfall/,
+				)
 				expect(motivMatch).not.toBeNull()
 				expect(motivMatch![1]).not.toBe(motivMatch![2])
 			}
@@ -1920,9 +1993,18 @@ describe('AutoRoller Generators', () => {
 
 		it('should generate individual table results', () => {
 			const tables = [
-				'geography', 'resources', 'culture', 'government',
-				'history', 'threats', 'defenses', 'law',
-				'power', 'landmarks', 'districts', 'streets',
+				'geography',
+				'resources',
+				'culture',
+				'government',
+				'history',
+				'threats',
+				'defenses',
+				'law',
+				'power',
+				'landmarks',
+				'districts',
+				'streets',
 			]
 			tables.forEach((table) => {
 				const result = generateSettlement(table)
@@ -1947,8 +2029,16 @@ describe('AutoRoller Generators', () => {
 
 	describe('Building Data', () => {
 		const districtTypes = [
-			'harbor', 'market', 'temple', 'artisan', 'garrison',
-			'residential', 'slum', 'scholarly', 'pleasure', 'foreign',
+			'harbor',
+			'market',
+			'temple',
+			'artisan',
+			'garrison',
+			'residential',
+			'slum',
+			'scholarly',
+			'pleasure',
+			'foreign',
 		]
 
 		it('should have 10 district building types', () => {
@@ -1957,7 +2047,9 @@ describe('AutoRoller Generators', () => {
 
 		it('should have 20 building entries per district type', () => {
 			districtTypes.forEach((type) => {
-				expect((settlementData.buildings as Record<string, string[]>)[type]).toHaveLength(20)
+				expect(
+					(settlementData.buildings as Record<string, string[]>)[type],
+				).toHaveLength(20)
 			})
 		})
 
@@ -1995,8 +2087,16 @@ describe('AutoRoller Generators', () => {
 	describe('generateBuilding', () => {
 		it('should generate a building for each district type', () => {
 			const types = [
-				'harbor', 'market', 'temple', 'artisan', 'garrison',
-				'residential', 'slum', 'scholarly', 'pleasure', 'foreign',
+				'harbor',
+				'market',
+				'temple',
+				'artisan',
+				'garrison',
+				'residential',
+				'slum',
+				'scholarly',
+				'pleasure',
+				'foreign',
 			]
 			types.forEach((type) => {
 				const result = generateBuilding(type)

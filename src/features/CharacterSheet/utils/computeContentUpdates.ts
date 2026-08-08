@@ -8,11 +8,22 @@ export type FieldChange = {
 	after: string
 }
 
+/*
+	What an update is CALLED, beside its name.
+
+	Both of these carried a single `sublabel: string` — `[type, 'Rank 3'].join(' · ')`
+	— because the dialog rendered it as one caption. The dialog is a ledger with
+	named columns now, so two facts joined by a separator would have to be split
+	apart again by the surface that displays them: a parse of a string this file
+	had just built. They travel as the two facts they are.
+*/
 export type SpellUpdate = {
 	id: string
 	index: number
 	name: string
-	sublabel: string
+	/** The spell's discipline or tradition, whichever it has. */
+	type: string
+	rank: number
 	changes: FieldChange[]
 	next: Omit<Spell, 'id'>
 }
@@ -21,7 +32,10 @@ export type TalentUpdate = {
 	id: string
 	index: number
 	name: string
-	sublabel: string
+	/** The skill the rulebook files this talent under. */
+	skill: string
+	/** The rank the character has taken it to, which the refresh preserves. */
+	rank?: number
 	changes: FieldChange[]
 	next: Pick<Ability, 'title' | 'description' | 'skill'>
 }
@@ -101,12 +115,12 @@ export const computeSpellUpdates = (
 		pushChange(changes, 'Effect', spell.effect, next.effect)
 
 		if (changes.length) {
-			const type = source.data.discipline || source.data.tradition || ''
 			updates.push({
 				id: spell.id,
 				index,
 				name: spell.name,
-				sublabel: [type, `Rank ${next.rank}`].filter(Boolean).join(' · '),
+				type: source.data.discipline || source.data.tradition || '',
+				rank: next.rank,
 				changes,
 				next,
 			})
@@ -138,9 +152,8 @@ export const computeTalentUpdates = (abilities: Ability[]): TalentUpdate[] => {
 				id: ability.id,
 				index,
 				name: ability.title,
-				sublabel: [next.skill, ability.rank ? `Rank ${ability.rank}` : '']
-					.filter(Boolean)
-					.join(' · '),
+				skill: next.skill ?? '',
+				rank: ability.rank,
 				changes,
 				next,
 			})

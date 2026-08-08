@@ -21,7 +21,9 @@ describe('parseCostValue', () => {
 		const min = Number.NEGATIVE_INFINITY
 		const max = 20
 		const matches =
-			cost === null ? min === Number.NEGATIVE_INFINITY && max === Number.POSITIVE_INFINITY : cost >= min && cost <= max
+			cost === null
+				? min === Number.NEGATIVE_INFINITY && max === Number.POSITIVE_INFINITY
+				: cost >= min && cost <= max
 		expect(matches).toBe(false)
 	})
 })

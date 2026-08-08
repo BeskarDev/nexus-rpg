@@ -8,9 +8,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 
 # 🧌 Creatures
 
+What lives here: its type, how it hunts, how it fights, and what can be taken from its carcass.
+
 <CreatureAutoRollerWrapper />
 
 ## Creature Type
+
+<TableFold label="Creature Types (d12)" rows={12}>
 
 <RollableTable singleRoll>
 | d12 | Creature Type |
@@ -29,9 +33,15 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 12 | Extraplanar |
 </RollableTable>
 
+</TableFold>
+
+The tables below are what the roller draws from. They are folded because nothing reads them start to finish. Open one to roll it by hand.
+
 ### Beast
 
-<RollableTable singleRoll>
+<TableFold label="Beast" rows={20}>
+
+<RollableTable>
 | d20 | Shape | Head Attribute | Body Attribute | Adaption |
 | --- | --- | --- | --- | --- |
 | 1 | Serpentine | Enormous jaws | Armored hide | Night vision |
@@ -56,9 +66,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Camelid | Long eyelashes | Fat-storing hump | Migratory |
 </RollableTable>
 
+</TableFold>
+
 ### Magical Beast
 
-<RollableTable singleRoll>
+<TableFold label="Magical Beast" rows={20}>
+
+<RollableTable>
 | d20 | Shape | Head Attribute | Body Attribute | Adaption |
 | --- | --- | --- | --- | --- |
 | 1 | Animalistic | Eyeless head | Shadowy pelt | Fire breath |
@@ -83,9 +97,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Ethereal Mist | Shifting eyes | Swarm-body | Control lesser creatures |
 </RollableTable>
 
+</TableFold>
+
 ### Undead
 
-<RollableTable singleRoll>
+<TableFold label="Undead" rows={20}>
+
+<RollableTable>
 | d20 | Shape | Head Attribute | Body Attribute | Adaption |
 | --- | --- | --- | --- | --- |
 | 1 | Skeletal | Hollow sockets | Missing limbs | Undying hunger |
@@ -110,9 +128,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Ashen revenant | Charred skull | Scorched fingers | Death aura |
 </RollableTable>
 
+</TableFold>
+
 ### Giant
 
-<RollableTable singleRoll>
+<TableFold label="Giant" rows={20}>
+
+<RollableTable>
 | d20 | Shape | Head Attribute | Body Attribute | Adaption |
 | --- | --- | --- | --- | --- |
 | 1 | Fomorian | Twisted horn | Multi-limbed | Fire aura |
@@ -137,9 +159,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Crystal Titan | Gemstone crown | Crystalline growths | Thunderclap |
 </RollableTable>
 
+</TableFold>
+
 ### Humanoid
 
-<RollableTable singleRoll>
+<TableFold label="Humanoid" rows={20}>
+
+<RollableTable>
 | d20 | Shape | Head Attributes | Body Attribute | Adaption |
 | --- | --- | --- | --- | --- |
 | 1 | Elf | Pointed ears | Agile limbs | Night vision |
@@ -164,9 +190,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Fairy | Masked | Thick eyebrows | Night stalking |
 </RollableTable>
 
+</TableFold>
+
 ### Dragon
 
-<RollableTable singleRoll>
+<TableFold label="Dragon" rows={20}>
+
+<RollableTable>
 | d20 | Shape | Head Attribute | Body Attribute | Adaption |
 | --- | --- | --- | --- | --- |
 | 1 | Serpentine | Animal head | Scaled, glossy skin | Fire breath |
@@ -191,9 +221,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Magma Serpent | Molten eyes | Spiny ridges | Volcanic eruption |
 </RollableTable>
 
+</TableFold>
+
 ### Elemental
 
-<RollableTable singleRoll>
+<TableFold label="Elemental" rows={20}>
+
+<RollableTable>
 | d20 | Shape | Head Attribute | Body Attribute | Adaption |
 | --- | --- | --- | --- | --- |
 | 1 | Amorphous | Featureless visage | Radiant core | Fire manipulation |
@@ -218,9 +252,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Djinn figure | Ancient visage | Ethereal robes | Illusions |
 </RollableTable>
 
+</TableFold>
+
 ### Construct
 
-<RollableTable singleRoll>
+<TableFold label="Construct" rows={20}>
+
+<RollableTable>
 | d20 | Shape | Body Attribute | Adaption |
 | --- | --- | --- | --- |
 | 1 | Humanoid | Multi-limbed | Earthquake stomp |
@@ -245,9 +283,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Amalgam | Rotating blades | Cutting whirlwind |
 </RollableTable>
 
+</TableFold>
+
 ### Plant
 
-<RollableTable singleRoll>
+<TableFold label="Plant" rows={20}>
+
+<RollableTable>
 | d20 | Shape | Body Attribute | Adaption |
 | --- | --- | --- | --- |
 | 1 | Vine-wrapped | Thorny bark | Poisonous sap |
@@ -272,9 +314,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Venom vine | Coiling fronds | Poisonous touch |
 </RollableTable>
 
+</TableFold>
+
 ### Ooze
 
-<RollableTable singleRoll>
+<TableFold label="Ooze" rows={20}>
+
+<RollableTable>
 | d20 | Shape | Body Attribute | Adaption |
 | --- | --- | --- | --- |
 | 1 | Gelatinous blob | Translucent flesh | Acidic touch |
@@ -299,9 +345,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Dark slime | Shadowy outline | Fear aura |
 </RollableTable>
 
+</TableFold>
+
 ### Aberration
 
-<RollableTable singleRoll>
+<TableFold label="Aberration" rows={20}>
+
+<RollableTable>
 | d20 | Shape | Head Attribute | Body Attribute | Adaption |
 | --- | --- | --- | --- | --- |
 | 1 | Tentacled | Multiple eyes | Swarm-shaped | Mind control |
@@ -326,9 +376,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Stitch horror | Asymmetrical visage | Patchwork flesh | Warp reality |
 </RollableTable>
 
+</TableFold>
+
 ### Extraplanar
 
-<RollableTable singleRoll>
+<TableFold label="Extraplanar" rows={20}>
+
+<RollableTable>
 | d20 | Shape | Head Attribute | Body Attribute | Adaption |
 | --- | --- | --- | --- | --- |
 | 1 | Radiant | Halo of light | Glowing skin | Holy aura |
@@ -353,11 +407,17 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Shadow overlord | Eyes of void | Cloaked in shadow | Mind domination |
 </RollableTable>
 
+</TableFold>
+
 ## Characteristics
+
+The tables below are what the roller draws from. They are folded because nothing reads them start to finish. Open one to roll it by hand.
 
 ### Personality
 
-<RollableTable singleRoll>
+<TableFold label="Personality" rows={12}>
+
+<RollableTable>
 | d12 | Food Method | Reproduction | Social Structure | Behavior |
 | --- | --- | --- | --- | --- |
 | 1 | Ambush predator | Egg layers | Solitary | Territorial |
@@ -374,9 +434,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 12 | Cannibal | Swarm spawning | Servitude (master-servant) | Ambush predator |
 </RollableTable>
 
+</TableFold>
+
 ### Physical Attack
 
-<RollableTable singleRoll>
+<TableFold label="Physical Attack" rows={20}>
+
+<RollableTable>
 | d20 | Body Part | Attack Mode |
 | --- | --- | --- |
 | 1 | Claws | Slash |
@@ -401,9 +465,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Antennae | Jab |
 </RollableTable>
 
+</TableFold>
+
 ### Special Attack
 
-<RollableTable singleRoll>
+<TableFold label="Special Attack" rows={20}>
+
+<RollableTable>
 | d20 | Delivery Method | Attack Type |
 | --- | --- | --- |
 | 1 | Breath | Acid |
@@ -428,9 +496,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Whirl | Banishing |
 </RollableTable>
 
+</TableFold>
+
 ### Special Defense
 
-<RollableTable singleRoll>
+<TableFold label="Special Defense" rows={20}>
+
+<RollableTable>
 | d20 | Defense Method | Defense Type |
 | --- | --- | --- |
 | 1 | Resistance | Harmful energy |
@@ -455,9 +527,13 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | Shielding | Afflictions |
 </RollableTable>
 
+</TableFold>
+
 ### Special Abilities
 
-<RollableTable singleRoll>
+<TableFold label="Special Abilities" rows={20}>
+
+<RollableTable>
 | d20 | Trigger | Action | Subject |
 | --- | --- | --- | --- |
 | 1 | On touch | Move | Shadow |
@@ -482,6 +558,8 @@ import { HarvestAutoRollerWrapper } from '@site/src/components/AutoRoller/Harves
 | 20 | At dawn or dusk | Split | Self |
 </RollableTable>
 
+</TableFold>
+
 ## Harvesting Creature Parts
 
 <HarvestAutoRollerWrapper />
@@ -490,9 +568,13 @@ Use these tables as inspiration for what kind of a creature’s parts are worth 
 
 In general, there should be at least a few options for the players to make decisions about what to prioritize. On a bad harvesting roll, they might be forced to destroy some parts of the creature to harvest others.
 
+The tables below are what the roller draws from. They are folded because nothing reads them start to finish. Open one to roll it by hand.
+
 ### Food
 
-<RollableTable singleRoll>
+<TableFold label="Food" rows={20}>
+
+<RollableTable>
 | d20 | Item | Preparation | Effect |
 | --- | --- | --- | --- |
 | 1 | Marrow | Bone-seared | Strength enhancement |
@@ -517,9 +599,13 @@ In general, there should be at least a few options for the players to make decis
 | 20 | Spinal fluid | Simmered broth | Steady nerves |
 </RollableTable>
 
+</TableFold>
+
 ### Trophy
 
-<RollableTable singleRoll>
+<TableFold label="Trophy" rows={20}>
+
+<RollableTable>
 | d20 | Item | Attribute | Effect |
 | --- | --- | --- | --- |
 | 1 | Skull | Polished | Wise aura |
@@ -544,9 +630,13 @@ In general, there should be at least a few options for the players to make decis
 | 20 | Core | Glowing | Mystic essence |
 </RollableTable>
 
+</TableFold>
+
 ### Tool/Substance
 
-<RollableTable singleRoll>
+<TableFold label="Tool/Substance" rows={20}>
+
+<RollableTable>
 | d20 | Item | Attribute | Effect |
 | --- | --- | --- | --- |
 | 1 | Sinew | Fibrous | Binding material |
@@ -571,9 +661,13 @@ In general, there should be at least a few options for the players to make decis
 | 20 | Fine dust | Powdered | Ritual powder |
 </RollableTable>
 
+</TableFold>
+
 ### Material
 
-<RollableTable singleRoll>
+<TableFold label="Material" rows={20}>
+
+<RollableTable>
 | d20 | Item | Attribute | Property |
 | --- | --- | --- | --- |
 | 1 | Hide | Tough | Armor crafting |
@@ -597,3 +691,5 @@ In general, there should be at least a few options for the players to make decis
 | 19 | Ectoplasm | Ethereal | Magic channeling |
 | 20 | Glow organ | Luminous | Illumination device |
 </RollableTable>
+
+</TableFold>

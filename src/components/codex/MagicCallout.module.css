@@ -1,0 +1,35 @@
+.callout {
+	display: flex;
+	gap: 0.75rem;
+	align-items: flex-start;
+	/* The shared `.alert` frame (M8 S1) zeroes the alert padding so admonition
+	   title bands can run edge to edge. This callout has no band, so it restores
+	   its own padding through the same vars rather than racing the shorthand. */
+	--ifm-alert-padding-vertical: 0.85rem;
+	--ifm-alert-padding-horizontal: 1rem;
+	margin: 1rem 0;
+	border-radius: 2px;
+}
+
+.glyph {
+	flex: 0 0 auto;
+	line-height: 0;
+	margin-top: 0.1rem;
+}
+
+.body {
+	flex: 1 1 auto;
+}
+
+.title {
+	display: block;
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	margin-bottom: 0.25rem;
+	color: var(--rune-cyan-text);
+}
+
+.body > :last-child {
+	margin-bottom: 0;
+}

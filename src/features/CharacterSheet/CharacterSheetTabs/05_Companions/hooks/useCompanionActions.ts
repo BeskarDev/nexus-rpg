@@ -37,8 +37,11 @@ export const useCompanionActions = () => {
 
 	const updateCompanionWithAutoHP = useCallback(
 		(
+			// `Partial<Companion>` since M13 S7: the row commits ONE field on blur, so it
+			// arrives with a markdown and no name (or vice versa). The old signature
+			// demanded both because the edit mode it served saved both at once.
 			id: string,
-			updates: { name: string; markdown: string },
+			updates: Partial<Companion>,
 			currentHP?: number,
 		) => {
 			// First update the basic fields

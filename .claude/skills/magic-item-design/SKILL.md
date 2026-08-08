@@ -32,7 +32,18 @@ The analysis doc contains **proposed but not-yet-implemented changes** (splittin
 
 ## Design Principles
 
-**Binding rules distilled from owner feedback — [references/designer-principles.md](references/designer-principles.md) holds the full text.** Native principles 1–10 plus principles ported from the spell-design and talent-design corpora, and pointers to the shared spell-design wording/GM-facing/condition convention files that apply to item text verbatim. Read it before any design pass. The most frequently load-bearing: enchantments grant boons, never auto-success (1); enchantments complement talents, never replace them (2); powerful actives cost limited uses, passives stay moderate (3); information effects give the GM bounded parameters (4); one enchantment per item, hard limit (5); quality tier matches party level (6); damage/healing follows the spell scaling frameworks with quality tier ≈ spell rank for repeatable effects and +1 rank for scarce single-use or 1/day access (8); never gate an ongoing effect on a static-TN save (9); a drawback enacts its own fiction and never touches Resolve (10); items assist, never bypass (11); never scale a cap (12); a granted immunity needs a circumvention (13); high-impact conditions never ride no-roll triggers (16); weigh worldbuilding reach of information/economic items (19); validate against talents and spells, not just other items (20); Q7 is the mortal crafting ceiling — Q8 items are found artifacts, never crafted or bought (21); material effects stay low on mental load — passive first, cooldown reactive at most (22); a material serves every item type it plausibly makes, minimum three (23); catalyst enchantments and materials belong to the host item — only fixed implements (wand, staff, orb) are their own host (24); wearable material effects only on Body, Back, Feet, and Hands slots (25).
+**Binding rules distilled from owner feedback — [references/designer-principles.md](references/designer-principles.md) holds the full text.** Native principles plus principles ported from the spell-design and talent-design corpora, and pointers to the shared spell-design wording/GM-facing/condition convention files that apply to item text verbatim.
+
+**Read the reference before any design pass** — it carries a one-line hook per principle, including the material and catalyst rules (22–25) that this list omits. These eight are the ones worth knowing first:
+
+- **(5)** One enchantment per item. Hard limit.
+- **(1, 3)** Enchantments grant boons, never auto-success. Powerful actives cost limited uses; passives stay moderate.
+- **(6, 21)** Quality tier matches party level. Q7 is the mortal crafting ceiling — Q8 items are found artifacts, never crafted or bought.
+- **(8)** Damage and healing follow the spell scaling frameworks: quality tier ≈ spell rank for repeatable effects, +1 rank for scarce single-use or 1/day access.
+- **(11, 12, 13)** Items assist, never bypass. Never scale a cap. A granted immunity needs a circumvention.
+- **(2, 20)** Enchantments complement talents rather than replacing them — validate against talents and spells, not only other items.
+- **(4, 16)** Information effects hand the GM bounded parameters. High-impact conditions never ride no-roll triggers.
+- **(9, 10)** Never gate an ongoing effect on a static-TN save. A drawback enacts its own fiction and never touches Resolve.
 
 ## Creation Workflow
 

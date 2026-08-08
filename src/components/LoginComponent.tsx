@@ -15,7 +15,7 @@ export const LoginComponent: React.FC = () => {
 			<Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
 				<Typography>Hello there {currentUser?.email ?? ''}</Typography>
 				<Button variant="contained" color="primary" onClick={() => signOut()}>
-					LOGOUT
+					Sign out
 				</Button>
 			</Box>
 		)
@@ -36,6 +36,7 @@ export const LoginComponent: React.FC = () => {
 		<Box
 			component="form"
 			onSubmit={onSubmit}
+			className="cs-account-panel"
 			sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
 		>
 			{error && (
@@ -43,12 +44,15 @@ export const LoginComponent: React.FC = () => {
 					Error during login! Please check your credentials.
 				</Alert>
 			)}
-			<Typography variant="h6">Login</Typography>
+			{/* The panel says what it is in the sheet's caption register (M13 S13),
+				not as an h6 — a heading level inside a portalled popover is a document
+				structure that does not exist. */}
+			<Typography className="cs-account-panel__caption">Sign in</Typography>
 			<TextField
 				required
 				type="email"
-				label="email"
-				placeholder="type your email"
+				label="Email"
+				placeholder="you@example.com"
 				value={email}
 				onChange={(e) => {
 					setEmail(e.target.value)
@@ -62,8 +66,8 @@ export const LoginComponent: React.FC = () => {
 			<TextField
 				required
 				type="password"
-				label="password"
-				placeholder="type your password"
+				label="Password"
+				placeholder="your password"
 				value={password}
 				onChange={(e) => {
 					setPassword(e.target.value)
@@ -80,7 +84,7 @@ export const LoginComponent: React.FC = () => {
 				color="primary"
 				disabled={isSigningIn}
 			>
-				LOGIN
+				Sign in
 			</Button>
 		</Box>
 	)

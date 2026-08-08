@@ -84,8 +84,8 @@ No adventurer exists in isolation. You begin the game with three significant con
 
 Every adventurer is shaped not only by where they came from, but by what drives them and what they cannot escape. Choose one **Motivation** and one **Vice** to define the twin forces that pull your character forward and drag them astray.
 
-- **Motivation:** your core drive; the purpose that pushes you beyond safety and comfort.
-- **Vice:** your defining flaw; the compulsion or weakness that will betray you at the worst moment.
+- **Motivation:** your core drive. The purpose that pushes you beyond safety and comfort.
+- **Vice:** your defining flaw. The compulsion or weakness that will betray you at the worst moment.
 
 Both can be invoked during play to gain Resolve. The GM can invoke your Vice to offer you a reward for indulging in it. See the Resolve section for details.
 
@@ -166,6 +166,8 @@ Every adventurer begins with the following standard equipment:
 Additionally, you receive 350 coins to spend on equipment and items of your choice:
 
 - Selecting a weapon requiring ammunition gives you one unit of that ammunition for free (e.g., arrows (d8) for a bow)
+- If you took the Animal Companion talent, you can buy a trained companion here, at the cost for its Tier (see the Trained Companion Costs table in the Mounts & Companions section). The talent grants the ability to bond with a companion, never the companion itself. You can also start without one and tame it during play
+- If you learned a spell that summons a lasting companion, such as Conjure Familiar, you can pay its ritual cost in ingredients here to begin play with your familiar already summoned
 - You keep any unspent coins
 
 > Example: Arzhag the Warrior spent their 350 coins on a battleaxe (100 coins), a light shield (150 coins), leather armor (50 coins), and kept 50 coins for future needs.
@@ -187,9 +189,9 @@ Remember that the journey of an adventurer is never complete. There are always n
 
 ## Level 1 → Early Progression (Quick Example)
 
-- Session rewards: typically **1 XP each session**; milestone sessions may grant **2 XP**
+- Session rewards: typically **1 XP each session**. Milestone sessions may grant **2 XP**
 - Spending XP: after a session or downtime, allocate XP to skills (respect your level’s max XP per skill)
-- Level gating: total XP spent determines your **character level**; level sets the max XP you can invest in any single skill
+- Level gating: total XP spent determines your **character level**. Level sets the max XP you can invest in any single skill
 - Example: After 4 sessions, you earned **4 XP**
   - Spend **2 XP** to raise **Athletics** to rank 1 → you gain **1 talent point** for Athletics
   - Spend **2 XP** to raise **Stealth** to rank 1 → another **1 talent point** for Stealth
@@ -197,4 +199,17 @@ Remember that the journey of an adventurer is never complete. There are always n
 
 ## Character Sheet
 
+<details>
+<summary>The printable character sheet, both pages</summary>
+
 Use this sheet to record your adventurer's statistics, equipment, and connections within the game world.
+
+**Page one: statistics, equipment and abilities.**
+
+![figure-img|Character sheet, page one. The left half holds name, folk, upbringing and background, the four attribute dice with Parry, Dodge, Resist and Resolve beneath them, current and maximum HP, armor value, three wound circles, level and XP, a ranked skill list and an abilities panel. The right half holds coins and carried load, a weapons table with damage, properties, cost and load, and a long equipment and items table.](./img/character-sheet-p1.jpg)
+
+**Page two: magic, description and connections.**
+
+![figure-img|Character sheet, page two. The left half holds magic skill, disciplines or traditions, current and maximum Focus, and a learned spells table with cost, rank, name, target, range and properties. The right half holds motivation, height, weight and age, a physical description box, and lists for allies, contacts, rivals and personal notes.](./img/character-sheet-p2.jpg)
+
+</details>

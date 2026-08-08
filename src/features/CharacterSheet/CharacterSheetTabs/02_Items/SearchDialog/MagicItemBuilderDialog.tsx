@@ -1,48 +1,27 @@
-/**
- * Magic Item Builder Dialog
- * Implementation based on the 2024 magic items system
- */
-
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import {
-	Dialog,
-	DialogTitle,
-	DialogContent,
-	DialogActions,
-	Button,
-	Stepper,
-	Step,
-	StepLabel,
-	Box,
-	Typography,
-	FormControl,
-	InputLabel,
-	Select,
-	MenuItem,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-	Paper,
-	Radio,
-	Card,
-	CardContent,
-	Grid,
-	Divider,
-	TextField,
-	Alert,
-	Chip,
-} from '@mui/material'
+	BuilderRegister,
+	BuilderShell,
+	BuilderVerb,
+	BuilderVerbSpacer,
+	ChoiceRail,
+	FilterChip,
+	GrantLine,
+	Ledger,
+	LedgerEmpty,
+	LedgerRow,
+	SearchField,
+	type RailOption,
+} from '@site/src/components/builder'
+import { ConfirmDialog } from '../../../components'
+import { MagicItemPlate } from './MagicItemPlate'
 import {
-	ArrowBack,
-	ArrowForward,
-	Cancel,
-	Refresh,
-	Add,
-} from '@mui/icons-material'
-import { MagicItemBuilderOutput } from './MagicItemBuilderOutput'
+	ARMOR_CATEGORIES,
+	CATEGORIES,
+	CATEGORY_LABEL,
+	CATEGORY_SIGIL,
+	WEAPON_CATEGORIES,
+} from './magicItemMarks'
 
 import type {
 	CharacterDocument,
@@ -80,30 +59,12 @@ import {
 	getStaffCharges,
 	getStaffSpellCapacity,
 } from '../utils/magicItemsConfig'
+import {
+	getCulturalVariants,
+	hasCulturalVariants,
+} from '../utils/culturalVariants'
+import { getBaseDamageType } from '../utils/weaponDamage'
 
-// Color mapping for weapon categories - each category gets a unique color
-const weaponCategoryColorMap: Record<
-	string,
-	'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
-> = {
-	Axe: 'error',
-	Blade: 'primary',
-	Bow: 'success',
-	Brawling: 'warning',
-	Crossbow: 'info',
-	Mace: 'secondary',
-	Polearm: 'error',
-	Shield: 'info',
-	Thrown: 'success',
-}
-
-const getWeaponCategoryColor = (
-	category: string,
-): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
-	return weaponCategoryColorMap[category] || 'default' as any
-}
-
-// Helpers to identify wand/staff base items
 const isWandItem = (item: BaseItem | null): boolean =>
 	!!item && item.properties?.includes('wand') === true
 const isStaffItem = (item: BaseItem | null): boolean =>
@@ -111,22 +72,62 @@ const isStaffItem = (item: BaseItem | null): boolean =>
 const isWandOrStaff = (item: BaseItem | null): boolean =>
 	isWandItem(item) || isStaffItem(item)
 
+const QUALITIES: QualityTier[] = [3, 4, 5, 6, 7, 8]
+const coins = (value: number) => value.toLocaleString('en-US')
+
 export type MagicItemBuilderDialogProps = {
 	open: boolean
 	onClose: () => void
 	onCreateItem?: (item: Partial<Item> | Partial<Weapon>) => void
 	character?: CharacterDocument
-	onItemCreated?: (item: Partial<Item> | Partial<Weapon>, itemName: string) => void
+	onItemCreated?: (
+		item: Partial<Item> | Partial<Weapon>,
+		itemName: string,
+	) => void
 }
 
-const steps = [
-	'Select Base Item',
-	'Choose Quality (Q3-Q8)',
-	'Select Material (Required)',
-	'Enchantment (Optional)',
-	'Review & Create',
-]
+/** Which register is showing its controls. */
+type OpenRegister =
+	'item' | 'quality' | 'material' | 'enchantment' | 'appearance'
 
+/**
+ * The Magic Item Builder — a commission, and the item it prices (M13 S8).
+ *
+ * ## What this replaced
+ *
+ * A five-step MUI `Stepper` over four `TableContainer`s of `Radio` rows, plus a
+ * review `Card`. Roughly 1,100 lines of the 1,623 were the tables. Its faults were
+ * the ones the Companion Builder had already been rebuilt out of, plus two of its
+ * own:
+ *
+ * - **`weaponCategoryColorMap`** put nine weapon categories on MUI's SEMANTIC
+ *   palette — an Axe was `error`, a Bow was `success`. See `magicItemMarks.ts`;
+ *   this is the third such palette deleted in this slice.
+ * - **Five `Alert severity="info"` boxes** carried the rules ("Magic items start at
+ *   Quality 3", "All magic items require a material"). A filled severity box is
+ *   Material's voice, and the rule it states belongs on the control it constrains,
+ *   not in a notification above it. Each is now the register's own note, or the
+ *   reason printed on a locked register.
+ * - **Nothing showed the consequence of a choice while making it.** Quality is the
+ *   lever that prices the whole item, and its effects were spread across four
+ *   columns of a table you left behind on the next step. It has a grant line now,
+ *   the same device the companion tier rail uses.
+ * - **The cost — the one calculation the tool exists to perform — was a `Grid` of
+ *   label/value pairs** at body weight, indistinguishable from the six fields under
+ *   it. It is the plate's most legible register now. See `MagicItemPlate`.
+ *
+ * ## Why the registers collapse, when the Companion Builder's do not
+ *
+ * Four dependent decisions, three of them long lists (37 weapons, 88 materials, 50
+ * enchantments before filtering). One growing register cannot hold three lists, and
+ * three capped ones would be a column of scrollbars. So a settled register states
+ * its answer and gets out of the way, and the one being decided takes the height —
+ * the expanded-row pattern applied to a decision rather than to an item.
+ *
+ * This is what the `Stepper` was really for. The difference is that a step you have
+ * passed is still ON SCREEN with its answer, and every step is reachable in one
+ * press instead of by walking back through the ones between.
+ */
 export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 	open,
 	onClose,
@@ -134,10 +135,6 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 	character,
 	onItemCreated,
 }) => {
-	const [activeStep, setActiveStep] = useState(0)
-	const [selectedCategory, setSelectedCategory] = useState<ItemCategory | ''>(
-		'',
-	)
 	const [selectedBaseItem, setSelectedBaseItem] = useState<BaseItem | null>(
 		null,
 	)
@@ -146,54 +143,112 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 		useState<SpecialMaterial | null>(null)
 	const [selectedEnchantment, setSelectedEnchantment] =
 		useState<Enchantment | null>(null)
-	const [targetLocation, setTargetLocation] = useState<'worn' | 'carried'>(
-		'carried',
+	/**
+	 * The cultural weapon or armor type the item is styled as — a *Bastard Sword*
+	 * rather than a *Longsword*. Null means the base item's own name.
+	 *
+	 * A NAME and nothing else, per the equipment chapter's two "of the Regions"
+	 * sections. It is deliberately not part of `BaseItem`, so no cost, load or
+	 * property calculation can ever read it.
+	 */
+	const [selectedAppearance, setSelectedAppearance] = useState<string | null>(
+		null,
 	)
+	/**
+	 * Where the item lands. NOT a question this dialog asks any more (M13 S8, second
+	 * pass): it is a filing instruction, not a property of the item, and
+	 * `ItemDetails` already carries a Location row that edits it on the sheet. It was
+	 * a numbered register here only because the old `Stepper` had it as step 5.
+	 * Everything arrives carried; the sheet moves it.
+	 */
+	const targetLocation: 'worn' | 'carried' = 'carried'
+	const [openRegister, setOpenRegister] = useState<OpenRegister>('item')
 	const [showConfirmClose, setShowConfirmClose] = useState(false)
-	const [createdItem, setCreatedItem] = useState<(Partial<Weapon> | Partial<Item>) & { slot?: string } | null>(null)
-	const [createdItemName, setCreatedItemName] = useState('')
-	const [copiedToClipboard, setCopiedToClipboard] = useState(false)
+	const [copied, setCopied] = useState(false)
 
-	const availableQualities: QualityTier[] = [3, 4, 5, 6, 7, 8]
+	// Ledger-local filters.
+	const [itemQuery, setItemQuery] = useState('')
+	const [categoryFilter, setCategoryFilter] = useState<ItemCategory | null>(
+		null,
+	)
+	const [materialQuery, setMaterialQuery] = useState('')
+	const [materialKind, setMaterialKind] = useState<'base' | 'special' | null>(
+		null,
+	)
+	const [enchantQuery, setEnchantQuery] = useState('')
 
-	// Auto-select base item for categories with only one option
+	const category = (selectedBaseItem?.category ?? '') as ItemCategory | ''
+
+	/**
+	 * A base material is chosen for you when quality is set.
+	 *
+	 * Kept from the old builder: a material is REQUIRED, most items want the plain
+	 * one, and making every reader pick "Bronze" before they can price anything is
+	 * friction with no decision in it. The register still shows the answer and opens
+	 * to change it.
+	 */
 	useEffect(() => {
-		if (selectedCategory) {
-			const categoryItems = baseItems[selectedCategory]
-			if (categoryItems.length === 1) {
-				setSelectedBaseItem(categoryItems[0])
-			} else {
-				setSelectedBaseItem(null)
-			}
-		}
-	}, [selectedCategory])
+		if (!category || !selectedQuality || selectedMaterial) return
+		const materials = getAvailableMaterials(category, selectedQuality)
+		const base =
+			materials.find((m) => m.materialType === 'base' && m.name === 'Bronze') ||
+			materials.find((m) => m.materialType === 'base')
+		if (base) setSelectedMaterial(base)
+	}, [category, selectedQuality, selectedMaterial])
 
-	// Auto-select a base material (Bronze/Leather/etc.) when quality is selected
-	useEffect(() => {
-		if (selectedCategory && selectedQuality && !selectedMaterial) {
-			const materials = getAvailableMaterials(selectedCategory, selectedQuality)
-			// Find bronze or any base material
-			const baseMaterial =
-				materials.find(
-					(m) => m.materialType === 'base' && m.name === 'Bronze',
-				) || materials.find((m) => m.materialType === 'base')
-			if (baseMaterial) {
-				setSelectedMaterial(baseMaterial)
-			}
-		}
-	}, [selectedCategory, selectedQuality])
+	const availableMaterials = useMemo(
+		() =>
+			category && selectedQuality
+				? getAvailableMaterials(category, selectedQuality)
+				: [],
+		[category, selectedQuality],
+	)
 
-	const availableMaterials = useMemo(() => {
-		if (!selectedCategory || !selectedQuality) return []
-		return getAvailableMaterials(selectedCategory, selectedQuality)
-	}, [selectedCategory, selectedQuality])
+	const availableEnchantments = useMemo(
+		() =>
+			category && selectedQuality
+				? getAvailableEnchantments(category, selectedQuality)
+				: [],
+		[category, selectedQuality],
+	)
 
-	const availableEnchantments = useMemo(() => {
-		if (!selectedCategory || !selectedQuality) return []
-		return getAvailableEnchantments(selectedCategory, selectedQuality)
-	}, [selectedCategory, selectedQuality])
+	const shownItems = useMemo(() => {
+		const needle = itemQuery.trim().toLowerCase()
+		const pool = categoryFilter
+			? baseItems[categoryFilter]
+			: CATEGORIES.flatMap((key) => baseItems[key])
+		return pool.filter(
+			(item) =>
+				!needle ||
+				item.name.toLowerCase().includes(needle) ||
+				item.properties?.toLowerCase().includes(needle) ||
+				(item.weaponCategory ?? '').toLowerCase().includes(needle),
+		)
+	}, [itemQuery, categoryFilter])
 
-	const costBreakdown = useMemo(() => {
+	const shownMaterials = useMemo(() => {
+		const needle = materialQuery.trim().toLowerCase()
+		return availableMaterials.filter((material) => {
+			if (materialKind && material.materialType !== materialKind) return false
+			return (
+				!needle ||
+				material.name.toLowerCase().includes(needle) ||
+				material.description.toLowerCase().includes(needle)
+			)
+		})
+	}, [availableMaterials, materialQuery, materialKind])
+
+	const shownEnchantments = useMemo(() => {
+		const needle = enchantQuery.trim().toLowerCase()
+		return availableEnchantments.filter(
+			(enchantment) =>
+				!needle ||
+				enchantment.name.toLowerCase().includes(needle) ||
+				enchantment.description.toLowerCase().includes(needle),
+		)
+	}, [availableEnchantments, enchantQuery])
+
+	const cost = useMemo(() => {
 		if (!selectedBaseItem || !selectedQuality) {
 			return {
 				baseCost: 0,
@@ -203,47 +258,107 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 				totalCost: 0,
 			}
 		}
-
-		const baseCost = selectedBaseItem.cost
-		const magicItemBaseCost = getMagicItemBaseCost(
-			selectedQuality,
-			selectedBaseItem.category,
-		)
-		const materialExtraCost = getSpecialMaterialExtraCost(
-			selectedMaterial,
-			selectedQuality,
-			selectedBaseItem.category,
-		)
-		const enchantmentCost = selectedEnchantment
-			? getEnchantmentCost(selectedQuality, selectedBaseItem.category)
-			: 0
-		const totalCost = calculateMagicItemCost(
-			selectedBaseItem,
-			selectedQuality,
-			selectedMaterial,
-			selectedEnchantment,
-		)
-
 		return {
-			baseCost,
-			magicItemBaseCost,
-			materialExtraCost,
-			enchantmentCost,
-			totalCost,
+			baseCost: selectedBaseItem.cost,
+			magicItemBaseCost: getMagicItemBaseCost(
+				selectedQuality,
+				selectedBaseItem.category,
+			),
+			materialExtraCost: getSpecialMaterialExtraCost(
+				selectedMaterial,
+				selectedQuality,
+				selectedBaseItem.category,
+			),
+			enchantmentCost: selectedEnchantment
+				? getEnchantmentCost(selectedQuality, selectedBaseItem.category)
+				: 0,
+			totalCost: calculateMagicItemCost(
+				selectedBaseItem,
+				selectedQuality,
+				selectedMaterial,
+				selectedEnchantment,
+			),
 		}
 	}, [selectedBaseItem, selectedQuality, selectedMaterial, selectedEnchantment])
 
-	const finalItemName = useMemo(() => {
-		if (!selectedBaseItem || !selectedQuality) return ''
-		return generateItemName(
+	const enhanceProperties = (
+		baseProperties: string,
+		quality: QualityTier,
+		isWeapon: boolean,
+	): string => {
+		let properties = baseProperties
+
+		if (
+			ARMOR_CATEGORIES.includes(category as ItemCategory) &&
+			selectedBaseItem
+		) {
+			const totalAV = getTotalAV(selectedBaseItem, quality)
+			if (properties.includes('AV +')) {
+				properties = properties.replace(/AV \+\d+/g, `AV +${totalAV}`)
+			} else if (totalAV > 0) {
+				properties = `AV +${totalAV}${properties ? ', ' + properties : ''}`
+			}
+		}
+
+		if (category === 'ammo' && selectedBaseItem) {
+			const damageBonus = getAmmoDamageBonus(
+				Number(selectedBaseItem.quality),
+				quality,
+			)
+			const ammoProperties: string[] = []
+			if (damageBonus > 0) ammoProperties.push(`+${damageBonus} dmg`)
+			ammoProperties.push(selectedEnchantment ? '3 pieces' : 'supply')
+			const base = properties
+				? properties
+						.replace(/supply/g, '')
+						.replace(/,\s*$/, '')
+						.replace(/^,\s*/, '')
+				: ''
+			properties = (base ? [base, ...ammoProperties] : ammoProperties)
+				.filter((p) => p.trim())
+				.join(', ')
+		}
+
+		return modifyPropertiesString(
+			properties,
+			calculatePropertyModifications(
+				category as ItemCategory,
+				selectedMaterial,
+				selectedEnchantment,
+			),
+		)
+	}
+
+	const finalName = useMemo(
+		() =>
+			selectedBaseItem && selectedQuality
+				? generateItemName(
+						selectedBaseItem,
+						selectedMaterial,
+						selectedEnchantment,
+						selectedQuality,
+						selectedAppearance,
+					)
+				: '',
+		[
 			selectedBaseItem,
 			selectedMaterial,
 			selectedEnchantment,
 			selectedQuality,
-		)
-	}, [selectedBaseItem, selectedMaterial, selectedEnchantment, selectedQuality])
+			selectedAppearance,
+		],
+	)
 
-	const finalItemDescription = useMemo(() => {
+	/** The appearances open to the chosen base item, its own name first. */
+	const appearances = useMemo(
+		() => (selectedBaseItem ? getCulturalVariants(selectedBaseItem.name) : []),
+		[selectedBaseItem],
+	)
+	const itemHasVariants = Boolean(
+		selectedBaseItem && hasCulturalVariants(selectedBaseItem.name),
+	)
+
+	const finalDescription = useMemo(() => {
 		if (!selectedBaseItem || !selectedQuality) return ''
 		let description = generateItemDescription(
 			selectedBaseItem,
@@ -251,136 +366,144 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 			selectedMaterial,
 			selectedEnchantment,
 		)
-
-		// Add usage note for enchanted ammo
-		if (selectedCategory === 'ammo' && selectedEnchantment) {
+		if (category === 'ammo' && selectedEnchantment) {
 			description +=
 				'\n\nEach shot consumes 1 use, regardless of whether it hits.'
 		}
-
 		return description
 	}, [
 		selectedBaseItem,
 		selectedQuality,
 		selectedMaterial,
 		selectedEnchantment,
-		selectedCategory,
+		category,
 	])
 
-	const hasUnsavedChanges = useMemo(() => {
-		return !!(
-			selectedCategory ||
-			selectedBaseItem ||
-			selectedQuality ||
-			selectedMaterial ||
-			selectedEnchantment
-		)
-	}, [
-		selectedCategory,
-		selectedBaseItem,
-		selectedQuality,
-		selectedMaterial,
-		selectedEnchantment,
-	])
+	const finalProperties =
+		selectedBaseItem && selectedQuality
+			? enhanceProperties(
+					selectedBaseItem.properties,
+					selectedQuality,
+					WEAPON_CATEGORIES.includes(category as ItemCategory),
+				)
+			: ''
+
+	const finalLoad =
+		selectedBaseItem && selectedQuality
+			? calculateFinalLoad(
+					selectedBaseItem.load,
+					calculatePropertyModifications(
+						category as ItemCategory,
+						selectedMaterial,
+						selectedEnchantment,
+					),
+				)
+			: null
+
+	const hasDraft = Boolean(
+		selectedBaseItem || selectedQuality || selectedEnchantment,
+	)
+	const canCreate = Boolean(
+		selectedBaseItem && selectedQuality && selectedMaterial,
+	)
+
+	const handleReset = () => {
+		setSelectedBaseItem(null)
+		setSelectedQuality('')
+		setSelectedMaterial(null)
+		setSelectedEnchantment(null)
+		setSelectedAppearance(null)
+		setOpenRegister('item')
+		setItemQuery('')
+		setCategoryFilter(null)
+		setMaterialQuery('')
+		setMaterialKind(null)
+		setEnchantQuery('')
+	}
 
 	const handleClose = () => {
-		if (hasUnsavedChanges) {
-			setShowConfirmClose(true)
-		} else {
+		if (hasDraft) setShowConfirmClose(true)
+		else {
 			handleReset()
 			onClose()
 		}
 	}
 
-	const handleConfirmClose = () => {
-		setShowConfirmClose(false)
-		handleReset()
-		onClose()
-	}
-
-	const handleCancelClose = () => {
-		setShowConfirmClose(false)
-	}
-
-	const handleNext = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep + 1)
-	}
-
-	const handleBack = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep - 1)
-	}
-
-	const handleStepClick = (stepIndex: number) => {
-		const canNavigateToStep = (targetStep: number): boolean => {
-			if (targetStep === 0) return true
-
-			for (let i = 0; i < targetStep; i++) {
-				if (!canProceedFromStep(i)) return false
-			}
-			return true
-		}
-
-		if (canNavigateToStep(stepIndex)) {
-			setActiveStep(stepIndex)
-		}
-	}
-
-	const handleReset = () => {
-		setActiveStep(0)
-		setSelectedCategory('')
-		setSelectedBaseItem(null)
-		setSelectedQuality('')
+	const chooseItem = (item: BaseItem) => {
+		setSelectedBaseItem(item)
+		// The material and enchantment pools are derived from the category, so a
+		// different category invalidates both. Cleared rather than silently kept.
 		setSelectedMaterial(null)
 		setSelectedEnchantment(null)
-		setTargetLocation('carried')
+		// The appearance list is the base item's own, so a different item invalidates
+		// it as surely as the category invalidates the material.
+		setSelectedAppearance(null)
+		/*
+			Appearance next, where it has anything to offer (owner review).
+
+			It sat last on the theory that the register changing nothing but the name
+			must not interrupt the ones that price the item. But it is answered ENTIRELY
+			by the base item — nothing downstream feeds it — so putting it last made the
+			reader carry "what is this thing called" past three decisions that have no
+			bearing on it. Naming the sword is part of picking the sword.
+
+			Items with no variants skip straight to quality: advancing into a locked
+			register would state a decision that is not there.
+		*/
+		setOpenRegister(hasCulturalVariants(item.name) ? 'appearance' : 'quality')
 	}
 
-	// Format numbers with thousand separators
-	const formatCost = (cost: number): string => {
-		return cost.toLocaleString('en-US')
+	const chooseAppearance = (name: string | null) => {
+		setSelectedAppearance(name)
+		setOpenRegister('quality')
 	}
 
-	const canProceedFromStep = (step: number): boolean => {
-		switch (step) {
-			case 0:
-				return !!selectedBaseItem
-			case 1:
-				return !!selectedQuality
-			case 2:
-				return !!selectedMaterial // Materials are mandatory
-			case 3:
-				return true // Enchantments are optional
-			case 4:
-				return !!selectedMaterial
-			default:
-				return false
-		}
+	const chooseQuality = (value: QualityTier) => {
+		setSelectedQuality(value)
+		// A material or enchantment can fall out of range when quality drops.
+		setSelectedMaterial(null)
+		setSelectedEnchantment(null)
+		/*
+			Straight to the ENCHANTMENT, not the material.
+
+			Material is required by the rules, but the plain one is chosen for you and
+			is what most items want — so leading with it puts a settled question in
+			front of the interesting one. The enchantment is what makes the thing
+			magic, and it is the reason anyone opened this dialog. Material sits after
+			it as a refinement, already answered.
+		*/
+		setOpenRegister('enchantment')
+	}
+
+	/*
+		Choosing ADVANCES the chain, it does not just record an answer (owner review).
+
+		Every register up to here handed you the next one, and the enchantment did not:
+		picking one left its own list open, so the material was reachable only through
+		its `Change` control, which a reader who had never seen it open had no reason
+		to press. A settled register that stays open is also the one thing the collapse
+		rule exists to prevent.
+	*/
+	const chooseEnchantment = (enchantment: Enchantment | null) => {
+		setSelectedEnchantment(enchantment)
+		setOpenRegister('material')
+	}
+
+	// Material is the end of the chain, so it stays open with its answer marked.
+	const chooseMaterial = (material: SpecialMaterial) => {
+		setSelectedMaterial(material)
 	}
 
 	const handleCreateItem = () => {
-		if (
-			!selectedBaseItem ||
-			!selectedQuality ||
-			!selectedMaterial ||
-			!selectedCategory
-		)
+		if (!selectedBaseItem || !selectedQuality || !selectedMaterial || !category)
 			return
 
-		const isWeapon =
-			selectedCategory.includes('weapon') || selectedCategory === 'shield'
-
-		const modifications = calculatePropertyModifications(
-			selectedCategory as ItemCategory,
-			selectedMaterial,
-			selectedEnchantment,
-		)
-		const finalLoad = calculateFinalLoad(selectedBaseItem.load, modifications)
-
+		const isWeapon = WEAPON_CATEGORIES.includes(category)
 		const baseProps = {
-			name: finalItemName,
-			description: finalItemDescription,
-			cost: costBreakdown.totalCost,
-			load: finalLoad,
+			name: finalName,
+			description: finalDescription,
+			cost: cost.totalCost,
+			load: finalLoad ?? selectedBaseItem.load,
 			location: targetLocation,
 			uses: 0,
 			durability: getDurabilityDie(selectedBaseItem, selectedQuality) as any,
@@ -388,18 +511,34 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 
 		let itemToCreate: Partial<Weapon> | Partial<Item> | null = null
 
-		if (isWeapon) {
+		if (isWeapon || category === 'spell-catalyst') {
 			const baseDamage = Number(selectedBaseItem.damage) || 0
-			const damageBonus = getWeaponDamageBonus(
-				Number(selectedBaseItem.quality),
-				selectedQuality,
-			)
-
+			const bonus = isWeapon
+				? getWeaponDamageBonus(
+						Number(selectedBaseItem.quality),
+						selectedQuality,
+					)
+				: getSpellDamageBonus(selectedQuality)
 			itemToCreate = {
 				...baseProps,
 				damage: {
-					base: '',
-					weapon: baseDamage + damageBonus,
+					/*
+						The rules default, from the weapon's own type (owner report: a
+						Cleaver arrived with an empty base attribute).
+
+						This was a hardcoded `''`, so every weapon the builder has ever made
+						landed on the sheet with no base attribute at all and a damage
+						equation that could not be read. `importWeapons` defaults it to
+						`STR`, but the builder's payload is spread OVER that default, so the
+						empty string won every time.
+
+						A spell catalyst keeps the empty base on purpose: its bonus applies
+						to a spell, and the spell carries its own attribute.
+					*/
+					base: isWeapon
+						? getBaseDamageType(selectedBaseItem.weaponCategory)
+						: '',
+					weapon: baseDamage + bonus,
 					other: 0,
 					otherWeak: 0,
 					otherStrong: 0,
@@ -413,1186 +552,614 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 				),
 				quality: selectedQuality,
 			} as Partial<Weapon>
-		} else if (selectedCategory === 'spell-catalyst') {
-			const baseDamage = Number(selectedBaseItem.damage) || 0
-			const spellDamageBonus = getSpellDamageBonus(selectedQuality)
-
-			itemToCreate = {
-				...baseProps,
-				damage: {
-					base: '',
-					weapon: baseDamage + spellDamageBonus,
-					other: 0,
-					otherWeak: 0,
-					otherStrong: 0,
-					otherCritical: 0,
-					type: 'physical',
-				},
-				properties: enhanceProperties(
-					selectedBaseItem.properties,
-					selectedQuality,
-					false,
-				),
-				quality: selectedQuality,
-			} as Partial<Weapon>
 		} else {
-			const enhancedProps = enhanceProperties(
+			const enhanced = enhanceProperties(
 				selectedBaseItem.properties,
 				selectedQuality,
-				isWeapon,
+				false,
 			)
 			itemToCreate = {
 				...baseProps,
-				properties: enhancedProps ? enhancedProps.split(', ') : [],
-				container:
-					targetLocation === 'worn' && selectedBaseItem.slot
-						? 'worn'
-						: 'backpack',
-				slot:
-					targetLocation === 'worn'
-						? ((selectedBaseItem.slot || '') as EquipmentSlotType)
-						: '',
+				properties: enhanced ? enhanced.split(', ') : [],
+				/*
+					Everything arrives in the pack. The builder no longer asks where the
+					item goes — that is a filing decision the Items tab's own Location row
+					owns — so the two `worn` branches that used to sit here are gone rather
+					than left as dead conditionals on a constant.
+
+					The item's `slot` is still carried through, so moving it to Equipment on
+					the sheet knows where it belongs without the reader re-stating it.
+				*/
+				container: 'backpack',
+				slot: (selectedBaseItem.slot || '') as EquipmentSlotType,
 				amount: 1,
 				quality: selectedQuality,
 			} as Partial<Item>
 		}
 
-		// Store the created item and show output
-		setCreatedItem(itemToCreate)
-		setCreatedItemName(finalItemName)
+		if (character && onCreateItem && itemToCreate) onCreateItem(itemToCreate)
+		if (onItemCreated && itemToCreate) onItemCreated(itemToCreate, finalName)
 
-		// If there's a character, also add to inventory
-		if (character && onCreateItem && itemToCreate) {
-			onCreateItem(itemToCreate)
-		}
+		/*
+			Adding the item ENDS the commission (owner review).
 
-		// Call the onItemCreated callback for standalone mode
-		if (onItemCreated && itemToCreate) {
-			onItemCreated(itemToCreate, finalItemName)
-		}
+			It used to flash "Created X" and leave the whole draft standing, which put
+			the reader in front of a builder holding an item that already exists —
+			pressing the verb again silently made a second copy, and closing then asked
+			whether to discard work that had already been saved. The item's real home is
+			the Items tab, which is behind this dialog, so the deliverable is only
+			visible once the dialog is gone.
+
+			`handleReset` rather than `handleClose`: the draft was committed, so there is
+			nothing to confirm the loss of.
+		*/
+		handleReset()
+		onClose()
 	}
 
-	const enhanceProperties = (
-		baseProperties: string,
-		quality: QualityTier,
-		isWeapon: boolean,
-	): string => {
-		let properties = baseProperties
-
-		// Handle AV for armor, shields, and helmets
-		if (
-			(selectedCategory === 'light-armor' ||
-				selectedCategory === 'heavy-armor' ||
-				selectedCategory === 'shield' ||
-				selectedCategory === 'helmet') &&
-			selectedBaseItem
-		) {
-			const totalAV = getTotalAV(selectedBaseItem, quality)
-
-			if (properties.includes('AV +')) {
-				properties = properties.replace(/AV \+\d+/g, `AV +${totalAV}`)
-			} else if (selectedBaseItem.baseAV && selectedBaseItem.baseAV > 0) {
-				properties = `AV +${totalAV}${properties ? ', ' + properties : ''}`
-			} else if (totalAV > 0) {
-				properties = `AV +${totalAV}${properties ? ', ' + properties : ''}`
-			}
+	/**
+	 * The item as JSON, for a reader with no character sheet open.
+	 *
+	 * The docs page mounts this builder to DESIGN an item, not to own one, and the
+	 * old flow put that behind a post-create screen (`MagicItemBuilderOutput`) that
+	 * only appeared after pressing Create. Since the plate is live, the copy does not
+	 * need a screen of its own — it is a verb, exactly as the Companion Builder's
+	 * "Copy markdown" is.
+	 */
+	const copyItem = () => {
+		if (!selectedBaseItem || !selectedQuality) return
+		const isWeapon = WEAPON_CATEGORIES.includes(category as ItemCategory)
+		const payload: Record<string, unknown> = {
+			name: finalName,
+			category: isWeapon ? 'Weapon' : CATEGORY_LABEL[category as ItemCategory],
+			quality: selectedQuality,
+			cost: cost.totalCost,
+			load: finalLoad ?? selectedBaseItem.load,
+			durability: getDurabilityDie(selectedBaseItem, selectedQuality),
+			description: finalDescription,
 		}
-
-		// Handle damage bonus and supply/pieces for ammo
-		if (selectedCategory === 'ammo' && selectedBaseItem) {
-			const damageBonus = getAmmoDamageBonus(
-				Number(selectedBaseItem.quality),
-				quality,
-			)
-			let ammoProperties = []
-
-			if (damageBonus > 0) {
-				ammoProperties.push(`+${damageBonus} dmg`)
-			}
-
-			if (selectedEnchantment) {
-				ammoProperties.push('3 pieces')
-			} else {
-				ammoProperties.push('supply')
-			}
-
-			const baseProps = properties
-				? properties
-						.replace(/supply/g, '')
-						.replace(/,\s*$/, '')
-						.replace(/^,\s*/, '')
-				: ''
-			const allProps = baseProps
-				? [baseProps, ...ammoProperties]
-				: ammoProperties
-			properties = allProps.filter((p) => p.trim()).join(', ')
-		}
-
-		const modifications = calculatePropertyModifications(
-			selectedCategory as ItemCategory,
-			selectedMaterial,
-			selectedEnchantment,
-		)
-		properties = modifyPropertiesString(properties, modifications)
-
-		return properties
-	}
-
-	const renderStepContent = (step: number) => {
-		switch (step) {
-			case 0:
-				return (
-					<Box>
-						<Typography variant="h6" gutterBottom>
-							Select Item Category and Base Item
-						</Typography>
-						<FormControl fullWidth sx={{ mb: 2 }}>
-							<InputLabel id="category-label">Category</InputLabel>
-							<Select
-								labelId="category-label"
-								value={selectedCategory}
-								label="Category"
-								onChange={(e) => {
-									setSelectedCategory(e.target.value as ItemCategory)
-									setSelectedBaseItem(null)
-								}}
-							>
-								<MenuItem value="one-handed-weapon">
-									One-Handed Weapons
-								</MenuItem>
-								<MenuItem value="two-handed-weapon">
-									Two-Handed Weapons
-								</MenuItem>
-								<MenuItem value="spell-catalyst">Spell Catalysts</MenuItem>
-								<MenuItem value="light-armor">Light Armor</MenuItem>
-								<MenuItem value="heavy-armor">Heavy Armor</MenuItem>
-								<MenuItem value="shield">Shields</MenuItem>
-								<MenuItem value="helmet">Helmets</MenuItem>
-								<MenuItem value="wearable">Wearable Items</MenuItem>
-								<MenuItem value="ammo">Ammunition</MenuItem>
-							</Select>
-						</FormControl>
-
-						{selectedCategory && (
-							<TableContainer component={Paper} sx={{ mt: 2, maxHeight: 400 }}>
-								<Table size="small" stickyHeader>
-									<TableHead>
-										<TableRow>
-											<TableCell padding="checkbox"></TableCell>
-											<TableCell>Name</TableCell>
-											<TableCell align="center">Quality</TableCell>
-											{(selectedCategory === 'one-handed-weapon' ||
-												selectedCategory === 'two-handed-weapon' ||
-												selectedCategory === 'shield') && (
-												<TableCell align="center">Weapon Category</TableCell>
-											)}
-											<TableCell align="center">Cost</TableCell>
-											<TableCell align="center">Load</TableCell>
-											{(selectedCategory === 'one-handed-weapon' ||
-												selectedCategory === 'two-handed-weapon' ||
-												selectedCategory === 'shield') && (
-												<TableCell align="center">Damage</TableCell>
-											)}
-											{(selectedCategory === 'light-armor' ||
-												selectedCategory === 'heavy-armor' ||
-												selectedCategory === 'shield' ||
-												selectedCategory === 'helmet') && (
-												<TableCell align="center">Base AV</TableCell>
-											)}
-											<TableCell>Properties</TableCell>
-										</TableRow>
-									</TableHead>
-									<TableBody>
-										{baseItems[selectedCategory].map((item) => (
-											<TableRow
-												key={item.name}
-												hover
-												onClick={() => {
-													setSelectedBaseItem(item)
-													setSelectedMaterial(null)
-													setSelectedEnchantment(null)
-												}}
-												sx={{
-													cursor: 'pointer',
-													bgcolor:
-														selectedBaseItem?.name === item.name
-															? 'action.selected'
-															: 'inherit',
-													'&:hover': {
-														bgcolor:
-															selectedBaseItem?.name === item.name
-																? 'action.selected'
-																: 'action.hover',
-													},
-												}}
-											>
-												<TableCell padding="checkbox">
-													<Radio
-														checked={selectedBaseItem?.name === item.name}
-														size="small"
-													/>
-												</TableCell>
-												<TableCell>
-													<Typography variant="body2" fontWeight="bold">
-														{item.name}
-													</Typography>
-												</TableCell>
-												<TableCell align="center">
-													<Chip
-														label={`Q${item.quality}`}
-														size="small"
-														color="default"
-														variant="outlined"
-													/>
-												</TableCell>
-												{(selectedCategory === 'one-handed-weapon' ||
-													selectedCategory === 'two-handed-weapon' ||
-													selectedCategory === 'shield') && (
-													<TableCell align="center">
-														<Chip
-															label={item.weaponCategory || '—'}
-															size="small"
-															color={item.weaponCategory ? getWeaponCategoryColor(item.weaponCategory) : 'default'}
-														/>
-													</TableCell>
-												)}
-												<TableCell align="center">
-													<Typography variant="body2">
-														{formatCost(item.cost)}
-													</Typography>
-												</TableCell>
-												<TableCell align="center">
-													<Typography variant="body2">{item.load}</Typography>
-												</TableCell>
-												{(selectedCategory === 'one-handed-weapon' ||
-													selectedCategory === 'two-handed-weapon' ||
-													selectedCategory === 'shield') && (
-													<TableCell align="center">
-														<Typography variant="body2">
-															{item.damage}
-														</Typography>
-													</TableCell>
-												)}
-												{(selectedCategory === 'light-armor' ||
-													selectedCategory === 'heavy-armor' ||
-													selectedCategory === 'shield' ||
-													selectedCategory === 'helmet') && (
-													<TableCell align="center">
-														<Typography variant="body2">
-															{item.baseAV || 0}
-														</Typography>
-													</TableCell>
-												)}
-												<TableCell>
-													<Typography
-														variant="body2"
-														sx={{
-															maxWidth: 300,
-															overflow: 'hidden',
-															textOverflow: 'ellipsis',
-														}}
-													>
-														{item.properties}
-													</Typography>
-												</TableCell>
-											</TableRow>
-										))}
-									</TableBody>
-								</Table>
-							</TableContainer>
-						)}
-					</Box>
-				)
-
-			case 1:
-				return (
-					<Box>
-						<Typography variant="h6" gutterBottom>
-							Choose Quality Tier (Q3-Q8)
-						</Typography>
-						<Alert severity="info" sx={{ mb: 2 }}>
-							<strong>Magic items start at Quality 3.</strong> Higher quality
-							items offer better bonuses and can use more powerful materials and
-							enchantments.
-							{selectedCategory === 'wearable' && (
-								<>
-									<br />
-									<strong>Wearables skip the Magic Item Base Cost</strong> as
-									they only gain value from enchantments.
-								</>
-							)}
-						</Alert>
-
-						<TableContainer component={Paper}>
-							<Table>
-								<TableHead>
-									<TableRow>
-										<TableCell></TableCell>
-										<TableCell>Quality</TableCell>
-										<TableCell>Magic Item Base Cost</TableCell>
-										{selectedBaseItem?.damage && (
-											<TableCell>Weapon Damage</TableCell>
-										)}
-										{selectedCategory === 'spell-catalyst' && (
-											<TableCell>Spell Damage</TableCell>
-										)}
-										{isWandOrStaff(selectedBaseItem) && (
-											<>
-												<TableCell>Spell Rank</TableCell>
-												<TableCell>Charges</TableCell>
-											</>
-										)}
-										{isStaffItem(selectedBaseItem) && (
-											<TableCell>Spells Held</TableCell>
-										)}
-										{selectedCategory === 'ammo' && (
-											<TableCell>Dmg Bonus</TableCell>
-										)}
-										{(selectedCategory === 'light-armor' ||
-											selectedCategory === 'heavy-armor' ||
-											selectedCategory === 'helmet' ||
-											selectedCategory === 'shield') && (
-											<TableCell>AV Bonus</TableCell>
-										)}
-									</TableRow>
-								</TableHead>
-								<TableBody>
-									{availableQualities.map((quality) => {
-										const magicBaseCost = selectedBaseItem
-											? getMagicItemBaseCost(quality, selectedBaseItem.category)
-											: 0
-										return (
-											<TableRow
-												key={quality}
-												hover
-												selected={selectedQuality === quality}
-												sx={{ cursor: 'pointer' }}
-												onClick={() => setSelectedQuality(quality)}
-											>
-												<TableCell padding="checkbox">
-													<Radio checked={selectedQuality === quality} />
-												</TableCell>
-												<TableCell>
-													<Typography variant="body2" fontWeight="bold">
-														{qualityTierLabels[quality]}
-													</Typography>
-												</TableCell>
-												<TableCell>
-													<Typography variant="body2">
-														{magicBaseCost > 0
-															? `+${formatCost(magicBaseCost)} coins`
-															: '—'}
-														{magicBaseCost === 0 &&
-															selectedCategory === 'wearable' &&
-															' (skipped)'}
-													</Typography>
-												</TableCell>
-												{selectedBaseItem?.damage && (
-													<TableCell>
-														<Chip
-															label={
-																selectedBaseItem.damage +
-																getWeaponDamageBonus(
-																	selectedBaseItem.quality,
-																	quality,
-																)
-															}
-															size="small"
-															color="primary"
-															variant="outlined"
-														/>
-													</TableCell>
-												)}
-												{selectedCategory === 'spell-catalyst' && (
-													<TableCell>
-														<Chip
-															label={`+${getSpellDamageBonus(quality)}`}
-															size="small"
-															color="primary"
-															variant="outlined"
-														/>
-													</TableCell>
-												)}
-												{isWandOrStaff(selectedBaseItem) && (
-													<>
-														<TableCell>
-															<Chip
-																label={quality >= 4 ? `Rank ${getMaxSpellRank(quality)}` : '—'}
-																size="small"
-																color="secondary"
-																variant="outlined"
-															/>
-														</TableCell>
-														<TableCell>
-															<Chip
-																label={quality >= 4 ? (isStaffItem(selectedBaseItem) ? getStaffCharges(quality) : getWandCharges(quality)) : '—'}
-																size="small"
-																color="secondary"
-																variant="outlined"
-															/>
-														</TableCell>
-													</>
-												)}
-												{isStaffItem(selectedBaseItem) && (
-													<TableCell>
-														<Chip
-															label={quality >= 4 ? getStaffSpellCapacity(quality) : '—'}
-															size="small"
-															color="secondary"
-															variant="outlined"
-														/>
-													</TableCell>
-												)}
-												{selectedCategory === 'ammo' && selectedBaseItem && (
-													<TableCell>
-														<Chip
-															label={`+${getAmmoDamageBonus(selectedBaseItem.quality, quality)}`}
-															size="small"
-															color="primary"
-															variant="outlined"
-														/>
-													</TableCell>
-												)}
-												{(selectedCategory === 'light-armor' ||
-													selectedCategory === 'heavy-armor' ||
-													selectedCategory === 'helmet' ||
-													selectedCategory === 'shield') && (
-													<TableCell>
-														<Chip
-															label={`+${getArmorAVBonus(quality)} AV`}
-															size="small"
-															color="primary"
-															variant="outlined"
-														/>
-													</TableCell>
-												)}
-											</TableRow>
-										)
-									})}
-								</TableBody>
-							</Table>
-						</TableContainer>
-					</Box>
-				)
-
-			case 2:
-				return (
-					<Box>
-						<Typography variant="h6" gutterBottom>
-							Select Material (Required)
-						</Typography>
-						<Alert severity="info" sx={{ mb: 2 }}>
-							<strong>All magic items require a material.</strong> Base
-							materials (Bronze, Leather, etc.) cost nothing extra. Special
-							materials (Mithril, Dragon Scales, etc.) provide unique properties
-							for additional cost.
-						</Alert>
-
-						{selectedMaterial && (
-							<Box
-								sx={{
-									mb: 2,
-									p: 2,
-									bgcolor: 'action.selected',
-									borderRadius: 1,
-								}}
-							>
-								<Typography variant="subtitle2" gutterBottom>
-									<strong>Currently selected:</strong> {selectedMaterial.name}
-									<Chip
-										label={
-											selectedMaterial.materialType === 'base'
-												? 'Base Material'
-												: 'Special Material'
-										}
-										size="small"
-										color={
-											selectedMaterial.materialType === 'base'
-												? 'default'
-												: 'secondary'
-										}
-										sx={{ ml: 1 }}
-									/>
-								</Typography>
-							</Box>
-						)}
-
-						{availableMaterials.length > 0 ? (
-							<TableContainer component={Paper} sx={{ maxHeight: 450 }}>
-								<Table size="small" stickyHeader>
-									<TableHead>
-										<TableRow>
-											<TableCell></TableCell>
-											<TableCell>Material</TableCell>
-											<TableCell>Type</TableCell>
-											<TableCell align="right">Extra Cost</TableCell>
-											<TableCell>Description & Properties</TableCell>
-										</TableRow>
-									</TableHead>
-									<TableBody>
-										{availableMaterials.map((material) => {
-											const extraCost =
-												selectedQuality && selectedCategory
-													? getSpecialMaterialExtraCost(
-															material,
-															selectedQuality,
-															selectedCategory as ItemCategory,
-														)
-													: 0
-											return (
-												<TableRow
-													key={material.id}
-													hover
-													selected={selectedMaterial?.id === material.id}
-													sx={{
-														cursor: 'pointer',
-														bgcolor:
-															selectedMaterial?.id === material.id
-																? 'action.selected'
-																: 'inherit',
-													}}
-													onClick={() => setSelectedMaterial(material)}
-												>
-													<TableCell padding="checkbox">
-														<Radio
-															checked={selectedMaterial?.id === material.id}
-														/>
-													</TableCell>
-													<TableCell>
-														<Typography variant="body2" fontWeight="bold">
-															{material.name}
-														</Typography>
-													</TableCell>
-													<TableCell>
-														<Chip
-															label={
-																material.materialType === 'base'
-																	? 'Base'
-																	: 'Special'
-															}
-															size="small"
-															color={
-																material.materialType === 'base'
-																	? 'default'
-																	: 'secondary'
-															}
-														/>
-													</TableCell>
-													<TableCell align="right">
-														<Typography variant="body2">
-															{extraCost > 0
-																? `+${formatCost(extraCost)}`
-																: '—'}
-														</Typography>
-													</TableCell>
-													<TableCell>
-														<Typography
-															variant="body2"
-															sx={{ fontSize: '0.85rem' }}
-														>
-															{material.description}
-															{material.materialType === 'special' &&
-																material.properties && (
-																	<>
-																		<br />
-																		<strong>Properties:</strong>{' '}
-																		{material.properties}
-																	</>
-																)}
-														</Typography>
-													</TableCell>
-												</TableRow>
-											)
-										})}
-									</TableBody>
-								</Table>
-							</TableContainer>
-						) : (
-							<Alert severity="warning">
-								No materials are available for this item category and quality
-								tier.
-							</Alert>
-						)}
-					</Box>
-				)
-
-			case 3:
-				return (
-					<Box>
-						<Typography variant="h6" gutterBottom>
-							Select Enchantment (Optional)
-						</Typography>
-						<Alert severity="info" sx={{ mb: 2 }}>
-							<strong>Enchantments are optional.</strong> They provide magical
-							abilities and bonuses. You can skip this step if you only want a
-							material upgrade.
-						</Alert>
-
-						{selectedEnchantment && (
-							<Box
-								sx={{ mb: 2, display: 'flex', gap: 2, alignItems: 'center' }}
-							>
-								<Box
-									sx={{
-										flex: 1,
-										p: 2,
-										bgcolor: 'action.selected',
-										borderRadius: 1,
-									}}
-								>
-									<Typography variant="subtitle2">
-										<strong>Selected:</strong> {selectedEnchantment.name}
-										<Chip
-											label={selectedEnchantment.type}
-											size="small"
-											color="primary"
-											sx={{ ml: 1 }}
-										/>
-									</Typography>
-								</Box>
-								<Button
-									variant="outlined"
-									onClick={() => setSelectedEnchantment(null)}
-								>
-									Clear Selection
-								</Button>
-							</Box>
-						)}
-
-						{availableEnchantments.length > 0 ? (
-							<TableContainer component={Paper} sx={{ maxHeight: 450 }}>
-								<Table size="small" stickyHeader>
-									<TableHead>
-										<TableRow>
-											<TableCell></TableCell>
-											<TableCell>Enchantment</TableCell>
-											<TableCell>Type</TableCell>
-											<TableCell>Qualities</TableCell>
-											<TableCell>Description</TableCell>
-										</TableRow>
-									</TableHead>
-									<TableBody>
-										{availableEnchantments.map((enchantment) => (
-											<TableRow
-												key={enchantment.id}
-												hover
-												selected={selectedEnchantment?.id === enchantment.id}
-												sx={{
-													cursor: 'pointer',
-													bgcolor:
-														selectedEnchantment?.id === enchantment.id
-															? 'action.selected'
-															: 'inherit',
-												}}
-												onClick={() => setSelectedEnchantment(enchantment)}
-											>
-												<TableCell padding="checkbox">
-													<Radio
-														checked={selectedEnchantment?.id === enchantment.id}
-													/>
-												</TableCell>
-												<TableCell>
-													<Typography variant="body2" fontWeight="bold">
-														{enchantment.name}
-													</Typography>
-												</TableCell>
-												<TableCell>
-													<Chip
-														label={enchantment.type}
-														size="small"
-														color="primary"
-													/>
-												</TableCell>
-												<TableCell>
-													<Typography
-														variant="body2"
-														sx={{ fontSize: '0.75rem' }}
-													>
-														{enchantment.qualityTiers
-															.map((q) => `Q${q}`)
-															.join(', ')}
-													</Typography>
-												</TableCell>
-												<TableCell>
-													<Typography
-														variant="body2"
-														sx={{ fontSize: '0.85rem' }}
-													>
-														{enchantment.description}
-													</Typography>
-												</TableCell>
-											</TableRow>
-										))}
-									</TableBody>
-								</Table>
-							</TableContainer>
-						) : (
-							<Alert severity="info">
-								No enchantments are available for this item category and quality
-								tier.
-							</Alert>
-						)}
-					</Box>
-				)
-
-			case 4:
-				return (
-					<Box>
-						<Typography variant="h6" gutterBottom>
-							Review & Create Magic Item
-						</Typography>
-
-						{!selectedMaterial && (
-							<Alert severity="error" sx={{ mb: 2 }}>
-								You must select a material to create a magic item.
-							</Alert>
-						)}
-
-						<Card sx={{ mb: 2 }}>
-							<CardContent>
-								<Typography variant="h5" gutterBottom>
-									{finalItemName}
-								</Typography>
-								<Typography variant="h6" color="primary" gutterBottom>
-									{qualityTierLabels[selectedQuality as QualityTier]}
-								</Typography>
-
-								{/* Cost Breakdown */}
-								<Box
-									sx={{
-										mb: 2,
-										p: 2,
-										bgcolor: 'background.default',
-										borderRadius: 1,
-									}}
-								>
-									<Typography
-										variant="subtitle2"
-										gutterBottom
-										fontWeight="bold"
-									>
-										Cost Breakdown
-									</Typography>
-									<Grid container spacing={1}>
-										<Grid item xs={8}>
-											<Typography variant="body2">Base Item Cost:</Typography>
-										</Grid>
-										<Grid item xs={4} textAlign="right">
-											<Typography variant="body2">
-												{formatCost(costBreakdown.baseCost)} coins
-											</Typography>
-										</Grid>
-
-										<Grid item xs={8}>
-											<Typography variant="body2">
-												Magic Item Base Cost:
-											</Typography>
-										</Grid>
-										<Grid item xs={4} textAlign="right">
-											<Typography variant="body2">
-												{costBreakdown.magicItemBaseCost > 0
-													? `${formatCost(costBreakdown.magicItemBaseCost)} coins`
-													: '— (wearable)'}
-											</Typography>
-										</Grid>
-
-										<Grid item xs={8}>
-											<Box
-												sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
-											>
-												<Typography variant="body2">
-													Special Material Extra Cost:
-												</Typography>
-												{selectedMaterial && (
-													<Chip
-														label={
-															selectedMaterial.materialType === 'base'
-																? 'Base'
-																: 'Special'
-														}
-														size="small"
-														sx={{ height: 16, fontSize: '0.7rem' }}
-													/>
-												)}
-											</Box>
-										</Grid>
-										<Grid item xs={4} textAlign="right">
-											<Typography variant="body2">
-												{costBreakdown.materialExtraCost > 0
-													? `${formatCost(costBreakdown.materialExtraCost)} coins`
-													: '—'}
-											</Typography>
-										</Grid>
-
-										<Grid item xs={8}>
-											<Typography variant="body2">Enchantment Cost:</Typography>
-										</Grid>
-										<Grid item xs={4} textAlign="right">
-											<Typography variant="body2">
-												{costBreakdown.enchantmentCost > 0
-													? `${formatCost(costBreakdown.enchantmentCost)} coins`
-													: '—'}
-											</Typography>
-										</Grid>
-
-										<Grid item xs={12}>
-											<Divider sx={{ my: 1 }} />
-										</Grid>
-
-										<Grid item xs={8}>
-											<Typography variant="body2" fontWeight="bold">
-												Total Cost:
-											</Typography>
-										</Grid>
-										<Grid item xs={4} textAlign="right">
-											<Typography variant="body2" fontWeight="bold">
-												{formatCost(costBreakdown.totalCost)} coins
-											</Typography>
-										</Grid>
-									</Grid>
-								</Box>
-
-								<Grid container spacing={2} sx={{ mb: 2 }}>
-									<Grid item xs={6}>
-										<Typography variant="body2" color="text.secondary">
-											<strong>Load:</strong>{' '}
-											{selectedBaseItem &&
-												selectedMaterial &&
-												selectedCategory &&
-												calculateFinalLoad(
-													selectedBaseItem.load,
-													calculatePropertyModifications(
-														selectedCategory as ItemCategory,
-														selectedMaterial,
-														selectedEnchantment,
-													),
-												)}
-										</Typography>
-									</Grid>
-									{selectedBaseItem?.damage && (
-										<Grid item xs={6}>
-											<Typography variant="body2" color="text.secondary">
-												<strong>Damage:</strong>{' '}
-												{selectedBaseItem.damage +
-													getWeaponDamageBonus(
-														selectedBaseItem.quality,
-														selectedQuality as QualityTier,
-													)}
-											</Typography>
-										</Grid>
-									)}
-									{isWandOrStaff(selectedBaseItem) && selectedQuality && (selectedQuality as number) >= 4 && (
-										<>
-											<Grid item xs={6}>
-												<Typography variant="body2" color="text.secondary">
-													<strong>Max Spell Rank:</strong>{' '}
-													{getMaxSpellRank(selectedQuality as QualityTier)}
-												</Typography>
-											</Grid>
-											<Grid item xs={6}>
-												<Typography variant="body2" color="text.secondary">
-													<strong>Charges:</strong>{' '}
-													{isStaffItem(selectedBaseItem)
-														? getStaffCharges(selectedQuality as QualityTier)
-														: getWandCharges(selectedQuality as QualityTier)}
-												</Typography>
-											</Grid>
-										</>
-									)}
-									{isStaffItem(selectedBaseItem) && selectedQuality && (selectedQuality as number) >= 4 && (
-										<Grid item xs={6}>
-											<Typography variant="body2" color="text.secondary">
-												<strong>Spells Held:</strong>{' '}
-												{getStaffSpellCapacity(selectedQuality as QualityTier)}
-											</Typography>
-										</Grid>
-									)}
-									<Grid item xs={12}>
-										<Typography variant="body2" color="text.secondary">
-											<strong>Properties:</strong>{' '}
-											{selectedBaseItem &&
-												enhanceProperties(
-													selectedBaseItem.properties,
-													selectedQuality as QualityTier,
-													selectedCategory.includes('weapon'),
-												)}
-										</Typography>
-									</Grid>
-									<Grid item xs={12}>
-										<Typography variant="body2" color="text.secondary">
-											<strong>Durability:</strong>{' '}
-											{selectedBaseItem &&
-												getDurabilityDie(
-													selectedBaseItem,
-													selectedQuality as QualityTier,
-												)}
-										</Typography>
-									</Grid>
-								</Grid>
-
-								<Divider sx={{ my: 2 }} />
-
-								<Typography
-									variant="subtitle1"
-									sx={{ mb: 1 }}
-									fontWeight="bold"
-								>
-									Description
-								</Typography>
-								<TextField
-									multiline
-									rows={6}
-									fullWidth
-									value={finalItemDescription}
-									variant="outlined"
-									InputProps={{
-										readOnly: true,
-									}}
-									sx={{ mb: 2 }}
-								/>
-
-								{character && (
-									<Grid container spacing={2} alignItems="center">
-										<Grid item xs={12} sm={6}>
-											<FormControl fullWidth>
-												<InputLabel id="location-label">
-													Add to Location
-												</InputLabel>
-												<Select
-													labelId="location-label"
-													value={targetLocation}
-													label="Add to Location"
-													onChange={(e) =>
-														setTargetLocation(
-															e.target.value as 'worn' | 'carried',
-														)
-													}
-												>
-													<MenuItem value="worn">Equipment (Worn)</MenuItem>
-													<MenuItem value="carried">Inventory (Carried)</MenuItem>
-												</Select>
-											</FormControl>
-										</Grid>
-									</Grid>
-								)}
-							</CardContent>
-						</Card>
-					</Box>
-				)
-
-			default:
-				return 'Unknown step'
-		}
-	}
-
-	const handleCopyToClipboard = () => {
-		if (!createdItem || !createdItemName) return
-
-		const item = createdItem as any
-		const isWeapon = 'damage' in item && item.damage
-
-		let category = 'Wearable'
-		if (isWeapon) {
-			category = 'Weapon'
-		}
-
-		const markdownObj: any = {
-			name: createdItemName,
-			category: category,
-			quality: item.quality || 3,
-			type: isWeapon
-				? item.properties?.split?.(', ')?.[0] || 'weapon'
-				: item.slot || 'wearable',
-			cost: item.cost || 0,
-			load: item.load || 0,
-			description: item.description || '',
-		}
-
-		if (item.properties) {
-			markdownObj.properties = Array.isArray(item.properties)
-				? item.properties.join(', ')
-				: item.properties
-		}
-
-		if (item.uses !== undefined) {
-			markdownObj.uses = item.uses
-		}
-
-		const jsonString = JSON.stringify(markdownObj, null, 2)
-		navigator.clipboard.writeText(jsonString).then(() => {
-			setCopiedToClipboard(true)
-			setTimeout(() => setCopiedToClipboard(false), 2000)
+		if (finalProperties) payload.properties = finalProperties
+		navigator.clipboard.writeText(JSON.stringify(payload, null, 2)).then(() => {
+			setCopied(true)
+			setTimeout(() => setCopied(false), 1800)
 		})
 	}
 
-	const handleResetForNewItem = () => {
-		setCreatedItem(null)
-		setCreatedItemName('')
-		setActiveStep(0)
-		setSelectedCategory('')
-		setSelectedBaseItem(null)
-		setSelectedQuality('')
-		setSelectedMaterial(null)
-		setSelectedEnchantment(null)
-		setTargetLocation('carried')
+	/** What the quality buys, read off the rulebook's own tables. */
+	const qualityGrant = (): [string, React.ReactNode][] => {
+		if (!selectedBaseItem || !selectedQuality) return []
+		const pairs: [string, React.ReactNode][] = [
+			[
+				'Magic cost',
+				cost.magicItemBaseCost > 0
+					? `+${coins(cost.magicItemBaseCost)}`
+					: '— skipped',
+			],
+		]
+		if (selectedBaseItem.damage) {
+			pairs.push([
+				'Weapon dmg',
+				`+${getWeaponDamageBonus(Number(selectedBaseItem.quality), selectedQuality)}`,
+			])
+		}
+		if (category === 'spell-catalyst') {
+			pairs.push(['Spell dmg', `+${getSpellDamageBonus(selectedQuality)}`])
+		}
+		if (ARMOR_CATEGORIES.includes(category as ItemCategory)) {
+			pairs.push(['AV', `+${getArmorAVBonus(selectedQuality)}`])
+		}
+		if (category === 'ammo') {
+			pairs.push([
+				'Dmg bonus',
+				`+${getAmmoDamageBonus(Number(selectedBaseItem.quality), selectedQuality)}`,
+			])
+		}
+		if (isWandOrStaff(selectedBaseItem) && selectedQuality >= 4) {
+			pairs.push(['Spell rank', getMaxSpellRank(selectedQuality)])
+			pairs.push([
+				'Charges',
+				isStaffItem(selectedBaseItem)
+					? getStaffCharges(selectedQuality)
+					: getWandCharges(selectedQuality),
+			])
+			if (isStaffItem(selectedBaseItem)) {
+				pairs.push(['Spells held', getStaffSpellCapacity(selectedQuality)])
+			}
+		}
+		pairs.push([
+			'Durability',
+			getDurabilityDie(selectedBaseItem, selectedQuality),
+		])
+		return pairs
 	}
+
+	/**
+	 * `qualityTierLabels` reads `Q4 (formidable)` — the figure and the descriptor in
+	 * one string. The plate shows them separately, so printing the label whole would
+	 * put "Q4" on the plate twice. Split for display, kept whole for the accessible
+	 * name, since neither half identifies the option on its own.
+	 */
+	const qualityOptions: RailOption[] = QUALITIES.map((value) => {
+		const label = qualityTierLabels[value]
+		const descriptor = label.match(/\(([^)]+)\)/)?.[1] ?? label
+		/*
+			Armour starts at Q4.
+			
+			The effects chapter is explicit: magic armor, shields and helmets "are only
+			available at minimum Quality 4 in contrast to weapons", and their AV table
+			starts at Q4. The builder offered Q3 for them anyway, which charged the Q3
+			magic-item base cost (500 coins for a shield, 1,000 for heavy armour) and
+			granted +0 AV in return — a legal-looking item the rules do not have.
+			
+			Shown disabled with the reason rather than dropped, so the cap reads as a
+			rule rather than as a shorter rail.
+		*/
+		const armourBelowFloor =
+			value === 3 && ARMOR_CATEGORIES.includes(category as ItemCategory)
+		return {
+			value,
+			figure: `Q${value}`,
+			name: descriptor,
+			ariaLabel: label,
+			disabled: armourBelowFloor,
+			disabledReason: armourBelowFloor
+				? 'armour, shields and helmets start at Q4'
+				: undefined,
+		}
+	})
+
+	const commission = selectedBaseItem ? (
+		<>
+			<b>{finalName || selectedBaseItem.name}</b>
+			{selectedQuality
+				? ` — ${coins(cost.totalCost)} coins`
+				: ' — choose a quality'}
+		</>
+	) : (
+		<>Choose a base item</>
+	)
 
 	return (
 		<>
-			<Dialog open={open} onClose={handleClose} maxWidth="lg" fullWidth>
-				<DialogTitle>Magic Item Builder</DialogTitle>
-				<DialogContent>
-					{!createdItem ? (
-						<>
-							<Stepper activeStep={activeStep} sx={{ mb: 3 }}>
-								{steps.map((label, index) => {
-									const canNavigateToStep = (targetStep: number): boolean => {
-										if (targetStep === 0) return true
-										for (let i = 0; i < targetStep; i++) {
-											if (!canProceedFromStep(i)) return false
-										}
-										return true
-									}
-
-									const isNavigable = canNavigateToStep(index)
-
-									return (
-										<Step key={label}>
-											<StepLabel
-												sx={{
-													cursor: isNavigable ? 'pointer' : 'default',
-													'&:hover': {
-														opacity: isNavigable ? 0.8 : 1,
-													},
-													'& .MuiStepLabel-label': {
-														fontWeight: isNavigable ? 'bold' : 'normal',
-													},
-												}}
-												onClick={() => isNavigable && handleStepClick(index)}
-											>
-												{label}
-											</StepLabel>
-										</Step>
-									)
-								})}
-							</Stepper>
-
-							{renderStepContent(activeStep)}
-						</>
-					) : (
-					<MagicItemBuilderOutput
-						createdItem={createdItem}
-						createdItemName={createdItemName}
-						copiedToClipboard={copiedToClipboard}
-						onCopyToClipboard={handleCopyToClipboard}
-						onBuildAnother={handleResetForNewItem}
-						onClose={handleClose}
+			<BuilderShell
+				open={open}
+				onClose={handleClose}
+				title="Magic Item Builder"
+				commission={commission}
+				paneLabels={{ build: 'Build', result: 'Item' }}
+				result={
+					<MagicItemPlate
+						baseItem={selectedBaseItem}
+						quality={selectedQuality}
+						material={selectedMaterial}
+						enchantment={selectedEnchantment}
+						cost={cost}
+						name={finalName}
+						description={finalDescription}
+						properties={finalProperties}
+						load={finalLoad}
+						isWandOrStaff={isWandOrStaff(selectedBaseItem)}
+						isStaff={isStaffItem(selectedBaseItem)}
 					/>
-					)}
-				</DialogContent>
-				<DialogActions
-					sx={{
-						display: 'flex',
-						justifyContent: 'space-between',
-						alignItems: 'center',
-						p: 2,
-					}}
+				}
+				actions={
+					<>
+						<BuilderVerb disabled={!hasDraft} onClick={handleReset}>
+							Reset
+						</BuilderVerb>
+						<BuilderVerbSpacer />
+						{copied && (
+							<span className="cb-flash" role="status">
+								Copied
+							</span>
+						)}
+						{/*
+							The primary verb only exists where there is something to add the item
+							TO. On the docs page there is no character, `onCreateItem` is never
+							called, and "Create item" did nothing but flash a message — a verb
+							that lies about having done something. There, copying IS the
+							deliverable, so it takes the primary weight instead.
+						*/}
+						<BuilderVerb
+							tone={character ? 'quiet' : 'primary'}
+							disabled={!canCreate}
+							onClick={copyItem}
+						>
+							Copy JSON
+						</BuilderVerb>
+						{character && (
+							<BuilderVerb
+								tone="primary"
+								disabled={!canCreate}
+								onClick={handleCreateItem}
+							>
+								Add to inventory
+							</BuilderVerb>
+						)}
+						<BuilderVerb onClick={handleClose}>Close</BuilderVerb>
+					</>
+				}
+			>
+				<BuilderRegister
+					step="I"
+					label="Base item"
+					note={
+						selectedQuality
+							? `costs shown at Q${selectedQuality}`
+							: 'what the magic is worked into'
+					}
+					grow
+					open={openRegister === 'item'}
+					onOpen={() => setOpenRegister('item')}
+					summary={
+						selectedBaseItem ? (
+							<>
+								<b>{selectedBaseItem.name}</b> —{' '}
+								{CATEGORY_LABEL[category as ItemCategory]},{' '}
+								{coins(selectedBaseItem.cost)} coins
+							</>
+						) : null
+					}
 				>
-					{!createdItem ? (
-						<>
-							<Box sx={{ display: 'flex', gap: 1 }}>
-								<Button
-									onClick={handleClose}
-									color="error"
-									variant="outlined"
-									startIcon={<Cancel />}
-								>
-									Cancel
-								</Button>
-								<Button
-									onClick={handleReset}
-									disabled={activeStep === 0}
-									color="warning"
-									variant="outlined"
-									startIcon={<Refresh />}
-								>
-									Reset
-								</Button>
-							</Box>
-							<Box sx={{ display: 'flex', gap: 1 }}>
-								<Button
-									onClick={handleBack}
-									disabled={activeStep === 0}
-									variant="contained"
-									color="inherit"
-									startIcon={<ArrowBack />}
-								>
-									Back
-								</Button>
-								{activeStep < steps.length - 1 ? (
-									<Button
-										variant="contained"
-										onClick={handleNext}
-										disabled={!canProceedFromStep(activeStep)}
-										endIcon={<ArrowForward />}
-									>
-										Next
-									</Button>
-								) : (
-									<Button
-										variant="contained"
-										onClick={handleCreateItem}
-										disabled={!selectedMaterial}
-										startIcon={<Add />}
-										sx={{ minWidth: '120px' }}
-									>
-										Create Item
-									</Button>
-								)}
-							</Box>
-						</>
-					) : (
-						<Box sx={{ display: 'flex', gap: 1, ml: 'auto' }}>
-							<Button
-								onClick={handleResetForNewItem}
-								variant="contained"
-								color="primary"
-								startIcon={<Add />}
+					<div className="cb-ledger__filters">
+						<SearchField
+							value={itemQuery}
+							onChange={setItemQuery}
+							placeholder="Search items"
+						/>
+						{CATEGORIES.map((key) => (
+							<FilterChip
+								key={key}
+								pressed={categoryFilter === key}
+								sigil={CATEGORY_SIGIL[key]}
+								onClick={() =>
+									setCategoryFilter(categoryFilter === key ? null : key)
+								}
 							>
-								Build Another Item
-							</Button>
-							<Button
-								onClick={handleClose}
-								variant="outlined"
-								color="inherit"
-							>
-								Close
-							</Button>
-						</Box>
-					)}
-				</DialogActions>
-			</Dialog>
-
-			{/* Confirmation Dialog */}
-			<Dialog open={showConfirmClose} onClose={handleCancelClose}>
-				<DialogTitle>Unsaved Changes</DialogTitle>
-				<DialogContent>
-					<Typography>
-						You have unsaved changes. Are you sure you want to close without
-						saving?
-					</Typography>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={handleCancelClose}>Keep Editing</Button>
-					<Button
-						onClick={handleConfirmClose}
-						color="error"
-						variant="contained"
+								{CATEGORY_LABEL[key]}
+							</FilterChip>
+						))}
+					</div>
+					<Ledger
+						label="Base item"
+						columns="15px minmax(6rem, 1.4fr) 2.5rem 3.5rem 2.5rem minmax(0, 1.6fr)"
+						headings={[
+							{ label: '' },
+							{ label: 'Name' },
+							{ label: 'Q', align: 'center' },
+							{
+								label: selectedQuality ? `Cost at Q${selectedQuality}` : 'Cost',
+								align: 'right',
+							},
+							{ label: 'Load', align: 'right' },
+							{ label: 'Properties' },
+						]}
 					>
-						Discard Changes
-					</Button>
-				</DialogActions>
-			</Dialog>
+						{shownItems.map((item) => (
+							<LedgerRow
+								key={`${item.category}-${item.name}`}
+								selected={
+									selectedBaseItem?.name === item.name &&
+									selectedBaseItem?.category === item.category
+								}
+								sigil={CATEGORY_SIGIL[item.category]}
+								onSelect={() => chooseItem(item)}
+							>
+								<span className="cb-row__name">{item.name}</span>
+								<span className="cb-row__num" style={{ textAlign: 'center' }}>
+									{item.quality}
+								</span>
+								<span className="cb-row__num">
+									{coins(
+										selectedQuality
+											? item.cost +
+													getMagicItemBaseCost(selectedQuality, item.category)
+											: item.cost,
+									)}
+								</span>
+								<span className="cb-row__num">{item.load}</span>
+								<span className="cb-row__skills">{item.properties}</span>
+							</LedgerRow>
+						))}
+						{shownItems.length === 0 && (
+							<LedgerEmpty
+								onClear={() => {
+									setItemQuery('')
+									setCategoryFilter(null)
+								}}
+							>
+								{categoryFilter
+									? `No ${CATEGORY_LABEL[categoryFilter]} matches “${itemQuery.trim()}”`
+									: `Nothing matches “${itemQuery.trim()}”`}
+							</LedgerEmpty>
+						)}
+					</Ledger>
+				</BuilderRegister>
+
+				{/*
+					The equipment chapter's two "of the Regions" sections, which the builder
+					could not reach before: every item it made was a *Bronze Longsword*,
+					never a *Bronze Bastard Sword*.
+
+					Directly behind the base item (owner review). It was last, on the
+					theory that the register changing nothing but the name must not
+					interrupt the ones that price the item. But it is answered ENTIRELY by
+					the base item and nothing downstream feeds it, so putting it last made
+					the reader carry "what is this thing called" past three decisions with
+					no bearing on it. Naming the sword is part of picking the sword.
+				*/}
+				<BuilderRegister
+					step="II"
+					label="Appearance"
+					note="a name only, no mechanical change"
+					open={openRegister === 'appearance'}
+					onOpen={() => setOpenRegister('appearance')}
+					locked={
+						!selectedBaseItem
+							? 'Choose a base item to see its cultural types'
+							: !itemHasVariants
+								? `A ${selectedBaseItem.name} has no cultural variants`
+								: undefined
+					}
+					summary={
+						<>
+							<b>{selectedAppearance ?? selectedBaseItem?.name}</b>
+							{selectedAppearance ? ` — a ${selectedBaseItem?.name}` : ''}
+						</>
+					}
+				>
+					<Ledger
+						label="Appearance"
+						columns="15px minmax(6rem, 1fr) 9.5rem minmax(0, 1.6fr)"
+						headings={[
+							{ label: '' },
+							{ label: 'Called' },
+							{ label: 'Common in' },
+							{ label: 'Counts as' },
+						]}
+					>
+						{appearances.map(({ name, region }, index) => (
+							<LedgerRow
+								key={name}
+								selected={
+									index === 0
+										? selectedAppearance === null
+										: selectedAppearance === name
+								}
+								/* The standard name is a real row, not the absence of one —
+									the same rule the "No enchantment" row above follows. It
+									stores `null` so the name tracks the base item rather than
+									going stale against it. */
+								onSelect={() => chooseAppearance(index === 0 ? null : name)}
+							>
+								<span className="cb-row__name">{name}</span>
+								{/* Where the shape is COMMON, never who may carry one — the
+									rules are explicit that the keying is suggestive. The
+									standard form belongs to no one people, so it says so
+									rather than claiming a region. */}
+								<span className="cb-row__skills">
+									{index === 0
+										? '—'
+										: region === 'Common'
+											? 'every land'
+											: region}
+								</span>
+								<span className="cb-row__skills">
+									{index === 0
+										? 'the standard form'
+										: `${selectedBaseItem?.name}, unchanged in every stat`}
+								</span>
+							</LedgerRow>
+						))}
+					</Ledger>
+				</BuilderRegister>
+
+				<BuilderRegister
+					step="III"
+					label="Quality"
+					note="magic items start at Q3"
+					open={openRegister === 'quality'}
+					onOpen={() => setOpenRegister('quality')}
+					locked={selectedBaseItem ? undefined : 'Choose a base item first'}
+					summary={
+						selectedQuality ? (
+							// `qualityTierLabels` already reads `Q5 (exceptional)` — prefixing
+							// another `Q5` printed it twice.
+							<b>{qualityTierLabels[selectedQuality]}</b>
+						) : null
+					}
+				>
+					<ChoiceRail
+						label="Quality"
+						variant="quality"
+						options={qualityOptions}
+						value={selectedQuality}
+						onChange={(value) => chooseQuality(Number(value) as QualityTier)}
+					/>
+					{selectedQuality && <GrantLine pairs={qualityGrant()} />}
+				</BuilderRegister>
+
+				<BuilderRegister
+					step="IV"
+					label="Enchantment"
+					note="optional"
+					grow
+					open={openRegister === 'enchantment'}
+					onOpen={() => setOpenRegister('enchantment')}
+					locked={
+						!selectedBaseItem || !selectedQuality
+							? 'Choose a base item and its quality first'
+							: undefined
+					}
+					summary={
+						selectedEnchantment ? (
+							<>
+								<b>{selectedEnchantment.name}</b> — +
+								{coins(cost.enchantmentCost)} coins
+							</>
+						) : (
+							<>No enchantment</>
+						)
+					}
+				>
+					<div className="cb-ledger__filters">
+						<SearchField
+							value={enchantQuery}
+							onChange={setEnchantQuery}
+							placeholder="Search enchantments"
+						/>
+					</div>
+					<Ledger
+						label="Enchantment"
+						columns="15px minmax(6rem, 1fr) 3.5rem minmax(0, 2fr)"
+						headings={[
+							{ label: '' },
+							{ label: 'Enchantment' },
+							{ label: 'Kind', align: 'center' },
+							{ label: 'Effect' },
+						]}
+					>
+						{/* Choosing nothing is a real choice here, so it is a real row —
+							not the absence of one. */}
+						<LedgerRow
+							selected={selectedEnchantment === null}
+							onSelect={() => chooseEnchantment(null)}
+						>
+							<span className="cb-row__name">No enchantment</span>
+							<span className="cb-row__num">—</span>
+							<span className="cb-row__skills">A material upgrade only.</span>
+						</LedgerRow>
+						{shownEnchantments.map((enchantment) => (
+							<LedgerRow
+								key={enchantment.id}
+								selected={selectedEnchantment?.id === enchantment.id}
+								onSelect={() => chooseEnchantment(enchantment)}
+							>
+								<span className="cb-row__name">{enchantment.name}</span>
+								<span className="cb-row__num" style={{ textAlign: 'center' }}>
+									{enchantment.type}
+								</span>
+								<span className="cb-row__skills">
+									{enchantment.description}
+								</span>
+							</LedgerRow>
+						))}
+						{shownEnchantments.length === 0 && enchantQuery.trim() && (
+							<LedgerEmpty onClear={() => setEnchantQuery('')}>
+								{`Nothing matches “${enchantQuery.trim()}”`}
+							</LedgerEmpty>
+						)}
+					</Ledger>
+				</BuilderRegister>
+
+				<BuilderRegister
+					step="V"
+					label="Material"
+					note="required; a base material costs nothing extra"
+					grow
+					open={openRegister === 'material'}
+					onOpen={() => setOpenRegister('material')}
+					locked={
+						!selectedBaseItem || !selectedQuality
+							? 'Choose a base item and its quality first'
+							: undefined
+					}
+					summary={
+						selectedMaterial ? (
+							<>
+								<b>{selectedMaterial.name}</b>
+								{selectedMaterial.materialType === 'base'
+									? ' — base material, no extra cost'
+									: ` — +${coins(cost.materialExtraCost)} coins`}
+							</>
+						) : null
+					}
+				>
+					<div className="cb-ledger__filters">
+						<SearchField
+							value={materialQuery}
+							onChange={setMaterialQuery}
+							placeholder="Search materials"
+						/>
+						{(['base', 'special'] as const).map((kind) => (
+							<FilterChip
+								key={kind}
+								pressed={materialKind === kind}
+								onClick={() =>
+									setMaterialKind(materialKind === kind ? null : kind)
+								}
+							>
+								{kind}
+							</FilterChip>
+						))}
+					</div>
+					<Ledger
+						label="Material"
+						columns="15px minmax(6rem, 1fr) 4rem minmax(0, 2fr)"
+						headings={[
+							{ label: '' },
+							{ label: 'Material' },
+							{ label: 'Extra', align: 'right' },
+							{ label: 'Effect' },
+						]}
+					>
+						{shownMaterials.map((material) => {
+							const extra =
+								selectedQuality && category
+									? getSpecialMaterialExtraCost(
+											material,
+											selectedQuality,
+											category,
+										)
+									: 0
+							return (
+								<LedgerRow
+									key={material.id}
+									selected={selectedMaterial?.id === material.id}
+									onSelect={() => chooseMaterial(material)}
+								>
+									<span className="cb-row__name">{material.name}</span>
+									<span className="cb-row__num">
+										{extra > 0 ? `+${coins(extra)}` : '—'}
+									</span>
+									<span className="cb-row__skills">
+										{material.properties || material.description}
+									</span>
+								</LedgerRow>
+							)
+						})}
+						{shownMaterials.length === 0 && (
+							<LedgerEmpty
+								onClear={() => {
+									setMaterialQuery('')
+									setMaterialKind(null)
+								}}
+							>
+								No material for this category at Q{selectedQuality}
+							</LedgerEmpty>
+						)}
+					</Ledger>
+				</BuilderRegister>
+			</BuilderShell>
+
+			{/* Kept by the S8 confirm audit: the builder holds a multi-step draft the
+				sheet never persisted, so closing is the one press here that loses work
+				rather than an entity that can be re-imported. */}
+			<ConfirmDialog
+				open={showConfirmClose}
+				title="Unsaved changes"
+				confirmLabel="Discard changes"
+				cancelLabel="Keep editing"
+				onConfirm={() => {
+					setShowConfirmClose(false)
+					handleReset()
+					onClose()
+				}}
+				onCancel={() => setShowConfirmClose(false)}
+			>
+				Closing the builder discards the item you are building. This cannot be
+				undone.
+			</ConfirmDialog>
 		</>
 	)
 }

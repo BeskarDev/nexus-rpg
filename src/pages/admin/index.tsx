@@ -58,8 +58,8 @@ function AdminPanelContent() {
 			<Alert severity="warning">
 				You must be logged in to access the admin panel.
 				<Typography variant="body2" sx={{ mt: 1 }}>
-					Please log in and try again. If you believe you should have
-					access, contact your administrator.
+					Please log in and try again. If you believe you should have access,
+					contact your administrator.
 				</Typography>
 			</Alert>
 		)

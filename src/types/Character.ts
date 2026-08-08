@@ -78,7 +78,23 @@ export type Companion = {
 	markdown: string
 	currentHP: number
 	maxHP: number
-	wounded: boolean
+	/**
+	 * @deprecated Since M13 S7 — superseded by `wounds`.
+	 *
+	 * Kept on the type because stored documents still carry it: `migrateCharacterData`
+	 * converts a `true` into one wound, and the field is left in place so an older client
+	 * reading the same document does not lose the flag.
+	 */
+	wounded?: boolean
+	/**
+	 * Wounds taken, 0-2.
+	 *
+	 * A companion has **two Health Marks** (`docs/08-creatures/01-mounts-companions`): at two
+	 * Wounds they are instantly dead, and one Wound plus one Fatigue starts them dying like an
+	 * adventurer. The sheet modelled this as a single boolean, so the second mark — the one
+	 * that decides whether the companion survives — could not be recorded.
+	 */
+	wounds?: number
 }
 
 export type Statistics = {
@@ -164,6 +180,10 @@ export const statusEffectTypeArray = [
 	'frightened',
 	'grappled',
 	'hidden',
+	// Documented and published since before M13 but absent from this array, so it
+	// was unselectable on the character sheet. `conditions.json` is the source of
+	// truth for the SET as well as the text; a test pins the two together now.
+	'invisible',
 	'marked',
 	'paralyzed',
 	'poisoned',
@@ -264,10 +284,21 @@ export type Damage = {
 export const baseDamageTypeArray = ['', 'STR', 'AGI', 'SPI', 'MND'] as const
 export type BaseDamageType = (typeof baseDamageTypeArray)[number]
 
+/**
+ * The eleven damage types, as published in `docs/05-combat/02-attacking.md` (M13 S5).
+ *
+ * This array is the app's single source of truth: `DAMAGE_SIGIL`, the damage chips and
+ * every select read it, and `damageSigils.test.ts` asserts parity in both directions.
+ * `force` was missing here while existing in the rules, in the chip system and in the
+ * sigil table — so a force spell could be authored in the book, coloured by the chips
+ * and drawn a mark, and still not be selectable on the sheet. The test used to encode
+ * that gap as expected; it now asserts there is no gap.
+ */
 export const damageTypeArray = [
 	'acid',
 	'blast',
 	'fire',
+	'force',
 	'frost',
 	'lightning',
 	'necrotic',

@@ -1,78 +1,44 @@
-import {
-	Alert,
-	Avatar,
-	Box,
-	Button,
-	Divider,
-	Stack,
-	styled,
-	TextField,
-	Typography,
-	useTheme,
-} from '@mui/material'
+import { Box } from '@mui/material'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
+import {
+	CharacterSelector,
+	itemsPerPage,
+	PrintPages,
+	PrintToolShell,
+	usePagePrintStyle,
+	sheetDocumentTitle,
+	SHEET_PAGE,
+	SHEET_PAGE_MARGIN,
+	SHEET_SECTION,
+} from '../PrintingTools'
 import { emptyCharacter } from './assets/emptyCharacter'
 import './printCharacterSheetStyles.css'
 import { StatisticsSheet } from './sheets/1_Statistics'
 import { EquipmentSheet } from './sheets/2_Equipment'
 import { SpellsSheet } from './sheets/3_Spells'
 import { PersonalSheet } from './sheets/4_Personal'
-import { CharacterSelector } from '../PrintingTools'
 
-const AttributeField = styled(TextField)({
-	maxWidth: '4.5rem',
-})
-AttributeField.defaultProps = {
-	disabled: true,
-	variant: 'outlined',
-	inputProps: {
-		style: {
-			textAlign: 'center',
-			fontWeight: 'bold',
-			paddingInline: 'auto',
-		},
-	},
-}
+/** The four sections, in print order. Named once so the stated count, the
+ *  preview and the printed output all come from the same list. */
+const SHEETS = [
+	{ key: 'statistics', Sheet: StatisticsSheet },
+	{ key: 'equipment', Sheet: EquipmentSheet },
+	{ key: 'spells', Sheet: SpellsSheet },
+	{ key: 'personal', Sheet: PersonalSheet },
+] as const
 
-export const OutlinedTextfield = styled(TextField)({
-	'& .MuiOutlinedInput-root': {
-		'& .MuiOutlinedInput-notchedOutline': {
-			borderColor: 'black',
-		},
-		'& .MuiInputBase-input.MuiOutlinedInput-input': {
-			textAlign: 'right',
-		},
-	},
-})
-
-export const CharacterHeaderTextField = styled(TextField)({
-	marginTop: 0,
-	'& .MuiInputBase-input.MuiInput-input': {
-		paddingBottom: 0,
-	},
-})
-CharacterHeaderTextField.defaultProps = {
-	size: 'small',
-	variant: 'standard',
-}
-
-export const RankIndicator = styled(Avatar)({
-	width: 24,
-	height: 24,
-	backgroundColor: 'transparent',
-	color: 'black',
-	border: '1px solid black',
-	fontSize: '14px',
-})
+const sheetPageCount = Math.ceil(
+	SHEETS.length / itemsPerPage(SHEET_PAGE, SHEET_SECTION, SHEET_PAGE_MARGIN),
+)
 
 export const PrintCharacterSheet: React.FC = () => {
-	const muiTheme = useTheme()
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>(emptyCharacter)
 	const [selectedCharacter, setSelectedCharacter] =
 		React.useState<CharacterDocument | null>(null)
+	const [showJsonImport, setShowJsonImport] = React.useState(false)
 
 	const char: Character = useMemo(() => {
 		try {
@@ -104,90 +70,105 @@ export const PrintCharacterSheet: React.FC = () => {
 
 	const componentRef = useRef()
 	const handlePrint = useReactToPrint({
-		documentTitle: char?.personal.name + '-character-sheet',
+		// It read `undefined-character-sheet` with no character loaded, and a
+		// blank sheet printed for the table is a real use.
+		documentTitle: sheetDocumentTitle(char?.personal.name),
 		content: () => componentRef.current,
 	})
 
 	return (
 		<Box>
-			<style type="text/css" media="print">
-				{
-					'\
-        @page { size: 267mm 192mm; }\
-      '
+			<PrintToolShell
+				controlsLabel="Select Character"
+				previewLabel="Preview"
+				controls={
+					<>
+						<div className="pt-section">
+							<div className="pt-section__head">
+								<span className="pt-section__step">I</span>
+								<span className="pt-section__label">Source</span>
+							</div>
+							<div className="pt-source">
+								<CharacterSelector
+									onCharacterSelect={handleCharacterSelect}
+									label="Select character to print"
+									helperText="Choose a character from your account to load all their data."
+								/>
+								<button
+									type="button"
+									className={`pt-import-toggle${showJsonImport ? ' is-open' : ''}`}
+									onClick={() => setShowJsonImport(!showJsonImport)}
+									aria-expanded={showJsonImport}
+									aria-controls="pt-import-character-sheet"
+								>
+									<span
+										className="pt-import-toggle__caret"
+										aria-hidden="true"
+									/>
+									Import character as JSON
+								</button>
+								<div
+									id="pt-import-character-sheet"
+									className={`pt-import-body${showJsonImport ? '' : ' is-hidden'}`}
+								>
+									<textarea
+										value={characterJsonString}
+										onChange={(event) =>
+											handleCharacterUpload(event.target.value)
+										}
+										placeholder="Paste character JSON here…"
+										aria-label="Character JSON import"
+									/>
+								</div>
+							</div>
+						</div>
+						<div className="pt-section">
+							<div className="pt-count">
+								{char ? (
+									<>
+										<strong>
+											{char.personal?.name || 'Unnamed character'}
+										</strong>{' '}
+										— {SHEETS.length} sheets, {sheetPageCount}{' '}
+										{sheetPageCount === 1 ? 'page' : 'pages'}
+									</>
+								) : (
+									'No character selected'
+								)}
+							</div>
+							<button
+								type="button"
+								className="pt-print-verb"
+								onClick={handlePrint}
+								disabled={!char}
+							>
+								Print character sheet
+							</button>
+						</div>
+					</>
 				}
-			</style>
-			<Stack
-				flexDirection="column"
-				gap={2}
-				sx={{
-					mb: 2,
-					py: 2,
-					px: 3,
-					backgroundColor:
-						muiTheme.palette.mode === 'dark' ? '#1e1e1e' : 'white',
-					borderRadius: '8px',
-				}}
-			>
-				<Typography variant="h6" component="h2">
-					Character Sheet Printing
-				</Typography>
-				<Typography variant="body2" color="text.secondary">
-					Select a character from your account or paste character JSON data to
-					print a complete character sheet with all statistics, equipment,
-					spells, and personal information.
-				</Typography>
-
-				{muiTheme.palette.mode === 'dark' && (
-					<Alert variant="filled" severity="info">
-						If you're having trouble seeing everything on the sheets, try
-						switching to light mode using the theme toggle above (the printed
-						result isn't affected either way)!
-					</Alert>
-				)}
-
-				<Divider sx={{ my: 1 }} />
-
-				<CharacterSelector
-					onCharacterSelect={handleCharacterSelect}
-					label="Select Character to Print"
-					helperText="Choose a character from your account to automatically load all their data for printing."
-				/>
-
-				<Divider sx={{ my: 1 }} />
-
-				<TextField
-					multiline
-					minRows={3}
-					maxRows={5}
-					fullWidth
-					label="Alternative: Import Character as JSON"
-					value={characterJsonString}
-					onChange={(event) => handleCharacterUpload(event.target.value)}
-					placeholder="Paste character JSON here to load character data..."
-					helperText="You can also paste a character's exported JSON data here as an alternative to selecting a character above."
-				/>
-
-				<Divider sx={{ my: 1 }} />
-
-				<Button
-					variant="contained"
-					size="large"
-					onClick={handlePrint}
-					disabled={!char}
-				>
-					PRINT CHARACTER SHEET
-				</Button>
-			</Stack>
-
-			{Boolean(char) && (
-				<Box sx={{ display: 'flex', flexWrap: 'wrap' }} ref={componentRef}>
-					<StatisticsSheet char={char} />
-					<EquipmentSheet char={char} />
-					<SpellsSheet char={char} />
-					<PersonalSheet char={char} />
-				</Box>
-			)}
+				preview={
+					<Box ref={componentRef}>
+						<PrintPages
+							page={SHEET_PAGE}
+							item={SHEET_SECTION}
+							margin={SHEET_PAGE_MARGIN}
+							empty={
+								<p className="pt-empty">
+									Select a character in the controls panel to preview their
+									sheet here.
+								</p>
+							}
+						>
+							{char
+								? SHEETS.map(({ key, Sheet }) => (
+										<Sheet key={key} char={char} />
+									))
+								: []}
+						</PrintPages>
+					</Box>
+				}
+			/>
 		</Box>
 	)
 }

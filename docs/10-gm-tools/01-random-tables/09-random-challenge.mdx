@@ -7,11 +7,17 @@ import { ChallengeAutoRollerWrapper } from '@site/src/components/AutoRoller/Chal
 
 # 🪤 Challenges
 
+Something in the way: a puzzle to solve, a trap to survive, or a fight with a complication in it.
+
 <ChallengeAutoRollerWrapper />
+
+The tables below are what the roller draws from. They are folded because nothing reads them start to finish. Open one to roll it by hand.
 
 ## Puzzles & Riddles
 
-<RollableTable singleRoll>
+<TableFold label="Puzzles & Riddles" rows={20}>
+
+<RollableTable>
 | d20 | Puzzle Type | Core Element | Interaction | Presentation | Feedback | Hints |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | Logic | Numbered levers | Pull/push | Control panel | Glyph glow | Symbols repeat |
@@ -36,9 +42,13 @@ import { ChallengeAutoRollerWrapper } from '@site/src/components/AutoRoller/Chal
 | 20 | Illusion | False paths | Discern/touch | Mirror chamber | Reflection wavers | Truth marks |
 </RollableTable>
 
+</TableFold>
+
 ## Traps & Hazards
 
-<RollableTable singleRoll>
+<TableFold label="Traps & Hazards" rows={12}>
+
+<RollableTable>
 | d12 | Hazard Type | Presentation | Warning | Avoidance |
 | --- | --- | --- | --- | --- |
 | 1 | Pitfall | Floor grate | Draft | Jump over |
@@ -55,9 +65,13 @@ import { ChallengeAutoRollerWrapper } from '@site/src/components/AutoRoller/Chal
 | 12 | Crushing walls | Narrow passage | Dust falling | Brace shoulders |
 </RollableTable>
 
+</TableFold>
+
 ## Combat Scenes
 
-<RollableTable singleRoll>
+<TableFold label="Combat Scenes" rows={12}>
+
+<RollableTable>
 | d12 | Scene Type | Terrain | Objective | Twist |
 | --- | --- | --- | --- | --- |
 | 1 | Ambush | Dense cover | Secure flank | Reinforcements |
@@ -73,3 +87,5 @@ import { ChallengeAutoRollerWrapper } from '@site/src/components/AutoRoller/Chal
 | 11 | Assault | Broken ground | Breach defenses | Flooding |
 | 12 | Pursuit | Moving terrain | Escape zone | Narrow span |
 </RollableTable>
+
+</TableFold>

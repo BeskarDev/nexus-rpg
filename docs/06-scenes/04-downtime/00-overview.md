@@ -6,10 +6,6 @@ sidebar_position: 0
 
 ![banner-img](/img/banner/crafting-banner.png)
 
-# 🏠 Downtime
-
-![banner-img](/img/banner/crafting-banner.png)
-
 Whenever adventurers return from their perilous quests, they find solace in the familiar comforts of civilization. This downtime offers a chance to rest, replenish your supplies, and let you prepare for the challenges that lie ahead. You might spend your hard-earned coins on new equipment, forge alliances, or simply enjoy the peace and quiet of a well-deserved break.
 
 Downtime is measured in weeks, where each adventurer can choose to partake in a variety of downtime activities. You choose one downtime activity per week.

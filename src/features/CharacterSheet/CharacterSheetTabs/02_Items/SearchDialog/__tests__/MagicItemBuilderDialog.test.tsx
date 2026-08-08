@@ -1,8 +1,8 @@
 import React from 'react'
 /// <reference types="vitest" />
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { vi, describe, it, expect } from 'vitest'
+import { vi, describe, it, expect, beforeEach } from 'vitest'
 import { MagicItemBuilderDialog } from '../MagicItemBuilderDialog'
 import { CharacterDocument } from '../../../../../../types/Character'
 
@@ -47,6 +47,22 @@ const mockCharacter: CharacterDocument = {
 	companions: [],
 }
 
+/**
+ * The builder's behaviour, driven through the ledgers that replaced the stepper
+ * (M13 S8).
+ *
+ * ## What changed here, and what deliberately did not
+ *
+ * The INTERACTION is new: there is no `Stepper`, no category `combobox` and no
+ * Next/Back, because a settled register now states its answer and the next one
+ * opens. Every assertion about the OUTCOME is unchanged — the generated name, the
+ * cost arithmetic, the damage, the description and the location are the contract
+ * this tool has to keep, and they are what these tests are for.
+ *
+ * The one test that was rewritten rather than re-pointed is the helmet AV case: it
+ * was a tree of `if (element)` guards ending in `expect(true).toBe(true)`, so it
+ * could pass without asserting anything. It asserts now.
+ */
 describe('MagicItemBuilderDialog', () => {
 	const mockOnClose = vi.fn()
 	const mockOnCreateItem = vi.fn()
@@ -56,8 +72,8 @@ describe('MagicItemBuilderDialog', () => {
 		mockOnCreateItem.mockClear()
 	})
 
-	const renderDialog = (open = true) => {
-		return render(
+	const renderDialog = (open = true) =>
+		render(
 			<MagicItemBuilderDialog
 				open={open}
 				onClose={mockOnClose}
@@ -65,332 +81,268 @@ describe('MagicItemBuilderDialog', () => {
 				character={mockCharacter}
 			/>,
 		)
+
+	/** A ledger row, chosen by the name in its first cell. */
+	const row = (name: string | RegExp) =>
+		screen
+			.getAllByRole('option')
+			.find((option) =>
+				typeof name === 'string'
+					? option.textContent?.startsWith(name)
+					: name.test(option.textContent ?? ''),
+			)!
+
+	const chooseQuality = (label: string) =>
+		screen.getByRole('radio', { name: label })
+
+	/**
+	 * Keep the base item's own name and move on to quality.
+	 *
+	 * The appearance register sits directly behind the base item, so every path
+	 * through the builder passes it. Its first row is always the standard form.
+	 */
+	const keepStandardName = () => screen.getAllByRole('option')[0]
+
+	const createButton = () =>
+		screen.getByRole('button', { name: /add to inventory/i })
+
+	/** Reopen a settled register by pressing its summary row. */
+	const reopen = (label: string) => {
+		const register = screen
+			.getAllByText(label)
+			.map((node) => node.closest('.cb-register'))
+			.find(Boolean)!
+		return register.querySelector('.cb-register__summary') as HTMLElement
 	}
 
-	it('should render the stepper and initial step', () => {
-		renderDialog()
-
+	it('renders its first register, and nothing when closed', () => {
+		const { unmount } = renderDialog()
 		expect(screen.getByText('Magic Item Builder')).toBeInTheDocument()
-		expect(screen.getByText('Select Base Item')).toBeInTheDocument()
-		expect(
-			screen.getByText('Select Item Category and Base Item'),
-		).toBeInTheDocument()
-	})
+		expect(screen.getByText('Base item')).toBeInTheDocument()
+		unmount()
 
-	it('should not render when closed', () => {
 		renderDialog(false)
-
 		expect(screen.queryByText('Magic Item Builder')).not.toBeInTheDocument()
 	})
 
-	it('should navigate through the stepper workflow', async () => {
+	it('opens the next register as each choice is made', async () => {
 		const user = userEvent.setup()
 		renderDialog()
 
-		// Step 1: Select category and base item
-		await user.click(screen.getByRole('combobox', { name: /category/i }))
-		await user.click(screen.getByText('One-Handed Weapons'))
+		// The quality register is locked until there is an item to price.
+		expect(screen.getByText('Choose a base item first')).toBeInTheDocument()
 
-		await waitFor(() => {
-			expect(screen.getByText('Shortsword')).toBeInTheDocument()
-		})
+		await user.click(row('Shortsword'))
+		// Choosing the item settles register I and opens APPEARANCE, which the base
+		// item alone answers.
+		expect(row('Gladius')).toBeVisible()
+		// …and the settled answer is still on screen, with the way back to it.
+		expect(screen.getAllByText('Change')[0]).toBeInTheDocument()
 
-		await user.click(screen.getByText('Shortsword'))
+		// Appearance opens the quality rail.
+		await user.click(keepStandardName())
+		expect(screen.getByRole('radio', { name: 'Q4 (formidable)' })).toBeVisible()
 
-		// Next button should be enabled now
-		const nextButton = screen.getByRole('button', { name: /next/i })
-		expect(nextButton).toBeEnabled()
-		await user.click(nextButton)
+		// Quality opens the ENCHANTMENT, which is the interesting choice.
+		await user.click(chooseQuality('Q4 (formidable)'))
+		expect(row('No enchantment')).toBeVisible()
 
-		// Step 2: Choose quality
-		expect(screen.getByText('Choose Quality (Q3-Q8)')).toBeInTheDocument()
-		await user.click(screen.getByText('Q4 (Lesser Magic)'))
-
-		await user.click(screen.getByRole('button', { name: /next/i }))
-
-		// Step 3: Material (required - should auto-select a base material)
-		expect(
-			screen.getAllByText('Select Material (Required)')[0],
-		).toBeInTheDocument()
-		await user.click(screen.getByRole('button', { name: /next/i }))
-
-		// Step 4: Enchantment (optional)
-		expect(
-			screen.getByText('Select Enchantment (Optional)'),
-		).toBeInTheDocument()
-
-		// Select an enchantment
-		await user.click(screen.getByText('Flaming'))
-
-		await user.click(screen.getByRole('button', { name: /next/i }))
-
-		// Step 5: Review & Create
-		expect(screen.getByText('Review & Create Magic Item')).toBeInTheDocument()
-		expect(screen.getByText(/Shortsword \+1/)).toBeInTheDocument() // Material prefix + Flaming + Shortsword + +1
+		// And the enchantment opens the MATERIAL, which used to be reachable only
+		// through its `Change` control (owner review).
+		await user.click(row('Flaming'))
+		expect(row('Bronze')).toBeVisible()
 	})
 
-	it('should allow creating item with just base material and no enchantment', async () => {
+	it('names the item after the cultural type chosen for it', async () => {
 		const user = userEvent.setup()
 		renderDialog()
 
-		// Navigate to final step with base material auto-selected, no enchantment
-		// Step 1: Select base item
-		await user.click(screen.getByRole('combobox', { name: /category/i }))
-		await user.click(screen.getByText('One-Handed Weapons'))
-		await user.click(screen.getByText('Shortsword'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
+		await user.click(row('Longsword'))
+		await user.click(row('Bastard Sword'))
+		await user.click(chooseQuality('Q4 (formidable)'))
 
-		// Step 2: Choose quality
-		await user.click(screen.getByText('Q4 (Lesser Magic)'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
-
-		// Step 3: Accept auto-selected base material (Bronze)
-		await user.click(screen.getByRole('button', { name: /next/i }))
-
-		// Step 4: Skip enchantment (optional)
-		await user.click(screen.getByRole('button', { name: /next/i }))
-
-		// Should allow creating item with base material only
-		expect(screen.getByRole('button', { name: /create item/i })).toBeEnabled()
+		await user.click(createButton())
+		// The appearance replaces the base item's name and NOTHING else: a Longsword
+		// costs 100 base + 1,000 magic base either way.
+		expect(mockOnCreateItem).toHaveBeenCalledWith(
+			expect.objectContaining({ name: 'Bronze Bastard Sword +1', cost: 1100 }),
+		)
 	})
 
-	it('should create a weapon with correct properties', async () => {
+	it('offers no appearance for an item with no cultural variants', async () => {
 		const user = userEvent.setup()
 		renderDialog()
 
-		// Create a flaming shortsword
-		await user.click(screen.getByRole('combobox', { name: /category/i }))
-		await user.click(screen.getByText('One-Handed Weapons'))
-		await user.click(screen.getByText('Shortsword'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
+		await user.click(row('Buckler'))
+		expect(
+			screen.getByText('A Buckler has no cultural variants'),
+		).toBeInTheDocument()
+	})
 
-		await user.click(screen.getByText('Q4 (Lesser Magic)'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
+	it('closes and clears the draft once the item is added', async () => {
+		const user = userEvent.setup()
+		renderDialog()
 
-		// Skip material
-		await user.click(screen.getByRole('button', { name: /next/i }))
+		await user.click(row('Shortsword'))
+		await user.click(keepStandardName())
+		await user.click(chooseQuality('Q4 (formidable)'))
+		await user.click(createButton())
 
-		// Select flaming enchantment
-		await user.click(screen.getByText('Flaming'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
+		expect(mockOnCreateItem).toHaveBeenCalledTimes(1)
+		// Adding ENDS the commission — no confirm-discard prompt, because the draft
+		// was committed rather than lost.
+		expect(mockOnClose).toHaveBeenCalledTimes(1)
+		expect(screen.queryByText('Unsaved changes')).not.toBeInTheDocument()
+		// …and the builder is back to its first register, so reopening it does not
+		// show an item that already exists.
+		expect(screen.getByText('Choose a base item')).toBeInTheDocument()
+	})
 
-		// Create the item
-		await user.click(screen.getByRole('button', { name: /create item/i }))
+	it('creates a weapon with the right name, cost, damage and description', async () => {
+		const user = userEvent.setup()
+		renderDialog()
+
+		await user.click(row('Shortsword'))
+		await user.click(keepStandardName())
+		await user.click(chooseQuality('Q4 (formidable)'))
+		// Quality opens the ENCHANTMENT: the material is required but already
+		// answered with the plain one, and the enchantment is the interesting choice.
+		await user.click(row('Flaming'))
+		await user.click(createButton())
 
 		expect(mockOnCreateItem).toHaveBeenCalledWith(
 			expect.objectContaining({
-				name: expect.stringMatching(/Flaming.*Shortsword \+1$/), // Base material + Flaming + Shortsword + +1
-				cost: 2050, // 50 base + 1000 magic base + 0 material (Bronze base) + 1000 enchantment
+				name: expect.stringMatching(/Flaming.*Shortsword \+1$/),
+				// 50 base + 1000 magic base + 0 material (Bronze is a base material)
+				// + 1000 enchantment
+				cost: 2050,
 				damage: expect.objectContaining({
-					weapon: 3, // 2 base + 1 quality bonus (Q2->Q4 = +1)
+					// A Shortsword is a Blade, so Strength — `agile` grants an option the
+					// player takes per attack, it does not move the base (owner report:
+					// the builder wrote an empty base attribute for every weapon).
+					base: 'STR',
+					weapon: 3, // 2 base + 1 quality bonus (Q2 -> Q4)
 					type: 'physical',
 				}),
-				description: expect.stringContaining('While holding this weapon'), // New description format
+				description: expect.stringContaining('While holding this weapon'),
 				location: 'carried',
 			}),
 		)
 	})
 
-	it('should create a wearable item with correct properties', async () => {
+	it('creates an item with only a base material and no enchantment', async () => {
 		const user = userEvent.setup()
 		renderDialog()
 
-		// Create an amulet of might
-		await user.click(screen.getByRole('combobox', { name: /category/i }))
-		await user.click(screen.getByText('Wearable Items'))
-		await user.click(screen.getByText('Amulet'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
+		await user.click(row('Shortsword'))
+		await user.click(keepStandardName())
+		await user.click(chooseQuality('Q4 (formidable)'))
+		// A base material is chosen for you, so the item is complete without
+		// touching the material or enchantment registers.
+		expect(createButton()).toBeEnabled()
 
-		await user.click(screen.getByText('Q4 (Lesser Magic)'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
+		await user.click(createButton())
+		expect(mockOnCreateItem).toHaveBeenCalledWith(
+			expect.objectContaining({ cost: 1050 }),
+		)
+	})
 
-		// Skip material
-		await user.click(screen.getByRole('button', { name: /next/i }))
+	it('creates a wearable, which skips the magic-item base cost', async () => {
+		const user = userEvent.setup()
+		renderDialog()
 
-		// Select of Ogre Strength enchantment
-		await user.click(screen.getByText('of Ogre Strength'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
-
-		// Create the item
-		await user.click(screen.getByRole('button', { name: /create item/i }))
+		await user.click(row('Amulet'))
+		await user.click(chooseQuality('Q4 (formidable)'))
+		await user.click(row('of Ogre Strength'))
+		await user.click(createButton())
 
 		expect(mockOnCreateItem).toHaveBeenCalledWith(
 			expect.objectContaining({
-				name: expect.stringMatching(/Amulet of Ogre Strength$/), // Now includes base material prefix
-				cost: 1050, // 50 base + 0 magic base (wearables skip) + 0 material (Brass base) + 1000 enchantment (wearables use one-handed weapon cost)
+				name: expect.stringMatching(/Amulet of Ogre Strength$/),
+				// 50 base + 0 magic base (wearables skip it) + 0 material + 1000
+				// enchantment
+				cost: 1050,
 				location: 'carried',
 				description: expect.stringContaining('While wearing this item'),
 			}),
 		)
 	})
 
-	it('should calculate correct cost for special material and enchantment', async () => {
+	it('prices a special material and an enchantment together, and shows the total', async () => {
 		const user = userEvent.setup()
 		renderDialog()
 
-		// Create an iron flaming shortsword
-		await user.click(screen.getByRole('combobox', { name: /category/i }))
-		await user.click(screen.getByText('One-Handed Weapons'))
-		await user.click(screen.getByText('Shortsword'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
+		await user.click(row('Shortsword'))
+		await user.click(keepStandardName())
+		await user.click(chooseQuality('Q4 (formidable)'))
+		// Choosing the enchantment opens the MATERIAL register, so a special material
+		// is walked into rather than reopened.
+		await user.click(row('Flaming'))
+		await user.click(row('Iron'))
 
-		await user.click(screen.getByText('Q4 (Lesser Magic)'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
+		// 50 base + 1000 magic base + 500 material + 1000 enchantment
+		expect(screen.getByText('2,550')).toBeInTheDocument()
 
-		// Select iron material (available for weapons at Q4 as special material)
-		await user.click(screen.getByText('Iron'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
-
-		// Select flaming enchantment
-		await user.click(screen.getByText('Flaming'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
-
-		// New cost model: 50 base + 1000 magic base + 500 material extra + 1000 enchantment = 2550
-		expect(screen.getByText('2,550 coins')).toBeInTheDocument()
-
-		await user.click(screen.getByRole('button', { name: /create item/i }))
-
+		await user.click(createButton())
 		expect(mockOnCreateItem).toHaveBeenCalledWith(
 			expect.objectContaining({
-				name: 'Flaming Iron Shortsword +1', // Now includes +1 bonus
+				name: 'Flaming Iron Shortsword +1',
 				cost: 2550,
 			}),
 		)
 	})
 
-	it('should allow resetting the form', async () => {
+	it('resets back to an empty commission', async () => {
 		const user = userEvent.setup()
 		renderDialog()
 
-		// Make some selections
-		await user.click(screen.getByRole('combobox', { name: /category/i }))
-		await user.click(screen.getByText('One-Handed Weapons'))
-		await user.click(screen.getByText('Shortsword'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
-
-		// Reset should go back to step 1
+		await user.click(row('Shortsword'))
+		await user.click(keepStandardName())
+		await user.click(chooseQuality('Q4 (formidable)'))
 		await user.click(screen.getByRole('button', { name: /reset/i }))
 
-		expect(
-			screen.getByText('Select Item Category and Base Item'),
-		).toBeInTheDocument()
-		expect(screen.getByText('Next')).toBeDisabled()
+		expect(screen.getByText('Choose a base item')).toBeInTheDocument()
+		expect(screen.getByText('Choose a base item first')).toBeInTheDocument()
 	})
 
-	it('should handle back navigation correctly', async () => {
+	it('filters materials and enchantments by category and quality', async () => {
 		const user = userEvent.setup()
 		renderDialog()
 
-		// Navigate forward
-		await user.click(screen.getByRole('combobox', { name: /category/i }))
-		await user.click(screen.getByText('One-Handed Weapons'))
-		await user.click(screen.getByText('Shortsword'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
+		await user.click(row('Amulet'))
+		await user.click(chooseQuality('Q5 (exceptional)'))
 
-		expect(screen.getByText('Choose Quality (Q3-Q8)')).toBeInTheDocument()
-
-		// Navigate back
-		await user.click(screen.getByRole('button', { name: /back/i }))
-
+		// Wearables take suffix enchantments; `Flaming` is a weapon's.
+		expect(row('of Protection')).toBeDefined()
+		expect(row('of Ogre Strength')).toBeDefined()
 		expect(
-			screen.getByText('Select Item Category and Base Item'),
-		).toBeInTheDocument()
+			screen.queryAllByRole('option').some((o) => o.textContent === 'Flaming'),
+		).toBe(false)
+
+		// …and a wearable-and-Q5 material is in the register behind it.
+		await user.click(reopen('Material'))
+		expect(row('Phantom-Silk')).toBeDefined()
 	})
 
-	it('should filter materials and enchantments by category and quality', async () => {
+	it('writes a helmet’s AV once, not twice', async () => {
 		const user = userEvent.setup()
 		renderDialog()
 
-		// Select wearable category
-		await user.click(screen.getByRole('combobox', { name: /category/i }))
-		await user.click(screen.getByText('Wearable Items'))
-		await user.click(screen.getByText('Amulet'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
+		// The only helmet in the data; the register filters to it by name.
+		await user.click(row(/^Helmet/))
+		await user.click(keepStandardName())
+		await user.click(chooseQuality('Q5 (exceptional)'))
+		await user.click(createButton())
 
-		await user.click(screen.getByText('Q5 (Potent Magic)'))
-		await user.click(screen.getByRole('button', { name: /next/i }))
+		expect(mockOnCreateItem).toHaveBeenCalled()
+		const created = mockOnCreateItem.mock.calls[0][0]
+		expect(created.quality).toBe(5)
 
-		// Materials step - phantom-silk should be available for wearables at Q5
-		expect(screen.getByText('Phantom-Silk')).toBeInTheDocument()
-		await user.click(screen.getByRole('button', { name: /next/i }))
-
-		// Enchantments step - should only show suffix enchantments for wearables
-		expect(screen.getByText('of Protection')).toBeInTheDocument()
-		expect(screen.getByText('of Ogre Strength')).toBeInTheDocument()
-		expect(screen.queryByText('Flaming')).not.toBeInTheDocument() // weapon enchantment
-	})
-
-	it('should handle helmet AV properties correctly without duplication', async () => {
-		const mockOnCreateItem = vi.fn()
-		const mockOnClose = vi.fn()
-
-		render(
-			<MagicItemBuilderDialog
-				open={true}
-				onClose={mockOnClose}
-				onCreateItem={mockOnCreateItem}
-				character={mockCharacter}
-			/>,
-		)
-
-		// Navigate through workflow to create a helmet
-		// Step 1: Select helmet category (this should be available in the categories)
-		const nextButton = screen.getByText('Next')
-
-		// If helmet category exists, select it and proceed
-		const helmetCategory = screen.queryByText('Helmet')
-		if (helmetCategory) {
-			fireEvent.click(helmetCategory)
-			fireEvent.click(nextButton)
-
-			// Step 2: Select a helmet item (if available)
-			await waitFor(() => {
-				const helmetItems = screen.queryAllByText(/helmet/i)
-				if (helmetItems.length > 0) {
-					fireEvent.click(helmetItems[0])
-				}
-			})
-
-			if (screen.getByText('Next').closest('button')?.disabled === false) {
-				fireEvent.click(nextButton)
-
-				// Step 3: Select Q5 quality
-				const q5Button = screen.queryByText('Q5')
-				if (q5Button) {
-					fireEvent.click(q5Button)
-					fireEvent.click(nextButton)
-
-					// Step 4: Skip materials
-					fireEvent.click(nextButton)
-
-					// Step 5: Create item without enchantment
-					const createButton = screen.getByText('Create Item')
-					fireEvent.click(createButton)
-
-					// Verify no duplicate AV in properties
-					if (mockOnCreateItem.mock.calls.length > 0) {
-						const createdItem = mockOnCreateItem.mock.calls[0][0]
-						if (
-							createdItem.properties &&
-							createdItem.properties.includes('AV +')
-						) {
-							// Check that there's no duplicate AV pattern like "AV +2, AV +1"
-							const avMatches = createdItem.properties.match(/AV \+\d+/g)
-							expect(avMatches).toBeDefined()
-							expect(avMatches!.length).toBe(1) // Should only have one AV entry
-
-							// Should not contain the buggy pattern
-							expect(createdItem.properties).not.toMatch(/AV \+\d+.*AV \+\d+/)
-						}
-
-						// Should have quality field set
-						expect(createdItem.quality).toBe(5)
-					}
-				}
-			}
-		}
-
-		// If we can't test helmets specifically, at least verify the quality field is added
-		expect(true).toBe(true) // Placeholder assertion
+		const properties = Array.isArray(created.properties)
+			? created.properties.join(', ')
+			: (created.properties ?? '')
+		// The bug this guards: `AV +2, AV +1` from the bonus being appended rather
+		// than replacing the base value.
+		expect(properties.match(/AV \+\d+/g) ?? []).toHaveLength(1)
 	})
 })

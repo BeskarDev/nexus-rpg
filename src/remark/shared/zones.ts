@@ -68,3 +68,55 @@ export function isMechanicalZone(
 	const cell = getTableCellContext(ancestors)
 	return cell.inTableCell && !cell.isHeaderRow
 }
+
+/**
+ * JSX elements whose text is a NAME, not rules prose, and must never be
+ * converted by the keyword or chip plugins.
+ *
+ * Both plugins already skip `strong`, which used to cover this: stat-block entry
+ * names were emitted as `**Undead Nature**`. The creature card renders them as
+ * `<EntryName>` instead, to hold the name in its own typographic register — and
+ * that silently dropped them out of the guard, so "Undead Nature" started
+ * chipping "Nature" as a skill. Keeping the list here means both plugins share
+ * one definition and a future name container only has to be added once.
+ */
+export const NAME_ELEMENTS = new Set(['EntryName'])
+
+/** True when any ancestor is a JSX element that holds a name rather than prose. */
+export function inNameElement(
+	ancestors: { type?: string; name?: string }[],
+): boolean {
+	return ancestors.some(
+		(ancestor) =>
+			ancestor.type?.startsWith('mdxJsx') &&
+			typeof ancestor.name === 'string' &&
+			NAME_ELEMENTS.has(ancestor.name),
+	)
+}
+
+/**
+ * JSX elements that render an `<a>` around their own children.
+ *
+ * The keyword plugin already refuses to link inside a markdown `link` node,
+ * because a nested anchor is invalid HTML. It could not see THESE: the anchor
+ * is created by the React component at render time, long after remark has run.
+ * `ToolEntry` wraps its blurb in the row's link, so every keyword in a GM-tools
+ * contents blurb became an `<a>` inside an `<a>` and the build's HTML minifier
+ * reported it on every entry.
+ *
+ * A contents row should navigate to its own target anyway, not offer a second
+ * destination inside its description.
+ */
+export const LINK_ELEMENTS = new Set(['ToolEntry'])
+
+/** True when any ancestor is a JSX element that renders its own anchor. */
+export function inLinkElement(
+	ancestors: { type?: string; name?: string }[],
+): boolean {
+	return ancestors.some(
+		(ancestor) =>
+			ancestor.type?.startsWith('mdxJsx') &&
+			typeof ancestor.name === 'string' &&
+			LINK_ELEMENTS.has(ancestor.name),
+	)
+}

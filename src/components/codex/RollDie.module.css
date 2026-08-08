@@ -1,0 +1,73 @@
+/* The shared roll die (M14 S2, owner review).
+   ==========================================================================
+
+   Lifted out of `CreatureStatBlock.module.css`, where `TreasureTable` had it
+   first. The oracle and the rollable tables press the same die now, so the
+   plate, the tumble and the reduced-motion path live in one place. */
+.roll {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4rem;
+	width: 1.35rem;
+	height: 1.35rem;
+	padding: 0;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 88%,
+		var(--ifm-font-color-base)
+	);
+	cursor: pointer;
+}
+.roll:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
+}
+.roll:focus-visible {
+	outline: 2px solid var(--ifm-color-primary);
+	outline-offset: 2px;
+}
+.roll:disabled {
+	cursor: default;
+}
+
+/* The shuffle. Transform and colour ONLY — no size, margin or border change — so
+   the button cannot move itself or its neighbours while it tumbles. The die rocks
+   rather than spinning a full turn: a square pip-face reads as a die at rest and
+   as a blur when spun, and the rock keeps the pips legible while they change
+   underneath. */
+@keyframes die-tumble {
+	0% {
+		transform: rotate(0deg) scale(1);
+	}
+	20% {
+		transform: rotate(-14deg) scale(1.08);
+	}
+	45% {
+		transform: rotate(12deg) scale(1.08);
+	}
+	70% {
+		transform: rotate(-7deg) scale(1.05);
+	}
+	88% {
+		transform: rotate(4deg) scale(1.02);
+	}
+	100% {
+		transform: rotate(0deg) scale(1);
+	}
+}
+.rolling {
+	animation: die-tumble 470ms ease-out;
+	background: color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+	border-color: color-mix(in srgb, var(--ifm-color-primary) 70%, transparent);
+}
+
+/* Belt and braces: the component skips the shuffle entirely for the same reader. */
+@media (prefers-reduced-motion: reduce) {
+	.rolling {
+		animation: none;
+	}
+}

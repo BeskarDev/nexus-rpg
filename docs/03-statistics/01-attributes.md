@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ![banner-img](/img/banner/attributes-banner.png)
 
-> "The four vessels of power granted to mortals—strength of body, quickness of movement, depth of spirit, and sharpness of mind—these define our path through the world and our legacy within it."
+> "The four vessels of power granted to mortals are strength of body, quickness of movement, depth of spirit, and sharpness of mind. These define our path through the world and our legacy within it."
 
 ## The Four Attributes
 

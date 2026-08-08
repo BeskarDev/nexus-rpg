@@ -9,12 +9,36 @@ describe('Talent point calculation helpers', () => {
 		]
 
 		const abilities = [
-			{ id: 'a1', title: 'Parry', description: '', tag: 'Talent', rank: 1, skill: 'Fighting' },
-			{ id: 'a2', title: 'Riposte', description: '', tag: 'Talent', rank: 2, skill: 'Fighting' },
-			{ id: 'a3', title: 'Spell Shield', description: '', tag: 'Talent', rank: 1, skill: 'Arcana' },
+			{
+				id: 'a1',
+				title: 'Parry',
+				description: '',
+				tag: 'Talent',
+				rank: 1,
+				skill: 'Fighting',
+			},
+			{
+				id: 'a2',
+				title: 'Riposte',
+				description: '',
+				tag: 'Talent',
+				rank: 2,
+				skill: 'Fighting',
+			},
+			{
+				id: 'a3',
+				title: 'Spell Shield',
+				description: '',
+				tag: 'Talent',
+				rank: 1,
+				skill: 'Arcana',
+			},
 		]
 
-		const { summaries } = getTalentPointSummaries(skills as any, abilities as any)
+		const { summaries } = getTalentPointSummaries(
+			skills as any,
+			abilities as any,
+		)
 
 		expect(summaries.find((s) => s.skill === 'Fighting')).toMatchObject({
 			available: 2,

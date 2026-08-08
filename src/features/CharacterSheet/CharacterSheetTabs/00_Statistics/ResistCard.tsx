@@ -1,8 +1,7 @@
 import { useMemo } from 'react'
-import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings, Psychology } from '@mui/icons-material'
-import { Menu, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -13,13 +12,11 @@ import {
 	calculateDefenseLevelBonus,
 	migrateCharacterDefenses,
 } from '../../utils/calculateDefenses'
-import { CharacterSheetCard, CardHeader, CardContent } from '../../components'
+import { SheetField, DerivedPart } from '../../components'
 import { ATTRIBUTE_COLORS } from '../../../../utils/colors'
 
 export const ResistCard = () => {
 	const dispatch = useAppDispatch()
-	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-	const open = Boolean(anchorEl)
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
 	)
@@ -62,16 +59,6 @@ export const ResistCard = () => {
 		}
 	}, [autoBase, autoLevelBonus, totalResist])
 
-	const handleClick = (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-	) => {
-		setAnchorEl(event.currentTarget)
-	}
-
-	const handleClose = () => {
-		setAnchorEl(null)
-	}
-
 	// Initialize detailed structure if it doesn't exist
 	const initializeDetails = () => {
 		const migratedDefenses = migrateCharacterDefenses(activeCharacter)
@@ -83,63 +70,45 @@ export const ResistCard = () => {
 		})
 	}
 
-	const displayValue = resistDetails ? totalResist : resist
-
 	return (
-		<CharacterSheetCard
-			header={
-				<CardHeader icon={<Psychology />} label="Resist" color={ATTRIBUTE_COLORS.mind} />
+		<SheetField
+			label="Resist"
+			sigil="resist"
+			tone={ATTRIBUTE_COLORS.mind}
+			// M9 S6: read often, edited almost never — so it sits in the defence
+			// band with no keyline or wash of its own.
+			weight="band"
+			size="sm"
+			info="Resist: Defense against mental and magical effects (5 + 1/2 Spirit/Mind + level bonus)"
+			value={resistDetails ? totalResist : resist}
+			onEditOpen={resistDetails ? undefined : initializeDetails}
+			editor={
+				<>
+					<SectionHeader>Resist Calculator</SectionHeader>
+					<Typography variant="subtitle2">
+						Set the individual sources of Resist defense.
+					</Typography>
+					<DerivedPart
+						auto
+						value={autoBase}
+						label="Base"
+						helperText="5 + 1/2 Spirit/Mind"
+					/>
+					<DerivedPart auto value={autoLevelBonus} label="Level Bonus" />
+					<DerivedPart
+						value={details.other}
+						label="Other"
+						onChange={(other) =>
+							updateCharacter({
+								statistics: {
+									resistDetails: { other },
+									resist: autoBase + autoLevelBonus + other,
+								},
+							})
+						}
+					/>
+				</>
 			}
-			showConfigButton
-			onConfigClick={resistDetails ? handleClick : initializeDetails}
-			tooltip="Resist: Defense against mental and magical effects (5 + 1/2 Spirit/Mind + level bonus)"
-			minWidth="5rem"
-			configMenu={
-				resistDetails && (
-					<Menu
-						anchorEl={anchorEl}
-						open={open}
-						onClose={handleClose}
-						MenuListProps={{ sx: { p: 2, maxWidth: '17rem' } }}
-					>
-						<SectionHeader>Resist Calculator</SectionHeader>
-						<Typography variant="subtitle2">
-							Set the individual sources of Resist defense.
-						</Typography>
-						<AttributeField
-							disabled
-							type="number"
-							size="small"
-							value={autoBase}
-							label="Base"
-							helperText="5 + 1/2 Spirit/Mind"
-						/>
-						<AttributeField
-							disabled
-							type="number"
-							size="small"
-							value={autoLevelBonus}
-							label="Level Bonus"
-						/>
-						<AttributeField
-							type="number"
-							size="small"
-							value={details.other}
-							onChange={(event) =>
-								updateCharacter({
-									statistics: {
-										resistDetails: { other: Number(event.target.value) },
-										resist: autoBase + autoLevelBonus + Number(event.target.value),
-									},
-								})
-							}
-							label="Other"
-						/>
-					</Menu>
-				)
-			}
-		>
-			<CardContent value={displayValue} />
-		</CharacterSheetCard>
+		/>
 	)
 }

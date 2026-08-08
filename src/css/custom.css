@@ -4,45 +4,746 @@
  * work well for content-centric websites.
  */
 
+/* The printed register (M16): tokens and element rules shared by every printed
+   artifact. Global because the print previews render on screen. */
+@import './print-codex.css';
+
+/* Self-hosted codex fonts (GDPR: no Google Fonts CDN).
+   Subsetted to Latin via pyftsubset with smcp/c2sc/onum layout features kept. */
+@font-face {
+	font-family: 'Cinzel';
+	src: url('/fonts/cinzel-semibold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Spectral';
+	src: url('/fonts/spectral-regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Spectral';
+	src: url('/fonts/spectral-semibold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Alegreya Sans ships no 600 cut; weight 600 requests resolve up to 700
+   per CSS font matching, 500 covers MUI's medium weight. */
+@font-face {
+	font-family: 'Alegreya Sans';
+	src: url('/fonts/alegreya-sans-regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Alegreya Sans';
+	src: url('/fonts/alegreya-sans-medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Alegreya Sans';
+	src: url('/fonts/alegreya-sans-bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
 /* You can override the default Infima variables here. */
 :root {
-	--ifm-color-primary: #2e8555;
-	--ifm-color-primary-dark: #29784c;
-	--ifm-color-primary-darker: #277148;
-	--ifm-color-primary-darkest: #205d3b;
-	--ifm-color-primary-light: #33925d;
-	--ifm-color-primary-lighter: #359962;
-	--ifm-color-primary-lightest: #3cad6e;
-	--ifm-background-color: var(--ifm-color-emphasis-100);
-	--ifm-footer-background-color: var(--ifm-color-emphasis-200);
+	/* --nexus-* design tokens: single source of truth for the codex palette
+	   (parchment / bronze / ink, cyan reserved for magic). Infima reads them
+	   through the --ifm-* aliases below; MUI and the codex kit read them
+	   directly. Token values live here and in the dark block only. */
+	--nexus-bronze: #8a5a2b; /* aged bronze, structural accent */
+	--nexus-parchment: #f2eadc; /* sun-faded vellum */
+	--nexus-surface: #f7f0e4; /* cream paper */
+	--nexus-ink: #2f2418; /* dark reading ink */
+	/* Magic accent pair: defined for M3, zero uses in M2a. The text token
+	   must hold AA per mode; the glow token is for shadows/fills, never text. */
+	--nexus-rune-cyan-text: #1b6e7c;
+	--nexus-rune-cyan-glow: #63d7e6;
+	--rune-cyan-text: var(--nexus-rune-cyan-text);
+	--rune-cyan-glow: var(--nexus-rune-cyan-glow);
+
+	/* Jewel accents (M7 E3): inlaid-gem tones for KEY/divine glyphs only —
+	   never a general accent. Deliberately blue / red / green so none reads as
+	   the reserved magic rune-cyan. Values are per mode so each holds as a
+	   graphic object (>=3:1) on its surface: deeper on the cream light surface,
+	   lighter on the smoky dark surface. */
+	--nexus-jewel-lapis: #2a4d8f; /* deep lapis blue */
+	--nexus-jewel-carnelian: #a83a28; /* burnt carnelian red */
+	--nexus-jewel-emerald: #1f6b47; /* deep emerald green */
+	/* Added for M9 D3: the sheet's Spirit attribute is amethyst-derived and
+	   Mind reuses lapis, so this is the fourth jewel needed for four
+	   distinguishable attribute hues. Same "graphic object, not text" pairing
+	   rule as the other three — M9 mixes it toward ink before using it as text. */
+	--nexus-jewel-amethyst: #6b3fa0; /* deep amethyst purple */
+
+	/* Skill identity hues (M5 chip retune): one set of 16, read by the doc-table
+	   skill chips below AND (M9) by the character sheet's per-skill labels, so a
+	   skill is one color site-wide instead of two palettes describing the same
+	   sixteen concepts. Chip fills stay these literal values in both modes
+	   (opaque swatch + white text needs no mode variance); the sheet mixes them
+	   toward ink separately per mode in characterSheet.css since a solid chip
+	   fill and legible small-caption text have different contrast needs. */
+	--nexus-skill-arcana: #5e34a6;
+	--nexus-skill-archery: #5a341c;
+	--nexus-skill-athletics: #2b804a;
+	--nexus-skill-crafting: #5e441e;
+	--nexus-skill-education: #263871;
+	--nexus-skill-fighting: #902f2f;
+	--nexus-skill-fortitude: #632222;
+	--nexus-skill-influence: #7d5628;
+	--nexus-skill-insight: #1d465c;
+	--nexus-skill-lore: #215b69;
+	--nexus-skill-mysticism: #7336ab;
+	--nexus-skill-nature: #1c5745;
+	--nexus-skill-perception: #27427c;
+	--nexus-skill-stealth: #2c3139;
+	--nexus-skill-streetwise: #8a4c2c;
+	--nexus-skill-survival: #1b5330;
+
+	/* Damage-type identity hues (M13 S4c). Hoisted out of the eleven
+	   `.chip--*-vibrant` rules below so the sheet's damage SIGILS and the doc
+	   tables' damage CHIPS read one value per type, exactly as the skills do —
+	   before this the hexes existed only inside the chip classes and a mark on the
+	   character sheet had nowhere to read them from. Values unchanged. */
+	--nexus-damage-acid: #5d7f28;
+	--nexus-damage-blast: #8a4c2c;
+	--nexus-damage-fire: #902f2f;
+	--nexus-damage-frost: #215b69;
+	--nexus-damage-lightning: #88712b;
+	--nexus-damage-necrotic: #5e34a6;
+	--nexus-damage-poison: #154225;
+	--nexus-damage-psychic: #ad3771;
+	--nexus-damage-radiant: #7d5628;
+	--nexus-damage-physical: #55504a;
+	--nexus-damage-force: #4a4a86;
+
+	/* Text-safe variants: the values above are chosen for white text on an opaque
+	   chip, so as INK they are near-black on parchment. Mixed toward the reading
+	   ink per mode, the same one-declaration trick `--cs-skill-*` uses. */
+	--cs-damage-acid: color-mix(
+		in oklab,
+		var(--nexus-damage-acid),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-blast: color-mix(
+		in oklab,
+		var(--nexus-damage-blast),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-fire: color-mix(
+		in oklab,
+		var(--nexus-damage-fire),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-frost: color-mix(
+		in oklab,
+		var(--nexus-damage-frost),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-lightning: color-mix(
+		in oklab,
+		var(--nexus-damage-lightning),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-necrotic: color-mix(
+		in oklab,
+		var(--nexus-damage-necrotic),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-poison: color-mix(
+		in oklab,
+		var(--nexus-damage-poison),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-psychic: color-mix(
+		in oklab,
+		var(--nexus-damage-psychic),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-radiant: color-mix(
+		in oklab,
+		var(--nexus-damage-radiant),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-physical: color-mix(
+		in oklab,
+		var(--nexus-damage-physical),
+		var(--ifm-font-color-base) 12%
+	);
+	--cs-damage-force: color-mix(
+		in oklab,
+		var(--nexus-damage-force),
+		var(--ifm-font-color-base) 12%
+	);
+
+	/* Text-safe per-skill variants (M9 F2/S1): the --nexus-skill-* values above
+	   are dark, chosen for white-on-chip contrast, so they read as near-black
+	   text on the dark-mode surface unless lifted further toward that mode's
+	   ink. These are global (not scoped to the character sheet) precisely so
+	   embedded doc-page tools like CreatureAdvancedSettings.tsx read the same
+	   per-skill color the sheet does — the fix for the F2 leak is that both
+	   surfaces now consume the SAME derived token, not that the sheet stopped
+	   reaching outside itself. */
+	--cs-skill-arcana: color-mix(
+		in oklab,
+		var(--nexus-skill-arcana),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-archery: color-mix(
+		in oklab,
+		var(--nexus-skill-archery),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-athletics: color-mix(
+		in oklab,
+		var(--nexus-skill-athletics),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-crafting: color-mix(
+		in oklab,
+		var(--nexus-skill-crafting),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-education: color-mix(
+		in oklab,
+		var(--nexus-skill-education),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-fighting: color-mix(
+		in oklab,
+		var(--nexus-skill-fighting),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-fortitude: color-mix(
+		in oklab,
+		var(--nexus-skill-fortitude),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-influence: color-mix(
+		in oklab,
+		var(--nexus-skill-influence),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-insight: color-mix(
+		in oklab,
+		var(--nexus-skill-insight),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-lore: color-mix(
+		in oklab,
+		var(--nexus-skill-lore),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-mysticism: color-mix(
+		in oklab,
+		var(--nexus-skill-mysticism),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-nature: color-mix(
+		in oklab,
+		var(--nexus-skill-nature),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-perception: color-mix(
+		in oklab,
+		var(--nexus-skill-perception),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-stealth: color-mix(
+		in oklab,
+		var(--nexus-skill-stealth),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-streetwise: color-mix(
+		in oklab,
+		var(--nexus-skill-streetwise),
+		var(--ifm-font-color-base) 10%
+	);
+	--cs-skill-survival: color-mix(
+		in oklab,
+		var(--nexus-skill-survival),
+		var(--ifm-font-color-base) 10%
+	);
+
+	/* Admonition alarm hues (M8 S1). Only warning and danger take a hue —
+	   note/tip/info stay bronze and are told apart by their sigil — so the
+	   reading column never carries a block of saturated colour. Kept separate
+	   from the jewel tokens, which are reserved for KEY/divine marks. */
+	--nexus-alert-warning: #9a6a12; /* ochre, kin to the bronze accent */
+	--nexus-alert-danger: #9c3322; /* oxidized red */
+
+	/* Local search (@easyops-cn/docusaurus-search-local): point the plugin's
+	   own vars at the token palette. Highlight/cursor already fall back to
+	   --ifm-color-primary (bronze); these align the surfaces too. Active-row
+	   text must stay AA on the bronze cursor row, so it flips per mode. */
+	--search-local-modal-background: var(--ifm-background-surface-color);
+	/* Rows are transparent so only the selected row carries a wash — with the
+	   dropdown on the same surface colour, per-row fills read as nothing. */
+	--search-local-hit-background: transparent;
+	--search-local-hit-color: var(--ifm-font-color-base);
+	/* This token has TWO jobs in the plugin: the matched-text ink AND the selected
+	   row's background fill. A single value cannot serve both (see the cyan
+	   two-token rule), so it keeps the INK job here and the row fill is
+	   overridden to a wash in the S12 block. */
+	--search-local-highlight-color: var(--ifm-color-primary);
+	--search-local-muted-color: var(--ifm-color-emphasis-700);
+	/* Bronze ink on the wash, matching "you are here" in the side nav. Was white,
+	   which only worked while the selected row was a solid bronze block. */
+	--search-local-hit-active-color: var(--ifm-color-primary);
+	/* Flat: no modal or per-row shadows. */
+	--search-local-modal-shadow: none;
+	--search-local-hit-shadow: none;
+
+	--ifm-color-primary: var(--nexus-bronze);
+	--ifm-color-primary-dark: #7a4f26;
+	--ifm-color-primary-darker: #6f4922;
+	--ifm-color-primary-darkest: #5c3c1c;
+	--ifm-color-primary-light: #9a6835;
+	--ifm-color-primary-lighter: #a5713d;
+	--ifm-color-primary-lightest: #bb884f;
+	--ifm-background-color: var(--nexus-parchment);
+	--ifm-background-surface-color: var(--nexus-surface);
+	--ifm-font-color-base: var(--nexus-ink);
+	--ifm-color-emphasis-200: #d8c7aa;
+	--ifm-color-emphasis-300: #c7b391;
+	--ifm-color-emphasis-700: #6a5844;
+	--ifm-color-emphasis-900: #241a12;
+	--ifm-navbar-background-color: rgba(247, 240, 228, 0.92);
+	--ifm-footer-background-color: #e8dcc8;
+	/* Base bronze is 4.33:1 on the footer surface; the dark step passes AA. */
+	--ifm-footer-link-color: var(--ifm-color-primary-dark);
 	--ifm-code-font-size: 95%;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 	--ifm-footer-padding-vertical: var(--ifm-spacing-vertical);
-	--ifm-heading-font-family: 'Exo 2', sans-serif;
+	/* Infima's own `.container` — the row wrapping sidebar + doc column + TOC on
+	   EVERY page using the default layout — was capping at the stock 1320px
+	   above the `xl` breakpoint and never growing again, on any monitor. That
+	   was the actual "thin strip" bottleneck: the doc column measured ~990px
+	   even at a 3000px-wide viewport, because the row around it had already
+	   hit its ceiling. `--nexus-measure`'s own `clamp()` (see custom.css further
+	   down) can only widen the SHEET within whatever room this leaves it, so
+	   raising the floor here is what gives that clamp something to work with.
+
+	   2000px (up from an interim 1600px) is sized for `<Columns>` (M14): a
+	   two-column spread needs ~72rem (2 × 34.75rem tracks + a 2.5rem gap) of
+	   pure content width, and at 1600px the doc column plateaued at 75rem —
+	   enough to fit ONE `<Columns>` block, but with only ~3rem of margin, which
+	   read as an edge-case squeeze rather than a comfortable default, and left
+	   some data tables (e.g. the Folk page's Age Groups table) still needing
+	   their own internal scrollbar inside a track that narrow.
+
+	   The homepage does not use `.container` (its own module CSS), so this is
+	   scoped to the doc/theme-page layout in practice; if another page reads as
+	   too wide with the wider row, narrow `.container` back down for that page
+	   specifically rather than lowering this. */
+	--ifm-container-width-xl: 2000px;
+	/* Procedural parchment grain: a tiny stitched SVG noise tile, no raster
+	   asset. Consumed by body::before below. */
+	--parchment-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+	/* TWO frieze tiles, both repeat-x MASKs, so whatever element carries one
+	   tints from its own color and tiles seamlessly at any width.
+
+	   The split is by SPAN, not by surface. A cornice sits over a container a
+	   few hundred pixels wide and can carry mass; the navbar and footer bands
+	   run the full viewport, where the same mass turns into a heavy stripe
+	   fencing the page top and bottom. So:
+
+	   - `--nexus-frieze-tile` (merlon course, 10px on the table cornice, 12px on
+	     the short FriezeDivider / FriezeBand ornaments).
+	   - `--nexus-frieze-rail` (braid rail, 9px) — full-width edges: navbar and
+	     footer.
+
+	   They are the same language at two weights, not two motifs: the rail's
+	   lozenge node is the merlon tile's lozenge, and both stand on a continuous
+	   line that runs edge to edge.
+
+	   --- The merlon course ---------------------------------------------------
+	   The stepped crenellation that crowns a ziggurat and a city wall,
+	   alternating with a lozenge, both standing on an unbroken ground course.
+
+	   Three things make it a frieze rather than a row of shapes, and the first
+	   version had none of them:
+	   - CONTINUITY. The ground course runs edge to edge, so consecutive tiles
+	     join into one band instead of reading as detached ornaments.
+	   - RHYTHM. Two beats, evenly spaced (5.5 units of air either side of the
+	     lozenge), alternating heavy/light rather than cycling three unrelated
+	     primitives with arbitrary gaps.
+	   - ONE FAMILY. Both beats already exist in the kit — the stepped ziggurat
+	     is TalentCard's keystone, the lozenge is CardFrame's corner mark. Heavy
+	     and light alternate by MASS — a tall stepped block against a small
+	     diamond — because at 12px that is the only contrast that survives. The
+	     first cut carved the lozenge out as a ring; its wall came to 0.65px and
+	     rendered as mud, which is the sub-3px rule biting in the usual way.
+
+	   Authored at 2x (36x24) and rendered at 12px, so nothing is authored
+	   sub-pixel. Nothing but the ground course crosses a tile edge, so the
+	   repeat cannot seam. */
+	--nexus-frieze-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='24'%3E%3Cpath fill='%23000' d='M0 20h36v2.6H0z M2 20V11h4V4h7v7h4v9z M27.5 8 32.5 14 27.5 20 22.5 14z'/%3E%3C/svg%3E");
+	/* --- The merlon course, TRANSPOSED for a vertical run --------------------
+	   The same tile with x and y swapped: 24x36 instead of 36x24, the ground
+	   course standing on the RIGHT edge (x 20..22.6) and the merlons rising
+	   leftward out of it.
+
+	   It exists because a frame is the first ornament in this kit that has to
+	   turn a corner, and `rotate()` cannot do it. Rotating a `repeat-x` masked
+	   band transposes the repeat axis and the tile aspect at once
+	   (ornament-craft §5 in its purest form), and the run's length is the
+	   PLATE's height, which no CSS length can name. A second tile plus
+	   `repeat-y` is exact, so the vertical run keeps the horizontal run's
+	   period and mass by construction rather than by tuning.
+
+	   Reflection is still safe — it is not a transposition — so only two tiles
+	   are needed for four edges: the top run takes the horizontal tile as
+	   authored, the bottom run `scaleY(-1)`, the left run this tile as
+	   authored, the right run `scaleX(-1)`. Ground faces the picture on all
+	   four sides, which is what makes the four runs read as one surround.
+
+	   Hand-transposed once, like the navbar sigil masks: a mask cannot import
+	   geometry. If the horizontal tile is ever recut, recut this with it. */
+	--nexus-frieze-tile-v: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='36'%3E%3Cpath fill='%23000' d='M20 0h2.6v36H20z M20 2H11V6H4V13H11V17H20Z M14 22.5 20 27.5 14 32.5 8 27.5z'/%3E%3C/svg%3E");
+	/* --- The braid rail -----------------------------------------------------
+	   Two mirrored strands plaiting through each other, run in sections and
+	   interrupted by a lozenge node the strands thread into. Guilloche is the
+	   Mesopotamian border ornament, and it is the same strand the breadcrumb
+	   TrailBraid is cut from, so the page's top and bottom edges rhyme with its
+	   navigation.
+
+	   Almost all line and almost no mass — 0.9px strokes plus one 3x4px diamond
+	   per 30px — which is the whole point: a full-viewport band reads at a
+	   glance as a rule, so what it must NOT do is read as a heavy stripe.
+
+	   The plaited section is deliberately only HALF the repeat, with the rest
+	   left as plain rail either side of the node. A braid run edge to edge is a
+	   continuous texture and reads busy across 1500px however fine the stroke;
+	   breaking it with quiet line is what keeps it a rule rather than a pattern.
+
+	   The over/under is deliberately not drawn. Faking it needs an opaque casing
+	   on the upper strand, and a mask has only alpha, so a "casing" would punch
+	   a hole through the lower strand instead of covering it. Two clean mirrored
+	   strands read as guilloche anyway at 1.2px.
+
+	   Authored at 78x18 and rendered at 7px. Both strands and the axis line meet
+	   the tile edge at y=9 with butt caps, so consecutive tiles join
+	   mid-crossing and the run has no seam. */
+	--nexus-frieze-rail: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='78' height='18'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2.4' d='M0 9C5 1 15 1 20 9 25 17 35 17 40 9M0 9C5 17 15 17 20 9 25 1 35 1 40 9M40 9H55M63 9H78'/%3E%3Cpath fill='%23000' d='M59 4 63 9 59 14 55 9z'/%3E%3C/svg%3E");
+	/* The `eye` sigil as a MASK, for the search field's seeking glyph. Geometry is
+	   the same path as SIGIL_INNER.eye in sigil-paths.ts — kept in sync by hand,
+	   like the navbar sigil masks, because a mask cannot import from TS. A mask
+	   (not a background-image) so it tints from currentColor in both themes. */
+	--nexus-eye-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z'/%3E%3Ccircle cx='12' cy='12' r='2.5'/%3E%3C/svg%3E");
+	/* The disclosure caret: a CARVED arrowhead, not a plain triangle. Keeps the
+	   triangle silhouette but crenellates the base (two notches cut up into it,
+	   the ziggurat's stepped language) and voids an inlaid lozenge at its centre.
+	   `fill-rule: evenodd` makes the lozenge a real hole, so the surface shows
+	   through it — the mask paints a single colour, and a hole is the only way to
+	   carve detail back out of it. Points UP: Infima orients the caret by rotating
+	   180deg when open and 90deg when collapsed. */
+	--nexus-caret-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M12 4.4 L20.6 16.8 L16.4 16.8 L15.2 14.6 L14 16.8 L10 16.8 L8.8 14.6 L7.6 16.8 L3.4 16.8 Z M12 8.8 L14.4 11.7 L12 14.6 L9.6 11.7 Z'/%3E%3C/svg%3E");
+	/* Typography: display (Cinzel, h1/h2 only via scoped rules below),
+	   body serif (Spectral), UI sans (Alegreya Sans). Cinzel and Spectral
+	   only ship 400/600, so bold maps to the real 600 cut instead of
+	   synthesized 700 (Alegreya Sans resolves 600 up to its real 700). */
+	--ifm-font-family-base: 'Spectral', Georgia, serif;
+	--ifm-heading-font-family: 'Spectral', Georgia, serif;
+	--nexus-font-display: 'Cinzel', 'Times New Roman', serif;
+	--nexus-font-ui: 'Alegreya Sans', Arial, sans-serif;
+	--ifm-font-weight-bold: 600;
+	--ifm-heading-font-weight: 600;
 	--ifm-paragraph-margin-bottom: 1rem;
 	--ifm-leading: 1rem;
 
-	/* Character Sheet Layout System */
-	--cs-max-width-sm: 25rem;      /* Statistics panel, Skills lists */
-	--cs-max-width-md: 38rem;      /* Spells tab */
-	--cs-max-width-lg: 47rem;      /* Items, Personal, Companions */
-	--cs-max-width-xl: 65rem;      /* Full-width content */
-	--cs-max-width-page: 100rem;   /* Global max-width for entire sheet on ultra-wide screens */
-	--cs-panel-gap: 1.5rem;        /* Gap between panels */
-	--cs-section-gap: 1rem;        /* Gap between sections within panels */
+	/* ---- Type scale (single source of truth) -------------------------------
+	   One ladder for the whole site. Before this existed there were 28 distinct
+	   rem values across 69 declarations, some 0.32px apart — differences nobody
+	   can see, but each one a decision to re-make. Every font-size outside the
+	   character sheet now comes from a step here.
+
+	   `html` deliberately stays at the browser's 16px: overriding the root font
+	   size breaks the reader's own zoom/accessibility setting, so the scale is
+	   built on top of it rather than under it. */
+	/* M13 S3.5 — the interactive floor. ONE size, S4d (owner call).
+
+	   WCAG 2.2 SC 2.5.8 (Target Size, Minimum) is 24x24 CSS px at AA, which this
+	   meets on every pointer. S3.5 additionally stepped the token to 44px under
+	   `pointer: coarse` — SC 2.5.5's AAA figure, and what Apple HIG and Material
+	   ask for touch.
+
+	   **That step is gone.** It did not only grow the hit area: it grew the header
+	   buttons, the field heights and the GAP between a pip row's sigils, so the
+	   same tab read as a different, looser design on a phone than at the table on a
+	   laptop. Nothing was gained by the pips being 20px further apart — a pip row
+	   is read as a count, and its marks stayed 0.85rem while the space between them
+	   nearly doubled.
+
+	   The premise of S3.5 was that padding could grow the target without growing
+	   the layout, and on the ledger rows it did. It did not hold for the control
+	   strips and the pip rows, which are laid out FROM those paddings. One size,
+	   AA everywhere, and a touch complaint gets solved per-control rather than by a
+	   token that moves the whole sheet. */
+	--nexus-target: 24px;
+
+	--nexus-text-3xs: 0.625rem; /* 10px — micro captions (die-token sublabels) */
+	--nexus-text-2xs: 0.6875rem; /* 11px — badge + cartouche labels */
+	--nexus-text-xs: 0.75rem; /* 12px — chips, TOC, breadcrumbs */
+	--nexus-text-sm: 0.875rem; /* 14px — nav UI, card meta */
+	--nexus-text-dense: 0.9375rem; /* 15px — tables + card bodies (scan surfaces) */
+	--nexus-text-base: 1rem; /* 16px — body prose */
+	--nexus-text-md: 1.125rem; /* 18px — h4, small card titles */
+	--nexus-text-lg: 1.25rem; /* 20px — card titles */
+	--nexus-text-xl: 1.375rem; /* 22px — h3 ceiling */
+	--nexus-text-2xl: 1.75rem; /* 28px — h2 ceiling */
+	--nexus-text-3xl: 2.25rem; /* 36px — h1 ceiling */
+
+	/* Reading measure: 42rem = 672px, ~84 characters of 16px Spectral. Above the
+	   66–75 optimum on purpose, because it is now the width of the whole vellum
+	   sheet rather than of the prose alone.
+
+	   It started at 36rem applied to the PROSE elements only, with tables, cards
+	   and code keeping the full ~813px column. That left prose ending 237px short
+	   of every table on the page, and the ragged right edge read as broken rather
+	   than as a printed manual setting a wide figure beside a text column. The
+	   cap moved onto the sheet itself (see `.theme-doc-markdown` below), so prose
+	   and tables now describe ONE right edge, and the measure was widened to keep
+	   tables from being squeezed by the move.
+
+	   Deliberately NOT expressed in `ch`. The `ch` unit resolves against the
+	   ELEMENT's own font, not the body's, so `72ch` on a 28px Cinzel h2 came out
+	   wider than the column and the cap silently did nothing — headings kept
+	   their full 759px while paragraphs wrapped at 576px. An absolute length
+	   resolves identically for every element it is applied to.
+
+	   42rem here is the FLOOR, not the value in force everywhere. On a doc page
+	   `.theme-doc-markdown` overrides this to a `clamp()` that grows with the
+	   doc column's own width up to 56rem — see that rule for why. This root
+	   value is what the character sheet and any other non-doc consumer of the
+	   token still get untouched. */
+	--nexus-measure: 42rem;
+	/* Horizontal padding on the vellum sheet, published as a token so the sheet's
+	   max-width can be written as measure + padding and the two cannot drift. */
+	--nexus-sheet-padding-x: 2rem;
+	--nexus-leading-prose: 1.7;
+
+	/* Character Sheet Layout System.
+
+	   These are CEILINGS, not widths (M13 S11). The sheet is a two-column desktop
+	   layout — a fixed statistics plate beside a fluid working column — and the
+	   working column fills whatever the viewport gives it up to `--cs-max-width-column`.
+	   The older `sm`/`md`/`lg`/`xl` steps stay for the surfaces that genuinely want
+	   a bound (a prose panel, the meta band), and are no longer applied to the
+	   column itself: on a 1512px laptop that capped the working column at 608px
+	   and left ~450px of the row empty. */
+	--cs-max-width-sm: 25rem; /* Statistics panel, Skills lists */
+	--cs-max-width-md: 38rem; /* Spells tab */
+	--cs-max-width-lg: 47rem; /* a bounded reading measure inside a panel */
+	--cs-max-width-xl: 65rem; /* Full-width content */
+	/* What one working column may grow to. Wide enough that a 1512px laptop and a
+	   1920px monitor both fill, bounded so an ultra-wide does not produce a
+	   2000px ledger row nobody can track across. */
+	--cs-max-width-column: 78rem;
+	--cs-max-width-page: 100rem; /* Global max-width for entire sheet on ultra-wide screens */
+	--cs-panel-gap: 1.5rem; /* Gap between panels */
+	--cs-section-gap: 1rem; /* Gap between sections within panels */
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark mode: charred obsidian + ember bronze — intentional, not inverted. */
 [data-theme='dark'] {
-	--ifm-color-primary: #25c2a0;
-	--ifm-color-primary-dark: #21af90;
-	--ifm-color-primary-darker: #1fa588;
-	--ifm-color-primary-darkest: #1a8870;
-	--ifm-color-primary-light: #29d5b0;
-	--ifm-color-primary-lighter: #32d8b4;
-	--ifm-color-primary-lightest: #4fddbf;
-	--ifm-footer-background-color: #0f0f10;
+	--nexus-bronze: #c9975a; /* ember bronze / dim gold */
+	--nexus-obsidian: #16120f; /* charred basalt */
+	--nexus-surface: #211a15; /* smoky bronze-black */
+	--nexus-ink: #eadfcd; /* warm sand / bone */
+	--nexus-rune-cyan-text: #63d7e6; /* AA-safe on obsidian */
+	--nexus-rune-cyan-glow: #63d7e6;
+	/* Jewel accents lightened for the smoky dark surface (M7 E3). */
+	--nexus-jewel-lapis: #6f93d6;
+	--nexus-jewel-carnelian: #d97a5f;
+	--nexus-jewel-emerald: #5cae82;
+	--nexus-jewel-amethyst: #a883d9;
+	/* Alarm hues lifted for the smoky dark surface (M8 S1). */
+	--nexus-alert-warning: #d9a63f;
+	--nexus-alert-danger: #e07a63;
+
+	/* Text-safe damage variants (M13 S4c): same reasoning as the skills below —
+	   these hexes were chosen dark for white-on-chip, so the dark surface needs a
+	   heavier mix toward the bone ink before they read as ink. */
+	--cs-damage-acid: color-mix(
+		in oklab,
+		var(--nexus-damage-acid),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-blast: color-mix(
+		in oklab,
+		var(--nexus-damage-blast),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-fire: color-mix(
+		in oklab,
+		var(--nexus-damage-fire),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-frost: color-mix(
+		in oklab,
+		var(--nexus-damage-frost),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-lightning: color-mix(
+		in oklab,
+		var(--nexus-damage-lightning),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-necrotic: color-mix(
+		in oklab,
+		var(--nexus-damage-necrotic),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-poison: color-mix(
+		in oklab,
+		var(--nexus-damage-poison),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-psychic: color-mix(
+		in oklab,
+		var(--nexus-damage-psychic),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-radiant: color-mix(
+		in oklab,
+		var(--nexus-damage-radiant),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-physical: color-mix(
+		in oklab,
+		var(--nexus-damage-physical),
+		var(--ifm-font-color-base) 48%
+	);
+	--cs-damage-force: color-mix(
+		in oklab,
+		var(--nexus-damage-force),
+		var(--ifm-font-color-base) 48%
+	);
+
+	/* Text-safe skill variants (M9 F2/S1): 50% is the minimum ink-mix that
+	   clears AA for every one of the 16 identity hues at once on the smoky
+	   dark surface — the light-mode 10% mix above isn't enough here because
+	   these hexes were chosen dark for white-on-chip contrast. */
+	--cs-skill-arcana: color-mix(
+		in oklab,
+		var(--nexus-skill-arcana),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-archery: color-mix(
+		in oklab,
+		var(--nexus-skill-archery),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-athletics: color-mix(
+		in oklab,
+		var(--nexus-skill-athletics),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-crafting: color-mix(
+		in oklab,
+		var(--nexus-skill-crafting),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-education: color-mix(
+		in oklab,
+		var(--nexus-skill-education),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-fighting: color-mix(
+		in oklab,
+		var(--nexus-skill-fighting),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-fortitude: color-mix(
+		in oklab,
+		var(--nexus-skill-fortitude),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-influence: color-mix(
+		in oklab,
+		var(--nexus-skill-influence),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-insight: color-mix(
+		in oklab,
+		var(--nexus-skill-insight),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-lore: color-mix(
+		in oklab,
+		var(--nexus-skill-lore),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-mysticism: color-mix(
+		in oklab,
+		var(--nexus-skill-mysticism),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-nature: color-mix(
+		in oklab,
+		var(--nexus-skill-nature),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-perception: color-mix(
+		in oklab,
+		var(--nexus-skill-perception),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-stealth: color-mix(
+		in oklab,
+		var(--nexus-skill-stealth),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-streetwise: color-mix(
+		in oklab,
+		var(--nexus-skill-streetwise),
+		var(--ifm-font-color-base) 50%
+	);
+	--cs-skill-survival: color-mix(
+		in oklab,
+		var(--nexus-skill-survival),
+		var(--ifm-font-color-base) 50%
+	);
+
+	--ifm-color-primary: var(--nexus-bronze);
+	--ifm-color-primary-dark: #bd8748;
+	--ifm-color-primary-darker: #b47f40;
+	--ifm-color-primary-darkest: #966833;
+	--ifm-color-primary-light: #d3a568;
+	--ifm-color-primary-lighter: #d9af75;
+	--ifm-color-primary-lightest: #e6c795;
+	--ifm-background-color: var(--nexus-obsidian);
+	--ifm-background-surface-color: var(--nexus-surface);
+	--ifm-font-color-base: var(--nexus-ink);
+	--ifm-color-emphasis-200: #5f5142;
+	--ifm-color-emphasis-300: #786753;
+	--ifm-color-emphasis-700: #c6b69d;
+	--ifm-color-emphasis-900: #f3eadb;
+	--ifm-navbar-background-color: rgba(22, 18, 15, 0.9);
+	--ifm-footer-background-color: #191410;
+	--ifm-footer-link-color: var(--ifm-color-primary);
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+	/* The selected search row is now a faint bronze WASH on the dark surface, not
+	   a solid bronze block, so its text takes the ember bronze like the rest of
+	   the "you are here" language — the old dark-on-bronze value would be
+	   near-invisible against the wash. */
+	--search-local-hit-active-color: var(--ifm-color-primary);
 	--ifm-color-grey: #959595;
 	--ifm-color-brown: #ba8670;
 	--ifm-color-yellow: #cb9a4b;
@@ -61,58 +762,557 @@
 	--ifm-color-quality-8: var(--ifm-color-red);
 }
 
-/* Blockquote styling for better visibility */
-blockquote {
-	background-color: rgba(46, 133, 85, 0.1);
-	border-left: 4px solid var(--ifm-color-primary);
-	padding: 0.75rem 1rem;
+/* Parchment atmosphere: fixed pseudo-element behind everything (frame /
+   margins only). Grain never sits behind body text because the reading
+   column carries its own flat surface color (see .theme-doc-markdown rule).
+   Uses a fixed element rather than background-attachment:fixed to avoid
+   mobile scroll jank. Purely decorative. */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background-color: var(--ifm-background-color);
+	background-image:
+		var(--parchment-grain),
+		radial-gradient(circle at 50% 0%, rgba(180, 140, 80, 0.1), transparent 55%),
+		radial-gradient(
+			circle at 15% 60%,
+			rgba(150, 110, 60, 0.06),
+			transparent 40%
+		);
+	background-repeat: repeat, no-repeat, no-repeat;
+}
+
+[data-theme='dark'] body::before {
+	background-image:
+		var(--parchment-grain),
+		radial-gradient(circle at 50% 0%, rgba(90, 180, 200, 0.05), transparent 55%);
+	background-blend-mode: soft-light;
+	opacity: 0.5;
+}
+
+/* Guardrail (README § Surfaces): the reading column sits on the flat surface
+   color so grain stays off the text. Internal padding + a soft radius inset
+   the vellum sheet from the parchment frame so text never touches the edge.
+   Excluded from the character-sheet app (its own full-width layout). */
+.theme-doc-markdown:not(:has(.character-sheet-page)) {
+	background-color: var(--ifm-background-surface-color);
+	padding: 1.5rem var(--nexus-sheet-padding-x);
+	border-radius: 8px;
+	/* Fixed, and deliberately NOT fluid. A `clamp(..., 20cqw, ...)` was tried and
+	   is circular by construction: the only container in scope is `.markdown`,
+	   which IS this element, and this element's `max-width` is derived from the
+	   measure — so the measure depended on a width that depended on the measure.
+	   Browsers resolve that cycle by falling back rather than by erroring, which
+	   is worse than a fixed number: it silently computed a DIFFERENT measure on a
+	   spread page (697.6px) than on a plain one (768px), for no stated reason.
+
+	   48rem is ~96 characters, already past the 66-75 optimum, and going further
+	   is the "92-character line" mistake the measure exists to prevent. A single
+	   column should not absorb a wide monitor at all — the answer to a wide
+	   screen is the SPREAD below, which spends the width on a second column
+	   instead of on a longer line. */
+	--nexus-measure: 48rem;
+	/* The measure cap lives HERE, on the sheet, not on the prose elements — see
+	   the --nexus-measure token for why. Everything the page sets (prose, tables,
+	   cards, code, images) is bounded by the same edge, so the reading flow has
+	   one right margin instead of two. */
+	max-width: calc(var(--nexus-measure) + 2 * var(--nexus-sheet-padding-x));
+}
+
+/* ---------------------------------------------------------------------------
+   The SPREAD page (M14). A page containing a `<Columns>` segment is a book
+   page, not a reading column, so its sheet widens to hold two tracks.
+
+   Keyed off `:has()` rather than front matter so conversion is incremental and
+   costs no ceremony: a page that has not been converted matches nothing here
+   and renders byte-for-byte as it did before. Same idiom as the
+   `:not(:has(.character-sheet-page))` guard above.
+
+   This is what replaces the earlier attempt to have the BLOCK break out of the
+   sheet. That could not work: the sheet is both the vellum surface and the
+   width cap, so a child wider than the sheet is wider than its own background
+   and hangs off the parchment. Widening the sheet is the only version of this
+   that keeps content on its page.
+
+   68rem of content = two 32.75rem tracks + a 2.5rem gap, ~65 characters each.
+   With padding the sheet is 72rem (1152px), which fits the ~75rem doc column a
+   1920px viewport gives (measured, not assumed).
+   --------------------------------------------------------------------------- */
+.theme-doc-markdown:not(:has(.character-sheet-page)):has(.codex-columns) {
+	--nexus-spread-measure: 68rem;
+	/* The gutter between tracks. Read by Columns.module.css too, so the prose
+	   track width and the real column gap cannot drift apart. */
+	--nexus-track-gap: 2.5rem;
+	max-width: calc(
+		var(--nexus-spread-measure) + 2 * var(--nexus-sheet-padding-x)
+	);
+}
+
+/* A spread page has exactly TWO widths, and every block edge lands on a track
+   edge. This is how a printed two-column manual is set:
+
+     - RUNNING TEXT is one track wide, the same measure as the text inside a
+       spread, so a paragraph outside a segment is indistinguishable from one
+       inside it.
+     - EVERYTHING ELSE spans both tracks: the page title, the banner plate,
+       tables, figures, cards. A figure spanning the page is the convention, and
+       a table squeezed into half the page would be worse than useless.
+
+   There used to be a third width here — the old single-column reading measure,
+   48rem — which matched neither a track (30.4rem) nor the page (68rem). It was
+   a leftover from before spreads existed, and it was what made the page read as
+   two layouts stacked: the banner stopped 244px short of the segment below it
+   for no reason a reader could infer.
+
+   Left-aligned, not centred: everything hangs off one left margin, so a
+   one-track block reads as column one of a two-column page rather than as a
+   narrow thing floating in a wide one. */
+.theme-doc-markdown:has(.codex-columns) > *:not(.codex-columns) {
+	max-width: none;
+	margin-inline: 0;
+}
+
+/* Running text sits in ONE track.
+
+   Derived from `100%` — the sheet's ACTUAL content width — and not from
+   `--nexus-spread-measure`. The token is the ideal 68rem, but the sheet is
+   capped by the doc column and is routinely narrower than that; computing from
+   the token gave prose a 524px track beside a real 486px one, which is the very
+   misalignment this section exists to remove. A percentage tracks whatever the
+   sheet actually got. */
+/* The trailing `:not(.codex-columns)` is specificity, not logic — a segment can
+   never be a `<p>`. Without it this is (0,3,1) against the (0,3,0) reset above
+   and LOSES on the class count, so every paragraph silently took the full page
+   width. With it, (0,3,1) beats (0,3,0). */
+.theme-doc-markdown:has(.codex-columns)
+	> :is(p, ul, ol, dl):not(.codex-columns) {
+	max-width: calc((100% - var(--nexus-track-gap)) / 2);
+}
+
+/* ...but a HEADING and a CALLOUT are page furniture, not running text, and they
+   span both tracks even when they sit outside a segment.
+
+   Both carry full-bleed decoration that a half-width box truncates in a way a
+   reader reads as a bug rather than as a measure: an `h2`'s cornice is a rule
+   fading rightwards across the page (S9), and a blockquote's frame is drawn by
+   its own `::before`/`::after` corner diamonds. Held to one track, the cornice
+   stopped dead at the gutter and the intro callout on How To Roll sat in the
+   left column with the whole right half of the sheet empty beside it — a
+   heading or a callout is what OPENS a spread, so it has to be as wide as the
+   spread it opens.
+
+   Only the top-level ones. Inside a `.codex-columns` the track IS the page, and
+   the rule at the end of this section already lifts the cap there. */
+.theme-doc-markdown:has(.codex-columns)
+	> :is(blockquote, h2, h3, h4, h5, h6):not(.codex-columns) {
+	max-width: none;
+}
+/* ...but a paragraph that is only a BANNER plate is a figure, not text, and
+   spans the page. An MDX image lands inside a paragraph, so without this the
+   banner would be caught by the rule above and held to half the page.
+
+   Scoped to `banner` deliberately. The `inline` weight is a FLOATED portrait
+   that belongs beside its prose; letting it span the page pushed the folk
+   portraits to the far right edge with a track's width of nothing between them
+   and the text they illustrate. Reached through `data-plate-weight`, the stable
+   attribute `ImagePlate` and `PlateShell` both set for exactly this kind of
+   selector — their class names are CSS-module hashes that change between dev
+   and build. */
+.theme-doc-markdown:has(.codex-columns)
+	> p:has([data-plate-weight='banner']) {
+	max-width: none;
+}
+
+/* A floated portrait cannot share a 32.75rem track with readable prose — a
+   300px float leaves about 220px of text, which is three or four words a line.
+   `.plate-inline`'s own container query drops the float below a 40rem column,
+   but it measures the SHEET (68rem on a spread page), so it never fires here
+   even though the real column is half that. On a spread page the plate is a
+   block in the flow instead. */
+.theme-doc-markdown:has(.codex-columns) span[data-plate-weight='inline'] {
+	float: none;
+	width: 100%;
 	margin: 1rem 0;
 }
 
-[data-theme='dark'] blockquote {
-	background-color: rgba(37, 194, 160, 0.1);
+/* Inside a segment the measure is the TRACK, not the sheet: the global prose
+   cap is wider than a 32.75rem column and would silently do nothing, but it
+   must still be switched off or a future narrower measure would re-cap a
+   column from the outside. Two classes beat the `.theme-doc-markdown p` cap on
+   specificity, so this holds regardless of stylesheet order — a CSS-module
+   rule at equal specificity would not. */
+.theme-doc-markdown .codex-columns :is(p, ul, ol, dl, blockquote, h2, h3, h4, h5, h6) {
+	max-width: none;
 }
 
-/* Subtle heading visual separation for easier scanning */
-article h2 {
-	padding-top: 1.5rem;
-	margin-top: 2rem;
-	border-top: 1px solid rgba(0, 0, 0, 0.05);
+@media (max-width: 996px) {
+	.theme-doc-markdown:not(:has(.character-sheet-page)) {
+		--nexus-sheet-padding-x: 1.25rem;
+		padding: 1rem var(--nexus-sheet-padding-x);
+		/* Below the doc column's own max-width the sheet is already narrower than
+		   the measure, so the cap only costs horizontal room. */
+		max-width: none;
+	}
 }
 
-article h3 {
-	padding-top: 1rem;
-	margin-top: 1.5rem;
-	border-top: 1px solid rgba(0, 0, 0, 0.03);
+/* Admonitions and example quotes are themed in the M8 default-theme section at
+   the end of this file (the M2a left-accent bar was replaced there by carved
+   frames + title bands). */
+
+/* ---------------------------------------------------------------------------
+   M3 — Magic flavor layer. "Living magic" rune-cyan accent. All glow derived
+   from --rune-cyan-glow via color-mix. Every animation here is gated on
+   prefers-reduced-motion. Text/borders use --rune-cyan-text (AA-validated);
+   the glow token never colors text.
+
+   Owner decision (2026-07-21): the rune hover effect applies to ALL links
+   site-wide, not just magic-domain keywords — it is the signature link
+   interaction, making any link glow like a spell effect on hover. This
+   deliberately overrides the README "cyan = magic-only" rule for link hover.
+   The link hover is a soft glow pulse only (an earlier boil/displacement
+   effect was removed as too noisy).
+   --------------------------------------------------------------------------- */
+
+/* Slow, low-amplitude pulse for decorative sigils/ornaments. Uses
+   filter: drop-shadow rather than text-shadow so it glows inline SVG sigils
+   (text-shadow has no effect on SVG content); derived from the glow token. */
+@keyframes rune-pulse {
+	0%,
+	100% {
+		filter: drop-shadow(
+			0 0 0.15rem color-mix(in srgb, var(--rune-cyan-glow) 30%, transparent)
+		);
+	}
+	50% {
+		filter: drop-shadow(
+				0 0 0.4rem color-mix(in srgb, var(--rune-cyan-glow) 55%, transparent)
+			)
+			drop-shadow(
+				0 0 0.8rem color-mix(in srgb, var(--rune-cyan-glow) 20%, transparent)
+			);
+	}
 }
 
-article h4 {
-	padding-top: 0.75rem;
-	margin-top: 1.25rem;
-	border-top: 1px solid rgba(0, 0, 0, 0.02);
+/* Ornament glyphs and standalone (non-link) magic markers pulse continuously. */
+.runeGlyph,
+.magic-accent:not(a) {
+	color: var(--rune-cyan-text);
+	animation: rune-pulse 4s ease-in-out infinite;
 }
 
-[data-theme='dark'] article h2 {
-	border-top-color: rgba(255, 255, 255, 0.08);
+/* Soft glow pulse for a hovered link (text-shadow from the glow token). */
+@keyframes rune-link-pulse {
+	0%,
+	100% {
+		text-shadow: 0 0 0.2rem
+			color-mix(in srgb, var(--rune-cyan-glow) 22%, transparent);
+	}
+	50% {
+		text-shadow:
+			0 0 0.4rem color-mix(in srgb, var(--rune-cyan-glow) 42%, transparent),
+			0 0 0.9rem color-mix(in srgb, var(--rune-cyan-glow) 18%, transparent);
+	}
 }
 
-[data-theme='dark'] article h3 {
-	border-top-color: rgba(255, 255, 255, 0.05);
+/* Universal link hover: rune-cyan color + a soft glow pulse. Applied to every
+   link (site-wide per owner decision) except inside the character-sheet app
+   (MUI scope boundary). */
+a {
+	transition: color 0.2s ease-in-out;
 }
 
-[data-theme='dark'] article h4 {
-	border-top-color: rgba(255, 255, 255, 0.03);
+a:hover:not(.navbar__brand):not(.character-sheet-page a) {
+	color: var(--rune-cyan-text);
+	animation: rune-link-pulse 2.4s ease-in-out infinite;
 }
 
-html,
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: 'Exo 2', sans-serif;
+/* Never pulse the character-sheet app's links (keeps the tool stable). */
+.character-sheet-page a:hover {
+	animation: none;
+}
+
+/* Magic admonition variant. The frame/band geometry is shared with every other
+   callout in the M8 section; only the ink changes, to the cyan text token (it
+   holds the 3:1 non-text contrast where the glow token would not). */
+.alert--magic {
+	--codex-alert-ink: var(--rune-cyan-text);
+}
+
+/* Accessibility: kill all magic motion when the user asks for reduced motion.
+   The hover color change stays (it is not motion); the pulses stop.
+   Non-negotiable. */
+@media (prefers-reduced-motion: reduce) {
+	.runeGlyph,
+	.magic-accent:not(a) {
+		animation: none;
+	}
+	a:hover:not(.navbar__brand):not(.character-sheet-page a) {
+		animation: none;
+	}
+}
+
+/* Heading separators: see the S9 cornice rules in the M8 section (the flat
+   full-width hairlines were recut there into fading cornices with a lozenge
+   terminal). */
+
+/* Reading surface. Scoped to the doc markdown container so nothing bleeds into
+   the character sheet app.
+
+   Was 1.05rem / 1.8. The bump existed for a real reason — Spectral's x-height
+   is 0.45em, smaller than Georgia's 0.481 — but combined with a 92-character
+   measure and 1.8 leading it made the page read oversized. With the measure
+   capped below, the base size carries fine at 1.7. */
+.theme-doc-markdown {
+	font-size: var(--nexus-text-base);
+	line-height: var(--nexus-leading-prose);
+}
+
+/* The prose body is a named query container (M11 S3) so a floated image plate
+   can drop its float when the column can no longer hold the plate AND a
+   readable text column beside it. The floor has to come from the MEASURE, not
+   from a device width: the same 300px float is fine in a 42rem column and
+   unreadable in a 24rem one, whatever device either is on.
+
+   Named, and scoped to `.markdown` rather than `.theme-doc-markdown`, to keep
+   the containment off the page header, breadcrumbs and paginator. */
+.markdown {
+	container: nexus-prose / inline-size;
+}
+
+/* A table is never a figure that sits BESIDE something. `.plate-inline` floats
+   right, and when an entry's prose is shorter than the portrait the float is
+   still live when the table starts, so the table laid out in what was left of
+   the column instead of its full width. Clearing costs a band of whitespace
+   under a short entry and buys a table that is always the same width as every
+   other table on the page. */
+.markdown .codex-table-slab {
+	clear: both;
+}
+
+/* Measure cap on prose. The SHEET is already capped at the measure plus its own
+   padding (above), so at the top level this is a no-op that holds the invariant:
+   if the sheet is ever widened for a layout, prose still stops at the measure.
+
+   It does real work at depth. Prose is capped at ANY depth, not just as a direct
+   child, because the content cards (spell, creature, talent, combat art) are the
+   most-read pages on the site: capping only the top level left their rule text
+   at 90 characters, which is the problem this cap exists to solve. The card
+   FRAME still spans the full sheet — its stat bands, badges and rank seals need
+   that room.
+
+   Headings stay direct-child only: a card's `### Name` heading sits in a flex
+   row beside its rank badge, where a max-width would fight the layout. */
+.theme-doc-markdown p,
+.theme-doc-markdown ul,
+.theme-doc-markdown ol,
+.theme-doc-markdown dl,
+.theme-doc-markdown blockquote,
+.theme-doc-markdown > h1,
+.theme-doc-markdown > header > h1,
+.theme-doc-markdown > h2,
+.theme-doc-markdown > h3,
+.theme-doc-markdown > h4,
+.theme-doc-markdown > h5,
+.theme-doc-markdown > h6 {
+	max-width: var(--nexus-measure);
+}
+
+/* Scope boundary: the sheet's MUI Typography renders real `<p>` elements inside
+   the doc markdown container, so the measure cap has to be lifted there — the
+   sheet owns its own layout widths (--cs-max-width-*). */
+.character-sheet-page p,
+.character-sheet-page ul,
+.character-sheet-page ol,
+.character-sheet-page dl,
+.character-sheet-page blockquote {
+	max-width: none;
+}
+
+/* Ceremonial display headings, h1/h2 only. Cinzel ships no smcp feature;
+   its lowercase glyphs ARE natively drawn small caps, so mixed-case text
+   already renders as true small caps. Do not add font-variant-caps here:
+   with smcp absent, browsers would synthesize faux scaled caps on top.
+   h3+ deliberately stay in the body serif, normal case. */
+.theme-doc-markdown h1,
+.theme-doc-markdown h2 {
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
+/* Heading ramp: 36 / 28 / 22 / 18 / 16 / 16 at full width.
+
+   h1 and h2 are fluid rather than fixed. Infima ships its own step-down below
+   576px, but it works by reassigning `--ifm-h*-font-size`, and the old rules
+   here set `font-size` directly — which beat the variable and left h1 at 38.4px
+   on a 390px phone. `clamp()` cannot be defeated that way and has no breakpoint
+   jump, so the fluid range replaces the override rather than fighting it.
+
+   h3 and h4 also have to be stated: Infima's defaults (24px and 16px) left h3
+   only 6.7% below h2, and put h4 BELOW body text. */
+.theme-doc-markdown h1 {
+	font-size: clamp(1.75rem, 1.4rem + 1.6vw, var(--nexus-text-3xl));
+}
+
+.theme-doc-markdown h2 {
+	font-size: clamp(1.375rem, 1.15rem + 1vw, var(--nexus-text-2xl));
+}
+
+.theme-doc-markdown h3 {
+	font-size: clamp(1.1875rem, 1.1rem + 0.35vw, var(--nexus-text-xl));
+}
+
+.theme-doc-markdown h4 {
+	font-size: var(--nexus-text-md);
+}
+
+.theme-doc-markdown h5,
+.theme-doc-markdown h6 {
+	font-size: var(--nexus-text-base);
+}
+
+/* Page sigil injected before each side-nav label by the DocSidebarItems
+   swizzle (replaces the old emoji markers). Bronze, sized to the label, and
+   nudged onto the text baseline. */
+.sidebar-sigil {
+	color: var(--nexus-bronze);
+	vertical-align: -3px;
+	margin-right: 0.4rem;
+	flex: 0 0 auto;
+}
+
+/* Forked DocBreadcrumbs container (replaces the theme's CSS-module class) and
+   the per-crumb page sigil. */
+/* ---- The carved trail (breadcrumbs) ---------------------------------------
+   Infima's pill-and-chevron markup is gone entirely (see the DocBreadcrumbs
+   swizzle), so none of its classes or tokens apply here. Ancestors are quiet
+   small-caps ink joined by carved triangle marks; the current page is the one
+   plated element, a compact Cartouche carrying its page sigil. */
+.codex-trail {
+	margin-bottom: 0.9rem;
+}
+
+.codex-trail__list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.1rem 0.15rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* The bullet system is scoped to `.theme-doc-markdown ul`, but the trail can sit
+   inside that container, so the marker is switched off explicitly. */
+.codex-trail__list > li::before {
+	content: none;
+}
+
+.codex-trail__item {
+	display: inline-flex;
+	align-items: center;
+	min-width: 0;
+}
+
+.codex-trail__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	padding: 0.1rem 0.15rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	font-weight: 600;
+	letter-spacing: 0.07em;
+	text-decoration: none;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 62%, transparent);
+	transition: color 150ms ease;
+}
+
+.codex-trail__link:hover {
+	color: var(--ifm-color-primary);
+	text-decoration: none;
+}
+
+/* The home crumb: the temple sigil (the great house), replacing the theme's
+   hardcoded house glyph. */
+.codex-trail__sigil {
+	color: color-mix(in srgb, var(--ifm-color-primary) 75%, transparent);
+	flex: 0 0 auto;
+}
+
+.codex-trail__link:hover .codex-trail__sigil {
+	color: var(--ifm-color-primary);
+}
+
+/* The connector is a twisted-cord braid (the TrailBraid ornament), not a
+   chevron: an arrow between crumbs reads as browser furniture, a cord reads as
+   an inscription binding two nameplates. */
+.codex-trail__mark {
+	display: inline-flex;
+	align-items: center;
+	flex: 0 0 auto;
+	margin: 0 0.45rem;
+}
+
+/* The current page is the only plate. The Cartouche brings its own nameplate
+   geometry; this just seats it on the trail's baseline. */
+.codex-trail__item--current {
+	margin-left: 0.1rem;
+}
+
+/* Chapter sigil injected before each page's h1 by the chapter-sigil remark
+   plugin (replaces the old emoji markers). Inherits the bronze heading color
+   via currentColor, sized to the cap height and nudged onto the baseline. */
+.theme-doc-markdown h1 .heading-sigil {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	margin-right: 0.5rem;
+	vertical-align: -0.08em;
+	color: var(--nexus-bronze);
+	flex: 0 0 auto;
+}
+
+/* Support layer: navigation and technical UI in the neutral sans. */
+.navbar,
+.menu,
+.table-of-contents,
+.pagination-nav,
+.breadcrumbs,
+.theme-code-block {
+	font-family: var(--nexus-font-ui);
+}
+
+/* Nav sizing had no system: navbar and sidebar sat at the full 16px body size
+   while the TOC and breadcrumbs were at 12.8px, so the chrome read as two
+   unrelated layers. Both now come off the ladder — the primary nav a step below
+   body, the secondary nav a step below that. Alegreya Sans has a larger
+   x-height than Spectral, so 14px of sans holds its own beside 16px of serif. */
+.navbar__item,
+.navbar__link,
+.menu__link {
+	font-size: var(--nexus-text-sm);
+}
+
+.table-of-contents,
+.breadcrumbs {
+	font-size: var(--nexus-text-xs);
+}
+
+/* The paginator carries page TITLES, so it stays with the primary nav step. */
+.pagination-nav__label {
+	font-size: var(--nexus-text-sm);
+}
+
+/* Form controls don't inherit font from ancestors; the local-search input
+   (and its dropdown, which measures text off the input's computed font)
+   needs the UI sans set explicitly. */
+.navbar__search-input {
+	font-family: var(--nexus-font-ui);
 }
 
 /* @media only screen and (max-device-height: 640px) 
@@ -141,29 +1341,15 @@ img.medium-zoom-image.medium-zoom-image--opened {
 	z-index: 300;
 }
 
-img[alt='banner-img'] {
-	width: 1000px;
-  max-width: 100%;
-  padding-block: 12px;
-}
+/* M11 S2 — the `img[alt='banner-img']` and `img[alt='folk-img']` rules that used
+   to live here are gone. The markers are now read by `MdxImage`, which maps them
+   to a plate weight and STRIPS them, so nothing keys off an `alt` value any
+   more and no marker reaches the DOM. Placement moved to
+   `ImagePlate.module.css`. */
 
-img[alt='folk-img'] {
-	width: 300px;
-  max-width: 50vw;
-  float: right;
-  padding: 12px;
-  padding-right: 0;
-}
-
-@media (max-width: 996px) {
-	.navbar__search-input {
-		width: 12rem;
-	}
-}
-
-.footer__logo {
-	margin-top: 0;
-}
+/* The mobile top-bar layout (icon cluster, search sizing) lives with the rest of
+   the navbar rules in the M4 section below — it has to load AFTER the desktop
+   icon-cluster rules it overrides, which are the same specificity. */
 
 table thead,
 table tr:nth-child(2n) {
@@ -173,6 +1359,12 @@ table tr:nth-child(2n) {
 table tr {
 	border-top: none;
 	border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+/* Header row gets a firmer bronze rule; body rows stay hairline-subtle. */
+table thead tr {
+	border-bottom: 2px solid
+		color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
 }
 
 table tbody tr:last-child {
@@ -185,705 +1377,2951 @@ table th {
 	padding: 0.25rem 0.5rem;
 }
 
-.markdown > pre, .markdown > ul, .markdown > p {
-  margin-bottom: calc(var(--ifm-leading) / 2);
+.markdown > pre,
+.markdown > ul,
+.markdown > p {
+	margin-bottom: calc(var(--ifm-leading) / 2);
 }
 
 .markdown > ul {
-  margin-top: calc(-1 * var(--ifm-leading) / 2);
+	margin-top: calc(-1 * var(--ifm-leading) / 2);
+}
+
+/* Bronze diamond bullets — the codex shape language applied to every unordered
+   list in the reading column. Scoped to the doc markdown so the character sheet
+   app keeps native bullets. Ordered lists keep their numerals. */
+.theme-doc-markdown ul {
+	list-style: none;
+	padding-left: 1.4rem;
+}
+.theme-doc-markdown ul > li {
+	position: relative;
+}
+.theme-doc-markdown ul > li::before {
+	content: '';
+	position: absolute;
+	left: -1.1rem;
+	/* Center the mark on the first text line. Tracks the prose leading token, not
+     Infima's --ifm-line-height-base: the reading column sets its own. */
+	top: calc(0.5em * var(--nexus-leading-prose, 1.7) - 3.5px);
+	width: 7px;
+	height: 7px;
+	transform: rotate(45deg);
+	background-color: var(--ifm-color-primary);
+}
+/* Scope boundary: the character sheet renders its MUI lists INSIDE the doc
+   markdown container, so the codex bullet lands on every MuiListItem (bronze
+   diamonds beside each saved character). Switch the marker back off there —
+   found during the M8 scope-boundary check. */
+.character-sheet-page ul > li::before {
+	content: none;
+}
+/* Nested lists: hollow lozenge, a step quieter. */
+.theme-doc-markdown ul ul > li::before {
+	background-color: transparent;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 70%, transparent);
+	width: 6px;
+	height: 6px;
 }
 
 /* Chip styles for table content */
-a.chip, .chip {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 1.2;
-  text-align: center;
-  white-space: nowrap;
-  border: 1px solid transparent;
-  text-decoration: none !important;
-  cursor: default;
-  pointer-events: none; /* Disable clicking */
+a.chip,
+.chip {
+	display: inline-block;
+	/* inline-block aligns on its bottom edge by default, so the pill's lower
+     padding pushes it below the text baseline. Center on the line, then lift a
+     hair: the serif body text is ascender-heavy, so a geometrically centered
+     pill still reads low. */
+	vertical-align: middle;
+	position: relative;
+	top: -0.12em;
+	padding: 2px 8px;
+	border-radius: 12px;
+	/* Sans UI face: Spectral's small x-height made chip text read tiny at this
+     size. Alegreya Sans has a larger x-height, so the same visual weight needs
+     fewer rem. */
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-weight: 500;
+	line-height: 1.2;
+	/* Small-caps reads as struck lettering and levels mixed-case labels
+     (skills/damage) into a uniform stamp face. */
+	font-variant-caps: small-caps;
+	letter-spacing: 0.03em;
+	text-align: center;
+	white-space: nowrap;
+	border: 1px solid transparent;
+	text-decoration: none !important;
+	cursor: default;
+	pointer-events: none; /* Disable clicking */
 }
 
 a.chip:hover {
-  text-decoration: none !important;
+	text-decoration: none !important;
 }
 
 /* Skill chips */
 .chip.chip--skill {
-  position: relative;
-  border-radius: 0 !important; /* Override base chip border-radius completely */
-  padding: 2px 4px; /* Extra horizontal padding for triangular ends */
-  margin: 0 6px; /* Space for triangular pseudo-elements */
-  border: none;
-  height: 20px;
-  --chip-bg: var(--chip-background-color);
+	position: relative;
+	border-radius: 0 !important; /* Override base chip border-radius completely */
+	padding: 2px 4px; /* Extra horizontal padding for triangular ends */
+	margin: 0 6px; /* Space for triangular pseudo-elements */
+	border: none;
+	height: 20px;
+	--chip-bg: var(--chip-background-color);
 }
 
 /* Left triangular point */
 .chip--skill::before {
-  content: '';
-  position: absolute;
-  left: -6px;
-  top: 0;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 6px solid;
-  border-right-color: inherit;
+	content: '';
+	position: absolute;
+	left: -6px;
+	top: 0;
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-right: 6px solid;
+	border-right-color: inherit;
 }
 
 /* Right triangular point */
 .chip--skill::after {
-  content: '';
-  position: absolute;
-  right: -6px;
-  top: 0;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 6px solid;
-  border-left-color: inherit;
+	content: '';
+	position: absolute;
+	right: -6px;
+	top: 0;
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 6px solid;
+	border-left-color: inherit;
+}
+
+/* A skill rank absorbed into its chip (see the table-chips plugin). Set inside a
+   struck divider so "Athletics 3" reads as name + rank rather than one label. */
+.chip__rank {
+	margin-left: 5px;
+	padding-left: 5px;
+	border-left: 1px solid color-mix(in srgb, currentColor 45%, transparent);
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
 }
 
 /* Weapon category chips */
 .chip--weapon {
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.7rem;
+	font-weight: 600;
+	font-size: var(--nexus-text-xs);
 }
 
 /* Attribute chips */
 .chip--attribute {
-  font-weight: bold;
-  border-radius: 2px !important; /* No rounded edges for attributes - override base chip rule */
-  font-size: 0.7rem;
-  margin-left: 3px;
-  margin-right: 3px;
-  padding: 2px 6px; /* Reduced horizontal padding */
+	font-weight: bold;
+	border-radius: 2px !important; /* No rounded edges for attributes - override base chip rule */
+	font-size: var(--nexus-text-xs);
+	margin-left: 3px;
+	margin-right: 3px;
+	padding: 2px 6px; /* Reduced horizontal padding */
 }
 
 /* Color variants */
 .chip--red {
-  background-color: #dc2626; /* Darker red for attributes - better contrast */
-  color: white;
+	--chip-fill: #902f2f;
+	background-color: #902f2f; /* Darker red for attributes - better contrast */
+	color: white;
 }
 
 .chip--blue {
-  background-color: #154dc7; /* Darker blue for attributes - better contrast */
-  color: white;
+	--chip-fill: #27427c;
+	background-color: #27427c; /* Darker blue for attributes - better contrast */
+	color: white;
 }
 
 .chip--green {
-  background-color: #01752b; /* Darker green for attributes - better contrast */
-  color: white;
+	--chip-fill: #154225;
+	background-color: #154225; /* Darker green for attributes - better contrast */
+	color: white;
 }
 
 .chip--light-purple {
-  background-color: #9333ea; /* Darker purple for attributes - better contrast */
-  color: white;
+	--chip-fill: #6c33a0;
+	background-color: #6c33a0; /* Darker purple for attributes - better contrast */
+	color: white;
 }
 
 .chip--yellow {
-  background-color: #b8860b; /* Darker yellow for better contrast */
-  color: white;
+	--chip-fill: #b8860b;
+	background-color: #b8860b; /* Darker yellow for better contrast */
+	color: white;
 }
 
 .chip--purple {
-  background-color: var(--ifm-color-purple);
-  color: white;
+	--chip-fill: var(--ifm-color-purple);
+	background-color: var(--ifm-color-purple);
+	color: white;
 }
 
 .chip--orange {
-  background-color: var(--ifm-color-orange);
-  color: white;
+	--chip-fill: var(--ifm-color-orange);
+	background-color: var(--ifm-color-orange);
+	color: white;
 }
 
 .chip--brown {
-  background-color: var(--ifm-color-brown);
-  color: white;
+	--chip-fill: var(--ifm-color-brown);
+	background-color: var(--ifm-color-brown);
+	color: white;
 }
 
 .chip--grey {
-  background-color: #555555; /* Darker grey for better contrast */
-  color: white;
+	--chip-fill: #555555;
+	background-color: #555555; /* Darker grey for better contrast */
+	color: white;
 }
 
 /* Pastel color variants for improved diversity and softer appearance */
 .chip--lime-pastel {
-  background-color: #c3f0ca; /* Pastel lime */
-  color: black;
+	--chip-fill: #c3f0ca;
+	background-color: #c3f0ca; /* Pastel lime */
+	color: black;
 }
 
 .chip--cyan-pastel {
-  background-color: #a5f3fc; /* Pastel cyan */
-  color: black;
+	--chip-fill: #a5f3fc;
+	background-color: #a5f3fc; /* Pastel cyan */
+	color: black;
 }
 
 .chip--pink-pastel {
-  background-color: #fbb6ce; /* Pastel pink */
-  color: black;
+	--chip-fill: #fbb6ce;
+	background-color: #fbb6ce; /* Pastel pink */
+	color: black;
 }
 
 .chip--gold-pastel {
-  background-color: #fed766; /* Pastel gold */
-  color: black;
+	--chip-fill: #fed766;
+	background-color: #fed766; /* Pastel gold */
+	color: black;
 }
 
 .chip--olive-pastel {
-  background-color: #d4d48a; /* Pastel olive */
-  color: black;
+	--chip-fill: #d4d48a;
+	background-color: #d4d48a; /* Pastel olive */
+	color: black;
 }
 
 .chip--maroon-pastel {
-  background-color: #e06b6b; /* Pastel maroon */
-  color: white;
+	--chip-fill: #e06b6b;
+	background-color: #e06b6b; /* Pastel maroon */
+	color: white;
 }
 
 .chip--navy-pastel {
-  background-color: #7c93c3; /* Pastel navy */
-  color: white;
+	--chip-fill: #7c93c3;
+	background-color: #7c93c3; /* Pastel navy */
+	color: white;
 }
 
 .chip--indigo-pastel {
-  background-color: #a78bfa; /* Pastel indigo */
-  color: white;
+	--chip-fill: #a78bfa;
+	background-color: #a78bfa; /* Pastel indigo */
+	color: white;
 }
 
 .chip--teal-pastel {
-  background-color: #7dd3fc; /* Pastel teal */
-  color: black;
+	--chip-fill: #7dd3fc;
+	background-color: #7dd3fc; /* Pastel teal */
+	color: black;
 }
 
 .chip--slate-pastel {
-  background-color: #cbd5e1; /* Pastel slate */
-  color: black;
+	--chip-fill: #cbd5e1;
+	background-color: #cbd5e1; /* Pastel slate */
+	color: black;
 }
 
 .chip--tan-pastel {
-  background-color: #fed7aa; /* Pastel tan */
-  color: black;
+	--chip-fill: #fed7aa;
+	background-color: #fed7aa; /* Pastel tan */
+	color: black;
 }
 
 .chip--silver-pastel {
-  background-color: #e2e8f0; /* Pastel silver */
-  color: black;
+	--chip-fill: #e2e8f0;
+	background-color: #e2e8f0; /* Pastel silver */
+	color: black;
 }
 
 .chip--copper-pastel {
-  background-color: #fdba74; /* Pastel copper */
-  color: black;
+	--chip-fill: #fdba74;
+	background-color: #fdba74; /* Pastel copper */
+	color: black;
 }
 
 .chip--bronze-pastel {
-  background-color: #fed7aa; /* Pastel bronze */
-  color: black;
+	--chip-fill: #fed7aa;
+	background-color: #fed7aa; /* Pastel bronze */
+	color: black;
 }
 
 .chip--steel-pastel {
-  background-color: #bfdbfe; /* Pastel steel */
-  color: black;
+	--chip-fill: #bfdbfe;
+	background-color: #bfdbfe; /* Pastel steel */
+	color: black;
 }
 
 .chip--amber-pastel {
-  background-color: #fde68a; /* Pastel amber */
-  color: black;
+	--chip-fill: #fde68a;
+	background-color: #fde68a; /* Pastel amber */
+	color: black;
 }
 
 .chip--orange-pastel {
-  background-color: #fed7aa; /* Pastel orange */
-  color: black;
+	--chip-fill: #fed7aa;
+	background-color: #fed7aa; /* Pastel orange */
+	color: black;
 }
 
 .chip--brown-pastel {
-  background-color: #d6d3d1; /* Pastel brown */
-  color: black;
+	--chip-fill: #d6d3d1;
+	background-color: #d6d3d1; /* Pastel brown */
+	color: black;
 }
 
 .chip--red-pastel {
-  background-color: #fca5a5; /* Pastel red */
-  color: black;
+	--chip-fill: #fca5a5;
+	background-color: #fca5a5; /* Pastel red */
+	color: black;
 }
 
 .chip--green-pastel {
-  background-color: #bbf7d0; /* Pastel green */
-  color: black;
+	--chip-fill: #bbf7d0;
+	background-color: #bbf7d0; /* Pastel green */
+	color: black;
 }
 
 .chip--purple-pastel {
-  background-color: #e9d5ff; /* Pastel purple */
-  color: black;
+	--chip-fill: #e9d5ff;
+	background-color: #e9d5ff; /* Pastel purple */
+	color: black;
 }
 
 .chip--blue-pastel {
-  background-color: #bfdbfe; /* Pastel blue */
-  color: black;
+	--chip-fill: #bfdbfe;
+	background-color: #bfdbfe; /* Pastel blue */
+	color: black;
 }
 
 .chip--yellow-pastel {
-  background-color: #fde68a; /* Pastel yellow */
-  color: black;
+	--chip-fill: #fde68a;
+	background-color: #fde68a; /* Pastel yellow */
+	color: black;
 }
 
 .chip--grey-pastel {
-  background-color: #e5e7eb; /* Pastel grey */
-  color: black;
+	--chip-fill: #e5e7eb;
+	background-color: #e5e7eb; /* Pastel grey */
+	color: black;
 }
 
 /* Additional pastel colors for better skill distribution */
 .chip--forest-green-pastel {
-  background-color: #86efac; /* Forest green pastel for Athletics */
-  color: black;
+	--chip-fill: #86efac;
+	background-color: #86efac; /* Forest green pastel for Athletics */
+	color: black;
 }
 
 .chip--sage-green-pastel {
-  background-color: #a7f3d0; /* Sage green pastel for Survival */
-  color: black;
+	--chip-fill: #a7f3d0;
+	background-color: #a7f3d0; /* Sage green pastel for Survival */
+	color: black;
 }
 
 .chip--violet-pastel {
-  background-color: #ddd6fe; /* Violet pastel for Mysticism */
-  color: black;
+	--chip-fill: #ddd6fe;
+	background-color: #ddd6fe; /* Violet pastel for Mysticism */
+	color: black;
 }
 
 .chip--charcoal-pastel {
-  background-color: #d1d5db; /* Charcoal pastel for Stealth */
-  color: black;
+	--chip-fill: #d1d5db;
+	background-color: #d1d5db; /* Charcoal pastel for Stealth */
+	color: black;
 }
 
 /* Dark mode adjustments for better contrast */
 [data-theme='dark'] .chip--light-purple {
-  background-color: #9c31ff; /* Darker purple for dark mode */
-  color: white;
+	--chip-fill: #6c33a0;
+	background-color: #6c33a0; /* Darker purple for dark mode */
+	color: white;
 }
 
 [data-theme='dark'] .chip--red {
-  background-color: #dc2626; /* Keep consistent with light mode */
-  color: white;
+	--chip-fill: #902f2f;
+	background-color: #902f2f; /* Keep consistent with light mode */
+	color: white;
 }
 
 [data-theme='dark'] .chip--green {
-  background-color: #049037; /* Keep consistent with light mode */
-  color: white;
+	--chip-fill: #154225;
+	background-color: #154225; /* Keep consistent with light mode */
+	color: white;
 }
 
 [data-theme='dark'] .chip--blue {
-  background-color: #154dc7; /* Keep consistent with light mode */
-  color: white;
+	--chip-fill: #27427c;
+	background-color: #27427c; /* Keep consistent with light mode */
+	color: white;
 }
 
 [data-theme='dark'] .chip--yellow-pastel {
-  background-color: #fbbf24;
-  color: black;
+	--chip-fill: #fbbf24;
+	background-color: #fbbf24;
+	color: black;
 }
 
 [data-theme='dark'] .chip--gold-pastel {
-  background-color: #f59e0b;
-  color: black;
+	--chip-fill: #f59e0b;
+	background-color: #f59e0b;
+	color: black;
 }
 
 [data-theme='dark'] .chip--lime-pastel {
-  background-color: #84cc16;
-  color: black;
+	--chip-fill: #84cc16;
+	background-color: #84cc16;
+	color: black;
 }
 
 [data-theme='dark'] .chip--cyan-pastel {
-  background-color: #06b6d4;
-  color: black;
+	--chip-fill: #06b6d4;
+	background-color: #06b6d4;
+	color: black;
 }
 
 [data-theme='dark'] .chip--tan-pastel {
-  background-color: #d97706;
-  color: black;
+	--chip-fill: #d97706;
+	background-color: #d97706;
+	color: black;
 }
 
 [data-theme='dark'] .chip--silver-pastel {
-  background-color: #94a3b8;
-  color: black;
+	--chip-fill: #94a3b8;
+	background-color: #94a3b8;
+	color: black;
 }
 
 [data-theme='dark'] .chip--amber-pastel {
-  background-color: #f59e0b;
-  color: black;
+	--chip-fill: #f59e0b;
+	background-color: #f59e0b;
+	color: black;
 }
 
 /* Dark mode adjustments for new skill colors */
 [data-theme='dark'] .chip--forest-green-pastel {
-  background-color: #22c55e;
-  color: black;
+	--chip-fill: #22c55e;
+	background-color: #22c55e;
+	color: black;
 }
 
 [data-theme='dark'] .chip--sage-green-pastel {
-  background-color: #34d399;
-  color: black;
+	--chip-fill: #34d399;
+	background-color: #34d399;
+	color: black;
 }
 
 [data-theme='dark'] .chip--violet-pastel {
-  background-color: #9c31ff;
-  color: black;
+	--chip-fill: #9c31ff;
+	background-color: #9c31ff;
+	color: black;
 }
 
 [data-theme='dark'] .chip--charcoal-pastel {
-  background-color: #9ca3af;
-  color: black;
+	--chip-fill: #9ca3af;
+	background-color: #9ca3af;
+	color: black;
 }
 
 /* Vibrant color variants for damage types */
 .chip--acid-vibrant {
-  background-color: #84cc16; /* Vibrant lime green */
-  color: white;
+	--chip-fill: var(--nexus-damage-acid);
+	background-color: var(--nexus-damage-acid); /* Vibrant lime green */
+	color: white;
 }
 
 .chip--blast-vibrant {
-  background-color: #ea580c; /* Vibrant orange */
-  color: white;
+	--chip-fill: var(--nexus-damage-blast);
+	background-color: var(--nexus-damage-blast); /* Vibrant orange */
+	color: white;
 }
 
 .chip--fire-vibrant {
-  background-color: #dc2626; /* Vibrant red */
-  color: white;
+	--chip-fill: var(--nexus-damage-fire);
+	background-color: var(--nexus-damage-fire); /* Vibrant red */
+	color: white;
 }
 
 .chip--frost-vibrant {
-  background-color: #0891b2; /* Vibrant cyan */
-  color: white;
+	--chip-fill: var(--nexus-damage-frost);
+	background-color: var(--nexus-damage-frost); /* Vibrant cyan */
+	color: white;
 }
 
 .chip--lightning-vibrant {
-  background-color: #eab308; /* Vibrant yellow */
-  color: white;
+	--chip-fill: var(--nexus-damage-lightning);
+	background-color: var(--nexus-damage-lightning); /* Vibrant yellow */
+	color: white;
 }
 
 .chip--necrotic-vibrant {
-  background-color: #7c3aed; /* Vibrant purple */
-  color: white;
+	--chip-fill: var(--nexus-damage-necrotic);
+	background-color: var(--nexus-damage-necrotic); /* Vibrant purple */
+	color: white;
 }
 
 .chip--poison-vibrant {
-  background-color: #01752b; /* Vibrant green */
-  color: white;
+	--chip-fill: var(--nexus-damage-poison);
+	background-color: var(--nexus-damage-poison); /* Vibrant green */
+	color: white;
 }
 
 .chip--psychic-vibrant {
-  background-color: #ec4899; /* Vibrant pink */
-  color: white;
+	--chip-fill: var(--nexus-damage-psychic);
+	background-color: var(--nexus-damage-psychic); /* Vibrant pink */
+	color: white;
 }
 
 .chip--radiant-vibrant {
-  background-color: #d97706; /* Vibrant gold */
-  color: white;
+	--chip-fill: var(--nexus-damage-radiant);
+	background-color: var(--nexus-damage-radiant); /* Vibrant gold */
+	color: white;
 }
 
-/* Vibrant color variants for skills */
+/* Physical is the DEFAULT damage type (rules prose omits it entirely), so it gets
+   a neutral struck-steel grey rather than an elemental hue — it should read as
+   "mundane" beside the coloured elements, not compete with them. */
+.chip--physical-vibrant {
+	--chip-fill: var(--nexus-damage-physical);
+	background-color: var(--nexus-damage-physical); /* Struck steel grey */
+	color: white;
+}
+
+/* Force is pure magical energy — a cold violet-white, kept clear of necrotic's
+   purple and psychic's pink. */
+.chip--force-vibrant {
+	--chip-fill: var(--nexus-damage-force);
+	background-color: var(--nexus-damage-force); /* Arcane violet */
+	color: white;
+}
+
+/* ============================================================================
+ * Codex chip unification (M6).
+ *
+ * The chips predate the codex theme: fully rounded pills, flat saturated fills
+ * and pure-white text read as generic web UI against carved stone and inlaid
+ * bronze. The COLOUR IDENTITIES are deliberately untouched — they are the whole
+ * point of the chips, and scanning a stat block depends on them — so this only
+ * changes the material the colour is set in:
+ *
+ *  - squared corners, matching every other codex element (cards 3px, badges,
+ *    cartouches, cartouche labels and the tier chip all sit at 2px);
+ *  - a BRONZE bezel instead of the white hairline, so a chip reads as enamel
+ *    inlaid into metal, and so all four chip families are tied together by the
+ *    same edge regardless of fill;
+ *  - warm parchment ink instead of pure white, which glared against the deep
+ *    fills.
+ *
+ * Skill chips keep their tag silhouette: the pointed ends are a banner/cartouche
+ * shape rather than a web pill, so they are already on-theme, and their points
+ * are drawn as border triangles coloured per variant — an outer bezel cannot be
+ * added to that construction without rebuilding all 16 variants.
+ * ========================================================================== */
+
+/* ── Codex chip unification (M6) ─────────────────────────────────────────────
+ * Chips predate the codex theme. Solid saturated fills made them the only
+ * elements on a page carrying heavy colour MASS, so against carved stone and
+ * inlaid bronze they read as stickers laid on top. Retuning the hues was not
+ * enough — the mass itself was the clash.
+ *
+ * So the colour moves from the fill to the INK. Each chip is now a keyline
+ * around the card surface with its identity colour applied to the text. Identity
+ * survives completely — a red word is still fire, a blue one still insight — but
+ * nothing on the page carries a block of colour any more.
+ *
+ * The identity hue lives in `--chip-fill`, set by every variant rule below.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+/* Ink, not fill. Mixing toward `--ifm-font-color-base` rather than using the raw
+   hue is what keeps these legible in BOTH themes: that token is light on dark and
+   dark on light, so the same declaration lightens the hue in dark mode and
+   darkens it in light mode while holding the hue itself. */
+.chip[class*='chip--'] {
+	color: color-mix(in srgb, var(--chip-fill) 68%, var(--ifm-font-color-base));
+	background-color: transparent !important;
+}
+
+a.chip,
+.chip {
+	border-radius: 2px;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+}
+
+/* ── Per-family silhouettes ──────────────────────────────────────────────────
+ * Squaring every chip removed the one thing that told the families apart at a
+ * glance. Each family keeps its own carved silhouette, cut with `clip-path`:
+ *
+ *   skill      pointed tag, both ends   — a banner/standard: a named proficiency
+ *   damage     cut-corner tessera       — an inlaid stone chip: elemental matter
+ *   weapon     chevron, pointed right   — a blade profile
+ *   attribute  square, concentric rule  — a die face, echoing DieToken and the
+ *                                          card frame's nested border
+ *
+ * A clipped shape cannot take a `border`, so the outline is built from two flat
+ * layers: the keyline beneath, and the CARD SURFACE inset 1.5px above it, which
+ * punches the middle back out. The keyline carries a trace of the identity hue
+ * over bronze — at hairline width that sharpens identity without reintroducing
+ * any mass.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+.chip--skill,
+.chip--damage,
+.chip--weapon {
+	position: relative;
+	isolation: isolate;
+	border: none !important;
+	border-radius: 0 !important;
+}
+
+.chip--skill::before,
+.chip--damage::before,
+.chip--weapon::before,
+.chip--skill::after,
+.chip--damage::after,
+.chip--weapon::after {
+	content: '';
+	position: absolute;
+	/* Reset the skill chip's old triangular-point construction, which used these
+     same two pseudo-elements as CSS border triangles. */
+	border: none;
+	width: auto;
+	height: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	clip-path: var(--chip-shape);
+}
+/* keyline */
+.chip--skill::before,
+.chip--damage::before,
+.chip--weapon::before {
+	background: color-mix(
+		in srgb,
+		var(--chip-fill) 45%,
+		var(--ifm-color-primary)
+	);
+	z-index: -2;
+}
+/* the surface, punching the middle back out to leave an outline */
+.chip--skill::after,
+.chip--damage::after,
+.chip--weapon::after {
+	inset: 1.5px;
+	background: var(--ifm-background-surface-color);
+	z-index: -1;
+}
+
+.chip--skill {
+	--chip-shape: polygon(
+		7px 0,
+		calc(100% - 7px) 0,
+		100% 50%,
+		calc(100% - 7px) 100%,
+		7px 100%,
+		0 50%
+	);
+	padding: 2px 12px !important;
+	margin: 0 2px !important;
+}
+
+.chip--damage {
+	--chip-shape: polygon(
+		4px 0,
+		calc(100% - 4px) 0,
+		100% 4px,
+		100% calc(100% - 4px),
+		calc(100% - 4px) 100%,
+		4px 100%,
+		0 calc(100% - 4px),
+		0 4px
+	);
+	padding: 2px 9px;
+}
+
+.chip--weapon {
+	--chip-shape: polygon(
+		0 0,
+		calc(100% - 7px) 0,
+		100% 50%,
+		calc(100% - 7px) 100%,
+		0 100%
+	);
+	padding: 2px 13px 2px 8px;
+}
+
+/* Attributes stay a true square — a die face. It carried a concentric second
+   keyline at first, which was redundant: the square is ALREADY the only
+   right-angled silhouette among the four families, so its own outline is the
+   distinction and the inner rule was just weight. A single keyline is enough,
+   and at this size two hairlines 3px apart read as noise rather than as the
+   card frame's nested border they were meant to echo. */
+.chip--attribute {
+	/* 1.5px, not 1px: the clipped families get their outline from a bezel layer
+     with the surface inset 1.5px on top, so a 1px border here rendered visibly
+     thinner than every chip beside it. Hard corners too — the other three
+     silhouettes are cut with clip-path and have no rounding to soften, so a
+     radius here was the only rounded corner left in the set. */
+	border: 1.5px solid
+		color-mix(in srgb, var(--chip-fill) 45%, var(--ifm-color-primary)) !important;
+	border-radius: 0 !important;
+	padding: 2px 6px;
+}
+
+/* The rank divider inside a skill chip picks up the chip's own ink. */
+.chip__rank {
+	border-left-color: color-mix(in srgb, currentColor 40%, transparent);
+}
+
+/* Vibrant color variants for skills. Hex values live once, in the
+   --nexus-skill-* tokens at the top of this file (M9 F2) — the sheet's
+   per-skill labels read the same tokens, so a skill is one color site-wide. */
 .chip--athletics-vibrant {
-  background-color: #22c55e; /* Vibrant green */
-  color: white;
+	--chip-fill: var(--nexus-skill-athletics);
+	background-color: var(--nexus-skill-athletics);
+	color: white;
 }
 
 .chip--crafting-vibrant {
-  background-color: #a16207; /* Vibrant brown */
-  color: white;
+	--chip-fill: var(--nexus-skill-crafting);
+	background-color: var(--nexus-skill-crafting);
+	color: white;
 }
 
 .chip--nature-vibrant {
-  background-color: #059669; /* Vibrant emerald */
-  color: white;
+	--chip-fill: var(--nexus-skill-nature);
+	background-color: var(--nexus-skill-nature);
+	color: white;
 }
 
 .chip--survival-vibrant {
-  background-color: #15803d; /* Vibrant forest green */
-  color: white;
+	--chip-fill: var(--nexus-skill-survival);
+	background-color: var(--nexus-skill-survival);
+	color: white;
 }
 
 .chip--fighting-vibrant {
-  background-color: #dc2626; /* Vibrant red */
-  color: white;
+	--chip-fill: var(--nexus-skill-fighting);
+	background-color: var(--nexus-skill-fighting);
+	color: white;
 }
 
 .chip--fortitude-vibrant {
-  background-color: #991b1b; /* Vibrant maroon */
-  color: white;
+	--chip-fill: var(--nexus-skill-fortitude);
+	background-color: var(--nexus-skill-fortitude);
+	color: white;
 }
 
 .chip--perception-vibrant {
-  background-color: #154dc7; /* Vibrant blue */
-  color: white;
+	--chip-fill: var(--nexus-skill-perception);
+	background-color: var(--nexus-skill-perception);
+	color: white;
 }
 
 .chip--arcana-vibrant {
-  background-color: #7c3aed; /* Vibrant purple */
-  color: white;
+	--chip-fill: var(--nexus-skill-arcana);
+	background-color: var(--nexus-skill-arcana);
+	color: white;
 }
 
 .chip--influence-vibrant {
-  background-color: #d97706; /* Vibrant amber */
-  color: white;
+	--chip-fill: var(--nexus-skill-influence);
+	background-color: var(--nexus-skill-influence);
+	color: white;
 }
 
 .chip--lore-vibrant {
-  background-color: #0891b2; /* Vibrant teal */
-  color: white;
+	--chip-fill: var(--nexus-skill-lore);
+	background-color: var(--nexus-skill-lore);
+	color: white;
 }
 
 .chip--mysticism-vibrant {
-  background-color: #9c31ff; /* Vibrant violet */
-  color: white;
+	--chip-fill: var(--nexus-skill-mysticism);
+	background-color: var(--nexus-skill-mysticism);
+	color: white;
 }
 
 .chip--insight-vibrant {
-  background-color: #0369a1; /* Vibrant sky blue */
-  color: white;
+	--chip-fill: var(--nexus-skill-insight);
+	background-color: var(--nexus-skill-insight);
+	color: white;
 }
 
 .chip--stealth-vibrant {
-  background-color: #374151; /* Vibrant charcoal */
-  color: white;
+	--chip-fill: var(--nexus-skill-stealth);
+	background-color: var(--nexus-skill-stealth);
+	color: white;
 }
 
 .chip--streetwise-vibrant {
-  background-color: #ea580c; /* Vibrant rust */
-  color: white;
+	--chip-fill: var(--nexus-skill-streetwise);
+	background-color: var(--nexus-skill-streetwise);
+	color: white;
 }
 
 .chip--education-vibrant {
-  background-color: #1e40af; /* Vibrant navy */
-  color: white;
+	--chip-fill: var(--nexus-skill-education);
+	background-color: var(--nexus-skill-education);
+	color: white;
 }
 
 .chip--archery-vibrant {
-  background-color: #92400e; /* Vibrant tan */
-  color: white;
+	--chip-fill: var(--nexus-skill-archery);
+	background-color: var(--nexus-skill-archery);
+	color: white;
 }
 
 /* Triangular pseudo-elements for skill chips */
-.chip--athletics-vibrant::before, .chip--athletics-vibrant::after {
-  border-right-color: #22c55e;
-  border-left-color: #22c55e;
+.chip--athletics-vibrant::before,
+.chip--athletics-vibrant::after {
+	border-right-color: var(--nexus-skill-athletics);
+	border-left-color: var(--nexus-skill-athletics);
 }
 
-.chip--crafting-vibrant::before, .chip--crafting-vibrant::after {
-  border-right-color: #a16207;
-  border-left-color: #a16207;
+.chip--crafting-vibrant::before,
+.chip--crafting-vibrant::after {
+	border-right-color: var(--nexus-skill-crafting);
+	border-left-color: var(--nexus-skill-crafting);
 }
 
-.chip--nature-vibrant::before, .chip--nature-vibrant::after {
-  border-right-color: #059669;
-  border-left-color: #059669;
+.chip--nature-vibrant::before,
+.chip--nature-vibrant::after {
+	border-right-color: var(--nexus-skill-nature);
+	border-left-color: var(--nexus-skill-nature);
 }
 
-.chip--survival-vibrant::before, .chip--survival-vibrant::after {
-  border-right-color: #15803d;
-  border-left-color: #15803d;
+.chip--survival-vibrant::before,
+.chip--survival-vibrant::after {
+	border-right-color: var(--nexus-skill-survival);
+	border-left-color: var(--nexus-skill-survival);
 }
 
-.chip--fighting-vibrant::before, .chip--fighting-vibrant::after {
-  border-right-color: #dc2626;
-  border-left-color: #dc2626;
+.chip--fighting-vibrant::before,
+.chip--fighting-vibrant::after {
+	border-right-color: var(--nexus-skill-fighting);
+	border-left-color: var(--nexus-skill-fighting);
 }
 
-.chip--fortitude-vibrant::before, .chip--fortitude-vibrant::after {
-  border-right-color: #991b1b;
-  border-left-color: #991b1b;
+.chip--fortitude-vibrant::before,
+.chip--fortitude-vibrant::after {
+	border-right-color: var(--nexus-skill-fortitude);
+	border-left-color: var(--nexus-skill-fortitude);
 }
 
-.chip--perception-vibrant::before, .chip--perception-vibrant::after {
-  border-right-color: #154dc7;
-  border-left-color: #154dc7;
+.chip--perception-vibrant::before,
+.chip--perception-vibrant::after {
+	border-right-color: var(--nexus-skill-perception);
+	border-left-color: var(--nexus-skill-perception);
 }
 
-.chip--arcana-vibrant::before, .chip--arcana-vibrant::after {
-  border-right-color: #7c3aed;
-  border-left-color: #7c3aed;
+.chip--arcana-vibrant::before,
+.chip--arcana-vibrant::after {
+	border-right-color: var(--nexus-skill-arcana);
+	border-left-color: var(--nexus-skill-arcana);
 }
 
-.chip--influence-vibrant::before, .chip--influence-vibrant::after {
-  border-right-color: #d97706;
-  border-left-color: #d97706;
+.chip--influence-vibrant::before,
+.chip--influence-vibrant::after {
+	border-right-color: var(--nexus-skill-influence);
+	border-left-color: var(--nexus-skill-influence);
 }
 
-.chip--lore-vibrant::before, .chip--lore-vibrant::after {
-  border-right-color: #0891b2;
-  border-left-color: #0891b2;
+.chip--lore-vibrant::before,
+.chip--lore-vibrant::after {
+	border-right-color: var(--nexus-skill-lore);
+	border-left-color: var(--nexus-skill-lore);
 }
 
-.chip--mysticism-vibrant::before, .chip--mysticism-vibrant::after {
-  border-right-color: #9c31ff;
-  border-left-color: #9c31ff;
+.chip--mysticism-vibrant::before,
+.chip--mysticism-vibrant::after {
+	border-right-color: var(--nexus-skill-mysticism);
+	border-left-color: var(--nexus-skill-mysticism);
 }
 
-.chip--insight-vibrant::before, .chip--insight-vibrant::after {
-  border-right-color: #0369a1;
-  border-left-color: #0369a1;
+.chip--insight-vibrant::before,
+.chip--insight-vibrant::after {
+	border-right-color: var(--nexus-skill-insight);
+	border-left-color: var(--nexus-skill-insight);
 }
 
-.chip--stealth-vibrant::before, .chip--stealth-vibrant::after {
-  border-right-color: #374151;
-  border-left-color: #374151;
+.chip--stealth-vibrant::before,
+.chip--stealth-vibrant::after {
+	border-right-color: var(--nexus-skill-stealth);
+	border-left-color: var(--nexus-skill-stealth);
 }
 
-.chip--streetwise-vibrant::before, .chip--streetwise-vibrant::after {
-  border-right-color: #ea580c;
-  border-left-color: #ea580c;
+.chip--streetwise-vibrant::before,
+.chip--streetwise-vibrant::after {
+	border-right-color: var(--nexus-skill-streetwise);
+	border-left-color: var(--nexus-skill-streetwise);
 }
 
-.chip--education-vibrant::before, .chip--education-vibrant::after {
-  border-right-color: #1e40af;
-  border-left-color: #1e40af;
+.chip--education-vibrant::before,
+.chip--education-vibrant::after {
+	border-right-color: var(--nexus-skill-education);
+	border-left-color: var(--nexus-skill-education);
 }
 
-.chip--archery-vibrant::before, .chip--archery-vibrant::after {
-  border-right-color: #92400e;
-  border-left-color: #92400e;
+.chip--archery-vibrant::before,
+.chip--archery-vibrant::after {
+	border-right-color: var(--nexus-skill-archery);
+	border-left-color: var(--nexus-skill-archery);
 }
 
 /* Vibrant color variants for weapon types - very distinct colors */
 .chip--axe-vibrant {
-  background-color: #7c2d12; /* Deep brown */
-  color: white;
+	--chip-fill: #502719;
+	background-color: #502719; /* Deep brown */
+	color: white;
 }
 
 .chip--blade-vibrant {
-  background-color: #64748b; /* Steel grey */
-  color: white;
+	--chip-fill: #4e5763;
+	background-color: #4e5763; /* Steel grey */
+	color: white;
 }
 
 .chip--bow-vibrant {
-  background-color: #a16207; /* Wood brown */
-  color: white;
+	--chip-fill: #5e441e;
+	background-color: #5e441e; /* Wood brown */
+	color: white;
 }
 
 .chip--brawling-vibrant {
-  background-color: #dc2626; /* Fighting red */
-  color: white;
+	--chip-fill: #902f2f;
+	background-color: #902f2f; /* Fighting red */
+	color: white;
 }
 
 .chip--crossbow-vibrant {
-  background-color: #374151; /* Dark grey */
-  color: white;
+	--chip-fill: #2c3139;
+	background-color: #2c3139; /* Dark grey */
+	color: white;
 }
 
 .chip--mace-vibrant {
-  background-color: #4338ca; /* Royal blue */
-  color: white;
+	--chip-fill: #3f3986;
+	background-color: #3f3986; /* Royal blue */
+	color: white;
 }
 
 .chip--polearm-vibrant {
-  background-color: #059669; /* Emerald green */
-  color: white;
+	--chip-fill: #1c5745;
+	background-color: #1c5745; /* Emerald green */
+	color: white;
 }
 
 .chip--shield-vibrant {
-  background-color: #7c3aed; /* Shield purple */
-  color: white;
+	--chip-fill: #5e34a6;
+	background-color: #5e34a6; /* Shield purple */
+	color: white;
 }
 
 .chip--thrown-vibrant {
-  background-color: #ea580c; /* Orange */
-  color: white;
+	--chip-fill: #8a4c2c;
+	background-color: #8a4c2c; /* Orange */
+	color: white;
 }
 
 /* Hide left sidebar on desktop for Character Sheet page */
 @media (min-width: 997px) {
-  /* Target the sidebar when the character-sheet-page class exists in the article */
-  div:has(.character-sheet-page) aside.theme-doc-sidebar-container {
-    display: none !important; /* sidebar hiding still uses !important because theme CSS sets widths */
-  }
+	/* Target the sidebar when the character-sheet-page class exists in the article */
+	div:has(.character-sheet-page) aside.theme-doc-sidebar-container {
+		display: none !important; /* sidebar hiding still uses !important because theme CSS sets widths */
+	}
 
-  /* Keep legacy container/col fallbacks for any layouts that rely on them */
-  div:has(.character-sheet-page) .container {
-    max-width: 100% !important;
-  }
+	/* Keep legacy container/col fallbacks for any layouts that rely on them */
+	div:has(.character-sheet-page) .container {
+		max-width: 100% !important;
+	}
 
-  div:has(.character-sheet-page) .col {
-    max-width: 100% !important;
-    flex-basis: 100% !important;
-  }
+	div:has(.character-sheet-page) .col {
+		max-width: 100% !important;
+		flex-basis: 100% !important;
+	}
 
-  /* Prefer a more-specific override for the generated doc main container to
+	/* Prefer a more-specific override for the generated doc main container to
      expand it to full width without using !important. By increasing selector
      specificity and placing this in `src/css/custom.css` (loaded after theme
      CSS), this will override the rule in the bundled styles. */
-  div:has(.character-sheet-page) main.docMainContainer_TBSr {
-    max-width: 100%;
-    width: 100%;
-  }
+	div:has(.character-sheet-page) main.docMainContainer_TBSr {
+		max-width: 100%;
+		width: 100%;
+	}
 }
 
-/* Navbar GitHub icon: replace the text label with a small SVG icon.
-   Uses the local file `/img/github.svg` placed in /static/img so it is served
-   at /img/github.svg. We style the navbar link using its className set in
-   `docusaurus.config.js` (navbar-github-link). Keep the link accessible
-   by using an `aria-label` in the config. */
-.navbar__item.navbar-github-link {
-  /* match spacing for other navbar icons */
-  padding-left: 1rem;
-  padding-right: 1rem;
-  position: relative;
-  line-height: 2rem;
+/* Chapter sigils in the navbar — the shared SigilIcon marks in place of the old
+   emoji labels (M4 Half B). Each sigil renders as a currentColor mask before the
+   label, so it inherits the link colour and tints correctly in both themes.
+
+   A mask resolves its image source as ALPHA, not luminance, so these marks must
+   be correct silhouettes: solid fill, voids as real geometry. That is why sigils
+   may not use the ornament kit's carve-back-out-in-the-surface-colour move — an
+   opaque overpaint would come back as ink and the mark would render as a blob.
+
+   The per-chapter rules below are GENERATED from src/components/codex/sigil-paths.ts
+   by `bun run sigils:masks`. Do not hand-edit them; `sigils:masks --check` runs in
+   CI and fails on drift. */
+/* Deliberately NOT qualified with `.navbar__item`. Docusaurus renders every
+   navbar item twice: as `.navbar__item` in the top bar and as `.menu__link`
+   inside the mobile drawer (`DefaultNavbarItem/Mobile`). Qualifying on
+   `.navbar__item` meant the generated mask-image below resolved in the drawer
+   but `content` never did, so below 996px the chapter list was naked labels.
+   The class is ours and appears nowhere else, so the bare selector is safe. */
+.navbar-sigil::before {
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-right: 0.4rem;
+	background-color: currentColor;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	mask-position: center;
+	-webkit-mask-size: contain;
+	mask-size: contain;
+	vertical-align: -3px;
 }
 
-.navbar__item.navbar-github-link::before {
-  content: "";
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  /* Use the SVG as a mask so the icon inherits `currentColor` and is
-     always visible in both light/dark themes. */
-  background-color: currentColor;
-  -webkit-mask: url('/img/github.svg') no-repeat center / contain;
-  mask: url('/img/github.svg') no-repeat center / contain;
-  vertical-align: middle;
-  /* Nudge to better align with other icons (tweak if needed) */
-  margin-top: -1px;
+/* sigils:masks:start — generated by `bun run sigils:masks`, do not edit */
+.navbar-sigil--sun::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M7%2016A9%209%200%201%200%2025%2016A9%209%200%201%200%207%2016Z%22%20/%3E%3Cpath%20d=%22M12.5%208.25L16%202.5L19.5%208.25ZM19%208.05L25.55%206.45L23.95%2013ZM23.75%2012.5L29.5%2016L23.75%2019.5ZM23.95%2019L25.55%2025.55L19%2023.95ZM19.5%2023.75L16%2029.5L12.5%2023.75ZM13%2023.95L6.45%2025.55L8.05%2019ZM8.25%2019.5L2.5%2016L8.25%2012.5ZM8.05%2013L6.45%206.45L13%208.05Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M7%2016A9%209%200%201%200%2025%2016A9%209%200%201%200%207%2016Z%22%20/%3E%3Cpath%20d=%22M12.5%208.25L16%202.5L19.5%208.25ZM19%208.05L25.55%206.45L23.95%2013ZM23.75%2012.5L29.5%2016L23.75%2019.5ZM23.95%2019L25.55%2025.55L19%2023.95ZM19.5%2023.75L16%2029.5L12.5%2023.75ZM13%2023.95L6.45%2025.55L8.05%2019ZM8.25%2019.5L2.5%2016L8.25%2012.5ZM8.05%2013L6.45%206.45L13%208.05Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--ziggurat::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M2.5%2025L29.5%2025L29.5%2029.5L2.5%2029.5ZM5%2020.5L27%2020.5L27%2025L5%2025ZM7.5%2016L24.5%2016L24.5%2020.5L7.5%2020.5ZM10%2011.5L22%2011.5L22%2016L10%2016ZM12.5%206L19.5%206L19.5%2011.5L12.5%2011.5ZM14.2%2025L17.8%2025L17.8%2029.5L14.2%2029.5Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M2.5%2025L29.5%2025L29.5%2029.5L2.5%2029.5ZM5%2020.5L27%2020.5L27%2025L5%2025ZM7.5%2016L24.5%2016L24.5%2020.5L7.5%2020.5ZM10%2011.5L22%2011.5L22%2016L10%2016ZM12.5%206L19.5%206L19.5%2011.5L12.5%2011.5ZM14.2%2025L17.8%2025L17.8%2029.5L14.2%2029.5Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--tablet::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%203.5L23.5%203.5L25%2028.5L7%2028.5ZM11%209.5L22%209.5L22%2012L11%2012ZM11%2015L22.2%2015L22.2%2017.5L11%2017.5ZM11%2020.5L22.4%2020.5L22.4%2023L11%2023Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%203.5L23.5%203.5L25%2028.5L7%2028.5ZM11%209.5L22%209.5L22%2012L11%2012ZM11%2015L22.2%2015L22.2%2017.5L11%2017.5ZM11%2020.5L22.4%2020.5L22.4%2023L11%2023Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--anvil::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M1.5%2013.5L9%208L27%208L27%2015L19.5%2015L19.5%2020L25.5%2020L25.5%2025.5L6.5%2025.5L6.5%2020L12.5%2020L12.5%2015L9%2015Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M1.5%2013.5L9%208L27%208L27%2015L19.5%2015L19.5%2020L25.5%2020L25.5%2025.5L6.5%2025.5L6.5%2020L12.5%2020L12.5%2015L9%2015Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--blades::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M9.28%2028.63L9.56%2028.2L9.92%2027.65L10.34%2027.01L10.81%2026.29L11.32%2025.51L11.86%2024.69L12.41%2023.86L12.96%2023.03L13.49%2022.22L14.01%2021.45L14.52%2020.67L15.04%2019.87L15.57%2019.06L16.11%2018.24L16.64%2017.43L17.17%2016.63L17.69%2015.87L18.19%2015.14L18.67%2014.47L19.14%2013.84L19.59%2013.25L20.04%2012.67L20.46%2012.13L20.87%2011.63L21.25%2011.18L21.62%2010.77L21.97%2010.41L22.3%2010.1L22.61%209.85L22.88%209.65L23.12%209.52L23.4%209.42L23.75%209.34L24.14%209.28L24.56%209.24L24.99%209.23L25.42%209.22L25.83%209.23L26.24%209.22L26.57%209.2L26.43%205.8L26.22%205.8L25.94%205.78L25.55%205.75L25.06%205.72L24.5%205.69L23.89%205.7L23.24%205.74L22.54%205.85L21.82%206.05L21.12%206.35L20.5%206.7L19.93%207.09L19.39%207.51L18.88%207.97L18.37%208.45L17.88%208.95L17.38%209.47L16.89%2010.02L16.39%2010.57L15.86%2011.16L15.3%2011.8L14.72%2012.49L14.13%2013.22L13.53%2013.98L12.92%2014.76L12.32%2015.54L11.72%2016.33L11.13%2017.09L10.55%2017.84L9.99%2018.55L9.42%2019.29L8.82%2020.06L8.2%2020.85L7.59%2021.65L6.99%2022.43L6.42%2023.17L5.89%2023.85L5.43%2024.46L5.03%2024.97L4.72%2025.37Z%22%20/%3E%3Cpath%20d=%22M27.28%2025.37L26.97%2024.97L26.57%2024.46L26.11%2023.85L25.58%2023.17L25.01%2022.43L24.41%2021.65L23.8%2020.85L23.18%2020.06L22.58%2019.29L22.01%2018.55L21.45%2017.84L20.87%2017.09L20.28%2016.33L19.68%2015.54L19.08%2014.76L18.47%2013.98L17.87%2013.22L17.28%2012.49L16.7%2011.8L16.14%2011.16L15.61%2010.57L15.11%2010.02L14.62%209.47L14.12%208.95L13.63%208.45L13.12%207.97L12.61%207.51L12.07%207.09L11.5%206.7L10.88%206.35L10.18%206.05L9.46%205.85L8.76%205.74L8.11%205.7L7.5%205.69L6.94%205.72L6.45%205.75L6.06%205.78L5.78%205.8L5.57%205.8L5.43%209.2L5.76%209.22L6.17%209.23L6.58%209.22L7.01%209.23L7.44%209.24L7.86%209.28L8.25%209.34L8.6%209.42L8.88%209.52L9.12%209.65L9.39%209.85L9.7%2010.1L10.03%2010.41L10.38%2010.77L10.75%2011.18L11.13%2011.63L11.54%2012.13L11.96%2012.67L12.41%2013.25L12.86%2013.84L13.33%2014.47L13.81%2015.14L14.31%2015.87L14.83%2016.63L15.36%2017.43L15.89%2018.24L16.43%2019.06L16.96%2019.87L17.48%2020.67L17.99%2021.45L18.51%2022.22L19.04%2023.03L19.59%2023.86L20.14%2024.69L20.68%2025.51L21.19%2026.29L21.66%2027.01L22.08%2027.65L22.44%2028.2L22.72%2028.63Z%22%20/%3E%3Cpath%20d=%22M9.5%2021.5L22.5%2021.5L22.5%2025L9.5%2025Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M9.28%2028.63L9.56%2028.2L9.92%2027.65L10.34%2027.01L10.81%2026.29L11.32%2025.51L11.86%2024.69L12.41%2023.86L12.96%2023.03L13.49%2022.22L14.01%2021.45L14.52%2020.67L15.04%2019.87L15.57%2019.06L16.11%2018.24L16.64%2017.43L17.17%2016.63L17.69%2015.87L18.19%2015.14L18.67%2014.47L19.14%2013.84L19.59%2013.25L20.04%2012.67L20.46%2012.13L20.87%2011.63L21.25%2011.18L21.62%2010.77L21.97%2010.41L22.3%2010.1L22.61%209.85L22.88%209.65L23.12%209.52L23.4%209.42L23.75%209.34L24.14%209.28L24.56%209.24L24.99%209.23L25.42%209.22L25.83%209.23L26.24%209.22L26.57%209.2L26.43%205.8L26.22%205.8L25.94%205.78L25.55%205.75L25.06%205.72L24.5%205.69L23.89%205.7L23.24%205.74L22.54%205.85L21.82%206.05L21.12%206.35L20.5%206.7L19.93%207.09L19.39%207.51L18.88%207.97L18.37%208.45L17.88%208.95L17.38%209.47L16.89%2010.02L16.39%2010.57L15.86%2011.16L15.3%2011.8L14.72%2012.49L14.13%2013.22L13.53%2013.98L12.92%2014.76L12.32%2015.54L11.72%2016.33L11.13%2017.09L10.55%2017.84L9.99%2018.55L9.42%2019.29L8.82%2020.06L8.2%2020.85L7.59%2021.65L6.99%2022.43L6.42%2023.17L5.89%2023.85L5.43%2024.46L5.03%2024.97L4.72%2025.37Z%22%20/%3E%3Cpath%20d=%22M27.28%2025.37L26.97%2024.97L26.57%2024.46L26.11%2023.85L25.58%2023.17L25.01%2022.43L24.41%2021.65L23.8%2020.85L23.18%2020.06L22.58%2019.29L22.01%2018.55L21.45%2017.84L20.87%2017.09L20.28%2016.33L19.68%2015.54L19.08%2014.76L18.47%2013.98L17.87%2013.22L17.28%2012.49L16.7%2011.8L16.14%2011.16L15.61%2010.57L15.11%2010.02L14.62%209.47L14.12%208.95L13.63%208.45L13.12%207.97L12.61%207.51L12.07%207.09L11.5%206.7L10.88%206.35L10.18%206.05L9.46%205.85L8.76%205.74L8.11%205.7L7.5%205.69L6.94%205.72L6.45%205.75L6.06%205.78L5.78%205.8L5.57%205.8L5.43%209.2L5.76%209.22L6.17%209.23L6.58%209.22L7.01%209.23L7.44%209.24L7.86%209.28L8.25%209.34L8.6%209.42L8.88%209.52L9.12%209.65L9.39%209.85L9.7%2010.1L10.03%2010.41L10.38%2010.77L10.75%2011.18L11.13%2011.63L11.54%2012.13L11.96%2012.67L12.41%2013.25L12.86%2013.84L13.33%2014.47L13.81%2015.14L14.31%2015.87L14.83%2016.63L15.36%2017.43L15.89%2018.24L16.43%2019.06L16.96%2019.87L17.48%2020.67L17.99%2021.45L18.51%2022.22L19.04%2023.03L19.59%2023.86L20.14%2024.69L20.68%2025.51L21.19%2026.29L21.66%2027.01L22.08%2027.65L22.44%2028.2L22.72%2028.63Z%22%20/%3E%3Cpath%20d=%22M9.5%2021.5L22.5%2021.5L22.5%2025L9.5%2025Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--hourglass::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5.5%203.5L26.5%203.5L26.5%207.5L5.5%207.5Z%22%20/%3E%3Cpath%20d=%22M5.5%2024.5L26.5%2024.5L26.5%2028.5L5.5%2028.5Z%22%20/%3E%3Cpath%20d=%22M7.5%207.5L24.5%207.5L17.4%2014.8L14.6%2014.8ZM14.6%2014.8L17.4%2014.8L17.4%2017.2L14.6%2017.2ZM14.6%2017.2L17.4%2017.2L24.5%2024.5L7.5%2024.5Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5.5%203.5L26.5%203.5L26.5%207.5L5.5%207.5Z%22%20/%3E%3Cpath%20d=%22M5.5%2024.5L26.5%2024.5L26.5%2028.5L5.5%2028.5Z%22%20/%3E%3Cpath%20d=%22M7.5%207.5L24.5%207.5L17.4%2014.8L14.6%2014.8ZM14.6%2014.8L17.4%2014.8L17.4%2017.2L14.6%2017.2ZM14.6%2017.2L17.4%2017.2L24.5%2024.5L7.5%2024.5Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--rune::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M13.4%203.5L18.6%203.5L18.6%2028.5L13.4%2028.5Z%22%20/%3E%3Cpath%20d=%22M20.05%2012.65L27.45%206.15L24.55%202.85L17.15%209.35Z%22%20/%3E%3Cpath%20d=%22M17.15%2020.65L24.55%2027.15L27.45%2023.85L20.05%2017.35Z%22%20/%3E%3Cpath%20d=%22M14.85%2013.35L7.45%206.85L4.55%2010.15L11.95%2016.65Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M13.4%203.5L18.6%203.5L18.6%2028.5L13.4%2028.5Z%22%20/%3E%3Cpath%20d=%22M20.05%2012.65L27.45%206.15L24.55%202.85L17.15%209.35Z%22%20/%3E%3Cpath%20d=%22M17.15%2020.65L24.55%2027.15L27.45%2023.85L20.05%2017.35Z%22%20/%3E%3Cpath%20d=%22M14.85%2013.35L7.45%206.85L4.55%2010.15L11.95%2016.65Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--serpent::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M9.27%2029.35L9.58%2029.23L10%2029.1L10.52%2028.93L11.13%2028.73L11.8%2028.51L12.5%2028.25L13.22%2027.96L13.95%2027.64L14.67%2027.27L15.32%2026.88L15.9%2026.49L16.48%2026.08L17.09%2025.64L17.71%2025.15L18.33%2024.62L18.92%2024.04L19.49%2023.38L20%2022.61L20.41%2021.66L20.6%2020.49L20.43%2019.28L20.01%2018.28L19.5%2017.48L18.95%2016.81L18.39%2016.22L17.83%2015.68L17.3%2015.18L16.8%2014.72L16.38%2014.3L15.96%2013.87L15.39%2013.32L14.73%2012.78L14.1%2012.31L13.52%2011.89L13.02%2011.52L12.64%2011.2L12.4%2010.97L12.36%2010.9L12.51%2011.11L12.67%2011.62L12.7%2012.04L12.71%2012.1L12.82%2011.94L13.03%2011.65L13.32%2011.3L13.67%2010.93L14.03%2010.58L14.39%2010.28L14.7%2010.05L14.83%209.99L14.78%2010.04L14.82%2010.06L15.02%2010.05L15.34%2010.06L15.73%2010.08L16.17%2010.11L16.64%2010.16L17.13%2010.21L17.67%2010.24L18.12%2010.25L17.88%202.75L17.72%202.77L17.46%202.78L17%202.78L16.4%202.78L15.71%202.8L14.93%202.85L14.08%202.95L13.15%203.15L12.14%203.49L11.17%204.01L10.4%204.59L9.76%205.18L9.14%205.82L8.55%206.52L7.99%207.27L7.47%208.06L7.01%208.93L6.61%209.88L6.34%2011L6.33%2012.38L6.75%2013.77L7.43%2014.81L8.15%2015.54L8.86%2016.1L9.54%2016.55L10.18%2016.94L10.77%2017.28L11.28%2017.59L11.68%2017.85L12.04%2018.13L12.53%2018.56L13.12%2019.02L13.68%2019.45L14.21%2019.85L14.67%2020.22L15.05%2020.54L15.3%2020.78L15.43%2020.9L15.42%2020.82L15.4%2020.51L15.45%2020.26L15.47%2020.26L15.38%2020.45L15.17%2020.76L14.86%2021.13L14.48%2021.54L14.04%2021.95L13.57%2022.37L13.1%2022.77L12.68%2023.12L12.3%2023.41L11.86%2023.69L11.35%2023.99L10.79%2024.28L10.2%2024.56L9.62%2024.82L9.06%2025.06L8.55%2025.28L8.09%2025.49L7.73%2025.65Z%22%20/%3E%3Cpath%20d=%22M17%203L28%207L17%2010.5Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M9.27%2029.35L9.58%2029.23L10%2029.1L10.52%2028.93L11.13%2028.73L11.8%2028.51L12.5%2028.25L13.22%2027.96L13.95%2027.64L14.67%2027.27L15.32%2026.88L15.9%2026.49L16.48%2026.08L17.09%2025.64L17.71%2025.15L18.33%2024.62L18.92%2024.04L19.49%2023.38L20%2022.61L20.41%2021.66L20.6%2020.49L20.43%2019.28L20.01%2018.28L19.5%2017.48L18.95%2016.81L18.39%2016.22L17.83%2015.68L17.3%2015.18L16.8%2014.72L16.38%2014.3L15.96%2013.87L15.39%2013.32L14.73%2012.78L14.1%2012.31L13.52%2011.89L13.02%2011.52L12.64%2011.2L12.4%2010.97L12.36%2010.9L12.51%2011.11L12.67%2011.62L12.7%2012.04L12.71%2012.1L12.82%2011.94L13.03%2011.65L13.32%2011.3L13.67%2010.93L14.03%2010.58L14.39%2010.28L14.7%2010.05L14.83%209.99L14.78%2010.04L14.82%2010.06L15.02%2010.05L15.34%2010.06L15.73%2010.08L16.17%2010.11L16.64%2010.16L17.13%2010.21L17.67%2010.24L18.12%2010.25L17.88%202.75L17.72%202.77L17.46%202.78L17%202.78L16.4%202.78L15.71%202.8L14.93%202.85L14.08%202.95L13.15%203.15L12.14%203.49L11.17%204.01L10.4%204.59L9.76%205.18L9.14%205.82L8.55%206.52L7.99%207.27L7.47%208.06L7.01%208.93L6.61%209.88L6.34%2011L6.33%2012.38L6.75%2013.77L7.43%2014.81L8.15%2015.54L8.86%2016.1L9.54%2016.55L10.18%2016.94L10.77%2017.28L11.28%2017.59L11.68%2017.85L12.04%2018.13L12.53%2018.56L13.12%2019.02L13.68%2019.45L14.21%2019.85L14.67%2020.22L15.05%2020.54L15.3%2020.78L15.43%2020.9L15.42%2020.82L15.4%2020.51L15.45%2020.26L15.47%2020.26L15.38%2020.45L15.17%2020.76L14.86%2021.13L14.48%2021.54L14.04%2021.95L13.57%2022.37L13.1%2022.77L12.68%2023.12L12.3%2023.41L11.86%2023.69L11.35%2023.99L10.79%2024.28L10.2%2024.56L9.62%2024.82L9.06%2025.06L8.55%2025.28L8.09%2025.49L7.73%2025.65Z%22%20/%3E%3Cpath%20d=%22M17%203L28%207L17%2010.5Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--key::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M16%202L24.5%2010L16%2018L7.5%2010ZM16%207L19%2010L16%2013L13%2010Z%22%20/%3E%3Cpath%20d=%22M13%2014L19%2014L19%2029.5L13%2029.5Z%22%20/%3E%3Cpath%20d=%22M19%2019.5L26%2019.5L26%2023.5L19%2023.5Z%22%20/%3E%3Cpath%20d=%22M19%2025.5L24.5%2025.5L24.5%2029.5L19%2029.5Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M16%202L24.5%2010L16%2018L7.5%2010ZM16%207L19%2010L16%2013L13%2010Z%22%20/%3E%3Cpath%20d=%22M13%2014L19%2014L19%2029.5L13%2029.5Z%22%20/%3E%3Cpath%20d=%22M19%2019.5L26%2019.5L26%2023.5L19%2023.5Z%22%20/%3E%3Cpath%20d=%22M19%2025.5L24.5%2025.5L24.5%2029.5L19%2029.5Z%22%20/%3E%3C/svg%3E");
+}
+.navbar-sigil--scroll::before {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5%204.5L8.5%204.5L8.5%2027.5L5%2027.5Z%22%20/%3E%3Cpath%20d=%22M23.5%204.5L27%204.5L27%2027.5L23.5%2027.5Z%22%20/%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%207L23.5%207L23.5%2025L8.5%2025ZM11.5%209.9L20.5%209.9L20.5%2012.1L11.5%2012.1ZM11.5%2014.9L18%2014.9L18%2017.1L11.5%2017.1ZM11.5%2019.9L19.5%2019.9L19.5%2022.1L11.5%2022.1Z%22%20/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='%23000'%3E%3Cpath%20d=%22M5%204.5L8.5%204.5L8.5%2027.5L5%2027.5Z%22%20/%3E%3Cpath%20d=%22M23.5%204.5L27%204.5L27%2027.5L23.5%2027.5Z%22%20/%3E%3Cpath%20fill-rule=%22evenodd%22%20d=%22M8.5%207L23.5%207L23.5%2025L8.5%2025ZM11.5%209.9L20.5%209.9L20.5%2012.1L11.5%2012.1ZM11.5%2014.9L18%2014.9L18%2017.1L11.5%2017.1ZM11.5%2019.9L19.5%2019.9L19.5%2022.1L11.5%2022.1Z%22%20/%3E%3C/svg%3E");
+}
+/* sigils:masks:end */
+
+/* Uniform right-side icon cluster (GM Tools, Character Sheet, color-mode
+   toggle). Each item previously carried its own spacing model AND a different
+   glyph size (sigils 18px, toggle 24px) in a different box width, so even equal
+   gaps left the icons visually staggered. Fix: put every icon item in the SAME
+   square box, center its glyph, and size every glyph the same — then a single
+   flex `column-gap` yields perfectly even, aligned icons. The search box (a
+   sibling, not in this container) keeps its own spacing.
+
+   The GitHub mark used to be a fourth icon here, drawn from /img/github.svg as a
+   currentColor mask. It moved to the footer's "Tools & Source" column — it is
+   provenance, not navigation, and it was the icon the crowded mobile bar could
+   least afford. */
+.navbar__items--right {
+	column-gap: 0.5rem;
+	align-items: center;
 }
 
-/* Visually hide the textual label but keep it available to screen readers */
-.navbar__item.navbar-github-link .menu__link {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
+.navbar__items--right > .navbar__item.navbar-sigil,
+.navbar__items--right > [class*='colorModeToggle'] {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	margin: 0;
 }
 
-/* Hide labels for icon-only navbar items on desktop */
+/* One glyph size (20px) across all the icons. */
+.navbar__items--right > .navbar__item.navbar-sigil::before {
+	width: 20px;
+	height: 20px;
+}
+
+.navbar__items--right > [class*='colorModeToggle'] svg {
+	width: 20px;
+	height: 20px;
+}
+
+/* Toggle button fills and centers within the normalized 32px box. */
+.navbar__items--right > [class*='colorModeToggle'] button {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Icon-only navbar items on desktop (GM Tools, Character Sheet): the sigil
+   ::before stays visible while the text label is collapsed via font-size: 0.
+   The label returns on mobile (media query below). */
 .navbar-icon-with-label {
-  margin-inline: 0.5rem;
-  padding-left: 0;
-  width: 20px;
-  white-space: nowrap;
+	margin-inline: 0;
+	/* Shrink-wrap the anchor to the sigil (drop the default .navbar__link
+     horizontal padding) so its box matches the other icon items — otherwise the
+     leftover padding pads the icon and the visual gaps read as uneven. */
+	padding-inline: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0;
+	white-space: nowrap;
+}
+
+.navbar-icon-with-label.navbar-sigil::before {
+	margin-right: 0;
+	vertical-align: middle;
 }
 
 /* Add bottom border to active navbar items */
 .navbar__link--active {
-  border-bottom: 2px solid var(--ifm-color-primary);
-  padding-bottom: 2px;
+	border-bottom: 2px solid var(--ifm-color-primary);
+	padding-bottom: 2px;
 }
 
 .navbar__link:hover {
-  border-bottom: 2px solid rgba(46, 133, 85, 0.5);
-  padding-bottom: 2px;
+	border-bottom: 2px solid
+		color-mix(in srgb, var(--ifm-color-primary) 50%, transparent);
+	padding-bottom: 2px;
 }
 
-/* Show labels on mobile sidebar */
-@media (max-width: 996px) {
-  .navbar-icon-with-label {
-    width: auto;
-    white-space: normal;
-  }
+/* Show labels in the mobile DRAWER only.
 
-  .navbar__link--active,
-  .navbar__link:hover {
-    border-bottom: none;
-  }
+   Docusaurus renders every right-position navbar item twice below 996px: once in
+   the collapsed top bar and once inside `.navbar-sidebar`. This rule used to be
+   unscoped, so restoring the label also un-collapsed the TOP-BAR copies — which
+   keep their 32px icon box — and the text spilled sideways across the navbar.
+   Scoping to the drawer is the whole fix: the top-bar copies keep the base
+   `font-size: 0` and stay icon-only, exactly as on desktop. */
+@media (max-width: 996px) {
+	.navbar-sidebar .navbar-icon-with-label {
+		width: auto;
+		/* The nav type step, matching the sibling drawer links rather than
+       inheriting the 16px body size. */
+		font-size: var(--nexus-text-sm);
+		white-space: normal;
+		/* Undo the desktop icon shrink-wrap. In the drawer these are ordinary
+       left-aligned menu links, so they need the menu link's own padding and
+       alignment back — without this they sat flush against the drawer edge while
+       every sibling was indented. */
+		padding-inline: var(--ifm-menu-link-padding-horizontal);
+		justify-content: flex-start;
+	}
+
+	.navbar-sidebar .navbar-icon-with-label.navbar-sigil::before {
+		margin-right: 0.4rem;
+	}
+
+	.navbar__link--active,
+	.navbar__link:hover {
+		border-bottom: none;
+	}
+
+	/* Mobile top bar. Infima hides the top-bar copies of every navbar item with
+     `.navbar__item { display: none }` because the drawer already carries them.
+     The icon-cluster rule above (same 0,3,0 specificity, earlier in the file)
+     outranked that, so two 32px sigils plus the GitHub mark stayed in a bar with
+     no room for them: they overlapped the colour-mode toggle and squeezed the
+     12rem search field down to 45px. That overlap is the misalignment. Hand the
+     top bar back to Infima and give the room to the search instead. */
+	.navbar__items--right > .navbar__item.navbar-sigil {
+		display: none;
+	}
+
+	/* And the search field itself. Docusaurus pulls the search container OUT of
+     the flow below 996px (`position: absolute; right: var(--ifm-navbar-padding-
+     horizontal)` in Navbar/Search/styles.module.css) on the assumption that it
+     is the only thing on the right of a mobile bar. This bar also carries the
+     colour-mode toggle, so the field was pinned to the same 16px right edge as
+     the toggle and sat directly on top of it — that overlap is the whole of the
+     "search is badly aligned" symptom.
+
+     Putting it back in the flex row lets `.navbar__items--right`'s own
+     `column-gap` and `align-items: center` space it like every other control.
+     The search plugin's collapse-when-unfocused behaviour below 576px is left
+     alone: it is the right pattern for a phone, and it only looked broken
+     because of where the collapsed field was sitting. */
+	.navbar__items--right > [class*='navbarSearchContainer'] {
+		position: static;
+		/* The plugin's own 16px offset, superseded by the cluster's column-gap. */
+		margin-left: 0;
+	}
+}
+
+/* ============================================================================
+   M8 — Bronze-Age look as the DEFAULT theme.
+
+   Every Docusaurus surface renders in the carved-stone / inlaid-bronze language
+   with zero per-page placement: a plain markdown page with headings, lists, a
+   blockquote, a table, a code block and an admonition comes out fully themed.
+   Mechanism is the lightest that reaches each surface — CSS on stable class
+   names first, then MDX element mapping, then a WRAPPING swizzle. Only two
+   components are swizzled (`Admonition/Layout`, `Footer/Layout`), both wrappers.
+
+   Two standing rules govern everything here:
+   - Flat only. Keyline borders, flat washes and inlaid motifs. No shadows,
+     bevels or glossy depth.
+   - Never a straight rule as a grouping device. A keyline is a FRAME on a
+     container; content is grouped by a background wash, spacing or a carved
+     ornament — never a bare left bar.
+
+   Scope: doc/site chrome only. Nothing here may reach `.character-sheet-page`
+   or MUI; reading-column rules are scoped to `.theme-doc-markdown`.
+   ========================================================================== */
+
+/* --- S1 Admonitions → carved-stone callouts --------------------------------
+   The stock alert is a coloured box with a fat left bar. Recut as a stone
+   panel: a flat keyline frame, a faint wash, and a title BAND (a wash, not a
+   rule) carrying the type's codex sigil.
+
+   Colour does focused work: note / tip / info all stay bronze and are told
+   apart by sigil and label, so the reading column never carries a block of
+   saturated colour. Only the two alarm types take a hue. Geometry comes from
+   overriding Infima's own `--ifm-alert-*` vars rather than fighting its rules,
+   so the theme keeps ownership of the box model. */
+.alert {
+	--codex-alert-ink: var(--ifm-color-primary);
+	--ifm-alert-border-left-width: var(--ifm-alert-border-width);
+	--ifm-alert-border-width: 1.5px;
+	--ifm-alert-border-radius: 2px;
+	--ifm-alert-padding-vertical: 0;
+	--ifm-alert-padding-horizontal: 0;
+	--ifm-alert-shadow: none;
+	--ifm-alert-foreground-color: var(--ifm-font-color-base);
+	--ifm-alert-border-color: color-mix(
+		in srgb,
+		var(--codex-alert-ink) 55%,
+		transparent
+	);
+	--ifm-alert-background-color: color-mix(
+		in srgb,
+		var(--codex-alert-ink) 6%,
+		var(--ifm-background-surface-color)
+	);
+	--ifm-alert-background-color-highlight: color-mix(
+		in srgb,
+		var(--codex-alert-ink) 12%,
+		transparent
+	);
+	/* Links inside a callout keep the site's bronze, not the alert foreground. */
+	--ifm-link-color: var(--ifm-color-primary);
+	--ifm-link-hover-color: var(--ifm-color-primary);
+	overflow: hidden; /* the title band runs edge to edge inside the frame */
+}
+
+/* Alarm types only. Mixed toward the base ink so one declaration holds in both
+   themes (the token is dark on parchment, light on obsidian). */
+.theme-admonition-warning,
+.theme-admonition-caution {
+	--codex-alert-ink: var(--nexus-alert-warning);
+}
+.theme-admonition-danger {
+	--codex-alert-ink: var(--nexus-alert-danger);
+}
+
+/* Title band. The heading class is a hashed CSS module, so it is matched by
+   substring — the stable part of the theme's own naming. */
+.codex-admonition > [class*='admonitionHeading'] {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0.35rem 0.85rem;
+	background: color-mix(in srgb, var(--codex-alert-ink) 13%, transparent);
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--codex-alert-ink) 38%, transparent);
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-dense);
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	/* Cinzel's lowercase glyphs ARE natively drawn small caps, so the theme's
+	   uppercasing is removed rather than replaced (see the h1/h2 rule). */
+	text-transform: none;
+	color: color-mix(
+		in srgb,
+		var(--codex-alert-ink) 65%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.codex-admonition > [class*='admonitionHeading'] [class*='admonitionIcon'] {
+	display: inline-flex;
+	margin-right: 0;
+}
+
+/* The theme's icon rule sets its own fill and a 1.6em box. Sigils are solid
+   `currentColor` masses, so the fill has to be restored to currentColor here —
+   a theme fill would otherwise recolour the whole mark. */
+.codex-admonition [class*='admonitionIcon'] svg.codex-admonition__sigil {
+	width: 22px;
+	height: 22px;
+	fill: currentColor;
+	stroke: none;
+}
+
+.codex-admonition > [class*='admonitionContent'] {
+	padding: 0.7rem 0.85rem;
+}
+
+/* --- S2 Blockquotes → inset tablet -----------------------------------------
+   The game uses `>` for in-world examples. Distinct from an admonition by
+   having no title band; identified instead by two inlaid corner beads on the
+   top edge (mirror-symmetric, detail hugging the frame). */
+.theme-doc-markdown blockquote {
+	position: relative;
+	border: none;
+	border-radius: 2px;
+	margin: 1.35rem 0;
+	padding: 0.85rem 1.1rem;
+	background: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 6%,
+		var(--ifm-background-surface-color)
+	);
+	/* A flat second keyline drawn inside the box: `outline` with a negative
+	   offset, never a shadow. */
+	outline: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	outline-offset: -1px;
+}
+
+.theme-doc-markdown blockquote::before,
+.theme-doc-markdown blockquote::after {
+	content: '';
+	position: absolute;
+	top: -3.5px;
+	width: 7px;
+	height: 7px;
+	transform: rotate(45deg);
+	background: color-mix(in srgb, var(--ifm-color-primary) 75%, transparent);
+}
+.theme-doc-markdown blockquote::before {
+	left: 10px;
+}
+.theme-doc-markdown blockquote::after {
+	right: 10px;
+}
+
+.theme-doc-markdown blockquote > :last-child {
+	margin-bottom: 0;
+}
+
+/* --- S3 Tables → stone slab + frieze cornice -------------------------------
+   Comparison tables stay tables (cards-vs-tables rule) and gain a slab frame
+   with a hieroglyph cornice above the header band. The slab is the wrapper from
+   the `table` element mapping (`DocTable`) — see that file for why the frame
+   cannot live on the table element itself. The cornice is ONE full-width
+   element, so the tile never resets phase (a per-cell tile would seam at every
+   column edge). */
+.codex-table-slab {
+	margin-bottom: var(--ifm-spacing-vertical);
+	overflow-x: auto;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
+	border-radius: 2px;
+	/* A table is a scan surface, not prose: one step below body, with the prose
+	   leading dropped back to a compact line so rows stay dense. Wide comparison
+	   tables (equipment, weapons) were the heaviest thing on the page at full
+	   body size. */
+	font-size: var(--nexus-text-dense);
+	line-height: 1.5;
+}
+
+/* Sticky, because the cornice belongs to the FRAME, not the content. The slab is
+   the scroll container, so this block's width is the visible width — scrolling a
+   wide table right used to drag the frieze out of view and leave the cornice
+   ending mid-slab while the border (which never scrolls) carried on. `left: 0`
+   pins it back to the scrollport so frame and cornice stay one edge. */
+.codex-table-slab::before {
+	content: '';
+	display: block;
+	position: sticky;
+	left: 0;
+	z-index: 1;
+	height: 10px;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 42%,
+		transparent
+	);
+	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
+	mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
+}
+
+/* Back to a real table box, so the frame and the rows describe the same width. */
+.codex-table-slab > table {
+	display: table;
+	width: 100%;
+	margin-bottom: 0;
+}
+
+.theme-doc-markdown table thead tr {
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 11%,
+		transparent
+	);
+	border-bottom: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+}
+
+.theme-doc-markdown table thead th {
+	padding: 0.4rem 0.55rem;
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-align: left;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 55%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.theme-doc-markdown table tbody tr {
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
+}
+
+/* --- S4 Code blocks → inlaid tablet ----------------------------------------
+   Flat bronze frame over a stone fill, with the optional title as a cornice
+   band. Mono legibility and the copy button are untouched apart from their
+   frame. */
+.theme-code-block {
+	--prism-background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 5%,
+		var(--ifm-background-surface-color)
+	) !important;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
+	border-radius: 2px;
+	box-shadow: none !important;
+}
+
+/* prism-react-renderer writes the theme's plain background as an INLINE style on
+   the `pre`, which outranks any class selector — so the stone fill only lands if
+   the inline value is cleared with `!important` and the container's fill shows
+   through. */
+.theme-code-block pre {
+	background-color: transparent !important;
+}
+
+.theme-code-block [class*='codeBlockTitle'] {
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.theme-code-block [class*='copyButton'] button,
+.theme-code-block [class*='wordWrapButton'] button {
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	border-radius: 2px;
+	background: var(--ifm-background-surface-color);
+	color: var(--ifm-color-primary);
+	box-shadow: none;
+}
+
+/* Inline code: a small inlaid chip of stone rather than a rounded pill. */
+.theme-doc-markdown code {
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 28%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
+}
+
+/* --- S5 Pagination → cartouche nav -----------------------------------------
+   The prev/next plates become nameplates with a carved directional chevron.
+   Infima's `«`/`»` glyph content is replaced by a clip-path triangle so the
+   mark matches the kit's hard-vertex shape language. */
+.pagination-nav__link {
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	border-radius: 2px;
+	background: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 5%,
+		var(--ifm-background-surface-color)
+	);
+	transition: background-color 150ms ease;
+}
+
+.pagination-nav__link:hover {
+	border-color: var(--ifm-color-primary);
+	background: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 11%,
+		var(--ifm-background-surface-color)
+	);
+}
+
+.pagination-nav__sublabel {
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.pagination-nav__label {
+	display: flex;
+	align-items: center;
+	gap: 0.45rem;
+	font-family: var(--ifm-font-family-base);
+	color: var(--ifm-font-color-base);
+}
+
+.pagination-nav__link--next .pagination-nav__label {
+	justify-content: flex-end;
+}
+
+.pagination-nav__link--prev .pagination-nav__label::before,
+.pagination-nav__link--next .pagination-nav__label::after {
+	content: '';
+	flex: 0 0 auto;
+	width: 8px;
+	height: 11px;
+	background-color: var(--ifm-color-primary);
+}
+
+.pagination-nav__link--prev .pagination-nav__label::before {
+	clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+.pagination-nav__link--next .pagination-nav__label::after {
+	clip-path: polygon(0 0, 0 100%, 100% 50%);
+}
+
+/* --- S6 TOC → framed side tablet -------------------------------------------
+   Infima binds the TOC with a bare left rule — exactly the flat-chrome bar the
+   theme forbids. Replaced by a framed panel (a keyline is legitimate AS a
+   container frame) with a lozenge marking the active entry. */
+.table-of-contents {
+	border-left: none;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 4%, transparent);
+	padding: 0.6rem 0.75rem;
+}
+
+.table-of-contents ul {
+	padding-left: 0.9rem;
+}
+
+.table-of-contents__link {
+	position: relative;
+}
+
+.table-of-contents__link--active {
+	font-weight: 600;
+}
+
+.table-of-contents__link--active::before {
+	content: '';
+	position: absolute;
+	left: -0.85rem;
+	top: 0.5em;
+	width: 6px;
+	height: 6px;
+	transform: rotate(45deg);
+	background-color: var(--ifm-color-primary);
+}
+
+/* --- S6b Mobile TOC → a small carved tablet --------------------------------
+   Below 997px the TOC becomes `TOCCollapsible`, which arrives entirely
+   untreated: a soft-radius panel filled with `--ifm-menu-color-background-active`,
+   a plain sentence-case label, a generic chevron drawn as a `background-image`
+   run through `--ifm-menu-link-sublist-icon-filter`, and — twice over — a bare
+   rule as a grouping device (`border-top` on the list, plus Infima's
+   `table-of-contents__left-border`).
+
+   Rebuilt on the table slab's own build, because it is the same object at a
+   smaller scale: frieze cornice, header band, content. Its internal class names
+   are hashed CSS modules, so they are matched by the stable substring and TAG
+   QUALIFIED — `[class*='tocCollapsible']` on its own also matches the button,
+   the content wrapper and the expanded-state class. The container is hooked by
+   `theme-doc-toc-mobile`, which is stable. */
+.theme-doc-toc-mobile {
+	margin: 1rem 0;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 34%, transparent);
+	border-radius: 2px;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 4%,
+		transparent
+	);
+	overflow: hidden;
+}
+
+/* The merlon cornice, at the table slab's 10px band. Sits above the head rather
+   than between head and list, so the plate reads as a tablet whether it is open
+   or shut. */
+.theme-doc-toc-mobile::before {
+	content: '';
+	display: block;
+	height: 10px;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 42%,
+		transparent
+	);
+	-webkit-mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
+	mask: var(--nexus-frieze-tile) repeat-x center / auto 10px;
+}
+
+/* Header band: the same faint bronze wash and display small caps the table's
+   `thead` uses, which is what separates it from the list below. A rule would do
+   the job too, and is exactly what the theme forbids. */
+.theme-doc-toc-mobile button[class*='tocCollapsibleButton'] {
+	padding: 0.45rem 0.8rem;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 11%,
+		transparent
+	);
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 58%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* Caret recut as a flat bronze triangle in the paginator's arrow hand. The stock
+   glyph is a background-image, so it cannot take `currentColor` — `clip-path` on
+   a solid fill can, and it drops the `filter` hack with it.
+
+   Infima has the rotation the other way round (base `rotate(180deg)`, expanded
+   `none`), so both states are restated rather than only one. */
+.theme-doc-toc-mobile button[class*='tocCollapsibleButton']::after {
+	width: 9px;
+	height: 7px;
+	background: currentColor;
+	filter: none;
+	clip-path: polygon(0 0, 100% 0, 50% 100%);
+	transform: none;
+}
+
+.theme-doc-toc-mobile button[class*='tocCollapsibleButtonExpanded']::after {
+	transform: rotate(180deg);
+}
+
+/* The list inside is already framed by the plate, so it drops the framed-panel
+   treatment the desktop TOC carries — and both of its bare rules with it. */
+.theme-doc-toc-mobile .table-of-contents {
+	border: none;
+	background: none;
+	padding: 0.35rem 0 0.5rem;
+}
+
+/* The nav step, not the desktop TOC's secondary step: these are tap targets on a
+   phone, so they match the drawer's menu links rather than the 12px side rail. */
+.theme-doc-toc-mobile div[class*='tocCollapsibleContent'] > ul {
+	border-top: none;
+	font-size: var(--nexus-text-sm);
+}
+
+/* Nesting step. The theme's own `margin: 0.4rem 0.8rem` on every `li` stacks on
+   top of the TOC's `padding-left`, so each level indented by ~46px and the
+   sub-entries drifted into the middle of the plate. */
+.theme-doc-toc-mobile div[class*='tocCollapsibleContent'] ul li {
+	margin-inline: 0.8rem 0;
+}
+
+.theme-doc-toc-mobile .table-of-contents ul {
+	padding-left: 0.35rem;
+}
+
+/* --- S7 Sidebar → one face, two orthogonal signals -------------------------
+   The first pass set category headers in the DISPLAY face, which broke the
+   README typography rule ("no decorative fonts for the sidebar"; Cinzel is
+   restricted to large headings where the letterforms can breathe). It also left
+   two different boxed treatments sitting next to each other — an active leaf in
+   sans inside a keyline, and a category in Cinzel inside a keyline — which read
+   as two unrelated objects rather than one system.
+
+   Recut so the whole side nav is ONE face (the UI sans) and the two signals are
+   independent and composable:
+
+     keyline + faint wash = "this names a GROUP"   (a nameplate on the stone)
+     stronger wash, no keyline = "you are HERE"    (engraved into the stone)
+
+   A category you are inside therefore carries both, and nothing has to be read
+   as a special case. */
+Owner revision: EVERY top-level entry now shares one plain style. The category
+   nameplate (keyline + wash + heavier weight) is gone — a parent page announces
+   itself only by the caret to its right. A boxed header among plain siblings
+   read as an unrelated object no matter which typeface it used, and it made the
+   one category on a page the loudest thing in the nav.
+
+   So the single remaining signal in the side nav is:
+
+     wash + bronze ink = "you are HERE"
+
+   which composes freely with anything, category or leaf. */
+
+/* "You are here": a flat wash and bronze ink. Never a left bar. */
+.menu__link--active {
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 15%, transparent);
+	color: var(--ifm-color-primary);
+}
+
+/* Nested children: light, and ALIGNED. The previous recessed wash plus a lozenge
+   per row read as heavy across a 20+ entry list (Talents, Spells), and the rows
+   were out-dented — their markers sat LEFT of the parents' sigils, so children
+   looked like a higher level than their parent.
+
+   Hierarchy is now carried by indentation alone: 22.4px = the parent's 16px sigil
+   plus its 0.4rem gap, so a child's text starts exactly under its parent's text
+   and the nav reads as one left rhythm. */
+.theme-doc-sidebar-menu .menu__list {
+	padding-left: 1.4rem;
+}
+
+.theme-doc-sidebar-menu .menu__list .menu__link {
+	font-weight: 500;
+	letter-spacing: 0;
+}
+
+/* The disclosure caret. Infima draws it as a background-image data-URI with
+   `fill="rgba(0,0,0,0.5)"` baked in, tintable only through a `filter` — which is
+   why it stayed grey and why dark mode inverted it.
+
+   Replaced with a carved arrowhead mask (`--nexus-caret-glyph`): the triangle
+   silhouette is kept, but its base is crenellated and an inlaid lozenge is voided
+   through its centre, so it reads as cut stone rather than a UI chevron. A mask
+   rather than a clip-path, because clip-path can only cut one outline and cannot
+   carve the interior void. */
+.menu__caret::before,
+.menu__link--sublist-caret::after {
+	background-image: none;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 75%,
+		var(--ifm-font-color-base)
+	);
+	filter: none;
+	clip-path: none;
+	-webkit-mask: var(--nexus-caret-glyph) no-repeat center / contain;
+	mask: var(--nexus-caret-glyph) no-repeat center / contain;
+}
+
+.menu__caret {
+	border-radius: 2px;
+}
+
+.menu__caret:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+}
+
+/* Sidebar collapse toggle: a flat bronze plate, not Infima's generic outline
+   button. The glyph itself is a bespoke SVG (the `Icon/Arrow` swizzle), shared
+   by this button and the expand tab.
+
+   The element selectors matter. `[class*='collapseSidebarButton']` also matches
+   the ICON, whose class is `collapseSidebarButtonIcon…` — the wash was being
+   painted a second time as a dark box behind the glyph. Tag-qualifying pins each
+   rule to the control rather than its child.
+
+   `position` is deliberately NOT set: the expand tab relies on Docusaurus's own
+   `position: absolute`, and overriding it collapsed the tab to nothing, which is
+   why the expand anchor was invisible once the sidebar was closed. */
+.theme-doc-sidebar-container button[class*='collapseSidebarButton'],
+div[class*='expandButton'] {
+	border: none;
+	border-top: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 28%, transparent);
+	border-radius: 0;
+	background: color-mix(in srgb, var(--ifm-color-primary) 5%, transparent);
+	color: var(--ifm-color-primary);
+}
+
+.theme-doc-sidebar-container button[class*='collapseSidebarButton']:hover,
+div[class*='expandButton']:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+}
+
+/* The sigil beside a paginator label (PaginatorNavLink swizzle). */
+.pagination-sigil {
+	flex: 0 0 auto;
+	color: var(--ifm-color-primary);
+	vertical-align: -2px;
+}
+
+/* --- S8 Navbar + footer → friezes and a solar crest ------------------------
+   Both bands get the braid RAIL, not the merlon course: they span the full
+   viewport, and at that length the merlon's mass reads as a stripe fencing the
+   page rather than as an ornament. See the token block for the split.
+
+   One full-width element per band, and identical height (7px) and ink (46%) on
+   both, so the page's two edges are the same edge. They previously ran at
+   8px/40% and 10px/45% off a tile authored for neither height, which is a large
+   part of why the friezes did not read as one motif. */
+.navbar {
+	box-shadow: none;
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+}
+
+.navbar::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 7px;
+	pointer-events: none;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 46%,
+		transparent
+	);
+	-webkit-mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
+	mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
+}
+
+.footer {
+	position: relative;
+	border-top: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+}
+
+.footer::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 7px;
+	pointer-events: none;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 46%,
+		transparent
+	);
+	-webkit-mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
+	mask: var(--nexus-frieze-rail) repeat-x center / auto 7px;
+}
+
+/* The footer as a COLOPHON: an index of the book's parts, then the crest, then
+   the provenance. It previously held nothing but a centred sun disc, which is
+   why the disc read as spent space — it was marking an empty band.
+
+   Grouping is by spacing and by the crest itself (a carved ornament), never by a
+   rule: a bare hairline binding the legal block would be exactly the flat-UI
+   chrome the theme rejects. */
+.footer {
+	padding-top: calc(var(--ifm-footer-padding-vertical) * 1.5);
+}
+
+.footer__links {
+	max-width: 52rem;
+	margin-inline: auto;
+	margin-bottom: 0;
+}
+
+/* Column heads are LABELS, not headings: the quietest register that still reads
+   as a head, so the links under them stay the loudest thing in the band. */
+.footer__title {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	margin-bottom: 0.6rem;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.footer__item {
+	position: relative;
+	padding-left: 0.9rem;
+	margin-top: 0;
+	line-height: 1.9;
+}
+
+/* The doc column's bronze lozenge bullet, at the nav register. Echoes the list
+   marker readers already know from the rules pages, rather than introducing a
+   second marker shape for the footer. */
+.footer__item::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0.75em;
+	width: 4px;
+	height: 4px;
+	transform: rotate(45deg);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 45%,
+		transparent
+	);
+}
+
+.footer__link-item {
+	font-size: var(--nexus-text-sm);
+}
+
+.footer__link-item svg {
+	width: 0.7em;
+	height: 0.7em;
+	margin-left: 0.3em;
+	opacity: 0.7;
+}
+
+/* Colophon block: crest, wordmark, then licence and attribution. */
+.footer__bottom {
+	padding-top: 1.75rem;
+}
+
+.footer__crest {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.55rem;
+	color: var(--ifm-color-primary);
+}
+
+.footer__wordmark {
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-sm);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.16em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 65%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* Provenance text. Capped well inside the footer's own width: three centred
+   lines running the full band would be the widest measure on the site. */
+.footer__legal {
+	max-width: 38rem;
+	margin: 0 auto 0.5rem;
+	font-size: var(--nexus-text-xs);
+	line-height: 1.65;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 72%, transparent);
+}
+
+.footer__legal--mark {
+	margin-bottom: 0;
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-2xs);
+	letter-spacing: 0.12em;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 55%, transparent);
+}
+
+/* Infima already stacks `.col` below 996px, so the columns only need the gap
+   they lose when they stop sitting side by side. */
+@media (max-width: 996px) {
+	.footer__col {
+		margin-bottom: 1.1rem;
+	}
+}
+
+/* --- S9 Headings → architectural cornices ----------------------------------
+   The M2/M6 flat hairlines are recut as cornices: a rule that fades out to the
+   right rather than a full-width bar, capped at its left terminal by an inlaid
+   lozenge. The lozenge is opaque, so the rule stops at the ornament. */
+article h2,
+article h3,
+article h4 {
+	position: relative;
+	border-top: none;
+}
+
+article h2 {
+	padding-top: 1.5rem;
+	margin-top: 2.25rem;
+}
+
+article h3 {
+	padding-top: 1rem;
+	margin-top: 1.5rem;
+}
+
+article h4 {
+	padding-top: 0.75rem;
+	margin-top: 1.25rem;
+}
+
+article h2::before,
+article h3::before,
+article h4::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+}
+
+/* The strength step per level is written out longhand: a var() in the
+   color-mix() percentage slot is valid CSS but a needless minifier risk. */
+article h2::before {
+	background: linear-gradient(
+		to right,
+		color-mix(in srgb, var(--ifm-color-primary) 55%, transparent),
+		color-mix(in srgb, var(--ifm-color-primary) 55%, transparent) 45%,
+		transparent
+	);
+}
+
+article h3::before {
+	background: linear-gradient(
+		to right,
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent),
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent) 35%,
+		transparent
+	);
+}
+
+article h4::before {
+	background: linear-gradient(
+		to right,
+		color-mix(in srgb, var(--ifm-color-primary) 18%, transparent),
+		color-mix(in srgb, var(--ifm-color-primary) 18%, transparent) 25%,
+		transparent
+	);
+}
+
+/* Terminal lozenge — h2 only, so the mark stays a section opening rather than
+   ornament on every heading level. */
+article h2::after {
+	content: '';
+	position: absolute;
+	top: -3.5px;
+	left: 0;
+	width: 7px;
+	height: 7px;
+	transform: rotate(45deg);
+	background-color: var(--ifm-color-primary);
+}
+
+/* --- S12 Search: input, dropdown and hits ----------------------------------
+   `@easyops-cn/docusaurus-search-local` ships a 32px pill input and a 6px
+   rounded dropdown with no border — the only fully rounded shapes left in a kit
+   built on hard 2px vertices, and the focus ring was still the browser default
+   blue. Its internal class names are hashed CSS modules, so they are matched by
+   the stable substring, the same escape hatch the admonition heading uses. The
+   `--search-local-*` vars set in :root cover the modal variant's colours; the
+   dropdown variant needs these rules. */
+/* The vendor magnifier is REPLACED, not retinted. It ships as a
+   `background-image` data-URI on the input, and `currentColor` does not resolve
+   inside a background-image (no element context), so it could never take the
+   bronze token. Dropped, and the watchful eye — the search glyph of a Bronze-Age
+   codex — is drawn on the container as a MASK instead, which does tint from
+   currentColor in both themes. Same mechanism as the navbar chapter sigils. */
+.navbar__search {
+	position: relative;
+}
+
+.navbar__search::before {
+	content: '';
+	position: absolute;
+	left: 0.65rem;
+	top: calc(50% - 8px);
+	width: 16px;
+	height: 16px;
+	pointer-events: none;
+	z-index: 1;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 80%,
+		transparent
+	);
+	-webkit-mask: var(--nexus-eye-glyph) no-repeat center / contain;
+	mask: var(--nexus-eye-glyph) no-repeat center / contain;
+}
+
+.navbar__search-input {
+	border-radius: 2px;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	background-color: var(--ifm-background-surface-color);
+	background-image: none;
+	padding-left: 2.1rem;
+	color: var(--ifm-font-color-base);
+	font-size: var(--nexus-text-sm);
+}
+
+/* The ⌘K hint keys. Borderless: a keyline around each key put a second frame
+   inside the field's own frame, which read as clutter at this size. They are a
+   faint inlaid wash with bronze ink instead.
+
+   `kbd[...]` matters: `[class*='searchHint']` also matches the wrapping
+   `searchHintContainer`, which painted the wash as a slab spanning both keys and
+   the gap between them. Same sibling-class trap as the collapse button's icon —
+   always tag-qualify a hashed-module substring selector. */
+.navbar__search kbd[class*='searchHint'] {
+	border: none;
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+	box-shadow: none;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.navbar__search-input::placeholder {
+	color: color-mix(in srgb, var(--ifm-font-color-base) 55%, transparent);
+}
+
+/* Bronze focus keyline instead of the UA blue ring. A flat second keyline via
+   outline, never a glow. */
+.navbar__search-input:focus,
+.navbar__search-input:focus-visible {
+	outline: 1.5px solid var(--ifm-color-primary);
+	outline-offset: 1px;
+	border-color: var(--ifm-color-primary);
+}
+
+/* The results dropdown: a carved plate, flat, hard corners. The plugin's own
+   `.searchBar .dropdownMenu` hardcodes a 6px radius at 0,2,0 and loads after
+   this file, so this chain is one component longer to win outright. */
+.navbar__search [class*='searchBar'] [class*='dropdownMenu'] {
+	border-radius: 2px;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+}
+
+/* Hit rows. The plugin hardcodes a 4px radius on each row and drives the
+   SELECTED row's fill from `--search-local-highlight-color` — a token it also
+   uses as the matched-text ink. One value cannot be both a background and
+   legible ink (the same trap as the cyan two-token rule in the README), so the
+   token keeps the INK job and the row's fill is overridden here as a wash.
+
+   Its own rule is `.searchBar .dropdownMenu .suggestion.cursor` (0,4,0) and the
+   plugin's stylesheet loads after this one, so an equal-specificity selector
+   would lose on order — hence the deliberately longer chain. Hashed module names
+   are matched by their stable substring. */
+.navbar__search
+	[class*='searchBar']
+	[class*='dropdownMenu']
+	[class*='suggestion'] {
+	border-radius: 2px;
+}
+
+.navbar__search
+	[class*='searchBar']
+	[class*='dropdownMenu']
+	[class*='suggestion'][class*='cursor'] {
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 15%,
+		transparent
+	);
+}
+
+/* Section/path captions inside a hit sit a step quieter. */
+.navbar__search [class*='hitPath'],
+.navbar__search [class*='hitFooter'] {
+	font-size: var(--nexus-text-xs);
+}
+
+/* The hit glyphs are REPLACED, not retinted: the plugin ships a document icon
+   for page hits and a `#` hash for heading hits, both unmistakably web-docs
+   furniture. Swapped for the kit's universal marker — a hollow lozenge, the same
+   mark the sidebar's nested children carry. The page/heading distinction is not
+   lost: heading hits are the ones that also draw a tree connector. */
+.navbar__search [class*='hitIcon'] svg {
+	display: none;
+}
+
+.navbar__search [class*='hitIcon'] {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.1rem;
+}
+
+.navbar__search [class*='hitIcon']::before {
+	content: '';
+	width: 7px;
+	height: 7px;
+	transform: rotate(45deg);
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 60%, transparent);
+}
+
+/* The selected row's marker fills in, matching the sidebar's current-page mark. */
+.navbar__search
+	[class*='suggestion'][class*='cursor']
+	[class*='hitIcon']::before {
+	background-color: var(--ifm-color-primary);
+	border-color: var(--ifm-color-primary);
+}
+
+/* The tree connector and the return affordance take bronze instead of grey. */
+.navbar__search [class*='hitTree'] svg,
+.navbar__search [class*='hitTree'] svg path,
+.navbar__search [class*='hitAction'] svg,
+.navbar__search [class*='hitAction'] svg path {
+	stroke: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	fill: none;
+}
+
+/* Full-page search results (/search) share the reading column's ink. */
+.search-result-match {
+	background: transparent;
+	color: var(--ifm-color-primary);
+	font-weight: 700;
+}
+
+/* --- S10 Buttons, tabs, details --------------------------------------------
+   Flat plates and engraved states. Infima marks the active tab with a 3px
+   bottom bar; replaced by a wash plus a keyline. */
+.button {
+	border-radius: 2px;
+	border-width: 1.5px;
+	box-shadow: none;
+	font-family: var(--nexus-font-ui);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+}
+
+.tabs__item {
+	border-radius: 2px 2px 0 0;
+	border-bottom: none;
+	font-family: var(--nexus-font-ui);
+	letter-spacing: 0.03em;
+}
+
+.tabs__item--active {
+	border-bottom: none;
+	background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+	outline: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	outline-offset: -1.5px;
+	color: var(--ifm-color-primary);
+}
+
+/* Disclosures. The theme renders `<details>` as an `.alert`, so the frame above
+   already applies; this adds the summary band and turns the caret bronze. */
+.theme-doc-markdown details {
+	--docusaurus-details-decoration-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		transparent
+	);
+}
+
+.theme-doc-markdown details > summary {
+	padding: 0.4rem 0.85rem 0.4rem 1.75rem;
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+	font-family: var(--nexus-font-display);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 60%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* The disclosure caret, same carved arrowhead the sidebar uses
+   (`--nexus-caret-glyph`). The theme draws this one as a CSS BORDER triangle —
+   a plain UI wedge, and the one remaining generic chevron on the page once the
+   sidebar was recut. Borders are zeroed and the glyph becomes a mask, so it
+   tints from `currentColor`-adjacent tokens in both themes instead of being a
+   baked fill.
+
+   Two fixes in the geometry:
+
+   - It is CENTRED on the text, not pinned. The theme hard-codes `top: 0.45rem`,
+     which was cut for its own summary metrics and sits visibly high against
+     this band's display face and padding. `top: 50%` plus a translate follows
+     whatever line-height the summary ends up with.
+   - `left` is nudged inside. The theme pins it at `left: 0` of the summary box,
+     which with the alert's padding zeroed for the band is the frame itself.
+
+   The glyph points UP at rest (the sidebar rotates it), so the closed state
+   turns it a quarter to point right and the open state a half to point down —
+   the same two positions the theme's triangle used. */
+.theme-doc-markdown details > summary::before {
+	left: 0.8rem;
+	top: 50%;
+	width: 0.8rem;
+	height: 0.8rem;
+	border: 0;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 75%,
+		var(--ifm-font-color-base)
+	);
+	-webkit-mask: var(--nexus-caret-glyph) no-repeat center / contain;
+	mask: var(--nexus-caret-glyph) no-repeat center / contain;
+	transform-origin: center;
+	transform: translateY(-50%) rotate(90deg);
+}
+
+/* Both open-state selectors the theme ships: `data-collapsed` when its JS runs,
+   `[open]` when it does not. The first has to out-specify
+   `.details[data-collapsed='false'].isBrowser > summary::before` (three
+   class-level parts), hence the extra attribute selector — without it the
+   theme's bare `rotate(90deg)` wins and drops the vertical centring with it. */
+.theme-doc-markdown details[open] > summary::before,
+.theme-doc-markdown
+	details[data-collapsed='false'][class*='details_']
+	> summary::before {
+	transform: translateY(-50%) rotate(180deg);
+}
+
+.theme-doc-markdown details[open] > summary {
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+}
+
+/* The panel's own top rule would double the summary's — the band already
+   separates them. */
+.theme-doc-markdown details [class*='collapsibleContent'] {
+	margin-top: 0;
+	border-top: none;
+	padding: 0.7rem 0.85rem;
+}
+
+/* --- S11 Cards → CardFrame language ----------------------------------------
+   Docusaurus `.card` (generated index pages, `<DocCardList>`) picks up the card
+   family's flat frame plus a lozenge keystone on the top edge. The keystone's
+   surface-coloured ring is its opaque backing, so the card's own border stops
+   at the ornament (the same trick the SVG keystones use). The homepage
+   `ChapterCard` adopts the real `CardFrame` component instead. */
+.card {
+	position: relative;
+	margin-top: 0.6rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 38%, transparent);
+	border-radius: 2px;
+	background: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 4%,
+		var(--ifm-background-surface-color)
+	);
+	box-shadow: none;
+}
+
+.card::before {
+	content: '';
+	position: absolute;
+	top: -7.5px;
+	left: 50%;
+	width: 15px;
+	height: 15px;
+	box-sizing: border-box;
+	transform: translateX(-50%) rotate(45deg);
+	background-color: var(--ifm-color-primary);
+	border: 3px solid var(--ifm-background-surface-color);
+}
+
+/* The companion stat block — the codex creature card outside a creature page.
+   ==========================================================================
+
+   **Moved here from `characterSheet.css` and unscoped (M13 S8, the builder pass.)**
+   It was written for the Companions tab and scoped under `.character-sheet-page`.
+   It has two consumers now: that tab, and the Companion Builder's preview — and the
+   builder renders both inside a portalled dialog (outside `.character-sheet-page`)
+   and on the `creatures/mounts-companions` docs page, which never loads
+   `characterSheet.css` at all. A global home is the only one both can reach.
+
+   Unscoping is safe rather than merely convenient: `cs-companion-card`,
+   `cs-entry-name` and `cs-entry-badge` are emitted by exactly one renderer
+   (`renderCompanionInline` and the card that wraps it), so there is nothing else on
+   the site for them to reach.
+
+   A companion whose markdown parses renders as `CreatureStatBlock`, the same card the creature
+   pages use. Three things need saying for it to read the same inside a panel, and only three —
+   the frame, the defence band and the die tokens are the card's own and untouched.
+
+   1. It must not reserve the keystone clearance twice; the panel already spaces its groups.
+   2. Its prose measure is set for a doc column; in a panel the panel decides.
+   3. **The list markers and the entry register have to be supplied here.** A creature page gets
+      its bullets from `.theme-doc-markdown ul > li::before`, which is deliberately switched OFF
+      inside `.character-sheet-page` (the sheet's MUI lists would otherwise all sprout diamonds),
+      and its `EntryName` / `StatBadge` from MDX components the sheet does not run. So the bullet
+      is redrawn for this card only, and the two entry registers are classes the inline renderer
+      emits. */
+.cs-companion-card {
+	container-type: inline-size;
+}
+.cs-companion-card > * {
+	max-width: 100%;
+	margin-top: 0;
+}
+.cs-companion-card p,
+.cs-companion-card ul,
+.cs-companion-card li {
+	max-width: none;
+}
+/* The codex bullet, redrawn for this card and sized to the PANEL's type rather than the doc
+   column's (S7, owner review): 5px against the docs' 7px, because the panel reads at 15px where
+   a creature page reads at 16-17px, and a marker that keeps its absolute size while the text
+   shrinks around it reads as oversized — which is what the owner saw. Centred on the item's
+   first line. */
+.cs-companion-card ul {
+	list-style: none;
+	padding-left: 0.9rem;
+	margin: 0.1rem 0;
+}
+.cs-companion-card ul > li {
+	position: relative;
+}
+.cs-companion-card ul > li::before {
+	content: '';
+	position: absolute;
+	left: -0.9rem;
+	/*
+		Centred on the FIRST LINE BOX, not on an em of the font (M13 S8, owner review).
+
+		`top: 0.62em` plus a -2.5px nudge put the mark 6.8px down where the line's
+		centre is 12.375px — visibly high, because an em is the type size while the
+		mark has to centre on the LEADING, and this card leads at 1.65. The docs'
+		own bullet already tracks its leading (`0.5em * --nexus-leading-prose`); this
+		is the same idea expressed against the element's own line box, so it stays
+		correct if the card is ever re-typed.
+
+		Two declarations: the `em` form is the fallback for engines without the `lh`
+		unit, and the `lh` form wins wherever it is understood.
+	*/
+	top: calc(0.5em * 1.65 - 2.5px);
+	top: calc(0.5lh - 2.5px);
+	width: 5px;
+	height: 5px;
+	transform: rotate(45deg);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 85%,
+		transparent
+	);
+}
+/* An entry's numbered sub-options — the Floating Eye's four eye rays (M13 S8).
+   ==========================================================================
+
+   The source marks these with `<br/>` and `<strong>1. Dazing Ray.</strong>`, and the
+   pipeline used to flatten them into the parent paragraph, so four separate outcomes
+   ran together mid-sentence. They are a real ordered list, indented under their entry
+   and marked with their own numerals.
+
+   The numeral is the marker, in the small-caps bronze register the card uses for
+   labels — NOT the codex diamond, which is the mark of a top-level entry and would
+   say these four options are four more attacks. */
+.cs-companion-card ol.cs-entry-options {
+	list-style: none;
+	counter-reset: cs-option;
+	margin: 0.25rem 0 0;
+	padding-left: 1.15rem;
+}
+.cs-companion-card ol.cs-entry-options > li {
+	position: relative;
+	counter-increment: cs-option;
+}
+.cs-companion-card ol.cs-entry-options > li + li {
+	margin-top: 0.15rem;
+}
+.cs-companion-card ol.cs-entry-options > li::before {
+	content: counter(cs-option) '.';
+	position: absolute;
+	left: -1.15rem;
+	width: 1rem;
+	text-align: right;
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
+	/* No diamond here — see above. The numeral sits on the text baseline already, so
+	   it needs none of the line-box centring the bullet does. */
+	background: none;
+	transform: none;
+	height: auto;
+}
+
+/* An entry's NAME — the bold lead-in on an attack or ability, in the same register the docs'
+   `EntryName` uses. */
+.cs-entry-name {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.03em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 85%,
+		var(--ifm-font-color-base)
+	);
+	margin-right: 0.3rem;
+}
+/* A property badge (`Passive`, `Quick Action`) — the docs' `StatBadge`: a keyline and a faint
+   wash, small caps, never a filled pill. */
+.cs-entry-badge {
+	display: inline-block;
+	margin-right: 0.3rem;
+	padding: 0 0.3rem;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 40%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 80%,
+		var(--ifm-font-color-base)
+	);
+	vertical-align: 0.05em;
+}
+
+/* M14 — the oracle: the GM tools' rolled-table instrument.
+   ==========================================================================
+
+   A random table is a question you ask and an answer you get back. The component
+   this replaced was an MUI `Card` whose FORM was the largest thing in it and whose
+   answer was a plain paragraph underneath — the shape of a settings dialog, on the
+   page a GM uses mid-session with four people waiting.
+
+   The register is the character sheet's, because M13 settled it and a reader who
+   has used the sheet should not have to learn a second vocabulary: keylined plate,
+   small-caps labels, hard corners, bronze ink. */
+.cs-oracle {
+	margin: 0 0 1.5rem;
+	padding: 0.75rem 0.9rem 0.9rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 4%, transparent);
+}
+
+/* The select(s) and the die share one line so they read as one control, which is
+   what `nowrap` buys. It only holds where there is room: `min-width` on the
+   fields means a nowrap bar cannot shrink, so a phone carrying the main select
+   plus a page's `extraControls` plus the die overflows the sheet. Below 600px
+   the bar wraps and the fields take a real basis to wrap against. */
+.cs-oracle__bar {
+	display: flex;
+	align-items: flex-end;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+.cs-oracle__field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	flex: 1 1 8rem;
+	min-width: 6rem;
+}
+/* The main table-select field gets more room than the extra controls. */
+.cs-oracle__field--main {
+	flex: 2 1 12rem;
+	min-width: 10rem;
+}
+@media (min-width: 600px) {
+	.cs-oracle__bar {
+		flex-wrap: nowrap;
+	}
+	.cs-oracle__field {
+		flex: 1 1 0;
+	}
+	.cs-oracle__field--main {
+		flex: 2 1 0;
+	}
+}
+.cs-oracle__label {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 75%,
+		var(--ifm-font-color-base)
+	);
+}
+.cs-oracle__select {
+	width: 100%;
+}
+.cs-oracle__select .MuiInputBase-root {
+	height: 2.75rem;
+}
+
+/* The roll control: a DIE, and the loudest thing on the page.
+   ==========================================================================
+
+   It was a bronze slab reading `Roll`, which got the hierarchy right and the act
+   wrong — a rolled answer that simply appears has been computed. It is the shared
+   `RollDie` now (tumble, reduced-motion path and all), scaled up from the 1.35rem
+   plate a creature card uses to something a hand returns to without looking, and
+   carrying its word beside the pips. */
+.cs-oracle__roll.cs-oracle__roll {
+	flex: 0 0 auto;
+	width: auto;
+	min-width: 7rem;
+	height: auto;
+	min-height: 2.75rem;
+	padding: 0 1.25rem;
+	gap: 0.5rem;
+	border: 1.5px solid var(--nexus-bronze);
+	border-radius: 0;
+	background: var(--nexus-bronze);
+	color: var(--ifm-background-surface-color);
+}
+.cs-oracle__roll.cs-oracle__roll:hover {
+	background: color-mix(
+		in srgb,
+		var(--nexus-bronze) 85%,
+		var(--ifm-font-color-base)
+	);
+	border-color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 85%,
+		var(--ifm-font-color-base)
+	);
+}
+.cs-oracle__roll-word {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-md);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.09em;
+}
+
+.cs-oracle__caption {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.4rem 1rem;
+	margin-top: 0.5rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 55%,
+		var(--ifm-font-color-base)
+	);
+}
+.cs-oracle__count-field,
+.cs-oracle__switch {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+.cs-oracle__caption-label {
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+}
+.cs-oracle__count .MuiSelect-select {
+	padding: 0 1.25rem 0 0.25rem;
+	min-height: 0;
+	font-size: var(--nexus-text-xs);
+	background: none;
+	border: 0;
+}
+.cs-oracle__switch input {
+	accent-color: var(--nexus-bronze);
+}
+.cs-oracle__clear {
+	margin-left: auto;
+	padding: 0.15rem 0.5rem;
+	border: 1px solid color-mix(in srgb, var(--nexus-bronze) 28%, transparent);
+	background: none;
+	color: inherit;
+	font: inherit;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.07em;
+	cursor: pointer;
+}
+.cs-oracle__clear:hover {
+	background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
+}
+
+/* The answer is the subject of the page, styled as a stone panel: a full
+   keyline all the way round and a faint wash. A border-top separator was not
+   enough visual weight.
+
+   It carried a 3px bronze `border-left` for one commit. That is the accent-bar
+   shape the theme has rejected three times over (spell card, talent ladder,
+   creature stat block) — a straight rule used to bind content reads as flat
+   digital chrome. The wash and the even keyline do the grouping instead. */
+.cs-oracle__answer {
+	margin-top: 0.75rem;
+	padding: 0.6rem 0.75rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 35%, transparent);
+	background: color-mix(
+		in srgb,
+		var(--nexus-bronze) 8%,
+		var(--ifm-background-surface-color)
+	);
+	min-height: 3rem;
+	display: flex;
+	align-items: center;
+}
+.cs-oracle__struck {
+	margin: 0;
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-xl);
+	font-weight: 600;
+	line-height: 1.25;
+	letter-spacing: 0.01em;
+}
+.cs-oracle__struck.is-prose {
+	font-family: var(--ifm-font-family-base);
+	font-size: var(--nexus-text-base);
+	font-weight: 400;
+	line-height: 1.55;
+}
+/* Highlight the newest result for a moment after rolling. */
+.cs-oracle__struck.is-highlighted {
+	background: color-mix(in srgb, var(--nexus-bronze) 18%, transparent);
+	transition: background 0.6s ease-out;
+}
+.cs-oracle__struck:not(.is-highlighted) {
+	background: transparent;
+	transition: background 0.6s ease-out;
+}
+.cs-oracle__empty {
+	font-style: italic;
+	font-size: var(--nexus-text-sm);
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 45%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* The log: what you rolled before, because keeping the third of five is the
+   actual workflow. Quiet by construction — it is context, not the answer. */
+.cs-oracle__log {
+	margin-top: 0.6rem;
+	padding-top: 0.5rem;
+	border-top: 1px solid color-mix(in srgb, var(--nexus-bronze) 16%, transparent);
+}
+.cs-oracle__log-label {
+	font-family: var(--nexus-font-ui);
+	font-weight: 700;
+	font-size: var(--nexus-text-3xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 60%,
+		var(--ifm-font-color-base)
+	);
+}
+.cs-oracle__log ol {
+	margin: 0.3rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+.cs-oracle__log li {
+	padding: 0.15rem 0;
+	font-size: var(--nexus-text-sm);
+	color: color-mix(
+		in srgb,
+		var(--nexus-bronze) 30%,
+		var(--ifm-font-color-base)
+	);
+	border-bottom: 1px solid
+		color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
+}
+.cs-oracle__log li:last-child {
+	border-bottom: 0;
+}
+/* Briefly highlight newly rolled log items when count > 1. */
+.cs-oracle__log li.is-new {
+	background: color-mix(in srgb, var(--nexus-bronze) 12%, transparent);
+	transition: background 0.6s ease-out;
+}
+.cs-oracle__log li:not(.is-new) {
+	background: transparent;
+	transition: background 0.6s ease-out;
+}
+
+/* M14 S3 — the dice-by-hand fold.
+   ==========================================================================
+
+   The data a random table rolls on is not reading matter, and printing 1,266 rows
+   of syllables under the two tables a GM actually reads is why these pages were
+   unusable. The data sits behind this instead, and the fold says what it is for:
+   rolling by hand, away from a screen.
+
+   The panel is rendered and `hidden`, never unmounted — so the rows stay in the
+   static HTML for the search index, for find-in-page, and for print. */
+.table-fold {
+	margin: 0 0 0.75rem;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 24%, transparent);
+}
+.table-fold__summary {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	width: 100%;
+	min-height: 2.25rem;
+	padding: 0 0.6rem;
+	border: 0;
+	background: color-mix(in srgb, var(--ifm-color-primary) 6%, transparent);
+	color: inherit;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	text-align: left;
+	cursor: pointer;
+}
+.table-fold__summary:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+}
+/* The site's own carved caret, pointing down when the panel is open — the same
+   mark and the same rotation the sidebar and the character sheet use. */
+.table-fold__caret {
+	flex: 0 0 auto;
+	width: 9px;
+	height: 9px;
+	background-color: currentColor;
+	-webkit-mask: var(--nexus-caret-glyph) center / contain no-repeat;
+	mask: var(--nexus-caret-glyph) center / contain no-repeat;
+	transform: rotate(-90deg);
+	transition: transform 120ms linear;
+	color: var(--ifm-color-primary);
+}
+.table-fold.is-open .table-fold__caret {
+	transform: rotate(180deg);
+}
+.table-fold__label {
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 78%,
+		var(--ifm-font-color-base)
+	);
+}
+/* What it costs to open, so the reader can price the press. */
+.table-fold__count {
+	margin-left: auto;
+	font-size: var(--nexus-text-3xs);
+	font-variant-numeric: tabular-nums;
+	color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 45%,
+		var(--ifm-font-color-base)
+	);
+}
+.table-fold__panel[hidden] {
+	display: none;
+}
+.table-fold__panel > :last-child {
+	margin-bottom: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+	.table-fold__caret,
+	.cs-oracle__struck,
+	.cs-oracle__struck.is-highlighted,
+	.cs-oracle__log li,
+	.cs-oracle__log li.is-new {
+		transition: none;
+	}
+}
+
+/* RollableTable — highlighted rows and result box.
+   ==========================================================================
+
+   A rolled CELL gets a bronze wash so the reader can see which entry the die
+   landed on. Per cell, not per row: in the multi-column mode each column rolls
+   its own die and they land on different rows, so washing the whole `tr` would
+   claim every column hit that row. The result box below uses the same
+   keyline-and-wash treatment as the oracle plate itself, never a dashed border
+   or inline colour. */
+.rollable-table td[data-rolled] {
+	background: color-mix(in srgb, var(--nexus-bronze) 10%, transparent);
+}
+.rollable-result {
+	margin-top: 0.75rem;
+	padding: 0.5rem 0.75rem;
+	border: 1.5px solid color-mix(in srgb, var(--nexus-bronze) 30%, transparent);
+	background: color-mix(in srgb, var(--nexus-bronze) 6%, transparent);
+}
+.rollable-result__line {
+	margin: 0 0 0.25rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-sm);
+	line-height: 1.4;
+}
+.rollable-result__line:last-child {
+	margin-bottom: 0;
 }

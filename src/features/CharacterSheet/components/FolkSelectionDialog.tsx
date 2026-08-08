@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Typography, Chip, Box } from '@mui/material'
+import { Typography, Box } from '@mui/material'
+import { SheetChip } from './SheetChip'
+import { entrySummary } from './EntryProse'
 import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
@@ -37,18 +39,18 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 		{
 			key: 'name',
 			label: 'Folk',
+			width: 'minmax(0, 1fr)',
 			render: (value, folk) => (
 				<Box>
 					<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
 						{folk.name}
 					</Typography>
-					<Chip
-						label={folk.category}
-						size="small"
-						variant="outlined"
-						color={folk.category === 'Old Folk' ? 'primary' : 'secondary'}
-						sx={{ fontSize: '0.75rem', mt: 0.5 }}
-					/>
+					{/* Old Folk / New Folk was `primary` vs `secondary` — MUI's brand slots
+						standing in for a distinction the rules make in words (M13 S8).
+						Structural bronze, like every other category chip on the sheet. */}
+					<Box sx={{ mt: 0.5 }}>
+						<SheetChip variant="plate">{folk.category}</SheetChip>
+					</Box>
 				</Box>
 			),
 		},
@@ -56,33 +58,31 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 			key: 'quote',
 			label: 'Description',
 			sortable: false,
+			width: 'minmax(0, 2fr)',
 			render: (value, folk) => (
 				<Box>
-					<Typography
-						variant="caption"
-						sx={{
-							display: '-webkit-box',
-							WebkitLineClamp: 2,
-							WebkitBoxOrient: 'vertical',
-							overflow: 'hidden',
-							fontStyle: 'italic',
-							color: 'text.secondary',
-							mb: 0.5,
-						}}
-					>
-						"{folk.quote}"
-					</Typography>
-					<Typography
-						variant="caption"
-						sx={{
-							display: '-webkit-box',
-							WebkitLineClamp: 3,
-							WebkitBoxOrient: 'vertical',
-							overflow: 'hidden',
-							lineHeight: 1.2,
-						}}
-					>
-						{folk.description}
+					{/* Only when there is one. Eleven of the twelve folk carry no quote,
+						and the quotation marks were rendered unconditionally — so every row
+						opened with a bare `""` above its description (M13 S8, found in the
+						running app). */}
+					{folk.quote?.trim() && (
+						<Typography
+							variant="caption"
+							sx={{
+								display: '-webkit-box',
+								WebkitLineClamp: 2,
+								WebkitBoxOrient: 'vertical',
+								overflow: 'hidden',
+								fontStyle: 'italic',
+								color: 'text.secondary',
+								mb: 0.5,
+							}}
+						>
+							“{folk.quote}”
+						</Typography>
+					)}
+					<Typography component="span" className="cs-entry-summary">
+						{entrySummary(String(folk.description ?? ''))}
 					</Typography>
 				</Box>
 			),
@@ -91,6 +91,7 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 			key: 'abilities',
 			label: 'Abilities',
 			sortable: false,
+			width: 'minmax(0, 1fr)',
 			render: (value, folk) => (
 				<Box>
 					{folk.abilities.slice(0, 2).map((ability, index) => (
@@ -118,20 +119,14 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 			key: 'languages',
 			label: 'Languages',
 			sortable: false,
+			width: 'minmax(0, 1fr)',
 			render: (value, folk) => (
-				<Box>
+				// The same banner the Skills tab gives a language, and for the reason it
+				// records there: a language has no skill behind it, so it takes the
+				// structural ink rather than an identity hue.
+				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
 					{folk.languages.map((language, index) => (
-						<Chip
-							key={index}
-							label={language}
-							size="small"
-							variant="outlined"
-							sx={{
-								fontSize: '0.7rem',
-								mb: 0.25,
-								mr: 0.25,
-							}}
-						/>
+						<SheetChip key={index}>{language}</SheetChip>
 					))}
 				</Box>
 			),
@@ -163,6 +158,10 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 			onConfirm={handleConfirm}
 			getItemKey={(folk) => folk.name}
 			confirmButtonText="Select Folk"
+			// Alphabetical rather than the JSON's authoring order (F11.6).
+			defaultSort={{ key: 'name' }}
+			itemNoun="folk"
+			itemNounPlural="folk"
 			searchPlaceholder="Search by name, category, or description..."
 		/>
 	)

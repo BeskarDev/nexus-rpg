@@ -10,7 +10,12 @@
 		"damageModifier": 0,
 		"movementModifier": 0,
 		"attributePriority": ["str", "agi", "spi", "mnd"],
-		"attributeModifiers": { "str": 0, "agi": -1, "spi": -1, "mnd": -2 }
+		"attributeModifiers": {
+			"str": 0,
+			"agi": -1,
+			"spi": -1,
+			"mnd": -2
+		}
 	},
 	{
 		"name": "Ambusher",
@@ -23,11 +28,16 @@
 		"damageModifier": 0,
 		"movementModifier": 1,
 		"attributePriority": ["agi", "spi", "mnd", "str"],
-		"attributeModifiers": { "str": -2, "agi": 0, "spi": -1, "mnd": -1 }
+		"attributeModifiers": {
+			"str": -2,
+			"agi": 0,
+			"spi": -1,
+			"mnd": -1
+		}
 	},
 	{
 		"name": "Artillery",
-		"description": "Long-Range Cannon - Fragile backliner with extreme ranged threat; prefers cover and distance.",
+		"description": "Long-Range Cannon - Fragile backliner with extreme ranged threat. Prefers cover and distance.",
 		"hpModifier": -1,
 		"armorType": "light",
 		"parryModifier": -1,
@@ -36,7 +46,12 @@
 		"damageModifier": 1,
 		"movementModifier": 0,
 		"attributePriority": ["agi", "mnd", "spi", "str"],
-		"attributeModifiers": { "str": -2, "agi": 0, "spi": -1, "mnd": -1 }
+		"attributeModifiers": {
+			"str": -2,
+			"agi": 0,
+			"spi": -1,
+			"mnd": -1
+		}
 	},
 	{
 		"name": "Bruiser",
@@ -49,7 +64,12 @@
 		"damageModifier": 0,
 		"movementModifier": 0,
 		"attributePriority": ["str", "spi", "mnd", "agi"],
-		"attributeModifiers": { "str": 0, "agi": -2, "spi": -1, "mnd": -1 }
+		"attributeModifiers": {
+			"str": 0,
+			"agi": -2,
+			"spi": -1,
+			"mnd": -1
+		}
 	},
 	{
 		"name": "Defender",
@@ -62,7 +82,12 @@
 		"damageModifier": -1,
 		"movementModifier": -1,
 		"attributePriority": ["str", "spi", "mnd", "agi"],
-		"attributeModifiers": { "str": 0, "agi": -2, "spi": -1, "mnd": -1 }
+		"attributeModifiers": {
+			"str": 0,
+			"agi": -2,
+			"spi": -1,
+			"mnd": -1
+		}
 	},
 	{
 		"name": "Horde",
@@ -75,7 +100,12 @@
 		"damageModifier": -2,
 		"movementModifier": 0,
 		"attributePriority": ["str", "agi", "spi", "mnd"],
-		"attributeModifiers": { "str": 0, "agi": -1, "spi": -1, "mnd": -2 }
+		"attributeModifiers": {
+			"str": 0,
+			"agi": -1,
+			"spi": -1,
+			"mnd": -2
+		}
 	},
 	{
 		"name": "Controller",
@@ -88,7 +118,12 @@
 		"damageModifier": 0,
 		"movementModifier": 0,
 		"attributePriority": ["spi", "mnd", "agi", "str"],
-		"attributeModifiers": { "str": -2, "agi": -1, "spi": 0, "mnd": -1 }
+		"attributeModifiers": {
+			"str": -2,
+			"agi": -1,
+			"spi": 0,
+			"mnd": -1
+		}
 	},
 	{
 		"name": "Ranged",
@@ -101,7 +136,12 @@
 		"damageModifier": 0,
 		"movementModifier": 0,
 		"attributePriority": ["agi", "str", "spi", "mnd"],
-		"attributeModifiers": { "str": -1, "agi": 0, "spi": -1, "mnd": -2 }
+		"attributeModifiers": {
+			"str": -1,
+			"agi": 0,
+			"spi": -1,
+			"mnd": -2
+		}
 	},
 	{
 		"name": "Skirmisher",
@@ -114,7 +154,12 @@
 		"damageModifier": -1,
 		"movementModifier": 1,
 		"attributePriority": ["agi", "str", "spi", "mnd"],
-		"attributeModifiers": { "str": -1, "agi": 0, "spi": -1, "mnd": -2 }
+		"attributeModifiers": {
+			"str": -1,
+			"agi": 0,
+			"spi": -1,
+			"mnd": -2
+		}
 	},
 	{
 		"name": "Support",
@@ -127,6 +172,11 @@
 		"damageModifier": -1,
 		"movementModifier": 0,
 		"attributePriority": ["spi", "mnd", "agi", "str"],
-		"attributeModifiers": { "str": -2, "agi": -1, "spi": 0, "mnd": -1 }
+		"attributeModifiers": {
+			"str": -2,
+			"agi": -1,
+			"spi": 0,
+			"mnd": -1
+		}
 	}
 ]

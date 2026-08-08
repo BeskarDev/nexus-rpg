@@ -23,14 +23,14 @@ Creatures are categorized by their fundamental nature, defining mechanical inter
 
 | Type | Description | Common Subtypes |
 |------|-------------|-----------------|
-| **Aberration** | Eldritch horrors from outside reality with alien physiologies and reality-warping abilities. | — |
+| **Aberration** | Eldritch horrors from outside reality with alien physiologies and reality-warping abilities. | - |
 | **Automaton** | Artificial beings animated by magic or divine power. | Golem, Animated Object, Magical Construct |
 | **Beast** | Natural animals and fauna lacking inherent magic. Includes hybrid-animals as natural ecology. | Mammal, Reptile, Bird, Fish, Insect, Hybrid |
 | **Draconic** | Winged serpents and lizards with elemental attunement, breath weapons, and supernatural might. | Chromatic, Metallic, Elemental, Wyvern |
 | **Giant** | Mythical beings of immense size with supernatural properties beyond mere scale. | Stone Giant, Cyclops, Troll, Ogre |
 | **Humanoid** | Sentient anthropomorphic peoples with language, culture, and reasoning. | Human, Goblinoid, Orc, Elf, Dwarf |
 | **Monstrosity** | Magical beasts with supernatural abilities or origins that defy natural biology. | Chimera, Hydra, Griffin, Magical Beast |
-| **Ooze** | Amorphous creatures with fluid or gelatinous bodies, typically mindless and corrosive. | — |
+| **Ooze** | Amorphous creatures with fluid or gelatinous bodies, typically mindless and corrosive. | - |
 | **Plant** | Animate vegetation and fungal creatures, both mobile and rooted. | Treant, Myconid, Vine Creature |
 | **Spirit** | Extraplanar beings manifesting primal forces, divine will, or cosmic principles. | Celestial, Primordial, Infernal, Sylvan, Chthonic, Astral |
 | **Undead** | Beings that died and returned through necromancy or curses. Physical or Ethereal forms. | Physical, Ethereal |
@@ -39,7 +39,7 @@ Creatures are categorized by their fundamental nature, defining mechanical inter
 
 **Shapechanger**: Property (not a type) for creatures that can alter their physical form, affecting certain spell interactions.
 
-**Swarms**: A Creature Archetype (see below), not a type—describes combat function, not fundamental nature.
+**Swarms**: A Creature Archetype (see below), not a type. Describes combat function, not fundamental nature.
 
 ### Using Types
 
@@ -205,7 +205,7 @@ TODO
 | **Archetype** | **Stat Modifiers** | **Core Identity** | **Combat Role & Behavior** |
 | --- | --- | --- | --- |
 | Ambusher | Normal HP, Light Armor, High Dodge, Low Parry, Avg Resist, Fast movement | Stealth & Burst | Strikes from surprise, deals big damage in opening turns, fragile if exposed. |
-| Artillery | -1 Tier HP, Light/No Armor, Low Parry & Dodge, Avg Resist, +1 Tier Damage (ranged) | Long-Range Cannon | Fragile backliner with extreme ranged threat; prefers cover and distance. |
+| Artillery | -1 Tier HP, Light/No Armor, Low Parry & Dodge, Avg Resist, +1 Tier Damage (ranged) | Long-Range Cannon | Fragile backliner with extreme ranged threat. Prefers cover and distance. |
 | Bruiser | +1 Tier HP, Light Armor, High Parry, Low Dodge, Avg Resist | Frontline Brawler | Durable melee damage dealer, trades blows and pressures enemies up close. |
 | Defender | +2 Tier HP, Heavy Armor, High Parry & Resist, Low Dodge, -1 Tier Damage, Slower | Tank & Protector | Soaks damage, locks down foes, defends allies through positioning. |
 | Horde | -1 Tier HP, No/Light Armor, Low Defenses, -2 Tier Damage | Overwhelming Numbers | Group of many individual creatures acting together as a single unit. |

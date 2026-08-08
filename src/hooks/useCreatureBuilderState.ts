@@ -8,6 +8,8 @@ import {
 	calculateAttributes,
 	getWeaponDamage,
 	getArchetypeData,
+	calculateBaseDamage,
+	formatDamageString,
 } from '../utils/typescript/creature/creatureBuilderCalculations'
 import { BuiltCreature } from '../types/CreatureBuilder'
 
@@ -78,6 +80,41 @@ export const useCreatureBuilderState = () => {
 		// Get weapon damage
 		const weaponDamage = getWeaponDamage(state.tier, state.archetype)
 
+		/**
+		 * Attack damage is DERIVED from the tier unless the author overrode it.
+		 *
+		 * This mirrors `creatureBuilderCLI.ts` exactly, which has always worked this
+		 * way: an attack stores a `weaponDamage` MODIFIER, not a damage figure, and
+		 * the figure is computed at render time. The React builder computed
+		 * `weaponDamage` above and then discarded it, passing `state.attacks`
+		 * through untouched — so an attack added at tier 3 still read as tier 3
+		 * after the tier was changed to 7, which is the bug this fixes.
+		 *
+		 * `damage` is the override channel, the same shape as `customHP` / `customAV`
+		 * elsewhere in the builder: set it and it is used verbatim, leave it empty
+		 * and the tier decides.
+		 */
+		const attributeDice: Record<string, string> = {
+			STR: attributes.str,
+			AGI: attributes.agi,
+			SPI: attributes.spi,
+			MND: attributes.mnd,
+		}
+		const resolvedAttacks = state.attacks.map((attack) => {
+			if (attack.damage && attack.damage.trim()) return attack
+			const die = attributeDice[(attack.baseAttribute ?? '').toUpperCase()]
+			// No attribute means the attack is pure weapon damage, base 0 — the
+			// CLI's third branch.
+			const base = die ? calculateBaseDamage(die) : 0
+			return {
+				...attack,
+				damage: formatDamageString(
+					base,
+					weaponDamage + (attack.weaponDamage ?? 0),
+				),
+			}
+		})
+
 		// Format skills as strings with ranks
 		const formattedSkills = state.skills.map(
 			(skill) => `${skill.name} (${skill.rank})`,
@@ -107,7 +144,7 @@ export const useCreatureBuilderState = () => {
 			immunities: state.immunities,
 			resistances: state.resistances,
 			weaknesses: state.weaknesses,
-			attacks: state.attacks,
+			attacks: resolvedAttacks,
 			abilities: state.abilities,
 		}
 	}, [

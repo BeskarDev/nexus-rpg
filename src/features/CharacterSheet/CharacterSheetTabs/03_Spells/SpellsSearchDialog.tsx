@@ -1,55 +1,30 @@
 import React, { useMemo, useState } from 'react'
+import { Typography, Button } from '@mui/material'
 import {
-	Typography,
-	Chip,
-	Box,
-	FormControl,
-	InputLabel,
-	Select,
-	MenuItem,
-	Checkbox,
-	ListItemText,
-	Button,
-} from '@mui/material'
-import {
-	SearchDialog,
-	SearchDialogColumn,
-} from '../02_Items/SearchDialog/GenericSearchDialog'
+	SheetChip,
+	EntryProse,
+	entrySummary,
+	FilterSelect,
+} from '../../components'
+import { SearchDialog } from '../../components'
+import type { SearchDialogColumn } from '../../components'
 import arcaneSpellsData from '../../../../utils/data/json/arcane-spells.json'
 import mysticSpellsData from '../../../../utils/data/json/mystic-spells.json'
 import { CharacterDocument } from '../../../../types/Character'
-import { sanitizeHtml } from '../../../../utils/typescript/htmlSanitizer'
 import { buildSpellFromData } from '../../utils/spellFactory'
+import { maxLearnableSpellRank } from '../../utils/spellAccess'
 
-// Color mapping for disciplines/traditions
-const disciplineColorMap: Record<
-	string,
-	'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
-> = {
-	// Arcane disciplines
-	Evocation: 'error',
-	Illusion: 'secondary',
-	Conjuration: 'warning',
-	Telepathy: 'primary',
-	Telekinetics: 'info',
-	Necromancy: 'success',
-
-	// Mystic traditions
-	Light: 'warning',
-	Twilight: 'secondary',
-	Life: 'success',
-	Death: 'primary',
-	Nature: 'info',
-	Tempest: 'error',
-	Peace: 'primary',
-	War: 'error',
-}
-
-const getDisciplineColor = (
-	discipline: string,
-): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
-	return disciplineColorMap[discipline] || 'primary'
-}
+/**
+ * The discipline colour map is gone (M13 S8) — see `EquipmentSearchDialog` for the
+ * general reason. This one is worth its own note: the map had fourteen entries and
+ * six colours, so Evocation, Tempest and War were one hue and Telepathy, Death and
+ * Peace were another. Readers cannot learn an identity that three subjects share.
+ *
+ * Not the magic register either, though a discipline is unambiguously magic. S5
+ * spent `--cs-magic` on three things — the cast plate, the focus pool, the catalyst
+ * — and the milestone's rule is that cyan reads as sorcery only while it stays
+ * rare. A filter facet inside a search dialog is not worth the fourth spend.
+ */
 
 export type SpellsSearchDialogProps = {
 	open: boolean
@@ -112,8 +87,7 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 		() =>
 			(spellsData as SpellData[]).filter((spell) => {
 				const rankMatch =
-					!rankFilter.length ||
-					rankFilter.includes(String(spell.rank))
+					!rankFilter.length || rankFilter.includes(String(spell.rank))
 				const typeValue =
 					(spell[typeFieldKey as keyof SpellData] as string) || ''
 				const typeMatch = !typeFilter.length || typeFilter.includes(typeValue)
@@ -127,10 +101,64 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 		setTypeFilter([])
 	}
 
+	/*
+		Where each spell stands on THIS character's sheet (M13 S8b, F11.2).
+
+		`character` was declared and never read. The ceiling is `maxLearnableSpellRank`
+		— the magic skill's rank OR a spell-granting talent's, whichever reaches
+		higher. The first pass used the skill alone and was wrong on the owner's
+		correction: `Divine Scholar` is a Lore talent that grants mystic spells, so a
+		character with no Mysticism can legitimately know them. See `spellAccess.ts`.
+
+		What is NOT checked is the discipline half of the rule. A learned spell is
+		stored as `Spell`, which has no discipline field, so the sheet does not know
+		which disciplines a character has adopted; checking it would mean inventing
+		the data. For the same reason `owned` matches on NAME alone — the dialog keys
+		rows by `name|discipline` because two arcane spells are called *Astral Body*,
+		but the sheet records only the name, so learning either marks both. Named
+		here rather than papered over; the fix is a discipline on `Spell`, which is a
+		schema change and a migration.
+	*/
+	const standingOf = useMemo(() => {
+		const abilities = character.skills?.abilities ?? []
+		const known = new Set(
+			(character.spells?.spells ?? []).map((spell) =>
+				spell.name.trim().toLowerCase(),
+			),
+		)
+		const ceiling = maxLearnableSpellRank(
+			magicType,
+			character.skills?.skills ?? [],
+			abilities,
+		)
+
+		return (spell: SpellData) => {
+			const owned = known.has(spell.name.trim().toLowerCase())
+			// Nothing in the magic chapter lets you learn a spell twice, and a second
+			// copy on the sheet is just clutter you have to delete. The import path
+			// does not check, so this is where the reader is told.
+			if (owned) return { owned: true, blocked: 'known' }
+			// No skill and no granting talent: every spell of this kind is out of
+			// reach, and the reason is the discipline itself rather than the rank.
+			if (ceiling === null) return { owned, blocked: `no ${magicType}` }
+			return {
+				owned,
+				blocked:
+					Number(spell.rank) > ceiling ? `rank ${spell.rank}` : undefined,
+			}
+		}
+	}, [
+		character.spells?.spells,
+		character.skills?.skills,
+		character.skills?.abilities,
+		magicType,
+	])
+
 	const columns: SearchDialogColumn<SpellData>[] = [
 		{
 			key: 'name',
 			label: 'Spell',
+			width: 'minmax(0, 1.2fr)',
 			render: (value, spell) => (
 				<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
 					{spell.name}
@@ -140,83 +168,91 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 		{
 			key: typeFieldKey as keyof SpellData,
 			label: typeLabel,
-			render: (value) => (
-				<Chip
-					label={value}
-					size="small"
-					variant="outlined"
-					color={getDisciplineColor(value)}
-					sx={{ fontSize: '0.75rem' }}
-				/>
-			),
+			width: '9rem',
+			render: (value) => <SheetChip>{value}</SheetChip>,
 		},
 		{
 			key: 'rank',
 			label: 'Rank',
-			width: '80px',
-			render: (value) => (
-				<Typography variant="body2" sx={{ textAlign: 'center' }}>
-					{value}
-				</Typography>
-			),
+			width: '4rem',
+			// The cell's alignment, not the Typography's: the column heading reads the
+			// same `align` the cell does, so a value centred locally under a heading
+			// aligned by the shared template is exactly the drift the one-template rule
+			// exists to stop (M13 S8).
+			align: 'center',
+			render: (value) => <Typography variant="body2">{value}</Typography>,
 		},
 		{
 			key: 'focus',
 			label: 'Focus',
-			width: '80px',
-			render: (value) => (
-				<Typography variant="body2" sx={{ textAlign: 'center' }}>
-					{value}
-				</Typography>
-			),
+			width: '4rem',
+			align: 'center',
+			render: (value) => <Typography variant="body2">{value}</Typography>,
 		},
 		{
 			key: 'target',
 			label: 'Target',
-			width: '120px',
+			width: '7rem',
 			render: (value) => <Typography variant="caption">{value}</Typography>,
 		},
 		{
 			key: 'range',
 			label: 'Range',
-			width: '100px',
+			width: '5.5rem',
 			render: (value) => <Typography variant="caption">{value}</Typography>,
 		},
 		{
 			key: 'effect',
 			label: 'Effect',
 			sortable: false,
+			width: 'minmax(0, 2fr)',
 			render: (value) => (
-				<Typography
-					variant="caption"
-					sx={{
-						display: '-webkit-box',
-						WebkitLineClamp: 3,
-						WebkitBoxOrient: 'vertical',
-						overflow: 'hidden',
-						lineHeight: 1.2,
-						whiteSpace: 'pre-line', // Preserve newlines from sanitized HTML
-					}}
-				>
-					{sanitizeHtml(value)}
+				<Typography component="span" className="cs-entry-summary">
+					{entrySummary(String(value ?? ''))}
 				</Typography>
 			),
 		},
 	]
 
+	/*
+		Search what the reader can see (F11.6).
+
+		Two mismatches: `focus` had a COLUMN and was not searched, and `properties`
+		was searched while appearing nowhere at all — a query matching a spell on a
+		property returned a row with no visible reason for being there. `focus` is
+		added; `properties` stays searchable because the details panel shows it now,
+		which is the honest way to close that half.
+	*/
 	const searchFields: (keyof SpellData)[] = [
 		'name',
 		typeFieldKey as keyof SpellData,
 		'rank',
+		'focus',
 		'target',
 		'range',
 		'properties',
 		'effect',
 	]
 
+	/**
+	 * A spell's identity is its name AND its discipline, not its name.
+	 *
+	 * `arcane-spells.json` holds two spells called *Astral Body* — one Conjuration,
+	 * one Telepathy — and keying rows by name alone gave React two children with
+	 * the same key. Filtering to rank 5 then rendered 17 rows for 16 spells with a
+	 * rank 4 spell stranded at the top, because React could not tell which of the
+	 * two a retained node belonged to. Selecting one also selected the other, and
+	 * importing it imported both.
+	 *
+	 * `SearchDialog` now shouts about a non-unique key in development, but the fix
+	 * belongs here: this is where a spell's identity is known.
+	 */
+	const spellKey = (spell: SpellData) =>
+		`${spell.name}|${(spell[typeFieldKey as keyof SpellData] as string) ?? ''}`
+
 	const handleImport = () => {
 		const spellsToImport = (spellsData as SpellData[])
-			.filter((spell) => selectedSpells.has(spell.name))
+			.filter((spell) => selectedSpells.has(spellKey(spell)))
 			.map((spell) => ({
 				id: crypto.randomUUID(),
 				...buildSpellFromData(spell, magicType),
@@ -236,67 +272,61 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 			selectedItems={selectedSpells}
 			onSelectionChange={setSelectedSpells}
 			onImport={handleImport}
-			getItemKey={(spell) => spell.name}
+			getItemKey={spellKey}
 			importButtonText="Import"
+			itemNoun="spell"
+			getStanding={standingOf}
+			// Rank ascending, then name — the order a reader looks a spell up in. The
+			// JSON's own order is by discipline with ranks interleaved, which is an
+			// authoring artefact, not a reading order.
+			defaultSort={{ key: 'rank' }}
+			// An arcane spell's effect is a median of 558 characters and the row
+			// clamps it to three lines (F11.1). Opened, it shows the weak / strong /
+			// critical tiers the docs card shows — the same `SuccessLevel` rows, from
+			// the same parser — instead of collapsing them into one paragraph.
+			renderDetails={(spell) => (
+				<div className="cs-entry-prose">
+					{/* Shown because it is searched. `properties` was in `searchFields`
+						while appearing on no surface, so a match had no visible cause. */}
+					{spell.properties && (
+						<p className="cs-entry-prose__para">
+							<strong>Properties.</strong> {entrySummary(spell.properties)}
+						</p>
+					)}
+					<EntryProse source={spell.effect ?? ''} name={spell.name} />
+				</div>
+			)}
 			searchPlaceholder={`Search by name, ${typeLabel.toLowerCase()}, rank, or effect...`}
 			filters={
 				<>
-					<FormControl size="small" sx={{ minWidth: '10rem' }}>
-						<InputLabel id="rank-filter-label">Rank</InputLabel>
-						<Select
-							multiple
-							labelId="rank-filter-label"
-							value={rankFilter}
-							label="Rank"
-							onChange={(event) =>
-								setRankFilter(event.target.value as string[])
-							}
-							renderValue={(selected) =>
-								selected.length ? selected.join(', ') : 'All ranks'
-							}
-						>
-							{rankOptions.map((rank) => (
-								<MenuItem key={rank} value={String(rank)}>
-									<Checkbox checked={rankFilter.indexOf(String(rank)) > -1} />
-									<ListItemText primary={`Rank ${rank}`} />
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
-
-					<FormControl size="small" sx={{ minWidth: '12rem' }}>
-						<InputLabel id="type-filter-label">{typeLabel}</InputLabel>
-						<Select
-							multiple
-							labelId="type-filter-label"
-							value={typeFilter}
-							label={typeLabel}
-							onChange={(event) =>
-								setTypeFilter(event.target.value as string[])
-							}
-							renderValue={(selected) =>
-								selected.length ? selected.join(', ') : `All ${typeLabel}s`
-							}
-						>
-							{typeOptions.map((type) => (
-								<MenuItem key={type} value={type}>
-									<Checkbox checked={typeFilter.indexOf(type) > -1} />
-									<ListItemText primary={type} />
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
-
-					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-						<Button
-							variant="text"
-							size="small"
-							onClick={clearFilters}
-							disabled={!rankFilter.length && !typeFilter.length}
-						>
-							Clear filters
-						</Button>
-					</Box>
+					<FilterSelect
+						label="Rank"
+						allLabel="All ranks"
+						options={rankOptions.map(String)}
+						value={rankFilter}
+						onChange={setRankFilter}
+						optionLabel={(rank) => `Rank ${rank}`}
+						minWidth="10rem"
+					/>
+					{/* No tone. A discipline is unambiguously magic, so `--cs-magic` was
+						available and is deliberately not spent: S5 gave the magic register
+						to the cast plate, the focus pool and the catalyst, and cyan reads
+						as sorcery only while it stays rare. Structural bronze. */}
+					<FilterSelect
+						label={typeLabel}
+						allLabel={`All ${typeLabel.toLowerCase()}s`}
+						options={typeOptions}
+						value={typeFilter}
+						onChange={setTypeFilter}
+					/>
+					<Button
+						variant="text"
+						size="small"
+						onClick={clearFilters}
+						disabled={!rankFilter.length && !typeFilter.length}
+					>
+						Clear filters
+					</Button>
 				</>
 			}
 		/>

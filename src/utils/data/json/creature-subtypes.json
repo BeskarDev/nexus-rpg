@@ -1,49 +1,13 @@
 {
 	"Aberration": [],
-	"Automaton": [
-		"Golem",
-		"Animated Object",
-		"Magical Construct"
-	],
-	"Beast": [
-		"Mammal",
-		"Reptile",
-		"Bird",
-		"Fish",
-		"Insect",
-		"Hybrid"
-	],
-	"Draconic": [
-		"Chromatic",
-		"Metallic",
-		"Elemental",
-		"Wyvern"
-	],
-	"Giant": [
-		"Stone Giant",
-		"Cyclops",
-		"Troll",
-		"Ogre"
-	],
-	"Humanoid": [
-		"Human",
-		"Goblinoid",
-		"Orc",
-		"Elf",
-		"Dwarf"
-	],
-	"Monstrosity": [
-		"Chimera",
-		"Hydra",
-		"Griffin",
-		"Magical Beast"
-	],
+	"Automaton": ["Golem", "Animated Object", "Magical Construct"],
+	"Beast": ["Mammal", "Reptile", "Bird", "Fish", "Insect", "Hybrid"],
+	"Draconic": ["Chromatic", "Metallic", "Elemental", "Wyvern"],
+	"Giant": ["Stone Giant", "Cyclops", "Troll", "Ogre"],
+	"Humanoid": ["Human", "Goblinoid", "Orc", "Elf", "Dwarf"],
+	"Monstrosity": ["Chimera", "Hydra", "Griffin", "Magical Beast"],
 	"Ooze": [],
-	"Plant": [
-		"Treant",
-		"Myconid",
-		"Vine Creature"
-	],
+	"Plant": ["Treant", "Myconid", "Vine Creature"],
 	"Spirit": [
 		"Celestial",
 		"Infernal",
@@ -52,8 +16,5 @@
 		"Chthonic",
 		"Astral"
 	],
-	"Undead": [
-		"Physical",
-		"Ethereal"
-	]
+	"Undead": ["Physical", "Ethereal"]
 }
