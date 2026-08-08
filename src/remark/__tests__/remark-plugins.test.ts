@@ -206,7 +206,12 @@ describe('table header detection (Phase 2)', () => {
 	})
 
 	it('auto-keyword: converts single-word BODY cells (old proxy over-skipped)', () => {
-		const tree = runPlugin(autoKeywordPlugin, table('Notes', 'roll'), FILE)
+		// Column 1: column 0 is a row label and is suppressed on its own grounds.
+		const tree = runPlugin(
+			autoKeywordPlugin,
+			['| Step | Notes |', '| --- | --- |', '| first | roll |'].join('\n'),
+			FILE,
+		)
 		const links = collectConversions(tree).filter((l) => l.text === 'roll')
 		expect(links).toHaveLength(1)
 	})
@@ -289,11 +294,71 @@ describe('table header detection (Phase 2)', () => {
 	})
 })
 
+describe('row-label and name columns (auto-keyword)', () => {
+	const FILE = 'docs/99-test/sample.md'
+
+	it('does not link the first body column (row label)', () => {
+		// Shape of docs/04-equipment/05-armor-weapon-properties.md: the row IS the
+		// definition of "reach", so linking it points back at itself.
+		const md = [
+			'| Name | Description |',
+			'| --- | --- |',
+			'| reach | Attack targets at close distance. |',
+		].join('\n')
+		const links = collectConversions(runPlugin(autoKeywordPlugin, md, FILE))
+		expect(links.map((l) => l.text)).not.toContain('reach')
+	})
+
+	it('does not link a Name column that follows an index column', () => {
+		// The magic-item catalogs all lead with `| d100 | Name | ... |`, so the
+		// first-column rule alone would miss the entry names.
+		const md = [
+			'| d100 | Name | Effect |',
+			'| --- | --- | --- |',
+			'| 01 | Heavy Cloak | Grants shelter. |',
+		].join('\n')
+		const links = collectConversions(runPlugin(autoKeywordPlugin, md, FILE))
+		expect(links.map((l) => l.text)).not.toContain('Heavy')
+	})
+
+	it('matches "Item Name" style headers too', () => {
+		const md = [
+			'| # | Item Name |',
+			'| --- | --- |',
+			'| 1 | Light Blade |',
+		].join('\n')
+		const links = collectConversions(runPlugin(autoKeywordPlugin, md, FILE))
+		expect(links.map((l) => l.text)).not.toContain('Light')
+	})
+
+	it('still links later columns in the same table', () => {
+		const md = [
+			'| Name | Effect |',
+			'| --- | --- |',
+			'| Cleave | Deals damage to a second target. |',
+		].join('\n')
+		const links = collectConversions(runPlugin(autoKeywordPlugin, md, FILE))
+		expect(links.map((l) => l.text)).toContain('damage')
+	})
+
+	it('leaves a row label as plain text, not a stripped fragment', () => {
+		const md = ['| Property |', '| --- |', '| two-handed |'].join('\n')
+		const tree = runPlugin(autoKeywordPlugin, md, FILE)
+		let seen = ''
+		visit(tree, 'text', (n: any) => {
+			if (n.value.includes('two-handed')) seen = n.value
+		})
+		expect(seen).toBe('two-handed')
+	})
+})
+
 describe('zone gating for ambiguous words (Phase 4b)', () => {
 	const FILE = 'docs/99-test/sample.md'
 
+	// Second column on purpose: the first body column is a row label and never
+	// links (see the row-label/name-column suite below).
 	const bodyTable = (body: string) =>
-		['| Category |', '| --- |', `| ${body} |`].join('\n')
+		['| Item | Category |', '| --- | --- |', `| spear | ${body} |`].join('\n')
 
 	it('does NOT link a bare ambiguous word in narrative prose', () => {
 		for (const md of [

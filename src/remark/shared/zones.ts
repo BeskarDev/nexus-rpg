@@ -70,6 +70,49 @@ export function isMechanicalZone(
 }
 
 /**
+ * A row-label cell: the FIRST body column of a table.
+ *
+ * By table convention the first column is the key the row is about — the
+ * property being defined, the action being described, the success level being
+ * ruled on. Linking it points the reader at the definition of the thing they
+ * are already reading the definition of, so every properties table linked its
+ * own rows back to itself ("reach", "crush", "two-handed" in
+ * 04-equipment/05-armor-weapon-properties.md), and every SL table linked
+ * "Weak"/"Strong"/"Critical" to the success-level page from inside the
+ * success-level rules.
+ *
+ * Suppressing the whole first column rather than a list of header names was
+ * measured against the docs tree: of 113 keyword links that landed in a first
+ * body column, all were this self-referential shape. It also improves the
+ * first-occurrence-per-page budget — a term whose first hit was a row label now
+ * spends its one link on the prose occurrence instead.
+ */
+export function isRowLabelCell(
+	ancestors: (Parent & { type: string })[],
+): boolean {
+	const cell = getTableCellContext(ancestors)
+	return cell.inTableCell && !cell.isHeaderRow && cell.columnIndex === 0
+}
+
+/**
+ * A name cell: a body cell under a header that names entries rather than
+ * describing them ("Name", "Title", "Item Name", ...).
+ *
+ * The first-column rule above misses these whenever the table leads with an
+ * index column, which the catalogs all do (`| d100 | Name | Quality | ... |`) —
+ * 69 tables in the docs tree put Name at column 1 or later. An entry's own name
+ * is never a reference to a keyword, even when it happens to contain one.
+ */
+export function isNameColumnCell(
+	ancestors: (Parent & { type: string })[],
+): boolean {
+	const cell = getTableCellContext(ancestors)
+	if (!cell.inTableCell || cell.isHeaderRow) return false
+	const header = cell.columnHeader.toLowerCase().replace(/[*_`]/g, '').trim()
+	return header === 'name' || header === 'title' || header.endsWith(' name')
+}
+
+/**
  * JSX elements whose text is a NAME, not rules prose, and must never be
  * converted by the keyword or chip plugins.
  *

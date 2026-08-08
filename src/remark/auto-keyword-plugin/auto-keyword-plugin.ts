@@ -8,6 +8,8 @@ import {
 	isMechanicalZone,
 	inNameElement,
 	inLinkElement,
+	isRowLabelCell,
+	isNameColumnCell,
 } from '../shared/zones'
 
 const EXCLUSION_PREFIX = '_'
@@ -89,6 +91,14 @@ const autoKeywordPlugin = (options: { disableInPaths?: string[] } = {}) => {
 				// headers ("AV (light / heavy)") and no longer skips legitimate
 				// single-word body cells.
 				if (getTableCellContext(ancestors).isHeaderRow) {
+					return
+				}
+
+				// Skip row-label and name cells. A table's first body column is the
+				// key the row is about, and a "Name" column holds entry names — in
+				// both the link would point at the definition of the thing the row
+				// already defines (see zones.ts).
+				if (isRowLabelCell(ancestors) || isNameColumnCell(ancestors)) {
 					return
 				}
 
