@@ -256,7 +256,7 @@
 		"description": "While worn, this takes up 0 load instead. Simple, functional clothes."
 	},
 	{
-		"name": "Traveler\u2018s Clothes",
+		"name": "Traveler\u2019s Clothes",
 		"quality": "2",
 		"category": "Clothes",
 		"load": "1",
@@ -440,7 +440,7 @@
 		"description": "An animal bladder filled with a cheap wine. Intoxicates on frequent consumption. Spend 1 use to become intoxicated for a medium duration. While being intoxicated, you are also poisoned."
 	},
 	{
-		"name": "Alchemist\u2018s Supplies",
+		"name": "Alchemist\u2019s Supplies",
 		"quality": "2",
 		"category": "Gear",
 		"load": "1",
@@ -453,10 +453,10 @@
 		"category": "Gear",
 		"load": "1",
 		"cost": "50",
-		"description": "Contains a tent, tent pegs, a tinder box, and a bedroll. Provides shelter for a night\u2018s rest for up to two people."
+		"description": "Contains a tent, tent pegs, a tinder box, and a bedroll. Provides shelter for a night\u2019s rest for up to two people."
 	},
 	{
-		"name": "Healer\u2018s Kit",
+		"name": "Healer\u2019s Kit",
 		"quality": "2",
 		"category": "Gear",
 		"load": "1",
@@ -480,7 +480,7 @@
 		"description": "Contains a sturdy leather tool pouch with various crafting implements: a hammer, nails, a set of chisels, a small saw, a measuring tape, and a whetstone. Using the kit, you can attempt to repair a damaged item during a night's rest. Spend 1 use and roll Agility/Mind + Crafting against 5 + the item\u2019s Quality as the difficulty. On a success, the item is no longer damaged."
 	},
 	{
-		"name": "Thieves\u2018 Tools",
+		"name": "Thieves\u2019 Tools",
 		"quality": "2",
 		"category": "Gear",
 		"load": "1",
@@ -565,7 +565,7 @@
 		"category": "Supply",
 		"load": "1",
 		"cost": "15",
-		"description": "Contains a waterskin and a nutricious yet bland pack consisting of dried meat, fruits, and nuts. Has a d4 Supply die. At the end of each day, make a Supply Check as part of a night\u2018s rest."
+		"description": "Contains a waterskin and a nutricious yet bland pack consisting of dried meat, fruits, and nuts. Has a d4 Supply die. At the end of each day, make a Supply Check as part of a night\u2019s rest."
 	},
 	{
 		"name": "Torch (d4)",
@@ -597,7 +597,7 @@
 		"category": "Supply",
 		"load": "1",
 		"cost": "40",
-		"description": "Contains a waterskin and a well-rounded pack of cured meat, spiced grains, dried fruits, and soft cheese. More satisfying than simple fare. Has a d6 Supply die. At the end of each day, make a Supply Check as part of a night\u2018s rest."
+		"description": "Contains a waterskin and a well-rounded pack of cured meat, spiced grains, dried fruits, and soft cheese. More satisfying than simple fare. Has a d6 Supply die. At the end of each day, make a Supply Check as part of a night\u2019s rest."
 	},
 	{
 		"name": "Simple Materials (d6)",
@@ -613,7 +613,7 @@
 		"category": "Supply",
 		"load": "1",
 		"cost": "120",
-		"description": "Contains a waterskin and a rich selection of smoked meats, honeyed nuts, dried figs, and herbed flatbread. A morale-boosting indulgence. Has a d8 Supply die. At the end of each day, make a Supply Check as part of a night\u2018s rest."
+		"description": "Contains a waterskin and a rich selection of smoked meats, honeyed nuts, dried figs, and herbed flatbread. A morale-boosting indulgence. Has a d8 Supply die. At the end of each day, make a Supply Check as part of a night\u2019s rest."
 	},
 	{
 		"name": "Advanced Materials (d6)",
@@ -648,7 +648,7 @@
 		"description": "Contains a crowbar, a hammer, a shovel, chalk, a wooden pole, and spikes. Spend 1 use to produce one specific item from the list."
 	},
 	{
-		"name": "Brewer\u2018s Tools",
+		"name": "Brewer\u2019s Tools",
 		"quality": "2",
 		"category": "Toolkit",
 		"load": "1",
@@ -656,7 +656,7 @@
 		"description": "Contains a large glass jug, a quantity of hops, a siphon, and several feet of tubing. Spend 1 use to produce one specific item from the list."
 	},
 	{
-		"name": "Carpenter\u2018s Tools",
+		"name": "Carpenter\u2019s Tools",
 		"quality": "2",
 		"category": "Toolkit",
 		"load": "1",
@@ -664,7 +664,7 @@
 		"description": "Contains a saw, a hammer, nails, a hatchet, a square, a ruler, an adze, a plane, and a chisel. Spend 1 use to produce one specific item from the list."
 	},
 	{
-		"name": "Climber\u2018s Kit",
+		"name": "Climber\u2019s Kit",
 		"quality": "2",
 		"category": "Toolkit",
 		"load": "1",
@@ -672,7 +672,7 @@
 		"description": "Contains pitons, boot tips, gloves, and a harness. Spend 1 use to produce one specific item from the list."
 	},
 	{
-		"name": "Cook\u2018s Utensils",
+		"name": "Cook\u2019s Utensils",
 		"quality": "2",
 		"category": "Toolkit",
 		"load": "1",
@@ -696,7 +696,7 @@
 		"description": "Contains all the pieces to play a specific game, such as a board, cards, dice, or tokens. Spend 1 use to produce one specific item from the list."
 	},
 	{
-		"name": "Leatherworker\u2018s Tools",
+		"name": "Leatherworker\u2019s Tools",
 		"quality": "2",
 		"category": "Toolkit",
 		"load": "1",
@@ -704,7 +704,7 @@
 		"description": "Contains a knife, a small mallet, an edger, a hole punch, thread, and leather scraps. Spend 1 use to produce one specific item from the list."
 	},
 	{
-		"name": "Mason\u2018s Tools",
+		"name": "Mason\u2019s Tools",
 		"quality": "2",
 		"category": "Toolkit",
 		"load": "1",
@@ -712,7 +712,7 @@
 		"description": "Contains a small trowel, a hammer, a chisel, brushes, and a square. Spend 1 use to produce one specific item from the list."
 	},
 	{
-		"name": "Navigator\u2018s Tools",
+		"name": "Navigator\u2019s Tools",
 		"quality": "2",
 		"category": "Toolkit",
 		"load": "1",
@@ -720,7 +720,7 @@
 		"description": "Contains a sextant, a compass, calipers, a ruler, parchment, ink, and a quill. Spend 1 use to produce one specific item from the list."
 	},
 	{
-		"name": "Painter\u2018s Supplies",
+		"name": "Painter\u2019s Supplies",
 		"quality": "2",
 		"category": "Toolkit",
 		"load": "1",
@@ -728,7 +728,7 @@
 		"description": "Contains an easel, canvas, brushes, charcoal sticks, and a palette. Spend 1 use to produce one specific item from the list."
 	},
 	{
-		"name": "Smith\u2018s Tools",
+		"name": "Smith\u2019s Tools",
 		"quality": "2",
 		"category": "Toolkit",
 		"load": "1",
@@ -736,7 +736,7 @@
 		"description": "Contains hammers, tongs, charcoal, rags, and a small whetstone. Spend 1 use to produce one specific item from the list."
 	},
 	{
-		"name": "Weaver\u2018s Tools",
+		"name": "Weaver\u2019s Tools",
 		"quality": "2",
 		"category": "Toolkit",
 		"load": "1",
@@ -744,7 +744,7 @@
 		"description": "Contains thread, needles, and scraps of cloth. Spend 1 use to produce one specific item from the list."
 	},
 	{
-		"name": "Woodcarver\u2018s Tools",
+		"name": "Woodcarver\u2019s Tools",
 		"quality": "2",
 		"category": "Toolkit",
 		"load": "1",
@@ -760,7 +760,7 @@
 		"description": "Any common type of string, woodwind, brass, or percussion instrument. Examples include a harp, lire, or cithara for stringed instruments. A flute, pan pipes, or clarinet for woodwind instruments. A horn, trumpet, or tuba for brass instruments. Or lastly hand drums, a tambourine, or macaras for percussion instruments."
 	},
 	{
-		"name": "Jeweler\u2018s Tools",
+		"name": "Jeweler\u2019s Tools",
 		"quality": "2",
 		"category": "Toolkit",
 		"load": "1",

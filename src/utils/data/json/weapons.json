@@ -202,7 +202,7 @@
 		"quality": "2",
 		"type": "Mace",
 		"damage": "2",
-		"properties": "agile, crush, light",
+		"properties": "agile, crush, light, simple",
 		"load": "1",
 		"cost": "50"
 	},
@@ -238,7 +238,7 @@
 		"quality": "2",
 		"type": "Polearm",
 		"damage": "2",
-		"properties": "light, pierce, thrown (short/medium), versatile (+1)",
+		"properties": "light, pierce, simple, thrown (short/medium), versatile (+1)",
 		"load": "1",
 		"cost": "75"
 	},
@@ -247,7 +247,7 @@
 		"quality": "2",
 		"type": "Polearm",
 		"damage": "3",
-		"properties": "crush, reach, versatile (+1)",
+		"properties": "crush, reach, simple, versatile (+1)",
 		"load": "1",
 		"cost": "100"
 	},
@@ -328,7 +328,7 @@
 		"quality": "2",
 		"type": "Thrown",
 		"damage": "3",
-		"properties": "ammo, crush, thrown (short/long), two-handed",
+		"properties": "ammo, crush, simple, thrown (short/long), two-handed",
 		"load": "1",
 		"cost": "50"
 	}

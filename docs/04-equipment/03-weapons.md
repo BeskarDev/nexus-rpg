@@ -53,7 +53,7 @@ sidebar_position: 3
 | Quality | Name | Damage | Properties | Load | Cost |
 | --- | --- | --- | --- | --- | --- |
 | 2 | Throwing Club | 2 | bundle (d4), crush, light, thrown (short/medium) | 1 | 25 |
-| 2 | Club | 2 | agile, crush, light | 1 | 50 |
+| 2 | Club | 2 | agile, crush, light, simple | 1 | 50 |
 | 2 | Mace | 3 | crush, versatile (+1) | 1 | 100 |
 | 2 | Maul | 4 | crush, heavy (d8), two-handed | 2 | 150 |
 ### Polearm
@@ -61,8 +61,8 @@ sidebar_position: 3
 | Quality | Name | Damage | Properties | Load | Cost |
 | --- | --- | --- | --- | --- | --- |
 | 2 | Javelin | 2 | bundle (d4), light, pierce, thrown (short/long) | 1 | 50 |
-| 2 | Short Spear | 2 | light, pierce, thrown (short/medium), versatile (+1) | 1 | 75 |
-| 2 | Quarterstaff | 3 | crush, reach, versatile (+1) | 1 | 100 |
+| 2 | Short Spear | 2 | light, pierce, simple, thrown (short/medium), versatile (+1) | 1 | 75 |
+| 2 | Quarterstaff | 3 | crush, reach, simple, versatile (+1) | 1 | 100 |
 | 2 | Spear | 3 | pierce, reach, versatile (+1) | 1 | 100 |
 | 2 | Glaive | 4 | reach, slash, two-handed | 2 | 150 |
 ### Shield
@@ -79,7 +79,7 @@ sidebar_position: 3
 | 2 | Blowpipe | 1 | ammo, blowpipe, pierce, range (short/long) | 1 | 25 |
 | 2 | Bola | 2 | bundle (d4), entangle (large), heavy (d6), thrown (close/short) | 1 | 25 |
 | 2 | Spear Thrower | 3 | ammo, pierce, thrown (short/long), two-handed | 1 | 50 |
-| 2 | Sling | 3 | ammo, crush, thrown (short/long), two-handed | 1 | 50 |
+| 2 | Sling | 3 | ammo, crush, simple, thrown (short/long), two-handed | 1 | 50 |
 <br/><br/>
 ## Primitive Weapons
 

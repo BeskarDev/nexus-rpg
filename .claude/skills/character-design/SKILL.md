@@ -76,7 +76,8 @@ serves it. The rubric, the scoring, and the failure modes are in
    contribute in combat, in exploration, and in a social scene — but it earns its seat by being
    the best in the party at one of them.
 9. **Coins are a design surface.** A kit that spends 350 on one weapon says something; so does
-   one that keeps 100 back. What it must not do is buy things the build never uses.
+   one that keeps 100 back. What it must not do is buy things the build never uses — or leave a
+   purse idle while the build fights its own carrying capacity.
 10. **Stay inside the mortal ceiling.** Rank 1 is a competent novice, not a hero: 3 skills at
     Novice, one talent each, four spells or two-to-three combat arts. Power fantasy comes from
     focus, never from breadth.
@@ -110,7 +111,9 @@ serves it. The rubric, the scoring, and the failure modes are in
 - [ ] Spells: correct count for the mode (Arcana 4, Balance 4, Devotion 6), ranks 0–1 only,
       catalyst bought
 - [ ] Focus pool computed, and the build's per-scene spell plan fits inside it
-- [ ] Equipment within 350 coins, total load within carrying capacity, free ammunition claimed
+- [ ] Equipment within 350 coins, free ammunition claimed; **capacity bought (Traveler's
+      Backpack, 50c, +2, no load) before any kit is cut**; load over carrying capacity only as a
+      deliberate trade, never above twice capacity, and the page carries the encumbered note
 - [ ] Every item resolves to a catalogue entry by its exact name
 - [ ] The build has at least one answer in combat, in exploration, and in a social scene
 - [ ] Nothing in the build waits for rank 2+ to function

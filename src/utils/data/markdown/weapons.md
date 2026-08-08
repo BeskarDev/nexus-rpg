@@ -22,12 +22,12 @@ Name | Quality | Type | Damage | Properties | Load | Cost
 **Light Crossbow** | 3 | Crossbow | 4 | ammo, range (medium/very long), reload, two-handed | 2 | 250
 **Heavy Crossbow** | 3 | Crossbow | 6 | ammo, heavy (d8), range (long/extreme), reload, two-handed | 3 | 750
 **Throwing Club** | 2 | Mace | 2 | bundle (d4), crush, light, thrown (short/medium) | 1 | 25
-**Club** | 2 | Mace | 2 | agile, crush, light | 1 | 50
+**Club** | 2 | Mace | 2 | agile, crush, light, simple | 1 | 50
 **Mace** | 2 | Mace | 3 | crush, versatile (+1) | 1 | 100
 **Maul** | 2 | Mace | 4 | crush, heavy (d8), two-handed | 2 | 150
 **Javelin** | 2 | Polearm | 2 | bundle (d4), light, pierce, thrown (short/long) | 1 | 50
-**Short Spear** | 2 | Polearm | 2 | light, pierce, thrown (short/medium), versatile (+1) | 1 | 75
-**Quarterstaff** | 2 | Polearm | 3 | crush, reach, versatile (+1) | 1 | 100
+**Short Spear** | 2 | Polearm | 2 | light, pierce, simple, thrown (short/medium), versatile (+1) | 1 | 75
+**Quarterstaff** | 2 | Polearm | 3 | crush, reach, simple, versatile (+1) | 1 | 100
 **Spear** | 2 | Polearm | 3 | pierce, reach, versatile (+1) | 1 | 100
 **Glaive** | 2 | Polearm | 4 | reach, slash, two-handed | 2 | 150
 **Light Shield** | 2 | Shield | 2 | AV +1, crush, parry +1, rigid 1 | 1 | 150
@@ -36,4 +36,4 @@ Name | Quality | Type | Damage | Properties | Load | Cost
 **Blowpipe** | 2 | Thrown | 1 | ammo, blowpipe, pierce, range (short/long) | 1 | 25
 **Bola** | 2 | Thrown | 2 | bundle (d4), entangle (large), heavy (d6), thrown (close/short) | 1 | 25
 **Spear Thrower** | 2 | Thrown | 3 | ammo, pierce, thrown (short/long), two-handed | 1 | 50
-**Sling** | 2 | Thrown | 3 | ammo, crush, thrown (short/long), two-handed | 1 | 50
+**Sling** | 2 | Thrown | 3 | ammo, crush, simple, thrown (short/long), two-handed | 1 | 50

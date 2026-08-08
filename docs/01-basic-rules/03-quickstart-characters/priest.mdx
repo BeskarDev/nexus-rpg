@@ -6,10 +6,10 @@ sidebar_position: 15
 
 {/* GENERATED from src/utils/data/json/archetypes.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}
 
-A divine spellcaster who heals and protects allies while holding the frontline with mace and shield.
+A divine healer who mends wounds, shields the failing, and calls calm down onto a fight before it turns.
 
 <ArchetypeCard
-	role="Support / Tank"
+	role="Support"
 	str="d6"
 	agi="d4"
 	spi="d8"
@@ -28,13 +28,13 @@ A divine spellcaster who heals and protects allies while holding the frontline w
 
 <ArchetypeField label="Rank 1" block>
 
-- Mysticism - *Divine Rites (Rank 1)* - Regain half your Focus during a short break, limited uses per day
-- Fighting † - *Shield Mastery (Rank 1)* - Reduce enemy attack Success Level with Quick Action
+- Mysticism - *Armor of the Faithful (Rank 1)* - Wear no armor and faith is your armor: 1 + Mysticism as AV
 - Lore - *Consult the Myths (Rank 1)* - Re‑roll Lore about supernatural topics once per scene
+- Influence - *Rallying Cry (Rank 1)* - Quick Action: an ally shakes off fright or a daze, or gains a boon
 
 </ArchetypeField>
 
-<ArchetypeField label="Rank 0">Influence, Insight, Fortitude †, Education</ArchetypeField>
+<ArchetypeField label="Rank 0">Fighting †, Insight, Fortitude †, Education</ArchetypeField>
 
 Note: † Customized skills, chosen outside the upbringing and background suggestions.
 
@@ -42,10 +42,9 @@ Note: † Customized skills, chosen outside the upbringing and background sugges
 
 <ArchetypeSection label="Combat Arts">
 
-With Fighting rank 1, you know **2 Combat Arts**. Recommended:
+With Fighting rank 0, you know **1 Combat Art**. Recommended:
 
-- **Defensive Strike** (*Axe, Blade, Brawling, Mace, Polearm, Shield*) - Gain Defend Action effects on hit
-- **Exhilarating Strike** (*Axe, Blade, Brawling, Mace, Polearm*) - Heal nearby allies on hit
+- **Exhilarating Strike** (*Axe, Blade, Brawling, Mace, Polearm*) - A hit heals you and every ally close to you
 
 </ArchetypeSection>
 
@@ -54,13 +53,14 @@ With Fighting rank 1, you know **2 Combat Arts**. Recommended:
 - Mace (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
 - Spell Catalyst (Mystic Talisman) (75 coins, 0 load)
-- Cook‘s Utensils toolkit (included in standard gear)
+- Healing Salve (weak) (15 coins, 1 load) - for the wound your spells cannot close
+- Cook’s Utensils toolkit (included in standard gear)
 
 <ArchetypeTally
-	coins={25}
-	coinsFrom="350 - 325 spent"
-	load={7}
-	loadFrom="equipment 2 + standard gear 5"
+	coins={10}
+	coinsFrom="350 - 340 spent"
+	load={8}
+	loadFrom="equipment 3 + standard gear 5"
 	capacity={11}
 	capacityFrom="1/2 STR 3 + 8"
 />
@@ -87,10 +87,10 @@ Note: at rank 1 you know 3 spells in total.
 
 ## Playstyle
 
-The Priest is perfect for players who want to support allies with healing and protection while remaining combat-effective. Balance divine magic with frontline fighting. Heal and protect allies while holding the line with shield and mace. Divine Rites helps you recover Focus between fights. Use Defensive Strike to stay alive and Exhilarating Strike to keep allies in the fight.
+The Priest is perfect for players who want to support allies with healing and protection while remaining combat-effective. You wear no armor on purpose: Armor of the Faithful gives you 1 + Mysticism as your armor, and a shield still counts as wearing none, so you stand at AV 3 in a robe. As your Mysticism grows, so does your skin. You are the party's healer first and everything else second, and the only Devotion of Life in the set: nobody mends a wound like you do. Your mace and shield exist so that standing near the fighting is survivable, since your healing reaches only as far as your hand does, and the mace is crush, so it ignores half of whatever armor your enemies wear. Rallying Cry pulls an ally out of a fright or a daze for a Quick Action, and Exhilarating Strike is the one attack worth making: a hit heals you and every ally close to you. Defensive Strike keeps you standing, and Exhilarating Strike heals you and every ally near you on a hit, which is the closest thing in the game to fighting and healing in the same breath.
 
 ## Advancement
 
-Increase Mysticism to rank 2-3 for more powerful spells, raise Fighting for better combat effectiveness and more Combat Arts, add Influence for religious authority, and consider Armor of the Faithful for unarmored defense builds.
+Increase Mysticism to rank 2-3 for more powerful spells, raise Influence for stronger authority and rallying, take Fighting to rank 1 if you want a second Combat Art and a steadier Parry, and learn Rapid Vitality or Sustaining Grace when you tire of spending your whole Action to heal: both are Quick Actions, where Healing Touch is slow but heals far more. Divine Rites is worth taking once your spells cost more Focus than a fight can spare.
 
 [Back to all archetypes](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)

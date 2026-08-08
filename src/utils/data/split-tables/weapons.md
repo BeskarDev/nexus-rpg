@@ -49,7 +49,7 @@ Name | Quality | Damage | Properties | Load | Cost
 Name | Quality | Damage | Properties | Load | Cost
 --- | --- | --- | --- | --- | ---
 **Throwing Club**  | 2  | 2  | bundle (d4), crush, light, thrown (short/medium)  | 1  | 25
-**Club**  | 2  | 2  | agile, crush, light  | 1  | 50
+**Club**  | 2  | 2  | agile, crush, light, simple  | 1  | 50
 **Mace**  | 2  | 3  | crush, versatile (+1)  | 1  | 100
 **Maul**  | 2  | 4  | crush, heavy (d8), two-handed  | 2  | 150
 
@@ -58,8 +58,8 @@ Name | Quality | Damage | Properties | Load | Cost
 Name | Quality | Damage | Properties | Load | Cost
 --- | --- | --- | --- | --- | ---
 **Javelin**  | 2  | 2  | bundle (d4), light, pierce, thrown (short/long)  | 1  | 50
-**Short Spear**  | 2  | 2  | light, pierce, thrown (short/medium), versatile (+1)  | 1  | 75
-**Quarterstaff**  | 2  | 3  | crush, reach, versatile (+1)  | 1  | 100
+**Short Spear**  | 2  | 2  | light, pierce, simple, thrown (short/medium), versatile (+1)  | 1  | 75
+**Quarterstaff**  | 2  | 3  | crush, reach, simple, versatile (+1)  | 1  | 100
 **Spear**  | 2  | 3  | pierce, reach, versatile (+1)  | 1  | 100
 **Glaive**  | 2  | 4  | reach, slash, two-handed  | 2  | 150
 
@@ -78,5 +78,5 @@ Name | Quality | Damage | Properties | Load | Cost
 **Blowpipe**  | 2  | 1  | ammo, blowpipe, pierce, range (short/long)  | 1  | 25
 **Bola**  | 2  | 2  | bundle (d4), entangle (large), heavy (d6), thrown (close/short)  | 1  | 25
 **Spear Thrower**  | 2  | 3  | ammo, pierce, thrown (short/long), two-handed  | 1  | 50
-**Sling**  | 2  | 3  | ammo, crush, thrown (short/long), two-handed  | 1  | 50
+**Sling**  | 2  | 3  | ammo, crush, simple, thrown (short/long), two-handed  | 1  | 50
 

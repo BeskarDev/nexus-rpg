@@ -6,7 +6,7 @@ sidebar_position: 9
 
 {/* GENERATED from src/utils/data/json/archetypes.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}
 
-A reliable frontline combatant using shield and blade to protect allies while dishing out tactical damage.
+A frontline soldier who fights with a great blade, drawing every eye on the field and outlasting what comes back.
 
 <ArchetypeCard
 	role="Tank / Striker"
@@ -28,8 +28,8 @@ A reliable frontline combatant using shield and blade to protect allies while di
 
 <ArchetypeField label="Rank 1" block>
 
-- Fighting - *Shield Mastery (Rank 1)* - Reduce enemy attack Success Level with Quick Action
-- Athletics † - *Stand your Ground (Rank 1)* - Resist being knocked prone or pushed with Quick Action
+- Fighting - *Art of Fighting (Rank 1)* - Learn two more melee Combat Arts, no action needed
+- Athletics † - *Bulky (Rank 1)* - +2 HP and +2 carrying capacity, with no action to spend
 - Fortitude - *Second Wind (Rank 1)* - Regain HP with Quick Action once per scene
 
 </ArchetypeField>
@@ -42,29 +42,31 @@ Note: † Customized skills, chosen outside the upbringing and background sugges
 
 <ArchetypeSection label="Combat Arts">
 
-With Fighting rank 1 and Archery rank 0, you know **3 Combat Arts**. Recommended:
+With Fighting rank 1 and Archery rank 0 plus Art of Fighting, you know **5 Combat Arts**. Recommended:
 
 - **Defensive Strike** (*Axe, Blade, Brawling, Mace, Polearm, Shield*) - Gain Defend Action effects on hit
 - **Charge** (*Axe, Blade, Mace, Polearm, Shield*) - Move and shove while attacking
-- **Aimed Shot** (*Bow, Crossbow, Thrown*) - Gain +1 boon on a thrown attack when you don’t move
+- **Cleave** (*Axe, Blade, Mace, Polearm*) - Hit up to two extra creatures in your weapon's reach
+- **Divert Attention** (*Axe, Blade, Brawling, Mace, Polearm*) - Your attack also distracts the target onto you
+- **Aimed Shot** (*Bow, Crossbow, Thrown*) - Gain +1 boon on a thrown attack when you don't move
 
 </ArchetypeSection>
 
 <ArchetypeSection label="Equipment">
 
-- Longsword (100 coins, 1 load)
-- Light Shield (150 coins, 1 load)
+- Greatsword (150 coins, 2 load)
 - Leather Armor (50 coins, 1 load)
 - Javelin (50 coins, 1 load) - thrown opener for the Archery rank 0 art
+- Healing Salve (weak) (15 coins, 1 load)
 - Adventuring Gear toolkit (included in standard gear)
 
 <ArchetypeTally
-	coins={0}
-	coinsFrom="350 - 350 spent"
-	load={9}
-	loadFrom="equipment 4 + standard gear 5"
-	capacity={12}
-	capacityFrom="1/2 STR 4 + 8"
+	coins={85}
+	coinsFrom="350 - 265 spent"
+	load={10}
+	loadFrom="equipment 5 + standard gear 5"
+	capacity={14}
+	capacityFrom="1/2 STR 4 + 8 + 2 talent"
 />
 
 </ArchetypeSection>
@@ -73,10 +75,10 @@ With Fighting rank 1 and Archery rank 0, you know **3 Combat Arts**. Recommended
 
 ## Playstyle
 
-The Fighter is perfect for players who want straightforward, effective combat with tactical depth. Use your shield to protect allies and your versatile longsword to adapt to situations. Stand your Ground keeps you in position while Second Wind provides survivability when needed. Combat Arts like Defensive Strike and Charge give you tactical options for different situations.
+The Fighter is perfect for players who want straightforward, effective combat with tactical depth. A greatsword deals 4 weapon damage and reaches two extra enemies with Cleave, so a knot of foes is where you want to stand. You have no shield, so you hold the line by being the one worth hitting: Divert Attention turns an attack into a Distract, and Protect Ally still lets you step in front of a blow and take it on Parry 9. Bulky asks for no action at all and leaves you with 24 HP, the most in the set, and Second Wind gives 4 of them back once a scene. Art of Fighting is why you have five Combat Arts instead of three, which is the real difference between a Fighter and everyone else who swings a sword. The javelin plus Aimed Shot answers the enemy you cannot reach.
 
 ## Advancement
 
-Increase Fighting and Fortitude to rank 2-3 for more Combat Arts and resilience, add Influence for battlefield command, consider Heavy Armor Mastery or more shield-focused talents.
+Increase Fighting and Fortitude to rank 2-3 for more Combat Arts and resilience, add Athletics for mobility under a heavy weapon, and consider Heavy Weapon Mastery or Blade Mastery to widen what the greatsword can answer.
 
 [Back to all archetypes](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)

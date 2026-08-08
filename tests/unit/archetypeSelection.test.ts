@@ -113,9 +113,12 @@ describe('Archetype Selection', () => {
 		)
 		const talentNames = talentAbilities.map((a) => a.title)
 
-		expect(talentNames).toContain('Shield Mastery')
-		expect(talentNames).toContain('Stand your Ground')
-		expect(talentNames).toContain('Second Wind')
+		// Data-driven: the sheet must carry whatever the archetype recommends, so a
+		// design change to the Fighter's talents is not a test failure. Naming them
+		// here meant every archetype review broke this test.
+		const recommended = fighterArchetype.recommendedTalents.map((t) => t.name)
+		expect(recommended.length).toBe(3)
+		for (const name of recommended) expect(talentNames).toContain(name)
 	})
 
 	it('should calculate correct initial HP based on archetype strength', () => {
@@ -227,13 +230,18 @@ describe('Archetype Selection', () => {
 			const suggested = archetype.suggestedSkills
 				.split(',')
 				.map((s) => s.trim())
-			const required = (['Fighting', 'Archery'] as const)
-				.filter((skill) => suggested.includes(skill))
-				.reduce(
-					(sum, skill) =>
-						sum + (archetype.primarySkills.includes(skill) ? 2 : 1),
-					0,
-				)
+			const required =
+				(['Fighting', 'Archery'] as const)
+					.filter((skill) => suggested.includes(skill))
+					.reduce(
+						(sum, skill) =>
+							sum + (archetype.primarySkills.includes(skill) ? 2 : 1),
+						0,
+					) +
+				// Art of Fighting rank 1 grants two more melee arts.
+				(archetype.recommendedTalents.some((t) => t.name === 'Art of Fighting')
+					? 2
+					: 0)
 			expect(
 				archetype.recommendedCombatArts?.length ?? 0,
 				`${archetype.name} should recommend ${required} combat arts`,

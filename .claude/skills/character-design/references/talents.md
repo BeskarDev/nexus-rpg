@@ -76,6 +76,20 @@ turn, one on an enemy's action). Two that both want your own turn's Quick Action
   — `Identify Weakness` into any damage art; `Insult to Injury` (Distract) into `Assassination`.
 - **Enable-the-weapon**: `Pugilist` (unarmed counts as brawling weapons) turns every brawling
   combat art on — without it, an unarmed build cannot legally use one.
+
+  **But `Pugilist` and BUYING brawling weapons are mutually redundant** (owner ruling,
+  2026-08-08). Pugilist makes fists into 2-damage, crush, light brawling weapons — which is a
+  `Cestus`. A build that takes the talent *and* buys cesti pays 100 coins for the +1 Parry
+  clause alone. Pick a lane: empty hands with `Pugilist` (`Grappler`, `Choking Grip`,
+  `Knockout` all follow), or a weapon in each fist with `Dual Wielder` (no banes for two light
+  melee weapons). The set had this backwards on two archetypes at once.
+
+  **But `Pugilist` and BUYING brawling weapons are mutually redundant** (owner ruling,
+  2026-08-08). Pugilist makes fists into 2-damage, crush, light brawling weapons — which is a
+  `Cestus`. A build that takes the talent *and* buys cesti pays 100 coins for the +1 Parry
+  clause alone. Pick a lane: empty hands with `Pugilist` (`Grappler`, `Choking Grip`,
+  `Knockout` all follow), or a weapon in each fist with `Dual Wielder` (no banes for two light
+  melee weapons). The set had this backwards on two archetypes at once.
 - **Survive-the-choice**: an aggressive stance plus a survivability talent — `Battle Rage` with
   `Hard to Kill` or `Body of Bronze`; `Rapid Shot` with `Reflexive Shooter`.
 - **Cast-and-swing**: `Spellblade` / `Mystic Champion` (spell into a weapon attack) with a
@@ -107,13 +121,20 @@ turn, one on an enemy's action). Two that both want your own turn's Quick Action
 | **Arcana** | Spell reliability, defense, and spell-weapon fusion. | `Master of Fundamentals`, `Battle Mage`, `Mana Shield`, `Spellblade`, `Arcane Spell Knowledge`, `Spellweaver` |
 | **Mysticism** | Pacts, ally-facing magic, and armor from faith. | `Master of Principles`, `Armor of the Faithful`, `Mystic Champion`, `Communal Practices`, the four `Pact of …` talents |
 
-Two notes that catch builds out:
+Three notes that catch builds out:
+
+- **A skill grants ONE talent point at rank 1, so one talent per rank-1 skill.** Two talents
+  from the same skill needs that skill at rank 2 (6 XP), which a starting character cannot
+  afford without giving up another rank-1 skill entirely. `Battle Rage` and `Body of Bronze`
+  are both Fortitude — a starting Barbarian picks one, and the other is the advancement line.
 
 - **`Animal Companion` is a NATURE talent** (Tier ≤ your Nature rank), not Survival. The mounts
   chapter still says Survival in one line; `talents.json` is canonical.
 - **`Arcane Spell Knowledge` / `Mystical Spell Knowledge` give +2 Focus and extra spells** —
   the correct pick for a caster whose fantasy is breadth, and the wrong one for a caster who
   needs a rule of their own at rank 1.
+- **"No armor" talents still allow a helmet and a shield** (body slot only, per the armor
+  chapter), so an unarmored build is not stuck at AV 0.
 
 ## Checks before moving on
 

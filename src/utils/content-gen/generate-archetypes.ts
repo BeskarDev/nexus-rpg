@@ -148,10 +148,19 @@ function equipmentSection(a: DerivedArchetype): string {
 		`\tload={${e.totalLoad}}`,
 		`\tloadFrom="equipment ${e.equipmentLoad} + standard gear ${STANDARD_GEAR_LOAD}"`,
 		`\tcapacity={${e.carryCapacity}}`,
-		`\tcapacityFrom="1/2 STR ${Math.floor(a.record.attributes.STR / 2)} + 8"`,
+		`\tcapacityFrom="1/2 STR ${Math.floor(a.record.attributes.STR / 2)} + 8${e.capacityBonus ? ` + ${e.capacityBonus} pack` : ''}${e.talentCapacity ? ` + ${e.talentCapacity} talent` : ''}"`,
 		'/>',
 	].join('\n')
-	return section('Equipment', lines.join('\n'), tally)
+	// Over capacity is allowed and is sometimes the right trade (owner ruling), but
+	// a new player reading "12 load, capacity 10" has no way to know that, or what
+	// it costs them. So the page says it, at the point of use, rather than leaving
+	// it to the equipment chapter.
+	const blocks = [lines.join('\n'), tally]
+	if (e.encumberedBy > 0)
+		blocks.push(
+			`Note: this kit is ${e.encumberedBy} load over your carrying capacity, so you start **encumbered**: +1 bane on Strength and Agility rolls for movement, no Dash Action, no Evade Quick Action, and +1 Fatigue whenever you suffer Fatigue while travelling. That is a deliberate trade for carrying everything here. Drop something to clear it, or carry it on a mount or pack animal. You can never carry more than ${2 * e.carryCapacity} load at all.`,
+		)
+	return section('Equipment', ...blocks)
 }
 
 function combatArtsSection(a: DerivedArchetype): string | null {
@@ -162,9 +171,17 @@ function combatArtsSection(a: DerivedArchetype): string | null {
 		.filter((s) => skills.rank1.includes(s) || skills.rank0.includes(s))
 		.map((s) => `${s} rank ${skills.rank1.includes(s) ? 1 : 0}`)
 	const plural = required === 1 ? 'Combat Art' : 'Combat Arts'
+	// A talent can raise the count, and then "with Fighting rank 1 you know 5"
+	// reads as an arithmetic error to anyone checking it against the rules.
+	const granting = a.record.recommendedTalents.find(
+		(t) => t.name === 'Art of Fighting',
+	)
+	const from = granting
+		? `${held.join(' and ')} plus ${granting.name}`
+		: held.join(' and ')
 	return section(
 		'Combat Arts',
-		`With ${held.join(' and ')}, you know **${required} ${plural}**. Recommended:`,
+		`With ${from}, you know **${required} ${plural}**. Recommended:`,
 		arts
 			.map((art) => `- **${art.name}** (*${art.weapons}*) - ${art.gloss}`)
 			.join('\n'),

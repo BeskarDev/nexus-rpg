@@ -18,6 +18,10 @@ However, you can only ever gain AV from one piece of armor, one shield, and one 
 
 If you would gain AV from multiple sources, but they both count as your armor/shield/helmet bonus, you only gain one of those bonuses (your choice).
 
+## Wearing no Armor
+
+Some abilities only work while you wear no armor, or no heavy armor. Those requirements refer to the **body slot** only. **Shields and helmets never count as armor for them**, so you can carry a shield and wear a helmet and still use an ability that requires wearing no armor.
+
 
 ### Light Armor
 

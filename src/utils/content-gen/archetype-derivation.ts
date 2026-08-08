@@ -19,6 +19,9 @@ import armorJson from '../data/json/armor.json'
 import equipmentJson from '../data/json/equipment.json'
 import combatArtsJson from '../data/json/combat-arts.json'
 import companionTraitsJson from '../data/json/companion-traits.json'
+import talentsJson from '../data/json/talents.json'
+import arcaneSpellsJson from '../data/json/arcane-spells.json'
+import mysticSpellsJson from '../data/json/mystic-spells.json'
 
 /** Coins every adventurer gets to spend (02-character-creation.md). */
 export const STARTING_COINS = 350
@@ -86,6 +89,7 @@ interface CatalogueItem {
 	type?: string
 	properties?: string
 	category?: string
+	description?: string
 }
 
 const CATALOGUE = new Map<string, CatalogueItem>()
@@ -145,6 +149,31 @@ const COMBAT_ARTS = new Map(
 const COMPANION_TRAITS = new Set(
 	(companionTraitsJson as { name: string }[]).map((t) => t.name),
 )
+const TALENT_SKILL = new Map(
+	(talentsJson as { name: string; 'skill requirement': string }[]).map((t) => [
+		t.name,
+		t['skill requirement'],
+	]),
+)
+const TALENT_TEXT = new Map(
+	(talentsJson as { name: string; description: string }[]).map((t) => [
+		t.name,
+		t.description,
+	]),
+)
+
+interface SpellRecord {
+	name: string
+	rank: string
+	discipline?: string
+	tradition?: string
+}
+const ARCANE_SPELLS = new Map(
+	(arcaneSpellsJson as SpellRecord[]).map((s) => [s.name, s]),
+)
+const MYSTIC_SPELLS = new Map(
+	(mysticSpellsJson as SpellRecord[]).map((s) => [s.name, s]),
+)
 
 /** `"2,250"` and `"-"` both appear in the catalogues. */
 function toNumber(value: string): number {
@@ -173,6 +202,42 @@ export interface DerivedEquipment {
 }
 
 /**
+ * A backpack bought to replace the free one from standard gear.
+ *
+ * Every character already carries a backpack ("0 load for your first one"), so a
+ * bought backpack is a REPLACEMENT: it is still the first backpack, still 0 load,
+ * and the better ones state a carrying-capacity bonus in their own description
+ * (Traveler's +2, Explorer's +4, Enchanted +6, Bottomless +8).
+ *
+ * The bonus is read from the catalogue text rather than tabulated here, so a new
+ * backpack or a re-costed one needs no code change (owner ruling, 2026-08-08:
+ * capacity is a purchase, not a formula buff).
+ */
+function backpackCapacityBonus(entry: CatalogueItem): number | null {
+	if (!/Backpack$/.test(entry.name)) return null
+	const match = /adds \+(\d+) to your carry capacity/i.exec(
+		entry.description ?? '',
+	)
+	return match ? Number(match[1]) : 0
+}
+
+/**
+ * Carrying capacity granted by a rank 1 talent, read from the talent text the
+ * same way a backpack's is read from its catalogue entry.
+ *
+ * The Fighter's card said capacity 12 while its own talent list said "+2
+ * carrying capacity" two lines above, because only backpacks were counted.
+ */
+function talentCapacityBonus(a: ArchetypeRecord): number {
+	return a.recommendedTalents.reduce((sum, talent) => {
+		const text = TALENT_TEXT.get(talent.name) ?? ''
+		const rankOne = text.split(/\(Rank 2\)/)[0]
+		const match = /\+(\d+) to your carry(?:ing)? capacity/i.exec(rankOne)
+		return sum + (match ? Number(match[1]) : 0)
+	}, 0)
+}
+
+/**
  * Ammunition. `Supply` also covers rations, torches and crafting materials,
  * none of which a weapon grants, so those come out by name.
  */
@@ -190,6 +255,12 @@ export function deriveEquipment(a: ArchetypeRecord): {
 	equipmentLoad: number
 	totalLoad: number
 	carryCapacity: number
+	/** Extra capacity from a bought backpack, if any. */
+	capacityBonus: number
+	/** Extra capacity from a rank 1 talent, if any. */
+	talentCapacity: number
+	/** Load carried above carrying capacity, if any (owner ruling: allowed). */
+	encumberedBy: number
 } {
 	const resolved = a.startingEquipment.map((ref) => {
 		const entry = CATALOGUE.get(ref.item)
@@ -208,16 +279,20 @@ export function deriveEquipment(a: ArchetypeRecord): {
 	)
 	let freeTaken = false
 
+	let capacityBonus = 0
 	const items: DerivedEquipment[] = resolved.map(({ ref, entry }) => {
 		const quantity = ref.quantity ?? 1
 		const free =
 			carriesAmmoWeapon && !freeTaken && quantity === 1 && isAmmunition(entry)
 		if (free) freeTaken = true
+		const backpack = backpackCapacityBonus(entry)
+		if (backpack !== null) capacityBonus += backpack * quantity
 		return {
 			name: displayName(entry),
 			quantity,
 			cost: free ? 0 : toNumber(entry.cost) * quantity,
-			load: toNumber(entry.load) * quantity,
+			// A replacement backpack is still your first one, so it carries no load.
+			load: backpack !== null ? 0 : toNumber(entry.load) * quantity,
 			free,
 			note: ref.note,
 		}
@@ -243,15 +318,33 @@ export function deriveEquipment(a: ArchetypeRecord): {
 		)
 
 	const equipmentLoad = items.reduce((sum, i) => sum + i.load, 0)
-	const carryCapacity = Math.floor(a.attributes.STR / 2) + 8
+	const talentCapacity = talentCapacityBonus(a)
+	const carryCapacity =
+		Math.floor(a.attributes.STR / 2) + 8 + capacityBonus + talentCapacity
+	const totalLoad = equipmentLoad + STANDARD_GEAR_LOAD
+
+	// Carrying capacity is a SOFT limit (owner ruling, 2026-08-08): a character
+	// over it is encumbered and takes the penalties in `04-equipment/01-items.md`,
+	// which is a legitimate trade for a kit with nothing left to cut. The HARD
+	// limit is twice capacity — "you can never physically carry more than 2 x your
+	// carrying capacity" — and that one is a build error.
+	if (totalLoad > 2 * carryCapacity)
+		fail(
+			a.name,
+			`carries ${totalLoad} load against a hard limit of ${2 * carryCapacity} (2 x carrying capacity ${carryCapacity})`,
+		)
+
 	return {
 		items,
 		toolkit,
 		coinsSpent,
 		coinsRemaining,
 		equipmentLoad,
-		totalLoad: equipmentLoad + STANDARD_GEAR_LOAD,
+		totalLoad,
 		carryCapacity,
+		capacityBonus,
+		talentCapacity,
+		encumberedBy: Math.max(0, totalLoad - carryCapacity),
 	}
 }
 
@@ -262,6 +355,27 @@ export interface DerivedSkills {
 	customised: Set<string>
 	upbringing: { name: string; skills: string[] }
 	background: { name: string; skills: string[]; startingItem: string }
+}
+
+/**
+ * The starting array is fixed: d6 in all four, then one raised to d8 by dropping
+ * another to d4 (creation step 1). So a legal spread is exactly one d8, one d4 and
+ * two d6 — or all d6 for a build that takes neither.
+ *
+ * The Tamer shipped with two d4s and one d6, which no character can build, and
+ * both d4s sat on Spirit and Mind, the two attributes its Nature rolls use.
+ */
+export function validateAttributes(a: ArchetypeRecord): void {
+	const dice = Object.values(a.attributes).sort((x, y) => x - y)
+	const legal = [
+		[4, 6, 6, 8],
+		[6, 6, 6, 6],
+	]
+	if (!legal.some((array) => array.every((die, i) => die === dice[i])))
+		fail(
+			a.name,
+			`has attributes ${dice.map((d) => `d${d}`).join('/')}, which the array cannot produce: raise one to d8 only by dropping one to d4`,
+		)
 }
 
 export function deriveSkills(a: ArchetypeRecord): DerivedSkills {
@@ -285,6 +399,16 @@ export function deriveSkills(a: ArchetypeRecord): DerivedSkills {
 		fail(
 			a.name,
 			`suggestedSkills leaves ${rank0.length} rank 0 skills, not 4 (7 total expected)`,
+		)
+
+	// "Any character can only learn one of the two magic skills Arcana and
+	// Mysticism" (07-magic/01-magic-spells). Recording one at rank 0 is still
+	// learning it, so the pair is illegal at any rank. The Summoner shipped with
+	// Arcana at rank 1 and Mysticism at rank 0.
+	if (suggested.includes('Arcana') && suggested.includes('Mysticism'))
+		fail(
+			a.name,
+			'records both Arcana and Mysticism, and a character may only ever learn one magic skill',
 		)
 
 	const granted = new Set([
@@ -313,10 +437,17 @@ export function deriveSkills(a: ArchetypeRecord): DerivedSkills {
  */
 export function requiredCombatArts(a: ArchetypeRecord): number {
 	const suggested = splitSkills(a.suggestedSkills)
-	return WEAPON_SKILLS.filter((skill) => suggested.includes(skill)).reduce(
-		(sum, skill) => sum + (a.primarySkills.includes(skill) ? 2 : 1),
-		0,
+	const fromSkills = WEAPON_SKILLS.filter((skill) =>
+		suggested.includes(skill),
+	).reduce((sum, skill) => sum + (a.primarySkills.includes(skill) ? 2 : 1), 0)
+	// "(Rank 1) You learn two more Combat Arts for any melee weapons." A talent
+	// can raise the budget, so the count is not a pure function of skill ranks.
+	const fromTalents = a.recommendedTalents.some(
+		(t) => t.name === 'Art of Fighting',
 	)
+		? 2
+		: 0
+	return fromSkills + fromTalents
 }
 
 /** Weapon categories the archetype can actually bring to a Combat Art. */
@@ -331,6 +462,9 @@ function usableWeaponCategories(a: ArchetypeRecord): Set<string> {
 	}
 	// "Unarmed attacks don't count as wielding a weapon in regards to Combat
 	// Arts ... unless you have the Pugilist talent" (05-combat/02-attacking.md).
+	// Pugilist also makes SIMPLE weapons count as brawling for its owner (owner
+	// ruling, 2026-08-08), which is what lets a Monk use its Brawling arts with a
+	// quarterstaff in hand.
 	if (a.recommendedTalents.some((t) => t.name === 'Pugilist'))
 		categories.add('Brawling')
 	return categories
@@ -379,6 +513,85 @@ export function deriveFocusPool(a: ArchetypeRecord): {
 	const attribute = magicSkill === 'Arcana' ? 'MND' : 'SPI'
 	const value = a.attributes[attribute]
 	return { attribute, value, total: value - 2 + 2 }
+}
+
+/**
+ * Every recommended talent must belong to one of the three rank-1 skills.
+ *
+ * A skill grants one talent point at rank 1, and rank 0 grants none — so a talent
+ * whose skill the archetype only holds at rank 0 is one the character is not
+ * allowed to take. The Champion shipped recommending `Heavy Armor Mastery`, a
+ * Fortitude talent, with no Fortitude at rank 1.
+ */
+export function validateTalents(a: ArchetypeRecord): void {
+	if (a.recommendedTalents.length !== a.primarySkills.length)
+		fail(
+			a.name,
+			`recommends ${a.recommendedTalents.length} talents for ${a.primarySkills.length} rank 1 skills`,
+		)
+	a.recommendedTalents.forEach((talent, i) => {
+		const skill = TALENT_SKILL.get(talent.name)
+		if (!skill) fail(a.name, `talent "${talent.name}" is not in talents.json`)
+		if (!a.primarySkills.includes(skill))
+			fail(
+				a.name,
+				`talent "${talent.name}" requires ${skill}, which is not one of its rank 1 skills (${a.primarySkills.join(', ')})`,
+			)
+		// The generator prints talent i beside rank 1 skill i, so the ORDER is a
+		// contract rather than a convention. Reordering the Priest's skills without
+		// reordering its talents rendered "Lore - Rallying Cry" — legal by
+		// membership, and wrong on the page.
+		if (skill !== a.primarySkills[i])
+			fail(
+				a.name,
+				`talent "${talent.name}" (${skill}) is listed in position ${i + 1}, where its rank 1 skills put ${a.primarySkills[i]} — recommendedTalents must follow primarySkills order`,
+			)
+	})
+}
+
+/**
+ * Every starting spell must exist, sit in the option it is listed under, and be a
+ * rank the character can actually learn.
+ *
+ * Both faults this catches shipped: the Champion listed `Protect from Influence`
+ * as rank 1 when the catalogue has it at rank 2, and the Oracle listed
+ * `Whisper of Dreams`, which is not a spell at all.
+ */
+export function validateSpells(a: ArchetypeRecord): void {
+	const data = a.spellData
+	if (!data) return
+	const arcane = data.magicSkill === 'Arcana'
+	const catalogue = arcane ? ARCANE_SPELLS : MYSTIC_SPELLS
+	const groupOf = (s: SpellRecord) => (arcane ? s.discipline : s.tradition)
+	const kind = arcane ? 'discipline' : 'tradition'
+
+	for (const option of data.options) {
+		for (const spell of option.spells) {
+			const record = catalogue.get(spell.name)
+			if (!record)
+				fail(
+					a.name,
+					`spell "${spell.name}" is not in the ${data.magicSkill} catalogue`,
+				)
+			const rank = Number(record.rank)
+			if (rank !== spell.rank)
+				fail(
+					a.name,
+					`spell "${spell.name}" is listed at rank ${spell.rank}, but the catalogue has it at rank ${rank}`,
+				)
+			// A starting character learns spells of rank 0 or 1 only.
+			if (rank > 1)
+				fail(
+					a.name,
+					`spell "${spell.name}" is rank ${rank}, which a rank 1 caster cannot learn`,
+				)
+			if (groupOf(record) !== option.name)
+				fail(
+					a.name,
+					`spell "${spell.name}" belongs to the ${groupOf(record)} ${kind}, but is listed under ${option.name}`,
+				)
+		}
+	}
 }
 
 /** How many spells the archetype knows at rank 1, given its choice mode. */
@@ -502,6 +715,11 @@ export function derive(record: ArchetypeRecord): DerivedArchetype {
 	for (const talent of record.recommendedTalents)
 		if (!talent.gloss.trim())
 			fail(record.name, `talent "${talent.name}" has no gloss`)
+	validateAttributes(record)
+	validateTalents(record)
+	validateSpells(record)
+	validateTalents(record)
+	validateSpells(record)
 	validateCompanions(record)
 
 	const equipment = deriveEquipment(record)

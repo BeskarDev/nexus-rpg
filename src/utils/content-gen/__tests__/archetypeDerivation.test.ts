@@ -10,6 +10,9 @@ import {
 	deriveSpellsKnown,
 	requiredCombatArts,
 	validateCompanions,
+	validateTalents,
+	validateSpells,
+	validateAttributes,
 	deriveCompanionCost,
 	COMPANION_COST,
 	FAMILIAR_RITUAL_COST,
@@ -53,8 +56,11 @@ describe('archetype derivation', () => {
 			expect(a.equipment.totalLoad, a.record.name).toBe(
 				a.equipment.equipmentLoad + STANDARD_GEAR_LOAD,
 			)
+			// Carrying capacity is a SOFT limit (owner ruling, 2026-08-08): a kit may
+			// sit over it and take the encumbered penalties. Twice capacity is the
+			// hard one.
 			expect(a.equipment.totalLoad, a.record.name).toBeLessThanOrEqual(
-				a.equipment.carryCapacity,
+				2 * a.equipment.carryCapacity,
 			)
 		}
 	})
@@ -75,7 +81,6 @@ describe('archetype derivation', () => {
 
 	it('counts combat arts from the weapon skills, rank 0 included', () => {
 		// 02-character-creation.md: two per weapon skill at rank 1, one at rank 0.
-		expect(requiredCombatArts(record('Fighter'))).toBe(3) // Fighting 1 + Archery 0
 		expect(requiredCombatArts(record('Ranger'))).toBe(3) // Archery 1 + Fighting 0
 		expect(requiredCombatArts(record('Gladiator'))).toBe(2) // Fighting 1 only
 		expect(requiredCombatArts(record('Sorcerer'))).toBe(0) // no weapon skill
@@ -148,7 +153,7 @@ describe('archetype derivation fails loud', () => {
 	})
 
 	it('rejects the wrong number of combat arts', () => {
-		const bad = record('Fighter')
+		const bad = record('Ranger')
 		bad.recommendedCombatArts = bad.recommendedCombatArts!.slice(0, 2)
 		expect(() => deriveCombatArts(bad)).toThrow(/grant 3/)
 	})
@@ -188,7 +193,9 @@ describe('archetype derivation fails loud', () => {
 		a.recommendedTalents = a.recommendedTalents.filter(
 			(t) => t.name !== 'Animal Companion',
 		)
-		expect(() => validateCompanions(a)).toThrow(/Druid.*Animal Companion.*talent/s)
+		expect(() => validateCompanions(a)).toThrow(
+			/Druid.*Animal Companion.*talent/s,
+		)
 	})
 
 	it('fails a familiar with no Conjure Familiar spell', () => {
@@ -226,5 +233,243 @@ describe('archetype derivation fails loud', () => {
 		expect(() => deriveCompanionCost(a, COMPANION_COST - 1)).toThrow(
 			/Tamer.*cannot pay the 75 coins/s,
 		)
+	})
+
+	// Owner ruling 2026-08-08: carrying capacity is a soft limit. Being over it is
+	// a priced trade; twice capacity is the hard limit and fails the build.
+	it('allows a kit over carrying capacity and reports by how much', () => {
+		// Synthetic rather than a published archetype: after the backpack retrofit
+		// none of the 25 is encumbered, and this tests the mechanic, not the set.
+		const a = record('Apothecary') // d4 Strength: capacity 10, standard gear 5
+		const e = deriveEquipment({
+			...a,
+			startingEquipment: [{ item: 'Blowpipe', quantity: 7 }],
+		})
+		expect(e.totalLoad).toBe(12)
+		expect(e.carryCapacity).toBe(10)
+		expect(e.encumberedBy).toBe(2)
+	})
+
+	it('reports no encumbrance for a kit inside capacity', () => {
+		for (const a of deriveAll()) {
+			if (a.equipment.totalLoad <= a.equipment.carryCapacity)
+				expect(a.equipment.encumberedBy, a.record.name).toBe(0)
+		}
+	})
+
+	it('fails a kit above twice carrying capacity', () => {
+		const a = record('Apothecary')
+		// d4 Strength: capacity 10, hard limit 20, standard gear 5.
+		// 20 load of darts (100 coins, so the budget gate does not fire first) plus
+		// 5 of standard gear is 25, against a hard limit of 20.
+		a.startingEquipment = [{ item: 'Blowdarts (d8)', quantity: 20 }]
+		expect(() => deriveEquipment(a)).toThrow(/Apothecary.*hard limit of 20/s)
+	})
+
+	// The Champion shipped recommending Heavy Armor Mastery, a Fortitude talent,
+	// with no Fortitude at rank 1 — a talent it was not allowed to take.
+	it('fails a talent whose skill the archetype only has at rank 0', () => {
+		const a = record('Champion')
+		a.recommendedTalents = [
+			{ name: 'Heavy Armor Mastery', gloss: 'x' },
+			...a.recommendedTalents.slice(1),
+		]
+		expect(() => validateTalents(a)).toThrow(
+			/Champion.*Fortitude.*not one of its rank 1 skills/s,
+		)
+	})
+
+	it('fails a talent that is not in talents.json', () => {
+		const a = record('Champion')
+		// Keep the count at three, or the arity check fires first.
+		a.recommendedTalents[0] = { name: 'Not A Talent', gloss: 'x' }
+		expect(() => validateTalents(a)).toThrow(/Champion.*not in talents.json/s)
+	})
+
+	it('accepts every published archetype talent', () => {
+		for (const a of deriveAll())
+			expect(() => validateTalents(a.record), a.record.name).not.toThrow()
+	})
+
+	// The Champion listed Protect from Influence at rank 1 (the catalogue has it at
+	// rank 2); the Oracle listed Whisper of Dreams, which is not a spell at all.
+	it('fails a spell the catalogue does not carry', () => {
+		const a = record('Champion')
+		a.spellData!.options[0].spells[0] = { name: 'Whisper of Dreams', rank: 1 }
+		expect(() => validateSpells(a)).toThrow(
+			/Champion.*not in the Mysticism catalogue/s,
+		)
+	})
+
+	it('fails a spell listed at the wrong rank', () => {
+		const a = record('Champion')
+		a.spellData!.options[0].spells[0] = { name: 'Radiant Burst', rank: 0 }
+		expect(() => validateSpells(a)).toThrow(
+			/Champion.*listed at rank 0.*catalogue has it at rank 1/s,
+		)
+	})
+
+	it('fails a spell above rank 1', () => {
+		const a = record('Champion')
+		a.spellData!.options[0].spells[0] = {
+			name: 'Protect from Influence',
+			rank: 2,
+		}
+		expect(() => validateSpells(a)).toThrow(
+			/Champion.*rank 2, which a rank 1 caster cannot learn/s,
+		)
+	})
+
+	it('fails a spell listed under the wrong tradition', () => {
+		const a = record('Champion')
+		a.spellData!.options[0].spells[0] = { name: 'Battle Surge', rank: 0 }
+		expect(() => validateSpells(a)).toThrow(
+			/Champion.*War tradition.*listed under Light/s,
+		)
+	})
+
+	it('accepts every published archetype spell list', () => {
+		for (const a of deriveAll())
+			expect(() => validateSpells(a.record), a.record.name).not.toThrow()
+	})
+
+	// The generator prints talent i beside rank 1 skill i, so order is a contract.
+	// The Warlock shipped with two Arcana talents and none for Lore, which rendered a
+	// Lore skill beside an Arcana talent.
+	it('fails talents listed out of primarySkills order', () => {
+		const a = record('Priest')
+		a.recommendedTalents = [
+			a.recommendedTalents[0],
+			a.recommendedTalents[2],
+			a.recommendedTalents[1],
+		]
+		expect(() => validateTalents(a)).toThrow(/must follow primarySkills order/s)
+	})
+
+	it('fails when a skill has no talent and another has two', () => {
+		const a = record('Warlock')
+		a.recommendedTalents[1] = { name: 'Arcane Spell Knowledge', gloss: 'x' }
+		expect(() => validateTalents(a)).toThrow(/Warlock/s)
+	})
+
+	it('pairs every archetype talent with the rank 1 skill printed beside it', () => {
+		for (const a of deriveAll()) {
+			a.record.recommendedTalents.forEach((t, i) => {
+				expect(() => validateTalents(a.record), a.record.name).not.toThrow()
+				expect(a.skills.rank1[i], `${a.record.name} slot ${i}`).toBeTruthy()
+			})
+		}
+	})
+
+	// Capacity is a PURCHASE, not a formula buff (owner ruling, 2026-08-08): a bought
+	// backpack replaces the free one, so it costs no load and raises the limit.
+	it("adds a bought backpack's capacity and charges it no load", () => {
+		const a = record('Slinger')
+		const plain = deriveEquipment({
+			...a,
+			startingEquipment: [{ item: 'Sling' }],
+		})
+		const packed = deriveEquipment({
+			...a,
+			startingEquipment: [
+				{ item: 'Sling' },
+				{ item: 'Traveler\u2019s Backpack' },
+			],
+		})
+		expect(plain.capacityBonus).toBe(0)
+		expect(packed.capacityBonus).toBe(2)
+		expect(packed.carryCapacity).toBe(plain.carryCapacity + 2)
+		// The backpack replaces the standard one, so it adds nothing to load.
+		expect(packed.equipmentLoad).toBe(plain.equipmentLoad)
+		expect(packed.coinsRemaining).toBe(plain.coinsRemaining - 50)
+	})
+
+	it('reads the bonus off the catalogue text, so the ladder scales', () => {
+		const a = record('Slinger')
+		for (const [name, bonus] of [
+			['Backpack', 0],
+			['Traveler\u2019s Backpack', 2],
+			['Explorer\u2019s Backpack', 4],
+		] as const) {
+			const e = deriveEquipment({ ...a, startingEquipment: [{ item: name }] })
+			expect(e.capacityBonus, name).toBe(bonus)
+			expect(e.equipmentLoad, name).toBe(0)
+		}
+	})
+
+	it('leaves no archetype encumbered after the backpack retrofit', () => {
+		for (const a of deriveAll())
+			expect(a.equipment.encumberedBy, a.record.name).toBe(0)
+	})
+
+	// A character may only ever learn one magic skill, at any rank. The Summoner
+	// shipped with Arcana at rank 1 and Mysticism among its rank 0 skills.
+	it('fails an archetype that records both magic skills', () => {
+		const a = record('Summoner')
+		a.suggestedSkills = a.suggestedSkills.replace('Streetwise', 'Mysticism')
+		expect(() => deriveSkills(a)).toThrow(
+			/Summoner.*only ever learn one magic skill/s,
+		)
+	})
+
+	it('leaves every published archetype with at most one magic skill', () => {
+		for (const a of deriveAll()) {
+			const skills = [...a.skills.rank1, ...a.skills.rank0]
+			const magic = skills.filter((s) => s === 'Arcana' || s === 'Mysticism')
+			expect(magic.length, a.record.name).toBeLessThanOrEqual(1)
+		}
+	})
+
+	// The array is one d8, one d4 and two d6 — the Tamer shipped with two d4s.
+	it('fails an attribute array the rules cannot produce', () => {
+		const a = record('Tamer')
+		a.attributes = { STR: 6, AGI: 8, SPI: 4, MND: 4 }
+		expect(() => validateAttributes(a)).toThrow(/Tamer.*array cannot produce/s)
+	})
+
+	it('accepts the all-d6 array and the standard spread', () => {
+		const a = record('Tamer')
+		for (const attributes of [
+			{ STR: 6, AGI: 8, SPI: 6, MND: 4 },
+			{ STR: 6, AGI: 6, SPI: 6, MND: 6 },
+		])
+			expect(() => validateAttributes({ ...a, attributes })).not.toThrow()
+	})
+
+	it('gives every published archetype a legal array', () => {
+		for (const a of deriveAll())
+			expect(() => validateAttributes(a.record), a.record.name).not.toThrow()
+	})
+
+	// Art of Fighting rank 1: "You learn two more Combat Arts for any melee
+	// weapons." The count is not a pure function of weapon-skill ranks.
+	it('adds the two Combat Arts a talent grants to the required count', () => {
+		const a = record('Fighter')
+		const withTalent = requiredCombatArts(a)
+		const withoutTalent = requiredCombatArts({
+			...a,
+			recommendedTalents: a.recommendedTalents.filter(
+				(t) => t.name !== 'Art of Fighting',
+			),
+		})
+		expect(withTalent - withoutTalent).toBe(2)
+		expect(withTalent).toBe(5)
+	})
+
+	// The Fighter's card read capacity 12 while its own talent list said "+2
+	// carrying capacity" two lines above it.
+	it('counts a talent carrying-capacity bonus, not only a backpack', () => {
+		const a = record('Fighter')
+		expect(deriveEquipment(a).talentCapacity).toBe(2)
+		expect(deriveEquipment(a).carryCapacity).toBe(
+			Math.floor(a.attributes.STR / 2) + 8 + 2,
+		)
+		const stripped = {
+			...a,
+			recommendedTalents: a.recommendedTalents.filter(
+				(t) => t.name !== 'Bulky',
+			),
+		}
+		expect(deriveEquipment(stripped).talentCapacity).toBe(0)
 	})
 })

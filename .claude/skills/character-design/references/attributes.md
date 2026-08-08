@@ -48,8 +48,9 @@ Attribute modifiers used by abilities: ¼ / ½ / 1 / 1½ × attribute, from the 
 
 The d4 is a **real weakness the table will see**, not a discard slot. Check what it costs:
 
-- **STR d4** → HP 16 (the lowest in the game), carrying capacity 10, +1 bane-equivalent
-  weakness on climb/swim/shove contests. Fine for a caster who stays back; dangerous on anyone
+- **STR d4** → HP 16 (the lowest in the game), carrying capacity 10 (so a consumable-heavy kit
+  will start encumbered — allowed, but priced; see equipment.md), +1 bane-equivalent weakness
+  on climb/swim/shove contests. Fine for a caster who stays back; dangerous on anyone
   who ends up in melee, and it is the first thing that kills a starting character.
 - **AGI d4** → Dodge 7. Every ranged attack and area effect in the game is rolled against that
   number. Acceptable on an armored frontliner (they have AV and HP to absorb it), bad on

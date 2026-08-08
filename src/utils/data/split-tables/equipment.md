@@ -38,7 +38,7 @@ Name | Quality | Load | Cost | Description
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Simple Clothes**  | 1  | 1  | 5  | While worn, this takes up 0 load instead. Simple, functional clothes.
-**Traveler‘s Clothes**  | 2  | 1  | 25  | While worn, this takes up 0 load instead. Sturdy clothes made for harsh weather and long journeys.
+**Traveler’s Clothes**  | 2  | 1  | 25  | While worn, this takes up 0 load instead. Sturdy clothes made for harsh weather and long journeys.
 **Fine Clothes**  | 3  | 1  | 250  | While worn, this takes up 0 load instead. Clothes of a noble or wealthy merchant made from high quality materials.
 **Extravagant Clothes**  | 4  | 1  | 750  | While worn, this takes up 0 load instead. Clothes worthy of a king or queen made from the most exotic materials.
 
@@ -71,12 +71,12 @@ Name | Quality | Load | Cost | Description
 **Pickaxe**  | 1  | 2  | 30  | Used for mining rock and minerals.
 **Portable Ram**  | 1  | 2  | 50  | Roll Strength + Athletics with this ram to force a door open - very loudly.
 **Wineskin**  | 2  | 1  | 30  | An animal bladder filled with a cheap wine. Intoxicates on frequent consumption. Spend 1 use to become intoxicated for a medium duration. While being intoxicated, you are also poisoned.
-**Alchemist‘s Supplies**  | 2  | 1  | 50  | Contains glass beakers with a metal frame, a glass stirring rod, a small mortar and pestle, a pouch of common alchemical ingredients.<br/>Spend 1 use in combination with base ingredients to craft alchemy items.<br/>
+**Alchemist’s Supplies**  | 2  | 1  | 50  | Contains glass beakers with a metal frame, a glass stirring rod, a small mortar and pestle, a pouch of common alchemical ingredients.<br/>Spend 1 use in combination with base ingredients to craft alchemy items.<br/>
 **Camping Kit**  | 2  | 1  | 50  | Contains a tent, tent pegs, a tinder box, and a bedroll. Provides shelter for a night‘s rest for up to two people.
-**Healer‘s Kit**  | 2  | 1  | 50  | Contains powders, bandages, a mortar and pestle, and clippers to collect plants.<br/>Spend 1 use to roll Spirit/Mind + Nature to attempt to treat a Wound.<br/>
+**Healer’s Kit**  | 2  | 1  | 50  | Contains powders, bandages, a mortar and pestle, and clippers to collect plants.<br/>Spend 1 use to roll Spirit/Mind + Nature to attempt to treat a Wound.<br/>
 **Lantern**  | 2  | 1  | 50  | Requires oil to be used as a source of light. Emits bright light in close range and dim light in medium range when lit. Can be dimmed (only dim light in close distance). The lantern is not considered as Supply.
 **Repair Kit**  | 2  | 1  | 50  | Contains a sturdy leather tool pouch with various crafting implements: a hammer, nails, a set of chisels, a small saw, a measuring tape, and a whetstone. Using the kit, you can attempt to repair a damaged item during a night's rest. Spend 1 use and roll Agility/Mind + Crafting against 5 + the item’s Quality as the difficulty. On a success, the item is no longer damaged.
-**Thieves‘ Tools**  | 2  | 1  | 50  | Contains a small file, a set of lock picks, a small mirror, a set of narrow-bladed scissors, and a pair of pliers.<br/>Each time you fail a roll to pick a lock, spend 1 use.<br/>
+**Thieves’ Tools**  | 2  | 1  | 50  | Contains a small file, a set of lock picks, a small mirror, a set of narrow-bladed scissors, and a pair of pliers.<br/>Each time you fail a roll to pick a lock, spend 1 use.<br/>
 **Bundle of Maps**  | 2  | 1  | 75  | Contains several maps for a specific region. Spend 1 use to consult the maps about a specific area and gain +1 boon on Nature rolls for that area.
 **Bundle of Scrolls**  | 2  | 1  | 75  | Contains several scrolls with valuable knowledge about a topic, such as local politics, medicine, or the history of a region. Spend 1 use to consult the scrolls about a specific topic and gain +1 boon on rolls with either Education, Lore, or Nature regarding that topic.
 **Spell Catalyst (Arcane Conduit)**  | 2  | 0  | 75  | A small object infused by an elemental gem or similar arcane conduit used to be able to cast arcane spells. Can be combined with another hand-held (weapon, shield, etc.) or worn (helmet, necklace, etc.) item.
@@ -106,21 +106,21 @@ Name | Quality | Load | Cost | Description
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Adventuring Gear**  | 2  | 1  | 50  | Contains a crowbar, a hammer, a shovel, chalk, a wooden pole, and spikes. Spend 1 use to produce one specific item from the list.
-**Brewer‘s Tools**  | 2  | 1  | 50  | Contains a large glass jug, a quantity of hops, a siphon, and several feet of tubing. Spend 1 use to produce one specific item from the list.
-**Carpenter‘s Tools**  | 2  | 1  | 50  | Contains a saw, a hammer, nails, a hatchet, a square, a ruler, an adze, a plane, and a chisel. Spend 1 use to produce one specific item from the list.
-**Climber‘s Kit**  | 2  | 1  | 50  | Contains pitons, boot tips, gloves, and a harness. Spend 1 use to produce one specific item from the list.
-**Cook‘s Utensils**  | 2  | 1  | 50  | Contains a metal pot, knives, forks, a stirring spoon, and a ladle. Spend 1 use to produce one specific item from the list.
+**Brewer’s Tools**  | 2  | 1  | 50  | Contains a large glass jug, a quantity of hops, a siphon, and several feet of tubing. Spend 1 use to produce one specific item from the list.
+**Carpenter’s Tools**  | 2  | 1  | 50  | Contains a saw, a hammer, nails, a hatchet, a square, a ruler, an adze, a plane, and a chisel. Spend 1 use to produce one specific item from the list.
+**Climber’s Kit**  | 2  | 1  | 50  | Contains pitons, boot tips, gloves, and a harness. Spend 1 use to produce one specific item from the list.
+**Cook’s Utensils**  | 2  | 1  | 50  | Contains a metal pot, knives, forks, a stirring spoon, and a ladle. Spend 1 use to produce one specific item from the list.
 **Disguise Kit**  | 2  | 1  | 50  | Contains cosmetics, hair dye, small props, and a few different pieces of clothing. Spend 1 use to produce one specific item from the list.
 **Gaming Set**  | 2  | 1  | 50  | Contains all the pieces to play a specific game, such as a board, cards, dice, or tokens. Spend 1 use to produce one specific item from the list.
-**Leatherworker‘s Tools**  | 2  | 1  | 50  | Contains a knife, a small mallet, an edger, a hole punch, thread, and leather scraps. Spend 1 use to produce one specific item from the list.
-**Mason‘s Tools**  | 2  | 1  | 50  | Contains a small trowel, a hammer, a chisel, brushes, and a square. Spend 1 use to produce one specific item from the list.
-**Navigator‘s Tools**  | 2  | 1  | 50  | Contains a sextant, a compass, calipers, a ruler, parchment, ink, and a quill. Spend 1 use to produce one specific item from the list.
-**Painter‘s Supplies**  | 2  | 1  | 50  | Contains an easel, canvas, brushes, charcoal sticks, and a palette. Spend 1 use to produce one specific item from the list.
-**Smith‘s Tools**  | 2  | 1  | 50  | Contains hammers, tongs, charcoal, rags, and a small whetstone. Spend 1 use to produce one specific item from the list.
-**Weaver‘s Tools**  | 2  | 1  | 50  | Contains thread, needles, and scraps of cloth. Spend 1 use to produce one specific item from the list.
-**Woodcarver‘s Tools**  | 2  | 1  | 50  | Contains a knife, a gourge, and a small saw. Spend 1 use to produce one specific item from the list.
+**Leatherworker’s Tools**  | 2  | 1  | 50  | Contains a knife, a small mallet, an edger, a hole punch, thread, and leather scraps. Spend 1 use to produce one specific item from the list.
+**Mason’s Tools**  | 2  | 1  | 50  | Contains a small trowel, a hammer, a chisel, brushes, and a square. Spend 1 use to produce one specific item from the list.
+**Navigator’s Tools**  | 2  | 1  | 50  | Contains a sextant, a compass, calipers, a ruler, parchment, ink, and a quill. Spend 1 use to produce one specific item from the list.
+**Painter’s Supplies**  | 2  | 1  | 50  | Contains an easel, canvas, brushes, charcoal sticks, and a palette. Spend 1 use to produce one specific item from the list.
+**Smith’s Tools**  | 2  | 1  | 50  | Contains hammers, tongs, charcoal, rags, and a small whetstone. Spend 1 use to produce one specific item from the list.
+**Weaver’s Tools**  | 2  | 1  | 50  | Contains thread, needles, and scraps of cloth. Spend 1 use to produce one specific item from the list.
+**Woodcarver’s Tools**  | 2  | 1  | 50  | Contains a knife, a gourge, and a small saw. Spend 1 use to produce one specific item from the list.
 **Musical Instrument**  | 2  | 1  | 75  | Any common type of string, woodwind, brass, or percussion instrument. Examples include a harp, lire, or cithara for stringed instruments. A flute, pan pipes, or clarinet for woodwind instruments. A horn, trumpet, or tuba for brass instruments. Or lastly hand drums, a tambourine, or macaras for percussion instruments.
-**Jeweler‘s Tools**  | 2  | 1  | 100  | Contains a small saw, hammer, files, pliers, tweezers, and a small magnifying glass. Spend 1 use to produce one specific item from the list.
+**Jeweler’s Tools**  | 2  | 1  | 100  | Contains a small saw, hammer, files, pliers, tweezers, and a small magnifying glass. Spend 1 use to produce one specific item from the list.
 
 
 ## Trade Good 

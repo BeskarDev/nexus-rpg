@@ -12,7 +12,7 @@ A non-magical animal handler who commands a loyal companion and controls space w
 	role="Support / Controller"
 	str="d6"
 	agi="d8"
-	spi="d4"
+	spi="d6"
 	mnd="d4"
 >
 
@@ -28,9 +28,9 @@ A non-magical animal handler who commands a loyal companion and controls space w
 
 <ArchetypeField label="Rank 1" block>
 
-- Fighting † - *Pugilist (Rank 1)* - Unarmed and brawling control pairs with whips and grapples
+- Fighting † - *Riposte (Rank 1)* - Miss you in melee and your whip answers with a free attack
 - Nature - *Animal Companion (Rank 1)* - Control an animal companion (Tier ≤ Nature)
-- Athletics - *Fast Stride (Rank 1)* - Use Dash as a Quick Action for better kiting and positioning
+- Athletics - *Grappler (Rank 1)* - Any whip hit can also grapple them, which is what Snare needs
 
 </ArchetypeField>
 
@@ -55,24 +55,25 @@ With Fighting rank 1, you know **2 Combat Arts**. Recommended:
 - Leather Armor (50 coins, 1 load)
 - Club (50 coins, 1 load)
 - Rope (Hemp) (10 coins, 1 load)
-- Healer‘s Kit (50 coins, 1 load)
+- Healer’s Kit (50 coins, 1 load)
 - Healing Salve (weak) (15 coins, 1 load)
+- Traveler’s Backpack (50 coins, 0 load) - replaces your standard pack: no load of its own, +2 carrying capacity
 - Adventuring Gear toolkit (included in standard gear)
 
 <ArchetypeTally
-	coins={125}
-	coinsFrom="350 - 225 spent"
+	coins={75}
+	coinsFrom="350 - 275 spent"
 	load={11}
 	loadFrom="equipment 6 + standard gear 5"
-	capacity={11}
-	capacityFrom="1/2 STR 3 + 8"
+	capacity={13}
+	capacityFrom="1/2 STR 3 + 8 + 2 pack"
 />
 
 </ArchetypeSection>
 
 <ArchetypeSection label="Animal Companion">
 
-The talent lets you keep a companion, it does not give you one. A trained Tier 1 companion costs 75 coins, which you can pay from your starting coins to begin play with it, leaving 50. You can also tame one during play instead.
+The talent lets you keep a companion, it does not give you one. A trained Tier 1 companion costs 75 coins, which you can pay from your starting coins to begin play with it, leaving 0. You can also tame one during play instead.
 
 Use the companion base stat block with Tier equal to your Nature rank (see the Mounts & Companions rules). Then pick any one Animal trait to define your companion.
 
@@ -88,10 +89,10 @@ Suggested traits:
 
 ## Playstyle
 
-The Tamer locks lanes and creates openings for their animal. Use Fast Stride to kite. Disarm to strip threats. Snare to pin priority targets so your companion can maul them. Pugilist improves your baseline brawl control with whips and grapples. Your companion is your second body. Set up flanks and force bad choices.
+The Tamer locks lanes and creates openings for their animal. Your whip has reach, so you fight from close range and Riposte punishes anyone who swings at you and misses. Grappler turns any whip hit into a grapple, which is what Snare hangs off: restrained, and prone on a strong hit, with your companion already on top of them. Disarm strips the threat out of their hands entirely. Your companion is your second body. Set up flanks and force bad choices.
 
 ## Advancement
 
-Raise Nature 2-3 to deepen companion options. Fighting 2-3 for more Combat Arts (Supreme Disarm, Flurry). Add Athletics or Survival for mobility and fieldcraft. Consider Field Medic from Nature for downtime care.
+Raise Nature 2-3 to deepen companion options. Fighting 2-3 for more Combat Arts (Supreme Disarm, Flurry). Add Survival for fieldcraft and Fast Stride from Athletics if you would rather kite than hold a lane. Consider Field Medic from Nature for downtime care.
 
 [Back to all archetypes](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)

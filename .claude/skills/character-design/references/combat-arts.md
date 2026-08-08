@@ -39,6 +39,16 @@ Two rules the check depends on:
   with the `thrown` property, so it legally powers `Pinning Shot`.
 - **Unarmed counts as `Brawling` only with the `Pugilist` talent.** A monk with a quarterstaff
   and two brawling arts is illegal unless Pugilist is one of the three talents.
+- **`Snare` and `Choking Grip` are used "when attempting to grapple"**, so they need the
+  Grapple Action (`Strength + Athletics`) to hang off, and they only come alive with the
+  `Grappler` talent, which converts a hit into a grapple. Recommending either to a build with
+  no Athletics and no `Grappler` gives it an art it will rarely get to use — legal, and still
+  wrong.
+- **`Snare` and `Choking Grip` are used "when attempting to grapple"**, so they need the
+  Grapple Action (`Strength + Athletics`) to hang off, and they only come alive with the
+  `Grappler` talent, which converts a hit into a grapple. Recommending either to a build with
+  no Athletics and no `Grappler` gives it an art it will rarely get to use — legal, and still
+  wrong.
 
 ## The 29 basic arts by weapon type
 
