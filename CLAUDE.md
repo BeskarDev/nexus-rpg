@@ -64,6 +64,7 @@ bun run creature:build # Creature builder CLI
 - Redux state updates via Immer (Redux Toolkit); action pattern `characterSheetActions.verbNoun`.
 - Never commit temporary test scripts or standalone summary docs in the project root.
 - **Never run `git commit` or `git push`.** All version control operations are done manually by the owner. Finish edits, verify docs and JSON agree, then stop — never attempt to stage or commit.
+- **Never run `git checkout`, `git restore` or `git clean` to undo changes.** Nothing here is staged or committed by the agent, so an uncommitted file has no recovery path — a revert is permanent data loss, and it has already cost a full day of work once. Prettier reformatting files unrelated to the change is fine: **leave it**. If a diff genuinely must be narrowed, run the formatter on named paths only.
 
 ## CI must be clean, always
 

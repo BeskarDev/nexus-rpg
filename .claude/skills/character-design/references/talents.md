@@ -84,12 +84,6 @@ turn, one on an enemy's action). Two that both want your own turn's Quick Action
   `Knockout` all follow), or a weapon in each fist with `Dual Wielder` (no banes for two light
   melee weapons). The set had this backwards on two archetypes at once.
 
-  **But `Pugilist` and BUYING brawling weapons are mutually redundant** (owner ruling,
-  2026-08-08). Pugilist makes fists into 2-damage, crush, light brawling weapons — which is a
-  `Cestus`. A build that takes the talent *and* buys cesti pays 100 coins for the +1 Parry
-  clause alone. Pick a lane: empty hands with `Pugilist` (`Grappler`, `Choking Grip`,
-  `Knockout` all follow), or a weapon in each fist with `Dual Wielder` (no banes for two light
-  melee weapons). The set had this backwards on two archetypes at once.
 - **Survive-the-choice**: an aggressive stance plus a survivability talent — `Battle Rage` with
   `Hard to Kill` or `Body of Bronze`; `Rapid Shot` with `Reflexive Shooter`.
 - **Cast-and-swing**: `Spellblade` / `Mystic Champion` (spell into a weapon attack) with a
