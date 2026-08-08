@@ -34,7 +34,7 @@ bun run creature:build # Creature builder CLI
 | `src/types/Character.ts` | Central TypeScript type definitions |
 | `src/utils/scripts/` | Python content pipeline: `notion-import/`, `converters/`, `transformers/` |
 | `spec/` | Technical feature specs for the app (currently mostly Notion-import work) |
-| `.claude/skills/` | Design + workflow skills (spell-design, talent-design, creature-design, magic-item-design, notion-sync) and `codex-theme` for the site's visual language and codex components |
+| `.claude/skills/` | Design + workflow skills (spell-design, talent-design, creature-design, magic-item-design, character-design, notion-sync) and `codex-theme` for the site's visual language and codex components |
 | `.github/instructions/` | Legacy Copilot instructions — superseded by CLAUDE.md and skills, kept as pointer stubs |
 
 ## Game Design Work

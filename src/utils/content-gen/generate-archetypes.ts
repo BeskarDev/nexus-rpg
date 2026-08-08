@@ -217,18 +217,26 @@ function spellSection(a: DerivedArchetype): string | null {
 function companionSection(a: DerivedArchetype): string | null {
 	const companions = a.record.recommendedCompanions
 	const familiars = a.record.recommendedFamiliars
-	if (companions) {
+	// The talent and the spell grant the ABILITY to have a companion, never the
+	// creature (owner ruling; the Mounts & Companions chapter has always said so).
+	// A starting character may pay for one out of the 350 coins, and this page is
+	// where a new player looks for that number — so the cost and the remainder are
+	// derived and stated rather than left to the reader.
+	const cost = a.companionCost
+	if (companions && cost) {
 		return section(
 			'Animal Companion',
+			`The talent lets you keep a companion, it does not give you one. A trained Tier 1 companion costs ${cost.cost} coins, which you can pay from your starting coins to begin play with it, leaving ${cost.left}. You can also tame one during play instead.`,
 			'Use the companion base stat block with Tier equal to your Nature rank (see the Mounts & Companions rules). Then pick any one Animal trait to define your companion.',
 			'Suggested traits:',
 			companions.map((c) => `- **${c.name}.** ${c.gloss}`).join('\n'),
 		)
 	}
-	if (familiars) {
+	if (familiars && cost) {
 		return section(
 			'Familiar',
-			'If you prepare Conjure Familiar, build your familiar as a Tier 0 companion (see the Mounts & Companions rules). Then pick any one Animal trait to define its form and role.',
+			`Conjure Familiar is a ritual taking hours, and each casting spends ${cost.cost} coins of incense and occult ingredients. You can pay that from your starting coins to begin play with your familiar already summoned, leaving ${cost.left}.`,
+			'Build your familiar as a Tier 0 companion (see the Mounts & Companions rules), then pick any one Animal trait to define its form and role.',
 			'Suggested traits:',
 			familiars.map((f) => `- **${f.name}.** ${f.gloss}`).join('\n'),
 		)

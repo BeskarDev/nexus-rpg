@@ -9,6 +9,10 @@ import {
 	deriveSkills,
 	deriveSpellsKnown,
 	requiredCombatArts,
+	validateCompanions,
+	deriveCompanionCost,
+	COMPANION_COST,
+	FAMILIAR_RITUAL_COST,
 	STANDARD_GEAR_LOAD,
 	STARTING_COINS,
 	type ArchetypeRecord,
@@ -174,5 +178,53 @@ describe('archetype derivation fails loud', () => {
 			2,
 		)
 		expect(() => deriveSpellsKnown(bad)).toThrow(/differ in size/)
+	})
+
+	// A companion has to be paid for: the `Animal Companion` talent (Nature) or the
+	// `Conjure Familiar` spell. Bard shipped with a block and neither, because its
+	// pre-generation page hedged with "If you choose Animal Companion…".
+	it('fails an animal companion with no Animal Companion talent', () => {
+		const a = record('Druid')
+		a.recommendedTalents = a.recommendedTalents.filter(
+			(t) => t.name !== 'Animal Companion',
+		)
+		expect(() => validateCompanions(a)).toThrow(/Druid.*Animal Companion.*talent/s)
+	})
+
+	it('fails a familiar with no Conjure Familiar spell', () => {
+		const a = record('Summoner')
+		for (const option of a.spellData!.options)
+			option.spells = option.spells.filter((s) => s.name !== 'Conjure Familiar')
+		expect(() => validateCompanions(a)).toThrow(/Summoner.*Conjure Familiar/s)
+	})
+
+	it('accepts the three companion archetypes and the one familiar archetype', () => {
+		for (const name of ['Druid', 'Ranger', 'Tamer', 'Summoner'])
+			expect(() => validateCompanions(record(name)), name).not.toThrow()
+	})
+
+	// Owner ruling 2026-08-08: a starting character may pay for the companion out
+	// of the 350 coins, so every companion archetype must be able to afford it.
+	it('prices every companion and familiar out of the starting coins', () => {
+		for (const a of deriveAll()) {
+			const cost = a.companionCost
+			if (!a.record.recommendedCompanions && !a.record.recommendedFamiliars) {
+				expect(cost, a.record.name).toBeNull()
+				continue
+			}
+			expect(cost, a.record.name).not.toBeNull()
+			expect(cost!.cost).toBe(
+				a.record.recommendedCompanions ? COMPANION_COST : FAMILIAR_RITUAL_COST,
+			)
+			expect(cost!.left, a.record.name).toBeGreaterThanOrEqual(0)
+			expect(cost!.left).toBe(a.equipment.coinsRemaining - cost!.cost)
+		}
+	})
+
+	it('fails a companion the kit cannot afford', () => {
+		const a = record('Tamer')
+		expect(() => deriveCompanionCost(a, COMPANION_COST - 1)).toThrow(
+			/Tamer.*cannot pay the 75 coins/s,
+		)
 	})
 })

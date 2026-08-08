@@ -166,6 +166,8 @@ Every adventurer begins with the following standard equipment:
 Additionally, you receive 350 coins to spend on equipment and items of your choice:
 
 - Selecting a weapon requiring ammunition gives you one unit of that ammunition for free (e.g., arrows (d8) for a bow)
+- If you took the Animal Companion talent, you can buy a trained companion here, at the cost for its Tier (see the Trained Companion Costs table in the Mounts & Companions section). The talent grants the ability to bond with a companion, never the companion itself. You can also start without one and tame it during play
+- If you learned a spell that summons a lasting companion, such as Conjure Familiar, you can pay its ritual cost in ingredients here to begin play with your familiar already summoned
 - You keep any unspent coins
 
 > Example: Arzhag the Warrior spent their 350 coins on a battleaxe (100 coins), a light shield (150 coins), leather armor (50 coins), and kept 50 coins for future needs.

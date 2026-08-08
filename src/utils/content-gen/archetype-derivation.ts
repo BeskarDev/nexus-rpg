@@ -401,6 +401,48 @@ export function deriveSpellsKnown(a: ArchetypeRecord): number | null {
 	return options.reduce((sum, o) => sum + o.spells.length, 0)
 }
 
+/** The Nature talent that grants an animal companion, and the spell that summons a familiar. */
+const COMPANION_TALENT = 'Animal Companion'
+const FAMILIAR_SPELL = 'Conjure Familiar'
+
+/**
+ * What a companion costs out of the 350 starting coins (owner ruling, 2026-08-08).
+ *
+ * The talent and the spell grant the ABILITY, never the creature — the Mounts &
+ * Companions chapter has always said so, and character creation now says a
+ * starting character may pay here to arrive with one.
+ *
+ * A Nature rank-1 character may keep a Tier 1 companion (Tier <= Nature rank), so
+ * the trained-companion price is the Tier 1 row: 75 coins. The familiar is not
+ * bought but summoned, and `Conjure Familiar` spends 100 coins of incense and
+ * occult ingredients per ritual.
+ */
+export const COMPANION_COST = 75
+export const FAMILIAR_RITUAL_COST = 100
+
+/**
+ * What the companion costs this archetype, and what it has left after paying —
+ * or `null` when the build has no companion. Fails when the kit cannot afford it.
+ */
+export function deriveCompanionCost(
+	a: ArchetypeRecord,
+	coinsRemaining: number,
+): { kind: 'companion' | 'familiar'; cost: number; left: number } | null {
+	const kind = a.recommendedCompanions
+		? ('companion' as const)
+		: a.recommendedFamiliars
+			? ('familiar' as const)
+			: null
+	if (!kind) return null
+	const cost = kind === 'companion' ? COMPANION_COST : FAMILIAR_RITUAL_COST
+	if (coinsRemaining < cost)
+		fail(
+			a.name,
+			`has ${coinsRemaining} coins left, which cannot pay the ${cost} coins its ${kind} costs at creation`,
+		)
+	return { kind, cost, left: coinsRemaining - cost }
+}
+
 export function validateCompanions(a: ArchetypeRecord): void {
 	for (const list of [a.recommendedCompanions, a.recommendedFamiliars]) {
 		for (const entry of list ?? [])
@@ -410,6 +452,33 @@ export function validateCompanions(a: ArchetypeRecord): void {
 					`companion trait "${entry.name}" is not in companion-traits.json`,
 				)
 	}
+
+	// A companion has to be PAID for, and the two routes are the only ones a rank-1
+	// character has: the `Animal Companion` talent (a Nature talent, Tier <= your
+	// Nature rank) or the `Conjure Familiar` spell (Conjuration rank 1, a Tier 0
+	// familiar). `Wild Companion` is not a third route — it upgrades a companion
+	// the talent already granted, and requires that talent by its own text.
+	//
+	// Bard shipped with a companion block and neither route: its page hedged with
+	// "If you choose Animal Companion…", which is advice about a future pick, and
+	// the generated section read as something the character has.
+	if (
+		a.recommendedCompanions &&
+		!a.recommendedTalents.some((t) => t.name === COMPANION_TALENT)
+	)
+		fail(
+			a.name,
+			`recommends animal companion traits without the "${COMPANION_TALENT}" talent, which is the only route to one at rank 1`,
+		)
+
+	const knowsFamiliarSpell = (a.spellData?.options ?? []).some((option) =>
+		option.spells.some((spell) => spell.name === FAMILIAR_SPELL),
+	)
+	if (a.recommendedFamiliars && !knowsFamiliarSpell)
+		fail(
+			a.name,
+			`recommends familiar traits without the "${FAMILIAR_SPELL}" spell in its starting spells`,
+		)
 }
 
 export interface DerivedArchetype {
@@ -420,6 +489,7 @@ export interface DerivedArchetype {
 	combatArts: ReturnType<typeof deriveCombatArts>
 	focus: ReturnType<typeof deriveFocusPool>
 	spellsKnown: number | null
+	companionCost: ReturnType<typeof deriveCompanionCost>
 }
 
 export function slugFor(name: string): string {
@@ -434,14 +504,16 @@ export function derive(record: ArchetypeRecord): DerivedArchetype {
 			fail(record.name, `talent "${talent.name}" has no gloss`)
 	validateCompanions(record)
 
+	const equipment = deriveEquipment(record)
 	return {
 		record,
 		slug: slugFor(record.name),
 		skills: deriveSkills(record),
-		equipment: deriveEquipment(record),
+		equipment,
 		combatArts: deriveCombatArts(record),
 		focus: deriveFocusPool(record),
 		spellsKnown: deriveSpellsKnown(record),
+		companionCost: deriveCompanionCost(record, equipment.coinsRemaining),
 	}
 }
 

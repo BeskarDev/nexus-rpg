@@ -131,22 +131,8 @@
 				}
 			]
 		},
-		"recommendedCompanions": [
-			{
-				"name": "Bear",
-				"gloss": "Tough frontline with knockdown and grapple options and an intimidating roar."
-			},
-			{
-				"name": "Bird",
-				"gloss": "Fast flying scout with keen eyes and dive attack bursts."
-			},
-			{
-				"name": "Constrictor Snake",
-				"gloss": "Grapple and restrain to lock down priority targets."
-			}
-		],
 		"playstyle": "The Bard shines in social scenes and soft control. Use performance‑flavored rank 0 spells with Master of Principles to land key effects reliably. Calming Influence and veils shape tempo before blades are drawn. Inspire Ally fuels allies’ key rolls (and damage), while Eloquent Talker keeps you dominant in parley. You can still carry a shortsword, but your magic and words are your real weapons.",
-		"advancement": "Raise Mysticism 2-3 to expand spells and reliability (Communal Practices next if you want multi‑target flexibility). Boost Influence 2-3 for stronger team support (Leading Presence is a great pick). Add Education/Lore for cultural/magical knowledge, and optionally Stealth for infiltration and stagecraft."
+		"advancement": "Raise Mysticism 2-3 to expand spells and reliability (Communal Practices next if you want multi‑target flexibility). Boost Influence 2-3 for stronger team support (Leading Presence is a great pick). Add Education/Lore for cultural/magical knowledge, and optionally Stealth for infiltration and stagecraft. If you want an animal companion, raise Nature to rank 1 and spend its talent on Animal Companion: nothing in your starting build grants one."
 	},
 	{
 		"name": "Barbarian",
@@ -479,8 +465,7 @@
 				"item": "Leather"
 			},
 			{
-				"item": "Healing Salve (simple)",
-				"quantity": 2
+				"item": "Healing Salve (simple)"
 			}
 		],
 		"toolkit": "Brewer‘s Tools",
@@ -1666,9 +1651,6 @@
 			},
 			{
 				"item": "Healing Salve (weak)"
-			},
-			{
-				"item": "Draft Horse"
 			}
 		],
 		"toolkit": "Adventuring Gear",
