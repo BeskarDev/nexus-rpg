@@ -816,6 +816,19 @@
 	transform: translateX(-50%);
 	color: var(--ifm-color-primary);
 }
+/* City-gate keystone (quickstart archetypes, M22 S3). Same 100x30 box and ground
+   line as the palm and the stele, so the three newest marks are in scale with
+   each other and with the ziggurat — and so the overhang stays at 20.52px, which
+   is what the card's raised `margin-top` is sized against. */
+.gateKeystone {
+	position: absolute;
+	left: 50%;
+	top: calc(-20.52px * var(--ornament-scale, 1) * var(--ornament-overhang, 1));
+	width: calc(90.8px * var(--ornament-scale, 1));
+	height: calc(27.24px * var(--ornament-scale, 1));
+	transform: translateX(-50%);
+	color: var(--ifm-color-primary);
+}
 /* Sacred-palm keystone (folk, M20 S4). viewBox is 100x30 with the border line at
    y=22.6 — a wider, taller box than its siblings, because a palm's crown has to
    be wider than it is tall over a visible trunk or the mark reads as a starburst

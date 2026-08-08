@@ -6,55 +6,76 @@ sidebar_position: 13
 
 {/* GENERATED from src/utils/data/json/archetypes.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}
 
-**Role:** Striker / Controller
+An unarmed combat specialist with superhuman toughness and grappling techniques.
 
-**Overview:** An unarmed combat specialist with superhuman toughness and grappling techniques.
+<ArchetypeCard
+	role="Striker / Controller"
+	str="d6"
+	agi="d8"
+	spi="d6"
+	mnd="d4"
+>
 
-**Attributes**
+<ArchetypeSection label="Origin">
 
-| STR | AGI | SPI | MND |
-|-----|-----|-----|-----|
-| d6 | d8 | d6 | d4 |
+<ArchetypeField label="Upbringing">Monastic (Insight, Lore, Mysticism)</ArchetypeField>
+<ArchetypeField label="Background">Monk (Education, Fighting, Fortitude, Mysticism)</ArchetypeField>
+<ArchetypeField label="Starting Item">Lacquered prayer beads (0 load)</ArchetypeField>
 
-**Upbringing & Background**
+</ArchetypeSection>
 
-- **Upbringing:** Monastic (Insight, Lore, Mysticism)
-- **Background:** Monk (Education, Fighting, Fortitude, Mysticism)
-- **Starting Item:** Lacquered prayer beads (0 load)
+<ArchetypeSection label="Skills">
 
-**Rank 1 Skills**
+<ArchetypeField label="Rank 1" block>
 
-- **Fighting** - *Pugilist (Rank 1)* - Unarmed attacks deal 2 weapon damage, +1 Parry
-- **Athletics** - *Grappler (Rank 1)* - Grapple on hit with unarmed/brawling weapons
-- **Fortitude** - *Body of Bronze (Rank 1)* - +2 HP, +1+Fortitude AV while unarmored
+- Fighting - *Pugilist (Rank 1)* - Unarmed attacks deal 2 weapon damage, +1 Parry
+- Athletics † - *Grappler (Rank 1)* - Grapple on hit with unarmed/brawling weapons
+- Fortitude - *Body of Bronze (Rank 1)* - +2 HP, +1+Fortitude AV while unarmored
 
-**Rank 0 Skills:** Insight, Perception †, Mysticism, Education
+</ArchetypeField>
+
+<ArchetypeField label="Rank 0">Insight, Perception †, Mysticism, Education</ArchetypeField>
 
 Note: † Customized skills, chosen outside the upbringing and background suggestions.
 
-**Combat Arts**
+</ArchetypeSection>
+
+<ArchetypeSection label="Combat Arts">
 
 With Fighting rank 1, you know **2 Combat Arts**. Recommended:
 
 - **Choking Grip** (*Brawling, Thrown*) - Restrain grappled targets
 - **Knockout** (*Brawling, Mace, Shield*) - Stun enemies with crush attacks
 
-**Equipment**
+</ArchetypeSection>
+
+<ArchetypeSection label="Equipment">
 
 - Quarterstaff (100 coins, 1 load) - backup weapon
 - Healing Salve (potent) (125 coins, 1 load)
 - Healing Salve (simple) x2 (60 coins, 2 load)
 - Rope (Hemp) (10 coins, 1 load)
-- **Total Load:** 10 (equipment 5 + standard gear 5)
-- **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 55 (of 350)
+- Weaver‘s Tools toolkit (included in standard gear)
 
-**Playstyle**
+<ArchetypeTally
+	coins={55}
+	coinsFrom="350 - 295 spent"
+	load={10}
+	loadFrom="equipment 5 + standard gear 5"
+	capacity={11}
+	capacityFrom="1/2 STR 3 + 8"
+/>
+
+</ArchetypeSection>
+
+</ArchetypeCard>
+
+## Playstyle
 
 The Monk is perfect for players who want to fight without weapons or armor, using martial arts and grappling. Fight with fists and feet, using Grappler to control enemies and Body of Bronze for defense without armor. Pugilist makes unarmed strikes effective weapons. Your high mobility and control make you a disruptive force. Use Choking Grip to restrain dangerous foes and Knockout to take out heavily armored enemies.
 
-**Advancement**
+## Advancement
 
 Increase Fighting and Athletics to rank 2-3 for more Combat Arts and grappling options, raise Fortitude for more toughness, add Insight for reading opponents, and consider Martial Artist or more unarmed talents.
 
-[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)
+[Back to all archetypes](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)

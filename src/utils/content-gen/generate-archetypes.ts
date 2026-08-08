@@ -33,16 +33,46 @@ const BANNER =
 
 const DAGGER = '†'
 
+/**
+ * The overview's comparison table, and the anchor every archetype page links
+ * back to. Heading and slug are derived from one constant so the back-link
+ * cannot drift from its destination the way it did in S2.
+ */
+const OVERVIEW_SECTION = 'Archetypes at a Glance'
+const OVERVIEW_ANCHOR = OVERVIEW_SECTION.toLowerCase().replace(/\s+/g, '-')
+
 function frontmatter(sidebarPosition: number): string {
 	return ['---', `sidebar_position: ${sidebarPosition}`, '---'].join('\n')
 }
 
-function attributeTable(a: DerivedArchetype): string {
-	const { attributes } = a.record
+/**
+ * One labelled block of the card. Markdown children throughout, never props: the
+ * skill names, weapon categories and item names inside are exactly what the chip
+ * and keyword plugins exist to catch (component-patterns § 1).
+ */
+function section(label: string, ...blocks: string[]): string {
 	return [
-		'| STR | AGI | SPI | MND |',
-		'|-----|-----|-----|-----|',
-		`| d${attributes.STR} | d${attributes.AGI} | d${attributes.SPI} | d${attributes.MND} |`,
+		`<ArchetypeSection label="${label}">`,
+		'',
+		blocks.join('\n\n'),
+		'',
+		'</ArchetypeSection>',
+	].join('\n')
+}
+
+/** A named field inside a section, with its value on one line. */
+function field(label: string, value: string): string {
+	return `<ArchetypeField label="${label}">${value}</ArchetypeField>`
+}
+
+/** A named field whose value is a list, so the label takes its own line. */
+function blockField(label: string, value: string): string {
+	return [
+		`<ArchetypeField label="${label}" block>`,
+		'',
+		value,
+		'',
+		'</ArchetypeField>',
 	].join('\n')
 }
 
@@ -52,38 +82,47 @@ function markSkill(name: string, customised: Set<string>): string {
 
 function skillSection(a: DerivedArchetype): string {
 	const { skills, record } = a
-	const rank1 = skills.rank1.map((skill, i) => {
-		const talent = record.recommendedTalents[i]
-		const marked = markSkill(`**${skill}**`, skills.customised)
-		return `- ${marked} - *${talent.name} (Rank 1)* - ${talent.gloss}`
-	})
-	const rank0 = skills.rank0.map((s) => markSkill(s, skills.customised))
-	const blocks = [
-		'**Rank 1 Skills**',
-		'',
-		rank1.join('\n'),
-		'',
-		`**Rank 0 Skills:** ${rank0.join(', ')}`,
-	]
+	// Skill names are deliberately NOT bold: both plugins skip text inside a
+	// `strong` ancestor, so the old `**Fighting**` was the one thing on the page
+	// the skill-chip plugin could never see (component-patterns § 2).
+	const rank1 = skills.rank1
+		.map((skill, i) => {
+			const talent = record.recommendedTalents[i]
+			return `- ${markSkill(skill, skills.customised)} - *${talent.name} (Rank 1)* - ${talent.gloss}`
+		})
+		.join('\n')
+	const rank0 = skills.rank0
+		.map((s) => markSkill(s, skills.customised))
+		.join(', ')
+
+	const blocks = [blockField('Rank 1', rank1), field('Rank 0', rank0)]
 	if (skills.customised.size > 0) {
 		const plural = skills.customised.size === 1 ? 'skill' : 'skills'
 		blocks.push(
-			'',
 			`Note: ${DAGGER} Customized ${plural}, chosen outside the upbringing and background suggestions.`,
 		)
 	}
-	return blocks.join('\n')
+	return section('Skills', ...blocks)
 }
 
 function originSection(a: DerivedArchetype): string {
 	const { upbringing, background } = a.skills
-	return [
-		'**Upbringing & Background**',
-		'',
-		`- **Upbringing:** ${upbringing.name} (${upbringing.skills.join(', ')})`,
-		`- **Background:** ${background.name} (${background.skills.join(', ')})`,
-		`- **Starting Item:** ${background.startingItem} (0 load)`,
-	].join('\n')
+	return section(
+		'Origin',
+		[
+			field(
+				'Upbringing',
+				`${upbringing.name} (${upbringing.skills.join(', ')})`,
+			),
+			field(
+				'Background',
+				`${background.name} (${background.skills.join(', ')})`,
+			),
+			// Granted for roleplay by the background, never bought, so it carries no
+			// coins and no load (M22 D4, F10).
+			field('Starting Item', `${background.startingItem} (0 load)`),
+		].join('\n'),
+	)
 }
 
 function equipmentLine(item: DerivedEquipment): string {
@@ -99,12 +138,20 @@ function equipmentSection(a: DerivedArchetype): string {
 	const lines = e.items.map(equipmentLine)
 	if (e.toolkit)
 		lines.push(`- ${e.toolkit.name} toolkit (included in standard gear)`)
-	lines.push(
-		`- **Total Load:** ${e.totalLoad} (equipment ${e.equipmentLoad} + standard gear ${STANDARD_GEAR_LOAD})`,
-		`- **Carry Capacity:** ${e.carryCapacity} (1/2 STR ${Math.floor(a.record.attributes.STR / 2)} + 8)`,
-		`- **Remaining Coins:** ${e.coinsRemaining} (of ${STARTING_COINS})`,
-	)
-	return ['**Equipment**', '', lines.join('\n')].join('\n')
+	// What the kit cost belongs WITH the kit (owner review): three figures under
+	// the item list, each carrying its own derivation, rather than one run-on
+	// "Totals" line naming all three at once.
+	const tally = [
+		'<ArchetypeTally',
+		`\tcoins={${e.coinsRemaining}}`,
+		`\tcoinsFrom="${STARTING_COINS} - ${e.coinsSpent} spent"`,
+		`\tload={${e.totalLoad}}`,
+		`\tloadFrom="equipment ${e.equipmentLoad} + standard gear ${STANDARD_GEAR_LOAD}"`,
+		`\tcapacity={${e.carryCapacity}}`,
+		`\tcapacityFrom="1/2 STR ${Math.floor(a.record.attributes.STR / 2)} + 8"`,
+		'/>',
+	].join('\n')
+	return section('Equipment', lines.join('\n'), tally)
 }
 
 function combatArtsSection(a: DerivedArchetype): string | null {
@@ -115,15 +162,13 @@ function combatArtsSection(a: DerivedArchetype): string | null {
 		.filter((s) => skills.rank1.includes(s) || skills.rank0.includes(s))
 		.map((s) => `${s} rank ${skills.rank1.includes(s) ? 1 : 0}`)
 	const plural = required === 1 ? 'Combat Art' : 'Combat Arts'
-	return [
-		'**Combat Arts**',
-		'',
+	return section(
+		'Combat Arts',
 		`With ${held.join(' and ')}, you know **${required} ${plural}**. Recommended:`,
-		'',
 		arts
 			.map((art) => `- **${art.name}** (*${art.weapons}*) - ${art.gloss}`)
 			.join('\n'),
-	].join('\n')
+	)
 }
 
 function spellSection(a: DerivedArchetype): string | null {
@@ -141,16 +186,14 @@ function spellSection(a: DerivedArchetype): string | null {
 			: `Using Balance, you draw on both and choose spells freely from either.`
 
 	const blocks = [
-		'**Spells**',
-		'',
-		`**${kind}:** ${names}. ${rule}`,
-		'',
-		`**Focus Pool:** (${focus.attribute} ${focus.value} - 2) + (2 x ${data.magicSkill} rank 1) = ${focus.total}`,
-		'',
-		'**Starting Spells**',
-		'',
+		field(kind, `${names}. ${rule}`),
+		field(
+			'Focus Pool',
+			`(${focus.attribute} ${focus.value} - 2) + (2 x ${data.magicSkill} rank 1) = ${focus.total}`,
+		),
 	]
 
+	const spells: string[] = []
 	for (const option of data.options) {
 		const byRank = new Map<number, string[]>()
 		for (const spell of option.spells) {
@@ -159,61 +202,83 @@ function spellSection(a: DerivedArchetype): string | null {
 		}
 		const ranks = [...byRank.entries()]
 			.sort((x, y) => x[0] - y[0])
-			.map(([rank, spells]) => `  - Rank ${rank}: ${spells.join(', ')}`)
-		blocks.push(`- **${option.name}:**`, ...ranks)
+			.map(([rank, names]) => `  - Rank ${rank}: ${names.join(', ')}`)
+		spells.push(`- **${option.name}:**`, ...ranks)
 	}
 
-	blocks.push('', `Note: at rank 1 you know ${a.spellsKnown} spells in total.`)
-	return blocks.join('\n')
+	return section(
+		'Spells',
+		blocks.join('\n'),
+		spells.join('\n'),
+		`Note: at rank 1 you know ${a.spellsKnown} spells in total.`,
+	)
 }
 
 function companionSection(a: DerivedArchetype): string | null {
 	const companions = a.record.recommendedCompanions
 	const familiars = a.record.recommendedFamiliars
 	if (companions) {
-		return [
-			'**Animal Companion**',
-			'',
+		return section(
+			'Animal Companion',
 			'Use the companion base stat block with Tier equal to your Nature rank (see the Mounts & Companions rules). Then pick any one Animal trait to define your companion.',
-			'',
 			'Suggested traits:',
-			'',
 			companions.map((c) => `- **${c.name}.** ${c.gloss}`).join('\n'),
-		].join('\n')
+		)
 	}
 	if (familiars) {
-		return [
-			'**Familiar**',
-			'',
+		return section(
+			'Familiar',
 			'If you prepare Conjure Familiar, build your familiar as a Tier 0 companion (see the Mounts & Companions rules). Then pick any one Animal trait to define its form and role.',
-			'',
 			'Suggested traits:',
-			'',
 			familiars.map((f) => `- **${f.name}.** ${f.gloss}`).join('\n'),
-		].join('\n')
+		)
 	}
 	return null
 }
 
+/**
+ * The card holds the BUILD only (M22 Q4, owner). The overview line introduces it
+ * and the two advice paragraphs close the page, both as ordinary prose, so an
+ * archetype page reads like the rest of the content pages with one card in it.
+ */
 function renderArchetype(a: DerivedArchetype, sidebarPosition: number): string {
-	const blocks: (string | null)[] = [
-		frontmatter(sidebarPosition),
-		`# ${a.record.name}`,
-		BANNER,
-		`**Role:** ${a.record.role}`,
-		`**Overview:** ${a.record.description}`,
-		['**Attributes**', '', attributeTable(a)].join('\n'),
+	const { attributes } = a.record
+	const card = [
+		'<ArchetypeCard',
+		`\trole="${a.record.role}"`,
+		`\tstr="d${attributes.STR}"`,
+		`\tagi="d${attributes.AGI}"`,
+		`\tspi="d${attributes.SPI}"`,
+		`\tmnd="d${attributes.MND}"`,
+		'>',
+	].join('\n')
+
+	const sections = [
 		originSection(a),
 		skillSection(a),
 		combatArtsSection(a),
 		equipmentSection(a),
 		spellSection(a),
 		companionSection(a),
-		['**Playstyle**', '', a.record.playstyle].join('\n'),
-		['**Advancement**', '', a.record.advancement].join('\n'),
-		`[Back to Quick Reference](${OVERVIEW_PATH}/overview#archetypes-at-a-glance)`,
+	].filter((b): b is string => b !== null)
+
+	const blocks: string[] = [
+		frontmatter(sidebarPosition),
+		`# ${a.record.name}`,
+		BANNER,
+		a.record.description,
+		card,
+		...sections,
+		'</ArchetypeCard>',
+		['## Playstyle', '', a.record.playstyle].join('\n'),
+		['## Advancement', '', a.record.advancement].join('\n'),
+		// The label names the section it lands on. It used to read "Back to Quick
+		// Reference" against a heading called "Quick Reference: Archetype
+		// Overview", and S2 renamed that heading without moving the label with it
+		// — a link whose words do not match its destination.
+		`[Back to all archetypes](${OVERVIEW_PATH}/overview#${OVERVIEW_ANCHOR})`,
 	]
-	return blocks.filter((b): b is string => b !== null).join('\n\n') + '\n'
+	return blocks.join('\n\n') + '\n'
 }
 
 /**
@@ -221,11 +286,13 @@ function renderArchetype(a: DerivedArchetype, sidebarPosition: number): string {
  * data, so it lives with the generator: nothing derives it and nothing else
  * states it.
  */
-const OVERVIEW_INTRO = `![banner-img](/img/banner/character-creation-banner.png)
+const OVERVIEW_LEAD = `![banner-img](/img/banner/character-creation-banner.png)
 
 > "The greatest warriors were once novices with nothing but determination and a well-chosen path."
 
-## Using These Examples
+Twenty-five characters built by the standard rules and ready to play as written. Filter the table by the job you want in the party, then open one to see its full build.`
+
+const OVERVIEW_USING = `## Using These Examples
 
 These quickstart characters demonstrate classic fantasy archetypes within Nexus RPG. Each example follows the standard character creation rules:
 
@@ -262,70 +329,79 @@ Each rank 1 skill offers multiple talent options. Consider offensive talents for
 
 Remember: these are starting points. Your character will grow and specialize as you gain XP and advance through the ranks!`
 
-/** The role a reader picks first, in the order a party is usually built. */
+/** The jobs a party is built from, in the order it is usually built. */
 const ROLE_ORDER = ['Tank', 'Striker', 'Support', 'Controller'] as const
 
-function primaryRole(role: string): string {
-	const first = role.split('/')[0].trim()
-	return (ROLE_ORDER as readonly string[]).includes(first) ? first : 'Other'
+/**
+ * What may follow the slash without being a party job of its own. These say how
+ * the archetype plays rather than what seat it takes, so they are not filters.
+ */
+const QUALIFIER_ROLES = ['Utility', 'Hybrid']
+
+/** Every role an archetype claims, from a `Tank / Striker` string. */
+function rolesOf(role: string): string[] {
+	return role
+		.split('/')
+		.map((part) => part.trim())
+		.filter(Boolean)
 }
 
 function renderOverview(all: DerivedArchetype[]): string {
-	const byRole = new Map<string, DerivedArchetype[]>()
-	for (const a of all) {
-		const role = primaryRole(a.record.role)
-		if (!byRole.has(role)) byRole.set(role, [])
-		byRole.get(role)!.push(a)
-	}
-	const unknown = byRole.get('Other')
-	if (unknown)
+	// The filter offers the four party jobs, so every archetype must lead with
+	// one — otherwise a reader filtering for "Support" silently loses rows. The
+	// qualifier after the slash is a different vocabulary (`Utility`, `Hybrid`)
+	// and is not offered as a filter, but it is still checked, because an unknown
+	// word there means the role string drifted (D3: fail loud).
+	const unknown = all.filter((a) => {
+		const [primary, ...rest] = rolesOf(a.record.role)
+		return (
+			!(ROLE_ORDER as readonly string[]).includes(primary) ||
+			rest.some(
+				(role) =>
+					!(ROLE_ORDER as readonly string[]).includes(role) &&
+					!QUALIFIER_ROLES.includes(role),
+			)
+		)
+	})
+	if (unknown.length > 0)
 		throw new Error(
-			`[generate-archetypes] unrecognised primary role on: ${unknown
+			`[generate-archetypes] unrecognised role on: ${unknown
 				.map((a) => `${a.record.name} (${a.record.role})`)
 				.join(', ')}`,
 		)
 
-	// A 25-row alphabetical table answers "what kind of character do I want to
-	// be" last, so the role index goes above it and the table stays as the
-	// comparison surface it is good at (M22 D7).
-	const index = ROLE_ORDER.flatMap((role) => {
-		const entries = byRole.get(role) ?? []
-		if (entries.length === 0) return []
-		return [
-			`### ${role}`,
-			'',
-			entries
-				.map(
-					(a) =>
-						`- [${a.record.name}](${OVERVIEW_PATH}/${a.slug}) - ${a.record.bestFor}`,
-				)
-				.join('\n'),
-			'',
-		]
-	})
-
+	// ONE surface, narrowed, rather than two listings of the same 25 archetypes
+	// (owner review). The role-grouped index that used to sit above this table
+	// answered "what kind of character do I want to be" — so does a filter over
+	// the Role column, and it leaves the table as the comparison surface it is
+	// good at instead of repeating it.
+	//
+	// A role written `Tank / Striker` answers to BOTH filters, because the filter
+	// matches the cell's text rather than a parsed primary role.
 	const table = [
+		`<TableFilter column="Role" options="${ROLE_ORDER.join(', ')}">`,
+		'',
 		'| Archetype | Role | Primary Skills | Best For |',
 		'|-----------|------|----------------|----------|',
 		...all.map(
 			(a) =>
 				`| [${a.record.name}](${OVERVIEW_PATH}/${a.slug}) | ${a.record.role} | ${a.skills.rank1.join(', ')} | ${a.record.bestFor} |`,
 		),
+		'',
+		'</TableFilter>',
 	].join('\n')
 
+	// The table leads (owner review): a reader arrives to pick an archetype, not
+	// to read the character-creation rules again, so the rules that produced them
+	// sit under it rather than in front of it.
 	return (
 		[
 			frontmatter(0),
 			'# Quickstart Characters',
 			BANNER,
-			OVERVIEW_INTRO,
-			[
-				'## Choose a Role',
-				'',
-				'Every archetype leans on one job in a party. Start here, then compare the details in the table below.',
-			].join('\n'),
-			index.join('\n').trim(),
-			['## Archetypes at a Glance', '', table].join('\n'),
+			OVERVIEW_LEAD,
+			[`## ${OVERVIEW_SECTION}`, '', table].join('\n'),
+			OVERVIEW_USING,
 			OVERVIEW_OUTRO,
 		].join('\n\n') + '\n'
 	)

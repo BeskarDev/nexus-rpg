@@ -100,6 +100,28 @@ for (const entry of [
 const WEAPONS = new Map(
 	(weaponsJson as CatalogueItem[]).map((w) => [w.name, w]),
 )
+const ARMOR = new Set((armorJson as CatalogueItem[]).map((a) => a.name))
+
+/** Names that already say "armor" without the word, so appending it reads wrong. */
+const ARMOR_NOUNS = /\b(Armor|Mail|Harness|Breastplate|Plate|Helmet|Shield)\b/
+
+/**
+ * What an equipment line CALLS a catalogue entry.
+ *
+ * The catalogue names armor by its material alone — the leather entry is just
+ * `Leather` — which is fine in a table under an "Armor" heading and reads as a
+ * missing word in a kit list ("Longsword, Light Shield, Leather"). So a body
+ * armor gains the noun for display only. The reference in the JSON stays the
+ * catalogue name verbatim, because that is what the D4 gate checks; this is a
+ * rendering rule, not a second name.
+ */
+export function displayName(entry: CatalogueItem): string {
+	const isBodyArmor =
+		ARMOR.has(entry.name) && (entry.type ?? '').endsWith('Armor')
+	return isBodyArmor && !ARMOR_NOUNS.test(entry.name)
+		? `${entry.name} Armor`
+		: entry.name
+}
 const UPBRINGINGS = new Map(
 	(upbringingsJson as { name: string; 'suggested skills': string }[]).map(
 		(u) => [u.name, u],
@@ -192,7 +214,7 @@ export function deriveEquipment(a: ArchetypeRecord): {
 			carriesAmmoWeapon && !freeTaken && quantity === 1 && isAmmunition(entry)
 		if (free) freeTaken = true
 		return {
-			name: entry.name,
+			name: displayName(entry),
 			quantity,
 			cost: free ? 0 : toNumber(entry.cost) * quantity,
 			load: toNumber(entry.load) * quantity,

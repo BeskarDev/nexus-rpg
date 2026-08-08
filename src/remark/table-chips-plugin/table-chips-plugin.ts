@@ -4,7 +4,7 @@ import { chipMappings } from './chip-mappings'
 import { processText, InlineNode } from '../shared/tokenize'
 import { getTableCellContext } from '../shared/table-context'
 import { hasDamageContext } from '../shared/context'
-import { inNameElement } from '../shared/zones'
+import { inLinkElement, inNameElement } from '../shared/zones'
 
 /**
  * A remark plugin to automatically convert specific keywords in all text to colored chips.
@@ -131,7 +131,14 @@ const tableChipsPlugin = (options = {}) => {
 					// Entry names moved from `**bold**` into their own JSX element, which
 					// took them out of the `strong` guard above — "Undead Nature" began
 					// chipping "Nature" as a skill.
-					inNameElement(ancestors as any)
+					inNameElement(ancestors as any) ||
+					// Same reason as the `link` guard above, for an anchor the COMPONENT
+					// builds rather than remark: `ToolEntry` wraps its blurb in the row's
+					// link, so a skill named in a contents blurb ("Stealth, infiltration,
+					// skills") chipped into an `<a>` inside an `<a>`. The keyword plugin
+					// already consulted this list; the chip plugin did not, and chips are
+					// anchors too.
+					inLinkElement(ancestors as any)
 				) {
 					return
 				}

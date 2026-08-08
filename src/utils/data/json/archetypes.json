@@ -131,6 +131,20 @@
 				}
 			]
 		},
+		"recommendedCompanions": [
+			{
+				"name": "Bear",
+				"gloss": "Tough frontline with knockdown and grapple options and an intimidating roar."
+			},
+			{
+				"name": "Bird",
+				"gloss": "Fast flying scout with keen eyes and dive attack bursts."
+			},
+			{
+				"name": "Constrictor Snake",
+				"gloss": "Grapple and restrain to lock down priority targets."
+			}
+		],
 		"playstyle": "The Bard shines in social scenes and soft control. Use performance‑flavored rank 0 spells with Master of Principles to land key effects reliably. Calming Influence and veils shape tempo before blades are drawn. Inspire Ally fuels allies’ key rolls (and damage), while Eloquent Talker keeps you dominant in parley. You can still carry a shortsword, but your magic and words are your real weapons.",
 		"advancement": "Raise Mysticism 2-3 to expand spells and reliability (Communal Practices next if you want multi‑target flexibility). Boost Influence 2-3 for stronger team support (Leading Presence is a great pick). Add Education/Lore for cultural/magical knowledge, and optionally Stealth for infiltration and stagecraft."
 	},
@@ -577,7 +591,7 @@
 				"item": "Acid Vial"
 			}
 		],
-		"toolkit": "Carpenter‘ Tools",
+		"toolkit": "Carpenter‘s Tools",
 		"playstyle": "The Engineer is perfect for players who enjoy battlefield problem‑solving and logistics. Use Quick Construction to bolster defenses, create tools, and set simple traps. Deliver devices at range with Expert Slinger and support allies by shaping the field.",
 		"advancement": "Increase Crafting to rank 2-3 for stronger builds, add Education and Perception for planning and scouting, raise Archery or Fighting depending on preferred delivery method, and consider Efficient Worker or Artisan talents."
 	},
@@ -754,7 +768,7 @@
 				"item": "Javelin"
 			}
 		],
-		"toolkit": "Carpenter‘ Tools",
+		"toolkit": "Carpenter‘s Tools",
 		"playstyle": "The Hoplite is perfect for players who enjoy tactical positioning, defensive play, and Bronze Age military aesthetics. Control space with reach weapons and hold formation with allies. Polearm Mastery punishes enemies who approach, while Fast Stride allows repositioning. Leading Presence helps coordinate your unit. Use Charge for aggressive pushes and Defensive Strike to hold the line.",
 		"advancement": "Increase Fighting to rank 2-3 for more Combat Arts, raise Athletics and Influence for tactical command, add Fortitude for resilience, consider Shield Mastery or Protective Stance, and save for heavier armor (Scale Mail 250 coins)."
 	},
@@ -918,6 +932,7 @@
 				"item": "Rope (Hemp)"
 			}
 		],
+		"toolkit": "Weaver‘s Tools",
 		"playstyle": "The Monk is perfect for players who want to fight without weapons or armor, using martial arts and grappling. Fight with fists and feet, using Grappler to control enemies and Body of Bronze for defense without armor. Pugilist makes unarmed strikes effective weapons. Your high mobility and control make you a disruptive force. Use Choking Grip to restrain dangerous foes and Knockout to take out heavily armored enemies.",
 		"advancement": "Increase Fighting and Athletics to rank 2-3 for more Combat Arts and grappling options, raise Fortitude for more toughness, add Insight for reading opponents, and consider Martial Artist or more unarmed talents."
 	},

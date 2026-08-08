@@ -23,12 +23,18 @@ import CreatureStatBlock, {
 	TreasureTable,
 	TreasureRow,
 } from '@site/src/components/codex/CreatureStatBlock'
+import ArchetypeCard, {
+	ArchetypeSection,
+	ArchetypeField,
+	ArchetypeTally,
+} from '@site/src/components/codex/ArchetypeCard'
 import { LozengeDivider, RankChip } from '@site/src/components/codex/ornaments'
 import DocTable from '@site/src/components/codex/DocTable'
 import MdxImage from '@site/src/components/codex/MdxImage'
 import TableFold from '@site/src/components/TableFold'
 import ToolIndex, { ToolEntry } from '@site/src/components/codex/ToolIndex'
 import Columns from '@site/src/components/codex/Columns'
+import TableFilter from '@site/src/components/codex/TableFilter'
 
 /**
  * Global MDX component registry. Extends the Docusaurus defaults with codex
@@ -61,6 +67,13 @@ export default {
 	TreasureTable,
 	TreasureRow,
 	RankChip,
+	// The quickstart-archetype card and its labelled blocks (M22 S3).
+	ArchetypeCard,
+	ArchetypeSection,
+	ArchetypeField,
+	ArchetypeTally,
+	// A markdown table narrowed by one of its own columns (M22).
+	TableFilter,
 	// The dice-by-hand fallback the GM tools' data tables sit behind (M14 S3).
 	TableFold,
 	// A section landing page's contents rows (M14 S3).

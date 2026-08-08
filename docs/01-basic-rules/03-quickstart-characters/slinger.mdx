@@ -6,57 +6,77 @@ sidebar_position: 19
 
 {/* GENERATED from src/utils/data/json/archetypes.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}
 
-**Role:** Striker
+A mobile short-range skirmisher who uses slings and thrown weapons for hit-and-run tactics.
 
-**Overview:** A mobile short-range skirmisher who uses slings and thrown weapons for hit-and-run tactics.
+<ArchetypeCard
+	role="Striker"
+	str="d6"
+	agi="d8"
+	spi="d6"
+	mnd="d4"
+>
 
-**Attributes**
+<ArchetypeSection label="Origin">
 
-| STR | AGI | SPI | MND |
-|-----|-----|-----|-----|
-| d6 | d8 | d6 | d4 |
+<ArchetypeField label="Upbringing">Nomadic (Archery, Nature, Survival)</ArchetypeField>
+<ArchetypeField label="Background">Hunter (Archery, Nature, Perception, Survival)</ArchetypeField>
+<ArchetypeField label="Starting Item">Prey bone whistle (0 load)</ArchetypeField>
 
-**Upbringing & Background**
+</ArchetypeSection>
 
-- **Upbringing:** Nomadic (Archery, Nature, Survival)
-- **Background:** Hunter (Archery, Nature, Perception, Survival)
-- **Starting Item:** Prey bone whistle (0 load)
+<ArchetypeSection label="Skills">
 
-**Rank 1 Skills**
+<ArchetypeField label="Rank 1" block>
 
-- **Archery** - *Expert Slinger (Rank 1)* - Supply checks for thrown bundles: roll twice, take higher
-- **Athletics** - *Fast Stride (Rank 1)* - Use Dash as Quick Action
-- **Stealth** - *Devious Tactics (Rank 1)* - Use Distract as a Quick Action. Set up openings
+- Archery - *Expert Slinger (Rank 1)* - Supply checks for thrown bundles: roll twice, take higher
+- Athletics † - *Fast Stride (Rank 1)* - Use Dash as Quick Action
+- Stealth † - *Devious Tactics (Rank 1)* - Use Distract as a Quick Action. Set up openings
 
-**Rank 0 Skills:** Survival, Perception, Insight †, Nature
+</ArchetypeField>
+
+<ArchetypeField label="Rank 0">Survival, Perception, Insight †, Nature</ArchetypeField>
 
 Note: † Customized skills, chosen outside the upbringing and background suggestions.
 
-**Combat Arts**
+</ArchetypeSection>
+
+<ArchetypeSection label="Combat Arts">
 
 With Archery rank 1, you know **2 Combat Arts**. Recommended:
 
 - **Aimed Shot** (*Bow, Crossbow, Thrown*) - Gain +1 boon when not moving
 - **Power Shot** (*Bow, Crossbow, Thrown*) - Add Strength to damage
 
-**Equipment**
+</ArchetypeSection>
+
+<ArchetypeSection label="Equipment">
 
 - Sling (50 coins, 1 load)
 - Throwing Stones (d6) (free with the weapon, 1 load)
 - Javelin (50 coins, 1 load)
-- Leather (50 coins, 1 load)
+- Leather Armor (50 coins, 1 load)
 - Healing Salve (simple) x2 (60 coins, 2 load)
 - Climber‘s Kit toolkit (included in standard gear)
-- **Total Load:** 11 (equipment 6 + standard gear 5)
-- **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 140 (of 350)
 
-**Playstyle**
+<ArchetypeTally
+	coins={140}
+	coinsFrom="350 - 210 spent"
+	load={11}
+	loadFrom="equipment 6 + standard gear 5"
+	capacity={11}
+	capacityFrom="1/2 STR 3 + 8"
+/>
+
+</ArchetypeSection>
+
+</ArchetypeCard>
+
+## Playstyle
 
 The Slinger is perfect for players who want a mobile, hit-and-run playstyle with simple but effective ranged combat. Harass enemies from short range then reposition with Fast Stride. Expert Slinger makes your thrown bundles more reliable so your javelins keep flying. Devious Tactics lets you create distractions as a Quick Action to set up safe shots. Use Aimed Shot for reliable damage and Power Shot for finishing blows.
 
-**Advancement**
+## Advancement
 
 Increase Archery to rank 2-3 for more Combat Arts and damage, raise Athletics for mobility, add Survival for scouting, and consider Rapid Shot or more mobility talents.
 
-[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)
+[Back to all archetypes](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)

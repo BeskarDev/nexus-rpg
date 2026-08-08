@@ -6,49 +6,62 @@ sidebar_position: 18
 
 {/* GENERATED from src/utils/data/json/archetypes.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}
 
-**Role:** Support / Controller
+A spirit medium who communes with ancestors to bless allies and curse enemies through spiritual power.
 
-**Overview:** A spirit medium who communes with ancestors to bless allies and curse enemies through spiritual power.
+<ArchetypeCard
+	role="Support / Controller"
+	str="d4"
+	agi="d6"
+	spi="d8"
+	mnd="d6"
+>
 
-**Attributes**
+<ArchetypeSection label="Origin">
 
-| STR | AGI | SPI | MND |
-|-----|-----|-----|-----|
-| d4 | d6 | d8 | d6 |
+<ArchetypeField label="Upbringing">Shamanistic (Insight, Mysticism, Nature)</ArchetypeField>
+<ArchetypeField label="Background">Shaman (Insight, Mysticism, Nature, Survival)</ArchetypeField>
+<ArchetypeField label="Starting Item">Ancestor bone fetish (0 load)</ArchetypeField>
 
-**Upbringing & Background**
+</ArchetypeSection>
 
-- **Upbringing:** Shamanistic (Insight, Mysticism, Nature)
-- **Background:** Shaman (Insight, Mysticism, Nature, Survival)
-- **Starting Item:** Ancestor bone fetish (0 load)
+<ArchetypeSection label="Skills">
 
-**Rank 1 Skills**
+<ArchetypeField label="Rank 1" block>
 
-- **Mysticism** - *Divine Sense (Rank 1)* - Sense spirits/undead and hallowed or cursed auras
-- **Nature** - *Field Medic (Rank 1)* - Save the dying. Treat wounds quickly during delves
-- **Lore** - *Consult the Myths (Rank 1)* - Re‑roll Lore about supernatural topics once per scene
+- Mysticism - *Divine Sense (Rank 1)* - Sense spirits/undead and hallowed or cursed auras
+- Nature - *Field Medic (Rank 1)* - Save the dying. Treat wounds quickly during delves
+- Lore † - *Consult the Myths (Rank 1)* - Re‑roll Lore about supernatural topics once per scene
 
-**Rank 0 Skills:** Insight, Survival, Perception †, Influence †
+</ArchetypeField>
+
+<ArchetypeField label="Rank 0">Insight, Survival, Perception †, Influence †</ArchetypeField>
 
 Note: † Customized skills, chosen outside the upbringing and background suggestions.
 
-**Equipment**
+</ArchetypeSection>
+
+<ArchetypeSection label="Equipment">
 
 - Short Spear (75 coins, 1 load)
 - Spell Catalyst (Mystic Talisman) (75 coins, 0 load)
 - Healing Salve (simple) x3 (90 coins, 3 load)
 - Weaver‘s Tools toolkit (included in standard gear)
-- **Total Load:** 9 (equipment 4 + standard gear 5)
-- **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 110 (of 350)
 
-**Spells**
+<ArchetypeTally
+	coins={110}
+	coinsFrom="350 - 240 spent"
+	load={9}
+	loadFrom="equipment 4 + standard gear 5"
+	capacity={10}
+	capacityFrom="1/2 STR 2 + 8"
+/>
 
-**Tradition:** Death (ancestors/curses) and Life (blessings/community). Using Balance, you draw on both and choose spells freely from either.
+</ArchetypeSection>
 
-**Focus Pool:** (SPI 8 - 2) + (2 x Mysticism rank 1) = 8
+<ArchetypeSection label="Spells">
 
-**Starting Spells**
+<ArchetypeField label="Tradition">Death (ancestors/curses) and Life (blessings/community). Using Balance, you draw on both and choose spells freely from either.</ArchetypeField>
+<ArchetypeField label="Focus Pool">(SPI 8 - 2) + (2 x Mysticism rank 1) = 8</ArchetypeField>
 
 - **Death:**
   - Rank 0: Chill Touch
@@ -59,12 +72,16 @@ Note: † Customized skills, chosen outside the upbringing and background sugges
 
 Note: at rank 1 you know 4 spells in total.
 
-**Playstyle**
+</ArchetypeSection>
+
+</ArchetypeCard>
+
+## Playstyle
 
 The Shaman is perfect for players who enjoy spiritual themes, supporting through blessings, and connecting with ancestral powers. Bridge the physical and spirit worlds, calling on ancestors for aid. Use blessings to empower allies and curses to weaken enemies. Divine Sense and Field Medic make you invaluable to your community.
 
-**Advancement**
+## Advancement
 
 Increase Mysticism to rank 2-3 for more powerful spells, raise Lore for deeper spiritual knowledge, add Insight for reading people and spirits, and consider more spirit-themed talents.
 
-[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)
+[Back to all archetypes](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)

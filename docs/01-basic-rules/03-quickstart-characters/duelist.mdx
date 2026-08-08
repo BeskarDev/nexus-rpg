@@ -6,56 +6,76 @@ sidebar_position: 7
 
 {/* GENERATED from src/utils/data/json/archetypes.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}
 
-**Role:** Striker
+A swift, precise blade fighter who wins through footwork, feints, and pinpoint strikes.
 
-**Overview:** A swift, precise blade fighter who wins through footwork, feints, and pinpoint strikes.
+<ArchetypeCard
+	role="Striker"
+	str="d6"
+	agi="d8"
+	spi="d6"
+	mnd="d4"
+>
 
-**Attributes**
+<ArchetypeSection label="Origin">
 
-| STR | AGI | SPI | MND |
-|-----|-----|-----|-----|
-| d6 | d8 | d6 | d4 |
+<ArchetypeField label="Upbringing">Militaristic (Fighting, Fortitude, Perception)</ArchetypeField>
+<ArchetypeField label="Background">Officer (Education, Fighting, Influence, Insight)</ArchetypeField>
+<ArchetypeField label="Starting Item">Ingraved command baton (0 load)</ArchetypeField>
 
-**Upbringing & Background**
+</ArchetypeSection>
 
-- **Upbringing:** Militaristic (Fighting, Fortitude, Perception)
-- **Background:** Officer (Education, Fighting, Influence, Insight)
-- **Starting Item:** Ingraved command baton (0 load)
+<ArchetypeSection label="Skills">
 
-**Rank 1 Skills**
+<ArchetypeField label="Rank 1" block>
 
-- **Fighting** - *Defensive Dueling (Rank 1)* - +1 Parry while wielding a single non‑heavy melee weapon and no shield
-- **Athletics** - *Fast Stride (Rank 1)* - Use Dash as Quick Action
-- **Stealth** - *Devious Tactics (Rank 1)* - Use Distract as a Quick Action. Feint via misdirection
+- Fighting - *Defensive Dueling (Rank 1)* - +1 Parry while wielding a single non‑heavy melee weapon and no shield
+- Athletics † - *Fast Stride (Rank 1)* - Use Dash as Quick Action
+- Stealth † - *Devious Tactics (Rank 1)* - Use Distract as a Quick Action. Feint via misdirection
 
-**Rank 0 Skills:** Influence, Perception, Streetwise †, Education
+</ArchetypeField>
+
+<ArchetypeField label="Rank 0">Influence, Perception, Streetwise †, Education</ArchetypeField>
 
 Note: † Customized skills, chosen outside the upbringing and background suggestions.
 
-**Combat Arts**
+</ArchetypeSection>
+
+<ArchetypeSection label="Combat Arts">
 
 With Fighting rank 1, you know **2 Combat Arts**. Recommended:
 
 - **Feint** (*Blade, Brawling, Polearm*) - Gain +1 boon when not moving
 - **Precise Strike** (*Blade, Brawling, Polearm*) - Ignore armor and add Agility to damage
 
-**Equipment**
+</ArchetypeSection>
+
+<ArchetypeSection label="Equipment">
 
 - Shortsword (50 coins, 1 load)
 - Throwing Knife (25 coins, 1 load)
-- Leather (50 coins, 1 load)
+- Leather Armor (50 coins, 1 load)
 - Healing Salve (weak) (15 coins, 1 load)
 - Disguise Kit toolkit (included in standard gear)
-- **Total Load:** 9 (equipment 4 + standard gear 5)
-- **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 210 (of 350)
 
-**Playstyle**
+<ArchetypeTally
+	coins={210}
+	coinsFrom="350 - 140 spent"
+	load={9}
+	loadFrom="equipment 4 + standard gear 5"
+	capacity={11}
+	capacityFrom="1/2 STR 3 + 8"
+/>
+
+</ArchetypeSection>
+
+</ArchetypeCard>
+
+## Playstyle
 
 The Duelist is perfect for players who prefer agility and precision over brute force. Control distance with Fast Stride, use Feint to open defenses, and land Precise Strikes when it counts.
 
-**Advancement**
+## Advancement
 
 Increase Fighting and Athletics to rank 2-3, add Stealth or Influence depending on intrigue vs. street play, and consider Defensive Dueling or Riposte.
 
-[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)
+[Back to all archetypes](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)

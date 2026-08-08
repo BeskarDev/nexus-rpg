@@ -6,56 +6,71 @@ sidebar_position: 12
 
 {/* GENERATED from src/utils/data/json/archetypes.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}
 
-**Role:** Striker / Hybrid
+A melee fighter who infuses weapons with arcane magic, blending swordplay and spellcasting.
 
-**Overview:** A melee fighter who infuses weapons with arcane magic, blending swordplay and spellcasting.
+<ArchetypeCard
+	role="Striker / Hybrid"
+	str="d6"
+	agi="d6"
+	spi="d4"
+	mnd="d8"
+>
 
-**Attributes**
+<ArchetypeSection label="Origin">
 
-| STR | AGI | SPI | MND |
-|-----|-----|-----|-----|
-| d6 | d6 | d4 | d8 |
+<ArchetypeField label="Upbringing">Scholar (Education, Insight, Lore)</ArchetypeField>
+<ArchetypeField label="Background">Renegade Mage (Arcana, Education, Fighting, Streetwise)</ArchetypeField>
+<ArchetypeField label="Starting Item">Wooden face mask (0 load)</ArchetypeField>
 
-**Upbringing & Background**
+</ArchetypeSection>
 
-- **Upbringing:** Scholar (Education, Insight, Lore)
-- **Background:** Renegade Mage (Arcana, Education, Fighting, Streetwise)
-- **Starting Item:** Wooden face mask (0 load)
+<ArchetypeSection label="Skills">
 
-**Rank 1 Skills**
+<ArchetypeField label="Rank 1" block>
 
-- **Arcana** - *Battle Mage (Rank 1)* - Quick Action arcane barrier adds Arcana to Parry/Dodge
-- **Fighting** - *Blade Mastery (Rank 1)* - Switch between pierce/slash properties
-- **Education** - *General Education (Rank 1)* - No bane on untrained expert skills when using Mind
+- Arcana - *Battle Mage (Rank 1)* - Quick Action arcane barrier adds Arcana to Parry/Dodge
+- Fighting - *Blade Mastery (Rank 1)* - Switch between pierce/slash properties
+- Education - *General Education (Rank 1)* - No bane on untrained expert skills when using Mind
 
-**Rank 0 Skills:** Lore, Perception †, Insight, Streetwise
+</ArchetypeField>
+
+<ArchetypeField label="Rank 0">Lore, Perception †, Insight, Streetwise</ArchetypeField>
 
 Note: † Customized skill, chosen outside the upbringing and background suggestions.
 
-**Combat Arts**
+</ArchetypeSection>
+
+<ArchetypeSection label="Combat Arts">
 
 With Fighting rank 1, you know **2 Combat Arts**. Recommended:
 
 - **Feint** (*Blade, Brawling, Polearm*) - Gain +1 boon when not moving
 - **Precise Strike** (*Blade, Brawling, Polearm*) - Ignore armor and add Agility to damage
 
-**Equipment**
+</ArchetypeSection>
+
+<ArchetypeSection label="Equipment">
 
 - Longsword (100 coins, 1 load)
 - Spell Catalyst (Arcane Conduit) (75 coins, 0 load)
 - Acid Vial x3 (90 coins, 3 load)
 - Smith‘s Tools toolkit (included in standard gear)
-- **Total Load:** 9 (equipment 4 + standard gear 5)
-- **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 85 (of 350)
 
-**Spells**
+<ArchetypeTally
+	coins={85}
+	coinsFrom="350 - 265 spent"
+	load={9}
+	loadFrom="equipment 4 + standard gear 5"
+	capacity={11}
+	capacityFrom="1/2 STR 3 + 8"
+/>
 
-**Discipline:** Evocation (elemental) or Telekinetics (force). Choose one discipline and take its spells.
+</ArchetypeSection>
 
-**Focus Pool:** (MND 8 - 2) + (2 x Arcana rank 1) = 8
+<ArchetypeSection label="Spells">
 
-**Starting Spells**
+<ArchetypeField label="Discipline">Evocation (elemental) or Telekinetics (force). Choose one discipline and take its spells.</ArchetypeField>
+<ArchetypeField label="Focus Pool">(MND 8 - 2) + (2 x Arcana rank 1) = 8</ArchetypeField>
 
 - **Evocation:**
   - Rank 0: Flickering Flame, Frost Snap
@@ -66,12 +81,16 @@ With Fighting rank 1, you know **2 Combat Arts**. Recommended:
 
 Note: at rank 1 you know 4 spells in total.
 
-**Playstyle**
+</ArchetypeSection>
+
+</ArchetypeCard>
+
+## Playstyle
 
 The Magus is perfect for players who want to combine melee combat with spellcasting in a hybrid warrior-mage. Blend swordplay with arcane magic. Battle Mage provides magical defense while you fight in melee. Blade Mastery gives combat versatility. Use spells to enhance your combat effectiveness. Use Feint for reliable attacks and Precise Strike against armored foes.
 
-**Advancement**
+## Advancement
 
 Increase Arcana and Fighting equally to rank 2-3 for more spells and Combat Arts, take Spellblade talent at higher ranks, add Lore for magical knowledge, and consider Battle Mage rank 2 for casting with Mind.
 
-[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)
+[Back to all archetypes](/docs/basic-rules/quickstart-characters/overview#archetypes-at-a-glance)

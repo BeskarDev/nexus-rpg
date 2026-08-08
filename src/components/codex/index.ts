@@ -117,3 +117,22 @@ export type {
 // and height-bounded rather than a page-wide `column-count`.
 export { default as Columns } from './Columns'
 export type { ColumnsProps } from './Columns'
+
+// M22 S3 — the quickstart-archetype card, and the `gate` keystone family it
+// introduced.
+export {
+	default as ArchetypeCard,
+	ArchetypeSection,
+	ArchetypeField,
+	ArchetypeTally,
+} from './ArchetypeCard'
+export type {
+	ArchetypeCardProps,
+	ArchetypeSectionProps,
+	ArchetypeFieldProps,
+	ArchetypeTallyProps,
+} from './ArchetypeCard'
+
+// M22 (owner review) — a markdown table with a filter bar over one column.
+export { default as TableFilter } from './TableFilter'
+export type { TableFilterProps } from './TableFilter'

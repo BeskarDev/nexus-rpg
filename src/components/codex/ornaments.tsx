@@ -60,6 +60,7 @@ export type CodexVariant =
 	| 'gem'
 	| 'palm'
 	| 'stele'
+	| 'gate'
 
 const SURFACE = 'var(--ifm-background-surface-color)'
 
@@ -115,6 +116,10 @@ const RAIL_LEN: Record<CodexVariant, { edge: number; side: number }> = {
 	// 63 × 88mm printed one, which is deeper than every screen card these reaches
 	// were measured against.
 	stele: { edge: 92, side: 55 },
+	// M22 — the quickstart-archetype family. An archetype card carries an origin
+	// block, a skill list, equipment and often spells, so it is the deepest screen
+	// card in the kit; the 55-unit side reach is validated well below that.
+	gate: { edge: 92, side: 55 },
 }
 
 const n = (v: number) => v.toFixed(2)
@@ -464,6 +469,46 @@ function CornerRail({ variant, len }: { variant: CodexVariant; len: number }) {
 					stroke={SURFACE}
 					strokeWidth={0.5}
 				/>
+			</>
+		)
+	}
+	if (variant === 'gate') {
+		// M22 — the archetype family: a low plinth ending in a fixed-size
+		// crenellated crest, the city wall running away from the gate its keystone
+		// draws. Same two-part construction as its siblings (fixed terminal,
+		// variable shaft, §4), so the long top rail and the short side rail carry
+		// the identical crest.
+		//
+		// Deliberately NOT the ziggurat's stair, which is the nearest neighbour in
+		// the kit: that terminal is one continuous mass DESCENDING outward, this is
+		// three separate blocks of EQUAL height with real gaps between them. Rhythm
+		// against gradient is what tells the two apart at rail scale, where neither
+		// keeps any interior detail.
+		const CREST = 15
+		const b = len - CREST
+		const MERLON = 3.6
+		const GAP = 1.7
+		// Growth is upward (−y) only: rail detail must never project inward into
+		// the content panel.
+		const merlons = [0, 1, 2].map((i) => {
+			const xa = b + 0.9 + i * (MERLON + GAP)
+			return `M${n(xa)} 3.3 L${n(xa + MERLON)} 3.3 L${n(xa + MERLON)} 5.3 L${n(xa)} 5.3 Z`
+		})
+		return (
+			<>
+				{/* the wall course, running the whole rail so the crest stands ON it */}
+				<path
+					d={`M13 5.3 L${n(len)} 5.3 L${n(len)} 6.7 L13 6.7 Z`}
+					fill="currentColor"
+					stroke="none"
+				/>
+				{/* the two collar ticks near the butt, the rhythm every rail carries */}
+				<path d="M18 4.3 L18 7.7 M22.5 4.3 L22.5 7.7" strokeWidth={0.8} />
+				<g fill="currentColor" stroke="none">
+					{merlons.map((d) => (
+						<path key={d} d={d} />
+					))}
+				</g>
 			</>
 		)
 	}
@@ -1564,6 +1609,134 @@ function SteleKeystone() {
 	)
 }
 
+/**
+ * A crenellated CITY GATE — two piers under a stepped lintel, crowned with three
+ * merlons — as the keystone for the quickstart-archetype family (M22 D6).
+ *
+ * ## Why a gate
+ *
+ * An archetype is the doorway into play: the reader has no character yet, picks
+ * one of twenty-five, and walks through. The gate is also the setting's own
+ * signature monument (the Ishtar Gate grammar the bull keystone already borrows
+ * its guilloche and rosettes from), so the mark is period-correct without being
+ * borrowed from another family.
+ *
+ * ## Craft
+ *
+ * **The structure is entirely in the OUTLINE (§16), and the void is the design.**
+ * Every other mark in the kit is a solid mass: the disc spreads, the khopeshes
+ * cross, the ziggurat steps up to a point, the bull broadens, the palm arches,
+ * the stele stands narrow. A wide mass with a large rectangular hole punched
+ * through it was the one unclaimed silhouette, and it is what tells this apart
+ * from the ziggurat — its nearest neighbour — at any size, including the 52px a
+ * printed card would give it.
+ *
+ * The merlon crest is doing the second half of that work. A plain lintel makes
+ * the mark a rectangle sitting over a rectangular card frame, which reads as
+ * structure rather than ornament; three crenellations break the top edge into a
+ * rhythm and tie the keystone to its corner rails, which carry the same crest as
+ * the wall running away from the gate.
+ *
+ * **No boss, and that is deliberate.** Its siblings put a lozenge or a shrine at
+ * the centre because they need a focal in a mass; here the opening already is
+ * one, and a diamond hung in the gateway would be interior detail — the first
+ * thing to go at small sizes (§16), and the exact failure that condemned the
+ * cartouche as the `Other` mark.
+ */
+function GateKeystone() {
+	// Ground line, and the flanking-course geometry, match the palm and the stele
+	// so the three newest marks are in scale with each other.
+	const GROUND = 22.6
+	const CX = 50
+	/**
+	 * Half the gateway opening, and the lintel it runs up to.
+	 *
+	 * The void has to be TALLER than it is wide or it reads as a slot cut in a
+	 * wall rather than a doorway — the first cut was 16 × 12.2 and did exactly
+	 * that. At 13 × 14.1 it is a portal, and at the card's 90.8px render that is
+	 * still ~12px of clear ground, well over the 3px floor (§8).
+	 */
+	const OPENING = 6.5
+	const PIER = 7.5
+	const LINTEL_TOP = 5.6
+	const LINTEL_BOTTOM = 8.5
+	const MERLON_TOP = 2
+
+	const box = (xa: number, xb: number, t: number, b: number) =>
+		`M${n(xa)} ${n(t)} L${n(xb)} ${n(t)} L${n(xb)} ${n(b)} L${n(xa)} ${n(b)} Z`
+
+	// Both piers from one function, mirrored about CX, so the pair is symmetric by
+	// construction rather than by two hand-typed coordinate sets (§6).
+	const piers = [-1, 1].map((side) =>
+		box(
+			CX + side * OPENING,
+			CX + side * (OPENING + PIER),
+			LINTEL_BOTTOM,
+			GROUND,
+		),
+	)
+	// Three equal merlons over the lintel: the crest the corner rails repeat.
+	const MERLON = 6
+	const merlons = [-1, 0, 1].map((i) =>
+		box(
+			CX + i * 12 - MERLON / 2,
+			CX + i * 12 + MERLON / 2,
+			MERLON_TOP,
+			LINTEL_TOP,
+		),
+	)
+	// Flanking courses out to the frame edges, stepping down away from the gate —
+	// the same two-course run the stele stands on.
+	const courses = [
+		{ inner: OPENING + PIER, outer: 30, top: 18.4 },
+		{ inner: 30, outer: 46, top: 20.2 },
+	].flatMap(({ inner, outer, top }) =>
+		[-1, 1].map((side) =>
+			box(CX + side * inner, CX + side * outer, top, GROUND),
+		),
+	)
+
+	return (
+		<svg
+			className={styles.gateKeystone}
+			viewBox="0 0 100 30"
+			fill="none"
+			stroke="currentColor"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			{/* Opaque backing along the border line only, so the card's top border
+			    stops at the ornament instead of running through the courses — and,
+			    here, so it does not run straight across the gateway opening. */}
+			<path
+				d={`M2 ${n(GROUND - 1.2)} L98 ${n(GROUND - 1.2)} L98 ${n(GROUND + 1.2)} L2 ${n(GROUND + 1.2)} Z`}
+				fill={SURFACE}
+				stroke="none"
+			/>
+			<g fill="currentColor" stroke="none">
+				{courses.map((d) => (
+					<path key={d} d={d} />
+				))}
+				{piers.map((d) => (
+					<path key={d} d={d} />
+				))}
+				{/* the lintel, oversailing both piers */}
+				<path
+					d={box(
+						CX - OPENING - PIER - 2.4,
+						CX + OPENING + PIER + 2.4,
+						LINTEL_TOP,
+						LINTEL_BOTTOM,
+					)}
+				/>
+				{merlons.map((d) => (
+					<path key={d} d={d} />
+				))}
+			</g>
+		</svg>
+	)
+}
+
 export interface CardFrameProps {
 	/**
 	 * Which card family this is. Selects both the top-edge keystone and the
@@ -1592,6 +1765,7 @@ const KEYSTONES = {
 	gem: GemKeystone,
 	palm: PalmKeystone,
 	stele: SteleKeystone,
+	gate: GateKeystone,
 } as const
 
 /**

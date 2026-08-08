@@ -1,0 +1,85 @@
+/* TableFilter — a filter bar bound to the table under it (M22, owner review).
+   Tokens only. */
+
+.filtered {
+	margin-bottom: var(--ifm-spacing-vertical);
+}
+/* The bar belongs to the table, so the slab loses its own bottom margin and the
+   two read as one object. */
+.filtered :global(.codex-table-slab) {
+	margin-bottom: 0;
+}
+
+/* Grouped by a wash and a shared edge with the slab below, never a rule. */
+.bar {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.35rem 0.6rem;
+	padding: 0.4rem 0.6rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 42%, transparent);
+	border-bottom: none;
+	border-radius: 2px 2px 0 0;
+	background: color-mix(in srgb, var(--ifm-color-primary) 5%, transparent);
+}
+
+.options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.28rem;
+}
+
+/* The same struck bronze tag the cards use for a VALUE, made pressable. Not an
+   MUI control and not a switch — the codex has its own register for this. */
+.option {
+	margin: 0;
+	padding: 1px 8px;
+	border: 1px solid
+		color-mix(in srgb, var(--ifm-color-primary) 34%, transparent);
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
+	color: color-mix(
+		in srgb,
+		var(--ifm-font-color-base) 78%,
+		var(--ifm-color-primary)
+	);
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	font-size: var(--nexus-text-xs);
+	line-height: 1.5;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.option:hover {
+	border-color: color-mix(in srgb, var(--ifm-color-primary) 60%, transparent);
+	background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+}
+/* The pressed state is carried by INK and border weight, not a saturated fill:
+   a solid bronze block reads as a sticker laid on carved stone. */
+.optionOn {
+	border-color: var(--ifm-color-primary);
+	background: color-mix(in srgb, var(--ifm-color-primary) 18%, transparent);
+	color: var(--ifm-font-color-base);
+}
+.option:focus-visible {
+	outline: 2px solid var(--ifm-color-primary);
+	outline-offset: 2px;
+}
+
+.count {
+	margin-left: auto;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.04em;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 62%, transparent);
+}
+
+/* Infima gives table rows their own display, so the `hidden` attribute alone
+   does not take. */
+.filtered :global(tbody tr[hidden]) {
+	display: none;
+}
