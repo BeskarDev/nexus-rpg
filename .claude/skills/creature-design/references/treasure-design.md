@@ -36,7 +36,7 @@ Rule of thumb per row, against that tier's average trophy value (2d6 ≈ 7):
 
 | Scale | Typical row | Why |
 |---|---|---|
-| **None** | no table | Beasts and constructs that carry nothing. |
+| **None** | no table | Reserve for creatures with no body worth harvesting and no lair — a summoned elemental, an illusion. **Not for animals.** |
 | **Incidental** | ~¼ to ½ a trophy | Personal effects, a few coins. |
 | **Standard** | ~½ to 1½ trophies | What a creature of this tier normally has on them. |
 | **Rich** | ~1 to 3 trophies, one row well above | Grave goods, a warlord's gear. |
@@ -44,12 +44,35 @@ Rule of thumb per row, against that tier's average trophy value (2d6 ≈ 7):
 
 Two economic facts that change what a row is worth:
 
-- **Items sell for HALF their value.** Trade goods and gems are the exception and sell for
-  full. So a 200-coin ornament is 100 coins in hand, and writing the sale price is often
-  more useful than the list price. Say which you mean.
+- **Items sell for HALF their value, and looted gear is not intact.** Trade goods and gems
+  are the exception and sell for full. **Damaged sells for a quarter, broken for a tenth**
+  (`01-items.md` § Value) — and `02-creature-rules.md` says equipment from fallen creatures
+  is *almost always damaged*, so a creature's own kit is a **quarter** of list price in
+  hand, not a half. A 100-coin battleaxe off a raider is 25 coins, or 50 after a rest spent
+  repairing it. Write the sale price, and say which condition you mean.
 - **A Quality rating already implies a price.** Q1 25 · Q2 75 · Q3 250 · Q4 750 · Q5 2,500
   · Q6 7,500 · Q7 25,000 · Q8 75,000 coins. Never state a `value` that contradicts the
   `stats` Quality you gave the same item.
+
+### 1.1 Beasts are not `None` — their body is the treasure
+
+The commonest mistake at low tier is giving an animal an empty table because it has no pockets. That
+confuses **carrying** nothing with **yielding** nothing, and it ignores
+`docs/06-scenes/06-harvesting-creature-parts.md`, which turns any creature into a **Trophy**, a **Tool**,
+a **Material** and a day or more of food. Those four are half a table before you have invented anything,
+and the harvesting page already prices them by creature level.
+
+**The lair carries what the animal cannot.** A den, a nest, a gullet or the fill under a floor is a
+legitimate home for the treasure block, and it is usually where a beast's interesting rows come from —
+the jackal's den holds a bell dragged off a graveside, the crocodile's gizzard holds a signet ring. Say
+in the `scale` line which it is, so a GM knows whether the loot needs a body or a search.
+
+**Keep low-tier rows small but useful.** A dose of venom written as `Weapon Poison (weak), 1 use` is a
+real item a level-1 party will coat a spear with. Belly hide written as `Leatherworking material,
+Quality 1` becomes armour. Vendor trash is the failure mode, not the target.
+
+> **Gap:** the harvesting table starts at **level 1** and has no row for level 0. Until it gains one,
+> write tier-0 trophies as `1d6` coins with Quality 1 parts, which is the straight extrapolation.
 
 ## 2. Mundane gear — name the published item
 

@@ -99,7 +99,7 @@ const FULL_MARKDOWN = `### **Marsh Tyrant** (Large Beast (Serpent))
 
 | HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
 |----|----|----|----|----|-----|-------|-------|--------|
-| 2×60 | 9 (heavy) | d10 | d6 | d8 | d8 | 12 | 8 | 10 |
+| 2×60 | 7 (heavy) | d10 | d6 | d8 | d8 | 12 | 8 | 10 |
 
 **Skills:** Perception (2)
 

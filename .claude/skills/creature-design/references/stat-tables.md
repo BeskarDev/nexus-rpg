@@ -6,7 +6,7 @@ Canonical numeric reference for creature design. Use these values exactly.
 
 | Tier | HP | AV (light/heavy) | Defense | Max Attribute | Skill Rank (1st/2nd) | Weapon Damage | Ability Difficulty | Secondary dmg |
 |------|----|------------------|---------|---------------|----------------------|---------------|--------------------|---------------|
-| 0    | 5  | 0/0              | 6       | d6            | 0/1                  | 2             | TN 6               | 1 |
+| 0    | 5  | 0/1              | 6       | d6            | 0/1                  | 2             | TN 6               | 1 |
 | 1    | 10 | 1/2              | 7       | d6            | 1/1                  | 3             | TN 7               | 2 |
 | 2    | 20 | 2/3              | 8       | d8            | 1/2                  | 4             | TN 8               | 2 |
 | 3    | 30 | 3/5              | 9       | d8            | 2/2                  | 5             | TN 9               | 3 |
@@ -20,12 +20,38 @@ Canonical numeric reference for creature design. Use these values exactly.
 
 Base damage from attribute die: d6→3, d8→4, d10→5, d12→6, d12+1→7, d12+2→8.
 
-**AV** (D-014): light = tier, heavy = **1.5 × tier rounded up**. Chosen to track the player AV
-progression so the two sides stay legible against each other.
+**AV** (D-014): light = tier, heavy = **1.5 × tier rounded up, minimum 1**. Chosen to track the player
+AV progression so the two sides stay legible against each other. The minimum exists only for tier 0,
+where the formula returns 0 and heavy armor would otherwise be indistinguishable from light.
 
 **Defense** (D-015): `6 + tier` through tier 5, then **+1 per two tiers**. Player accuracy grows +6
 across ten levels while a flat +1-per-tier Defense grew +10, sliding player hit rates from 79% down to
 46%. This curve holds 55–71%.
+
+**Changing an attack's target defense** — write the whole roll as the attack text's **first sentence**:
+
+> `Roll Strength + Fortitude vs. Dodge. Target all creatures in a short cone. On a success, …`
+
+`Roll <Attribute> + <Skill> vs. <Defense>.` is the only sanctioned form. **There is no `vs. Dodge`
+property**, and the defense never appears without the attribute and skill beside it, because leaving the
+default weapon-attack path means declaring the whole roll rather than swapping one number. Once the roll
+is written out, the outcome clause reads **"On a success"**, not "On a hit". Default mapping if you do
+not override it (`docs/03-statistics/03-defenses.md`): melee and touch attacks vs. **Parry**, ranged and
+area vs. **Dodge**, mental and environmental vs. **Resist**. Attacks written in this form do not need
+`agile` — stating `Roll Agility + …` already does that job, and `agile` exists only to let an ordinary
+weapon attack substitute Agility for Strength.
+
+**Writing the roll frees the skill, not just the defense** — and that is the more useful half. An
+attack scored on the competence it actually uses says something a stat line cannot: the Leatherwing's
+theft rolls `Agility + Perception` because spotting a loose pouch is Perception, and since that creature
+has Perception (1) and Fighting (0), the block states by itself that it is better at robbing you than at
+hurting you. Reach for a non-combat skill whenever the attack is not really a fight.
+
+**Multi-target attacks** halve the **weapon damage only**, rounded up — base damage is unchanged. This
+is symmetric with the spell system, where Spell Power applies equally to single-target and multi-target
+spells and only the SL-scaling spell bonus is halved (`SPELL_SYSTEM_ANALYSIS.md` §6). Halving the
+*total* would halve the flat component too, and multi-target attacks would collapse to the AV floor at
+every tier.
 
 **Secondary damage** (D-017): half weapon damage rounded up, for an attack carrying a separate
 AV-ignoring damage instance. **A per-creature design channel, never a chassis line.** Written in its own
@@ -65,7 +91,7 @@ Canonical data: `creature-types.json`, `creature-subtypes.json`, `creature-addit
 | Type | Description | Subtypes |
 |------|-------------|----------|
 | **Automaton** | Made things given motion, from a mortal workshop or a god's forge | Golem, Animated Object, Vessel |
-| **Beast** | Natural animals lacking inherent magic | Mammal, Reptile, Bird, Insect, Aquatic |
+| **Beast** | Natural animals lacking inherent magic | Mammal, Reptile, Bird, Insect, Aquatic, **Saurian** |
 | **Divine Beast** | Shaped or marked by a god, made for a purpose. Bound to a duty, place, or mandate — **and the mandate is a Treat** | Guardian, Omen, Forsaken |
 | **Draconic** | Elemental spirit-beings permanently bound to the material world, and their lesser kin | True Dragon, Celestial Dragon, Lesser, Serpent, Dragonkin |
 | **Giant** | The titanic-era lineage. Some held onto their minds, some did not | Elder, Feral |
@@ -89,9 +115,14 @@ Subtypes describing a nature that cuts across types, rather than a kind of creat
 
 | Additive | Effect |
 |---|---|
+**Every Undead carries the `Undead Nature` trait by default** — *does not need to breathe, eat, drink,
+or sleep* — in the same way it must carry `Mindless` or `Intelligent`. Write it on every undead rather
+than re-deriving what being dead means per creature, and never restate what the additive already grants
+(`Mindless` already covers no Morale roll and immunity to charmed, frightened and confused).
+
 | **Mindless** / **Intelligent** | Mindless: no Morale roll, no parley, immune to charmed/frightened/confused. Intelligent: none of those. **One is required on every Undead and Automaton** |
 | **Shapechanger** | Can alter its physical form |
-| **Swarm** | One creature that is a mass of bodies. Resistant to single-target damage, immune to single-target conditions, cannot be grappled, occupies an area. **Not the Horde archetype**, which is many creatures in a troop |
+| **Swarm** | One creature that is a mass of bodies. Resistant to single-target damage, immune to single-target conditions, cannot be grappled, occupies an area. **At half HP or lower their attacks deal half damage, rounded up** — the additive's cost, repeated in each swarm's attack text. **Not the Horde archetype**, which is many creatures in a troop |
 | **Amorphous** | No fixed form. Squeezes through gaps, cannot be grappled, no anatomy to target. Every Ooze has it |
 
 ### What subtype does NOT own
@@ -313,7 +344,7 @@ Derived: base damage 5 (d10), weapon damage 6, ability TN 10, secondary damage 3
   their next turn they gain +2 Parry, and any creature that tries to move past them must roll Strength or
   Agility + Athletics vs. TN 10 or have their Movement end. This creature cannot use Movement while in
   the stance.
-- **Sunrise Vow** (Elite Trigger). When this creature loses their first life pool, the oath tightens. For
+- **Sunrise Vow** (Elite Trigger). When this creature suffers a Wound, the oath tightens. For
   the rest of the scene they cannot willingly move further than close range from the gate, and their
   attacks deal +3 damage while they stand within it.
 

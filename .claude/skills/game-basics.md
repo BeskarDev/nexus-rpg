@@ -151,3 +151,36 @@ Bounded mortal pinnacle: Rank 5 spells ≈ D&D level 7; Rank 5 martial skill ≈
 - Examples in quote blocks (`>`).
 - Tone: authoritative but accessible, evocative of ancient Bronze Age civilizations without purple prose.
 - Lead with mechanics, then flavor that enhances rather than obscures.
+
+### Reading level
+
+**Write for a middle schooler.** Roughly ages eleven to fourteen: plain words, short clauses, one idea
+per sentence. A rule that has to be read twice has failed, and a player who has to stop and work out a
+word has stopped playing.
+
+**The test:** could a twelve-year-old read this aloud and say what happens? If not, it is the writing,
+not the reader.
+
+This bans **ornament, not vocabulary**. A hard word is right when it is the *precise* word and no
+shorter one means the same thing — `parry`, `boon`, `sarcophagus`, `sinew`, `signet` all stay, because
+each names something exactly and the reader learns it once. A hard word is wrong when a common word
+would have done the same work:
+
+| Reaching | Plain |
+|---|---|
+| the shaded side of a bund | the shade of the bank |
+| fish offal | fish guts |
+| carapace | shell |
+| which processions leave food | which funerals leave food |
+| the fill under a tomb floor | the packed earth under a tomb floor |
+| utilize, commence, numerous, requisite | use, start, many, needed |
+
+Two habits that quietly raise the reading level without adding a single long word:
+
+- **Stacked clauses.** Three ideas joined by "and" and a trailing "which" costs a reader more than any
+  vocabulary does. Split the sentence.
+- **Abstract nouns doing a verb's job.** "Their behaviour is one of avoidance" is harder than "they
+  keep away", and longer.
+
+The register is *plain and confident*, not childish. Short sentences about concrete things are how
+folklore has always sounded, which is also the voice this setting wants.

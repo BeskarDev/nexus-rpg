@@ -80,6 +80,16 @@ Adventurers amass wealth in the abstracted currency of “coins” over their ad
 
 > Generally, items can be sold for half their value. The exception are designated trade goods or gems, which can be sold for their full value.
 
+**Damaged and broken items are worth less.** A buyer pays for the work needed to make the item whole again, or for what is left of the materials.
+
+| Condition | Sells for |
+| --- | --- |
+| Intact | half its value (trade goods and gems, full value) |
+| Damaged | a quarter of its value |
+| Broken | a tenth of its value |
+
+This matters most when looting, since equipment taken from fallen creatures is almost always damaged. Repairing a damaged item during a rest restores both its use and its price, so it is usually worth carrying the axe home rather than selling it where you found it.
+
 Here are some examples for how much different items or services are worth:
 
 | Coins | Value of Item or Service |

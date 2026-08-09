@@ -2,12 +2,20 @@
 	{
 		"name": "Mindless",
 		"description": "No mind to reach. Does not roll Morale and cannot be parleyed. Immune to charmed, frightened, and confused. Required on every Undead and Automaton, paired with Intelligent.",
-		"forTypes": ["Undead", "Automaton", "Ooze"]
+		"forTypes": [
+			"Undead",
+			"Automaton",
+			"Ooze"
+		]
 	},
 	{
 		"name": "Intelligent",
 		"description": "Retains or was given a mind. Parley is possible, may cast spells, may command lesser creatures of its kind. Not automatically immune to mind-affecting conditions. Required on every Undead and Automaton, paired with Mindless.",
-		"forTypes": ["Undead", "Automaton", "Ooze"]
+		"forTypes": [
+			"Undead",
+			"Automaton",
+			"Ooze"
+		]
 	},
 	{
 		"name": "Shapechanger",
@@ -16,7 +24,7 @@
 	},
 	{
 		"name": "Swarm",
-		"description": "One creature that is a mass of small bodies. Resistant to damage from single-target effects, immune to conditions from single-target effects, cannot be grappled, occupies an area. Distinct from the Horde archetype, which is many separate creatures under troop rules.",
+		"description": "One creature that is a mass of small bodies. Resistant to damage from single-target effects, immune to conditions from single-target effects, cannot be grappled, occupies an area. While at half HP or lower, their attacks deal half damage, rounded up. Distinct from the Horde archetype, which is many separate creatures under troop rules.",
 		"forTypes": []
 	},
 	{

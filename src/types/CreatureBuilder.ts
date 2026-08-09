@@ -10,6 +10,9 @@ export interface CreatureTier {
 	secondarySkillRank: number
 	weaponDamage: number
 	abilityDifficulty: number
+	/** Half weapon damage, rounded up. The AV-ignoring secondary instance a creature
+	 * may carry as a design channel (not a chassis line — it applies per creature). */
+	secondaryDamage: number
 }
 
 export interface CreatureArchetype {

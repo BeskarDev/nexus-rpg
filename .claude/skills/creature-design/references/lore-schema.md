@@ -22,6 +22,47 @@ no purple prose. Tactics should tell a GM how to *run* them, not restate the sta
 Omit any optional key rather than writing an empty value — the generator rejects unknown
 keys and empty strings outright, so the structure cannot drift entry by entry.
 
+## Writing the prose
+
+`narrative`, `ecology` and `tactics` are the only free prose in the whole schema, which
+makes them the only place the writing can go wrong. Four rules, in priority order:
+
+**1. One idea per sentence.** The commonest defect is a sentence carrying three: a subject,
+a participial aside, and a second independent clause bolted on with "and". Long sentences
+are fine when they are long about *one thing*. Split the moment a second thing arrives.
+
+**2. Open on the concrete thing, close on the turn.** The first sentence is an
+establishing shot — what a person would see. Save the wit, the reversal or the dry
+observation for the last sentence, where the reader already has an image to hang it on. An
+aphorism in the opening slot ("They are the funeral's other congregation") makes the reader
+decode before they have been given anything to decode *with*.
+
+**3. Never make the reader unpack an idiom to reach a fact.** "Keeping the distance a
+thrown stone travels" is a riddle whose answer is "just out of reach". Write the answer.
+Ornament belongs on things the reader already understands.
+
+**4. Write for a middle schooler.** Plain words, short clauses, one idea per sentence — the full rule
+and its test live in [../../game-basics.md](../../game-basics.md#reading-level). Hard words are for
+precision, never for texture: `sinew` and `signet` stay because they name a thing exactly, while a
+`bund` is a bank and `offal` is guts. Varied lengths, too: Three or four sentences with a mix of
+lengths reads faster than two balanced ones. Avoid meta-phrasing that explains the
+sentence you are writing — "which in practice means", "what this amounts to is" — because
+it is always shorter to just say the thing.
+
+> **Before.** They are the funeral's other congregation. Every burial road out of a city has
+> its jackals, keeping the distance a thrown stone travels, and every gravedigger knows the
+> ones that work their stretch. Nobody has ever successfully driven them off anything.
+>
+> **After.** A lean grey scavenger of the burial roads. Jackals follow funerals at the edge
+> of a thrown stone's range, and they have learned which processions leave food. Every
+> gravedigger knows the ones that work their stretch, and none of them has ever driven one
+> off for good.
+
+Same length, same facts, and the reader now sees the animal before being told what to think
+about it. **This is not a licence to write flatly** — the last clause of the rewrite is the
+same joke as the original's last sentence. It just arrives after the image instead of
+in place of one.
+
 ## Environment
 
 **Environment is a ranked vocabulary**, and the list must run broadest to narrowest:

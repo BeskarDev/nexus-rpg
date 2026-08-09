@@ -109,8 +109,9 @@ describe('creatureBuilderCalculations', () => {
 		})
 
 		it('should calculate heavy armor AV', () => {
+			// heavy = 1.5 x tier, rounded up (D-014): tier 4 -> 6
 			const av = calculateAV(4, 'Defender', 'Medium')
-			expect(av).toBe('8')
+			expect(av).toBe('6')
 		})
 
 		it('should apply size modifier', () => {

@@ -77,18 +77,31 @@ other ten: at tier 9 it promises 15/19/23 where the creature data says 18/33/48.
 
 | Category | Life Pools | HP Format | Wounds | Attacks | Abilities | Built-in Rules |
 |----------|-----------|-----------|--------|---------|-----------|----------------|
-| **Basic** | 1 | `40` | 1 | 1–2 | 1–3 | Rolls Morale, no Resolve, can form troops |
+| **Basic** | 1 | `40` | 1 | 1–2 | **0–3** | Rolls Morale, no Resolve, can form troops |
 | **Elite** | 2 | `2×40` | 2 | 2–3 | 2–4 | 1 Resolve, +1 boon on Morale |
 | **Lord** | 3 | `3×40` | 3 | 3–5 | 3–6 | 3 Resolve, second round at half Initiative, no Morale, recovers conditions on Wound, immune to repeated conditions after one success |
 
 Life pool mechanics: when a pool hits 0 HP, the creature takes 1 Wound and immediately regains full HP (next pool). Lords also shed all negative conditions.
 
+**A Basic may have zero abilities** (D-054), provided it has **at least one ability or trait between
+the two lists**. Zero of both is too thin — nothing distinguishes the creature. Never add a filler
+ability to satisfy a column: a creature carrying its identity in an attack rider or a subtype such as
+`Swarm` has already earned its place. Elite and Lord minimums are unchanged, because their mandatory
+triggers are what define those categories.
+
 **Do not write "Special Rules" or "Combat Notes" sections in stat blocks** — Elite/Lord built-in rules apply automatically from the category.
 
 ### Mandatory Ability Requirements
 
-- **Elite**: ≥1 **Elite Trigger** (fires when first pool depletes: power surge, ability unlock, or environmental change) and ≥1 Quick Action ability (reactive or proactive).
-- **Lord**: ≥2 **Lord Triggers** (fire when any pool depletes; each should shift combat dynamics) plus ≥1 reactive AND ≥1 proactive Quick Action ability.
+- **Elite**: ≥1 **Elite Trigger** (power surge, ability unlock, or environmental change) and ≥1 Quick Action ability (reactive or proactive). **A trigger escalates — never write one that makes the fight easier** (principle 27), and check first whether the published rules already do it: a band breaking when its leader falls is Morale, not a trigger.
+- **Lord**: ≥2 **Lord Triggers**, each shifting combat dynamics, plus ≥1 reactive AND ≥1 proactive Quick Action ability.
+
+**Trigger wording is fixed.** Open every trigger with **`When this creature suffers a Wound, …`**. "Life
+pool" is jargon from this skill and the old analysis document — the published rules
+(`02-creature-rules.md`) only ever say a creature *suffers a Wound* and *regains all of their HP*, so a
+stat block must too. An Elite needs no ordinal: it has two Wounds and the second kills, so only one Wound
+can trigger anything. A **Lord takes the ordinal** — `their first Wound`, `their second Wound` — because
+three Wounds and two mandatory triggers otherwise fire everything at once instead of escalating.
 - **Elite/Lord**: ≥1 defensive ability fitting the fighting style — blocking, redirecting, evading, absorbing, negating, or environmental (category table in references) — with counterplay per principle 10.
 
 ## Creation Workflow
@@ -142,6 +155,10 @@ The canonical form, as the Dark Cultist Acolyte already writes it:
 Apply size modifiers and category-appropriate immunity sets from references. Resistances = half damage, weaknesses = double damage. Match to creature-type logic — undead aren't immune to everything; living creatures aren't immune to bleeding. Immunity counterplay per principle 10.
 
 **Use the published damage-type names only** — acid, blast, fire, force, frost, lightning, necrotic, physical, poison, psychic, radiant (`docs/05-combat/02-attacking.md` § Damage Types). D&D's `cold` and `thunder` are **not** Nexus types; they drifted into the data once and had to be normalised to `frost` and `blast`. Anything off that list will also fail to render as a damage chip, since the chip map follows the published table.
+
+**Undead default trait**: every Undead carries `Undead Nature` (*does not need to breathe, eat, drink,
+or sleep*), alongside its required `Mindless` or `Intelligent` additive. Do not restate what the
+additive already grants.
 
 ### 5b. Lore (optional field, fixed structure)
 A creature may carry an optional `lore` object — a **fixed structure**, not free prose —
