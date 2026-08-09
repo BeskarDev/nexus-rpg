@@ -22,6 +22,9 @@ Creatures are designed on a tier chassis (Tier 0–10, matching adventurer level
 | Published spells (for spellcasting creatures) | `docs/07-magic/02-arcane-spells/`, `04-mystic-spells/` |
 | Damage/healing scaling frameworks | `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6 and §16 |
 | Deep analysis (survivability math, encounter building, ability catalogues) | `docs/analysis/creature-creation-encounter-building-analysis.md` |
+| **Types, subtypes, additives** | `creature-types.json`, `creature-subtypes.json`, `creature-additives.json` — 12 types, subtypes are an **array** so additives sit alongside the primary value |
+| **Worldbuilding vault** | `~/git/personal/nexus-rpg-vault` (separate repo, German). `04 Natur/Bestiarium` holds the cosmological origin lore, `02 Kosmologie/Seelenreiche` the soul realms. **Read before designing a creature's identity. Read-only — never write to it** |
+| **The twelve Folk** | `docs/02-adventurers/01-folk.md` — a humanoid creature **inherits its folk's published traits** rather than inventing them |
 | Creature Builder rule tables (app) | `src/utils/data/json/creature-*.json` (tier stats, sizes, types, archetypes — NOT the roster) |
 | **Attacks library** (Builder pre-sets) | `src/utils/data/json/creature-attacks-library.json` — template attacks by tags (melee/ranged/breath/natural) and `forTypes` hints. **An entry stores `weaponDamage` (a modifier on the tier's baseline) and an optional `baseAttribute`, never a damage figure** — see below |
 | **Abilities library** (Builder pre-sets) | `src/utils/data/json/creature-abilities-library.json` — template abilities by tags and `forTypes` hints |
@@ -63,7 +66,12 @@ other ten: at tier 9 it promises 15/19/23 where the creature data says 18/33/48.
 - **8.** Check every condition against its published definition — stunned doesn't disable, only paralyzed does.
 - **9.** High-impact conditions need a save or a rolled attack, never a no-roll trigger.
 - **10.** Defensive abilities and immunities need counterplay; no auto-win offense either.
-- **13.** Mythological-first roster identity — D&D imports only naturalized: renamed (legal minimum), setting-fit ecology.
+- **13.** Mythological-first roster identity — D&D imports only naturalized: renamed (legal minimum), setting-fit ecology. Entry names are **anglicised, no diacritics** (Mushhushshu, Girtablilu, Edimmu, Anzu).
+- **14.** A game term must say what it is; lore names stay in `lore.narrative`.
+- **15.** Timer, Threat, Treat — and the Treat has **five channels**, one of them lore-only. For ordinary animals a false mechanic is worse than none.
+- **16.** Condition escalation prices a disable instead of banning it.
+- **17.** Bonus damage comes in three rungs — flat, costed attack, SL escalator — and they are rungs, not a right answer.
+- **18.** `briefly` (one turn) and `short` (rest of the fight) are the two in-combat durations. Never spell `briefly` out longhand.
 
 ## Creature Categories
 
@@ -113,8 +121,22 @@ Use only official weapon properties (`docs/04-equipment/05-armor-weapon-properti
 ### 4. Abilities
 - **Ability TN** = 6 + tier. Saves usually Spirit/Strength + Fortitude. Official durations only.
 - Add mandatory trigger/Quick Action/defensive abilities per category (above), then thematic abilities: movement, senses, auras, environmental manipulation.
-- Damage/healing beyond basic attacks and spellcasting rules: principle 7 — spell scaling frameworks, max spell rank = magic skill rank, every spell verified to exist by grep.
-- Condition-inflicting abilities: principles 8–9 — design against the published condition text, saves for high-impact conditions.
+- Damage/healing beyond basic attacks: principle 7 — spell scaling frameworks.
+- Condition-inflicting abilities: principles 8–9 and **16** — design against the published condition text, and **escalate** rather than landing a disable off one roll.
+- **Limiters**: `recharge (dX)` (4+ at the **end** of the turn, d4/d6/d8 only), `once per scene`, or `once between your turns`. Nothing else.
+
+#### NPC spellcasting
+
+The canonical form, as the Dark Cultist Acolyte already writes it:
+
+> This creature can cast the following spells, rolling Mind + Arcana, once per scene each: *Attack
+> Thoughts*, *Subtle Suggestion*.
+
+- NPCs draw on the **general published roster** — 201 arcane, 285 mystic. **No Focus, no spell slots, no per-day counting.**
+- **Max spell rank = the creature's magic skill rank**, straight off the tier table. Every spell verified by grep.
+- **Spells known ≈ max rank + 1** — a tier-3 cultist gets three, a tier-10 lich six. **A guideline, not a cap**: a creature designed as a master spellcaster may carry more.
+- **Front-load, do not ration.** A spellcaster creature survives one to three turns. Withholding its best option means it dies before using it and the encounter never shows what the creature was.
+- Bespoke magical abilities are valid **on top** of the list, and cost an ability slot. A spell costs only a line.
 
 ### 5. Size, Immunities, Resistances
 Apply size modifiers and category-appropriate immunity sets from references. Resistances = half damage, weaknesses = double damage. Match to creature-type logic — undead aren't immune to everything; living creatures aren't immune to bleeding. Immunity counterplay per principle 10.

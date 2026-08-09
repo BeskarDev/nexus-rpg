@@ -19,6 +19,11 @@
 import fs from 'fs'
 import path from 'path'
 
+import creatureAdditives from '../data/json/creature-additives.json'
+import creatureSizes from '../data/json/creature-sizes.json'
+import creatureSubtypes from '../data/json/creature-subtypes.json'
+import creatureTypes from '../data/json/creature-types.json'
+
 const REPO = path.resolve(__dirname, '../../..')
 const JSON_FILE = path.join(REPO, 'src/utils/data/json/creatures.json')
 const DOC_DIR = path.join(REPO, 'docs/08-creatures/03-creatures')
@@ -60,7 +65,9 @@ interface StatBlockEntry {
 
 interface CreatureRecord {
 	name: string
+	size: string
 	type: string
+	subtype: string[]
 	tier: number
 	category: string
 	armor: string
@@ -79,7 +86,6 @@ interface CreatureRecord {
 	weaknesses: string[]
 	attacks: StatBlockEntry[]
 	abilities: StatBlockEntry[]
-	quickActions: StatBlockEntry[]
 	/** Optional non-mechanical lore, rendered collapsed under the card header. */
 	lore?: CreatureLoreRecord
 }
@@ -227,6 +233,7 @@ const LORE_KEYS = new Set([
 
 const STRING_FIELDS = [
 	'name',
+	'size',
 	'type',
 	'category',
 	'armor',
@@ -244,10 +251,97 @@ const LIST_FIELDS = [
 	'resistances',
 	'weaknesses',
 ] as const
-const ENTRY_FIELDS = ['attacks', 'abilities', 'quickActions'] as const
+const ENTRY_FIELDS = ['attacks', 'abilities'] as const
+
+/**
+ * The taxonomy vocabulary, loaded from the same files the Builder reads so the
+ * two can never drift. Open to extension, closed to typos: adding a term is a
+ * deliberate edit to the JSON, not a free-text field (D-043).
+ */
+const VALID_SIZES = new Set(
+	(creatureSizes as { name: string }[]).map((s) => s.name),
+)
+const VALID_TYPES = new Set(creatureTypes as string[])
+const VALID_SUBTYPES = new Map<string, Set<string>>(
+	Object.entries(creatureSubtypes as Record<string, string[]>).map(
+		([type, subs]) => [type, new Set(subs)],
+	),
+)
+const ADDITIVES = new Set(
+	(creatureAdditives as { name: string }[]).map((a) => a.name),
+)
+/** Types where exactly one of Mindless / Intelligent is required (D-045, D-046). */
+const MIND_REQUIRED = new Set(['Undead', 'Automaton'])
 
 function fail(context: string, reason: string): never {
 	throw new Error(`[generate-creatures] ${context}: ${reason}`)
+}
+
+/**
+ * Size, type and subtype against the published vocabulary.
+ *
+ * These used to be one string ("Medium Undead") with no subtype at all, which
+ * meant nothing could be checked: a typo, a retired type, or an invented
+ * subtype all passed. Splitting them made each one checkable, so each one is
+ * checked.
+ */
+function validateTaxonomy(e: Record<string, unknown>, context: string): void {
+	const size = e.size as string
+	const type = e.type as string
+	if (!VALID_SIZES.has(size))
+		fail(context, `unknown size "${size}" (see creature-sizes.json)`)
+	if (!VALID_TYPES.has(type))
+		fail(context, `unknown type "${type}" (see creature-types.json)`)
+
+	const subtypes = e.subtype as string[]
+	const known = VALID_SUBTYPES.get(type) ?? new Set<string>()
+	for (const sub of subtypes) {
+		if (typeof sub !== 'string' || sub.trim() === '')
+			fail(context, 'subtype entries must be non-empty strings')
+		if (!known.has(sub) && !ADDITIVES.has(sub))
+			fail(
+				context,
+				`"${sub}" is not a subtype of ${type} and not an additive; ` +
+					'extend creature-subtypes.json or creature-additives.json deliberately',
+			)
+	}
+
+	// A mindless thing and a thinking one differ in whether they roll Morale, can
+	// be parleyed with, and are immune to mind-affecting conditions. The outgoing
+	// roster gave every undead blanket immunity regardless, across six
+	// inconsistent sets. Requiring the additive is what stops that returning.
+	if (MIND_REQUIRED.has(type)) {
+		const minds = subtypes.filter((s) => s === 'Mindless' || s === 'Intelligent')
+		if (minds.length !== 1)
+			fail(
+				context,
+				`${type} must carry exactly one of "Mindless" or "Intelligent" ` +
+					`(found ${minds.length})`,
+			)
+	}
+}
+
+/**
+ * Any damage resistance or immunity requires at least one weakness (D-035).
+ *
+ * Resistance and weakness are two halves of one statement — a thing made of
+ * stone is hard to cut and easy to shatter. Taking only the first half is
+ * taking the armour without the seam, and the outgoing roster did it on 30 of
+ * the 49 creatures that had a resistance.
+ */
+function validateResistancePairing(
+	e: Record<string, unknown>,
+	context: string,
+): void {
+	const resistances = e.resistances as string[]
+	const immunities = e.immunities as string[]
+	const weaknesses = e.weaknesses as string[]
+	const hasDefence = resistances.length > 0 || immunities.length > 0
+	if (hasDefence && weaknesses.length === 0)
+		fail(
+			context,
+			'has resistances or immunities but no weaknesses; every defence needs a seam',
+		)
 }
 
 function validateCreature(entry: unknown, context: string): CreatureRecord {
@@ -264,7 +358,7 @@ function validateCreature(entry: unknown, context: string): CreatureRecord {
 		if (typeof e[field] !== 'number')
 			fail(context, `field "${field}" must be a number`)
 	}
-	for (const field of [...LIST_FIELDS, ...ENTRY_FIELDS]) {
+	for (const field of [...LIST_FIELDS, ...ENTRY_FIELDS, 'subtype']) {
 		if (!Array.isArray(e[field]))
 			fail(context, `field "${field}" must be an array`)
 	}
@@ -279,6 +373,8 @@ function validateCreature(entry: unknown, context: string): CreatureRecord {
 			context,
 			`unknown category "${e.category}" (expected ${[...CATEGORIES].join(', ')})`,
 		)
+	validateTaxonomy(e, context)
+	validateResistancePairing(e, context)
 	// Every published creature states its armor twice: as its own field and inside
 	// the AV parenthetical. The card shows only AV, so guard the redundancy that
 	// justifies that — if they ever diverge, the card would be hiding real data.
@@ -558,15 +654,21 @@ const TRAIT_LABELS: Record<(typeof LIST_FIELDS)[number], string> = {
 const SECTION_LABELS: Record<(typeof ENTRY_FIELDS)[number], string> = {
 	attacks: 'Attacks',
 	abilities: 'Abilities',
-	quickActions: 'Quick Actions',
 }
 
 function renderCreature(
 	c: CreatureRecord,
 	linkTo: (name: string) => string,
 ): string {
+	// The card shows one line where the record keeps three fields. Subtypes are
+	// appended in parentheses so the primary value stays the thing you read
+	// first: "Large Divine Beast (Guardian)".
+	const typeLine =
+		c.subtype.length > 0
+			? `${c.size} ${c.type} (${c.subtype.join(', ')})`
+			: `${c.size} ${c.type}`
 	const props = [
-		`type=${attr(c.type)}`,
+		`type=${attr(typeLine)}`,
 		`tier={${c.tier}}`,
 		`category=${attr(c.category)}`,
 		`hp=${attr(c.hp)}`,
@@ -733,8 +835,13 @@ function main() {
 		const outFile = path.join(DOC_DIR, `tier-${tier}.mdx`)
 		const legacy = path.join(DOC_DIR, `tier-${tier}.md`)
 		const inTier = creatures.filter((c) => c.tier === tier)
-		if (inTier.length === 0)
-			fail(`tier ${tier}`, 'no creatures found for this tier')
+		// An empty tier used to fail the build, to catch a tier silently vanishing
+		// behind a bad `tier` value. That job is now done by the tier validation in
+		// validateCreature, and the roster is being rebuilt tier by tier — so a tier
+		// with nothing in it yet is an expected state, not a defect.
+		if (inTier.length === 0) {
+			console.warn(`[generate-creatures] tier ${tier}: no creatures yet`)
+		}
 		const content = renderPage(tier, inTier, linkTo)
 
 		if (check) {

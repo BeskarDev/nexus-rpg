@@ -21,25 +21,39 @@ Creatures are categorized by their fundamental nature, defining mechanical inter
 
 ### Primary Types
 
-| Type | Description | Common Subtypes |
-|------|-------------|-----------------|
-| **Aberration** | Eldritch horrors from outside reality with alien physiologies and reality-warping abilities. | - |
-| **Automaton** | Artificial beings animated by magic or divine power. | Golem, Animated Object, Magical Construct |
-| **Beast** | Natural animals and fauna lacking inherent magic. Includes hybrid-animals as natural ecology. | Mammal, Reptile, Bird, Fish, Insect, Hybrid |
-| **Draconic** | Winged serpents and lizards with elemental attunement, breath weapons, and supernatural might. | Chromatic, Metallic, Elemental, Wyvern |
-| **Giant** | Mythical beings of immense size with supernatural properties beyond mere scale. | Stone Giant, Cyclops, Troll, Ogre |
-| **Humanoid** | Sentient anthropomorphic peoples with language, culture, and reasoning. | Human, Goblinoid, Orc, Elf, Dwarf |
-| **Monstrosity** | Magical beasts with supernatural abilities or origins that defy natural biology. | Chimera, Hydra, Griffin, Magical Beast |
-| **Ooze** | Amorphous creatures with fluid or gelatinous bodies, typically mindless and corrosive. | - |
-| **Plant** | Animate vegetation and fungal creatures, both mobile and rooted. | Treant, Myconid, Vine Creature |
-| **Spirit** | Extraplanar beings manifesting primal forces, divine will, or cosmic principles. | Celestial, Primordial, Infernal, Sylvan, Chthonic, Astral |
-| **Undead** | Beings that died and returned through necromancy or curses. Physical or Ethereal forms. | Physical, Ethereal |
+| Type | Description | Subtypes |
+|------|-------------|----------|
+| **Automaton** | Made things given motion, whether from a mortal workshop or a god's forge. | Golem, Animated Object, Vessel |
+| **Beast** | Natural animals lacking inherent magic. | Mammal, Reptile, Bird, Insect, Aquatic |
+| **Divine Beast** | Shaped or marked by a god, and made for a purpose. Bound to a duty, a place, or a mandate. | Guardian, Omen, Forsaken |
+| **Draconic** | Elemental spirit-beings permanently bound to the material world, and their lesser kin. | True Dragon, Celestial Dragon, Lesser, Serpent, Dragonkin |
+| **Giant** | The titanic-era lineage. Some held onto their minds, some did not. | Elder, Feral |
+| **Horror** | Things belonging to no realm at all, and what their presence does to living matter. | Warped, Adapted, Cosmic |
+| **Humanoid** | The peoples, and those descended or fallen from them. | The twelve folk, and others |
+| **Magical Beast** | Magic in the biology, with no maker and no purpose. | Hybrid, Hive, Primal, Aberrant |
+| **Ooze** | Amorphous bodies that flow, cling, and consume. | - |
+| **Plant** | Animate vegetation and fungal growth, mobile or rooted. | Tree, Fungus, Vine |
+| **Spirit** | Beings aligned to one of the spirit realms, manifesting its nature. | Celestial, Infernal, Primordial, Sylvan, Chthonic, Astral |
+| **Undead** | The dead returned through necromancy or curse. | Corporeal, Incorporeal |
 
-### Special Designations
+A creature may carry more than one subtype. A werewolf is **Human** and **Shapechanger**; an Urduk fire-elemental automaton is **Vessel** and **Intelligent**.
 
-**Shapechanger**: Property (not a type) for creatures that can alter their physical form, affecting certain spell interactions.
+Two boundaries decide the cases that look alike:
 
-**Swarms**: A Creature Archetype (see below), not a type. Describes combat function, not fundamental nature.
+- A **Spirit** belongs to a realm. A **Horror** belongs to nothing.
+- A **Draconic** creature is permanently manifest in the material world. A **Spirit** moves between realms.
+
+### Additives
+
+Additives are subtypes that describe a nature cutting across the types, rather than a kind of creature.
+
+**Mindless** or **Intelligent**: whether there is a mind to reach. A mindless creature doesn't roll Morale, can't be parleyed with, and is immune to being charmed, frightened, or confused. An intelligent one is none of those things. Every Undead and Automaton carries one or the other.
+
+**Shapechanger**: can alter its physical form.
+
+**Swarm**: one creature that is a mass of small bodies. Resistant to damage from effects targeting a single creature, immune to conditions from such effects, can't be grappled, and occupies an area. This is not the same as the Horde archetype, which is many separate creatures fighting as a troop.
+
+**Amorphous**: no fixed form. Squeezes through any gap, can't be grappled, and has no anatomy to target. Every ooze is amorphous.
 
 ### Using Types
 

@@ -4,37 +4,108 @@ Canonical numeric reference for creature design. Use these values exactly.
 
 ## Tier Statistics Table
 
-| Tier | HP | AV (light/heavy) | Defense | Max Attribute | Skill Rank (1st/2nd) | Weapon Damage | Ability Difficulty |
-|------|----|--------------------|---------|---------------|----------------------|---------------|--------------------|
-| 0    | 5  | 0/1               | 6       | d6            | 0/1                  | 2             | TN 6               |
-| 1    | 10 | 1/2               | 7       | d6            | 1/1                  | 3             | TN 7               |
-| 2    | 20 | 2/4               | 8       | d8            | 1/2                  | 4             | TN 8               |
-| 3    | 30 | 3/6               | 9       | d8            | 2/2                  | 5             | TN 9               |
-| 4    | 40 | 4/8               | 10      | d10           | 2/3                  | 6             | TN 10              |
-| 5    | 50 | 5/10              | 11      | d10           | 3/3                  | 7             | TN 11              |
-| 6    | 60 | 6/12              | 12      | d12           | 3/4                  | 8             | TN 12              |
-| 7    | 70 | 7/14              | 13      | d12           | 4/4                  | 9             | TN 13              |
-| 8    | 80 | 8/16              | 14      | d12+1         | 4/5                  | 10            | TN 14              |
-| 9    | 90 | 9/18              | 15      | d12+1         | 5/5                  | 11            | TN 15              |
-| 10   | 100| 10/20             | 16      | d12+2         | 5/5                  | 12            | TN 16              |
+| Tier | HP | AV (light/heavy) | Defense | Max Attribute | Skill Rank (1st/2nd) | Weapon Damage | Ability Difficulty | Secondary dmg |
+|------|----|------------------|---------|---------------|----------------------|---------------|--------------------|---------------|
+| 0    | 5  | 0/0              | 6       | d6            | 0/1                  | 2             | TN 6               | 1 |
+| 1    | 10 | 1/2              | 7       | d6            | 1/1                  | 3             | TN 7               | 2 |
+| 2    | 20 | 2/3              | 8       | d8            | 1/2                  | 4             | TN 8               | 2 |
+| 3    | 30 | 3/5              | 9       | d8            | 2/2                  | 5             | TN 9               | 3 |
+| 4    | 40 | 4/6              | 10      | d10           | 2/3                  | 6             | TN 10              | 3 |
+| 5    | 50 | 5/8              | 11      | d10           | 3/3                  | 7             | TN 11              | 4 |
+| 6    | 60 | 6/9              | **12**  | d12           | 3/4                  | 8             | TN 12              | 4 |
+| 7    | 70 | 7/11             | **12**  | d12           | 4/4                  | 9             | TN 13              | 5 |
+| 8    | 80 | 8/12             | **13**  | d12+1         | 4/5                  | 10            | TN 14              | 5 |
+| 9    | 90 | 9/14             | **13**  | d12+1         | 5/5                  | 11            | TN 15              | 6 |
+| 10   | 100| 10/15            | **14**  | d12+2         | 5/5                  | 12            | TN 16              | 6 |
 
 Base damage from attribute die: d6→3, d8→4, d10→5, d12→6, d12+1→7, d12+2→8.
 
+**AV** (D-014): light = tier, heavy = **1.5 × tier rounded up**. Chosen to track the player AV
+progression so the two sides stay legible against each other.
+
+**Defense** (D-015): `6 + tier` through tier 5, then **+1 per two tiers**. Player accuracy grows +6
+across ten levels while a flat +1-per-tier Defense grew +10, sliding player hit rates from 79% down to
+46%. This curve holds 55–71%.
+
+**Secondary damage** (D-017): half weapon damage rounded up, for an attack carrying a separate
+AV-ignoring damage instance. **A per-creature design channel, never a chassis line.** Written in its own
+sentence after the damage triple (D-018):
+
+> `10/15/20 damage. The target also takes 4 poison damage (ignore AV). On a strong or critical hit, the
+> target is poisoned briefly.`
+
+Anything that continues the first sentence past the triple breaks the DamageLadder render **and** trips
+the damage-type conversion rule in `02-attacking.md`, turning the whole attack into that type.
+
+### Recharge (D-024)
+
+> **Recharge (dX).** At the **end** of each of this creature's turns, roll dX. On a **4+**, the ability
+> recharges.
+
+Same shape as Durability and Supply checks, where 4+ is the favourable outcome. Rolled at the end of the
+turn so the party has a full round knowing it is back.
+
+| Die | Chance | Expected gap | Uses per 5 rounds |
+|---|---|---|---|
+| **d4** | 25% | 4.0 turns | **2.0** — a dragon's breath |
+| **d6** | 50% | 2.0 turns | 3.0 |
+| **d8** | 62.5% | 1.6 turns | 3.5 |
+
+**A bigger die recharges faster**, which inverts the D&D intuition — a creature's rarest, biggest ability
+carries the **smallest** die. Only d4, d6 and d8 are usable; above d8 the curve flattens and the die stops
+carrying information.
+
+Other limiters: `once per scene`, and `once between your turns` for anything off-turn. **No `X/day`, no
+`once per combat`, no `once per turn`.**
+
 ## Creature Types
 
-| Type | Description | Common Subtypes |
-|------|-------------|-----------------|
-| **Aberration** | Eldritch horrors from outside reality with alien physiologies | — |
-| **Automaton** | Artificial beings animated by magic or divine power | Golem, Animated Object, Magical Construct |
-| **Beast** | Natural animals and fauna lacking inherent magic | Mammal, Reptile, Bird, Fish, Insect, Hybrid |
-| **Draconic** | Winged serpents with elemental attunement and breath weapons | Chromatic, Metallic, Elemental, Wyvern |
-| **Giant** | Mythical beings of immense size with supernatural properties | Stone Giant, Cyclops, Troll, Ogre |
-| **Humanoid** | Sentient anthropomorphic peoples | Human, Goblinoid, Orc, Elf |
-| **Monstrosity** | Magical beasts with supernatural abilities | Chimera, Hydra, Griffin, Magical Beast |
-| **Ooze** | Amorphous creatures, typically mindless and corrosive | — |
-| **Plant** | Animate vegetation and fungal creatures | Treant, Myconid, Vine Creature |
-| **Spirit** | Extraplanar beings manifesting cosmic forces | Celestial, Primordial, Infernal |
-| **Undead** | Beings that died and returned through necromancy | Physical, Ethereal |
+Canonical data: `creature-types.json`, `creature-subtypes.json`, `creature-additives.json`.
+
+| Type | Description | Subtypes |
+|------|-------------|----------|
+| **Automaton** | Made things given motion, from a mortal workshop or a god's forge | Golem, Animated Object, Vessel |
+| **Beast** | Natural animals lacking inherent magic | Mammal, Reptile, Bird, Insect, Aquatic |
+| **Divine Beast** | Shaped or marked by a god, made for a purpose. Bound to a duty, place, or mandate — **and the mandate is a Treat** | Guardian, Omen, Forsaken |
+| **Draconic** | Elemental spirit-beings permanently bound to the material world, and their lesser kin | True Dragon, Celestial Dragon, Lesser, Serpent, Dragonkin |
+| **Giant** | The titanic-era lineage. Some held onto their minds, some did not | Elder, Feral |
+| **Horror** | Things belonging to no realm, and what their presence does to living matter | Warped, Adapted, Cosmic |
+| **Humanoid** | The peoples, and those descended or fallen from them | The twelve folk (`docs/02-adventurers/01-folk.md`), extensible |
+| **Magical Beast** | Magic in the biology, no maker, no purpose | Hybrid, Hive, Primal, Aberrant |
+| **Ooze** | Amorphous bodies that flow, cling, and consume | — |
+| **Plant** | Animate vegetation and fungal growth | Tree, Fungus, Vine |
+| **Spirit** | Beings aligned to one of the spirit realms | Celestial, Infernal, Primordial, Sylvan, Chthonic, Astral |
+| **Undead** | The dead returned through necromancy or curse | Corporeal, Incorporeal |
+
+**Subtype is an array** — a creature may carry more than one. A werewolf is `["Human", "Shapechanger"]`.
+
+**Two boundary rules** settle the cases that look alike:
+- A **Spirit** belongs to a realm; a **Horror** belongs to nothing.
+- A **Draconic** creature is permanently manifest; a **Spirit** moves between realms.
+
+### Additives
+
+Subtypes describing a nature that cuts across types, rather than a kind of creature.
+
+| Additive | Effect |
+|---|---|
+| **Mindless** / **Intelligent** | Mindless: no Morale roll, no parley, immune to charmed/frightened/confused. Intelligent: none of those. **One is required on every Undead and Automaton** |
+| **Shapechanger** | Can alter its physical form |
+| **Swarm** | One creature that is a mass of bodies. Resistant to single-target damage, immune to single-target conditions, cannot be grappled, occupies an area. **Not the Horde archetype**, which is many creatures in a troop |
+| **Amorphous** | No fixed form. Squeezes through gaps, cannot be grappled, no anatomy to target. Every Ooze has it |
+
+### What subtype does NOT own
+
+Three axes have their own fields, and every retired subtype leaked into one of them:
+
+| Axis | Field that owns it |
+|---|---|
+| Combat role | `creature-archetypes.json` — Standard, Ambusher, Artillery, Bruiser, Defender, Horde, Controller, Ranged, Skirmisher, Support |
+| Size | `creature-sizes.json` |
+| Element / damage identity | `resistances`, `weaknesses`, attack damage types |
+
+**Element is never a subtype** — a "Fire Dragon" subtype holds one creature across a tier ladder.
+**Role is never a subtype.** **Material is never a subtype** — it predicts only defence, and cannot hold a construct made of bound flame.
 
 ## Size Modifiers
 
@@ -55,15 +126,45 @@ Base damage from attribute die: d6→3, d8→4, d10→5, d12→6, d12+1→7, d12
 
 Size effects on stats: larger → AV +1 tier, Parry +1–2 tiers, Dodge −1–2 tiers. Smaller → AV −1 tier, Dodge +1–2 tiers, Parry −1–2 tiers.
 
-## Immunity Sets by Type
+## Immunity Sets
 
-- **Undead**: bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-- **Automatons**: bleeding, charmed, confused, frightened, poisoned, unconscious
-- **Spirits (Primordial)**: varies by type (fire spirits immune to fire, etc.)
-- **Plants**: deafened, blinded (for some)
+**Condition immunity follows the `Mindless` / `Intelligent` additive, not the type** (D-045). The
+outgoing roster gave every undead blanket charm and fear immunity regardless of whether it had a mind,
+across six inconsistent sets. Tying it to the additive means **a lich can be frightened and a skeleton
+cannot**, which is both correct and a tactical lever for the party.
 
-**Resistances** = half damage from type. **Weaknesses** = double damage from type.
-Damage types: physical, fire, frost, lightning, acid, poison, necrotic, radiant, psychic, blast.
+- **Mindless** (required on Undead and Automaton, or `Intelligent`): charmed, frightened, confused.
+- **Undead**, additionally: bleeding, poisoned, unconscious.
+- **Automaton**, additionally: bleeding, poisoned, unconscious.
+- **Spirit (Primordial)**: its own element — the sanctioned embodiment case (D-036).
+- **Amorphous** additive: grappled, and no anatomy to target.
+
+### Resistances, weaknesses and immunities
+
+**Resistance** = half damage. **Weakness** = double damage.
+
+**Damage types** — the published list, nothing else: acid, blast, fire, force, frost, lightning,
+necrotic, physical, poison, psychic, radiant. (`cold` and `thunder` are D&D; they are `frost` and
+`blast`.)
+
+Three binding rules:
+
+1. **Any damage resistance or immunity requires at least one damage weakness** (D-035). Mechanically
+   checkable: `resistances` non-empty implies `weaknesses` non-empty. In the outgoing roster **30 of 49
+   creatures with a resistance had no weakness**, and the offenders skewed high-tier — the Lords were all
+   armour and no seam.
+2. **Damage immunities are rare, identity-gated, one type, and normally tier 7+** (D-036). The creature
+   must *be* the thing, not merely use it: a fire spirit made of flame is immune, a hound that *breathes*
+   fire is resistant. **Prefer a resistance** — half damage still lets the party's approach work while
+   making it a worse choice, which is a tactical statement rather than a wall. In the outgoing roster
+   **100% of tier 8–9 creatures had one**, most often fire, which is the D&D failure mode where a
+   specialist stops existing for the back half of a campaign.
+   **Exception:** an embodiment (a fire spirit) may carry it at any tier **provided the immunity is
+   bundled with its drawback in the same ability**, as `Flame Body` does.
+3. **Physical is an ordinary damage type** (D-037). No "resistant to non-magical weapons" wording — it
+   imports a material rule Nexus does not have. **Permanent physical immunity is never given out, at any
+   tier — even a ghost is only resistant.** Where the fiction demands untouchability, use the window
+   (defensive shape 8).
 
 ## Weapon Properties (common)
 
@@ -83,68 +184,150 @@ Damage types: physical, fire, frost, lightning, acid, poison, necrotic, radiant,
 
 Use only official conditions (`docs/05-combat/04-conditions.md`) and durations (`docs/06-scenes/02-effect-durations.md`): briefly, short, medium, long, very long. Complete condition list and duration definitions: [../../game-basics.md](../../game-basics.md#canonical-keyword-sources).
 
-## Defensive Ability Categories
+## Defensive Toolkit — eight shapes
 
-Every Elite/Lord needs at least one, matched to fighting style:
+Every Elite and Lord needs at least one, matched to fighting style. **Every one names a cost and a
+counterplay the party can act on** — something they can *do*, not something they can hope for.
 
-| Category | Fits | Example |
-|----------|------|---------|
-| **Blocking** | Heavily armored, guardians | "Iron Will" — reduce incoming damage by 2 when using a shield |
-| **Redirecting** | Skilled warriors, weapon masters | Parry and riposte, damage reflection |
-| **Evading** | Agile creatures, assassins, ethereal | "Shadow Step" — Quick Action teleport to avoid attack |
-| **Absorbing** | Undead, constructs, magical beings | Damage conversion, healing on hit, temp HP |
-| **Negating** | Magical/divine beings | Condition immunity, spell resistance |
-| **Environmental** | Elementals, druids | Terrain manipulation for protection, concealment |
+| # | Shape | How it works | Cost | Counterplay | Earliest |
+|---|---|---|---|---|---|
+| 1 | **Retaliation** | Attackers take damage on a melee hit | Only fires when attacked | Attack at range, or accept the trade | Basic, tier 1 |
+| 2 | **Positional gating** | Regeneration or a bonus that switches off in a named circumstance | Worse in the wrong place | Create the circumstance — fire, sunlight, running water | Basic, tier 2 |
+| 3 | **Ally redirection** | Redirect an incoming attack to a nearby ally | Costs the ally | Kill the minions first | Basic, tier 2 |
+| 4 | **Stance trade** | Trade all offense for defense until they leave the stance | Their whole turn | Walk away, or ignore them | Basic, tier 1 |
+| 5 | **Conditional negation** | Roll to halve or negate a specific kind of incoming damage | A roll that can fail, and it is narrow | Use a different damage source | Elite, tier 3 |
+| 6 | **Regrowth** | Restore HP or a lost part on a stated trigger | Bounded and interruptible | Deny the trigger, or burst past it | Elite, tier 4 |
+| 7 | **Success-level reduction** | Reduce an incoming hit by one SL step (D-011) | Limited uses | Land more hits, or use effects that do not read SL | Elite, tier 5 |
+| 8 | **State-gated defence** | Strong while in a state, weaker the moment the creature acts (D-037) | **The creature's own aggression opens the window** | Time the attack to the window | Elite, tier 5 |
+
+**Shape 8 is the one to reach for whenever a permanent immunity is tempting.** Unlike shape 2, whose off
+switch is a circumstance the party must arrange, shape 8's off switch is **the creature doing what it
+wants to do** — so the window is guaranteed, costs the GM nothing to track, and arrives exactly when the
+creature is most threatening.
+
+> **Untouchable** (Passive). This creature is immune to physical damage. When they attack, or interact
+> with a physical object or creature, they become only resistant to physical damage briefly.
+
+### Two hard limits
+
+**No auto-success on a failed save, at any tier** (D-023). Legendary Resistance has no Nexus equivalent
+and nothing replaces it — the category rules already cover it four times over: **Resolve** (Elite 1,
+Lord 3, spend to re-roll), **condition wipe on every Wound**, the **Lord condition lockout** (succeed
+once against a type, immune to it for the scene), and the **Lord double turn**.
+
+**A defensive ability may grant at most +2 to a single Defense**, lasting until the start of the
+creature's next turn and costing a Quick Action. **+1 is the default.** One-off AV bonuses are uncapped.
+One Defense point is worth ~18.5% of incoming damage from tier 5 up; one AV point is worth 2–7%, so
+**Defense is 3x to 9x stronger per point** — at tier 10, +2 Defense is worth roughly +9 AV. Working in
+[`../../game-basics.md`](../../game-basics.md#roll-distribution--what-one-point-is-worth).
 
 ## Validation Checklist
 
-### Mechanical
-- [ ] HP appropriate for tier; format matches category (`40` / `2×40` / `3×40`)
-- [ ] AV follows tier and creature type (bone/stone → heavy)
-- [ ] Defenses average 6 + tier; Resist ≤ 6 + tier + 2
-- [ ] Damage = base + 1×/2×/3× weapon damage
+### Chassis
+- [ ] HP for tier; format matches category (`40` / `2×40` / `3×40`)
+- [ ] AV = tier (light) or **1.5 × tier rounded up** (heavy) — D-014
+- [ ] Defense from the tier table (**+1 per two tiers above tier 5**); Resist ≤ base + 2 — D-015
+- [ ] Damage = base + 1×/2×/3× weapon damage. Never a doubled increment
 - [ ] Ability TNs = 6 + tier
-- [ ] Skill ranks match tier table
+- [ ] Skill ranks match the tier table
+- [ ] Tier adjustments balanced — one stat down for one stat up, one pair only
+
+### Taxonomy
+- [ ] Type is one of the twelve; subtype values come from `creature-subtypes.json` or `creature-additives.json`
+- [ ] **Undead and Automaton carry exactly one of `Mindless` / `Intelligent`**
+- [ ] Condition immunities follow the additive, not the type
+- [ ] Anglicised name, no diacritics (D-050)
+
+### Abilities
+- [ ] Every ability has a **Trigger**, an **Effect** naming who/what/how much/how long, and a **Limit**
+- [ ] Qualifier from the closed list; limiter is `recharge (dX)`, `once per scene`, or `once between your turns`
+- [ ] **No `X/day`, no `once per combat`, no `once per turn`**; `recharge` uses d4/d6/d8 only
 - [ ] Attack count fits category (Basic 1–2, Elite 2–3, Lord 3–5)
-- [ ] Ability count fits category (Basic 1–3, Elite 2–4, Lord 3–6)
-- [ ] Elite: Elite Trigger + ≥1 Quick Action ability
-- [ ] Lord: ≥2 Lord Triggers + ≥1 reactive AND ≥1 proactive Quick Action
-- [ ] Elite/Lord: ≥1 defensive ability fitting fighting style
-- [ ] All conditions/spells referenced exist in Nexus RPG rules
-- [ ] Spell ranks ≤ creature's Arcana/Mysticism skill rank; correct attribute pairing
-- [ ] Tier adjustments balanced (one down ↔ one up)
-- [ ] No "Special Rules"/"Combat Notes" sections (category rules are automatic)
+- [ ] Ability count fits category (Basic 3, Elite 4, Lord 6). **Named slots count toward the total and may overlap** — D-030
+- [ ] Elite: Elite Trigger + defensive + Quick Action. **Lord: two Lord Triggers** + defensive + reactive and proactive Quick Actions
+- [ ] Trait count within guideline (Basic 2, Elite 3, Lord 4); over it, the rest is tuned down — D-026
+- [ ] Every trait passes the four boundary questions
+- [ ] No "Special Rules" or "Combat Notes" sections — category rules are automatic
 
-### Thematic
-- [ ] Abilities reflect creature nature and role
-- [ ] Stats support intended combat behavior
-- [ ] Fits sword & sorcery ancient-world aesthetic
-- [ ] Immunities/resistances make thematic sense
+### Defence
+- [ ] Every defensive ability names a **cost** and a **counterplay the party can act on**
+- [ ] **No auto-success on a failed save, at any tier** — D-023
+- [ ] No more than **+2 to a single Defense**, ending by the creature's next turn. AV bonuses uncapped
+- [ ] **`resistances` non-empty implies `weaknesses` non-empty** — D-035
+- [ ] Damage immunity is rare, identity-gated, one type, normally tier 7+ — D-036
+- [ ] **No permanent physical immunity**; no "non-magical weapons" wording — D-037
 
-### Balance
-- [ ] Single creature ≈ one same-level adventurer
-- [ ] Triggers meaningful but not overwhelming; Lord triggers create combat phases
+### Wording
+- [ ] Official conditions and durations only; damage types from the published list
+- [ ] Duration chosen deliberately: `briefly` (one turn) for common riders, `short` (rest of the fight) for signature effects
+- [ ] **`briefly` never spelled out longhand** as "until the end of their next turn"
+- [ ] Disabling conditions **escalate**, never land off a single roll — D-029
+- [ ] Secondary damage in its own sentence after the triple, with `(ignore AV)` — D-018
+- [ ] Rider magnitudes scale with tier; grapples state their limb cost
+- [ ] they/their/them for creatures. No semicolons, no em or en dashes
+- [ ] Every spell verified by grep against `arcane-spells.json` / `mystic-spells.json`; rank ≤ magic skill rank
+
+### Thematic and balance
+- [ ] One clear tactical lesson; a Treat the party can act on (any of the five channels)
+- [ ] Fits sword & sorcery ancient-world aesthetic; drawn from the vault where possible
+- [ ] Single creature ≈ one same-level adventurer; power consistent within tier
+- [ ] Triggers create phases rather than raising numbers
 - [ ] Not trivially defeated by common tactics; no auto-win abilities
-- [ ] Power consistent within tier
 
 ## Worked Example
 
-### **Sand Viper Elite** (Medium Beast)
+**Girtablilu, Gate Guardian** — a scorpion-bodied sentinel bound by an oath it did not choose, set to
+hold the mountain gate where the sun rises. It must challenge everyone who approaches, and it must let
+pass anyone who answers rightly.
 
-**Tier:** 4 (Elite)
+**Tactical lesson:** *can players get past a defender who is stronger standing still than moving?*
+
+| Field | Value |
+|---|---|
+| Size / Type | Large **Divine Beast** |
+| Subtype | `["Guardian"]` |
+| Tier / Category | 4, Elite |
+| Archetype | Defender |
 
 | HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
-|----|----|----|----|----|-----|-------|-------|--------|
-| 2×40 | 4 | d8 | d10 | d8 | d6 | 10 | 12 | 8 |
+|----|----|-----|-----|-----|-----|-------|-------|--------|
+| 2×40 | 8 | d10 | d8 | d8 | d6 | 11 | 9 | 10 |
 
-**Skills:** Fighting (2), Stealth (3), Athletics (3)
+**Skills:** Fighting (2), Athletics (3), Perception (3)
+
+**Chassis working** (scratch, never published): tier-4 baseline is AV 6 heavy, Defense 10. One pair
+adjusted — **+1 tier of AV** for the chitin plate, **paid for with −1 tier of Dodge**. Parry +1 for Large.
+Derived: base damage 5 (d10), weapon damage 6, ability TN 10, secondary damage 3.
 
 **Attacks:**
 
-- **Venomous Bite** (*pierce*). 5/7/9 damage (base 5 + weapon 2). Target makes Spirit + Fortitude vs TN 10 or becomes poisoned for a short duration.
+- **Planted Sting** (*pierce, reach*). This creature can only use this attack if they skip all Movement
+  this turn, before and after the attack. 12/19/26 damage. The target also takes 3 poison damage
+  (ignore AV). On a strong or critical hit, the target is poisoned briefly.
+- **Claw** (*crush*). 11/17/23 damage. On a strong or critical hit against a creature of equal or smaller
+  size, the target is pushed close.
 
 **Abilities:**
 
-- **Elite Trigger — Desert Fury.** When the first life pool is depleted, the Sand Viper's rage awakens. Their Agility increases to d12 and they gain +2 weapon damage for the remainder of the scene.
-- **Sand Camouflage.** While in sandy terrain, they gain +2 boons on Stealth rolls and can move through sand as if it were water.
-- **Serpentine Dodge (Quick Action, Reactive).** When targeted by an attack, roll Agility + Athletics vs. TN 10. On a success, gain +2 Dodge against the triggering attack; strong success +4; critical +6 and move to an adjacent area without provoking attacks.
+- **Threshold Stance** (Quick Action). This creature plants themselves in the gateway. Until the start of
+  their next turn they gain +2 Parry, and any creature that tries to move past them must roll Strength or
+  Agility + Athletics vs. TN 10 or have their Movement end. This creature cannot use Movement while in
+  the stance.
+- **Sunrise Vow** (Elite Trigger). When this creature loses their first life pool, the oath tightens. For
+  the rest of the scene they cannot willingly move further than close range from the gate, and their
+  attacks deal +3 damage while they stand within it.
+
+**Traits:** Night Vision. Blindsense (close).
+
+**Why this passes:**
+
+- **Signature move carries the lesson.** `Planted Sting` is rung 2 of the damage ladder (D-021) — the cost
+  clause *is* the tactical question. `12/19/26` is base 5 + weapon 7 at 1×/2×/3×.
+- **The Treat is structural.** A girtablilu that chases you does 11/17/23 with no poison instead of
+  12/19/26. Threat and Treat from one mechanic, costing no ability slot.
+- **Defensive shape 4** (stance trade), matched to a guardian. **+2 Parry is the cap** (D-025), one round,
+  costs a Quick Action — and the cost is what the party exploits.
+- **The trigger changes the problem, not a number.** It makes the creature more dangerous *and* more
+  exploitable at once, rather than raising attack and damage for the scene.
+- **Slots:** four available, two used — Threshold Stance covers defensive **and** Quick Action (D-030
+  permits overlap), Sunrise Vow is the Elite Trigger. Two attacks (Elite range 2–3), two traits (under 3).

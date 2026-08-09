@@ -2,137 +2,220 @@
 	{
 		"id": "pack-tactics",
 		"name": "Pack Tactics",
-		"description": "This creature gains +1 boon on attack rolls when at least one ally is adjacent to the target.",
+		"description": "While in a troop, or while an ally is within melee range of the same target, this creature's attacks gain +1 boon.",
 		"actionType": "Passive",
-		"tags": ["universal", "passive", "combat"],
-		"forTypes": ["Beast", "Humanoid"]
+		"tags": ["combat", "ally"],
+		"forTypes": ["Beast", "Humanoid", "Magical Beast"]
 	},
 	{
-		"id": "keen-senses",
-		"name": "Keen Senses",
-		"description": "This creature has +1 boon on rolls to perceive hidden or invisible creatures and can sense creatures by smell and sound within a short distance.",
+		"id": "formation-fighting",
+		"name": "Formation Fighting",
+		"description": "While an ally is within melee range of this creature, they gain +1 Parry.",
 		"actionType": "Passive",
-		"tags": ["universal", "passive", "senses"],
-		"forTypes": ["Beast", "Dragon"]
+		"tags": ["combat", "ally", "defensive"],
+		"forTypes": ["Humanoid", "Undead", "Automaton"]
 	},
 	{
-		"id": "darkvision",
-		"name": "Darkvision",
-		"description": "This creature can see in complete darkness as if it were dim light. Magical darkness still blocks their vision.",
+		"id": "retaliation-aura",
+		"name": "Searing Form",
+		"description": "A creature that touches this creature, or hits them with a melee attack from melee range, takes damage equal to the tier's secondary damage (ignore AV). Choose the damage type to match the creature.",
 		"actionType": "Passive",
-		"tags": ["universal", "passive", "senses"],
-		"forTypes": ["Undead", "Humanoid"]
+		"tags": ["defensive", "shape-1-retaliation"],
+		"forTypes": ["Spirit", "Magical Beast", "Ooze", "Draconic"]
 	},
 	{
-		"id": "amphibious",
-		"name": "Amphibious",
-		"description": "This creature can breathe both air and water and moves without penalty in aquatic environments.",
-		"actionType": "Passive",
-		"tags": ["universal", "passive", "movement"],
-		"forTypes": ["Beast", "Monstrosity"]
-	},
-	{
-		"id": "undead-nature",
-		"name": "Undead Nature",
-		"description": "This creature does not need to breathe, eat, drink, or sleep. It is immune to poison and the Poisoned condition, and it does not age. Effects that require a living target have no effect on it.",
-		"actionType": "Passive",
-		"tags": ["undead", "passive"],
-		"forTypes": ["Undead"]
-	},
-	{
-		"id": "night-vision",
-		"name": "Night Vision",
-		"description": "This creature sees perfectly in dim light and darkness out to a short distance, treating them as if in normal light.",
-		"actionType": "Passive",
-		"tags": ["goblinoid", "humanoid", "passive", "senses"],
-		"forTypes": ["Humanoid"]
-	},
-	{
-		"id": "quick-escape",
-		"name": "Quick Escape",
-		"description": "When this creature moves away from an enemy, it does not provoke Opportunity Attacks. If it starts its turn adjacent to two or more enemies, it may take a free Disengage action.",
-		"actionType": "Passive",
-		"tags": ["goblinoid", "passive", "movement"],
-		"forTypes": ["Humanoid"]
-	},
-	{
-		"id": "death-roll",
-		"name": "Death Roll",
-		"description": "When this creature successfully Grapples a target, it immediately rolls and twists, dealing its bite damage and applying Bleeding (3) to the target.",
-		"actionType": "Reaction",
-		"tags": ["beast", "combat", "grapple"],
-		"forTypes": ["Beast"]
-	},
-	{
-		"id": "multiattack",
-		"name": "Multiattack",
-		"description": "This creature makes two attacks in a single Action.",
-		"actionType": "Action",
-		"tags": ["universal", "combat"],
-		"forTypes": ["Beast", "Humanoid", "Dragon"]
-	},
-	{
-		"id": "regeneration",
+		"id": "positional-regeneration",
 		"name": "Regeneration",
-		"description": "At the start of each of this creature's turns, they regain hit points equal to their tier. This regeneration is suppressed until the end of their next turn if they took radiant or fire damage on the previous turn.",
+		"description": "At the start of each of their turns, this creature regains HP equal to their tier's weapon damage. This does not happen if they took damage of their named weakness since their last turn, and it does not work while they are in a place that denies it. Name both.",
 		"actionType": "Passive",
-		"tags": ["universal", "passive", "healing"],
-		"forTypes": ["Monstrosity", "Undead"]
+		"tags": ["defensive", "healing", "shape-2-positional"],
+		"forTypes": ["Magical Beast", "Undead", "Plant", "Giant"]
 	},
 	{
-		"id": "savage-momentum",
-		"name": "Savage Momentum",
-		"description": "When this creature reduces a target to 0 HP, they may immediately move up to a short distance and make one additional attack as a free action.",
-		"actionType": "Reaction",
-		"tags": ["universal", "combat"],
-		"forTypes": ["Beast", "Humanoid", "Dragon"]
+		"id": "sacrifice-ally",
+		"name": "Sacrifice",
+		"description": "When this creature would be hit by an attack, they can redirect it to target one ally within close range instead.",
+		"actionType": "Quick Action",
+		"tags": ["defensive", "ally", "shape-3-redirection", "reactive"],
+		"forTypes": ["Humanoid", "Undead", "Giant"]
 	},
 	{
-		"id": "web-spit",
-		"name": "Web Spit",
-		"description": "Range: Short. This creature fires a sticky mass of webbing at one target. The target must succeed on a hard Agility + Athletics test or become Restrained until they or an ally uses an Action to break free (hard Strength + Athletics test).",
-		"actionType": "Action",
-		"tags": ["ranged", "restraint", "spider"],
-		"forTypes": ["Beast", "Monstrosity"]
+		"id": "guard-stance",
+		"name": "Guard Stance",
+		"description": "This creature braces. Until the start of their next turn they gain +2 to one Defense, and they cannot use Movement.",
+		"actionType": "Quick Action",
+		"tags": ["defensive", "shape-4-stance"],
+		"forTypes": [
+			"Automaton",
+			"Giant",
+			"Humanoid",
+			"Beast",
+			"Divine Beast"
+		]
 	},
 	{
-		"id": "breath-weapon-fire",
-		"name": "Breath Weapon (Fire)",
-		"description": "This creature exhales fire in a cone (medium area). Each creature in the area must succeed on a medium Agility + Athletics test or take fire damage equal to 3 × the creature's tier. On a success, they take half damage. This ability recharges at the start of the creature's turn on a roll of 5 or 6 on a d6.",
-		"actionType": "Action",
-		"tags": ["dragon", "fire", "area", "breath"],
-		"forTypes": ["Dragon"]
+		"id": "evasion",
+		"name": "Evasion",
+		"description": "When this creature would take damage from an area attack, they roll Agility + Athletics vs. the attack's TN. On a success they take half damage. On a strong or critical success they take none.",
+		"actionType": "Quick Action",
+		"tags": ["defensive", "shape-5-negation", "reactive"],
+		"forTypes": ["Humanoid", "Beast", "Spirit", "Horror"]
 	},
 	{
-		"id": "breath-weapon-frost",
-		"name": "Breath Weapon (Frost)",
-		"description": "This creature exhales a blast of frost in a cone (medium area). Each creature in the area must succeed on a medium Strength + Fortitude test or take frost damage equal to 3 × the creature's tier and become Slowed. On a success, they take half damage and are not Slowed. This ability recharges at the start of the creature's turn on a roll of 5 or 6 on a d6.",
-		"actionType": "Action",
-		"tags": ["dragon", "frost", "area", "breath"],
-		"forTypes": ["Dragon"]
+		"id": "sl-reduction",
+		"name": "Turn the Blow",
+		"description": "When this creature is hit, they can reduce the success level of the attack by one step. They can use this ability once between their turns.",
+		"actionType": "Quick Action",
+		"tags": ["defensive", "shape-7-sl-reduction", "reactive"],
+		"forTypes": ["Humanoid", "Divine Beast", "Draconic", "Giant"]
 	},
 	{
-		"id": "stone-gaze",
-		"name": "Stone Gaze",
-		"description": "As an Action, this creature fixes their gaze upon one creature they can see within a short distance. The target must succeed on a hard Spirit + Willpower test or be Paralyzed until the end of their next turn.",
-		"actionType": "Action",
-		"tags": ["gaze", "paralysis"],
-		"forTypes": ["Monstrosity"]
-	},
-	{
-		"id": "ethereal-movement",
-		"name": "Ethereal Movement",
-		"description": "This creature can move through solid objects and creatures as if they were difficult terrain, but cannot end their turn inside a solid object.",
+		"id": "untouchable",
+		"name": "Untouchable",
+		"description": "This creature is immune to physical damage. When they attack, or interact with a physical object or creature, they become only resistant to physical damage briefly.",
 		"actionType": "Passive",
-		"tags": ["undead", "passive", "movement"],
-		"forTypes": ["Undead"]
+		"tags": ["defensive", "shape-8-window"],
+		"forTypes": ["Undead", "Spirit", "Horror"]
 	},
 	{
-		"id": "frightful-presence",
-		"name": "Frightful Presence",
-		"description": "When this creature becomes visible to creatures within a medium distance, each creature must succeed on a hard Spirit + Willpower test or become Frightened for 1 minute. A creature that succeeds is immune to this ability for 24 hours.",
+		"id": "command-ally",
+		"name": "Command",
+		"description": "One allied creature within short range can immediately make an attack, or move up to close range.",
+		"actionType": "Quick Action",
+		"tags": ["commander", "ally"],
+		"forTypes": ["Humanoid", "Undead", "Draconic", "Divine Beast"]
+	},
+	{
+		"id": "inspiring-presence",
+		"name": "Inspiring Presence",
+		"description": "Allies within short range gain +1 boon on Morale checks and on saves against being frightened.",
 		"actionType": "Passive",
-		"tags": ["dragon", "undead", "fear", "passive"],
-		"forTypes": ["Dragon", "Undead"]
+		"tags": ["commander", "ally"],
+		"forTypes": ["Humanoid", "Giant", "Divine Beast"]
+	},
+	{
+		"id": "condition-escalation",
+		"name": "Escalating Grip",
+		"description": "On a strong or critical hit with this creature's signature attack, the target is stunned briefly. If the target is already stunned, they are paralyzed briefly instead.",
+		"actionType": "Passive",
+		"tags": ["combat", "condition", "escalation"],
+		"forTypes": ["Undead", "Magical Beast", "Horror", "Spirit"]
+	},
+	{
+		"id": "elite-trigger-terrain",
+		"name": "Elite Trigger — Broken Ground",
+		"description": "When this creature loses their first life pool, the ground around them changes. Every area within short range becomes difficult terrain for the rest of the scene, and creatures entering or starting their turn there take the tier's secondary damage.",
+		"actionType": "Elite Trigger",
+		"tags": ["trigger", "terrain"],
+		"forTypes": [
+			"Giant",
+			"Draconic",
+			"Spirit",
+			"Magical Beast",
+			"Divine Beast"
+		]
+	},
+	{
+		"id": "elite-trigger-recharge",
+		"name": "Elite Trigger — Second Wind",
+		"description": "When this creature loses their first life pool, they immediately regain their recharging ability and use it.",
+		"actionType": "Elite Trigger",
+		"tags": ["trigger", "recharge"],
+		"forTypes": ["Draconic", "Giant", "Magical Beast", "Humanoid"]
+	},
+	{
+		"id": "elite-trigger-rally",
+		"name": "Elite Trigger — Rally",
+		"description": "When this creature loses their first life pool, every ally within medium range can immediately make a single attack, or move up to a short distance.",
+		"actionType": "Elite Trigger",
+		"tags": ["trigger", "commander", "ally"],
+		"forTypes": ["Humanoid", "Undead", "Giant"]
+	},
+	{
+		"id": "lord-trigger-menu",
+		"name": "Lord Trigger — Shifting Ground",
+		"description": "When this creature loses a life pool, choose one bounded option and state it before the fight: a persistent terrain change, a summoning that arrives after a stated delay, or an immediate area effect. A Lord needs two Lord Triggers, and each should change the tactical problem rather than raise a number.",
+		"actionType": "Lord Trigger",
+		"tags": ["trigger"],
+		"forTypes": [
+			"Draconic",
+			"Giant",
+			"Undead",
+			"Spirit",
+			"Divine Beast",
+			"Horror"
+		]
+	},
+	{
+		"id": "lord-trigger-bind",
+		"name": "Lord Trigger — The Oath Tightens",
+		"description": "When this creature loses a life pool, their binding constrains them further and empowers them within it. For the rest of the scene they cannot willingly leave a stated area, and their attacks deal extra damage while they remain inside it.",
+		"actionType": "Lord Trigger",
+		"tags": ["trigger", "drawback"],
+		"forTypes": ["Divine Beast", "Undead", "Automaton", "Spirit"]
+	},
+	{
+		"id": "drawback-slow",
+		"name": "Lumbering",
+		"description": "This creature can either move or take an Action on their turn, not both. They cannot use Quick Actions.",
+		"actionType": "Passive",
+		"tags": ["drawback"],
+		"forTypes": ["Undead", "Automaton", "Plant", "Ooze"]
+	},
+	{
+		"id": "drawback-shortsighted",
+		"name": "Poor Sight",
+		"description": "This creature suffers +1 bane on attack rolls against any target further away than short range.",
+		"actionType": "Passive",
+		"tags": ["drawback"],
+		"forTypes": ["Giant", "Ooze", "Magical Beast", "Horror"]
+	},
+	{
+		"id": "drawback-daylight",
+		"name": "Daylight Frailty",
+		"description": "While in direct sunlight, this creature suffers +1 bane on all rolls.",
+		"actionType": "Passive",
+		"tags": ["drawback", "terrain"],
+		"forTypes": ["Undead", "Horror", "Plant", "Humanoid"]
+	},
+	{
+		"id": "costed-charge",
+		"name": "Trample",
+		"description": "When this creature moves through the space of a creature at least one size smaller, that creature rolls Agility + Athletics vs. this creature's ability TN or takes the tier's weapon damage and falls prone.",
+		"actionType": "Passive",
+		"tags": ["combat", "movement"],
+		"forTypes": ["Beast", "Giant", "Magical Beast"]
+	},
+	{
+		"id": "trait-night-vision",
+		"name": "Night Vision",
+		"description": "This creature can see one range category further from sources of bright and dim light.",
+		"actionType": "Passive",
+		"tags": ["trait", "senses"],
+		"forTypes": ["Humanoid", "Beast", "Undead", "Horror"]
+	},
+	{
+		"id": "trait-blindsense",
+		"name": "Blindsense (close)",
+		"description": "This creature perceives their surroundings at close range without relying on sight.",
+		"actionType": "Passive",
+		"tags": ["trait", "senses"],
+		"forTypes": ["Beast", "Magical Beast", "Ooze", "Horror"]
+	},
+	{
+		"id": "trait-flying",
+		"name": "Flying",
+		"description": "This creature can fly with 2 Movement per turn. While on the ground they can spend only 1 Movement in total during their turn.",
+		"actionType": "Passive",
+		"tags": ["trait", "movement"],
+		"forTypes": ["Beast", "Draconic", "Spirit", "Divine Beast", "Horror"]
+	},
+	{
+		"id": "trait-amphibious",
+		"name": "Amphibious",
+		"description": "This creature can breathe both air and water, and swims without penalty to their Movement.",
+		"actionType": "Passive",
+		"tags": ["trait", "movement"],
+		"forTypes": ["Beast", "Magical Beast", "Humanoid"]
 	}
 ]

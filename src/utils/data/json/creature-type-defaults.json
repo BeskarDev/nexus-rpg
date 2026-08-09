@@ -1,20 +1,125 @@
 [
 	{
-		"type": "Undead",
-		"abilities": ["undead-nature", "darkvision"]
-	},
-	{
-		"type": "Humanoid",
-		"subtype": "goblinoid",
-		"abilities": ["night-vision", "quick-escape"]
+		"type": "Beast",
+		"subtype": "Mammal",
+		"attacks": ["bite", "claw"],
+		"abilities": ["pack-tactics", "trait-night-vision"]
 	},
 	{
 		"type": "Beast",
-		"attacks": ["bite", "claw-swipe"]
+		"subtype": "Reptile",
+		"attacks": ["bite", "constrict"],
+		"abilities": ["trait-blindsense"]
 	},
 	{
-		"type": "Dragon",
-		"attacks": ["bite", "claw-swipe"],
-		"abilities": ["keen-senses", "frightful-presence", "breath-weapon-fire"]
+		"type": "Beast",
+		"subtype": "Bird",
+		"attacks": ["claw"],
+		"abilities": ["trait-flying"]
+	},
+	{
+		"type": "Beast",
+		"subtype": "Insect",
+		"attacks": ["venomous-sting"],
+		"abilities": ["trait-blindsense"]
+	},
+	{
+		"type": "Beast",
+		"subtype": "Aquatic",
+		"attacks": ["bite"],
+		"abilities": ["trait-amphibious"]
+	},
+	{
+		"type": "Draconic",
+		"subtype": "True Dragon",
+		"attacks": ["bite", "claw", "tail-sweep", "breath-weapon"],
+		"abilities": ["trait-flying", "elite-trigger-recharge"]
+	},
+	{
+		"type": "Draconic",
+		"subtype": "Lesser",
+		"attacks": ["bite", "claw"],
+		"abilities": ["trait-flying"]
+	},
+	{
+		"type": "Draconic",
+		"subtype": "Serpent",
+		"attacks": ["bite", "constrict"],
+		"abilities": ["trait-blindsense"]
+	},
+	{
+		"type": "Undead",
+		"subtype": "Corporeal",
+		"attacks": ["slam", "sword-strike"],
+		"abilities": ["trait-night-vision", "drawback-daylight"]
+	},
+	{
+		"type": "Undead",
+		"subtype": "Incorporeal",
+		"attacks": ["spectral-touch"],
+		"abilities": ["untouchable", "trait-flying"]
+	},
+	{
+		"type": "Humanoid",
+		"attacks": ["sword-strike", "spear-thrust", "arrow-shot"],
+		"abilities": ["formation-fighting", "pack-tactics"]
+	},
+	{
+		"type": "Giant",
+		"subtype": "Elder",
+		"attacks": ["stomp", "wide-swing"],
+		"abilities": ["guard-stance", "inspiring-presence"]
+	},
+	{
+		"type": "Giant",
+		"subtype": "Feral",
+		"attacks": ["stomp", "slam"],
+		"abilities": ["drawback-shortsighted", "positional-regeneration"]
+	},
+	{
+		"type": "Automaton",
+		"attacks": ["slam"],
+		"abilities": ["guard-stance", "drawback-slow"]
+	},
+	{
+		"type": "Divine Beast",
+		"subtype": "Guardian",
+		"attacks": ["claw", "gore"],
+		"abilities": ["guard-stance", "sl-reduction"]
+	},
+	{
+		"type": "Magical Beast",
+		"subtype": "Hybrid",
+		"attacks": ["bite", "claw", "tail-sweep"],
+		"abilities": ["trait-blindsense"]
+	},
+	{
+		"type": "Magical Beast",
+		"subtype": "Hive",
+		"attacks": ["venomous-sting"],
+		"abilities": ["pack-tactics", "trait-blindsense"]
+	},
+	{
+		"type": "Spirit",
+		"subtype": "Primordial",
+		"attacks": ["slam"],
+		"abilities": ["retaliation-aura", "trait-flying"]
+	},
+	{
+		"type": "Horror",
+		"subtype": "Warped",
+		"attacks": ["slam", "spit"],
+		"abilities": ["condition-escalation", "drawback-shortsighted"]
+	},
+	{
+		"type": "Plant",
+		"subtype": "Vine",
+		"attacks": ["constrict"],
+		"abilities": ["drawback-slow"]
+	},
+	{
+		"type": "Ooze",
+		"attacks": ["slam", "spit"],
+		"abilities": ["drawback-slow", "trait-blindsense"]
 	}
 ]

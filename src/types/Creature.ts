@@ -2,7 +2,32 @@ export interface Creature {
 	name: string
 	tier: number
 	category: string // Basic, Elite, Lord
-	type: string // e.g., "Medium Undead"
+	/**
+	 * Size, one of `creature-sizes.json`. Split out of `type` so the three axes
+	 * a creature is sorted on — size, type, subtype — are each their own field
+	 * and each independently checkable.
+	 *
+	 * Optional because the markdown card parser (Companion Traits, the print
+	 * tool) still produces a combined `type` string. Records in
+	 * `creatures.json` always carry it.
+	 */
+	size?: string
+	/**
+	 * One of the twelve primary types in `creature-types.json`. Legacy markdown
+	 * cards put size and type in this one field ("Medium Undead"); JSON records
+	 * carry the bare type and put the size in `size`.
+	 */
+	type: string
+	/**
+	 * Subtypes from `creature-subtypes.json`, plus any cross-cutting additive
+	 * from `creature-additives.json`.
+	 *
+	 * An **array** because additives compose with the primary value rather than
+	 * replacing it: a werewolf is `["Human", "Shapechanger"]`, an Urduk
+	 * fire-elemental automaton is `["Vessel", "Intelligent"]`. Undead and
+	 * Automaton must carry exactly one of `Mindless` / `Intelligent`.
+	 */
+	subtype?: string[]
 	armor: string // Armor category, e.g. "Light", "Heavy", "None"
 	hp: string // Can be a number like "50" or a pattern like "2×50" for elite/lord
 	av: string
@@ -20,12 +45,16 @@ export interface Creature {
 	attacks: Attack[]
 	abilities: Ability[]
 	/**
-	 * Quick Actions, the creature's off-turn options. A separate list from
-	 * `abilities` because the stat block presents them as their own block. They
-	 * used to be swallowed into `abilities` by a greedy section regex, so printed
-	 * cards showed them unlabeled among the passives.
+	 * **Legacy — markdown cards only.** Quick Actions used to be a separate list
+	 * from `abilities` because the stat block presented them as their own block.
+	 *
+	 * Removed from the creature record (D-005): a Quick Action is an ability
+	 * whose `qualifier` says so, and grouping is the qualifier's job. The field
+	 * survives here solely because the markdown parser still reads a
+	 * `**Quick Actions:**` section out of Companion Traits, whose cleanup is
+	 * deferred (D-009). New JSON records never carry it.
 	 */
-	quickActions: Ability[]
+	quickActions?: Ability[]
 	/**
 	 * Non-mechanical flavour, carried through from `creatures.json` for whatever
 	 * reads it next. One creature in the corpus has it, and a printed card does

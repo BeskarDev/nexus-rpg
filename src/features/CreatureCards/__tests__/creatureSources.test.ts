@@ -9,36 +9,86 @@ import {
 
 const raw = creaturesJson as unknown[]
 
-describe('creatureEntries', () => {
-	it('adapts every creature in the catalogue without loss', () => {
-		const { entries, errors } = creatureEntries()
-		expect(errors).toEqual([])
-		expect(entries).toHaveLength(raw.length)
+/**
+ * Fixtures rather than the live catalogue.
+ *
+ * These assertions used to read `creatures.json` and hard-code counts from it
+ * (402 abilities, Manticore appearing twice). That coupled the adapter's tests
+ * to roster content, so replacing the roster broke tests that had nothing to do
+ * with the change. What is under test is the adapter, so the adapter gets its
+ * own inputs.
+ */
+const FIXTURES: unknown[] = [
+	{
+		name: 'Cat',
+		tier: 0,
+		category: 'Basic',
+		attacks: [
+			{ name: 'Claw', properties: ['agile', 'light'], text: '4/6/8 damage.' },
+		],
+		abilities: [{ name: 'Keen Scent', qualifier: 'Passive', text: 'Smells you.' }],
+	},
+	{
+		name: 'Manticore',
+		tier: 3,
+		category: 'Elite',
+		abilities: [{ name: 'Savage Fury', qualifier: 'Elite Trigger', text: 'Rage.' }],
+	},
+	{
+		name: 'Manticore',
+		tier: 4,
+		category: 'Basic',
+		attacks: [
+			{
+				name: 'Eye Rays',
+				text: 'Shoots two rays:',
+				details: ['1. One ray.', '2. Another ray.'],
+			},
+		],
+	},
+	{
+		name: 'Mummy',
+		tier: 4,
+		category: 'Basic',
+		lore: { narrative: 'Wrapped and waiting.' },
+	},
+]
 
-		// Every ability's qualifier reaches the app type — the fact the card has
-		// been dropping (M21 F4). All 402 abilities in the corpus carry one; a
-		// quick action often does not, because its section heading already says
-		// what it is.
+describe('creatureEntries', () => {
+	it('adapts every creature it is given without loss', () => {
+		const { entries, errors } = creatureEntries(FIXTURES)
+		expect(errors).toEqual([])
+		expect(entries).toHaveLength(FIXTURES.length)
+
+		// Every ability's qualifier reaches the app type — the fact the card was
+		// dropping (M21 F4).
 		const abilities = entries.flatMap((e) => e.creature.abilities)
-		expect(abilities).toHaveLength(402)
 		expect(abilities.every((a) => Boolean(a.qualifier))).toBe(true)
 
 		const everyEntry = entries.flatMap((e) => [
 			...e.creature.abilities,
-			...e.creature.quickActions,
+			...(e.creature.quickActions ?? []),
 		])
 		expect(everyEntry.every((a) => Boolean(a.name && a.description))).toBe(true)
 	})
 
+	it('adapts the live catalogue without errors, whatever is in it', () => {
+		// The roster is rebuilt tier by tier, so its size is not asserted — only
+		// that everything present survives adaptation.
+		const { entries, errors } = creatureEntries()
+		expect(errors).toEqual([])
+		expect(entries).toHaveLength(raw.length)
+	})
+
 	it('sorts by tier then name', () => {
-		const { entries } = creatureEntries()
+		const { entries } = creatureEntries(FIXTURES)
 		const keys = entries.map((e) => [e.creature.tier, e.creature.name] as const)
 		const sorted = [...keys].sort((a, b) => a[0] - b[0] || a[1].localeCompare(b[1]))
 		expect(keys).toEqual(sorted)
 	})
 
 	it('splits an attack into its damage triple and the prose after it', () => {
-		const { entries } = creatureEntries()
+		const { entries } = creatureEntries(FIXTURES)
 		const cat = entries.find((e) => e.creature.name === 'Cat')!
 		// The literal word "damage" is dropped, as the docs generator drops it: the
 		// ladder's own W/S/C ticks already say what the three numbers are.
@@ -66,14 +116,14 @@ describe('creatureEntries', () => {
 	})
 
 	it('carries an attack sub-list through', () => {
-		const { entries } = creatureEntries()
-		const beholder = entries.find((e) => e.creature.name === 'Beholder Spawn')!
-		const withDetails = beholder.creature.attacks.find((a) => a.details)
+		const { entries } = creatureEntries(FIXTURES)
+		const withRays = entries.find((e) => e.creature.tier === 4 && e.creature.attacks.length > 0)!
+		const withDetails = withRays.creature.attacks.find((a) => a.details)
 		expect(withDetails?.details?.length).toBeGreaterThan(1)
 	})
 
 	it('carries lore through without printing it', () => {
-		const { entries } = creatureEntries()
+		const { entries } = creatureEntries(FIXTURES)
 		const mummy = entries.find((e) => e.creature.name === 'Mummy')!
 		expect(mummy.creature.lore).toBeTruthy()
 	})
@@ -83,9 +133,9 @@ describe('creatureEntries', () => {
 	})
 
 	it('gives every catalogue record its own ID, duplicate names included', () => {
-		// Manticore is two different creatures (T3 Elite, T4 Basic) and Harpy is
-		// recorded twice, so a name is not a key even inside the catalogue.
-		const { entries } = creatureEntries()
+		// Manticore is two different creatures (T3 Elite, T4 Basic), so a name is
+		// not a key even inside one catalogue.
+		const { entries } = creatureEntries(FIXTURES)
 		expect(new Set(entries.map((e) => e.id)).size).toBe(entries.length)
 		expect(entries.filter((e) => e.creature.name === 'Manticore')).toHaveLength(2)
 	})
