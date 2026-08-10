@@ -40,10 +40,10 @@ const SkillTag: React.FC<{ value: string }> = ({ value }) => {
 	const rank = match?.[2]
 	return (
 		<span
-		className={`pc-chip pc-chip--skill${
-			name.length > WIDE_VALUE ? ' pc-chip--wide' : ''
-		}`}
-	>
+			className={`pc-chip pc-chip--skill${
+				name.length > WIDE_VALUE ? ' pc-chip--wide' : ''
+			}`}
+		>
 			<span className="pc-chip__face" aria-hidden="true" />
 			<span className="pc-chip__label">
 				{name}
@@ -71,7 +71,8 @@ const TraitTessera: React.FC<{ value: string }> = ({ value }) => (
 	</span>
 )
 
-export type TraitRowKind = 'Skills' | 'Immunities' | 'Resistances' | 'Weaknesses'
+export type TraitRowKind =
+	'Skills' | 'Immunities' | 'Resistances' | 'Weaknesses'
 
 /**
  * One labelled trait row.

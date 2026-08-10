@@ -47,6 +47,25 @@ theft rolls `Agility + Perception` because spotting a loose pouch is Perception,
 has Perception (1) and Fighting (0), the block states by itself that it is better at robbing you than at
 hurting you. Reach for a non-combat skill whenever the attack is not really a fight.
 
+**Paired natural weapons** — claws, talons, pincers — carry the **`light`** property and therefore attack
+**twice in one Action, with no bane**: `02-attacking.md` exempts *"unarmed attacks or natural weapons that
+are part of your body (e.g. a lionfolk's claws or any monster's natural attacks)"* from the dual-wield
+penalty. **Each attack takes half the tier's weapon damage**, rounded up.
+
+The halving is the catalog's own ladder rather than a creature-only rule. At Quality 2 a **light** weapon
+is weapon damage **2**, a one-handed weapon **3**, a two-handed weapon **4** — and the tier's weapon damage
+sits on the **two-handed** rung, with a published `Claw` entry sitting on the light one. So two light
+attacks and one two-handed attack come to the same total, exactly as they do for a player.
+
+What this buys, measured at tier 2 against the reference build: paired claws at 6/8/10 deal **2.25 a turn
+against an armored martial**, below a single full-damage attack's 2.88, and **8.58 against a caster**, above
+its 7.00. **Each hit is taxed by AV separately**, so many small hits are worse against armor and better
+against soft targets. That trade is the point, not a defect — a first draft of the tier-2 ghoul wrote paired
+claws at the *full* tier figure and produced a Basic that out-damaged its own Elite.
+
+A **single** natural weapon — a bite, a gore, a sting, a grapple that uses both hands — takes the tier's
+full weapon damage and does not carry `light`.
+
 **Multi-target attacks** halve the **weapon damage only**, rounded up — base damage is unchanged. This
 is symmetric with the spell system, where Spell Power applies equally to single-target and multi-target
 spells and only the SL-scaling spell bonus is halved (`SPELL_SYSTEM_ANALYSIS.md` §6). Halving the
@@ -58,7 +77,7 @@ AV-ignoring damage instance. **A per-creature design channel, never a chassis li
 sentence after the damage triple (D-018):
 
 > `10/15/20 damage. The target also takes 4 poison damage (ignore AV). On a strong or critical hit, the
-> target is poisoned briefly.`
+> target is briefly poisoned.`
 
 Anything that continues the first sentence past the triple breaks the DamageLadder render **and** trips
 the damage-type conversion rule in `02-attacking.md`, turning the whole attack into that type.
@@ -83,6 +102,33 @@ carrying information.
 
 Other limiters: `once per scene`, and `once between your turns` for anything off-turn. **No `X/day`, no
 `once per combat`, no `once per turn`.**
+
+### Where a limiter goes, and which qualifiers may carry one
+
+**A limiter lives in the `qualifier` field.** Never in an attack's `properties`, never buried in the
+effect text — milestone 03 found this one class of information in three places, two of which no
+automated check can see.
+
+| Qualifier | May carry a limiter? |
+|---|---|
+| `Action` | **Yes.** This is the only one that can |
+| `Quick Action` | **No.** It already means "once between your turns" (`01-combat-scenes.md`), so adding one charges the creature twice for one restriction |
+| `Passive` | **No, and it is a category error.** A Passive is always on, so there is nothing to limit. If an effect needs a frequency cap it is not a Passive |
+| `Elite Trigger` / `Lord Trigger` | **No.** They fire once by construction, and a Lord's ordinal (`their first Wound`) does the sequencing |
+
+**The one exception is attacks**, which have no qualifier field. There the limiter is a **property badge**
+— `recharge (d4)` — and it must not move into the damage sentence, because anything continuing the first
+sentence past the triple breaks the DamageLadder render (D-018).
+
+**If a Passive needs a cap, the fix is the trigger, not a limiter.** Gate it on something that is already
+infrequent — a strong or critical hit, a state, a circumstance — and the frequency falls out of the
+fiction with nothing to track:
+
+> ~~**Feeding Frenzy** (Passive, once between your turns). When this creature hits a dazed creature…~~
+> **Feeding Frenzy** (Passive). On a strong or critical hit against a dazed creature, …
+
+That rewrite also fixed a second defect the limiter was hiding: **`once between your turns` names the
+off-turn window**, so on a Passive firing off the creature's own attacks it limited nothing at all.
 
 ## Creature Types
 
@@ -259,6 +305,7 @@ One Defense point is worth ~18.5% of incoming damage from tier 5 up; one AV poin
 - [ ] AV = tier (light) or **1.5 × tier rounded up** (heavy) — D-014
 - [ ] Defense from the tier table (**+1 per two tiers above tier 5**); Resist ≤ base + 2 — D-015
 - [ ] Damage = base + 1×/2×/3× weapon damage. Never a doubled increment
+- [ ] **Paired natural weapons carry `light` and take HALF the tier's weapon damage each** (they attack twice); a single natural weapon takes the full figure — D-076
 - [ ] Ability TNs = 6 + tier
 - [ ] Skill ranks match the tier table
 - [ ] Tier adjustments balanced — one stat down for one stat up, one pair only
@@ -272,6 +319,7 @@ One Defense point is worth ~18.5% of incoming damage from tier 5 up; one AV poin
 ### Abilities
 - [ ] Every ability has a **Trigger**, an **Effect** naming who/what/how much/how long, and a **Limit**
 - [ ] Qualifier from the closed list; limiter is `recharge (dX)`, `once per scene`, or `once between your turns`
+- [ ] **The limiter is in the `qualifier`, and only on an `Action`** — never on a Passive, never in an attack's `properties` (attacks badge it instead) — D-077
 - [ ] **No `X/day`, no `once per combat`, no `once per turn`**; `recharge` uses d4/d6/d8 only
 - [ ] Attack count fits category (Basic 1–2, Elite 2–3, Lord 3–5)
 - [ ] Ability count fits category (Basic 3, Elite 4, Lord 6). **Named slots count toward the total and may overlap** — D-030
@@ -291,6 +339,7 @@ One Defense point is worth ~18.5% of incoming damage from tier 5 up; one AV poin
 ### Wording
 - [ ] Official conditions and durations only; damage types from the published list
 - [ ] Duration chosen deliberately: `briefly` (one turn) for common riders, `short` (rest of the fight) for signature effects
+- [ ] **The duration comes BEFORE the condition: `briefly dazed`, never `dazed briefly`** — D-074
 - [ ] **`briefly` never spelled out longhand** as "until the end of their next turn"
 - [ ] Disabling conditions **escalate**, never land off a single roll — D-029
 - [ ] Secondary damage in its own sentence after the triple, with `(ignore AV)` — D-018
@@ -334,7 +383,7 @@ Derived: base damage 5 (d10), weapon damage 6, ability TN 10, secondary damage 3
 
 - **Planted Sting** (*pierce, reach*). This creature can only use this attack if they skip all Movement
   this turn, before and after the attack. 12/19/26 damage. The target also takes 3 poison damage
-  (ignore AV). On a strong or critical hit, the target is poisoned briefly.
+  (ignore AV). On a strong or critical hit, the target is briefly poisoned.
 - **Claw** (*crush*). 11/17/23 damage. On a strong or critical hit against a creature of equal or smaller
   size, the target is pushed close.
 

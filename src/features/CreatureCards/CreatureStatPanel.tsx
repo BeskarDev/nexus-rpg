@@ -124,7 +124,11 @@ export const CreatureStatPanel: React.FC<{ creature: Creature }> = ({
 							    theirs (owner, 2026-08-07). The polygon says which DIE to
 							    pick up; it does not say which attribute — without a mark
 							    the row was four shapes in an order a reader had to know. */}
-							<StatSigil name={glyph} size="1.05em" className="pc-figure__mark" />
+							<StatSigil
+								name={glyph}
+								size="1.05em"
+								className="pc-figure__mark"
+							/>
 							<DieToken value={value} />
 							<span className="pc-cell__name">{label}</span>
 						</span>

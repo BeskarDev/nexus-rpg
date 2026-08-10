@@ -471,11 +471,9 @@ export function TreasureTable({ scale, children }: TreasureTableProps) {
 export interface TreasureRowProps {
 	/** Loot category: Weapon, Armor, Magic, Material, Valuables, Supplies, Relic. */
 	kind: string
-	/** Rules reference — the core-rules item this is, and its Quality. */
-	stats?: string
 	/** What it sells for, or what it rolls for. */
 	value?: string
-	/** The item's name, plus any short qualifying note, as markdown. */
+	/** The item's name, plus its short description, as markdown. */
 	children: React.ReactNode
 }
 
@@ -486,19 +484,18 @@ export interface TreasureRowProps {
  * ("give me the crafting materials from this lair"), and so a GM scanning six
  * rows can find the weapon without reading all of them. The item stays markdown,
  * so it can link to equipment and magic-item entries.
+ *
+ * Only the VALUE is lifted out as a mark. A separate `stats` mark used to sit
+ * beside it carrying the rules reference, which turned out to duplicate the
+ * description as often as it complemented it — the two merged into one
+ * description that says what the thing is for (owner review).
  */
-export function TreasureRow({
-	kind,
-	stats,
-	value,
-	children,
-}: TreasureRowProps) {
+export function TreasureRow({ kind, value, children }: TreasureRowProps) {
 	return (
 		<>
 			<span className={styles.treasureKind}>{kind}</span>
 			<span className={styles.treasureItem}>
 				{children}
-				{stats && <span className={styles.treasureStats}>{stats}</span>}
 				{value && <span className={styles.treasureValue}>{value}</span>}
 			</span>
 		</>

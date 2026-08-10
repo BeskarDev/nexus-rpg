@@ -253,17 +253,21 @@ export const CreatureCards: React.FC = () => {
 	const allCards = useMemo(
 		() =>
 			selectedEntries.flatMap((entry) =>
-				spillPlan.partsFor(entry.id).map((part) => (
-					<CreatureCompactCard
-						key={`${entry.id}#${part.part}`}
-						{...entry.creature}
-						start={part.start}
-						end={part.end}
-						part={part.part}
-						totalParts={part.totalParts}
-						onFitted={(result) => spillPlan.report(entry.id, part.start, result)}
-					/>
-				)),
+				spillPlan
+					.partsFor(entry.id)
+					.map((part) => (
+						<CreatureCompactCard
+							key={`${entry.id}#${part.part}`}
+							{...entry.creature}
+							start={part.start}
+							end={part.end}
+							part={part.part}
+							totalParts={part.totalParts}
+							onFitted={(result) =>
+								spillPlan.report(entry.id, part.start, result)
+							}
+						/>
+					)),
 			),
 		[selectedEntries, spillPlan.partsFor],
 	)
@@ -389,7 +393,9 @@ export const CreatureCards: React.FC = () => {
 							>
 								<textarea
 									value={characterJsonString}
-									onChange={(event) => handleCharacterUpload(event.target.value)}
+									onChange={(event) =>
+										handleCharacterUpload(event.target.value)
+									}
 									placeholder="Paste character JSON here…"
 									aria-label="Character JSON import"
 								/>
@@ -457,9 +463,7 @@ export const CreatureCards: React.FC = () => {
 										<ListItemText
 											primary={entry.creature.name}
 											secondary={`T${entry.creature.tier} ${entry.creature.category}${
-												entry.source === 'catalogue'
-													? ''
-													: ` · ${entry.source}`
+												entry.source === 'catalogue' ? '' : ` · ${entry.source}`
 											}`}
 										/>
 									</MenuItem>

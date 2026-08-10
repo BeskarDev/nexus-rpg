@@ -45,13 +45,7 @@
 		"description": "This creature braces. Until the start of their next turn they gain +2 to one Defense, and they cannot use Movement.",
 		"actionType": "Quick Action",
 		"tags": ["defensive", "shape-4-stance"],
-		"forTypes": [
-			"Automaton",
-			"Giant",
-			"Humanoid",
-			"Beast",
-			"Divine Beast"
-		]
+		"forTypes": ["Automaton", "Giant", "Humanoid", "Beast", "Divine Beast"]
 	},
 	{
 		"id": "evasion",
@@ -96,7 +90,7 @@
 	{
 		"id": "condition-escalation",
 		"name": "Escalating Grip",
-		"description": "On a strong or critical hit with this creature's signature attack, the target is stunned briefly. If the target is already stunned, they are paralyzed briefly instead.",
+		"description": "On a strong or critical hit with this creature's signature attack, the target is briefly stunned. If the target is already stunned, they are briefly paralyzed instead.",
 		"actionType": "Passive",
 		"tags": ["combat", "condition", "escalation"],
 		"forTypes": ["Undead", "Magical Beast", "Horror", "Spirit"]
@@ -107,13 +101,7 @@
 		"description": "When this creature loses their first life pool, the ground around them changes. Every area within short range becomes difficult terrain for the rest of the scene, and creatures entering or starting their turn there take the tier's secondary damage.",
 		"actionType": "Elite Trigger",
 		"tags": ["trigger", "terrain"],
-		"forTypes": [
-			"Giant",
-			"Draconic",
-			"Spirit",
-			"Magical Beast",
-			"Divine Beast"
-		]
+		"forTypes": ["Giant", "Draconic", "Spirit", "Magical Beast", "Divine Beast"]
 	},
 	{
 		"id": "elite-trigger-recharge",

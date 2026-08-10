@@ -1,22 +1,7 @@
 {
-	"Automaton": [
-		"Golem",
-		"Animated Object",
-		"Vessel"
-	],
-	"Beast": [
-		"Mammal",
-		"Reptile",
-		"Bird",
-		"Insect",
-		"Aquatic",
-		"Saurian"
-	],
-	"Divine Beast": [
-		"Guardian",
-		"Omen",
-		"Forsaken"
-	],
+	"Automaton": ["Golem", "Animated Object", "Vessel"],
+	"Beast": ["Mammal", "Reptile", "Bird", "Insect", "Aquatic", "Saurian"],
+	"Divine Beast": ["Guardian", "Omen", "Forsaken"],
 	"Draconic": [
 		"True Dragon",
 		"Celestial Dragon",
@@ -24,15 +9,8 @@
 		"Serpent",
 		"Dragonkin"
 	],
-	"Giant": [
-		"Elder",
-		"Feral"
-	],
-	"Horror": [
-		"Warped",
-		"Adapted",
-		"Cosmic"
-	],
+	"Giant": ["Elder", "Feral"],
+	"Horror": ["Warped", "Adapted", "Cosmic"],
 	"Humanoid": [
 		"Dwarf",
 		"Elf",
@@ -47,18 +25,9 @@
 		"Dogfolk",
 		"Satyr"
 	],
-	"Magical Beast": [
-		"Hybrid",
-		"Hive",
-		"Primal",
-		"Aberrant"
-	],
+	"Magical Beast": ["Hybrid", "Hive", "Primal", "Aberrant"],
 	"Ooze": [],
-	"Plant": [
-		"Tree",
-		"Fungus",
-		"Vine"
-	],
+	"Plant": ["Tree", "Fungus", "Vine"],
 	"Spirit": [
 		"Celestial",
 		"Infernal",
@@ -67,8 +36,5 @@
 		"Chthonic",
 		"Astral"
 	],
-	"Undead": [
-		"Corporeal",
-		"Incorporeal"
-	]
+	"Undead": ["Corporeal", "Incorporeal"]
 }

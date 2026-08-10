@@ -114,7 +114,10 @@ describe('published stat blocks agree with creatures.json', () => {
 			for (const field of ['parry', 'dodge', 'resist', 'tier'] as const) {
 				expect(typeof c[field], `${c.name}.${field}`).toBe('number')
 			}
-			for (const field of ['attacks', 'abilities', 'quickActions'] as const) {
+			// `quickActions` is deliberately absent: D-005 deleted the field and the
+			// qualifier carries the grouping, so a Quick Action is an ability with a
+			// qualifier like any other.
+			for (const field of ['attacks', 'abilities'] as const) {
 				expect(Array.isArray(c[field]), `${c.name}.${field}`).toBe(true)
 			}
 			// The armor category is fully redundant with the AV parenthetical on every
@@ -225,15 +228,23 @@ describe('optional creature lore', () => {
 		'narrative',
 		'environment',
 		'ecology',
+		// Added with the physiology block (D-055): size, weight, lifespan and
+		// reproduction. The generator and the schema took it; this allowlist did
+		// not, so every creature carrying one failed the no-drifting-keys check.
+		'physiology',
 		'tactics',
 		'treasure',
 		'organization',
 	]
 	const TREASURE_SCALES = ['None', 'Incidental', 'Standard', 'Rich', 'Hoard']
+	// The closed set from the lore schema. Trophy, Tool and Material are the
+	// published harvesting categories, used here with the same meaning.
 	const TREASURE_KINDS = [
 		'Weapon',
 		'Armor',
 		'Magic',
+		'Trophy',
+		'Tool',
 		'Material',
 		'Valuables',
 		'Supplies',

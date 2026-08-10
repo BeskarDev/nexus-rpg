@@ -8,3 +8,160 @@ toc_max_heading_level: 3
 {/* GENERATED from src/utils/data/json/creatures.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}
 
 Tier 1 creatures provide a meaningful challenge to starting adventurers. They include common predators, basic undead, and lesser humanoid warriors.
+
+<CreatureStatBlock
+	type="Medium Undead (Corporeal, Mindless)"
+	tier={1}
+	category="Basic"
+	hp="10"
+	av="1 (natural light)"
+	str="d6"
+	agi="d4"
+	spi="d4"
+	mnd="d4"
+	parry={7}
+	dodge={6}
+	resist={8}
+>
+
+### Grave Husk
+
+<CreatureLore>
+
+One of the unburied dead, walking in the body nobody said the words over. They do not remember being a person, and nothing in them wants anything. They walk a short distance from where they were left and no further. They keep doing it until somebody puts them in the ground.
+
+<LoreSection label="Ecology"><LoreTag>Desert</LoreTag><LoreTag>Grassland</LoreTag><LoreTag>Battlefield</LoreTag><LoreTag>Necropolis</LoreTag><LoreTag>Barrow</LoreTag> They do not eat, sleep, or rest, and they do not decay the way a body should. They rise where rites were skipped: plague pits, battlefields nobody came back for, robbed graves, any burial that was interrupted. They cannot be reasoned with or frightened. That, not their strength, is the practical problem. One husk on a road costs a village a week and a priest's fee. A field of them after a battle is why the temples send people.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>Whatever the person was in life, and most of them stood 1.6 to 1.8 m</LoreTag><LoreTag>40 to 60 kg, and falling, since they dry out rather than rot</LoreTag><LoreTag>They do not age, and a husk still walking a road may be 200 years dead</LoreTag></LoreSection>
+
+<LoreSection label="Tactics">They walk at whoever is closest and take hold. `Grasping Hands` grapples and they do not let go, which for something this slow is the only way they ever catch anybody. They never speed up, never flank, and never choose a better target. **They cannot follow past the ground they were left on.** They stop dead at that edge, and `Grave-Bound` says how far it reaches. Killing one settles nothing. They stand up again at the next sunset unless the body is buried or burned, so the same husk can meet the same travellers three days later.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Incidental"><TreasureRow kind="Valuables" value="2 coins">**Burial coin** Still in the mouth. Taking passage money is not free of consequence in most cities.</TreasureRow><TreasureRow kind="Weapon" value="75 coins">**Corroded spear** Short Spear, Quality 2, damaged. Pitted through where the head meets the haft.</TreasureRow><TreasureRow kind="Valuables" value="25 coins">**Bronze arm ring** Thin and decorative, made for a funeral rather than for wear.</TreasureRow><TreasureRow kind="Tool" value="25 coins">**Sealed grave jar** Oil, Quality 1, 3 uses. Four centuries old and it still burns.</TreasureRow><TreasureRow kind="Armor" value="50 coins">**Rotted leather cuirass** Leather, Quality 1, broken. Rotted through at the shoulders.</TreasureRow><TreasureRow kind="Relic">**Clay name-tile** The name of whoever this was. A priest needs it to lay them properly.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="2-4">Gang</EncounterTemplate><EncounterTemplate count="5-8">Mob</EncounterTemplate></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (1), Athletics (1)</StatBlockTrait>
+
+<StatBlockTrait label="Immunities"><TraitItem>bleeding</TraitItem><TraitItem>charmed</TraitItem><TraitItem>confused</TraitItem><TraitItem>frightened</TraitItem><TraitItem>poisoned</TraitItem></StatBlockTrait>
+
+<StatBlockTrait label="Weaknesses"><TraitItem>radiant</TraitItem></StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Grasping Hands</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="6/9/12" /> On a strong or critical hit, the target is grappled.
+- <EntryName>Bearing Down</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="6/9/12" /> Only against a target this creature has grappled. On a hit, the target falls prone.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Grave-Bound</EntryName> <StatBadge>Passive</StatBadge> This creature cannot willingly move further than a medium distance from the ground they were left on. When they are destroyed, they rise again at the next sunset unless their body is buried or burned.
+- <EntryName>Undead Nature</EntryName> <StatBadge>Passive</StatBadge> This creature doesn't need to breathe, eat, drink, or sleep.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Medium Humanoid (Orc)"
+	tier={1}
+	category="Basic"
+	hp="10"
+	av="1 (light armor)"
+	str="d6"
+	agi="d4"
+	spi="d4"
+	mnd="d4"
+	parry={8}
+	dodge={6}
+	resist={7}
+>
+
+### Orc Raider
+
+<CreatureLore>
+
+An orc down from the dry country at harvest, as their band has come down every harvest anyone can remember. They are not an invasion and they do not want the land. They want the grain, and they intend to be home before the season turns.
+
+<LoreSection label="Ecology"><LoreTag>Wastes</LoreTag><LoreTag>Desert</LoreTag><LoreTag>Steppe</LoreTag><LoreTag>River</LoreTag><LoreTag>Farmland</LoreTag><LoreTag>Settlement</LoreTag> Raiding bands come out of the herding country at the edge of the farmland, where nothing is sown and everything is driven. Harvest is the one season the valley is worth the ride. Twenty to forty come down together, hit the villages furthest from a garrison, and are gone inside a day. Most villages keep a standing arrangement, a portion left out and a route left unwatched, and the raids that turn violent are the ones where a new headman decided not to pay. The rest of the year these are herders, smiths and mercenaries, and the people they rob sometimes know them by name. The best known of them are the Zakhar of the canyon country, who have taken the river valley's harvest for as long as the valley has had one.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>1.80 to 1.90 m tall</LoreTag><LoreTag>95 kg</LoreTag><LoreTag>Adult at 14, old at 45, and 60 years is a long life</LoreTag> Children are raised by the whole canyon hold rather than by one household, and a Zakhar rides on their first raid the year they come of age. A raider in their twenties has been coming down to this river for a decade already.</LoreSection>
+
+<LoreSection label="Tactics">Javelins first, at range, while they close. Then the axes. `Formation Fighting` makes them markedly harder to kill while they stand together, so keep them shoulder to shoulder and have them reform the line whenever it breaks. They go for whoever stands between them and the grain, not for whoever is most dangerous. **They will break off to carry away what they came for** if they can reach it. A raider who is alone and losing looks for a way out rather than a last stand.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Standard"><TreasureRow kind="Weapon" value="100 coins">**Battleaxe** Battleaxe, Quality 2, damaged.</TreasureRow><TreasureRow kind="Weapon" value="17 coins">**Javelin bundle** Javelin, Quality 2, `bundle (d4)` with 1 use left.</TreasureRow><TreasureRow kind="Armor" value="50 coins">**Layered shoulder hide** Leather, Quality 1, damaged. Covers the shoulders and nothing else.</TreasureRow><TreasureRow kind="Valuables" value="30 coins">**Turquoise bead string** Strung on a thong, cut and polished in the holds they winter in.</TreasureRow><TreasureRow kind="Supplies" value="15 coins">**Waterskins and dried curd** Simple Rations (d4), full.</TreasureRow><TreasureRow kind="Relic">**Knotted countersign** The cord a rider shows at a friendly hold to be let in and fed. Whoever carries it passes for one of the band.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="3-6">Raiding file</EncounterTemplate><EncounterGroup name="Harvest raid">1 [Orc Band-Leader](/docs/creatures/creatures/tier-2#orc-band-leader) and 6-10 [Orc Raider](/docs/creatures/creatures/tier-1#orc-raider)</EncounterGroup><EncounterGroup name="Full band">1 [Orc Band-Leader](/docs/creatures/creatures/tier-2#orc-band-leader) and 20-40 [Orc Raider](/docs/creatures/creatures/tier-1#orc-raider)</EncounterGroup></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (1), Athletics (1), Survival (1)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Battleaxe</EntryName> <StatBadge>slash</StatBadge><StatBadge>versatile (+1)</StatBadge> <DamageLadder values="6/9/12" />
+- <EntryName>Javelin</EntryName> <StatBadge>bundle (d4)</StatBadge><StatBadge>light</StatBadge><StatBadge>pierce</StatBadge><StatBadge>thrown (short/long)</StatBadge> <DamageLadder values="5/7/9" /> On a strong or critical hit, the target is briefly slowed.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Orcish Fury</EntryName> <StatBadge>Passive</StatBadge> When this creature hits with a melee weapon and rolls a critical success, add their weapon damage an additional time to the total damage.
+- <EntryName>Formation Fighting</EntryName> <StatBadge>Passive</StatBadge> While an ally is within melee range of this creature, attacks against this creature suffer +1 bane.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Medium Beast (Reptile)"
+	tier={1}
+	category="Basic"
+	hp="10"
+	av="2 (natural light)"
+	str="d6"
+	agi="d4"
+	spi="d4"
+	mnd="d4"
+	parry={8}
+	dodge={6}
+	resist={7}
+>
+
+### Young Crocodile
+
+<CreatureLore>
+
+A river crocodile not yet at full size, small enough to lie up under a landing stage. River villages keep their children off the bank at dusk, and the fence along the bank is there for the same reason.
+
+<LoreSection label="Ecology"><LoreTag>River</LoreTag><LoreTag>Marsh</LoreTag><LoreTag>Settlement</LoreTag> They lie up in shallow water against a bank, a jetty, or a stand of reed, and take whatever comes down to drink. A young one hunts dogs, goats, waterfowl, and people who are alone. They avoid anything in a group. Full-grown crocodiles drive the young off the best stretches, so the ones a village meets are usually this size and usually hungry. One that has taken livestock keeps using the same crossing until something changes. The village always knows where they are.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>2.2 m long</LoreTag><LoreTag>70 kg</LoreTag><LoreTag>60 years or more, and one this size is 4 to 6 years old</LoreTag> The female buries forty eggs in the warm sand of a bank and guards the nest until they hatch. Almost none of them reach this size, and the ones that do have already been driven off the best water by something larger.</LoreSection>
+
+<LoreSection label="Tactics">They open from the water, on whoever is closest to the edge. The bite grapples, and the grapple is the point, because a grappled person is going into the river. **They cannot hold and bite at once.** A crocodile with someone in their jaws spends the turn dragging rather than attacking, and bites nobody else while they do. If the fight turns they release and submerge, and they will not come back while anyone is standing on their bank.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Incidental"><TreasureRow kind="Trophy" value="4 coins">**Crocodile hide** Taken whole, then part ruined by careless skinning.</TreasureRow><TreasureRow kind="Material" value="25 coins">**Belly hide** Primitive materials, Quality 1. Enough leather for one set of light armor once worked.</TreasureRow><TreasureRow kind="Material" value="8 coins">**Crocodile teeth** Primitive materials, Quality 1, a full jaw of them.</TreasureRow><TreasureRow kind="Supplies" value="4 coins">**Crocodile meat** Raw meat equal to 1 x simple rations (d4) with 2 uses left. At the start of each day, remove 1 use as the meat spoils.</TreasureRow><TreasureRow kind="Valuables" value="20 coins">**Stomach stones** And what came up with them: a belt buckle, two rings, a bronze fitting.</TreasureRow><TreasureRow kind="Relic">**Tax-farmer's signet** Still on the finger. Shown at any river village it opens a headman's door, and closes every other one.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="2-3">Colony</EncounterTemplate></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (1), Stealth (1)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Bite</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="6/9/12" /> On a strong or critical hit against a creature of equal or smaller size, the target is grappled. While grappling, this attack cannot be used against any other target.
+- <EntryName>Death Roll</EntryName> <StatBadge>crush</StatBadge> Only against a target this creature has grappled. 6/9/12 damage, and the target falls prone.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Amphibious</EntryName> <StatBadge>Passive</StatBadge> This creature can hold their breath underwater for a medium duration and can swim with normal Movement.
+- <EntryName>Ambush Predator</EntryName> <StatBadge>Passive</StatBadge> When this creature hits an enemy that is unaware of them with an attack for the first time during a scene, increase the SL of their attack by one step (max. critical success).
+
+</StatBlockSection>
+
+</CreatureStatBlock>

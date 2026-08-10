@@ -22,6 +22,7 @@ Creatures are designed on a tier chassis (Tier 0–10, matching adventurer level
 | Published spells (for spellcasting creatures) | `docs/07-magic/02-arcane-spells/`, `04-mystic-spells/` |
 | Damage/healing scaling frameworks | `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6 and §16 |
 | Deep analysis (survivability math, encounter building, ability catalogues) | `docs/analysis/creature-creation-encounter-building-analysis.md` |
+| **Shared traits** (canonical) | `src/utils/data/json/creature-traits.json` — 47 reusable passives by name. A creature stores the NAME, `content:gen` expands it into a full Passive ability |
 | **Types, subtypes, additives** | `creature-types.json`, `creature-subtypes.json`, `creature-additives.json` — 12 types, subtypes are an **array** so additives sit alongside the primary value |
 | **Worldbuilding vault** | `~/git/personal/nexus-rpg-vault` (separate repo, German). `04 Natur/Bestiarium` holds the cosmological origin lore, `02 Kosmologie/Seelenreiche` the soul realms. **Read before designing a creature's identity. Read-only — never write to it** |
 | **The twelve Folk** | `docs/02-adventurers/01-folk.md` — a humanoid creature **inherits its folk's published traits** rather than inventing them |
@@ -57,21 +58,26 @@ other ten: at tier 9 it promises 15/19/23 where the creature data says 18/33/48.
 
 ## Design Principles
 
-[references/designer-principles.md](references/designer-principles.md) holds the binding rules in full: native principles 1–7 and 13, principles 8–12 ported from the spell-design and talent-design corpora, and pointers to the shared spell-design wording and condition files that bind creature text verbatim. Read it before any design pass — this list is only the shortlist of the ones most often violated.
+**32 binding principles, split by phase so a task loads only what it needs.** Full text in
+[references/principles/](references/principles/); the one-line index of all 32 and the
+"which file when" table are in
+[references/designer-principles.md](references/designer-principles.md).
 
-- **1.** Stat chassis + ability menu — never let either carry the whole design.
-- **3.** Damage threads the needle between glass-cannon casters and heavy-armor martials.
-- **5.** Adventurers don't heal on Wounds (creatures do) — factor into lethality.
-- **7.** Ability output follows the spell scaling frameworks; every referenced spell verified to exist by grep.
-- **8.** Check every condition against its published definition — stunned doesn't disable, only paralyzed does.
-- **9.** High-impact conditions need a save or a rolled attack, never a no-roll trigger.
+| Before you… | Read |
+|---|---|
+| pick a concept, tier, category (step 1) | [identity.md](references/principles/identity.md) — naming, taxonomy, folk inheritance, magical naturalism |
+| set statistics and attacks (steps 2-3) | [chassis.md](references/principles/chassis.md) — stat chassis, damage bands, Timer/Threat/Treat |
+| write abilities or a trigger (step 4) | [abilities.md](references/principles/abilities.md) — conditions, counterplay, escalation, durations, universal actions |
+| write any text at all | [writing.md](references/principles/writing.md) — canonical wordings, pronouns, lore prose, say-it-once |
+
+**Do not design from the index.** The summaries say *which* principle applies, never what it
+says — every one of them is a compressed ruling with a worked example behind it.
+
+The three most-violated, kept here because they are cheap to state and expensive to miss:
+
+- **8.** Check every condition against its published definition — `stunned` doesn't disable, only `paralyzed` does.
 - **10.** Defensive abilities and immunities need counterplay; no auto-win offense either.
-- **13.** Mythological-first roster identity — D&D imports only naturalized: renamed (legal minimum), setting-fit ecology. Entry names are **anglicised, no diacritics** (Mushhushshu, Girtablilu, Edimmu, Anzu).
-- **14.** A game term must say what it is; lore names stay in `lore.narrative`.
-- **15.** Timer, Threat, Treat — and the Treat has **five channels**, one of them lore-only. For ordinary animals a false mechanic is worse than none.
-- **16.** Condition escalation prices a disable instead of banning it.
-- **17.** Bonus damage comes in three rungs — flat, costed attack, SL escalator — and they are rungs, not a right answer.
-- **18.** `briefly` (one turn) and `short` (rest of the fight) are the two in-combat durations. Never spell `briefly` out longhand.
+- **15.** Timer, Threat, Treat — the Treat has **five channels**, one of them lore-only. For ordinary animals a false mechanic is worse than none.
 
 ## Creature Categories
 
@@ -167,10 +173,11 @@ play-time reference. Write it to the same standards as rules text: they/their/th
 semicolons or dashes, no purple prose. Omit any optional key rather than writing an empty
 value; the generator rejects unknown keys and empty strings outright.
 
-**Full schema — keys, environment vocabulary, treasure table, encounter templates:
+**Full schema — keys, environment vocabulary, physiology, treasure table, encounter templates:
 [references/lore-schema.md](references/lore-schema.md).** Read it before writing a lore
 block, and [references/treasure-design.md](references/treasure-design.md) before writing a
-treasure table. **Mummy (tier 4) is the reference implementation** in `creatures.json`.
+treasure table. The **eight worked blocks in `.drafts/bestiary/creatures/tier-0-1-lore.md`**
+are the reference implementation while the roster is being rebuilt.
 
 ### 6. Write it into a draft document
 **Never straight into `creatures.json`, and never into the tier pages at all.** Create (or append to) a batch file under the repo-root `.drafts/creatures/` (e.g. `.drafts/creatures/tier-<N>-batch.md`, or a concept-named file). The draft holds: a status banner ("pending owner approval, not yet published"), scope, per-creature design rationale (role, tier, category, any tier-adjustment justification), the full stat block in readable markdown, and an "open questions for owner" section flagging unresolved forks. The draft is the review artifact; publication only happens after owner approval.
@@ -178,7 +185,20 @@ treasure table. **Mummy (tier 4) is the reference implementation** in `creatures
 Keep the draft in **readable markdown**, not JSON — it is for a human reviewer. The JSON record is written at publication (see Publication Pipeline), from the approved draft.
 
 ### 7. Validate
-Run the full checklist in [references/stat-tables.md](references/stat-tables.md#validation-checklist), then sanity-check against 2–3 published creatures of the same tier and category — comparable power, no strict domination. Key failure modes:
+Run the full checklist in [references/stat-tables.md](references/stat-tables.md#validation-checklist), then sanity-check against 2–3 published creatures of the same tier and category — comparable power, no strict domination.
+
+**Then run the principle sweep.** Open each phase file you used and check the draft against its
+principles by number. A design pass that never re-opened a principle file has not been validated,
+it has been written — the recurring failures below were all caught this way, one review at a time:
+
+| Sweep | Ask of the draft |
+|---|---|
+| [identity.md](references/principles/identity.md) | Does the name promise what the stat block delivers? Is a real animal called by its real name, an invented one built as *one* deviation, a folk creature inheriting only what its folk entry grants? |
+| [chassis.md](references/principles/chassis.md) | Is every number off the tier table, with at most one traded pair? Does the encounter have a Timer, a Threat and a Treat — and is the Treat real rather than invented? |
+| [abilities.md](references/principles/abilities.md) | Every condition checked against its published text? Every high-impact one gated by a save or a roll? Every defence counterable? Triggers escalating, opening `When this creature suffers a Wound`? Nothing restating a universal action? |
+| [writing.md](references/principles/writing.md) | Canonical wordings copied verbatim? Subject named where two creatures share a sentence? Lore prose read aloud, superstitions recorded rather than debunked, nothing said twice? |
+
+Key failure modes:
 
 - ❌ Damage math like `6/10/14` (doubling the increment) — correct is base + 1×/2×/3× weapon: `6/8/10`.
 - ❌ Referencing undefined conditions ("cursed", "drained") — use official conditions or spell out mechanics ("+1 bane on all rolls").
@@ -219,14 +239,34 @@ creature is one object in that array:
   "abilities": [
     {
       "name": "Sand Sense",
-      "qualifier": "Passive",         // Passive | Action | Quick Action | Elite Trigger | Lord Trigger, optionally ", 3/day"
+      "qualifier": "Passive",         // Passive | Action | Quick Action | Elite Trigger | Lord Trigger.
+                                      // A limiter may follow ONLY on `Action` — see stat-tables.md
       "text": "This creature senses any creature touching the sand within short range."
     }
   ],
-  "quickActions": [],
+  "traits": ["Keen Scent"],           // NAMES ONLY, resolved from creature-traits.json
   "lore": { }                         // optional, fixed structure — see references/lore-schema.md
 }
 ```
+
+### Traits are stored by name and resolved at build time
+
+A creature's **shared** passives — `Keen Scent`, `Amphibious`, `Undead Nature`,
+`Blindsight (close)` — go in `traits` as **names only**. Their wording lives once in
+`src/utils/data/json/creature-traits.json` (47 entries, extracted from the companion trait
+library so creatures and companions cannot drift on what a trait means), and
+`content:gen` **expands each name into a full `Passive` ability** on the published card.
+
+- **The card shows no seam.** A GM reads one Abilities list with every effect spelled out.
+  The split is an authoring convenience: one fix to a trait's text reaches every creature
+  carrying it.
+- **Unknown names fail the build**, which is what catches a near-miss: the first batch
+  wrote `Blindsense`, and the published trait is `Blindsight (close)`.
+- **Parameterised traits carry their parameter in the name** — `Blindsight (close)`,
+  `Blindsight (medium)`, `Flying (Wings)`, `Darkvision (medium/long)` — because that is how
+  the trait library already stores them.
+- **A trait unique to one creature is not a trait.** Write it as an ability on that creature.
+  The library is for wording used more than once.
 
 Field notes that the generator enforces (it fails the build, it does not guess):
 
@@ -276,4 +316,4 @@ tool are unaffected: they exchange markdown between themselves and never read
 
 ## Designer Feedback Loop
 
-When the owner corrects or refines a design decision in session (a balance call, a thematic boundary, a wording rule), append it to [references/designer-principles.md](references/designer-principles.md) (next free number, bolded one-line rule + reasoning + owner-ruling provenance, under the matching section — the file states the next free number). Numeric chassis corrections go into [references/stat-tables.md](references/stat-tables.md) instead, and corrections to the `lore` object — its keys, the environment vocabulary, treasure tables, encounter templates — into [references/lore-schema.md](references/lore-schema.md). If it's frequently load-bearing, also add its one-line hook to the Design Principles shortlist above. If the correction refines a *ported* principle, note the creature-side ruling there — never edit the spell-design or talent-design files from here. This is the accumulated design memory — it must grow. Keep SKILL.md itself lean: new lessons go into `references/`.
+When the owner corrects or refines a design decision in session (a balance call, a thematic boundary, a wording rule), append it to the matching phase file in [references/principles/](references/principles/) — `chassis`, `identity`, `abilities` or `writing` — as the next free number (bolded one-line rule + reasoning + owner-ruling provenance), **and add its one-line summary to the index in [references/designer-principles.md](references/designer-principles.md)**, which states the next free number. Numeric chassis corrections go into [references/stat-tables.md](references/stat-tables.md) instead, and corrections to the `lore` object — its keys, the environment vocabulary, treasure tables, encounter templates — into [references/lore-schema.md](references/lore-schema.md). If it's frequently load-bearing, also add its one-line hook to the Design Principles shortlist above. If the correction refines a *ported* principle, note the creature-side ruling there — never edit the spell-design or talent-design files from here. This is the accumulated design memory — it must grow. Keep SKILL.md itself lean: new lessons go into `references/`.

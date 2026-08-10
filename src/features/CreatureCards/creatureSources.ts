@@ -82,7 +82,9 @@ interface RawCreature {
 }
 
 const asStrings = (value: unknown): string[] =>
-	Array.isArray(value) ? value.filter((v): v is string => typeof v === 'string') : []
+	Array.isArray(value)
+		? value.filter((v): v is string => typeof v === 'string')
+		: []
 
 const asNumber = (value: unknown): number =>
 	typeof value === 'number' ? value : Number(value ?? 0)
@@ -134,7 +136,8 @@ export function adaptCreature(
 ): { creature: Creature } | { reason: string } {
 	const name = typeof raw.name === 'string' ? raw.name.trim() : ''
 	if (!name) return { reason: 'missing name' }
-	if (typeof raw.tier !== 'number') return { reason: 'missing or non-numeric tier' }
+	if (typeof raw.tier !== 'number')
+		return { reason: 'missing or non-numeric tier' }
 	if (typeof raw.category !== 'string' || !raw.category.trim())
 		return { reason: 'missing category' }
 
@@ -162,9 +165,10 @@ export function adaptCreature(
 			abilities: (Array.isArray(raw.abilities) ? raw.abilities : []).map(
 				adaptAbility,
 			),
-			quickActions: (Array.isArray(raw.quickActions) ? raw.quickActions : []).map(
-				adaptAbility,
-			),
+			quickActions: (Array.isArray(raw.quickActions)
+				? raw.quickActions
+				: []
+			).map(adaptAbility),
 			...(raw.lore !== undefined ? { lore: raw.lore } : {}),
 		},
 	}

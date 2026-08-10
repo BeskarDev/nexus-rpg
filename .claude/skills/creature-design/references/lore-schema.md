@@ -13,55 +13,87 @@ the point.
 | `narrative` | **prose**, required | One short passage in the setting's voice. What this creature *is*, not what it does. 2–3 sentences. |
 | `environment` | shorthand | Terrain terms, **ordered generic to specific**: `["Desert", "Ruins", "Tomb"]`. See below. |
 | `ecology` | **prose** | How they live: diet, range, activity, what wakes or draws them, what people believe and do about them. |
-| `tactics` | **prose** | What they actually do in a fight — opening move, what they target, when they break off. Reference their own abilities by name. |
+| `physiology` | shorthand + one line | `{ "size", "weight", "lifespan", "reproduction" }`. The body facts, under the ecology. See below. |
+| `tactics` | **prose** | How a GM **runs** them: opening move, what they target, how they behave under pressure, when they break off. **The creature is the subject of every sentence**, and their own attacks and abilities are the only game terms allowed. See below. |
 | `treasure` | shorthand + **d6 table** | `{ "scale": "...", "table": [...6 rows...] }`. See below. |
-| `organization` | shorthand | Encounter templates (see below). Always include a solitary entry if they are ever met alone. |
+| `organization` | shorthand | The group sizes this creature is naturally met in, in the D&D 3.5 Organization style: `Solitary`, `Pack (3-6)`, mixed bands. See below. |
 
-Write it to the same standards as rules text: they/their/them, no semicolons or dashes,
-no purple prose. Tactics should tell a GM how to *run* them, not restate the stat block.
+Write it to the same standards as rules text: they/their/them, no purple prose, and **no em
+dashes, en dashes or semicolons anywhere** (CLAUDE.md) — the generator now walks every string in
+the block and fails the build on all three, including inside a treasure row. Split the sentence,
+use "such as", or omit the field. An unsellable row omits `value` rather than writing `—` for it. Tactics should tell a GM how to *run* them, not restate the stat block.
 Omit any optional key rather than writing an empty value — the generator rejects unknown
 keys and empty strings outright, so the structure cannot drift entry by entry.
 
 ## Writing the prose
 
-`narrative`, `ecology` and `tactics` are the only free prose in the whole schema, which
-makes them the only place the writing can go wrong. Four rules, in priority order:
+`narrative`, `ecology`, `tactics` and `physiology.reproduction` are the only free prose in the
+whole schema, which makes them the only place the writing can go wrong. **The rules and their
+worked examples live in [principles/writing.md](principles/writing.md) (principles 29-32) — read
+it before writing prose.** This is the checklist to run against a finished draft:
 
-**1. One idea per sentence.** The commonest defect is a sentence carrying three: a subject,
-a participial aside, and a second independent clause bolted on with "and". Long sentences
-are fine when they are long about *one thing*. Split the moment a second thing arrives.
+| # | Check | Principle |
+|---|---|---|
+| 1 | One idea per sentence. Long is fine when it is long about one thing. | 29 |
+| 2 | Open on the concrete thing, close on the turn. No aphorism in the first slot. | 29 |
+| 3 | No idiom the reader has to unpack to reach a fact. | 29 |
+| 4 | Read it aloud — any unintended pause is the defect. | 30 |
+| 5 | No modern narrator. Attribute beliefs, never debunk them, leave the truth open. | 31 |
+| 6 | Only `tactics` addresses the table. No "the party" elsewhere — the generator enforces it. | — |
+| 7 | Say it once. Cut any clause defending a statement already made. | 32 |
+| 8 | Middle-school register, plain words, varied sentence lengths. | 29 |
 
-**2. Open on the concrete thing, close on the turn.** The first sentence is an
-establishing shot — what a person would see. Save the wit, the reversal or the dry
-observation for the last sentence, where the reader already has an image to hang it on. An
-aphorism in the opening slot ("They are the funeral's other congregation") makes the reader
-decode before they have been given anything to decode *with*.
+Rule 6 is schema-specific and has no principle behind it: `narrative`, `ecology` and
+`physiology` describe a creature that existed before the campaign and carries on after it, so
+they name the people who actually meet them — villagers, gravediggers, tomb robbers, masons.
+`tactics` is GM instruction, so "the party" is the right word there.
 
-**3. Never make the reader unpack an idiom to reach a fact.** "Keeping the distance a
-thrown stone travels" is a riddle whose answer is "just out of reach". Write the answer.
-Ornament belongs on things the reader already understands.
-
-**4. Write for a middle schooler.** Plain words, short clauses, one idea per sentence — the full rule
-and its test live in [../../game-basics.md](../../game-basics.md#reading-level). Hard words are for
-precision, never for texture: `sinew` and `signet` stay because they name a thing exactly, while a
-`bund` is a bank and `offal` is guts. Varied lengths, too: Three or four sentences with a mix of
-lengths reads faster than two balanced ones. Avoid meta-phrasing that explains the
-sentence you are writing — "which in practice means", "what this amounts to is" — because
-it is always shorter to just say the thing.
-
-> **Before.** They are the funeral's other congregation. Every burial road out of a city has
-> its jackals, keeping the distance a thrown stone travels, and every gravedigger knows the
-> ones that work their stretch. Nobody has ever successfully driven them off anything.
+> **Before.** They boil up when the floor is broken. That makes them a consequence of what the
+> party just did, not an ambush.
 >
-> **After.** A lean grey scavenger of the burial roads. Jackals follow funerals at the edge
-> of a thrown stone's range, and they have learned which processions leave food. Every
-> gravedigger knows the ones that work their stretch, and none of them has ever driven one
-> off for good.
+> **After.** They boil up when the floor is broken. They do not lie in wait, so whoever wakes
+> them has just broken the floor they nest under, and that is usually a robber, a mason, or a
+> priest come to re-seal a chamber.
 
-Same length, same facts, and the reader now sees the animal before being told what to think
-about it. **This is not a licence to write flatly** — the last clause of the rewrite is the
-same joke as the original's last sentence. It just arrives after the image instead of
-in place of one.
+The second costs nothing and buys three named kinds of person, any of whom can be an NPC, a
+rumour or a corpse in the room.
+
+## Tactics
+
+`tactics` is the one field that speaks to the GM, but it is still **read aloud-able prose, not a
+rules paragraph**. The creature's own attacks and abilities are named in backticks, because that
+is how a GM finds the line on the card. **Everything else is plain language.**
+
+| ❌ game term | ✅ plain |
+|---|---|
+| "no amount of Stealth solves it" | "no amount of creeping solves it" |
+| "an ally who cuts the grappled character free" | "whoever cuts their friend loose" |
+| "walk a medium distance and the encounter is over" | "walk away far enough and it is over, and `Grave-Bound` says how far" |
+| "the band **rolls Morale**, because the published trigger fires when the elites are removed" | "the band's nerve goes with them" |
+
+The reason is division of labour, not squeamishness about rules. **The numbers are already on the
+card**, one line above, and a GM who wants the exact leash distance reads the ability. What tactics
+adds is the thing no stat block can hold: what these creatures *want*, who they go for, and when
+they stop. Spending its sentences restating skill names and range bands wastes the only field that
+can say those things, and it makes a paragraph a GM has to parse rather than glance at.
+
+**The creature is the subject.** This is a tool for running them, not a player handout, so a limit is
+written as behaviour rather than as the party's answer to it: not "the party's answer is distance and
+patience", but "they never speed up, never flank, and never choose a better target". The fact
+survives, the reader changes.
+
+**Brief, do not stage.** Say what the creature does, what it goes for and what stops it, then stop.
+No coaching the GM on delivery ("the party should be allowed to notice", "say so out loud"), no
+labelling your own content ("that is the counterplay"), no spelling out what follows from the line
+above. The test is whether the sentence would survive in a scout's report. Full rule:
+[principles/writing.md](principles/writing.md) principle 33.
+
+Two consequences worth stating:
+
+- **Name the creature's own ability rather than the rule it invokes.** `Grave-Bound` beats "a
+  medium distance", because the ability carries the number and cannot drift from it.
+- **A published rule the party triggers is described by its effect**, not its name. The band losing
+  its nerve *is* Morale, and every GM runs it without being told which trigger fired.
 
 ## Environment
 
@@ -76,9 +108,91 @@ in place of one.
 This is **groundwork for a future encounter builder**: "a desert tomb, challenging for
 three level-4 characters" is a rank-1 filter plus a rank-3 filter, and a tool can only
 intersect creature lists per level if every entry agrees on what is broad and what is
-narrow. An unknown term or an out-of-order list fails the build. Adding a term is a
-deliberate act — extend `ENVIRONMENT_RANKS` in `generate-creatures.ts` rather than
-inventing a synonym no filter will ever match.
+narrow.
+
+**All three ranks are closed lists, not just rank 1.** The 16 regions, 12 sites and 10
+features above are the whole vocabulary, and the generator rejects anything else by name —
+`Graveyard` and `Ossuary` fail the build exactly as an invented region would. That is the
+point of the field: a tag is only a filter if several creatures share it, and a bestiary
+that coins `Ossuary` for the one creature that inspired it has written a tag that matches
+one entry and competes with `Crypt` forever. It also rejects a repeated term.
+
+**Adding a term is a deliberate act with a bar to clear.** Extend `ENVIRONMENT_RANKS` in
+`generate-creatures.ts` only when the new term (a) names a place several creatures would
+carry, and (b) is not a synonym of an existing one at the same rank. Otherwise use the
+nearest published term — a graveyard is a `Necropolis`, a bone-vault is a `Crypt`, a
+sinkhole is `Caves`. **A slightly loose fit that filters is worth more than an exact word
+nobody can query.**
+
+**Rank 1 works like a habitat tag, so list EVERY region the creature is found in.** This is
+the rule most easily got wrong, because one region always feels like enough while writing
+the entry. It is not: a GM filtering for "grassland, level 1" gets whatever the tags say and
+nothing else, so a jackal tagged only `Desert` is missing from every grassland encounter it
+belongs in. Two or three regions is normal, and the generator **requires at least one**.
+
+Rank 2 and rank 3 are the opposite discipline: **specific, and only where they really live.**
+`Necropolis` and `Tomb` on the beetles means "you meet these in tombs", and adding a site
+they are merely plausible in dilutes every filter that mentions it. Ask of a rank-1 term
+"could they be here?" and of a rank-2 or rank-3 term "is this where they are?"
+
+> **Worked.** Jackal: `["Desert", "Grassland", "Road", "Necropolis"]` — two habitats they
+> range across, then the two places a party actually meets them. Grave Husk:
+> `["Desert", "Grassland", "Battlefield", "Necropolis", "Barrow"]` — they rise wherever
+> rites were skipped, so the sites carry the meaning and the regions stay broad.
+
+## Physiology
+
+The body facts, rendered as a short section directly under Ecology. Three
+measurements badge as tags, and reproduction is one line of prose.
+
+```json
+"physiology": {
+  "size": "80 cm at the shoulder, 1.2 m long",
+  "weight": "12 kg",
+  "lifespan": "10 to 12 years",
+  "reproduction": "One litter of four to six pups a year, born in a dug den and running with the pack by the end of a season."
+}
+```
+
+| field | kind | what to write |
+|---|---|---|
+| `size` | measurement | **Height or length, whichever the anatomy makes meaningful.** Upright creatures give height, four-legged ones shoulder height and often length too, snakes and worms length, winged ones may add wingspan. Metric, and say which dimension it is: `1.4 m tall`, `2.6 m long`, `4 m wingspan`. |
+| `weight` | measurement | Metric: `12 kg`, `1.8 t`. Give a range when the spread matters more than the average. |
+| `lifespan` | measurement | `10 to 12 years`. For things that do not age, state what actually ends them: `Does not age, and 400 years is an ordinary age for one`. |
+| `reproduction` | one line of prose | How they breed, and how long it takes. One or two sentences, never a paragraph. **Omit for anything that does not breed** — see rule 4. |
+
+Rules:
+
+1. **Every measured field states a figure with its unit.** The generator rejects
+   `size: "large"` — a tag reading "large" tells the reader nothing the size chip on the
+   card did not already say. If a figure is genuinely unknowable, **omit the key**.
+2. **Metric only, one system throughout the bestiary.** Ranges use "to", never a dash.
+   **Distances use the published vocabulary and nothing else**
+   (`docs/05-combat/03-distances-movement.md`): the range bands (melee, close, short, medium,
+   long, very long, extreme), metres, or areas — one area being **6 by 6 m**. Never invent a
+   unit. `3 paces of floor` was rejected for exactly this: `a thousand paces` is a published
+   *narrative* distance meaning **1.5 km**, so paces already mean something, and a reader who
+   knows the rules reads three of them as an eighth of a mile.
+3. **A swarm's measurements are one animal's, and the headcount goes in `reproduction`.** The
+   tags say how big a single beetle is, because that is the fact nothing else on the card
+   carries. **The space a swarm occupies is already on the stat block** — a `Medium` swarm
+   fills a Medium creature's space, roughly 2 to 3 m across — so repeating it in physiology
+   states it twice and invites the two to disagree. Close the reproduction line with the rough
+   count instead: *"A swarm is two to three thousand of them."* Same for any creature whose
+   entry is a mass rather than a body.
+4. **Anything that does not breed omits `reproduction` entirely.** Undead, constructs,
+   elementals and summoned things: leave the key out. Do not write "they make no more of
+   themselves", and **do not repurpose the field** for what raises or builds them — that is
+   origin, it belongs in `ecology` or `narrative`, and a physiology block is the wrong place to
+   explain a rite. The Grave Husk carries size, weight and lifespan, and nothing else.
+5. **This is a short section, not a second ecology.** Three tags and one sentence. Behaviour,
+   diet and range belong in `ecology`, above it. Anything the party can exploit belongs in
+   `tactics`.
+6. **Keep the figures consistent with the creature's size category and their tier.** A
+   Medium creature that weighs 900 kg is a data entry error the generator cannot catch.
+
+Every field is optional and the whole block is optional, but a creature with a
+`physiology` block carrying no fields fails the build.
 
 ## Treasure
 
@@ -114,23 +228,66 @@ Schema:
 "treasure": {
   "scale": "Rich",
   "table": [
-    { "kind": "Weapon", "item": "Ceremonial khopesh",
-      "stats": "Scimitar, Quality 2", "value": "150 coins",
-      "note": "Gold-inlaid but soundly forged, so it carries no penalty." },
-    { "kind": "Magic", "item": "Amulet of Willpower",
-      "stats": "Wearable (neck), Quality 4", "value": "1,050 coins",
-      "note": "While worn, you gain +1 Resist (max. 10)." }
+    { "kind": "Weapon", "item": "Ceremonial khopesh", "value": "150 coins",
+      "description": "Scimitar, Quality 2. Gold inlay, soundly forged, no penalty." },
+    { "kind": "Magic", "item": "Amulet of Willpower", "value": "1,050 coins",
+      "description": "Wearable (neck), Quality 4. While worn, you gain +1 Resist (max. 10)." }
   ]
 }
 ```
 
 | field | required | content |
 |---|---|---|
-| `kind` | yes | **Weapon, Armor, Magic, Material, Valuables, Supplies, Relic** — closed, so a generator can filter and a GM can find the weapon without reading six rows. |
-| `item` | yes | The **name only**, under 60 characters. The generator rejects prose here. |
-| `stats` | when it has rules | What it IS in core-rules terms: `Scimitar, Quality 2`, `Wearable (neck), Quality 4`. |
-| `value` | usually | `150 coins`, `3d6 x 10 coins`, or `—` when it cannot be sold. Never contradict the Quality in `stats`. |
-| `note` | optional | One short qualifier, or a magic item's actual published effect. Not a paragraph. |
+| `kind` | yes | **Weapon, Armor, Magic, Trophy, Tool, Material, Valuables, Supplies, Relic** — closed, so a generator can filter and a GM can find the weapon without reading six rows. Trophy, Tool and Material are the published harvesting categories, used here with the same meaning. |
+| `item` | yes | The **name only**, under 40 characters, and shorter than that in practice: `Jackal pelt`, `Jackal meat`, `Sinew`. The generator rejects prose here. |
+| `description` | usually | One line: what it IS in core-rules terms and what it is FOR. `Scimitar, Quality 2. Gold inlay, no penalty.` |
+| `value` | usually | A **flat coin figure**: `150 coins`. **Omit the field entirely** when the thing cannot be sold, so no badge renders. **Never dice**, and never a dash. Never contradict the Quality named in the description. |
+
+**Four rules for the two text fields**, all of them corrections of the first draft:
+
+1. **The name is what a player says out loud.** `Jackal pelt`, not `Jackal pelt, mange-thin`.
+   Condition, quality and detail go in the description.
+2. **Name the thing that is actually there.** You cut `Sinew` off a jackal, not `Dried sinew`
+   — the drying is work somebody does afterwards. Write the raw part, and let the quality say
+   how good it is.
+3. **The description must earn its line, and it closes on the last useful word.** It says what the
+   item IS in core-rules terms and what it is FOR. Then it stops. **Treasure rows carry no
+   quips** — the closing joke that reads well in a paragraph of lore is dead weight in a table a GM
+   scans mid-session, and six of them in one table is a voice rather than a reference.
+
+   Cut in the tier-0 pass, all of them final sentences: *"A trophy is still a trophy."* · *"or a
+   necklace nobody will admire"* · *"Small, sharp, and easy to carry."* · *"There is not much of
+   it."* · *"and never missed"* · *"Somebody is still annoyed about losing it."* · *"Edible if you
+   are not fussy."* · *"It says what it says."* · *"The rest are somewhere downrange."* · *"Worth
+   nothing, and worth a great deal."*
+
+   **The test is whether the sentence changes what the GM hands over or what the party can do with
+   it.** Provenance passes when it is a lead ("painted with the band's mark, which every village on
+   the river knows"), and fails when it is only colour ("dropped in a market, and never missed").
+   Personality belongs in `narrative` and `ecology`, which are built for it.
+4. **Every published value is a flat number of coins, never a die.** A table mixing `1d6 coins`
+   with `15 coins` asks the GM to roll twice for one row, and the d6 that picked the row was
+   the roll. Dice stay a **design tool**: where the rules give a value as dice (harvesting
+   trophies), roll them or read them as a range and place the item inside it deliberately, then
+   write the number you landed on. A mange-thin pelt sits at the bottom of its range, an
+   unbroken skin near the top. Ranges and middles per tier are in
+   [treasure-design.md](treasure-design.md) §1.
+5. **One number per row, and no economics in the description.** `value` is what the thing is
+   worth. Never write a sale price ("sells for 7"), never explain the halving rule, never
+   label an item a **trade good**, and never give a second, conditional value ("a cut skin is
+   worth 2", "a clean job is worth up to 12"). All of that is either the published rules
+   applied for the reader, or a fork the GM has to adjudicate before handing over one item.
+   **If a condition changes the price, pick the condition and price it** — the row describes
+   one specific object, not a range of possible ones.
+
+   The trade-good clause is the subtle one. Whether an item sells at full or half value is a
+   **property of its category**, published once and applied by the GM to everything. Restating
+   it per row implies this particular clutch of eggs is special, and it quietly files them
+   beside gemstones. Say what the thing is. The rules price it.
+
+> `stats` and `note` were separate fields until the tier-0 review. They produced rows that said
+> the same thing twice and notes spent on "sells for 7". One `description` replaces both, and the
+> generator rejects the old keys by name.
 
 `scale` is one of **None, Incidental, Standard, Rich, Hoard** — how much, relative to what
 is normal for their tier. A `table` of **exactly six rows** is required unless the scale is
@@ -143,13 +300,37 @@ is normal for their tier. A `table` of **exactly six rows** is required unless t
 
 ## Organization
 
-**Encounter templates** come in two shapes. Either N of this creature:
+**This is the D&D 3.5 Organization line, split into rows.** That line reads *"Solitary, pair,
+or pack (3-6)"*, and it is a **list of the group sizes this creature is naturally encountered
+in** — the GM's first answer to "how many do I put in this room?" Each row is one of those
+options: a **group term** plus how many it contains.
+
+So the name is a **standard group term**, not a description of the scene:
+
+| use | for |
+|---|---|
+| `Solitary` | one, met alone. **Almost every creature gets this row, and it goes first.** |
+| `Pair` | two, usually mated or paired by role |
+| `Pack`, `Flock`, `Herd`, `Swarm`, `Colony`, `Nest`, `Roost` | the natural grouping of an animal |
+| `Gang`, `Band`, `Mob`, `Troop`, `Warband`, `Patrol`, `Company` | organised or massed groups |
+
+Themed variants are welcome where they carry real information, exactly as 3.5 used "slaver
+band" or "hunting party": `Burial-road pack`, `Raiding file`, `Harvest raid`. Keep the group
+term recognisable inside them.
+
+What it is **not** is a description of where or when you meet them. These all failed review:
+`Underfoot` (an adverb), `Under a landing stage` and `Roost above a fish quay` (the place),
+`A bad stretch of channel` and `The one on the road` (prose with an article), `Alone, come to
+talk` (a sentence). Each became a group term: `Solitary`, `Colony`, `Roost`, `Nest`, `Mob`.
+The generator rejects a leading article, a comma, and anything over 28 characters.
+
+Rows come in two shapes. Either N of this creature:
 
 ```json
-{ "name": "Warden squad", "count": "2-4" }
+{ "name": "Pack", "count": "3-6" }
 ```
 
-or a mixed band naming other creatures, for the bands this creature is actually met in:
+or a mixed band naming other creatures, which is how 3.5 wrote "band (6-11 plus 1 leader)":
 
 ```json
 { "name": "Tomb guard", "composition": [
@@ -164,7 +345,34 @@ that creature's entry**, across tiers, and the build fails naming any creature t
 not exist. So a band can reference a leader written later, but only after that leader is
 in `creatures.json`.
 
+**Mixed bands are the point of the field, not an edge case.** Any creature that fights
+alongside others owes at least one `composition` row: a leader with their followers, a
+handler with their beasts, a caster with their bodyguard. A Zakhar Band-Leader that lists only
+solitary rows is a stat block a GM has to build an encounter around from scratch, when the
+whole reason the creature exists is the band behind them.
+
+**The counts form one ladder: no gaps, no overlaps, and they agree with the rest of the
+entry.** `Pack (3-6)` under `Burial-road pack (6-9)` makes six mean two different things, and
+`Gang (2-3)` above `Mob (5-8)` leaves four unanswered. Read the row set as a single sequence
+from one upward. Then check it against what the entry already claims: an ecology saying
+"family groups of four to nine" and a reproduction line saying "six to ten eggs" are
+**numbers the organization rows have to match**, since the two sit inches apart on the card.
+
+**Never annotate a row as a troop.** `02-creature-rules.md` already says three or more basic
+creatures with the same statistics are typically grouped into a troop, so "(as a troop)" on a
+`Pack (3-6)` row restates a published default and implies the rows without it are exempt.
+Give the count and stop. The same test applies to every other rule a row might be tempted to
+repeat: if the core rules decide it from the number, the row does not say it.
+
+**Write the band on BOTH cards.** The same `Harvest raid` row belongs on the Band-Leader and
+on the Raider, so a GM who opened either one sees the same menu. The rows are identical in
+content, and the links resolve in both directions.
+
 ## Reference implementation
 
-**Mummy (tier 4) is the reference implementation** — read it in `creatures.json` before
-writing your first lore block.
+The roster was emptied for the bestiary rebuild, so there is no lore block in
+`creatures.json` to copy yet. **The eight worked examples in
+`.drafts/bestiary/creatures/tier-0-1-lore.md` are the reference** — read them before writing
+your first lore block. They cover every awkward case the schema has: a swarm, an undead with
+no reproduction line at all, and two humanoids whose figures come from `01-folk.md` rather than from
+invention.

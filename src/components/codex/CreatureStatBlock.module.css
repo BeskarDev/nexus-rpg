@@ -467,11 +467,14 @@
 	font-weight: 600;
 }
 
-/* The two standardised facts every row can carry: what it IS in core-rules terms,
-   and what it is WORTH. Set as compact inline marks so the eye can find the
+/* What the row is WORTH, set as a compact inline mark so the eye can find the
    number without reading the sentence — the whole reason the rows are structured
-   rather than prose. */
-.treasureStats,
+   rather than prose. It carries a bronze wash, being the single most looked-up
+   fact in a treasure table.
+
+   A matching `.treasureStats` mark used to sit beside it for the rules
+   reference; `stats` and `note` merged into one `description` (owner review), so
+   the row now carries exactly one mark and one sentence. */
 .treasureValue {
 	margin-left: 0.3rem;
 	padding: 0 4px;
@@ -482,19 +485,6 @@
 	letter-spacing: 0.02em;
 	font-size: var(--nexus-text-3xs);
 	white-space: nowrap;
-}
-.treasureStats {
-	border: 1px solid
-		color-mix(in srgb, var(--ifm-color-primary) 22%, transparent);
-	color: color-mix(
-		in srgb,
-		var(--ifm-font-color-base) 68%,
-		var(--ifm-color-primary)
-	);
-}
-/* Value carries a bronze wash — it is the single most looked-up fact in a
-   treasure table. */
-.treasureValue {
 	background: color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
 	color: color-mix(
 		in srgb,

@@ -1,1 +1,1349 @@
-[]
+[
+	{
+		"name": "Jackal",
+		"size": "Small",
+		"type": "Beast",
+		"subtype": [
+			"Mammal"
+		],
+		"tier": 0,
+		"category": "Basic",
+		"armor": "None",
+		"hp": "5",
+		"av": "0 (none)",
+		"str": "d4",
+		"agi": "d6",
+		"spi": "d4",
+		"mnd": "d4",
+		"parry": 5,
+		"dodge": 8,
+		"resist": 6,
+		"skills": [
+			"Fighting (0)",
+			"Perception (1)",
+			"Stealth (1)"
+		],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Bite",
+				"properties": [
+					"pierce",
+					"agile"
+				],
+				"text": "5/7/9 damage. On a strong or critical hit against a creature of equal or smaller size, the target falls prone."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Pack Tactics",
+				"qualifier": "Passive",
+				"text": "While in a troop, or while an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon."
+			}
+		],
+		"traits": [
+			"Keen Scent"
+		],
+		"lore": {
+			"narrative": "A lean grey scavenger of the burial roads. Jackals follow funerals at the edge of a thrown stone's range, and they have learned which funerals leave food. Every gravedigger knows the ones that work their stretch, and none of them has ever driven one off for good.",
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Road",
+				"Necropolis"
+			],
+			"ecology": "They eat what is left. Offerings, grave goods with fat in them, animals that died on the road, whatever a caravan drops. They range in family groups of four to nine and hunt only what is already dying. A pack learns a funeral's route within a season and will be at the graveside before the mourners. Some cities take that as the dead being met on the road. Others take it as a warning that the rites were begun badly, and start again.",
+			"physiology": {
+				"size": "45 cm at the shoulder, 1.1 m nose to tail",
+				"weight": "9 kg",
+				"lifespan": "8 to 10 years",
+				"reproduction": "A mated pair keeps to each other for life and raises one litter of four to six pups a year in a dug den. The pups run with the pack by the end of their first season, and most of a litter does not see a second one."
+			},
+			"tactics": "They will not open a fight. They follow, they wait for someone to fall behind, and they take the smallest or the slowest. In a fight they circle rather than close. `Pack Tactics` only pays off when two of them reach the same person, so run them in pairs working one target and have them give up on anyone they cannot get behind. **They break off the moment it costs them anything.** One dead jackal is usually enough, and they will not follow anyone who turns and advances. Send them back to the edge of the light and let them wait there.",
+			"treasure": {
+				"scale": "Incidental",
+				"table": [
+					{
+						"kind": "Trophy",
+						"item": "Jackal pelt",
+						"description": "Mange-thin and badly furred.",
+						"value": "2 coins"
+					},
+					{
+						"kind": "Material",
+						"item": "Teeth and claws",
+						"description": "Primitive materials, Quality 1. One set of fittings.",
+						"value": "5 coins"
+					},
+					{
+						"kind": "Material",
+						"item": "Sinew",
+						"description": "Primitive materials, Quality 1. Twisted into cord it repairs a bowstring or binds a loose haft.",
+						"value": "3 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Jackal meat",
+						"description": "Raw meat equal to 1 x simple rations (d4) with 1 use left. At the start of each day, remove 1 use as the meat spoils.",
+						"value": "2 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Bronze offering bell",
+						"description": "Dragged off a graveside into the den.",
+						"value": "10 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Grave-door tally",
+						"description": "A notched stick from a tomb door, chewed but readable. It matches the seal on one necropolis vault."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Pack",
+					"count": "4-6"
+				},
+				{
+					"name": "Burial-road pack",
+					"count": "7-9"
+				}
+			]
+		}
+	},
+	{
+		"name": "Leatherwing",
+		"size": "Tiny",
+		"type": "Beast",
+		"subtype": [
+			"Saurian"
+		],
+		"tier": 0,
+		"category": "Basic",
+		"armor": "None",
+		"hp": "5",
+		"av": "0 (none)",
+		"str": "d4",
+		"agi": "d6",
+		"spi": "d4",
+		"mnd": "d4",
+		"parry": 4,
+		"dodge": 8,
+		"resist": 6,
+		"skills": [
+			"Fighting (0)",
+			"Perception (1)",
+			"Insight (1)"
+		],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Peck",
+				"properties": [
+					"pierce",
+					"agile"
+				],
+				"text": "5/7/9 damage."
+			},
+			{
+				"name": "Snatching Beak",
+				"properties": [],
+				"text": "Roll Agility + Perception vs. Dodge. No damage. On a success, this creature takes one loose item of 0 or 1 load from the target's hands, belt, or an open container and immediately uses their Movement to fly away with it."
+			}
+		],
+		"abilities": [],
+		"traits": [
+			"Flying (Wings)",
+			"Keen Eyes"
+		],
+		"lore": {
+			"narrative": "A pigeon-sized flier, all leather wing and beaked snout, at home in harbour cities for as long as there have been harbour cities. They sit on market awnings, nest in roof beams, and take bread out of baskets nobody is watching. Sailors say a quay without leatherwings is a quay the sea has turned against, and no captain who believes it will tie up there.",
+			"environment": [
+				"Coast",
+				"Sea",
+				"City"
+			],
+			"ecology": "They eat scraps, fish guts, dropped bread, and insects. A market with leatherwings has fewer rats than a market without. Everyone who keeps records knows this. Nobody says it in a council meeting. Flocks follow the boats in and strip the guts off the water before the catch is landed. Wild colonies nest on sea cliffs. The city flocks are a separate population, and nobody brought them in. They moved into the cities as the cities grew. A trained one carries messages better than a pigeon, because a leatherwing remembers roofs and coastlines instead of a single home loft. It takes most of a year to train one, and the trainers are a small and well-paid trade.",
+			"physiology": {
+				"size": "35 cm long, 90 cm wingspan",
+				"weight": "600 g",
+				"lifespan": "15 to 20 years",
+				"reproduction": "A pair holds one nest site for years and raises two eggs at a time, twice a year, on a cliff ledge or a roof beam. Chicks fly at ten weeks and stay with the flock they hatched in. A city colony is mostly one extended family, which is part of why they all know the same faces."
+			},
+			"tactics": "A leatherwing is not an opponent. What they do is **scream**. A flock that does not recognise someone raises a racket that carries across a whole market, and every local knows what that noise means. While the flock is up, treat the district as awake and watching. **They remember faces.** Anyone who has fed one stops being a stranger to the whole flock for days, and it costs a piece of bread. `Snatching Beak` is the other half. They take what is held, not what is guarded, and go straight up with it to a roofline nothing can follow them to.",
+			"treasure": {
+				"scale": "Incidental",
+				"table": [
+					{
+						"kind": "Valuables",
+						"item": "Loose coins",
+						"description": "Tarnished, dropped in a market.",
+						"value": "7 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Copper hair pin",
+						"description": "A glass bead still set in it.",
+						"value": "4 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Waxed twine and hook",
+						"description": "Enough tackle to fish with.",
+						"value": "6 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Lead signet",
+						"description": "Lead, half melted. Somebody sealed letters with it."
+					},
+					{
+						"kind": "Supplies",
+						"item": "Figs and salt fish",
+						"description": "A week old, equal to 1 x simple rations (d4) with 1 use left.",
+						"value": "5 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Message capsule",
+						"description": "Still sealed, off a courier. Inside is one of: a shipment and a date, a name and a price, or an order nobody wants attributed."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Flock",
+					"count": "4-8"
+				},
+				{
+					"name": "Roost",
+					"count": "10-20"
+				}
+			]
+		}
+	},
+	{
+		"name": "Reed Viper",
+		"size": "Tiny",
+		"type": "Beast",
+		"subtype": [
+			"Reptile"
+		],
+		"tier": 0,
+		"category": "Basic",
+		"armor": "None",
+		"hp": "5",
+		"av": "0 (none)",
+		"str": "d4",
+		"agi": "d6",
+		"spi": "d4",
+		"mnd": "d4",
+		"parry": 4,
+		"dodge": 8,
+		"resist": 6,
+		"skills": [
+			"Fighting (0)",
+			"Stealth (1)"
+		],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Venomous Bite",
+				"properties": [
+					"pierce",
+					"agile"
+				],
+				"text": "4/5/6 damage. On a strong or critical hit, the target is briefly poisoned."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Strike from Cover",
+				"qualifier": "Passive",
+				"text": "While hidden, this creature's first attack in a scene increases the SL by one step (max. critical)."
+			}
+		],
+		"traits": [
+			"Blindsight (close)"
+		],
+		"lore": {
+			"narrative": "A forearm-long snake the colour of dry reed. They live in the irrigation channels, and the farmers who work those channels know the sound of one leaving. They are not aggressive. They are just always lying where somebody is about to step.",
+			"environment": [
+				"River",
+				"Marsh",
+				"Farmland"
+			],
+			"ecology": "They hunt rats and frogs along the channel banks. They spend the heat of the day under matting, stacked reed, or in the shade of the bank. Harvest is when people meet them, because harvest is when people walk the channels barefoot. Villages do not kill them. They keep the rats down, and any that are killed are replaced within a season.",
+			"physiology": {
+				"size": "35 cm long",
+				"weight": "200 g",
+				"lifespan": "6 to 8 years",
+				"reproduction": "They lay six to ten eggs under warm matting or a stacked reed pile at the end of summer and leave them there. Hatchlings are venomous from the first day and a finger's length long, which is how a village ends up with a bad stretch of channel in a single season."
+			},
+			"tactics": "They strike once, from cover, at whoever puts a foot near them. `Strike from Cover` is the whole creature and it only works while they are unseen, so once they are spotted they have nothing left to do but leave. After the strike they leave anyway. **They will not pursue.** A viper that has bitten someone is heading for the water. The danger is the poison in a person who is three days from a healer.",
+			"treasure": {
+				"scale": "Incidental",
+				"table": [
+					{
+						"kind": "Tool",
+						"item": "Raw venom",
+						"description": "Weapon Poison (weak), 1 use. Coats a weapon for 2 poison damage on a hit. Spoils within a day unless properly stored.",
+						"value": "17 coins"
+					},
+					{
+						"kind": "Material",
+						"item": "Fangs",
+						"description": "Primitive materials, Quality 1.",
+						"value": "3 coins"
+					},
+					{
+						"kind": "Trophy",
+						"item": "Viper skin",
+						"description": "Taken whole, off a snake that shed it clean.",
+						"value": "3 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Snake meat",
+						"description": "Raw meat equal to 1 x simple rations (d4) with 1 use left. At the start of each day, remove 1 use as the meat spoils.",
+						"value": "2 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Clutch of eggs",
+						"description": "Found under the same matting. An alchemist will take them.",
+						"value": "8 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Channel warden's tally",
+						"description": "Scratched with the sluice order for the whole valley: which gate opens when, and whose fields drink first."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Nest",
+					"count": "2-3"
+				},
+				{
+					"name": "Brood",
+					"count": "6-10"
+				}
+			]
+		}
+	},
+	{
+		"name": "Tomb Beetles",
+		"size": "Medium",
+		"type": "Beast",
+		"subtype": [
+			"Insect",
+			"Swarm"
+		],
+		"tier": 0,
+		"category": "Basic",
+		"armor": "None",
+		"hp": "5",
+		"av": "0 (none)",
+		"str": "d4",
+		"agi": "d6",
+		"spi": "d4",
+		"mnd": "d4",
+		"parry": 6,
+		"dodge": 5,
+		"resist": 7,
+		"skills": [
+			"Fighting (0)",
+			"Perception (1)"
+		],
+		"immunities": [
+			"grappled",
+			"conditions from single-target effects"
+		],
+		"resistances": [
+			"damage from single-target effects"
+		],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Devouring Bites",
+				"properties": [
+					"pierce",
+					"agile"
+				],
+				"text": "4/5/6 damage against every creature in this creature's area. On a strong or critical hit, the target is distracted until they spend an Action to brush the beetles off. While this creature is at half HP or lower, this attack deals half damage, rounded up."
+			}
+		],
+		"abilities": [],
+		"traits": [
+			"Natural Climber"
+		],
+		"lore": {
+			"narrative": "Finger-long scarabs that live on grave goods, funeral tallow, and the dead themselves. The priests of the necropolis call them the last of the offerings, left to eat what the living stopped bringing. Disturb the floor and they come up through it.",
+			"environment": [
+				"Desert",
+				"Ruins",
+				"Necropolis",
+				"Tomb"
+			],
+			"ecology": "A colony lives in the packed earth under a tomb floor. They eat the fat in funeral lamps, the leather and linen of grave goods, and anything organic left as an offering. They do not hunt. They boil up when the floor above them is walked on, worked, or broken. They do not lie in wait, so whoever wakes them has just broken the floor they nest under, and that is usually a robber, a mason, or a priest come to re-seal a chamber. A tomb with intact floors and no beetles has usually been emptied already.",
+			"physiology": {
+				"size": "6 cm long",
+				"weight": "20 g",
+				"lifespan": "4 years",
+				"reproduction": "Eggs go into the packed earth in their hundreds, and the grubs feed underground for two years on whatever is buried above them. That is why a broken floor brings up a generation rather than a handful. A swarm is two to three thousand of them, and the colony they come from is as old as the tomb."
+			},
+			"tactics": "They occupy an area and threaten only what stands in it, so `Devouring Bites` hits everyone who stayed. Being distracted matters more than the damage. Anyone covered in scarabs fights the scarabs well and everything else badly. **Fire drives them off and they will not cross it.** A torch swept low, a lamp broken on the floor, a burning cloak dropped in the doorway. Any of it turns them. They do not pursue past their colony, so once the room is empty they settle back into the floor.",
+			"treasure": {
+				"scale": "Standard",
+				"table": [
+					{
+						"kind": "Material",
+						"item": "Beetle shells",
+						"description": "Primitive materials, Quality 1, swept up by the handful.",
+						"value": "5 coins"
+					},
+					{
+						"kind": "Tool",
+						"item": "Lamp tallow",
+						"description": "Oil, Quality 1, 2 uses left. Rendered out of the funeral lamps.",
+						"value": "16 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Stripped grave goods",
+						"description": "Bronze pins, a ring, the back of a mirror.",
+						"value": "8 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Sealed offering jar",
+						"description": "Unbroken, with the tomb patron's seal still on the stopper. The grain inside went past eating three centuries ago.",
+						"value": "6 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Chewed gold leaf",
+						"description": "Off a coffin face.",
+						"value": "10 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Inscribed floor tile",
+						"description": "The tomb's plan cut into the underside. The builders left directions, and the beetles cleaned them off."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Swarm",
+					"count": "1"
+				},
+				{
+					"name": "Colony",
+					"count": "2-3"
+				}
+			]
+		}
+	},
+	{
+		"name": "Grave Husk",
+		"size": "Medium",
+		"type": "Undead",
+		"subtype": [
+			"Corporeal",
+			"Mindless"
+		],
+		"tier": 1,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "10",
+		"av": "1 (natural light)",
+		"str": "d6",
+		"agi": "d4",
+		"spi": "d4",
+		"mnd": "d4",
+		"parry": 7,
+		"dodge": 6,
+		"resist": 8,
+		"skills": [
+			"Fighting (1)",
+			"Athletics (1)"
+		],
+		"immunities": [
+			"bleeding",
+			"charmed",
+			"confused",
+			"frightened",
+			"poisoned"
+		],
+		"resistances": [],
+		"weaknesses": [
+			"radiant"
+		],
+		"attacks": [
+			{
+				"name": "Grasping Hands",
+				"properties": [
+					"crush"
+				],
+				"text": "6/9/12 damage. On a strong or critical hit, the target is grappled."
+			},
+			{
+				"name": "Bearing Down",
+				"properties": [
+					"crush"
+				],
+				"text": "6/9/12 damage. Only against a target this creature has grappled. On a hit, the target falls prone."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Grave-Bound",
+				"qualifier": "Passive",
+				"text": "This creature cannot willingly move further than a medium distance from the ground they were left on. When they are destroyed, they rise again at the next sunset unless their body is buried or burned."
+			}
+		],
+		"traits": [
+			"Undead Nature"
+		],
+		"lore": {
+			"narrative": "One of the unburied dead, walking in the body nobody said the words over. They do not remember being a person, and nothing in them wants anything. They walk a short distance from where they were left and no further. They keep doing it until somebody puts them in the ground.",
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Battlefield",
+				"Necropolis",
+				"Barrow"
+			],
+			"ecology": "They do not eat, sleep, or rest, and they do not decay the way a body should. They rise where rites were skipped: plague pits, battlefields nobody came back for, robbed graves, any burial that was interrupted. They cannot be reasoned with or frightened. That, not their strength, is the practical problem. One husk on a road costs a village a week and a priest's fee. A field of them after a battle is why the temples send people.",
+			"physiology": {
+				"size": "Whatever the person was in life, and most of them stood 1.6 to 1.8 m",
+				"weight": "40 to 60 kg, and falling, since they dry out rather than rot",
+				"lifespan": "They do not age, and a husk still walking a road may be 200 years dead"
+			},
+			"tactics": "They walk at whoever is closest and take hold. `Grasping Hands` grapples and they do not let go, which for something this slow is the only way they ever catch anybody. They never speed up, never flank, and never choose a better target. **They cannot follow past the ground they were left on.** They stop dead at that edge, and `Grave-Bound` says how far it reaches. Killing one settles nothing. They stand up again at the next sunset unless the body is buried or burned, so the same husk can meet the same travellers three days later.",
+			"treasure": {
+				"scale": "Incidental",
+				"table": [
+					{
+						"kind": "Valuables",
+						"item": "Burial coin",
+						"description": "Still in the mouth. Taking passage money is not free of consequence in most cities.",
+						"value": "2 coins"
+					},
+					{
+						"kind": "Weapon",
+						"item": "Corroded spear",
+						"description": "Short Spear, Quality 2, damaged. Pitted through where the head meets the haft.",
+						"value": "75 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Bronze arm ring",
+						"description": "Thin and decorative, made for a funeral rather than for wear.",
+						"value": "25 coins"
+					},
+					{
+						"kind": "Tool",
+						"item": "Sealed grave jar",
+						"description": "Oil, Quality 1, 3 uses. Four centuries old and it still burns.",
+						"value": "25 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Rotted leather cuirass",
+						"description": "Leather, Quality 1, broken. Rotted through at the shoulders.",
+						"value": "50 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Clay name-tile",
+						"description": "The name of whoever this was. A priest needs it to lay them properly."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Gang",
+					"count": "2-4"
+				},
+				{
+					"name": "Mob",
+					"count": "5-8"
+				}
+			]
+		}
+	},
+	{
+		"name": "Orc Raider",
+		"size": "Medium",
+		"type": "Humanoid",
+		"subtype": [
+			"Orc"
+		],
+		"tier": 1,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "10",
+		"av": "1 (light armor)",
+		"str": "d6",
+		"agi": "d4",
+		"spi": "d4",
+		"mnd": "d4",
+		"parry": 8,
+		"dodge": 6,
+		"resist": 7,
+		"skills": [
+			"Fighting (1)",
+			"Athletics (1)",
+			"Survival (1)"
+		],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Battleaxe",
+				"properties": [
+					"slash",
+					"versatile (+1)"
+				],
+				"text": "6/9/12 damage."
+			},
+			{
+				"name": "Javelin",
+				"properties": [
+					"bundle (d4)",
+					"light",
+					"pierce",
+					"thrown (short/long)"
+				],
+				"text": "5/7/9 damage. On a strong or critical hit, the target is briefly slowed."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Orcish Fury",
+				"qualifier": "Passive",
+				"text": "When this creature hits with a melee weapon and rolls a critical success, add their weapon damage an additional time to the total damage."
+			},
+			{
+				"name": "Formation Fighting",
+				"qualifier": "Passive",
+				"text": "While an ally is within melee range of this creature, attacks against this creature suffer +1 bane."
+			}
+		],
+		"lore": {
+			"narrative": "An orc down from the dry country at harvest, as their band has come down every harvest anyone can remember. They are not an invasion and they do not want the land. They want the grain, and they intend to be home before the season turns.",
+			"environment": [
+				"Wastes",
+				"Desert",
+				"Steppe",
+				"River",
+				"Farmland",
+				"Settlement"
+			],
+			"ecology": "Raiding bands come out of the herding country at the edge of the farmland, where nothing is sown and everything is driven. Harvest is the one season the valley is worth the ride. Twenty to forty come down together, hit the villages furthest from a garrison, and are gone inside a day. Most villages keep a standing arrangement, a portion left out and a route left unwatched, and the raids that turn violent are the ones where a new headman decided not to pay. The rest of the year these are herders, smiths and mercenaries, and the people they rob sometimes know them by name. The best known of them are the Zakhar of the canyon country, who have taken the river valley's harvest for as long as the valley has had one.",
+			"physiology": {
+				"size": "1.80 to 1.90 m tall",
+				"weight": "95 kg",
+				"lifespan": "Adult at 14, old at 45, and 60 years is a long life",
+				"reproduction": "Children are raised by the whole canyon hold rather than by one household, and a Zakhar rides on their first raid the year they come of age. A raider in their twenties has been coming down to this river for a decade already."
+			},
+			"tactics": "Javelins first, at range, while they close. Then the axes. `Formation Fighting` makes them markedly harder to kill while they stand together, so keep them shoulder to shoulder and have them reform the line whenever it breaks. They go for whoever stands between them and the grain, not for whoever is most dangerous. **They will break off to carry away what they came for** if they can reach it. A raider who is alone and losing looks for a way out rather than a last stand.",
+			"treasure": {
+				"scale": "Standard",
+				"table": [
+					{
+						"kind": "Weapon",
+						"item": "Battleaxe",
+						"description": "Battleaxe, Quality 2, damaged.",
+						"value": "100 coins"
+					},
+					{
+						"kind": "Weapon",
+						"item": "Javelin bundle",
+						"description": "Javelin, Quality 2, `bundle (d4)` with 1 use left.",
+						"value": "17 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Layered shoulder hide",
+						"description": "Leather, Quality 1, damaged. Covers the shoulders and nothing else.",
+						"value": "50 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Turquoise bead string",
+						"description": "Strung on a thong, cut and polished in the holds they winter in.",
+						"value": "30 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Waterskins and dried curd",
+						"description": "Simple Rations (d4), full.",
+						"value": "15 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Knotted countersign",
+						"description": "The cord a rider shows at a friendly hold to be let in and fed. Whoever carries it passes for one of the band."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Raiding file",
+					"count": "3-6"
+				},
+				{
+					"name": "Harvest raid",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Orc Band-Leader"
+						},
+						{
+							"count": "6-10",
+							"creature": "Orc Raider"
+						}
+					]
+				},
+				{
+					"name": "Full band",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Orc Band-Leader"
+						},
+						{
+							"count": "20-40",
+							"creature": "Orc Raider"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"name": "Young Crocodile",
+		"size": "Medium",
+		"type": "Beast",
+		"subtype": [
+			"Reptile"
+		],
+		"tier": 1,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "10",
+		"av": "2 (natural light)",
+		"str": "d6",
+		"agi": "d4",
+		"spi": "d4",
+		"mnd": "d4",
+		"parry": 8,
+		"dodge": 6,
+		"resist": 7,
+		"skills": [
+			"Fighting (1)",
+			"Stealth (1)"
+		],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Bite",
+				"properties": [
+					"crush"
+				],
+				"text": "6/9/12 damage. On a strong or critical hit against a creature of equal or smaller size, the target is grappled. While grappling, this attack cannot be used against any other target."
+			},
+			{
+				"name": "Death Roll",
+				"properties": [
+					"crush"
+				],
+				"text": "Only against a target this creature has grappled. 6/9/12 damage, and the target falls prone."
+			}
+		],
+		"abilities": [],
+		"traits": [
+			"Amphibious",
+			"Ambush Predator"
+		],
+		"lore": {
+			"narrative": "A river crocodile not yet at full size, small enough to lie up under a landing stage. River villages keep their children off the bank at dusk, and the fence along the bank is there for the same reason.",
+			"environment": [
+				"River",
+				"Marsh",
+				"Settlement"
+			],
+			"ecology": "They lie up in shallow water against a bank, a jetty, or a stand of reed, and take whatever comes down to drink. A young one hunts dogs, goats, waterfowl, and people who are alone. They avoid anything in a group. Full-grown crocodiles drive the young off the best stretches, so the ones a village meets are usually this size and usually hungry. One that has taken livestock keeps using the same crossing until something changes. The village always knows where they are.",
+			"physiology": {
+				"size": "2.2 m long",
+				"weight": "70 kg",
+				"lifespan": "60 years or more, and one this size is 4 to 6 years old",
+				"reproduction": "The female buries forty eggs in the warm sand of a bank and guards the nest until they hatch. Almost none of them reach this size, and the ones that do have already been driven off the best water by something larger."
+			},
+			"tactics": "They open from the water, on whoever is closest to the edge. The bite grapples, and the grapple is the point, because a grappled person is going into the river. **They cannot hold and bite at once.** A crocodile with someone in their jaws spends the turn dragging rather than attacking, and bites nobody else while they do. If the fight turns they release and submerge, and they will not come back while anyone is standing on their bank.",
+			"treasure": {
+				"scale": "Incidental",
+				"table": [
+					{
+						"kind": "Trophy",
+						"item": "Crocodile hide",
+						"description": "Taken whole, then part ruined by careless skinning.",
+						"value": "4 coins"
+					},
+					{
+						"kind": "Material",
+						"item": "Belly hide",
+						"description": "Primitive materials, Quality 1. Enough leather for one set of light armor once worked.",
+						"value": "25 coins"
+					},
+					{
+						"kind": "Material",
+						"item": "Crocodile teeth",
+						"description": "Primitive materials, Quality 1, a full jaw of them.",
+						"value": "8 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Crocodile meat",
+						"description": "Raw meat equal to 1 x simple rations (d4) with 2 uses left. At the start of each day, remove 1 use as the meat spoils.",
+						"value": "4 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Stomach stones",
+						"description": "And what came up with them: a belt buckle, two rings, a bronze fitting.",
+						"value": "20 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Tax-farmer's signet",
+						"description": "Still on the finger. Shown at any river village it opens a headman's door, and closes every other one."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Colony",
+					"count": "2-3"
+				}
+			]
+		}
+	},
+	{
+		"name": "Clay Servant",
+		"size": "Small",
+		"type": "Automaton",
+		"subtype": [
+			"Golem",
+			"Mindless"
+		],
+		"tier": 2,
+		"category": "Basic",
+		"armor": "Heavy",
+		"hp": "20",
+		"av": "3 (natural heavy)",
+		"str": "d8",
+		"agi": "d6",
+		"spi": "d4",
+		"mnd": "d4",
+		"parry": 7,
+		"dodge": 9,
+		"resist": 8,
+		"skills": [
+			"Fighting (1)",
+			"Stealth (2)"
+		],
+		"immunities": [
+			"bleeding",
+			"charmed",
+			"confused",
+			"frightened",
+			"poisoned",
+			"unconscious"
+		],
+		"resistances": [],
+		"weaknesses": [
+			"blast"
+		],
+		"attacks": [
+			{
+				"name": "Fist",
+				"properties": [
+					"crush"
+				],
+				"text": "8/12/16 damage."
+			},
+			{
+				"name": "Pull Down",
+				"properties": [
+					"crush"
+				],
+				"text": "6/8/10 damage. On a strong or critical hit, the target falls prone."
+			}
+		],
+		"abilities": [
+			{
+				"name": "False Appearance",
+				"qualifier": "Passive",
+				"text": "While this creature does not move, they are indistinguishable from ordinary grave goods. A creature searching the room can tell the difference with a successful Mind + Perception roll vs. TN 8."
+			}
+		],
+		"traits": [
+			"Ambush Predator"
+		]
+	},
+	{
+		"name": "Ghoul",
+		"size": "Medium",
+		"type": "Undead",
+		"subtype": [
+			"Corporeal",
+			"Intelligent"
+		],
+		"tier": 2,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "20",
+		"av": "2 (natural light)",
+		"str": "d6",
+		"agi": "d8",
+		"spi": "d6",
+		"mnd": "d4",
+		"parry": 8,
+		"dodge": 9,
+		"resist": 7,
+		"skills": [
+			"Fighting (1)",
+			"Perception (2)",
+			"Stealth (2)"
+		],
+		"immunities": [
+			"bleeding",
+			"poisoned",
+			"unconscious"
+		],
+		"resistances": [],
+		"weaknesses": [
+			"radiant"
+		],
+		"attacks": [
+			{
+				"name": "Claws",
+				"properties": [
+					"agile",
+					"light",
+					"slash"
+				],
+				"text": "6/8/10 damage. On a strong or critical hit, the target is briefly dazed, or stunned for a short duration instead if they are already dazed. A stunned target can roll Strength + Fortitude vs. TN 8 at the end of each of their turns to end the condition early."
+			},
+			{
+				"name": "Bite",
+				"properties": [
+					"agile",
+					"pierce"
+				],
+				"text": "8/12/16 damage."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Feeding Frenzy",
+				"qualifier": "Passive",
+				"text": "When this creature hits a stunned creature with their Bite, they regain 4 HP."
+			}
+		],
+		"traits": [
+			"Undead Nature",
+			"Keen Scent"
+		]
+	},
+	{
+		"name": "Polearm Soldier",
+		"size": "Medium",
+		"type": "Humanoid",
+		"subtype": [
+			"Human"
+		],
+		"tier": 2,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "20",
+		"av": "2 (light armor)",
+		"str": "d8",
+		"agi": "d6",
+		"spi": "d6",
+		"mnd": "d4",
+		"parry": 9,
+		"dodge": 6,
+		"resist": 9,
+		"skills": [
+			"Fighting (1)",
+			"Athletics (2)",
+			"Insight (2)"
+		],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Glaive",
+				"properties": [
+					"reach",
+					"slash",
+					"two-handed"
+				],
+				"text": "8/12/16 damage."
+			},
+			{
+				"name": "Sweeping Blow",
+				"properties": [
+					"reach",
+					"slash",
+					"two-handed"
+				],
+				"text": "This creature can only use this attack if they skip all Movement this turn, before and after the attack. 6/8/10 damage against every creature within close range."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Close the Ranks",
+				"qualifier": "Passive",
+				"text": "While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane."
+			},
+			{
+				"name": "Over the Shields",
+				"qualifier": "Passive",
+				"text": "While another creature with `Close the Ranks` is within melee range of this creature, this creature's attacks do not suffer the reach bane."
+			}
+		],
+		"traits": []
+	},
+	{
+		"name": "Slinger",
+		"size": "Medium",
+		"type": "Humanoid",
+		"subtype": [
+			"Human"
+		],
+		"tier": 2,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "20",
+		"av": "2 (light armor)",
+		"str": "d8",
+		"agi": "d6",
+		"spi": "d6",
+		"mnd": "d4",
+		"parry": 7,
+		"dodge": 9,
+		"resist": 8,
+		"skills": [
+			"Fighting (1)",
+			"Athletics (2)",
+			"Perception (2)"
+		],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Sling",
+				"properties": [
+					"ammo",
+					"crush",
+					"simple",
+					"thrown (short/long)",
+					"two-handed"
+				],
+				"text": "7/10/13 damage."
+			},
+			{
+				"name": "Shortsword",
+				"properties": [
+					"agile",
+					"light",
+					"pierce"
+				],
+				"text": "5/7/9 damage."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Close the Ranks",
+				"qualifier": "Passive",
+				"text": "While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane."
+			},
+			{
+				"name": "Ranging Shot",
+				"qualifier": "Passive",
+				"text": "On a strong or critical hit with a ranged weapon, the target suffers marked (2)."
+			}
+		],
+		"traits": []
+	},
+	{
+		"name": "Spearman",
+		"size": "Medium",
+		"type": "Humanoid",
+		"subtype": [
+			"Human"
+		],
+		"tier": 2,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "20",
+		"av": "3 (light armor and shield)",
+		"str": "d8",
+		"agi": "d6",
+		"spi": "d6",
+		"mnd": "d4",
+		"parry": 9,
+		"dodge": 7,
+		"resist": 8,
+		"skills": [
+			"Fighting (1)",
+			"Athletics (2)",
+			"Perception (2)"
+		],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Spear",
+				"properties": [
+					"pierce",
+					"reach",
+					"versatile (+1)"
+				],
+				"text": "7/10/13 damage."
+			},
+			{
+				"name": "Shield Bash",
+				"properties": [
+					"crush"
+				],
+				"text": "6/8/10 damage. On a strong or critical hit, the target falls prone."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Close the Ranks",
+				"qualifier": "Passive",
+				"text": "While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane."
+			},
+			{
+				"name": "Braced Spear",
+				"qualifier": "Passive",
+				"text": "When using Opportunity Attack with their Spear, this creature deals +2 damage and the target's Movement ends."
+			}
+		],
+		"traits": []
+	},
+	{
+		"name": "Orc Band-Leader",
+		"size": "Medium",
+		"type": "Humanoid",
+		"subtype": [
+			"Orc"
+		],
+		"tier": 2,
+		"category": "Elite",
+		"armor": "Light",
+		"hp": "2x20",
+		"av": "3 (light armor and shield)",
+		"str": "d8",
+		"agi": "d6",
+		"spi": "d6",
+		"mnd": "d4",
+		"parry": 9,
+		"dodge": 7,
+		"resist": 8,
+		"skills": [
+			"Fighting (1)",
+			"Athletics (2)",
+			"Insight (2)",
+			"Survival (2)"
+		],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Battleaxe",
+				"properties": [
+					"slash",
+					"versatile (+1)"
+				],
+				"text": "7/10/13 damage."
+			},
+			{
+				"name": "Shield Bash",
+				"properties": [
+					"crush"
+				],
+				"text": "6/8/10 damage. Only against a target within melee range of an ally. On a strong or critical hit, the target falls prone."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Orcish Fury",
+				"qualifier": "Passive",
+				"text": "When this creature hits with a melee weapon and rolls a critical success, add their weapon damage an additional time to the total damage."
+			},
+			{
+				"name": "Fight Where I Point",
+				"qualifier": "Quick Action",
+				"text": "One ally within short range gains +1 boon on their next attack, and on a hit the target is briefly slowed."
+			},
+			{
+				"name": "Take It On The Shield",
+				"qualifier": "Passive",
+				"text": "When using Protect Ally, this creature takes half damage."
+			},
+			{
+				"name": "Blood Up",
+				"qualifier": "Elite Trigger",
+				"text": "When this creature suffers a Wound, the rage takes them and they stop caring whether they live. For the rest of the scene their melee attacks gain +1 boon and deal +2 damage, and melee attacks against them gain +1 boon."
+			}
+		],
+		"lore": {
+			"narrative": "The one who chose the village, and the one who will decide when it is finished. They have ridden this country for twenty years and have never once fought to the last orc. That is why they are still the one choosing.",
+			"environment": [
+				"Wastes",
+				"Desert",
+				"Steppe",
+				"River",
+				"Farmland",
+				"Settlement"
+			],
+			"ecology": "A band-leader holds the band by being right about what a raid is worth, not by being the strongest in it. They know which villages pay, which have a garrison within a day, and which headman will talk. Most have a name in the country they ride. Some have an understanding with the people they take from, renewed every harvest and kept on both sides more often than either would admit. A band that loses their leader does not usually pick another that season. They go home.",
+			"physiology": {
+				"size": "1.85 m tall",
+				"weight": "105 kg",
+				"lifespan": "Adult at 14, old at 45, and 60 years is a long life",
+				"reproduction": "The same canyon holds raise the same bands, and a leader is usually somebody every raider behind them has known since childhood. Most are between 35 and 50, which in Zakhar terms is late enough to be listened to and early enough to still ride."
+			},
+			"tactics": "They stay behind the line and run it. `Fight Where I Point` sets up whichever raider is best placed. `Take It On The Shield` puts the leader in the way of a blow meant for one of their raiders. With no raiders left to direct, they fight plainly. If they fall first, the band's nerve goes with them and the raid is usually over. Wounding them changes the fight rather than ending it. `Blood Up` takes a careful commander and turns them into something that trades hits, so the second half is more dangerous and much shorter. **They can be bought at any point before that.** A party that offers the grain is taking the deal the leader would have proposed themselves.",
+			"treasure": {
+				"scale": "Rich",
+				"table": [
+					{
+						"kind": "Weapon",
+						"item": "Battleaxe",
+						"description": "Battleaxe, Quality 2, damaged. The haft is wound in silver wire.",
+						"value": "175 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Faced shield",
+						"description": "Light Shield, Quality 2, damaged. Painted with the band's mark, which every village in the country knows on sight.",
+						"value": "150 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Three seal rings",
+						"description": "River-city seals, none of them theirs, taken over three seasons. Two of the owners are still alive.",
+						"value": "120 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Silver arm rings",
+						"description": "Worn as a record of raids. Taking them off a living leader is an insult.",
+						"value": "200 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Wastes-crossing kit",
+						"description": "12 x Simple Rations (d4). Where the band was going next.",
+						"value": "180 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Agreement tablet",
+						"description": "Incised clay with two marks, a village and a band. It proves the raids were arranged."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Harvest raid",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Orc Band-Leader"
+						},
+						{
+							"count": "6-10",
+							"creature": "Orc Raider"
+						}
+					]
+				},
+				{
+					"name": "Full band",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Orc Band-Leader"
+						},
+						{
+							"count": "20-40",
+							"creature": "Orc Raider"
+						}
+					]
+				}
+			]
+		}
+	}
+]

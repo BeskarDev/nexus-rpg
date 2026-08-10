@@ -8,3 +8,207 @@ toc_max_heading_level: 3
 {/* GENERATED from src/utils/data/json/creatures.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}
 
 Tier 0 creatures represent the weakest opponents - small animals, vermin, and harmless wildlife. They're suitable challenges for completely inexperienced adventurers or can be used in large numbers for higher-level parties.
+
+<CreatureStatBlock
+	type="Small Beast (Mammal)"
+	tier={0}
+	category="Basic"
+	hp="5"
+	av="0 (none)"
+	str="d4"
+	agi="d6"
+	spi="d4"
+	mnd="d4"
+	parry={5}
+	dodge={8}
+	resist={6}
+>
+
+### Jackal
+
+<CreatureLore>
+
+A lean grey scavenger of the burial roads. Jackals follow funerals at the edge of a thrown stone's range, and they have learned which funerals leave food. Every gravedigger knows the ones that work their stretch, and none of them has ever driven one off for good.
+
+<LoreSection label="Ecology"><LoreTag>Desert</LoreTag><LoreTag>Grassland</LoreTag><LoreTag>Road</LoreTag><LoreTag>Necropolis</LoreTag> They eat what is left. Offerings, grave goods with fat in them, animals that died on the road, whatever a caravan drops. They range in family groups of four to nine and hunt only what is already dying. A pack learns a funeral's route within a season and will be at the graveside before the mourners. Some cities take that as the dead being met on the road. Others take it as a warning that the rites were begun badly, and start again.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>45 cm at the shoulder, 1.1 m nose to tail</LoreTag><LoreTag>9 kg</LoreTag><LoreTag>8 to 10 years</LoreTag> A mated pair keeps to each other for life and raises one litter of four to six pups a year in a dug den. The pups run with the pack by the end of their first season, and most of a litter does not see a second one.</LoreSection>
+
+<LoreSection label="Tactics">They will not open a fight. They follow, they wait for someone to fall behind, and they take the smallest or the slowest. In a fight they circle rather than close. `Pack Tactics` only pays off when two of them reach the same person, so run them in pairs working one target and have them give up on anyone they cannot get behind. **They break off the moment it costs them anything.** One dead jackal is usually enough, and they will not follow anyone who turns and advances. Send them back to the edge of the light and let them wait there.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Incidental"><TreasureRow kind="Trophy" value="2 coins">**Jackal pelt** Mange-thin and badly furred.</TreasureRow><TreasureRow kind="Material" value="5 coins">**Teeth and claws** Primitive materials, Quality 1. One set of fittings.</TreasureRow><TreasureRow kind="Material" value="3 coins">**Sinew** Primitive materials, Quality 1. Twisted into cord it repairs a bowstring or binds a loose haft.</TreasureRow><TreasureRow kind="Supplies" value="2 coins">**Jackal meat** Raw meat equal to 1 x simple rations (d4) with 1 use left. At the start of each day, remove 1 use as the meat spoils.</TreasureRow><TreasureRow kind="Valuables" value="10 coins">**Bronze offering bell** Dragged off a graveside into the den.</TreasureRow><TreasureRow kind="Relic">**Grave-door tally** A notched stick from a tomb door, chewed but readable. It matches the seal on one necropolis vault.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="2">Pair</EncounterTemplate><EncounterTemplate count="4-6">Pack</EncounterTemplate><EncounterTemplate count="7-9">Burial-road pack</EncounterTemplate></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (0), Perception (1), Stealth (1)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Bite</EntryName> <StatBadge>pierce</StatBadge><StatBadge>agile</StatBadge> <DamageLadder values="5/7/9" /> On a strong or critical hit against a creature of equal or smaller size, the target falls prone.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Pack Tactics</EntryName> <StatBadge>Passive</StatBadge> While in a troop, or while an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon.
+- <EntryName>Keen Scent</EntryName> <StatBadge>Passive</StatBadge> This creature gains +1 boon on Perception rolls based on smell.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Tiny Beast (Saurian)"
+	tier={0}
+	category="Basic"
+	hp="5"
+	av="0 (none)"
+	str="d4"
+	agi="d6"
+	spi="d4"
+	mnd="d4"
+	parry={4}
+	dodge={8}
+	resist={6}
+>
+
+### Leatherwing
+
+<CreatureLore>
+
+A pigeon-sized flier, all leather wing and beaked snout, at home in harbour cities for as long as there have been harbour cities. They sit on market awnings, nest in roof beams, and take bread out of baskets nobody is watching. Sailors say a quay without leatherwings is a quay the sea has turned against, and no captain who believes it will tie up there.
+
+<LoreSection label="Ecology"><LoreTag>Coast</LoreTag><LoreTag>Sea</LoreTag><LoreTag>City</LoreTag> They eat scraps, fish guts, dropped bread, and insects. A market with leatherwings has fewer rats than a market without. Everyone who keeps records knows this. Nobody says it in a council meeting. Flocks follow the boats in and strip the guts off the water before the catch is landed. Wild colonies nest on sea cliffs. The city flocks are a separate population, and nobody brought them in. They moved into the cities as the cities grew. A trained one carries messages better than a pigeon, because a leatherwing remembers roofs and coastlines instead of a single home loft. It takes most of a year to train one, and the trainers are a small and well-paid trade.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>35 cm long, 90 cm wingspan</LoreTag><LoreTag>600 g</LoreTag><LoreTag>15 to 20 years</LoreTag> A pair holds one nest site for years and raises two eggs at a time, twice a year, on a cliff ledge or a roof beam. Chicks fly at ten weeks and stay with the flock they hatched in. A city colony is mostly one extended family, which is part of why they all know the same faces.</LoreSection>
+
+<LoreSection label="Tactics">A leatherwing is not an opponent. What they do is **scream**. A flock that does not recognise someone raises a racket that carries across a whole market, and every local knows what that noise means. While the flock is up, treat the district as awake and watching. **They remember faces.** Anyone who has fed one stops being a stranger to the whole flock for days, and it costs a piece of bread. `Snatching Beak` is the other half. They take what is held, not what is guarded, and go straight up with it to a roofline nothing can follow them to.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Incidental"><TreasureRow kind="Valuables" value="7 coins">**Loose coins** Tarnished, dropped in a market.</TreasureRow><TreasureRow kind="Valuables" value="4 coins">**Copper hair pin** A glass bead still set in it.</TreasureRow><TreasureRow kind="Supplies" value="6 coins">**Waxed twine and hook** Enough tackle to fish with.</TreasureRow><TreasureRow kind="Valuables">**Lead signet** Lead, half melted. Somebody sealed letters with it.</TreasureRow><TreasureRow kind="Supplies" value="5 coins">**Figs and salt fish** A week old, equal to 1 x simple rations (d4) with 1 use left.</TreasureRow><TreasureRow kind="Relic">**Message capsule** Still sealed, off a courier. Inside is one of: a shipment and a date, a name and a price, or an order nobody wants attributed.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="2">Pair</EncounterTemplate><EncounterTemplate count="4-8">Flock</EncounterTemplate><EncounterTemplate count="10-20">Roost</EncounterTemplate></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (0), Perception (1), Insight (1)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Peck</EntryName> <StatBadge>pierce</StatBadge><StatBadge>agile</StatBadge> <DamageLadder values="5/7/9" />
+- <EntryName>Snatching Beak</EntryName>. Roll Agility + Perception vs. Dodge. No damage. On a success, this creature takes one loose item of 0 or 1 load from the target's hands, belt, or an open container and immediately uses their Movement to fly away with it.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Flying (Wings)</EntryName> <StatBadge>Passive</StatBadge> This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn.
+- <EntryName>Keen Eyes</EntryName> <StatBadge>Passive</StatBadge> This creature gains +1 boon on Perception rolls based on sight.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Tiny Beast (Reptile)"
+	tier={0}
+	category="Basic"
+	hp="5"
+	av="0 (none)"
+	str="d4"
+	agi="d6"
+	spi="d4"
+	mnd="d4"
+	parry={4}
+	dodge={8}
+	resist={6}
+>
+
+### Reed Viper
+
+<CreatureLore>
+
+A forearm-long snake the colour of dry reed. They live in the irrigation channels, and the farmers who work those channels know the sound of one leaving. They are not aggressive. They are just always lying where somebody is about to step.
+
+<LoreSection label="Ecology"><LoreTag>River</LoreTag><LoreTag>Marsh</LoreTag><LoreTag>Farmland</LoreTag> They hunt rats and frogs along the channel banks. They spend the heat of the day under matting, stacked reed, or in the shade of the bank. Harvest is when people meet them, because harvest is when people walk the channels barefoot. Villages do not kill them. They keep the rats down, and any that are killed are replaced within a season.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>35 cm long</LoreTag><LoreTag>200 g</LoreTag><LoreTag>6 to 8 years</LoreTag> They lay six to ten eggs under warm matting or a stacked reed pile at the end of summer and leave them there. Hatchlings are venomous from the first day and a finger's length long, which is how a village ends up with a bad stretch of channel in a single season.</LoreSection>
+
+<LoreSection label="Tactics">They strike once, from cover, at whoever puts a foot near them. `Strike from Cover` is the whole creature and it only works while they are unseen, so once they are spotted they have nothing left to do but leave. After the strike they leave anyway. **They will not pursue.** A viper that has bitten someone is heading for the water. The danger is the poison in a person who is three days from a healer.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Incidental"><TreasureRow kind="Tool" value="17 coins">**Raw venom** Weapon Poison (weak), 1 use. Coats a weapon for 2 poison damage on a hit. Spoils within a day unless properly stored.</TreasureRow><TreasureRow kind="Material" value="3 coins">**Fangs** Primitive materials, Quality 1.</TreasureRow><TreasureRow kind="Trophy" value="3 coins">**Viper skin** Taken whole, off a snake that shed it clean.</TreasureRow><TreasureRow kind="Supplies" value="2 coins">**Snake meat** Raw meat equal to 1 x simple rations (d4) with 1 use left. At the start of each day, remove 1 use as the meat spoils.</TreasureRow><TreasureRow kind="Valuables" value="8 coins">**Clutch of eggs** Found under the same matting. An alchemist will take them.</TreasureRow><TreasureRow kind="Relic">**Channel warden's tally** Scratched with the sluice order for the whole valley: which gate opens when, and whose fields drink first.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="2-3">Nest</EncounterTemplate><EncounterTemplate count="6-10">Brood</EncounterTemplate></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (0), Stealth (1)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Venomous Bite</EntryName> <StatBadge>pierce</StatBadge><StatBadge>agile</StatBadge> <DamageLadder values="4/5/6" /> On a strong or critical hit, the target is briefly poisoned.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Strike from Cover</EntryName> <StatBadge>Passive</StatBadge> While hidden, this creature's first attack in a scene increases the SL by one step (max. critical).
+- <EntryName>Blindsight (close)</EntryName> <StatBadge>Passive</StatBadge> This creature can perceive the location of creatures and objects within range that aren’t behind full cover.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Medium Beast (Insect, Swarm)"
+	tier={0}
+	category="Basic"
+	hp="5"
+	av="0 (none)"
+	str="d4"
+	agi="d6"
+	spi="d4"
+	mnd="d4"
+	parry={6}
+	dodge={5}
+	resist={7}
+>
+
+### Tomb Beetles
+
+<CreatureLore>
+
+Finger-long scarabs that live on grave goods, funeral tallow, and the dead themselves. The priests of the necropolis call them the last of the offerings, left to eat what the living stopped bringing. Disturb the floor and they come up through it.
+
+<LoreSection label="Ecology"><LoreTag>Desert</LoreTag><LoreTag>Ruins</LoreTag><LoreTag>Necropolis</LoreTag><LoreTag>Tomb</LoreTag> A colony lives in the packed earth under a tomb floor. They eat the fat in funeral lamps, the leather and linen of grave goods, and anything organic left as an offering. They do not hunt. They boil up when the floor above them is walked on, worked, or broken. They do not lie in wait, so whoever wakes them has just broken the floor they nest under, and that is usually a robber, a mason, or a priest come to re-seal a chamber. A tomb with intact floors and no beetles has usually been emptied already.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>6 cm long</LoreTag><LoreTag>20 g</LoreTag><LoreTag>4 years</LoreTag> Eggs go into the packed earth in their hundreds, and the grubs feed underground for two years on whatever is buried above them. That is why a broken floor brings up a generation rather than a handful. A swarm is two to three thousand of them, and the colony they come from is as old as the tomb.</LoreSection>
+
+<LoreSection label="Tactics">They occupy an area and threaten only what stands in it, so `Devouring Bites` hits everyone who stayed. Being distracted matters more than the damage. Anyone covered in scarabs fights the scarabs well and everything else badly. **Fire drives them off and they will not cross it.** A torch swept low, a lamp broken on the floor, a burning cloak dropped in the doorway. Any of it turns them. They do not pursue past their colony, so once the room is empty they settle back into the floor.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Standard"><TreasureRow kind="Material" value="5 coins">**Beetle shells** Primitive materials, Quality 1, swept up by the handful.</TreasureRow><TreasureRow kind="Tool" value="16 coins">**Lamp tallow** Oil, Quality 1, 2 uses left. Rendered out of the funeral lamps.</TreasureRow><TreasureRow kind="Valuables" value="8 coins">**Stripped grave goods** Bronze pins, a ring, the back of a mirror.</TreasureRow><TreasureRow kind="Valuables" value="6 coins">**Sealed offering jar** Unbroken, with the tomb patron's seal still on the stopper. The grain inside went past eating three centuries ago.</TreasureRow><TreasureRow kind="Valuables" value="10 coins">**Chewed gold leaf** Off a coffin face.</TreasureRow><TreasureRow kind="Relic">**Inscribed floor tile** The tomb's plan cut into the underside. The builders left directions, and the beetles cleaned them off.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Swarm</EncounterTemplate><EncounterTemplate count="2-3">Colony</EncounterTemplate></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (0), Perception (1)</StatBlockTrait>
+
+<StatBlockTrait label="Immunities"><TraitItem>grappled</TraitItem><TraitItem>conditions from single-target effects</TraitItem></StatBlockTrait>
+
+<StatBlockTrait label="Resistances"><TraitItem>from single-target effects</TraitItem></StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Devouring Bites</EntryName> <StatBadge>pierce</StatBadge><StatBadge>agile</StatBadge> 4/5/6 damage against every creature in this creature's area. On a strong or critical hit, the target is distracted until they spend an Action to brush the beetles off. While this creature is at half HP or lower, this attack deals half damage, rounded up.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Natural Climber</EntryName> <StatBadge>Passive</StatBadge> This creature can climb without treating it as difficult terrain.
+
+</StatBlockSection>
+
+</CreatureStatBlock>

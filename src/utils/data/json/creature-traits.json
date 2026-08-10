@@ -1,0 +1,190 @@
+[
+	{
+		"name": "Air Form",
+		"text": "This creature can move through any space as narrow as one centimetre."
+	},
+	{
+		"name": "Ambush Predator",
+		"text": "When this creature hits an enemy that is unaware of them with an attack for the first time during a scene, increase the SL of their attack by one step (max. critical success)."
+	},
+	{
+		"name": "Amphibious",
+		"text": "This creature can hold their breath underwater for a medium duration and can swim with normal Movement."
+	},
+	{
+		"name": "Aquatic",
+		"text": "This creature is immune to drowning and can swim with normal Movement."
+	},
+	{
+		"name": "Aquatic (fast)",
+		"text": "This creature is immune to drowning and can swim with normal Movement. Also, this creature can swim with +2 Movement per turn."
+	},
+	{
+		"name": "Beast of Burden",
+		"text": "This creature can be of large Size even for a Tier that normally doesn’t allow that Size."
+	},
+	{
+		"name": "Blindsight (close)",
+		"text": "This creature can perceive the location of creatures and objects within range that aren’t behind full cover."
+	},
+	{
+		"name": "Blindsight (medium)",
+		"text": "This creature can perceive it‘s surroundings at medium range without relying on sight."
+	},
+	{
+		"name": "Burrow",
+		"text": "This creature can move freely through loose earth, treating it as difficult terrain."
+	},
+	{
+		"name": "Darkvision (medium/long)",
+		"text": "This creature can see at medium range in absolute darkness as in bright light and up to a long distance as in dim light."
+	},
+	{
+		"name": "Deep Breath",
+		"text": "This creature can hold their breath underwater for a short duration and can swim with normal Movement."
+	},
+	{
+		"name": "Desert Adapted",
+		"text": "This creature can ignore the penalty to Supply checks for extremely hot environments."
+	},
+	{
+		"name": "Dive Attack",
+		"text": "After flying at least a short distance downwards, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit)."
+	},
+	{
+		"name": "Earth Glide",
+		"text": "This creature can burrow through natural earth and stone as part of it’s normal Movement."
+	},
+	{
+		"name": "Echolocation (medium)",
+		"text": "This creature can perceive its surroundings without relying on sight within range, even around corners or behind cover."
+	},
+	{
+		"name": "Fast Movement",
+		"text": "This creature has +1 Movement and can cover twice the normal distance during travel."
+	},
+	{
+		"name": "Fire Form",
+		"text": "This creature can move through any space as narrow as a keyhole. This creature is immune against fire damage and burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers it’s Tier x 2 fire damage (ignore AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignore AV) each turn doing so."
+	},
+	{
+		"name": "Flying (Wings)",
+		"text": "This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn."
+	},
+	{
+		"name": "Flying (hover)",
+		"text": "This creature can fly freely by hovering in the air with +1 Movement per turn."
+	},
+	{
+		"name": "Gore Attack",
+		"text": "After moving at least a short distance in a straight line, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit)."
+	},
+	{
+		"name": "Hard Shell",
+		"text": "This creature can use the Guard Quick Action treating it’s shell as a shield."
+	},
+	{
+		"name": "Intimidating Roar",
+		"text": "This creature can use an Action in combat to unleash a powerful roar. Roll Strength + Fortitude vs. Resist against each creature within short range. On a success, they are frightened of you. They can roll Spirit + Fortitude at the start of their turns. On a success, they stop being frightened. You can use this ability once per combat."
+	},
+	{
+		"name": "Keen Eyes",
+		"text": "This creature gains +1 boon on Perception rolls based on sight."
+	},
+	{
+		"name": "Keen Scent",
+		"text": "This creature gains +1 boon on Perception rolls based on smell."
+	},
+	{
+		"name": "Magic Sense (long)",
+		"text": ". This creature can intuitively sense sources of magic within long range."
+	},
+	{
+		"name": "Natural Climber",
+		"text": "This creature can climb without treating it as difficult terrain."
+	},
+	{
+		"name": "Night Vision",
+		"text": "This creature can see one range category further from sources of bright and dim light."
+	},
+	{
+		"name": "Pack Tactics",
+		"text": "This creature gains +1 boon on attacks against any enemy in melee range if this creature has more allies in melee range than enemies."
+	},
+	{
+		"name": "Pounce",
+		"text": "If this creature spend Movement towards it’s target during the turn it attacks, it gains +1 boon on the attack. Also on a strong or critical hit against a creature of equal or smaller Size, the target is knocked prone."
+	},
+	{
+		"name": "Powerful Build",
+		"text": "Add +2 to this creature’s encumbrance and over-encumbrance limits."
+	},
+	{
+		"name": "Relentless",
+		"text": "When this creature would suffer a Wound, it can choose to ignore it. This creature can use this ability once per day."
+	},
+	{
+		"name": "Rotting Slowness",
+		"text": "This creature can only move or take an Action per turn, not both. This creature can't use Quick Actions."
+	},
+	{
+		"name": "Shell Defense",
+		"text": "As a Quick Action, this creature can withdraw into its shell, gaining the effects of the Guard Quick Action and +2 AV but becoming unable to move or attack until it uses another Quick Action to emerge."
+	},
+	{
+		"name": "Slow Movement",
+		"text": "This creature can’t spend more than 1 Movement per turn."
+	},
+	{
+		"name": "Slow Movement (Land)",
+		"text": "This creature can’t use more than 1 Movement per turn while on land."
+	},
+	{
+		"name": "Spider Climb",
+		"text": "This creature can climb on any surface, even upside down, without rolling."
+	},
+	{
+		"name": "Strong Leap",
+		"text": "This creature can jump up to a short distance without rolling, even without moving before."
+	},
+	{
+		"name": "Sure-Footed",
+		"text": "This creature gains +1 boon on rolls to avoid being knocked prone or pushed. It also ignores difficult terrain from rocky or mountainous areas."
+	},
+	{
+		"name": "Swallow",
+		"text": "This creature can only swallow one smaller creature at a time. When doing so, the target is no longer grappled. Instead, the target becomes blinded and restrained. It also takes lasting acid damage equal to normal weapon damage. When this creature takes a Wound or dies, it releases the swallowed creature and they are spit out prone in melee range."
+	},
+	{
+		"name": "Tool Usage",
+		"text": "This creature can use simple tools and weapons (only Quality 1) after being trained with them for at least a medium duration."
+	},
+	{
+		"name": "Track Scent",
+		"text": "This creature can track a scent trail for up to a day after it was made, unless some foreign force influenced the scent (for example, a heavy rain)."
+	},
+	{
+		"name": "Trample",
+		"text": "When this creature moves through the space of a creature at least one Size smaller, it can make a Stomp attack against that creature as a Quick Action."
+	},
+	{
+		"name": "Tremorsense",
+		"text": "This creature can perceive the location of moving creatures and objects on connected surfaces with it’s own in medium range."
+	},
+	{
+		"name": "Undead Nature",
+		"text": "This creature doesn't need to breathe, eat, drink, or sleep."
+	},
+	{
+		"name": "Wall Climb",
+		"text": "This creature can climb on any vertical surface without rolling."
+	},
+	{
+		"name": "Water Form",
+		"text": "This creature can move through any space as narrow as one centimetre. If this creature suffers frost damage, it is briefly slowed."
+	},
+	{
+		"name": "Web Walker",
+		"text": "This creature can move on webs normally. It also knows the exact location of any creature touching it’s web while standing on it."
+	}
+]

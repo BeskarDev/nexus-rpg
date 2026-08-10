@@ -89,7 +89,8 @@ Many Docusaurus pages (split by subdirectory) collapse into **one** Notion page.
 |---|---|---|
 | Mounts & Companions | `https://app.notion.com/p/dd40057282774a6fb0e5c30e7c447563` | `docs/08-creatures/01-mounts-companions/equipment.md` + `mounts.md` + `traits.md` (merged) |
 | Creature Rules | `https://app.notion.com/p/afe4dc6d3df44599a5b7141ab5b2d8d0` | `docs/08-creatures/02-creature-rules.md` |
-| Creatures ⚠️ | `https://app.notion.com/p/adbdd0508ed9426194a6b310a416154b` | **Inline DB only — creature stat blocks stored in Notion DB, not page text; docs `tier-*.md` files are not text-syncable here** |
+| Bestiary ⚠️ | `https://app.notion.com/p/3b8541d5871181c9b0c9f4d86005baaa` | **The current roster.** Child DB `collection://5cbb0071-c751-4124-a468-f0a4f4904022`, one page per creature, generated from `src/utils/data/json/creatures.json`. Stat block + lore live in the page body, filterable facts in properties. Do not hand-edit: regenerate from the JSON |
+| Creatures ⚠️ (legacy) | `https://app.notion.com/p/adbdd0508ed9426194a6b310a416154b` | **Superseded by Bestiary.** Old inline DB with the retired vocabulary (types `Animal`/`Daimon`, category `Master`, sizes with modifiers). Kept until the roster rebuild is finished |
 
 ### GM Tools
 

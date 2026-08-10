@@ -210,4 +210,6 @@ const parseAttacks = (attacksText: string): Attack[] =>
 	parseEntries(attacksText).map(({ head, details }) => toAttack(head, details))
 
 const parseAbilities = (abilitiesText: string): Ability[] =>
-	parseEntries(abilitiesText).map(({ head, details }) => toAbility(head, details))
+	parseEntries(abilitiesText).map(({ head, details }) =>
+		toAbility(head, details),
+	)

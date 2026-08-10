@@ -158,7 +158,8 @@ export function useSpillPlan(liveKeys?: readonly string[]): SpillPlan {
 	)
 
 	const oversize = React.useMemo(
-		() => (live ? state.oversize.filter((key) => live.has(key)) : state.oversize),
+		() =>
+			live ? state.oversize.filter((key) => live.has(key)) : state.oversize,
 		[state.oversize, live],
 	)
 

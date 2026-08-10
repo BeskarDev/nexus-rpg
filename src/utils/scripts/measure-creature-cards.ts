@@ -41,7 +41,8 @@ const baselineIndex = args.indexOf('--baseline')
 const baselinePath = baselineIndex >= 0 ? args[baselineIndex + 1] : undefined
 const positional = args.filter(
 	(arg, index) =>
-		!arg.startsWith('--') && !(baselineIndex >= 0 && index === baselineIndex + 1),
+		!arg.startsWith('--') &&
+		!(baselineIndex >= 0 && index === baselineIndex + 1),
 )
 const outPath = positional[0] ?? '/tmp/creature-cards-measure.json'
 
@@ -102,7 +103,9 @@ writeFileSync(outPath, JSON.stringify(summary, null, '\t'))
 console.log(`creatures      ${summary.creatures}`)
 console.log(`cards          ${summary.cards}`)
 console.log(`continuations  ${summary.continuations}`)
-console.log(`over budget    ${summary.oversize.length} ${summary.oversize.join(', ')}`)
+console.log(
+	`over budget    ${summary.oversize.length} ${summary.oversize.join(', ')}`,
+)
 console.log(`at 6.5pt floor ${summary.atFloor}`)
 console.log(`overflowing    ${summary.overflowing}`)
 console.log(`size min/med   ${summary.minSize} / ${summary.medianSize}`)
@@ -117,14 +120,18 @@ console.log(
 console.log(`written to     ${outPath}`)
 
 if (baselinePath && existsSync(baselinePath)) {
-	const before = JSON.parse(readFileSync(baselinePath, 'utf8')) as typeof summary
+	const before = JSON.parse(
+		readFileSync(baselinePath, 'utf8'),
+	) as typeof summary
 	console.log('\n— delta against ' + baselinePath)
 	console.log(`cards          ${before.cards} → ${summary.cards}`)
 	console.log(
 		`continuations  ${before.continuations} → ${summary.continuations}`,
 	)
 	console.log(`at floor       ${before.atFloor} → ${summary.atFloor}`)
-	console.log(`over budget    ${before.oversize.length} → ${summary.oversize.length}`)
+	console.log(
+		`over budget    ${before.oversize.length} → ${summary.oversize.length}`,
+	)
 	const beforeCards = new Map(before.rows.map((r) => [r.name, r.cards]))
 	const moved = summary.rows
 		.filter((r) => beforeCards.get(r.name) !== r.cards)

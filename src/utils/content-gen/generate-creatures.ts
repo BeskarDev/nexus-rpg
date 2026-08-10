@@ -22,6 +22,7 @@ import path from 'path'
 import creatureAdditives from '../data/json/creature-additives.json'
 import creatureSizes from '../data/json/creature-sizes.json'
 import creatureSubtypes from '../data/json/creature-subtypes.json'
+import creatureTraits from '../data/json/creature-traits.json'
 import creatureTypes from '../data/json/creature-types.json'
 
 const REPO = path.resolve(__dirname, '../../..')
@@ -86,6 +87,16 @@ interface CreatureRecord {
 	weaknesses: string[]
 	attacks: StatBlockEntry[]
 	abilities: StatBlockEntry[]
+	/**
+	 * Shared traits, BY NAME ONLY — resolved from `creature-traits.json` at
+	 * generation time and rendered as ordinary Passive abilities.
+	 *
+	 * Traits are reusable across dozens of creatures (`Keen Scent`, `Amphibious`,
+	 * `Undead Nature`), so their wording lives in exactly one place and a fix
+	 * reaches every creature carrying them. The published card shows no
+	 * distinction: a reader sees one abilities list with every effect spelled out.
+	 */
+	traits?: string[]
 	/** Optional non-mechanical lore, rendered collapsed under the card header. */
 	lore?: CreatureLoreRecord
 }
@@ -102,6 +113,7 @@ interface CreatureRecord {
  *   narrative     prose      — the voice of the entry, one short passage
  *   environment   shorthand  — terrain tags, badged
  *   ecology       prose      — behaviour, diet, range, how they live
+ *   physiology    both       — measurements as tags, breeding as one short line
  *   tactics       prose      — what they actually do in a fight
  *   treasure      shorthand  — a scale keyword, plus optional prose for specifics
  *   organization  shorthand  — named encounter templates with counts
@@ -110,15 +122,20 @@ interface CreatureLoreRecord {
 	narrative: string
 	environment?: string[]
 	ecology?: string
+	physiology?: {
+		size?: string
+		weight?: string
+		lifespan?: string
+		reproduction?: string
+	}
 	tactics?: string
 	treasure?: {
 		scale: string
 		table?: {
 			kind: string
 			item: string
-			stats?: string
+			description?: string
 			value?: string
-			note?: string
 		}[]
 	}
 	organization?: EncounterTemplateRecord[]
@@ -154,10 +171,26 @@ const TREASURE_SCALES = new Set([
  * generator can filter on it ("the crafting materials from this lair") and so six
  * rows can be scanned by type without reading every item.
  */
+/**
+ * The four fields of a treasure row.
+ *
+ * `stats` and `note` used to be separate — a rules reference and a qualifier —
+ * and the split produced rows that said the same thing twice, or spent the note
+ * on "sells for 7" when the rules already halve every non-trade-good sale. One
+ * `description` field instead, and it earns its place only by saying what the
+ * thing is FOR.
+ */
+const TREASURE_ROW_KEYS = new Set(['kind', 'item', 'description', 'value'])
+
 const TREASURE_KINDS = new Set([
 	'Weapon',
 	'Armor',
 	'Magic',
+	// Trophy, Tool and Material are the three published harvesting categories
+	// (`06-harvesting-creature-parts.md`), so a beast's body rows use the words the
+	// harvesting rules already use rather than a parallel vocabulary.
+	'Trophy',
+	'Tool',
 	'Material',
 	'Valuables',
 	'Supplies',
@@ -226,10 +259,25 @@ const LORE_KEYS = new Set([
 	'narrative',
 	'environment',
 	'ecology',
+	'physiology',
 	'tactics',
 	'treasure',
 	'organization',
 ])
+
+/**
+ * The physical facts of a creature: how big, how heavy, how long they live, how
+ * they breed.
+ *
+ * Three of the four are MEASUREMENTS and badge as tags, so a reader can scan them
+ * without reading a sentence, and so a later tool can compare a jackal to a lion
+ * without parsing prose. `reproduction` is the one part that genuinely varies —
+ * a clutch, a litter, a budded spawn, or a thing that was never born at all — so
+ * it stays one short line of prose.
+ */
+const PHYSIOLOGY_KEYS = new Set(['size', 'weight', 'lifespan', 'reproduction'])
+/** The measured ones, which must actually carry a number and its unit. */
+const PHYSIOLOGY_MEASURES = ['size', 'weight', 'lifespan'] as const
 
 const STRING_FIELDS = [
 	'name',
@@ -267,6 +315,17 @@ const VALID_SUBTYPES = new Map<string, Set<string>>(
 		([type, subs]) => [type, new Set(subs)],
 	),
 )
+/**
+ * The shared trait library, keyed by name. Extracted from the companion traits
+ * so creatures and companions cannot drift apart on what `Keen Scent` means.
+ */
+const TRAITS = new Map<string, string>(
+	(creatureTraits as { name: string; text: string }[]).map((t) => [
+		t.name,
+		t.text,
+	]),
+)
+
 const ADDITIVES = new Set(
 	(creatureAdditives as { name: string }[]).map((a) => a.name),
 )
@@ -311,7 +370,9 @@ function validateTaxonomy(e: Record<string, unknown>, context: string): void {
 	// roster gave every undead blanket immunity regardless, across six
 	// inconsistent sets. Requiring the additive is what stops that returning.
 	if (MIND_REQUIRED.has(type)) {
-		const minds = subtypes.filter((s) => s === 'Mindless' || s === 'Intelligent')
+		const minds = subtypes.filter(
+			(s) => s === 'Mindless' || s === 'Intelligent',
+		)
 		if (minds.length !== 1)
 			fail(
 				context,
@@ -333,8 +394,19 @@ function validateResistancePairing(
 	e: Record<string, unknown>,
 	context: string,
 ): void {
-	const resistances = e.resistances as string[]
-	const immunities = e.immunities as string[]
+	// Defences an ADDITIVE grants are not design choices, so they do not owe a
+	// seam. Every swarm carries the same three lines because `Swarm` says so
+	// (02-creature-rules.md), and charging each one an invented weakness would
+	// tax the creatures that chose nothing — and produce the "false mechanic"
+	// principle 15 forbids (a swarm of beetles is not doubly hurt by fire just
+	// because the schema wanted a counterweight).
+	const granted = new Set([
+		'grappled',
+		'conditions from single-target effects',
+		'damage from single-target effects',
+	])
+	const resistances = (e.resistances as string[]).filter((r) => !granted.has(r))
+	const immunities = (e.immunities as string[]).filter((i) => !granted.has(i))
 	const weaknesses = e.weaknesses as string[]
 	const hasDefence = resistances.length > 0 || immunities.length > 0
 	if (hasDefence && weaknesses.length === 0)
@@ -385,6 +457,27 @@ function validateCreature(entry: unknown, context: string): CreatureRecord {
 			context,
 			`armor "${e.armor}" does not appear in av "${e.av}"; the card shows only AV`,
 		)
+	if (e.traits !== undefined) {
+		if (!Array.isArray(e.traits))
+			fail(context, 'field "traits" must be an array of trait NAMES')
+		const seen = new Set<string>()
+		for (const t of e.traits as unknown[]) {
+			if (typeof t !== 'string' || t.trim() === '')
+				fail(context, 'traits entries must be non-empty strings')
+			// Names only. The wording lives in creature-traits.json so one fix
+			// reaches every creature carrying the trait, and a near-miss like
+			// "Blindsense" for "Blindsight (close)" fails here instead of shipping
+			// a trait nobody defined.
+			if (!TRAITS.has(t))
+				fail(
+					context,
+					`unknown trait "${t}" — add it to creature-traits.json or use the ` +
+						'published name (parameterised traits carry theirs, e.g. "Blindsight (close)")',
+				)
+			if (seen.has(t)) fail(context, `traits repeats "${t}"`)
+			seen.add(t)
+		}
+	}
 	if (e.lore !== undefined) validateLore(e.lore, context)
 	for (const field of ENTRY_FIELDS) {
 		for (const [i, raw] of (e[field] as unknown[]).entries()) {
@@ -408,6 +501,26 @@ function validateLore(raw: unknown, context: string): void {
 	if (typeof raw !== 'object' || raw === null || Array.isArray(raw))
 		fail(context, 'field "lore" must be an object (see CreatureLoreRecord)')
 	const lore = raw as Record<string, unknown>
+	// House rule (CLAUDE.md): no em dashes, en dashes or semicolons anywhere in
+	// game content. Lore is the field most prone to them, since it is the only
+	// free prose in the data. Split the sentence or use "such as" instead. An
+	// unsellable treasure row omits `value` rather than writing a dash for it.
+	const walk = (node: unknown, path: string): void => {
+		if (typeof node === 'string') {
+			const hit = node.match(/[—–;]/)
+			if (hit)
+				fail(
+					context,
+					`${path} contains "${hit[0]}" — no em dashes, en dashes or semicolons ` +
+						'in game content. Split the sentence, use "such as", or omit the field',
+				)
+		} else if (Array.isArray(node)) {
+			node.forEach((v, i) => walk(v, `${path}[${i}]`))
+		} else if (node && typeof node === 'object') {
+			for (const [k, v] of Object.entries(node)) walk(v, `${path}.${k}`)
+		}
+	}
+	walk(lore, 'lore')
 	for (const key of Object.keys(lore)) {
 		if (!LORE_KEYS.has(key))
 			fail(
@@ -425,6 +538,21 @@ function validateLore(raw: unknown, context: string): void {
 		if (typeof lore[key] !== 'string' || (lore[key] as string).trim() === '')
 			fail(context, `lore.${key} must be a non-empty string`)
 	}
+	// The world does not know the adventurers exist. `narrative` and `ecology`
+	// describe a creature that was there before the campaign and carries on after
+	// it, so they name the people who actually meet them — villagers, tomb robbers,
+	// masons. `tactics` is the exception: it is GM instruction, and "the party" is
+	// the right word there.
+	for (const key of ['narrative', 'ecology'] as const) {
+		const prose = lore[key] as string | undefined
+		const table = prose?.match(/\b(the party|the players?|the GM)\b/i)
+		if (table)
+			fail(
+				context,
+				`lore.${key} addresses the table ("${table[0]}"); write the people who ` +
+					'meet this creature in the world instead. Only lore.tactics speaks to the GM',
+			)
+	}
 	if (lore.environment !== undefined) {
 		if (!Array.isArray(lore.environment) || lore.environment.length === 0)
 			fail(
@@ -432,7 +560,11 @@ function validateLore(raw: unknown, context: string): void {
 				'lore.environment must be a non-empty array of terrain terms',
 			)
 		let previous = 0
+		const seen = new Set<string>()
 		for (const term of lore.environment) {
+			if (seen.has(term as string))
+				fail(context, `lore.environment repeats "${term}"`)
+			seen.add(term as string)
 			if (typeof term !== 'string' || term.trim() === '')
 				fail(context, 'lore.environment entries must be non-empty strings')
 			const rank = ENVIRONMENT_RANKS[term]
@@ -450,6 +582,54 @@ function validateLore(raw: unknown, context: string): void {
 						`follows a narrower term (rank ${previous})`,
 				)
 			previous = rank
+		}
+		// Rank 1 is the habitat tag an encounter filter starts from, so a list of
+		// sites and features alone is invisible to every regional query. One is the
+		// floor; most creatures range across two or three.
+		if (!(lore.environment as string[]).some((t) => ENVIRONMENT_RANKS[t] === 1))
+			fail(
+				context,
+				'lore.environment must include at least one rank-1 region ' +
+					'(Desert, Grassland, River, Coast, …) — sites and features alone cannot ' +
+					'be found by a habitat filter',
+			)
+	}
+	if (lore.physiology !== undefined) {
+		const physiology = lore.physiology as Record<string, unknown>
+		if (
+			typeof physiology !== 'object' ||
+			physiology === null ||
+			Array.isArray(physiology)
+		)
+			fail(context, 'lore.physiology must be an object')
+		for (const key of Object.keys(physiology)) {
+			if (!PHYSIOLOGY_KEYS.has(key))
+				fail(
+					context,
+					`lore.physiology has unknown key "${key}" (expected ${[...PHYSIOLOGY_KEYS].join(', ')})`,
+				)
+			if (
+				typeof physiology[key] !== 'string' ||
+				(physiology[key] as string).trim() === ''
+			)
+				fail(context, `lore.physiology.${key} must be a non-empty string`)
+		}
+		if (Object.keys(physiology).length === 0)
+			fail(
+				context,
+				'lore.physiology must carry at least one field, or be omitted',
+			)
+		// The measured fields are tags, and a tag reading "large" or "short-lived"
+		// tells a reader nothing they did not already have from the size chip. If a
+		// figure is genuinely unknowable, omit the key rather than hedging in it.
+		for (const key of PHYSIOLOGY_MEASURES) {
+			const value = physiology[key] as string | undefined
+			if (value !== undefined && !/\d/.test(value))
+				fail(
+					context,
+					`lore.physiology.${key} must state a figure with its unit ` +
+						`(e.g. "1.4 m tall", "60 kg", "20 to 30 years"), got ${JSON.stringify(value)}`,
+				)
 		}
 	}
 	if (lore.treasure !== undefined) {
@@ -487,17 +667,40 @@ function validateLore(raw: unknown, context: string): void {
 						context,
 						`lore.treasure.table[${i}].item must be a non-empty string`,
 					)
-				// `item` is a NAME now, not a sentence — the numbers live in `stats`
-				// and `value` so they can be found without reading the row.
-				if ((raw.item as string).length > 60)
+				// `item` is the NAME a player would say out loud — "Jackal pelt", not
+				// "Jackal pelt, mange-thin". Everything else belongs in `description`
+				// or `value`, where it can be found without reading the row.
+				if ((raw.item as string).length > 40)
 					fail(
 						context,
 						`lore.treasure.table[${i}].item should be a short name, not prose ` +
-							'(put rules references in "stats", worth in "value", and any qualifier in "note")',
+							'(put what it does in "description" and what it is worth in "value")',
 					)
-				for (const key of ['stats', 'value', 'note'] as const)
+				for (const key of Object.keys(raw)) {
+					if (!TREASURE_ROW_KEYS.has(key))
+						fail(
+							context,
+							`lore.treasure.table[${i}] has unknown key "${key}" ` +
+								`(expected ${[...TREASURE_ROW_KEYS].join(', ')}; "stats" and "note" ` +
+								'merged into "description")',
+						)
+				}
+				for (const key of ['description', 'value'] as const)
 					if (raw[key] !== undefined && typeof raw[key] !== 'string')
 						fail(context, `lore.treasure.table[${i}].${key} must be a string`)
+				// Values are FLAT coin figures, never dice (owner ruling). The d6 that
+				// picks the row is already the randomness, catalogue items and Quality
+				// tiers are priced flat, and a rolled value can contradict the Quality
+				// the same row names. The harvesting dice remain a DESIGN tool: roll
+				// them, or read them as a range and place the item inside it, then
+				// write the number you landed on.
+				if (/\d\s*d\s*\d/i.test((raw.value as string) ?? ''))
+					fail(
+						context,
+						`lore.treasure.table[${i}].value must be a flat coin figure, not dice ` +
+							`(got ${JSON.stringify(raw.value)}; roll the dice or place the item in ` +
+							'their range while designing, then write that number)',
+					)
 			}
 		}
 	}
@@ -512,6 +715,18 @@ function validateLore(raw: unknown, context: string): void {
 			const where = `lore.organization[${i}]`
 			if (typeof template?.name !== 'string' || template.name.trim() === '')
 				fail(context, `${where}.name must be a non-empty string`)
+			// The name badges beside a count, so it has to read as a LABEL for the
+			// group: "Pack", "Raiding file", "Lone viper". The shapes that keep
+			// creeping in are a place ("Under a landing stage"), a sentence ("Alone,
+			// come to talk") and prose with an article ("A bad stretch of channel").
+			const name = (template.name as string).trim()
+			if (/^(a|an|the)\s/i.test(name) || name.includes(',') || name.length > 28)
+				fail(
+					context,
+					`${where}.name "${name}" must be a short noun phrase naming the group ` +
+						'(no leading article, no comma, 28 characters max) — ' +
+						'"Lone viper", not "A bad stretch of channel"',
+				)
 			const hasCount = template.count !== undefined
 			const hasComposition = template.composition !== undefined
 			// One or the other: a template with both would render its size twice, and
@@ -656,6 +871,22 @@ const SECTION_LABELS: Record<(typeof ENTRY_FIELDS)[number], string> = {
 	abilities: 'Abilities',
 }
 
+/**
+ * Expand a creature's trait NAMES into full ability entries.
+ *
+ * Shared traits are stored by name and their text lives in
+ * `creature-traits.json`, so `Keen Scent` is worded once for the fifty
+ * creatures that have it. They render as ordinary `Passive` abilities: the
+ * split is an authoring convenience, and the card must not leak it.
+ */
+function resolveTraits(c: CreatureRecord): StatBlockEntry[] {
+	return (c.traits ?? []).map((name) => ({
+		name,
+		qualifier: 'Passive',
+		text: TRAITS.get(name) as string,
+	}))
+}
+
 function renderCreature(
 	c: CreatureRecord,
 	linkTo: (name: string) => string,
@@ -709,12 +940,18 @@ function renderCreature(
 	}
 
 	for (const field of ENTRY_FIELDS) {
-		if (c[field].length === 0) continue
+		// Traits resolve into the abilities list, spelled out in full like any
+		// other ability. The record stores names so the wording has one home;
+		// the published card shows no seam, because a GM reading a stat block
+		// does not care which of a creature's passives are shared with others.
+		const entries =
+			field === 'abilities' ? [...c.abilities, ...resolveTraits(c)] : c[field]
+		if (entries.length === 0) continue
 		blocks.push(
 			[
 				`<StatBlockSection label="${SECTION_LABELS[field]}">`,
 				'',
-				c[field].map((entry) => renderEntry(entry, field)).join('\n'),
+				entries.map((entry) => renderEntry(entry, field)).join('\n'),
 				'',
 				'</StatBlockSection>',
 			].join('\n'),
@@ -744,6 +981,18 @@ function renderLore(
 		const prose = lore.ecology ? ` ${lore.ecology.trim()}` : ''
 		parts.push(`<LoreSection label="Ecology">${tags}${prose}</LoreSection>`)
 	}
+	// Physiology sits under Ecology, since it answers the questions the ecology
+	// prose provokes — how big, how heavy, how long, how they breed. Measurements
+	// badge as tags in a fixed order so two creatures can be compared by eye.
+	if (lore.physiology) {
+		const tags = PHYSIOLOGY_MEASURES.filter((k) => lore.physiology?.[k])
+			.map((k) => `<LoreTag>${lore.physiology?.[k]}</LoreTag>`)
+			.join('')
+		const prose = lore.physiology.reproduction
+			? ` ${lore.physiology.reproduction.trim()}`
+			: ''
+		parts.push(`<LoreSection label="Physiology">${tags}${prose}</LoreSection>`)
+	}
 	if (lore.tactics)
 		parts.push(
 			`<LoreSection label="Tactics">${lore.tactics.trim()}</LoreSection>`,
@@ -752,11 +1001,10 @@ function renderLore(
 		const rows = (lore.treasure.table ?? [])
 			.map((row) => {
 				const attrs = [`kind="${row.kind}"`]
-				if (row.stats) attrs.push(`stats=${attr(row.stats)}`)
 				if (row.value) attrs.push(`value=${attr(row.value)}`)
-				// The name is bold and the qualifier follows it, both markdown, so an
+				// The name is bold and the description follows it, both markdown, so an
 				// item can still link to its equipment or magic-item entry.
-				const body = `**${row.item.trim()}**${row.note ? ` ${row.note.trim()}` : ''}`
+				const body = `**${row.item.trim()}**${row.description ? ` ${row.description.trim()}` : ''}`
 				return `<TreasureRow ${attrs.join(' ')}>${body}</TreasureRow>`
 			})
 			.join('')

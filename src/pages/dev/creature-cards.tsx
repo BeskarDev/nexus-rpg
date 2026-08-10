@@ -98,7 +98,13 @@ function Bench() {
 			byTier,
 			rows,
 		}
-	}, [entries, fits, spillPlan.partsFor, spillPlan.continuations, spillPlan.oversize])
+	}, [
+		entries,
+		fits,
+		spillPlan.partsFor,
+		spillPlan.continuations,
+		spillPlan.oversize,
+	])
 
 	const settled = pending === 0 && Object.keys(fits).length >= cards.length
 	React.useEffect(() => {

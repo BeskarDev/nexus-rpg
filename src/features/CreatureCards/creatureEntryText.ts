@@ -52,7 +52,8 @@ export interface SplitDamage {
 export function splitDamageText(text: string): SplitDamage {
 	const trimmed = text.trim()
 	const match = trimmed.match(LEADING_TRIPLE)
-	if (!match) return trimmed ? { damage: '', description: trimmed } : { damage: '' }
+	if (!match)
+		return trimmed ? { damage: '', description: trimmed } : { damage: '' }
 	const type = dropDamageWord(match[2])
 	const rest = trimmed.slice(match[0].length).trim()
 	return {
@@ -102,7 +103,11 @@ export function parseEntryHead(line: string): ParsedEntryHead | null {
 	// `**Eye Rays.**` — a trailing period belongs to the sentence, not the name.
 	name = name.replace(/\.$/, '').trim()
 
-	return { name, parenthetical: parenthetical.replace(/\*/g, '').trim(), text: match[3].trim() }
+	return {
+		name,
+		parenthetical: parenthetical.replace(/\*/g, '').trim(),
+		text: match[3].trim(),
+	}
 }
 
 const splitList = (value: string): string[] =>

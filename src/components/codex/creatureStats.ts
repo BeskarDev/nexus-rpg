@@ -8,10 +8,20 @@
  * the functions that would have drifted next.
  */
 
-/** Short forms for the armor parenthetical, so the tag fits beside a numeral. */
+/**
+ * Short forms for the armor parenthetical, so the tag fits beside a numeral.
+ *
+ * Keyed on the closed vocabulary the roster writes into `av`: worn armor says
+ * `light armor` / `heavy armor`, a body that grew its own says `natural …`. The
+ * split is not cosmetic — worn armor comes off the corpse under the looting
+ * rules and natural armor is a harvesting material — so both spellings are
+ * first-class here rather than one being an alias of the other.
+ */
 export const ARMOR_ABBR: Record<string, string> = {
 	light: 'L',
 	heavy: 'H',
+	'light armor': 'L',
+	'heavy armor': 'H',
 	// Two letters, never five (owner, 2026-08-07). `NAT L` beside a numeral was
 	// wider than the AV figure it qualified and made the tag a different size on
 	// every creature; `NL` reads the same way and holds one width.
@@ -19,9 +29,23 @@ export const ARMOR_ABBR: Record<string, string> = {
 	'natural heavy': 'NH',
 }
 
-/** `"0 (natural light)"` → `{ value: "0", note: "natural light" }`. */
+/** Appended when a shield contributes to the total: `L+S`, `NH+S`. */
+const SHIELD_SUFFIX = / and shield$/
+
+/**
+ * `"natural light"` → `"NL"`, `"light armor and shield"` → `"L+S"`.
+ *
+ * A shield is a second AV source rather than a different kind of armor, so it
+ * is a suffix on the base tag instead of four more table entries. An
+ * unrecognised note is returned verbatim: the tag is allowed to be long before
+ * it is allowed to be wrong.
+ */
 export function armorAbbr(note: string): string {
-	return ARMOR_ABBR[note.toLowerCase()] ?? note
+	const lower = note.trim().toLowerCase()
+	const shield = SHIELD_SUFFIX.test(lower)
+	const abbr = ARMOR_ABBR[lower.replace(SHIELD_SUFFIX, '')]
+	if (!abbr) return note
+	return shield ? `${abbr}+S` : abbr
 }
 
 /**

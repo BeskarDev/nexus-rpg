@@ -1,147 +1,99 @@
 # Designer Principles — Creature Design
 
-Binding rules, not suggestions. Two sources feed this file:
+**Binding rules, not suggestions.** 33 principles, split by the phase of work they govern so a
+task loads only what it needs. **Numbers are global and permanent — never renumber.**
 
-1. **Native principles (1–7, 13)** — distilled from owner feedback and the creature-system analysis during creature work. Numbers are stable — **never renumber**.
-2. **Ported principles (8–12)** — established through extensive spell-design and talent-design sessions with the owner, translated to creature terms. Each cites its provenance; the full original reasoning lives in `.claude/skills/spell-design/references/principles/`.
+Two sources feed them: **native** principles distilled from owner feedback during creature work,
+and **ported** ones (8-12) established in spell-design and talent-design sessions and translated
+to creature terms. Ported entries cite their origin; the full original reasoning lives in
+`.claude/skills/spell-design/references/principles/`.
 
-The numeric chassis (tier stats, size modifiers, immunity sets, validation checklist) lives in [stat-tables.md](stat-tables.md); this file holds design-judgment rules.
+The numeric chassis (tier stats, size modifiers, immunity sets, validation checklist) lives in
+[stat-tables.md](stat-tables.md); these files hold design *judgment*.
+
+## Which file to read when
+
+| Phase | File | Covers |
+|---|---|---|
+| steps 1-3 — concept, statistics, attacks | [principles/chassis.md](principles/chassis.md) | 1, 2, 3, 4, 5, 7, 15 |
+| step 1, and every time you name something | [principles/identity.md](principles/identity.md) | 6, 12, 13, 14, 20, 21, 22, 25 |
+| step 4 — abilities, and every Elite/Lord trigger | [principles/abilities.md](principles/abilities.md) | 8, 9, 10, 11, 16, 17, 18, 23, 24, 26, 27 |
+| every line of stat block text and lore prose | [principles/writing.md](principles/writing.md) | 19, 28, 29, 30, 31, 32, 33 |
+
+**Reading one file is the norm, not a shortcut.** Writing abilities means `abilities.md` plus
+`writing.md`; a whole creature from scratch means all four, in the order above. What is never
+correct is designing from the one-line summaries below — they exist to tell you *which* principle
+applies, not what it says.
 
 ## Shared spell-design principle files that bind creature text directly
 
-Creature ability text follows the same house conventions as spell and talent text. Before writing any stat block, these spell-design files apply as-is (read "spell" as "creature ability"):
+Creature ability text follows the same house conventions as spell and talent text. Before writing
+any stat block, these spell-design files apply as-is (read "spell" as "creature ability"):
 
 | File | What it governs |
 |------|-----------------|
-| `../../spell-design/references/principles/wording-conventions.md` | General-application-first ordering, defined keywords referenced by name and never re-explained, durations as defined intervals, activation cost opens the sentence, house micro-conventions (minimum 0, signed banes), capitalize only named mechanics, creatures are they/their/them — never it/its (principle 30 there, also in CLAUDE.md) |
+| `../../spell-design/references/principles/wording-conventions.md` | General-application-first ordering, defined keywords referenced by name and never re-explained, durations as defined intervals, activation cost opens the sentence, house micro-conventions (minimum 0, signed banes), capitalize only named mechanics, creatures are they/their/them — never it/its |
 | `../../spell-design/references/principles/conditions.md` | Condition definition checks, parameterized (X) values, consumed-key traps, kill-rider wording, no-roll trigger limits |
 
-## Native Principles
+## The full index
 
-**1. Stat chassis + ability menu.** The tier table provides the statistical foundation; abilities provide the tactical identity. Never let either carry the whole design.
 
-**2. Abilities over HP bloat.** Durability comes from defensive abilities (damage reduction, condition immunity, regeneration), not inflated HP. Keeps fights snappy.
+### Chassis, damage & encounter shape — [principles/chassis.md](principles/chassis.md)
 
-**3. Damage threads the needle.** Creature damage must threaten glass-cannon casters (16 HP, AV 2) without oppressing heavy-armor martials (20+ HP, AV 5–6). The linear +1 weapon damage per tier achieves this — don't break it.
+- **1.** Stat chassis + ability menu.
+- **2.** Abilities over HP bloat.
+- **3.** Damage threads the needle.
+- **4.** Bounded complexity.
+- **5.** Adventurers don't heal on Wounds.
+- **7.** Ability output follows the spell scaling frameworks.
+- **15.** Every encounter has a Timer, a Threat and a Treat — and the Treat has five channels.
 
-**4. Bounded complexity.** A creature should be buildable in under 5 minutes with this framework and immediately understandable at the table.
+### Identity, naming & taxonomy — [principles/identity.md](principles/identity.md)
 
-**5. Adventurers don't heal on Wounds.** Unlike Elite/Lord creatures, adventurers stay at 0 HP when Wounded. Party healing is their survival mechanism; factor this into lethality.
+- **6.** Thematic integration.
+- **12.** The name is a promise, spoken in a pre-scientific register.
+- **13.** Mythological-first roster identity — D&D imports must be naturalized, never copied.
+- **14.** A game term must say what it is; lore names stay in lore.
+- **20.** A real animal keeps its real name; invented names are for invented creatures.
+- **21.** Magical naturalism: an invented animal is a real one plus exactly one deviation, and the name states it.
+- **22.** Dinosaurs are ordinary Beasts with a `Saurian` subtype, and never carry their scientific name.
+- **25.** Folk inheritance is bounded by the folk entry, and Nexus is conservative about senses.
 
-**6. Thematic integration.** Sword & sorcery, ancient-world aesthetic (Mesopotamian, Egyptian, Persian, mythological folklore). Every creature suggests its place in the world's ecology.
+### Abilities, conditions & triggers — [principles/abilities.md](principles/abilities.md)
 
-**7. Ability output follows the spell scaling frameworks.** Damage/healing abilities beyond basic attacks use `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6 (damage per rank/tier, AoE = half single-target) and §16 (healing: single-target 1:1 with damage, Quick Action ½, AoE half; temp HP never stacks). A creature's ability output must stay consistent with what a same-tier caster could do. Spellcasting creatures: max spell rank = skill rank in Arcana/Mysticism, and every referenced spell must exist in the published spell lists — verify by grep, never import spells from other game systems.
+- **8.** Check every condition against its published definition; parameterized conditions carry their (X).
+- **9.** High-impact conditions never ride automatic, no-roll triggers.
+- **10.** Defensive abilities and immunities need counterplay.
+- **11.** Limits live in the fiction, not game structure.
+- **16.** Condition escalation prices a disable instead of banning it.
+- **17.** Bonus damage comes in three rungs, and they are rungs, not a right answer.
+- **18.** `briefly` and `short` are the two in-combat durations, and the choice is deliberate.
+- **23.** A creature's weapon may have any name, but its damage and properties must be a catalog entry's.
+- **24.** Check the universal Action and Quick Action lists before writing an ability.
+- **26.** Every trigger opens `When this creature suffers a Wound, …`, and Lords take the ordinal.
+- **27.** An Elite or Lord Trigger escalates. It is never a downgrade, and never a rule the game already has.
 
-**13. Mythological-first roster identity — D&D imports must be naturalized, never copied.** Every creature must pass the mood-board test: would it fit a Conan the Cimmerian comic panel, Clash of the Titans, or the brutality of ancient nature? Source concepts primarily from Bronze Age and ancient-world myth (Mesopotamian, Egyptian, Greek, Persian, and the analog registers of the setting's other regions) or from the natural world made deadly (giant scorpions, jackals, desert vipers). D&D monster concepts may still be imported when the underlying creature fits the setting — a stirge as an oversized bloodsucking mosquito belongs in a delta swamp — but the import must be naturalized: give it a new name (mandatory for any D&D-identified or trademarked name — otyugh, grell, stirge, bugbear, tarrasque, beholder, displacer beast, and kin — both for legal safety and because those names carry a dungeon-fantasy register), and adapt its ecology, anatomy, or behavior to a concrete place in the world (what it eats, where it lairs, which region and folk know it, what myth locals tell about it). Names from shared world myth (harpy, manticore, minotaur, lich, kraken) are fine as-is. Expansion targets that fit the register natively: lamassu, girtablilu (scorpion folk), ammit, sirrush, ushabti, roc, gorgon, mummy lords. The current published roster is an early demo roster — existing entries violating this are grandfathered until bestiary iterations replace them, but no new creature may violate it. *(Owner rulings, 2026-07-24, genre/vibe review V2: the roster is a demo, encode the identity feedback for future iterations; D&D monsters can exist in Nexus when flavor and identity match the setting — rename at minimum, and adapt ecology, anatomy, or behavior where needed.)*
+### Writing the text — [principles/writing.md](principles/writing.md)
 
-**14. A game term must say what it is; lore names stay in lore.** Any name appearing in the rules or the data — a type, a subtype, a condition, an ability — must tell the reader immediately what it is. Evocative, lore-derived naming belongs in `lore.narrative` and in the worldbuilding vault. A creature can be `Divine Beast / Guardian` on the stat line and "the last of the Titanenbrut's gate-wardens" in its lore block; both layers get the naming they need, and the GM reading a card at the table does not have to parse a cosmology. Rejected under this rule during the taxonomy pass: *Titanborn*, *Omenborn*, *Portent*, *Prodigy*, *Godtouched*. Each was accurate to the setting and none said what the creature was. **Applies to every design skill, not only creatures.** *(Owner ruling, 2026-08-09, D-038.)*
-
-**15. Every encounter has a Timer, a Threat and a Treat — and the Treat has five channels.** The Threat is the signature move; the Timer is usually a trigger or a recharging ability. The **Treat** is information the party can act on, and it need not be on the stat block at all: a **damage-type weakness** (free — no ability budget), the **structural cost of a signature move** (a costed attack means the creature that chases you hits softer), a **drawback**, a **terrain hook**, or **lore alone**. For ordinary creatures the last is correct and the others are wrong: a wolf has no damage weakness and should carry no drawback ability — inventing either produces a wolf that is wrong about wolves. Its pack behaviour goes in `lore.ecology` and `lore.tactics`, and **Morale is the mechanism the knowledge feeds**. A false mechanic is worse than no mechanic. *(Owner rulings, 2026-08-09, D-001, D-032.)*
-
-**16. Condition escalation prices a disable instead of banning it.** A rider applies a lesser condition, and applying it again to a target already suffering it upgrades to the greater one — `stunned` then `paralyzed` is the canonical pair. This costs two strong-or-critical hits rather than one roll, gives the party a visible warning round, and leaves two counterplays (clear the lesser condition, or do not let the creature land a second good hit). Escalate one impact band, never two. Reach for this whenever a creature's concept demands a disable, rather than removing the creature's identity. *(Owner ruling, 2026-08-09, D-029.)*
-
-**17. Bonus damage comes in three rungs, and they are rungs, not a right answer.** (a) A **flat `+N`** on a stated prerequisite, where N is at most half the tier's weapon damage — legal only with a real prerequisite, since a bonus for something the creature was doing anyway is not a cost. (b) A **costed attack**: `+1 weapon damage`, but the creature skips all Movement this turn, *before and after the attack*. (c) An **SL escalator**: `+1 boon`, and on a hit increase the success level by one step, gated behind a geometric prerequisite the party can deny. The escalator is the most powerful and is priced as such; the flat bonus remains correct for a smaller effect. Costed attacks suit heavy hitters, where trading mobility for impact is what the creature already is. *(Owner rulings, 2026-08-09, D-021, D-022.)*
-
-**18. `briefly` and `short` are the two in-combat durations, and the choice is deliberate.** `briefly` is one turn; `short` is the rest of the fight. A rider that fires on most hits wants `briefly`, or the fight fills with permanent conditions by round three; a signature effect meant to shape the encounter wants `short`. A third form is legal and often best — **name the end condition inline** when it is something the party *does* ("until they escape", "until they spend a Quick Action to brush off the scarabs"), because that is counterplay and a duration in one clause. **Never spell `briefly` out longhand** as "until the end of their next turn": that is imported phrasing for a duration Nexus already has a keyword for. *(Owner confirmation, 2026-08-09, milestone 04 §1.1.)*
-
-**19. SL escalation has one canonical wording: `increase the SL by one step (max. critical)`.** Copy it verbatim, never paraphrase. `SL` is published and defined in `docs/01-basic-rules/01-how-to-roll.md`, so the abbreviation costs the reader nothing, and the parenthetical carries the cap in two words. The longhand it replaces — "increases the success level of a hit by one step, to a maximum of a critical hit" — is twenty-two words for the same rule on a card where space is the scarce resource. The same discipline applies to every recurring mechanic: **once a pattern has a canonical form, drift is a defect**, because a GM who has read the phrase once should recognise it instantly rather than re-parse a variant. *(Owner ruling, 2026-08-09.)*
-
-**20. A real animal keeps its real name; invented names are for invented creatures.** Call a crocodile a crocodile, a jackal a jackal, a wolf a wolf. An evocative name on a creature the reader already knows ("Marsh Lurker" for a crocodile) is a promise the stat block cannot keep — the table braces for something strange and gets an animal — and it spends a good name on the one creature that needed no help being understood. Qualifiers that carry real mechanical information are fine and often necessary (`Young Crocodile`, `Dire Hyena`), because they place the creature on its lineage's tier ladder. **Save invented names for Magical Beasts, Horrors, Spirits and Divine Beasts**, where the name is the reader's only clue what they are looking at. Corollary: a good invented name that gets used on an ordinary animal is gone — "Marsh Lurker" is now reserved for a pseudo-animal that is genuinely not of this world. *(Owner ruling, 2026-08-09.)*
-
-**21. Magical naturalism: an invented animal is a real one plus exactly one deviation, and the name states it.** The setting's mundane ecological niches are filled by animals that do not exist on Earth, built by one recipe (worldbuilding vault, `04 Natur/Bestiarium`, owner-supplied 2026-08-09):
-
-> *Einfache Herangehensweise für magischen Naturalismus: Tiere mit einer ungewöhnlichen physischen Eigenschaft. Entweder von einem anderen gewöhnlichen Tier (Schuppenwolf, Hornschlange, …) oder mit unnatürlichen Eigenschaften (Blitzechse, Kristalleber, …).*
->
-> *Simple approach to magical naturalism: animals with one unusual physical trait. Either borrowed from another ordinary animal (scale-wolf, horn-snake) or outright unnatural (lightning-lizard, crystal-boar).*
-
-Three things follow, and all three are load-bearing:
-
-- **Two rungs, and they decide the type.** A **borrowed** trait (scale-wolf, horn-snake) is still a `Beast` — a species that does not exist here, with no magic in its biology. An **unnatural** trait (lightning-lizard, crystal-boar) is a `Magical Beast`, usually subtype `Primal` or `Hybrid`, because the magic *is* the biology. The recipe hands you the type boundary for free.
-- **One deviation, and it is the whole mechanical identity.** The deviation is the creature's ability, singular. A scale-wolf is a wolf with an AV that does not belong at its tier; a horn-snake is a snake whose bite has a charge behind it. This suits tiers 0–3 exactly, where the slot budget is one or two and a kit would not fit anyway.
-- **The name states the deviation** — `<trait><animal>`, compound, plain. This is the naming form the setting wants for invented animals, and it is *stronger* than an evocative name like "Marsh Lurker": the compound tells a player at a glance what is different and therefore what to expect, which is principle 20's requirement pointed the other way. Reserve purely evocative names for creatures whose whole point is that you cannot tell what they are — Horrors, Spirits, Divine Beasts.
-
-**Why this matters at roster scale:** a Bronze Age fantasy bestiary drawn from an Earth field guide reads as a zoo. Filling the low-tier `Beast` slots with invented species is what makes the wilderness feel like somewhere else, and it costs nothing mechanically, since the chassis is the same animal chassis either way. *(Owner direction, 2026-08-09, from the worldbuilding vault.)*
-
-**22. Dinosaurs are ordinary Beasts with a `Saurian` subtype, and never carry their scientific name.** They are a normal part of the world's wildlife, not monsters and not magical: type `Beast`, subtype `Saurian`, sitting **alongside** `Reptile` rather than under it, since filing a triceratops as a reptile shelves it next to a viper. Entry names are what the setting's people would call them — `Shieldhead`, `Sicklefoot`, `Thunderfoot`, `Tyrant`, `Marsh Lurker` — in the manner of Gothic's Scavenger and Shadowbeast. **Never a binomial**: "Triceratops" is a 19th-century Greek coinage by a paleontologist, and it breaks the pre-scientific register of principle 12 exactly as "Kinetic Field" would break a spell's.
-
-This looks like it contradicts principle 20 and instead sharpens it. The rule underneath 20 is **use the name the setting's people would use** — for a crocodile that *is* "crocodile", because a villager in Atakhet has the word; for a triceratops it is not "Triceratops", because nobody in that world does. A shared word survives the test, an anachronism fails it.
-
-**The subtype carries recognition so the name does not have to.** A renamed dinosaur is unidentifiable on its own, which is the real objection — `Large Beast (Saurian)` on the card answers it, and `lore` carries a one-line physical description. Recognition lives in the schema, flavour lives in the name.
-
-**Vary the naming register.** Some names say what it does to you, some are simply what people call it. All-compound naming is the same monotony trap as every swarm reaching for `distracted`. *(Owner ruling, 2026-08-09, D-053.)*
-
-**23. A creature's weapon may have any name, but its damage and properties must be a catalog entry's.** `docs/04-equipment/03-weapons.md` explicitly invites invented names — "invent a name of your own and tell the table what it counts as" — so *Raiding Axe* and *Canyon Sword* are legal as names. What is not legal is inventing the **stat line** behind them. A creature's weapon is looted (`02-creature-rules.md` § Looting Equipment), so an invented property list changes the item the moment it leaves the corpse, and the party has no way to know what they picked up. Every creature weapon resolves to a row of the catalog: its weapon damage, its full property list, verbatim.
-
-Three checks, in order:
-
-1. **Use a published regional name if one exists.** `Arms of the Regions` already names the same weapon for every culture, so a Zakhar orc of the Eternal Desert carries a *Crescent Axe* (Battleaxe) and a *Chariot Sword* (Longsword). This is free flavour with zero invention, and it ties the creature to a place.
-2. **Copy the whole property list**, including the unglamorous ones. A javelin is `bundle (d4), light, pierce, thrown (short/long)` — the bundle is what the party inherits, and it is the reason a raider who threw javelins all fight has none left to loot.
-3. **Take the weapon damage from the catalog, not from the tier.** A javelin is 2 where the tier says 3, and a Light Shield is 2 — so those attacks land *below* the tier baseline on purpose. Equipment carrying its real number is one of the few ways a creature's damage legitimately varies without a tier adjustment.
-
-The same audit applies to armor and shields, and it pays for numbers that otherwise have no stated source: a Light Shield's `AV +1` and `parry +1` are exactly where a shield-carrying creature's extra point of each comes from. *(Owner ruling, 2026-08-09.)*
-
-**24. Check the universal Action and Quick Action lists before writing an ability.** `docs/05-combat/01-combat-scenes.md` gives every creature a full menu — `Protect Ally`, `Help`, `Evade`, `Guard`, `Opportunity Attack`, `Defend`, `Grapple`, `Disarm`, `Dash` — and an ability that restates one of them spends a slot on something the creature could already do for free. The Zakhar Band-Leader's `Take It On The Shield` was `Protect Ally` reworded, badly: the published version has the attacker **re-roll against the protector's Defense**, so stepping into a blow can fail, where the hand-written one silently transferred a hit that had already landed.
-
-The fix is the general pattern: **an ability that overlaps a universal action should improve it rather than replace it**, written as a Passive — *"When this creature uses Protect Ally, they take half the damage"*. That earns the slot, keeps the published sequencing, and gives the GM one rule instead of two similar ones.
-
-**A `Quick Action` qualifier already means "once between your turns"** — *"You can use one Quick Action on your turn or between your turns. You regain access to your Quick Action at the end of each of your turns."* Writing `(Quick Action, once between your turns)` charges the creature twice for one restriction. Limiters still belong in the **qualifier**, never trailing the effect text, but only when they add something the qualifier does not already carry. *(Owner ruling, 2026-08-09.)*
-
-**25. Folk inheritance is bounded by the folk entry, and Nexus is conservative about senses.** A humanoid creature takes the abilities its folk actually has in `docs/02-adventurers/01-folk.md` and **nothing else**. The trap is D&D reflex, and vision is where it bites hardest: exactly **four of the twelve folk** get a vision trait — `Night Vision` for Elf, Goblin and Catfolk, `Dwarven Sight` for Dwarf. Orcs have `Orcish Fury` and `Pride above Death`, and no darkvision of any kind. Seeing in the dark is a distinguishing trait of a few peoples here, not a default for anything non-human, and handing it out erodes the thing that makes those four folk distinct.
-
-The same conservatism applies outside the folk: undead, constructs and beasts get a sense only when something in the rules or their biology grants it. A corpse that walks is not thereby able to see in the dark. *(Owner ruling, 2026-08-09.)*
-
-**26. Every trigger opens `When this creature suffers a Wound, …`, and Lords take the ordinal.** "Loses their first life pool" is **jargon from this skill and the old analysis document**, not rules text — `02-creature-rules.md` only ever says a creature *suffers a Wound* and *regains all of their HP*. A stat block speaks the published vocabulary or the GM has to translate it at the table.
-
-An **Elite** needs no ordinal, by arithmetic: it has two Wounds and the second one kills, so exactly one Wound can trigger anything. A **Lord does** — `their first Wound`, `their second Wound` — because three Wounds against two mandatory triggers would otherwise fire both twice and dump the creature's entire second act on the table at once. Staged ordinals turn the two required triggers into an escalation, which is what the category is for.
-
-The broader habit this is an instance of: **design vocabulary and published vocabulary are different registers, and only one of them goes on a card.** Life pools, chassis, rungs, and tier-adjustment are how designers talk to each other. Wounds, HP, boons and Success Levels are how the game talks to its table. *(Owner ruling, 2026-08-09.)*
-
-**27. An Elite or Lord Trigger escalates. It is never a downgrade, and never a rule the game already has.** The category exists to declare the second half of a fight: a power surge, an ability unlock, or an environmental change. A trigger that makes the encounter *easier* — the boss's allies flee, a defence drops, the creature disengages — inverts the one job the category has, however well it reads as fiction. "It shifts combat dynamics" is true of any change and is not the test. **The test is whether the party is in more trouble after it fires than before.**
-
-The second half of the rule catches the same mistake from the other side. Before writing a trigger, check whether the published rules already produce the effect. A band breaking when its leader falls is **Morale**, which already fires when *"all elite creatures or lords are dead or otherwise removed from the fight"* — writing that as a trigger spends the creature's defining slot restating a rule every GM already runs.
-
-**State a state, never choreography.** A trigger that says *what the creature does* — throws its shield aside, leaps to the altar, shatters the pillar — makes every copy of that creature perform the identical beat. Three band-leaders in a campaign, three identical shields hitting three identical patches of ground. Write what is now **true** of the creature and leave how it looks to the GM and the moment. The side benefit is reuse: a state-shaped trigger drops onto any creature of its kind at its own tier, scaling only its numbers.
-
-**Express the surge in boons, banes and flat damage — never in AV or Defense.** A trigger that sets "their AV becomes 1" or grants "+2 Parry for the rest of the scene" hands the GM a floating number to remember and re-apply every round. Boons and banes are applied once, at roll time, by whoever is rolling; flat damage is added once on a hit. Nothing survives between turns. The Zakhar Band-Leader's `Blood Up` is the model: **+1 boon on its melee attacks, +1 boon on melee attacks against it, +2 damage on melee hits** — more dangerous and easier to kill, in three clauses with no bookkeeping, and the flat bonus sits at principle 17's rung-1 cap of half the tier's weapon damage. **The trigger's opening clause explains the cost.** It is not mood-setting before the numbers start. "They stop fighting carefully" is accurate and dead; "the rage takes them and they stop caring whether they live" is the same rule with the fiction restored, and it makes the drawback self-evident — a reader who has taken in that sentence already knows why melee attacks against the creature gain a boon. Write the opening so the **cost** reads as something the creature chose, not something the designer imposed. *(Owner rulings, 2026-08-09.)*
-
-**28. When two creatures share a sentence, name the subject — do not reach for a pronoun.** The house rule that creatures are **they/their/them** stands and is not the problem. The problem is that *any* pronoun fails once a second creature is in scope: "When this creature uses Protect Ally, **they** take half the damage" could be the protector or the ally, and swapping to "it" would only disambiguate by accident — it reads as the protector *because the ally happens to be a person*, and breaks the moment both are beasts.
-
-**Write `This creature` as the subject instead, and the pronoun usually disappears along with a word or two.** The published trait library already does this and never reaches for a pronoun at all: `Natural Climber`, `Undead Nature` and `Keen Scent` each open with "This creature". The fix is normally shorter than the ambiguity:
-
-> ~~When this creature uses Protect Ally, they take half the damage from the attack.~~
-> **When using Protect Ally, this creature takes half damage.**
-
-**And order the sentence general to specific:** the situation first, the detail last. "This creature takes half damage when using Protect Ally" is unambiguous but makes the reader hold a number before learning what it belongs to. Leading with the origin lets a GM scanning a stat block discard the line the moment it does not apply. This is the ability template (`trigger, effect, limit`) at sentence scale, so a line that opens with its effect has usually inverted the template rather than found an exception to it.
-
-`they/their/them` stays correct wherever **only one creature is in scope** — `Blood Up`'s "they stop fighting carefully", `Grave-Bound`'s "they rise again at the next sunset" — and everywhere in lore and flavour text. Never use `it/its` for a creature: that is reserved for objects, zones, areas and spells. *(Owner ruling, 2026-08-09.)*
-
-**29. Lore prose: write for a middle schooler — one idea per sentence, concrete first, wit last.** The register is set in [../../game-basics.md](../../game-basics.md#reading-level) and applies to every design skill: plain words, short clauses, and a hard word only when it is the precise one. `sinew` and `signet` stay; a `bund` is a bank and `offal` is guts. `narrative`, `ecology` and `tactics` are the only free prose in the creature schema, so they are the only place the writing can drift. The recurring defect is a sentence carrying three ideas — a subject, a participial aside, and a second clause bolted on with "and" — which reads as sophistication and lands as work. **Long sentences are fine when they are long about one thing.**
-
-**Open on the concrete and close on the turn.** The first sentence is an establishing shot: what a person would actually see. An aphorism in the opening slot makes a reader decode before they have anything to decode with. Put the dry observation last, where it has an image to land on — the joke is not lost, it is aimed.
-
-**Never make the reader unpack an idiom to reach a fact.** "Keeping the distance a thrown stone travels" is a riddle whose answer is "just out of reach". Ornament belongs on things the reader already understands, never on the thing they are trying to learn. Same for meta-phrasing that narrates the sentence you are writing ("which in practice means") — saying the thing is always shorter.
-
-This is **not** an instruction to write flatly. The worked before/after in [lore-schema.md](lore-schema.md) keeps the original's joke word for word and simply moves it behind the image. *(Owner ruling, 2026-08-09.)*
-
-## Ported Principles
-
-**8. Check every condition against its published definition; parameterized conditions carry their (X).** Never reason about a condition from its name or its D&D counterpart — open `docs/05-combat/04-conditions.md` and design against what it actually does. The canonical trap: Nexus **stunned** does not disable a creature (they still move or act, at +1 bane); full incapacitation is **paralyzed** alone, which sits a full severity tier higher and needs harsher gates (rolled, limited, repeat-save escape valves). Write "poisoned for a short duration" with the save spelled out, "burning (4)", never a bare adverb. *(spell principle 73; talent principle 26)*
-
-**9. High-impact conditions never ride automatic, no-roll triggers.** A creature ability that inflicts frightened or stronger gives the target a save (Attribute + Skill vs. the ability TN) or requires the creature to hit with a rolled attack. Automatic on-proximity or on-turn-start hard control with no counter-roll is oppressive at the table. Low-impact conditions (distracted, briefly slowed) may ride passively. *(spell principle 88; talent principle 9)*
-
-**10. Defensive abilities and immunities need counterplay.** Every defensive ability leaves an opening: a limited frequency (once between turns), a stance the party can break, a fictional bypass (fire negates the regeneration), or degradation under pressure. Blanket immunity with no circumvention is an invisible invincibility wall — and a single-use "I win" ability is the same mistake on offense. Effects must be counterable in both directions. *(spell principle 77; talent principle 5)*
-
-**11. Limits live in the fiction, not game structure.** Creature ability restrictions are diegetic: terrain (sandy ground, water, darkness), state (below half HP, enraged, first pool depleted), equipment, time of day. Never scope to meta-constructs ("only during encounter turns"). Per-scene/between-turns frequency limits are the sanctioned pacing exception, stated plainly. *(spell principle 12; talent principle 12)*
-
-**12. The name is a promise, spoken in a pre-scientific register.** An ability's effect must fit what its name leads the table to expect, and the name covers every mode. Names and flavor use Bronze Age vocabulary — no modern physics or science terms — but stay clear and functional first: function in the name, poetry in the flavor. *(spell principles 61, 91; talent principle 16)*
+- **19.** SL escalation has one canonical wording: `increase the SL by one step (max. critical)`.
+- **28.** When two creatures share a sentence, name the subject — do not reach for a pronoun.
+- **29.** Lore prose: write for a middle schooler — one idea per sentence, concrete first, wit last.
+- **30.** Read every prose sentence aloud, and fix what the mouth stumbles on.
+- **31.** Lore prose has no modern narrator. Never debunk the setting's superstitions — record them.
+- **32.** Say it once. Never add the sentence that defends the first one.
+- **33.** `tactics` is a GM briefing with the creature as its subject. No staging, no stating the obvious, no player advice.
 
 ## Appending a new principle
 
 When the owner corrects or refines a creature design decision in session:
 
-1. Take the next free number (currently next: **30**).
-2. Append the full principle under the matching section above (numbered, bolded one-line rule, then reasoning, then owner-ruling provenance).
-3. If it is frequently load-bearing, add its one-line hook to the Design Principles section in [../SKILL.md](../SKILL.md).
-4. Update the "currently next" number in step 1. Never renumber.
+1. Take the next free number (currently next: **34**).
+2. **Write the full principle into the phase file it belongs to** — `principles/chassis.md`,
+   `identity.md`, `abilities.md` or `writing.md` (numbered, bolded one-line rule, then reasoning,
+   then owner-ruling provenance).
+3. **Add its one-line summary to "The full index" above**, under the same phase.
+4. If it is frequently load-bearing, add its one-line hook to the Design Principles section in [../SKILL.md](../SKILL.md).
+5. Update the "currently next" number in step 1. Never renumber, and never move a principle between files without updating both the index and every `principle N` cross-reference.
 
 If a correction refines a *ported* principle, note the creature-side ruling here under the ported entry rather than editing the spell-design or talent-design files — each skill owns its own provenance chain. If a correction changes a *numeric chassis rule*, it belongs in [stat-tables.md](stat-tables.md) instead, with a pointer here only if it encodes a judgment call.
+

@@ -26,13 +26,17 @@ const FIXTURES: unknown[] = [
 		attacks: [
 			{ name: 'Claw', properties: ['agile', 'light'], text: '4/6/8 damage.' },
 		],
-		abilities: [{ name: 'Keen Scent', qualifier: 'Passive', text: 'Smells you.' }],
+		abilities: [
+			{ name: 'Keen Scent', qualifier: 'Passive', text: 'Smells you.' },
+		],
 	},
 	{
 		name: 'Manticore',
 		tier: 3,
 		category: 'Elite',
-		abilities: [{ name: 'Savage Fury', qualifier: 'Elite Trigger', text: 'Rage.' }],
+		abilities: [
+			{ name: 'Savage Fury', qualifier: 'Elite Trigger', text: 'Rage.' },
+		],
 	},
 	{
 		name: 'Manticore',
@@ -83,7 +87,9 @@ describe('creatureEntries', () => {
 	it('sorts by tier then name', () => {
 		const { entries } = creatureEntries(FIXTURES)
 		const keys = entries.map((e) => [e.creature.tier, e.creature.name] as const)
-		const sorted = [...keys].sort((a, b) => a[0] - b[0] || a[1].localeCompare(b[1]))
+		const sorted = [...keys].sort(
+			(a, b) => a[0] - b[0] || a[1].localeCompare(b[1]),
+		)
 		expect(keys).toEqual(sorted)
 	})
 
@@ -104,7 +110,9 @@ describe('creatureEntries', () => {
 			name: 'X',
 			tier: 1,
 			category: 'Basic',
-			attacks: [{ name: 'Bite', text: '4/6/8 fire damage. On a strong hit, burn.' }],
+			attacks: [
+				{ name: 'Bite', text: '4/6/8 fire damage. On a strong hit, burn.' },
+			],
 		})
 		expect('creature' in adapted && adapted.creature.attacks[0]).toEqual({
 			name: 'Bite',
@@ -117,7 +125,9 @@ describe('creatureEntries', () => {
 
 	it('carries an attack sub-list through', () => {
 		const { entries } = creatureEntries(FIXTURES)
-		const withRays = entries.find((e) => e.creature.tier === 4 && e.creature.attacks.length > 0)!
+		const withRays = entries.find(
+			(e) => e.creature.tier === 4 && e.creature.attacks.length > 0,
+		)!
 		const withDetails = withRays.creature.attacks.find((a) => a.details)
 		expect(withDetails?.details?.length).toBeGreaterThan(1)
 	})
@@ -137,7 +147,9 @@ describe('creatureEntries', () => {
 		// not a key even inside one catalogue.
 		const { entries } = creatureEntries(FIXTURES)
 		expect(new Set(entries.map((e) => e.id)).size).toBe(entries.length)
-		expect(entries.filter((e) => e.creature.name === 'Manticore')).toHaveLength(2)
+		expect(entries.filter((e) => e.creature.name === 'Manticore')).toHaveLength(
+			2,
+		)
 	})
 
 	it('reports a malformed entry rather than dropping it silently', () => {

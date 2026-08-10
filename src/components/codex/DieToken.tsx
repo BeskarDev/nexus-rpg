@@ -92,9 +92,7 @@ export default function DieToken({ value, className, size }: DieTokenProps) {
 		<span
 			className={`${styles.token}${className ? ' ' + className : ''}`}
 			style={
-				size
-					? ({ '--die-token-size': size } as React.CSSProperties)
-					: undefined
+				size ? ({ '--die-token-size': size } as React.CSSProperties) : undefined
 			}
 		>
 			<svg

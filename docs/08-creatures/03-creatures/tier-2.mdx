@@ -8,3 +8,240 @@ toc_max_heading_level: 3
 {/* GENERATED from src/utils/data/json/creatures.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}
 
 Tier 2 creatures are slightly more dangerous, including stronger undead, minor magical beings, and organized humanoid fighters.
+
+<CreatureStatBlock
+	type="Small Automaton (Golem, Mindless)"
+	tier={2}
+	category="Basic"
+	hp="20"
+	av="3 (natural heavy)"
+	str="d8"
+	agi="d6"
+	spi="d4"
+	mnd="d4"
+	parry={7}
+	dodge={9}
+	resist={8}
+>
+
+### Clay Servant
+
+<StatBlockTrait label="Skills">Fighting (1), Stealth (2)</StatBlockTrait>
+
+<StatBlockTrait label="Immunities"><TraitItem>bleeding</TraitItem><TraitItem>charmed</TraitItem><TraitItem>confused</TraitItem><TraitItem>frightened</TraitItem><TraitItem>poisoned</TraitItem><TraitItem>unconscious</TraitItem></StatBlockTrait>
+
+<StatBlockTrait label="Weaknesses"><TraitItem>blast</TraitItem></StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Fist</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="8/12/16" />
+- <EntryName>Pull Down</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="6/8/10" /> On a strong or critical hit, the target falls prone.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>False Appearance</EntryName> <StatBadge>Passive</StatBadge> While this creature does not move, they are indistinguishable from ordinary grave goods. A creature searching the room can tell the difference with a successful Mind + Perception roll vs. TN 8.
+- <EntryName>Ambush Predator</EntryName> <StatBadge>Passive</StatBadge> When this creature hits an enemy that is unaware of them with an attack for the first time during a scene, increase the SL of their attack by one step (max. critical success).
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Medium Undead (Corporeal, Intelligent)"
+	tier={2}
+	category="Basic"
+	hp="20"
+	av="2 (natural light)"
+	str="d6"
+	agi="d8"
+	spi="d6"
+	mnd="d4"
+	parry={8}
+	dodge={9}
+	resist={7}
+>
+
+### Ghoul
+
+<StatBlockTrait label="Skills">Fighting (1), Perception (2), Stealth (2)</StatBlockTrait>
+
+<StatBlockTrait label="Immunities"><TraitItem>bleeding</TraitItem><TraitItem>poisoned</TraitItem><TraitItem>unconscious</TraitItem></StatBlockTrait>
+
+<StatBlockTrait label="Weaknesses"><TraitItem>radiant</TraitItem></StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Claws</EntryName> <StatBadge>agile</StatBadge><StatBadge>light</StatBadge><StatBadge>slash</StatBadge> <DamageLadder values="6/8/10" /> On a strong or critical hit, the target is briefly dazed, or stunned for a short duration instead if they are already dazed. A stunned target can roll Strength + Fortitude vs. TN 8 at the end of each of their turns to end the condition early.
+- <EntryName>Bite</EntryName> <StatBadge>agile</StatBadge><StatBadge>pierce</StatBadge> <DamageLadder values="8/12/16" />
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Feeding Frenzy</EntryName> <StatBadge>Passive</StatBadge> When this creature hits a stunned creature with their Bite, they regain 4 HP.
+- <EntryName>Undead Nature</EntryName> <StatBadge>Passive</StatBadge> This creature doesn't need to breathe, eat, drink, or sleep.
+- <EntryName>Keen Scent</EntryName> <StatBadge>Passive</StatBadge> This creature gains +1 boon on Perception rolls based on smell.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Medium Humanoid (Human)"
+	tier={2}
+	category="Basic"
+	hp="20"
+	av="2 (light armor)"
+	str="d8"
+	agi="d6"
+	spi="d6"
+	mnd="d4"
+	parry={9}
+	dodge={6}
+	resist={9}
+>
+
+### Polearm Soldier
+
+<StatBlockTrait label="Skills">Fighting (1), Athletics (2), Insight (2)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Glaive</EntryName> <StatBadge>reach</StatBadge><StatBadge>slash</StatBadge><StatBadge>two-handed</StatBadge> <DamageLadder values="8/12/16" />
+- <EntryName>Sweeping Blow</EntryName> <StatBadge>reach</StatBadge><StatBadge>slash</StatBadge><StatBadge>two-handed</StatBadge> This creature can only use this attack if they skip all Movement this turn, before and after the attack. 6/8/10 damage against every creature within close range.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Close the Ranks</EntryName> <StatBadge>Passive</StatBadge> While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane.
+- <EntryName>Over the Shields</EntryName> <StatBadge>Passive</StatBadge> While another creature with `Close the Ranks` is within melee range of this creature, this creature's attacks do not suffer the reach bane.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Medium Humanoid (Human)"
+	tier={2}
+	category="Basic"
+	hp="20"
+	av="2 (light armor)"
+	str="d8"
+	agi="d6"
+	spi="d6"
+	mnd="d4"
+	parry={7}
+	dodge={9}
+	resist={8}
+>
+
+### Slinger
+
+<StatBlockTrait label="Skills">Fighting (1), Athletics (2), Perception (2)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Sling</EntryName> <StatBadge>ammo</StatBadge><StatBadge>crush</StatBadge><StatBadge>simple</StatBadge><StatBadge>thrown (short/long)</StatBadge><StatBadge>two-handed</StatBadge> <DamageLadder values="7/10/13" />
+- <EntryName>Shortsword</EntryName> <StatBadge>agile</StatBadge><StatBadge>light</StatBadge><StatBadge>pierce</StatBadge> <DamageLadder values="5/7/9" />
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Close the Ranks</EntryName> <StatBadge>Passive</StatBadge> While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane.
+- <EntryName>Ranging Shot</EntryName> <StatBadge>Passive</StatBadge> On a strong or critical hit with a ranged weapon, the target suffers marked (2).
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Medium Humanoid (Human)"
+	tier={2}
+	category="Basic"
+	hp="20"
+	av="3 (light armor and shield)"
+	str="d8"
+	agi="d6"
+	spi="d6"
+	mnd="d4"
+	parry={9}
+	dodge={7}
+	resist={8}
+>
+
+### Spearman
+
+<StatBlockTrait label="Skills">Fighting (1), Athletics (2), Perception (2)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Spear</EntryName> <StatBadge>pierce</StatBadge><StatBadge>reach</StatBadge><StatBadge>versatile (+1)</StatBadge> <DamageLadder values="7/10/13" />
+- <EntryName>Shield Bash</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="6/8/10" /> On a strong or critical hit, the target falls prone.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Close the Ranks</EntryName> <StatBadge>Passive</StatBadge> While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane.
+- <EntryName>Braced Spear</EntryName> <StatBadge>Passive</StatBadge> When using Opportunity Attack with their Spear, this creature deals +2 damage and the target's Movement ends.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Medium Humanoid (Orc)"
+	tier={2}
+	category="Elite"
+	hp="2x20"
+	av="3 (light armor and shield)"
+	str="d8"
+	agi="d6"
+	spi="d6"
+	mnd="d4"
+	parry={9}
+	dodge={7}
+	resist={8}
+>
+
+### Orc Band-Leader
+
+<CreatureLore>
+
+The one who chose the village, and the one who will decide when it is finished. They have ridden this country for twenty years and have never once fought to the last orc. That is why they are still the one choosing.
+
+<LoreSection label="Ecology"><LoreTag>Wastes</LoreTag><LoreTag>Desert</LoreTag><LoreTag>Steppe</LoreTag><LoreTag>River</LoreTag><LoreTag>Farmland</LoreTag><LoreTag>Settlement</LoreTag> A band-leader holds the band by being right about what a raid is worth, not by being the strongest in it. They know which villages pay, which have a garrison within a day, and which headman will talk. Most have a name in the country they ride. Some have an understanding with the people they take from, renewed every harvest and kept on both sides more often than either would admit. A band that loses their leader does not usually pick another that season. They go home.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>1.85 m tall</LoreTag><LoreTag>105 kg</LoreTag><LoreTag>Adult at 14, old at 45, and 60 years is a long life</LoreTag> The same canyon holds raise the same bands, and a leader is usually somebody every raider behind them has known since childhood. Most are between 35 and 50, which in Zakhar terms is late enough to be listened to and early enough to still ride.</LoreSection>
+
+<LoreSection label="Tactics">They stay behind the line and run it. `Fight Where I Point` sets up whichever raider is best placed. `Take It On The Shield` puts the leader in the way of a blow meant for one of their raiders. With no raiders left to direct, they fight plainly. If they fall first, the band's nerve goes with them and the raid is usually over. Wounding them changes the fight rather than ending it. `Blood Up` takes a careful commander and turns them into something that trades hits, so the second half is more dangerous and much shorter. **They can be bought at any point before that.** A party that offers the grain is taking the deal the leader would have proposed themselves.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Rich"><TreasureRow kind="Weapon" value="175 coins">**Battleaxe** Battleaxe, Quality 2, damaged. The haft is wound in silver wire.</TreasureRow><TreasureRow kind="Armor" value="150 coins">**Faced shield** Light Shield, Quality 2, damaged. Painted with the band's mark, which every village in the country knows on sight.</TreasureRow><TreasureRow kind="Valuables" value="120 coins">**Three seal rings** River-city seals, none of them theirs, taken over three seasons. Two of the owners are still alive.</TreasureRow><TreasureRow kind="Valuables" value="200 coins">**Silver arm rings** Worn as a record of raids. Taking them off a living leader is an insult.</TreasureRow><TreasureRow kind="Supplies" value="180 coins">**Wastes-crossing kit** 12 x Simple Rations (d4). Where the band was going next.</TreasureRow><TreasureRow kind="Relic">**Agreement tablet** Incised clay with two marks, a village and a band. It proves the raids were arranged.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterGroup name="Harvest raid">1 [Orc Band-Leader](/docs/creatures/creatures/tier-2#orc-band-leader) and 6-10 [Orc Raider](/docs/creatures/creatures/tier-1#orc-raider)</EncounterGroup><EncounterGroup name="Full band">1 [Orc Band-Leader](/docs/creatures/creatures/tier-2#orc-band-leader) and 20-40 [Orc Raider](/docs/creatures/creatures/tier-1#orc-raider)</EncounterGroup></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (1), Athletics (2), Insight (2), Survival (2)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Battleaxe</EntryName> <StatBadge>slash</StatBadge><StatBadge>versatile (+1)</StatBadge> <DamageLadder values="7/10/13" />
+- <EntryName>Shield Bash</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="6/8/10" /> Only against a target within melee range of an ally. On a strong or critical hit, the target falls prone.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Orcish Fury</EntryName> <StatBadge>Passive</StatBadge> When this creature hits with a melee weapon and rolls a critical success, add their weapon damage an additional time to the total damage.
+- <EntryName>Fight Where I Point</EntryName> <StatBadge>Quick Action</StatBadge> One ally within short range gains +1 boon on their next attack, and on a hit the target is briefly slowed.
+- <EntryName>Take It On The Shield</EntryName> <StatBadge>Passive</StatBadge> When using Protect Ally, this creature takes half damage.
+- <EntryName>Blood Up</EntryName> <StatBadge>Elite Trigger</StatBadge> When this creature suffers a Wound, the rage takes them and they stop caring whether they live. For the rest of the scene their melee attacks gain +1 boon and deal +2 damage, and melee attacks against them gain +1 boon.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
