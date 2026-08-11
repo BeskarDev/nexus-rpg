@@ -25,11 +25,11 @@
 	},
 	{
 		"name": "Blindsight (close)",
-		"text": "This creature can perceive the location of creatures and objects within range that aren’t behind full cover."
+		"text": "This creature perceives the location of creatures and objects within close range without relying on sight. Full cover blocks this sense."
 	},
 	{
 		"name": "Blindsight (medium)",
-		"text": "This creature can perceive it‘s surroundings at medium range without relying on sight."
+		"text": "This creature perceives the location of creatures and objects within medium range without relying on sight. Full cover blocks this sense."
 	},
 	{
 		"name": "Burrow",
@@ -49,15 +49,15 @@
 	},
 	{
 		"name": "Dive Attack",
-		"text": "After flying at least a short distance downwards, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit)."
+		"text": "After flying at least a short distance downwards, this creature gains +1 boon on their next attack during the same turn. On a hit, increase the SL by one step (max. critical hit)."
 	},
 	{
 		"name": "Earth Glide",
-		"text": "This creature can burrow through natural earth and stone as part of it’s normal Movement."
+		"text": "This creature can burrow through natural earth and stone as part of their normal Movement."
 	},
 	{
 		"name": "Echolocation (medium)",
-		"text": "This creature can perceive its surroundings without relying on sight within range, even around corners or behind cover."
+		"text": "This creature perceives the location of creatures and objects within medium range without relying on sight, including around corners and behind full cover. While this creature is deafened, they lose this sense."
 	},
 	{
 		"name": "Fast Movement",
@@ -65,11 +65,11 @@
 	},
 	{
 		"name": "Fire Form",
-		"text": "This creature can move through any space as narrow as a keyhole. This creature is immune against fire damage and burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers it’s Tier x 2 fire damage (ignore AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignore AV) each turn doing so."
+		"text": "This creature can move through any space as narrow as a keyhole. This creature is immune against fire damage and burning. This creature illuminates the area in short distance around them in bright light. If this creature is hit by an attack at melee range, the attacker suffers their Tier x 2 fire damage (ignore AV). If this creature comes into contact with a large amount of water, they take 5 damage (ignore AV) each turn doing so."
 	},
 	{
 		"name": "Flying (Wings)",
-		"text": "This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn."
+		"text": "This creature can fly with +1 Movement per turn. If on the ground, they can’t use more than 1 Movement per turn."
 	},
 	{
 		"name": "Flying (hover)",
@@ -77,11 +77,11 @@
 	},
 	{
 		"name": "Gore Attack",
-		"text": "After moving at least a short distance in a straight line, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit)."
+		"text": "After moving at least a short distance in a straight line, this creature gains +1 boon on their next attack during the same turn. On a hit, increase the SL by one step (max. critical hit)."
 	},
 	{
 		"name": "Hard Shell",
-		"text": "This creature can use the Guard Quick Action treating it’s shell as a shield."
+		"text": "This creature can use the Guard Quick Action treating their shell as a shield."
 	},
 	{
 		"name": "Intimidating Roar",
@@ -97,7 +97,7 @@
 	},
 	{
 		"name": "Magic Sense (long)",
-		"text": ". This creature can intuitively sense sources of magic within long range."
+		"text": "This creature can intuitively sense sources of magic within long range."
 	},
 	{
 		"name": "Natural Climber",
@@ -113,15 +113,15 @@
 	},
 	{
 		"name": "Pounce",
-		"text": "If this creature spend Movement towards it’s target during the turn it attacks, it gains +1 boon on the attack. Also on a strong or critical hit against a creature of equal or smaller Size, the target is knocked prone."
+		"text": "If this creature spend Movement towards their target during the turn they attack, they gain +1 boon on the attack. Also on a strong or critical hit against a creature of equal or smaller Size, the target is knocked prone."
 	},
 	{
 		"name": "Powerful Build",
-		"text": "Add +2 to this creature’s encumbrance and over-encumbrance limits."
+		"text": "Add +2 to this creature’s carrying capacity."
 	},
 	{
 		"name": "Relentless",
-		"text": "When this creature would suffer a Wound, it can choose to ignore it. This creature can use this ability once per day."
+		"text": "When this creature would suffer a Wound, they can choose to ignore it. This creature can use this ability once per day."
 	},
 	{
 		"name": "Rotting Slowness",
@@ -129,7 +129,7 @@
 	},
 	{
 		"name": "Shell Defense",
-		"text": "As a Quick Action, this creature can withdraw into its shell, gaining the effects of the Guard Quick Action and +2 AV but becoming unable to move or attack until it uses another Quick Action to emerge."
+		"text": "As a Quick Action, this creature can withdraw into their shell, gaining the effects of the Guard Quick Action and +2 AV but becoming unable to move or attack until they use another Quick Action to emerge."
 	},
 	{
 		"name": "Slow Movement",
@@ -149,11 +149,11 @@
 	},
 	{
 		"name": "Sure-Footed",
-		"text": "This creature gains +1 boon on rolls to avoid being knocked prone or pushed. It also ignores difficult terrain from rocky or mountainous areas."
+		"text": "This creature gains +1 boon on rolls to avoid being knocked prone or pushed. They also ignore difficult terrain from rocky or mountainous areas."
 	},
 	{
 		"name": "Swallow",
-		"text": "This creature can only swallow one smaller creature at a time. When doing so, the target is no longer grappled. Instead, the target becomes blinded and restrained. It also takes lasting acid damage equal to normal weapon damage. When this creature takes a Wound or dies, it releases the swallowed creature and they are spit out prone in melee range."
+		"text": "This creature can only swallow one smaller creature at a time. When doing so, the target is no longer grappled. Instead, the target becomes blinded and restrained. The target also takes lasting acid damage equal to normal weapon damage. When this creature takes a Wound or dies, they release the swallowed creature and they are spit out prone in melee range."
 	},
 	{
 		"name": "Tool Usage",
@@ -165,11 +165,11 @@
 	},
 	{
 		"name": "Trample",
-		"text": "When this creature moves through the space of a creature at least one Size smaller, it can make a Stomp attack against that creature as a Quick Action."
+		"text": "When this creature moves through the space of a creature at least one Size smaller, they can make a Stomp attack against that creature as a Quick Action."
 	},
 	{
-		"name": "Tremorsense",
-		"text": "This creature can perceive the location of moving creatures and objects on connected surfaces with it’s own in medium range."
+		"name": "Tremorsense (medium)",
+		"text": "This creature perceives the location of creatures and objects moving on a surface connected to their own within medium range. Anything not in contact with that surface is unseen."
 	},
 	{
 		"name": "Undead Nature",
@@ -181,10 +181,10 @@
 	},
 	{
 		"name": "Water Form",
-		"text": "This creature can move through any space as narrow as one centimetre. If this creature suffers frost damage, it is briefly slowed."
+		"text": "This creature can move through any space as narrow as one centimetre. If this creature suffers frost damage, they are briefly slowed."
 	},
 	{
 		"name": "Web Walker",
-		"text": "This creature can move on webs normally. It also knows the exact location of any creature touching it’s web while standing on it."
+		"text": "This creature can move on webs normally. They also know the exact location of any creature touching their web while standing on it."
 	}
 ]

@@ -24,6 +24,8 @@ import creatureSizes from '../data/json/creature-sizes.json'
 import creatureSubtypes from '../data/json/creature-subtypes.json'
 import creatureTraits from '../data/json/creature-traits.json'
 import creatureTypes from '../data/json/creature-types.json'
+import companionTraits from '../data/json/companion-traits.json'
+import conditions from '../data/json/conditions.json'
 
 const REPO = path.resolve(__dirname, '../../..')
 const JSON_FILE = path.join(REPO, 'src/utils/data/json/creatures.json')
@@ -479,6 +481,7 @@ function validateCreature(entry: unknown, context: string): CreatureRecord {
 		}
 	}
 	if (e.lore !== undefined) validateLore(e.lore, context)
+	validateDesign(e, context)
 	for (const field of ENTRY_FIELDS) {
 		for (const [i, raw] of (e[field] as unknown[]).entries()) {
 			const item = raw as Record<string, unknown>
@@ -489,6 +492,228 @@ function validateCreature(entry: unknown, context: string): CreatureRecord {
 		}
 	}
 	return entry as CreatureRecord
+}
+
+/* ------------------------------------------------------------------ *
+ * Design guards (D-107, D-082, D-101, R1)
+ *
+ * Everything above this point checks that a record can be RENDERED. What
+ * follows checks that it obeys design rules the skill states, because every
+ * rule that lived only in prose has been broken at least once — the limiter
+ * placement three times, the pronoun rule across 17 shared traits.
+ * ------------------------------------------------------------------ */
+
+/** The closed qualifier list. ONE value, never a limiter (D-107). */
+const QUALIFIERS = new Set([
+	'Passive',
+	'Action',
+	'Quick Action',
+	'Elite Trigger',
+	'Lord Trigger',
+])
+
+/** Published damage types (`05-combat/02-attacking.md`). `cold`/`thunder` are D&D. */
+const DAMAGE_TYPES = new Set([
+	'acid',
+	'blast',
+	'fire',
+	'force',
+	'frost',
+	'lightning',
+	'necrotic',
+	'physical',
+	'poison',
+	'psychic',
+	'radiant',
+])
+
+/** Words that precede "damage" without naming a type. */
+const NON_TYPE_DAMAGE_WORDS = new Set([
+	'no',
+	'any',
+	'all',
+	'the',
+	'this',
+	'that',
+	'their',
+	'its',
+	'same',
+	'full',
+	'half',
+	'normal',
+	'weapon',
+	'extra',
+	'additional',
+	'more',
+	'less',
+	'lasting',
+	'falling',
+	'total',
+	'spell',
+	'base',
+])
+
+/**
+ * Words we police in the "is X" position. Restricted to real condition names plus
+ * the invented ones that have actually appeared, so ordinary prose ("is prone to",
+ * "becomes visible") never trips the build.
+ */
+const CONDITION_LIKE = new Set([
+	'cursed',
+	'drained',
+	'weakened',
+	'exhausted',
+	'incapacitated',
+	'petrified',
+	'charmed',
+	'confused',
+	'dazed',
+	'deafened',
+	'distracted',
+	'frightened',
+	'grappled',
+	'hidden',
+	'invisible',
+	'paralyzed',
+	'poisoned',
+	'prone',
+	'restrained',
+	'silenced',
+	'slowed',
+	'staggered',
+	'stunned',
+	'unconscious',
+	'blinded',
+	'burning',
+	'bleeding',
+	'deprived',
+	'marked',
+	'pushed',
+	'suffocating',
+])
+
+const CONDITION_NAMES = new Set(
+	(conditions as { name: string }[]).map((c) => c.name.replace(/\s*\(X\)$/, '')),
+)
+
+/**
+ * "it"/"its" naming a creature. Creatures are they/their/them (CLAUDE.md).
+ *
+ * Deliberately HIGH PRECISION rather than exhaustive: impersonal "it" is ordinary
+ * English ("the moment it costs them anything") and an object referent is correct
+ * ("treating it as difficult terrain"), so the check only fires when "it" is the
+ * SUBJECT of something only a creature does, or possesses something only a
+ * creature has. A rule that blocks the build has to be right every time.
+ */
+const CREATURE_VERB =
+	/\bit\s+(?:can|cannot|can’t|can't|gains?|takes?|makes?|uses?|suffers?|moves?|attacks?|deals?|regains?|releases?|ignores?|perceives?|chooses?|spends?|rolls?|becomes?|loses?|knows?|flies|climbs?|swallows?|withdraws?)\b/i
+
+const CREATURE_POSSESSIVE =
+	/\bit(?:'|’)?s\s+(?:own|next|shell|target|surroundings|Tier|turn|Movement|attack|allies|prey|web|body|jaws|HP|AV)\b/i
+
+function checkPronouns(text: string, context: string): void {
+	for (const re of [CREATURE_VERB, CREATURE_POSSESSIVE]) {
+		const m = text.match(re)
+		if (!m) continue
+		const at = text.indexOf(m[0])
+		fail(
+			context,
+			`"${m[0].trim()}" names a creature — creatures are they/their/them. ` +
+				`Context: "...${text.slice(Math.max(0, at - 30), at + m[0].length + 20).trim()}..."`,
+		)
+	}
+}
+
+/** Rules a record must obey beyond being renderable. */
+function validateDesign(e: Record<string, unknown>, context: string): void {
+	for (const [i, raw] of (e.abilities as unknown[]).entries()) {
+		const a = raw as Record<string, unknown>
+		const q = a.qualifier
+		if (typeof q !== 'string' || !QUALIFIERS.has(q))
+			fail(
+				context,
+				`abilities[${i}] (${a.name}) qualifier must be exactly one of ` +
+					`${[...QUALIFIERS].join(', ')} — got "${String(q)}". A limiter is ` +
+					'the LAST SENTENCE of the text, never the qualifier (D-107)',
+			)
+	}
+	for (const field of ENTRY_FIELDS) {
+		for (const raw of e[field] as unknown[]) {
+			const item = raw as Record<string, unknown>
+			const text = String(item.text)
+			checkPronouns(text, `${context} ${field} "${item.name}"`)
+			for (const m of text.matchAll(/\b(\w+) damage\b/g)) {
+				const word = m[1].toLowerCase()
+				// Quantifiers and references, not types: "no damage", "half damage",
+				// "their weapon damage", "the same damage".
+				if (
+					/^\d+$/.test(word) ||
+					NON_TYPE_DAMAGE_WORDS.has(word)
+				)
+					continue
+				if (!DAMAGE_TYPES.has(word))
+					fail(
+						context,
+						`${field} "${item.name}" uses damage type "${word}", which is not ` +
+							`published. Use one of: ${[...DAMAGE_TYPES].join(', ')}`,
+					)
+			}
+			// Invented conditions are a recurring failure ("cursed", "drained"), and
+			// they arrive in one of the canonical phrasings.
+			for (const m of text.matchAll(
+				/\b(?:is|are|becomes?|remains?)\s+(?:briefly\s+)?([a-z]+)\b/g,
+			)) {
+				const word = m[1]
+				if (!CONDITION_LIKE.has(word)) continue
+				if (!CONDITION_NAMES.has(word))
+					fail(
+						context,
+						`${field} "${item.name}" applies "${word}", which is not a ` +
+							'published condition. Use one from conditions.json or spell ' +
+							'the effect out in full',
+					)
+			}
+		}
+	}
+	const lore = e.lore as Record<string, unknown> | undefined
+	if (lore && typeof lore.tactics === 'string') {
+		if (lore.tactics.includes('`'))
+			fail(
+				context,
+				'lore.tactics must not code-style ability names — use bold (D-082)',
+			)
+		checkPronouns(lore.tactics, `${context} lore.tactics`)
+	}
+}
+
+/**
+ * The creature trait library and the companion trait library must agree, because
+ * they exist so the two sides cannot drift on what a trait means — and they had
+ * drifted anyway (D-105), since only one file was ever edited.
+ */
+function checkTraitLibrarySync(): void {
+	const creature = new Map(
+		(creatureTraits as { name: string; text: string }[]).map((t) => [
+			t.name,
+			t.text.trim(),
+		]),
+	)
+	for (const companion of companionTraits as Record<string, unknown>[]) {
+		for (const [key, value] of Object.entries(companion)) {
+			if (!key.startsWith('ability') || typeof value !== 'string') continue
+			const m = value.match(/^<strong>\s*([^<.]+?)\s*\.?\s*<\/strong>\s*(.+)$/)
+			if (!m) continue
+			const expected = creature.get(m[1].trim())
+			if (expected === undefined) continue
+			const got = m[2].trim()
+			if (got !== expected)
+				fail(
+					`companion "${companion.name}" trait "${m[1].trim()}"`,
+					'text differs from creature-traits.json. The two libraries must ' +
+						`agree (D-105).\n  companion: ${got}\n  creature:  ${expected}`,
+				)
+		}
+	}
 }
 
 /**
@@ -809,11 +1034,10 @@ function dropDamageWord(item: string): string {
 /**
  * Render a parenthesised property list as badges.
  *
- * Applies to both an attack's weapon properties (`light`, `range (medium)`) and an
- * ability's qualifier (`Passive`, `Action, recharge (d6)`). Each becomes its own
- * badge, split on comma — the qualifiers that carry two facts ("Passive, 3/day")
- * are genuinely two tags, while a nested parenthetical like "recharge (d6)" has no
- * comma and stays whole.
+ * Applies to an attack's weapon properties (`light`, `range (medium)`) and to an
+ * ability's qualifier, which is exactly ONE closed-list value (D-107). A limiter is
+ * never part of the qualifier — it is the last sentence of the ability's text — so
+ * there is nothing here to split on a comma.
  *
  * The text is emitted as CHILDREN, not a prop, so property terms keep
  * keyword-linking (`range` and the damage types resolve to real pages).
@@ -847,7 +1071,7 @@ function renderEntry(
 			text = text.slice(match[0].length)
 		}
 	} else if (entry.qualifier) {
-		badges = renderBadges(entry.qualifier.split(','))
+		badges = renderBadges([entry.qualifier])
 	}
 	// A trailing period only when nothing follows the name in the head, so a badge
 	// never sits after a full stop.
@@ -1067,6 +1291,7 @@ function main() {
 	const creatures = entries.map((raw, i) =>
 		validateCreature(raw, `creatures.json[${i}]`),
 	)
+	checkTraitLibrarySync()
 
 	// Cross-references in encounter templates are resolved against the roster, so a
 	// template can never point at a creature that was renamed or never written.

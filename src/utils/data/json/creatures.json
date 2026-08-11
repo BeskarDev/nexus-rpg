@@ -61,7 +61,7 @@
 				"lifespan": "8 to 10 years",
 				"reproduction": "A mated pair keeps to each other for life and raises one litter of four to six pups a year in a dug den. The pups run with the pack by the end of their first season, and most of a litter does not see a second one."
 			},
-			"tactics": "They will not open a fight. They follow, they wait for someone to fall behind, and they take the smallest or the slowest. In a fight they circle rather than close. `Pack Tactics` only pays off when two of them reach the same person, so run them in pairs working one target and have them give up on anyone they cannot get behind. **They break off the moment it costs them anything.** One dead jackal is usually enough, and they will not follow anyone who turns and advances. Send them back to the edge of the light and let them wait there.",
+			"tactics": "They will not open a fight. They follow, wait for someone to fall behind, and take the smallest or the slowest. In a fight they circle rather than close. **Pack Tactics** pays only when two of them reach the same person, so run them in pairs on one target and have them give up on anyone they cannot get behind. A strong bite puts anyone of their own size or smaller prone, so send the next jackal at whoever is already down. They break off the moment it costs them anything, and one dead jackal is usually enough. They will not follow anyone who turns and advances, and they fall back to the edge of the light and wait.",
 			"treasure": {
 				"scale": "Incidental",
 				"table": [
@@ -183,7 +183,7 @@
 				"lifespan": "15 to 20 years",
 				"reproduction": "A pair holds one nest site for years and raises two eggs at a time, twice a year, on a cliff ledge or a roof beam. Chicks fly at ten weeks and stay with the flock they hatched in. A city colony is mostly one extended family, which is part of why they all know the same faces."
 			},
-			"tactics": "A leatherwing is not an opponent. What they do is **scream**. A flock that does not recognise someone raises a racket that carries across a whole market, and every local knows what that noise means. While the flock is up, treat the district as awake and watching. **They remember faces.** Anyone who has fed one stops being a stranger to the whole flock for days, and it costs a piece of bread. `Snatching Beak` is the other half. They take what is held, not what is guarded, and go straight up with it to a roofline nothing can follow them to.",
+			"tactics": "Do not run them as a fight. What they do is scream. A flock that does not recognise somebody raises a racket that carries across a whole market, and while the flock is up the district is awake and watching. They remember faces, so anyone who has fed one is not a stranger to the flock for days. Use **Snatching Beak** on what is held rather than what is guarded, then go straight up to a roofline nothing can follow to. They break off by climbing out of reach, and they come back.",
 			"treasure": {
 				"scale": "Incidental",
 				"table": [
@@ -218,8 +218,8 @@
 					},
 					{
 						"kind": "Relic",
-						"item": "Message capsule",
-						"description": "Still sealed, off a courier. Inside is one of: a shipment and a date, a name and a price, or an order nobody wants attributed."
+						"item": "Sealed clay envelope",
+						"description": "Still sealed, off a courier. A clay case baked around the tablet inside. It holds one of: a shipment and a date, a name and a price, or an order nobody wants attributed."
 					}
 				]
 			},
@@ -303,7 +303,7 @@
 				"lifespan": "6 to 8 years",
 				"reproduction": "They lay six to ten eggs under warm matting or a stacked reed pile at the end of summer and leave them there. Hatchlings are venomous from the first day and a finger's length long, which is how a village ends up with a bad stretch of channel in a single season."
 			},
-			"tactics": "They strike once, from cover, at whoever puts a foot near them. `Strike from Cover` is the whole creature and it only works while they are unseen, so once they are spotted they have nothing left to do but leave. After the strike they leave anyway. **They will not pursue.** A viper that has bitten someone is heading for the water. The danger is the poison in a person who is three days from a healer.",
+			"tactics": "They strike once, from cover, at whoever puts a foot near them. **Strike from Cover** only works while they are unseen, so open from hiding and do not open twice. After the strike they leave for the water and they will not pursue. The bite is not what kills. Run the poison in somebody who is days from a healer.",
 			"treasure": {
 				"scale": "Incidental",
 				"table": [
@@ -421,7 +421,7 @@
 				"lifespan": "4 years",
 				"reproduction": "Eggs go into the packed earth in their hundreds, and the grubs feed underground for two years on whatever is buried above them. That is why a broken floor brings up a generation rather than a handful. A swarm is two to three thousand of them, and the colony they come from is as old as the tomb."
 			},
-			"tactics": "They occupy an area and threaten only what stands in it, so `Devouring Bites` hits everyone who stayed. Being distracted matters more than the damage. Anyone covered in scarabs fights the scarabs well and everything else badly. **Fire drives them off and they will not cross it.** A torch swept low, a lamp broken on the floor, a burning cloak dropped in the doorway. Any of it turns them. They do not pursue past their colony, so once the room is empty they settle back into the floor.",
+			"tactics": "They occupy an area and threaten only what stands in it, so **Devouring Bites** hits everyone who stayed. Fire drives them off and they will not cross it. A torch swept low, a lamp broken on the floor, a burning cloak dropped in a doorway, any of it turns them. They will not leave the colony's ground, and that ground is the whole chamber floor rather than one corner of it, so backing out of the room gives it up rather than winning it. Once it is empty they settle back into the floor.",
 			"treasure": {
 				"scale": "Standard",
 				"table": [
@@ -485,14 +485,14 @@
 		"tier": 1,
 		"category": "Basic",
 		"armor": "Light",
-		"hp": "10",
+		"hp": "20",
 		"av": "1 (natural light)",
 		"str": "d6",
 		"agi": "d4",
 		"spi": "d4",
 		"mnd": "d4",
 		"parry": 7,
-		"dodge": 6,
+		"dodge": 5,
 		"resist": 8,
 		"skills": [
 			"Fighting (1)",
@@ -550,7 +550,7 @@
 				"weight": "40 to 60 kg, and falling, since they dry out rather than rot",
 				"lifespan": "They do not age, and a husk still walking a road may be 200 years dead"
 			},
-			"tactics": "They walk at whoever is closest and take hold. `Grasping Hands` grapples and they do not let go, which for something this slow is the only way they ever catch anybody. They never speed up, never flank, and never choose a better target. **They cannot follow past the ground they were left on.** They stop dead at that edge, and `Grave-Bound` says how far it reaches. Killing one settles nothing. They stand up again at the next sunset unless the body is buried or burned, so the same husk can meet the same travellers three days later.",
+			"tactics": "They walk at whoever is closest and take hold. **Grasping Hands** grapples on a strong hit and they do not let go. Once they have hold, switch to **Bearing Down** and use it every turn after, which puts the held character prone. They never speed up, never flank and never choose a better target. They cannot follow past the ground they were left on, and **Grave-Bound** says how far that reaches. They do not rout. Killing one settles nothing, since they stand up again at the next sunset unless the body is buried or burned.",
 			"treasure": {
 				"scale": "Incidental",
 				"table": [
@@ -683,7 +683,7 @@
 				"lifespan": "Adult at 14, old at 45, and 60 years is a long life",
 				"reproduction": "Children are raised by the whole canyon hold rather than by one household, and a Zakhar rides on their first raid the year they come of age. A raider in their twenties has been coming down to this river for a decade already."
 			},
-			"tactics": "Javelins first, at range, while they close. Then the axes. `Formation Fighting` makes them markedly harder to kill while they stand together, so keep them shoulder to shoulder and have them reform the line whenever it breaks. They go for whoever stands between them and the grain, not for whoever is most dangerous. **They will break off to carry away what they came for** if they can reach it. A raider who is alone and losing looks for a way out rather than a last stand.",
+			"tactics": "Javelins first, at range, while they close. Then the axes. **Formation Fighting** makes them markedly harder to kill while they stand together, so keep them shoulder to shoulder and have them reform the line whenever it breaks. They go for whoever stands between them and the grain, not for whoever is most dangerous. **They will break off to carry away what they came for** if they can reach it. A raider who is alone and losing looks for a way out rather than a last stand.",
 			"treasure": {
 				"scale": "Standard",
 				"table": [
@@ -771,15 +771,15 @@
 		],
 		"tier": 1,
 		"category": "Basic",
-		"armor": "Light",
+		"armor": "Heavy",
 		"hp": "10",
-		"av": "2 (natural light)",
-		"str": "d6",
+		"av": "2 (natural heavy)",
+		"str": "d8",
 		"agi": "d4",
 		"spi": "d4",
 		"mnd": "d4",
 		"parry": 8,
-		"dodge": 6,
+		"dodge": 5,
 		"resist": 7,
 		"skills": [
 			"Fighting (1)",
@@ -794,14 +794,14 @@
 				"properties": [
 					"crush"
 				],
-				"text": "6/9/12 damage. On a strong or critical hit against a creature of equal or smaller size, the target is grappled. While grappling, this attack cannot be used against any other target."
+				"text": "7/10/13 damage. On a strong or critical hit against a creature of equal or smaller size, the target is grappled. While grappling, this attack cannot be used against any other target."
 			},
 			{
 				"name": "Death Roll",
 				"properties": [
 					"crush"
 				],
-				"text": "Only against a target this creature has grappled. 6/9/12 damage, and the target falls prone."
+				"text": "Only against a target this creature has grappled. 7/10/13 damage, and the target falls prone."
 			}
 		],
 		"abilities": [],
@@ -823,7 +823,7 @@
 				"lifespan": "60 years or more, and one this size is 4 to 6 years old",
 				"reproduction": "The female buries forty eggs in the warm sand of a bank and guards the nest until they hatch. Almost none of them reach this size, and the ones that do have already been driven off the best water by something larger."
 			},
-			"tactics": "They open from the water, on whoever is closest to the edge. The bite grapples, and the grapple is the point, because a grappled person is going into the river. **They cannot hold and bite at once.** A crocodile with someone in their jaws spends the turn dragging rather than attacking, and bites nobody else while they do. If the fight turns they release and submerge, and they will not come back while anyone is standing on their bank.",
+			"tactics": "They lie submerged and wait for somebody to come to the bank rather than swimming into view. Open with the **Bite** against a target who does not know they are there, since **Ambush Predator** raises that first strike one success level. The bite grapples, and the grapple is the point, because a grappled person is going into the river. They cannot hold and bite at once, so a crocodile with someone in their jaws spends the turn dragging and attacks nobody else. If the fight turns they release, submerge, and do not come back while anyone is standing on their bank.",
 			"treasure": {
 				"scale": "Incidental",
 				"table": [
@@ -887,8 +887,8 @@
 		"tier": 2,
 		"category": "Basic",
 		"armor": "Heavy",
-		"hp": "20",
-		"av": "3 (natural heavy)",
+		"hp": "10",
+		"av": "5 (natural heavy)",
 		"str": "d8",
 		"agi": "d6",
 		"spi": "d4",
@@ -937,7 +937,83 @@
 		],
 		"traits": [
 			"Ambush Predator"
-		]
+		],
+		"lore": {
+			"narrative": "A knee-high figure of fired clay with a hoe moulded into its fists, buried by the hundred so the dead would not have to work their own fields. The potters who made them wrote the work into the clay before the firing, in an age that knew how. The potters are long gone and the figures are still working.",
+			"environment": [
+				"Desert",
+				"Hills",
+				"Necropolis",
+				"Ruins",
+				"Tomb",
+				"Vault"
+			],
+			"ecology": "They do not eat, wear out, or stop. The tombs of the old dynasties were buried with a chamber of them, ranked by the hundred and moulded for one task each: the diggers, the water carriers, the ones with a loom. Nobody has made one since. The work is written into a fired core, and the cutting of cores was Ghahar craft that went into the ground with the fortresses that held it, so a tomb furnished today gets painted figures that will stand in the dark forever and never lift a hoe. Ghahar smiths still raise new servants, and every one of them is built around a core dug out of somewhere older, which is most of why the old chambers get opened at all. The rule the potters worked to is still repeated by the people who set the figures out, that one moulded with its face turned from the door will not serve, so the faces all look at whoever comes in. What wakes them is the chamber being disturbed, and they go back to standing when it is quiet again.",
+			"physiology": {
+				"size": "60 cm tall",
+				"weight": "12 kg",
+				"lifespan": "They do not age. A shattered figure stops and the pieces are only clay, and figures 400 years in the ground stand up when the chamber is opened"
+			},
+			"tactics": "They do not start a fight. **False Appearance** holds them still among the grave goods until somebody lifts something or breaks a seal, and then the whole rank moves at once. They go for the nearest hands. Use **Pull Down** to take a standing character off their feet and leave them for the next figure. They never leave the chamber they were buried in, and they mass at the doorway rather than following through it. Backing into the corridor is safe and leaves with nothing, since everything worth taking is on the floor they are standing on. They do not rout, and they stop the moment the room is quiet.",
+			"treasure": {
+				"scale": "Incidental",
+				"table": [
+					{
+						"kind": "Material",
+						"item": "Fired clay shards",
+						"description": "Primitive materials, Quality 2. Fine grey clay with the glaze still on it.",
+						"value": "15 coins"
+					},
+					{
+						"kind": "Tool",
+						"item": "Robber's chisel and mallet",
+						"description": "Tools, Quality 2. Bronze chisel and a wooden mallet, dropped by whoever came in before and never picked up again.",
+						"value": "40 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Robber's purse",
+						"description": "Coin off somebody the rank pulled down, still knotted shut.",
+						"value": "55 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Sealed oil jar",
+						"description": "Oil, Quality 1, 3 uses. Left for the chamber lamps.",
+						"value": "25 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Cracked golem core",
+						"description": "Fired clay with the animating sigils cracked through. No smith alive can cut new ones, so an unbroken core is worth opening a tomb for. This one will never raise a servant again, and a Ghahar house will buy it anyway.",
+						"value": "90 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Task tile",
+						"description": "Fired into the figure's back. It names the dead this chamber was cut for and the work the figure was given. A priest can say whose tomb this is, and an heir can claim it."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Work gang",
+					"count": "3-6"
+				},
+				{
+					"name": "Buried host",
+					"count": "8-20"
+				}
+			]
+		}
 	},
 	{
 		"name": "Ghoul",
@@ -1002,7 +1078,83 @@
 		"traits": [
 			"Undead Nature",
 			"Keen Scent"
-		]
+		],
+		"lore": {
+			"narrative": "A thin, quick eater of the dead, at home in the necropolis and in the graves the robbers opened first. They talk, in a fashion, and it has never once been a conversation. What they want is always the same thing, and a living person is the part of it that is still moving. The grave-wardens of the old cities know which colonies are theirs and leave a body out at the end of the season.",
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Ruins",
+				"Necropolis",
+				"Tomb",
+				"Crypt"
+			],
+			"ecology": "They eat the dead and nothing else. A colony holds a stretch of burial ground and works it in pairs, going first through what has already been broken open and digging only when nothing has. After a battle they come out onto the field in numbers and there is nothing left on it by the third night, which is why several cities tolerate the colony under their necropolis and one or two feed it. They keep away from the living while there is easier food, and a bad year is when there is not. The colony is the only thing a ghoul cooperates with. Inside it they hunt in pairs, share a kill and hold a stretch of ground together, and none of that reaches anybody outside it. A city that tolerates a colony is feeding one, not dealing with one, and the wardens who work the same ground stay in twos and are careful never to be the easiest thing on it. Some hold that a ghoul is what becomes of somebody who ate the dead in a famine year. The wardens say they were never people at all, and that talking to one is talking to the hunger rather than to a person.",
+			"physiology": {
+				"size": "1.50 to 1.70 m tall, and stooped",
+				"weight": "45 kg",
+				"lifespan": "They do not age, and colonies 300 years under the same necropolis are known. Hunger is what ends them, and a stretch of ground picked clean empties itself in a season"
+			},
+			"tactics": "They open on whoever is already hurt and they work in pairs. Lead with **Claws**, which dazes and then stuns. Against a stunned target they switch to the **Bite** and stay on it. They circle for a flank rather than pushing through a shield, and they leave a target the moment somebody easier is on the ground. They cannot be parleyed with. A torch pushed into a face turns one, and a pack that loses its nerve runs for the graves. They will not follow anyone out of the burial ground.",
+			"treasure": {
+				"scale": "Standard",
+				"table": [
+					{
+						"kind": "Material",
+						"item": "Claws",
+						"description": "Primitive materials, Quality 2. A full set, still hard.",
+						"value": "40 coins"
+					},
+					{
+						"kind": "Trophy",
+						"item": "Ghoul jaw",
+						"description": "Taken whole, with the teeth in it.",
+						"value": "35 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Stripped grave goods",
+						"description": "Bronze pins, the back of a mirror, a string of carnelian, all off the dead they ate.",
+						"value": "150 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Funeral gold",
+						"description": "Leaf and wire, worked off a coffin face and carried home.",
+						"value": "120 coins"
+					},
+					{
+						"kind": "Tool",
+						"item": "Sealed lamp oil",
+						"description": "Oil, Quality 1, 3 uses. Out of the chamber they nest in.",
+						"value": "25 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Warden's bone whistle",
+						"description": "The note the grave-wardens use to call a colony off a body. Ghouls that have heard it before come away, and every one within the necropolis hears it."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Pack",
+					"count": "3-5"
+				},
+				{
+					"name": "Colony",
+					"count": "6-12"
+				}
+			]
+		}
 	},
 	{
 		"name": "Polearm Soldier",
@@ -1063,7 +1215,106 @@
 				"text": "While another creature with `Close the Ranks` is within melee range of this creature, this creature's attacks do not suffer the reach bane."
 			}
 		],
-		"traits": []
+		"traits": [],
+		"lore": {
+			"narrative": "The second rank, working over the shoulders of the shields with three metres of pole and a blade on the end of it. They are picked for reach and shoulders, and they spend the whole fight looking at the backs of their own front rank.",
+			"environment": [
+				"Grassland",
+				"River",
+				"Desert",
+				"City",
+				"Fortress",
+				"Road"
+			],
+			"ecology": "They are paid at the start of the season and drilled for the rest of it. A file stands watches, walks the wall, escorts carts and grain barges, and fights perhaps twice a year. Most were taken on at sixteen for the food and the coin, and most go home at thirty with a bad shoulder and a plot of land they were promised. They eat better than the people they guard and they know it. Off duty they are in the same wineshops as everybody else. A file that has stood together for a season is closer than most families, and the older soldiers hold that a line which loses its right-hand man twice will not stand a third time, so a file that loses two is broken up and shared out.",
+			"physiology": {
+				"size": "1.60 to 1.80 m tall",
+				"weight": "70 to 80 kg",
+				"lifespan": "Adult at 18, old at 60, and 80 years is a full life",
+				"reproduction": "A soldier's household is an ordinary one, two or three children raised in the quarter behind the barracks, and the sons are taken on at sixteen if there is a place. Whole files are often cousins, because a soldier speaks for their own first when a place comes open."
+			},
+			"tactics": "They stand behind a shield and hit what the shield is holding. **Over the Shields** only works while somebody is in front of them, so keep them in the second rank and move them along the line rather than out of it. They drag people out of cover and off the flanks toward the spears. **Sweeping Blow** costs them their movement for the turn, so save it for the moment the party bunches up. They hold as long as the shields do and break with them.",
+			"treasure": {
+				"scale": "Incidental",
+				"table": [
+					{
+						"kind": "Weapon",
+						"item": "Glaive",
+						"description": "Glaive, Quality 2, damaged. The haft is cracked below the head.",
+						"value": "150 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Leather cuirass",
+						"description": "Leather, Quality 1, damaged.",
+						"value": "50 coins"
+					},
+					{
+						"kind": "Tool",
+						"item": "Whetstone and oil flask",
+						"description": "Oil, Quality 1, 2 uses left. Carried for the blade.",
+						"value": "16 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Season's pay",
+						"description": "Coin drawn at the muster, in a purse sewn inside the cuirass.",
+						"value": "80 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Ration bag",
+						"description": "Simple Rations (d4) with 1 use left.",
+						"value": "5 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Pay list",
+						"description": "An incised tablet of what the file is owed. Three of the names on it draw wages and do not stand in the line, and the officer who wrote it knows."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Patrol",
+					"composition": [
+						{
+							"count": "3-4",
+							"creature": "Spearman"
+						},
+						{
+							"count": "1-2",
+							"creature": "Slinger"
+						}
+					]
+				},
+				{
+					"name": "Line",
+					"composition": [
+						{
+							"count": "4-6",
+							"creature": "Spearman"
+						},
+						{
+							"count": "2",
+							"creature": "Slinger"
+						},
+						{
+							"count": "2-3",
+							"creature": "Polearm Soldier"
+						}
+					]
+				}
+			]
+		}
 	},
 	{
 		"name": "Slinger",
@@ -1126,7 +1377,106 @@
 				"text": "On a strong or critical hit with a ranged weapon, the target suffers marked (2)."
 			}
 		],
-		"traits": []
+		"traits": [],
+		"lore": {
+			"narrative": "The one behind the shields with a bag of cast lead, who has been told which target and does not have to think about the rest. They are the cheapest soldier a city fields and the one their own line stands in front of.",
+			"environment": [
+				"Grassland",
+				"River",
+				"Desert",
+				"City",
+				"Fortress",
+				"Road"
+			],
+			"ecology": "They are paid at the start of the season and drilled for the rest of it. A file stands watches, walks the wall, escorts carts and grain barges, and fights perhaps twice a year. Most were taken on at sixteen for the food and the coin, and most go home at thirty with a bad shoulder and a plot of land they were promised. They eat better than the people they guard and they know it. Off duty they are in the same wineshops as everybody else. A file that has stood together for a season is closer than most families, and the older soldiers hold that a line which loses its right-hand man twice will not stand a third time, so a file that loses two is broken up and shared out.",
+			"physiology": {
+				"size": "1.60 to 1.80 m tall",
+				"weight": "70 to 80 kg",
+				"lifespan": "Adult at 18, old at 60, and 80 years is a full life",
+				"reproduction": "A soldier's household is an ordinary one, two or three children raised in the quarter behind the barracks, and the sons are taken on at sixteen if there is a place. Whole files are often cousins, because a soldier speaks for their own first when a place comes open."
+			},
+			"tactics": "They stay behind the shields and shoot over them. Put **Ranging Shot** on whoever the line is about to reach rather than on whoever is nearest, and shoot the same target twice before choosing another. They fall back the moment somebody gets past the shields, and draw the shortsword only when cornered. With the line gone they break and run.",
+			"treasure": {
+				"scale": "Incidental",
+				"table": [
+					{
+						"kind": "Weapon",
+						"item": "Sling",
+						"description": "Sling, Quality 2, damaged. The cradle is cut through.",
+						"value": "50 coins"
+					},
+					{
+						"kind": "Weapon",
+						"item": "Shortsword",
+						"description": "Shortsword, Quality 2, damaged.",
+						"value": "50 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Leather cuirass",
+						"description": "Leather, Quality 1, damaged.",
+						"value": "50 coins"
+					},
+					{
+						"kind": "Material",
+						"item": "Cast lead shot",
+						"description": "Primitive materials, Quality 2. Thirty of them in a bag, all of one weight.",
+						"value": "20 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Season's pay",
+						"description": "Coin drawn at the muster, and less of it than the shield ranks draw.",
+						"value": "40 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Knotted march line",
+						"description": "A cord the file knots as they march, one knot to the landmark and one to the day. Run backward it is the road to the camp they came from."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Patrol",
+					"composition": [
+						{
+							"count": "3-4",
+							"creature": "Spearman"
+						},
+						{
+							"count": "1-2",
+							"creature": "Slinger"
+						}
+					]
+				},
+				{
+					"name": "Line",
+					"composition": [
+						{
+							"count": "4-6",
+							"creature": "Spearman"
+						},
+						{
+							"count": "2",
+							"creature": "Slinger"
+						},
+						{
+							"count": "2-3",
+							"creature": "Polearm Soldier"
+						}
+					]
+				}
+			]
+		}
 	},
 	{
 		"name": "Spearman",
@@ -1185,7 +1535,106 @@
 				"text": "When using Opportunity Attack with their Spear, this creature deals +2 damage and the target's Movement ends."
 			}
 		],
-		"traits": []
+		"traits": [],
+		"lore": {
+			"narrative": "A trained soldier of a city or a warlord, three years drilled, standing behind a painted shield with the spear held level. They have never fought anything that was not standing in a line opposite them. They are very good at the one thing they do.",
+			"environment": [
+				"Grassland",
+				"River",
+				"Desert",
+				"City",
+				"Fortress",
+				"Road"
+			],
+			"ecology": "They are paid at the start of the season and drilled for the rest of it. A file stands watches, walks the wall, escorts carts and grain barges, and fights perhaps twice a year. Most were taken on at sixteen for the food and the coin, and most go home at thirty with a bad shoulder and a plot of land they were promised. They eat better than the people they guard and they know it. Off duty they are in the same wineshops as everybody else. A file that has stood together for a season is closer than most families, and the older soldiers hold that a line which loses its right-hand man twice will not stand a third time, so a file that loses two is broken up and shared out.",
+			"physiology": {
+				"size": "1.60 to 1.80 m tall",
+				"weight": "70 to 80 kg",
+				"lifespan": "Adult at 18, old at 60, and 80 years is a full life",
+				"reproduction": "A soldier's household is an ordinary one, two or three children raised in the quarter behind the barracks, and the sons are taken on at sixteen if there is a place. Whole files are often cousins, because a soldier speaks for their own first when a place comes open."
+			},
+			"tactics": "They form up and hold. They will not chase individuals and will not spread out, but the line advances as a line and walks down anyone shooting at it. They give ground a step at a time rather than open it. Keep them shoulder to shoulder, since **Close the Ranks** pays only while they have a neighbour, and close the gap whenever one goes down. They attack whoever comes at the line rather than whoever is most dangerous. **Braced Spear** catches anyone trying to leave their reach, so hold the position and let people walk into it. They fight until their file breaks, then run with it.",
+			"treasure": {
+				"scale": "Standard",
+				"table": [
+					{
+						"kind": "Weapon",
+						"item": "Spear",
+						"description": "Spear, Quality 2, damaged. Split through the socket.",
+						"value": "100 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Light shield",
+						"description": "Light Shield, Quality 2, damaged. Faced with the mark of whoever pays them.",
+						"value": "150 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Leather cuirass",
+						"description": "Leather, Quality 1, damaged.",
+						"value": "50 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Season's pay",
+						"description": "Coin drawn at the muster, carried in a neck pouch.",
+						"value": "60 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Ration bag",
+						"description": "Simple Rations (d4) with 2 uses left.",
+						"value": "10 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Gate seal-tag",
+						"description": "A clay tag with the garrison officer's seal rolled into it, carried by whoever is sent out on an errand. The gate guards know the seal and do not know the faces, so it opens the city gate for whoever holds it."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Patrol",
+					"composition": [
+						{
+							"count": "3-4",
+							"creature": "Spearman"
+						},
+						{
+							"count": "1-2",
+							"creature": "Slinger"
+						}
+					]
+				},
+				{
+					"name": "Line",
+					"composition": [
+						{
+							"count": "4-6",
+							"creature": "Spearman"
+						},
+						{
+							"count": "2",
+							"creature": "Slinger"
+						},
+						{
+							"count": "2-3",
+							"creature": "Polearm Soldier"
+						}
+					]
+				}
+			]
+		}
 	},
 	{
 		"name": "Orc Band-Leader",
@@ -1271,7 +1720,7 @@
 				"lifespan": "Adult at 14, old at 45, and 60 years is a long life",
 				"reproduction": "The same canyon holds raise the same bands, and a leader is usually somebody every raider behind them has known since childhood. Most are between 35 and 50, which in Zakhar terms is late enough to be listened to and early enough to still ride."
 			},
-			"tactics": "They stay behind the line and run it. `Fight Where I Point` sets up whichever raider is best placed. `Take It On The Shield` puts the leader in the way of a blow meant for one of their raiders. With no raiders left to direct, they fight plainly. If they fall first, the band's nerve goes with them and the raid is usually over. Wounding them changes the fight rather than ending it. `Blood Up` takes a careful commander and turns them into something that trades hits, so the second half is more dangerous and much shorter. **They can be bought at any point before that.** A party that offers the grain is taking the deal the leader would have proposed themselves.",
+			"tactics": "They stay behind the line and run it rather than fighting in it. Spend **Fight Where I Point** on whichever raider is best placed, and **Take It On The Shield** to intercept a blow meant for a raider. With no raiders left to direct they fight plainly. Once they are Wounded, **Blood Up** puts them in the front rank trading hits and they stop protecting anybody. **They can be bought at any point before that.** Offer them the grain and they take it and go.",
 			"treasure": {
 				"scale": "Rich",
 				"table": [

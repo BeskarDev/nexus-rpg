@@ -141,7 +141,7 @@ Every new design starts life in a draft document under `.drafts/talents/` (workf
 
 1. **`src/utils/data/json/talents.json`** — add the record. **This is the only file you author by hand.** Schema: `name`, `skill requirement` (the exact skill name, which selects the page), `description` (the full rank ladder). The description is one HTML string of optional preamble prose followed by rank sections, each opened by a canonical `<strong>(Rank N)</strong>` label. The generator **fails the build** on a malformed label — a paren outside the tag, a `<br/>` swallowed inside it, or no emphasis at all — because each of those silently drops a whole rank section. ⚠️ For edits to existing entries, use surgical string replacement — never parse + re-serialize the whole file.
 2. **`bun run content:gen`** — regenerates `docs/03-statistics/06-talents/<skill>.mdx`. Never edit those files: they carry a do-not-edit banner, and `bun run content:check` runs in CI and fails on any hand-edit or missed regeneration.
-3. **Notion** — push via the `notion-sync` skill. Note: talents live as an **inline database** on the Notion Talents page (flagged ⚠️ in the sync mapping) — follow the skill's inline-DB handling in `.claude/skills/notion-sync/references/inline-databases.md`.
+**Notion is out of the design process** (owner ruling, 2026-08-11). The workspace's inline databases are the pre-migration system and keeping them in sync costs more than it returns. The `notion-sync` skill stays available for a deliberate, owner-requested push. Do not run it as a publication step.
 
 Then verify: `bun run content:check` clean and `bun run build` green. Docs and JSON agree **by construction** now — one JSON edit plus `content:gen` updates both surfaces in the same commit.
 

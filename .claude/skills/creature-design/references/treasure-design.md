@@ -65,14 +65,21 @@ Worked at tier 0 (trophy = 3 coins): Incidental is a **15-30 coin table** whose 
 **10 coins**. At tier 4 (trophy = 140) the same scale is a 700-1,400 coin table. The bands travel
 with the tier, which is the whole reason they are written in trophies.
 
+**The scale band is advisory for any creature carrying manufactured gear** (D-113). Harvesting prices a
+**corpse** and the catalogue prices **gear**, and the two will never agree on an armed humanoid: a
+tier-1 raider's battleaxe is 100 coins against a 7-coin trophy. **Write the real catalogue price** — rule
+2 forbids contradicting an item's Quality — and read the band as guidance rather than a gate on those
+records. It binds normally on beasts, where the whole table is the body.
+
 **One catalogue consumable may blow past the row cap, and that is not an error.** A single dose of
 `Weapon Poison (weak)` is 17 coins because the alchemy list says so, which is nearly six tier-0
 trophies on its own. Let it stand and **do not inflate the other five rows to match** — the viper's
 venom being worth more than the rest of the snake is a true fact about the economy, and evening the
 table out only hides it.
 
-Creatures carrying **published equipment** break these bands entirely: see the note at the end of
-§2. That tension is real and unresolved, not a licence to price freehand.
+Creatures carrying **published equipment** break these bands entirely, and that is **resolved rather
+than unresolved** (D-113): write the catalogue price and read the band as advisory for that record. Not
+a licence to price freehand — the catalogue is still the authority.
 
 Two economic facts that change what a row is worth:
 
@@ -288,6 +295,19 @@ twice**:
 | **Proof** | leverage over a person or faction | a tally cord of who paid, an agreement tablet, a forged seal |
 | **Summons** | draws something, or gets its bearer noticed | a token a cult answers, a horn, a mark that opens doors and closes others |
 
+**No fuse the party cannot see.** A relic that expires on a schedule nobody at the table is tracking
+("it works until the watch changes") is not a relic, it is a trap with a timer. The party will
+either never risk it or discover it was worthless after they spent the scene getting to it. A relic
+stops working when **somebody does something** — a person who knows better looks at it, the seal is
+recognised as stolen, the owner reports it gone. That is a thing a GM can play.
+
+**Check the relic against the technology of the setting** (D-081). Bronze Age access control is a
+**seal impression in clay** and a guard who knows your face, not a credential. A "watch token
+stamped for one gate and one watch" is a modern shift pass with a bronze skin on it, and it reads as
+one. The published fix is a **gate seal-tag**: a clay tag with the garrison officer's seal rolled
+into it, which the gate guards know by the seal because they do not know the faces. Same unlock,
+built out of what the setting actually has.
+
 **Bound what a sealed thing contains.** A sealed message whose description is "it says what
 it says" is the open-ended "GM decides" the house rules forbid: give a short menu of what is
 plausibly inside (a shipment and a date, a name and a price, an order nobody wants attributed)
@@ -302,6 +322,12 @@ so the GM can pick one at speed.
 - **Everything must be specific.** "Some gold" is not a row. "Funerary rings, 120 coins" is.
 - **Fit the creature's fiction.** The loot answers "why did *they* have this?" A mummy
   carries grave goods sealed in with them, not a merchant's ledger.
+- **A guardian's table is what it guarded AND what it took off the last people who came**
+  (D-080). For a creature that protects a place rather than carrying anything, half the rows
+  are the hoard and half are **intruder spoil**: a robber's chisel and mallet, a purse off
+  somebody the guardian pulled down, a lamp refilled from the chamber jars. Rows about the room are
+  about the room. Rows about the people who did not leave are about the creature, and they
+  hand a GM a previous expedition to hang a hook on.
 - Write `item` as a **short name** — the generator caps it at 40 characters and most rows want
   half that (`Jackal pelt`, `Sinew`). The worth goes in `value`, and one line in `description`
   says what the thing is in rules terms and what it is for. Nothing else.

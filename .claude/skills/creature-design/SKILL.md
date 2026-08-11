@@ -32,6 +32,45 @@ Creatures are designed on a tier chassis (Tier 0–10, matching adventurer level
 | **Type defaults** (Builder auto-fill) | `src/utils/data/json/creature-type-defaults.json` — maps creature type+subtype to default attack/ability IDs from the libraries above |
 | **Treasure**: economy, item catalogues, magic-item pricing | [references/treasure-design.md](references/treasure-design.md) — read before writing any loot table |
 
+### Every rule has ONE home
+
+**A rule stated in two files will drift, and the second copy will be the one somebody follows.** That is
+not a hypothesis — the limiter placement was written in three files, one drifted, and the wrong version
+was followed three times before anyone noticed. Other files may **point** at a rule. They may not restate
+it.
+
+| Rule area | Its one home |
+|---|---|
+| Tier statistics, damage math, AV sources and stacking, recharge, limiter placement, validation checklist | [references/stat-tables.md](references/stat-tables.md) |
+| Naming, taxonomy, folk inheritance, senses, magical naturalism, magic in decline | [references/principles/identity.md](references/principles/identity.md) |
+| Chassis shape, tier adjustment, size and reach, light vs heavy, Timer/Threat/Treat | [references/principles/chassis.md](references/principles/chassis.md) |
+| Conditions, counterplay, triggers, universal actions, leashes, reactive attacks, riders | [references/principles/abilities.md](references/principles/abilities.md) |
+| Prose register, pronouns, saying it once, lore voice | [references/principles/writing.md](references/principles/writing.md) |
+| The `lore` object: keys, `tactics`, environment, physiology, organization | [references/lore-schema.md](references/lore-schema.md) |
+| Treasure economy, scales, relic channels, row composition | [references/treasure-design.md](references/treasure-design.md) |
+| Workflow, categories, publication, what to load when | **this file** |
+| The history behind a rule | [references/case-studies.md](references/case-studies.md) |
+
+**When a ruling lands, put it in its home and add a pointer elsewhere if it is genuinely needed.** Adding
+the full rule twice is how the skill breaks.
+
+### Surface map — what else changes when you change this
+
+**A rule that reaches more than one file has to be applied to all of them in the same pass.** The
+companion trait library sat stale for a whole session because a pronoun fix went into the creature copy
+only.
+
+| Change this | And these change with it |
+|---|---|
+| A creature record (`creatures.json`) | `bun run content:gen` regenerates `docs/08-creatures/03-creatures/tier-*.mdx`. Nothing else |
+| A **shared trait**'s text | `creature-traits.json` **and** `companion-traits.json` **and** `docs/08-creatures/01-mounts-companions/traits.md`. The generator now machine-checks the first two agree |
+| A trait's **name** | the above, plus every `traits` array that references it — unknown names fail the build |
+| A creature's **name** | every `lore.organization` `composition` row that names it, across all records |
+| A **type, subtype or additive** | `creature-types.json` / `creature-subtypes.json` / `creature-additives.json`, plus `docs/08-creatures/02-creature-rules.md`'s type table |
+| The **tier tables** | `references/stat-tables.md` **and** `creature-tiers.json` (the Builder's copy) **and** `02-creature-rules.md`'s derivation notes |
+| A **condition or damage type** | it is published rules, not ours — change `conditions.json` / the attacking page, and the generator's guard lists follow |
+| A **design ruling** | its one home above, the index in `references/designer-principles.md`, and the decision record |
+
 **Keyword discipline**: only official conditions, durations, and weapon properties — complete lists in [../game-basics.md](../game-basics.md#canonical-keyword-sources). Anything non-official must be spelled out as an exact mechanical effect.
 
 ### Attack damage is derived, never written down
@@ -58,14 +97,14 @@ other ten: at tier 9 it promises 15/19/23 where the creature data says 18/33/48.
 
 ## Design Principles
 
-**32 binding principles, split by phase so a task loads only what it needs.** Full text in
-[references/principles/](references/principles/); the one-line index of all 32 and the
+**45 binding principles, split by phase so a task loads only what it needs.** Full text in
+[references/principles/](references/principles/); the one-line index of all 45 and the
 "which file when" table are in
 [references/designer-principles.md](references/designer-principles.md).
 
 | Before you… | Read |
 |---|---|
-| pick a concept, tier, category (step 1) | [identity.md](references/principles/identity.md) — naming, taxonomy, folk inheritance, magical naturalism |
+| pick a concept, tier, category (step 1) | [identity.md](references/principles/identity.md) — naming, taxonomy, folk inheritance, magical naturalism, magic in decline |
 | set statistics and attacks (steps 2-3) | [chassis.md](references/principles/chassis.md) — stat chassis, damage bands, Timer/Threat/Treat |
 | write abilities or a trigger (step 4) | [abilities.md](references/principles/abilities.md) — conditions, counterplay, escalation, durations, universal actions |
 | write any text at all | [writing.md](references/principles/writing.md) — canonical wordings, pronouns, lore prose, say-it-once |
@@ -112,6 +151,25 @@ three Wounds and two mandatory triggers otherwise fire everything at once instea
 
 ## Creation Workflow
 
+### Load exactly what the step needs
+
+**The skill is ~41k tokens. No task needs all of it.** Load per step and the routine cost of a
+stat-block pass drops by roughly 12,600 tokens with nothing removed from the skill (Q9.5).
+
+| Step | Load | Do NOT load |
+|---|---|---|
+| **1** concept, tier, category | [identity.md](references/principles/identity.md), [stat-tables.md](references/stat-tables.md) § tier table | lore-schema, treasure-design, writing.md |
+| **2-3** statistics, attacks | [chassis.md](references/principles/chassis.md), [stat-tables.md](references/stat-tables.md) | lore-schema, treasure-design |
+| **4** abilities | [abilities.md](references/principles/abilities.md), the **interaction manifest** below, `conditions.json` | lore-schema, treasure-design |
+| **5b** lore | [lore-schema.md](references/lore-schema.md), [writing.md](references/principles/writing.md) | chassis, stat-tables |
+| **5b** treasure only | [treasure-design.md](references/treasure-design.md) | everything else |
+| **7** validate | the phase files you actually used | the ones you did not |
+| any | [case-studies.md](references/case-studies.md) **only when you want the history behind a rule** | — |
+
+**`lore-schema.md` and `treasure-design.md` are 9,500 words together and are irrelevant to a stat
+block.** Loading them "to be safe" is the single largest avoidable cost in the skill.
+
+
 ### 1. Concept
 Define role (infantry, ranged, brute, cavalry, artillery, spawner), tier, category (Basic/Elite/Lord), size, and creature type (see type table in references). Check what already exists at that tier — avoid redundant designs. Query the canonical data rather than reading a page:
 
@@ -119,14 +177,65 @@ Define role (infantry, ranged, brute, cavalry, artillery, spawner), tier, catego
 python3 -c "import json;[print(f\"{c['tier']:2} {c['category']:6} {c['name']}\") for c in json.load(open('src/utils/data/json/creatures.json')) if c['tier']==3]"
 ```
 
+
+> **Gate — answer these in the notes file before step 2:**
+> 1. What is the **tactical question** this creature asks the party?
+> 2. What already exists at this tier, and how is this one **not** a near-duplicate?
+> 3. Does the name promise exactly what the stat block will deliver?
+
 ### 2. Base Statistics (from tier table)
 - **HP**: tier table value, formatted per category (`40`, `2×40`, `3×40`).
-- **AV**: light = tier, heavy = 2×tier. Bone/stone/metal creatures typically heavy. Size: ±1 tier.
+- **AV**: light = tier, heavy = 1.5×tier rounded up. Bone/stone/metal creatures typically heavy. Size: ±1 tier.
+  **The light/heavy choice is about `slash`, not only about AV** (principle 39): a heavy-armored creature
+  is immune to the slash bonus, so blades lose about a third of their damage against it. Ask whether
+  swords should work on this creature and write the answer down.
 - **Defenses** (Parry/Dodge/Resist): base 6 + tier each; individual defenses may shift within 2 of base. Large/Huge: Parry up, Dodge down; Small/Tiny: reverse. **Resist rarely above 6 + tier + 2** — high mental attributes don't justify more.
 - **Attributes**: primary = tier's max attribute die; secondaries 1–2 die sizes below.
 - **Skills**: primary combat/magic skills at "1st" rank from table, others at "2nd"; add thematic skills (Stealth for ambushers, etc.).
 
-**Tier adjustment (optional, thematic)**: shift any single stat one tier up or down — but every reduction must be balanced by raising a different stat one tier (frail lich: −1 tier HP, +1 tier Spirit). Overall challenge must stay at the intended tier. Never adjust more than one stat pair.
+#### Tier adjustment — ask this for every creature, do not skip it
+
+**Shift one stat a tier up, and pay for it by shifting another a tier down.** This is what makes two
+creatures of the same tier feel like different animals instead of the same body with different text,
+and it is the step most likely to be skipped, because the unadjusted chassis already produces a
+*legal* creature. The first three bestiary batches produced **seventeen creatures with zero
+adjustments**, including an ogre with average Strength and trained skill, and nothing flagged it
+(D-097).
+
+**The question, asked out loud at this step:** *what is this creature better at than its tier, and
+what does it give up for that?*
+
+| Trade | Says | Example |
+|---|---|---|
+| Attribute up, **skill rank down** | Brutal physique, no technique | Ogre: d10 Strength, Fighting (1) |
+| Skill rank up, attribute down | Trained and slight | a duellist, an assassin |
+| Magic skill up, **HP down** | Out-casts their tier, dies to two hits | the frail adept |
+| **HP up, Defense down** | A slab. Easy to hit, hard to drop | the shambling dead |
+| **AV up, HP down** | Hard shell, brittle inside | fired clay, chitin |
+| Defense up, HP down | Evasive and fragile | a skirmisher |
+
+**"Nothing" is a real answer** — for a professional soldier, a city guard, a rank-and-file raider. Those
+are the baseline the adjusted creatures are read against, and if everything is adjusted then nothing is.
+Expect roughly **a third of a batch** to carry one, not all of it and not none.
+
+**Hard limits, because the chassis is tightly calibrated:**
+
+- **One pair only.** One stat up, one stat down. Never two pairs.
+- **One tier of movement, never more.** Two tiers is debatable in very few circumstances and should be
+  treated as a design error until argued. **Defense is the stat to be most careful with** — one point
+  moves hit rates several percent across the whole encounter, so a Defense shift is a bigger change than
+  the same "one tier" of HP.
+- **The overall challenge stays at the intended tier.** If the trade makes the creature plainly better,
+  it is not a trade.
+- **Tier 0 has almost no headroom** and tier 1 little: HP cannot go below the tier-0 floor and skills are
+  already at 0/1, so the low tiers are mostly unadjusted by structure rather than by choice.
+
+
+> **Gate — answer these before step 3:**
+> 1. **What is this creature better at than its tier, and what does it give up for it?** "Nothing" is a
+>    real answer for a baseline and a poor one for a monster. Write the answer down either way.
+> 2. **Should blades work on this creature?** That is the light/heavy decision, not the AV number.
+> 3. Is every figure off the tier table, with at most **one traded pair**?
 
 ### 3. Attacks
 Damage formula — always exactly:
@@ -137,25 +246,96 @@ Damage formula — always exactly:
 
 Use only official weapon properties (`docs/04-equipment/05-armor-weapon-properties.md`).
 
+
+> **Gate — answer these before step 4:**
+> 1. Is every damage figure `base + 1x/2x/3x weapon`, with the weapon value from the **catalogue at this
+>    creature's Quality** (D-091) or the tier figure for a natural weapon?
+> 2. Does at least one attack do **more than damage**, and is every plain attack genuinely plain (D-073)?
+> 3. Does any rider **add damage**? If so, it is paid for in weapon damage (D-110).
+
 ### 4. Abilities
+
+#### Read before you write — the interaction manifest
+
+**Before writing any ability, find what it does in this table and read the published rule first.** Three
+of the eleven errors in the tier-3 review were the same shape: **an invented mechanic that a published
+rule already covered**, written because the design satisfied a checklist without consulting the system it
+touched. This table exists to make that impossible to do by accident.
+
+| If the ability… | Read first | What you would otherwise reinvent |
+|---|---|---|
+| moves a creature, pushes, throws, drags | the **`pushed`** condition, `03-distances-movement.md` | `pushed` already gives collision damage to **both** parties and the falling rules knock both prone |
+| deals damage without an attack roll | falling damage, `02-attacking.md` | a bespoke number that does not scale |
+| reacts to something an enemy does | the **universal Quick Actions** in `01-combat-scenes.md` | Opportunity Attack and **Protect Ally** already occupy this space |
+| applies a condition | that condition's text in `conditions.json` | `stunned` does not remove a turn; only `paralyzed` and `unconscious` do |
+| turns a condition off | the condition's own removal clause | a second, conflicting removal rule |
+| resembles a spell | the tradition's list at that rank | the Cult Priest's knife rider **was `Minor Hex` verbatim** |
+| grants a sense | `creature-traits.json` and the companion distribution | a creature-only sense nobody can reuse |
+| grapples, trips, shoves | the Grapple action, `01-combat-scenes.md` | size rules that already exist |
+| ignores or reduces armor | `slash`, `crush`, the AV rules | a bespoke armor bypass |
+| is carried by a weapon | `05-armor-weapon-properties.md` | `reach`, `versatile`, `heavy` do it already |
+
+**The rule in one line: if a published rule already covers your effect, cite it instead of restating it.
+If you genuinely cannot find one, say so in the notes file** — that sentence is how a real gap gets
+found instead of quietly papered over.
+
 - **Ability TN** = 6 + tier. Saves usually Spirit/Strength + Fortitude. Official durations only.
 - Add mandatory trigger/Quick Action/defensive abilities per category (above), then thematic abilities: movement, senses, auras, environmental manipulation.
 - Damage/healing beyond basic attacks: principle 7 — spell scaling frameworks.
 - Condition-inflicting abilities: principles 8–9 and **16** — design against the published condition text, and **escalate** rather than landing a disable off one roll.
 - **Limiters**: `recharge (dX)` (4+ at the **end** of the turn, d4/d6/d8 only), `once per scene`, or `once between your turns`. Nothing else.
+- **A limiter is the LAST SENTENCE of the effect text. Never the qualifier, never an attack property.**
+  The qualifier is one word saying what kind of action this is, and nothing follows it. This is the most
+  frequently repeated error in the programme, so check it on every ability you write:
+  > ✅ `**Spellcasting** (Action). This creature can cast … *Rotting Grasp*. **This creature can cast each of these spells once per scene.**`
+  > ❌ `**Spellcasting** (Action, once per scene each). …`
+- **Never give a creature a second attack in its own turn.** The Nexus form is a **conditional second
+  attack as a Quick Action**, triggered on something an enemy does (principle 41). It closes the
+  armed-humanoid damage gap, keeps the GM's turn short, and comes with counterplay built in.
 
 #### NPC spellcasting
 
 The canonical form, as the Dark Cultist Acolyte already writes it:
 
-> This creature can cast the following spells, rolling Mind + Arcana, once per scene each: *Attack
-> Thoughts*, *Subtle Suggestion*.
+> **Spellcasting** (Action). This creature can cast the following spells, rolling Mind + Arcana:
+> *Attack Thoughts*, *Subtle Suggestion*. This creature can cast each of these spells once per scene.
+
+**The ability is always called `Spellcasting`.** One generic name reused on every caster in the roster,
+so a GM finds it in the same place on every card. Flavour names — `Rites of the Grave`, `Blood Litanies`
+— go in the lore, never on the ability (D-107). The limiter is the **last sentence**, never the
+qualifier.
 
 - NPCs draw on the **general published roster** — 201 arcane, 285 mystic. **No Focus, no spell slots, no per-day counting.**
 - **Max spell rank = the creature's magic skill rank**, straight off the tier table. Every spell verified by grep.
+- **Category never raises spell rank** (D-092). Basic, Elite and Lord casters at one tier share a
+  ceiling, exactly as a tier-3 Elite fighter has the same Fighting (2) as the tier-3 Basic. Category
+  buys HP, triggers, actions and **gear Quality**, never a skill rank. The counterplay floors are
+  written against spell rank — rank 2 answers arrive at level 3, rank 3 at level 5 — so an Elite
+  casting a rank above its tier is an unanswerable fight rather than a harder one.
+- **Spell damage does scale with category, through the catalyst.** A Spell Catalyst is Quality 2 gear
+  and takes the same ladder as a weapon (`07-magic-items/effects.md`): +1 spell damage per step above
+  base. So D-091's table applies unchanged — a tier-3 Elite caster carries a **Q3 catalyst, +1 spell
+  damage**, precisely as a tier-3 Elite fighter carries a Q3 weapon. The parallel is exact: **Spell
+  Power (half Mind or Spirit) is the caster's base damage, the spell's own `+X` is its weapon damage,
+  and the catalyst's Quality is the masterwork step.**
+- **What an Elite or Lord caster gets instead of rank:** more spells known (the "rank + 1" figure is a
+  guideline, not a cap), and **triggers that cast** — an Elite Trigger that refreshes its best spell or
+  casts one free is the caster's version of `Blood Up`.
+- **To out-cast your tier, pay for it.** The tier-adjustment rule (step 2) already allows one stat up a
+  tier against another down: a frail hierophant takes magic skill at tier + 1 and gives up HP. That is
+  the sanctioned lever, and it costs something.
 - **Spells known ≈ max rank + 1** — a tier-3 cultist gets three, a tier-10 lich six. **A guideline, not a cap**: a creature designed as a master spellcaster may carry more.
 - **Front-load, do not ration.** A spellcaster creature survives one to three turns. Withholding its best option means it dies before using it and the encounter never shows what the creature was.
 - Bespoke magical abilities are valid **on top** of the list, and cost an ability slot. A spell costs only a line.
+
+
+> **Gate — answer these before step 5:**
+> 1. For **each** ability: did you read the published rule it touches, from the interaction manifest?
+>    Name it in the notes. "I could not find one" is an acceptable answer and a useful one.
+> 2. Is every qualifier a **single closed-list word**, with any limiter as the **last sentence**?
+> 3. Does every condition match its published text, and is every high-impact one gated?
+> 4. Does the creature restate any **universal action**?
+> 5. Elite/Lord only: does each trigger **escalate**, and open `When this creature suffers a Wound`?
 
 ### 5. Size, Immunities, Resistances
 Apply size modifiers and category-appropriate immunity sets from references. Resistances = half damage, weaknesses = double damage. Match to creature-type logic — undead aren't immune to everything; living creatures aren't immune to bleeding. Immunity counterplay per principle 10.
@@ -179,10 +359,35 @@ block, and [references/treasure-design.md](references/treasure-design.md) before
 treasure table. The **eight worked blocks in `.drafts/bestiary/creatures/tier-0-1-lore.md`**
 are the reference implementation while the roster is being rebuilt.
 
-### 6. Write it into a draft document
-**Never straight into `creatures.json`, and never into the tier pages at all.** Create (or append to) a batch file under the repo-root `.drafts/creatures/` (e.g. `.drafts/creatures/tier-<N>-batch.md`, or a concept-named file). The draft holds: a status banner ("pending owner approval, not yet published"), scope, per-creature design rationale (role, tier, category, any tier-adjustment justification), the full stat block in readable markdown, and an "open questions for owner" section flagging unresolved forks. The draft is the review artifact; publication only happens after owner approval.
 
-Keep the draft in **readable markdown**, not JSON — it is for a human reviewer. The JSON record is written at publication (see Publication Pipeline), from the approved draft.
+> **Gate — answer these before step 6:**
+> 1. Does `tactics` cover the five things (opening, priority, turn loop, breaking off, hard limits) and
+>    nothing else?
+> 2. Is every treasure row a specific object with one value, and does the table total sit in its band?
+> 3. Does any lore claim date the setting's history, or grant a sense the creature has not earned?
+
+### 6. Write it into a draft, split across three files
+**Never straight into `creatures.json`, and never into the tier pages at all.** A batch is **three
+files** under `.drafts/creatures/` (or the programme folder in use), and the split is load-bearing:
+
+| File | Holds | Never holds |
+|---|---|---|
+| **`tier-<N>-batch.md`** | The **designs only.** Status banner, a scope table of what is in the batch, and one section per creature: a one-line theme, role and Treat, then the stat block, attacks, abilities and traits in readable markdown | Rationale, alternatives considered, balance math, revisions to published records, open questions |
+| **`tier-<N>-notes.md`** | Everything else. Why a number moved, what was cut and why, revisions to already-published records, the balance check, failure-mode tables, and the **`## Open Questions for Owner`** section | Stat blocks |
+| **`tier-<N>-lore.md`** | The `lore` blocks, one per creature | Stat blocks |
+
+**The batch file is the thing the owner reads to review a design, so it stays lean** (owner ruling,
+2026-08-11, D-088). The first two batches put the reasoning inline and landed at 1,195 and 1,534 lines
+before their lore files, which buries the eight stat blocks somebody actually has to check. Reasoning is
+worth keeping — it is why a later session does not re-litigate a settled call — it just does not belong
+between two creatures.
+
+**Cross-reference rather than repeat.** The batch file's banner links to its notes file, and a creature
+section may carry a single pointer line (*"chassis rationale in the notes, § Ghoul"*). Say it once
+(principle 32) applies across the pair.
+
+Keep all three in **readable markdown**, not JSON — they are for a human reviewer. The JSON record is
+written at publication (see Publication Pipeline), from the approved draft.
 
 ### 7. Validate
 Run the full checklist in [references/stat-tables.md](references/stat-tables.md#validation-checklist), then sanity-check against 2–3 published creatures of the same tier and category — comparable power, no strict domination.
@@ -194,8 +399,8 @@ it has been written — the recurring failures below were all caught this way, o
 | Sweep | Ask of the draft |
 |---|---|
 | [identity.md](references/principles/identity.md) | Does the name promise what the stat block delivers? Is a real animal called by its real name, an invented one built as *one* deviation, a folk creature inheriting only what its folk entry grants? |
-| [chassis.md](references/principles/chassis.md) | Is every number off the tier table, with at most one traded pair? Does the encounter have a Timer, a Threat and a Treat — and is the Treat real rather than invented? |
-| [abilities.md](references/principles/abilities.md) | Every condition checked against its published text? Every high-impact one gated by a save or a roll? Every defence counterable? Triggers escalating, opening `When this creature suffers a Wound`? Nothing restating a universal action? |
+| [chassis.md](references/principles/chassis.md) | Is every number off the tier table, with at most one traded pair? **Was the tier-adjustment question asked, and is the answer written down even when it is "no"?** Does the encounter have a Timer, a Threat and a Treat — and is the Treat real rather than invented? |
+| [abilities.md](references/principles/abilities.md) | Every condition checked against its published text? Every high-impact one gated by a save or a roll? Every defence counterable? Triggers escalating, opening `When this creature suffers a Wound`? Nothing restating a universal action? **Is every qualifier a single word with no limiter attached, and is every limiter the last sentence of its text?** |
 | [writing.md](references/principles/writing.md) | Canonical wordings copied verbatim? Subject named where two creatures share a sentence? Lore prose read aloud, superstitions recorded rather than debunked, nothing said twice? |
 
 Key failure modes:
@@ -240,7 +445,8 @@ creature is one object in that array:
     {
       "name": "Sand Sense",
       "qualifier": "Passive",         // Passive | Action | Quick Action | Elite Trigger | Lord Trigger.
-                                      // A limiter may follow ONLY on `Action` — see stat-tables.md
+                                      // ONE value, NOTHING after it. A limiter is never written here —
+                                      // it is the LAST SENTENCE of `text`. Only `Action` may have one.
       "text": "This creature senses any creature touching the sand within short range."
     }
   ],
@@ -295,7 +501,7 @@ production-ready. On approval:
 2. **`bun run content:gen`** — regenerates `docs/08-creatures/03-creatures/tier-*.mdx`.
    Never edit those files directly; `bun run content:check` runs in CI and fails on any
    hand-edit or missed regeneration.
-3. **Notion** — push via the `notion-sync` skill.
+**Notion is out of the design process** (owner ruling, 2026-08-11). The workspace's inline databases are the pre-migration system and keeping them in sync costs more than it returns. The `notion-sync` skill stays available for a deliberate, owner-requested push. Do not run it as a publication step.
 
 Then verify: `bun run content:check` clean, `bun run build` green, and the creature
 appears on its tier page with the right anchor. Stop there — the owner commits manually.

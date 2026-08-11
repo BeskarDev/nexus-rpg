@@ -60,9 +60,51 @@ rumour or a corpse in the room.
 
 ## Tactics
 
-`tactics` is the one field that speaks to the GM, but it is still **read aloud-able prose, not a
-rules paragraph**. The creature's own attacks and abilities are named in backticks, because that
+**`tactics` is combat instructions.** It tells a GM how to play this creature in an encounter and
+nothing else. Everything it says should be actionable at the table in the middle of a fight.
+
+**The five things it covers**, in roughly this order, omitting any that do not apply:
+
+| | |
+|---|---|
+| **Opening** | how the fight starts. Do they ambush, wait, close, open at range, refuse to start one at all? What triggers them? |
+| **Target priority** | who they attack. "Whoever is already hurt", "whoever comes at the line", "the nearest hands" |
+| **The turn loop** | which attack or ability, in what order, and what it sets up. This is where their own abilities are named |
+| **Breaking off** | when they flee, when they stop pursuing, what they will not follow past, or that they do not rout at all |
+| **Hard limits** | anything that overrides the above. Cannot be parleyed with, will not leave the burial ground, turns from fire |
+
+**Cut everything else.** The recurring failure is not length, it is **justification**: a sentence that
+explains why the instruction is correct instead of giving another instruction.
+
+| ❌ rambling | ✅ instruction |
+|---|---|
+| "Claws are the opening, because the claws are what lands the daze and the daze is what makes the next one worse" | "Lead with **Claws**, which dazes and then stuns" |
+| "Once a target is stunned they bite, every time, since **Feeding Frenzy** puts the HP back and nothing else on the card does" | "Against a stunned target they switch to the **Bite** and stay on it" |
+| "**Braced Spear** is what they are for" | "**Braced Spear** catches anyone trying to leave their reach, so hold the position and let people walk into it" |
+| "They do not strike twice. They take hold and lean, and a held character on the ground under a dead weight is how a husk actually kills somebody" | "Once they have hold, switch to **Bearing Down** and use it every turn after, which puts the held character prone" |
+| "One is a nuisance and twenty are the encounter" | *(cut, it is a remark about the design)* |
+
+Three specific bans, each of which produced a rewrite:
+
+- **No design commentary.** "Wounding them changes the fight rather than ending it", "which sets them
+  apart from most of the dead", "they are the softest thing in the encounter and they know it". True,
+  and none of it tells a GM what the creature does.
+- **No saying it twice.** The Ghoul said "two things move a ghoul off a target, an easier body and
+  fear" and then said both of them again in the next sentence.
+- **No fiction that repeats `narrative` or `ecology`.** Those fields exist and the GM has read them.
+
+**Length follows from this, it is not a target.** A creature with a simple loop is done in fifty words.
+Ninety is a lot. The batch-2 rewrite cut nine fields from an average of 122 words to 91 without losing
+a single instruction, because everything removed was explanation.
+
+It is still **read aloud-able prose, not a rules paragraph**. The creature's own attacks and abilities are named in **bold**, because that
 is how a GM finds the line on the card. **Everything else is plain language.**
+
+**Never code-style an ability name** (owner ruling, 2026-08-11). Backticks are for code, and this
+is prose a GM reads at the table. The house style already has a channel for a mechanical term and it
+is bold — `docs/CLAUDE.md`, *"**Bold** for mechanical terms and conditions"*. An ability name in a
+sentence that is **already** bolded for emphasis simply stays inside it: write
+**"Braced Spear is what they are for."**, never nested bold.
 
 | ❌ game term | ✅ plain |
 |---|---|
@@ -77,16 +119,9 @@ adds is the thing no stat block can hold: what these creatures *want*, who they 
 they stop. Spending its sentences restating skill names and range bands wastes the only field that
 can say those things, and it makes a paragraph a GM has to parse rather than glance at.
 
-**The creature is the subject.** This is a tool for running them, not a player handout, so a limit is
-written as behaviour rather than as the party's answer to it: not "the party's answer is distance and
-patience", but "they never speed up, never flank, and never choose a better target". The fact
-survives, the reader changes.
-
-**Brief, do not stage.** Say what the creature does, what it goes for and what stops it, then stop.
-No coaching the GM on delivery ("the party should be allowed to notice", "say so out loud"), no
-labelling your own content ("that is the counterplay"), no spelling out what follows from the line
-above. The test is whether the sentence would survive in a scout's report. Full rule:
-[principles/writing.md](principles/writing.md) principle 33.
+**The creature is the subject, and the emphasis rules are in
+[principles/writing.md](principles/writing.md) principle 33** — cut staging rather than converting it,
+turn every limit into behaviour, and test whether the sentence would survive in a scout's report.
 
 Two consequences worth stating:
 
@@ -94,6 +129,20 @@ Two consequences worth stating:
   medium distance", because the ability carries the number and cannot drift from it.
 - **A published rule the party triggers is described by its effect**, not its name. The band losing
   its nerve *is* Morale, and every GM runs it without being told which trigger fired.
+
+**`tactics` says whether the creature can be talked to, and `Intelligent` does not** (D-079). The
+additive is a mechanical statement — a mind exists, so no automatic immunity to mind-affecting
+conditions, and the creature may cast or command its own kind. It is **not** a promise that parley
+works. Whether it does is a lore statement, written in `ecology` and `tactics`, and it may say no. A
+ghoul cooperates inside its colony, coordinates a hunt, and still sees an adventurer as food. Say so
+in the field, because a GM running the encounter off the card otherwise has to guess, and half of them
+will guess wrong in each direction.
+
+**A field that says a mechanic was added must be updated when the mechanic is** (D-073 and D-071's
+consequence). `tactics` is the field most likely to fall silently out of date, because nothing in the
+build gate compares it to the attacks and abilities beside it. When a published creature gains an
+attack, a rider or a trait, re-read its `tactics` in the same pass: three records in batch 1 gained
+their best mechanic and briefed a GM on the old one for a week.
 
 ## Environment
 
@@ -193,6 +242,22 @@ Rules:
 
 Every field is optional and the whole block is optional, but a creature with a
 `physiology` block carrying no fields fails the build.
+
+**A figure describes a creature or an object. It never dates history** (D-085). The two are easy to
+confuse because both are numbers in lore, and only one of them is a problem:
+
+| | |
+|---|---|
+| ✅ **Fine** — how old a thing gets | "a husk still walking a road may be 200 years dead", "colonies 300 years under the same necropolis are known", "figures 400 years in the ground stand up when the chamber is opened", "four centuries old and it still burns" |
+| ❌ **Out** — when a historical event happened | "the potters are four centuries gone", any date on when a craft was lost, a dynasty fell, or an art was last practised |
+
+A creature's endurance is a property of the creature, and a GM can use it: 200 years dead tells them
+what era the corpse came out of without fixing anything else. **Dating the fallen age is different**,
+because that is the setting's chronology, and a number there is a timeline a GM can contradict and a
+mythic loss reduced to a fact to look up (principle 34). Write "long gone", "in an age that knew how".
+
+`lifespan` still requires a figure, so a creature that genuinely has none omits the key rather than
+hedging in it.
 
 ## Treasure
 

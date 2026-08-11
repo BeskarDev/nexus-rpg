@@ -47,6 +47,36 @@ theft rolls `Agility + Perception` because spotting a loose pouch is Perception,
 has Perception (1) and Fighting (0), the block states by itself that it is better at robbing you than at
 hurting you. Reach for a non-combat skill whenever the attack is not really a fight.
 
+### What a rider costs, and what a second natural attack is worth
+
+**A rider that adds damage is paid for in weapon damage. A rider that adds a condition is not** (D-110).
+Damage stacks with damage and compounds against the same clock; a condition changes what happens next and
+is already gated by a success level, which is its price. So the Reed Viper's venom costs it weapon
+damage, and the Jackal's prone, the Grave Husk's grapple, the Ghoul's daze and the Cult Priest's
+`blinded` are all free.
+
+**A second natural attack has no catalogue entry to cite, so the gate is the price** (D-116):
+
+| | Damage | Examples |
+|---|---|---|
+| **Gated** behind a grapple, condition or state | **full tier weapon damage** | `Death Roll`, `Bearing Down` |
+| **Ungated**, usable any turn | **below the tier's figure** | `Pull Down`, the Ogre's `Fist` |
+
+### AV: sources, stacking and vocabulary
+
+Three rules (D-114), and this was the last chassis number without one:
+
+1. **The tier's light/heavy figure is the TOTAL** from natural hide plus worn armor. Not a budget to
+   spend twice.
+2. **A shield adds +1 on top** and is named in the string. Shields gain AV only from **Quality 4**
+   (`07-magic-items/effects.md`), so a Q2 or Q3 shield is +1.
+3. **The vocabulary is closed.** `natural light` / `natural heavy` for hide, chitin, bone and clay;
+   `light armor` / `heavy armor` for worn gear; `light armor and shield` when both. Never mixed, never
+   invented.
+
+**The light/heavy word decides whether blades work** (principle 39), so it is a design choice, not a
+label for the number.
+
 **Paired natural weapons** — claws, talons, pincers — carry the **`light`** property and therefore attack
 **twice in one Action, with no bane**: `02-attacking.md` exempts *"unarmed attacks or natural weapons that
 are part of your body (e.g. a lionfolk's claws or any monster's natural attacks)"* from the dual-wield
@@ -103,24 +133,42 @@ carrying information.
 Other limiters: `once per scene`, and `once between your turns` for anything off-turn. **No `X/day`, no
 `once per combat`, no `once per turn`.**
 
-### Where a limiter goes, and which qualifiers may carry one
+### Where a limiter goes — the LAST SENTENCE of the effect, never the qualifier
 
-**A limiter lives in the `qualifier` field.** Never in an attack's `properties`, never buried in the
-effect text — milestone 03 found this one class of information in three places, two of which no
-automated check can see.
+**A limiter is written as the final sentence of the ability's or attack's text.** It never goes in the
+`qualifier` field, never in an attack's `properties`, and never mid-sentence.
 
-| Qualifier | May carry a limiter? |
+> ✅ **Spellcasting** (Action). This creature can cast the following spells, rolling Spirit + Mysticism:
+> *Cloud of Sickness*, *Curse of Death*, *Rotting Grasp*. **This creature can cast each of these spells
+> once per scene.**
+>
+> ✅ **Searing Breath** (Action). Roll Strength + Fortitude vs. Dodge against each creature in a short
+> cone. 12/18/24 fire damage. **Recharge (d4).**
+>
+> ❌ **Spellcasting** (Action, once per scene each). …
+> ❌ **Rites of the Grave** *(recharge (d6))*. …
+
+**Why the end of the text.** The qualifier is **what kind of action this is** and nothing else, so the
+badge stays one word a GM can scan. The limiter is a rule about frequency, which belongs with the rest of
+the rules text, where it is read at the moment the ability is used rather than parsed out of a header.
+
+**The qualifier field carries exactly one value** from the closed list: `Passive`, `Action`,
+`Quick Action`, `Elite Trigger`, `Lord Trigger`. Nothing follows it, ever.
+
+**Which abilities may carry a limiter at all** (unchanged from D-077, only the placement moved):
+
+| Qualifier | May be limited? |
 |---|---|
 | `Action` | **Yes.** This is the only one that can |
-| `Quick Action` | **No.** It already means "once between your turns" (`01-combat-scenes.md`), so adding one charges the creature twice for one restriction |
-| `Passive` | **No, and it is a category error.** A Passive is always on, so there is nothing to limit. If an effect needs a frequency cap it is not a Passive |
+| `Quick Action` | **No.** It already means "once between your turns" (`01-combat-scenes.md`), so a limiter charges the creature twice for one restriction |
+| `Passive` | **No, and it is a category error.** A Passive is always on, so there is nothing to limit |
 | `Elite Trigger` / `Lord Trigger` | **No.** They fire once by construction, and a Lord's ordinal (`their first Wound`) does the sequencing |
 
-**The one exception is attacks**, which have no qualifier field. There the limiter is a **property badge**
-— `recharge (d4)` — and it must not move into the damage sentence, because anything continuing the first
-sentence past the triple breaks the DamageLadder render (D-018).
+**On attacks**, the limiter is likewise the last sentence and **not a property badge**. It must stay out
+of the damage sentence, because anything continuing the first sentence past the triple breaks the
+DamageLadder render (D-018) — so write the triple, then the rider, then the limiter.
 
-**If a Passive needs a cap, the fix is the trigger, not a limiter.** Gate it on something that is already
+**If a Passive needs a cap, the fix is the trigger, not a limiter.** Gate it on something already
 infrequent — a strong or critical hit, a state, a circumstance — and the frequency falls out of the
 fiction with nothing to track:
 
@@ -318,7 +366,7 @@ One Defense point is worth ~18.5% of incoming damage from tier 5 up; one AV poin
 
 ### Abilities
 - [ ] Every ability has a **Trigger**, an **Effect** naming who/what/how much/how long, and a **Limit**
-- [ ] Qualifier from the closed list; limiter is `recharge (dX)`, `once per scene`, or `once between your turns`
+- [ ] Qualifier is ONE closed-list value with nothing after it; any limiter is the LAST SENTENCE of the text; limiter is `recharge (dX)`, `once per scene`, or `once between your turns`
 - [ ] **The limiter is in the `qualifier`, and only on an `Action`** — never on a Passive, never in an attack's `properties` (attacks badge it instead) — D-077
 - [ ] **No `X/day`, no `once per combat`, no `once per turn`**; `recharge` uses d4/d6/d8 only
 - [ ] Attack count fits category (Basic 1–2, Elite 2–3, Lord 3–5)

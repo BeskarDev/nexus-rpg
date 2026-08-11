@@ -13,8 +13,8 @@ Tier 2 creatures are slightly more dangerous, including stronger undead, minor m
 	type="Small Automaton (Golem, Mindless)"
 	tier={2}
 	category="Basic"
-	hp="20"
-	av="3 (natural heavy)"
+	hp="10"
+	av="5 (natural heavy)"
 	str="d8"
 	agi="d6"
 	spi="d4"
@@ -25,6 +25,22 @@ Tier 2 creatures are slightly more dangerous, including stronger undead, minor m
 >
 
 ### Clay Servant
+
+<CreatureLore>
+
+A knee-high figure of fired clay with a hoe moulded into its fists, buried by the hundred so the dead would not have to work their own fields. The potters who made them wrote the work into the clay before the firing, in an age that knew how. The potters are long gone and the figures are still working.
+
+<LoreSection label="Ecology"><LoreTag>Desert</LoreTag><LoreTag>Hills</LoreTag><LoreTag>Necropolis</LoreTag><LoreTag>Ruins</LoreTag><LoreTag>Tomb</LoreTag><LoreTag>Vault</LoreTag> They do not eat, wear out, or stop. The tombs of the old dynasties were buried with a chamber of them, ranked by the hundred and moulded for one task each: the diggers, the water carriers, the ones with a loom. Nobody has made one since. The work is written into a fired core, and the cutting of cores was Ghahar craft that went into the ground with the fortresses that held it, so a tomb furnished today gets painted figures that will stand in the dark forever and never lift a hoe. Ghahar smiths still raise new servants, and every one of them is built around a core dug out of somewhere older, which is most of why the old chambers get opened at all. The rule the potters worked to is still repeated by the people who set the figures out, that one moulded with its face turned from the door will not serve, so the faces all look at whoever comes in. What wakes them is the chamber being disturbed, and they go back to standing when it is quiet again.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>60 cm tall</LoreTag><LoreTag>12 kg</LoreTag><LoreTag>They do not age. A shattered figure stops and the pieces are only clay, and figures 400 years in the ground stand up when the chamber is opened</LoreTag></LoreSection>
+
+<LoreSection label="Tactics">They do not start a fight. **False Appearance** holds them still among the grave goods until somebody lifts something or breaks a seal, and then the whole rank moves at once. They go for the nearest hands. Use **Pull Down** to take a standing character off their feet and leave them for the next figure. They never leave the chamber they were buried in, and they mass at the doorway rather than following through it. Backing into the corridor is safe and leaves with nothing, since everything worth taking is on the floor they are standing on. They do not rout, and they stop the moment the room is quiet.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Incidental"><TreasureRow kind="Material" value="15 coins">**Fired clay shards** Primitive materials, Quality 2. Fine grey clay with the glaze still on it.</TreasureRow><TreasureRow kind="Tool" value="40 coins">**Robber's chisel and mallet** Tools, Quality 2. Bronze chisel and a wooden mallet, dropped by whoever came in before and never picked up again.</TreasureRow><TreasureRow kind="Valuables" value="55 coins">**Robber's purse** Coin off somebody the rank pulled down, still knotted shut.</TreasureRow><TreasureRow kind="Supplies" value="25 coins">**Sealed oil jar** Oil, Quality 1, 3 uses. Left for the chamber lamps.</TreasureRow><TreasureRow kind="Valuables" value="90 coins">**Cracked golem core** Fired clay with the animating sigils cracked through. No smith alive can cut new ones, so an unbroken core is worth opening a tomb for. This one will never raise a servant again, and a Ghahar house will buy it anyway.</TreasureRow><TreasureRow kind="Relic">**Task tile** Fired into the figure's back. It names the dead this chamber was cut for and the work the figure was given. A priest can say whose tomb this is, and an heir can claim it.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="2">Pair</EncounterTemplate><EncounterTemplate count="3-6">Work gang</EncounterTemplate><EncounterTemplate count="8-20">Buried host</EncounterTemplate></LoreSection>
+
+</CreatureLore>
 
 <StatBlockTrait label="Skills">Fighting (1), Stealth (2)</StatBlockTrait>
 
@@ -64,6 +80,22 @@ Tier 2 creatures are slightly more dangerous, including stronger undead, minor m
 >
 
 ### Ghoul
+
+<CreatureLore>
+
+A thin, quick eater of the dead, at home in the necropolis and in the graves the robbers opened first. They talk, in a fashion, and it has never once been a conversation. What they want is always the same thing, and a living person is the part of it that is still moving. The grave-wardens of the old cities know which colonies are theirs and leave a body out at the end of the season.
+
+<LoreSection label="Ecology"><LoreTag>Desert</LoreTag><LoreTag>Grassland</LoreTag><LoreTag>Ruins</LoreTag><LoreTag>Necropolis</LoreTag><LoreTag>Tomb</LoreTag><LoreTag>Crypt</LoreTag> They eat the dead and nothing else. A colony holds a stretch of burial ground and works it in pairs, going first through what has already been broken open and digging only when nothing has. After a battle they come out onto the field in numbers and there is nothing left on it by the third night, which is why several cities tolerate the colony under their necropolis and one or two feed it. They keep away from the living while there is easier food, and a bad year is when there is not. The colony is the only thing a ghoul cooperates with. Inside it they hunt in pairs, share a kill and hold a stretch of ground together, and none of that reaches anybody outside it. A city that tolerates a colony is feeding one, not dealing with one, and the wardens who work the same ground stay in twos and are careful never to be the easiest thing on it. Some hold that a ghoul is what becomes of somebody who ate the dead in a famine year. The wardens say they were never people at all, and that talking to one is talking to the hunger rather than to a person.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>1.50 to 1.70 m tall, and stooped</LoreTag><LoreTag>45 kg</LoreTag><LoreTag>They do not age, and colonies 300 years under the same necropolis are known. Hunger is what ends them, and a stretch of ground picked clean empties itself in a season</LoreTag></LoreSection>
+
+<LoreSection label="Tactics">They open on whoever is already hurt and they work in pairs. Lead with **Claws**, which dazes and then stuns. Against a stunned target they switch to the **Bite** and stay on it. They circle for a flank rather than pushing through a shield, and they leave a target the moment somebody easier is on the ground. They cannot be parleyed with. A torch pushed into a face turns one, and a pack that loses its nerve runs for the graves. They will not follow anyone out of the burial ground.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Standard"><TreasureRow kind="Material" value="40 coins">**Claws** Primitive materials, Quality 2. A full set, still hard.</TreasureRow><TreasureRow kind="Trophy" value="35 coins">**Ghoul jaw** Taken whole, with the teeth in it.</TreasureRow><TreasureRow kind="Valuables" value="150 coins">**Stripped grave goods** Bronze pins, the back of a mirror, a string of carnelian, all off the dead they ate.</TreasureRow><TreasureRow kind="Valuables" value="120 coins">**Funeral gold** Leaf and wire, worked off a coffin face and carried home.</TreasureRow><TreasureRow kind="Tool" value="25 coins">**Sealed lamp oil** Oil, Quality 1, 3 uses. Out of the chamber they nest in.</TreasureRow><TreasureRow kind="Relic">**Warden's bone whistle** The note the grave-wardens use to call a colony off a body. Ghouls that have heard it before come away, and every one within the necropolis hears it.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="2">Pair</EncounterTemplate><EncounterTemplate count="3-5">Pack</EncounterTemplate><EncounterTemplate count="6-12">Colony</EncounterTemplate></LoreSection>
+
+</CreatureLore>
 
 <StatBlockTrait label="Skills">Fighting (1), Perception (2), Stealth (2)</StatBlockTrait>
 
@@ -105,6 +137,22 @@ Tier 2 creatures are slightly more dangerous, including stronger undead, minor m
 
 ### Polearm Soldier
 
+<CreatureLore>
+
+The second rank, working over the shoulders of the shields with three metres of pole and a blade on the end of it. They are picked for reach and shoulders, and they spend the whole fight looking at the backs of their own front rank.
+
+<LoreSection label="Ecology"><LoreTag>Grassland</LoreTag><LoreTag>River</LoreTag><LoreTag>Desert</LoreTag><LoreTag>City</LoreTag><LoreTag>Fortress</LoreTag><LoreTag>Road</LoreTag> They are paid at the start of the season and drilled for the rest of it. A file stands watches, walks the wall, escorts carts and grain barges, and fights perhaps twice a year. Most were taken on at sixteen for the food and the coin, and most go home at thirty with a bad shoulder and a plot of land they were promised. They eat better than the people they guard and they know it. Off duty they are in the same wineshops as everybody else. A file that has stood together for a season is closer than most families, and the older soldiers hold that a line which loses its right-hand man twice will not stand a third time, so a file that loses two is broken up and shared out.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>1.60 to 1.80 m tall</LoreTag><LoreTag>70 to 80 kg</LoreTag><LoreTag>Adult at 18, old at 60, and 80 years is a full life</LoreTag> A soldier's household is an ordinary one, two or three children raised in the quarter behind the barracks, and the sons are taken on at sixteen if there is a place. Whole files are often cousins, because a soldier speaks for their own first when a place comes open.</LoreSection>
+
+<LoreSection label="Tactics">They stand behind a shield and hit what the shield is holding. **Over the Shields** only works while somebody is in front of them, so keep them in the second rank and move them along the line rather than out of it. They drag people out of cover and off the flanks toward the spears. **Sweeping Blow** costs them their movement for the turn, so save it for the moment the party bunches up. They hold as long as the shields do and break with them.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Incidental"><TreasureRow kind="Weapon" value="150 coins">**Glaive** Glaive, Quality 2, damaged. The haft is cracked below the head.</TreasureRow><TreasureRow kind="Armor" value="50 coins">**Leather cuirass** Leather, Quality 1, damaged.</TreasureRow><TreasureRow kind="Tool" value="16 coins">**Whetstone and oil flask** Oil, Quality 1, 2 uses left. Carried for the blade.</TreasureRow><TreasureRow kind="Valuables" value="80 coins">**Season's pay** Coin drawn at the muster, in a purse sewn inside the cuirass.</TreasureRow><TreasureRow kind="Supplies" value="5 coins">**Ration bag** Simple Rations (d4) with 1 use left.</TreasureRow><TreasureRow kind="Relic">**Pay list** An incised tablet of what the file is owed. Three of the names on it draw wages and do not stand in the line, and the officer who wrote it knows.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="2">Pair</EncounterTemplate><EncounterGroup name="Patrol">3-4 [Spearman](/docs/creatures/creatures/tier-2#spearman) and 1-2 [Slinger](/docs/creatures/creatures/tier-2#slinger)</EncounterGroup><EncounterGroup name="Line">4-6 [Spearman](/docs/creatures/creatures/tier-2#spearman), 2 [Slinger](/docs/creatures/creatures/tier-2#slinger) and 2-3 [Polearm Soldier](/docs/creatures/creatures/tier-2#polearm-soldier)</EncounterGroup></LoreSection>
+
+</CreatureLore>
+
 <StatBlockTrait label="Skills">Fighting (1), Athletics (2), Insight (2)</StatBlockTrait>
 
 <StatBlockSection label="Attacks">
@@ -140,6 +188,22 @@ Tier 2 creatures are slightly more dangerous, including stronger undead, minor m
 
 ### Slinger
 
+<CreatureLore>
+
+The one behind the shields with a bag of cast lead, who has been told which target and does not have to think about the rest. They are the cheapest soldier a city fields and the one their own line stands in front of.
+
+<LoreSection label="Ecology"><LoreTag>Grassland</LoreTag><LoreTag>River</LoreTag><LoreTag>Desert</LoreTag><LoreTag>City</LoreTag><LoreTag>Fortress</LoreTag><LoreTag>Road</LoreTag> They are paid at the start of the season and drilled for the rest of it. A file stands watches, walks the wall, escorts carts and grain barges, and fights perhaps twice a year. Most were taken on at sixteen for the food and the coin, and most go home at thirty with a bad shoulder and a plot of land they were promised. They eat better than the people they guard and they know it. Off duty they are in the same wineshops as everybody else. A file that has stood together for a season is closer than most families, and the older soldiers hold that a line which loses its right-hand man twice will not stand a third time, so a file that loses two is broken up and shared out.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>1.60 to 1.80 m tall</LoreTag><LoreTag>70 to 80 kg</LoreTag><LoreTag>Adult at 18, old at 60, and 80 years is a full life</LoreTag> A soldier's household is an ordinary one, two or three children raised in the quarter behind the barracks, and the sons are taken on at sixteen if there is a place. Whole files are often cousins, because a soldier speaks for their own first when a place comes open.</LoreSection>
+
+<LoreSection label="Tactics">They stay behind the shields and shoot over them. Put **Ranging Shot** on whoever the line is about to reach rather than on whoever is nearest, and shoot the same target twice before choosing another. They fall back the moment somebody gets past the shields, and draw the shortsword only when cornered. With the line gone they break and run.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Incidental"><TreasureRow kind="Weapon" value="50 coins">**Sling** Sling, Quality 2, damaged. The cradle is cut through.</TreasureRow><TreasureRow kind="Weapon" value="50 coins">**Shortsword** Shortsword, Quality 2, damaged.</TreasureRow><TreasureRow kind="Armor" value="50 coins">**Leather cuirass** Leather, Quality 1, damaged.</TreasureRow><TreasureRow kind="Material" value="20 coins">**Cast lead shot** Primitive materials, Quality 2. Thirty of them in a bag, all of one weight.</TreasureRow><TreasureRow kind="Valuables" value="40 coins">**Season's pay** Coin drawn at the muster, and less of it than the shield ranks draw.</TreasureRow><TreasureRow kind="Relic">**Knotted march line** A cord the file knots as they march, one knot to the landmark and one to the day. Run backward it is the road to the camp they came from.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="2">Pair</EncounterTemplate><EncounterGroup name="Patrol">3-4 [Spearman](/docs/creatures/creatures/tier-2#spearman) and 1-2 [Slinger](/docs/creatures/creatures/tier-2#slinger)</EncounterGroup><EncounterGroup name="Line">4-6 [Spearman](/docs/creatures/creatures/tier-2#spearman), 2 [Slinger](/docs/creatures/creatures/tier-2#slinger) and 2-3 [Polearm Soldier](/docs/creatures/creatures/tier-2#polearm-soldier)</EncounterGroup></LoreSection>
+
+</CreatureLore>
+
 <StatBlockTrait label="Skills">Fighting (1), Athletics (2), Perception (2)</StatBlockTrait>
 
 <StatBlockSection label="Attacks">
@@ -174,6 +238,22 @@ Tier 2 creatures are slightly more dangerous, including stronger undead, minor m
 >
 
 ### Spearman
+
+<CreatureLore>
+
+A trained soldier of a city or a warlord, three years drilled, standing behind a painted shield with the spear held level. They have never fought anything that was not standing in a line opposite them. They are very good at the one thing they do.
+
+<LoreSection label="Ecology"><LoreTag>Grassland</LoreTag><LoreTag>River</LoreTag><LoreTag>Desert</LoreTag><LoreTag>City</LoreTag><LoreTag>Fortress</LoreTag><LoreTag>Road</LoreTag> They are paid at the start of the season and drilled for the rest of it. A file stands watches, walks the wall, escorts carts and grain barges, and fights perhaps twice a year. Most were taken on at sixteen for the food and the coin, and most go home at thirty with a bad shoulder and a plot of land they were promised. They eat better than the people they guard and they know it. Off duty they are in the same wineshops as everybody else. A file that has stood together for a season is closer than most families, and the older soldiers hold that a line which loses its right-hand man twice will not stand a third time, so a file that loses two is broken up and shared out.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>1.60 to 1.80 m tall</LoreTag><LoreTag>70 to 80 kg</LoreTag><LoreTag>Adult at 18, old at 60, and 80 years is a full life</LoreTag> A soldier's household is an ordinary one, two or three children raised in the quarter behind the barracks, and the sons are taken on at sixteen if there is a place. Whole files are often cousins, because a soldier speaks for their own first when a place comes open.</LoreSection>
+
+<LoreSection label="Tactics">They form up and hold. They will not chase individuals and will not spread out, but the line advances as a line and walks down anyone shooting at it. They give ground a step at a time rather than open it. Keep them shoulder to shoulder, since **Close the Ranks** pays only while they have a neighbour, and close the gap whenever one goes down. They attack whoever comes at the line rather than whoever is most dangerous. **Braced Spear** catches anyone trying to leave their reach, so hold the position and let people walk into it. They fight until their file breaks, then run with it.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Standard"><TreasureRow kind="Weapon" value="100 coins">**Spear** Spear, Quality 2, damaged. Split through the socket.</TreasureRow><TreasureRow kind="Armor" value="150 coins">**Light shield** Light Shield, Quality 2, damaged. Faced with the mark of whoever pays them.</TreasureRow><TreasureRow kind="Armor" value="50 coins">**Leather cuirass** Leather, Quality 1, damaged.</TreasureRow><TreasureRow kind="Valuables" value="60 coins">**Season's pay** Coin drawn at the muster, carried in a neck pouch.</TreasureRow><TreasureRow kind="Supplies" value="10 coins">**Ration bag** Simple Rations (d4) with 2 uses left.</TreasureRow><TreasureRow kind="Relic">**Gate seal-tag** A clay tag with the garrison officer's seal rolled into it, carried by whoever is sent out on an errand. The gate guards know the seal and do not know the faces, so it opens the city gate for whoever holds it.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="2">Pair</EncounterTemplate><EncounterGroup name="Patrol">3-4 [Spearman](/docs/creatures/creatures/tier-2#spearman) and 1-2 [Slinger](/docs/creatures/creatures/tier-2#slinger)</EncounterGroup><EncounterGroup name="Line">4-6 [Spearman](/docs/creatures/creatures/tier-2#spearman), 2 [Slinger](/docs/creatures/creatures/tier-2#slinger) and 2-3 [Polearm Soldier](/docs/creatures/creatures/tier-2#polearm-soldier)</EncounterGroup></LoreSection>
+
+</CreatureLore>
 
 <StatBlockTrait label="Skills">Fighting (1), Athletics (2), Perception (2)</StatBlockTrait>
 
@@ -218,7 +298,7 @@ The one who chose the village, and the one who will decide when it is finished. 
 
 <LoreSection label="Physiology"><LoreTag>1.85 m tall</LoreTag><LoreTag>105 kg</LoreTag><LoreTag>Adult at 14, old at 45, and 60 years is a long life</LoreTag> The same canyon holds raise the same bands, and a leader is usually somebody every raider behind them has known since childhood. Most are between 35 and 50, which in Zakhar terms is late enough to be listened to and early enough to still ride.</LoreSection>
 
-<LoreSection label="Tactics">They stay behind the line and run it. `Fight Where I Point` sets up whichever raider is best placed. `Take It On The Shield` puts the leader in the way of a blow meant for one of their raiders. With no raiders left to direct, they fight plainly. If they fall first, the band's nerve goes with them and the raid is usually over. Wounding them changes the fight rather than ending it. `Blood Up` takes a careful commander and turns them into something that trades hits, so the second half is more dangerous and much shorter. **They can be bought at any point before that.** A party that offers the grain is taking the deal the leader would have proposed themselves.</LoreSection>
+<LoreSection label="Tactics">They stay behind the line and run it rather than fighting in it. Spend **Fight Where I Point** on whichever raider is best placed, and **Take It On The Shield** to intercept a blow meant for a raider. With no raiders left to direct they fight plainly. Once they are Wounded, **Blood Up** puts them in the front rank trading hits and they stop protecting anybody. **They can be bought at any point before that.** Offer them the grain and they take it and go.</LoreSection>
 
 <LoreSection label="Treasure"><TreasureTable scale="Rich"><TreasureRow kind="Weapon" value="175 coins">**Battleaxe** Battleaxe, Quality 2, damaged. The haft is wound in silver wire.</TreasureRow><TreasureRow kind="Armor" value="150 coins">**Faced shield** Light Shield, Quality 2, damaged. Painted with the band's mark, which every village in the country knows on sight.</TreasureRow><TreasureRow kind="Valuables" value="120 coins">**Three seal rings** River-city seals, none of them theirs, taken over three seasons. Two of the owners are still alive.</TreasureRow><TreasureRow kind="Valuables" value="200 coins">**Silver arm rings** Worn as a record of raids. Taking them off a living leader is an insult.</TreasureRow><TreasureRow kind="Supplies" value="180 coins">**Wastes-crossing kit** 12 x Simple Rations (d4). Where the band was going next.</TreasureRow><TreasureRow kind="Relic">**Agreement tablet** Incised clay with two marks, a village and a band. It proves the raids were arranged.</TreasureRow></TreasureTable></LoreSection>
 

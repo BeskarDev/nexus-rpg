@@ -4,6 +4,20 @@ Part of [designer-principles.md](../designer-principles.md); numbers are global 
 
 Read before writing any stat block text or `lore` prose, and again as a final pass. Binds ability text, lore prose and treasure rows.
 
+## In this file — How the text reads
+
+| # | |
+|---|---|
+| **19** | SL escalation has one canonical wording: `increase the SL by one step (max. critical)`. |
+| **28** | When two creatures share a sentence, name the subject — do not reach for a pronoun. |
+| **29** | Lore prose: write for a middle schooler — one idea per sentence, concrete first, wit last. |
+| **30** | Read every prose sentence aloud, and fix what the mouth stumbles on. |
+| **31** | Lore prose has no modern narrator. Never debunk the setting's superstitions — record them. |
+| **32** | Say it once. Never add the sentence that defends the first one. |
+| **33** | `tactics` is a neutral briefing for the GM, with the creature as its subject. |
+
+**Numbers are global and never renumbered, so this file is ordered for reading rather than by date.** Full text below in the same order.
+
 **19. SL escalation has one canonical wording: `increase the SL by one step (max. critical)`.** Copy it verbatim, never paraphrase. `SL` is published and defined in `docs/01-basic-rules/01-how-to-roll.md`, so the abbreviation costs the reader nothing, and the parenthetical carries the cap in two words. The longhand it replaces — "increases the success level of a hit by one step, to a maximum of a critical hit" — is twenty-two words for the same rule on a card where space is the scarce resource. The same discipline applies to every recurring mechanic: **once a pattern has a canonical form, drift is a defect**, because a GM who has read the phrase once should recognise it instantly rather than re-parse a variant. *(Owner ruling, 2026-08-09.)*
 
 **28. When two creatures share a sentence, name the subject — do not reach for a pronoun.** The house rule that creatures are **they/their/them** stands and is not the problem. The problem is that *any* pronoun fails once a second creature is in scope: "When this creature uses Protect Ally, **they** take half the damage" could be the protector or the ally, and swapping to "it" would only disambiguate by accident — it reads as the protector *because the ally happens to be a person*, and breaks the moment both are beasts.
@@ -41,11 +55,7 @@ Fixed: *"They are just always lying where somebody is about to step."* The test 
 
 **31. Lore prose has no modern narrator. Never debunk the setting's superstitions — record them.** This world is Bronze Age sword and sorcery, and its people do not have the scientific viewpoint that would let anyone say what a thing "really" is. A lore block that reaches for one is writing from outside the setting, and it costs the entry the only thing lore is for.
 
-The failure sounds authoritative, which is why it slips through. Three sentences from the first draft, all of them dismissals dressed as clarity:
-
-- *"They are not a plague and not an omen. They are what happens to a sealed room over four hundred years."* — states the modern answer and rules out the two readings a Bronze Age priest would actually hold.
-- *"Some cities read that as an omen. Others read it as a jackal knowing where the food is."* — offers a belief and then overrules it with the rational reading, so the belief is scenery.
-- *"Almost nobody stops to think that they are looking at a dinosaur."* — the same voice plus a 19th-century coinage, which principle 22 already forbids on names.
+The failure sounds authoritative, which is why it slips through — three worked dismissals from the first Tomb Beetles draft are in [../case-studies.md](../case-studies.md#p31).
 
 **Write what people believe, as the thing that is so.** The beetles are what the necropolis priests call the last of the offerings. A quay without leatherwings is a quay the sea has turned against, and no captain who believes it ties up there. **Two competing beliefs beat one belief and one correction**: some cities take the jackals as the dead being met on the road, others as a sign the rites were begun badly.
 
@@ -63,25 +73,25 @@ Two questions catch it before it ships. **Did I already say this?** — if the r
 
 **Trust the reader and trust the rules.** A stat block is read by someone who has the rulebook; a term used correctly needs no chaperone. This is a writing rule with a design edge: text spent defending is text not spent on the thing that makes the creature worth reading. *(Owner ruling, 2026-08-10, Tomb Beetles treasure table.)*
 
-**33. `tactics` is a neutral briefing written for the GM, with the creature as its subject. Cut every sentence that stages the scene, states the obvious, or tells the players what to do.** The field says what the creature does, what it goes for, what stops it, and when it breaks off. It does not tell the GM how to present any of that, and it does not narrate the consequence of a fact it has already given.
+**33. `tactics` is a neutral briefing for the GM, with the creature as its subject.** It says what the
+creature does, what it goes for, what stops it and when it breaks off. It does not stage the scene, does
+not state the obvious, and does not tell the players what to do.
 
-Two rounds of correction landed on the same rule from opposite sides, and the second is the one to remember.
+**The full rule lives in [../lore-schema.md](../lore-schema.md#tactics)** — the five things the field
+covers, the ❌/✅ table, and the three bans — because that is the file open when the field is being
+written. Do not restate it here; this entry exists so a writing pass knows the field has its own rule.
 
-**Round one, the stage directions.** *"Whoever cuts their friend loose has genuinely solved the problem, and the party should be allowed to notice."* Allowed by whom, doing what? It asks the GM to arrange an emotion, and pads itself with `genuinely` and `the problem` because there is no concrete claim underneath. Same shape: *"the lesson only lands if the party watches it happen"*, *"and that frustration is the point"*, *"let them retreat where the players can see it"*, *"make that boundary visible"*.
+The two failures worth carrying in the writing file, because they are prose defects rather than schema
+ones:
 
-**Round two: rewriting them as instructions was still wrong.** The stage direction became *"Say so out loud when it happens"*, which has a verb and is still a defect — it states the obvious and **breaks the register of a neutral briefing**. The mechanical fact was already there in the sentence before it. A GM who has read "cutting that person free costs the crocodile its whole turn" does not need to be told to mention it.
-
-So the rule is not "convert staging into instructions", it is **cut**:
+**Cut, do not convert.** A stage direction rewritten as an instruction is still a defect.
 
 > **Before.** …so cutting that person free costs the crocodile its whole turn. Say so out loud when it happens.
 >
 > **After.** …so cutting that person free costs the crocodile its whole turn.
 
-The same pass removed *"Run one as a hazard, not as a threat"*, *"and none of it is a rule"*, *"a fight with one should almost never be rolled at all"* and *"that is the counterplay"*. Every one was the entry explaining itself to the GM instead of briefing them.
-
-**Write from the GM's chair, with the creature as the subject.** The field exists to help someone *run* these creatures, so a sentence whose subject is the party has drifted into a player handout. The first pass was full of them: *"a party standing back to back has already beaten them"*, *"a party warned to watch the ground has already taken the ambush away"*, *"the party's answer is distance and patience"*, *"scattering them is the real work of the fight"*. Each states a true thing about the creature's limits and then points it at the wrong reader — the GM does not need to be told what the players should do, and telling them makes the counterplay read as a solution to apply rather than a weakness to play honestly.
-
-**Turn every limit into behaviour.** The fact survives, the subject changes, and the GM gets an instruction instead of a spoiler:
+**Turn every limit into behaviour.** A sentence whose subject is the party has drifted into a player
+handout. The fact survives, the subject changes:
 
 | ❌ party as subject | ✅ creature as subject |
 |---|---|
@@ -89,8 +99,11 @@ The same pass removed *"Run one as a hazard, not as a threat"*, *"and none of it
 | "a party warned to watch the ground has taken the ambush away" | "once they are spotted they have nothing left to do but leave" |
 | "the party's answer is distance and patience, not damage" | "they never speed up, never flank, and never choose a better target" |
 | "cutting that person free costs the crocodile its whole turn" | "a crocodile with someone in their jaws spends the turn dragging rather than attacking" |
-| "scattering them is the real work of the fight" | "keep them shoulder to shoulder, and have them reform the line whenever it breaks" |
 
-Naming the party is still fine where they are genuinely the object of the creature's behaviour — "they go for whoever stands between them and the grain" — because the creature is still doing the verb.
+Naming the party is fine where they are genuinely the object of the creature's behaviour — "they go for
+whoever stands between them and the grain" — because the creature is still doing the verb.
 
-**The test: would this sentence survive in a scout's report?** A briefing states what is true and stops. It does not coach delivery, it does not label its own content ("that is the counterplay"), and it does not spell out what follows from the line above. Emphasis is still allowed and still carries weight — **bolding the one fact that decides the fight** is briefing, not staging. *(Owner rulings, 2026-08-10, Young Crocodile tactics.)*
+**The test: would this sentence survive in a scout's report?** Emphasis is still allowed and still carries
+weight; **bolding the one fact that decides the fight** is briefing, not staging. Both rounds of
+correction: [../case-studies.md](../case-studies.md#p33). *(Owner rulings, 2026-08-10 and 2026-08-11,
+D-083.)*

@@ -39,7 +39,7 @@ Natural animals that can serve as companions or mounts.
 - <strong>Claw</strong> (<em>light, slash</em>). Deals -1 weapon damage (min. 1).
 
 **Abilities:**
-- <strong>Burrow. </strong>This creature can move freely through loose earth, treating it as difficult terrain.
+- <strong>Burrow.</strong> This creature can move freely through loose earth, treating it as difficult terrain.
 - <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.
 - <strong>Natural Climber.</strong> This creature can climb without treating it as difficult terrain.
 
@@ -57,8 +57,8 @@ Natural animals that can serve as companions or mounts.
 - <strong>Screech.</strong> Roll Agility + Perception vs. Resist against all creatures within a cone in short range. Deals -1 weapon damage (min. 1) (ignore 1/2 AV) as blast damage. This creature can use this attack once per scene.
 
 **Abilities:**
-- <strong>Echolocation (medium).</strong> This creature can perceive its surroundings without relying on sight within range, even around corners or behind cover.
-- <strong>Flying (Wings). </strong>This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn.
+- <strong>Echolocation (medium).</strong> This creature perceives the location of creatures and objects within medium range without relying on sight, including around corners and behind full cover. While this creature is deafened, they lose this sense.
+- <strong>Flying (Wings).</strong> This creature can fly with +1 Movement per turn. If on the ground, they can’t use more than 1 Movement per turn.
 
 
 ### **Bear**
@@ -74,8 +74,8 @@ Natural animals that can serve as companions or mounts.
 - <strong>Claw</strong> (<em>light, slash</em>). Deals -1 weapon damage (min. 1). On a strong or critical hit against a creature of equal or smaller Size, the target is knocked prone.
 
 **Abilities:**
-- <strong>Intimidating Roar. </strong>This creature can use an Action in combat to unleash a powerful roar. Roll Strength + Fortitude vs. Resist against each creature within short range. On a success, they are frightened of you. They can roll Spirit + Fortitude at the start of their turns. On a success, they stop being frightened. You can use this ability once per combat.
-- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
+- <strong>Intimidating Roar.</strong> This creature can use an Action in combat to unleash a powerful roar. Roll Strength + Fortitude vs. Resist against each creature within short range. On a success, they are frightened of you. They can roll Spirit + Fortitude at the start of their turns. On a success, they stop being frightened. You can use this ability once per combat.
+- <strong>Powerful Build.</strong> Add +2 to this creature’s carrying capacity.
 
 
 ### **Beetle**
@@ -91,8 +91,8 @@ Natural animals that can serve as companions or mounts.
 - <strong>Mandibles</strong> (<em>crush</em>). On a strong or critical hit against a creature of equal or smaller Size, the target is grappled. While grappled, this creature can’t attack any other target.
 
 **Abilities:**
-- <strong>Flying (Wings). </strong>This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn.
-- <strong>Wall Climb. </strong>This creature can climb on any vertical surface without rolling.
+- <strong>Flying (Wings).</strong> This creature can fly with +1 Movement per turn. If on the ground, they can’t use more than 1 Movement per turn.
+- <strong>Wall Climb.</strong> This creature can climb on any vertical surface without rolling.
 
 
 ### **Bird**
@@ -108,8 +108,8 @@ Natural animals that can serve as companions or mounts.
 - <strong>Talons</strong> (<em>agile, light, slash</em>). Deals -1 weapon damage (min. 1).
 
 **Abilities:**
-- <strong>Dive Attack. </strong>After flying at least a short distance downwards, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
-- <strong>Flying (Wings). </strong>This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn.
+- <strong>Dive Attack.</strong> After flying at least a short distance downwards, this creature gains +1 boon on their next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
+- <strong>Flying (Wings).</strong> This creature can fly with +1 Movement per turn. If on the ground, they can’t use more than 1 Movement per turn.
 - <strong>Keen Eyes.</strong> This creature gains +1 boon on Perception rolls based on sight.
 
 
@@ -125,9 +125,9 @@ Natural animals that can serve as companions or mounts.
 - <strong>Tusks</strong> (<em>crush</em>). Deals normal weapon damage.
 
 **Abilities:**
-- <strong>Gore Attack. </strong>After moving at least a short distance in a straight line, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
+- <strong>Gore Attack.</strong> After moving at least a short distance in a straight line, this creature gains +1 boon on their next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
 - <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.
-- <strong>Relentless. </strong>When this creature would suffer a Wound, it can choose to ignore it. This creature can use this ability once per day.
+- <strong>Relentless.</strong> When this creature would suffer a Wound, they can choose to ignore it. This creature can use this ability once per day.
 
 
 ### **Camel**
@@ -145,7 +145,7 @@ Natural animals that can serve as companions or mounts.
 **Abilities:**
 - <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
 - <strong>Desert Adapted.</strong> This creature can ignore the penalty to Supply checks for extremely hot environments.
-- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
+- <strong>Powerful Build.</strong> Add +2 to this creature’s carrying capacity.
 
 
 ### **Cat**
@@ -163,7 +163,7 @@ Natural animals that can serve as companions or mounts.
 **Abilities:**
 - <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.
 - <strong>Night Vision.</strong> This creature can see one range category further from sources of bright and dim light.
-- <strong>Pounce.</strong> If this creature spend Movement towards it’s target during the turn it attacks, it gains +1 boon on the attack. Also on a strong or critical hit against a creature of equal or smaller Size, the target is knocked prone.
+- <strong>Pounce.</strong> If this creature spend Movement towards their target during the turn they attack, they gain +1 boon on the attack. Also on a strong or critical hit against a creature of equal or smaller Size, the target is knocked prone.
 
 
 ### **Constrictor Snake**
@@ -179,7 +179,7 @@ Natural animals that can serve as companions or mounts.
 - <strong>Constrict</strong> (<em>crush</em>). Deals normal weapon damage. On a strong or critical hit and if the target is the same Size or smaller, the target is also grappled and restrained. While constricted, this attack can’t be used to attack any other target.
 
 **Abilities:**
-- <strong>Blindsight (close). </strong>This creature can perceive the location of creatures and objects within range that aren’t behind full cover.
+- <strong>Blindsight (close).</strong> This creature perceives the location of creatures and objects within close range without relying on sight. Full cover blocks this sense.
 - <strong>Deep Breath.</strong> This creature can hold their breath underwater for a short duration and can swim with normal Movement.
 
 
@@ -196,8 +196,8 @@ Natural animals that can serve as companions or mounts.
 
 **Abilities:**
 - <strong>Aquatic.</strong> This creature is immune to drowning and can swim with normal Movement.
-- <strong>Hard Shell.</strong> This creature can use the Guard Quick Action treating it’s shell as a shield.
-- <strong>Slow Movement. </strong>This creature can’t spend more than 1 Movement per turn.
+- <strong>Hard Shell.</strong> This creature can use the Guard Quick Action treating their shell as a shield.
+- <strong>Slow Movement.</strong> This creature can’t spend more than 1 Movement per turn.
 
 
 ### **Crocodile**
@@ -231,7 +231,7 @@ Natural animals that can serve as companions or mounts.
 **Abilities:**
 - <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.
 - <strong>Pack Tactics.</strong> This creature gains +1 boon on attacks against any enemy in melee range if this creature has more allies in melee range than enemies.
-- <strong>Track Scent. </strong>This creature can track a scent trail for up to a day after it was made, unless some foreign force influenced the scent (for example, a heavy rain).
+- <strong>Track Scent.</strong> This creature can track a scent trail for up to a day after it was made, unless some foreign force influenced the scent (for example, a heavy rain).
 
 
 ### **Donkey**
@@ -248,8 +248,8 @@ Natural animals that can serve as companions or mounts.
 
 **Abilities:**
 - <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
-- <strong>Sure-Footed. </strong>This creature gains +1 boon on rolls to avoid being knocked prone or pushed. It also ignores difficult terrain from rocky or mountainous areas.
-- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
+- <strong>Sure-Footed.</strong> This creature gains +1 boon on rolls to avoid being knocked prone or pushed. They also ignore difficult terrain from rocky or mountainous areas.
+- <strong>Powerful Build.</strong> Add +2 to this creature’s carrying capacity.
 
 
 ### **Elephant**
@@ -266,8 +266,8 @@ Natural animals that can serve as companions or mounts.
 
 **Abilities:**
 - <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
-- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
-- <strong>Trample. </strong>When this creature moves through the space of a creature at least one Size smaller, it can make a Stomp attack against that creature as a Quick Action.
+- <strong>Powerful Build.</strong> Add +2 to this creature’s carrying capacity.
+- <strong>Trample.</strong> When this creature moves through the space of a creature at least one Size smaller, they can make a Stomp attack against that creature as a Quick Action.
 
 
 ### **Frog**
@@ -285,7 +285,7 @@ Natural animals that can serve as companions or mounts.
 **Abilities:**
 - <strong>Amphibious.</strong> This creature can hold their breath underwater for a medium duration and can swim with normal Movement.
 - <strong>Strong Leap.</strong> This creature can jump up to a short distance without rolling, even without moving before.
-- <strong>Swallow.</strong> This creature can only swallow one smaller creature at a time. When doing so, the target is no longer grappled. Instead, the target becomes blinded and restrained. It also takes lasting acid damage equal to normal weapon damage. When this creature takes a Wound or dies, it releases the swallowed creature and they are spit out prone in melee range.
+- <strong>Swallow.</strong> This creature can only swallow one smaller creature at a time. When doing so, the target is no longer grappled. Instead, the target becomes blinded and restrained. The target also takes lasting acid damage equal to normal weapon damage. When this creature takes a Wound or dies, they release the swallowed creature and they are spit out prone in melee range.
 
 
 ### **Hippopotamus**
@@ -301,8 +301,8 @@ Natural animals that can serve as companions or mounts.
 
 **Abilities:**
 - <strong>Deep Breath.</strong> This creature can hold their breath underwater for a short duration and can swim with normal Movement.
-- <strong>Gore Attack. </strong>After moving at least a short distance in a straight line, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
-- <strong>Relentless. </strong>When this creature would suffer a Wound, it can choose to ignore it. This creature can use this ability once per day.
+- <strong>Gore Attack.</strong> After moving at least a short distance in a straight line, this creature gains +1 boon on their next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
+- <strong>Relentless.</strong> When this creature would suffer a Wound, they can choose to ignore it. This creature can use this ability once per day.
 
 
 ### **Horse**
@@ -319,8 +319,8 @@ Natural animals that can serve as companions or mounts.
 
 **Abilities:**
 - <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
-- <strong>Fast Movement. </strong>This creature has +1 Movement and can cover twice the normal distance during travel.
-- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
+- <strong>Fast Movement.</strong> This creature has +1 Movement and can cover twice the normal distance during travel.
+- <strong>Powerful Build.</strong> Add +2 to this creature’s carrying capacity.
 
 
 ### **Lizard**
@@ -353,8 +353,8 @@ Natural animals that can serve as companions or mounts.
 
 **Abilities:**
 - <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
-- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
-- <strong>Gore Attack. </strong>After moving at least a short distance in a straight line, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
+- <strong>Powerful Build.</strong> Add +2 to this creature’s carrying capacity.
+- <strong>Gore Attack.</strong> After moving at least a short distance in a straight line, this creature gains +1 boon on their next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
 
 
 ### **Poisonous Snake**
@@ -369,7 +369,7 @@ Natural animals that can serve as companions or mounts.
 - <strong>Bite</strong> (<em>agile, pierce</em>). Deals normal weapon damage. On a strong or critical hit, the target also takes lasting poison damage (2 x Tier) and is poisoned for a short duration.
 
 **Abilities:**
-- <strong>Blindsight (close). </strong>This creature can perceive the location of creatures and objects within range that aren’t behind full cover.
+- <strong>Blindsight (close).</strong> This creature perceives the location of creatures and objects within close range without relying on sight. Full cover blocks this sense.
 - <strong>Deep Breath.</strong> This creature can hold their breath underwater for a short duration and can swim with normal Movement.
 
 
@@ -403,8 +403,8 @@ Natural animals that can serve as companions or mounts.
 - <strong>Web</strong> (<em>thrown (close/short)</em>). Deals no damage. On a hit, the target is restrained by the web. The web has 10 HP per Tier (min. 1), 0 AV and 8 Defense. The target can also roll Strength + Agility vs. this creature’s Parry as an Action on their turn. On a success, they escape the web and are no longer restrained. This creature can use this ability once per scene.
 
 **Abilities:**
-- <strong>Spider Climb. </strong>This creature can climb on any surface, even upside down, without rolling.
-- <strong>Web Walker.</strong> This creature can move on webs normally. It also knows the exact location of any creature touching it’s web while standing on it.
+- <strong>Spider Climb.</strong> This creature can climb on any surface, even upside down, without rolling.
+- <strong>Web Walker.</strong> This creature can move on webs normally. They also know the exact location of any creature touching their web while standing on it.
 
 
 ### **Stag**
@@ -420,9 +420,9 @@ Natural animals that can serve as companions or mounts.
 - <strong>Kick</strong> (<em>crush</em>). This creature can only use this attack if it skips all Movement this turn (before and after the attack). Deals +1 weapon damage.
 
 **Abilities:**
-- <strong>Fast Movement. </strong>This creature has +1 Movement and can cover twice the normal distance during travel.
-- <strong>Gore Attack. </strong>After moving at least a short distance in a straight line, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
-- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
+- <strong>Fast Movement.</strong> This creature has +1 Movement and can cover twice the normal distance during travel.
+- <strong>Gore Attack.</strong> After moving at least a short distance in a straight line, this creature gains +1 boon on their next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
+- <strong>Powerful Build.</strong> Add +2 to this creature’s carrying capacity.
 
 
 ### **Turtle**
@@ -438,7 +438,7 @@ Natural animals that can serve as companions or mounts.
 
 **Abilities:**
 - <strong>Amphibious.</strong> This creature can hold their breath underwater for a medium duration and can swim with normal Movement.
-- <strong>Shell Defense.</strong> As a Quick Action, this creature can withdraw into its shell, gaining the effects of the Guard Quick Action and +2 AV but becoming unable to move or attack until it uses another Quick Action to emerge.
+- <strong>Shell Defense.</strong> As a Quick Action, this creature can withdraw into their shell, gaining the effects of the Guard Quick Action and +2 AV but becoming unable to move or attack until they use another Quick Action to emerge.
 - <strong>Slow Movement (Land).</strong> This creature can’t use more than 1 Movement per turn while on land.
 
 ## Spirit (Primordial)
@@ -465,7 +465,7 @@ Primordial spirits embodying the fundamental forces of nature - air, earth, fire
 
 **Abilities:**
 - <strong>Air Form.</strong> This creature can move through any space as narrow as one centimetre.
-- <strong>Flying (hover). </strong>This creature can fly freely by hovering in the air with +1 Movement per turn.
+- <strong>Flying (hover).</strong> This creature can fly freely by hovering in the air with +1 Movement per turn.
 
 
 ### **Earth Elemental**
@@ -487,8 +487,8 @@ Primordial spirits embodying the fundamental forces of nature - air, earth, fire
 - <strong>Earth Spikes</strong> (<em>crush</em>). Target all creatures in melee range. On a hit, subtract the weapon damage once from the total damage against each target.
 
 **Abilities:**
-- <strong>Earth Glide. </strong>This creature can burrow through natural earth and stone as part of it’s normal Movement.
-- <strong>Tremorsense. </strong>This creature can perceive the location of moving creatures and objects on connected surfaces with it’s own in medium range.
+- <strong>Earth Glide.</strong> This creature can burrow through natural earth and stone as part of their normal Movement.
+- <strong>Tremorsense (medium).</strong> This creature perceives the location of creatures and objects moving on a surface connected to their own within medium range. Anything not in contact with that surface is unseen.
 
 
 ### **Fire Elemental**
@@ -510,8 +510,8 @@ Primordial spirits embodying the fundamental forces of nature - air, earth, fire
 - <strong>Flame Bolt </strong>(<em>thrown (short/medium)</em>). Deals -1 weapon damage (min. 1) as fire damage. On a strong or critical hit, inflicts burning (equal to 2 x Tier) for a short duration.
 
 **Abilities:**
-- <strong>Fire Form.</strong> This creature can move through any space as narrow as a keyhole. This creature is immune against fire damage and burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers it’s Tier x 2 fire damage (ignore AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignore AV) each turn doing so.
-- <strong>Flying (hover). </strong>This creature can fly freely by hovering in the air with +1 Movement per turn.
+- <strong>Fire Form.</strong> This creature can move through any space as narrow as a keyhole. This creature is immune against fire damage and burning. This creature illuminates the area in short distance around them in bright light. If this creature is hit by an attack at melee range, the attacker suffers their Tier x 2 fire damage (ignore AV). If this creature comes into contact with a large amount of water, they take 5 damage (ignore AV) each turn doing so.
+- <strong>Flying (hover).</strong> This creature can fly freely by hovering in the air with +1 Movement per turn.
 
 
 ### **Water Elemental**
@@ -534,7 +534,7 @@ Primordial spirits embodying the fundamental forces of nature - air, earth, fire
 
 **Abilities:**
 - <strong>Aquatic (fast).</strong> This creature is immune to drowning and can swim with normal Movement. Also, this creature can swim with +2 Movement per turn.
-- <strong>Water Form.</strong> This creature can move through any space as narrow as one centimetre. If this creature suffers frost damage, it is briefly slowed.
+- <strong>Water Form.</strong> This creature can move through any space as narrow as one centimetre. If this creature suffers frost damage, they are briefly slowed.
 
 ## Undead
 
@@ -668,7 +668,7 @@ Primordial spirits embodying the fundamental forces of nature - air, earth, fire
 
 **Abilities:**
 - <strong>Aquatic.</strong> This creature is immune to drowning and can swim with normal Movement.
-- <strong>Magic Sense (long)</strong>. This creature can intuitively sense sources of magic within long range.
+- <strong>Magic Sense (long).</strong> This creature can intuitively sense sources of magic within long range.
 - <strong>Night Vision.</strong> This creature can see one range category further from sources of bright and dim light.
 
 
@@ -689,8 +689,8 @@ Primordial spirits embodying the fundamental forces of nature - air, earth, fire
 - <strong>Eye Rays.</strong> This creature can shoot two randomly chosen arcane eye rays (roll 1d4 per eye ray). Choose one or two targets within medium range before rolling the eye rays effects. Roll Agility + Arcana once per eye ray and apply the effects:<br/><strong>1. Dazing Ray.</strong> Compare the result vs. Resist. On a success, the target is charmed and distracted for a short duration by this creature.<br/><strong>2. Fear Ray. </strong>Compare the result vs. Resist. On a success, the target is briefly frightened.<br/><strong>3. Frost Ray. </strong>Treat the roll as a range attack vs. Dodge. Deals +1 weapon damage as frost damage.<br/><strong>4. Telekinetic Ray. </strong>Compare the result vs. Parry. On a success, the target is pushed a short distance away from this creature. If the target is of smaller Size than this creature, this creature can move the target freely in any direction for a short distance instead.
 
 **Abilities:**
-- <strong>Darkvision (medium/long). </strong>This creature can see at medium range in absolute darkness as in bright light and up to a long distance as in dim light.
-- <strong>Flying (hover). </strong>This creature can fly freely by hovering in the air.
+- <strong>Darkvision (medium/long).</strong> This creature can see at medium range in absolute darkness as in bright light and up to a long distance as in dim light.
+- <strong>Flying (hover).</strong> This creature can fly freely by hovering in the air with +1 Movement per turn.
 
 
 ### **Grell**
@@ -708,5 +708,5 @@ Primordial spirits embodying the fundamental forces of nature - air, earth, fire
 - <strong>Tentacles</strong> (<em>pierce</em>). If this creature is Medium or larger, this attack has reach. On a strong or critical hit, the target is grappled and poisoned for a short duration. While poisoned by this attack, the target is also stunned. They can roll Strength + Fortitude at the end of their turns to end the effect early. While grappling, this creature can use it’s Quick Action on it’s turn to make a Beak attack with +1 boon against the target.
 
 **Abilities:**
-- <strong>Blindsight (medium).</strong> This creature can perceive it‘s surroundings at medium range without relying on sight.
-- <strong>Flying (hover).</strong> This creature can fly freely by hovering in the air.
+- <strong>Blindsight (medium).</strong> This creature perceives the location of creatures and objects within medium range without relying on sight. Full cover blocks this sense.
+- <strong>Flying (hover).</strong> This creature can fly freely by hovering in the air with +1 Movement per turn.

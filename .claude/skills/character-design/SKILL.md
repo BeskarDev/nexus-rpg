@@ -129,7 +129,7 @@ Quickstart archetypes are **JSON-canonical**. A revised archetype is published b
 2. **`bun run content:gen`** — regenerates the page and the overview. The generator is also the
    auditor: it recomputes coins, load, carrying capacity, focus pool, rank-0 skills, `†` marks
    and the combat-art count, and **fails the build** when the data cannot produce them.
-3. **Notion** — push via the `notion-sync` skill.
+**Notion is out of the design process** (owner ruling, 2026-08-11). The workspace's inline databases are the pre-migration system and keeping them in sync costs more than it returns. The `notion-sync` skill stays available for a deliberate, owner-requested push. Do not run it as a publication step.
 
 Then verify `bun run content:check` clean and `bun run build` green. The same JSON builds a new
 player's sheet through `createInitialCharacter`, so a data change is a change to the character

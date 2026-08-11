@@ -82,12 +82,28 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **31.** Lore prose has no modern narrator. Never debunk the setting's superstitions — record them.
 - **32.** Say it once. Never add the sentence that defends the first one.
 - **33.** `tactics` is a GM briefing with the creature as its subject. No staging, no stating the obvious, no player advice.
+- **34.** Magic is in decline. A lost art is written in the past tense, never as an ongoing industry. *(identity)*
+- **35.** A leash is rare, large, and never a firing position. The objective sits inside it. *(abilities)*
+- **36.** The acting creature rolls, and one roll may be read against several Defenses. Inherit published conditions instead of inventing consequences. *(abilities)*
+- **37.** A Large or bigger creature's long weapon carries `reach`, which makes its second attack the answer to being closed on. *(chassis)*
+- **38.** Use the tier adjustment. Ask what each creature is better at than its tier and what it pays. *(chassis)*
+- **39.** Light or heavy armor decides whether `slash` works. Choose it deliberately, not by AV number. *(chassis)*
+- **40.** An armed humanoid closes the chassis gap with abilities, not a bigger weapon. *(chassis)*
+- **41.** A conditional second attack on a Quick Action is the answer to multiattack. Trigger on an action, not a result. *(abilities)*
+- **42.** Improved senses are earned. Seeing in the dark is rare: 3 of 34 companions, one of them an ordinary animal. *(identity)*
+- **43.** A trait must act in the encounter. Companion-utility traits are inert on a monster. *(abilities)*
+- **44.** A rider comes from the weapon and the creature, never from the checklist. Never reproduce a published spell for free. *(abilities)*
+- **45.** Qualifier is one word; the limiter is the LAST SENTENCE of the text. Most-repeated error. *(abilities)*
 
 ## Appending a new principle
 
 When the owner corrects or refines a creature design decision in session:
 
-1. Take the next free number (currently next: **34**).
+**Each phase file now opens with its own digest** — the numbers it holds, in reading order, with a
+one-line title each. Open the phase file rather than this index when you are designing: this list says
+*which* principle applies and never what it says.
+
+1. Take the next free number (currently next: **46**).
 2. **Write the full principle into the phase file it belongs to** — `principles/chassis.md`,
    `identity.md`, `abilities.md` or `writing.md` (numbered, bolded one-line rule, then reasoning,
    then owner-ruling provenance).

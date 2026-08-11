@@ -94,12 +94,12 @@ For **rules-table changes** (new enchantment, material, or cost tier), write the
 
 Two distinct cases — don't confuse them:
 
-**Individual treasure items** (the common case): campaign-specific loot is NOT published to docs or Notion. Deliverable = the item description + cost breakdown, plus the printable-card JSON if requested. Ephemeral output.
+**Individual treasure items** (the common case): campaign-specific loot is NOT published to docs at all. Deliverable = the item description + cost breakdown, plus the printable-card JSON if requested. Ephemeral output.
 
 **Rules-table changes** (new enchantment, material, cost tier — only as a deliberate, owner-approved design decision, drafted under `.drafts/magic-items/` first):
 1. **Docs** — update the canonical table in `docs/04-equipment/07-magic-items/` (enchantments.md, materials.md, cost-tables.md, effects.md).
 2. **App JSON** — update the matching `src/utils/data/json/magic-item-*.json` file per [references/output-formats.md](references/output-formats.md). ⚠️ Edit directly, surgically — legacy regeneration scripts are deprecated.
-3. **Notion** — push via the `notion-sync` skill.
+**Notion is out of the design process** (owner ruling, 2026-08-11). The workspace's inline databases are the pre-migration system and keeping them in sync costs more than it returns. The `notion-sync` skill stays available for a deliberate, owner-requested push. Do not run it as a publication step.
 4. Check `docs/analysis/magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` and the matching catalog in `docs/analysis/magic-items/catalogs/` — if the change touches an area with a pending rework proposal, flag it to the owner first.
 
 Verify docs and JSON agree, then stop — the owner commits manually.
