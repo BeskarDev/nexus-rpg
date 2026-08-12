@@ -11,6 +11,7 @@ Read before writing any stat block text or `lore` prose, and again as a final pa
 | **19** | SL escalation has one canonical wording: `increase the SL by one step (max. critical)`. |
 | **28** | When two creatures share a sentence, name the subject — do not reach for a pronoun. |
 | **29** | Lore prose: write for a middle schooler — one idea per sentence, concrete first, wit last. |
+| **29a** | …and run the **register pass** on the finished draft: the hard word, and the clever construction. |
 | **30** | Read every prose sentence aloud, and fix what the mouth stumbles on. |
 | **31** | Lore prose has no modern narrator. Never debunk the setting's superstitions — record them. |
 | **32** | Say it once. Never add the sentence that defends the first one. |
@@ -44,6 +45,45 @@ This is **not** an instruction to write flatly. The worked before/after keeps th
 > **After.** A lean grey scavenger of the burial roads. Jackals follow funerals at the edge of a thrown stone's range, and they have learned which processions leave food. Every gravedigger knows the ones that work their stretch, and none of them has ever driven one off for good.
 
 Same length, same facts, and the reader now sees the animal before being told what to think about it. The checklist form of all of this is in [../lore-schema.md](../lore-schema.md) § Writing the prose. *(Owner ruling, 2026-08-09.)*
+
+### 29a. The register pass — the two defects that survive every other check
+
+**The tier-3 lore shipped six of these past a clean punctuation sweep, a length check and a read-through**
+(owner review, 2026-08-11). Every one is covered by the rule above and none was caught by it, because the
+rule is a *standard* and what a draft needs is a *pass*. **Run the register pass as its own step, on the
+finished draft, one noun and one construction at a time.** The two defects it looks for:
+
+**The hard word.** A word the reader has to already know. The test is not "is this word real" but **would
+a twelve-year-old stop here** — and if the plain word says the same thing, the hard one was never the
+precise one.
+
+| ❌ | ✅ | why |
+|---|---|---|
+| "between one polity and the next" | "out on the bad ground that no city has ever bothered to claim" | `polity` is a political-science word doing a job "city" does |
+| "Rebound at the socket with wire" | "Bound at the socket with wire, twice over" | reads as the verb *rebound* before it reads as *bound again* |
+| "Refaced twice" | "Faced over twice" | same defect, same word-shape |
+
+`sinew`, `signet`, `carnelian`, `haft` and `cuirass` all stay. They are the precise word for a specific
+thing and no plain word replaces them. That is the whole difference.
+
+**The clever construction.** Harder to catch, because **every word in it is common** — the reader has to
+decode a *shape* rather than a word. It always feels like the best sentence in the block while writing it.
+
+| ❌ | ✅ | why |
+|---|---|---|
+| "Read forward it is the safe way through the hills, and read at the scoring it is where this ogre works" | three plain sentences: what it is, then what the crossing-out means | a two-clause riddle in a treasure row a GM reads mid-session |
+| "Once somebody is inside the club" | "Once somebody is right up against them the club is no use" | states the fact instead of trusting a coined idiom to carry it |
+| "the alternative is the ogre dealing with them" | "the alternative is having the ogre come to them" | the pun has to be unpacked before the fact arrives |
+| "calls the difference the prayer" | "tells itself the prayer is the difference" | compressed to the point of inversion |
+| "both things are true of the same night" | "those are the rites somebody interrupted" | elegant, and the reader cannot tell what happened |
+| "Three metres of hungry" | "Three metres tall and always hungry" | a figure of speech in the slot where the establishing fact goes |
+
+**The test for both: point at the fact the sentence delivers, then count the steps to reach it.** More than
+zero is the defect. Wit is still allowed and still goes last (above) — a joke the reader gets *after* they
+have the fact costs them nothing, and one they must solve *to* get the fact costs them the fact.
+
+**Say what you swapped.** The pass is only real if it produces a list, because a pass that finds nothing is
+indistinguishable from a pass that was not run. *(Owner review, 2026-08-11.)*
 
 **30. Read every prose sentence aloud, and fix what the mouth stumbles on.** Grammatical is not the standard — a sentence can parse and still make a reader back up and take a second run at it. Three defects cause almost all of it, and all three survive a grammar check:
 

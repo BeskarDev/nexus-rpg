@@ -129,6 +129,7 @@ interface CreatureLoreRecord {
 		weight?: string
 		lifespan?: string
 		reproduction?: string
+		note?: string
 	}
 	tactics?: string
 	treasure?: {
@@ -275,9 +276,17 @@ const LORE_KEYS = new Set([
  * without reading a sentence, and so a later tool can compare a jackal to a lion
  * without parsing prose. `reproduction` is the one part that genuinely varies —
  * a clutch, a litter, a budded spawn, or a thing that was never born at all — so
- * it stays one short line of prose.
+ * it stays one short line of prose. `note` is the fifth field, exclusive with the
+ * other four: a folk-flexible humanoid has no figures of its own to give, so it
+ * carries a single pointer sentence to `01-folk.md` instead of measurement tags.
  */
-const PHYSIOLOGY_KEYS = new Set(['size', 'weight', 'lifespan', 'reproduction'])
+const PHYSIOLOGY_KEYS = new Set([
+	'size',
+	'weight',
+	'lifespan',
+	'reproduction',
+	'note',
+])
 /** The measured ones, which must actually carry a number and its unit. */
 const PHYSIOLOGY_MEASURES = ['size', 'weight', 'lifespan'] as const
 
@@ -593,7 +602,9 @@ const CONDITION_LIKE = new Set([
 ])
 
 const CONDITION_NAMES = new Set(
-	(conditions as { name: string }[]).map((c) => c.name.replace(/\s*\(X\)$/, '')),
+	(conditions as { name: string }[]).map((c) =>
+		c.name.replace(/\s*\(X\)$/, ''),
+	),
 )
 
 /**
@@ -646,11 +657,7 @@ function validateDesign(e: Record<string, unknown>, context: string): void {
 				const word = m[1].toLowerCase()
 				// Quantifiers and references, not types: "no damage", "half damage",
 				// "their weapon damage", "the same damage".
-				if (
-					/^\d+$/.test(word) ||
-					NON_TYPE_DAMAGE_WORDS.has(word)
-				)
-					continue
+				if (/^\d+$/.test(word) || NON_TYPE_DAMAGE_WORDS.has(word)) continue
 				if (!DAMAGE_TYPES.has(word))
 					fail(
 						context,
@@ -843,6 +850,12 @@ function validateLore(raw: unknown, context: string): void {
 			fail(
 				context,
 				'lore.physiology must carry at least one field, or be omitted',
+			)
+		if (physiology.note !== undefined && Object.keys(physiology).length > 1)
+			fail(
+				context,
+				'lore.physiology.note is exclusive with size/weight/lifespan/reproduction — ' +
+					'a folk-flexible pointer and real figures do not belong on the same card',
 			)
 		// The measured fields are tags, and a tag reading "large" or "short-lived"
 		// tells a reader nothing they did not already have from the size chip. If a
@@ -1212,9 +1225,8 @@ function renderLore(
 		const tags = PHYSIOLOGY_MEASURES.filter((k) => lore.physiology?.[k])
 			.map((k) => `<LoreTag>${lore.physiology?.[k]}</LoreTag>`)
 			.join('')
-		const prose = lore.physiology.reproduction
-			? ` ${lore.physiology.reproduction.trim()}`
-			: ''
+		const proseSource = lore.physiology.reproduction ?? lore.physiology.note
+		const prose = proseSource ? ` ${proseSource.trim()}` : ''
 		parts.push(`<LoreSection label="Physiology">${tags}${prose}</LoreSection>`)
 	}
 	if (lore.tactics)

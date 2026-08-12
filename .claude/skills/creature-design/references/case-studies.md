@@ -112,10 +112,12 @@ was not an argument for being the first.
 
 ---
 
-## P44 — The rider that was a spell {#p44}
+## P44 — The rider that was a spell, and the weapon that was an invention {#p44}
 
-The tier-3 Cult Priest's `Ritual Knife` read *"on a strong or critical hit, the target suffers +1 bane on
-their next roll"*.
+**One creature, two reviews, and the second is the one that produced the rule.**
+
+**Review one, the knife.** The tier-3 Cult Priest's `Ritual Knife` read *"on a strong or critical hit,
+the target suffers +1 bane on their next roll"*.
 
 That is **`Minor Hex`** word for word — a rank-0 Death spell: *"the target is hexed for a short duration.
 The next roll they make while hexed suffers +1 bane, and then the hex ends."*
@@ -123,6 +125,52 @@ The next roll they make while hexed suffers +1 bane, and then the hex ends."*
 **The same design pass had cut `Minor Hex` from that priest's spell list** for being too weak to be worth
 a slot, and then re-attached it to a weapon for free. The design judged the effect not worth a slot and
 gave it away anyway.
+
+**Review two, the censer, and the fix from review one was part of the problem.** Principle 44 was written
+with the priest's *other* weapon as its ✅ example: *"a censer swung into someone's face blinds them with
+smoke, that is the object doing something only it can do."* The owner rejected it on the next pass, for
+two reasons that turned out to be one:
+
+1. **`Censer` was not a weapon.** It was written `(crush, reach)` with its own damage figure — an
+   invented catalogue entry, which **principle 23 had forbidden since the first batch**, citing the
+   reskin tables by name. A censer on a chain is a **Flail**, which `03-weapons.md` already counts as a
+   **Mace**: `crush, versatile (+1)`, damage 3. **No `reach`** — the invented entry had quietly handed
+   the softest body in the batch a soldier's reach.
+2. **Being traceable to the object was not the test.** Smoke in the eyes is a perfectly good reason for
+   `blinded`, and it is still a magical effect handed out free on a weapon line.
+
+**So the rule moved from the rider to the weapon**: on a carried weapon the line is catalogue properties
+plus catalogue damage, full stop. The blinding became **`Grave-Smoke`**, an ability.
+
+**Review three, and it was my overcorrection this time.** Having just been told the effect was too cheap,
+I made it *"roll Spirit + Mysticism vs. the target's Resist … once per scene"* — **a second roll and a
+frequency limiter, on a one-turn condition**, after the attack roll had already produced a success level.
+The owner cut both: *"requiring a second roll is bad practice … it doesn't even need the once per scene
+restriction, it's just a brief condition."* Two rules came out of that, and both are now stated in the
+phase file: **resolve at the cheapest rung that carries the effect** (principle 36) and **`briefly`
+limits itself** (principle 18).
+
+**The published ability and the rider it replaced read almost alike**, which is the thing to hold onto:
+
+| | Text | Costs |
+|---|---|---|
+| The rider | `**Censer** … On a strong or critical hit, the target is briefly blinded.` | **nothing** |
+| The ability | `**Grave-Smoke** (Quick Action). On a strong or critical hit with their Censer, … the target is briefly blinded.` | an ability slot and **the creature's one Quick Action** |
+
+The priest cannot blind someone and `Evade` in the same round. **That single resource is the whole price
+of a magical effect over a mundane one** — and paying it a third time, in rolls or limiters, is its own
+error.
+
+**The lesson about the skill, not the creature.** Principle 23 was correct, complete and three batches
+old, and it was broken anyway — an unenforced rule is not a rule. The enforcement point is now a step-3
+gate that makes the designer **name the catalogue row in writing**, the same mechanism that fixed the
+tier adjustment ([P38](#p38)).
+
+**A third error was hiding under the first two.** SKILL.md's step 3 said base damage is *"half **primary**
+attribute die"*, so the priest's melee was computed off their Spirit d10 instead of the d6 their arms
+swing on, and **both attacks were one damage too high at every success level**. `stat-tables.md` had it
+right and the workflow step contradicted it — the R2 failure mode, one rule with two homes, caught by
+recomputing the numbers rather than by reading either file.
 
 ---
 

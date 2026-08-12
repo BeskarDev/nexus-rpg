@@ -16,6 +16,7 @@ Read before **workflow step 1** (concept) and whenever naming anything — the c
 | **21** | Magical naturalism: an invented animal is a real one plus exactly one deviation, and the name states it. |
 | **22** | Dinosaurs are ordinary Beasts with a `Saurian` subtype, and never carry their scientific name. |
 | **25** | Folk inheritance is bounded by the folk entry, and Nexus is conservative about senses. |
+| **47** | A generic-role humanoid is folk-flexible; only a folk-named one is fixed. |
 | **42** | Improved senses are earned by identity or ecology, and seeing in the dark is rare. |
 | **34** | Magic is in decline, so a lost art is written in the past tense. |
 
@@ -62,6 +63,8 @@ This looks like it contradicts principle 20 and instead sharpens it. The rule un
 **25. Folk inheritance is bounded by the folk entry, and Nexus is conservative about senses.** A humanoid creature takes the abilities its folk actually has in `docs/02-adventurers/01-folk.md` and **nothing else**. The trap is D&D reflex, and vision is where it bites hardest: exactly **four of the twelve folk** get a vision trait — `Night Vision` for Elf, Goblin and Catfolk, `Dwarven Sight` for Dwarf. Orcs have `Orcish Fury` and `Pride above Death`, and no darkvision of any kind. Seeing in the dark is a distinguishing trait of a few peoples here, not a default for anything non-human, and handing it out erodes the thing that makes those four folk distinct.
 
 The same conservatism applies outside the folk: undead, constructs and beasts get a sense only when something in the rules or their biology grants it. A corpse that walks is not thereby able to see in the dark. *(Owner ruling, 2026-08-09.)*
+
+**47. A generic-role humanoid is folk-flexible; only a folk-named one is fixed.** *Veteran*, *Spearman*, *Cult Priest*, *Captain* name a role, not a people, so the GM may embody any of them as any of the twelve folk, and the card must be written so nothing in it forecloses that. *Orc Raider*, *Orc Band-Leader* name the folk in the title, so the card is that folk and nothing else, and principle 25's inheritance applies without qualification. For a flexible entry, `lore.physiology`'s `size`, `weight` and `lifespan` are **omitted rather than defaulted** — a "default folk" is an invented figure exactly like the ones principle 21 already forbids elsewhere, and `01-folk.md`'s Physical Traits and Age Groups tables already hold the real number for whichever folk the GM assigns. `narrative`/`ecology`/`tactics` stay free of any detail — a name, a god, a homeland — that only one folk would plausibly have. The mechanics (stats, attacks, abilities) never vary by folk; only the physiology figures and the prose voice do. *(Owner ruling, 2026-08-12; see also lore-schema.md § Physiology rule 8.)*
 
 **42. Improved senses are earned by identity or ecology, and seeing in the dark is rare.** Nexus does not
 hand out D&D's darkvision. Principle 25 already says only **four of twelve folk** get a vision trait, and

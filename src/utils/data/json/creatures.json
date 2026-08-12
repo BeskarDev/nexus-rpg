@@ -3,9 +3,7 @@
 		"name": "Jackal",
 		"size": "Small",
 		"type": "Beast",
-		"subtype": [
-			"Mammal"
-		],
+		"subtype": ["Mammal"],
 		"tier": 0,
 		"category": "Basic",
 		"armor": "None",
@@ -18,21 +16,14 @@
 		"parry": 5,
 		"dodge": 8,
 		"resist": 6,
-		"skills": [
-			"Fighting (0)",
-			"Perception (1)",
-			"Stealth (1)"
-		],
+		"skills": ["Fighting (0)", "Perception (1)", "Stealth (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"pierce",
-					"agile"
-				],
+				"properties": ["pierce", "agile"],
 				"text": "5/7/9 damage. On a strong or critical hit against a creature of equal or smaller size, the target falls prone."
 			}
 		],
@@ -43,17 +34,10 @@
 				"text": "While in a troop, or while an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon."
 			}
 		],
-		"traits": [
-			"Keen Scent"
-		],
+		"traits": ["Keen Scent"],
 		"lore": {
 			"narrative": "A lean grey scavenger of the burial roads. Jackals follow funerals at the edge of a thrown stone's range, and they have learned which funerals leave food. Every gravedigger knows the ones that work their stretch, and none of them has ever driven one off for good.",
-			"environment": [
-				"Desert",
-				"Grassland",
-				"Road",
-				"Necropolis"
-			],
+			"environment": ["Desert", "Grassland", "Road", "Necropolis"],
 			"ecology": "They eat what is left. Offerings, grave goods with fat in them, animals that died on the road, whatever a caravan drops. They range in family groups of four to nine and hunt only what is already dying. A pack learns a funeral's route within a season and will be at the graveside before the mourners. Some cities take that as the dead being met on the road. Others take it as a warning that the rites were begun badly, and start again.",
 			"physiology": {
 				"size": "45 cm at the shoulder, 1.1 m nose to tail",
@@ -126,9 +110,7 @@
 		"name": "Leatherwing",
 		"size": "Tiny",
 		"type": "Beast",
-		"subtype": [
-			"Saurian"
-		],
+		"subtype": ["Saurian"],
 		"tier": 0,
 		"category": "Basic",
 		"armor": "None",
@@ -141,21 +123,14 @@
 		"parry": 4,
 		"dodge": 8,
 		"resist": 6,
-		"skills": [
-			"Fighting (0)",
-			"Perception (1)",
-			"Insight (1)"
-		],
+		"skills": ["Fighting (0)", "Perception (1)", "Insight (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Peck",
-				"properties": [
-					"pierce",
-					"agile"
-				],
+				"properties": ["pierce", "agile"],
 				"text": "5/7/9 damage."
 			},
 			{
@@ -165,17 +140,10 @@
 			}
 		],
 		"abilities": [],
-		"traits": [
-			"Flying (Wings)",
-			"Keen Eyes"
-		],
+		"traits": ["Flying (Wings)", "Keen Eyes"],
 		"lore": {
 			"narrative": "A pigeon-sized flier, all leather wing and beaked snout, at home in harbour cities for as long as there have been harbour cities. They sit on market awnings, nest in roof beams, and take bread out of baskets nobody is watching. Sailors say a quay without leatherwings is a quay the sea has turned against, and no captain who believes it will tie up there.",
-			"environment": [
-				"Coast",
-				"Sea",
-				"City"
-			],
+			"environment": ["Coast", "Sea", "City"],
 			"ecology": "They eat scraps, fish guts, dropped bread, and insects. A market with leatherwings has fewer rats than a market without. Everyone who keeps records knows this. Nobody says it in a council meeting. Flocks follow the boats in and strip the guts off the water before the catch is landed. Wild colonies nest on sea cliffs. The city flocks are a separate population, and nobody brought them in. They moved into the cities as the cities grew. A trained one carries messages better than a pigeon, because a leatherwing remembers roofs and coastlines instead of a single home loft. It takes most of a year to train one, and the trainers are a small and well-paid trade.",
 			"physiology": {
 				"size": "35 cm long, 90 cm wingspan",
@@ -247,9 +215,7 @@
 		"name": "Reed Viper",
 		"size": "Tiny",
 		"type": "Beast",
-		"subtype": [
-			"Reptile"
-		],
+		"subtype": ["Reptile"],
 		"tier": 0,
 		"category": "Basic",
 		"armor": "None",
@@ -262,20 +228,14 @@
 		"parry": 4,
 		"dodge": 8,
 		"resist": 6,
-		"skills": [
-			"Fighting (0)",
-			"Stealth (1)"
-		],
+		"skills": ["Fighting (0)", "Stealth (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Venomous Bite",
-				"properties": [
-					"pierce",
-					"agile"
-				],
+				"properties": ["pierce", "agile"],
 				"text": "4/5/6 damage. On a strong or critical hit, the target is briefly poisoned."
 			}
 		],
@@ -286,16 +246,10 @@
 				"text": "While hidden, this creature's first attack in a scene increases the SL by one step (max. critical)."
 			}
 		],
-		"traits": [
-			"Blindsight (close)"
-		],
+		"traits": ["Blindsight (close)"],
 		"lore": {
 			"narrative": "A forearm-long snake the colour of dry reed. They live in the irrigation channels, and the farmers who work those channels know the sound of one leaving. They are not aggressive. They are just always lying where somebody is about to step.",
-			"environment": [
-				"River",
-				"Marsh",
-				"Farmland"
-			],
+			"environment": ["River", "Marsh", "Farmland"],
 			"ecology": "They hunt rats and frogs along the channel banks. They spend the heat of the day under matting, stacked reed, or in the shade of the bank. Harvest is when people meet them, because harvest is when people walk the channels barefoot. Villages do not kill them. They keep the rats down, and any that are killed are replaced within a season.",
 			"physiology": {
 				"size": "35 cm long",
@@ -364,10 +318,7 @@
 		"name": "Tomb Beetles",
 		"size": "Medium",
 		"type": "Beast",
-		"subtype": [
-			"Insect",
-			"Swarm"
-		],
+		"subtype": ["Insect", "Swarm"],
 		"tier": 0,
 		"category": "Basic",
 		"armor": "None",
@@ -380,40 +331,22 @@
 		"parry": 6,
 		"dodge": 5,
 		"resist": 7,
-		"skills": [
-			"Fighting (0)",
-			"Perception (1)"
-		],
-		"immunities": [
-			"grappled",
-			"conditions from single-target effects"
-		],
-		"resistances": [
-			"damage from single-target effects"
-		],
+		"skills": ["Fighting (0)", "Perception (1)"],
+		"immunities": ["grappled", "conditions from single-target effects"],
+		"resistances": ["damage from single-target effects"],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Devouring Bites",
-				"properties": [
-					"pierce",
-					"agile"
-				],
+				"properties": ["pierce", "agile"],
 				"text": "4/5/6 damage against every creature in this creature's area. On a strong or critical hit, the target is distracted until they spend an Action to brush the beetles off. While this creature is at half HP or lower, this attack deals half damage, rounded up."
 			}
 		],
 		"abilities": [],
-		"traits": [
-			"Natural Climber"
-		],
+		"traits": ["Natural Climber"],
 		"lore": {
 			"narrative": "Finger-long scarabs that live on grave goods, funeral tallow, and the dead themselves. The priests of the necropolis call them the last of the offerings, left to eat what the living stopped bringing. Disturb the floor and they come up through it.",
-			"environment": [
-				"Desert",
-				"Ruins",
-				"Necropolis",
-				"Tomb"
-			],
+			"environment": ["Desert", "Ruins", "Necropolis", "Tomb"],
 			"ecology": "A colony lives in the packed earth under a tomb floor. They eat the fat in funeral lamps, the leather and linen of grave goods, and anything organic left as an offering. They do not hunt. They boil up when the floor above them is walked on, worked, or broken. They do not lie in wait, so whoever wakes them has just broken the floor they nest under, and that is usually a robber, a mason, or a priest come to re-seal a chamber. A tomb with intact floors and no beetles has usually been emptied already.",
 			"physiology": {
 				"size": "6 cm long",
@@ -478,10 +411,7 @@
 		"name": "Grave Husk",
 		"size": "Medium",
 		"type": "Undead",
-		"subtype": [
-			"Corporeal",
-			"Mindless"
-		],
+		"subtype": ["Corporeal", "Mindless"],
 		"tier": 1,
 		"category": "Basic",
 		"armor": "Light",
@@ -494,34 +424,19 @@
 		"parry": 7,
 		"dodge": 5,
 		"resist": 8,
-		"skills": [
-			"Fighting (1)",
-			"Athletics (1)"
-		],
-		"immunities": [
-			"bleeding",
-			"charmed",
-			"confused",
-			"frightened",
-			"poisoned"
-		],
+		"skills": ["Fighting (1)", "Athletics (1)"],
+		"immunities": ["bleeding", "charmed", "confused", "frightened", "poisoned"],
 		"resistances": [],
-		"weaknesses": [
-			"radiant"
-		],
+		"weaknesses": ["radiant"],
 		"attacks": [
 			{
 				"name": "Grasping Hands",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "6/9/12 damage. On a strong or critical hit, the target is grappled."
 			},
 			{
 				"name": "Bearing Down",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "6/9/12 damage. Only against a target this creature has grappled. On a hit, the target falls prone."
 			}
 		],
@@ -532,9 +447,7 @@
 				"text": "This creature cannot willingly move further than a medium distance from the ground they were left on. When they are destroyed, they rise again at the next sunset unless their body is buried or burned."
 			}
 		],
-		"traits": [
-			"Undead Nature"
-		],
+		"traits": ["Undead Nature"],
 		"lore": {
 			"narrative": "One of the unburied dead, walking in the body nobody said the words over. They do not remember being a person, and nothing in them wants anything. They walk a short distance from where they were left and no further. They keep doing it until somebody puts them in the ground.",
 			"environment": [
@@ -611,9 +524,7 @@
 		"name": "Orc Raider",
 		"size": "Medium",
 		"type": "Humanoid",
-		"subtype": [
-			"Orc"
-		],
+		"subtype": ["Orc"],
 		"tier": 1,
 		"category": "Basic",
 		"armor": "Light",
@@ -626,31 +537,19 @@
 		"parry": 8,
 		"dodge": 6,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Athletics (1)",
-			"Survival (1)"
-		],
+		"skills": ["Fighting (1)", "Athletics (1)", "Survival (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Battleaxe",
-				"properties": [
-					"slash",
-					"versatile (+1)"
-				],
+				"properties": ["slash", "versatile (+1)"],
 				"text": "6/9/12 damage."
 			},
 			{
 				"name": "Javelin",
-				"properties": [
-					"bundle (d4)",
-					"light",
-					"pierce",
-					"thrown (short/long)"
-				],
+				"properties": ["bundle (d4)", "light", "pierce", "thrown (short/long)"],
 				"text": "5/7/9 damage. On a strong or critical hit, the target is briefly slowed."
 			}
 		],
@@ -680,8 +579,7 @@
 			"physiology": {
 				"size": "1.80 to 1.90 m tall",
 				"weight": "95 kg",
-				"lifespan": "Adult at 14, old at 45, and 60 years is a long life",
-				"reproduction": "Children are raised by the whole canyon hold rather than by one household, and a Zakhar rides on their first raid the year they come of age. A raider in their twenties has been coming down to this river for a decade already."
+				"lifespan": "Adult at 14, old at 45, and 60 years is a long life"
 			},
 			"tactics": "Javelins first, at range, while they close. Then the axes. **Formation Fighting** makes them markedly harder to kill while they stand together, so keep them shoulder to shoulder and have them reform the line whenever it breaks. They go for whoever stands between them and the grain, not for whoever is most dangerous. **They will break off to carry away what they came for** if they can reach it. A raider who is alone and losing looks for a way out rather than a last stand.",
 			"treasure": {
@@ -766,9 +664,7 @@
 		"name": "Young Crocodile",
 		"size": "Medium",
 		"type": "Beast",
-		"subtype": [
-			"Reptile"
-		],
+		"subtype": ["Reptile"],
 		"tier": 1,
 		"category": "Basic",
 		"armor": "Heavy",
@@ -781,41 +677,27 @@
 		"parry": 8,
 		"dodge": 5,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Stealth (1)"
-		],
+		"skills": ["Fighting (1)", "Stealth (1)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Bite",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "7/10/13 damage. On a strong or critical hit against a creature of equal or smaller size, the target is grappled. While grappling, this attack cannot be used against any other target."
 			},
 			{
 				"name": "Death Roll",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "Only against a target this creature has grappled. 7/10/13 damage, and the target falls prone."
 			}
 		],
 		"abilities": [],
-		"traits": [
-			"Amphibious",
-			"Ambush Predator"
-		],
+		"traits": ["Amphibious", "Ambush Predator"],
 		"lore": {
 			"narrative": "A river crocodile not yet at full size, small enough to lie up under a landing stage. River villages keep their children off the bank at dusk, and the fence along the bank is there for the same reason.",
-			"environment": [
-				"River",
-				"Marsh",
-				"Settlement"
-			],
+			"environment": ["River", "Marsh", "Settlement"],
 			"ecology": "They lie up in shallow water against a bank, a jetty, or a stand of reed, and take whatever comes down to drink. A young one hunts dogs, goats, waterfowl, and people who are alone. They avoid anything in a group. Full-grown crocodiles drive the young off the best stretches, so the ones a village meets are usually this size and usually hungry. One that has taken livestock keeps using the same crossing until something changes. The village always knows where they are.",
 			"physiology": {
 				"size": "2.2 m long",
@@ -880,10 +762,7 @@
 		"name": "Clay Servant",
 		"size": "Small",
 		"type": "Automaton",
-		"subtype": [
-			"Golem",
-			"Mindless"
-		],
+		"subtype": ["Golem", "Mindless"],
 		"tier": 2,
 		"category": "Basic",
 		"armor": "Heavy",
@@ -896,10 +775,7 @@
 		"parry": 7,
 		"dodge": 9,
 		"resist": 8,
-		"skills": [
-			"Fighting (1)",
-			"Stealth (2)"
-		],
+		"skills": ["Fighting (1)", "Stealth (2)"],
 		"immunities": [
 			"bleeding",
 			"charmed",
@@ -909,22 +785,16 @@
 			"unconscious"
 		],
 		"resistances": [],
-		"weaknesses": [
-			"blast"
-		],
+		"weaknesses": ["blast"],
 		"attacks": [
 			{
 				"name": "Fist",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "8/12/16 damage."
 			},
 			{
 				"name": "Pull Down",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "6/8/10 damage. On a strong or critical hit, the target falls prone."
 			}
 		],
@@ -935,9 +805,7 @@
 				"text": "While this creature does not move, they are indistinguishable from ordinary grave goods. A creature searching the room can tell the difference with a successful Mind + Perception roll vs. TN 8."
 			}
 		],
-		"traits": [
-			"Ambush Predator"
-		],
+		"traits": ["Ambush Predator"],
 		"lore": {
 			"narrative": "A knee-high figure of fired clay with a hoe moulded into its fists, buried by the hundred so the dead would not have to work their own fields. The potters who made them wrote the work into the clay before the firing, in an age that knew how. The potters are long gone and the figures are still working.",
 			"environment": [
@@ -1019,10 +887,7 @@
 		"name": "Ghoul",
 		"size": "Medium",
 		"type": "Undead",
-		"subtype": [
-			"Corporeal",
-			"Intelligent"
-		],
+		"subtype": ["Corporeal", "Intelligent"],
 		"tier": 2,
 		"category": "Basic",
 		"armor": "Light",
@@ -1035,36 +900,19 @@
 		"parry": 8,
 		"dodge": 9,
 		"resist": 7,
-		"skills": [
-			"Fighting (1)",
-			"Perception (2)",
-			"Stealth (2)"
-		],
-		"immunities": [
-			"bleeding",
-			"poisoned",
-			"unconscious"
-		],
+		"skills": ["Fighting (1)", "Perception (2)", "Stealth (2)"],
+		"immunities": ["bleeding", "poisoned", "unconscious"],
 		"resistances": [],
-		"weaknesses": [
-			"radiant"
-		],
+		"weaknesses": ["radiant"],
 		"attacks": [
 			{
 				"name": "Claws",
-				"properties": [
-					"agile",
-					"light",
-					"slash"
-				],
+				"properties": ["agile", "light", "slash"],
 				"text": "6/8/10 damage. On a strong or critical hit, the target is briefly dazed, or stunned for a short duration instead if they are already dazed. A stunned target can roll Strength + Fortitude vs. TN 8 at the end of each of their turns to end the condition early."
 			},
 			{
 				"name": "Bite",
-				"properties": [
-					"agile",
-					"pierce"
-				],
+				"properties": ["agile", "pierce"],
 				"text": "8/12/16 damage."
 			}
 		],
@@ -1075,10 +923,7 @@
 				"text": "When this creature hits a stunned creature with their Bite, they regain 4 HP."
 			}
 		],
-		"traits": [
-			"Undead Nature",
-			"Keen Scent"
-		],
+		"traits": ["Undead Nature", "Keen Scent"],
 		"lore": {
 			"narrative": "A thin, quick eater of the dead, at home in the necropolis and in the graves the robbers opened first. They talk, in a fashion, and it has never once been a conversation. What they want is always the same thing, and a living person is the part of it that is still moving. The grave-wardens of the old cities know which colonies are theirs and leave a body out at the end of the season.",
 			"environment": [
@@ -1152,6 +997,19 @@
 				{
 					"name": "Colony",
 					"count": "6-12"
+				},
+				{
+					"name": "Grave vigil",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Cult Priest"
+						},
+						{
+							"count": "3-5",
+							"creature": "Ghoul"
+						}
+					]
 				}
 			]
 		}
@@ -1160,9 +1018,7 @@
 		"name": "Polearm Soldier",
 		"size": "Medium",
 		"type": "Humanoid",
-		"subtype": [
-			"Human"
-		],
+		"subtype": ["Human"],
 		"tier": 2,
 		"category": "Basic",
 		"armor": "Light",
@@ -1175,31 +1031,19 @@
 		"parry": 9,
 		"dodge": 6,
 		"resist": 9,
-		"skills": [
-			"Fighting (1)",
-			"Athletics (2)",
-			"Insight (2)"
-		],
+		"skills": ["Fighting (1)", "Athletics (2)", "Insight (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Glaive",
-				"properties": [
-					"reach",
-					"slash",
-					"two-handed"
-				],
+				"properties": ["reach", "slash", "two-handed"],
 				"text": "8/12/16 damage."
 			},
 			{
 				"name": "Sweeping Blow",
-				"properties": [
-					"reach",
-					"slash",
-					"two-handed"
-				],
+				"properties": ["reach", "slash", "two-handed"],
 				"text": "This creature can only use this attack if they skip all Movement this turn, before and after the attack. 6/8/10 damage against every creature within close range."
 			}
 		],
@@ -1228,10 +1072,7 @@
 			],
 			"ecology": "They are paid at the start of the season and drilled for the rest of it. A file stands watches, walks the wall, escorts carts and grain barges, and fights perhaps twice a year. Most were taken on at sixteen for the food and the coin, and most go home at thirty with a bad shoulder and a plot of land they were promised. They eat better than the people they guard and they know it. Off duty they are in the same wineshops as everybody else. A file that has stood together for a season is closer than most families, and the older soldiers hold that a line which loses its right-hand man twice will not stand a third time, so a file that loses two is broken up and shared out.",
 			"physiology": {
-				"size": "1.60 to 1.80 m tall",
-				"weight": "70 to 80 kg",
-				"lifespan": "Adult at 18, old at 60, and 80 years is a full life",
-				"reproduction": "A soldier's household is an ordinary one, two or three children raised in the quarter behind the barracks, and the sons are taken on at sixteen if there is a place. Whole files are often cousins, because a soldier speaks for their own first when a place comes open."
+				"note": "Depends on the folk of this creature. See \"Physical Traits by Folk\" in the Folk section for more details."
 			},
 			"tactics": "They stand behind a shield and hit what the shield is holding. **Over the Shields** only works while somebody is in front of them, so keep them in the second rank and move them along the line rather than out of it. They drag people out of cover and off the flanks toward the spears. **Sweeping Blow** costs them their movement for the turn, so save it for the moment the party bunches up. They hold as long as the shields do and break with them.",
 			"treasure": {
@@ -1300,6 +1141,10 @@
 					"name": "Line",
 					"composition": [
 						{
+							"count": "1",
+							"creature": "Veteran"
+						},
+						{
 							"count": "4-6",
 							"creature": "Spearman"
 						},
@@ -1312,6 +1157,27 @@
 							"creature": "Polearm Soldier"
 						}
 					]
+				},
+				{
+					"name": "Company",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "6-8",
+							"creature": "Spearman"
+						},
+						{
+							"count": "3-4",
+							"creature": "Slinger"
+						},
+						{
+							"count": "3-4",
+							"creature": "Polearm Soldier"
+						}
+					]
 				}
 			]
 		}
@@ -1320,9 +1186,7 @@
 		"name": "Slinger",
 		"size": "Medium",
 		"type": "Humanoid",
-		"subtype": [
-			"Human"
-		],
+		"subtype": ["Human"],
 		"tier": 2,
 		"category": "Basic",
 		"armor": "Light",
@@ -1335,11 +1199,7 @@
 		"parry": 7,
 		"dodge": 9,
 		"resist": 8,
-		"skills": [
-			"Fighting (1)",
-			"Athletics (2)",
-			"Perception (2)"
-		],
+		"skills": ["Fighting (1)", "Athletics (2)", "Perception (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
@@ -1357,11 +1217,7 @@
 			},
 			{
 				"name": "Shortsword",
-				"properties": [
-					"agile",
-					"light",
-					"pierce"
-				],
+				"properties": ["agile", "light", "pierce"],
 				"text": "5/7/9 damage."
 			}
 		],
@@ -1390,10 +1246,7 @@
 			],
 			"ecology": "They are paid at the start of the season and drilled for the rest of it. A file stands watches, walks the wall, escorts carts and grain barges, and fights perhaps twice a year. Most were taken on at sixteen for the food and the coin, and most go home at thirty with a bad shoulder and a plot of land they were promised. They eat better than the people they guard and they know it. Off duty they are in the same wineshops as everybody else. A file that has stood together for a season is closer than most families, and the older soldiers hold that a line which loses its right-hand man twice will not stand a third time, so a file that loses two is broken up and shared out.",
 			"physiology": {
-				"size": "1.60 to 1.80 m tall",
-				"weight": "70 to 80 kg",
-				"lifespan": "Adult at 18, old at 60, and 80 years is a full life",
-				"reproduction": "A soldier's household is an ordinary one, two or three children raised in the quarter behind the barracks, and the sons are taken on at sixteen if there is a place. Whole files are often cousins, because a soldier speaks for their own first when a place comes open."
+				"note": "Depends on the folk of this creature. See \"Physical Traits by Folk\" in the Folk section for more details."
 			},
 			"tactics": "They stay behind the shields and shoot over them. Put **Ranging Shot** on whoever the line is about to reach rather than on whoever is nearest, and shoot the same target twice before choosing another. They fall back the moment somebody gets past the shields, and draw the shortsword only when cornered. With the line gone they break and run.",
 			"treasure": {
@@ -1462,6 +1315,10 @@
 					"name": "Line",
 					"composition": [
 						{
+							"count": "1",
+							"creature": "Veteran"
+						},
+						{
 							"count": "4-6",
 							"creature": "Spearman"
 						},
@@ -1474,6 +1331,27 @@
 							"creature": "Polearm Soldier"
 						}
 					]
+				},
+				{
+					"name": "Company",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "6-8",
+							"creature": "Spearman"
+						},
+						{
+							"count": "3-4",
+							"creature": "Slinger"
+						},
+						{
+							"count": "3-4",
+							"creature": "Polearm Soldier"
+						}
+					]
 				}
 			]
 		}
@@ -1482,9 +1360,7 @@
 		"name": "Spearman",
 		"size": "Medium",
 		"type": "Humanoid",
-		"subtype": [
-			"Human"
-		],
+		"subtype": ["Human"],
 		"tier": 2,
 		"category": "Basic",
 		"armor": "Light",
@@ -1497,29 +1373,19 @@
 		"parry": 9,
 		"dodge": 7,
 		"resist": 8,
-		"skills": [
-			"Fighting (1)",
-			"Athletics (2)",
-			"Perception (2)"
-		],
+		"skills": ["Fighting (1)", "Athletics (2)", "Perception (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Spear",
-				"properties": [
-					"pierce",
-					"reach",
-					"versatile (+1)"
-				],
+				"properties": ["pierce", "reach", "versatile (+1)"],
 				"text": "7/10/13 damage."
 			},
 			{
 				"name": "Shield Bash",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "6/8/10 damage. On a strong or critical hit, the target falls prone."
 			}
 		],
@@ -1548,10 +1414,7 @@
 			],
 			"ecology": "They are paid at the start of the season and drilled for the rest of it. A file stands watches, walks the wall, escorts carts and grain barges, and fights perhaps twice a year. Most were taken on at sixteen for the food and the coin, and most go home at thirty with a bad shoulder and a plot of land they were promised. They eat better than the people they guard and they know it. Off duty they are in the same wineshops as everybody else. A file that has stood together for a season is closer than most families, and the older soldiers hold that a line which loses its right-hand man twice will not stand a third time, so a file that loses two is broken up and shared out.",
 			"physiology": {
-				"size": "1.60 to 1.80 m tall",
-				"weight": "70 to 80 kg",
-				"lifespan": "Adult at 18, old at 60, and 80 years is a full life",
-				"reproduction": "A soldier's household is an ordinary one, two or three children raised in the quarter behind the barracks, and the sons are taken on at sixteen if there is a place. Whole files are often cousins, because a soldier speaks for their own first when a place comes open."
+				"note": "Depends on the folk of this creature. See \"Physical Traits by Folk\" in the Folk section for more details."
 			},
 			"tactics": "They form up and hold. They will not chase individuals and will not spread out, but the line advances as a line and walks down anyone shooting at it. They give ground a step at a time rather than open it. Keep them shoulder to shoulder, since **Close the Ranks** pays only while they have a neighbour, and close the gap whenever one goes down. They attack whoever comes at the line rather than whoever is most dangerous. **Braced Spear** catches anyone trying to leave their reach, so hold the position and let people walk into it. They fight until their file breaks, then run with it.",
 			"treasure": {
@@ -1620,6 +1483,10 @@
 					"name": "Line",
 					"composition": [
 						{
+							"count": "1",
+							"creature": "Veteran"
+						},
+						{
 							"count": "4-6",
 							"creature": "Spearman"
 						},
@@ -1632,6 +1499,27 @@
 							"creature": "Polearm Soldier"
 						}
 					]
+				},
+				{
+					"name": "Company",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "6-8",
+							"creature": "Spearman"
+						},
+						{
+							"count": "3-4",
+							"creature": "Slinger"
+						},
+						{
+							"count": "3-4",
+							"creature": "Polearm Soldier"
+						}
+					]
 				}
 			]
 		}
@@ -1640,9 +1528,7 @@
 		"name": "Orc Band-Leader",
 		"size": "Medium",
 		"type": "Humanoid",
-		"subtype": [
-			"Orc"
-		],
+		"subtype": ["Orc"],
 		"tier": 2,
 		"category": "Elite",
 		"armor": "Light",
@@ -1655,29 +1541,19 @@
 		"parry": 9,
 		"dodge": 7,
 		"resist": 8,
-		"skills": [
-			"Fighting (1)",
-			"Athletics (2)",
-			"Insight (2)",
-			"Survival (2)"
-		],
+		"skills": ["Fighting (1)", "Athletics (2)", "Insight (2)", "Survival (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Battleaxe",
-				"properties": [
-					"slash",
-					"versatile (+1)"
-				],
+				"properties": ["slash", "versatile (+1)"],
 				"text": "7/10/13 damage."
 			},
 			{
 				"name": "Shield Bash",
-				"properties": [
-					"crush"
-				],
+				"properties": ["crush"],
 				"text": "6/8/10 damage. Only against a target within melee range of an ally. On a strong or critical hit, the target falls prone."
 			}
 		],
@@ -1717,8 +1593,7 @@
 			"physiology": {
 				"size": "1.85 m tall",
 				"weight": "105 kg",
-				"lifespan": "Adult at 14, old at 45, and 60 years is a long life",
-				"reproduction": "The same canyon holds raise the same bands, and a leader is usually somebody every raider behind them has known since childhood. Most are between 35 and 50, which in Zakhar terms is late enough to be listened to and early enough to still ride."
+				"lifespan": "Adult at 14, old at 45, and 60 years is a long life"
 			},
 			"tactics": "They stay behind the line and run it rather than fighting in it. Spend **Fight Where I Point** on whichever raider is best placed, and **Take It On The Shield** to intercept a blow meant for a raider. With no raiders left to direct they fight plainly. Once they are Wounded, **Blood Up** puts them in the front rank trading hits and they stop protecting anybody. **They can be bought at any point before that.** Offer them the grain and they take it and go.",
 			"treasure": {
@@ -1789,6 +1664,583 @@
 						{
 							"count": "20-40",
 							"creature": "Orc Raider"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"name": "Veteran",
+		"size": "Medium",
+		"type": "Humanoid",
+		"subtype": ["Human"],
+		"tier": 3,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "30",
+		"av": "4 (light armor and shield)",
+		"str": "d8",
+		"agi": "d6",
+		"spi": "d6",
+		"mnd": "d6",
+		"parry": 10,
+		"dodge": 8,
+		"resist": 9,
+		"skills": [
+			"Fighting (2)",
+			"Athletics (2)",
+			"Insight (2)",
+			"Perception (2)"
+		],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Spear",
+				"properties": ["pierce", "reach", "versatile (+1)"],
+				"text": "7/10/13 damage."
+			},
+			{
+				"name": "Shield Bash",
+				"properties": ["crush"],
+				"text": "6/8/10 damage. On a strong or critical hit, the target falls prone."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Close the Ranks",
+				"qualifier": "Passive",
+				"text": "While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane."
+			},
+			{
+				"name": "Step Into the Gap",
+				"qualifier": "Quick Action",
+				"text": "When an enemy attacks an ally within short range of this creature, this creature moves into melee range of that ally and makes one attack against the attacker."
+			},
+			{
+				"name": "Nothing New",
+				"qualifier": "Quick Action",
+				"text": "This creature briefly ignores the effects of the frightened condition."
+			}
+		],
+		"traits": [],
+		"lore": {
+			"narrative": "A soldier past forty, taken on at sixteen and still standing in the line at an age when most of the file has gone home to a plot of land. They carry the same spear and the same painted shield as the soldier beside them, and every strap on the kit has been replaced twice. The officers put them where the line is expected to break.",
+			"environment": [
+				"Grassland",
+				"River",
+				"Desert",
+				"City",
+				"Fortress",
+				"Road"
+			],
+			"ecology": "They draw the same pay as everybody else in the file and are worth three of them. A veteran is not given a rank and does not ask for one, because a rank means standing behind the line and giving orders instead of holding a place in it. Officers move them from file to file along the wall, and a file that has been given one knows it has been marked as the weak one. Off duty they drink with the young soldiers and tell them nothing useful. Most of them have a plot of land waiting somewhere they have stopped meaning to go to, and the older soldiers hold that somebody who has stood twenty years in a line will not know what to do with a field.",
+			"physiology": {
+				"note": "Depends on the folk of this creature. See \"Physical Traits by Folk\" in the Folk section for more details."
+			},
+			"tactics": "They take the worst place in the line and stay in it. Keep them shoulder to shoulder, since **Close the Ranks** pays only while somebody is beside them. They fight at reach with the **Spear** and hold their one Quick Action for **Step Into the Gap**, which carries them to a threatened neighbour and answers the attacker, or spend it on **Nothing New** when fear is the bigger problem. They attack whoever is on their neighbour rather than whoever is most dangerous, and they are the last of the file to run.",
+			"treasure": {
+				"scale": "Incidental",
+				"table": [
+					{
+						"kind": "Weapon",
+						"item": "Spear",
+						"description": "Spear, Quality 2, damaged. Bound at the socket with wire, twice over.",
+						"value": "100 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Light shield",
+						"description": "Light Shield, Quality 2, damaged. Faced over twice, and the marks underneath belong to two different cities.",
+						"value": "150 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Banded leather cuirass",
+						"description": "Banded Leather, Quality 2, damaged. Cut and restitched to fit somebody wider than it was made for.",
+						"value": "150 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Coin purse",
+						"description": "Their share of a town that was taken, carried on the body because they do not trust a strongbox.",
+						"value": "150 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Ration bag",
+						"description": "Simple Rations (d4) with 2 uses left.",
+						"value": "10 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Muster horn",
+						"description": "A short bronze horn on a cord. Two notes bring the nearest patrol to the sound, and every soldier of that city has been drilled to come. It does not ask who blew it."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Retinue",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "2-3",
+							"creature": "Veteran"
+						}
+					]
+				},
+				{
+					"name": "Line",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Veteran"
+						},
+						{
+							"count": "4-6",
+							"creature": "Spearman"
+						},
+						{
+							"count": "2",
+							"creature": "Slinger"
+						},
+						{
+							"count": "2-3",
+							"creature": "Polearm Soldier"
+						}
+					]
+				},
+				{
+					"name": "Company",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "1-2",
+							"creature": "Veteran"
+						},
+						{
+							"count": "6-8",
+							"creature": "Spearman"
+						},
+						{
+							"count": "3-4",
+							"creature": "Slinger"
+						},
+						{
+							"count": "3-4",
+							"creature": "Polearm Soldier"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"name": "Ogre",
+		"size": "Large",
+		"type": "Giant",
+		"subtype": ["Feral"],
+		"tier": 3,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "30",
+		"av": "3 (natural light)",
+		"str": "d10",
+		"agi": "d6",
+		"spi": "d6",
+		"mnd": "d4",
+		"parry": 10,
+		"dodge": 8,
+		"resist": 8,
+		"skills": ["Fighting (1)", "Athletics (2)", "Survival (2)"],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Great Club",
+				"properties": ["crush", "reach", "two-handed"],
+				"text": "10/15/20 damage."
+			},
+			{
+				"name": "Fist",
+				"properties": ["crush"],
+				"text": "8/11/14 damage. On a strong or critical hit against a creature of Medium size or smaller, the target is grappled."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Hurl",
+				"qualifier": "Quick Action",
+				"text": "Only against a creature this creature is grappling. This creature throws the target a short distance in any direction, resolved as if the target were pushed that distance. Roll Strength + Athletics vs. Dodge against each creature in the space the target is thrown into. On a success, the target collides with them, and both take the damage and fall prone. On a failure, that creature gets clear. As an Action instead of a Quick Action, this creature can throw a Small or Medium object within their reach the same way, and only the creature struck takes the damage."
+			}
+		],
+		"traits": [],
+		"lore": {
+			"narrative": "Three metres tall and always hungry, with a tree for a club and a shoulder like a wall. Ogres are the smallest of the giants and the only ones that live where people do, out on the bad ground that no city has ever bothered to claim. They will take a price and stand guard for a season, which has convinced a great many people that an ogre is somebody you can come to an arrangement with. The arrangement lasts exactly as long as the ogre is fed.",
+			"environment": [
+				"Hills",
+				"Grassland",
+				"Marsh",
+				"Farmland",
+				"Road",
+				"Caves",
+				"Lair"
+			],
+			"ecology": "They eat constantly and they are not particular. An ogre works a stretch of hill or marsh the way a bear does, walking the same round every few days, taking whatever is slow, and coming down onto the farmland when the round runs thin. They know that people carry food and they have learned that people are food. Ogres are the only giants that deal with anyone. They keep to twos and threes, they know enough trade-speech to name a price, and a village will pay them in cattle to be left alone while a raiding band hires one for a season. None of that makes them a people. An ogre keeps no custom and remembers no agreement past the day it fed them, so a bargain holds while it is the easiest food in reach and breaks the hour it is not, without warning. Everybody who deals with an ogre knows this and does it anyway, because the alternative is having the ogre come to them. The priests say the giants came out of the titans and have never forgiven the world for what came after. An ogre asked about it says nothing that settles the question.",
+			"physiology": {
+				"size": "2.80 to 3.20 m tall",
+				"weight": "400 kg",
+				"lifespan": "Adult at 20, and 200 years is an ordinary age for one",
+				"reproduction": "One child at a time after a long carrying, perhaps three in a life, and the young stay with the mother until they can bring down something on their own."
+			},
+			"tactics": "They walk straight in and open with the **Great Club** before anyone gets close. Once somebody is right up against them the club is no use, so they switch to the **Fist**, and a grabbed character goes into the nearest group with **Hurl** on the same turn. Against a party that stays back they throw whatever is lying around instead. They go for the smallest person they can lift, and break off once they have something worth carrying. Livestock buys off this fight and nothing later, so an ogre the party has paid turns on them the moment something easier stands closer.",
+			"treasure": {
+				"scale": "Incidental",
+				"table": [
+					{
+						"kind": "Material",
+						"item": "Giant bone",
+						"description": "Crafting material, Quality 3. Long bones, dense enough to work into hafts and roof beams.",
+						"value": "90 coins"
+					},
+					{
+						"kind": "Trophy",
+						"item": "Ogre tusks",
+						"description": "The lower pair, taken out whole. A bounty officer knows them on sight.",
+						"value": "70 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Stolen goat",
+						"description": "1 x simple rations (d4) with 2 uses left. At the start of each day, remove 1 use as the meat spoils.",
+						"value": "4 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Chewed metal",
+						"description": "Buckles, rings and a bent bracelet, sorted into a fold of hide because the ogre likes the noise.",
+						"value": "180 coins"
+					},
+					{
+						"kind": "Weapon",
+						"item": "Battleaxe",
+						"description": "Battleaxe, Quality 2, damaged. Off somebody who came for the bounty and did not manage it.",
+						"value": "100 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Drover's hide",
+						"description": "A goat hide with the herding routes cut into it and the wells marked along each one. It is the safe way through the hills. One stretch has been crossed out twice, and that stretch is where this ogre works."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Family",
+					"count": "3-5"
+				}
+			]
+		}
+	},
+	{
+		"name": "Cult Priest",
+		"size": "Medium",
+		"type": "Humanoid",
+		"subtype": ["Human"],
+		"tier": 3,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "20",
+		"av": "3 (light armor)",
+		"str": "d6",
+		"agi": "d6",
+		"spi": "d10",
+		"mnd": "d6",
+		"parry": 8,
+		"dodge": 8,
+		"resist": 10,
+		"skills": ["Mysticism (2)", "Insight (2)", "Influence (2)", "Lore (2)"],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Ritual Knife",
+				"properties": ["agile", "light", "pierce"],
+				"text": "5/7/9 damage."
+			},
+			{
+				"name": "Censer",
+				"properties": ["crush", "versatile (+1)"],
+				"text": "6/9/12 damage."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Spellcasting",
+				"qualifier": "Action",
+				"text": "This creature can cast the following spells, rolling Spirit + Mysticism: *Cloud of Sickness*, *Curse of Death*, *Rotting Grasp*. This creature can cast each of these spells once per scene."
+			},
+			{
+				"name": "Grave-Smoke",
+				"qualifier": "Quick Action",
+				"text": "On a strong or critical hit with their Censer, this creature swings the chain so the smoke breaks across the target's face. The target is briefly blinded."
+			}
+		],
+		"traits": [],
+		"lore": {
+			"narrative": "A priest of a fringe death-cult, keeping rites the orthodox temples struck off their calendars. They meet at night in a necropolis nobody has swept in years, in a robe that smells of the censer, with a mark of their cult cut into everything they own. What they offer the people who come down to them is that death is a power worth speaking to, and that they know how to speak to it.",
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Necropolis",
+				"Ruins",
+				"Crypt",
+				"Shrine"
+			],
+			"ecology": "They are not a temple and they do not have one. A cult like this is nine or ten people who meet in a crypt on the nights the calendar says nothing happens, and the priest is whoever learned the words from the last one. They sit with the dying the temples will not sit with, and they lay out the dead of families who cannot pay for a proper burial, and they do the work for nothing. That is most of how they grow. The orthodox priesthoods call the rites heresy and the city watches call them a nuisance, and neither of them goes into the necropolis after dark to do anything about it. Where a colony of ghouls holds ground the cult wants, the cult feeds them exactly as the grave-wardens do and tells itself the prayer is the difference. Some say it is one of their rites that leaves a body walking instead of resting. The cult says those are the rites somebody interrupted.",
+			"physiology": {
+				"note": "Depends on the folk of this creature. See \"Physical Traits by Folk\" in the Folk section for more details."
+			},
+			"tactics": "They open with **Spellcasting** and spend all three spells in the first three rounds rather than holding any back. *Cloud of Sickness* goes on the tightest group, *Curse of Death* on whoever is hardest to kill, and *Rotting Grasp* on anyone who reaches them. After that they swing the **Censer** so **Grave-Smoke** can blind whoever is on them. They keep something between themselves and the party and give ground. They can be talked to before the rite starts and not once it has, and a spent priest runs for the crypt.",
+			"treasure": {
+				"scale": "Incidental",
+				"table": [
+					{
+						"kind": "Weapon",
+						"item": "Censer",
+						"description": "Flail, which the catalogue counts as a Mace, Quality 2, damaged. Pierced bronze bowl on a chain, still warm.",
+						"value": "100 coins"
+					},
+					{
+						"kind": "Tool",
+						"item": "Serpent talisman",
+						"description": "Spell Catalyst (Mystic Talisman), Quality 2. A bronze snake swallowing its own tail, worn against the skin.",
+						"value": "75 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Banded leather cuirass",
+						"description": "Banded Leather, Quality 2, damaged. Worn under the robe and not meant to be seen.",
+						"value": "150 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Funeral goods",
+						"description": "Pins, a string of carnelian and a gold mouth-plate, all given by families who had nothing else to give.",
+						"value": "150 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Jar of resin",
+						"description": "Oil, Quality 1, 3 uses. Burns in the censer and in the chamber lamps.",
+						"value": "25 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Rite-cylinder",
+						"description": "A clay cylinder cut with the rite-name the cult uses for what they serve. An orthodox priest who reads it can close the shrine it was cut for. They will want to know where it was found first."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Grave vigil",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Cult Priest"
+						},
+						{
+							"count": "3-5",
+							"creature": "Ghoul"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"name": "Captain",
+		"size": "Medium",
+		"type": "Humanoid",
+		"subtype": ["Human"],
+		"tier": 3,
+		"category": "Elite",
+		"armor": "Light",
+		"hp": "2x30",
+		"av": "4 (light armor and shield)",
+		"str": "d8",
+		"agi": "d6",
+		"spi": "d6",
+		"mnd": "d6",
+		"parry": 10,
+		"dodge": 8,
+		"resist": 9,
+		"skills": ["Fighting (2)", "Athletics (2)", "Insight (2)", "Influence (2)"],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Longsword",
+				"properties": ["pierce", "versatile (+1)"],
+				"text": "8/12/16 damage."
+			},
+			{
+				"name": "Shield Bash",
+				"properties": ["crush"],
+				"text": "7/10/13 damage. On a strong or critical hit, the target is pushed close and this creature moves into melee range of them."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Close the Ranks",
+				"qualifier": "Passive",
+				"text": "While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane."
+			},
+			{
+				"name": "Dress the Line",
+				"qualifier": "Quick Action",
+				"text": "When an enemy attacks an ally within short range of this creature, that attack suffers +1 bane. If the attack fails, that ally immediately moves up to a close distance toward this creature unprovoked."
+			},
+			{
+				"name": "Set the Shield",
+				"qualifier": "Quick Action",
+				"text": "This creature gains +2 Parry and cannot use Movement until the start of their next turn."
+			},
+			{
+				"name": "Hold the Line",
+				"qualifier": "Elite Trigger",
+				"text": "When this creature suffers a Wound, the file closes up and stops giving ground. For the rest of the scene, every ally within short range of this creature gains +1 boon on their attacks, and this creature can use one Action to attack with both their Longsword and their Shield Bash, each against a different target."
+			}
+		],
+		"traits": [],
+		"lore": {
+			"narrative": "An officer of a city or a warlord, appointed out of a landholding family and handed a company to keep alive. They wear the same leather as their soldiers and carry a sword instead of a spear, which is how everyone on the field knows which one they are. They have never had to fight in the front rank.",
+			"environment": [
+				"Grassland",
+				"River",
+				"Desert",
+				"City",
+				"Fortress",
+				"Road"
+			],
+			"ecology": "A captain is appointed rather than promoted, usually out of a family that holds land near the city and can be held to account if the company goes wrong. They draw ten times a soldier's pay, eat better than their soldiers, and are expected to spend some of the difference on them. Most of the work is not fighting. They count the muster, sign for the grain, walk the wall at night, and settle whatever their soldiers have done in the wineshops. Both sides know an officer is worth more alive than dead, so a captain taken in the field is held for ransom and the letters go back and forth for a season. Their own soldiers know it too, and a file that believes its captain would sell them does not stand.",
+			"physiology": {
+				"note": "Depends on the folk of this creature. See \"Physical Traits by Folk\" in the Folk section for more details."
+			},
+			"tactics": "They fight from inside their own file rather than in front of it. Their one Quick Action goes to **Dress the Line** for an ally under attack and to **Set the Shield** when the attention turns on them. They take whoever has broken into the formation with the **Longsword**, and use **Shield Bash** to push someone off an ally and follow them. After **Hold the Line** they look for two enemies in reach at once. They do not chase and they do not rout, and cornered with the file gone they offer a ransom.",
+			"treasure": {
+				"scale": "Standard",
+				"table": [
+					{
+						"kind": "Weapon",
+						"item": "Longsword",
+						"description": "Longsword, Quality 3, damaged. Given at the appointment, with the giver's mark under the grip.",
+						"value": "250 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Light shield",
+						"description": "Light Shield, Quality 3, damaged. Faced in beaten bronze rather than painted hide.",
+						"value": "300 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Banded leather cuirass",
+						"description": "Banded Leather, Quality 2, damaged. Deliberately plain, so the sword is the only thing that marks them.",
+						"value": "150 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Signet and chain",
+						"description": "Silver, worn on the chest. Seals the company's letters and draws its grain ration.",
+						"value": "200 coins"
+					},
+					{
+						"kind": "Supplies",
+						"item": "Officer's ration bag",
+						"description": "Luxury Rations (d8) with 2 uses left.",
+						"value": "80 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Sealed orders",
+						"description": "An incised tablet under a clay seal, naming who bought this company, what they were sent to do, and the sum. The city that sent them will pay to have it back, and the city they were sent against will pay more."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Retinue",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "2-3",
+							"creature": "Veteran"
+						}
+					]
+				},
+				{
+					"name": "Company",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "1-2",
+							"creature": "Veteran"
+						},
+						{
+							"count": "6-8",
+							"creature": "Spearman"
+						},
+						{
+							"count": "3-4",
+							"creature": "Slinger"
+						},
+						{
+							"count": "3-4",
+							"creature": "Polearm Soldier"
 						}
 					]
 				}

@@ -1,6 +1,6 @@
 # Designer Principles — Creature Design
 
-**Binding rules, not suggestions.** 33 principles, split by the phase of work they govern so a
+**Binding rules, not suggestions.** 46 principles, split by the phase of work they govern so a
 task loads only what it needs. **Numbers are global and permanent — never renumber.**
 
 Two sources feed them: **native** principles distilled from owner feedback during creature work,
@@ -18,7 +18,7 @@ The numeric chassis (tier stats, size modifiers, immunity sets, validation check
 | steps 1-3 — concept, statistics, attacks | [principles/chassis.md](principles/chassis.md) | 1, 2, 3, 4, 5, 7, 15 |
 | step 1, and every time you name something | [principles/identity.md](principles/identity.md) | 6, 12, 13, 14, 20, 21, 22, 25 |
 | step 4 — abilities, and every Elite/Lord trigger | [principles/abilities.md](principles/abilities.md) | 8, 9, 10, 11, 16, 17, 18, 23, 24, 26, 27 |
-| every line of stat block text and lore prose | [principles/writing.md](principles/writing.md) | 19, 28, 29, 30, 31, 32, 33 |
+| every line of stat block text and lore prose | [principles/writing.md](principles/writing.md) | 19, 28, 29, **29a**, 30, 31, 32, 33 |
 
 **Reading one file is the norm, not a shortcut.** Writing abilities means `abilities.md` plus
 `writing.md`; a whole creature from scratch means all four, in the order above. What is never
@@ -58,6 +58,7 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **21.** Magical naturalism: an invented animal is a real one plus exactly one deviation, and the name states it.
 - **22.** Dinosaurs are ordinary Beasts with a `Saurian` subtype, and never carry their scientific name.
 - **25.** Folk inheritance is bounded by the folk entry, and Nexus is conservative about senses.
+- **47.** A generic-role humanoid is folk-flexible; only a folk-named one is fixed.
 
 ### Abilities, conditions & triggers — [principles/abilities.md](principles/abilities.md)
 
@@ -78,13 +79,14 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **19.** SL escalation has one canonical wording: `increase the SL by one step (max. critical)`.
 - **28.** When two creatures share a sentence, name the subject — do not reach for a pronoun.
 - **29.** Lore prose: write for a middle schooler — one idea per sentence, concrete first, wit last.
+- **29a.** …and run the **register pass** on the finished draft: the hard word, and the clever construction made of common words. Not a new rule, an enforcement point for 29. *(writing)*
 - **30.** Read every prose sentence aloud, and fix what the mouth stumbles on.
 - **31.** Lore prose has no modern narrator. Never debunk the setting's superstitions — record them.
 - **32.** Say it once. Never add the sentence that defends the first one.
 - **33.** `tactics` is a GM briefing with the creature as its subject. No staging, no stating the obvious, no player advice.
 - **34.** Magic is in decline. A lost art is written in the past tense, never as an ongoing industry. *(identity)*
 - **35.** A leash is rare, large, and never a firing position. The objective sits inside it. *(abilities)*
-- **36.** The acting creature rolls, and one roll may be read against several Defenses. Inherit published conditions instead of inventing consequences. *(abilities)*
+- **36.** The acting creature rolls, one roll may be read against several Defenses, and no roll beats one. Inherit published conditions instead of inventing consequences. *(abilities)*
 - **37.** A Large or bigger creature's long weapon carries `reach`, which makes its second attack the answer to being closed on. *(chassis)*
 - **38.** Use the tier adjustment. Ask what each creature is better at than its tier and what it pays. *(chassis)*
 - **39.** Light or heavy armor decides whether `slash` works. Choose it deliberately, not by AV number. *(chassis)*
@@ -92,8 +94,9 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **41.** A conditional second attack on a Quick Action is the answer to multiattack. Trigger on an action, not a result. *(abilities)*
 - **42.** Improved senses are earned. Seeing in the dark is rare: 3 of 34 companions, one of them an ordinary animal. *(identity)*
 - **43.** A trait must act in the encounter. Companion-utility traits are inert on a monster. *(abilities)*
-- **44.** A rider comes from the weapon and the creature, never from the checklist. Never reproduce a published spell for free. *(abilities)*
+- **44.** On a carried weapon, the line is catalogue data. Anything more is an ability. *(abilities)*
 - **45.** Qualifier is one word; the limiter is the LAST SENTENCE of the text. Most-repeated error. *(abilities)*
+- **46.** Write an ability's clauses in resolution order, and make the second effect the payoff of the first. *(abilities)*
 
 ## Appending a new principle
 
@@ -103,7 +106,7 @@ When the owner corrects or refines a creature design decision in session:
 one-line title each. Open the phase file rather than this index when you are designing: this list says
 *which* principle applies and never what it says.
 
-1. Take the next free number (currently next: **46**).
+1. Take the next free number (currently next: **48**).
 2. **Write the full principle into the phase file it belongs to** — `principles/chassis.md`,
    `identity.md`, `abilities.md` or `writing.md` (numbered, bolded one-line rule, then reasoning,
    then owner-ruling provenance).

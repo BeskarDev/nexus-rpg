@@ -20,10 +20,11 @@ Read before **workflow step 4** (abilities), and again before any Elite or Lord 
 | **26** | Every trigger opens `When this creature suffers a Wound, …`, and Lords take the ordinal. |
 | **27** | An Elite or Lord Trigger escalates. It is never a downgrade, and never a rule the game already has. |
 | **35** | A leash is a rare feature, and it must never be a firing position. |
-| **36** | The acting creature rolls, and one roll may be read against several Defenses. |
+| **36** | The acting creature rolls, one roll may be read against several Defenses, and no roll beats one. |
 | **41** | A conditional second attack is the Nexus answer to multiattack. |
+| **46** | Write an ability's clauses in resolution order, and make the second effect the payoff of the first. |
 | **43** | A trait must act in the encounter, or it is lore wearing a slot. |
-| **44** | A rider comes from the weapon and the creature, never from the checklist. |
+| **44** | On a carried weapon, the line is catalogue data. Anything more is an ability. |
 | **45** | The qualifier is one word. The limiter is the last sentence. This keeps being got wrong. |
 
 **Numbers are global and never renumbered, so this file is ordered for reading rather than by date.** Full text below in the same order.
@@ -44,6 +45,13 @@ Read before **workflow step 4** (abilities), and again before any Elite or Lord 
 
 **18. `briefly` and `short` are the two in-combat durations, and the choice is deliberate.** `briefly` is one turn; `short` is the rest of the fight. A rider that fires on most hits wants `briefly`, or the fight fills with permanent conditions by round three; a signature effect meant to shape the encounter wants `short`. A third form is legal and often best — **name the end condition inline** when it is something the party *does* ("until they escape", "until they spend a Quick Action to brush off the scarabs"), because that is counterplay and a duration in one clause. **Never spell `briefly` out longhand** as "until the end of their next turn": that is imported phrasing for a duration Nexus already has a keyword for.
 
+**A `briefly` condition does not also need a frequency limiter.** One turn means it cannot stack, cannot
+persist and cannot compound, so `once per scene` on top is a second lock on the same door — a thing for
+the GM to remember that changes nothing about what happens. **Reserve frequency limiters for effects that
+last, that repeat damage, or that would otherwise fire every turn to real advantage.** Caught on the Cult
+Priest's `Grave-Smoke`, which briefly blinded, rolled for it *and* capped itself once per scene.
+*(Owner ruling, 2026-08-11, D-121.)*
+
 **Word order is fixed: the duration goes BEFORE the condition.** `briefly dazed`, `briefly stunned`, `briefly poisoned` — never `dazed briefly`. Both orders are correct English and the published corpus is not close: **451 uses of `briefly <condition>` against 9 the other way**, and six of those nine were creature records written before this rule existed. This is principle 19 applied to the commonest phrase in the whole bestiary, so it is worth stating rather than trusting an ear: a GM who has read `briefly dazed` four hundred times should recognise the phrase, not re-parse a variant of it. The longer durations keep their own published form — `for a short duration`, not `shortly`. *(Owner confirmation, 2026-08-09, milestone 04 §1.1; word order ruled 2026-08-10, D-074.)*
 
 **23. A creature's weapon may have any name, but its damage and properties must be a catalog entry's.** `docs/04-equipment/03-weapons.md` explicitly invites invented names — "invent a name of your own and tell the table what it counts as" — so *Raiding Axe* and *Canyon Sword* are legal as names. What is not legal is inventing the **stat line** behind them. A creature's weapon is looted (`02-creature-rules.md` § Looting Equipment), so an invented property list changes the item the moment it leaves the corpse, and the party has no way to know what they picked up. Every creature weapon resolves to a row of the catalog: its weapon damage, its full property list, verbatim.
@@ -54,7 +62,9 @@ Three checks, in order:
 2. **Copy the whole property list**, including the unglamorous ones. A javelin is `bundle (d4), light, pierce, thrown (short/long)` — the bundle is what the party inherits, and it is the reason a raider who threw javelins all fight has none left to loot.
 3. **Take the weapon damage from the catalog, not from the tier.** A javelin is 2 where the tier says 3, and a Light Shield is 2 — so those attacks land *below* the tier baseline on purpose. Equipment carrying its real number is one of the few ways a creature's damage legitimately varies without a tier adjustment.
 
-The same audit applies to armor and shields, and it pays for numbers that otherwise have no stated source: a Light Shield's `AV +1` and `parry +1` are exactly where a shield-carrying creature's extra point of each comes from. *(Owner ruling, 2026-08-09.)*
+The same audit applies to armor and shields, and it pays for numbers that otherwise have no stated source: a Light Shield's `AV +1` and `parry +1` are exactly where a shield-carrying creature's extra point of each comes from. **Those two are then *not* repeated in the attack's property list** — they have already been spent in the AV and Parry figures, so `Shield Bash` lists `crush` alone across the whole roster. "Copy the whole property list" means the properties describing **the attack**, not the ones the stat line has banked. *(Owner ruling, 2026-08-09.)*
+
+***This principle was correct, complete and broken anyway***, three batches after it was written, by a `Censer` given `(crush, reach)` and a damage figure of its own. **A rule with no enforcement point is not a rule**, so step 3's gate now makes a designer **name the catalogue row in the notes file** — a censer on a chain is a *Flail*, which the catalogue counts as a *Mace*. What the invented entry actually bought was `reach` for the softest body in the batch. See [principle 44](#44) for what happens to the rider, and [../case-studies.md](../case-studies.md#p44) for the full failure. *(Owner ruling, 2026-08-11, D-119.)*
 
 **No creature type gets a standard rider.** `distracted` fits a swarm almost too well, which is exactly
 why it may be used on **one more** and then every swarm needs its own signature (D-112). Same lesson as
@@ -140,6 +150,25 @@ creature struck takes the same, and the falling rules already knock both prone. 
 "the target is pushed a short distance" inherits all of it and needs no damage figure of its own.
 *(Owner ruling, 2026-08-11, D-093.)*
 
+***One roll is better than two, and no roll is better than one.*** The principle above is about **whose**
+roll it is. This is about **how many**, and the ladder runs the other way from the instinct to be fair:
+
+| Rung | Cost at the table | Use it for |
+|---|---|---|
+| **1. Gate on the success level of a roll already made** | **nothing** | Most riders and small reactive effects. `On a strong or critical hit, …` |
+| **2. Read that same roll against a second Defense** | one comparison | An effect landing on **someone other than the attack's target**, where there is a second Defense to read — the Ogre's `Hurl` |
+| **3. A fresh roll** | a full resolution step | Effects big enough to deserve their own moment, and abilities with no attack in front of them |
+
+**Rung 1 is the default and rung 3 has to be argued for.** The question is never *"would a roll be fairer
+here"*, it is ***"has the table already decided this?"*** — and after an attack, it usually has.
+
+❌ `(Quick Action). When this creature hits with their Censer, roll Spirit + Mysticism vs. the target's
+Resist. On a success, the target is briefly blinded. Once per scene.`
+✅ `(Quick Action). On a strong or critical hit with their Censer, this creature swings the chain so the
+smoke breaks across the target's face. The target is briefly blinded.`
+
+*(Owner ruling, 2026-08-11, D-121.)*
+
 **41. A conditional second attack is the Nexus answer to multiattack.** D&D gives a high-tier creature
 more attacks in its own turn. Nexus gives it **one extra attack that fires on somebody else's**, as a
 Quick Action with a trigger the party can see and play around.
@@ -169,6 +198,23 @@ before you keep it** (principle 24). Two of them already occupy this space, and 
 adds nothing to either is not an ability. Both failed drafts are in
 [../case-studies.md](../case-studies.md#p24).
 
+***This is the default, not a ban. A trigger may unlock a paired attack.*** An **Elite or Lord Trigger**
+is the sanctioned channel for a creature to do something it could not do before, and *"use one Action to
+attack with both weapons"* is a legitimate thing for it to unlock — the Captain's `Hold the Line` does
+exactly that, after a Wound has already cost them half their HP.
+
+**Price it off the AV table, because the instinct is wrong.** **AV is subtracted from each attack
+separately**, so a paired attack is taxed twice and gains far less against armor than it looks like it
+should — and far more against an unarmored caster. Run the three rows in
+[../stat-tables.md](../stat-tables.md#paired-attacks) before granting one, then **constrain it where the
+math says**: the Captain's pair must take **two different targets**, which is what keeps a 16 HP caster
+out of one-Action range and reads as an officer holding a gap.
+
+**Never on the base stat line.** D-076 still rules the routine case: paired natural weapons carry `light`
+and take **half** the tier's weapon damage each, because that is what the creature does every turn and it
+is priced into the chassis. Full damage on both weapons is an **escalation**, and it is paid for by
+costing half the creature's HP to reach. *(Owner ruling, 2026-08-11, D-124.)*
+
 | Universal action | Does | So the creature's version must |
 |---|---|---|
 | **Opportunity Attack** | Attacks an enemy leaving your melee reach. No movement | change the **trigger** and add something |
@@ -178,6 +224,29 @@ A second draft of `Step Into the Gap` dropped the movement and became "an Opport
 different trigger", which also made the name a lie. Restoring the step is what separates it from both:
 the veteran covers ground *and* answers, where `Protect Ally` covers ground and eats it.
 *(Owner rulings, 2026-08-11, D-103.)*
+
+**46. Write an ability's clauses in resolution order, and make the second effect the payoff of the
+first.** Two rules that keep landing on the same abilities, because a reactive Quick Action almost always
+does two things at once.
+
+**(a) Resolution order.** An ability that both modifies an attack and moves somebody resolves the
+**attack modifier first**, against a stationary target, and the movement afterwards. Moving the target
+*before* the attack resolves leaves the table asking whether the attack still reaches — a question the
+stat block must never hand a GM mid-roll.
+
+**(b) Gate the second effect on the first one working.** When a Quick Action does two things, make the
+second the **payoff** of the first rather than a parallel benefit. It becomes one readable sentence of
+cause and effect, and spending the Quick Action becomes a gamble instead of a guaranteed two-for-one.
+
+| ❌ | ✅ |
+|---|---|
+| `When an ally within short range is attacked, that ally moves up to a close distance toward this creature **and** the attack suffers +1 bane.` | `When an enemy attacks an ally within short range of this creature, that attack suffers +1 bane. **If the attack fails**, that ally immediately moves up to a close distance toward this creature **unprovoked**.` |
+
+**If an ability moves a creature, decide whether the movement is `unprovoked`** — it is a published
+keyword: *"Movement described as unprovoked doesn't trigger an Opportunity Attack or any other reaction"*
+(`docs/05-combat/03-distances-movement.md`). Omitting it on a pull toward safety hands a free Opportunity
+Attack to the enemy the ability just defeated, which inverts what the ability is for. *(Owner ruling,
+2026-08-11, D-123.)*
 
 **43. A trait must act in the encounter, or it is lore wearing a slot.** `creature-traits.json` is shared
 with the companion rules, and several of its entries exist for **companion utility** — carrying gear,
@@ -194,21 +263,41 @@ capacity` vocabulary ("encumbrance and over-encumbrance limits"), which no publi
 while. Shared data is corrected in place, because companions and creatures read the same file.
 *(Owner ruling, 2026-08-11, D-104.)*
 
-**44. A rider comes from the weapon and the creature, never from the checklist.** D-073 asks that a
+**44. On a carried weapon, the line is catalogue data. Anything more is an ability.** D-073 asks that a
 creature have at least one attack doing more than damage. It does **not** ask that every attack carry a
-rider, and it says so directly: *plain weapon attacks stay plain*. When a rider cannot be traced to what
-the weapon is and who is swinging it, it was written to satisfy the rule and it should be cut.
+rider, and it says so directly: *plain weapon attacks stay plain*.
+
+**For a weapon out of `03-weapons.md`, the whole attack is: catalogue properties + catalogue damage +
+the creature's base damage.** A rider is allowed only when it is what any creature would achieve with
+that weapon **as the catalogue models it** — a shield knocks someone `prone`, a spear `pushes`. If the
+effect needs something the object does that the catalogue does not model, it is an **ability**, where it
+costs a slot, an action and usually a roll.
 
 **Two questions that catch it:**
 
-1. **Where did this come from?** A censer swung into someone's face blinds them with smoke — that is the
-   object doing something only it can do. A knife making the target's *next roll* worse is not a knife
-   doing anything.
-2. **Does a published effect already do this?** A rider that reproduces a spell, condition or talent is
-   worse than no rider, because it hands out for free what the rules price.
+1. **Does a published effect already do this?** A rider reproducing a spell, condition or talent is worse
+   than no rider, because it hands out for free what the rules price.
+2. **Would this still be true if the weapon were the plain catalogue entry?** If the rider depends on the
+   *object's* special nature — smoke, poison, a consecrated edge — the answer is no, and it belongs in an
+   ability.
 
-The worked failure — a knife rider that was a published spell verbatim — is in
-[../case-studies.md](../case-studies.md#p44).
+❌ `**Censer** (crush, reach). 7/10/13. On a strong or critical hit, the target is briefly blinded.`
+✅ `**Censer** (crush, versatile (+1)). 6/9/12.` plus `**Grave-Smoke** (Quick Action). On a strong or
+critical hit with their Censer, this creature swings the chain so the smoke breaks across the target's
+face. The target is briefly blinded.`
+
+**The two texts read almost alike, and the difference is the entire point: the rider was free, the
+ability costs the creature's Quick Action.** The priest cannot blind someone and `Evade` in the same
+round. **A mundane consequence rides free on the weapon. A magical one costs a slot and a Quick Action.**
+Do not pay for it a third time with a roll or a limiter — that is principles 36 and 18, and the first
+draft of this very ability did both (D-121).
+
+**Natural weapons are the exception.** A fist grappling, a bite holding on, a tail sweeping legs out —
+there is no catalogue entry to be honest to, so the rider *is* the design (D-116 prices it: gated takes
+full damage, ungated takes less).
+
+Two worked failures, a knife rider that was a published spell verbatim and the censer that took three
+reviews to fall, are in [../case-studies.md](../case-studies.md#p44).
 
 **The creature's identity does not have to live in every line.** A caster's interesting half is the spell
 list. Its knife is there so the creature still has something to do when the spells are spent (D-094).

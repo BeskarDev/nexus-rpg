@@ -62,6 +62,23 @@ damage, and the Jackal's prone, the Grave Husk's grapple, the Ghoul's daze and t
 | **Gated** behind a grapple, condition or state | **full tier weapon damage** | `Death Roll`, `Bearing Down` |
 | **Ungated**, usable any turn | **below the tier's figure** | `Pull Down`, the Ogre's `Fist` |
 
+### Paired attacks: AV is subtracted twice {#paired-attacks}
+
+**AV applies to each attack separately**, so splitting one Action into two attacks is taxed twice. Run
+these rows before a trigger grants a paired attack (principle 41, D-124) — the instinct that two attacks
+are roughly twice one attack is wrong in both directions:
+
+| Against | One attack (8/12/16) | Paired with a 7/10/13 off-hand | Gain |
+|---|---|---|---|
+| **AV 5** martial, strong | 12 - 5 = **7** | (12-5) + (10-5) = **12** | +5 |
+| **AV 5** martial, weak | 8 - 5 = **3** | (8-5) + (7-5) = **5** | +2 |
+| **AV 2** caster, strong | 12 - 2 = **10** | (12-2) + (10-2) = **18** | **+8** |
+
+**Against armor it is a moderate gain. Against an unarmored caster it is a burst**, and 18 into a 16 HP
+body in one Action is over the line principle 3 draws. **Constrain where the math says**, not
+everywhere: the Captain's pair must take **two different targets**, which removes the bottom row and
+gives the party a stated counterplay.
+
 ### AV: sources, stacking and vocabulary
 
 Three rules (D-114), and this was the last chassis number without one:

@@ -37,6 +37,7 @@ it before writing prose.** This is the checklist to run against a finished draft
 | 1 | One idea per sentence. Long is fine when it is long about one thing. | 29 |
 | 2 | Open on the concrete thing, close on the turn. No aphorism in the first slot. | 29 |
 | 3 | No idiom the reader has to unpack to reach a fact. | 29 |
+| 3a | **Register pass, on the finished draft.** Go noun by noun for the **hard word**, then clause by clause for the **clever construction** made of common words. Point at the fact each sentence delivers and count the steps to it. **List what you swapped** — a pass with no list did not happen. | 29a |
 | 4 | Read it aloud — any unintended pause is the defect. | 30 |
 | 5 | No modern narrator. Attribute beliefs, never debunk them, leave the truth open. | 31 |
 | 6 | Only `tactics` addresses the table. No "the party" elsewhere — the generator enforces it. | — |
@@ -138,6 +139,25 @@ ghoul cooperates inside its colony, coordinates a hunt, and still sees an advent
 in the field, because a GM running the encounter off the card otherwise has to guess, and half of them
 will guess wrong in each direction.
 
+**And where parley does work, `tactics` says what ends the arrangement** (D-125). A creature that can be
+dealt with is not a creature whose bargain holds, and silence on the point reads as "the deal holds",
+which is the default a GM applies and usually the wrong one. **The distinction is culture, not
+intelligence.** A Folk has custom, obligation and memory of an agreement, so a deal with one is enforced
+by something outside the moment. A creature dealing purely from appetite has none of that scaffolding,
+and it is not treacherous either, because treachery needs a promise the creature understands itself to be
+breaking. The deal simply stops being the easiest option and nothing in the creature registers a change.
+
+One clause, actionable at the table:
+
+| ✅ | Creature |
+|---|---|
+| "an ogre the party has paid turns on them the moment something easier stands closer" | Ogre |
+| "they can be talked to before the rite starts and not once it has" | Cult Priest |
+
+**This is also the honest form of a *buyable* Treat.** Being able to pay a creature off is a good
+counterplay channel and it is only interesting while it stays a gamble. A creature that can be reliably
+bought is an encounter the party skips with coin.
+
 **A field that says a mechanic was added must be updated when the mechanic is** (D-073 and D-071's
 consequence). `tactics` is the field most likely to fall silently out of date, because nothing in the
 build gate compares it to the attacks and abilities beside it. When a published creature gains an
@@ -209,6 +229,7 @@ measurements badge as tags, and reproduction is one line of prose.
 | `weight` | measurement | Metric: `12 kg`, `1.8 t`. Give a range when the spread matters more than the average. |
 | `lifespan` | measurement | `10 to 12 years`. For things that do not age, state what actually ends them: `Does not age, and 400 years is an ordinary age for one`. |
 | `reproduction` | one line of prose | How they breed, and how long it takes. One or two sentences, never a paragraph. **Omit for anything that does not breed** — see rule 4. |
+| `note` | one line of prose | **Folk-flexible humanoids only** — a pointer sentence, in place of every other field, see rule 8. |
 
 Rules:
 
@@ -234,11 +255,44 @@ Rules:
    themselves", and **do not repurpose the field** for what raises or builds them — that is
    origin, it belongs in `ecology` or `narrative`, and a physiology block is the wrong place to
    explain a rite. The Grave Husk carries size, weight and lifespan, and nothing else.
-5. **This is a short section, not a second ecology.** Three tags and one sentence. Behaviour,
+5. **A humanoid's whole physiology block points to `01-folk.md`, not just `reproduction`**
+   (owner ruling, 2026-08-12). Size, weight, lifespan and breeding are already published there
+   per folk (§ Physical Traits by Folk, § Age Groups by Folk), and a bestiary entry restating
+   them earns its place on the card less than the same lines spent on `ecology` or `tactics`.
+   `reproduction` is dropped outright. See rule 8, below, for `size`/`weight`/`lifespan`, and for
+   the `note` field that replaces all four.
+6. **This is a short section, not a second ecology.** Three tags and one sentence. Behaviour,
    diet and range belong in `ecology`, above it. Anything the party can exploit belongs in
    `tactics`.
-6. **Keep the figures consistent with the creature's size category and their tier.** A
+7. **Keep the figures consistent with the creature's size category and their tier.** A
    Medium creature that weighs 900 kg is a data entry error the generator cannot catch.
+8. **A generic-role humanoid is folk-flexible unless its name specifies a folk** (owner ruling,
+   2026-08-12; see also identity.md principle 47). *Veteran*, *Spearman*, *Cult Priest*,
+   *Captain*: nothing in the name ties the role to one folk, so the GM may embody it as any of
+   the twelve, and the card must not silently assume otherwise. *Orc Raider*, *Orc Band-Leader*:
+   the name is the folk, and the card is written for that folk alone.
+
+   **For a flexible entry, `size`, `weight` and `lifespan` are omitted, not defaulted.** A made-up
+   "default folk" (human, by habit) is exactly the invented figure rule 1 already forbids — it
+   just moves the invention from one field to three. `01-folk.md` § Physical Traits by Folk / Age
+   Groups by Folk already holds the real number for whichever folk the GM assigns the role to, so
+   the card states none of them. `narrative`, `ecology` and `tactics` are written so nothing in
+   them contradicts any folk playing the role.
+
+   **The block is not silently absent, though — it carries a pointer** (owner ruling,
+   2026-08-12, revised same day). Omitting `physiology` outright reads as an oversight to a GM
+   scanning the card, not a decision, so a flexible entry instead sets exactly one field:
+
+   ```json
+   "physiology": {
+     "note": "Depends on the folk of this creature. See \"Physical Traits by Folk\" in the Folk section for more details."
+   }
+   ```
+
+   `note` is the whole block on a flexible entry — never alongside `size`, `weight`,
+   `lifespan` or `reproduction` on the same record (the generator rejects the combination). It
+   renders exactly where `reproduction`'s prose line would, with no measurement tags ahead of
+   it, so the section still appears on the card instead of vanishing.
 
 Every field is optional and the whole block is optional, but a creature with a
 `physiology` block carrying no fields fails the build.

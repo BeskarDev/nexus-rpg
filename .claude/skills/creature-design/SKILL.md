@@ -97,8 +97,8 @@ other ten: at tier 9 it promises 15/19/23 where the creature data says 18/33/48.
 
 ## Design Principles
 
-**45 binding principles, split by phase so a task loads only what it needs.** Full text in
-[references/principles/](references/principles/); the one-line index of all 45 and the
+**46 binding principles, split by phase so a task loads only what it needs.** Full text in
+[references/principles/](references/principles/); the one-line index of all 46 and the
 "which file when" table are in
 [references/designer-principles.md](references/designer-principles.md).
 
@@ -240,18 +240,43 @@ Expect roughly **a third of a batch** to carry one, not all of it and not none.
 ### 3. Attacks
 Damage formula — always exactly:
 - **Weak** = Base + Weapon | **Strong** = Base + 2×Weapon | **Critical** = Base + 3×Weapon
-- **Base damage** = half primary attribute die (d6→3, d8→4, d10→5, d12→6, d12+1→7, d12+2→8)
-- **Weapon damage** = tier + 2 single-target; half that for multi-target
+- **Base damage** = half the die of **the attribute that attack uses** — Strength, or **Agility for an
+  `agile` weapon** (d6→3, d8→4, d10→5, d12→6, d12+1→7, d12+2→8). **Not the creature's highest die.** A
+  caster with Spirit d10 and Strength d6 swings a knife off the **d6**.
+- **Weapon damage** — the tier's figure from the table in
+  [references/stat-tables.md](references/stat-tables.md) for a **natural** weapon; the **catalogue row's
+  damage** for a **carried** weapon (principle 23). Half, rounded up, for multi-target.
 - Write as `5/7/9 damage (base 5 + weapon 2)`.
 
-Use only official weapon properties (`docs/04-equipment/05-armor-weapon-properties.md`).
-
+**A carried weapon is a published weapon or a published reskin of one** (principle 23, D-119). Name it
+whatever suits the culture, then take its properties and its damage from the catalogue row verbatim.
+`docs/04-equipment/03-weapons.md` carries the regional reskin tables for exactly this: *Flail* counts as
+*Mace*, *Scepter* as *Quarterstaff*, *Khopesh* as *Scimitar*, *Dagger* as *Shortsword*. Use only official
+weapon properties (`docs/04-equipment/05-armor-weapon-properties.md`).
 
 > **Gate — answer these before step 4:**
-> 1. Is every damage figure `base + 1x/2x/3x weapon`, with the weapon value from the **catalogue at this
->    creature's Quality** (D-091) or the tier figure for a natural weapon?
-> 2. Does at least one attack do **more than damage**, and is every plain attack genuinely plain (D-073)?
-> 3. Does any rider **add damage**? If so, it is paid for in weapon damage (D-110).
+> 1. **Name the catalogue row every carried weapon resolves to**, in the notes file, with its damage
+>    figure. "It is a natural weapon" is the other acceptable answer. Anything else is an invented weapon
+>    (D-119) — this rule existed as principle 23 for three batches and was still broken by a `Censer`
+>    written as `(crush, reach)`.
+> 2. Is every damage figure `base + 1x/2x/3x weapon`, with base taken from **that attack's own
+>    attribute** and the weapon value from the catalogue row or the tier figure?
+> 3. Does at least one attack do **more than damage**, and is every plain attack genuinely plain (D-073)?
+> 4. Does any rider **add damage**? If so, it is paid for in weapon damage (D-110).
+> 5. On a **carried** weapon, is every rider something the plain catalogue entry would do (D-120)? A
+>    shield knocks people `prone`. Smoke, poison and curses are abilities.
+> 6. **Who else on the roster carries this loadout, and is that deliberate?** (D-122.) Sharing a kit is
+>    correct when the sharing *is* the design — the Veteran is *a better Spearman* on purpose. It is a
+>    defect when it is inheritance nobody re-examined, which is how a Captain ended up as the third
+>    record with `Spear` + `Shield Bash`. **Loadout is an identity axis**, and the fiction usually names
+>    the fix: the rank and file carry spears, the officer carries a sword. Shields are exempt — a shield
+>    doing a shield's job is not a collision.
+
+**Changing a weapon type changes two numbers, so check both.** Damage moves with the catalogue row, and
+`slash` adds weapon damage **a second time** against light or no armor (D-099). A Q3 Broadsword on a
+tier-3 officer reads 8/12/16 against a martial and **12/16/20 against an unarmored caster**, which is
+principle 3's needle threaded the wrong way. Swap a weapon, then re-read the damage line against **both**
+armor cases and against the creature's own category rung (D-091).
 
 ### 4. Abilities
 
@@ -401,7 +426,7 @@ it has been written — the recurring failures below were all caught this way, o
 | [identity.md](references/principles/identity.md) | Does the name promise what the stat block delivers? Is a real animal called by its real name, an invented one built as *one* deviation, a folk creature inheriting only what its folk entry grants? |
 | [chassis.md](references/principles/chassis.md) | Is every number off the tier table, with at most one traded pair? **Was the tier-adjustment question asked, and is the answer written down even when it is "no"?** Does the encounter have a Timer, a Threat and a Treat — and is the Treat real rather than invented? |
 | [abilities.md](references/principles/abilities.md) | Every condition checked against its published text? Every high-impact one gated by a save or a roll? Every defence counterable? Triggers escalating, opening `When this creature suffers a Wound`? Nothing restating a universal action? **Is every qualifier a single word with no limiter attached, and is every limiter the last sentence of its text?** |
-| [writing.md](references/principles/writing.md) | Canonical wordings copied verbatim? Subject named where two creatures share a sentence? Lore prose read aloud, superstitions recorded rather than debunked, nothing said twice? |
+| [writing.md](references/principles/writing.md) | Canonical wordings copied verbatim? Subject named where two creatures share a sentence? Superstitions recorded rather than debunked, nothing said twice? **Register pass run on every prose field and every treasure row, with the swap list written down** — the hard word, and the clever construction made of common words (29a). A punctuation sweep is not a register pass and will not catch one. |
 
 Key failure modes:
 

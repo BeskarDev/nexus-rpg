@@ -8,3 +8,209 @@ toc_max_heading_level: 3
 {/* GENERATED from src/utils/data/json/creatures.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}
 
 Tier 3 creatures represent meaningful threats. They include more powerful undead, large predators, and experienced combatants.
+
+<CreatureStatBlock
+	type="Medium Humanoid (Human)"
+	tier={3}
+	category="Basic"
+	hp="30"
+	av="4 (light armor and shield)"
+	str="d8"
+	agi="d6"
+	spi="d6"
+	mnd="d6"
+	parry={10}
+	dodge={8}
+	resist={9}
+>
+
+### Veteran
+
+<CreatureLore>
+
+A soldier past forty, taken on at sixteen and still standing in the line at an age when most of the file has gone home to a plot of land. They carry the same spear and the same painted shield as the soldier beside them, and every strap on the kit has been replaced twice. The officers put them where the line is expected to break.
+
+<LoreSection label="Ecology"><LoreTag>Grassland</LoreTag><LoreTag>River</LoreTag><LoreTag>Desert</LoreTag><LoreTag>City</LoreTag><LoreTag>Fortress</LoreTag><LoreTag>Road</LoreTag> They draw the same pay as everybody else in the file and are worth three of them. A veteran is not given a rank and does not ask for one, because a rank means standing behind the line and giving orders instead of holding a place in it. Officers move them from file to file along the wall, and a file that has been given one knows it has been marked as the weak one. Off duty they drink with the young soldiers and tell them nothing useful. Most of them have a plot of land waiting somewhere they have stopped meaning to go to, and the older soldiers hold that somebody who has stood twenty years in a line will not know what to do with a field.</LoreSection>
+
+<LoreSection label="Physiology"> Depends on the folk of this creature. See "Physical Traits by Folk" in the Folk section for more details.</LoreSection>
+
+<LoreSection label="Tactics">They take the worst place in the line and stay in it. Keep them shoulder to shoulder, since **Close the Ranks** pays only while somebody is beside them. They fight at reach with the **Spear** and hold their one Quick Action for **Step Into the Gap**, which carries them to a threatened neighbour and answers the attacker, or spend it on **Nothing New** when fear is the bigger problem. They attack whoever is on their neighbour rather than whoever is most dangerous, and they are the last of the file to run.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Incidental"><TreasureRow kind="Weapon" value="100 coins">**Spear** Spear, Quality 2, damaged. Bound at the socket with wire, twice over.</TreasureRow><TreasureRow kind="Armor" value="150 coins">**Light shield** Light Shield, Quality 2, damaged. Faced over twice, and the marks underneath belong to two different cities.</TreasureRow><TreasureRow kind="Armor" value="150 coins">**Banded leather cuirass** Banded Leather, Quality 2, damaged. Cut and restitched to fit somebody wider than it was made for.</TreasureRow><TreasureRow kind="Valuables" value="150 coins">**Coin purse** Their share of a town that was taken, carried on the body because they do not trust a strongbox.</TreasureRow><TreasureRow kind="Supplies" value="10 coins">**Ration bag** Simple Rations (d4) with 2 uses left.</TreasureRow><TreasureRow kind="Relic">**Muster horn** A short bronze horn on a cord. Two notes bring the nearest patrol to the sound, and every soldier of that city has been drilled to come. It does not ask who blew it.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="2">Pair</EncounterTemplate><EncounterGroup name="Retinue">1 [Captain](/docs/creatures/creatures/tier-3#captain) and 2-3 [Veteran](/docs/creatures/creatures/tier-3#veteran)</EncounterGroup><EncounterGroup name="Line">1 [Veteran](/docs/creatures/creatures/tier-3#veteran), 4-6 [Spearman](/docs/creatures/creatures/tier-2#spearman), 2 [Slinger](/docs/creatures/creatures/tier-2#slinger) and 2-3 [Polearm Soldier](/docs/creatures/creatures/tier-2#polearm-soldier)</EncounterGroup><EncounterGroup name="Company">1 [Captain](/docs/creatures/creatures/tier-3#captain), 1-2 [Veteran](/docs/creatures/creatures/tier-3#veteran), 6-8 [Spearman](/docs/creatures/creatures/tier-2#spearman), 3-4 [Slinger](/docs/creatures/creatures/tier-2#slinger) and 3-4 [Polearm Soldier](/docs/creatures/creatures/tier-2#polearm-soldier)</EncounterGroup></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (2), Athletics (2), Insight (2), Perception (2)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Spear</EntryName> <StatBadge>pierce</StatBadge><StatBadge>reach</StatBadge><StatBadge>versatile (+1)</StatBadge> <DamageLadder values="7/10/13" />
+- <EntryName>Shield Bash</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="6/8/10" /> On a strong or critical hit, the target falls prone.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Close the Ranks</EntryName> <StatBadge>Passive</StatBadge> While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane.
+- <EntryName>Step Into the Gap</EntryName> <StatBadge>Quick Action</StatBadge> When an enemy attacks an ally within short range of this creature, this creature moves into melee range of that ally and makes one attack against the attacker.
+- <EntryName>Nothing New</EntryName> <StatBadge>Quick Action</StatBadge> This creature briefly ignores the effects of the frightened condition.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Large Giant (Feral)"
+	tier={3}
+	category="Basic"
+	hp="30"
+	av="3 (natural light)"
+	str="d10"
+	agi="d6"
+	spi="d6"
+	mnd="d4"
+	parry={10}
+	dodge={8}
+	resist={8}
+>
+
+### Ogre
+
+<CreatureLore>
+
+Three metres tall and always hungry, with a tree for a club and a shoulder like a wall. Ogres are the smallest of the giants and the only ones that live where people do, out on the bad ground that no city has ever bothered to claim. They will take a price and stand guard for a season, which has convinced a great many people that an ogre is somebody you can come to an arrangement with. The arrangement lasts exactly as long as the ogre is fed.
+
+<LoreSection label="Ecology"><LoreTag>Hills</LoreTag><LoreTag>Grassland</LoreTag><LoreTag>Marsh</LoreTag><LoreTag>Farmland</LoreTag><LoreTag>Road</LoreTag><LoreTag>Caves</LoreTag><LoreTag>Lair</LoreTag> They eat constantly and they are not particular. An ogre works a stretch of hill or marsh the way a bear does, walking the same round every few days, taking whatever is slow, and coming down onto the farmland when the round runs thin. They know that people carry food and they have learned that people are food. Ogres are the only giants that deal with anyone. They keep to twos and threes, they know enough trade-speech to name a price, and a village will pay them in cattle to be left alone while a raiding band hires one for a season. None of that makes them a people. An ogre keeps no custom and remembers no agreement past the day it fed them, so a bargain holds while it is the easiest food in reach and breaks the hour it is not, without warning. Everybody who deals with an ogre knows this and does it anyway, because the alternative is having the ogre come to them. The priests say the giants came out of the titans and have never forgiven the world for what came after. An ogre asked about it says nothing that settles the question.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>2.80 to 3.20 m tall</LoreTag><LoreTag>400 kg</LoreTag><LoreTag>Adult at 20, and 200 years is an ordinary age for one</LoreTag> One child at a time after a long carrying, perhaps three in a life, and the young stay with the mother until they can bring down something on their own.</LoreSection>
+
+<LoreSection label="Tactics">They walk straight in and open with the **Great Club** before anyone gets close. Once somebody is right up against them the club is no use, so they switch to the **Fist**, and a grabbed character goes into the nearest group with **Hurl** on the same turn. Against a party that stays back they throw whatever is lying around instead. They go for the smallest person they can lift, and break off once they have something worth carrying. Livestock buys off this fight and nothing later, so an ogre the party has paid turns on them the moment something easier stands closer.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Incidental"><TreasureRow kind="Material" value="90 coins">**Giant bone** Crafting material, Quality 3. Long bones, dense enough to work into hafts and roof beams.</TreasureRow><TreasureRow kind="Trophy" value="70 coins">**Ogre tusks** The lower pair, taken out whole. A bounty officer knows them on sight.</TreasureRow><TreasureRow kind="Supplies" value="4 coins">**Stolen goat** 1 x simple rations (d4) with 2 uses left. At the start of each day, remove 1 use as the meat spoils.</TreasureRow><TreasureRow kind="Valuables" value="180 coins">**Chewed metal** Buckles, rings and a bent bracelet, sorted into a fold of hide because the ogre likes the noise.</TreasureRow><TreasureRow kind="Weapon" value="100 coins">**Battleaxe** Battleaxe, Quality 2, damaged. Off somebody who came for the bounty and did not manage it.</TreasureRow><TreasureRow kind="Relic">**Drover's hide** A goat hide with the herding routes cut into it and the wells marked along each one. It is the safe way through the hills. One stretch has been crossed out twice, and that stretch is where this ogre works.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="2">Pair</EncounterTemplate><EncounterTemplate count="3-5">Family</EncounterTemplate></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (1), Athletics (2), Survival (2)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Great Club</EntryName> <StatBadge>crush</StatBadge><StatBadge>reach</StatBadge><StatBadge>two-handed</StatBadge> <DamageLadder values="10/15/20" />
+- <EntryName>Fist</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="8/11/14" /> On a strong or critical hit against a creature of Medium size or smaller, the target is grappled.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Hurl</EntryName> <StatBadge>Quick Action</StatBadge> Only against a creature this creature is grappling. This creature throws the target a short distance in any direction, resolved as if the target were pushed that distance. Roll Strength + Athletics vs. Dodge against each creature in the space the target is thrown into. On a success, the target collides with them, and both take the damage and fall prone. On a failure, that creature gets clear. As an Action instead of a Quick Action, this creature can throw a Small or Medium object within their reach the same way, and only the creature struck takes the damage.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Medium Humanoid (Human)"
+	tier={3}
+	category="Basic"
+	hp="20"
+	av="3 (light armor)"
+	str="d6"
+	agi="d6"
+	spi="d10"
+	mnd="d6"
+	parry={8}
+	dodge={8}
+	resist={10}
+>
+
+### Cult Priest
+
+<CreatureLore>
+
+A priest of a fringe death-cult, keeping rites the orthodox temples struck off their calendars. They meet at night in a necropolis nobody has swept in years, in a robe that smells of the censer, with a mark of their cult cut into everything they own. What they offer the people who come down to them is that death is a power worth speaking to, and that they know how to speak to it.
+
+<LoreSection label="Ecology"><LoreTag>Desert</LoreTag><LoreTag>Grassland</LoreTag><LoreTag>Necropolis</LoreTag><LoreTag>Ruins</LoreTag><LoreTag>Crypt</LoreTag><LoreTag>Shrine</LoreTag> They are not a temple and they do not have one. A cult like this is nine or ten people who meet in a crypt on the nights the calendar says nothing happens, and the priest is whoever learned the words from the last one. They sit with the dying the temples will not sit with, and they lay out the dead of families who cannot pay for a proper burial, and they do the work for nothing. That is most of how they grow. The orthodox priesthoods call the rites heresy and the city watches call them a nuisance, and neither of them goes into the necropolis after dark to do anything about it. Where a colony of ghouls holds ground the cult wants, the cult feeds them exactly as the grave-wardens do and tells itself the prayer is the difference. Some say it is one of their rites that leaves a body walking instead of resting. The cult says those are the rites somebody interrupted.</LoreSection>
+
+<LoreSection label="Physiology"> Depends on the folk of this creature. See "Physical Traits by Folk" in the Folk section for more details.</LoreSection>
+
+<LoreSection label="Tactics">They open with **Spellcasting** and spend all three spells in the first three rounds rather than holding any back. *Cloud of Sickness* goes on the tightest group, *Curse of Death* on whoever is hardest to kill, and *Rotting Grasp* on anyone who reaches them. After that they swing the **Censer** so **Grave-Smoke** can blind whoever is on them. They keep something between themselves and the party and give ground. They can be talked to before the rite starts and not once it has, and a spent priest runs for the crypt.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Incidental"><TreasureRow kind="Weapon" value="100 coins">**Censer** Flail, which the catalogue counts as a Mace, Quality 2, damaged. Pierced bronze bowl on a chain, still warm.</TreasureRow><TreasureRow kind="Tool" value="75 coins">**Serpent talisman** Spell Catalyst (Mystic Talisman), Quality 2. A bronze snake swallowing its own tail, worn against the skin.</TreasureRow><TreasureRow kind="Armor" value="150 coins">**Banded leather cuirass** Banded Leather, Quality 2, damaged. Worn under the robe and not meant to be seen.</TreasureRow><TreasureRow kind="Valuables" value="150 coins">**Funeral goods** Pins, a string of carnelian and a gold mouth-plate, all given by families who had nothing else to give.</TreasureRow><TreasureRow kind="Supplies" value="25 coins">**Jar of resin** Oil, Quality 1, 3 uses. Burns in the censer and in the chamber lamps.</TreasureRow><TreasureRow kind="Relic">**Rite-cylinder** A clay cylinder cut with the rite-name the cult uses for what they serve. An orthodox priest who reads it can close the shrine it was cut for. They will want to know where it was found first.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterGroup name="Grave vigil">1 [Cult Priest](/docs/creatures/creatures/tier-3#cult-priest) and 3-5 [Ghoul](/docs/creatures/creatures/tier-2#ghoul)</EncounterGroup></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Mysticism (2), Insight (2), Influence (2), Lore (2)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Ritual Knife</EntryName> <StatBadge>agile</StatBadge><StatBadge>light</StatBadge><StatBadge>pierce</StatBadge> <DamageLadder values="5/7/9" />
+- <EntryName>Censer</EntryName> <StatBadge>crush</StatBadge><StatBadge>versatile (+1)</StatBadge> <DamageLadder values="6/9/12" />
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Spellcasting</EntryName> <StatBadge>Action</StatBadge> This creature can cast the following spells, rolling Spirit + Mysticism: *Cloud of Sickness*, *Curse of Death*, *Rotting Grasp*. This creature can cast each of these spells once per scene.
+- <EntryName>Grave-Smoke</EntryName> <StatBadge>Quick Action</StatBadge> On a strong or critical hit with their Censer, this creature swings the chain so the smoke breaks across the target's face. The target is briefly blinded.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Medium Humanoid (Human)"
+	tier={3}
+	category="Elite"
+	hp="2x30"
+	av="4 (light armor and shield)"
+	str="d8"
+	agi="d6"
+	spi="d6"
+	mnd="d6"
+	parry={10}
+	dodge={8}
+	resist={9}
+>
+
+### Captain
+
+<CreatureLore>
+
+An officer of a city or a warlord, appointed out of a landholding family and handed a company to keep alive. They wear the same leather as their soldiers and carry a sword instead of a spear, which is how everyone on the field knows which one they are. They have never had to fight in the front rank.
+
+<LoreSection label="Ecology"><LoreTag>Grassland</LoreTag><LoreTag>River</LoreTag><LoreTag>Desert</LoreTag><LoreTag>City</LoreTag><LoreTag>Fortress</LoreTag><LoreTag>Road</LoreTag> A captain is appointed rather than promoted, usually out of a family that holds land near the city and can be held to account if the company goes wrong. They draw ten times a soldier's pay, eat better than their soldiers, and are expected to spend some of the difference on them. Most of the work is not fighting. They count the muster, sign for the grain, walk the wall at night, and settle whatever their soldiers have done in the wineshops. Both sides know an officer is worth more alive than dead, so a captain taken in the field is held for ransom and the letters go back and forth for a season. Their own soldiers know it too, and a file that believes its captain would sell them does not stand.</LoreSection>
+
+<LoreSection label="Physiology"> Depends on the folk of this creature. See "Physical Traits by Folk" in the Folk section for more details.</LoreSection>
+
+<LoreSection label="Tactics">They fight from inside their own file rather than in front of it. Their one Quick Action goes to **Dress the Line** for an ally under attack and to **Set the Shield** when the attention turns on them. They take whoever has broken into the formation with the **Longsword**, and use **Shield Bash** to push someone off an ally and follow them. After **Hold the Line** they look for two enemies in reach at once. They do not chase and they do not rout, and cornered with the file gone they offer a ransom.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Standard"><TreasureRow kind="Weapon" value="250 coins">**Longsword** Longsword, Quality 3, damaged. Given at the appointment, with the giver's mark under the grip.</TreasureRow><TreasureRow kind="Armor" value="300 coins">**Light shield** Light Shield, Quality 3, damaged. Faced in beaten bronze rather than painted hide.</TreasureRow><TreasureRow kind="Armor" value="150 coins">**Banded leather cuirass** Banded Leather, Quality 2, damaged. Deliberately plain, so the sword is the only thing that marks them.</TreasureRow><TreasureRow kind="Valuables" value="200 coins">**Signet and chain** Silver, worn on the chest. Seals the company's letters and draws its grain ration.</TreasureRow><TreasureRow kind="Supplies" value="80 coins">**Officer's ration bag** Luxury Rations (d8) with 2 uses left.</TreasureRow><TreasureRow kind="Relic">**Sealed orders** An incised tablet under a clay seal, naming who bought this company, what they were sent to do, and the sum. The city that sent them will pay to have it back, and the city they were sent against will pay more.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterGroup name="Retinue">1 [Captain](/docs/creatures/creatures/tier-3#captain) and 2-3 [Veteran](/docs/creatures/creatures/tier-3#veteran)</EncounterGroup><EncounterGroup name="Company">1 [Captain](/docs/creatures/creatures/tier-3#captain), 1-2 [Veteran](/docs/creatures/creatures/tier-3#veteran), 6-8 [Spearman](/docs/creatures/creatures/tier-2#spearman), 3-4 [Slinger](/docs/creatures/creatures/tier-2#slinger) and 3-4 [Polearm Soldier](/docs/creatures/creatures/tier-2#polearm-soldier)</EncounterGroup></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (2), Athletics (2), Insight (2), Influence (2)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Longsword</EntryName> <StatBadge>pierce</StatBadge><StatBadge>versatile (+1)</StatBadge> <DamageLadder values="8/12/16" />
+- <EntryName>Shield Bash</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="7/10/13" /> On a strong or critical hit, the target is pushed close and this creature moves into melee range of them.
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Close the Ranks</EntryName> <StatBadge>Passive</StatBadge> While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane.
+- <EntryName>Dress the Line</EntryName> <StatBadge>Quick Action</StatBadge> When an enemy attacks an ally within short range of this creature, that attack suffers +1 bane. If the attack fails, that ally immediately moves up to a close distance toward this creature unprovoked.
+- <EntryName>Set the Shield</EntryName> <StatBadge>Quick Action</StatBadge> This creature gains +2 Parry and cannot use Movement until the start of their next turn.
+- <EntryName>Hold the Line</EntryName> <StatBadge>Elite Trigger</StatBadge> When this creature suffers a Wound, the file closes up and stops giving ground. For the rest of the scene, every ally within short range of this creature gains +1 boon on their attacks, and this creature can use one Action to attack with both their Longsword and their Shield Bash, each against a different target.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
