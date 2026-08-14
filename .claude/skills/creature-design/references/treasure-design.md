@@ -216,6 +216,35 @@ A weapon or armour row must name a **real catalogue entry**, because the whole p
 > item's Quality), let the damaged condition do its work, and do not re-tune the beast bands to
 > accommodate people. Open question in `.drafts/bestiary/creatures/tier-0-1-lore.md` (Q8L.1).
 
+### 2.1 Loot from an uncivilized culture is `damaged and fragile`
+
+A creature whose people do not work metal well still carries **ordinary catalogue gear at its normal
+Quality and normal price**. What changes is the condition on the row: write **`damaged and fragile`**
+instead of `damaged`.
+
+> `"description": "Shortsword, Quality 2, damaged and fragile. Ground down from something longer."`
+
+**Why this and not Quality 1.** `03-weapons.md` § Primitive Weapons is the by-the-book route — any Quality
+2 weapon costing 100 coins or less may be crafted Quality 1, at half price, with `fragile`, and **damage
+and properties are unchanged**. It was considered and **rejected as GM bookkeeping** (D-132): it moves the
+Quality, the price and the catalogue row the description points at, to reach a result the condition field
+already delivers.
+
+**What it buys:** the party can loot the gear and use it, and it comes apart under them. `fragile` is
+*"roll a Durability Check after each use"*, so the drawback plays itself with nothing for the GM to track.
+No stat block figure moves, because `fragile` never touched damage in either version.
+
+**Scope is the culture, not the tier.** Ask whether *these people* make things badly, and check the
+creature's own `ecology` before answering. Goblin road-gangs qualify. **Orc raiders do not** — their
+published ecology says the band are *"herders, smiths and mercenaries"* the rest of the year, so brittle
+gear would contradict the record. A tier is not a proxy for craft: a tier-1 city guard has better kit than
+a tier-3 ogre.
+
+**The Q2 gear floor and why Q1 is not the default** live in
+[stat-tables.md](stat-tables.md#carried-gear-quality--per-tier-and-category-d-091), with the rest of the
+carried-gear ladder. This section only says what the loot row reads.
+*(Owner ruling, 2026-08-14, D-132.)*
+
 ## 3. Magic items — built, not invented
 
 Nexus magic items are **assembled from a closed catalogue**, not written freehand. An

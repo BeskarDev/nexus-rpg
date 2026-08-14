@@ -24,8 +24,9 @@ Read before **workflow step 4** (abilities), and again before any Elite or Lord 
 | **41** | A conditional second attack is the Nexus answer to multiattack. |
 | **46** | Write an ability's clauses in resolution order, and make the second effect the payoff of the first. |
 | **43** | A trait must act in the encounter, or it is lore wearing a slot. |
-| **44** | On a carried weapon, the line is catalogue data. Anything more is an ability. |
+| **44** | A carried weapon's damage and properties are the catalogue's, changed only by a Quality step. Build-checked. Riders are allowed. |
 | **45** | The qualifier is one word. The limiter is the last sentence. This keeps being got wrong. |
+| **49** | Never cancel a universal player option. Add pressure instead of removing a choice. |
 
 **Numbers are global and never renumbered, so this file is ordered for reading rather than by date.** Full text below in the same order.
 
@@ -267,6 +268,71 @@ while. Shared data is corrected in place, because companions and creatures read 
 creature have at least one attack doing more than damage. It does **not** ask that every attack carry a
 rider, and it says so directly: *plain weapon attacks stay plain*.
 
+> ### What is absolute is the WEAPON, not the rider {#p44-absolute}
+>
+> **A rider on a weapon attack is a legitimate design tool, and the build does not police it.** At high
+> tier it is close to a necessity: carried gear gains one Quality every two tiers while the chassis gains
+> weapon damage every tier, so an armed creature is level at tier 2 and **six behind by tier 10**
+> (principle 40). A rider is one of the ways that gap closes.
+>
+> **What a designer may never do is touch the weapon.** This half is absolute, and it is now
+> **machine-checked** (`generate-creatures.ts`, D-133):
+>
+> | Absolute | Meaning |
+> |---|---|
+> | **Real damage** | The catalogue row's damage figure. The **only** legitimate change is a Quality step, and the creature's tier and category already determine which Quality it carries (D-091) |
+> | **Real properties** | The row's property list, verbatim. A property the row does not have is an invented weapon |
+> | **A real row** | Name the weapon anything the culture suits (principle 23), but it resolves to a published row or a published reskin's row — a *Flail* counts as a *Mace* |
+>
+> **Never dock weapon damage to pay for a rider.** A Quality step only ever adds. A Shortsword written at
+> 4/5/6 to fund a `bleeding` effect is a Shortsword that is no longer a Shortsword, and the party finds out
+> when they loot it.
+>
+> **The record declares its row in a `weapon` field**, because neither the name nor the properties can
+> identify it: a creature's weapon may be called anything, and the Ghoul's **natural** `Claws` carry
+> `agile, light, slash`, which is the exact signature of three catalogue weapons. Omit the field for
+> natural weapons — there is no row for a bite.
+>
+> ```jsonc
+> { "name": "Knife", "weapon": "Shortsword", "properties": ["agile","light","pierce"],
+>   "text": "5/7/9 damage." }
+> ```
+>
+> A deliberate exception — a chief carrying a knight's sword — sets `quality` on the attack and says why in
+> the notes. Leave it unset in the normal case: letting tier and category decide is what stops a line
+> soldier hitting as hard as their own officer.
+>
+> ### And a rider still has to be worth its place
+>
+> Not a build error, and still worth getting right. **Prefer the catalogue's own channel when one exists**,
+> because then the effect is real for players too: `entangle (X)` restricts movement, `crush` bypasses
+> armor, `slash` punishes light armor, `reach` extends range, `pierce` grants a reroll on a miss. Reaching
+> for a *rider* that duplicates a property the row could have had is worse than picking a weapon that has
+> it.
+>
+> **At low tier, ask what the rider is for.** Gear keeps pace with the chassis at tiers 0-2, so there is no
+> power gap to compensate for, and a rider there is pure addition. That is the question the Goblin Archer's
+> `bleeding` knife failed: it was there to satisfy a checklist, not to solve a problem the creature had.
+>
+> **An effect that depends on the object being special is an ability, not a rider** — smoke, poison, a
+> consecrated edge. It costs a slot and usually an action, which is the point: the Cult Priest cannot blind
+> someone and `Evade` in the same round.
+>
+> **Natural weapons sit outside all of this.** No catalogue row to be honest to, so the rider *is* the
+> design (D-116). A bite that holds on, a fist that grapples, a tail that sweeps legs.
+
+**The weapon half was broken three times with the principle written down and a gate attached**, which is
+why it is now data and a build failure rather than a rule to remember:
+
+| Creature | What was done to the weapon |
+|---|---|
+| Cult Priest | a `Censer` given `(crush, reach)` and a damage figure of its own, where the row is a *Mace*, `(crush, versatile (+1))` |
+| Goblin Archer | a Shortsword **docked a point of weapon damage** to fund a `bleeding (2)` rider |
+| Goblin Skulker | `Cut and Away` — a second Shortsword line that moved its wielder, and a near-copy of the first attack besides |
+
+Each one **named the right catalogue row in prose and got the numbers wrong anyway**, which is exactly
+what a gate asking the designer to name the row cannot catch. *(Owner ruling, 2026-08-14, D-133.)*
+
 **For a weapon out of `03-weapons.md`, the whole attack is: catalogue properties + catalogue damage +
 the creature's base damage.** A rider is allowed only when it is what any creature would achieve with
 that weapon **as the catalogue models it** — a shield knocks someone `prone`, a spear `pushes`. If the
@@ -321,3 +387,42 @@ turn this happens on. The limiter is a rule, and rules belong in the rules sente
 wrong rule and the renderer supported it ([case study](../case-studies.md#p45)). It is now
 machine-checked by the generator. *(Owner rulings, D-077 and D-107; D-107 reverses D-077's placement
 while keeping which qualifiers may be limited at all.)*
+
+**49. Never cancel a universal player option. Add pressure instead of removing a choice.** Principle 10
+requires a creature's defences and offences to be counterable. This is its sharpest special case, and it
+is about the *player's* side of the table: **an ability must not switch off something every character can
+always do.** Disengaging, hiding, taking cover, standing up, Dashing, `Protect Ally` — those are the
+universal outs, and they are most of what a player has to answer a monster with. An ability that removes
+one takes a decision away every single round rather than presenting one.
+
+**The rejected draft, and it read perfectly well:**
+
+> ❌ **Run Them Down** (Passive). When an enemy within melee range of this creature uses Movement to
+> leave that range, this creature immediately moves up to a close distance toward them unprovoked.
+
+Nothing about it is illegal. It cites no invented rule, restates no universal action, and composes
+correctly with `Opportunity Attack`. It is still wrong, because a melee character who decides to break off
+from an orc now cannot, for free, forever. *(Owner objection: "it basically negates if a melee player
+tries to disengage.")*
+
+**The fix is to want the same fiction and pay for it with the creature's own resources:**
+
+> ✅ **Charge In** (Quick Action). This creature gains 1 additional Movement this turn. They must use it
+> to move closer to an enemy they can see.
+
+Same creature — raiders who close fast and give ground to nobody — arrived at from the other direction.
+
+| The test | |
+|---|---|
+| **Does it remove an option, or add a cost?** | Removing is out. `Charge In` adds no cost to anything the party does; it just gets the orc there sooner |
+| **What does the creature spend?** | Its Quick Action, so charging trades against `Opportunity Attack`, `Protect Ally` and `Evade`. Closing fast and punishing a retreat are now the **same** resource, which is the choice the Passive destroyed |
+| **Is it an improvement on a universal action, or a replacement?** | `Dash` is a published **Action** that doubles Movement. A direction-restricted **Quick Action** version is cheaper and narrower, which is principle 24's sanctioned relationship |
+
+**Passive is the smell.** A free always-on effect triggered by something the party does is where this
+error lives, because it costs the creature nothing and so has nowhere to be counterplayed. Moving the
+effect onto the Quick Action fixed it without changing what it does.
+
+**Corollary, and the reason this generalises past movement:** a mechanic that punishes a player choice is
+fine, and one that *voids* it is not. `Braced Spear` punishes leaving a veteran's reach with an
+Opportunity Attack that hits harder, and the player still gets to decide whether to eat it.
+*(Owner ruling, 2026-08-14, D-130.)*

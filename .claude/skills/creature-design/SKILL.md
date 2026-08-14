@@ -41,7 +41,7 @@ it.
 
 | Rule area | Its one home |
 |---|---|
-| Tier statistics, damage math, AV sources and stacking, recharge, limiter placement, validation checklist | [references/stat-tables.md](references/stat-tables.md) |
+| Tier statistics, damage math, **carried gear Quality**, AV sources and stacking, recharge, limiter placement, validation checklist | [references/stat-tables.md](references/stat-tables.md) |
 | Naming, taxonomy, folk inheritance, senses, magical naturalism, magic in decline | [references/principles/identity.md](references/principles/identity.md) |
 | Chassis shape, tier adjustment, size and reach, light vs heavy, Timer/Threat/Treat | [references/principles/chassis.md](references/principles/chassis.md) |
 | Conditions, counterplay, triggers, universal actions, leashes, reactive attacks, riders | [references/principles/abilities.md](references/principles/abilities.md) |
@@ -63,7 +63,7 @@ only.
 | Change this | And these change with it |
 |---|---|
 | A creature record (`creatures.json`) | `bun run content:gen` regenerates `docs/08-creatures/03-creatures/tier-*.mdx`. Nothing else |
-| A **shared trait**'s text | `creature-traits.json` **and** `companion-traits.json` **and** `docs/08-creatures/01-mounts-companions/traits.md`. The generator now machine-checks the first two agree |
+| A **shared trait**'s text | **six files** (D-129): `creature-traits.json`, `companion-traits.json`, `creature-abilities-library.json` (the Builder pre-set), `docs/08-creatures/01-mounts-companions/traits.md`, and the two legacy Notion source tables `src/utils/data/markdown/companion-traits.md` and `split-tables/companion-traits.md`. **Plus any creature carrying a same-named `ability`** — the generator machine-checks the first two agree and does **not** compare abilities to the trait library, which is how `Pack Tactics` ended up with four wordings. Grep the name across the repo |
 | A trait's **name** | the above, plus every `traits` array that references it — unknown names fail the build |
 | A creature's **name** | every `lore.organization` `composition` row that names it, across all records |
 | A **type, subtype or additive** | `creature-types.json` / `creature-subtypes.json` / `creature-additives.json`, plus `docs/08-creatures/02-creature-rules.md`'s type table |
@@ -116,6 +116,9 @@ The three most-violated, kept here because they are cheap to state and expensive
 
 - **8.** Check every condition against its published definition — `stunned` doesn't disable, only `paralyzed` does.
 - **10.** Defensive abilities and immunities need counterplay; no auto-win offense either.
+- **44.** A carried weapon's damage and properties are the catalogue's, changed only by a legitimate
+  Quality step. Build-checked. Riders on weapon attacks are allowed and are how high-tier armed creatures
+  close the chassis gap.
 - **15.** Timer, Threat, Treat — the Treat has **five channels**, one of them lore-only. For ordinary animals a false mechanic is worse than none.
 
 ## Creature Categories
@@ -260,11 +263,24 @@ weapon properties (`docs/04-equipment/05-armor-weapon-properties.md`).
 >    (D-119) — this rule existed as principle 23 for three batches and was still broken by a `Censer`
 >    written as `(crush, reach)`.
 > 2. Is every damage figure `base + 1x/2x/3x weapon`, with base taken from **that attack's own
->    attribute** and the weapon value from the catalogue row or the tier figure?
-> 3. Does at least one attack do **more than damage**, and is every plain attack genuinely plain (D-073)?
+>    attribute** and the weapon value from the catalogue row or the tier figure? **An always-on critical
+>    bonus is the one exception** — it is folded into the critical figure and declared as
+>    `critWeaponDamage` (D-135), while a situational one such as `slash` stays out.
+>    [stat-tables.md § Always-on bonuses](references/stat-tables.md#always-on).
+> 3. Does the **creature** offer more than a damage number, and is every plain attack genuinely plain
+>    (D-073)? It does **not** have to be an attack that carries it — the published **Slinger** has two
+>    plain weapons and puts its effect in a Passive, which is the right pattern for any creature whose
+>    whole loadout is plain catalogue gear.
 > 4. Does any rider **add damage**? If so, it is paid for in weapon damage (D-110).
-> 5. On a **carried** weapon, is every rider something the plain catalogue entry would do (D-120)? A
->    shield knocks people `prone`. Smoke, poison and curses are abilities.
+> 5. **Does every carried weapon use the catalogue's real damage and real properties?** This is
+>    **absolute and build-checked** (D-133): set `weapon` on the attack to the row it resolves to, copy the
+>    property list verbatim, and take the damage from the row plus **only** the Quality step your tier and
+>    category allow (D-091). **Never dock weapon damage to pay for a rider.** A deliberate exception sets
+>    `quality` on the attack and says why here. Omit `weapon` for natural weapons.
+>    **Riders themselves are allowed** — they are how an armed creature closes the chassis gap at high tier
+>    (principle 40). Prefer the catalogue's own channel where one exists (`entangle` for movement, `crush`
+>    for armor, `slash` for light armor), and at tiers 0-2 ask what the rider is *for*, since gear still
+>    keeps pace with the chassis there. An effect that needs the object to be special is an ability.
 > 6. **Who else on the roster carries this loadout, and is that deliberate?** (D-122.) Sharing a kit is
 >    correct when the sharing *is* the design — the Veteran is *a better Spearman* on purpose. It is a
 >    defect when it is inheritance nobody re-examined, which is how a Captain ended up as the third
@@ -276,7 +292,7 @@ weapon properties (`docs/04-equipment/05-armor-weapon-properties.md`).
 `slash` adds weapon damage **a second time** against light or no armor (D-099). A Q3 Broadsword on a
 tier-3 officer reads 8/12/16 against a martial and **12/16/20 against an unarmored caster**, which is
 principle 3's needle threaded the wrong way. Swap a weapon, then re-read the damage line against **both**
-armor cases and against the creature's own category rung (D-091).
+armor cases and against the creature's own category rung ([the gear-Quality ladder](references/stat-tables.md#carried-gear-quality--per-tier-and-category-d-091), D-091).
 
 ### 4. Abilities
 
@@ -339,7 +355,7 @@ qualifier.
   casting a rank above its tier is an unanswerable fight rather than a harder one.
 - **Spell damage does scale with category, through the catalyst.** A Spell Catalyst is Quality 2 gear
   and takes the same ladder as a weapon (`07-magic-items/effects.md`): +1 spell damage per step above
-  base. So D-091's table applies unchanged — a tier-3 Elite caster carries a **Q3 catalyst, +1 spell
+  base. So the [gear-Quality ladder](references/stat-tables.md#carried-gear-quality--per-tier-and-category-d-091) applies unchanged — a tier-3 Elite caster carries a **Q3 catalyst, +1 spell
   damage**, precisely as a tier-3 Elite fighter carries a Q3 weapon. The parallel is exact: **Spell
   Power (half Mind or Spirit) is the caster's base damage, the spell's own `+X` is its weapon damage,
   and the catalyst's Quality is the masterwork step.**
@@ -425,12 +441,17 @@ it has been written — the recurring failures below were all caught this way, o
 |---|---|
 | [identity.md](references/principles/identity.md) | Does the name promise what the stat block delivers? Is a real animal called by its real name, an invented one built as *one* deviation, a folk creature inheriting only what its folk entry grants? |
 | [chassis.md](references/principles/chassis.md) | Is every number off the tier table, with at most one traded pair? **Was the tier-adjustment question asked, and is the answer written down even when it is "no"?** Does the encounter have a Timer, a Threat and a Treat — and is the Treat real rather than invented? |
-| [abilities.md](references/principles/abilities.md) | Every condition checked against its published text? Every high-impact one gated by a save or a roll? Every defence counterable? Triggers escalating, opening `When this creature suffers a Wound`? Nothing restating a universal action? **Is every qualifier a single word with no limiter attached, and is every limiter the last sentence of its text?** |
+| [abilities.md](references/principles/abilities.md) | Every condition checked against its published text? Every high-impact one gated by a save or a roll? Every defence counterable? Triggers escalating, opening `When this creature suffers a Wound`? Nothing restating a universal action? **Is every qualifier a single word with no limiter attached, and is every limiter the last sentence of its text?** **Does every carried attack declare its `weapon` row, with the catalogue's properties and damage (principle 44)? The build checks it, so a green `content:check` is the answer.** |
 | [writing.md](references/principles/writing.md) | Canonical wordings copied verbatim? Subject named where two creatures share a sentence? Superstitions recorded rather than debunked, nothing said twice? **Register pass run on every prose field and every treasure row, with the swap list written down** — the hard word, and the clever construction made of common words (29a). A punctuation sweep is not a register pass and will not catch one. |
 
 Key failure modes:
 
 - ❌ Damage math like `6/10/14` (doubling the increment) — correct is base + 1×/2×/3× weapon: `6/8/10`.
+  An **always-on** critical bonus is the one legitimate departure and must be declared (D-135).
+- ❌ **A carried weapon whose damage or properties are not the catalogue's** — an invented property, a
+  bespoke damage figure, or weapon damage docked to pay for a rider. Broken three times, so the build now
+  fails on it ([principle 44](references/principles/abilities.md), D-133). Riders are fine; changing the
+  weapon is not.
 - ❌ Referencing undefined conditions ("cursed", "drained") — use official conditions or spell out mechanics ("+1 bane on all rolls").
 - ❌ Missing Elite/Lord triggers — they define the category, not optional.
 - ❌ AV or Resist raised without compensating reduction elsewhere.

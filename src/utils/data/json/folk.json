@@ -238,12 +238,12 @@
 				"description": "Martial-arts practicing goblins seeking discipline and enlightenment in monasteries"
 			},
 			{
-				"name": "Sikari (Jungle-Goblins)",
+				"name": "Grikku (Jungle-Goblins)",
 				"region": "Southern Jungle",
 				"description": "Skilled climbers in cliffs and treetops. Masters of verticality"
 			},
 			{
-				"name": "Sniknez (Cave-Goblins)",
+				"name": "Snikrez (Cave-Goblins)",
 				"region": "Western Island Realms",
 				"description": "Underground dwellers, masters of hidden paths and secret passages"
 			}

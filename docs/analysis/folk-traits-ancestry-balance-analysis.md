@@ -910,10 +910,10 @@ You gain +1 boon on Athletics rolls to swim or navigate river currents. You can 
 **Goki (Monkey-Goblins)** — *Monastic Agility*
 You gain +1 boon on Athletics rolls to climb, leap, or perform acrobatic maneuvers. You can meditate for 10 minutes to recover from the frightened or dazed condition.
 
-**Sikari (Jungle-Goblins)** — *Treetop Runner*
+**Grikku (Jungle-Goblins)** — *Treetop Runner*
 You gain +1 boon on Athletics rolls to climb. You take half damage from falls (rounded down) and can move at full speed while climbing without penalty.
 
-**Sniknez (Cave-Goblins)** — *Tunnel Sense*
+**Snikrez (Cave-Goblins)** — *Tunnel Sense*
 While underground, you gain +1 boon on Perception rolls to notice environmental details such as air currents, moisture, or structural instability. You can feel air currents and estimate the direction and approximate distance to exits or openings in enclosed spaces.
 
 ---

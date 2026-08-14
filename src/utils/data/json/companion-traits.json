@@ -295,7 +295,7 @@
 		"attack 1": "<strong>Bite</strong> (<em>pierce</em>). Deals normal weapon damage. On a strong or critical hit against a creature of equal or smaller Size, the target is grappled. While grappled, this attack can't be used against any other target.",
 		"attack 2": "-",
 		"ability 1": "<strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.",
-		"ability 2": "<strong>Pack Tactics.</strong> This creature gains +1 boon on attacks against any enemy in melee range if this creature has more allies in melee range than enemies.",
+		"ability 2": "<strong>Pack Tactics.</strong> While an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon.",
 		"ability 3": "<strong>Track Scent. </strong>This creature can track a scent trail for up to a day after it was made, unless some foreign force influenced the scent (for example, a heavy rain)."
 	},
 	{
@@ -503,7 +503,7 @@
 		"attack 2": "-",
 		"ability 1": "<strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.",
 		"ability 2": "<strong>Natural Climber.</strong> This creature can climb without treating it as difficult terrain.",
-		"ability 3": "<strong>Pack Tactics.</strong> This creature gains +1 boon on attacks against any enemy in melee range if this creature has more allies in melee range than enemies."
+		"ability 3": "<strong>Pack Tactics.</strong> While an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon."
 	},
 	{
 		"name": "Spider",

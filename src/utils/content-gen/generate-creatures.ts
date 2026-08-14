@@ -26,6 +26,7 @@ import creatureTraits from '../data/json/creature-traits.json'
 import creatureTypes from '../data/json/creature-types.json'
 import companionTraits from '../data/json/companion-traits.json'
 import conditions from '../data/json/conditions.json'
+import weapons from '../data/json/weapons.json'
 
 const REPO = path.resolve(__dirname, '../../..')
 const JSON_FILE = path.join(REPO, 'src/utils/data/json/creatures.json')
@@ -64,6 +65,46 @@ interface StatBlockEntry {
 	properties?: string[]
 	text: string
 	details?: string[]
+	/**
+	 * ATTACKS ONLY. The row in `weapons.json` this attack resolves to, when the
+	 * creature is swinging **carried gear** rather than a natural weapon.
+	 *
+	 * A creature's weapon may be named anything the culture suits (principle 23 —
+	 * `Dagger` counts as `Shortsword`, `Scourge` as `Whip`), so the NAME cannot
+	 * identify the row and the properties cannot either: the Ghoul's natural
+	 * `Claws` carry `agile, light, slash`, which is the exact signature of three
+	 * catalogue weapons. Naming the row is the only way the build can check the
+	 * one thing that is absolute — that carried gear uses the equipment section's
+	 * real damage and real properties, adjusted only by a legitimate Quality step
+	 * (D-133).
+	 *
+	 * Omit for natural weapons. There is no catalogue row for a bite.
+	 */
+	weapon?: string
+	/**
+	 * ATTACKS ONLY, and only as a deliberate exception. The Quality of the carried
+	 * weapon, when it is NOT the one the creature's tier and category imply
+	 * (D-091) — a chief who took a knight's sword, a conscript handed a worn one.
+	 *
+	 * Leave unset in the normal case: the tier and category already determine it,
+	 * and letting them do so is what keeps a line soldier from hitting as hard as
+	 * their own officer.
+	 */
+	quality?: number
+	/**
+	 * ATTACKS ONLY. Extra applications of weapon damage on a CRITICAL, from an
+	 * always-on ability — currently the orc folk trait `Orcish Fury`, which adds
+	 * weapon damage an additional time whenever a critical lands with a melee
+	 * weapon.
+	 *
+	 * **An unconditional bonus belongs in the printed triple** (D-135). `slash` and
+	 * the like stay out because they depend on the target; a bonus that applies
+	 * every time a critical happens is arithmetic the GM should not have to redo
+	 * mid-swing. So the critical figure is `base + (3 + critWeaponDamage) x wd`,
+	 * and the weak-to-strong step still yields the weapon's real damage, which is
+	 * what the catalogue check reads.
+	 */
+	critWeaponDamage?: number
 }
 
 interface CreatureRecord {
@@ -458,6 +499,7 @@ function validateCreature(entry: unknown, context: string): CreatureRecord {
 		)
 	validateTaxonomy(e, context)
 	validateResistancePairing(e, context)
+	validateCarriedWeapons(e, context)
 	// Every published creature states its armor twice: as its own field and inside
 	// the AV parenthetical. The card shows only AV, so guard the redundancy that
 	// justifies that — if they ever diverge, the card would be hiding real data.
@@ -560,6 +602,10 @@ const NON_TYPE_DAMAGE_WORDS = new Set([
 	'total',
 	'spell',
 	'base',
+	// success levels, not damage types: "the critical damage of their melee attacks"
+	'weak',
+	'strong',
+	'critical',
 ])
 
 /**
@@ -632,6 +678,211 @@ function checkPronouns(text: string, context: string): void {
 			`"${m[0].trim()}" names a creature — creatures are they/their/them. ` +
 				`Context: "...${text.slice(Math.max(0, at - 30), at + m[0].length + 20).trim()}..."`,
 		)
+	}
+}
+
+/**
+ * The weapon catalogue, keyed by row name. `weapons.json` is the same data the
+ * equipment page renders, so a creature and a player read one set of numbers.
+ */
+const WEAPON_ROWS = new Map(
+	(
+		weapons as {
+			name: string
+			damage: string
+			properties: string
+		}[]
+	).map((w) => [w.name, w]),
+)
+
+/**
+ * A shield's `AV +N`, `parry +N` and `rigid N` are spent in the creature's AV and
+ * Parry figures, so they are deliberately NOT repeated in the attack's property
+ * list (principle 23). Every other property must appear verbatim.
+ */
+const BANKED_PROPERTY = /^(?:AV \+\d+|parry \+\d+|rigid \d+)$/i
+
+/**
+ * D-091: carried gear Quality by tier AND category, read off Random Treasure by
+ * Level with level = tier (Basic reads Simple Loot, Elite Minor Treasure, Lord
+ * Major Treasure). The full table and its reasoning live in
+ * `.claude/skills/creature-design/references/stat-tables.md`.
+ */
+const GEAR_QUALITY: Record<string, number[]> = {
+	//              tiers 0-2, 3-4, 5-6, 7-8, 9-10
+	Basic: [2, 2, 3, 4, 5],
+	Elite: [2, 3, 4, 5, 6],
+	Lord: [3, 4, 5, 6, 7],
+}
+
+/** A Quality step above the item's base is +1 weapon damage per step (D-091). */
+const QUALITY_STEP: Record<number, number> = {
+	2: 0,
+	3: 1,
+	4: 1,
+	5: 2,
+	6: 3,
+	7: 4,
+	8: 5,
+}
+
+function expectedQuality(tier: number, category: string): number | undefined {
+	// The first band is THREE tiers wide (0-2) and the rest are two, so a plain
+	// halving is off by one from tier 2 upward. Getting this wrong reads a tier-2
+	// Elite as Q3 and demands +1 weapon damage the roster does not have.
+	const t = Math.max(0, tier)
+	const band = t <= 2 ? 0 : Math.min(4, Math.floor((t - 1) / 2))
+	return GEAR_QUALITY[category]?.[band]
+}
+
+function splitProperties(list: string): string[] {
+	return list
+		.split(',')
+		.map((p) => p.trim())
+		.filter((p) => p !== '' && !BANKED_PROPERTY.test(p))
+		.sort()
+}
+
+/**
+ * Carried gear uses the equipment section's real stats (D-133, owner ruling).
+ *
+ * **What is absolute is the WEAPON, not the rider.** A rider on a weapon attack is
+ * a legitimate design tool, and at high tier it is close to a necessity — carried
+ * gear gains one Quality every two tiers while the chassis gains weapon damage
+ * every tier, so an armed creature is six behind by tier 10 (principle 40). What a
+ * designer may never do is adjust the weapon itself: no invented properties, no
+ * damage figure that is not the catalogue's, and the only legitimate change is a
+ * Quality step.
+ *
+ * The check exists because the reverse was done three times — a `Censer` given
+ * `(crush, reach)` and a damage figure of its own, and a Shortsword docked a point
+ * of weapon damage to pay for a bleed. Both named the right row in prose and got
+ * the numbers wrong anyway, which is why this is data rather than a note.
+ */
+function validateCarriedWeapons(
+	e: Record<string, unknown>,
+	context: string,
+): void {
+	for (const raw of e.attacks as unknown[]) {
+		const a = raw as Record<string, unknown>
+		const declared = a.weapon
+		const name = String(a.name)
+
+		if (declared === undefined) {
+			// An attack named after a catalogue row is carried gear by any reading, so
+			// it may not skip the declaration and escape the check.
+			if (WEAPON_ROWS.has(name))
+				fail(
+					context,
+					`attack "${name}" is named after a catalogue row but declares no ` +
+						'"weapon" field. Carried gear must name its row so its damage and ' +
+						'properties can be checked against the equipment section (D-133)',
+				)
+			continue
+		}
+		if (typeof declared !== 'string' || declared.trim() === '')
+			fail(context, `attack "${name}": "weapon" must be a non-empty string`)
+
+		const row = WEAPON_ROWS.get(declared)
+		if (!row)
+			fail(
+				context,
+				`attack "${name}" resolves to "${declared}", which is not a row in ` +
+					'weapons.json. Name a published weapon, or a published reskin\'s ' +
+					'underlying row (a Flail counts as a Mace). Invented weapons change ' +
+					'the moment they are looted (principle 23)',
+			)
+
+		// Properties, verbatim from the row.
+		const expected = splitProperties(row.properties)
+		const actual = [...((a.properties as string[] | undefined) ?? [])].sort()
+		if (expected.join(' | ') !== actual.join(' | '))
+			fail(
+				context,
+				`attack "${name}" (${declared}) has properties [${actual.join(', ')}] ` +
+					`but the catalogue row is [${expected.join(', ')}]. Carried gear ` +
+					'takes its property list from the equipment section verbatim; a ' +
+					'property the row does not have is an invented weapon (D-133)',
+			)
+
+		// Weapon damage: a constant step, and only a Quality step above the row.
+		//
+		// The triple is NOT always first. An attack that changes its target defense
+		// writes the whole roll as its opening sentence ("Roll Strength + Fighting
+		// vs. Dodge. 6/9/12 damage."), which is the sanctioned form in
+		// stat-tables.md, so anchoring to the start silently skipped those.
+		const text = String(a.text)
+		const m = /(\d+)\/(\d+)\/(\d+) damage/.exec(text)
+		if (!m) continue // no-damage manoeuvres are prose on purpose
+
+		// A multi-target attack takes HALF the weapon damage, rounded up, so its
+		// triple is legitimately below the row. That is a published scaling rule
+		// rather than an adjusted weapon, so the damage check does not apply.
+		if (/\b(?:every|each|all) creature/i.test(text)) continue
+		const [x, y, z] = [Number(m[1]), Number(m[2]), Number(m[3])]
+		// Weapon damage is read off the WEAK-to-STRONG step, which no crit bonus can
+		// touch. The critical figure then carries any always-on extra applications.
+		const wd = y - x
+		const extraCrit = a.critWeaponDamage
+		if (extraCrit !== undefined) {
+			if (
+				typeof extraCrit !== 'number' ||
+				!Number.isInteger(extraCrit) ||
+				extraCrit < 0 ||
+				extraCrit > 2
+			)
+				fail(
+					context,
+					`attack "${name}": "critWeaponDamage" must be an integer 0-2 — ` +
+						`got ${String(extraCrit)}`,
+				)
+		}
+		const critSteps = 1 + ((extraCrit as number | undefined) ?? 0)
+		if (z - y !== wd * critSteps)
+			fail(
+				context,
+				`attack "${name}" reads ${x}/${y}/${z}. With ${wd} weapon damage and ` +
+					`critWeaponDamage ${(extraCrit as number | undefined) ?? 0}, the ` +
+					`critical should be ${y + wd * critSteps}. The weak-to-strong step is ` +
+					'always one weapon damage; only an always-on ability may raise the ' +
+					'critical, and it must be declared (D-135)',
+			)
+		// The only legitimate departure from the catalogue's damage is a Quality
+		// step, and the creature's tier and category already say which Quality it
+		// carries. So the figure is not a range to sit inside, it is a number.
+		const override = a.quality
+		let quality: number | undefined
+		if (override !== undefined) {
+			if (
+				typeof override !== 'number' ||
+				!Number.isInteger(override) ||
+				!(override in QUALITY_STEP)
+			)
+				fail(
+					context,
+					`attack "${name}": "quality" must be an integer 2-8 when set — ` +
+						`got ${String(override)}`,
+				)
+			quality = override as number
+		} else {
+			quality = expectedQuality(e.tier as number, e.category as string)
+		}
+		if (quality === undefined) continue
+		const expectedWd = Number(row.damage) + QUALITY_STEP[quality]
+		const actualWd = wd
+		if (actualWd !== expectedWd)
+			fail(
+				context,
+				`attack "${name}" (${declared}) reads ${x}/${y}/${z}, which is ` +
+					`${actualWd} weapon damage. A tier-${e.tier} ${e.category} carries ` +
+					`Quality ${quality} gear (D-091), so a ${declared} is ` +
+					`${row.damage} + ${QUALITY_STEP[quality]} = ${expectedWd}: the triple ` +
+					`should read ${x}/${x + expectedWd}/${x + 2 * expectedWd}. Carried ` +
+					'gear takes the equipment section\'s damage, adjusted only by a ' +
+					'legitimate Quality step. If this creature deliberately carries ' +
+					'better or worse gear, set "quality" on the attack and say why in ' +
+					'the notes (D-133)',
+			)
 	}
 }
 

@@ -10,7 +10,60 @@ toc_max_heading_level: 3
 Tier 3 creatures represent meaningful threats. They include more powerful undead, large predators, and experienced combatants.
 
 <CreatureStatBlock
-	type="Medium Humanoid (Human)"
+	type="Medium Humanoid (Orc)"
+	tier={3}
+	category="Elite"
+	hp="2x30"
+	av="3 (light armor)"
+	str="d8"
+	agi="d6"
+	spi="d6"
+	mnd="d6"
+	parry={10}
+	dodge={9}
+	resist={8}
+>
+
+### Orc Band-Leader
+
+<CreatureLore>
+
+The one who chose the village, and the one who will decide when it is finished. They have ridden this country for twenty years and have never once fought to the last orc. That is why they are still the one choosing.
+
+<LoreSection label="Ecology"><LoreTag>Wastes</LoreTag><LoreTag>Desert</LoreTag><LoreTag>Steppe</LoreTag><LoreTag>River</LoreTag><LoreTag>Farmland</LoreTag><LoreTag>Settlement</LoreTag> A band-leader holds the band by being right about what a raid is worth, not by being the strongest in it. They know which villages pay, which have a garrison within a day, and which headman will talk. Most have a name in the country they ride. Some have an understanding with the people they take from, renewed every harvest and kept on both sides more often than either would admit. A band that loses their leader does not usually pick another that season. They go home.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>1.85 m tall</LoreTag><LoreTag>105 kg</LoreTag><LoreTag>Adult at 14, old at 45, and 60 years is a long life</LoreTag></LoreSection>
+
+<LoreSection label="Tactics">They stay behind the line and run it rather than fighting in it. Spend **Fight Where I Point** on whichever raider is best placed, and hold the Quick Action for **Batter Aside** when somebody finally reaches them, because they cannot do both in one round. The maul is for whoever is armored and the javelin for whoever is not close enough yet. Once they are Wounded, **Blood Up** puts them in the front rank trading hits and they stop directing anybody. **They can be bought at any point before that.** Offer them the grain and they take it and go.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Rich"><TreasureRow kind="Weapon" value="500 coins">**Maul** Maul, Quality 3, damaged. Bronze head over a hardwood core, wound with silver wire.</TreasureRow><TreasureRow kind="Armor" value="150 coins">**Banded leather cuirass** Banded Leather, Quality 2, damaged. The source of their AV.</TreasureRow><TreasureRow kind="Valuables" value="120 coins">**Three seal rings** River-city seals, none of them theirs, taken over three seasons. Two of the owners are still alive.</TreasureRow><TreasureRow kind="Valuables" value="400 coins">**Silver arm rings** Worn as a record of raids. Taking them off a living leader is an insult.</TreasureRow><TreasureRow kind="Supplies" value="180 coins">**Wastes-crossing kit** 12 x Simple Rations (d4). Where the band was going next.</TreasureRow><TreasureRow kind="Relic">**Agreement tablet** Incised clay with two marks, a village and a band. It proves the raids were arranged.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterGroup name="Harvest raid">1 [Orc Band-Leader](/docs/creatures/creatures/tier-3#orc-band-leader) and 6-10 [Orc Raider](/docs/creatures/creatures/tier-2#orc-raider)</EncounterGroup><EncounterGroup name="Full band">1 [Orc Band-Leader](/docs/creatures/creatures/tier-3#orc-band-leader) and 20-40 [Orc Raider](/docs/creatures/creatures/tier-2#orc-raider)</EncounterGroup></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (2), Athletics (2), Insight (2), Survival (2)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Maul</EntryName> <StatBadge>crush</StatBadge><StatBadge>heavy (d8)</StatBadge><StatBadge>two-handed</StatBadge> <DamageLadder values="9/14/24" />
+- <EntryName>Javelin</EntryName> <StatBadge>bundle (d4)</StatBadge><StatBadge>light</StatBadge><StatBadge>pierce</StatBadge><StatBadge>thrown (short/long)</StatBadge> <DamageLadder values="7/10/13" />
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Orcish Fury</EntryName> <StatBadge>Passive</StatBadge> When this creature hits with a melee weapon and rolls a critical success, they add their weapon damage an additional time to the total damage. The critical damage listed for their melee attacks already includes it.
+- <EntryName>Fight Where I Point</EntryName> <StatBadge>Quick Action</StatBadge> One ally within short range gains +1 boon on their next attack, and on a hit the target is briefly slowed.
+- <EntryName>Batter Aside</EntryName> <StatBadge>Quick Action</StatBadge> When an enemy within melee range attacks this creature, that attack suffers +1 bane. If the attack fails, this creature makes one Maul attack against them.
+- <EntryName>Blood Up</EntryName> <StatBadge>Elite Trigger</StatBadge> When this creature suffers a Wound, the rage takes them and they stop caring whether they live. For the rest of the scene their melee attacks gain +1 boon and deal +2 damage, and melee attacks against them gain +1 boon.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
+	type="Medium Humanoid (Any)"
 	tier={3}
 	category="Basic"
 	hp="30"
@@ -112,7 +165,7 @@ Three metres tall and always hungry, with a tree for a club and a shoulder like 
 </CreatureStatBlock>
 
 <CreatureStatBlock
-	type="Medium Humanoid (Human)"
+	type="Medium Humanoid (Any)"
 	tier={3}
 	category="Basic"
 	hp="20"
@@ -163,7 +216,7 @@ A priest of a fringe death-cult, keeping rites the orthodox temples struck off t
 </CreatureStatBlock>
 
 <CreatureStatBlock
-	type="Medium Humanoid (Human)"
+	type="Medium Humanoid (Any)"
 	tier={3}
 	category="Elite"
 	hp="2x30"

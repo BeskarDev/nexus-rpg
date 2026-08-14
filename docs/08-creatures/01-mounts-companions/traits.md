@@ -230,7 +230,7 @@ Natural animals that can serve as companions or mounts.
 
 **Abilities:**
 - <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.
-- <strong>Pack Tactics.</strong> This creature gains +1 boon on attacks against any enemy in melee range if this creature has more allies in melee range than enemies.
+- <strong>Pack Tactics.</strong> While an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon.
 - <strong>Track Scent.</strong> This creature can track a scent trail for up to a day after it was made, unless some foreign force influenced the scent (for example, a heavy rain).
 
 
@@ -387,7 +387,7 @@ Natural animals that can serve as companions or mounts.
 **Abilities:**
 - <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.
 - <strong>Natural Climber.</strong> This creature can climb without treating it as difficult terrain.
-- <strong>Pack Tactics.</strong> This creature gains +1 boon on attacks against any enemy in melee range if this creature has more allies in melee range than enemies.
+- <strong>Pack Tactics.</strong> While an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon.
 
 
 ### **Spider**

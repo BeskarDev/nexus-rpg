@@ -58,7 +58,7 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **21.** Magical naturalism: an invented animal is a real one plus exactly one deviation, and the name states it.
 - **22.** Dinosaurs are ordinary Beasts with a `Saurian` subtype, and never carry their scientific name.
 - **25.** Folk inheritance is bounded by the folk entry, and Nexus is conservative about senses.
-- **47.** A generic-role humanoid is folk-flexible; only a folk-named one is fixed.
+- **47.** A generic-role humanoid is folk-flexible; only a folk-named one is fixed. The card says `Humanoid (Any)`.
 
 ### Abilities, conditions & triggers — [principles/abilities.md](principles/abilities.md)
 
@@ -94,9 +94,11 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **41.** A conditional second attack on a Quick Action is the answer to multiattack. Trigger on an action, not a result. *(abilities)*
 - **42.** Improved senses are earned. Seeing in the dark is rare: 3 of 34 companions, one of them an ordinary animal. *(identity)*
 - **43.** A trait must act in the encounter. Companion-utility traits are inert on a monster. *(abilities)*
-- **44.** On a carried weapon, the line is catalogue data. Anything more is an ability. *(abilities)*
+- **44.** A carried weapon's damage and properties are the catalogue's, changed only by a Quality step — **build-checked** via the attack's `weapon` field. Riders are allowed. *(abilities)*
 - **45.** Qualifier is one word; the limiter is the LAST SENTENCE of the text. Most-repeated error. *(abilities)*
 - **46.** Write an ability's clauses in resolution order, and make the second effect the payoff of the first. *(abilities)*
+- **48.** The tier says how strong. The **category** says how many adventurers it is sized against: Basic one, Elite a group or a mini-boss slot, Lord a whole party alone. *(chassis)*
+- **49.** Never cancel a universal player option. Add pressure instead of removing a choice. A Passive that voids disengaging is the canonical failure. *(abilities)*
 
 ## Appending a new principle
 
@@ -106,7 +108,7 @@ When the owner corrects or refines a creature design decision in session:
 one-line title each. Open the phase file rather than this index when you are designing: this list says
 *which* principle applies and never what it says.
 
-1. Take the next free number (currently next: **48**).
+1. Take the next free number (currently next: **50**).
 2. **Write the full principle into the phase file it belongs to** — `principles/chassis.md`,
    `identity.md`, `abilities.md` or `writing.md` (numbered, bolded one-line rule, then reasoning,
    then owner-ruling provenance).

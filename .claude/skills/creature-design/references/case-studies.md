@@ -172,6 +172,39 @@ swing on, and **both attacks were one damage too high at every success level**. 
 right and the workflow step contradicted it — the R2 failure mode, one rule with two homes, caught by
 recomputing the numbers rather than by reading either file.
 
+### The gate did not hold, and the fix was data (2026-08-14)
+
+**Two more instances landed in one session**, three months of rulings after the principle was written and
+after the step-3 gate was added. A goblin's Shortsword that moved its wielder (`Cut and Away`), and a
+goblin's Shortsword **docked a point of weapon damage** to fund a `bleeding (2)` rider. Both were caught by
+the owner, not by the gate.
+
+**The gate asked a question that could be answered correctly while the defect went in.** It required naming
+the **catalogue row** — and every one of the three drafts named it correctly. The Censer resolved to a Mace,
+the knives to a Shortsword. Naming the row proves the weapon exists; it says nothing about whether the
+numbers beside it are the row's numbers. The gate verified the half nobody was breaking.
+
+**The first fix was also wrong, and the owner corrected it.** The rule was rewritten as *"no property on
+the row, no rider — it becomes an ability"*, with an allowlist of two legal riders. That is too strong.
+Carried gear gains one Quality every two tiers while the chassis gains weapon damage every tier, so an
+armed creature is **six behind by tier 10** — a rider is one of the mechanisms that closes the gap, and
+banning it removes a tool the upper tiers need. **The absolute is the weapon, not the rider.**
+
+**So the enforcement moved to the thing that is actually absolute, and into the build.** An attack declares
+its row in a `weapon` field, and `generate-creatures.ts` checks the properties verbatim and the damage
+against the row plus the Quality step the tier and category imply. Riders are not policed at all.
+
+**The field was necessary because neither name nor properties can identify a row.** A creature's weapon may
+be called anything (principle 23), and signatures collide: the Ghoul's **natural** `Claws` are
+`agile, light, slash` — the exact signature of the Hatchet, the Scimitar and the Claw. A property-matching
+guard would have false-positived on the Ghoul's legal rider and missed both goblin knives, which is to say
+it would have been wrong in both directions at once.
+
+**The guard found a bug in itself on the first run**, which is the argument for guards in one line. D-091's
+first Quality band is three tiers wide (0-2) where the rest are two, so a plain halving read a tier-2 Elite
+as Quality 3 and demanded weapon damage the published Orc Band-Leader does not have. A reviewer would have
+read the ladder as "every two tiers" and agreed with the bug.
+
 ---
 
 ## P45 — The limiter that kept moving into the qualifier {#p45}

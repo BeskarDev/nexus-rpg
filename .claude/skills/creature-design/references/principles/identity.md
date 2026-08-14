@@ -64,7 +64,18 @@ This looks like it contradicts principle 20 and instead sharpens it. The rule un
 
 The same conservatism applies outside the folk: undead, constructs and beasts get a sense only when something in the rules or their biology grants it. A corpse that walks is not thereby able to see in the dark. *(Owner ruling, 2026-08-09.)*
 
-**47. A generic-role humanoid is folk-flexible; only a folk-named one is fixed.** *Veteran*, *Spearman*, *Cult Priest*, *Captain* name a role, not a people, so the GM may embody any of them as any of the twelve folk, and the card must be written so nothing in it forecloses that. *Orc Raider*, *Orc Band-Leader* name the folk in the title, so the card is that folk and nothing else, and principle 25's inheritance applies without qualification. For a flexible entry, `lore.physiology`'s `size`, `weight` and `lifespan` are **omitted rather than defaulted** — a "default folk" is an invented figure exactly like the ones principle 21 already forbids elsewhere, and `01-folk.md`'s Physical Traits and Age Groups tables already hold the real number for whichever folk the GM assigns. `narrative`/`ecology`/`tactics` stay free of any detail — a name, a god, a homeland — that only one folk would plausibly have. The mechanics (stats, attacks, abilities) never vary by folk; only the physiology figures and the prose voice do. *(Owner ruling, 2026-08-12; see also lore-schema.md § Physiology rule 8.)*
+**47. A generic-role humanoid is folk-flexible; only a folk-named one is fixed.** *Veteran*, *Spearman*, *Cult Priest*, *Captain* name a role, not a people, so the GM may embody any of them as any of the twelve folk, and the card must be written so nothing in it forecloses that. *Orc Raider*, *Orc Band-Leader* name the folk in the title, so the card is that folk and nothing else, and principle 25's inheritance applies without qualification. For a flexible entry, `lore.physiology`'s `size`, `weight` and `lifespan` are **omitted rather than defaulted** — a "default folk" is an invented figure exactly like the ones principle 21 already forbids elsewhere, and `01-folk.md`'s Physical Traits and Age Groups tables already hold the real number for whichever folk the GM assigns. `narrative`/`ecology`/`tactics` stay free of any detail — a name, a god, a homeland — that only one folk would plausibly have. The mechanics (stats, attacks, abilities) never vary by folk; only the physiology figures and the prose voice do.
+
+**The subtype field says so too: a folk-flexible entry is `Humanoid (Any)`** (D-128). `Any` is a published
+value in `creature-subtypes.json`'s `Humanoid` list, and it is a **subtype rather than an additive**
+because it replaces the primary value instead of composing alongside it. This half of the rule was missing
+for two batches, and the cost was six cards reading `Medium Humanoid (Human)` directly above their own
+*"depends on the folk of this creature"* physiology pointer — **the card contradicting the record**, which
+is the exact failure the split-out size/type/subtype fields were introduced to make checkable.
+
+An **empty `subtype: []`** renders as a bare `Medium Humanoid` and was rejected: an omission reads as an
+oversight, where `(Any)` states a decision and tells the GM the folk is theirs to pick.
+*(Owner rulings, 2026-08-12 and 2026-08-14; see also lore-schema.md § Physiology rule 8.)*
 
 **42. Improved senses are earned by identity or ecology, and seeing in the dark is rare.** Nexus does not
 hand out D&D's darkvision. Principle 25 already says only **four of twelve folk** get a vision trait, and

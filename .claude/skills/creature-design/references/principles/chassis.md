@@ -17,6 +17,7 @@ Read before **workflow steps 1-3** (concept, base statistics, attacks). These de
 | **39** | Light or heavy armor is a decision about which weapons work, not just about a number. |
 | **37** | A Large or bigger creature's long weapon carries `reach`, and that is what makes its second attack… |
 | **40** | An armed humanoid closes the chassis gap with abilities, not with a bigger weapon. |
+| **48** | The tier says how strong. The category says how many adventurers it is sized against. |
 | **4** | Bounded complexity. |
 | **15** | Every encounter has a Timer, a Threat and a Treat — and the Treat has five channels. |
 
@@ -99,8 +100,9 @@ it from the catalogue because of what they are. This principle is about **size**
 
 **40. An armed humanoid closes the chassis gap with abilities, not with a bigger weapon.** The tier's
 weapon-damage figure is the creature's **total capability**, not what its weapon prints. Carried gear
-rises one Quality every two tiers (D-091) while the chassis figure rises every tier, so an armed creature
-is level at tier 2, one behind at tier 3 and **six behind at tier 10**.
+rises one Quality every two tiers while the chassis figure rises every tier, so an armed creature
+is level at tier 2, one behind at tier 3 and **six behind at tier 10**. The ladder itself is in
+[../stat-tables.md](../stat-tables.md#carried-gear-quality--per-tier-and-category-d-091) (D-091).
 
 **That gap is correct, and it is filled the same way a player fills it.** A level-7 adventurer is not
 dangerous because of their spear — they are dangerous because of talents and combat arts. A high-tier
@@ -120,6 +122,39 @@ than into finding them a bigger sword.
 
 **Natural weapons are outside all of this** and take the chassis figure directly, which is why a giant's
 club out-damages a soldier's glaive at the same tier. *(Owner ruling, 2026-08-11, D-100.)*
+
+**48. The tier says how strong. The CATEGORY says how many adventurers it is sized against.** The skill's
+opening line — *a single creature of a tier should challenge one adventurer of the same level* — is true of
+a **Basic** and is the wrong yardstick for the other two. Category is not a stack of extra HP on the same
+job description:
+
+| Category | Is | Sized against |
+|---|---|---|
+| **Basic** | rank and file, met in numbers | **one adventurer** of its level |
+| **Elite** | a **mini-boss**, or a **leader fighting alongside a group of Basics** | the group it leads, or a party as one component of a fight |
+| **Lord** | a **full boss**. Minions are optional decoration, never the load-bearing part | **a whole party, alone.** If it needs the minions to be a fight, it is an Elite |
+
+**The Lord test is the useful half, and it is a build instruction.** *Would this creature still be a real
+fight if the party met it with nothing else in the room?* Three Wounds, three life pools, two escalating
+triggers and both a reactive and a proactive Quick Action exist to make the answer yes. A Lord whose
+threat is really its escort has been designed as an Elite and priced as a Lord.
+
+**The Elite test is the mirror.** An Elite is allowed to lean on its group, because half the definition
+*is* leading one. What it may not do is need the group to be interesting — a mini-boss met alone should
+still ask the party a question.
+
+**Two things fall out of this that were previously special cases:**
+
+- **Where a tier's Elite and Lord slots come from.** D-066 pushes every leader one rung up (Elite) or two
+  (Lord), so a tier whose Basics are all rank-and-file has no boss of its own. The slot is filled by
+  **the leader of the tier below**, or by a **solitary mini-boss that leads nothing**. Tier 2 was the
+  first instance: its Basics are three Soldiers, a Ghoul and a Clay Servant, whose leaders all sit at
+  tier 3 or 4, and the Goblin Chief fills it as the tier-1 goblins' leader.
+- **Category still never buys a skill rank** (D-092). It buys HP, Wounds, triggers, actions and gear
+  Quality — the things that let one body absorb a party's worth of attention. Spell rank and skill rank
+  are the tier's business.
+
+*(Owner ruling, 2026-08-14, D-131, answering Q-RA.6.)*
 
 **4. Bounded complexity.** A creature should be buildable in under 5 minutes with this framework and immediately understandable at the table.
 

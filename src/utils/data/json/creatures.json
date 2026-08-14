@@ -27,14 +27,8 @@
 				"text": "5/7/9 damage. On a strong or critical hit against a creature of equal or smaller size, the target falls prone."
 			}
 		],
-		"abilities": [
-			{
-				"name": "Pack Tactics",
-				"qualifier": "Passive",
-				"text": "While in a troop, or while an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon."
-			}
-		],
-		"traits": ["Keen Scent"],
+		"abilities": [],
+		"traits": ["Keen Scent", "Pack Tactics"],
 		"lore": {
 			"narrative": "A lean grey scavenger of the burial roads. Jackals follow funerals at the edge of a thrown stone's range, and they have learned which funerals leave food. Every gravedigger knows the ones that work their stretch, and none of them has ever driven one off for good.",
 			"environment": ["Desert", "Grassland", "Road", "Necropolis"],
@@ -521,50 +515,360 @@
 		}
 	},
 	{
-		"name": "Orc Raider",
-		"size": "Medium",
+		"name": "Goblin Skulker",
+		"size": "Small",
 		"type": "Humanoid",
-		"subtype": ["Orc"],
+		"subtype": ["Goblin"],
 		"tier": 1,
 		"category": "Basic",
 		"armor": "Light",
 		"hp": "10",
 		"av": "1 (light armor)",
-		"str": "d6",
-		"agi": "d4",
+		"str": "d4",
+		"agi": "d6",
 		"spi": "d4",
 		"mnd": "d4",
-		"parry": 8,
-		"dodge": 6,
+		"parry": 5,
+		"dodge": 9,
 		"resist": 7,
-		"skills": ["Fighting (1)", "Athletics (1)", "Survival (1)"],
+		"skills": ["Fighting (1)", "Stealth (1)", "Athletics (1)"],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Knife",
+				"weapon": "Shortsword",
+				"properties": ["agile", "light", "pierce"],
+				"text": "5/7/9 damage."
+			},
+			{
+				"name": "Snatch",
+				"properties": [],
+				"text": "Roll Agility + Stealth vs. Dodge. No damage. On a success, this creature takes one loose item of 0 or 1 load from the target's hands, belt, or an open container, and immediately uses their Movement to move away with it."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Quick Escape",
+				"qualifier": "Quick Action",
+				"text": "When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked."
+			}
+		],
+		"traits": ["Night Vision", "Pack Tactics", "Small Stature"],
+		"lore": {
+			"narrative": "A goblin who has learned that nobody watches the small one until it is too late, and who has never once picked a fight they were expected to win. They are not really trying to kill anybody. They are trying to leave with something, and the knife is only there in case that goes wrong.",
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Hills",
+				"Road",
+				"Ruins",
+				"Caves",
+				"Den"
+			],
+			"ecology": "They live where a road runs past cover, which is most roads. A gang holds a stretch of it for a season, sleeps in whatever hole is nearest, and moves on when the carters start travelling armed. They eat what they take, and what they take is mostly food. Nothing about this is a war. The stretch of road matters more than the goblins on it, and a village that loses two carts in a month knows exactly which bend the trouble is at and cannot spare the men to go and look. Carters, drovers, tax collectors and pilgrims are the people who meet them, and most of the ones who do arrive late rather than not at all.",
+			"physiology": {
+				"size": "0.92 to 0.98 m tall",
+				"weight": "17 to 23 kg",
+				"lifespan": "Adult at 12, old at 35, and 50 years is a long life"
+			},
+			"tactics": "They do not open the fight. They wait for somebody else to, then come in from the side. **Snatch** is what they are here for, so spend their turns robbing whoever is already busy and save the knife for when somebody corners them. They take from the character with the most hanging off their belt, not the most dangerous one, and they leave with it. **Pack Tactics** wants another goblin already on the same target, so put two of them on one character rather than one each on two. Between turns they spend **Quick Escape** on the first attack that misses them. They will not stand in a line and they will not hold ground. One of them alone breaks and runs, and a gang that has lost half its number goes with it, carrying whatever it has.",
+			"treasure": {
+				"scale": "Standard",
+				"table": [
+					{
+						"kind": "Weapon",
+						"item": "Knife",
+						"value": "50 coins",
+						"description": "Shortsword, Quality 2, damaged and fragile. Ground down from something longer."
+					},
+					{
+						"kind": "Armor",
+						"item": "Scavenged leathers",
+						"value": "50 coins",
+						"description": "Leather, Quality 1, damaged and fragile. Cut down from a piece made for somebody twice their size."
+					},
+					{
+						"kind": "Valuables",
+						"item": "Cut purse",
+						"value": "25 coins",
+						"description": "Coin off whoever came down this road before."
+					},
+					{
+						"kind": "Valuables",
+						"item": "Bronze earrings",
+						"value": "20 coins",
+						"description": "Four of them, no two a pair."
+					},
+					{
+						"kind": "Supplies",
+						"item": "Ration bag",
+						"value": "10 coins",
+						"description": "Simple Rations (d4) with 2 uses left."
+					},
+					{
+						"kind": "Relic",
+						"item": "Watch-post tally",
+						"description": "A knotted cord counting the carts that have passed and the days between them. Read backward it gives the road's traffic and the place the gang watches it from."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Gang",
+					"count": "3-6"
+				},
+				{
+					"name": "Road ambush",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Goblin Chief"
+						},
+						{
+							"count": "4-6",
+							"creature": "Goblin Skulker"
+						},
+						{
+							"count": "2-3",
+							"creature": "Goblin Archer"
+						}
+					]
+				},
+				{
+					"name": "Warren",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Goblin Chief"
+						},
+						{
+							"count": "8-12",
+							"creature": "Goblin Skulker"
+						},
+						{
+							"count": "4-6",
+							"creature": "Goblin Archer"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"name": "Goblin Archer",
+		"size": "Small",
+		"type": "Humanoid",
+		"subtype": ["Goblin"],
+		"tier": 1,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "10",
+		"av": "1 (light armor)",
+		"str": "d4",
+		"agi": "d6",
+		"spi": "d4",
+		"mnd": "d4",
+		"parry": 5,
+		"dodge": 9,
+		"resist": 7,
+		"skills": ["Fighting (1)", "Archery (1)", "Stealth (1)"],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Shortbow",
+				"weapon": "Shortbow",
+				"properties": ["ammo", "range (short/long)", "two-handed"],
+				"text": "6/9/12 damage."
+			},
+			{
+				"name": "Knife",
+				"weapon": "Shortsword",
+				"properties": ["agile", "light", "pierce"],
+				"text": "5/7/9 damage."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Pin Them Down",
+				"qualifier": "Passive",
+				"text": "On a strong or critical hit with their Shortbow, the target is briefly slowed."
+			},
+			{
+				"name": "Quick Escape",
+				"qualifier": "Quick Action",
+				"text": "When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked."
+			}
+		],
+		"traits": ["Night Vision", "Small Stature"],
+		"lore": {
+			"narrative": "The one in the rocks above the road, who has been watching the track since the last bend. They shoot first, and they shoot from somewhere nobody has thought to look.",
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Hills",
+				"Road",
+				"Ruins",
+				"Caves",
+				"Den"
+			],
+			"ecology": "They live where a road runs past cover, which is most roads. A gang holds a stretch of it for a season, sleeps in whatever hole is nearest, and moves on when the carters start travelling armed. They eat what they take, and what they take is mostly food. The bow is the one thing in a gang that gets looked after, because it is the one thing they cannot make again in an afternoon, and the goblin holding it is usually the one who has been on this road longest. Carters, drovers, tax collectors and pilgrims are the people who meet them, and most of the ones who do arrive late rather than not at all.",
+			"physiology": {
+				"size": "0.92 to 0.98 m tall",
+				"weight": "17 to 23 kg",
+				"lifespan": "Adult at 12, old at 35, and 50 years is a long life"
+			},
+			"tactics": "They open the fight, from cover, at whatever range the ground gives them. They shoot whoever is least protected rather than whoever is most dangerous, and they keep shooting the same one. They give up height only when they have to. In melee they are almost nothing, so **Quick Escape** goes on the first melee attack that misses them and they use it to get back to a position rather than simply away. **Pin Them Down** is the whole point of shooting low, so put it on whoever is trying to reach them and shoot that one again. The knife is a last resort. A shortage of arrows moves them off the fight faster than a wound does. They break and run alone, and they run before the skulkers do.",
+			"treasure": {
+				"scale": "Standard",
+				"table": [
+					{
+						"kind": "Weapon",
+						"item": "Shortbow",
+						"value": "75 coins",
+						"description": "Shortbow, Quality 2, damaged and fragile. The upper limb is split and bound."
+					},
+					{
+						"kind": "Weapon",
+						"item": "Knife",
+						"value": "50 coins",
+						"description": "Shortsword, Quality 2, damaged and fragile."
+					},
+					{
+						"kind": "Armor",
+						"item": "Scavenged leathers",
+						"value": "50 coins",
+						"description": "Leather, Quality 1, damaged and fragile."
+					},
+					{
+						"kind": "Material",
+						"item": "Bundle of arrows",
+						"value": "10 coins",
+						"description": "Primitive materials, Quality 1. Fletched with whatever was to hand, no two alike."
+					},
+					{
+						"kind": "Valuables",
+						"item": "Caravan seal",
+						"value": "40 coins",
+						"description": "Silver, off a trader's neck. The house it belongs to is still trading."
+					},
+					{
+						"kind": "Relic",
+						"item": "Notched sighting stick",
+						"description": "A stick cut with the distance from the watch-post to each landmark along the road. Whoever holds it knows every position the gang shoots from."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Gang",
+					"count": "3-6"
+				},
+				{
+					"name": "Road ambush",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Goblin Chief"
+						},
+						{
+							"count": "4-6",
+							"creature": "Goblin Skulker"
+						},
+						{
+							"count": "2-3",
+							"creature": "Goblin Archer"
+						}
+					]
+				},
+				{
+					"name": "Warren",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Goblin Chief"
+						},
+						{
+							"count": "8-12",
+							"creature": "Goblin Skulker"
+						},
+						{
+							"count": "4-6",
+							"creature": "Goblin Archer"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"name": "Orc Raider",
+		"size": "Medium",
+		"type": "Humanoid",
+		"subtype": ["Orc"],
+		"tier": 2,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "20",
+		"av": "2 (light armor)",
+		"str": "d8",
+		"agi": "d6",
+		"spi": "d6",
+		"mnd": "d4",
+		"parry": 9,
+		"dodge": 8,
+		"resist": 7,
+		"skills": ["Fighting (1)", "Athletics (2)", "Survival (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
 				"name": "Battleaxe",
+				"weapon": "Battleaxe",
+				"critWeaponDamage": 1,
 				"properties": ["slash", "versatile (+1)"],
-				"text": "6/9/12 damage."
+				"text": "7/10/16 damage."
 			},
 			{
 				"name": "Javelin",
+				"weapon": "Javelin",
 				"properties": ["bundle (d4)", "light", "pierce", "thrown (short/long)"],
-				"text": "5/7/9 damage. On a strong or critical hit, the target is briefly slowed."
+				"text": "6/8/10 damage."
 			}
 		],
 		"abilities": [
 			{
 				"name": "Orcish Fury",
 				"qualifier": "Passive",
-				"text": "When this creature hits with a melee weapon and rolls a critical success, add their weapon damage an additional time to the total damage."
+				"text": "When this creature hits with a melee weapon and rolls a critical success, they add their weapon damage an additional time to the total damage. The critical damage listed for their melee attacks already includes it."
 			},
 			{
-				"name": "Formation Fighting",
-				"qualifier": "Passive",
-				"text": "While an ally is within melee range of this creature, attacks against this creature suffer +1 bane."
+				"name": "Charge In",
+				"qualifier": "Quick Action",
+				"text": "This creature gains 1 additional Movement this turn. They must use it to move closer to an enemy they can see."
 			}
 		],
+		"traits": [],
 		"lore": {
 			"narrative": "An orc down from the dry country at harvest, as their band has come down every harvest anyone can remember. They are not an invasion and they do not want the land. They want the grain, and they intend to be home before the season turns.",
 			"environment": [
@@ -581,7 +885,7 @@
 				"weight": "95 kg",
 				"lifespan": "Adult at 14, old at 45, and 60 years is a long life"
 			},
-			"tactics": "Javelins first, at range, while they close. Then the axes. **Formation Fighting** makes them markedly harder to kill while they stand together, so keep them shoulder to shoulder and have them reform the line whenever it breaks. They go for whoever stands between them and the grain, not for whoever is most dangerous. **They will break off to carry away what they came for** if they can reach it. A raider who is alone and losing looks for a way out rather than a last stand.",
+			"tactics": "Javelins first, at range, while they close. **Charge In** gets them across open ground a round sooner than the party has planned for, so spend it early and arrive together rather than in ones. A raider who has already spent it has no answer to anybody leaving their reach, and that trade comes up every round. They go for whoever stands between them and the grain, not for whoever is most dangerous. **They will break off to carry away what they came for** if they can reach it. A raider who is alone and losing looks for a way out rather than a last stand.",
 			"treasure": {
 				"scale": "Standard",
 				"table": [
@@ -1018,7 +1322,7 @@
 		"name": "Polearm Soldier",
 		"size": "Medium",
 		"type": "Humanoid",
-		"subtype": ["Human"],
+		"subtype": ["Any"],
 		"tier": 2,
 		"category": "Basic",
 		"armor": "Light",
@@ -1038,11 +1342,13 @@
 		"attacks": [
 			{
 				"name": "Glaive",
+				"weapon": "Glaive",
 				"properties": ["reach", "slash", "two-handed"],
 				"text": "8/12/16 damage."
 			},
 			{
 				"name": "Sweeping Blow",
+				"weapon": "Glaive",
 				"properties": ["reach", "slash", "two-handed"],
 				"text": "This creature can only use this attack if they skip all Movement this turn, before and after the attack. 6/8/10 damage against every creature within close range."
 			}
@@ -1186,7 +1492,7 @@
 		"name": "Slinger",
 		"size": "Medium",
 		"type": "Humanoid",
-		"subtype": ["Human"],
+		"subtype": ["Any"],
 		"tier": 2,
 		"category": "Basic",
 		"armor": "Light",
@@ -1206,6 +1512,7 @@
 		"attacks": [
 			{
 				"name": "Sling",
+				"weapon": "Sling",
 				"properties": [
 					"ammo",
 					"crush",
@@ -1217,6 +1524,7 @@
 			},
 			{
 				"name": "Shortsword",
+				"weapon": "Shortsword",
 				"properties": ["agile", "light", "pierce"],
 				"text": "5/7/9 damage."
 			}
@@ -1360,7 +1668,7 @@
 		"name": "Spearman",
 		"size": "Medium",
 		"type": "Humanoid",
-		"subtype": ["Human"],
+		"subtype": ["Any"],
 		"tier": 2,
 		"category": "Basic",
 		"armor": "Light",
@@ -1380,11 +1688,13 @@
 		"attacks": [
 			{
 				"name": "Spear",
+				"weapon": "Spear",
 				"properties": ["pierce", "reach", "versatile (+1)"],
 				"text": "7/10/13 damage."
 			},
 			{
 				"name": "Shield Bash",
+				"weapon": "Light Shield",
 				"properties": ["crush"],
 				"text": "6/8/10 damage. On a strong or critical hit, the target falls prone."
 			}
@@ -1529,39 +1839,42 @@
 		"size": "Medium",
 		"type": "Humanoid",
 		"subtype": ["Orc"],
-		"tier": 2,
+		"tier": 3,
 		"category": "Elite",
 		"armor": "Light",
-		"hp": "2x20",
-		"av": "3 (light armor and shield)",
+		"hp": "2x30",
+		"av": "3 (light armor)",
 		"str": "d8",
 		"agi": "d6",
 		"spi": "d6",
-		"mnd": "d4",
-		"parry": 9,
-		"dodge": 7,
+		"mnd": "d6",
+		"parry": 10,
+		"dodge": 9,
 		"resist": 8,
-		"skills": ["Fighting (1)", "Athletics (2)", "Insight (2)", "Survival (2)"],
+		"skills": ["Fighting (2)", "Athletics (2)", "Insight (2)", "Survival (2)"],
 		"immunities": [],
 		"resistances": [],
 		"weaknesses": [],
 		"attacks": [
 			{
-				"name": "Battleaxe",
-				"properties": ["slash", "versatile (+1)"],
-				"text": "7/10/13 damage."
+				"name": "Maul",
+				"weapon": "Maul",
+				"critWeaponDamage": 1,
+				"properties": ["crush", "heavy (d8)", "two-handed"],
+				"text": "9/14/24 damage."
 			},
 			{
-				"name": "Shield Bash",
-				"properties": ["crush"],
-				"text": "6/8/10 damage. Only against a target within melee range of an ally. On a strong or critical hit, the target falls prone."
+				"name": "Javelin",
+				"weapon": "Javelin",
+				"properties": ["bundle (d4)", "light", "pierce", "thrown (short/long)"],
+				"text": "7/10/13 damage."
 			}
 		],
 		"abilities": [
 			{
 				"name": "Orcish Fury",
 				"qualifier": "Passive",
-				"text": "When this creature hits with a melee weapon and rolls a critical success, add their weapon damage an additional time to the total damage."
+				"text": "When this creature hits with a melee weapon and rolls a critical success, they add their weapon damage an additional time to the total damage. The critical damage listed for their melee attacks already includes it."
 			},
 			{
 				"name": "Fight Where I Point",
@@ -1569,9 +1882,9 @@
 				"text": "One ally within short range gains +1 boon on their next attack, and on a hit the target is briefly slowed."
 			},
 			{
-				"name": "Take It On The Shield",
-				"qualifier": "Passive",
-				"text": "When using Protect Ally, this creature takes half damage."
+				"name": "Batter Aside",
+				"qualifier": "Quick Action",
+				"text": "When an enemy within melee range attacks this creature, that attack suffers +1 bane. If the attack fails, this creature makes one Maul attack against them."
 			},
 			{
 				"name": "Blood Up",
@@ -1579,6 +1892,7 @@
 				"text": "When this creature suffers a Wound, the rage takes them and they stop caring whether they live. For the rest of the scene their melee attacks gain +1 boon and deal +2 damage, and melee attacks against them gain +1 boon."
 			}
 		],
+		"traits": [],
 		"lore": {
 			"narrative": "The one who chose the village, and the one who will decide when it is finished. They have ridden this country for twenty years and have never once fought to the last orc. That is why they are still the one choosing.",
 			"environment": [
@@ -1595,21 +1909,21 @@
 				"weight": "105 kg",
 				"lifespan": "Adult at 14, old at 45, and 60 years is a long life"
 			},
-			"tactics": "They stay behind the line and run it rather than fighting in it. Spend **Fight Where I Point** on whichever raider is best placed, and **Take It On The Shield** to intercept a blow meant for a raider. With no raiders left to direct they fight plainly. Once they are Wounded, **Blood Up** puts them in the front rank trading hits and they stop protecting anybody. **They can be bought at any point before that.** Offer them the grain and they take it and go.",
+			"tactics": "They stay behind the line and run it rather than fighting in it. Spend **Fight Where I Point** on whichever raider is best placed, and hold the Quick Action for **Batter Aside** when somebody finally reaches them, because they cannot do both in one round. The maul is for whoever is armored and the javelin for whoever is not close enough yet. Once they are Wounded, **Blood Up** puts them in the front rank trading hits and they stop directing anybody. **They can be bought at any point before that.** Offer them the grain and they take it and go.",
 			"treasure": {
 				"scale": "Rich",
 				"table": [
 					{
 						"kind": "Weapon",
-						"item": "Battleaxe",
-						"description": "Battleaxe, Quality 2, damaged. The haft is wound in silver wire.",
-						"value": "175 coins"
+						"item": "Maul",
+						"value": "500 coins",
+						"description": "Maul, Quality 3, damaged. Bronze head over a hardwood core, wound with silver wire."
 					},
 					{
 						"kind": "Armor",
-						"item": "Faced shield",
-						"description": "Light Shield, Quality 2, damaged. Painted with the band's mark, which every village in the country knows on sight.",
-						"value": "150 coins"
+						"item": "Banded leather cuirass",
+						"value": "150 coins",
+						"description": "Banded Leather, Quality 2, damaged. The source of their AV."
 					},
 					{
 						"kind": "Valuables",
@@ -1621,7 +1935,7 @@
 						"kind": "Valuables",
 						"item": "Silver arm rings",
 						"description": "Worn as a record of raids. Taking them off a living leader is an insult.",
-						"value": "200 coins"
+						"value": "400 coins"
 					},
 					{
 						"kind": "Supplies",
@@ -1671,10 +1985,163 @@
 		}
 	},
 	{
+		"name": "Goblin Chief",
+		"size": "Small",
+		"type": "Humanoid",
+		"subtype": ["Goblin"],
+		"tier": 2,
+		"category": "Elite",
+		"armor": "Light",
+		"hp": "2x20",
+		"av": "1 (light armor)",
+		"str": "d6",
+		"agi": "d10",
+		"spi": "d6",
+		"mnd": "d6",
+		"parry": 6,
+		"dodge": 10,
+		"resist": 8,
+		"skills": ["Fighting (1)", "Stealth (2)", "Insight (2)", "Influence (2)"],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Knotted Lash",
+				"weapon": "Whip",
+				"properties": ["agile", "entangle (medium)", "light", "reach", "slash"],
+				"text": "7/9/11 damage."
+			},
+			{
+				"name": "Javelin",
+				"weapon": "Javelin",
+				"properties": ["bundle (d4)", "light", "pierce", "thrown (short/long)"],
+				"text": "7/9/11 damage."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Quick Escape",
+				"qualifier": "Quick Action",
+				"text": "When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked."
+			},
+			{
+				"name": "Get In Front",
+				"qualifier": "Quick Action",
+				"text": "When an enemy attacks this creature while an ally is within melee range of this creature, that attack targets that ally instead."
+			},
+			{
+				"name": "Spring the Trap",
+				"qualifier": "Elite Trigger",
+				"text": "When this creature suffers a Wound, they whistle, and the goblins who were waiting for the signal come down. Two Goblin Skulkers arrive within short range of this creature, from cover or higher ground if there is any. Every ally within short range of this creature immediately moves up to a short distance unprovoked."
+			}
+		],
+		"traits": ["Night Vision", "Small Stature"],
+		"lore": {
+			"narrative": "The one who chose this bend in the road, told everyone where to stand, and has already decided which way they personally are leaving. They hold the gang by being right about which carts are worth stopping.",
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Hills",
+				"Road",
+				"Ruins",
+				"Caves",
+				"Den"
+			],
+			"ecology": "A ringleader holds a gang by judgement rather than by strength, and most of them are the smallest thing in it. They know which stretch of road is watched, which villages will pay to be left alone, and which drover will hand over half a load rather than lose a wheel. Some of those arrangements run for years and are renewed every season. A gang that loses their ringleader scatters within the week and turns up on somebody else's road. The ones who last are the ones who never let a robbery become a fight.",
+			"physiology": {
+				"size": "0.95 to 1.00 m tall",
+				"weight": "20 to 23 kg",
+				"lifespan": "Adult at 12, old at 35, and 50 years is a long life"
+			},
+			"tactics": "They start the fight and then get out of it, running the gang from the back with the lash reaching over the top of them. **Get In Front** puts whoever is beside them in the way of anything aimed at them, so keep a skulker within arm's reach at all times and treat the gang as their armor. The lash is for anyone unarmored and the javelins for anyone who is not, and they will spend a whole fight at range if the ground allows. They compete for one Quick Action between **Get In Front** and **Quick Escape**, so once the goblins beside them are down the escape is all they have left. Once they are Wounded, **Spring the Trap** brings two more goblins down off the rocks and shifts everyone already fighting into a better position, so fire it before the gang is spent rather than after. **They can be bought before that and not after.** Take the toll and they wave the party through, and the deal holds only as long as the party keeps travelling that road.",
+			"treasure": {
+				"scale": "Rich",
+				"table": [
+					{
+						"kind": "Weapon",
+						"item": "Knotted lash",
+						"value": "50 coins",
+						"description": "Whip, Quality 2, damaged and fragile. Bone beads worked into the last hand of it."
+					},
+					{
+						"kind": "Weapon",
+						"item": "Javelin bundle",
+						"value": "50 coins",
+						"description": "Javelin, Quality 2, damaged and fragile. `bundle (d4)` with 2 uses left."
+					},
+					{
+						"kind": "Valuables",
+						"item": "Strung coin necklace",
+						"value": "250 coins",
+						"description": "Coins from six polities, pierced and strung in the order they were taken."
+					},
+					{
+						"kind": "Valuables",
+						"item": "Signet rings",
+						"value": "200 coins",
+						"description": "Five of them, off five travellers. Two of the owners are alive and looking."
+					},
+					{
+						"kind": "Supplies",
+						"item": "Caravan stores",
+						"value": "120 coins",
+						"description": "8 x Simple Rations (d4), off a load that was going somewhere else."
+					},
+					{
+						"kind": "Relic",
+						"item": "Marked map-hide",
+						"description": "A hide scratched with this road, every place the gang watches it from, and the three villages that pay them not to come down. Two of those villages would rather it was not found."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Road ambush",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Goblin Chief"
+						},
+						{
+							"count": "4-6",
+							"creature": "Goblin Skulker"
+						},
+						{
+							"count": "2-3",
+							"creature": "Goblin Archer"
+						}
+					]
+				},
+				{
+					"name": "Warren",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Goblin Chief"
+						},
+						{
+							"count": "8-12",
+							"creature": "Goblin Skulker"
+						},
+						{
+							"count": "4-6",
+							"creature": "Goblin Archer"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
 		"name": "Veteran",
 		"size": "Medium",
 		"type": "Humanoid",
-		"subtype": ["Human"],
+		"subtype": ["Any"],
 		"tier": 3,
 		"category": "Basic",
 		"armor": "Light",
@@ -1699,11 +2166,13 @@
 		"attacks": [
 			{
 				"name": "Spear",
+				"weapon": "Spear",
 				"properties": ["pierce", "reach", "versatile (+1)"],
 				"text": "7/10/13 damage."
 			},
 			{
 				"name": "Shield Bash",
+				"weapon": "Light Shield",
 				"properties": ["crush"],
 				"text": "6/8/10 damage. On a strong or critical hit, the target falls prone."
 			}
@@ -1972,7 +2441,7 @@
 		"name": "Cult Priest",
 		"size": "Medium",
 		"type": "Humanoid",
-		"subtype": ["Human"],
+		"subtype": ["Any"],
 		"tier": 3,
 		"category": "Basic",
 		"armor": "Light",
@@ -1997,6 +2466,7 @@
 			},
 			{
 				"name": "Censer",
+				"weapon": "Mace",
 				"properties": ["crush", "versatile (+1)"],
 				"text": "6/9/12 damage."
 			}
@@ -2094,7 +2564,7 @@
 		"name": "Captain",
 		"size": "Medium",
 		"type": "Humanoid",
-		"subtype": ["Human"],
+		"subtype": ["Any"],
 		"tier": 3,
 		"category": "Elite",
 		"armor": "Light",
@@ -2114,11 +2584,13 @@
 		"attacks": [
 			{
 				"name": "Longsword",
+				"weapon": "Longsword",
 				"properties": ["pierce", "versatile (+1)"],
 				"text": "8/12/16 damage."
 			},
 			{
 				"name": "Shield Bash",
+				"weapon": "Light Shield",
 				"properties": ["crush"],
 				"text": "7/10/13 damage. On a strong or critical hit, the target is pushed close and this creature moves into melee range of them."
 			}

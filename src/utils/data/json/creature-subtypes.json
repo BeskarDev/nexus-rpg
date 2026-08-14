@@ -12,6 +12,7 @@
 	"Giant": ["Elder", "Feral"],
 	"Horror": ["Warped", "Adapted", "Cosmic"],
 	"Humanoid": [
+		"Any",
 		"Dwarf",
 		"Elf",
 		"Gnome",

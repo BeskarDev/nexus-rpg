@@ -234,8 +234,8 @@ A cunning and resourceful race of small build, with a knack for trickery and dec
 | Culture | Region | Description |
 | --- | --- | --- |
 | Goki (Monkey-Goblins) | Eastern Mist Realms | Martial-arts practicing goblins seeking discipline and enlightenment in monasteries |
-| Sikari (Jungle-Goblins) | Southern Jungle | Skilled climbers in cliffs and treetops. Masters of verticality |
-| Sniknez (Cave-Goblins) | Western Island Realms | Underground dwellers, masters of hidden paths and secret passages |
+| Grikku (Jungle-Goblins) | Southern Jungle | Skilled climbers in cliffs and treetops. Masters of verticality |
+| Snikrez (Cave-Goblins) | Western Island Realms | Underground dwellers, masters of hidden paths and secret passages |
 
 **Size.** Goblins are of small size, growing up to 0.90 to 1.00 meters tall on average with a skinny build.
 

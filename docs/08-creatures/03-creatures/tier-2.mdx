@@ -10,6 +10,57 @@ toc_max_heading_level: 3
 Tier 2 creatures are slightly more dangerous, including stronger undead, minor magical beings, and organized humanoid fighters.
 
 <CreatureStatBlock
+	type="Medium Humanoid (Orc)"
+	tier={2}
+	category="Basic"
+	hp="20"
+	av="2 (light armor)"
+	str="d8"
+	agi="d6"
+	spi="d6"
+	mnd="d4"
+	parry={9}
+	dodge={8}
+	resist={7}
+>
+
+### Orc Raider
+
+<CreatureLore>
+
+An orc down from the dry country at harvest, as their band has come down every harvest anyone can remember. They are not an invasion and they do not want the land. They want the grain, and they intend to be home before the season turns.
+
+<LoreSection label="Ecology"><LoreTag>Wastes</LoreTag><LoreTag>Desert</LoreTag><LoreTag>Steppe</LoreTag><LoreTag>River</LoreTag><LoreTag>Farmland</LoreTag><LoreTag>Settlement</LoreTag> Raiding bands come out of the herding country at the edge of the farmland, where nothing is sown and everything is driven. Harvest is the one season the valley is worth the ride. Twenty to forty come down together, hit the villages furthest from a garrison, and are gone inside a day. Most villages keep a standing arrangement, a portion left out and a route left unwatched, and the raids that turn violent are the ones where a new headman decided not to pay. The rest of the year these are herders, smiths and mercenaries, and the people they rob sometimes know them by name. The best known of them are the Zakhar of the canyon country, who have taken the river valley's harvest for as long as the valley has had one.</LoreSection>
+
+<LoreSection label="Physiology"><LoreTag>1.80 to 1.90 m tall</LoreTag><LoreTag>95 kg</LoreTag><LoreTag>Adult at 14, old at 45, and 60 years is a long life</LoreTag></LoreSection>
+
+<LoreSection label="Tactics">Javelins first, at range, while they close. **Charge In** gets them across open ground a round sooner than the party has planned for, so spend it early and arrive together rather than in ones. A raider who has already spent it has no answer to anybody leaving their reach, and that trade comes up every round. They go for whoever stands between them and the grain, not for whoever is most dangerous. **They will break off to carry away what they came for** if they can reach it. A raider who is alone and losing looks for a way out rather than a last stand.</LoreSection>
+
+<LoreSection label="Treasure"><TreasureTable scale="Standard"><TreasureRow kind="Weapon" value="100 coins">**Battleaxe** Battleaxe, Quality 2, damaged.</TreasureRow><TreasureRow kind="Weapon" value="17 coins">**Javelin bundle** Javelin, Quality 2, `bundle (d4)` with 1 use left.</TreasureRow><TreasureRow kind="Armor" value="50 coins">**Layered shoulder hide** Leather, Quality 1, damaged. Covers the shoulders and nothing else.</TreasureRow><TreasureRow kind="Valuables" value="30 coins">**Turquoise bead string** Strung on a thong, cut and polished in the holds they winter in.</TreasureRow><TreasureRow kind="Supplies" value="15 coins">**Waterskins and dried curd** Simple Rations (d4), full.</TreasureRow><TreasureRow kind="Relic">**Knotted countersign** The cord a rider shows at a friendly hold to be let in and fed. Whoever carries it passes for one of the band.</TreasureRow></TreasureTable></LoreSection>
+
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterTemplate count="3-6">Raiding file</EncounterTemplate><EncounterGroup name="Harvest raid">1 [Orc Band-Leader](/docs/creatures/creatures/tier-3#orc-band-leader) and 6-10 [Orc Raider](/docs/creatures/creatures/tier-2#orc-raider)</EncounterGroup><EncounterGroup name="Full band">1 [Orc Band-Leader](/docs/creatures/creatures/tier-3#orc-band-leader) and 20-40 [Orc Raider](/docs/creatures/creatures/tier-2#orc-raider)</EncounterGroup></LoreSection>
+
+</CreatureLore>
+
+<StatBlockTrait label="Skills">Fighting (1), Athletics (2), Survival (2)</StatBlockTrait>
+
+<StatBlockSection label="Attacks">
+
+- <EntryName>Battleaxe</EntryName> <StatBadge>slash</StatBadge><StatBadge>versatile (+1)</StatBadge> <DamageLadder values="7/10/16" />
+- <EntryName>Javelin</EntryName> <StatBadge>bundle (d4)</StatBadge><StatBadge>light</StatBadge><StatBadge>pierce</StatBadge><StatBadge>thrown (short/long)</StatBadge> <DamageLadder values="6/8/10" />
+
+</StatBlockSection>
+
+<StatBlockSection label="Abilities">
+
+- <EntryName>Orcish Fury</EntryName> <StatBadge>Passive</StatBadge> When this creature hits with a melee weapon and rolls a critical success, they add their weapon damage an additional time to the total damage. The critical damage listed for their melee attacks already includes it.
+- <EntryName>Charge In</EntryName> <StatBadge>Quick Action</StatBadge> This creature gains 1 additional Movement this turn. They must use it to move closer to an enemy they can see.
+
+</StatBlockSection>
+
+</CreatureStatBlock>
+
+<CreatureStatBlock
 	type="Small Automaton (Golem, Mindless)"
 	tier={2}
 	category="Basic"
@@ -121,7 +172,7 @@ A thin, quick eater of the dead, at home in the necropolis and in the graves the
 </CreatureStatBlock>
 
 <CreatureStatBlock
-	type="Medium Humanoid (Human)"
+	type="Medium Humanoid (Any)"
 	tier={2}
 	category="Basic"
 	hp="20"
@@ -172,7 +223,7 @@ The second rank, working over the shoulders of the shields with three metres of 
 </CreatureStatBlock>
 
 <CreatureStatBlock
-	type="Medium Humanoid (Human)"
+	type="Medium Humanoid (Any)"
 	tier={2}
 	category="Basic"
 	hp="20"
@@ -223,7 +274,7 @@ The one behind the shields with a bag of cast lead, who has been told which targ
 </CreatureStatBlock>
 
 <CreatureStatBlock
-	type="Medium Humanoid (Human)"
+	type="Medium Humanoid (Any)"
 	tier={2}
 	category="Basic"
 	hp="20"
@@ -274,53 +325,54 @@ A trained soldier of a city or a warlord, three years drilled, standing behind a
 </CreatureStatBlock>
 
 <CreatureStatBlock
-	type="Medium Humanoid (Orc)"
+	type="Small Humanoid (Goblin)"
 	tier={2}
 	category="Elite"
 	hp="2x20"
-	av="3 (light armor and shield)"
-	str="d8"
-	agi="d6"
+	av="1 (light armor)"
+	str="d6"
+	agi="d10"
 	spi="d6"
-	mnd="d4"
-	parry={9}
-	dodge={7}
+	mnd="d6"
+	parry={6}
+	dodge={10}
 	resist={8}
 >
 
-### Orc Band-Leader
+### Goblin Chief
 
 <CreatureLore>
 
-The one who chose the village, and the one who will decide when it is finished. They have ridden this country for twenty years and have never once fought to the last orc. That is why they are still the one choosing.
+The one who chose this bend in the road, told everyone where to stand, and has already decided which way they personally are leaving. They hold the gang by being right about which carts are worth stopping.
 
-<LoreSection label="Ecology"><LoreTag>Wastes</LoreTag><LoreTag>Desert</LoreTag><LoreTag>Steppe</LoreTag><LoreTag>River</LoreTag><LoreTag>Farmland</LoreTag><LoreTag>Settlement</LoreTag> A band-leader holds the band by being right about what a raid is worth, not by being the strongest in it. They know which villages pay, which have a garrison within a day, and which headman will talk. Most have a name in the country they ride. Some have an understanding with the people they take from, renewed every harvest and kept on both sides more often than either would admit. A band that loses their leader does not usually pick another that season. They go home.</LoreSection>
+<LoreSection label="Ecology"><LoreTag>Desert</LoreTag><LoreTag>Grassland</LoreTag><LoreTag>Hills</LoreTag><LoreTag>Road</LoreTag><LoreTag>Ruins</LoreTag><LoreTag>Caves</LoreTag><LoreTag>Den</LoreTag> A ringleader holds a gang by judgement rather than by strength, and most of them are the smallest thing in it. They know which stretch of road is watched, which villages will pay to be left alone, and which drover will hand over half a load rather than lose a wheel. Some of those arrangements run for years and are renewed every season. A gang that loses their ringleader scatters within the week and turns up on somebody else's road. The ones who last are the ones who never let a robbery become a fight.</LoreSection>
 
-<LoreSection label="Physiology"><LoreTag>1.85 m tall</LoreTag><LoreTag>105 kg</LoreTag><LoreTag>Adult at 14, old at 45, and 60 years is a long life</LoreTag></LoreSection>
+<LoreSection label="Physiology"><LoreTag>0.95 to 1.00 m tall</LoreTag><LoreTag>20 to 23 kg</LoreTag><LoreTag>Adult at 12, old at 35, and 50 years is a long life</LoreTag></LoreSection>
 
-<LoreSection label="Tactics">They stay behind the line and run it rather than fighting in it. Spend **Fight Where I Point** on whichever raider is best placed, and **Take It On The Shield** to intercept a blow meant for a raider. With no raiders left to direct they fight plainly. Once they are Wounded, **Blood Up** puts them in the front rank trading hits and they stop protecting anybody. **They can be bought at any point before that.** Offer them the grain and they take it and go.</LoreSection>
+<LoreSection label="Tactics">They start the fight and then get out of it, running the gang from the back with the lash reaching over the top of them. **Get In Front** puts whoever is beside them in the way of anything aimed at them, so keep a skulker within arm's reach at all times and treat the gang as their armor. The lash is for anyone unarmored and the javelins for anyone who is not, and they will spend a whole fight at range if the ground allows. They compete for one Quick Action between **Get In Front** and **Quick Escape**, so once the goblins beside them are down the escape is all they have left. Once they are Wounded, **Spring the Trap** brings two more goblins down off the rocks and shifts everyone already fighting into a better position, so fire it before the gang is spent rather than after. **They can be bought before that and not after.** Take the toll and they wave the party through, and the deal holds only as long as the party keeps travelling that road.</LoreSection>
 
-<LoreSection label="Treasure"><TreasureTable scale="Rich"><TreasureRow kind="Weapon" value="175 coins">**Battleaxe** Battleaxe, Quality 2, damaged. The haft is wound in silver wire.</TreasureRow><TreasureRow kind="Armor" value="150 coins">**Faced shield** Light Shield, Quality 2, damaged. Painted with the band's mark, which every village in the country knows on sight.</TreasureRow><TreasureRow kind="Valuables" value="120 coins">**Three seal rings** River-city seals, none of them theirs, taken over three seasons. Two of the owners are still alive.</TreasureRow><TreasureRow kind="Valuables" value="200 coins">**Silver arm rings** Worn as a record of raids. Taking them off a living leader is an insult.</TreasureRow><TreasureRow kind="Supplies" value="180 coins">**Wastes-crossing kit** 12 x Simple Rations (d4). Where the band was going next.</TreasureRow><TreasureRow kind="Relic">**Agreement tablet** Incised clay with two marks, a village and a band. It proves the raids were arranged.</TreasureRow></TreasureTable></LoreSection>
+<LoreSection label="Treasure"><TreasureTable scale="Rich"><TreasureRow kind="Weapon" value="50 coins">**Knotted lash** Whip, Quality 2, damaged and fragile. Bone beads worked into the last hand of it.</TreasureRow><TreasureRow kind="Weapon" value="50 coins">**Javelin bundle** Javelin, Quality 2, damaged and fragile. `bundle (d4)` with 2 uses left.</TreasureRow><TreasureRow kind="Valuables" value="250 coins">**Strung coin necklace** Coins from six polities, pierced and strung in the order they were taken.</TreasureRow><TreasureRow kind="Valuables" value="200 coins">**Signet rings** Five of them, off five travellers. Two of the owners are alive and looking.</TreasureRow><TreasureRow kind="Supplies" value="120 coins">**Caravan stores** 8 x Simple Rations (d4), off a load that was going somewhere else.</TreasureRow><TreasureRow kind="Relic">**Marked map-hide** A hide scratched with this road, every place the gang watches it from, and the three villages that pay them not to come down. Two of those villages would rather it was not found.</TreasureRow></TreasureTable></LoreSection>
 
-<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterGroup name="Harvest raid">1 [Orc Band-Leader](/docs/creatures/creatures/tier-2#orc-band-leader) and 6-10 [Orc Raider](/docs/creatures/creatures/tier-1#orc-raider)</EncounterGroup><EncounterGroup name="Full band">1 [Orc Band-Leader](/docs/creatures/creatures/tier-2#orc-band-leader) and 20-40 [Orc Raider](/docs/creatures/creatures/tier-1#orc-raider)</EncounterGroup></LoreSection>
+<LoreSection label="Organization"><EncounterTemplate count="1">Solitary</EncounterTemplate><EncounterGroup name="Road ambush">1 [Goblin Chief](/docs/creatures/creatures/tier-2#goblin-chief), 4-6 [Goblin Skulker](/docs/creatures/creatures/tier-1#goblin-skulker) and 2-3 [Goblin Archer](/docs/creatures/creatures/tier-1#goblin-archer)</EncounterGroup><EncounterGroup name="Warren">1 [Goblin Chief](/docs/creatures/creatures/tier-2#goblin-chief), 8-12 [Goblin Skulker](/docs/creatures/creatures/tier-1#goblin-skulker) and 4-6 [Goblin Archer](/docs/creatures/creatures/tier-1#goblin-archer)</EncounterGroup></LoreSection>
 
 </CreatureLore>
 
-<StatBlockTrait label="Skills">Fighting (1), Athletics (2), Insight (2), Survival (2)</StatBlockTrait>
+<StatBlockTrait label="Skills">Fighting (1), Stealth (2), Insight (2), Influence (2)</StatBlockTrait>
 
 <StatBlockSection label="Attacks">
 
-- <EntryName>Battleaxe</EntryName> <StatBadge>slash</StatBadge><StatBadge>versatile (+1)</StatBadge> <DamageLadder values="7/10/13" />
-- <EntryName>Shield Bash</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="6/8/10" /> Only against a target within melee range of an ally. On a strong or critical hit, the target falls prone.
+- <EntryName>Knotted Lash</EntryName> <StatBadge>agile</StatBadge><StatBadge>entangle (medium)</StatBadge><StatBadge>light</StatBadge><StatBadge>reach</StatBadge><StatBadge>slash</StatBadge> <DamageLadder values="7/9/11" />
+- <EntryName>Javelin</EntryName> <StatBadge>bundle (d4)</StatBadge><StatBadge>light</StatBadge><StatBadge>pierce</StatBadge><StatBadge>thrown (short/long)</StatBadge> <DamageLadder values="7/9/11" />
 
 </StatBlockSection>
 
 <StatBlockSection label="Abilities">
 
-- <EntryName>Orcish Fury</EntryName> <StatBadge>Passive</StatBadge> When this creature hits with a melee weapon and rolls a critical success, add their weapon damage an additional time to the total damage.
-- <EntryName>Fight Where I Point</EntryName> <StatBadge>Quick Action</StatBadge> One ally within short range gains +1 boon on their next attack, and on a hit the target is briefly slowed.
-- <EntryName>Take It On The Shield</EntryName> <StatBadge>Passive</StatBadge> When using Protect Ally, this creature takes half damage.
-- <EntryName>Blood Up</EntryName> <StatBadge>Elite Trigger</StatBadge> When this creature suffers a Wound, the rage takes them and they stop caring whether they live. For the rest of the scene their melee attacks gain +1 boon and deal +2 damage, and melee attacks against them gain +1 boon.
+- <EntryName>Quick Escape</EntryName> <StatBadge>Quick Action</StatBadge> When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked.
+- <EntryName>Get In Front</EntryName> <StatBadge>Quick Action</StatBadge> When an enemy attacks this creature while an ally is within melee range of this creature, that attack targets that ally instead.
+- <EntryName>Spring the Trap</EntryName> <StatBadge>Elite Trigger</StatBadge> When this creature suffers a Wound, they whistle, and the goblins who were waiting for the signal come down. Two Goblin Skulkers arrive within short range of this creature, from cover or higher ground if there is any. Every ally within short range of this creature immediately moves up to a short distance unprovoked.
+- <EntryName>Night Vision</EntryName> <StatBadge>Passive</StatBadge> This creature can see one range category further from sources of bright and dim light.
+- <EntryName>Small Stature</EntryName> <StatBadge>Passive</StatBadge> This creature gains +1 boon on Agility rolls to hide or move stealthily.
 
 </StatBlockSection>
 

@@ -28,6 +28,50 @@ where the formula returns 0 and heavy armor would otherwise be indistinguishable
 across ten levels while a flat +1-per-tier Defense grew +10, sliding player hit rates from 79% down to
 46%. This curve holds 55–71%.
 
+### Carried gear Quality — per tier AND category (D-091)
+
+**The tier's weapon-damage figure above is a NATURAL-weapon figure.** A creature carrying a published
+weapon takes the catalogue row's damage instead (principle 23), and the Quality of that row is read off
+**Random Treasure by Level** (`docs/10-gm-tools/01-random-tables/05-random-treasure.mdx`) with
+**level = tier**, mapping **Basic → Simple Loot, Elite → Minor Treasure, Lord → Major Treasure**:
+
+| Tier | Basic | Elite | Lord |
+|---|---|---|---|
+| 0-2 | **Q2** | **Q2** | Q3 |
+| 3-4 | **Q2** | **Q3** | Q4 |
+| 5-6 | Q3 | Q4 | Q5 |
+| 7-8 | Q4 | Q5 | Q6 |
+| 9-10 | Q5 | Q6 | Q7 |
+
+**A Quality step is +1 weapon damage** above the item's base Quality (`07-magic-items/effects.md`): Q3 +1,
+Q4 +1, Q5 +2, Q6 +3, Q7 +4. **Shields gain AV only from Q4**, so a Q3 shield is still AV +1. The rungs in
+practice: light 2/3, one-handed 3/4, two-handed 4/5 at Q2/Q3.
+
+**Natural weapons are outside the ladder** and take the tier's weapon-damage figure directly. A giant's
+club is a monster attack, not graded gear.
+
+**Quality is a statement about what the creature is WORTH, not about what tier it sits at.** That is the
+whole reason the table has a category axis: a line soldier and their own officer sit at the same tier, and
+putting both on the same Quality makes the soldier hit exactly as hard as the officer.
+
+**Q2 is the floor, and the reason is the weapon catalogue's default rung, not a missing one.** Every
+weapon in `03-weapons.md` is listed at Q2 or Q3; **a Q1 rung does exist** — § Primitive Weapons lets any
+Q2 weapon costing 100 coins or less be crafted Quality 1, at half price, with `fragile`, damage unchanged
+— but it is a **deliberate downgrade a culture chooses**, not a default for every low-tier creature.
+Defaulting tiers 0-2 to it would put a durability roll on every mook's weapon and halve low-tier loot
+values. The sanctioned way to reach it is D-132: an uncivilized creature keeps catalogue Quality and its
+**loot rows** read `damaged and fragile`
+([treasure-design.md](treasure-design.md#21-loot-from-an-uncivilized-culture-is-damaged-and-fragile)).
+
+> **The table's floor is rounded up from the published source, deliberately.** Random Treasure by Level
+> gives Simple Loot **Q1** at levels 1 and 2, where this table gives Q2. That is a design choice for the
+> reason above, not a transcription. Levels 3 and up are the published values unchanged.
+
+**Gear falls behind the chassis, and that gap is correct** — the chassis figure rises +1 per tier while
+gear rises +1 per two tiers, so an armed creature is level at tier 2, one behind at tier 3 and six behind
+at tier 10. It is filled with **abilities**, never a bigger sword. See
+[principles/chassis.md](principles/chassis.md) principle 40.
+
 **Changing an attack's target defense** — write the whole roll as the attack text's **first sentence**:
 
 > `Roll Strength + Fortitude vs. Dodge. Target all creatures in a short cone. On a success, …`
@@ -46,6 +90,46 @@ attack scored on the competence it actually uses says something a stat line cann
 theft rolls `Agility + Perception` because spotting a loose pouch is Perception, and since that creature
 has Perception (1) and Fighting (0), the block states by itself that it is better at robbing you than at
 hurting you. Reach for a non-combat skill whenever the attack is not really a fight.
+
+**But NEVER write out a roll a weapon property already grants.** The form is for an attack that genuinely
+departs from the default, not for restating published behaviour, and a spelled-out roll that only repeats
+what the property does costs a line and implies the creature is doing something unusual when it is not.
+
+The trap is `thrown (X/Y)`, whose text offers **two independent swaps** — *"Strength instead of Agility
+(also for the base damage) **and** Fighting instead of Archery (**choose any combination of either
+option**)"*. Either may be taken alone. So a `thrown` weapon in the hands of a creature with high Agility
+and no Archery simply rolls **Agility + Fighting**, off the property, with nothing to declare. The Goblin
+Chief's javelin was drafted as `Roll Strength + Fighting vs. Dodge.` on a misreading of that parenthetical
+as a single package, which both spent a sentence on the default and pushed the attack onto the creature's
+**worst** attribute.
+
+**Before writing a roll out, check whether the weapon's own properties already produce it.** `agile` gives
+Agility on a melee weapon, `thrown` gives either or both swaps on a ranged one. **The damage triple on the
+card already reflects whichever line the creature uses**, so a GM needs no explanation to run it.
+*(Owner correction, 2026-08-14, D-134.)*
+
+### Always-on bonuses go in the printed triple; situational ones do not {#always-on}
+
+**The test is whether a GM can know the answer from the card alone.**
+
+| | In the triple | Because |
+|---|---|---|
+| **Always-on** — `Orcish Fury`, weapon damage again on every melee critical | **YES** | Nothing about the target or the situation changes it, so omitting it only makes the GM redo the arithmetic every time a critical lands |
+| **Situational** — `slash`, weapon damage again against light or no armor | **no** | It depends who is being hit, so one printed figure would be wrong against half the party |
+
+So an orc's melee critical is `base + 4 × weapon damage`: the tier-2 Orc Raider's Battleaxe reads
+**7/10/16**, not 7/10/13, and its javelin stays plain at 6/8/10 because `thrown` makes it a ranged weapon
+and Fury needs a melee one.
+
+**Two things have to travel with this, and both were caught the hard way:**
+
+1. **The ability text must say the figure already includes it**, or the card double-counts. `Orcish Fury`
+   closes with *"The critical damage listed for their melee attacks already includes it."*
+2. **Declare it in the data as `critWeaponDamage`** (extra applications, 0-2). The build reads weapon damage
+   off the **weak-to-strong** step, which no critical bonus can touch, so the catalogue check still works —
+   and an undeclared inflated critical fails `content:check`.
+
+*(Owner ruling, 2026-08-14, D-135.)*
 
 ### What a rider costs, and what a second natural attack is worth
 
@@ -369,7 +453,8 @@ One Defense point is worth ~18.5% of incoming damage from tier 5 up; one AV poin
 - [ ] HP for tier; format matches category (`40` / `2×40` / `3×40`)
 - [ ] AV = tier (light) or **1.5 × tier rounded up** (heavy) — D-014
 - [ ] Defense from the tier table (**+1 per two tiers above tier 5**); Resist ≤ base + 2 — D-015
-- [ ] Damage = base + 1×/2×/3× weapon damage. Never a doubled increment
+- [ ] Damage = base + 1×/2×/3× weapon damage. Never a doubled increment. **An always-on critical bonus
+      is the one exception and must be declared** — see § Always-on bonuses below
 - [ ] **Paired natural weapons carry `light` and take HALF the tier's weapon damage each** (they attack twice); a single natural weapon takes the full figure — D-076
 - [ ] Ability TNs = 6 + tier
 - [ ] Skill ranks match the tier table

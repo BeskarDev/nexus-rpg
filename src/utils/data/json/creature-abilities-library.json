@@ -2,7 +2,7 @@
 	{
 		"id": "pack-tactics",
 		"name": "Pack Tactics",
-		"description": "While in a troop, or while an ally is within melee range of the same target, this creature's attacks gain +1 boon.",
+		"description": "While an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon.",
 		"actionType": "Passive",
 		"tags": ["combat", "ally"],
 		"forTypes": ["Beast", "Humanoid", "Magical Beast"]

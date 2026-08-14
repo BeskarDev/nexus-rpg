@@ -109,7 +109,7 @@
 	},
 	{
 		"name": "Pack Tactics",
-		"text": "This creature gains +1 boon on attacks against any enemy in melee range if this creature has more allies in melee range than enemies."
+		"text": "While an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon."
 	},
 	{
 		"name": "Pounce",
@@ -138,6 +138,10 @@
 	{
 		"name": "Slow Movement (Land)",
 		"text": "This creature can’t use more than 1 Movement per turn while on land."
+	},
+	{
+		"name": "Small Stature",
+		"text": "This creature gains +1 boon on Agility rolls to hide or move stealthily."
 	},
 	{
 		"name": "Spider Climb",
