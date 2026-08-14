@@ -17,9 +17,6 @@ Converted markdown files from HTML exports. These are intermediate files used in
 ### `/split-tables/`
 Transformed and split markdown tables after processing. These contain reorganized content ready to be merged into documentation.
 
-### `/csv/`
-CSV exports of markdown tables, formatted for importing into Notion via "merge with CSV" feature. HTML tags are preserved for formatting.
-
 ### `/json/`
 JSON data files used by the web application:
 - Spell definitions
@@ -49,5 +46,4 @@ input/*.html  →  [html-to-md.py]  →  markdown/*.md
 - `input/` - Ignored (source files)
 - `markdown/` - Ignored (intermediate files)
 - `split-tables/` - Ignored (intermediate files)
-- `csv/` - Ignored (export files)
 - `json/` - **Tracked** (application data)

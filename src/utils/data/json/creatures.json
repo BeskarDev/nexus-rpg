@@ -419,8 +419,15 @@
 		"dodge": 5,
 		"resist": 8,
 		"skills": ["Fighting (1)", "Athletics (1)"],
-		"immunities": ["bleeding", "charmed", "confused", "frightened", "poisoned"],
-		"resistances": [],
+		"immunities": [
+			"bleeding",
+			"charmed",
+			"confused",
+			"frightened",
+			"poisoned",
+			"unconscious"
+		],
+		"resistances": ["poison"],
 		"weaknesses": ["radiant"],
 		"attacks": [
 			{
@@ -1088,7 +1095,7 @@
 			"poisoned",
 			"unconscious"
 		],
-		"resistances": [],
+		"resistances": ["poison"],
 		"weaknesses": ["blast"],
 		"attacks": [
 			{
@@ -1206,7 +1213,7 @@
 		"resist": 7,
 		"skills": ["Fighting (1)", "Perception (2)", "Stealth (2)"],
 		"immunities": ["bleeding", "poisoned", "unconscious"],
-		"resistances": [],
+		"resistances": ["poison"],
 		"weaknesses": ["radiant"],
 		"attacks": [
 			{

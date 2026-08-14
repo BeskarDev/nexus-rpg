@@ -1334,9 +1334,11 @@ function renderEntry(
 				: ` <DamageLadder values="${match[1]}" />`
 			text = text.slice(match[0].length)
 		}
-	} else if (entry.qualifier) {
-		badges = renderBadges([entry.qualifier])
 	}
+	// No qualifier badge: the group heading the entry sits under already says
+	// `Action` / `Quick Action` / `Trigger` / `Passive`, so a chip repeating it on
+	// every line is ink for nothing (D-147). Attacks keep their PROPERTY badges,
+	// which say something the heading cannot.
 	// A trailing period only when nothing follows the name in the head, so a badge
 	// never sits after a full stop.
 	if (!badges && !ladder) head += '.'
@@ -1354,10 +1356,36 @@ const TRAIT_LABELS: Record<(typeof LIST_FIELDS)[number], string> = {
 	weaknesses: 'Weaknesses',
 }
 
-const SECTION_LABELS: Record<(typeof ENTRY_FIELDS)[number], string> = {
-	attacks: 'Attacks',
-	abilities: 'Abilities',
-}
+/**
+ * The card groups a creature's entries by WHEN A GM USES THEM, not by which
+ * array they were authored in (D-147).
+ *
+ * `attacks` and `abilities` stay separate in the record because they carry
+ * different fields (`weapon`, `quality`, `critWeaponDamage`, `properties`, the
+ * damage ladder) and different validation — D-133's catalogue check only makes
+ * sense on an attack. The grouping is derived from data already present: an
+ * attack is something you do on your turn, and so is an ability qualified
+ * `Action`, so they belong under one heading.
+ *
+ * Ordered by how often a fight needs it, descending: every turn, every round,
+ * once at a Wound, then the standing rules.
+ *
+ * Two defects this fixes, beyond reading better. `Thrown Dirt`, `Snatch` and
+ * `Snatching Beak` are no-damage manoeuvres sitting in `attacks` because there
+ * was nowhere else for a turn option to live — they are Actions and now say so.
+ * And D-073's "two attack options" stops needing an argument about whether an
+ * offensive Action counts.
+ */
+const SECTION_GROUPS = [
+	{ label: 'Actions', qualifiers: ['Action'], withAttacks: true },
+	{ label: 'Quick Actions', qualifiers: ['Quick Action'], withAttacks: false },
+	{
+		label: 'Triggers',
+		qualifiers: ['Elite Trigger', 'Lord Trigger'],
+		withAttacks: false,
+	},
+	{ label: 'Passives', qualifiers: ['Passive'], withAttacks: false },
+] as const
 
 /**
  * Expand a creature's trait NAMES into full ability entries.
@@ -1427,19 +1455,30 @@ function renderCreature(
 		)
 	}
 
-	for (const field of ENTRY_FIELDS) {
-		// Traits resolve into the abilities list, spelled out in full like any
-		// other ability. The record stores names so the wording has one home;
-		// the published card shows no seam, because a GM reading a stat block
-		// does not care which of a creature's passives are shared with others.
-		const entries =
-			field === 'abilities' ? [...c.abilities, ...resolveTraits(c)] : c[field]
-		if (entries.length === 0) continue
+	// Traits resolve into the abilities list, spelled out in full like any other
+	// ability. The record stores names so the wording has one home; the published
+	// card shows no seam, because a GM reading a stat block does not care which of
+	// a creature's passives are shared with others.
+	const abilities = [...c.abilities, ...resolveTraits(c)]
+	for (const group of SECTION_GROUPS) {
+		const rendered = [
+			// Attacks first inside their group: they are the default thing to do, and
+			// they carry the damage ladder a GM scans for.
+			...(group.withAttacks
+				? c.attacks.map((a) => renderEntry(a, 'attacks'))
+				: []),
+			...abilities
+				.filter((a) =>
+					(group.qualifiers as readonly string[]).includes(a.qualifier ?? ''),
+				)
+				.map((a) => renderEntry(a, 'abilities')),
+		]
+		if (rendered.length === 0) continue
 		blocks.push(
 			[
-				`<StatBlockSection label="${SECTION_LABELS[field]}">`,
+				`<StatBlockSection label="${group.label}">`,
 				'',
-				entries.map((entry) => renderEntry(entry, field)).join('\n'),
+				rendered.join('\n'),
 				'',
 				'</StatBlockSection>',
 			].join('\n'),
@@ -1529,7 +1568,8 @@ function renderPage(
 	linkTo: (name: string) => string,
 ): string {
 	// h3 creature names are the only TOC-eligible headings; the h4 section labels
-	// inside each card (Attacks / Abilities) are excluded by the max level.
+	// inside each card (Actions / Quick Actions / Triggers / Passives) are excluded
+	// by the max level.
 	const fm = [
 		'---',
 		`sidebar_position: ${tier + 1}`,

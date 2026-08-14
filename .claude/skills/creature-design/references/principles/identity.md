@@ -19,6 +19,8 @@ Read before **workflow step 1** (concept) and whenever naming anything — the c
 | **47** | A generic-role humanoid is folk-flexible; only a folk-named one is fixed. |
 | **42** | Improved senses are earned by identity or ecology, and seeing in the dark is rare. |
 | **34** | Magic is in decline, so a lost art is written in the past tense. |
+| **50** | A construct is a myth, not a machine, and a carried-forward concept re-enters at step 1. |
+| **51** | Undead are the setting's horror. Their kit is a curse and a dread effect, not a second damage line. |
 
 **Numbers are global and never renumbered, so this file is ordered for reading rather than by date.** Full text below in the same order.
 
@@ -152,3 +154,74 @@ back, it was a pottery industry with a magic step in it, and it made the setting
 published version puts the making four centuries in the past, states that nobody has made one since,
 and says a tomb furnished today gets painted figures that never wake. *(Owner ruling, 2026-08-11,
 D-084.)*
+
+**50. A construct is a myth, not a machine, and a carried-forward concept re-enters at step 1.** The
+`Automaton` type is the easiest place in the roster to slip out of register, because "a made thing that
+moves" is one word away from science fiction in modern English and nothing about the chassis pushes back.
+
+**The test is the same mood-board test principle 13 already sets, asked of the image rather than the
+name:** *would a person in this world describe this as a made thing that a god or a smith woke, or as a
+machine?* A walking empty suit of plate armour fails it — the image is a hollow body with nobody in it,
+which is a mech, and no Bronze Age myth has one. Renaming it does not help, because the register is in the
+picture and not in the word.
+
+**What passes, and all of it is already in the setting.** Talos and the ushabti are the vault's own named
+exemplars (`04 Natur/Bestiarium/Automaten`): a bronze giant with one vein, figures moulded to do the dead's
+work, cult images that step off a plinth, bulls cast for a temple gate, and **a spirit shut inside a
+vessel**. The last is the strongest and the most under-used — the vault gives the Urduk their
+`Elementarbändigung`, fire and earth elementals bound into rune-cut iron cores, and the Ghahar the
+symbiotic version of the same craft. **The animating thing is a spirit with a grievance, never a
+mechanism**, which is also where the creature's counterplay and its lore both come from.
+
+**A construct named after one culture's technique is a smaller creature than the technique deserves.**
+Owner direction on the replacement: *"dont give it a name specific to just the urduk, make it a more
+generic creature which still fits the theme."* The craft belongs to more than one people and the thing
+standing in the vault does not say whose it was, so the name says what it is — `Furnace-Bound` — and the
+lore says who might have made it.
+
+**The second half of the rule is about process and it is why this was missed for two batches.** The
+Animated Armour entered the programme in the tier-2 batch, was moved to tier 4 on **price-list** evidence
+(D-115), and was carried in an appendix for two more batches on the strength of *"nothing about it was
+wrong except where it stood."* Nobody re-ran step 1 on it, because by then every conversation about it was
+a chassis conversation.
+
+> **A design carried forward from an earlier batch's appendix re-enters the workflow at step 1, not step
+> 2.** Re-ask the concept gate — the tactical question, the near-duplicate check, and whether the name
+> promises what the stat block delivers. A settled *tier* is not a settled *creature*.
+
+*(Owner rulings, 2026-08-14, tier-4 batch.)*
+
+**51. Undead are the setting's horror. Their kit is a curse and a dread effect, not a second damage line.**
+The Restless Dead is the largest supernatural family in the roster (14 records), and it is the one place the
+bestiary is allowed to reach for **soft old-school horror**: curses that follow the party out of the room,
+dread that takes a turn away, rot that will not close. An undead built as a body with an attack routine is a
+**wasted type** — a Spearman that cannot be reasoned with.
+
+**The test, asked of every undead ability:** *would this be interesting on a bandit?* If yes, it is the wrong
+ability for an undead. A sweep of the arms, a second plain attack, a knockdown — those are all fine mechanics
+and none of them needed a corpse.
+
+**What the register actually wants**, and every one of these is published Nexus vocabulary rather than an
+invention:
+
+| Reach for | Published channel |
+|---|---|
+| A **curse that outlives the fight** | `deprived` — +1 bane on everything, half HP from short breaks, 2 Fatigue a day, and it ends only after a night's rest with food and water. In a tomb crawl that is a retreat |
+| **Dread**, escalating to helplessness | `frightened`, then `paralyzed` against a target already frightened. The tier-4 counterplay floor (06b §4) is exactly where this becomes legal |
+| A **wound that will not close** | *"cannot regain HP"*, the wording the Death tradition and the Necromancy discipline both use |
+| **Being unable to hurt it properly** | physical resistance on an incorporeal one, with a `radiant` weakness as the answer (D-139) |
+
+**Spend the turn on the horror, not beside it.** The Mummy's `Dread Gaze` is an **Action**, so a mummy holding
+somebody in place is not hitting anybody, and the paralysis needs two landings. That cost is what makes the
+effect legal at all and it is also what makes it a scene: the party watches it choose.
+
+**The failure this corrects, in full.** The Mummy's first draft had a `Sweeping Arms` multi-target attack and
+a `Tomb-Rot` Action that applied `deprived` on a failed save. Both were legal, both were on-chassis, and the
+owner's verdict was *"too safe, boring, and not evocative for gameplay."* The fix moved the curse **onto the
+fist**, where a mummy's rot belongs and where it costs no extra roll, and spent the freed slot on the Gaze.
+**The rot and the dread are the creature. The punch is how it delivers one of them.**
+
+**It applies past the Undead type** — to Spirits, to the Chthonic, and to anything else whose whole reason to
+exist is that it is not alive. *(Owner ruling, 2026-08-14: "In this bronze age sword and sorcery setting, I
+want to evoke kind of soft old-school ttrpg horror elements with enemy groups like undead. curses, fear
+effects, all of that. not just another mundane enemy. its the undead!")*

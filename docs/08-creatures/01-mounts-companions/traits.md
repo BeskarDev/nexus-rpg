@@ -40,7 +40,7 @@ Natural animals that can serve as companions or mounts.
 
 **Abilities:**
 - <strong>Burrow.</strong> This creature can move freely through loose earth, treating it as difficult terrain.
-- <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.
+- <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell. They also sense the presence and general direction of any creature within close range by scent alone, without needing to see them. Still air and full cover block this.
 - <strong>Natural Climber.</strong> This creature can climb without treating it as difficult terrain.
 
 
@@ -126,7 +126,7 @@ Natural animals that can serve as companions or mounts.
 
 **Abilities:**
 - <strong>Gore Attack.</strong> After moving at least a short distance in a straight line, this creature gains +1 boon on their next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
-- <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.
+- <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell. They also sense the presence and general direction of any creature within close range by scent alone, without needing to see them. Still air and full cover block this.
 - <strong>Relentless.</strong> When this creature would suffer a Wound, they can choose to ignore it. This creature can use this ability once per day.
 
 
@@ -161,7 +161,7 @@ Natural animals that can serve as companions or mounts.
 - <strong>Claw</strong> (<em>light, slash</em>). Deals -1 weapon damage (min. 1).
 
 **Abilities:**
-- <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.
+- <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell. They also sense the presence and general direction of any creature within close range by scent alone, without needing to see them. Still air and full cover block this.
 - <strong>Night Vision.</strong> This creature can see one range category further from sources of bright and dim light.
 - <strong>Pounce.</strong> If this creature spend Movement towards their target during the turn they attack, they gain +1 boon on the attack. Also on a strong or critical hit against a creature of equal or smaller Size, the target is knocked prone.
 
@@ -229,7 +229,7 @@ Natural animals that can serve as companions or mounts.
 - <strong>Bite</strong> (<em>pierce</em>). Deals normal weapon damage. On a strong or critical hit against a creature of equal or smaller Size, the target is grappled. While grappled, this attack can't be used against any other target.
 
 **Abilities:**
-- <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.
+- <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell. They also sense the presence and general direction of any creature within close range by scent alone, without needing to see them. Still air and full cover block this.
 - <strong>Pack Tactics.</strong> While an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon.
 - <strong>Track Scent.</strong> This creature can track a scent trail for up to a day after it was made, unless some foreign force influenced the scent (for example, a heavy rain).
 
@@ -385,7 +385,7 @@ Natural animals that can serve as companions or mounts.
 - <strong>Bite</strong> (<em>agile, pierce</em>). Deals normal weapon damage. On a strong or critical hit, the target suffers bleeding (2 x Tier).
 
 **Abilities:**
-- <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.
+- <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell. They also sense the presence and general direction of any creature within close range by scent alone, without needing to see them. Still air and full cover block this.
 - <strong>Natural Climber.</strong> This creature can climb without treating it as difficult terrain.
 - <strong>Pack Tactics.</strong> While an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon.
 

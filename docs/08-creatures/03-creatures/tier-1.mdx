@@ -44,21 +44,23 @@ One of the unburied dead, walking in the body nobody said the words over. They d
 
 <StatBlockTrait label="Skills">Fighting (1), Athletics (1)</StatBlockTrait>
 
-<StatBlockTrait label="Immunities"><TraitItem>bleeding</TraitItem><TraitItem>charmed</TraitItem><TraitItem>confused</TraitItem><TraitItem>frightened</TraitItem><TraitItem>poisoned</TraitItem></StatBlockTrait>
+<StatBlockTrait label="Immunities"><TraitItem>bleeding</TraitItem><TraitItem>charmed</TraitItem><TraitItem>confused</TraitItem><TraitItem>frightened</TraitItem><TraitItem>poisoned</TraitItem><TraitItem>unconscious</TraitItem></StatBlockTrait>
+
+<StatBlockTrait label="Resistances"><TraitItem>poison</TraitItem></StatBlockTrait>
 
 <StatBlockTrait label="Weaknesses"><TraitItem>radiant</TraitItem></StatBlockTrait>
 
-<StatBlockSection label="Attacks">
+<StatBlockSection label="Actions">
 
 - <EntryName>Grasping Hands</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="6/9/12" /> On a strong or critical hit, the target is grappled.
 - <EntryName>Bearing Down</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="6/9/12" /> Only against a target this creature has grappled. On a hit, the target falls prone.
 
 </StatBlockSection>
 
-<StatBlockSection label="Abilities">
+<StatBlockSection label="Passives">
 
-- <EntryName>Grave-Bound</EntryName> <StatBadge>Passive</StatBadge> This creature cannot willingly move further than a medium distance from the ground they were left on. When they are destroyed, they rise again at the next sunset unless their body is buried or burned.
-- <EntryName>Undead Nature</EntryName> <StatBadge>Passive</StatBadge> This creature doesn't need to breathe, eat, drink, or sleep.
+- <EntryName>Grave-Bound</EntryName>. This creature cannot willingly move further than a medium distance from the ground they were left on. When they are destroyed, they rise again at the next sunset unless their body is buried or burned.
+- <EntryName>Undead Nature</EntryName>. This creature doesn't need to breathe, eat, drink, or sleep.
 
 </StatBlockSection>
 
@@ -99,19 +101,24 @@ A goblin who has learned that nobody watches the small one until it is too late,
 
 <StatBlockTrait label="Skills">Fighting (1), Stealth (1), Athletics (1)</StatBlockTrait>
 
-<StatBlockSection label="Attacks">
+<StatBlockSection label="Actions">
 
 - <EntryName>Knife</EntryName> <StatBadge>agile</StatBadge><StatBadge>light</StatBadge><StatBadge>pierce</StatBadge> <DamageLadder values="5/7/9" />
 - <EntryName>Snatch</EntryName>. Roll Agility + Stealth vs. Dodge. No damage. On a success, this creature takes one loose item of 0 or 1 load from the target's hands, belt, or an open container, and immediately uses their Movement to move away with it.
 
 </StatBlockSection>
 
-<StatBlockSection label="Abilities">
+<StatBlockSection label="Quick Actions">
 
-- <EntryName>Quick Escape</EntryName> <StatBadge>Quick Action</StatBadge> When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked.
-- <EntryName>Night Vision</EntryName> <StatBadge>Passive</StatBadge> This creature can see one range category further from sources of bright and dim light.
-- <EntryName>Pack Tactics</EntryName> <StatBadge>Passive</StatBadge> While an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon.
-- <EntryName>Small Stature</EntryName> <StatBadge>Passive</StatBadge> This creature gains +1 boon on Agility rolls to hide or move stealthily.
+- <EntryName>Quick Escape</EntryName>. When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked.
+
+</StatBlockSection>
+
+<StatBlockSection label="Passives">
+
+- <EntryName>Night Vision</EntryName>. This creature can see one range category further from sources of bright and dim light.
+- <EntryName>Pack Tactics</EntryName>. While an ally is in melee range of the same target, this creature's attacks against that target gain +1 boon.
+- <EntryName>Small Stature</EntryName>. This creature gains +1 boon on Agility rolls to hide or move stealthily.
 
 </StatBlockSection>
 
@@ -152,19 +159,24 @@ The one in the rocks above the road, who has been watching the track since the l
 
 <StatBlockTrait label="Skills">Fighting (1), Archery (1), Stealth (1)</StatBlockTrait>
 
-<StatBlockSection label="Attacks">
+<StatBlockSection label="Actions">
 
 - <EntryName>Shortbow</EntryName> <StatBadge>ammo</StatBadge><StatBadge>range (short/long)</StatBadge><StatBadge>two-handed</StatBadge> <DamageLadder values="6/9/12" />
 - <EntryName>Knife</EntryName> <StatBadge>agile</StatBadge><StatBadge>light</StatBadge><StatBadge>pierce</StatBadge> <DamageLadder values="5/7/9" />
 
 </StatBlockSection>
 
-<StatBlockSection label="Abilities">
+<StatBlockSection label="Quick Actions">
 
-- <EntryName>Pin Them Down</EntryName> <StatBadge>Passive</StatBadge> On a strong or critical hit with their Shortbow, the target is briefly slowed.
-- <EntryName>Quick Escape</EntryName> <StatBadge>Quick Action</StatBadge> When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked.
-- <EntryName>Night Vision</EntryName> <StatBadge>Passive</StatBadge> This creature can see one range category further from sources of bright and dim light.
-- <EntryName>Small Stature</EntryName> <StatBadge>Passive</StatBadge> This creature gains +1 boon on Agility rolls to hide or move stealthily.
+- <EntryName>Quick Escape</EntryName>. When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked.
+
+</StatBlockSection>
+
+<StatBlockSection label="Passives">
+
+- <EntryName>Pin Them Down</EntryName>. On a strong or critical hit with their Shortbow, the target is briefly slowed.
+- <EntryName>Night Vision</EntryName>. This creature can see one range category further from sources of bright and dim light.
+- <EntryName>Small Stature</EntryName>. This creature gains +1 boon on Agility rolls to hide or move stealthily.
 
 </StatBlockSection>
 
@@ -205,17 +217,17 @@ A river crocodile not yet at full size, small enough to lie up under a landing s
 
 <StatBlockTrait label="Skills">Fighting (1), Stealth (1)</StatBlockTrait>
 
-<StatBlockSection label="Attacks">
+<StatBlockSection label="Actions">
 
 - <EntryName>Bite</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="7/10/13" /> On a strong or critical hit against a creature of equal or smaller size, the target is grappled. While grappling, this attack cannot be used against any other target.
 - <EntryName>Death Roll</EntryName> <StatBadge>crush</StatBadge> Only against a target this creature has grappled. 7/10/13 damage, and the target falls prone.
 
 </StatBlockSection>
 
-<StatBlockSection label="Abilities">
+<StatBlockSection label="Passives">
 
-- <EntryName>Amphibious</EntryName> <StatBadge>Passive</StatBadge> This creature can hold their breath underwater for a medium duration and can swim with normal Movement.
-- <EntryName>Ambush Predator</EntryName> <StatBadge>Passive</StatBadge> When this creature hits an enemy that is unaware of them with an attack for the first time during a scene, increase the SL of their attack by one step (max. critical success).
+- <EntryName>Amphibious</EntryName>. This creature can hold their breath underwater for a medium duration and can swim with normal Movement.
+- <EntryName>Ambush Predator</EntryName>. When this creature hits an enemy that is unaware of them with an attack for the first time during a scene, increase the SL of their attack by one step (max. critical success).
 
 </StatBlockSection>
 

@@ -59,7 +59,7 @@ python3 import_notion.py ~/Downloads/notion-export.zip
 To export specific tables back to Notion:
 ```bash
 cd scripts/converters
-python3 markdown-to-csv.py ../../data/markdown/talents.md ../../data/csv/talents.csv
+python3 markdown-to-csv.py ../../data/markdown/talents.md <output>.csv
 ```
 
 ### Keyword Scanning

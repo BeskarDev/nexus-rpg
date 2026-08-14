@@ -44,17 +44,22 @@ An orc down from the dry country at harvest, as their band has come down every h
 
 <StatBlockTrait label="Skills">Fighting (1), Athletics (2), Survival (2)</StatBlockTrait>
 
-<StatBlockSection label="Attacks">
+<StatBlockSection label="Actions">
 
 - <EntryName>Battleaxe</EntryName> <StatBadge>slash</StatBadge><StatBadge>versatile (+1)</StatBadge> <DamageLadder values="7/10/16" />
 - <EntryName>Javelin</EntryName> <StatBadge>bundle (d4)</StatBadge><StatBadge>light</StatBadge><StatBadge>pierce</StatBadge><StatBadge>thrown (short/long)</StatBadge> <DamageLadder values="6/8/10" />
 
 </StatBlockSection>
 
-<StatBlockSection label="Abilities">
+<StatBlockSection label="Quick Actions">
 
-- <EntryName>Orcish Fury</EntryName> <StatBadge>Passive</StatBadge> When this creature hits with a melee weapon and rolls a critical success, they add their weapon damage an additional time to the total damage. The critical damage listed for their melee attacks already includes it.
-- <EntryName>Charge In</EntryName> <StatBadge>Quick Action</StatBadge> This creature gains 1 additional Movement this turn. They must use it to move closer to an enemy they can see.
+- <EntryName>Charge In</EntryName>. This creature gains 1 additional Movement this turn. They must use it to move closer to an enemy they can see.
+
+</StatBlockSection>
+
+<StatBlockSection label="Passives">
+
+- <EntryName>Orcish Fury</EntryName>. When this creature hits with a melee weapon and rolls a critical success, they add their weapon damage an additional time to the total damage. The critical damage listed for their melee attacks already includes it.
 
 </StatBlockSection>
 
@@ -97,19 +102,21 @@ A knee-high figure of fired clay with a hoe moulded into its fists, buried by th
 
 <StatBlockTrait label="Immunities"><TraitItem>bleeding</TraitItem><TraitItem>charmed</TraitItem><TraitItem>confused</TraitItem><TraitItem>frightened</TraitItem><TraitItem>poisoned</TraitItem><TraitItem>unconscious</TraitItem></StatBlockTrait>
 
+<StatBlockTrait label="Resistances"><TraitItem>poison</TraitItem></StatBlockTrait>
+
 <StatBlockTrait label="Weaknesses"><TraitItem>blast</TraitItem></StatBlockTrait>
 
-<StatBlockSection label="Attacks">
+<StatBlockSection label="Actions">
 
 - <EntryName>Fist</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="8/12/16" />
 - <EntryName>Pull Down</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="6/8/10" /> On a strong or critical hit, the target falls prone.
 
 </StatBlockSection>
 
-<StatBlockSection label="Abilities">
+<StatBlockSection label="Passives">
 
-- <EntryName>False Appearance</EntryName> <StatBadge>Passive</StatBadge> While this creature does not move, they are indistinguishable from ordinary grave goods. A creature searching the room can tell the difference with a successful Mind + Perception roll vs. TN 8.
-- <EntryName>Ambush Predator</EntryName> <StatBadge>Passive</StatBadge> When this creature hits an enemy that is unaware of them with an attack for the first time during a scene, increase the SL of their attack by one step (max. critical success).
+- <EntryName>False Appearance</EntryName>. While this creature does not move, they are indistinguishable from ordinary grave goods. A creature searching the room can tell the difference with a successful Mind + Perception roll vs. TN 8.
+- <EntryName>Ambush Predator</EntryName>. When this creature hits an enemy that is unaware of them with an attack for the first time during a scene, increase the SL of their attack by one step (max. critical success).
 
 </StatBlockSection>
 
@@ -152,20 +159,22 @@ A thin, quick eater of the dead, at home in the necropolis and in the graves the
 
 <StatBlockTrait label="Immunities"><TraitItem>bleeding</TraitItem><TraitItem>poisoned</TraitItem><TraitItem>unconscious</TraitItem></StatBlockTrait>
 
+<StatBlockTrait label="Resistances"><TraitItem>poison</TraitItem></StatBlockTrait>
+
 <StatBlockTrait label="Weaknesses"><TraitItem>radiant</TraitItem></StatBlockTrait>
 
-<StatBlockSection label="Attacks">
+<StatBlockSection label="Actions">
 
 - <EntryName>Claws</EntryName> <StatBadge>agile</StatBadge><StatBadge>light</StatBadge><StatBadge>slash</StatBadge> <DamageLadder values="6/8/10" /> On a strong or critical hit, the target is briefly dazed, or stunned for a short duration instead if they are already dazed. A stunned target can roll Strength + Fortitude vs. TN 8 at the end of each of their turns to end the condition early.
 - <EntryName>Bite</EntryName> <StatBadge>agile</StatBadge><StatBadge>pierce</StatBadge> <DamageLadder values="8/12/16" />
 
 </StatBlockSection>
 
-<StatBlockSection label="Abilities">
+<StatBlockSection label="Passives">
 
-- <EntryName>Feeding Frenzy</EntryName> <StatBadge>Passive</StatBadge> When this creature hits a stunned creature with their Bite, they regain 4 HP.
-- <EntryName>Undead Nature</EntryName> <StatBadge>Passive</StatBadge> This creature doesn't need to breathe, eat, drink, or sleep.
-- <EntryName>Keen Scent</EntryName> <StatBadge>Passive</StatBadge> This creature gains +1 boon on Perception rolls based on smell.
+- <EntryName>Feeding Frenzy</EntryName>. When this creature hits a stunned creature with their Bite, they regain 4 HP.
+- <EntryName>Undead Nature</EntryName>. This creature doesn't need to breathe, eat, drink, or sleep.
+- <EntryName>Keen Scent</EntryName>. This creature gains +1 boon on Perception rolls based on smell. They also sense the presence and general direction of any creature within close range by scent alone, without needing to see them. Still air and full cover block this.
 
 </StatBlockSection>
 
@@ -206,17 +215,17 @@ The second rank, working over the shoulders of the shields with three metres of 
 
 <StatBlockTrait label="Skills">Fighting (1), Athletics (2), Insight (2)</StatBlockTrait>
 
-<StatBlockSection label="Attacks">
+<StatBlockSection label="Actions">
 
 - <EntryName>Glaive</EntryName> <StatBadge>reach</StatBadge><StatBadge>slash</StatBadge><StatBadge>two-handed</StatBadge> <DamageLadder values="8/12/16" />
 - <EntryName>Sweeping Blow</EntryName> <StatBadge>reach</StatBadge><StatBadge>slash</StatBadge><StatBadge>two-handed</StatBadge> This creature can only use this attack if they skip all Movement this turn, before and after the attack. 6/8/10 damage against every creature within close range.
 
 </StatBlockSection>
 
-<StatBlockSection label="Abilities">
+<StatBlockSection label="Passives">
 
-- <EntryName>Close the Ranks</EntryName> <StatBadge>Passive</StatBadge> While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane.
-- <EntryName>Over the Shields</EntryName> <StatBadge>Passive</StatBadge> While another creature with `Close the Ranks` is within melee range of this creature, this creature's attacks do not suffer the reach bane.
+- <EntryName>Close the Ranks</EntryName>. While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane.
+- <EntryName>Over the Shields</EntryName>. While another creature with `Close the Ranks` is within melee range of this creature, this creature's attacks do not suffer the reach bane.
 
 </StatBlockSection>
 
@@ -257,17 +266,17 @@ The one behind the shields with a bag of cast lead, who has been told which targ
 
 <StatBlockTrait label="Skills">Fighting (1), Athletics (2), Perception (2)</StatBlockTrait>
 
-<StatBlockSection label="Attacks">
+<StatBlockSection label="Actions">
 
 - <EntryName>Sling</EntryName> <StatBadge>ammo</StatBadge><StatBadge>crush</StatBadge><StatBadge>simple</StatBadge><StatBadge>thrown (short/long)</StatBadge><StatBadge>two-handed</StatBadge> <DamageLadder values="7/10/13" />
 - <EntryName>Shortsword</EntryName> <StatBadge>agile</StatBadge><StatBadge>light</StatBadge><StatBadge>pierce</StatBadge> <DamageLadder values="5/7/9" />
 
 </StatBlockSection>
 
-<StatBlockSection label="Abilities">
+<StatBlockSection label="Passives">
 
-- <EntryName>Close the Ranks</EntryName> <StatBadge>Passive</StatBadge> While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane.
-- <EntryName>Ranging Shot</EntryName> <StatBadge>Passive</StatBadge> On a strong or critical hit with a ranged weapon, the target suffers marked (2).
+- <EntryName>Close the Ranks</EntryName>. While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane.
+- <EntryName>Ranging Shot</EntryName>. On a strong or critical hit with a ranged weapon, the target suffers marked (2).
 
 </StatBlockSection>
 
@@ -308,17 +317,17 @@ A trained soldier of a city or a warlord, three years drilled, standing behind a
 
 <StatBlockTrait label="Skills">Fighting (1), Athletics (2), Perception (2)</StatBlockTrait>
 
-<StatBlockSection label="Attacks">
+<StatBlockSection label="Actions">
 
 - <EntryName>Spear</EntryName> <StatBadge>pierce</StatBadge><StatBadge>reach</StatBadge><StatBadge>versatile (+1)</StatBadge> <DamageLadder values="7/10/13" />
 - <EntryName>Shield Bash</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="6/8/10" /> On a strong or critical hit, the target falls prone.
 
 </StatBlockSection>
 
-<StatBlockSection label="Abilities">
+<StatBlockSection label="Passives">
 
-- <EntryName>Close the Ranks</EntryName> <StatBadge>Passive</StatBadge> While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane.
-- <EntryName>Braced Spear</EntryName> <StatBadge>Passive</StatBadge> When using Opportunity Attack with their Spear, this creature deals +2 damage and the target's Movement ends.
+- <EntryName>Close the Ranks</EntryName>. While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane.
+- <EntryName>Braced Spear</EntryName>. When using Opportunity Attack with their Spear, this creature deals +2 damage and the target's Movement ends.
 
 </StatBlockSection>
 
@@ -359,20 +368,30 @@ The one who chose this bend in the road, told everyone where to stand, and has a
 
 <StatBlockTrait label="Skills">Fighting (1), Stealth (2), Insight (2), Influence (2)</StatBlockTrait>
 
-<StatBlockSection label="Attacks">
+<StatBlockSection label="Actions">
 
 - <EntryName>Knotted Lash</EntryName> <StatBadge>agile</StatBadge><StatBadge>entangle (medium)</StatBadge><StatBadge>light</StatBadge><StatBadge>reach</StatBadge><StatBadge>slash</StatBadge> <DamageLadder values="7/9/11" />
 - <EntryName>Javelin</EntryName> <StatBadge>bundle (d4)</StatBadge><StatBadge>light</StatBadge><StatBadge>pierce</StatBadge><StatBadge>thrown (short/long)</StatBadge> <DamageLadder values="7/9/11" />
 
 </StatBlockSection>
 
-<StatBlockSection label="Abilities">
+<StatBlockSection label="Quick Actions">
 
-- <EntryName>Quick Escape</EntryName> <StatBadge>Quick Action</StatBadge> When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked.
-- <EntryName>Get In Front</EntryName> <StatBadge>Quick Action</StatBadge> When an enemy attacks this creature while an ally is within melee range of this creature, that attack targets that ally instead.
-- <EntryName>Spring the Trap</EntryName> <StatBadge>Elite Trigger</StatBadge> When this creature suffers a Wound, they whistle, and the goblins who were waiting for the signal come down. Two Goblin Skulkers arrive within short range of this creature, from cover or higher ground if there is any. Every ally within short range of this creature immediately moves up to a short distance unprovoked.
-- <EntryName>Night Vision</EntryName> <StatBadge>Passive</StatBadge> This creature can see one range category further from sources of bright and dim light.
-- <EntryName>Small Stature</EntryName> <StatBadge>Passive</StatBadge> This creature gains +1 boon on Agility rolls to hide or move stealthily.
+- <EntryName>Quick Escape</EntryName>. When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked.
+- <EntryName>Get In Front</EntryName>. When an enemy attacks this creature while an ally is within melee range of this creature, that attack targets that ally instead.
+
+</StatBlockSection>
+
+<StatBlockSection label="Triggers">
+
+- <EntryName>Spring the Trap</EntryName>. When this creature suffers a Wound, they whistle, and the goblins who were waiting for the signal come down. Two Goblin Skulkers arrive within short range of this creature, from cover or higher ground if there is any. Every ally within short range of this creature immediately moves up to a short distance unprovoked.
+
+</StatBlockSection>
+
+<StatBlockSection label="Passives">
+
+- <EntryName>Night Vision</EntryName>. This creature can see one range category further from sources of bright and dim light.
+- <EntryName>Small Stature</EntryName>. This creature gains +1 boon on Agility rolls to hide or move stealthily.
 
 </StatBlockSection>
 

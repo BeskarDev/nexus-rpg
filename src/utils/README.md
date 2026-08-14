@@ -17,7 +17,6 @@ src/utils/
 │   ├── input/         # Source HTML/ZIP files
 │   ├── markdown/      # Converted markdown
 │   ├── split-tables/  # Transformed tables
-│   ├── csv/          # CSV exports
 │   └── json/         # JSON data for app
 ├── __tests__/          # Tests
 └── creature-template.json
@@ -56,10 +55,10 @@ See detailed documentation: [scripts/notion-import/README.md](./scripts/notion-i
 ```bash
 # Single file
 cd scripts/converters
-python3 markdown-to-csv.py ../../data/markdown/talents.md ../../data/csv/talents.csv
+python3 markdown-to-csv.py ../../data/markdown/talents.md <output>.csv
 
 # All files in directory
-python3 markdown-to-csv.py ../../data/markdown/ ../../data/csv/ --all-files
+python3 markdown-to-csv.py ../../data/markdown/ <output-dir>/ --all-files
 ```
 
 ### Scan for Keywords

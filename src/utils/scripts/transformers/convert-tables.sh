@@ -41,6 +41,10 @@ printf "\nConverting Markdown to CSV...\n"
 for file in data/markdown/*.md; do
     filename=$(basename "$file" .md)
     if [ "$filename" = "mystic-spells" ]; then
+        # CSV export was for Notion's "merge with CSV" import, which is out of the
+        # process (owner ruling, 2026-08-11), so data/csv/ was removed. Pass an
+        # output path if you ever need one again.
+        mkdir -p data/csv
         python3 scripts/converters/markdown-to-csv.py "$file" "data/csv/${filename}.csv" --type mystic-spells
     fi
 done

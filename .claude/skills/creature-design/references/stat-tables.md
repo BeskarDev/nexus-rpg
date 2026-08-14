@@ -28,6 +28,27 @@ where the formula returns 0 and heavy armor would otherwise be indistinguishable
 across ten levels while a flat +1-per-tier Defense grew +10, sliding player hit rates from 79% down to
 46%. This curve holds 55–71%.
 
+### The Defense spread: base ±1 by default, `base + 2` is the tier's rare ceiling (D-142)
+
+**All three Defenses start at the tier's base.** The **default spread is ±1** — one up, one flat, one down —
+and **size modifiers apply on top of that**. `base + 2` is a **rare** case, is the **highest any single
+Defense may reach at its tier**, and must be **balanced against HP and AV so it does not produce a wall**.
+
+**One point of Defense is worth far more than one point of AV.** A level-4 martial rolls
+`d8 + 1d6 + Fighting 2`, so at tier 4:
+
+| Defense | needs `d8+d6` ≥ | hit rate | damage/turn vs AV 6 | 40 HP lasts |
+|---|---|---|---|---|
+| 9 | 7 | 68.8% | 5.62 | 2.74 party rounds |
+| 10 (base) | 8 | 56.2% | 4.29 | 3.58 |
+| 11 | 9 | 43.8% | 3.12 | 4.92 |
+| **12** | 10 | **31.2%** | **2.12** | **7.24** |
+
+**`base + 2` stacked on raised AV is a second defensive layer, not a shift.** Two tier-4 drafts were written
+at Parry 12 and measured **7.24 party rounds for a Basic** and **8.34 for an Elite**, against targets of 2.0
+and 4.6. Both were rejected. *(This replaces the older, looser "individual defenses may shift within 2 of
+base".)*
+
 ### Carried gear Quality — per tier AND category (D-091)
 
 **The tier's weapon-damage figure above is a NATURAL-weapon figure.** A creature carrying a published
@@ -172,11 +193,70 @@ Three rules (D-114), and this was the last chassis number without one:
 2. **A shield adds +1 on top** and is named in the string. Shields gain AV only from **Quality 4**
    (`07-magic-items/effects.md`), so a Q2 or Q3 shield is +1.
 3. **The vocabulary is closed.** `natural light` / `natural heavy` for hide, chitin, bone and clay;
-   `light armor` / `heavy armor` for worn gear; `light armor and shield` when both. Never mixed, never
-   invented.
+   `light armor` / `heavy armor` for worn gear; `light armor and shield` when both; and **`none` for a
+   creature with no body at all** (D-139). Never mixed, never invented.
 
 **The light/heavy word decides whether blades work** (principle 39), so it is a design choice, not a
 label for the number.
+
+#### `armor: "None"`, `av: "0 (none)"` — and it has to be paid for (D-139)
+
+Only for a creature with **no body**: an `Incorporeal` Undead, a Spirit. AV is flat reduction from a
+surface and an incorporeal creature has none — what happens to a spear is that it goes half way through,
+and *that is a resistance*, not armour.
+
+**The swap is not free. Measured, party of four against a level-4 martial:**
+
+| | Party rounds |
+|---|---|
+| baseline: 40 HP, AV 4 light | **2.01** |
+| AV 0 + physical resistance, HP 40 | 2.46 · **+22%** |
+| **AV 0 + physical resistance, HP one tier down** | **1.85** |
+
+Halving beats flat reduction at the top of the damage range, so **take HP one tier down as the price.**
+That lands the creature slightly *under* baseline, which is correct: physical resistance is the only
+defence that is never party-dependent, and a defence that always pays out should sit at or under the clock.
+
+Two things travel with it. **`grappled` and `restrained` immunity comes free with "no body"** and invents
+nothing — the `Amorphous` and `Swarm` additives already grant it. And **`slash` applies**, because no
+armour is not heavy armour, and is then halved: a sword against a shade does roughly what a mace does
+against an ordinary creature. **Blades work, badly**, which is a better statement than "blades are
+useless".
+
+#### Heavy armor costs a tier of Defense, and buys AV rather than being hard to hit (D-141)
+
+**Heavy is not a free choice at the same tier.** Measured over the whole ladder, party of four:
+
+| | mean, tiers 3-10 | range |
+|---|---|---|
+| heavy, no price paid | **1.70x** a light creature's clock | 1.59-1.81x |
+| heavy, **Defense base one tier down** | **1.38x** | **1.32-1.44x** |
+| heavy, HP one tier down | 1.40x | 1.10-1.59x |
+
+**Two effects, and the second is the one that gets missed** because it is written on the player's weapon: the
+AV gap grows (+1 at tier 1, **+5 at tier 10**), *and* a heavy creature is immune to the whole **`slash`**
+bonus, a full extra application of the attacker's weapon damage.
+
+> **A creature whose armor is `heavy` takes its Defense base one tier down.**
+
+**Defense, not HP.** They cost the same on average and differ completely in stability: HP is a **shrinking
+fraction** of a linear curve (33% of the pool at tier 3, 10% at tier 10) against a multiplicative advantage,
+so it drifts. Defense scales with the chassis, so it holds. And **creature HP moves in intervals of 10** (5
+only in special circumstances), so a fractional HP price is not available — 70 x ¾ is not an HP value.
+
+***The catch, and it is the half that makes the rule work.*** A tier of Defense only pays if the Defense the
+attack **targets** moves. A melee attacker rolls against **Parry**, so dropping the base while keeping Parry
+at the **top** of the ±1 spread pays nothing — measured at **1.78x** versus **1.36x** with Parry in the
+middle.
+
+> **Heavy armor buys AV and gives up being hard to hit.** Parry sits at the middle of the spread or below,
+> never at the top. Plate makes a creature hard to **hurt**, not hard to **hit**.
+
+**~1.38x is the target, not 1.00x** — a heavy creature should be tougher, or the choice says nothing. The
+number to stay away from is the **2x** that `02-combat-math.md` §5 calls the fight the programme exists to
+prevent. **This is a chassis consequence, not a tier adjustment**, so a heavy creature may still take a
+separate principle-38 trade on top. At tiers 0-2 it barely bites; its real work is tier 6 and up. Table
+reproducible from `.drafts/bestiary/creatures/tier-4-check.py`.
 
 **Paired natural weapons** — claws, talons, pincers — carry the **`light`** property and therefore attack
 **twice in one Action, with no bane**: `02-attacking.md` exempts *"unarmed attacks or natural weapons that
@@ -359,9 +439,26 @@ outgoing roster gave every undead blanket charm and fear immunity regardless of 
 across six inconsistent sets. Tying it to the additive means **a lich can be frightened and a skeleton
 cannot**, which is both correct and a tactical lever for the party.
 
+> **`immunities` holds CONDITIONS. `resistances` and `weaknesses` hold DAMAGE TYPES. They are different
+> fields and neither implies the other** — and `poisoned` / `poison` is the trap, because the two words look
+> like one thing. **A creature immune to the `poisoned` condition still takes poison damage in full.** Same
+> for `burning` and `fire`. So the sets below grant **no damage protection whatsoever**, and neither does
+> `Undead Nature`, whose entire text is *"This creature doesn't need to breathe, eat, drink, or sleep."*
+> If a creature should shrug off a damage **type**, that is a `resistances` entry and it needs a weakness
+> beside it (D-035).
+
 - **Mindless** (required on Undead and Automaton, or `Intelligent`): charmed, frightened, confused.
 - **Undead**, additionally: bleeding, poisoned, unconscious.
 - **Automaton**, additionally: bleeding, poisoned, unconscious.
+
+**The one damage-type default: Undead and Automaton are `resistances: ["poison"]`** (D-148). No blood, no
+organs, nothing for a venom to act on — but **resistance, not immunity**, and the reason is measurable. A
+**poison coating ignores AV** (2/4/6 from the equipment list), and these are the roster's high-AV creatures, so
+the coating is worth **more** against them than against anything else: **22.7%** of a level-4 martial's damage
+against a light creature, **32.8%** against an AV 6 heavy one. Immunity would remove a third of their output
+against the creature they most need a bypass for, and a bought vial is the off-the-shelf AV bypass a character
+without a mace can actually get. **`necrotic` is deliberately excluded** — 36 published spells deal it,
+including rank-0 cantrips, so resisting it across the 14-record Undead family is D-036's specialist-lockout.
 - **Spirit (Primordial)**: its own element — the sanctioned embodiment case (D-036).
 - **Amorphous** additive: grappled, and no anatomy to target.
 
@@ -452,7 +549,10 @@ One Defense point is worth ~18.5% of incoming damage from tier 5 up; one AV poin
 ### Chassis
 - [ ] HP for tier; format matches category (`40` / `2×40` / `3×40`)
 - [ ] AV = tier (light) or **1.5 × tier rounded up** (heavy) — D-014
-- [ ] Defense from the tier table (**+1 per two tiers above tier 5**); Resist ≤ base + 2 — D-015
+- [ ] Defense from the tier table (**+1 per two tiers above tier 5**) — D-015
+- [ ] **Defense spread is base ±1 by default**, size on top; `base + 2` is rare, is the tier's ceiling for a
+      single Defense, and is paid for in HP or AV — D-142
+- [ ] **`heavy` armor costs one tier of Defense base**, and Parry sits mid-spread or below — D-141
 - [ ] Damage = base + 1×/2×/3× weapon damage. Never a doubled increment. **An always-on critical bonus
       is the one exception and must be declared** — see § Always-on bonuses below
 - [ ] **Paired natural weapons carry `light` and take HALF the tier's weapon damage each** (they attack twice); a single natural weapon takes the full figure — D-076
@@ -469,7 +569,7 @@ One Defense point is worth ~18.5% of incoming damage from tier 5 up; one AV poin
 ### Abilities
 - [ ] Every ability has a **Trigger**, an **Effect** naming who/what/how much/how long, and a **Limit**
 - [ ] Qualifier is ONE closed-list value with nothing after it; any limiter is the LAST SENTENCE of the text; limiter is `recharge (dX)`, `once per scene`, or `once between your turns`
-- [ ] **The limiter is in the `qualifier`, and only on an `Action`** — never on a Passive, never in an attack's `properties` (attacks badge it instead) — D-077
+- [ ] **Only an `Action` may carry a limiter at all** — never a Passive (category error), never a Quick Action (already once between turns), never a trigger. On an attack the limiter is likewise the last sentence and never a property badge — D-077, placement per D-107
 - [ ] **No `X/day`, no `once per combat`, no `once per turn`**; `recharge` uses d4/d6/d8 only
 - [ ] Attack count fits category (Basic 1–2, Elite 2–3, Lord 3–5)
 - [ ] Ability count fits category (Basic 3, Elite 4, Lord 6). **Named slots count toward the total and may overlap** — D-030

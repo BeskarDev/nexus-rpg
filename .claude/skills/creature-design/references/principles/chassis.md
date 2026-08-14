@@ -145,6 +145,10 @@ still ask the party a question.
 
 **Two things fall out of this that were previously special cases:**
 
+- **D-066's leader arithmetic is a GUIDELINE, not a hard rule** (D-143). Where a creature's own weight puts
+  it somewhere else, the placement wins and the departure gets written down. The **Elite mummy sits at tier
+  6**, two rungs above the Basic mummy rather than one, because that is where the creature belongs — *"its
+  more of a guideline than a hard rule anyway"* (owner, 2026-08-14).
 - **Where a tier's Elite and Lord slots come from.** D-066 pushes every leader one rung up (Elite) or two
   (Lord), so a tier whose Basics are all rank-and-file has no boss of its own. The slot is filled by
   **the leader of the tier below**, or by a **solitary mini-boss that leads nothing**. Tier 2 was the

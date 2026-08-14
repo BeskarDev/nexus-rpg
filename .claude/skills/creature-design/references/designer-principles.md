@@ -1,6 +1,6 @@
 # Designer Principles — Creature Design
 
-**Binding rules, not suggestions.** 46 principles, split by the phase of work they govern so a
+**Binding rules, not suggestions.** 51 principles, split by the phase of work they govern so a
 task loads only what it needs. **Numbers are global and permanent — never renumber.**
 
 Two sources feed them: **native** principles distilled from owner feedback during creature work,
@@ -99,6 +99,8 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **46.** Write an ability's clauses in resolution order, and make the second effect the payoff of the first. *(abilities)*
 - **48.** The tier says how strong. The **category** says how many adventurers it is sized against: Basic one, Elite a group or a mini-boss slot, Lord a whole party alone. *(chassis)*
 - **49.** Never cancel a universal player option. Add pressure instead of removing a choice. A Passive that voids disengaging is the canonical failure. *(abilities)*
+- **50.** A construct is a myth, not a machine — a spirit in a vessel, never a mechanism — and a concept carried forward from an appendix re-enters at step 1. *(identity)*
+- **51.** Undead are the setting's horror: a curse that outlives the fight and dread that takes a turn away, never a second damage line. Test: *would this be interesting on a bandit?* *(identity)*
 
 ## Appending a new principle
 
@@ -108,7 +110,7 @@ When the owner corrects or refines a creature design decision in session:
 one-line title each. Open the phase file rather than this index when you are designing: this list says
 *which* principle applies and never what it says.
 
-1. Take the next free number (currently next: **50**).
+1. Take the next free number (currently next: **52**).
 2. **Write the full principle into the phase file it belongs to** — `principles/chassis.md`,
    `identity.md`, `abilities.md` or `writing.md` (numbered, bolded one-line rule, then reasoning,
    then owner-ruling provenance).

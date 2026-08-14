@@ -97,7 +97,7 @@ other ten: at tier 9 it promises 15/19/23 where the creature data says 18/33/48.
 
 ## Design Principles
 
-**46 binding principles, split by phase so a task loads only what it needs.** Full text in
+**51 binding principles, split by phase so a task loads only what it needs.** Full text in
 [references/principles/](references/principles/); the one-line index of all 46 and the
 "which file when" table are in
 [references/designer-principles.md](references/designer-principles.md).
@@ -192,7 +192,13 @@ python3 -c "import json;[print(f\"{c['tier']:2} {c['category']:6} {c['name']}\")
   **The light/heavy choice is about `slash`, not only about AV** (principle 39): a heavy-armored creature
   is immune to the slash bonus, so blades lose about a third of their damage against it. Ask whether
   swords should work on this creature and write the answer down.
-- **Defenses** (Parry/Dodge/Resist): base 6 + tier each; individual defenses may shift within 2 of base. Large/Huge: Parry up, Dodge down; Small/Tiny: reverse. **Resist rarely above 6 + tier + 2** — high mental attributes don't justify more.
+- **Defenses** (Parry/Dodge/Resist): base 6 + tier each. **The default spread is ±1** — one up, one flat, one
+  down — with **size modifiers on top** (Large/Huge: Parry up, Dodge down; Small/Tiny: reverse). **`base + 2`
+  is rare, is the ceiling for any single Defense at that tier, and must be paid for in HP or AV** so it does
+  not become a wall (D-142). One point of Defense is worth far more than one point of AV — the arithmetic is
+  in [references/stat-tables.md](references/stat-tables.md#the-defense-spread-base-1-by-default-base--2-is-the-tiers-rare-ceiling-d-142).
+- **Armor**: `heavy` costs the creature **one tier of Defense base**, and its Parry sits at the middle of the
+  spread or below. Heavy armor buys AV, not being hard to hit (D-141).
 - **Attributes**: primary = tier's max attribute die; secondaries 1–2 die sizes below.
 - **Skills**: primary combat/magic skills at "1st" rank from table, others at "2nd"; add thematic skills (Stealth for ambushers, etc.).
 
@@ -470,7 +476,11 @@ creature is one object in that array:
 ```jsonc
 {
   "name": "Sand Lurker",
-  "type": "Large Monstrosity",        // "<Size> <Type>"
+  "size": "Large",                    // own field, from creature-sizes.json
+  "type": "Magical Beast",            // one of the twelve
+  "subtype": ["Primal"],              // ARRAY — subtypes plus any additives.
+                                      // `Mindless` or `Intelligent` is REQUIRED
+                                      // here on every Undead and Automaton
   "tier": 3,
   "category": "Basic",                // Basic | Elite | Lord
   "armor": "Light",                   // must also appear inside `av` below
@@ -493,6 +503,8 @@ creature is one object in that array:
       "qualifier": "Passive",         // Passive | Action | Quick Action | Elite Trigger | Lord Trigger.
                                       // ONE value, NOTHING after it. A limiter is never written here —
                                       // it is the LAST SENTENCE of `text`. Only `Action` may have one.
+                                      // The qualifier also DECIDES WHICH CARD GROUP this renders under
+                                      // (D-147), so it is structural, not decorative.
       "text": "This creature senses any creature touching the sand within short range."
     }
   ],
@@ -530,7 +542,11 @@ Field notes that the generator enforces (it fails the build, it does not guess):
   weak/strong/critical ladder, and the word "damage" is dropped. Write the triple first
   and put everything else after it. Compound forms ("…damage plus 6 fire damage") are
   left as prose on purpose.
-- `properties` and `qualifier` become badges; write them as plain words, no markup.
+- **The card groups entries by when a GM uses them, not by array** (D-147): **Actions** (every
+  `attacks` entry plus abilities qualified `Action`), then **Quick Actions**, **Triggers**, and
+  **Passives** (including resolved traits). So `qualifier` is structural — it picks the group.
+- `properties` become badges; write them as plain words, no markup. **`qualifier` does not** — its
+  group heading already states it, so only attacks carry badges.
 - Every string is markdown, so conditions and damage types auto-link and chip. Do not
   hand-write links.
 - `lore` is an optional fixed-structure object — omit the key rather than writing an empty
