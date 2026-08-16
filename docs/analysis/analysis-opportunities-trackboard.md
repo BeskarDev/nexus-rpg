@@ -17,7 +17,7 @@ The following systems already have dedicated analysis reports:
 | Alchemy & crafting system | `alchemy-crafting-system.md` |
 | Exploration crawl system | `exploration-crawl-system.md` |
 | Ability tags | `ability-tags.md` |
-| Downtime system | `downtime-system-analysis.md` |
+| Downtime system | `downtime-system-analysis.md` (+ `settlement-frontier-town-analysis.md` addendum on the frontier-town/settlement-menu adaptation) |
 | Enchantments & magic items | `magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` (+ `magic-items/catalogs/`) |
 | Creature creation & encounter building | `creature-creation-encounter-building-analysis.md` |
 | Non-magical equipment | `equipment/non-magical-equipment-analysis.md` |
