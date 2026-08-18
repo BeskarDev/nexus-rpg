@@ -13,7 +13,7 @@
  * match, "short duration" links as the phrase while a bare "short" in prose is
  * gated out.
  *
- * See docs/analysis/keyword-chip-detection-plan.md (Phase 4b, §5.3).
+ * See docs/analysis/_archive_/keyword-chip-detection-plan.md (Phase 4b, §5.3).
  */
 
 import { Parent } from 'unist'

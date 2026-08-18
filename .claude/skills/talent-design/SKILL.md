@@ -19,12 +19,13 @@ Talents are special abilities tied to one of 16 skills, bought with talent point
 | **Conditions** (official keyword list) | `docs/05-combat/04-conditions.md` |
 | **Effect durations** (briefly/short/medium/long/very long) | `docs/06-scenes/02-effect-durations.md` |
 | **Weapon/armor properties** | `docs/04-equipment/05-armor-weapon-properties.md` |
-| System analysis + prioritized roadmap (§9, v2.1) | `docs/analysis/talents/TALENT_SYSTEM_ANALYSIS.md` |
-| **Per-skill workbenches** (inventory, gaps, full design proposals) | `docs/analysis/talents/skills/<skill>.md` — all 16 exist |
-| Challenge/social/travel integration analyses | `docs/analysis/talents/*.md` |
+| **Open design work: prestige talents R4–R5** (the only live talent GDD) | `docs/analysis/characters/prestige-talents-gdd.md` |
+| System analysis + roadmap (ARCHIVED — P0–P2 shipped, base scope complete per owner ruling 2026-08-18) | `docs/analysis/_archive_/talents/TALENT_SYSTEM_ANALYSIS.md` |
+| Per-skill workbenches (ARCHIVED — inventory and gap sections describe the pre-2026-07-19 talent file) | `docs/analysis/_archive_/talents/skills/<skill>.md` — all 16 exist |
+| Challenge/social/travel integration analyses (archived) | `docs/analysis/_archive_/CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md`, `_archive_/TRAVEL_TALENT_INTEGRATION.md` |
 | **Designer principles** (binding — incl. rules ported from spell design) | [references/designer-principles.md](references/designer-principles.md) |
 
-**Read the target skill's talent file AND its workbench before designing** — the workbench is the finer-grained, more current source for that skill's gaps and proposals; several roadmap items already have full drafts there (review-and-promote, not design-from-scratch). The main analysis §9 roadmap sets the system-wide order: baseline fixes (P0) → completions (P1) → merged expansion pass (P2) → signature re-audit (P3) → high-rank progression (P4).
+**The base talent system is complete for its current scope** (148 talents, all 16 skills covered through R1–R3). New design work targets the prestige GDD's R4–R5 backlog. The archived workbenches remain useful for a skill's theme map and seed concepts, but their inventories and gap lists are stale and their drafts predate the current power-budget principles — treat drafts as inspiration to redesign, never review-and-promote as written.
 
 ## Talent Structure — Three Progression Paths
 
@@ -70,7 +71,7 @@ One sanctioned exception: a Basic talent may grow to R4–R5 **organically** whe
 
 When a talent adds damage or grants healing, it plugs into the system-wide scaling frameworks — don't invent numbers:
 
-- **Damage scaling chassis**: `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6 (per-rank W/S/C values, AoE half-scaling). Talent damage riders are small **fixed ability bonuses** (+2 typical), far below spell bonuses at the same tier — talents provide options, items and spells provide potency. The combat-talent damage audit is in `docs/analysis/talents/TALENT_SYSTEM_ANALYSIS.md` §4.
+- **Damage scaling chassis**: `docs/analysis/_archive_/spells/SPELL_SYSTEM_ANALYSIS.md` §6 (per-rank W/S/C values, AoE half-scaling). Talent damage riders are small **fixed ability bonuses** (+2 typical), far below spell bonuses at the same tier — talents provide options, items and spells provide potency. The combat-talent damage audit is in `docs/analysis/_archive_/talents/TALENT_SYSTEM_ANALYSIS.md` §4.
 - **Healing scaling**: SPELL_SYSTEM_ANALYSIS §16 — single-target healing = 1:1 damage, Quick Action healing = ½, AoE = multi-target scaling; temp HP never stacks; **wound healing is extremely rare by design**. Talent-granted healing must not outpace Life-tradition spells (the intentional healing bottleneck) and must never make wound recovery routine.
 
 ## Anti-Patterns (from published-talent audit)
@@ -84,8 +85,8 @@ When a talent adds damage or grants healing, it plugs into the system-wide scali
 
 ## Creation Workflow
 
-1. **Pick the skill, read its pool and its workbench** — `docs/03-statistics/06-talents/<skill>.mdx` plus `docs/analysis/talents/skills/<skill>.md`. What themes are covered? What's missing (combat/utility/downtime spread)? Does the workbench already carry a full draft for this concept? If yes, the job is review-and-promote against current principles, not fresh design.
-2. **Check the roadmap position** — analysis §9 (v2.1): does this design belong to the current phase? Baseline fixes (P0) and completions (P1) come before new designs (P2+). Filling a documented gap > new territory. Watch the P1.3 blocked list (Supernatural Mobility, Presence of Conquest, Foresight — owner decision pending).
+1. **Pick the skill, read its pool and its archived workbench** — `docs/03-statistics/06-talents/<skill>.mdx` plus `docs/analysis/_archive_/talents/skills/<skill>.md`. The published `.mdx` (generated from `talents.json`) is the authoritative inventory; the workbench supplies the skill's theme map and seed concepts only. Workbench drafts predate the current power-budget principles — redesign, never promote as written.
+2. **Check the scope** — the base system (R1–R3) is complete; new talents need explicit owner direction. R4–R5 work follows `docs/analysis/characters/prestige-talents-gdd.md`: signature extensions (P4.1) and per-skill capstones (P4.2), one R4+ option per skill before any skill gets a second R5.
 3. **Anchor to skill identity** — role spread and aspects from references. Prefer Excels/Decent roles; the talent must clearly fit one of the skill's aspects.
 4. **Read every system the talent touches — in source, this session, before writing any mechanics.** A talent hooks into or modifies existing procedures; designing from memory invents mechanics that don't exist (a Master Artisan draft once gave "craft above what materials allow" and "repair magic items" — neither concept existed once `Craft an Item` and the repair-kit rules were actually read; the real hooks were the Crafting-rank Quality gate, the damaged→broken ladder, and a dangling "masterwork property" reference). Open the actual rules for whatever the talent's abilities reference and design onto the published procedure — its TNs, costs, gates, and terminology. Paths for the common surfaces (downtime and crafting, items and Durability, magic items, resting, time scales, challenges and travel, combat, spells): [references/system-surfaces.md](references/system-surfaces.md). The best designs graft onto hooks the system already dangles rather than adding parallel subsystems.
 5. **Choose the progression path** — Basic (R1–R3) is the default for new talents. Signature (R1–R5) is a closed list of 11 (extending one of those to R4–R5 = filling a documented gap). High-Level (R4–R5) for prestige designs — check analysis §8.4 templates, §8.5 proposals, and the §9.5 demand-scoping before inventing new ones. Organic Basic extension to R4–R5 per principle 24.

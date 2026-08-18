@@ -3,7 +3,7 @@
  *
  * Extended from the original four (`Weapon | Wearable | Consumable | Spell
  * Scroll`) to the vocabulary the item system itself publishes —
- * `docs/analysis/magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` §2.1 and its
+ * `docs/analysis/equipment/magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` §2.1 and its
  * catalogs — so a character's lantern has somewhere to go and the model is
  * ready for that work rather than needing a second migration when it lands.
  *

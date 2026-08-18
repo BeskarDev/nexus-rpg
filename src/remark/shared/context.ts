@@ -1,6 +1,6 @@
 /**
  * Context predicates for deciding whether an ambiguous term is being used
- * mechanically or as flavor. See docs/analysis/keyword-chip-detection-plan.md
+ * mechanically or as flavor. See docs/analysis/_archive_/keyword-chip-detection-plan.md
  * (Phase 3, §5.1).
  */
 

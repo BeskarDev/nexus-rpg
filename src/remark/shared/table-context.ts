@@ -10,7 +10,7 @@
  *
  * The header is unambiguously the first tableRow (`table.children[0]`).
  *
- * See docs/analysis/keyword-chip-detection-plan.md (Phase 2).
+ * See docs/analysis/_archive_/keyword-chip-detection-plan.md (Phase 2).
  */
 
 import { Parent } from 'unist'

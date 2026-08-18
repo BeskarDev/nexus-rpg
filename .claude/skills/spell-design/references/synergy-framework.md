@@ -1,6 +1,6 @@
 # Spell Synergy Framework
 
-The design groundwork for how spells combine — within a school, across a caster's turns, and across a party. Every school's **Internal Synergies** section in `docs/analysis/spells/schools/*.md` instantiates this vocabulary. Read this before designing any spell that is meant to combo, and before rewriting a school's synergy section.
+The design groundwork for how spells combine — within a school, across a caster's turns, and across a party. Every school's **Internal Synergies** section in `docs/analysis/_archive_/spells/schools/*.md` instantiates this vocabulary. Read this before designing any spell that is meant to combo, and before rewriting a school's synergy section.
 
 The old per-school synergy notes named individual spells ("Fireball + Frost Wave"). That is too low-level to design against. This framework is the high-level layer above it: the *roles* spells play, the *axes* they combine along, and the *shared currency* that lets different schools and different players plug into each other.
 

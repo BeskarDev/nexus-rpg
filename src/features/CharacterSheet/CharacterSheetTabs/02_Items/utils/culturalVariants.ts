@@ -22,7 +22,7 @@
  * restriction** (owner's call): any adventurer may name their weapon after any of
  * these regardless of where they are from. The region exists so the lists do
  * worldbuilding work rather than reading as an appendix of reskins, which is what
- * `docs/analysis/genre/sword-and-sorcery-genre-review-v2.md` §4.A found them to be.
+ * `docs/analysis/world/genre/sword-and-sorcery-genre-review-v2.md` §4.A found them to be.
  *
  * ## What the names are drawn from
  *

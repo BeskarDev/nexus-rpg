@@ -8,7 +8,7 @@
  * means the existing `keywords` and `chipMappings` data can migrate onto this
  * shape incrementally without any behavior change.
  *
- * See docs/analysis/keyword-chip-detection-plan.md for the phased rollout.
+ * See docs/analysis/_archive_/keyword-chip-detection-plan.md for the phased rollout.
  */
 
 /** Whether a term renders as a navigable link or a styled mechanical chip. */

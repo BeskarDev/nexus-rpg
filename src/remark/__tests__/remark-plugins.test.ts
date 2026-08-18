@@ -9,7 +9,7 @@ import tableChipsPlugin from '../table-chips-plugin'
  * Golden-file regression net for the remark plugins.
  *
  * Phase 1 extracted the shared tokenizer/longest-match loop behind callbacks
- * (see docs/analysis/keyword-chip-detection-plan.md). These tests lock the
+ * (see docs/analysis/_archive_/keyword-chip-detection-plan.md). These tests lock the
  * observable output so that refactor — and the heuristic phases that follow —
  * cannot silently change conversions. When a later phase intentionally changes
  * behavior, update the specific expectation with a note.

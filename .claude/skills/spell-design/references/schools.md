@@ -1,6 +1,6 @@
 # School Identity Quick Reference
 
-Compact identity table for the 14 schools. **The per-school analysis files in `docs/analysis/spells/schools/<school>.md` are the authoritative, detailed source** — traits, signature gimmicks, condition identities, trait×rank coverage matrices, gap lists, and combo audits. Read the school's file before designing; this table is for orientation and cross-school comparison only.
+Compact identity table for the 14 schools. **The per-school analysis files in `docs/analysis/_archive_/spells/schools/<school>.md` are the authoritative, detailed source** — traits, signature gimmicks, condition identities, trait×rank coverage matrices, gap lists, and combo audits. Read the school's file before designing; this table is for orientation and cross-school comparison only.
 
 ## Arcane Disciplines (Mind + Arcana — transgressive, selfish)
 
@@ -30,7 +30,7 @@ Compact identity table for the 14 schools. **The per-school analysis files in `d
 
 ## Synergy Quick Reference
 
-Short-hand of each school's synergy declaration (framework: [synergy-framework.md](synergy-framework.md) — setup / payoff / extender, cold-cast deficit, shared sockets). **The full instantiations live in each school's `### Internal Synergies` section in `docs/analysis/spells/schools/<school>.md`** — read that before designing a combo spell; this table is for orientation and for checking cross-school interlock at a glance.
+Short-hand of each school's synergy declaration (framework: [synergy-framework.md](synergy-framework.md) — setup / payoff / extender, cold-cast deficit, shared sockets). **The full instantiations live in each school's `### Internal Synergies` section in `docs/analysis/_archive_/spells/schools/<school>.md`** — read that before designing a combo spell; this table is for orientation and for checking cross-school interlock at a glance.
 
 | School | Emits (setup for anyone) | Rewards (its payoffs bite…) | Extender style | Top synergy gap |
 |--------|--------------------------|------------------------------|----------------|------------------|

@@ -1,6 +1,6 @@
 # Spell Rank Scaling Tables
 
-Canonical numbers for spell design (aligned with `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6). Use exactly.
+Canonical numbers for spell design (aligned with `docs/analysis/_archive_/spells/SPELL_SYSTEM_ANALYSIS.md` §6). Use exactly.
 
 ## Casting Basics
 

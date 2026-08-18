@@ -20,8 +20,8 @@ Creatures are designed on a tier chassis (Tier 0–10, matching adventurer level
 | **Effect durations** (briefly/short/medium/long/very long) | `docs/06-scenes/02-effect-durations.md` |
 | **Weapon/armor properties** | `docs/04-equipment/05-armor-weapon-properties.md` |
 | Published spells (for spellcasting creatures) | `docs/07-magic/02-arcane-spells/`, `04-mystic-spells/` |
-| Damage/healing scaling frameworks | `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6 and §16 |
-| Deep analysis (survivability math, encounter building, ability catalogues) | `docs/analysis/creature-creation-encounter-building-analysis.md` |
+| Damage/healing scaling frameworks | `docs/analysis/_archive_/spells/SPELL_SYSTEM_ANALYSIS.md` §6 and §16 |
+| Deep analysis (survivability math, encounter building, ability catalogues) | `docs/analysis/creatures/creature-creation-encounter-building-analysis.md` |
 | **Shared traits** (canonical) | `src/utils/data/json/creature-traits.json` — 47 reusable passives by name. A creature stores the NAME, `content:gen` expands it into a full Passive ability |
 | **Types, subtypes, additives** | `creature-types.json`, `creature-subtypes.json`, `creature-additives.json` — 12 types, subtypes are an **array** so additives sit alongside the primary value |
 | **Worldbuilding vault** | `~/git/personal/nexus-rpg-vault` (separate repo, German). `04 Natur/Bestiarium` holds the cosmological origin lore, `02 Kosmologie/Seelenreiche` the soul realms. **Read before designing a creature's identity. Read-only — never write to it** |

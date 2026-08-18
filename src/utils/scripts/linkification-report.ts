@@ -12,7 +12,7 @@
  *   bun run report:links -- <substr>...  # only files whose path contains a substr
  *   bun run report:links -- --terms fire,light   # only these converted terms
  *
- * See docs/analysis/keyword-chip-detection-plan.md (Phase 5).
+ * See docs/analysis/_archive_/keyword-chip-detection-plan.md (Phase 5).
  */
 
 import { remark } from 'remark'

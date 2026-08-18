@@ -25,8 +25,8 @@ Magic items are assembled from components with a strict cost formula: base item 
 | Enchantment tables | `docs/04-equipment/07-magic-items/enchantments.md` |
 | **Cost tables** | `docs/04-equipment/07-magic-items/cost-tables.md` |
 | Curses subsystem | `docs/04-equipment/07-magic-items/curses.mdx` |
-| Damage/healing scaling frameworks | `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6 and §16 |
-| Design analysis (gaps, planned reworks) | `docs/analysis/magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` + per-category catalogs in `docs/analysis/magic-items/catalogs/` |
+| Damage/healing scaling frameworks | `docs/analysis/_archive_/spells/SPELL_SYSTEM_ANALYSIS.md` §6 and §16 |
+| Design analysis (gaps, planned reworks) | `docs/analysis/equipment/magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` + per-category catalogs in `docs/analysis/equipment/magic-items/catalogs/` |
 
 The analysis doc contains **proposed but not-yet-implemented changes** (splitting armor/shield enchantment tables, removing the catalyst enchantment table, d100 conversion, minor-enchantment rule). Check it before designing enchantments — don't build on top of a structure that's slated for rework without flagging it.
 
@@ -100,7 +100,7 @@ Two distinct cases — don't confuse them:
 1. **Docs** — update the canonical table in `docs/04-equipment/07-magic-items/` (enchantments.md, materials.md, cost-tables.md, effects.md).
 2. **App JSON** — update the matching `src/utils/data/json/magic-item-*.json` file per [references/output-formats.md](references/output-formats.md). ⚠️ Edit directly, surgically — legacy regeneration scripts are deprecated.
 **Notion is out of the design process** (owner ruling, 2026-08-11). The workspace's inline databases are the pre-migration system and keeping them in sync costs more than it returns. The `notion-sync` skill stays available for a deliberate, owner-requested push. Do not run it as a publication step.
-4. Check `docs/analysis/magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` and the matching catalog in `docs/analysis/magic-items/catalogs/` — if the change touches an area with a pending rework proposal, flag it to the owner first.
+4. Check `docs/analysis/equipment/magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` and the matching catalog in `docs/analysis/equipment/magic-items/catalogs/` — if the change touches an area with a pending rework proposal, flag it to the owner first.
 
 Verify docs and JSON agree, then stop — the owner commits manually.
 

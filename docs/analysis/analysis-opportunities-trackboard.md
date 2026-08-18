@@ -6,31 +6,47 @@ This document catalogs game systems and concepts that do **not** yet have a dedi
 
 ## Existing Coverage Summary
 
-The following systems already have dedicated analysis reports:
+The following systems already have dedicated analysis reports. Convention: **`_archive_/` holds finished analyses** — their recommendations shipped (or were explicitly superseded) and the docs are kept for reference only. Everything outside `_archive_/` is live: open, partially implemented, or awaiting a redo.
+
+### Live
+
+| System | Report | Status (2026-08-18 audit) |
+|--------|--------|--------|
+| Combat art system fixes (difficulty rule, renames, design principles) | `combat/combat-art-fixes-gdd.md` | Open — nothing implemented yet |
+| New combat arts (expansion catalog, piecemeal approval) | `combat/new-combat-arts-gdd.md` | Open — proposals need power-budget review before publication |
+| Special materials | `equipment/materials-mechanical-effects-analysis.md` (deep-dive) + `magic-items/catalogs/materials.md` (implementation spec) | Open — Greater/Legendary materials still flavor-only |
+| Exploration crawl system | `scenes/exploration-crawl-system.md` | Outdated — rules moved on (travel roles, challenge dice, Exploration interval); procedure half needs redo |
+| Ability tags | `systems/ability-tags.md` (taxonomy) + `systems/ability-tags-audit.md` (tag data) + `spec/ability-tags-implementation.md` (tech spec) | Partial — design complete; JSON integration and sheet filtering are open app work |
+| Downtime core fixes (Complication table, Carouse, Craft an Item, Lingering Fatigue) | `scenes/downtime-core-fixes-gdd.md` | Open — Complication table still dangling in live rules |
+| Settlement & market layer (traits, events, market procedure) | `world/settlement-and-market-gdd.md` | Open — pairs with shipped random-settlement flavor tables |
+| Enchantments & magic items | `equipment/magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` (+ `equipment/magic-items/catalogs/`) | Open — catalogs pending owner approval; rulings live only in the design skill |
+| Creature creation & encounter building | `creatures/creature-creation-encounter-building-analysis.md` | Outdated — Aug 2026 creature overhaul changed AV/Defense chassis under it; needs redo |
+| Non-magical equipment | `equipment/non-magical-equipment-analysis.md` | Outdated — predates travel/supply, field alchemy, harvesting; re-audit before implementing |
+| Prestige talents (R4–R5) | `characters/prestige-talents-gdd.md` | Open — successor to the archived talent system analysis |
+| Folk ability reworks (R1–R8 + full rework designs) | `characters/folk-rework-gdd.md` | Open — not yet applied to `folk.json` |
+| Cultural abilities subsystem (50 abilities across 12 folk) | `characters/cultural-abilities-gdd.md` | Open — separate decision from the rebalance |
+| Domain building (strongholds, organizations, agent missions) | `world/domain/DOMAIN_SYSTEM_GDD.md` + subfiles | Open — spec complete, no rules published |
+| Sword & sorcery genre + game vibe alignment | `world/genre/sword-and-sorcery-genre-review-v2.md` (working document, incl. owner rulings) | Partial — tracks own status; §4.B bestiary section stale since creature overhaul |
+| Table experience, onboarding & setting integration | `world/genre/table-experience-and-setting-integration.md` (player/GM pedagogy layer, vault-to-rules import map) | Open — chapter 09 gap persists |
+| Faction turns (living world, GM faction procedure) | `world/factions/FACTION_SYSTEM_GDD.md` + catalog | Open — spec complete, no rules published |
+
+### Finished (`_archive_/`)
 
 | System | Report |
 |--------|--------|
-| Core dice mechanics & balance | `dice-mechanics-balance-analysis.md` |
-| Combat arts design | `combat-arts-design-analysis.md` |
-| Multi-hit damage interactions | `multi-hit-damage-interaction-analysis.md` |
-| Special materials | `materials-mechanical-effects-analysis.md` (deep-dive) + `magic-items/catalogs/materials.md` (implementation spec) |
-| Alchemy & crafting system | `alchemy-crafting-system.md` |
-| Exploration crawl system | `exploration-crawl-system.md` |
-| Ability tags | `ability-tags.md` |
-| Downtime system | `downtime-system-analysis.md` |
-| Enchantments & magic items | `magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` (+ `magic-items/catalogs/`) |
-| Creature creation & encounter building | `creature-creation-encounter-building-analysis.md` |
-| Non-magical equipment | `equipment/non-magical-equipment-analysis.md` |
-| Talent system (general) | `talents/TALENT_SYSTEM_ANALYSIS.md` |
-| Talent–travel integration | `talents/TRAVEL_TALENT_INTEGRATION.md` |
-| Talent–challenge & social intrigue integration | `talents/CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md` |
-| Spell system (overview + all 14 schools) | `spells/SPELL_SYSTEM_ANALYSIS.md`, `spells/schools/*.md` |
-| Folk naming conventions (12 folk) | `names/*.md` |
-| Folk traits & ancestry balance | `folk-traits-ancestry-balance-analysis.md` |
-| Domain building (strongholds, organizations, agent missions) | `domain/DOMAIN_SYSTEM_GDD.md` + subfiles |
-| Sword & sorcery genre + game vibe alignment | `genre/sword-and-sorcery-genre-review-v2.md` (working document, incl. owner rulings) + `_archive_/sword-and-sorcery-genre-review.md` (V1 mechanics audit, superseded) |
-| Table experience, onboarding & setting integration | `genre/table-experience-and-setting-integration.md` (player/GM pedagogy layer, vault-to-rules import map) |
-| Faction turns (living world, GM faction procedure) | `factions/FACTION_SYSTEM_GDD.md` + catalog |
+| Core dice mechanics & balance | `_archive_/dice-mechanics-balance-analysis.md` |
+| Multi-hit damage interactions | `_archive_/multi-hit-damage-interaction-analysis.md` |
+| Alchemy & potion crafting (superseded by shipped field alchemy) | `_archive_/alchemy-crafting-system.md` |
+| Talent system (general — base scope complete, prestige work moved to `characters/prestige-talents-gdd.md`) | `_archive_/talents/TALENT_SYSTEM_ANALYSIS.md` + `_archive_/talents/skills/*.md` |
+| Talent–travel integration | `_archive_/TRAVEL_TALENT_INTEGRATION.md` |
+| Talent–challenge & social intrigue integration | `_archive_/CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md` |
+| Spell system (overview + all 14 schools; §6/§16 remain the canonical scaling frameworks) | `_archive_/spells/SPELL_SYSTEM_ANALYSIS.md`, `_archive_/spells/schools/*.md` |
+| Folk naming conventions (12 folk) | `_archive_/names/*.md` |
+| Genre review V1 (superseded by v2) | `_archive_/sword-and-sorcery-genre-review.md` |
+| Keyword & chip detection plugins | `_archive_/keyword-chip-detection-plan.md` |
+| Combat arts analysis (outputs extracted to the two combat GDDs) | `_archive_/combat-arts-design-analysis.md` |
+| Downtime system analysis (split into core-fixes + settlement GDDs; §4.2 superseded by faction GDD) | `_archive_/downtime-system-analysis.md` |
+| Folk traits & ancestry balance audit (outputs extracted to the two character GDDs) | `_archive_/folk-traits-ancestry-balance-analysis.md` |
 
 ---
 
@@ -301,3 +317,18 @@ The following systems already have dedicated analysis reports:
 - Are there archetypes that require talents from 4+ skills to function, making them impractical to build?
 - How well do the archetype identity tags (rage, favored enemy, formations, etc.) map to concrete mechanical abilities?
 - Are there popular fantasy archetypes missing from the current list that the system could support?
+
+---
+
+### 19. Full Crafting System
+
+**Relevant Rules:** `docs/06-scenes/05-crafting-professions/`, `docs/06-scenes/04-downtime/activities.md` (Craft an Item), `docs/04-equipment/`, `docs/06-scenes/06-harvesting-creature-parts.md`
+
+**Rationale:** Field alchemy shipped in its final, talent-gated form and the modular alchemy analysis was retired (`_archive_/alchemy-crafting-system.md`). What remains unexamined is the full crafting picture built on the shipped systems: downtime crafting procedure, ingredient gathering, harvesting integration, crafting professions beyond field alchemy, and magic item creation. The old analysis's open halves (batch crafting, gathering) need a fresh derivation against the shipped model rather than a straight port.
+
+**Questions to Explore:**
+- Does the downtime "Craft an Item" activity align with the challenge dice framework, or does it still use the legacy required-successes model?
+- How do harvested creature parts and gathered ingredients feed into crafting recipes and costs?
+- What crafting professions beyond field alchemy deserve the same talent-gated treatment (smithing, enchanting, engineering)?
+- How does player crafting of magic items interact with the quality tier cost tables and enchantment system?
+- Where do crafting downtime activities intersect with the downtime system analysis's open recommendations?

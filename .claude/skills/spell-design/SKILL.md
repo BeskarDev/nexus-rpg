@@ -18,15 +18,15 @@ Spells belong to one of 14 schools: 6 **arcane disciplines** (Mind + Arcana, tra
 | Spell properties | `docs/07-magic/05-spell-properties.md` |
 | **Conditions** (official keyword list) | `docs/05-combat/04-conditions.md` |
 | **Effect durations** (briefly/short/medium/long/very long) | `docs/06-scenes/02-effect-durations.md` |
-| System-wide balance analysis | `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` — esp. **§6 damage scaling framework** and **§16 healing scaling investigation** |
-| **Per-school design spaces** (traits, gimmicks, trait×rank coverage matrices, gap lists, combo audits) | `docs/analysis/spells/schools/<school>.md` |
+| System-wide balance analysis | `docs/analysis/_archive_/spells/SPELL_SYSTEM_ANALYSIS.md` — esp. **§6 damage scaling framework** and **§16 healing scaling investigation** |
+| **Per-school design spaces** (traits, gimmicks, trait×rank coverage matrices, gap lists, combo audits) | `docs/analysis/_archive_/spells/schools/<school>.md` |
 
 The per-school analysis files are the deepest, most current source for school identity — **always read the target school's file before designing for it.** They supersede older role/trait summaries where they conflict.
 
 ## Design Workflow
 
 ### 1. Pick school and read its design space
-Read `docs/analysis/spells/schools/<school>.md`: identity, traits, signature gimmick, primary conditions, role spread, known gaps, trait×rank coverage matrix. Prefer designing in the school's **Excels** role; **Decent** is fine; avoid **Weak** roles unless deliberately subversive.
+Read `docs/analysis/_archive_/spells/schools/<school>.md`: identity, traits, signature gimmick, primary conditions, role spread, known gaps, trait×rank coverage matrix. Prefer designing in the school's **Excels** role; **Decent** is fine; avoid **Weak** roles unless deliberately subversive.
 
 ### 2. Check for gaps and duplicates
 - Does the school's gap list already call for this spell? Filling documented gaps > inventing new territory.
