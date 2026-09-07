@@ -2,6 +2,12 @@ import React from 'react'
 import { FIT_BLOCK_ATTRIBUTE } from '@site/src/components/autofit'
 import { DamageLadder } from '@site/src/components/codex/DamageLadder'
 import { Ability, Attack, Creature } from '@site/src/types/Creature'
+import {
+	CREATURE_SECTIONS,
+	FALLBACK_SECTION,
+	QUICK_ACTION_QUALIFIER,
+	sectionForQualifier,
+} from '@site/src/utils/typescript/creature/creatureSections'
 import { TraitRow, type TraitRowKind } from './CreatureTraits'
 import { ANY_TRIPLE } from './creatureEntryText'
 
@@ -47,8 +53,23 @@ const Slabs: React.FC<{ items: string[] }> = ({ items }) => {
 	)
 }
 
-const splitQualifier = (qualifier?: string): string[] =>
-	qualifier ? qualifier.split(',') : []
+/**
+ * An ability's qualifier as slabs, MINUS whatever the section heading already
+ * says (D-147).
+ *
+ * `Passive, 3/day` under a `Passives` heading is one new fact and one repeated
+ * one, and the docs card drops the repeat for the same reason: a badge on every
+ * line saying what the heading above it says is ink for nothing. The limiter is
+ * kept, because a heading cannot carry it.
+ *
+ * An unrecognised value is kept whole — Companion Traits writes `**Flying
+ * (hover).**`, where `hover` is a property rather than a `when`, and the
+ * fallback heading it groups under does not say it.
+ */
+const splitQualifier = (qualifier?: string): string[] => {
+	const parts = qualifier ? qualifier.split(',') : []
+	return sectionForQualifier(qualifier) ? parts.slice(1) : parts
+}
 
 /**
  * The corpus's inline emphasis, rendered rather than printed as asterisks.
@@ -152,6 +173,12 @@ const AbilityEntry: React.FC<{ ability: Ability }> = ({ ability }) => (
  * (F6): the panel was filed as body when it is head furniture. It moved to the
  * shell's `header` slot (D4), which is also what makes a continuation cheap —
  * its head is one name line, so most of the card is free for text.
+ *
+ * **Sections come from `CREATURE_SECTIONS`** — Actions / Quick Actions /
+ * Triggers / Passives, grouped off the qualifier (D-147, Q8T4.23). The printed
+ * card used to group by `Attacks` / `Abilities` / `Quick Actions`, which is the
+ * shape of the record rather than of a turn, so a GM reading a printed card and
+ * the same creature in the docs met two different stat blocks.
  */
 export function creatureBlocks(creature: Creature): CreatureBlock[] {
 	const blocks: CreatureBlock[] = []
@@ -173,46 +200,62 @@ export function creatureBlocks(creature: Creature): CreatureBlock[] {
 	trait('resistances', 'Resistances', creature.resistances)
 	trait('weaknesses', 'Weaknesses', creature.weaknesses)
 
-	creature.attacks.forEach((attack, index) => {
-		push(`attack-${index}`, <AttackEntry attack={attack} />, 'Attacks')
-		/**
-		 * An attack's sub-list is its OWN blocks, one per line.
-		 *
-		 * The Beholder Spawn's six eye rays are the corpus's one consumer, and
-		 * hung off the attack as a single `<ul>` they made a first block that
-		 * would not fit on a card of its own — the deck's only over-budget entry,
-		 * and a silent drop before F7 was fixed. Each ray is a self-contained
-		 * numbered line, so cutting between them costs a reader nothing.
-		 */
-		;(attack.details ?? []).forEach((detail, detailIndex) => {
-			push(
-				`attack-${index}-detail-${detailIndex}`,
-				<div className="pc-details">{inlineText(detail)}</div>,
-				'Attacks',
-			)
+	/**
+	 * The markdown path's legacy `**Quick Actions:**` section, folded in.
+	 *
+	 * `quickActions` is a HEADING, not a kind of ability (D-005): a quick action
+	 * is an ability whose qualifier says so. Companion Traits still writes the
+	 * heading and its entries carry no inline qualifier, so the heading supplies
+	 * one and the grouping below reads qualifiers only — one rule for both
+	 * sources, as with the entry contract in `creatureEntryText`.
+	 */
+	const abilities: Ability[] = [
+		...creature.abilities,
+		...(creature.quickActions ?? []).map((ability) =>
+			ability.qualifier
+				? ability
+				: { ...ability, qualifier: QUICK_ACTION_QUALIFIER },
+		),
+	]
+
+	for (const group of CREATURE_SECTIONS) {
+		const section = group.label
+		if (group.withAttacks) {
+			// Attacks first inside their group, exactly as the docs card orders
+			// them: they are the default thing to do, and they carry the damage
+			// ladder a GM scans for.
+			creature.attacks.forEach((attack, index) => {
+				push(`attack-${index}`, <AttackEntry attack={attack} />, section)
+				/**
+				 * An attack's sub-list is its OWN blocks, one per line.
+				 *
+				 * The Beholder Spawn's six eye rays are the corpus's one consumer,
+				 * and hung off the attack as a single `<ul>` they made a first block
+				 * that would not fit on a card of its own — the deck's only
+				 * over-budget entry, and a silent drop before F7 was fixed. Each ray
+				 * is a self-contained numbered line, so cutting between them costs a
+				 * reader nothing.
+				 */
+				;(attack.details ?? []).forEach((detail, detailIndex) => {
+					push(
+						`attack-${index}-detail-${detailIndex}`,
+						<div className="pc-details">{inlineText(detail)}</div>,
+						section,
+					)
+				})
+			})
+		}
+		abilities.forEach((ability, index) => {
+			// An unrecognised qualifier is grouped, never dropped: the markdown
+			// sources are hand-written and `**Flying (hover).**` puts a property
+			// where a qualifier goes. `creatures.json` cannot reach this — the
+			// generator fails the build on a qualifier outside the closed list.
+			const belongs =
+				(sectionForQualifier(ability.qualifier) ?? FALLBACK_SECTION) === section
+			if (!belongs) return
+			push(`ability-${index}`, <AbilityEntry ability={ability} />, section)
 		})
-	})
-
-	creature.abilities.forEach((ability, index) => {
-		push(
-			`ability-${index}`,
-			<AbilityEntry ability={ability} />,
-			// The docs' own label. Two surfaces naming one section two different
-			// things is the same class of drift the entry contract just fixed.
-			'Abilities',
-		)
-	})
-
-	// Quick actions are off-turn options and print as their own section: they
-	// used to be swallowed into `abilities` by a greedy section regex, so a GM
-	// could not tell which options were off-turn.
-	;(creature.quickActions ?? []).forEach((quickAction, index) => {
-		push(
-			`quick-${index}`,
-			<AbilityEntry ability={quickAction} />,
-			'Quick Actions',
-		)
-	})
+	}
 
 	return blocks
 }

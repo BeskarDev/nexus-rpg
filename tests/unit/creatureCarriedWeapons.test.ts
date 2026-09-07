@@ -122,7 +122,15 @@ describe('carried weapons use the equipment section verbatim (D-133)', () => {
 			Elite: [2, 3, 4, 5, 6],
 			Lord: [3, 4, 5, 6, 7],
 		}
-		const step: Record<number, number> = { 2: 0, 3: 1, 4: 1, 5: 2, 6: 3, 7: 4, 8: 5 }
+		const step: Record<number, number> = {
+			2: 0,
+			3: 1,
+			4: 1,
+			5: 2,
+			6: 3,
+			7: 4,
+			8: 5,
+		}
 		for (const c of roster)
 			for (const a of c.attacks) {
 				if (a.weapon === undefined) continue

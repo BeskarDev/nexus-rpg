@@ -27,6 +27,7 @@ import creatureTypes from '../data/json/creature-types.json'
 import companionTraits from '../data/json/companion-traits.json'
 import conditions from '../data/json/conditions.json'
 import weapons from '../data/json/weapons.json'
+import { CREATURE_SECTIONS } from '../typescript/creature/creatureSections'
 
 const REPO = path.resolve(__dirname, '../../..')
 const JSON_FILE = path.join(REPO, 'src/utils/data/json/creatures.json')
@@ -554,14 +555,16 @@ function validateCreature(entry: unknown, context: string): CreatureRecord {
  * placement three times, the pronoun rule across 17 shared traits.
  * ------------------------------------------------------------------ */
 
-/** The closed qualifier list. ONE value, never a limiter (D-107). */
-const QUALIFIERS = new Set([
-	'Passive',
-	'Action',
-	'Quick Action',
-	'Elite Trigger',
-	'Lord Trigger',
-])
+/**
+ * The closed qualifier list. ONE value, never a limiter (D-107).
+ *
+ * Derived from the section groups rather than restated: a qualifier's whole job
+ * is to say when an entry is used, which is the same thing the grouping reads,
+ * so a value legal here and grouped nowhere would be an entry the card drops.
+ */
+const QUALIFIERS = new Set<string>(
+	CREATURE_SECTIONS.flatMap((section) => [...section.qualifiers]),
+)
 
 /** Published damage types (`05-combat/02-attacking.md`). `cold`/`thunder` are D&D. */
 const DAMAGE_TYPES = new Set([
@@ -788,7 +791,7 @@ function validateCarriedWeapons(
 			fail(
 				context,
 				`attack "${name}" resolves to "${declared}", which is not a row in ` +
-					'weapons.json. Name a published weapon, or a published reskin\'s ' +
+					"weapons.json. Name a published weapon, or a published reskin's " +
 					'underlying row (a Flail counts as a Mace). Invented weapons change ' +
 					'the moment they are looted (principle 23)',
 			)
@@ -878,7 +881,7 @@ function validateCarriedWeapons(
 					`Quality ${quality} gear (D-091), so a ${declared} is ` +
 					`${row.damage} + ${QUALITY_STEP[quality]} = ${expectedWd}: the triple ` +
 					`should read ${x}/${x + expectedWd}/${x + 2 * expectedWd}. Carried ` +
-					'gear takes the equipment section\'s damage, adjusted only by a ' +
+					"gear takes the equipment section's damage, adjusted only by a " +
 					'legitimate Quality step. If this creature deliberately carries ' +
 					'better or worse gear, set "quality" on the attack and say why in ' +
 					'the notes (D-133)',
@@ -1367,25 +1370,17 @@ const TRAIT_LABELS: Record<(typeof LIST_FIELDS)[number], string> = {
  * attack is something you do on your turn, and so is an ability qualified
  * `Action`, so they belong under one heading.
  *
- * Ordered by how often a fight needs it, descending: every turn, every round,
- * once at a Wound, then the standing rules.
- *
  * Two defects this fixes, beyond reading better. `Thrown Dirt`, `Snatch` and
  * `Snatching Beak` are no-damage manoeuvres sitting in `attacks` because there
  * was nowhere else for a turn option to live — they are Actions and now say so.
  * And D-073's "two attack options" stops needing an argument about whether an
  * offensive Action counts.
+ *
+ * **The definition moved out of this file** (Q8T4.23): the printed card
+ * grouped the old way for as long as this was the generator's private constant,
+ * so it lives in `creatureSections` and both surfaces read the one copy.
  */
-const SECTION_GROUPS = [
-	{ label: 'Actions', qualifiers: ['Action'], withAttacks: true },
-	{ label: 'Quick Actions', qualifiers: ['Quick Action'], withAttacks: false },
-	{
-		label: 'Triggers',
-		qualifiers: ['Elite Trigger', 'Lord Trigger'],
-		withAttacks: false,
-	},
-	{ label: 'Passives', qualifiers: ['Passive'], withAttacks: false },
-] as const
+const SECTION_GROUPS = CREATURE_SECTIONS
 
 /**
  * Expand a creature's trait NAMES into full ability entries.

@@ -591,7 +591,7 @@ One Defense point is worth ~18.5% of incoming damage from tier 5 up; one AV poin
 - [ ] Duration chosen deliberately: `briefly` (one turn) for common riders, `short` (rest of the fight) for signature effects
 - [ ] **The duration comes BEFORE the condition: `briefly dazed`, never `dazed briefly`** — D-074
 - [ ] **`briefly` never spelled out longhand** as "until the end of their next turn"
-- [ ] Disabling conditions **escalate**, never land off a single roll — D-029
+- [ ] Disabling conditions **escalate** — either across two strong-or-critical hits or across the success level of one roll, never off a single undifferentiated hit — D-029, D-151
 - [ ] Secondary damage in its own sentence after the triple, with `(ignore AV)` — D-018
 - [ ] Rider magnitudes scale with tier; grapples state their limb cost
 - [ ] they/their/them for creatures. No semicolons, no em or en dashes

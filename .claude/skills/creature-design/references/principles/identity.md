@@ -207,13 +207,17 @@ invention:
 | Reach for | Published channel |
 |---|---|
 | A **curse that outlives the fight** | `deprived` — +1 bane on everything, half HP from short breaks, 2 Fatigue a day, and it ends only after a night's rest with food and water. In a tomb crawl that is a retreat |
-| **Dread**, escalating to helplessness | `frightened`, then `paralyzed` against a target already frightened. The tier-4 counterplay floor (06b §4) is exactly where this becomes legal |
+| **Dread**, escalating to helplessness | `frightened` on a success, `paralyzed` on a strong or critical one (D-151), or `paralyzed` against a target already frightened. The tier-4 counterplay floor (06b §4) is exactly where this becomes legal |
 | A **wound that will not close** | *"cannot regain HP"*, the wording the Death tradition and the Necromancy discipline both use |
 | **Being unable to hurt it properly** | physical resistance on an incorporeal one, with a `radiant` weakness as the answer (D-139) |
 
-**Spend the turn on the horror, not beside it.** The Mummy's `Dread Gaze` is an **Action**, so a mummy holding
-somebody in place is not hitting anybody, and the paralysis needs two landings. That cost is what makes the
-effect legal at all and it is also what makes it a scene: the party watches it choose.
+**Spend the turn on the horror, not beside it.** The Mummy's `Dread Gaze` was drafted as an **Action** for
+exactly that reason — a mummy holding somebody in place is not hitting anybody. **D-150 moved it to a Quick
+Action** so the Fist and the Gaze both fire every turn, which is D&D's Multiattack in Nexus terms, and the cost
+moved with it: the paralysis now rides the **success level** of the one roll (D-151) and a failure grants that
+creature immunity for the rest of the scene. The lesson survives the change. **Something has to pay for a
+disable** — a spent turn, a second landing, or a graded roll with a hard counterplay — and naming which one is
+part of writing the ability.
 
 **The failure this corrects, in full.** The Mummy's first draft had a `Sweeping Arms` multi-target attack and
 a `Tomb-Rot` Action that applied `deprived` on a failed save. Both were legal, both were on-chassis, and the

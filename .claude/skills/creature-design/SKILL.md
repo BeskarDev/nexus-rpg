@@ -329,7 +329,7 @@ found instead of quietly papered over.
 - **Ability TN** = 6 + tier. Saves usually Spirit/Strength + Fortitude. Official durations only.
 - Add mandatory trigger/Quick Action/defensive abilities per category (above), then thematic abilities: movement, senses, auras, environmental manipulation.
 - Damage/healing beyond basic attacks: principle 7 — spell scaling frameworks.
-- Condition-inflicting abilities: principles 8–9 and **16** — design against the published condition text, and **escalate** rather than landing a disable off one roll.
+- Condition-inflicting abilities: principles 8–9 and **16** — design against the published condition text, and **escalate**: either across two strong-or-critical hits, or across the success level of one roll (lesser condition on a success, greater on a strong or critical).
 - **Limiters**: `recharge (dX)` (4+ at the **end** of the turn, d4/d6/d8 only), `once per scene`, or `once between your turns`. Nothing else.
 - **A limiter is the LAST SENTENCE of the effect text. Never the qualifier, never an attack property.**
   The qualifier is one word saying what kind of action this is, and nothing follows it. This is the most
