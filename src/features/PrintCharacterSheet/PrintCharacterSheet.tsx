@@ -29,11 +29,33 @@ const SHEETS = [
 	{ key: 'personal', Sheet: PersonalSheet },
 ] as const
 
+/*
+ * The page, at A4 landscape and full bleed (M17 D0, D1).
+ *
+ * The print target is fixed — Chrome, "Print to PDF", margins: none — so the
+ * declared size IS the PDF's page size at 1:1 and there is no hardware margin
+ * to design around. That is what lets the page be the real A4 landscape
+ * (297 × 210mm) and each sheet an exact A5 half (148.5 × 210mm): two sheets
+ * tile the page with nothing left over and the fold is the page centre.
+ *
+ * The nonstandard 267 × 192mm at 0.5mm margins this replaces was sized to
+ * survive an unknown printer's unprintable edge. There is no unknown printer.
+ *
+ * Full bleed is safe because the CONTENT is not: `SheetLayout` keeps the frame
+ * inset from the trim, so a PDF later run through a home printer loses white
+ * margin and never a rule or a glyph.
+ */
+const PAGE_CSS = `
+	@page { size: A4 landscape; margin: 0; }
+`
+
 const sheetPageCount = Math.ceil(
 	SHEETS.length / itemsPerPage(SHEET_PAGE, SHEET_SECTION, SHEET_PAGE_MARGIN),
 )
 
 export const PrintCharacterSheet: React.FC = () => {
+	usePagePrintStyle(PAGE_CSS)
+
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>(emptyCharacter)
 	const [selectedCharacter, setSelectedCharacter] =
@@ -153,6 +175,11 @@ export const PrintCharacterSheet: React.FC = () => {
 							page={SHEET_PAGE}
 							item={SHEET_SECTION}
 							margin={SHEET_PAGE_MARGIN}
+							/* Nothing here is cut. The page IS the artifact, kept whole or
+							   folded once down its centre, and the fold guide is the paper's
+							   own edge. Trim marks belong to the card tools, where a page
+							   holds many items that really do get separated. */
+							cutMarks={false}
 							empty={
 								<p className="pt-empty">
 									Select a character in the controls panel to preview their

@@ -16,9 +16,3 @@
 		break-after: page;
   }
 }
-
-@page {
-  /*size: a4 portrait;*/
-  size: 192mm 267mm;
-  margin: 1mm;
-}
