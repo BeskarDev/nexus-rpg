@@ -23,7 +23,7 @@ General utilities:
 - `equipment.ts` - Equipment and item helpers
 - `getHpBarColor.ts` - Health bar color calculations
 - `htmlSanitizer.ts` - HTML content sanitization
-- `spellDamageParser.ts` - Parse and calculate spell damage expressions
+- `spellDamage.ts` - The authored spell damage block and its mapping onto the sheet's damage fields
 
 ## Usage
 

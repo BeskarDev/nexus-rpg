@@ -20,6 +20,35 @@ import { db } from '@site/src/config/firebase'
 import { calculateMaxHp } from './calculateHp'
 import { calculateCharacterLevel } from './calculateCharacterLevel'
 
+/**
+ * The document migrations that need nothing but the document (M19,
+ * owner-reported).
+ *
+ * Every legacy shape a stored character can carry is normalised here —
+ * statistics, skills, items, spells — so anything that reads a character out of
+ * Firestore gets the current schema. The print tools read characters through
+ * `CharacterSelector` rather than through `migrateDoc`, so before this split
+ * they saw the raw document: an item stored with `container: 'backpack'` and no
+ * `location` matched neither the worn panel nor the carried list and printed
+ * nowhere, with no sign on the paper that anything was missing.
+ *
+ * `personal` stays out: its migration reads a `player-info` document and the
+ * page's own `?id=` parameter, so it belongs to the sheet app and cannot run
+ * where there is no such URL.
+ */
+export const migrateStoredCharacter = <T extends Record<string, any>>(
+	data: T,
+): T => {
+	const migrated: Record<string, any> = { ...data }
+
+	if (data.statistics) migrated.statistics = migrateStatistics(data.statistics)
+	if (data.skills) migrated.skills = migrateSkills(data.skills)
+	if (data.items) migrated.items = migrateItems(data.items)
+	if (data.spells) migrated.spells = migrateSpells(data.spells)
+
+	return migrated as T
+}
+
 export const migrateDoc = async (
 	collectionId: string,
 	doc: DocumentSnapshot<DocumentData, DocumentData>,
@@ -27,21 +56,11 @@ export const migrateDoc = async (
 	const data = doc.data()
 	const updatedDoc = { ...data }
 
-	const promises = Object.entries(data).map(async ([key, value]) => {
-		if (key === 'statistics') {
-			updatedDoc.statistics = migrateStatistics(value)
-		} else if (key === 'skills') {
-			updatedDoc.skills = migrateSkills(value)
-		} else if (key === 'items') {
-			updatedDoc.items = migrateItems(value)
-		} else if (key === 'spells') {
-			updatedDoc.spells = migrateSpells(value)
-		} else if (key === 'personal') {
-			updatedDoc.personal = await migratePersonal(value)
-		}
-	})
+	Object.assign(updatedDoc, migrateStoredCharacter(data))
 
-	await Promise.all(promises)
+	if (data.personal) {
+		updatedDoc.personal = await migratePersonal(data.personal)
+	}
 
 	// Add partyId field if it doesn't exist (for new party system)
 	if (!updatedDoc.partyId) {
@@ -245,7 +264,7 @@ const migrateStatistics = (data: any): Statistics => {
 const migrateSkills = (data: any): Skills => {
 	return {
 		...data,
-		skills: data.skills.map((skill) => {
+		skills: (data.skills || []).map((skill) => {
 			// Normalize skill names during migration
 			const normalizedName = normalizeSkillName(skill.name) || skill.name
 			return {
@@ -256,7 +275,7 @@ const migrateSkills = (data: any): Skills => {
 		}),
 		// Initialize professions array if it doesn't exist
 		professions: data.professions || [],
-		abilities: data.abilities.map((ability) => {
+		abilities: (data.abilities || []).map((ability) => {
 			const migratedAbility =
 				typeof ability === 'string'
 					? {
@@ -329,7 +348,7 @@ const migrateItems = (data: any): Items => {
 			...weapon,
 			id: weapon.id || crypto.randomUUID(),
 			damage:
-				typeof weapon.damage === 'string'
+				typeof weapon.damage !== 'object' || weapon.damage === null
 					? {
 							base: 0,
 							weapon: 0,
@@ -355,12 +374,12 @@ const migrateSpells = (data: any): Spells => {
 	return {
 		...data,
 		spellCatalystDamage: data.spellCatalystDamage || 0,
-		spells: data.spells.map((spell) => ({
+		spells: (data.spells || []).map((spell) => ({
 			...spell,
 			id: spell.id || crypto.randomUUID(),
-			dealsDamage: Boolean(spell.damage.base),
+			dealsDamage: Boolean(spell.damage?.base),
 			damage:
-				spell.damage === undefined
+				typeof spell.damage !== 'object' || spell.damage === null
 					? {
 							base: 0,
 							weapon: 0,

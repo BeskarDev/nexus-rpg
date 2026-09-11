@@ -14,6 +14,19 @@ import {
 import { AuthProvider, useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { firebaseService } from '@site/src/dev/firebaseService'
 import { CharacterDocument } from '@site/src/types/Character'
+import { migrateStoredCharacter } from '../CharacterSheet/utils/migrateDoc'
+
+/**
+ * Bring a stored character up to the current schema before anything prints it
+ * (M19, owner-reported).
+ *
+ * The sheet app migrates on fetch; this selector is the print tools' fetch, and
+ * it did not. A character saved before items gained `location` therefore printed
+ * with an empty inventory, because every filter on the paper asks for a field
+ * that document never had.
+ */
+const migrate = (character: CharacterDocument): CharacterDocument =>
+	migrateStoredCharacter(character)
 
 export interface CharacterSelectorProps {
 	onCharacterSelect: (character: CharacterDocument | null) => void
@@ -78,7 +91,9 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
 			const userUid = currentUser?.uid || 'dev-user'
 
 			// Get user's collection
-			const userChars = await firebaseService.getCollection(userUid)
+			const userChars = (await firebaseService.getCollection(userUid)).map(
+				migrate,
+			)
 
 			// Check for admin permissions and load additional collections
 			const userInfo = await firebaseService.getUserInfo(userUid)
@@ -87,8 +102,9 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
 			if (userInfo.allowedCollections.length > 0) {
 				const allChars = [...userChars]
 				for (const adminCollectionId of userInfo.allowedCollections) {
-					const adminChars =
+					const adminChars = (
 						await firebaseService.getCollection(adminCollectionId)
+					).map(migrate)
 					allChars.push(...adminChars)
 				}
 				setAllCharacters(allChars)

@@ -14,6 +14,8 @@
  * never papered over here. There are no silent fallbacks.
  */
 
+import { SpellDamage, validateSpellDamage } from '../typescript/spellDamage'
+
 export type SuccessLevelName = 'weak' | 'strong' | 'critical'
 
 /**
@@ -243,6 +245,8 @@ export function normalizePlaceholder(value: string): string {
 
 /** The frozen spell record shape the generator consumes. */
 export interface SpellRecord {
+	/** What the spell deals, stated rather than inferred. See `spellDamage.ts`. */
+	damage?: SpellDamage
 	name: string
 	rank: string
 	focus: string
@@ -296,5 +300,6 @@ export function validateSpellRecord(
 		)
 	if (typeof e.discipline !== 'string' && typeof e.tradition !== 'string')
 		fail(context, 'entry needs a discipline (arcane) or tradition (mystic)')
+	if (e.damage !== undefined) validateSpellDamage(e.damage, context)
 	return entry as SpellRecord
 }

@@ -98,7 +98,7 @@ Two directions, plus a publication flow for new designs:
 
 | Content | Canonical JSON | Generated pages |
 |---|---|---|
-| Spells | `arcane-spells.json`, `mystic-spells.json` | `docs/07-magic/{02-arcane,04-mystic}-spells/*.mdx` |
+| Spells | `arcane-spells.json`, `mystic-spells.json` (incl. the explicit `damage` block) | `docs/07-magic/{02-arcane,04-mystic}-spells/*.mdx` |
 | Conditions | `conditions.json` | `docs/05-combat/04-conditions.mdx` |
 | Combat arts | `combat-arts.json` | `docs/05-combat/05-combat-arts/*.mdx` |
 | Talents | `talents.json` | `docs/03-statistics/06-talents/*.mdx` |

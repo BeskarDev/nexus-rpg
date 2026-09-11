@@ -4,7 +4,10 @@ import {
 	rangeTypeArray,
 } from '../../../types/Character'
 import { sanitizeHtml } from '../../../utils/typescript/htmlSanitizer'
-import { parseDamageFromEffect } from '../../../utils/typescript/spellDamageParser'
+import {
+	SpellDamage,
+	spellDamageToSheetDamage,
+} from '../../../utils/typescript/spellDamage'
 import arcaneSpellsData from '../../../utils/data/json/arcane-spells.json'
 import mysticSpellsData from '../../../utils/data/json/mystic-spells.json'
 
@@ -21,6 +24,12 @@ export type SpellData = {
 	properties: string
 	effect: string
 	heightened?: string
+	/**
+	 * What the spell deals, stated in the canonical JSON. Absent means it deals
+	 * no direct damage — see `spellDamage.ts` for why this is data and not a
+	 * reading of the effect text.
+	 */
+	damage?: SpellDamage
 }
 
 // "Medium (8)" → "8", "vs. Dodge" → "Dodge", "Special" → "special"
@@ -47,22 +56,32 @@ export const mapRangeType = (val: string): Spell['range'] => {
 	return rangeTypeArray.includes(lower as any) ? (lower as any) : ''
 }
 
-const detectsDamage = (effect: string): boolean =>
-	/deal(s)?\s*\+?\d+\s*(\w+)?\s*damage|take(s)?\s*\+?\d+\s*(\w+)?\s*damage|inflict(s)?\s*damage/i.test(
-		effect,
-	)
-
 /**
  * Builds the canonical Spell fields (minus id) from a raw JSON spell entry.
  * Single source of truth shared by the spell search dialog import and the
- * "refresh spells" update flow, so both produce identical damage parsing,
- * target/range mapping, and effect sanitization.
+ * "refresh spells" update flow, so both produce identical target/range mapping,
+ * damage and effect sanitization.
+ *
+ * Damage is READ, not inferred (M19, owner-reported). A spell with no `damage`
+ * block deals none, and the empty object below is what the sheet shows when the
+ * player turns the damage row on by hand.
  */
 export const buildSpellFromData = (
 	spell: SpellData,
 	magicType: MagicType,
 ): Omit<Spell, 'id'> => {
-	const parsedDamage = parseDamageFromEffect(spell.effect, magicType)
+	const damage = spell.damage
+		? spellDamageToSheetDamage(spell.damage, magicType)
+		: {
+				base: '' as const,
+				weapon: 0,
+				other: 0,
+				otherWeak: 0,
+				otherStrong: 0,
+				otherCritical: 0,
+				type: 'physical' as const,
+				staticDamage: false,
+			}
 	return {
 		name: spell.name,
 		rank: parseInt(spell.rank) || 0,
@@ -70,17 +89,8 @@ export const buildSpellFromData = (
 		target: mapTargetType(spell.target),
 		range: mapRangeType(spell.range),
 		properties: spell.properties,
-		dealsDamage: detectsDamage(spell.effect),
-		damage: {
-			base: parsedDamage.base,
-			weapon: parsedDamage.weapon,
-			other: parsedDamage.other,
-			otherWeak: parsedDamage.otherWeak,
-			otherStrong: parsedDamage.otherStrong,
-			otherCritical: parsedDamage.otherCritical,
-			type: parsedDamage.type,
-			staticDamage: parsedDamage.staticDamage,
-		},
+		dealsDamage: Boolean(spell.damage),
+		damage,
 		effect: sanitizeHtml(spell.effect),
 	}
 }

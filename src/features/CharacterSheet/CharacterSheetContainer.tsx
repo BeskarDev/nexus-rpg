@@ -169,6 +169,16 @@ export const CharacterSheetContainer: React.FC = () => {
 					const docSnapshot = await getDoc(
 						doc(db, `${collectionId}/${activeCharacterId}`),
 					)
+
+					/*
+					 * An id that names no document is a dead link, not a character.
+					 * Migrating the empty snapshot yields an object with none of the
+					 * fields the sheet reads, and the header is the first thing to
+					 * dereference one. Nothing is dispatched, so the sheet keeps its
+					 * empty state.
+					 */
+					if (!docSnapshot.exists()) return
+
 					character = mapDocToCharacter(collectionId, docSnapshot)
 					const migratedCharacter = await migrateDoc(collectionId, docSnapshot)
 
