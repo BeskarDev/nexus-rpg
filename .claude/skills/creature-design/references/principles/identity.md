@@ -21,6 +21,8 @@ Read before **workflow step 1** (concept) and whenever naming anything — the c
 | **34** | Magic is in decline, so a lost art is written in the past tense. |
 | **50** | A construct is a myth, not a machine, and a carried-forward concept re-enters at step 1. |
 | **51** | Undead are the setting's horror. Their kit is a curse and a dread effect, not a second damage line. |
+| **52** | How a name is built: a head noun that agrees with the type line, plus at most one modifier carrying the deviation. |
+| **58** | The twelve Folk are PEOPLE. A creature on a folk's silhouette either is that folk, or differs somewhere a GM can point at. |
 
 **Numbers are global and never renumbered, so this file is ordered for reading rather than by date.** Full text below in the same order.
 
@@ -176,8 +178,10 @@ mechanism**, which is also where the creature's counterplay and its lore both co
 **A construct named after one culture's technique is a smaller creature than the technique deserves.**
 Owner direction on the replacement: *"dont give it a name specific to just the urduk, make it a more
 generic creature which still fits the theme."* The craft belongs to more than one people and the thing
-standing in the vault does not say whose it was, so the name says what it is — `Furnace-Bound` — and the
-lore says who might have made it.
+standing in the vault does not say whose it was, so the name says what it is and the lore says who might
+have made it. **The name it was given, `Furnace-Bound`, was itself fixed later** — a participle names a
+state rather than a thing, and it is now the **Furnace Effigy** (D-153, principle 52). The culture-free
+half of this ruling stands unchanged; only the word does not.
 
 **The second half of the rule is about process and it is why this was missed for two batches.** The
 Animated Armour entered the programme in the tier-2 batch, was moved to tier 4 on **price-list** evidence
@@ -225,7 +229,88 @@ owner's verdict was *"too safe, boring, and not evocative for gameplay."* The fi
 fist**, where a mummy's rot belongs and where it costs no extra roll, and spent the freed slot on the Gaze.
 **The rot and the dread are the creature. The punch is how it delivers one of them.**
 
+**The test generalises to any type that IS the creature's identity** — Automaton, Spirit, Divine Beast,
+Horror. The Furnace Effigy failed it on a raw fire AoE that an alchemist with a flask could have thrown,
+and the fix was the same shape as the undead ones: a **published condition** with published counterplay
+instead of a second damage figure (D-154, `burning`). **A second damage line always answers "yes, that
+would be interesting on a bandit", which is why it is always the wrong answer.** Asking it has now found
+three published mechanics no creature in the roster had ever used: `suffocating`, psychic damage, and
+`burning`.
+
 **It applies past the Undead type** — to Spirits, to the Chthonic, and to anything else whose whole reason to
 exist is that it is not alive. *(Owner ruling, 2026-08-14: "In this bronze age sword and sorcery setting, I
 want to evoke kind of soft old-school ttrpg horror elements with enemy groups like undead. curses, fear
 effects, all of that. not just another mundane enemy. its the undead!")*
+
+**52. A name is a head noun plus at most one modifier, and the head noun has to agree with the type line.**
+Principles 12, 14, 20, 21 and 22 each say what a name may not do. This one says how to build one, because
+four of the five names in the tier-4 batch had to be fixed after the stat block was written, and every
+failure was structural rather than a matter of taste.
+
+**The shape, measured on the published roster: 8 names of one word, 12 of two, none of three.** That is
+not a style preference, it is what a GM can find on a card and say out loud at the table.
+
+| Part | Job | Examples |
+|---|---|---|
+| **Head noun** | says **what kind of thing** the party is looking at, and it must not contradict the card's own `size type (subtype)` line | *Husk*, *Shade*, *Effigy*, *Soldier*, *Priest*, *Servant*, *Chief* |
+| **One modifier** | carries **the single thing that is different** — the deviation (principle 21), the rank (D-145), the role, the folk (principle 47), the material or the craft | *Grave* Husk, *Edimmu* Shade, *Furnace* Effigy, *Polearm* Soldier, *Young* Crocodile, *Mummy* Noble |
+
+**Where head nouns come from, in order of preference.** The **animal's real name** when it is a real
+animal (principle 20). Then the **setting's own categories** — the vault's `04 Natur/Bestiarium` names
+effigies, ushabti, colossi, shades, husks, and those words are free to use because the world already has
+them. Then a **plain trade or role word**: Soldier, Archer, Captain, Priest, Skulker. **Reach for an
+invented or mythological word only where the name is the reader's only clue what they are looking at** —
+Horrors, Spirits, Divine Beasts — and then it belongs to the higher-tier member of its family (D-109).
+
+**The four structural failures, all caught in one batch:**
+
+1. **No head noun.** `Furnace-Bound` is a participle: it names a **state**, not a thing, which is exactly
+   the *"something is missing from the name"* the owner reported. Every roster name is a noun.
+2. **A head noun the record denies.** `Furnace-Bound Spirit` over a record reading `Medium Automaton
+   (Vessel, Intelligent)` is **the card contradicting itself**, and `Spirit` also promises something
+   incorporeal on a creature at AV 6 heavy — a promise principle 20 says the stat block has to keep. The
+   name must survive being read next to the type line.
+3. **The head noun is a word the card already prints.** `Furnace-Bound Vessel` above `(Vessel,
+   Intelligent)` says it twice (principle 32).
+4. **The modifier names one culture of one folk.** `Kerbei Tomb-Warden`, cut on exactly that (D-138).
+
+**Name the prisoner or name the thing in the room?** The thing in the room. A creature is named after
+**what the party fights**, never after what animates it or what is trapped inside it — that is lore, and
+it is usually the Treat, which means putting it in the name spends the discovery before the fight starts.
+
+> **The name is checked twice, and the second check is the one that catches it.** Step 1's gate asks
+> whether the name promises what the stat block will deliver, and it can only be answered properly at
+> step 7, once the kit exists. The Furnace Effigy's name changed **because its abilities changed** in the
+> same pass — the fire moved from a damage figure to a `burning` condition, and *Effigy* is what the
+> creature turned out to be. Re-read the name after the last ability is written, every time.
+
+*(Owner ruling, 2026-09-07, D-153: "Mir fehlt was in dem Namen.")*
+
+**58. The twelve Folk are people, so a creature built on a folk's silhouette must either BE that folk or
+differ from it somewhere a GM can point at.** `01-folk.md` makes Minotaur, Lizardfolk, Catfolk, Dogfolk,
+Goblin, Orc and Satyr **playable peoples**, so the animal-headed humanoid a bestiary reaches for by reflex
+is, in this setting, **somebody**. That cuts both ways: a bull-horned guardian is either one of the
+Minotaur folk — `Humanoid (Minotaur)`, inheriting that folk's published traits and nothing else
+(principles 25 and 47) — or it is a different kind of thing and has to say so.
+
+**Four places a difference can live, and a design needs at least two of them:**
+
+| Axis | The Kusarikku's answer |
+|---|---|
+| **The type line** | `Medium Divine Beast (Guardian)`, where a person reads `Humanoid (Minotaur)` |
+| **Gear** | It carries **nothing**. A tier-4 Elite of a folk carries Q3 on D-091's ladder — an axe, a spear, a shield. Possessions are what a person has |
+| **What the numbers say** | Its ungated attack sits *below* the tier figure and its best option deals **no damage**. A warrior's figures are the point of a warrior |
+| **A rule a person could not have** | `Set in the Doorway` — unbudgeable in the gate, ordinary away from it. A person is strong wherever they stand |
+
+**The last row is the one worth spending an ability slot on**, because the first three are easy to miss at
+the table: a GM reading a stat block aloud says the name and the abilities long before anybody notices what
+the creature is not carrying.
+
+**And the fiction has to hold the line too.** Never describe such a creature with the folk's own defining
+feature — the Kusarikku is **never bull-headed**, because the animal half is the legs and the horns on a
+human frame, and one word of description puts it back in the people it is not. State the making: **cut and
+set**, no name, no herd, no lifespan of its own.
+
+**The mirror-image failure is real as well**: an ordinary NPC of a folk written as a monster, with invented
+senses or abilities its folk entry does not grant. Principle 25 already forbids that. This principle is the
+same rule read from the other end. *(Owner ruling, 2026-09-07, D-163.)*

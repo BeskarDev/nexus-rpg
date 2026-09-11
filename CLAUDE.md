@@ -94,7 +94,7 @@ Two directions, plus a publication flow for new designs:
 
 **Docs → Notion (sync back)**: **out of the design process** (owner ruling, 2026-08-11). The workspace's inline databases are the pre-migration system, the owner barely uses them, and keeping them in sync costs more than it returns. The `notion-sync` skill stays for a deliberate, owner-requested push. **Never run it as a publication step, and never treat Notion staleness as a defect.**
 
-**JSON → docs (generated content)**: five content types are now **JSON-canonical** — the app JSON is the source of truth and their docs pages are generated from it:
+**JSON → docs (generated content)**: six content types are now **JSON-canonical** — the app JSON is the source of truth and their docs pages are generated from it:
 
 | Content | Canonical JSON | Generated pages |
 |---|---|---|
@@ -103,12 +103,15 @@ Two directions, plus a publication flow for new designs:
 | Combat arts | `combat-arts.json` | `docs/05-combat/05-combat-arts/*.mdx` |
 | Talents | `talents.json` | `docs/03-statistics/06-talents/*.mdx` |
 | Creatures | `creatures.json` | `docs/08-creatures/03-creatures/tier-*.mdx` |
+| Combat actions | `combat-actions.json`, `skill-actions.json`, `quick-actions.json` | the three tables in `docs/05-combat/01-combat-scenes.md` (marked regions only, prose untouched), plus the printed Combat Reference |
 
 ```bash
-bun run content:gen     # regenerate all five from JSON
+bun run content:gen     # regenerate all six from JSON
 bun run content:check   # staleness gate — CI fails on hand-edited or stale MDX
 ```
 
+Two of the six are **region-based** rather than whole-page — combat actions and the random tables in `docs/10-gm-tools/01-random-tables/` — because those pages are prose first. A region generator owns what sits between its markers and never touches a byte outside them.
+
 **Never hand-edit those `.mdx` files.** They carry a do-not-edit banner and `content:check` runs in PR CI. Edit the JSON and regenerate: one edit updates both surfaces in the same commit, so docs and JSON agree by construction rather than by discipline. The generators shape-check as they go and **fail the build** on malformed data instead of papering over it.
 
-**New game content (design skills → production)**: after the owner approves a design as production-ready, publish it to its surfaces. For the five types above that means the canonical JSON, then `content:gen`. That is the whole pipeline: publication ends at a green `content:check`. Content that is NOT generated (magic items, equipment, rules chapters) is still authored as markdown directly. Each design skill's **Publication Pipeline** section states exactly which surfaces its content type touches and the formats.
+**New game content (design skills → production)**: after the owner approves a design as production-ready, publish it to its surfaces. For the six types above that means the canonical JSON, then `content:gen`. That is the whole pipeline: publication ends at a green `content:check`. Content that is NOT generated (magic items, equipment, rules chapters) is still authored as markdown directly. Each design skill's **Publication Pipeline** section states exactly which surfaces its content type touches and the formats.

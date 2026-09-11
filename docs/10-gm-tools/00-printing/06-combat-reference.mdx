@@ -1,0 +1,20 @@
+---
+sidebar_position: 6
+title: ⚔️ Combat Reference
+description: Print the two page combat quick reference sheet
+# The tool runs its own two-column layout, controls left, preview right, and it
+# needs the full page to do it.
+columns: false
+---
+
+import { CombatReferenceWrapper } from '@site/src/features/CombatReference'
+
+# ⚔️ Combat Reference
+
+Print the whole of combat onto one A4 landscape page. The left half is the turn itself: surprise and Initiative, the order of a turn, every Action, Skill Action and Quick Action, the attack rolls and their Success Levels, the distance bands, movement, and the duration ladder. The right half is every condition at full length, in alphabetical order, because a condition is looked up mid turn and a paraphrase is the wrong thing to read at that moment.
+
+Both halves run two columns, so the page reads as four columns across. It folds down the middle into an A5 booklet, or stays open on the table as one sheet.
+
+The sheet is built from the same data the rules pages are generated from. When an Action or a condition changes, it changes here.
+
+<CombatReferenceWrapper />

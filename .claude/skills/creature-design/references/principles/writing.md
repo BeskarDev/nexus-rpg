@@ -16,6 +16,7 @@ Read before writing any stat block text or `lore` prose, and again as a final pa
 | **31** | Lore prose has no modern narrator. Never debunk the setting's superstitions — record them. |
 | **32** | Say it once. Never add the sentence that defends the first one. |
 | **33** | `tactics` is a neutral briefing for the GM, with the creature as its subject. |
+| **56** | State an exception, never the absence of one. `every creature` already means every creature. |
 
 **Numbers are global and never renumbered, so this file is ordered for reading rather than by date.** Full text below in the same order.
 
@@ -147,3 +148,25 @@ whoever stands between them and the grain" — because the creature is still doi
 weight; **bolding the one fact that decides the fight** is briefing, not staging. Both rounds of
 correction: [../case-studies.md](../case-studies.md#p33). *(Owner rulings, 2026-08-10 and 2026-08-11,
 D-083.)*
+
+**56. State an exception, never the absence of one.** The Furnace Effigy's aura read *"every creature that
+ends their turn within melee range of this creature takes 3 fire damage (ignore AV). **This creature's own
+allies are not spared.**"* The second sentence says nothing the first did not: **`every creature` already
+means every creature**, and the creature's own side is a creature.
+
+**The cost is not a wasted line, it is a reader who stops trusting the other clauses.** A rules text that
+explains one of its own sentences teaches the GM that the unexplained ones might have a hidden restriction
+— so the next unrestricted wording gets read twice, or worse, read as if it had the exemption this one felt
+the need to deny.
+
+**Both directions are one rule:**
+
+| Intent | Wording |
+|---|---|
+| Everyone in the area, allies included | *"every creature"* — and **stop there** |
+| The creature's own side is spared | **Say so in the targeting**: *"each enemy"*, *"each creature other than this one"*, *"every creature except this creature's allies"* |
+
+**An exemption is a real design decision and belongs in the targeting**, where a GM reads who is affected,
+never in a trailing sentence about who is not. This is principle 32 pointed at targeting specifically,
+because that is where the reflex to reassure is strongest — the designer knows the aura hits allies, feels
+the GM will doubt it, and writes the doubt into the card. *(Owner ruling, 2026-09-07, D-161.)*

@@ -1,0 +1,322 @@
+/* The combat quick reference, in ink. ONE A4 landscape page, two halves of two
+   columns each — four columns across the spread, which is the layout of the
+   Figma sheet this replaces (owner, 2026-09-11).
+   ==========================================================================
+
+   Two A5-half sheets on that one page. Each imports the printed register from
+   `print-codex.css` through `.pc-sheet` (that class is what rebinds the codex's
+   colour tokens to black and gives the printed type scale) and adds only what a
+   page set SOLID needs, which the character sheet — a page of boxes waiting for
+   a pencil — never had to answer:
+
+   - a type scale below the sheet's, because the constraint here is fitting the
+     whole of combat at a size still read across a table, and
+   - sections that stay whole in one column, because half a table with its
+     heading in the other column is worse than no table.
+
+   Nothing here sets below `--pc-text-micro` (5.5pt), the register's floor. */
+
+.cr-sheet {
+	/* Set by MEASURING the rendered page, not by eye — see the tuning note at
+	   the foot of this file. Both halves carry two columns, so the size is
+	   whatever the fuller of them can hold on ONE A4 landscape page. */
+	--cr-text: 6.1pt;
+	--cr-lead: 1.2;
+	--cr-gap: 1.4mm;
+
+	position: relative;
+	box-sizing: border-box;
+	width: 148.5mm;
+	height: 210mm;
+	padding: 4mm;
+	background: #fff;
+	display: flex;
+	flex-direction: column;
+	/* A single hairline, drawn INSIDE the trim so a home printer's edge loss
+	   takes white and never a rule. There is no drawn register: on this page
+	   every millimetre of border is a line of rules text that would have to be
+	   cut or set smaller. */
+	outline: var(--pc-rule-key) solid var(--pc-ink);
+	outline-offset: -2.5mm;
+	font-family: var(--ifm-font-family-base);
+}
+
+.cr-sheet__head {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 2mm;
+	border-bottom: var(--pc-rule-key) solid var(--pc-ink);
+	padding-bottom: 0.8mm;
+	margin-bottom: 1.2mm;
+}
+
+.cr-sheet__title {
+	margin: 0;
+	font-size: var(--pc-text-name);
+	font-variant-caps: all-small-caps;
+	letter-spacing: 0.06em;
+	line-height: 1.1;
+}
+
+.cr-sheet__mark {
+	font-size: var(--pc-text-fine);
+	font-variant-caps: all-small-caps;
+	letter-spacing: 0.08em;
+	color: var(--pc-ink-soft);
+}
+
+.cr-sheet__body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--cr-gap);
+	flex-grow: 1;
+	min-height: 0;
+	/* The sheet is sized to its content and checked by the budget test; if an
+	   edit ever overruns it, the overflow is clipped at the trim rather than
+	   pushed onto a fifth sheet nobody asked to print. */
+	overflow: hidden;
+}
+
+/* The turn half: ten blocks flowed down two columns. Which block lands at the
+   foot of column one depends on the type size and on how long each Action's
+   brief runs, and both of those change — a hand-assigned split would have to be
+   re-balanced by eye every time one did. The height is definite, so the columns
+   fill in order rather than balancing, and the rule between them runs the full
+   height of the sheet. */
+.cr-sheet__body--flow {
+	display: block;
+	columns: 2;
+	column-gap: 3.5mm;
+	column-rule: var(--pc-rule-hair) solid var(--pc-ink);
+}
+
+.cr-block {
+	/* A section stays in ONE column (owner, 2026-09-11). Quick Actions was being
+	   cut across the column break, and half a table with its heading in the other
+	   column is a lookup that fails — the reader has to find the continuation
+	   before they can find the entry.
+
+	   This costs space: a block that cannot be cut starts a new column whole, so
+	   column one stops short by up to the height of the largest block. At 7pt
+	   that cost overflowed the half and two blocks were silently clipped, which
+	   is why an earlier pass made these breakable. The price is paid in type
+	   size instead: 6.3pt clipped Effect Durations, 6.1pt fits with every section
+	   whole — measured, not assumed (see the tuning table). */
+	break-inside: avoid;
+	margin-bottom: var(--cr-gap);
+}
+
+.cr-terms__row > dt,
+.cr-terms__row > dd,
+.cr-steps li,
+.cr-notes li {
+	break-inside: avoid;
+}
+
+.cr-block__head {
+	margin-bottom: 0.8mm;
+}
+
+/* A term and its shortest true statement — the sheet's commonest line.
+   Grid rather than flex: the terms form a column the eye runs down, and that
+   column has to be the same width for every row of a block. `max-content`
+   sizes it to the longest term in THAT block, so a block of short names
+   ("Weak", "Strong") does not pay for "Opportunity Attack" in another. */
+.cr-terms {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	column-gap: 1.6mm;
+	row-gap: 0.5mm;
+	margin: 0;
+	padding: 0 1.5mm;
+	font-size: var(--cr-text);
+	line-height: var(--cr-lead);
+}
+
+.cr-terms__row {
+	display: contents;
+}
+
+.cr-terms dt {
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.cr-terms dd {
+	margin: 0;
+}
+
+.cr-terms em {
+	color: var(--pc-ink-soft);
+	font-style: italic;
+}
+
+.cr-steps {
+	margin: 0;
+	padding: 0 1.5mm 0 5mm;
+	font-size: var(--cr-text);
+	line-height: var(--cr-lead);
+}
+
+.cr-steps li {
+	margin: 0 0 0.4mm;
+}
+
+.cr-steps__step {
+	font-weight: 700;
+}
+
+.cr-steps__detail {
+	color: var(--pc-ink);
+}
+
+.cr-notes {
+	margin: 0.4mm 0 0;
+	padding: 0 1.5mm 0 4mm;
+	font-size: var(--cr-text);
+	line-height: var(--cr-lead);
+	list-style: square;
+}
+
+.cr-notes li {
+	margin: 0 0 0.4mm;
+}
+
+/* ── The conditions sheets ───────────────────────────────────────────────── */
+
+.cr-conditions {
+	/* TWO columns in this half as well, so the page carries four across the
+	   spread. A single 136mm column would set about 100 characters to the line —
+	   twice what anyone tracks comfortably — and would not hold the conditions
+	   at any size worth printing. */
+	columns: 2;
+	column-gap: 3.5mm;
+	column-rule: var(--pc-rule-hair) solid var(--pc-ink);
+	font-size: var(--cr-text);
+	line-height: var(--cr-lead);
+	padding: 0 1mm;
+	/* Take the WHOLE remaining height of the sheet, not just the height the text
+	   happens to need. A multicol box sized to its content draws its column rule
+	   only as far as the text reaches, so the divider stopped two thirds down
+	   the page while the turn half's ran to the foot — the two halves of one
+	   sheet disagreeing about where the page ends. With a definite height the
+	   rule runs full length and the columns fill in order instead of balancing,
+	   which is what the turn half does. */
+	flex: 1 1 auto;
+	min-height: 0;
+}
+
+.cr-condition {
+	/* The entries are what the eye steps through, so they are separated by more
+	   space than the lines inside one of them. */
+	margin-bottom: 1.1mm;
+	padding-left: 3.4mm;
+}
+
+/* THE NAME IS A CHIP (owner, 2026-09-11).
+
+   It runs INTO the entry's first line rather than sitting on one of its own —
+   a heading line for each of 25 entries costs about 14% of the half, which is
+   the difference between carrying every condition and dropping two. So it has
+   to be found without a line of its own.
+
+   Bold small-caps did not do it, and nor did adding a square bullet and wider
+   tracking: set among paragraphs that are themselves full of bold rules terms,
+   a bolder bold is not a different KIND of thing. A chip is — a ruled plaque
+   with a wash behind it reads as an object in the text rather than as emphasis
+   of it, which is the same move the screen theme makes for skills and damage
+   types.
+
+   In ink rather than in colour, and square rather than a pill: the printed
+   register has no hue to spend, and its vocabulary is rule weight and wash
+   (`print-codex.css`). The chip is therefore a hairline box, the faint wash, and
+   small-caps — legible at 6pt, and about 1.5mm of extra height per entry, which
+   the half has. */
+.cr-condition__name {
+	display: inline-block;
+	font-weight: 700;
+	font-variant-caps: all-small-caps;
+	letter-spacing: 0.06em;
+	font-size: 1.02em;
+	padding: 0 0.9mm;
+	border: var(--pc-rule-hair) solid var(--pc-ink);
+	background: var(--pc-wash-faint);
+	/* The chip sets its own line box; without this the wash band would grow the
+	   leading of every entry's first line by a third. */
+	line-height: 1.25;
+	margin-right: 1.2mm;
+	/* Hung into the entry's own indent, so the chips form a column down the page
+	   and the rules text sits inside it. */
+	margin-left: -3.4mm;
+}
+
+.cr-condition p {
+	margin: 0 0 0.3mm;
+}
+
+.cr-condition__list {
+	margin: 0;
+	padding-left: 3.2mm;
+	list-style: square;
+}
+
+.cr-condition__list li {
+	margin: 0;
+}
+
+
+
+/* ── Tuning ──────────────────────────────────────────────────────────────────
+
+   The type size is the one number on this page that is not a judgement call,
+   because the page count is fixed and the content is not negotiable. It was
+   found by rendering the built page in a browser at 1:1 and stepping the size
+   until the fuller half nearly filled its 210mm:
+
+   | --cr-text | turn half | conditions half |
+   |---|---|---|
+   | 6pt   | 0.92 | 0.95 |
+   | 6.1pt | 0.94 | overruns |
+   | 6.3pt | overruns (Effect Durations clipped) | overruns |
+   | 6.6pt | overruns | overruns |
+   | 7pt   | overruns (two blocks clipped) | overruns |
+
+   So two sizes: 6.1pt for the turn half and 6pt for the conditions, which is
+   the half carrying all 25 entries at full length. They stop 5-6% short of the
+   trim — the margin an added Action or a lengthened condition grows into.
+
+   The turn half's figures are with `break-inside: avoid` on its blocks, which
+   keeps each section whole in one column and costs it about two steps of type
+   size. That is the trade the owner asked for and it is worth it: a section cut
+   across the column break is a lookup that fails.
+   The Figma sheet this replaces set its conditions at about the same size, which
+   is what one A4 page costs when it carries the whole of combat.
+
+   Two things bought the conditions half the room to carry all 25 rather than 23
+   (owner, 2026-09-11): its "You apply the following effects:" preambles are
+   dropped on the sheet (13 lines — see `conditionText.tsx`), and its leading is
+   a step tighter than the turn half's.
+
+   A HALF THAT OVERRUNS DOES NOT LOOK BROKEN. Its tail flows into a third
+   column that the fixed height then clips, so the loss is silent — which is
+   exactly how the first build of this page lost Movement and Effect Durations.
+   Measure with the clipping probe, do not eyeball it, and never buy space by
+   setting below the register's 5.5pt floor: take a non-combat condition off the
+   sheet instead (`CONDITIONS_OFF_SHEET`). */
+/* The conditions half carries every entry in the rules at full length, so it is
+   the denser of the two and takes the smaller size. The turn half is the one
+   read at a glance mid-turn and keeps the larger. */
+.cr-sheet--dense {
+	--cr-text: 6pt;
+	/* Tighter leading than the turn half, which is the trade that keeps this
+	   half at 6pt rather than 5.9: the conditions are read a paragraph at a time
+	   once a player has found the entry, where the turn half is scanned. */
+	--cr-lead: 1.15;
+}
+
+@media print {
+	.cr-condition {
+		break-inside: avoid;
+	}
+}

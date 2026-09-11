@@ -268,3 +268,62 @@ describe('the generator refuses to build each historical defect', () => {
 		expect(out).not.toContain('but the catalogue row is')
 	})
 })
+
+/**
+ * `recharge (dX)` is a property badge on an ATTACK, and nowhere else (D-157).
+ *
+ * The owner's ruling splits the limiter rule along a real seam. An ability's
+ * parenthesis is the closed-list qualifier, which D-147 stopped printing at all,
+ * so an ability's limiter has to be the last sentence of its text (D-107). An
+ * attack's parenthesis is its property list, which DOES print, so a recharging
+ * attack states its limit there where a GM scans for it.
+ *
+ * Two ways for that to go wrong, both build failures rather than review notes: a
+ * misspelled or off-list die renders as a badge stating a rule the game does not
+ * have, and a recharge in an ability's qualifier renders as nothing at all.
+ */
+describe('recharge as an attack property (D-157)', () => {
+	it('accepts recharge (d4), (d6) and (d8) on a natural attack', () => {
+		for (const die of ['d4', 'd6', 'd8']) {
+			const out = buildWith((r) => {
+				attack(r, 'Ghoul', 'Bite').properties = [`recharge (${die})`]
+			})
+			expect(out, `recharge (${die}) was refused`).not.toContain('recharge')
+		}
+	})
+
+	it('refuses an off-list die and a misspelling', () => {
+		for (const bad of ['recharge (d10)', 'recharge d6', 'Recharge (d6)']) {
+			const out = buildWith((r) => {
+				attack(r, 'Ghoul', 'Bite').properties = [bad]
+			})
+			expect(out, `"${bad}" was allowed through`).toContain(
+				'the die list is closed',
+			)
+		}
+	})
+
+	it('does NOT require a carried weapon’s catalogue row to carry the recharge', () => {
+		// A recharge is a limit on the creature's use of the weapon, not a property
+		// of the weapon, so D-133 and D-157 would otherwise be mutually exclusive.
+		const out = buildWith((r) => {
+			const spear = attack(r, 'Spearman', 'Spear')
+			spear.properties = [...(spear.properties ?? []), 'recharge (d6)']
+		})
+		expect(out).not.toContain('but the catalogue row is')
+	})
+
+	it('still refuses a recharge in an ability’s qualifier', () => {
+		// Caught by D-107's closed-list check rather than by a second guard: an
+		// ability's parenthesis is the qualifier, and it carries no badge at all
+		// since D-147, so its limiter stays the last sentence of the text.
+		const out = buildWith((r) => {
+			const ghoul = r.find((c) => c.name === 'Ghoul')! as unknown as {
+				abilities: { name: string; qualifier: string; text: string }[]
+			}
+			ghoul.abilities[0].qualifier = 'Action, recharge (d6)'
+		})
+		expect(out).toContain('qualifier must be exactly one of')
+		expect(out).toContain('the LAST SENTENCE of the text')
+	})
+})

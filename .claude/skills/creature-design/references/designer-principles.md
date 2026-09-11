@@ -101,6 +101,13 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **49.** Never cancel a universal player option. Add pressure instead of removing a choice. A Passive that voids disengaging is the canonical failure. *(abilities)*
 - **50.** A construct is a myth, not a machine — a spirit in a vessel, never a mechanism — and a concept carried forward from an appendix re-enters at step 1. *(identity)*
 - **51.** Undead are the setting's horror: a curse that outlives the fight and dread that takes a turn away, never a second damage line. Test: *would this be interesting on a bandit?* *(identity)*
+- **52.** How a name is BUILT: a head noun that agrees with the card's type line, plus at most one modifier carrying the deviation. One or two words. Re-read the name after the last ability is written. *(identity)*
+- **53.** A condition's end clause has to cost something the target CHOOSES to pay — a duration, an Action, or killing the source. "Step out of reach" is free. *(abilities)*
+- **54.** A gated line is measured against the batch's UNGATED lines. A gate that buys the tier figure is a tax on the GM; change the payoff's kind, never its damage. *(abilities)*
+- **55.** The ability budget is the ACTION ECONOMY, not a slot count. Three abilities costing the Action are one ability and two decorations; riders and Passives are where a non-turn effect goes. *(abilities)*
+- **56.** State an exception, never the absence of one. `every creature` already means every creature; sparing the creature's own side needs TARGETING, not a trailing sentence. *(writing)*
+- **57.** A rider that undoes the creature's own plan is not a rider. Ask where the creature is after it resolves: `pushed` on a grinder, `prone` on something already easy to hit. *(abilities)*
+- **58.** The twelve Folk are PEOPLE. A creature on a folk's silhouette either IS that folk on the type line, or differs somewhere a GM can point at — type, gear, numbers, or a rule a person could not have. *(identity)*
 
 ## Appending a new principle
 
@@ -110,7 +117,7 @@ When the owner corrects or refines a creature design decision in session:
 one-line title each. Open the phase file rather than this index when you are designing: this list says
 *which* principle applies and never what it says.
 
-1. Take the next free number (currently next: **52**).
+1. Take the next free number (currently next: **59**).
 2. **Write the full principle into the phase file it belongs to** — `principles/chassis.md`,
    `identity.md`, `abilities.md` or `writing.md` (numbered, bolded one-line rule, then reasoning,
    then owner-ruling provenance).

@@ -46,6 +46,7 @@ You can also drop, sheathe, draw, or switch weapons or other carried items on yo
 
 The following actions are available to all combatants.
 
+{/* gen:combat:combat-actions — from src/utils/data/json/combat-actions.json by `bun run content:gen`. Do not edit: change the JSON. */}
 | Action | Effect |
 | --- | --- |
 | Attack | Attack with your weapon (see more under Attacking). |
@@ -58,11 +59,13 @@ The following actions are available to all combatants.
 | Retreat | Enemies can‘t use Opportunity Attacks against you this turn, while you spend Movement. |
 | Use Skill | There are different Actions you can take by rolling for a skill. See the list below for more details, or use an Improvised Action for any situation not covered by the existing Use Skill Actions. |
 | Improvised | If you want to do anything plausible, but not covered by the rules or your adventurer sheet, you can still attempt it! Explain your intended results to the GM and they might let you roll for it. If it is not within your skill set, you might suffer +1 bane on the roll. You can for example attempt to trip an opponent, when you don't have the Trip Combat Art learned. The GM might rule that you gain the effects of the Trip Combat Art, but the attack deals no damage. |
+{/* /gen:combat */}
 
 ## **Use Skills in Combat**
 
 Use a variety of skills during combat to help you and your allies or hinder your enemies.
 
+{/* gen:combat:skill-actions — from src/utils/data/json/skill-actions.json by `bun run content:gen`. Do not edit: change the JSON. */}
 | Action | Effect |
 | --- | --- |
 | Demoralize | Attempt to break an enemy’s spirit. Target an enemy in short range that can see and hear you. Roll Strength/Spirit + Influence vs. Resist. On a success, they are briefly frightened of you.<br/>You can only use this Action once against any individual creature. |
@@ -72,11 +75,13 @@ Use a variety of skills during combat to help you and your allies or hinder your
 | Spot | Attempt to spot any hidden or invisible enemy. They must be in your line of sight or range of hearing. Roll Spirit + Perception vs. Dodge. On a success, they are no longer hidden from you. |
 | Trip | Attempt to knock an enemy to the ground. Target an enemy you are in melee range of and that is the same size or smaller than you. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher). On a success, you knock them prone. |
 | Vault | Attempt to quickly cross difficult terrain. When entering difficult terrain, roll Agility + Athletics. On a success, you can move through it without spending extra Movement. On a failure, your Movement becomes 0 for the turn. |
+{/* /gen:combat */}
 
 ## Quick Actions
 
 Quick Actions are small actions that take no more than a few seconds. They can also be quick reactive abilities outside of your turn during combat. Quick Actions always have triggers for when they can be used. You can use one Quick Action on your turn or between your turns. You regain access to your Quick Action at the end of each of your turns.<br/>You can also always substitute an ability using a Quick Action on your turn by using your Action instead.
 
+{/* gen:combat:quick-actions — from src/utils/data/json/quick-actions.json by `bun run content:gen`. Do not edit: change the JSON. */}
 | Quick Action | Trigger | Effect |
 | --- | --- | --- |
 | Evade | You are attacked by a melee or touch attack and don’t wear heavy armor. | Until your next turn, you can defend with your Dodge instead of your Parry. |
@@ -84,14 +89,10 @@ Quick Actions are small actions that take no more than a few seconds. They can a
 | Opportunity Attack | An enemy in your melee reach attempts to move out of melee (unless they are moved involuntarily by another source). | Roll an attack against the enemy with a melee weapon you wield. You can’t use any abilities or Combat Arts on this attack.<br/>Instead of an attack, you can also attempt to grapple the enemy if they are in melee range. |
 | Protect Ally | When an ally close to you is attacked and you are not prone. | You quickly step into the way and take the hit instead. As part of this Quick Action, you move into melee range of your targeted ally. The enemy then rolls against your Defense. If they hit, you take the damage instead of your ally. |
 | Delay Action | You can use your Quick Action on your turn to delay your Action until some condition is met. | You can use that delayed Action once the condition is met before your next turn. |
+{/* /gen:combat */}
 
 ## Quick Reference
 
-<details>
-<summary>The one page combat quick reference</summary>
+Everything on this page and the chapters around it is condensed onto a single A4 page for printing or keeping open at the table: the turn sequence, every Action, Skill Action and Quick Action, the attack rolls and their Success Levels, the distance bands, movement, effect durations, and every condition a combatant can inflict.
 
-Everything on this page and the chapters around it, condensed onto a single sheet for printing or keeping open at the table.
-
-![figure-img|Combat quick reference sheet in four columns. The first two cover starting combat and rolling Initiative, the order of a combat turn, the full list of Actions, Skill Actions and Quick Actions, how to roll each kind of attack, what each Success Level deals in damage, the distance bands from melee out to out of range, movement and difficult terrain, and effect durations. The last two list every condition in alphabetical order with its full effects, from bleeding through to unconscious.](./img/combat-quick-references.png)
-
-</details>
+Build and print it with the [Combat Reference](/docs/gm-tools/printing/combat-reference) tool. It reads the same data these tables are generated from, so the sheet always states the current rules.

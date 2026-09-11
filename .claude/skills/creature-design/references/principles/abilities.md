@@ -23,6 +23,10 @@ Read before **workflow step 4** (abilities), and again before any Elite or Lord 
 | **36** | The acting creature rolls, one roll may be read against several Defenses, and no roll beats one. |
 | **41** | A conditional second attack is the Nexus answer to multiattack. |
 | **46** | Write an ability's clauses in resolution order, and make the second effect the payoff of the first. |
+| **53** | A condition's end clause has to cost something the target chooses to pay. |
+| **54** | A gated line is measured against the batch's ungated lines, not against its own tier figure. |
+| **55** | The ability budget is the action economy, not a slot count. |
+| **57** | A rider that undoes the creature's own plan is not a rider. |
 | **43** | A trait must act in the encounter, or it is lore wearing a slot. |
 | **44** | A carried weapon's damage and properties are the catalogue's, changed only by a Quality step. Build-checked. Riders are allowed. |
 | **45** | The qualifier is one word. The limiter is the last sentence. This keeps being got wrong. |
@@ -195,6 +199,26 @@ Quick Action with a trigger the party can see and play around.
 **Write the trigger on an action, not on a result.** *"When an ally is reduced to 0 HP"* fires once a
 fight, after the damage is already done, and reads as a funeral. *"When an enemy attacks an ally"* fires
 often, changes how the party targets, and is the same ability doing something.
+
+**When the timing is load bearing, copy the universal action that already has it.** The reaction
+vocabulary is published and closed — ***attempts to move out of melee*** (Opportunity Attack), *when an
+enemy misses you*, *when an ally close to you is attacked* (Protect Ally) — and a paraphrase of one of
+them is a new rule nobody at the table can adjudicate. The Edimmu Shade's leash first read *"when a
+creature moves out of this creature's melee range"*, which fires on a **completed** move, so the creature
+reacted to something already finished. Opportunity Attack's *attempts to* fires **before** the move
+resolves, which is the only timing where following the target means anything.
+
+Two more rules fall out of the same ability, and both are cheap to apply:
+
+- **State the OUTCOME, and let the distance be the cap.** *"Moves a short distance toward them"* leaves
+  the table asking whether the creature arrived. *"Stays in melee range of them by moving with them up to
+  a short distance"* does not, and it matches `Protect Ally`'s own *"as part of this Quick Action, you
+  move into melee range of your targeted ally"*.
+- **Reactive movement is `unprovoked`.** It is the published keyword for movement that *"doesn't trigger
+  an Opportunity Attack or any other reaction"*, and the published `Quick Escape` already uses it on
+  creature cards. Without it, an ability that moves the creature into or through the party hands every
+  other character a free attack each time it fires, so the GM correctly never uses it and the creature's
+  signature is dead text. *(Owner ruling, 2026-09-07, D-156.)*
 
 **Make the retaliation an attack, not a manoeuvre**, and **check it against the universal Quick Actions
 before you keep it** (principle 24). Two of them already occupy this space, and a reactive attack that
@@ -428,3 +452,83 @@ effect onto the Quick Action fixed it without changing what it does.
 fine, and one that *voids* it is not. `Braced Spear` punishes leaving a veteran's reach with an
 Opportunity Attack that hits harder, and the player still gets to decide whether to eat it.
 *(Owner ruling, 2026-08-14, D-130.)*
+
+**53. A condition's end clause has to cost the target something they choose to pay.** `suffocating`,
+`burning` and the rest of the open-ended conditions carry no published duration, and principle 18 lets the
+ability name one inline. **It does not license a free one.** The Edimmu Shade's first draft ended its
+`suffocating` *"when they end a turn outside this creature's melee range"*, and
+`03-distances-movement.md` gives **moving out of melee range free once a turn**, with 1 Movement covering a
+short distance — so the creature's entire design was opt-out at no cost, on any target that had read the
+movement rules.
+
+**Three end clauses that work, in ascending order of what they ask:**
+
+| Clause | The party pays |
+|---|---|
+| **A published duration** — `briefly`, `for a short duration` | Nothing directly, but the condition is now *the fight's problem*, which is what makes the rest of the kit matter |
+| **A stated action** — the condition's own removal clause, where it has one (`burning`: an Action and an Agility + Athletics roll) | **A turn.** The strongest currency on the table and the one a GM can see being spent |
+| **Killing the source** — *"this condition ends early if this creature is destroyed"* | **Target priority.** It turns one creature into the thing the party has to deal with first |
+
+**The last one is usually the best answer for a signature condition**, because it is counterplay
+(principle 10) that costs nothing to write, reads as fiction rather than as a rule, and gives the GM a
+reason to expect the party to focus the creature. **Write the end clause by asking what it makes the party
+DO** — if the honest answer is "take one step", it is not a clause. *(Owner ruling, 2026-09-07, D-155.)*
+
+**54. A gated line is measured against the batch's UNGATED lines, not against its own tier figure.** D-116
+lets an attack gated behind a condition take the full tier weapon damage, and that is correct as an
+accounting rule. It is **not** an argument that the gated attack is worth building. The Edimmu Shade's
+`Take the Warmth` needed a prior round, a strong-or-critical hit, and a condition that survived the target's
+movement — and it paid **7.45/turn against the reference martial, which is exactly what the Mummy's ungated
+fist pays**. A gate that buys the figure everybody else gets for free is a **tax on the GM**, and it reads at
+the table as the creature not working.
+
+> **The check: put the gated line in the same table as the batch's plain attacks.** If it is not visibly
+> better than the best ungated line in the batch, either the gate comes off or the payoff changes kind —
+> healing, a second condition, ignoring armor, an extra target. **Do not raise the damage to fix it**; that
+> is how a two-stage combo becomes the hardest line in the batch.
+
+The Shade's fix was a change of kind: the gated *attack* became a gated **Passive** that feeds the creature
+6 HP, so the setup pays in something the plain attack cannot give at all. *(Owner ruling, 2026-09-07,
+D-155.)*
+
+**55. The ability budget is the ACTION ECONOMY, not a slot count.** The category table says how many
+abilities a creature may have. It does not say how many it can *use*, and those are different numbers: a
+creature has one Action, one Quick Action and its Movement per turn, so **three abilities that all cost the
+Action are one ability and two decorations**. The Edimmu Shade had a touch, a gated attack and an Action
+ability competing for the same slot, no Quick Action at all, and the third option measured **0.83 damage a
+turn** — a line on the card that a GM would never correctly choose.
+
+**Count the kit by slot before writing the text:**
+
+| Slot | What belongs there |
+|---|---|
+| **Action** | The attack, and at most one genuine alternative to it that does something the attack cannot |
+| **Quick Action** | The reactive option — a conditional second attack (principle 41), a defence, a follow, a leash |
+| **Free** | Riders on the attack, and **Passives**, which is where an effect goes when it must not compete |
+
+**When an effect is worth having but not worth a turn, make it a Passive or an attack rider.** That is what
+turned `Take the Warmth` from a second attack into a feed, and it is why the Furnace Effigy's aura is a
+Passive rather than an Action. **A Basic with one attack, one rider, one Passive and one Quick Action has
+four things and spends none of them fighting itself.** *(Owner ruling, 2026-09-07, D-155.)*
+
+**57. A rider that undoes the creature's own plan is not a rider.** Before adding an effect to an attack,
+read it against **what the creature is trying to do for the rest of the fight**. A rider that fights the
+kit costs real damage to make the creature worse at its own job, and it is invisible in review because
+each half is individually correct — `pushed` is a published condition, a stone fist plausibly knocks people
+back, and the arithmetic checks out.
+
+**The Furnace Effigy is the worked example.** It is a **grinder**: its aura punishes anybody standing next
+to it, its cone reaches close range, and `Slow Movement`-grade mobility means it cannot chase. It wants
+targets **near** it. So the two thematic riders both fail:
+
+| Rider | Why it fails on THIS creature |
+|---|---|
+| `pushed` | Shoves the target out of the aura and out of the cone, and the creature cannot follow. It spends damage to undo its own positioning |
+| `prone` | Costs the target a turn and hands **every melee attacker +1 boon** against the thing that is already easy to hit (principle 8's double-dip, pointed at the party's favour) |
+
+**The check is one question: after this rider resolves, is the creature closer to or further from the fight
+it wants?** Same question for a slow on a guardian that goes nowhere, a fear on a creature whose whole kit
+is melee reach, or a grapple on a skirmisher that wants to leave. Where the answer is *further*, the honest
+move is **no rider** — a plain line is not a gap in a design that carries its identity elsewhere
+(principle 15's Slinger case, D-073). *(Owner question, 2026-09-07, answered against the Furnace
+Effigy's kit.)*

@@ -160,12 +160,55 @@ is already gated by a success level, which is its price. So the Reed Viper's ven
 damage, and the Jackal's prone, the Grave Husk's grapple, the Ghoul's daze and the Cult Priest's
 `blinded` are all free.
 
+**A condition that deals lasting damage is a DAMAGE rider and is paid for** (D-159). `burning (X)` and
+`bleeding (X)` tick every turn, ignore Armor (`02-attacking.md` § lasting damage) and compound against the
+same clock, so they sit on the damage side of D-110 no matter that they are written as conditions. The
+Furnace Effigy's `Ember Breath` pays one step of weapon damage for its `burning (2)` — a multi-target
+figure of 3 becomes 2, so 8/11/14 becomes **7/9/11**. A condition that costs Fatigue, a turn or a choice
+(`suffocating`, `prone`, `dazed`) is still free.
+
 **A second natural attack has no catalogue entry to cite, so the gate is the price** (D-116):
 
 | | Damage | Examples |
 |---|---|---|
 | **Gated** behind a grapple, condition or state | **full tier weapon damage** | `Death Roll`, `Bearing Down` |
 | **Ungated**, usable any turn | **below the tier's figure** | `Pull Down`, the Ogre's `Fist` |
+
+### An area attack takes its shape from the published SPELL properties (D-159)
+
+A creature attack has no `range` or `properties` field of its own the way a spell record does, so an area
+attack states its **range in the text** and its **shape as a property badge**, using the published
+vocabulary from `docs/07-magic/05-spell-properties.md` verbatim:
+
+| Property | Shape |
+|---|---|
+| **`blast (cone)`** | A direction from the creature. Breadth at the far point is **one range band less than the length**, and anything in melee range in that direction is caught too |
+| **`blast (line)`** | Origin to target location, plus everything in melee range of each creature on the line |
+
+**Prefer a shape over "each creature within X range".** A cone is **aimed**, so the GM chooses a
+direction and the party can answer by spreading out or flanking — positional counterplay that costs the
+designer nothing (principle 10). *"Each creature within close range"* catches everything adjacent
+including the creature's own side, asks the GM no question, and gives the party nothing to play against.
+
+**Word it the way the corpus words it.** The 18 published cone spells say ***"Target each creature in the
+cone"*** (*Entropy*, *Annihilating Wave*) or *"Target all creatures in the cone"* / *"in the spell's
+area"* (*Cone of Cold*, *Toxic Mist*), and several say **nothing at all**, because a spell's range is a
+field on the record. **None of them writes "within X range"** — that phrase describes a radius, which is
+the shape the property just replaced. A creature has no range field, so its text supplies the band and
+nothing else:
+
+> ✅ **Ember Breath** *(blast (cone))* *(recharge (d6))*. Roll Strength + Fortitude vs. Dodge, targeting
+> each creature **in the cone at close range**. 7/9/11 fire damage. …
+>
+> ❌ … targeting each creature **within close range**. *(a radius, and it contradicts the badge)*
+> ❌ … targeting each creature **in a close-range cone**, with `blast (cone)` also on the badge. *(the
+> shape said twice, principle 32)*
+
+**The published analogue is the calibration.** *Flame Burst* — rank 1, `blast (cone)`, range Close, **+6
+fire damage to all targets and each of them suffers burning (2)** — is the exact shape of a fire breath
+that leaves people burning, so a creature's version should read like it and land near it.
+
+Multi-target damage is still **half the weapon figure, rounded up**, and the shape does not change that.
 
 ### Paired attacks: AV is subtracted twice {#paired-attacks}
 
@@ -323,11 +366,28 @@ Other limiters: `once per scene`, and `once between your turns` for anything off
 > *Cloud of Sickness*, *Curse of Death*, *Rotting Grasp*. **This creature can cast each of these spells
 > once per scene.**
 >
-> ✅ **Searing Breath** (Action). Roll Strength + Fortitude vs. Dodge against each creature in a short
-> cone. 12/18/24 fire damage. **Recharge (d4).**
+> ✅ **Searing Breath** *(recharge (d4))*. Roll Strength + Fortitude vs. Dodge, targeting each creature in
+> a short cone. 12/18/24 fire damage.
 >
 > ❌ **Spellcasting** (Action, once per scene each). …
-> ❌ **Rites of the Grave** *(recharge (d6))*. …
+
+**A recharging ATTACK is the one exception, and it takes a property badge** (D-157, owner ruling
+2026-09-07). An attack has no qualifier: its parenthesis is the **property list**, which is printed on the
+card, so `recharge (d6)` belongs there where a GM scans for it — beside `crush` and `reach`, the other
+facts about how the attack is used. **Everything above still holds for an ABILITY**, whose parenthesis is
+the closed-list qualifier and which **carries no badge at all** since D-147, so an ability's limiter can
+only be the last sentence of its text.
+
+| Entry | Where a limiter goes |
+|---|---|
+| **Attack** | `recharge (dX)` in the **properties**, rendered as a badge. Any other limiter is still the last sentence |
+| **Ability** | **Always the last sentence** of the text. Never the qualifier |
+
+**Build-checked both ways.** The generator accepts only the exact strings `recharge (d4)`, `recharge (d6)`
+and `recharge (d8)` in an attack's properties and fails on anything else recharge-shaped, and it filters
+the badge out of D-133's carried-weapon comparison — a recharge is a limit on the **creature's use** of the
+weapon, not a property of the weapon, so a catalogue row never has to carry it. Regression suite:
+`tests/unit/creatureCarriedWeapons.test.ts` § recharge as an attack property.
 
 **Why the end of the text.** The qualifier is **what kind of action this is** and nothing else, so the
 badge stays one word a GM can scan. The limiter is a rule about frequency, which belongs with the rest of

@@ -706,6 +706,25 @@ const WEAPON_ROWS = new Map(
 const BANKED_PROPERTY = /^(?:AV \+\d+|parry \+\d+|rigid \d+)$/i
 
 /**
+ * `recharge (d4|d6|d8)`, the one NON-weapon property an attack may carry (D-157).
+ *
+ * The limiter rule (D-107) puts a frequency limit in the LAST SENTENCE of an
+ * ability's text and forbids it in the qualifier, and that half is unchanged: an
+ * ability's parenthesis is the closed-list qualifier, which D-147 stopped
+ * printing altogether. An ATTACK's parenthesis is its property list, which does
+ * print, so a recharging attack states its limiter there where a GM scans for it
+ * (owner ruling, 2026-09-07).
+ *
+ * It is filtered out before the carried-weapon comparison below: a recharge is a
+ * fact about the creature's use of the weapon, not a property of the weapon, so
+ * requiring the catalogue row to carry it would make D-133 and D-157 exclusive.
+ */
+const RECHARGE_PROPERTY = /^recharge \((d4|d6|d8)\)$/
+
+/** Any near-miss at the recharge property, so a typo fails instead of rendering. */
+const RECHARGE_SHAPED = /recharge/i
+
+/**
  * D-091: carried gear Quality by tier AND category, read off Random Treasure by
  * Level with level = tier (Basic reads Simple Loot, Elite Minor Treasure, Lord
  * Major Treasure). The full table and its reasoning live in
@@ -796,9 +815,12 @@ function validateCarriedWeapons(
 					'the moment they are looted (principle 23)',
 			)
 
-		// Properties, verbatim from the row.
+		// Properties, verbatim from the row — except `recharge (dX)`, which is a
+		// limit on the creature rather than a property of the weapon (D-157).
 		const expected = splitProperties(row.properties)
-		const actual = [...((a.properties as string[] | undefined) ?? [])].sort()
+		const actual = [...((a.properties as string[] | undefined) ?? [])]
+			.filter((prop) => !RECHARGE_PROPERTY.test(prop.trim()))
+			.sort()
 		if (expected.join(' | ') !== actual.join(' | '))
 			fail(
 				context,
@@ -901,6 +923,27 @@ function validateDesign(e: Record<string, unknown>, context: string): void {
 					`${[...QUALIFIERS].join(', ')} — got "${String(q)}". A limiter is ` +
 					'the LAST SENTENCE of the text, never the qualifier (D-107)',
 			)
+	}
+	// `recharge (dX)` is a property badge on an ATTACK and nowhere else (D-157),
+	// and only d4/d6/d8 exist (D-024). The wording is checked because a typo here
+	// renders as a badge stating a rule the game does not have.
+	//
+	// No ability-side guard is needed: an ability's parenthesis is the closed-list
+	// qualifier, so `Action, recharge (d6)` already fails the check above with
+	// D-107's message. Adding a second one would be unreachable.
+	for (const [i, raw] of (e.attacks as unknown[]).entries()) {
+		const a = raw as Record<string, unknown>
+		for (const prop of (a.properties as string[] | undefined) ?? []) {
+			if (!RECHARGE_SHAPED.test(prop) || RECHARGE_PROPERTY.test(prop.trim()))
+				continue
+			fail(
+				context,
+				`attacks[${i}] (${a.name}) has property "${prop}". A recharging ` +
+					'attack writes exactly "recharge (d4)", "recharge (d6)" or ' +
+					'"recharge (d8)" — the die list is closed (D-024) and the wording ' +
+					'is the badge a GM reads (D-157)',
+			)
+		}
 	}
 	for (const field of ENTRY_FIELDS) {
 		for (const raw of e[field] as unknown[]) {

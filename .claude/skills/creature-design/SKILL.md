@@ -120,6 +120,7 @@ The three most-violated, kept here because they are cheap to state and expensive
   Quality step. Build-checked. Riders on weapon attacks are allowed and are how high-tier armed creatures
   close the chassis gap.
 - **15.** Timer, Threat, Treat — the Treat has **five channels**, one of them lore-only. For ordinary animals a false mechanic is worse than none.
+- **52.** A name is a **head noun** the type line agrees with, plus at most one modifier. Re-read it after the last ability is written — four of five names in one batch had to be fixed at that point.
 
 ## Creature Categories
 
@@ -184,7 +185,9 @@ python3 -c "import json;[print(f\"{c['tier']:2} {c['category']:6} {c['name']}\")
 > **Gate — answer these in the notes file before step 2:**
 > 1. What is the **tactical question** this creature asks the party?
 > 2. What already exists at this tier, and how is this one **not** a near-duplicate?
-> 3. Does the name promise exactly what the stat block will deliver?
+> 3. Does the name promise exactly what the stat block will deliver, and is it **built** the way
+>    principle 52 says — a head noun that agrees with the type line, plus at most one modifier? **Ask it
+>    again at step 7**, because only then does the kit exist to check the promise against.
 
 ### 2. Base Statistics (from tier table)
 - **HP**: tier table value, formatted per category (`40`, `2×40`, `3×40`).
@@ -383,6 +386,10 @@ qualifier.
 > 3. Does every condition match its published text, and is every high-impact one gated?
 > 4. Does the creature restate any **universal action**?
 > 5. Elite/Lord only: does each trigger **escalate**, and open `When this creature suffers a Wound`?
+> 6. **Count the kit by SLOT, not by number** (principle 55): what costs the Action, what costs the Quick
+>    Action, what is free (riders, Passives)? Two abilities competing for the Action is one ability.
+> 7. **Does any condition's end clause cost the target something they choose to pay** (principle 53), and
+>    **is every gated line visibly better than the batch's best ungated one** (principle 54)?
 
 ### 5. Size, Immunities, Resistances
 Apply size modifiers and category-appropriate immunity sets from references. Resistances = half damage, weaknesses = double damage. Match to creature-type logic — undead aren't immune to everything; living creatures aren't immune to bleeding. Immunity counterplay per principle 10.
@@ -445,7 +452,7 @@ it has been written — the recurring failures below were all caught this way, o
 
 | Sweep | Ask of the draft |
 |---|---|
-| [identity.md](references/principles/identity.md) | Does the name promise what the stat block delivers? Is a real animal called by its real name, an invented one built as *one* deviation, a folk creature inheriting only what its folk entry grants? |
+| [identity.md](references/principles/identity.md) | **Re-read the name now that the kit exists** — head noun agreeing with the type line, one modifier, one or two words (principle 52). Does it promise what the stat block delivers? Is a real animal called by its real name, an invented one built as *one* deviation, a folk creature inheriting only what its folk entry grants? |
 | [chassis.md](references/principles/chassis.md) | Is every number off the tier table, with at most one traded pair? **Was the tier-adjustment question asked, and is the answer written down even when it is "no"?** Does the encounter have a Timer, a Threat and a Treat — and is the Treat real rather than invented? |
 | [abilities.md](references/principles/abilities.md) | Every condition checked against its published text? Every high-impact one gated by a save or a roll? Every defence counterable? Triggers escalating, opening `When this creature suffers a Wound`? Nothing restating a universal action? **Is every qualifier a single word with no limiter attached, and is every limiter the last sentence of its text?** **Does every carried attack declare its `weapon` row, with the catalogue's properties and damage (principle 44)? The build checks it, so a green `content:check` is the answer.** |
 | [writing.md](references/principles/writing.md) | Canonical wordings copied verbatim? Subject named where two creatures share a sentence? Superstitions recorded rather than debunked, nothing said twice? **Register pass run on every prose field and every treasure row, with the swap list written down** — the hard word, and the clever construction made of common words (29a). A punctuation sweep is not a register pass and will not catch one. |
