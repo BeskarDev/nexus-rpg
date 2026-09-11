@@ -109,6 +109,13 @@ export const PAGE_SIGIL: Record<string, SigilName> = {
 	'gm-tools/printing/magic-items': 'gem',
 	'gm-tools/printing/print-character-sheet': 'tablet',
 	'gm-tools/printing/creature-cards': 'skull',
+	// The one printable where the artefact rule gives way to legibility. The
+	// artefact is a slab of rules, so `stele` was the honest mark — and it sits
+	// directly above `print-character-sheet`, whose `tablet` is the same
+	// silhouette at sidebar size, so the two rows read as one repeated icon. The
+	// list has to be scannable before it is clever, and `blades` is both the
+	// subject and the only mark in this group nothing else resembles.
+	'gm-tools/printing/combat-reference': 'blades',
 	'gm-tools/random-tables/random-treasure': 'chalice',
 	'gm-tools/random-tables/random-creature': 'paw',
 	'gm-tools/random-tables/random-spell': 'sparkle',
