@@ -2,7 +2,8 @@ import { useMemo } from 'react'
 import parse from 'html-react-parser'
 import { SheetLayout } from './SheetLayout'
 import { Character, NpcRelationship, Relation } from '@site/src/types/Character'
-import { Band, Field, Prose } from './SheetPrimitives'
+import { Band, Field, ProseBlocks } from './SheetPrimitives'
+import { splitProseBlocks } from './splitProseBlocks'
 
 /**
  * The Personal sheet (M16 S3).
@@ -73,17 +74,105 @@ export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 		(a, b) => b - a,
 	)
 
-	// Keyed on its own label: the three calls below sit in an array literal, so
-	// without one React warns and the list has no stable identity.
-	const legacyList = (label: string, entries: Relation[]) =>
-		entries.length > 0 && (
-			<div key={label} style={{ marginBottom: '1mm' }}>
-				<div className="pc-label">{label}</div>
-				{entries.map((entry, index) => (
-					<div key={entry.id || `${label}-${index}`}>{entry.description}</div>
-				))}
-			</div>
-		)
+	/*
+	 * One block per relationship, in disposition order, each carrying its group's
+	 * heading when it opens the group.
+	 *
+	 * The cut is per RELATIONSHIP rather than per disposition group, because a
+	 * group is as long as the player made it and cutting a whole one costs more
+	 * than it has to. Carrying the heading inside its first entry is what keeps a
+	 * heading from being left behind at the bottom of the panel with nothing
+	 * under it.
+	 */
+	const relationshipBlocks = useMemo(() => {
+		if (isNewFormat) {
+			return sortedDispositions.flatMap((disposition) =>
+				groupedRelationships
+					.get(disposition)!
+					.filter((npc) => npc.name?.trim() || npc.description?.trim())
+					.map((npc, index) => ({
+						key: `${disposition}-${npc.id || index}`,
+						node: (
+							<>
+								{index === 0 && (
+									<div className="pc-label">
+										{getDispositionLabel(disposition)}
+									</div>
+								)}
+								<div className="pc-entry-clamp">
+									{npc.name} ({npc.role}): {npc.description}
+								</div>
+							</>
+						),
+					})),
+			)
+		}
+
+		/*
+		 * Keyed by GROUP AND id: the pre-migration lists number their entries from
+		 * 1 independently, so allies, contacts and rivals all contain an entry
+		 * with id "1". Flattened into one list those are duplicate React keys, and
+		 * the panel rendered a mix of stale and current nodes.
+		 *
+		 * Blank entries are dropped rather than printed. The empty character ships
+		 * seven placeholders per list, and 21 empty blocks would fill the panel
+		 * with nothing and push every real relationship into the overflow note.
+		 */
+		const legacyGroup = (label: string, entries: Relation[]) =>
+			entries
+				.filter((entry) => entry.description?.trim())
+				.map((entry, index) => ({
+					key: `${label}-${entry.id || index}`,
+					node: (
+						<>
+							{index === 0 && <div className="pc-label">{label}</div>}
+							<div className="pc-entry-clamp">{entry.description}</div>
+						</>
+					),
+				}))
+
+		return [
+			...legacyGroup('Allies', allies),
+			...legacyGroup('Contacts', contacts),
+			...legacyGroup('Rivals', rivals),
+		]
+	}, [
+		isNewFormat,
+		sortedDispositions,
+		groupedRelationships,
+		allies,
+		contacts,
+		rivals,
+	])
+
+	/*
+	 * Notes cut at a paragraph, which is the unit the player wrote in. The same
+	 * splitter the card decks use, so "what counts as a block" is one rule in one
+	 * place rather than two that drift.
+	 */
+	const noteBlocks = useMemo(
+		() =>
+			splitProseBlocks(char.personal.notes || '').map((block, index) => ({
+				key: `note-${index}`,
+				node: <>{parse(block)}</>,
+			})),
+		[char.personal.notes],
+	)
+
+	/*
+	 * The description is bounded for the same reason the panels are: it is free
+	 * text, and 6000 characters of it pushed the sheet 51.6mm past the trim. It
+	 * sits above two panels that can give way, which is what made the overflow
+	 * look like their fault.
+	 */
+	const descriptionBlocks = useMemo(
+		() =>
+			splitProseBlocks(char.personal.description || '').map((block, index) => ({
+				key: `description-${index}`,
+				node: <>{parse(block)}</>,
+			})),
+		[char.personal.description],
+	)
 
 	return (
 		<SheetLayout crest="personal">
@@ -112,9 +201,13 @@ export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 				<Field label="Age" sigil="age" value={char.personal.age} width="14mm" />
 			</Band>
 
-			<Prose label="Physical Description" sigil="description" weight={1}>
-				{char.personal.description}
-			</Prose>
+			<ProseBlocks
+				label="Physical Description"
+				sigil="description"
+				weight={1}
+				blocks={descriptionBlocks}
+				noun={{ one: 'paragraph', many: 'paragraphs' }}
+			/>
 
 			<div
 				style={{
@@ -126,34 +219,40 @@ export const PersonalSheet: React.FC<{ char: Character }> = ({ char }) => {
 					alignItems: 'stretch',
 				}}
 			>
-				<div style={{ width: '50%', display: 'flex', minHeight: 0 }}>
-					<Prose label="NPC Relationships" sigil="figure-pair">
-						{isNewFormat
-							? sortedDispositions.map((disposition) => (
-									<div key={disposition} style={{ marginBottom: '1mm' }}>
-										<div className="pc-label">
-											{getDispositionLabel(disposition)}
-										</div>
-										{groupedRelationships
-											.get(disposition)!
-											.map((npc, index) => (
-												<div key={npc.id || `npc-${index}`}>
-													{npc.name} ({npc.role}): {npc.description}
-												</div>
-											))}
-									</div>
-								))
-							: [
-									legacyList('Allies', allies),
-									legacyList('Contacts', contacts),
-									legacyList('Rivals', rivals),
-								]}
-					</Prose>
+				{/*
+					`minWidth: 0` beside the height rule: a pasted URL or any other
+					unbreakable run would otherwise widen the column and push its
+					neighbour off the sheet sideways, which no height measurement sees.
+				*/}
+				<div
+					style={{
+						width: '50%',
+						display: 'flex',
+						minHeight: 0,
+						minWidth: 0,
+					}}
+				>
+					<ProseBlocks
+						label="NPC Relationships"
+						sigil="figure-pair"
+						blocks={relationshipBlocks}
+						noun={{ one: 'relationship', many: 'relationships' }}
+					/>
 				</div>
-				<div style={{ width: '50%', display: 'flex', minHeight: 0 }}>
-					<Prose label="Personal Notes" sigil="stylus">
-						{parse(char.personal.notes || '')}
-					</Prose>
+				<div
+					style={{
+						width: '50%',
+						display: 'flex',
+						minHeight: 0,
+						minWidth: 0,
+					}}
+				>
+					<ProseBlocks
+						label="Personal Notes"
+						sigil="stylus"
+						blocks={noteBlocks}
+						noun={{ one: 'paragraph of notes', many: 'paragraphs of notes' }}
+					/>
 				</div>
 			</div>
 		</SheetLayout>

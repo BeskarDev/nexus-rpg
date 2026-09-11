@@ -385,6 +385,38 @@
 	padding: 0.5mm 1mm;
 }
 
+/*
+ * A prose panel whose content is measured and cut to fit (`ProseBlocks`).
+ *
+ * The clip is a BACKSTOP, not the mechanism: the cut decides what prints, and
+ * this only guarantees that nothing can cross the trim in the moment before the
+ * measurement runs, or on a server render that never measures at all. Without it
+ * the Personal sheet grew to 434mm for a well-used character and ran off the
+ * bottom of the paper.
+ */
+.pc-prose--fitted {
+	flex: 0 1 auto;
+	min-height: 0;
+	overflow: hidden;
+}
+
+/*
+ * One relationship, held to four lines.
+ *
+ * A single entry can be longer than the panel, and an uncut one would take the
+ * whole page and leave every other relationship to the overflow note — the sheet
+ * is a play aid, and knowing WHO the character knows beats knowing everything
+ * about the first of them. The clamp's own ellipsis is the honest signal that
+ * the rest of the sentence is in the app.
+ */
+.pc-entry-clamp {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+	line-clamp: 4;
+	overflow: hidden;
+}
+
 .pc-prose p,
 .pc-prose ul,
 .pc-prose ol {
@@ -400,7 +432,15 @@
  * is safe because a blank line carries nothing — see `WriteLines`.
  */
 .pc-fill {
-	flex-grow: 1;
+	/*
+	 * `flex-basis: 0`, not `auto`. The block emits sixty lines — far more than any
+	 * panel can show — so an `auto` basis makes its CONTENT height 240mm, and a
+	 * flex row then shrinks the ruled area and the prose beside it in proportion.
+	 * The Personal sheet's relationships panel was squeezed to 46.8mm that way and
+	 * clipped entries the measurement had just found room for. Ruled lines are
+	 * decoration: they take what is left over and nothing else.
+	 */
+	flex: 1 1 0;
 	min-height: 0;
 	overflow: hidden;
 }

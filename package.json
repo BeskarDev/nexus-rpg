@@ -27,6 +27,7 @@
 		"test:coverage": "vitest run --coverage",
 		"creature:build": "bun src/utils/typescript/cli/creatureBuilderCLI.ts",
 		"report:links": "bun src/utils/scripts/linkification-report.ts",
+		"print:measure": "bun src/utils/scripts/measure-print-sheet.ts",
 		"spells:damage-backfill": "bun src/utils/scripts/maintenance/backfill-spell-damage.ts",
 		"spells:damage-rulings": "bun src/utils/scripts/maintenance/apply-spell-damage-rulings.ts",
 		"sigils:check": "bun src/utils/sigils/check.ts",

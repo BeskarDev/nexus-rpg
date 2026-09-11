@@ -8,6 +8,7 @@ import type {
 } from '@site/src/components/codex/stat-sigils'
 import { ActionGlyph } from '../../CharacterSheet/CharacterSheetTabs/01_Skills/components/ActionMark'
 import type { ActionType } from '@site/src/types/ActionType'
+import { SHEET_BLOCK_ATTRIBUTE, useFittedBlocks } from './useFittedBlocks'
 
 /**
  * What a printed label can be marked with.
@@ -206,37 +207,105 @@ export const Stat: React.FC<{
 )
 
 /**
- * A block of the player's own words, or the ruled space to write them in.
+ * What the panel says about the part of itself it could not print.
  *
- * Prose that is already there prints; whatever is left of the block stays ruled,
- * because the Personal sheet is the one page whose whole job is to be added to
- * during play.
+ * Pure, because the wording is the whole contract with the reader and the rest
+ * of the panel needs a laid-out page to test. Empty means the panel printed
+ * everything it was given and has nothing to confess.
  */
-export const Prose: React.FC<{
+export function overflowNote(
+	shown: number,
+	total: number,
+	noun: { one: string; many: string },
+	clipped: boolean,
+): string {
+	const dropped = total - shown
+	const more = `+ ${dropped} more ${dropped === 1 ? noun.one : noun.many}`
+	if (clipped)
+		return dropped > 0
+			? `breaks off here, ${more} — see the app`
+			: 'breaks off here — see the app'
+	return dropped > 0 ? `${more} — see the app` : ''
+}
+
+/**
+ * A block of the player's own words, or the ruled space to write them in —
+ * bounded, because there is no knowing how much of it there is (M19,
+ * owner-reported).
+ *
+ * The block this replaces took whatever it was handed and grew. A character
+ * with a dozen NPC relationships measured **434mm of content in a 210mm page**:
+ * the Personal sheet ran off the bottom of the paper and pushed the pages after
+ * it out of shape. A long physical description did the same thing 51.6mm past
+ * the trim, one block higher up.
+ *
+ * So the content arrives as BLOCKS and the panel keeps the ones that fit, cut at
+ * a boundary the writer would recognise: a whole relationship, a whole paragraph.
+ * What did not fit is stated rather than dropped in silence, which is the same
+ * contract `Rows` prints for the lists on the other three pages — and the same
+ * lesson M16 recorded when the fixed-height boxes lost weapons without a word.
+ */
+export const ProseBlocks: React.FC<{
 	label: string
-	children?: React.ReactNode
+	/** One cuttable unit each, in reading order. */
+	blocks: { key: string; node: React.ReactNode }[]
+	/** What the panel holds, named for the overflow note. */
+	noun: { one: string; many: string }
 	sigil?: SigilSlot
-	/** Its share of the page against its siblings. Physical description is worth
-	    less of the Personal sheet than relationships or notes are. */
 	weight?: number
-}> = ({ label, children, weight = 1, sigil }) => (
-	<section
-		style={{
-			display: 'flex',
-			flexDirection: 'column',
-			flexGrow: weight,
-			flexBasis: 0,
-			minHeight: 0,
-		}}
-	>
-		<div className="pc-group__head pc-mark-label">
-			{sigil && <Mark name={sigil} size="1.5em" />}
-			{label}
-		</div>
-		<div className="pc-prose">{children}</div>
-		<WriteLines />
-	</section>
-)
+}> = ({ label, blocks, noun, sigil, weight = 1 }) => {
+	const boxRef = React.useRef<HTMLDivElement>(null)
+	const fillRef = React.useRef<HTMLDivElement>(null)
+	const contentKey = blocks.map((block) => block.key).join('|')
+	const fitted = useFittedBlocks(boxRef, fillRef, blocks.length, contentKey)
+
+	// Not even one block fits: the first is printed anyway, clipped by the box,
+	// and the note says it breaks off. An empty panel under a footnote is the
+	// worse answer for a player who writes in long paragraphs.
+	const clipped = blocks.length > 0 && fitted === 0
+	const note = overflowNote(clipped ? 1 : fitted, blocks.length, noun, clipped)
+
+	return (
+		<section
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				flexGrow: weight,
+				flexBasis: 0,
+				minHeight: 0,
+			}}
+		>
+			<div className="pc-group__head pc-mark-label">
+				{sigil && <Mark name={sigil} size="1.5em" />}
+				{label}
+			</div>
+			{/*
+				The measured box. It is `overflow: hidden` so that nothing can escape
+				the page even before the measurement has run (or if it never does, as
+				on the server), and the cut is what keeps that clipping from ever
+				being the thing the reader notices.
+			*/}
+			<div className="pc-prose pc-prose--fitted" ref={boxRef}>
+				{/* No `display` here: `useFittedBlocks` owns it, and two owners means
+					whichever wrote last wins (see that file). */}
+				{blocks.map((block) => (
+					<div key={block.key} {...{ [SHEET_BLOCK_ATTRIBUTE]: '' }}>
+						{block.node}
+					</div>
+				))}
+			</div>
+			{note && <div className="pc-overflow-note">{note}</div>}
+			{/* Wrapped so the measurement can stand the lines down while it asks how
+				much room the panel really has — see `useFittedBlocks`. */}
+			<div
+				ref={fillRef}
+				style={{ display: 'flex', flex: '1 1 0', minHeight: 0 }}
+			>
+				<WriteLines />
+			</div>
+		</section>
+	)
+}
 
 /**
  * A named band of stats that sizes to its contents (M17 S2).
@@ -330,7 +399,8 @@ export const Group: React.FC<{
  *
  * ## Where these are still legitimate (M17 D3, S4)
  *
- * **Only `Prose`.** M16 spread write-lines across every block, because with the
+ * **Only the Personal sheet's `ProseBlocks` panels.** M16 spread write-lines
+ * across every block, because with the
  * old reservations in place a typical character printed 70% white and ruled
  * nothing looked better than white nothing. M17 removed the reservations, so
  * there is real content to put there instead, and D3 settles which is the better
