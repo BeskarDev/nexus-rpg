@@ -31,7 +31,7 @@ import './creatureCardsStyles.css'
 import { CreatureCompactCard } from './CreatureCompactCard'
 import { parseCreatureMarkdown } from './parseCreatureMarkdown'
 import {
-	companionId,
+	companionEntries,
 	creatureEntries,
 	pastedId,
 	type CreatureEntry,
@@ -97,23 +97,6 @@ export const CreatureCards: React.FC = () => {
 		setSelectedIds((current) =>
 			Array.from(new Set([...current, ...entries.map((entry) => entry.id)])),
 		)
-	}
-
-	/** A character's companions, keyed by the document they came off (D6). */
-	const companionEntries = (
-		docId: string,
-		companions: { markdown?: string }[] | undefined,
-	): CreatureEntry[] => {
-		const markdown = (companions ?? [])
-			.map((companion) => companion.markdown)
-			.filter((md) => md && md.trim())
-			.join('\n\n')
-		if (!markdown) return []
-		return parseCreatureMarkdown(markdown).map((creature) => ({
-			id: companionId(docId, creature.name),
-			source: 'companion' as const,
-			creature,
-		}))
 	}
 
 	const handleCharacterSelect = (character: CharacterDocument | null) => {

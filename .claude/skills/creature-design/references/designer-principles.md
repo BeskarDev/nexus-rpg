@@ -1,6 +1,6 @@
 # Designer Principles — Creature Design
 
-**Binding rules, not suggestions.** 51 principles, split by the phase of work they govern so a
+**Binding rules, not suggestions.** 61 principles, split by the phase of work they govern so a
 task loads only what it needs. **Numbers are global and permanent — never renumber.**
 
 Two sources feed them: **native** principles distilled from owner feedback during creature work,
@@ -15,13 +15,14 @@ The numeric chassis (tier stats, size modifiers, immunity sets, validation check
 
 | Phase | File | Covers |
 |---|---|---|
-| steps 1-3 — concept, statistics, attacks | [principles/chassis.md](principles/chassis.md) | 1, 2, 3, 4, 5, 7, 15 |
-| step 1, and every time you name something | [principles/identity.md](principles/identity.md) | 6, 12, 13, 14, 20, 21, 22, 25 |
-| step 4 — abilities, and every Elite/Lord trigger | [principles/abilities.md](principles/abilities.md) | 8, 9, 10, 11, 16, 17, 18, 23, 24, 26, 27 |
-| every line of stat block text and lore prose | [principles/writing.md](principles/writing.md) | 19, 28, 29, **29a**, 30, 31, 32, 33 |
+| steps 1-3 — concept, statistics | [principles/chassis.md](principles/chassis.md) | 1, 2, 3, 4, 5, 7, 15, 37, 38, 39, 40, 48 |
+| **step 3 — attacks and carried weapons** | [principles/attacks.md](principles/attacks.md) | **23, 41, 44** |
+| step 1, and every time you name something | [principles/identity.md](principles/identity.md) | 6, 12, 13, 14, 20, 21, 22, 25, 34, 42, 47, 50, 51, 52, 58 |
+| step 4 — abilities, and every Elite/Lord trigger | [principles/abilities.md](principles/abilities.md) | 8, 9, 10, 11, 16, 17, 18, 24, 26, 27, 35, 36, 43, 45, 46, 49, 53, 54, 55, 57, 59, 60, 61 |
+| every line of stat block text and lore prose | [principles/writing.md](principles/writing.md) | 19, 28, 29, **29a**, 30, 31, 32, 33, 56 |
 
 **Reading one file is the norm, not a shortcut.** Writing abilities means `abilities.md` plus
-`writing.md`; a whole creature from scratch means all four, in the order above. What is never
+`writing.md`; a whole creature from scratch means all five, in the order above. What is never
 correct is designing from the one-line summaries below — they exist to tell you *which* principle
 applies, not what it says.
 
@@ -69,7 +70,7 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **16.** Condition escalation prices a disable instead of banning it.
 - **17.** Bonus damage comes in three rungs, and they are rungs, not a right answer.
 - **18.** `briefly` and `short` are the two in-combat durations, and the choice is deliberate.
-- **23.** A creature's weapon may have any name, but its damage and properties must be a catalog entry's.
+- **23.** A creature's weapon may have any name, but its damage and properties must be a catalog entry's. *(attacks)*
 - **24.** Check the universal Action and Quick Action lists before writing an ability.
 - **26.** Every trigger opens `When this creature suffers a Wound, …`, and Lords take the ordinal.
 - **27.** An Elite or Lord Trigger escalates. It is never a downgrade, and never a rule the game already has.
@@ -91,10 +92,10 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **38.** Use the tier adjustment. Ask what each creature is better at than its tier and what it pays. *(chassis)*
 - **39.** Light or heavy armor decides whether `slash` works. Choose it deliberately, not by AV number. *(chassis)*
 - **40.** An armed humanoid closes the chassis gap with abilities, not a bigger weapon. *(chassis)*
-- **41.** A conditional second attack on a Quick Action is the answer to multiattack. Trigger on an action, not a result. *(abilities)*
+- **41.** A conditional second attack on a Quick Action is the answer to multiattack. Trigger on an action, not a result. *(attacks)*
 - **42.** Improved senses are earned. Seeing in the dark is rare: 3 of 34 companions, one of them an ordinary animal. *(identity)*
 - **43.** A trait must act in the encounter. Companion-utility traits are inert on a monster. *(abilities)*
-- **44.** A carried weapon's damage and properties are the catalogue's, changed only by a Quality step — **build-checked** via the attack's `weapon` field. Riders are allowed. *(abilities)*
+- **44.** A carried weapon's damage and properties are the catalogue's, changed only by a Quality step — **build-checked** via the attack's `weapon` field. Riders are allowed. *(attacks)*
 - **45.** Qualifier is one word; the limiter is the LAST SENTENCE of the text. Most-repeated error. *(abilities)*
 - **46.** Write an ability's clauses in resolution order, and make the second effect the payoff of the first. *(abilities)*
 - **48.** The tier says how strong. The **category** says how many adventurers it is sized against: Basic one, Elite a group or a mini-boss slot, Lord a whole party alone. *(chassis)*
@@ -108,6 +109,9 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **56.** State an exception, never the absence of one. `every creature` already means every creature; sparing the creature's own side needs TARGETING, not a trailing sentence. *(writing)*
 - **57.** A rider that undoes the creature's own plan is not a rider. Ask where the creature is after it resolves: `pushed` on a grinder, `prone` on something already easy to hit. *(abilities)*
 - **58.** The twelve Folk are PEOPLE. A creature on a folk's silhouette either IS that folk on the type line, or differs somewhere a GM can point at — type, gear, numbers, or a rule a person could not have. *(identity)*
+- **59.** The effect the creature is NAMED for fires on ANY success. The success level sets its degree, never whether it happens. *(abilities)*
+- **60.** The category buys TURN DENSITY. Count live options, not card entries. Elite and Lord produce two effects a turn, and the second is never a second attack roll. *(abilities)*
+- **61.** Resolve is a second currency, and a **Lord-only** one. One signature ability per Lord may be priced in it. *(abilities)*
 
 ## Appending a new principle
 
@@ -117,7 +121,7 @@ When the owner corrects or refines a creature design decision in session:
 one-line title each. Open the phase file rather than this index when you are designing: this list says
 *which* principle applies and never what it says.
 
-1. Take the next free number (currently next: **59**).
+1. Take the next free number (currently next: **62**).
 2. **Write the full principle into the phase file it belongs to** — `principles/chassis.md`,
    `identity.md`, `abilities.md` or `writing.md` (numbered, bolded one-line rule, then reasoning,
    then owner-ruling provenance).

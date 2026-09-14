@@ -54,15 +54,28 @@ Three things follow, and all three are load-bearing:
 
 **Why this matters at roster scale:** a Bronze Age fantasy bestiary drawn from an Earth field guide reads as a zoo. Filling the low-tier `Beast` slots with invented species is what makes the wilderness feel like somewhere else, and it costs nothing mechanically, since the chassis is the same animal chassis either way. *(Owner direction, 2026-08-09, from the worldbuilding vault.)*
 
-**22. Dinosaurs are ordinary Beasts with a `Saurian` subtype, and never carry their scientific name.** They are a normal part of the world's wildlife, not monsters and not magical: type `Beast`, subtype `Saurian`, sitting **alongside** `Reptile` rather than under it, since filing a triceratops as a reptile shelves it next to a viper. Entry names are what the setting's people would call them — `Shieldhead`, `Sicklefoot`, `Thunderfoot`, `Tyrant`, `Marsh Lurker` — in the manner of Gothic's Scavenger and Shadowbeast. **Never a binomial**: "Triceratops" is a 19th-century Greek coinage by a paleontologist, and it breaks the pre-scientific register of principle 12 exactly as "Kinetic Field" would break a spell's.
+**22. Dinosaurs are ordinary Beasts with a `Saurian` subtype, and never carry their scientific name.** Not
+monsters and not magical: type `Beast`, subtype `Saurian`, sitting **alongside** `Reptile` rather than under
+it, since filing a triceratops as a reptile shelves it next to a viper. Names are what the setting's people
+would call them — `Shieldhead`, `Sicklefoot`, `Thunderfoot`, `Tyrant`, `Marsh Lurker`. **Never a binomial**:
+"Triceratops" is a 19th-century Greek coinage and breaks principle 12's pre-scientific register.
 
-This looks like it contradicts principle 20 and instead sharpens it. The rule underneath 20 is **use the name the setting's people would use** — for a crocodile that *is* "crocodile", because a villager in Atakhet has the word; for a triceratops it is not "Triceratops", because nobody in that world does. A shared word survives the test, an anachronism fails it.
+This sharpens principle 20 rather than contradicting it. The rule underneath 20 is **use the name the
+setting's people would use** — for a crocodile that *is* "crocodile"; for a triceratops it is not
+"Triceratops", because nobody in that world has the word.
 
-**The subtype carries recognition so the name does not have to.** A renamed dinosaur is unidentifiable on its own, which is the real objection — `Large Beast (Saurian)` on the card answers it, and `lore` carries a one-line physical description. Recognition lives in the schema, flavour lives in the name.
+**The subtype carries recognition so the name does not have to.** A renamed dinosaur is unidentifiable on its
+own; `Large Beast (Saurian)` on the card answers it and `lore` carries a one-line description. **Vary the
+naming register** — all-compound naming is the same monotony trap as every swarm reaching for `distracted`.
 
-**Vary the naming register.** Some names say what it does to you, some are simply what people call it. All-compound naming is the same monotony trap as every swarm reaching for `distracted`.
-
-**The subtype boundary binds the prose too, not only the name.** `Saurian` sits *alongside* `Reptile`, so a saurian is never called a lizard, and a flying one is never called a bird — the Leatherwing was written as "a pigeon-sized flying lizard" with "the city birds" three lines later, and both contradicted its own stat block. This is not pedantry about clades: the setting's people sort animals by what they see, and a beaked, leather-winged flier is not the thing they call a lizard any more than a bat is. Three ways out, all good: **describe it** ("all leather wing and beaked snout"), **use the folk word** for its kind, or simply **call them saurians** — the word is plain enough that the setting's people can own it as the name of a group of animals, and unlike `Triceratops` it carries no scientific register. `saurian` is therefore legal in lore prose, not only as a subtype on the card. Comparisons to other animals stay legal — a leatherwing may carry messages *better than a pigeon*, because that names a different animal rather than miscategorising this one. *(Owner rulings, 2026-08-09 D-053, 2026-08-10 Leatherwing narrative.)*
+**The subtype boundary binds the prose too.** `Saurian` sits alongside `Reptile`, so a saurian is never
+called a lizard and a flying one is never called a bird — the Leatherwing was written as "a pigeon-sized
+flying lizard" with "the city birds" three lines later, contradicting its own stat block. Three ways out:
+**describe it** ("all leather wing and beaked snout"), **use the folk word**, or simply **call them
+saurians** — plain enough for the setting's people to own, and carrying no scientific register, so it is
+legal in lore prose. Comparisons stay legal: a leatherwing may carry messages *better than a pigeon*, which
+names a different animal rather than miscategorising this one. *(Owner rulings, 2026-08-09 D-053,
+2026-08-10.)*
 
 **25. Folk inheritance is bounded by the folk entry, and Nexus is conservative about senses.** A humanoid creature takes the abilities its folk actually has in `docs/02-adventurers/01-folk.md` and **nothing else**. The trap is D&D reflex, and vision is where it bites hardest: exactly **four of the twelve folk** get a vision trait — `Night Vision` for Elf, Goblin and Catfolk, `Dwarven Sight` for Dwarf. Orcs have `Orcish Fury` and `Pride above Death`, and no darkvision of any kind. Seeing in the dark is a distinguishing trait of a few peoples here, not a default for anything non-human, and handing it out erodes the thing that makes those four folk distinct.
 
@@ -82,207 +95,153 @@ oversight, where `(Any)` states a decision and tells the GM the folk is theirs t
 *(Owner rulings, 2026-08-12 and 2026-08-14; see also lore-schema.md § Physiology rule 8.)*
 
 **42. Improved senses are earned by identity or ecology, and seeing in the dark is rare.** Nexus does not
-hand out D&D's darkvision. Principle 25 already says only **four of twelve folk** get a vision trait, and
-the same discipline applies to every creature.
+hand out D&D's darkvision — only **four of twelve folk** get a vision trait (principle 25), and the same
+discipline applies to every creature. The published companion roster is the calibration: 34 species, counted
+in [../case-studies.md](../case-studies.md#p42).
 
-**The published companion roster is the calibration** — 34 species, counted in
-[../case-studies.md](../case-studies.md#p42).
+1. **Seeing in the dark is the rarest grant — 3 of 34**, two of them aberrations. Exactly **one ordinary
+   animal** has Night Vision and it is the **cat**. Not nocturnal or subterranean by identity, no dark vision.
+2. **A non-visual sense goes to a creature whose real biology has one** — snakes `Blindsight` for pit organs,
+   the bat `Echolocation`, the earth elemental `Tremorsense`. Anatomy, not a power budget.
+3. **Scent is the ordinary grant**, and usually the right answer when a creature "should sense something".
+4. **Size, strength and being undead earn nothing.** Bear, elephant, ox, skeleton and zombie have no sense
+   trait. **Undead do not get free darkvision here.**
 
-Four rules fall out of that table, and they are the ones to design against:
+**The vocabulary is known-incomplete and the gaps are recorded.** Do not invent a sense ad hoc — it becomes a
+creature-only rule nobody can reuse. Add it to `creature-traits.json` with a range in the name, after
+checking these three open gaps: a **short-grade darkvision** at the `Dwarven Sight` rung (the creature side
+jumps straight to `Darkvision (medium/long)`); **see invisibility**, which the `invisible` condition names
+and no trait grants; and **perceiving across a soul realm**, where `Astral` and `Chthonic` exist as subtypes
+but no sense does.
 
-1. **Seeing in the dark is the rarest grant — 3 of 34, and two of those are aberrations.** Exactly **one
-   ordinary animal** has Night Vision and it is the **cat**, the archetypal nocturnal hunter. If a
-   creature is not nocturnal or subterranean by identity, it does not see in the dark.
-2. **A non-visual sense goes to a creature whose real biology has one.** Snakes get `Blindsight` for
-   their pit organs, the bat `Echolocation`, the earth elemental `Tremorsense`. It is anatomy, not a
-   power budget.
-3. **Scent is the ordinary grant.** A mammal known for its nose gets `Keen Scent`, and that is usually
-   the right answer when a creature "should sense something".
-4. **Size, strength and being undead earn nothing.** The bear, the elephant, the ox, the skeleton and the
-   zombie all have no sense trait. **Undead do not get free darkvision here.**
-
-**The sense vocabulary is known-incomplete, and the gaps are recorded** (owner, 2026-08-11). Do not
-invent a sense trait ad hoc to fill one — it becomes a creature-only rule nobody else can reuse. Add it
-to `creature-traits.json` with a range in the name, and check the list below first:
-
-| Gap | Why it is owed |
-|---|---|
-| **A short-grade darkvision** | The folk trait `Dwarven Sight` is *melee* range in absolute darkness and *medium* in dim, and it reads as thermal — "differences in temperature by sight". The creature side jumps straight to `Darkvision (medium/long)`, so there is no counterpart at the dwarf's grade |
-| **See invisibility** | The published `invisible` condition already names it — *"hidden from any creature that can't perceive you through other senses or **see through invisibility**"* — and **no trait grants it.** The rule points at a hole |
-| **Perceiving across a soul realm** | The setting has the layer already: `Astral` and `Chthonic` are published Spirit subtypes and the vault's `02 Kosmologie/Seelenreiche` is the cosmology. A guardian that sees what has stepped out of the world is a real design need and has no vocabulary |
-
-**The sense vocabulary is now internally consistent** (D-105), and new entries follow its shape:
-
-| Rule | Meaning |
-|---|---|
-| **One name, one effect** | A parameter in the name changes the **range and nothing else**. `Blindsight (close)` and `Blindsight (medium)` are the same sense at two distances |
-| **The range lives in the name** | `Blindsight (close)`, `Tremorsense (medium)`, `Magic Sense (long)`. Only `Night Vision` has none, correctly, because it is relative to existing light |
-| **Each sense states its blind spot** | Blindsight is stopped by full cover, Echolocation is not but fails while `deafened`, Tremorsense misses anything not touching its surface. A sense with no blind spot is a sense with no counterplay (principle 10) |
-
-*(Owner ruling, 2026-08-11, D-104.)*
+New entries follow the established shape (D-105): **one name, one effect** — a parameter changes the range
+and nothing else; **the range lives in the name** (`Blindsight (close)`, `Tremorsense (medium)`), with
+`Night Vision` correctly parameterless; and **each sense states its blind spot**, because a sense without one
+has no counterplay (principle 10). *(Owner ruling, 2026-08-11, D-104.)*
 
 **34. Magic is in decline, so a lost art is written in the past tense.** The setting runs the classic
-ancient-civilisation trope: **the current age knows less magic than the ages before it.** Creature lore
-must never depict a magical craft as an ongoing industry. Nobody mass-produces enchanted things, no
-workshop still turns them out, and a wonder in a tomb was made by people who are gone.
+ancient-civilisation trope: **the current age knows less magic than the ages before it.** Creature lore never
+depicts a magical craft as an ongoing industry. Nobody mass-produces enchanted things, no workshop still
+turns them out, and a wonder in a tomb was made by people who are gone.
 
-The owner's worked example, and the model to copy: **the Ghahar dwarves** (Fortress-Dwarves of the
-canyonlands, `01-folk.md`) were master golem-builders, and **they lost the cutting of the cores.** They
-still raise new golems, and every one is built around a salvaged core that was not damaged beyond
-repair. The art is not forgotten in the sense of being unknown, it is unrepeatable, and the difference
-is what makes it playable.
+**The model to copy: the Ghahar dwarves** were master golem-builders and **lost the cutting of the cores.**
+They still raise new golems, every one built around a salvaged core that was not damaged beyond repair. The
+art is not unknown, it is **unrepeatable**, and that difference is what makes it playable.
 
-**What this buys a creature, mechanically as well as in flavour:**
+What it buys mechanically: **a motive for everyone else in the ruin** (if the old cores are the only cores,
+somebody has been down here before the party — D-080's intruder spoil), **scarcity that prices itself** (the
+intact version goes in the lair description, the **broken** one is the treasure row), and **a reason the
+creature is still here** (a thing that cannot be replaced is a thing people guard and come back for).
 
-- **A motive for everyone else in the ruin.** If the old cores are the only cores, then somebody has
-  been down here before the party, and that is the intruder spoil half of D-080's treasure table.
-- **Scarcity that prices itself.** The intact version is worth opening a tomb for, which puts it in
-  the lair description rather than on a d6 (§5). The **broken** version is the treasure row.
-- **A reason the creature is still here.** A thing that cannot be replaced is a thing people guard,
-  bury, and come back for.
+**Keep the fallen age vague, and only the age.** No date on when the craft was lost or the dynasty fell.
+*"The potters are long gone"*, *"in an age that knew how"*. A dated decline is a timeline a GM can
+contradict. **This is not a ban on numbers** — how old a creature or object is stays exact: a husk 200 years
+dead, a grave jar four centuries old that still burns. Only the setting's **chronology** goes vague (D-085).
 
-**Keep the fallen age vague, and only the age.** No date on when the craft was lost, the dynasty fell,
-or the art was last practised. "The potters are long gone", "in an age that knew how". A dated decline
-is a timeline a GM can contradict, and it turns a mythic loss into a fact to be looked up.
-
-**This is not a ban on numbers.** How old a creature or an object gets is a property of the thing and
-stays exactly as written: a husk 200 years dead, a ghoul colony of 300 years under one necropolis, a
-grave jar four centuries old that still burns. Only the setting's **chronology** goes vague
-(`lore-schema.md` § Physiology, D-085).
-
-**The failure it corrects**, from the Clay Servant's first draft: potters still taking commissions,
-cheap tombs still getting twenty figures pressed from one mould, rich ones getting a household. Read
-back, it was a pottery industry with a magic step in it, and it made the setting feel modern. The
-published version puts the making four centuries in the past, states that nobody has made one since,
-and says a tomb furnished today gets painted figures that never wake. *(Owner ruling, 2026-08-11,
-D-084.)*
+**The failure it corrects**, from the Clay Servant's first draft: potters still taking commissions, cheap
+tombs still getting twenty figures pressed from one mould. Read back, it was a pottery industry with a magic
+step in it. The published version puts the making four centuries in the past and says a tomb furnished today
+gets painted figures that never wake. *(Owner ruling, 2026-08-11, D-084.)*
 
 **50. A construct is a myth, not a machine, and a carried-forward concept re-enters at step 1.** The
-`Automaton` type is the easiest place in the roster to slip out of register, because "a made thing that
-moves" is one word away from science fiction in modern English and nothing about the chassis pushes back.
+`Automaton` type is the easiest place to slip out of register, because "a made thing that moves" is one word
+from science fiction in modern English and nothing in the chassis pushes back.
 
-**The test is the same mood-board test principle 13 already sets, asked of the image rather than the
-name:** *would a person in this world describe this as a made thing that a god or a smith woke, or as a
-machine?* A walking empty suit of plate armour fails it — the image is a hollow body with nobody in it,
-which is a mech, and no Bronze Age myth has one. Renaming it does not help, because the register is in the
-picture and not in the word.
+**The test, asked of the image rather than the name:** *would a person in this world describe this as a made
+thing that a god or a smith woke, or as a machine?* A walking empty suit of plate armour fails — the image is
+a hollow body with nobody in it, which is a mech, and no Bronze Age myth has one. Renaming does not help; the
+register is in the picture.
 
-**What passes, and all of it is already in the setting.** Talos and the ushabti are the vault's own named
-exemplars (`04 Natur/Bestiarium/Automaten`): a bronze giant with one vein, figures moulded to do the dead's
-work, cult images that step off a plinth, bulls cast for a temple gate, and **a spirit shut inside a
-vessel**. The last is the strongest and the most under-used — the vault gives the Urduk their
-`Elementarbändigung`, fire and earth elementals bound into rune-cut iron cores, and the Ghahar the
-symbiotic version of the same craft. **The animating thing is a spirit with a grievance, never a
-mechanism**, which is also where the creature's counterplay and its lore both come from.
+**What passes is already in the setting.** Talos and the ushabti are the vault's named exemplars: a bronze
+giant with one vein, figures moulded to do the dead's work, cult images that step off a plinth, bulls cast
+for a temple gate, and **a spirit shut inside a vessel** — the strongest and most under-used, and the Urduk's
+`Elementarbändigung` is exactly that craft. **The animating thing is a spirit with a grievance, never a
+mechanism**, which is where the creature's counterplay and its lore both come from.
 
-**A construct named after one culture's technique is a smaller creature than the technique deserves.**
-Owner direction on the replacement: *"dont give it a name specific to just the urduk, make it a more
-generic creature which still fits the theme."* The craft belongs to more than one people and the thing
-standing in the vault does not say whose it was, so the name says what it is and the lore says who might
-have made it. **The name it was given, `Furnace-Bound`, was itself fixed later** — a participle names a
-state rather than a thing, and it is now the **Furnace Effigy** (D-153, principle 52). The culture-free
-half of this ruling stands unchanged; only the word does not.
+**A construct named after one culture's technique is a smaller creature than the technique deserves**
+(*"dont give it a name specific to just the urduk, make it a more generic creature which still fits the
+theme."*). The craft belongs to more than one people, so the name says what it is and the lore says who might
+have made it.
 
-**The second half of the rule is about process and it is why this was missed for two batches.** The
-Animated Armour entered the programme in the tier-2 batch, was moved to tier 4 on **price-list** evidence
-(D-115), and was carried in an appendix for two more batches on the strength of *"nothing about it was
-wrong except where it stood."* Nobody re-ran step 1 on it, because by then every conversation about it was
-a chassis conversation.
-
-> **A design carried forward from an earlier batch's appendix re-enters the workflow at step 1, not step
-> 2.** Re-ask the concept gate — the tactical question, the near-duplicate check, and whether the name
-> promises what the stat block delivers. A settled *tier* is not a settled *creature*.
+> **The second half is process.** The Animated Armour entered in the tier-2 batch, moved to tier 4 on
+> price-list evidence (D-115), and was carried in an appendix for two more batches on *"nothing about it was
+> wrong except where it stood."* Nobody re-ran step 1, because by then every conversation about it was a
+> chassis conversation. **A design carried forward from an earlier batch's appendix re-enters the workflow at
+> step 1, not step 2.** A settled *tier* is not a settled *creature*.
 
 *(Owner rulings, 2026-08-14, tier-4 batch.)*
 
 **51. Undead are the setting's horror. Their kit is a curse and a dread effect, not a second damage line.**
-The Restless Dead is the largest supernatural family in the roster (14 records), and it is the one place the
-bestiary is allowed to reach for **soft old-school horror**: curses that follow the party out of the room,
-dread that takes a turn away, rot that will not close. An undead built as a body with an attack routine is a
-**wasted type** — a Spearman that cannot be reasoned with.
+The Restless Dead is the largest supernatural family in the roster and the one place the bestiary reaches for
+**soft old-school horror**: curses that follow the party out of the room, dread that takes a turn away, rot
+that will not close. An undead built as a body with an attack routine is a wasted type — a Spearman that
+cannot be reasoned with.
 
 **The test, asked of every undead ability:** *would this be interesting on a bandit?* If yes, it is the wrong
-ability for an undead. A sweep of the arms, a second plain attack, a knockdown — those are all fine mechanics
-and none of them needed a corpse.
+ability. A sweep of the arms, a second plain attack, a knockdown — fine mechanics, none of which needed a
+corpse. **A second damage line always answers "yes"**, which is why it is always the wrong answer.
 
-**What the register actually wants**, and every one of these is published Nexus vocabulary rather than an
-invention:
+**What the register wants**, all published Nexus vocabulary rather than invention:
 
 | Reach for | Published channel |
 |---|---|
-| A **curse that outlives the fight** | `deprived` — +1 bane on everything, half HP from short breaks, 2 Fatigue a day, and it ends only after a night's rest with food and water. In a tomb crawl that is a retreat |
-| **Dread**, escalating to helplessness | `frightened` on a success, `paralyzed` on a strong or critical one (D-151), or `paralyzed` against a target already frightened. The tier-4 counterplay floor (06b §4) is exactly where this becomes legal |
-| A **wound that will not close** | *"cannot regain HP"*, the wording the Death tradition and the Necromancy discipline both use |
+| A **curse that outlives the fight** | `deprived` — +1 bane on everything, half HP from short breaks, 2 Fatigue a day, ending only after a night's rest with food and water. In a tomb crawl that is a retreat |
+| **Dread**, escalating to helplessness | `frightened` on a success, `paralyzed` on a strong or critical one (D-151). The tier-4 counterplay floor is where this becomes legal |
+| A **wound that will not close** | *"cannot regain HP"*, the wording the Death tradition and Necromancy both use |
 | **Being unable to hurt it properly** | physical resistance on an incorporeal one, with a `radiant` weakness as the answer (D-139) |
 
-**Spend the turn on the horror, not beside it.** The Mummy's `Dread Gaze` was drafted as an **Action** for
-exactly that reason — a mummy holding somebody in place is not hitting anybody. **D-150 moved it to a Quick
-Action** so the Fist and the Gaze both fire every turn, which is D&D's Multiattack in Nexus terms, and the cost
-moved with it: the paralysis now rides the **success level** of the one roll (D-151) and a failure grants that
-creature immunity for the rest of the scene. The lesson survives the change. **Something has to pay for a
-disable** — a spent turn, a second landing, or a graded roll with a hard counterplay — and naming which one is
-part of writing the ability.
+**Something has to pay for a disable** — a spent turn, a second landing, or a graded roll with hard
+counterplay — and naming which one is part of writing the ability.
 
-**The failure this corrects, in full.** The Mummy's first draft had a `Sweeping Arms` multi-target attack and
-a `Tomb-Rot` Action that applied `deprived` on a failed save. Both were legal, both were on-chassis, and the
-owner's verdict was *"too safe, boring, and not evocative for gameplay."* The fix moved the curse **onto the
-fist**, where a mummy's rot belongs and where it costs no extra roll, and spent the freed slot on the Gaze.
-**The rot and the dread are the creature. The punch is how it delivers one of them.**
+**The failure this corrects.** The Mummy's first draft had a `Sweeping Arms` multi-target attack and a
+`Tomb-Rot` Action applying `deprived` on a failed save. Both legal, both on-chassis, and the verdict was
+*"too safe, boring, and not evocative for gameplay."* The fix moved the curse **onto the fist**, where a
+mummy's rot belongs and where it costs no extra roll, and spent the freed slot on the Gaze. **The rot and
+the dread are the creature. The punch is how it delivers one of them.**
 
-**The test generalises to any type that IS the creature's identity** — Automaton, Spirit, Divine Beast,
-Horror. The Furnace Effigy failed it on a raw fire AoE that an alchemist with a flask could have thrown,
-and the fix was the same shape as the undead ones: a **published condition** with published counterplay
-instead of a second damage figure (D-154, `burning`). **A second damage line always answers "yes, that
-would be interesting on a bandit", which is why it is always the wrong answer.** Asking it has now found
-three published mechanics no creature in the roster had ever used: `suffocating`, psychic damage, and
-`burning`.
-
-**It applies past the Undead type** — to Spirits, to the Chthonic, and to anything else whose whole reason to
-exist is that it is not alive. *(Owner ruling, 2026-08-14: "In this bronze age sword and sorcery setting, I
+**It generalises to any type that IS the creature's identity** — Automaton, Spirit, Divine Beast, Horror.
+The Furnace Effigy failed it on a raw fire AoE an alchemist with a flask could have thrown, and the fix was
+the same shape: a published condition with published counterplay instead of a second damage figure (D-154).
+Asking the question has now found three published mechanics no creature had ever used — `suffocating`,
+psychic damage, and `burning`. *(Owner ruling, 2026-08-14: "In this bronze age sword and sorcery setting, I
 want to evoke kind of soft old-school ttrpg horror elements with enemy groups like undead. curses, fear
 effects, all of that. not just another mundane enemy. its the undead!")*
 
 **52. A name is a head noun plus at most one modifier, and the head noun has to agree with the type line.**
-Principles 12, 14, 20, 21 and 22 each say what a name may not do. This one says how to build one, because
-four of the five names in the tier-4 batch had to be fixed after the stat block was written, and every
-failure was structural rather than a matter of taste.
+Principles 12, 14, 20, 21 and 22 say what a name may not do; this says how to build one. Four of the five
+names in the tier-4 batch had to be fixed after the stat block was written, and every failure was
+structural rather than a matter of taste.
 
-**The shape, measured on the published roster: 8 names of one word, 12 of two, none of three.** That is
-not a style preference, it is what a GM can find on a card and say out loud at the table.
+**The shape, measured on the published roster: 8 names of one word, 12 of two, none of three.**
 
 | Part | Job | Examples |
 |---|---|---|
-| **Head noun** | says **what kind of thing** the party is looking at, and it must not contradict the card's own `size type (subtype)` line | *Husk*, *Shade*, *Effigy*, *Soldier*, *Priest*, *Servant*, *Chief* |
-| **One modifier** | carries **the single thing that is different** — the deviation (principle 21), the rank (D-145), the role, the folk (principle 47), the material or the craft | *Grave* Husk, *Edimmu* Shade, *Furnace* Effigy, *Polearm* Soldier, *Young* Crocodile, *Mummy* Noble |
+| **Head noun** | says **what kind of thing** the party is looking at, and must not contradict the card's own `size type (subtype)` line | *Husk*, *Shade*, *Effigy*, *Soldier*, *Priest*, *Chief* |
+| **One modifier** | carries **the single thing that is different** — the deviation (principle 21), the rank (D-145), the role, the folk (principle 47), the material or craft | *Grave* Husk, *Edimmu* Shade, *Furnace* Effigy, *Young* Crocodile |
 
-**Where head nouns come from, in order of preference.** The **animal's real name** when it is a real
-animal (principle 20). Then the **setting's own categories** — the vault's `04 Natur/Bestiarium` names
-effigies, ushabti, colossi, shades, husks, and those words are free to use because the world already has
-them. Then a **plain trade or role word**: Soldier, Archer, Captain, Priest, Skulker. **Reach for an
-invented or mythological word only where the name is the reader's only clue what they are looking at** —
-Horrors, Spirits, Divine Beasts — and then it belongs to the higher-tier member of its family (D-109).
+**Where head nouns come from, in order of preference.** The **animal's real name** when it is a real animal
+(principle 20). Then the **setting's own categories** from the vault — effigy, ushabti, colossus, shade,
+husk. Then a **plain trade or role word**. **Reach for an invented or mythological word only where the name
+is the reader's only clue what they are looking at**, and then it belongs to the higher-tier member of its
+family (D-109).
 
-**The four structural failures, all caught in one batch:**
+**The four structural failures, all from one batch:**
 
-1. **No head noun.** `Furnace-Bound` is a participle: it names a **state**, not a thing, which is exactly
-   the *"something is missing from the name"* the owner reported. Every roster name is a noun.
-2. **A head noun the record denies.** `Furnace-Bound Spirit` over a record reading `Medium Automaton
-   (Vessel, Intelligent)` is **the card contradicting itself**, and `Spirit` also promises something
-   incorporeal on a creature at AV 6 heavy — a promise principle 20 says the stat block has to keep. The
-   name must survive being read next to the type line.
-3. **The head noun is a word the card already prints.** `Furnace-Bound Vessel` above `(Vessel,
-   Intelligent)` says it twice (principle 32).
+1. **No head noun.** `Furnace-Bound` is a participle naming a **state**, not a thing. Every roster name is a noun.
+2. **A head noun the record denies.** `Furnace-Bound Spirit` over `Medium Automaton (Vessel, Intelligent)`
+   is the card contradicting itself, and `Spirit` promises incorporeal on a creature at AV 6 heavy.
+3. **The head noun is a word the card already prints.** `Furnace-Bound Vessel` above `(Vessel, Intelligent)`
+   says it twice (principle 32).
 4. **The modifier names one culture of one folk.** `Kerbei Tomb-Warden`, cut on exactly that (D-138).
 
-**Name the prisoner or name the thing in the room?** The thing in the room. A creature is named after
-**what the party fights**, never after what animates it or what is trapped inside it — that is lore, and
-it is usually the Treat, which means putting it in the name spends the discovery before the fight starts.
+**Name the thing in the room, not the prisoner.** A creature is named after **what the party fights**, never
+after what animates it or is trapped inside it — that is lore, usually the Treat, and putting it in the name
+spends the discovery before the fight starts.
 
-> **The name is checked twice, and the second check is the one that catches it.** Step 1's gate asks
-> whether the name promises what the stat block will deliver, and it can only be answered properly at
-> step 7, once the kit exists. The Furnace Effigy's name changed **because its abilities changed** in the
-> same pass — the fire moved from a damage figure to a `burning` condition, and *Effigy* is what the
-> creature turned out to be. Re-read the name after the last ability is written, every time.
+> **The name is checked twice, and the second check catches it.** Step 1 asks whether the name promises what
+> the stat block will deliver; only at step 7 does the kit exist to answer it. The Furnace Effigy's name
+> changed **because its abilities changed** in the same pass. Re-read the name after the last ability is
+> written, every time.
 
 *(Owner ruling, 2026-09-07, D-153: "Mir fehlt was in dem Namen.")*
 

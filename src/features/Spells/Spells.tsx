@@ -8,9 +8,7 @@ import {
 	Select,
 	SelectChangeEvent,
 } from '@mui/material'
-import { ArcaneSpell } from '@site/src/types/ArcaneSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
-import { MysticSpell } from '@site/src/types/MysticSpell'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import {
@@ -18,8 +16,6 @@ import {
 	useSpillPlan,
 	whenAutofitSettled,
 } from '@site/src/components/autofit'
-import arcaneSpellData from '../../utils/data/json/arcane-spells.json'
-import mysticSpellData from '../../utils/data/json/mystic-spells.json'
 import {
 	CARD_PAGE,
 	CARD_PAGE_MARGIN,
@@ -32,6 +28,11 @@ import {
 	usePagePrintStyle,
 } from '../PrintingTools'
 import { SpellCard } from './SpellCard'
+import {
+	characterSpellIds,
+	spellCatalogue,
+	type UnifiedSpell,
+} from './spellSources'
 import './spellsStyles.css'
 
 const ITEM_HEIGHT = 48
@@ -46,20 +47,6 @@ const MenuProps = {
 }
 
 type SpellType = 'all' | 'arcane' | 'mystic'
-
-type UnifiedSpell = {
-	/**
-	 * `arcane:Acid Splash`. Five spell names exist in BOTH lists — Acid Splash,
-	 * Chain Lightning, Cone of Cold, Haste, True Strike — as genuinely different
-	 * spells with a discipline and a tradition of their own. Selecting by name
-	 * resolved both entries to whichever came first, so "Select all" printed the
-	 * arcane one twice and the mystic one never (owner, 2026-08-07).
-	 */
-	id: string
-	name: string
-	type: 'arcane' | 'mystic'
-	category: string // discipline or tradition
-} & (ArcaneSpell | MysticSpell)
 
 type SpellSelection = {
 	id: string
@@ -78,26 +65,7 @@ export const Spells: React.FC = () => {
 		React.useState<CharacterDocument | null>(null)
 	const [showJsonImport, setShowJsonImport] = React.useState(false)
 
-	// Combine both spell lists with type information
-	const allSpells: UnifiedSpell[] = useMemo(() => {
-		const arcane: UnifiedSpell[] = (arcaneSpellData as ArcaneSpell[]).map(
-			(spell) => ({
-				...spell,
-				id: `arcane:${spell.name}`,
-				type: 'arcane' as const,
-				category: spell.discipline,
-			}),
-		)
-		const mystic: UnifiedSpell[] = (mysticSpellData as MysticSpell[]).map(
-			(spell) => ({
-				...spell,
-				id: `mystic:${spell.name}`,
-				type: 'mystic' as const,
-				category: spell.tradition,
-			}),
-		)
-		return [...arcane, ...mystic].sort((a, b) => a.name.localeCompare(b.name))
-	}, [])
+	const allSpells = spellCatalogue()
 
 	const availableSpells = useMemo(() => {
 		if (spellTypeFilter === 'all') return allSpells
@@ -134,23 +102,16 @@ export const Spells: React.FC = () => {
 		setSelectedCharacter(character)
 		if (character) {
 			const characterName = character.personal.name
-			// A character names its spells; the deck selects them by id. Where a
-			// name exists in both lists the arcane one wins, which is what the
-			// tool did before ids existed.
-			const characterSpellIds = (
-				character.spells?.spells?.map((spell) => spell.name) || []
-			)
-				.map((name) => allSpells.find((spell) => spell.name === name)?.id)
-				.filter((id): id is string => Boolean(id))
+			const spellIds = characterSpellIds(character, allSpells)
 			// Add character's spells to the list with character attribution
 			setSelectedSpellsList((prev) => [
 				...prev,
-				...characterSpellIds.map((id) => ({ id, characterName })),
+				...spellIds.map((id) => ({ id, characterName })),
 			])
 			// Also update the selected spells for the dropdown
 			setSelectedSpells((prev) => {
 				const existingSpells = new Set(prev)
-				characterSpellIds.forEach((id) => existingSpells.add(id))
+				spellIds.forEach((id) => existingSpells.add(id))
 				return Array.from(existingSpells)
 			})
 		}
@@ -162,20 +123,16 @@ export const Spells: React.FC = () => {
 			if (jsonString.trim()) {
 				const character: Character = JSON.parse(jsonString)
 				const characterName = character.personal?.name || 'Uploaded Character'
-				const characterSpellIds = (
-					character.spells?.spells?.map((spell) => spell.name) || []
-				)
-					.map((name) => allSpells.find((spell) => spell.name === name)?.id)
-					.filter((id): id is string => Boolean(id))
+				const spellIds = characterSpellIds(character, allSpells)
 				// Add character's spells to the list with character attribution
 				setSelectedSpellsList((prev) => [
 					...prev,
-					...characterSpellIds.map((id) => ({ id, characterName })),
+					...spellIds.map((id) => ({ id, characterName })),
 				])
 				// Also update the selected spells for the dropdown
 				setSelectedSpells((prev) => {
 					const existingSpells = new Set(prev)
-					characterSpellIds.forEach((id) => existingSpells.add(id))
+					spellIds.forEach((id) => existingSpells.add(id))
 					return Array.from(existingSpells)
 				})
 			}
@@ -207,8 +164,8 @@ export const Spells: React.FC = () => {
 		// Add all spells as manual selections (no character attribution)
 		setSelectedSpellsList((prev) => {
 			const characterSelections = prev.filter((s) => s.characterName)
-			const allSpells = availableSpells.map((spell) => ({ id: spell.id }))
-			return [...characterSelections, ...allSpells]
+			const everySpell = availableSpells.map((spell) => ({ id: spell.id }))
+			return [...characterSelections, ...everySpell]
 		})
 	}
 	const deselectAll = () => {

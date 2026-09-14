@@ -49,14 +49,26 @@ not one adjustment ([case study](../case-studies.md#p38)).
 | Skill rank up, attribute down | Trained and slight. A duellist, an assassin |
 | Magic skill up, **HP down** | The frail adept who out-casts their tier |
 | HP up, Defense down | A slab that is easy to hit and hard to drop |
+| **AV up, HP down** | Hard shell, brittle inside. Fired clay, chitin |
 | Defense up, HP down | Evasive and fragile |
 
 **Ask it once per creature, at step 2:** *what is this creature better at than its tier, and what does it
 give up for that?* If the answer is "nothing", the creature is a baseline — which is a legitimate answer
 for a professional soldier and a poor one for a monster.
 
-**The balance rule is unchanged**: one pair, both directions, and the overall challenge stays at the
-intended tier. *(Owner review, 2026-08-11, D-097.)*
+**The hard limits, because the chassis is tightly calibrated:**
+
+- **One pair only.** One stat up, one stat down. Never two pairs.
+- **One tier of movement, never more.** Two tiers should be treated as a design error until argued.
+  **Defense is the stat to be most careful with** — one point moves hit rates several percent across the
+  whole encounter, so a Defense shift is a bigger change than the same "one tier" of HP.
+- **The overall challenge stays at the intended tier.** If the trade makes the creature plainly better,
+  it is not a trade.
+- **Tier 0 has almost no headroom** and tier 1 little: HP cannot go below the tier-0 floor and skills are
+  already at 0/1, so the low tiers are unadjusted by structure rather than by choice.
+
+Expect roughly **a third of a batch** to carry an adjustment — not all of it, and not none.
+*(Owner review, 2026-08-11, D-097.)*
 
 **39. Light or heavy armor is a decision about which weapons work, not just about a number.** The AV
 figure is the smaller half of the choice. The published `slash` property reads: *"On a hit against an
@@ -124,41 +136,33 @@ than into finding them a bigger sword.
 club out-damages a soldier's glaive at the same tier. *(Owner ruling, 2026-08-11, D-100.)*
 
 **48. The tier says how strong. The CATEGORY says how many adventurers it is sized against.** The skill's
-opening line — *a single creature of a tier should challenge one adventurer of the same level* — is true of
-a **Basic** and is the wrong yardstick for the other two. Category is not a stack of extra HP on the same
-job description:
+opening line — *a single creature of a tier should challenge one adventurer of the same level* — is true of a
+**Basic** and is the wrong yardstick for the other two.
 
 | Category | Is | Sized against |
 |---|---|---|
 | **Basic** | rank and file, met in numbers | **one adventurer** of its level |
 | **Elite** | a **mini-boss**, or a **leader fighting alongside a group of Basics** | the group it leads, or a party as one component of a fight |
-| **Lord** | a **full boss**. Minions are optional decoration, never the load-bearing part | **a whole party, alone.** If it needs the minions to be a fight, it is an Elite |
+| **Lord** | a **full boss**. Minions are optional decoration, never load-bearing | **a whole party, alone.** If it needs the minions to be a fight, it is an Elite |
 
-**The Lord test is the useful half, and it is a build instruction.** *Would this creature still be a real
-fight if the party met it with nothing else in the room?* Three Wounds, three life pools, two escalating
-triggers and both a reactive and a proactive Quick Action exist to make the answer yes. A Lord whose
-threat is really its escort has been designed as an Elite and priced as a Lord.
+**The Lord test is a build instruction:** *would this creature still be a real fight if the party met it with
+nothing else in the room?* Three Wounds, three life pools, two escalating triggers, a second turn each round
+and a setup-to-payoff menu (principle 60) exist to make the answer yes. A Lord whose threat is really its
+escort has been designed as an Elite and priced as a Lord.
 
-**The Elite test is the mirror.** An Elite is allowed to lean on its group, because half the definition
-*is* leading one. What it may not do is need the group to be interesting — a mini-boss met alone should
-still ask the party a question.
+**The Elite test is the mirror.** An Elite may lean on its group — half the definition *is* leading one. What
+it may not do is **need** the group to be interesting.
 
-**Two things fall out of this that were previously special cases:**
+- **D-066's leader arithmetic is a GUIDELINE, not a hard rule** (D-143). Where a creature's own weight puts it
+  elsewhere, the placement wins and the departure is written down — the **Elite mummy sits at tier 6**, two
+  rungs above the Basic mummy rather than one.
+- **Where a tier's Elite and Lord slots come from.** D-066 pushes every leader one rung up or two, so a tier
+  whose Basics are all rank-and-file has no boss of its own. The slot is filled by **the leader of the tier
+  below**, or a **solitary mini-boss that leads nothing** — tier 2's Goblin Chief is the first instance.
+- **Category still never buys a skill rank** (D-092). It buys HP, Wounds, triggers, actions and gear Quality.
+  Spell rank and skill rank are the tier's business.
 
-- **D-066's leader arithmetic is a GUIDELINE, not a hard rule** (D-143). Where a creature's own weight puts
-  it somewhere else, the placement wins and the departure gets written down. The **Elite mummy sits at tier
-  6**, two rungs above the Basic mummy rather than one, because that is where the creature belongs — *"its
-  more of a guideline than a hard rule anyway"* (owner, 2026-08-14).
-- **Where a tier's Elite and Lord slots come from.** D-066 pushes every leader one rung up (Elite) or two
-  (Lord), so a tier whose Basics are all rank-and-file has no boss of its own. The slot is filled by
-  **the leader of the tier below**, or by a **solitary mini-boss that leads nothing**. Tier 2 was the
-  first instance: its Basics are three Soldiers, a Ghoul and a Clay Servant, whose leaders all sit at
-  tier 3 or 4, and the Goblin Chief fills it as the tier-1 goblins' leader.
-- **Category still never buys a skill rank** (D-092). It buys HP, Wounds, triggers, actions and gear
-  Quality — the things that let one body absorb a party's worth of attention. Spell rank and skill rank
-  are the tier's business.
-
-*(Owner ruling, 2026-08-14, D-131, answering Q-RA.6.)*
+*(Owner ruling, 2026-08-14, D-131.)*
 
 **4. Bounded complexity.** A creature should be buildable in under 5 minutes with this framework and immediately understandable at the table.
 

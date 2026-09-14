@@ -1,0 +1,26 @@
+/*
+ * Print Everything's own two pieces (M22).
+ *
+ * The page is otherwise built from `printToolStyles.css` — the shell, the
+ * sections, the toggles, the count line and the print verb are the print tools'
+ * and stay theirs. What is new here is per-category arithmetic in the toggle
+ * list, and the line that says what packing the decks together saved.
+ */
+
+/* The card count beside a category's name: the answer to "what does ticking
+   this cost me", at rest, without opening anything. */
+.pe-category__count {
+	margin-left: 0.4rem;
+	font-variant-caps: normal;
+	letter-spacing: 0;
+	color: var(--pt-ink-quiet);
+}
+
+.pe-category__count::before {
+	content: '· ';
+}
+
+.pe-savings {
+	margin-top: 0.35rem;
+	color: var(--nexus-bronze);
+}

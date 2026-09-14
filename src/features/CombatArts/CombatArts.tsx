@@ -17,7 +17,6 @@ import {
 	useSpillPlan,
 	whenAutofitSettled,
 } from '@site/src/components/autofit'
-import combatArtsData from '../../utils/data/json/combat-arts.json'
 import {
 	CARD_PAGE,
 	CARD_PAGE_MARGIN,
@@ -30,6 +29,7 @@ import {
 	usePagePrintStyle,
 } from '../PrintingTools'
 import { CombatArtCard } from './CombatArtCard'
+import { characterCombatArtNames, combatArtCatalogue } from './combatArtSources'
 import './combatArtStyles.css'
 
 const ITEM_HEIGHT = 48
@@ -57,9 +57,11 @@ export const CombatArts: React.FC = () => {
 	>([])
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>('')
-	const [selectedCharacter, setSelectedCharacter] =
+	const [_selectedCharacter, setSelectedCharacter] =
 		React.useState<CharacterDocument | null>(null)
 	const [showJsonImport, setShowJsonImport] = React.useState(false)
+
+	const combatArts = combatArtCatalogue()
 
 	const handleChange = (
 		event: SelectChangeEvent<typeof selectedCombatArts>,
@@ -91,12 +93,8 @@ export const CombatArts: React.FC = () => {
 		setSelectedCharacter(character)
 		if (character) {
 			const characterName = character.personal.name
-			const characterAbilityNames =
-				character.skills?.abilities?.map((ability) => ability.title) || []
 			// Filter to only include abilities that exist in the combat arts data
-			const validCombatArts = characterAbilityNames.filter((name) =>
-				combatArts.some((ca) => ca.name === name),
-			)
+			const validCombatArts = characterCombatArtNames(character, combatArts)
 			// Add character's combat arts to the list with character attribution
 			setSelectedCombatArtsList((prev) => [
 				...prev,
@@ -117,12 +115,8 @@ export const CombatArts: React.FC = () => {
 			if (jsonString.trim()) {
 				const character: Character = JSON.parse(jsonString)
 				const characterName = character.personal?.name || 'Uploaded Character'
-				const characterAbilityNames =
-					character.skills?.abilities?.map((ability) => ability.title) || []
 				// Filter to only include abilities that exist in the combat arts data
-				const validCombatArts = characterAbilityNames.filter((name) =>
-					combatArts.some((ca) => ca.name === name),
-				)
+				const validCombatArts = characterCombatArtNames(character, combatArts)
 				// Add character's combat arts to the list with character attribution
 				setSelectedCombatArtsList((prev) => [
 					...prev,
@@ -145,7 +139,6 @@ export const CombatArts: React.FC = () => {
 	// pre-fit layout, and the dialog blocks the session, so there is no second
 	// chance to get it right (M18 D2).
 	const settlingCards = useAutofitPending()
-	const combatArts: CombatArt[] = combatArtsData
 
 	const filteredCombatArts = useMemo(() => {
 		return selectedCombatArtsList

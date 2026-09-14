@@ -208,6 +208,25 @@ export interface PrintPagesProps {
 	 * artifact has nothing to trim.
 	 */
 	cutMarks?: boolean
+	/**
+	 * The CSS named page these pages print on (M22 S4).
+	 *
+	 * A tool printing ONE paper size declares `@page { size: ... }` and needs
+	 * nothing here. Print Everything puts cards (192 x 267mm portrait) and
+	 * character sheets (A4 landscape) in a single job, which only works with
+	 * named pages — `@page cards { ... }` plus a `page: cards` on the box that
+	 * generates the page. Measured rather than assumed: the name has to sit on
+	 * the FIGURE, not on the paper inside it.
+	 */
+	pageName?: string
+	/**
+	 * Where this run of pages sits in a longer document.
+	 *
+	 * Two `PrintPages` in one printed ref would otherwise each caption their
+	 * pages "Page 1 of 2", and the preview would claim two page ones. The offset
+	 * is 0-based; the total is the whole document's page count.
+	 */
+	pageNumbering?: { offset: number; total: number }
 	children: React.ReactNode
 }
 
@@ -232,6 +251,8 @@ export const PrintPages: React.FC<PrintPagesProps> = ({
 	margin = 0,
 	empty,
 	cutMarks = true,
+	pageName,
+	pageNumbering,
 	children,
 }) => {
 	const { perRow, perColumn, perPage } = pageGrid(page, item, margin)
@@ -243,7 +264,7 @@ export const PrintPages: React.FC<PrintPagesProps> = ({
 			{pages.length === 0 && empty}
 			{pages.map((contents, index) => (
 				<figure
-					className="pt-page"
+					className={`pt-page${pageName ? ` pt-page--${pageName}` : ''}`}
 					key={index}
 					// The scaled paper is taken out of flow by `transform`, so the
 					// figure has to reserve the height the paper ends up occupying.
@@ -287,7 +308,8 @@ export const PrintPages: React.FC<PrintPagesProps> = ({
 						</div>
 					</div>
 					<figcaption className="pt-page__label">
-						Page {index + 1} of {pages.length}
+						Page {(pageNumbering?.offset ?? 0) + index + 1} of{' '}
+						{pageNumbering?.total ?? pages.length}
 					</figcaption>
 				</figure>
 			))}

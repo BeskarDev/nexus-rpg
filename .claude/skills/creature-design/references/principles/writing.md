@@ -39,13 +39,14 @@ Read before writing any stat block text or `lore` prose, and again as a final pa
 
 **Never make the reader unpack an idiom to reach a fact.** "Keeping the distance a thrown stone travels" is a riddle whose answer is "just out of reach". Ornament belongs on things the reader already understands, never on the thing they are trying to learn. Same for meta-phrasing that narrates the sentence you are writing ("which in practice means") — saying the thing is always shorter.
 
-This is **not** an instruction to write flatly. The worked before/after keeps the original's joke word for word and simply moves it behind the image:
+This is **not** an instruction to write flatly. Same length, same facts, joke kept word for word — it just
+moves behind the image:
 
-> **Before.** They are the funeral's other congregation. Every burial road out of a city has its jackals, keeping the distance a thrown stone travels, and every gravedigger knows the ones that work their stretch. Nobody has ever successfully driven them off anything.
+> **Before.** They are the funeral's other congregation. Every burial road out of a city has its jackals, keeping the distance a thrown stone travels…
 >
 > **After.** A lean grey scavenger of the burial roads. Jackals follow funerals at the edge of a thrown stone's range, and they have learned which processions leave food. Every gravedigger knows the ones that work their stretch, and none of them has ever driven one off for good.
 
-Same length, same facts, and the reader now sees the animal before being told what to think about it. The checklist form of all of this is in [../lore-schema.md](../lore-schema.md) § Writing the prose. *(Owner ruling, 2026-08-09.)*
+The checklist form is in [../lore-schema.md](../lore-schema.md) § Writing the prose. *(Owner ruling, 2026-08-09.)*
 
 ### 29a. The register pass — the two defects that survive every other check
 
@@ -64,8 +65,8 @@ precise one.
 | "Rebound at the socket with wire" | "Bound at the socket with wire, twice over" | reads as the verb *rebound* before it reads as *bound again* |
 | "Refaced twice" | "Faced over twice" | same defect, same word-shape |
 
-`sinew`, `signet`, `carnelian`, `haft` and `cuirass` all stay. They are the precise word for a specific
-thing and no plain word replaces them. That is the whole difference.
+`sinew`, `signet`, `carnelian`, `haft` and `cuirass` stay — the precise word for a specific thing, with no
+plain replacement. That is the whole difference.
 
 **The clever construction.** Harder to catch, because **every word in it is common** — the reader has to
 decode a *shape* rather than a word. It always feels like the best sentence in the block while writing it.

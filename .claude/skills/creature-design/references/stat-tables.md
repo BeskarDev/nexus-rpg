@@ -606,63 +606,8 @@ One Defense point is worth ~18.5% of incoming damage from tier 5 up; one AV poin
 
 ## Validation Checklist
 
-### Chassis
-- [ ] HP for tier; format matches category (`40` / `2×40` / `3×40`)
-- [ ] AV = tier (light) or **1.5 × tier rounded up** (heavy) — D-014
-- [ ] Defense from the tier table (**+1 per two tiers above tier 5**) — D-015
-- [ ] **Defense spread is base ±1 by default**, size on top; `base + 2` is rare, is the tier's ceiling for a
-      single Defense, and is paid for in HP or AV — D-142
-- [ ] **`heavy` armor costs one tier of Defense base**, and Parry sits mid-spread or below — D-141
-- [ ] Damage = base + 1×/2×/3× weapon damage. Never a doubled increment. **An always-on critical bonus
-      is the one exception and must be declared** — see § Always-on bonuses below
-- [ ] **Paired natural weapons carry `light` and take HALF the tier's weapon damage each** (they attack twice); a single natural weapon takes the full figure — D-076
-- [ ] Ability TNs = 6 + tier
-- [ ] Skill ranks match the tier table
-- [ ] Tier adjustments balanced — one stat down for one stat up, one pair only
-
-### Taxonomy
-- [ ] Type is one of the twelve; subtype values come from `creature-subtypes.json` or `creature-additives.json`
-- [ ] **Undead and Automaton carry exactly one of `Mindless` / `Intelligent`**
-- [ ] Condition immunities follow the additive, not the type
-- [ ] Anglicised name, no diacritics (D-050)
-
-### Abilities
-- [ ] Every ability has a **Trigger**, an **Effect** naming who/what/how much/how long, and a **Limit**
-- [ ] Qualifier is ONE closed-list value with nothing after it; any limiter is the LAST SENTENCE of the text; limiter is `recharge (dX)`, `once per scene`, or `once between your turns`
-- [ ] **Only an `Action` may carry a limiter at all** — never a Passive (category error), never a Quick Action (already once between turns), never a trigger. On an attack the limiter is likewise the last sentence and never a property badge — D-077, placement per D-107
-- [ ] **No `X/day`, no `once per combat`, no `once per turn`**; `recharge` uses d4/d6/d8 only
-- [ ] Attack count fits category (Basic 1–2, Elite 2–3, Lord 3–5)
-- [ ] Ability count fits category (Basic 3, Elite 4, Lord 6). **Named slots count toward the total and may overlap** — D-030
-- [ ] Elite: Elite Trigger + defensive + Quick Action. **Lord: two Lord Triggers** + defensive + reactive and proactive Quick Actions
-- [ ] Trait count within guideline (Basic 2, Elite 3, Lord 4); over it, the rest is tuned down — D-026
-- [ ] Every trait passes the four boundary questions
-- [ ] No "Special Rules" or "Combat Notes" sections — category rules are automatic
-
-### Defence
-- [ ] Every defensive ability names a **cost** and a **counterplay the party can act on**
-- [ ] **No auto-success on a failed save, at any tier** — D-023
-- [ ] No more than **+2 to a single Defense**, ending by the creature's next turn. AV bonuses uncapped
-- [ ] **`resistances` non-empty implies `weaknesses` non-empty** — D-035
-- [ ] Damage immunity is rare, identity-gated, one type, normally tier 7+ — D-036
-- [ ] **No permanent physical immunity**; no "non-magical weapons" wording — D-037
-
-### Wording
-- [ ] Official conditions and durations only; damage types from the published list
-- [ ] Duration chosen deliberately: `briefly` (one turn) for common riders, `short` (rest of the fight) for signature effects
-- [ ] **The duration comes BEFORE the condition: `briefly dazed`, never `dazed briefly`** — D-074
-- [ ] **`briefly` never spelled out longhand** as "until the end of their next turn"
-- [ ] Disabling conditions **escalate** — either across two strong-or-critical hits or across the success level of one roll, never off a single undifferentiated hit — D-029, D-151
-- [ ] Secondary damage in its own sentence after the triple, with `(ignore AV)` — D-018
-- [ ] Rider magnitudes scale with tier; grapples state their limb cost
-- [ ] they/their/them for creatures. No semicolons, no em or en dashes
-- [ ] Every spell verified by grep against `arcane-spells.json` / `mystic-spells.json`; rank ≤ magic skill rank
-
-### Thematic and balance
-- [ ] One clear tactical lesson; a Treat the party can act on (any of the five channels)
-- [ ] Fits sword & sorcery ancient-world aesthetic; drawn from the vault where possible
-- [ ] Single creature ≈ one same-level adventurer; power consistent within tier
-- [ ] Triggers create phases rather than raising numbers
-- [ ] Not trivially defeated by common tactics; no auto-win abilities
+**Moved to [validation-checklist.md](validation-checklist.md)** — it is a step-7 document, and steps 2-3
+were paying for it on every load.
 
 ## Worked Example
 

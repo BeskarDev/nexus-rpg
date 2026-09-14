@@ -15,19 +15,7 @@ import {
 } from '../PrintingTools'
 import { emptyCharacter } from './assets/emptyCharacter'
 import './printCharacterSheetStyles.css'
-import { StatisticsSheet } from './sheets/1_Statistics'
-import { EquipmentSheet } from './sheets/2_Equipment'
-import { SpellsSheet } from './sheets/3_Spells'
-import { PersonalSheet } from './sheets/4_Personal'
-
-/** The four sections, in print order. Named once so the stated count, the
- *  preview and the printed output all come from the same list. */
-const SHEETS = [
-	{ key: 'statistics', Sheet: StatisticsSheet },
-	{ key: 'equipment', Sheet: EquipmentSheet },
-	{ key: 'spells', Sheet: SpellsSheet },
-	{ key: 'personal', Sheet: PersonalSheet },
-] as const
+import { CHARACTER_SHEETS as SHEETS } from './sheets/sheetSections'
 
 /*
  * The page, at A4 landscape and full bleed (M17 D0, D1).

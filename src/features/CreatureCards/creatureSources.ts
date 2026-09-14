@@ -1,6 +1,7 @@
 import creaturesJson from '@site/src/utils/data/json/creatures.json'
 import type { Ability, Attack, Creature } from '@site/src/types/Creature'
 import { splitDamageText } from './creatureEntryText'
+import { parseCreatureMarkdown } from './parseCreatureMarkdown'
 
 /**
  * The three places a printable creature can come from (M21 D1, D6).
@@ -223,3 +224,27 @@ export const companionId = (docId: string, name: string) =>
 	`companion:${docId}:${name}`
 export const pastedId = (index: number, name: string) =>
 	`pasted:${index}:${name}`
+
+/**
+ * A character's companions as entries, keyed by the document they came off.
+ *
+ * The companion builder stores each companion as a markdown stat block, and
+ * several of them parse as one document — so they are joined and parsed
+ * together rather than one at a time, which is what the deck did inline before
+ * Print Everything needed the same answer (M22 S3).
+ */
+export function companionEntries(
+	docId: string,
+	companions: { markdown?: string }[] | undefined,
+): CreatureEntry[] {
+	const markdown = (companions ?? [])
+		.map((companion) => companion.markdown)
+		.filter((md) => md && md.trim())
+		.join('\n\n')
+	if (!markdown) return []
+	return parseCreatureMarkdown(markdown).map((creature) => ({
+		id: companionId(docId, creature.name),
+		source: 'companion' as const,
+		creature,
+	}))
+}

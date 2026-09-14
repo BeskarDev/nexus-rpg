@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
 	Alert,
 	Box,
@@ -11,22 +11,8 @@ import {
 	Stack,
 	Typography,
 } from '@mui/material'
-import { AuthProvider, useAuth } from '@site/src/hooks/firebaseAuthContext'
-import { firebaseService } from '@site/src/dev/firebaseService'
 import { CharacterDocument } from '@site/src/types/Character'
-import { migrateStoredCharacter } from '../CharacterSheet/utils/migrateDoc'
-
-/**
- * Bring a stored character up to the current schema before anything prints it
- * (M19, owner-reported).
- *
- * The sheet app migrates on fetch; this selector is the print tools' fetch, and
- * it did not. A character saved before items gained `location` therefore printed
- * with an empty inventory, because every filter on the paper asks for a field
- * that document never had.
- */
-const migrate = (character: CharacterDocument): CharacterDocument =>
-	migrateStoredCharacter(character)
+import { characterKey, useCharacterRoster } from './useCharacterRoster'
 
 export interface CharacterSelectorProps {
 	onCharacterSelect: (character: CharacterDocument | null) => void
@@ -36,106 +22,18 @@ export interface CharacterSelectorProps {
 }
 
 /**
- * A reusable component that allows users to select one of their characters
- * from Firebase. This component handles authentication, loading states, and
- * provides a user-friendly interface for character selection.
+ * Whatever the roster has to say before it has characters to offer.
+ *
+ * Shared by the single and multi selectors: signed out, loading, failed and
+ * empty are the same four states whichever control is going to render the
+ * roster, and they were worth exactly one copy.
  */
-export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
-	onCharacterSelect,
-	selectedCharacterId,
-	label = 'Select Character',
-	helperText = 'Choose a character to automatically load their abilities',
-}) => {
-	const { userLoggedIn, currentUser, isAdmin, viewAsAdmin } = useAuth()
-	const [characters, setCharacters] = useState<CharacterDocument[]>([])
-	const [allCharacters, setAllCharacters] = useState<CharacterDocument[]>([])
-	const [loading, setLoading] = useState(false)
-	const [error, setError] = useState<string | null>(null)
-	const [selectedId, setSelectedId] = useState<string>(
-		selectedCharacterId || '',
-	)
-
-	// Load characters when authentication state changes
-	useEffect(() => {
-		if (userLoggedIn && currentUser) {
-			loadCharacters()
-		} else if (process.env.NODE_ENV === 'development') {
-			// In development mode, load mock data even without auth
-			loadCharacters()
-		}
-	}, [userLoggedIn, currentUser])
-
-	// Filter characters based on admin view toggle
-	useEffect(() => {
-		if (!isAdmin || !currentUser) {
-			setCharacters(allCharacters)
-			return
-		}
-
-		if (viewAsAdmin) {
-			// Show all characters (admin view)
-			setCharacters(allCharacters)
-		} else {
-			// Show only user's own characters
-			const userChars = allCharacters.filter(
-				(char) => char.collectionId === currentUser.uid,
-			)
-			setCharacters(userChars)
-		}
-	}, [viewAsAdmin, isAdmin, currentUser, allCharacters])
-
-	const loadCharacters = async () => {
-		setLoading(true)
-		setError(null)
-		try {
-			const userUid = currentUser?.uid || 'dev-user'
-
-			// Get user's collection
-			const userChars = (await firebaseService.getCollection(userUid)).map(
-				migrate,
-			)
-
-			// Check for admin permissions and load additional collections
-			const userInfo = await firebaseService.getUserInfo(userUid)
-
-			// Load additional collections if user has admin access
-			if (userInfo.allowedCollections.length > 0) {
-				const allChars = [...userChars]
-				for (const adminCollectionId of userInfo.allowedCollections) {
-					const adminChars = (
-						await firebaseService.getCollection(adminCollectionId)
-					).map(migrate)
-					allChars.push(...adminChars)
-				}
-				setAllCharacters(allChars)
-				setCharacters(allChars)
-			} else {
-				setAllCharacters(userChars)
-				setCharacters(userChars)
-			}
-		} catch (err) {
-			console.error('Failed to load characters:', err)
-			setError('Failed to load characters. Please try again.')
-		} finally {
-			setLoading(false)
-		}
-	}
-
-	const handleChange = (event: SelectChangeEvent<string>) => {
-		const characterId = event.target.value
-		setSelectedId(characterId)
-
-		if (!characterId) {
-			onCharacterSelect(null)
-			return
-		}
-
-		const character = characters.find(
-			(char) => `${char.collectionId}-${char.docId}` === characterId,
-		)
-		onCharacterSelect(character || null)
-	}
-
+export const RosterStatus: React.FC<{
+	loading: boolean
+	error: string | null
+	userLoggedIn: boolean
+	empty: boolean
+}> = ({ loading, error, userLoggedIn, empty }) => {
 	if (!userLoggedIn && process.env.NODE_ENV !== 'development') {
 		return (
 			<Alert severity="info" sx={{ mb: 2 }}>
@@ -161,11 +59,63 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
 		)
 	}
 
-	if (characters.length === 0) {
+	if (empty) {
 		return (
 			<Alert severity="info" sx={{ mb: 2 }}>
 				No characters found. Create a character first to use this feature.
 			</Alert>
+		)
+	}
+
+	return null
+}
+
+/**
+ * A reusable component that allows users to select one of their characters
+ * from Firebase. This component handles authentication, loading states, and
+ * provides a user-friendly interface for character selection.
+ */
+export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
+	onCharacterSelect,
+	selectedCharacterId,
+	label = 'Select Character',
+	helperText = 'Choose a character to automatically load their abilities',
+}) => {
+	const { characters, loading, error, userLoggedIn } = useCharacterRoster()
+	const [selectedId, setSelectedId] = useState<string>(
+		selectedCharacterId || '',
+	)
+
+	const handleChange = (event: SelectChangeEvent<string>) => {
+		const characterId = event.target.value
+		setSelectedId(characterId)
+
+		if (!characterId) {
+			onCharacterSelect(null)
+			return
+		}
+
+		const character = characters.find(
+			(char) => characterKey(char) === characterId,
+		)
+		onCharacterSelect(character || null)
+	}
+
+	// Signed out, loading, failed or empty: the status IS the control, and there
+	// is no dropdown worth drawing behind it.
+	if (
+		(!userLoggedIn && process.env.NODE_ENV !== 'development') ||
+		loading ||
+		error ||
+		characters.length === 0
+	) {
+		return (
+			<RosterStatus
+				loading={loading}
+				error={error}
+				userLoggedIn={userLoggedIn}
+				empty={characters.length === 0}
+			/>
 		)
 	}
 
@@ -193,16 +143,16 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
 					<MenuItem value="">
 						<em>None - Select manually below</em>
 					</MenuItem>
-					{characters.map((character) => {
-						const characterId = `${character.collectionId}-${character.docId}`
-						return (
-							<MenuItem key={characterId} value={characterId}>
-								{character.personal.name}
-								{character.personal.playerName &&
-									` (${character.personal.playerName})`}
-							</MenuItem>
-						)
-					})}
+					{characters.map((character) => (
+						<MenuItem
+							key={characterKey(character)}
+							value={characterKey(character)}
+						>
+							{character.personal.name}
+							{character.personal.playerName &&
+								` (${character.personal.playerName})`}
+						</MenuItem>
+					))}
 				</Select>
 			</FormControl>
 			{helperText && (
