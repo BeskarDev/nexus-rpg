@@ -1,6 +1,10 @@
 # Spell Rank Scaling Tables
 
-Canonical numbers for spell design (aligned with `docs/analysis/_archive_/spells/SPELL_SYSTEM_ANALYSIS.md` §6). Use exactly.
+**This file is the source for spell damage and healing figures.** Use the numbers exactly.
+
+The archived `SPELL_SYSTEM_ANALYSIS.md` records how these tables were derived; it is **research, not a
+rule**, and is never cited as the authority for a figure (owner ruling, 2026-09-14). If a number is needed
+that this file does not carry, that is a real gap to report, not one to fill from an analysis document.
 
 ## Casting Basics
 
@@ -166,7 +170,7 @@ Full canonical list: `docs/07-magic/05-spell-properties.md`.
 ## Keyword Discipline
 
 Conditions and durations are established keywords — use them exactly:
-- **Conditions**: only the official list in `docs/05-combat/04-conditions.md`. Non-official shorthand must resolve to an official condition or an exact mechanical effect.
+- **Conditions**: only the official list in `docs/05-combat/04-conditions.mdx`. Non-official shorthand must resolve to an official condition or an exact mechanical effect.
 - **Durations**: briefly, short, medium, long, very long — definitions in `docs/06-scenes/02-effect-durations.md`. Ritual time intervals map to turn structures: minutes → delving, hours → exploration, days → travel, weeks → downtime.
 - **Narrative durations** (calendar scale, beyond very long): one moon, one season, one year — same page. Spans under a moon are plain days ("within the last seven days"). Never modern units or ad-hoc spans (principle 71).
 - **Narrative distances** (beyond combat bands): a thousand paces, a day's march, the same region, the same sphere of existence — defined in `docs/05-combat/03-distances-movement.md`; multiples allowed ("seven days' march apart"). Never combat bands or modern units for journey-scale reach (principle 71).

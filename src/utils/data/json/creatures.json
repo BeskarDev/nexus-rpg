@@ -517,6 +517,19 @@
 				{
 					"name": "Mob",
 					"count": "5-8"
+				},
+				{
+					"name": "Unburied field",
+					"composition": [
+						{
+							"count": "2-3",
+							"creature": "Edimmu Shade"
+						},
+						{
+							"count": "4-8",
+							"creature": "Grave Husk"
+						}
+					]
 				}
 			]
 		}
@@ -1190,6 +1203,36 @@
 				{
 					"name": "Buried host",
 					"count": "8-20"
+				},
+				{
+					"name": "Burial chamber",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Mummy"
+						},
+						{
+							"count": "4-6",
+							"creature": "Clay Servant"
+						}
+					]
+				},
+				{
+					"name": "Sealed tomb",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Mummy"
+						},
+						{
+							"count": "2",
+							"creature": "Kusarikku"
+						},
+						{
+							"count": "6-10",
+							"creature": "Clay Servant"
+						}
+					]
 				}
 			]
 		}
@@ -1318,6 +1361,32 @@
 						},
 						{
 							"count": "3-5",
+							"creature": "Ghoul"
+						}
+					]
+				},
+				{
+					"name": "Feeding pair",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Elder Ghoul"
+						},
+						{
+							"count": "2",
+							"creature": "Ghoul"
+						}
+					]
+				},
+				{
+					"name": "Elder's colony",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Elder Ghoul"
+						},
+						{
+							"count": "6-12",
 							"creature": "Ghoul"
 						}
 					]
@@ -2365,7 +2434,7 @@
 			{
 				"name": "Hurl",
 				"qualifier": "Quick Action",
-				"text": "Only against a creature this creature is grappling. This creature throws the target a short distance in any direction, resolved as if the target were pushed that distance. Roll Strength + Athletics vs. Dodge against each creature in the space the target is thrown into. On a success, the target collides with them, and both take the damage and fall prone. On a failure, that creature gets clear. As an Action instead of a Quick Action, this creature can throw a Small or Medium object within their reach the same way, and only the creature struck takes the damage."
+				"text": "Only against a creature this creature is grappling. This creature throws the target a short distance in any direction (counts as pushed). Roll Strength + Athletics vs. Dodge against each creature in the space they are thrown into, and on a failure that creature gets clear instead. As an Action, this creature can throw a Small or Medium object within their reach the same way, and only the creature struck takes the damage."
 			}
 		],
 		"traits": [],
@@ -2720,6 +2789,712 @@
 						{
 							"count": "3-4",
 							"creature": "Polearm Soldier"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"name": "Mummy",
+		"size": "Medium",
+		"type": "Undead",
+		"subtype": ["Corporeal", "Intelligent"],
+		"tier": 4,
+		"category": "Basic",
+		"armor": "Light",
+		"hp": "50",
+		"av": "4 (natural light)",
+		"str": "d10",
+		"agi": "d6",
+		"spi": "d8",
+		"mnd": "d8",
+		"parry": 9,
+		"dodge": 8,
+		"resist": 10,
+		"skills": ["Fighting (2)", "Fortitude (3)", "Lore (3)", "Influence (3)"],
+		"immunities": ["bleeding", "poisoned", "unconscious"],
+		"resistances": ["poison"],
+		"weaknesses": ["fire"],
+		"attacks": [
+			{
+				"name": "Rotting Fist",
+				"properties": ["crush"],
+				"text": "11/17/23 damage. On a strong or critical hit, the target contracts mummy rot."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Dread Gaze",
+				"qualifier": "Quick Action",
+				"text": "Roll Spirit + Influence vs. Resist against one creature within short range that can see this creature. On a success, the target is briefly frightened, and on a strong or critical success they are also briefly paralyzed. If this creature fails, that creature is immune to Dread Gaze for the rest of the scene."
+			},
+			{
+				"name": "Mummy Rot",
+				"qualifier": "Passive",
+				"text": "Mummy rot is a magical disease with a TN of 10. A creature suffering from mummy rot gains 1 Fatigue at the start of each day, and their Wounds can't be healed."
+			},
+			{
+				"name": "Resin and Linen",
+				"qualifier": "Passive",
+				"text": "Fire damage from any source sets this creature alight, and they suffer burning (2), or the attacking effect's own burning value instead if it is higher. While this creature is burning, their Rotting Fist also deals 3 fire damage (ignore AV) on a hit."
+			}
+		],
+		"traits": ["Undead Nature", "Slow Movement"],
+		"lore": {
+			"narrative": "A body that was wrapped, oiled and packed with resin by people who were paid well to do it properly. They lie in the chamber cut for them, with their name on the wall and their jars at their feet, and they have never once stopped expecting to be treated as what they were. What wakes them is the door.",
+			"environment": ["Desert", "Ruins", "Necropolis", "Tomb", "Vault"],
+			"ecology": "They do not eat or decay, and the resin that was meant to hold a body together for the journey holds this one together for the walking instead. A mummy is what a burial leaves behind when something in it went wrong: a rite cut short, a wrapping done by somebody cheap, a heart that did not weigh well at the end. The embalmers who still hold the old knowledge charge what they charge because of it, and the families pay. A robber who opens a sealed chamber and walks back out is watched for a season afterwards, since the rot takes days to show and a village would rather know early. Some cities hold that a mummy cannot pass the wall their name is written on. Others send for a priest and do not test it.",
+			"physiology": {
+				"size": "1.6 to 1.8 m tall",
+				"weight": "35 kg, since the body was dried before it was wrapped",
+				"lifespan": "They do not age. A mummy taken out of a sealed chamber may be 300 years dead and still in their wrappings"
+			},
+			"tactics": "They do not hide and they do not hurry. They open with **Dread Gaze** on whoever has their hands on the grave goods, then walk in and use the **Rotting Fist** every turn after. Keep the gaze for people it has not been tried on yet, since anyone who shrugs it off is finished with it for the fight. **Slow Movement** holds them to one step a turn, so they take whoever stands and fights and let the rest back away. They can be talked to, and it is the same conversation every time: put it back and get out. Anything taken out of the chamber ends the arrangement. They do not rout and they will not follow past the chamber door. Fire is the one thing that changes how they fight rather than how fast they die, since **Resin and Linen** puts the flames on their fist.",
+			"treasure": {
+				"scale": "Rich",
+				"table": [
+					{
+						"kind": "Valuables",
+						"item": "Gilded pectoral",
+						"description": "Sheet gold over cedar. Breaks up into three sellable pieces.",
+						"value": "200 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Funerary rings",
+						"description": "Worn on every finger, one for each of the mummy's titles.",
+						"value": "120 coins"
+					},
+					{
+						"kind": "Material",
+						"item": "Jar of natron and resins",
+						"description": "Crafting material, Quality 4. Preserves anything organic.",
+						"value": "80 coins"
+					},
+					{
+						"kind": "Weapon",
+						"item": "Ceremonial khopesh",
+						"description": "Scimitar, Quality 2. Gold inlay, soundly forged, no penalty.",
+						"value": "150 coins"
+					},
+					{
+						"kind": "Magic",
+						"item": "Amulet of Willpower",
+						"description": "Wearable (neck), Quality 4. While worn, you gain +1 Resist (max. 10).",
+						"value": "1,050 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Canopic jars and name-scroll",
+						"description": "Names the mummy. A priest needs both to lay them."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Burial chamber",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Mummy"
+						},
+						{
+							"count": "4-6",
+							"creature": "Clay Servant"
+						}
+					]
+				},
+				{
+					"name": "Sealed tomb",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Mummy"
+						},
+						{
+							"count": "2",
+							"creature": "Kusarikku"
+						},
+						{
+							"count": "6-10",
+							"creature": "Clay Servant"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"name": "Edimmu Shade",
+		"size": "Medium",
+		"type": "Undead",
+		"subtype": ["Incorporeal", "Intelligent"],
+		"tier": 4,
+		"category": "Basic",
+		"armor": "None",
+		"hp": "30",
+		"av": "0 (none)",
+		"str": "d6",
+		"agi": "d8",
+		"spi": "d10",
+		"mnd": "d8",
+		"parry": 9,
+		"dodge": 11,
+		"resist": 10,
+		"skills": ["Fighting (2)", "Perception (3)", "Stealth (3)", "Insight (3)"],
+		"immunities": [
+			"bleeding",
+			"grappled",
+			"poisoned",
+			"restrained",
+			"unconscious"
+		],
+		"resistances": ["physical", "poison"],
+		"weaknesses": ["radiant"],
+		"attacks": [
+			{
+				"name": "Grave-Cold Touch",
+				"properties": [],
+				"text": "Roll Spirit + Fighting vs. Resist. 11/17/23 necrotic damage. On a strong or critical hit, the target is suffocating for a short duration. This condition ends early if this creature is destroyed."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Take the Warmth",
+				"qualifier": "Passive",
+				"text": "When this creature hits a creature suffering suffocating, this creature regains 6 HP."
+			},
+			{
+				"name": "Never Left Alone",
+				"qualifier": "Quick Action",
+				"text": "When a creature suffering suffocating from this creature attempts to move out of this creature's melee range, this creature stays in melee range of them by moving with them up to a short distance, unprovoked."
+			}
+		],
+		"traits": ["Undead Nature", "Incorporeal Movement"],
+		"lore": {
+			"narrative": "Somebody who died where nobody found them and stayed there. They come up out of the ground they fell on, thin and grey and cold enough to feel before they touch anybody, and they go straight for the nearest living warmth. The words that would have sent them on were never said, and they have not stopped noticing.",
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Wastes",
+				"Battlefield",
+				"Ruins",
+				"Road"
+			],
+			"ecology": "They do not eat, and the warmth they take does not last, which is the whole reason they take it again. A shade forms wherever a death was never finished: a traveller off the track, a soldier left under somebody else's dead, a body that nobody could reach in time. Killing one buys a night. What ends one is the rite said over the ground the body fell on, which means somebody has to find the ground first. Caravan drivers pour out a little water and say a name at any place a death is known to have happened, whether or not they know whose death it was. Some hold that a shade takes the breath because it is trying to speak with it.",
+			"physiology": {
+				"size": "The shape they had in life, and most of them stood 1.6 to 1.8 m",
+				"lifespan": "They do not age. A shade still working the same stretch of road may have fallen 300 years ago"
+			},
+			"tactics": "They pick one person and do not change their mind. They come out of the ground or through a wall with **Grave-Cold Touch** and stay on whoever they hit first, since **Take the Warmth** pays only against someone already choking. They move through walls and floors to do it, and **Never Left Alone** carries them after anyone who tries to walk out of reach. They have no armor at all, so they will not stand and trade with a formed line. They cannot be parleyed with, they do not rout, and they do not stop while anyone warm is still on their feet. Destroying one lifts the cold off whoever they were choking and puts them down until the next night.",
+			"treasure": {
+				"scale": "Incidental",
+				"table": [
+					{
+						"kind": "Valuables",
+						"item": "Merchant's purse",
+						"description": "Coin carried in a belt fold and never spent.",
+						"value": "400 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Signet and cloak pin",
+						"description": "Bronze, both cut with the same house mark.",
+						"value": "150 coins"
+					},
+					{
+						"kind": "Weapon",
+						"item": "Corroded shortsword",
+						"description": "Shortsword, Quality 2, damaged. Pitted through and the grip binding is gone.",
+						"value": "50 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Rotted leather cuirass",
+						"description": "Leather, Quality 1, broken. Gone at the shoulders and the lacing.",
+						"value": "50 coins"
+					},
+					{
+						"kind": "Tool",
+						"item": "Bronze lamp",
+						"description": "Lantern, Quality 2, damaged. Dropped lit, and it went out where it fell.",
+						"value": "50 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Caravan tally-tag",
+						"description": "Clay, with the stage and the caravan mark on it. It names the stretch of road the body is under, which is what a priest needs to say the rite."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Haunt",
+					"count": "3-5"
+				},
+				{
+					"name": "Unburied field",
+					"composition": [
+						{
+							"count": "2-3",
+							"creature": "Edimmu Shade"
+						},
+						{
+							"count": "4-8",
+							"creature": "Grave Husk"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"name": "Furnace Effigy",
+		"size": "Medium",
+		"type": "Automaton",
+		"subtype": ["Vessel", "Intelligent"],
+		"tier": 4,
+		"category": "Basic",
+		"armor": "Heavy",
+		"hp": "40",
+		"av": "6 (natural heavy)",
+		"str": "d10",
+		"agi": "d6",
+		"spi": "d8",
+		"mnd": "d6",
+		"parry": 9,
+		"dodge": 8,
+		"resist": 10,
+		"skills": ["Fighting (2)", "Fortitude (3)", "Perception (3)"],
+		"immunities": ["bleeding", "burning", "poisoned", "unconscious"],
+		"resistances": ["fire"],
+		"weaknesses": ["frost"],
+		"attacks": [
+			{
+				"name": "Stone Fist",
+				"properties": ["crush"],
+				"text": "11/17/23 damage."
+			},
+			{
+				"name": "Ember Breath",
+				"properties": ["blast (cone)", "recharge (d6)"],
+				"text": "Roll Strength + Fortitude vs. Dodge, targeting each creature in the cone at close range. 7/9/11 fire damage. Each target also suffers burning (2) for a short duration."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Bound in Iron",
+				"qualifier": "Passive",
+				"text": "Creatures within close range of this creature suffer +1 bane on Mysticism rolls to cast spells."
+			},
+			{
+				"name": "The Fetters Give",
+				"qualifier": "Passive",
+				"text": "While this creature is at half HP or lower, every creature that ends their turn within melee range of this creature takes 3 fire damage (ignore AV)."
+			}
+		],
+		"traits": [],
+		"lore": {
+			"narrative": "A standing figure of lava-stone and iron plate, about the height of a tall man, built around a rune-cut iron core with a fire elemental shut inside it. Iron is the curse-stone, and that is the whole reason the fetters hold: what is in there cannot touch the metal that holds it. The thing inside has had a long time to think about that.",
+			"environment": [
+				"Desert",
+				"Mountains",
+				"Wastes",
+				"Ruins",
+				"Temple",
+				"Fortress",
+				"Vault"
+			],
+			"ecology": "They do not eat, sleep or wear out, and nothing in them chooses anything except the place they were told to keep. The craft is the shutting of a fire elemental into a rune-cut iron core, which the ash-dwarves of the Urduk perfected and sell, and which enough other houses have worked out badly to make the buyer's question worth asking. Iron is a hated metal in most cities, so a house that sets one of these at its vault door is saying something about itself that everybody hears, and no priest will stand close to it. The rule the binders work to is that the runes are read aloud once a year and cut again when they have worn thin. A house that has let that slip does not usually find out until the day somebody opens the door.",
+			"physiology": {
+				"size": "1.8 m tall",
+				"weight": "600 kg of stone and plate",
+				"lifespan": "They do not age. 400 years of standing wears the runes rather than the body, and the fetters go first"
+			},
+			"tactics": "They do not start a fight and they do not leave the place they were set. They walk in and use the **Stone Fist**, which breaks armor open, and they save **Ember Breath** for the moment two or more people are standing in one line in front of them. They fire it again the moment it comes back, and they turn it on whoever the fist does least to. **Bound in Iron** makes them a bad place for a mystic to stand, and they neither know nor care that it does. They can be talked to and they will not be talked away from the door. They do not rout. Once they are down to half, **The Fetters Give** and the heat comes off them onto whoever is nearest, including whatever they came in with, so play them from that point as pushing into a crowd rather than holding a line.",
+			"treasure": {
+				"scale": "Standard",
+				"table": [
+					{
+						"kind": "Material",
+						"item": "Rune-cut iron core",
+						"description": "Formidable Materials (d6), Quality 4. Cracked through where the fetters gave.",
+						"value": "750 coins"
+					},
+					{
+						"kind": "Material",
+						"item": "Lava-stone plate",
+						"description": "Simple Materials (d6), Quality 2. Black, fire-hardened, and still warm a day later.",
+						"value": "75 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Vault silver",
+						"description": "Cups and cut bar, sealed in behind the figure and counted before it was.",
+						"value": "600 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Copper offering bowl",
+						"description": "Left at the foot of the figure by whoever went past it last.",
+						"value": "120 coins"
+					},
+					{
+						"kind": "Tool",
+						"item": "Rune-cutter's kit",
+						"description": "Repair Kit, Quality 2. Chisels and a burnisher for going over the core once a year.",
+						"value": "50 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Bill of binding",
+						"description": "A clay tablet naming the house that paid for the figure and the thing it was set to keep. Whoever holds it can say who is answerable for what is behind the door."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Gate watch",
+					"count": "3-4"
+				}
+			]
+		}
+	},
+	{
+		"name": "Kusarikku",
+		"size": "Large",
+		"type": "Divine Beast",
+		"subtype": ["Guardian"],
+		"tier": 4,
+		"category": "Elite",
+		"armor": "Light",
+		"hp": "2x40",
+		"av": "5 (natural light)",
+		"str": "d10",
+		"agi": "d6",
+		"spi": "d8",
+		"mnd": "d6",
+		"parry": 10,
+		"dodge": 8,
+		"resist": 11,
+		"skills": [
+			"Fighting (2)",
+			"Athletics (3)",
+			"Insight (3)",
+			"Perception (3)"
+		],
+		"immunities": [],
+		"resistances": [],
+		"weaknesses": [],
+		"attacks": [
+			{
+				"name": "Grip",
+				"properties": ["crush"],
+				"text": "9/13/17 damage. On a hit, the target is grappled."
+			},
+			{
+				"name": "Gore",
+				"properties": ["pierce"],
+				"text": "9/13/17 damage. On a hit, the target's Movement becomes 0 for the rest of the turn and they are briefly slowed."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Bound to the Threshold",
+				"qualifier": "Passive",
+				"text": "Every Kusarikku is summoned to keep one place and bound to it: a gate, a passage, a stair or a bridge, no wider than a close distance. While they stand in it, their Grip gains +1 boon and can grapple a creature of any size, they gain +1 boon on any roll to resist being moved or knocked prone, and they never roll Morale. They leave it only to put back a creature that has got beyond it. While they are not standing in it they are dazed, and further than a medium distance from it they are dazed and staggered."
+			},
+			{
+				"name": "Cast Out",
+				"qualifier": "Quick Action",
+				"text": "Only against a creature this creature is grappling. Roll Strength + Athletics vs. Dodge. On a success, this creature throws the target a short distance away from themselves (counts as pushed). On a strong or critical success, they throw them a medium distance instead. On a failure, the grapple ends and the target is left in this creature's melee range."
+			},
+			{
+				"name": "Horns Lowered",
+				"qualifier": "Quick Action",
+				"text": "When a creature moves into or through this creature's melee range, this creature makes one Gore attack against them."
+			},
+			{
+				"name": "Not Past Me",
+				"qualifier": "Elite Trigger",
+				"text": "When this creature suffers a Wound, whatever they were set here to keep is nearer to being lost than it has ever been. For the rest of the scene Cast Out no longer costs a Quick Action and can be used even while this creature is dazed, and every Cast Out pushes the target one distance step further."
+			}
+		],
+		"traits": [],
+		"lore": {
+			"narrative": "A horned figure with a human chest and arms and the legs of a bull, standing a head and a half above anybody who comes to the door. They are cut from stone and set in a pair, one either side of a gateway, and once they are standing they never sit down again. They are not one of the Minotaur folk and never were: no name, no herd and no people.",
+			"environment": [
+				"Desert",
+				"Hills",
+				"Ruins",
+				"Temple",
+				"City",
+				"Necropolis",
+				"Tomb"
+			],
+			"ecology": "They do not eat and they do not sleep, and there is nothing in them that wants anything except the doorway they were given. A pair is cut on the spot and woken at the threshold, and the rite that wakes them names the thing they are to keep out rather than the people they are to let through. That is why a Kusarikku will put somebody outside and then stand there while the same person walks back up to the door. A person is not what they were set against. The tomb-cutters hold that the ward is the creature and not the stone, so a gateway whose pair has been broken is a gateway standing open, whatever the door itself is doing, and whatever was on the other side has been waiting the whole time. Cities that inherit an old gate with both figures still on it tend to route the new road around it.",
+			"physiology": {
+				"size": "2.6 m tall",
+				"weight": "700 kg",
+				"lifespan": "They do not age and nothing in them wears out. A pair still standing in a gateway may have been set there 800 years ago"
+			},
+			"tactics": "They do not open a fight and they do not leave the threshold to start one. They take hold with **Grip** and spend the Quick Action on **Cast Out**, which puts whoever they are holding back outside, and then they start again on the next one forward. They go for whoever is closest to getting past rather than whoever is hurting them. When somebody does get past, they leave the doorway to fetch that person back, and **Bound to the Threshold** says what being off it costs them. Hold **Horns Lowered** for anyone who tries to run the gap. They cannot be bought and cannot be argued off the door, they do not rout, and they stop the moment everyone is on the outside of it. They do not follow anyone who walks away.",
+			"treasure": {
+				"scale": "Rich",
+				"table": [
+					{
+						"kind": "Valuables",
+						"item": "Threshold offerings",
+						"description": "Copper and cut silver, left at the door by people who then did not go in.",
+						"value": "900 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Gold door facing",
+						"description": "Foil peeled off the door leaf in strips, which is as far as the last robber got.",
+						"value": "700 coins"
+					},
+					{
+						"kind": "Magic",
+						"item": "Battleaxe",
+						"description": "Battleaxe, Quality 4, Slaying (undead). Deals +2 damage on a hit against undead. Dropped outside the gate and never collected.",
+						"value": "2,100 coins"
+					},
+					{
+						"kind": "Armor",
+						"item": "Scale cuirass",
+						"description": "Scale Mail, Quality 2, damaged. Opened at the shoulder where the horns went in.",
+						"value": "250 coins"
+					},
+					{
+						"kind": "Tool",
+						"item": "Robber's ram",
+						"description": "Portable Ram, Quality 1. Carried all the way to the door and never used on it.",
+						"value": "50 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Threshold seal",
+						"description": "A clay seal-impression cut to this gateway. The fastening on the door knows it, and the wardens who set the pair knew it too."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Gatepost",
+					"count": "2"
+				},
+				{
+					"name": "Sealed tomb",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Mummy"
+						},
+						{
+							"count": "2",
+							"creature": "Kusarikku"
+						},
+						{
+							"count": "6-10",
+							"creature": "Clay Servant"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"name": "Elder Ghoul",
+		"size": "Medium",
+		"type": "Undead",
+		"subtype": ["Corporeal", "Intelligent"],
+		"tier": 4,
+		"category": "Lord",
+		"armor": "Light",
+		"hp": "3x40",
+		"av": "4 (natural light)",
+		"str": "d8",
+		"agi": "d10",
+		"spi": "d8",
+		"mnd": "d8",
+		"parry": 10,
+		"dodge": 11,
+		"resist": 9,
+		"skills": [
+			"Fighting (2)",
+			"Perception (3)",
+			"Stealth (3)",
+			"Insight (3)",
+			"Lore (3)"
+		],
+		"immunities": ["bleeding", "poisoned", "unconscious"],
+		"resistances": ["poison"],
+		"weaknesses": ["radiant"],
+		"attacks": [
+			{
+				"name": "Claws",
+				"properties": ["agile", "light", "slash"],
+				"text": "8/11/14 damage. On a strong or critical hit, the target is briefly stunned, or briefly paralyzed instead if they are already stunned."
+			},
+			{
+				"name": "Bite",
+				"properties": ["agile", "pierce"],
+				"text": "11/17/23 damage. On a strong or critical hit, the target cannot regain HP for a short duration. Against a creature that is stunned or paralyzed, that happens on any hit."
+			},
+			{
+				"name": "Grave Spit",
+				"properties": ["range (short/medium)"],
+				"text": "10/15/20 necrotic damage."
+			}
+		],
+		"abilities": [
+			{
+				"name": "Corpse-Eater",
+				"qualifier": "Action",
+				"text": "This creature feeds on a dead body within melee range and regains 20 HP. A body fed on this way cannot restore HP again."
+			},
+			{
+				"name": "Run It Down",
+				"qualifier": "Quick Action",
+				"text": "When an enemy within short range of this creature becomes stunned, paralyzed or prone, this creature moves into melee range of them unprovoked."
+			},
+			{
+				"name": "Bare the Teeth",
+				"qualifier": "Quick Action",
+				"text": "One enemy within short range of this creature rolls Spirit + Fortitude vs. TN 10. On a failure, they are briefly frightened."
+			},
+			{
+				"name": "Lash Out",
+				"qualifier": "Action",
+				"text": "By spending 1 Resolve, this creature makes a Claws attack against each enemy in their melee range."
+			},
+			{
+				"name": "The Hunger Wakes",
+				"qualifier": "Lord Trigger",
+				"text": "When this creature suffers their first Wound, the hunger takes them and the words stop coming. For the rest of the scene, the stunned and paralyzed conditions from their Claws last for a short duration instead of briefly. A creature stunned or paralyzed this way can roll Strength + Fortitude vs. TN 10 at the end of each of their turns to end the effect early."
+			},
+			{
+				"name": "The Colony Answers",
+				"qualifier": "Lord Trigger",
+				"text": "When this creature suffers their second Wound, they call, and the floor of the tomb answers. Three Ghouls climb out within short range and act on this creature's Initiative. This creature can use Corpse-Eater on a living Ghoul within melee range, killing it."
+			}
+		],
+		"traits": ["Undead Nature", "Keen Scent"],
+		"lore": {
+			"narrative": "The one at the bottom of a colony that has held the same burial ground for a long time. Nothing down there eats until the elder has. They are bigger than the rest and slower to be drawn off a body, and they have words and use them, mostly to keep their own kind off whatever they are working on.",
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Ruins",
+				"Necropolis",
+				"Tomb",
+				"Crypt"
+			],
+			"ecology": "An elder is what a colony grows after a hundred years or two in one place, and a colony that has one arranges itself around them. They keep the deepest chamber and do not leave it while food is still coming down, and an elder that is not getting enough sends the rest out further and further, which is how a tolerated colony turns into a problem on the roads. The grave-wardens who work a colony's ground can tell from the ordinary ghouls whether there is an elder under them, and the cities that can afford to will have a season's dead delivered rather than find out the other way. Some hold that an elder is only an old ghoul. The wardens hold that something else happens down there, and that it happens to one of them and never to the rest.",
+			"physiology": {
+				"size": "1.9 m tall, and stooped",
+				"weight": "80 kg",
+				"lifespan": "They do not age, and an elder is what 100 or 200 years in one burial ground produces. Hunger is the only thing that ends them"
+			},
+			"tactics": "They go for whoever is already down or already hurt, and **Run It Down** takes them there the moment anybody is stunned, held or off their feet. The loop is **Claws** until a target cannot act, then **Bite** to keep them from being put back together, and **Corpse-Eater** on any body within reach once they have taken real damage. Hold **Lash Out** for the turn three or more are crowded into their reach. Use **Bare the Teeth** on whoever is holding the line together. They cannot be parleyed with, and talking to one only holds their attention. They do not rout and they will not leave the burial ground. After the second Wound **The Colony Answers**, and they will eat the ghouls that come up as readily as anybody else.",
+			"treasure": {
+				"scale": "Rich",
+				"table": [
+					{
+						"kind": "Valuables",
+						"item": "Funeral gold",
+						"description": "Leaf and wire worked off a hundred coffin faces and carried down.",
+						"value": "1,200 coins"
+					},
+					{
+						"kind": "Valuables",
+						"item": "Stripped grave goods",
+						"description": "Rings, seals and the back of a mirror, all off the dead they ate.",
+						"value": "800 coins"
+					},
+					{
+						"kind": "Material",
+						"item": "Elder claws",
+						"description": "Formidable Materials (d6), Quality 4. A full set of the hard black kind.",
+						"value": "750 coins"
+					},
+					{
+						"kind": "Magic",
+						"item": "Warden's ring",
+						"description": "Wearable (ring), Quality 4, of Guarding. While worn, you gain +1 Parry (max. 10). Off a grave-warden who came down alone.",
+						"value": "1,050 coins"
+					},
+					{
+						"kind": "Weapon",
+						"item": "Warden's mace",
+						"description": "Mace, Quality 3. Bronze head, unbroken, and nobody came back for it.",
+						"value": "100 coins"
+					},
+					{
+						"kind": "Relic",
+						"item": "Warden's key-tag",
+						"description": "A clay tag with the necropolis warden's seal rolled into it. Every sealed door in that ground is opened for whoever carries it, and every warden in it knows the seal on sight."
+					}
+				]
+			},
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Feeding pair",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Elder Ghoul"
+						},
+						{
+							"count": "2",
+							"creature": "Ghoul"
+						}
+					]
+				},
+				{
+					"name": "Colony",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Elder Ghoul"
+						},
+						{
+							"count": "6-12",
+							"creature": "Ghoul"
 						}
 					]
 				}

@@ -1,6 +1,14 @@
 # School Identity Quick Reference
 
-Compact identity table for the 14 schools. **The per-school analysis files in `docs/analysis/_archive_/spells/schools/<school>.md` are the authoritative, detailed source** — traits, signature gimmicks, condition identities, trait×rank coverage matrices, gap lists, and combo audits. Read the school's file before designing; this table is for orientation and cross-school comparison only.
+**The lookup table for school identity** — traits, roles, damage types and typical conditions, in one
+place for cross-school comparison. **The rules each school binds — its signature gimmick, its mechanical
+identity — are in [school-rules.md](school-rules.md)**, and you need both before designing.
+
+The per-school files in `docs/analysis/_archive_/spells/schools/<school>.md` are **research, not authority**
+(owner ruling, 2026-09-14). Their binding rules were lifted into `school-rules.md`; what remains there is
+**gap lists, combo audits and derivation history**, which is what `docs/analysis/` is for. Treat every
+figure in them as dated — [principle 19](principles/school-identity.md) already rules their proposed spells
+stale drafts. On any conflict, the skill's own files win.
 
 ## Arcane Disciplines (Mind + Arcana — transgressive, selfish)
 
@@ -26,11 +34,11 @@ Compact identity table for the 14 schools. **The per-school analysis files in `d
 | **Peace** | calmness, protection, selflessness, travel, law | Defense | Support, Healing | Offense, Control, Utility | physical, blast, psychic | calmed, protected, oath-bound |
 | **War** | fury, pride, blood, justice, triumph | Offense | Control, Support | Healing, Defense, Utility | physical, fire, blast | emboldened, enraged, bleeding, inspired |
 
-\* **Condition names in these tables are thematic shorthand, not all official keywords.** The official condition list lives in `docs/05-combat/04-conditions.md` (complete list in [../../game-basics.md](../../game-basics.md#canonical-keyword-sources)). Official: burning, slowed, staggered, prone, frightened, confused, charmed, blinded, grappled, dazed, poisoned, bleeding, restrained, stunned, unconscious… Shorthand like "corroding", "weakened", "cursed", "withered", "blessed", "energized", "calmed", "emboldened", "revealed" must resolve in the spell text to either an official condition or an exact mechanical effect with a duration (e.g. corroding → "AV reduced by 2 for a short duration" plus a Durability check).
+\* **Condition names in these tables are thematic shorthand, not all official keywords.** The official condition list lives in `docs/05-combat/04-conditions.mdx` (complete list in [../../game-basics.md](../../game-basics.md#canonical-keyword-sources)). Official: burning, slowed, staggered, prone, frightened, confused, charmed, blinded, grappled, dazed, poisoned, bleeding, restrained, stunned, unconscious… Shorthand like "corroding", "weakened", "cursed", "withered", "blessed", "energized", "calmed", "emboldened", "revealed" must resolve in the spell text to either an official condition or an exact mechanical effect with a duration (e.g. corroding → "AV reduced by 2 for a short duration" plus a Durability check).
 
 ## Synergy Quick Reference
 
-Short-hand of each school's synergy declaration (framework: [synergy-framework.md](synergy-framework.md) — setup / payoff / extender, cold-cast deficit, shared sockets). **The full instantiations live in each school's `### Internal Synergies` section in `docs/analysis/_archive_/spells/schools/<school>.md`** — read that before designing a combo spell; this table is for orientation and for checking cross-school interlock at a glance.
+Short-hand of each school's synergy declaration (framework: [synergy-framework.md](synergy-framework.md) — setup / payoff / extender, cold-cast deficit, shared sockets). This table is the source for cross-school interlock at a glance. Each school's `### Internal Synergies` section in the archived files works the same declaration through spell by spell — **research to consult, not authority** (above).
 
 | School | Emits (setup for anyone) | Rewards (its payoffs bite…) | Extender style | Top synergy gap |
 |--------|--------------------------|------------------------------|----------------|------------------|

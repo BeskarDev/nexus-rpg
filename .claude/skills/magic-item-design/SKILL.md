@@ -16,7 +16,7 @@ Magic items are assembled from components with a strict cost formula: base item 
 | Quality tiers, item types, value | `docs/04-equipment/01-items.md` |
 | Base weapons / armor | `docs/04-equipment/03-weapons.md`, `04-armor.md` |
 | **Weapon/armor properties** | `docs/04-equipment/05-armor-weapon-properties.md` |
-| **Conditions** (official keyword list) | `docs/05-combat/04-conditions.md` |
+| **Conditions** (official keyword list) | `docs/05-combat/04-conditions.mdx` |
 | **Effect durations** (briefly/short/medium/long/very long) | `docs/06-scenes/02-effect-durations.md` |
 | Spell properties (for catalysts/scrolls) | `docs/07-magic/05-spell-properties.md` |
 | Magic item mechanics overview | `docs/04-equipment/07-magic-items/00-overview.md` |
@@ -25,8 +25,8 @@ Magic items are assembled from components with a strict cost formula: base item 
 | Enchantment tables | `docs/04-equipment/07-magic-items/enchantments.md` |
 | **Cost tables** | `docs/04-equipment/07-magic-items/cost-tables.md` |
 | Curses subsystem | `docs/04-equipment/07-magic-items/curses.mdx` |
-| Damage/healing scaling frameworks | `docs/analysis/_archive_/spells/SPELL_SYSTEM_ANALYSIS.md` §6 and §16 |
-| Design analysis (gaps, planned reworks) | `docs/analysis/equipment/magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` + per-category catalogs in `docs/analysis/equipment/magic-items/catalogs/` |
+| Damage/healing scaling frameworks | `../spell-design/references/rank-scaling.md` — § Standard Scaling by Rank and § Healing. **Never an analysis file** |
+| Design **research** — gaps, planned reworks, coverage (not a source of rules) | `docs/analysis/equipment/magic-items/MAGIC_ITEM_SYSTEM_ANALYSIS.md` + per-category catalogs in `docs/analysis/equipment/magic-items/catalogs/` |
 
 The analysis doc contains **proposed but not-yet-implemented changes** (splitting armor/shield enchantment tables, removing the catalyst enchantment table, d100 conversion, minor-enchantment rule). Check it before designing enchantments — don't build on top of a structure that's slated for rework without flagging it.
 

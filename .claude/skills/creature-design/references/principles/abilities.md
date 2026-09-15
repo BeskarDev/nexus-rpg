@@ -36,15 +36,15 @@ Read before **workflow step 4** (abilities), and again before any Elite or Lord 
 
 **Numbers are global and never renumbered, so this file is ordered for reading rather than by date.** Full text below in the same order.
 
-**8. Check every condition against its published definition; parameterized conditions carry their (X).** Never reason about a condition from its name or its D&D counterpart — open `docs/05-combat/04-conditions.md` and design against what it actually does. The canonical trap: Nexus **stunned** does not disable a creature (they still move or act, at +1 bane); full incapacitation is **paralyzed** alone, which sits a full severity tier higher and needs harsher gates (rolled, limited, repeat-save escape valves). Write "poisoned for a short duration" with the save spelled out, "burning (4)", never a bare adverb.
+**8. Check every condition against its published definition; parameterized conditions carry their (X).** Never reason about a condition from its name or its D&D counterpart — open `docs/05-combat/04-conditions.mdx` and design against what it actually does. The canonical trap: Nexus **stunned** does not disable a creature (they still move or act, at +1 bane); full incapacitation is **paralyzed** alone, which sits a full severity tier higher and needs harsher gates (rolled, limited, repeat-save escape valves). Write "poisoned for a short duration" with the save spelled out, "burning (4)", never a bare adverb.
 
-**Read the condition a second time, for what it already grants the attacker.** `stunned`, `paralyzed`, `prone` (against melee) and `distracted` all hand attackers **+1 boon** in their own text, so an ability reading *"gain +1 boon against a stunned creature"* is double-dipping — and it pays badly, because the **first** boon is 2d6-take-higher (about +1.9) while *"multiple boons beyond the first add a +1 bonus"*. The Ghoul's `Feeding Frenzy` was worth +1.9 against a dazed target and +1.0 against a stunned one, so it got **weaker as the creature got better**, inverting the escalation it was built to reward. When an ability rewards a condition, pay in a currency that condition does not already spend: flat damage, movement, an extra target, ignoring AV. *(Owner ruling, 2026-08-10, D-075.)* *(spell principle 73; talent principle 26)*
+**Read the condition a second time, for what it already grants the attacker.** `stunned`, `paralyzed`, `prone` (against melee) and `distracted` all hand attackers **+1 boon** in their own text, so an ability reading *"gain +1 boon against a stunned creature"* is double-dipping — and it pays badly, because the **first** boon is 2d6-take-higher (about +1.9) while *"Multiple boons or banes beyond the first add a +1 bonus or -1 penalty"*. The Ghoul's `Feeding Frenzy` was worth +1.9 against a dazed target and +1.0 against a stunned one, so it got **weaker as the creature got better**, inverting the escalation it was built to reward. When an ability rewards a condition, pay in a currency that condition does not already spend: flat damage, movement, an extra target, ignoring AV. *(Owner ruling, 2026-08-10, D-075.)* *(spell principle 73; talent principle 26)*
 
 **9. High-impact conditions never ride automatic, no-roll triggers.** A creature ability that inflicts frightened or stronger gives the target a save (Attribute + Skill vs. the ability TN) or requires the creature to hit with a rolled attack. Automatic on-proximity or on-turn-start hard control with no counter-roll is oppressive at the table. Low-impact conditions (distracted, briefly slowed) may ride passively. *(spell principle 88; talent principle 9)*
 
 **16. Condition escalation prices a disable instead of banning it.** A rider applies a lesser condition, and applying it again to a target already suffering it upgrades to the greater one — `stunned` then `paralyzed` is the canonical pair. This costs two strong-or-critical hits rather than one roll, gives the party a visible warning round, and leaves two counterplays (clear the lesser condition, or do not let the creature land a second good hit). Escalate one impact band, never two. Reach for this whenever a creature's concept demands a disable, rather than removing the creature's identity. *(Owner ruling, 2026-08-09, D-029.)*
 
-**The requirement is an escalation, not a count of rolls**, so there are TWO legal shapes and the second is often the better card. (a) **Across two hits**, as above. (b) **Across the success level of one roll**: a plain success applies the lesser condition and a strong or critical adds the greater one. The Mummy's `Dread Gaze` is the canonical example of (b) — *briefly frightened, and on a strong or critical success also briefly paralyzed* — and it is **less** probable than (a) while spending one line instead of two. What D-029 forbids is a full disable landing off one undifferentiated hit; a roll whose outcomes already grade satisfies it. Pair (b) with a counterplay the party can bank: the gaze grants scene-long immunity to anybody who shrugs it off once. *(Owner ruling, 2026-09-07, D-151.)*
+**The requirement is an escalation, not a count of rolls**, so there are TWO legal shapes and the second is often the better card. (a) **Across two hits**, as above. (b) **Across the success level of one roll**: a plain success applies the lesser condition and a strong or critical adds the greater one. The Mummy's `Dread Gaze` is the canonical example of (b) — *briefly frightened, and on a strong or critical success also briefly paralyzed* — and it is **less** probable than (a) while spending one line instead of two. What D-029 forbids is a full disable landing off one undifferentiated hit; a roll whose outcomes already grade satisfies it. **Shape (b) is also what principle 59 requires of an effect the creature is NAMED for** — there, the ladder is mandatory rather than optional, because a gate on the identity means the creature spends most of the fight not being the creature. Pair (b) with a counterplay the party can bank: the gaze grants scene-long immunity to anybody who shrugs it off once. *(Owner ruling, 2026-09-07, D-151.)*
 
 **17. Bonus damage comes in three rungs, and they are rungs, not a right answer.** (a) A **flat `+N`** on a stated prerequisite, where N is at most half the tier's weapon damage — legal only with a real prerequisite, since a bonus for something the creature was doing anyway is not a cost. (b) A **costed attack**: `+1 weapon damage`, but the creature skips all Movement this turn, *before and after the attack*. (c) An **SL escalator**: `+1 boon`, and on a hit increase the success level by one step, gated behind a geometric prerequisite the party can deny. The escalator is the most powerful and is priced as such; the flat bonus remains correct for a smaller effect. Costed attacks suit heavy hitters, where trading mobility for impact is what the creature already is. *(Owner rulings, 2026-08-09, D-021, D-022.)*
 
@@ -61,7 +61,7 @@ last, that repeat damage, or that would otherwise fire every turn to real advant
 Priest's `Grave-Smoke`, which briefly blinded, rolled for it *and* capped itself once per scene.
 *(Owner ruling, 2026-08-11, D-121.)*
 
-**Word order is fixed: the duration goes BEFORE the condition.** `briefly dazed`, `briefly stunned`, `briefly poisoned` — never `dazed briefly`. Both orders are correct English and the published corpus is not close: **451 uses of `briefly <condition>` against 9 the other way**, and six of those nine were creature records written before this rule existed. This is principle 19 applied to the commonest phrase in the whole bestiary, so it is worth stating rather than trusting an ear: a GM who has read `briefly dazed` four hundred times should recognise the phrase, not re-parse a variant of it. The longer durations keep their own published form — `for a short duration`, not `shortly`. *(Owner confirmation, 2026-08-09, milestone 04 §1.1; word order ruled 2026-08-10, D-074.)*
+**Word order is fixed: the duration goes BEFORE the condition.** `briefly dazed`, `briefly stunned`, `briefly poisoned` — never `dazed briefly`. Both orders are correct English and the published corpus is not close: **hundreds of uses of `briefly <condition>` against a single instance the other way** across docs and data. This is principle 19 applied to the commonest phrase in the whole bestiary, so it is worth stating rather than trusting an ear: a GM who has read `briefly dazed` hundreds of times should recognise the phrase, not re-parse a variant of it. The longer durations keep their own published form — `for a short duration`, not `shortly`. *(Owner confirmation, 2026-08-09, milestone 04 §1.1; word order ruled 2026-08-10, D-074.)*
 
 **24. Check the universal Action and Quick Action lists before writing an ability.**
 `docs/05-combat/01-combat-scenes.md` gives every creature `Protect Ally`, `Help`, `Evade`, `Guard`,
@@ -74,12 +74,11 @@ stepping into a blow can fail, where the hand-written one silently transferred a
 *"When this creature uses Protect Ally, they take half the damage"*. That earns the slot, keeps the
 published sequencing, and gives the GM one rule instead of two similar ones.
 
-**A `Quick Action` qualifier already means "once between your turns"**, so `(Quick Action, once between
-your turns)` charges the creature twice for one restriction. **In practice only `Action` may carry a
-limiter at all**: `Quick Action` implies one, both triggers fire once by construction, and a limiter on a
-**Passive is a category error** — a Passive is always on, so writing one signals the effect is not really
-passive. Made three times; placement is principle 45 and the table is in
-[../stat-tables.md](../stat-tables.md#where-a-limiter-goes--the-last-sentence-of-the-effect-never-the-qualifier).
+**A `Quick Action` qualifier already means "once between your turns"** — the published rule is
+*"You can use one Quick Action on your turn or between your turns"* — so `(Quick Action, once between your
+turns)` charges the creature twice for one restriction. That is the universal-action half of the limiter
+rule; **placement and which qualifiers may carry a limiter at all are principle 45's**, and the table lives
+in [../stat-tables.md](../stat-tables.md#where-a-limiter-goes--the-last-sentence-of-the-effect-never-the-qualifier).
 
 **If a Passive needs a frequency cap, gate its trigger instead.** `Feeding Frenzy` went from *"(Passive,
 once between your turns). When this creature hits a dazed creature…"* to *"(Passive). On a strong or
@@ -141,6 +140,14 @@ When a creature does have a leash, it passes three tests:
 **A leash the party can simply stand outside of and win is not counterplay, it is a solved encounter**
 (principle 10 from the other direction). Counterplay costs the party something. Cheese costs them
 patience.
+
+**A binding may cost the creature instead of forbidding the movement, and on anything divine or bound it
+should.** A mundane guard who will not leave their post is a **tactics note**, not a mechanic. A creature held
+to a place by something — a god, a rune, a grave — can be *weakened by distance from it* on a band gradient
+(+1 bane past medium, +2 and the loss of its signature past long). That turns the leash from a wall into a
+**second win condition the party can play for**, and it needs a **bait the fiction supplies**: the Kusarikku
+leaves its threshold only to put back somebody who got past it, which the party has to earn. Use published
+banes rather than inventing attrition (D-172).
 
 **The mechanical leashes are exempt from the frequency worry, not from the tests.** `Grave-Bound` is a
 published ability with a stated `medium` distance, and it is the creature's whole identity plus its
@@ -233,6 +240,11 @@ sentence of the effect text**.
 **Why the text and not the badge.** The qualifier is scanned, not read: a GM looks at it to know whose
 turn this happens on. The limiter is a rule, and rules belong in the rules sentence.
 
+**A COST is not a limiter and goes the other way — first.** *"Once per scene"* answers *how often*;
+*"by spending 1 Resolve"* answers *what it takes*. Costs open the sentence
+([spell principle 70](../../../spell-design/references/principles/wording-conventions.md), principle 61),
+limiters close it. An ability can carry both, and then it is cost first, effect, limiter last.
+
 **This is the most repeated error in the programme** — three times, because the skill itself stated the
 wrong rule and the renderer supported it ([case study](../case-studies.md#p45)). It is now
 machine-checked by the generator. *(Owner rulings, D-077 and D-107; D-107 reverses D-077's placement
@@ -320,7 +332,7 @@ turn** — a line on the card that a GM would never correctly choose.
 | Slot | What belongs there |
 |---|---|
 | **Action** | The attack, and at most one genuine alternative to it that does something the attack cannot |
-| **Quick Action** | The reactive option — a conditional second attack (principle 41), a defence, a follow, a leash |
+| **Quick Action** | The creature's **one** second effect — proactive on its own turn (principle 60b) or reactive: a conditional second attack ([principle 41](attacks.md)), a defence, a follow, a leash. Not both |
 | **Free** | Riders on the attack, and **Passives**, which is where an effect goes when it must not compete |
 
 **When an effect is worth having but not worth a turn, make it a Passive or an attack rider.** That is what
@@ -363,9 +375,13 @@ success level of one roll. Point it at the identity:
 
 | | Draft | Fixed |
 |---|---|---|
-| weak | damage only | pushed a **close** distance |
-| strong | damage, pushed close | pushed a **short** distance |
-| critical | damage, pushed close | pushed a **short** distance, and prone |
+| success | damage only | thrown a **short** distance — **out of the doorway**, which is one area (counts as pushed) |
+| strong or critical | damage, pushed close | thrown a **medium** distance instead, well clear |
+
+**The distance had to be checked against the map, not just against the ladder.** A *close* push looks like
+the natural bottom rung and is wrong here: a close distance is **0 areas**, so the target would still be
+standing in the doorway and the doorkeeper would have failed at its one job on a plain success — the very
+gate this principle exists to remove.
 
 Every rung now does the creature's job and the dice decide how emphatically. The gate is still the right
 tool for a **secondary** effect riding a plain attack — a disease, a curse, a condition the creature is not
@@ -426,12 +442,21 @@ choice — it is a once-a-scene ability with a hidden tax. An Elite's density co
 everyday channels. Three points is what makes it a decision: this ability now against a re-roll later,
 three separate times in a fight.
 
-**Two shapes, and the cost is the LAST SENTENCE, exactly like a limiter:**
+**The cost OPENS the effect text. It is not a limiter and does not go last.**
+[Spell-design principle 70](../../../spell-design/references/principles/wording-conventions.md) is an owner
+ruling that already binds creature text: *"Activation costs come before the effect in ability sentences …
+The reader pays first, then reads what they bought."* A **limiter** answers *how often* and goes last
+(principle 45). A **cost** answers *what this takes to use* and goes first. Both rules are right and they
+govern different things.
 
-> **Break the Gate** (Quick Action). When … . **This creature can spend 1 Resolve to use this ability
-> without spending their Quick Action.**
+> **Feeding Frenzy** (Action). **By spending 1 Resolve,** this creature makes a Claws attack against each
+> enemy in their melee range.
 
-> **Call the Flood** (Action). … **Using this ability costs 1 Resolve.**
+> **Break the Gate** (Quick Action). **By spending 1 Resolve instead of their Quick Action,** this creature …
+
+**Do not restate the action in the text.** The qualifier already carries it, and on the published card it
+becomes the **group heading** (D-147), so *"By using an Action and spending 1 Resolve"* prints "Action"
+twice. The qualifier stays a single closed-list word and the text opens on the Resolve alone.
 
 **No new qualifier** — the closed list stays closed and the card keeps grouping by slot (D-147).
 

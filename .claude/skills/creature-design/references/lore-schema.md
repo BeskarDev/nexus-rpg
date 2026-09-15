@@ -103,7 +103,7 @@ is how a GM finds the line on the card. **Everything else is plain language.**
 
 **Never code-style an ability name** (owner ruling, 2026-08-11). Backticks are for code, and this
 is prose a GM reads at the table. The house style already has a channel for a mechanical term and it
-is bold — `docs/CLAUDE.md`, *"**Bold** for mechanical terms and conditions"*. An ability name in a
+is bold — the root `CLAUDE.md`, *"**Bold** for mechanical terms and conditions"*. An ability name in a
 sentence that is **already** bolded for emphasis simply stays inside it: write
 **"Braced Spear is what they are for."**, never nested bold.
 

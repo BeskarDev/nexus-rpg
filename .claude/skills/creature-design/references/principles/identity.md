@@ -28,7 +28,7 @@ Read before **workflow step 1** (concept) and whenever naming anything — the c
 
 **6. Thematic integration.** Sword & sorcery, ancient-world aesthetic (Mesopotamian, Egyptian, Persian, mythological folklore). Every creature suggests its place in the world's ecology.
 
-**13. Mythological-first roster identity — D&D imports must be naturalized, never copied.** Every creature must pass the mood-board test: would it fit a Conan the Cimmerian comic panel, Clash of the Titans, or the brutality of ancient nature? Source concepts primarily from Bronze Age and ancient-world myth (Mesopotamian, Egyptian, Greek, Persian, and the analog registers of the setting's other regions) or from the natural world made deadly (giant scorpions, jackals, desert vipers). D&D monster concepts may still be imported when the underlying creature fits the setting — a stirge as an oversized bloodsucking mosquito belongs in a delta swamp — but the import must be naturalized: give it a new name (mandatory for any D&D-identified or trademarked name — otyugh, grell, stirge, bugbear, tarrasque, beholder, displacer beast, and kin — both for legal safety and because those names carry a dungeon-fantasy register), and adapt its ecology, anatomy, or behavior to a concrete place in the world (what it eats, where it lairs, which region and folk know it, what myth locals tell about it). Names from shared world myth (harpy, manticore, minotaur, lich, kraken) are fine as-is. Expansion targets that fit the register natively: lamassu, girtablilu (scorpion folk), ammit, sirrush, ushabti, roc, gorgon, mummy lords. The current published roster is an early demo roster — existing entries violating this are grandfathered until bestiary iterations replace them, but no new creature may violate it. *(Owner rulings, 2026-07-24, genre/vibe review V2: the roster is a demo, encode the identity feedback for future iterations; D&D monsters can exist in Nexus when flavor and identity match the setting — rename at minimum, and adapt ecology, anatomy, or behavior where needed.)*
+**13. Mythological-first roster identity — D&D imports must be naturalized, never copied.** Every creature must pass the mood-board test: would it fit a Conan the Cimmerian comic panel, Clash of the Titans, or the brutality of ancient nature? Source concepts primarily from Bronze Age and ancient-world myth (Mesopotamian, Egyptian, Greek, Persian, and the analog registers of the setting's other regions) or from the natural world made deadly (giant scorpions, jackals, desert vipers). D&D monster concepts may still be imported when the underlying creature fits the setting — a stirge as an oversized bloodsucking mosquito belongs in a delta swamp — but the import must be naturalized: give it a new name (mandatory for any D&D-identified or trademarked name — otyugh, grell, stirge, bugbear, tarrasque, beholder, displacer beast, and kin — both for legal safety and because those names carry a dungeon-fantasy register), and adapt its ecology, anatomy, or behavior to a concrete place in the world (what it eats, where it lairs, which region and folk know it, what myth locals tell about it). Names from shared world myth (harpy, manticore, minotaur, lich, kraken) are fine as-is. Expansion targets that fit the register natively: lamassu, girtablilu (scorpion folk), ammit, sirrush, ushabti, roc, gorgon, mummy lords. **This binds every creature in the roster.** The old demo roster has been purged, so the grandfather clause that once protected it is spent (owner ruling, 2026-09-14). *(Owner rulings, 2026-07-24, genre/vibe review V2; D&D monsters can exist in Nexus when flavor and identity match the setting — rename at minimum, and adapt ecology, anatomy, or behavior where needed.)*
 
 **12. The name is a promise, spoken in a pre-scientific register.** An ability's effect must fit what its name leads the table to expect, and the name covers every mode. Names and flavor use Bronze Age vocabulary — no modern physics or science terms — but stay clear and functional first: function in the name, poetry in the flavor. *(spell principles 61, 91; talent principle 16)*
 
@@ -57,7 +57,9 @@ Three things follow, and all three are load-bearing:
 **22. Dinosaurs are ordinary Beasts with a `Saurian` subtype, and never carry their scientific name.** Not
 monsters and not magical: type `Beast`, subtype `Saurian`, sitting **alongside** `Reptile` rather than under
 it, since filing a triceratops as a reptile shelves it next to a viper. Names are what the setting's people
-would call them — `Shieldhead`, `Sicklefoot`, `Thunderfoot`, `Tyrant`, `Marsh Lurker`. **Never a binomial**:
+would call them — `Shieldhead`, `Sicklefoot`, `Thunderfoot`, `Tyrant`, `Riverjaw`. (**Not** *Marsh Lurker*:
+principle 20 reserves that name for a creature genuinely not of this world, and a saurian is ordinary
+wildlife here.) **Never a binomial**:
 "Triceratops" is a 19th-century Greek coinage and breaks principle 12's pre-scientific register.
 
 This sharpens principle 20 rather than contradicting it. The rule underneath 20 is **use the name the
@@ -172,7 +174,7 @@ have made it.
 *(Owner rulings, 2026-08-14, tier-4 batch.)*
 
 **51. Undead are the setting's horror. Their kit is a curse and a dread effect, not a second damage line.**
-The Restless Dead is the largest supernatural family in the roster and the one place the bestiary reaches for
+The Restless Dead is the supernatural family the bestiary programme is building out furthest, and the one place it reaches for
 **soft old-school horror**: curses that follow the party out of the room, dread that takes a turn away, rot
 that will not close. An undead built as a body with an attack routine is a wasted type — a Spearman that
 cannot be reasoned with.
@@ -252,16 +254,17 @@ is, in this setting, **somebody**. That cuts both ways: a bull-horned guardian i
 Minotaur folk — `Humanoid (Minotaur)`, inheriting that folk's published traits and nothing else
 (principles 25 and 47) — or it is a different kind of thing and has to say so.
 
-**Four places a difference can live, and a design needs at least two of them:**
+**Five places a difference can live, and a design needs at least two of them:**
 
 | Axis | The Kusarikku's answer |
 |---|---|
-| **The type line** | `Medium Divine Beast (Guardian)`, where a person reads `Humanoid (Minotaur)` |
+| **Size** | **Large**, where every one of the twelve Folk is Medium or smaller — `01-folk.md` puts Minotaurs at 2.00-2.10 m, which is **Medium**. A Medium bull-horned humanoid is the folk's own silhouette (D-169) |
+| **The type line** | `Large Divine Beast (Guardian)`, where a person reads `Humanoid (Minotaur)` |
 | **Gear** | It carries **nothing**. A tier-4 Elite of a folk carries Q3 on D-091's ladder — an axe, a spear, a shield. Possessions are what a person has |
-| **What the numbers say** | Its ungated attack sits *below* the tier figure and its best option deals **no damage**. A warrior's figures are the point of a warrior |
-| **A rule a person could not have** | `Set in the Doorway` — unbudgeable in the gate, ordinary away from it. A person is strong wherever they stand |
+| **What the numbers say** | **Both** its ungated attacks sit *below* the tier figure, each paying for a rider, and its best option deals **no damage** at all. A warrior's figures are the point of a warrior |
+| **A rule a person could not have** | `Bound to the Threshold` — **summoned** to keep one place and mechanically weakened away from it. A person is strong wherever they stand, and nobody summoned them |
 
-**The last row is the one worth spending an ability slot on**, because the first three are easy to miss at
+**The last row is the one worth spending an ability slot on**, because the others are easy to miss at
 the table: a GM reading a stat block aloud says the name and the abilities long before anybody notices what
 the creature is not carrying.
 

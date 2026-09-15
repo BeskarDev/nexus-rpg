@@ -15,7 +15,7 @@ The numeric chassis (tier stats, size modifiers, immunity sets, validation check
 
 | Phase | File | Covers |
 |---|---|---|
-| steps 1-3 — concept, statistics | [principles/chassis.md](principles/chassis.md) | 1, 2, 3, 4, 5, 7, 15, 37, 38, 39, 40, 48 |
+| steps 1-3 — concept, statistics | [principles/chassis.md](principles/chassis.md) | 1, 2, 3, 4, 5, 7, 15, 37, 38, 39, 40, 48, 62 |
 | **step 3 — attacks and carried weapons** | [principles/attacks.md](principles/attacks.md) | **23, 41, 44** |
 | step 1, and every time you name something | [principles/identity.md](principles/identity.md) | 6, 12, 13, 14, 20, 21, 22, 25, 34, 42, 47, 50, 51, 52, 58 |
 | step 4 — abilities, and every Elite/Lord trigger | [principles/abilities.md](principles/abilities.md) | 8, 9, 10, 11, 16, 17, 18, 24, 26, 27, 35, 36, 43, 45, 46, 49, 53, 54, 55, 57, 59, 60, 61 |
@@ -112,6 +112,7 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **59.** The effect the creature is NAMED for fires on ANY success. The success level sets its degree, never whether it happens. *(abilities)*
 - **60.** The category buys TURN DENSITY. Count live options, not card entries. Elite and Lord produce two effects a turn, and the second is never a second attack roll. *(abilities)*
 - **61.** Resolve is a second currency, and a **Lord-only** one. One signature ability per Lord may be priced in it. *(abilities)*
+- **62.** Size is a design tool, not a default. Ask it out loud at step 1; on heavy armor Large is +2 AV, and Large fights an agile chassis. *(chassis)*
 
 ## Appending a new principle
 
@@ -121,7 +122,7 @@ When the owner corrects or refines a creature design decision in session:
 one-line title each. Open the phase file rather than this index when you are designing: this list says
 *which* principle applies and never what it says.
 
-1. Take the next free number (currently next: **62**).
+1. Take the next free number (currently next: **63**).
 2. **Write the full principle into the phase file it belongs to** — `principles/chassis.md`,
    `identity.md`, `abilities.md` or `writing.md` (numbered, bolded one-line rule, then reasoning,
    then owner-ruling provenance).

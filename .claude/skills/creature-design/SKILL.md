@@ -38,16 +38,22 @@ reference files below are large on purpose, and loading them "to be safe" is the
 | **Canonical creature data** | `src/utils/data/json/creatures.json` — **edit here, never in the docs** |
 | Published creatures by tier | `docs/08-creatures/03-creatures/tier-{0..10}.mdx` — **generated, do not hand-edit** |
 | Creature rules (categories, Morale, troops, triggers) | `docs/08-creatures/02-creature-rules.md` |
-| **Conditions** | `docs/05-combat/04-conditions.md` |
+| **Conditions** | `docs/05-combat/04-conditions.mdx` |
 | **Effect durations** | `docs/06-scenes/02-effect-durations.md` |
 | **Weapon/armor properties** | `docs/04-equipment/05-armor-weapon-properties.md` |
 | Published spells | `docs/07-magic/02-arcane-spells/`, `04-mystic-spells/` |
-| **Shared traits** | `src/utils/data/json/creature-traits.json` — 47 reusable passives by name; a creature stores the NAME and `content:gen` expands it |
+| **Shared traits** | `src/utils/data/json/creature-traits.json` — 49 reusable passives by name; a creature stores the NAME and `content:gen` expands it |
 | **Types, subtypes, additives** | `creature-types.json`, `creature-subtypes.json`, `creature-additives.json` — subtypes are an **array**, so additives sit alongside the primary value |
 | Builder pre-sets and rule tables | `creature-attacks-library.json`, `creature-abilities-library.json`, `creature-type-defaults.json`, `creature-tiers.json` — the Builder's tables, **not the roster** |
-| Deep analysis (survivability math, encounter building) | `docs/analysis/creatures/creature-creation-encounter-building-analysis.md` |
 | **Worldbuilding vault** | `~/git/personal/nexus-rpg-vault` (separate repo, German). `04 Natur/Bestiarium` for origin lore. **Read before designing an identity. Read-only** |
 | **The twelve Folk** | `docs/02-adventurers/01-folk.md` — a humanoid creature **inherits its folk's published traits** |
+| Damage and healing scaling for non-attack abilities | `../spell-design/references/rank-scaling.md` |
+
+**`docs/analysis/` is research, never a source.** Those files record how a decision was reached, and several
+are archived. A rule cited from one is a rule with no published home — take the figure from the published
+docs, from [stat-tables.md](references/stat-tables.md), or from the sibling design skill's own reference
+tables, and if none of them has it, that is a real gap to report rather than paper over.
+*(Owner ruling, 2026-09-14.)*
 
 **Keyword discipline**: only official conditions, durations, damage types and weapon properties — lists in
 [../game-basics.md](../game-basics.md#canonical-keyword-sources). Anything non-official is spelled out as

@@ -23,6 +23,8 @@ Run at **workflow step 7**, against the finished draft. Numeric rules cite their
 - [ ] **Undead and Automaton carry exactly one of `Mindless` / `Intelligent`**
 - [ ] Condition immunities follow the additive, not the type
 - [ ] Anglicised name, no diacritics (D-050)
+- [ ] **Size decided and the reason written down** (principle 62), size modifiers applied, and **no prose
+      claiming a bulk the field does not carry**
 
 ### Abilities
 - [ ] Every ability has a **Trigger**, an **Effect** naming who/what/how much/how long, and a **Limit**

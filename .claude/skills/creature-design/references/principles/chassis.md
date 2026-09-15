@@ -20,18 +20,28 @@ Read before **workflow steps 1-3** (concept, base statistics, attacks). These de
 | **48** | The tier says how strong. The category says how many adventurers it is sized against. |
 | **4** | Bounded complexity. |
 | **15** | Every encounter has a Timer, a Threat and a Treat — and the Treat has five channels. |
+| **62** | Size is a design tool, not a default. Ask it out loud at step 1 and write the answer down. |
 
 **Numbers are global and never renumbered, so this file is ordered for reading rather than by date.** Full text below in the same order.
 
 **1. Stat chassis + ability menu.** The tier table provides the statistical foundation; abilities provide the tactical identity. Never let either carry the whole design.
 
-**2. Abilities over HP bloat.** Durability comes from defensive abilities (damage reduction, condition immunity, regeneration), not inflated HP. Keeps fights snappy.
+**2. Abilities over HP bloat.** Durability comes from defensive abilities (damage reduction, condition immunity, regeneration), not inflated HP. Keeps fights snappy. **This is not a ban on the HP-up trade** — principle 38's `HP up, Defense down` is a *paid* swap that keeps the challenge at its tier. What this forbids is reaching for HP *instead of* designing the creature.
 
 **3. Damage threads the needle.** Creature damage must threaten glass-cannon casters (16 HP, AV 2) without oppressing heavy-armor martials (20+ HP, AV 5–6). The linear +1 weapon damage per tier achieves this — don't break it.
 
 **5. Adventurers don't heal on Wounds.** Unlike Elite/Lord creatures, adventurers stay at 0 HP when Wounded. Party healing is their survival mechanism; factor this into lethality.
 
-**7. Ability output follows the spell scaling frameworks.** Damage/healing abilities beyond basic attacks use `docs/analysis/_archive_/spells/SPELL_SYSTEM_ANALYSIS.md` §6 (damage per rank/tier, AoE = half single-target) and §16 (healing: single-target 1:1 with damage, Quick Action ½, AoE half; temp HP never stacks). A creature's ability output must stay consistent with what a same-tier caster could do. Spellcasting creatures: max spell rank = skill rank in Arcana/Mysticism, and every referenced spell must exist in the published spell lists — verify by grep, never import spells from other game systems.
+**7. Ability output follows the spell scaling frameworks.** Damage and healing abilities beyond a basic
+attack take their figures from **[spell-design's rank-scaling tables](../../../spell-design/references/rank-scaling.md)**
+— § Standard Scaling by Rank for damage (single-target +2 weak per rank, multi-target at R2+ takes half the
+single-target bonus) and § Healing (single-target 1:1 with damage, Quick Action half, multi-target half; temp
+HP never stacks; wound healing stays extremely rare). **That file is the source, not an analysis document** —
+`docs/analysis/` holds design research and is never cited as a rule (owner ruling, 2026-09-14).
+
+A creature's ability output must stay consistent with what a same-tier caster could do. Spellcasting
+creatures: max spell rank = skill rank in Arcana or Mysticism, and every referenced spell must exist in the
+published spell lists — verify by grep, never import spells from another game system.
 
 **38. Use the tier adjustment. A creature that is all chassis has no physique.** Step 2's rule — shift one
 stat a tier up, pay for it by shifting another a tier down — is the main tool for making two creatures of
@@ -167,3 +177,33 @@ it may not do is **need** the group to be interesting.
 **4. Bounded complexity.** A creature should be buildable in under 5 minutes with this framework and immediately understandable at the table.
 
 **15. Every encounter has a Timer, a Threat and a Treat — and the Treat has five channels.** The Threat is the signature move; the Timer is usually a trigger or a recharging ability. The **Treat** is information the party can act on, and it need not be on the stat block at all: a **damage-type weakness** (free — no ability budget), the **structural cost of a signature move** (a costed attack means the creature that chases you hits softer), a **drawback**, a **terrain hook**, or **lore alone**. For ordinary creatures the last is correct and the others are wrong: a wolf has no damage weakness and should carry no drawback ability — inventing either produces a wolf that is wrong about wolves. Its pack behaviour goes in `lore.ecology` and `lore.tactics`, and **Morale is the mechanism the knowledge feeds**. A false mechanic is worse than no mechanic. *(Owner rulings, 2026-08-09, D-001, D-032.)*
+
+
+**62. Size is a design tool, not a default — ask it out loud and write the answer down.** Medium is what a
+creature gets when nobody decides, and it shows: the published roster runs **12 Medium, 5 Small, 2 Tiny, 1
+Large**, and a whole tier-4 batch reached final review without the question being asked once. This is
+principle 38's failure in a different column — the unasked default is always *legal*, so nothing flags it.
+
+**Size is free identity and real mechanics at the same time:**
+
+| It changes | How |
+|---|---|
+| The silhouette a GM describes | The first thing anybody at the table learns about the creature |
+| **Grappling, pushing, knocking prone** | One size larger: +1 bane to grapple it, +1 boon to escape. **Two or more sizes larger: it cannot be grappled, pushed or knocked prone by the smaller creature at all** |
+| Whether a held creature moves with it | A larger creature's Movement carries the smaller one automatically |
+| AV, Parry and Dodge | Larger: AV +1 tier, Parry up, Dodge down. Smaller: the reverse |
+| **Separation from the Folk** | Every playable folk is Medium or Small, **Minotaurs included at 2.00-2.10 m**. Large is the fastest way to say *this is not a person* (principle 58) |
+
+**Three traps, all of them found in one batch:**
+
+1. **On heavy armor, "AV +1 tier" is +2 points, not +1** — tier-4 heavy is 6 and tier-5 heavy is 8. A Large
+   heavy-armored creature can blow a survivability target that a Large light-armored one would not.
+2. **Large fights an agile chassis.** Dodge goes *down*, so a creature built on high Agility and a high Dodge
+   is contradicting itself the moment it goes Large. Pick one.
+3. **The prose has to agree with the field.** *"They are the biggest thing in the tomb"* over a `Medium` stat
+   block is the card denying itself, exactly like a head noun the record contradicts (principle 52).
+
+**Never change a size for variety alone.** A table that is all Medium because the batch is a necropolis full
+of dead people is correct; reaching for Large to break it up is principle 15's false mechanic. **Where a
+family spans tiers, size may mark the rung** — but only when the fiction says so, and never when the higher
+rung's chassis is the faster one. *(Owner ruling, 2026-09-14, D-170.)*

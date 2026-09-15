@@ -103,7 +103,7 @@ Every ability must use these established keywords exactly — never invent or pa
 
 | Keyword class | Canonical page |
 |---------------|----------------|
-| **Conditions** | `docs/05-combat/04-conditions.md` |
+| **Conditions** | `docs/05-combat/04-conditions.mdx` |
 | **Effect durations** | `docs/06-scenes/02-effect-durations.md` |
 | **Weapon/armor properties** | `docs/04-equipment/05-armor-weapon-properties.md` |
 | **Spell properties** | `docs/07-magic/05-spell-properties.md` |

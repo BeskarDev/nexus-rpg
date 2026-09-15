@@ -51,7 +51,7 @@ creature is one object in that array:
 
 A creature's **shared** passives — `Keen Scent`, `Amphibious`, `Undead Nature`,
 `Blindsight (close)` — go in `traits` as **names only**. Their wording lives once in
-`src/utils/data/json/creature-traits.json` (47 entries, extracted from the companion trait
+`src/utils/data/json/creature-traits.json` (49 entries, extracted from the companion trait
 library so creatures and companions cannot drift on what a trait means), and
 `content:gen` **expands each name into a full `Passive` ability** on the published card.
 

@@ -22,6 +22,23 @@ Read before writing any stat block text or `lore` prose, and again as a final pa
 
 **19. SL escalation has one canonical wording: `increase the SL by one step (max. critical)`.** Copy it verbatim, never paraphrase. `SL` is published and defined in `docs/01-basic-rules/01-how-to-roll.md`, so the abbreviation costs the reader nothing, and the parenthetical carries the cap in two words. The longhand it replaces — "increases the success level of a hit by one step, to a maximum of a critical hit" — is twenty-two words for the same rule on a card where space is the scarce resource. The same discipline applies to every recurring mechanic: **once a pattern has a canonical form, drift is a defect**, because a GM who has read the phrase once should recognise it instantly rather than re-parse a variant. *(Owner ruling, 2026-08-09.)*
 
+**The canonical forms collected so far.** Before inventing a phrase for a common effect, grep the published
+spells and conditions for one — the corpus usually has it, and a near-miss reads as a new rule.
+
+| Effect | Canonical wording | Where it is published |
+|---|---|---|
+| SL escalation | `increase the SL by one step (max. critical)` | above |
+| **Stopping a creature mid-move** | **`their Movement becomes 0 for the rest of the turn`** | *Melt Ground* (Nature R2). **Not** "their movement ends", "they can't move again this turn" or `restrained`, whose Movement 0 comes bundled with +1 boon to every attacker |
+| **Resolving movement as a published condition** | **`(counts as pushed)`** | `counts as` is the published reskin construction — *"tell the table what it counts as"*, *"Flail counts as Mace"* (`03-weapons.md`). Three words inherit the whole condition |
+| **Throwing a grappled creature** | **`Only against a creature this creature is grappling. This creature throws the target <distance> <direction> (counts as pushed).`** | The Ogre's `Hurl`. **Do not restate what it inherits**: `pushed` already deals falling damage to the target *and* to whatever they hit, the falling rules knock both prone, and the **Grapple action already says the grapple ends when either party is moved away** |
+| **A lasting condition with a way out** | **`<condition> for a short duration. They can roll <Attribute> + <Skill> vs. <TN or Defense> at the end of each of their turns to end the effect early.`** | `Mass Hold` (R4) and `Phantasmal Killer` (R3). **The repeat save is what lets a disable exceed `briefly` at all** — principle 18 keeps a frequent rider at one turn, and this is how a gated, signature one reaches `short` |
+| **An ability's activation cost** | **`By spending 1 Resolve, …`** opening the effect text | Costs come first, limiters last (principle 61, spell principle 70). Never restate the action the qualifier already names |
+| Movement that draws no reaction | `unprovoked` | `03-distances-movement.md`, and `Quick Escape` on creature cards |
+| A one-turn duration | `briefly <condition>`, duration first | principle 18 |
+| A creature's self-reference | `This creature` | principle 28 |
+
+*(The movement row: owner question, 2026-09-14, D-168 — an invented phrasing caught in the Kusarikku's `Gore` rider.)*
+
 **28. When two creatures share a sentence, name the subject — do not reach for a pronoun.** The house rule that creatures are **they/their/them** stands and is not the problem. The problem is that *any* pronoun fails once a second creature is in scope: "When this creature uses Protect Ally, **they** take half the damage" could be the protector or the ally, and swapping to "it" would only disambiguate by accident — it reads as the protector *because the ally happens to be a person*, and breaks the moment both are beasts.
 
 **Write `This creature` as the subject instead, and the pronoun usually disappears along with a word or two.** The published trait library already does this and never reaches for a pronoun at all: `Natural Climber`, `Undead Nature` and `Keen Scent` each open with "This creature". The fix is normally shorter than the ambiguity:

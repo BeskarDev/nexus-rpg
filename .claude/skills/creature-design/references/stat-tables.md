@@ -322,7 +322,7 @@ full weapon damage and does not carry `light`.
 
 **Multi-target attacks** halve the **weapon damage only**, rounded up — base damage is unchanged. This
 is symmetric with the spell system, where Spell Power applies equally to single-target and multi-target
-spells and only the SL-scaling spell bonus is halved (`SPELL_SYSTEM_ANALYSIS.md` §6). Halving the
+spells and only the SL-scaling spell bonus is halved ([rank-scaling.md](../../spell-design/references/rank-scaling.md) § Standard Scaling by Rank). Halving the
 *total* would halve the flat component too, and multi-target attacks would collapse to the AV floor at
 every tier.
 
@@ -565,7 +565,7 @@ Three binding rules:
 
 ## Conditions & Durations
 
-Use only official conditions (`docs/05-combat/04-conditions.md`) and durations (`docs/06-scenes/02-effect-durations.md`): briefly, short, medium, long, very long. Complete condition list and duration definitions: [../../game-basics.md](../../game-basics.md#canonical-keyword-sources).
+Use only official conditions (`docs/05-combat/04-conditions.mdx`) and durations (`docs/06-scenes/02-effect-durations.md`): briefly, short, medium, long, very long. Complete condition list and duration definitions: [../../game-basics.md](../../game-basics.md#canonical-keyword-sources).
 
 ## Defensive Toolkit — eight shapes
 

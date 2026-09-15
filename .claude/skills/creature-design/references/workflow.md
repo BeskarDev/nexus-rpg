@@ -37,6 +37,8 @@ python3 -c "import json;[print(f\"{c['tier']:2} {c['category']:6} {c['name']}\")
 > **Gate:**
 > 1. What is the **tactical question** this creature asks the party?
 > 2. What already exists at this tier, and how is this one **not** a near-duplicate?
+> 2b. **What size, and why?** (principle 62.) Medium is what a creature gets when nobody decides. Write the
+>    reason down even when the answer is Medium, and check the prose agrees with the field.
 > 3. Does the name promise what the stat block will deliver, and is it built the way principle 52 says?
 >    **Ask it again at step 7**, because only then does the kit exist to check the promise against.
 
@@ -217,7 +219,7 @@ under the programme folder, and the split is load-bearing:
 
 | File | Holds | Never holds |
 |---|---|---|
-| **`tier-<N>-batch.md`** | The **designs only** — status banner, scope table, then one section per creature: theme, role, Treat, stat block, attacks, abilities, traits | Rationale, alternatives, balance math, revisions to published records, open questions |
+| **`tier-<N>-batch.md`** | The **designs only** — status banner, scope table, then one section per creature. **Each section opens with its card line, `size type (subtype) · category`**, because a reviewer reading one creature must not have to scroll back to a table to learn what it is (D-173). Then theme, role, Treat, stat block, attacks, abilities, traits | Rationale, alternatives, balance math, revisions to published records, open questions |
 | **`tier-<N>-notes.md`** | Everything else — why a number moved, what was cut, revisions to published records, the balance check, and **`## Open Questions for Owner`** | Stat blocks |
 | **`tier-<N>-lore.md`** | The `lore` blocks, one per creature | Stat blocks |
 

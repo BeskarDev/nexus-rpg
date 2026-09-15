@@ -9,7 +9,7 @@ Order within a written item description:
 3. **Lore** — 1–2 sentences, only for significant items (major/legendary treasure).
 4. **Exact mechanical effects** — bonuses with their type, active ability usage (action type, duration, uses per day or scene), limitations. Every ability states trigger, effect, and limit.
 
-Keyword discipline: only official conditions (`docs/05-combat/04-conditions.md`), official durations (briefly/short/medium/long/very long, `docs/06-scenes/02-effect-durations.md`), official weapon/armor properties (`docs/04-equipment/05-armor-weapon-properties.md`). Complete lists: [../../game-basics.md](../../game-basics.md#canonical-keyword-sources). Anything non-official must be spelled out as an exact mechanical effect.
+Keyword discipline: only official conditions (`docs/05-combat/04-conditions.mdx`), official durations (briefly/short/medium/long/very long, `docs/06-scenes/02-effect-durations.md`), official weapon/armor properties (`docs/04-equipment/05-armor-weapon-properties.md`). Complete lists: [../../game-basics.md](../../game-basics.md#canonical-keyword-sources). Anything non-official must be spelled out as an exact mechanical effect.
 
 ## JSON Format (printable cards)
 
@@ -29,7 +29,7 @@ Keyword discipline: only official conditions (`docs/05-combat/04-conditions.md`)
 
 - **Required**: `name` (include bonus, e.g. "Longsword +2"), `category` (`Weapon` | `Armor` | `Wearable` | `Consumable` | `Spell Scroll`), `quality` (3–8), `type` (base type + bonus, or slot for wearables e.g. `"ring (apparel slot)"`), `cost`, `load`, `description`.
 - **Optional**: `material`, `properties` (comma-separated string), `uses` (consumables, typically 1).
-- Multiple items: JSON array. Printing UI: `docs/10-gm-tools/00-printing/03-magic-items.mdx`.
+- Multiple items: JSON array. Printing UI: `docs/10-gm-tools/00-printing/04-magic-items.mdx`.
 
 ## App JSON (rules-table changes only)
 

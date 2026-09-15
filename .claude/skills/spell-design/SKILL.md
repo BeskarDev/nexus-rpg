@@ -16,22 +16,31 @@ Spells belong to one of 14 schools: 6 **arcane disciplines** (Mind + Arcana, tra
 | **Canonical spell data** | `src/utils/data/json/{arcane,mystic}-spells.json` — **edit here, never in the docs** |
 | Published spells | `docs/07-magic/02-arcane-spells/*.mdx`, `04-mystic-spells/*.mdx` — **generated, do not hand-edit** |
 | Spell properties | `docs/07-magic/05-spell-properties.md` |
-| **Conditions** (official keyword list) | `docs/05-combat/04-conditions.md` |
+| **Conditions** (official keyword list) | `docs/05-combat/04-conditions.mdx` |
 | **Effect durations** (briefly/short/medium/long/very long) | `docs/06-scenes/02-effect-durations.md` |
-| System-wide balance analysis | `docs/analysis/_archive_/spells/SPELL_SYSTEM_ANALYSIS.md` — esp. **§6 damage scaling framework** and **§16 healing scaling investigation** |
-| **Per-school design spaces** (traits, gimmicks, trait×rank coverage matrices, gap lists, combo audits) | `docs/analysis/_archive_/spells/schools/<school>.md` |
+| **Damage and healing figures** | [references/rank-scaling.md](references/rank-scaling.md) — the source. `docs/analysis/_archive_/spells/SPELL_SYSTEM_ANALYSIS.md` records how they were derived and is **research, never cited as the rule** |
+| **School identity** lookup (traits, roles, damage types, typical conditions) | [references/schools.md](references/schools.md) |
+| **School rules** — signature gimmick and the mechanics each school binds | [references/school-rules.md](references/school-rules.md) |
+| Per-school **research**: gap lists, combo audits, derivation history | `docs/analysis/_archive_/spells/schools/<school>.md` — archived, dated, **never authority** |
 
-The per-school analysis files are the deepest, most current source for school identity — **always read the target school's file before designing for it.** They supersede older role/trait summaries where they conflict.
+**`docs/analysis/` is research, never a source of rules** (owner ruling, 2026-09-14). The rules the archived school files carried now live in [references/school-rules.md](references/school-rules.md); what remains there is gap lists, combo audits and derivation history, and **principle 19 already rules their proposed spells stale drafts**. On any conflict, the skill's own files win.
 
 ## Design Workflow
 
 ### 1. Pick school and read its design space
-Read `docs/analysis/_archive_/spells/schools/<school>.md`: identity, traits, signature gimmick, primary conditions, role spread, known gaps, trait×rank coverage matrix. Prefer designing in the school's **Excels** role; **Decent** is fine; avoid **Weak** roles unless deliberately subversive.
+Read **both** [references/schools.md](references/schools.md) (traits, roles, damage types, typical
+conditions) and [references/school-rules.md](references/school-rules.md) (the signature gimmick and the
+mechanics this school binds — they are rules, not flavour). Prefer designing in the school's **Excels**
+role; **Decent** is fine; avoid **Weak** roles unless deliberately subversive.
+
+**Generate the inventory and coverage rather than reading a stored one** — `school-rules.md` carries the
+one-liner. A stored matrix is stale the day a spell ships. The archived school file is worth a look for its
+**gap list** only, treated as dated.
 
 ### 2. Check for gaps and duplicates
 - Does the school's gap list already call for this spell? Filling documented gaps > inventing new territory.
 - Grep the school's published spell file for similar names/effects. **Heighten, don't duplicate** — a higher-rank version of an existing concept should be a Heighten entry on the existing spell, not a new spell.
-- Check the coverage matrix: which trait×rank cells are empty?
+- **Generate** the trait×rank coverage (see the one-liner in `school-rules.md`) and ask which cells are empty. Never read a stored matrix — it is stale the day a spell ships.
 
 ### 3. Choose rank
 Match concept power to the rank table (rank ≈ D&D level equivalence in references). Rank 5 = D&D level 7 ceiling (Delayed Blast Fireball, Plane Shift, Resurrection) — never level 9 (Wish, Meteor Swarm, Time Stop). Resurrection framework: Revivify-equivalent R3, Raise Dead R4, Resurrection R5; True Resurrection does not exist.

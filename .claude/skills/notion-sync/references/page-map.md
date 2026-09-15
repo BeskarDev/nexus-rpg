@@ -44,7 +44,7 @@ Many Docusaurus pages (split by subdirectory) collapse into **one** Notion page.
 | Combat Scenes | `https://app.notion.com/p/ebfd895f5aa64ef39d68e0dc2fac3bf1` | `docs/05-combat/01-combat-scenes.md` |
 | Attacking | `https://app.notion.com/p/6f5335b858ec435ba1e312f2b0b0a966` | `docs/05-combat/02-attacking.md` |
 | Distances & Movement | `https://app.notion.com/p/a6ca58c46737426eb19abc691d6e428d` | `docs/05-combat/03-distances-movement.md` |
-| Conditions | `https://app.notion.com/p/fceb13238be1489694feb93c968fc714` | `docs/05-combat/04-conditions.md` |
+| Conditions | `https://app.notion.com/p/fceb13238be1489694feb93c968fc714` | `docs/05-combat/04-conditions.mdx` |
 | Combat Arts ⚠️ | `https://app.notion.com/p/f1c6922c7dd44b3592b7f9ed56976351` | `docs/05-combat/05-combat-arts/00-overview.md` (intro text only) — **actual arts list is inline DB; see [inline-databases.md](./inline-databases.md)** |
 
 ### Items
@@ -67,7 +67,7 @@ Many Docusaurus pages (split by subdirectory) collapse into **one** Notion page.
 | Effect Durations | `https://app.notion.com/p/819d7f4b7fa644aea87ba9023c0adfd1` | `docs/06-scenes/02-effect-durations.md` |
 | Resting | `https://app.notion.com/p/529578a4d457416ea113f0f10c42a28b` | `docs/06-scenes/03-resting.md` |
 | Downtime | `https://app.notion.com/p/6a1ae735202f4c95a4345df0655b6c68` | `docs/06-scenes/04-downtime/00-overview.md` + `activities.md` (merged) |
-| Crafting Professions | `https://app.notion.com/p/151541d587118020a209c4d6afe9e90b` | `docs/06-scenes/05-crafting-professions.md` |
+| Crafting Professions | `https://app.notion.com/p/151541d587118020a209c4d6afe9e90b` | `docs/06-scenes/05-crafting-professions/` |
 | Harvesting Creature Parts | `https://app.notion.com/p/18f541d5871180b19280d5eff63a4561` | `docs/06-scenes/06-harvesting-creature-parts.md` |
 | Challenges | `https://app.notion.com/p/311541d5871180118177df9da7fc85a4` | `docs/06-scenes/07-challenges/00-overview.md` |
 | Social Intrigue | `https://app.notion.com/p/Social-Intrigue-311541d5871180e7b7bbdb3a6e0a75f7` | `docs/06-scenes/07-challenges/01-social-intrigue.md` |
