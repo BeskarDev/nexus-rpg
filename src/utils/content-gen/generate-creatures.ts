@@ -20,6 +20,8 @@ import fs from 'fs'
 import path from 'path'
 
 import creatureAdditives from '../data/json/creature-additives.json'
+import creatureArchetypes from '../data/json/creature-archetypes.json'
+import creatureEnvironments from '../data/json/creature-environments.json'
 import creatureSizes from '../data/json/creature-sizes.json'
 import creatureSubtypes from '../data/json/creature-subtypes.json'
 import creatureTraits from '../data/json/creature-traits.json'
@@ -28,10 +30,29 @@ import companionTraits from '../data/json/companion-traits.json'
 import conditions from '../data/json/conditions.json'
 import weapons from '../data/json/weapons.json'
 import { CREATURE_SECTIONS } from '../typescript/creature/creatureSections'
+import type {
+	CreatureIndex,
+	CreatureIndexEntry,
+} from '../../types/CreatureIndex'
 
 const REPO = path.resolve(__dirname, '../../..')
 const JSON_FILE = path.join(REPO, 'src/utils/data/json/creatures.json')
 const DOC_DIR = path.join(REPO, 'docs/08-creatures/03-creatures')
+/**
+ * The bestiary browser's payload (see `types/CreatureIndex.ts` for what it
+ * holds and why it is not just `creatures.json`).
+ *
+ * It is emitted from THIS script rather than a `generate-creature-index.ts` of
+ * its own because everything it needs is already here: the validated records,
+ * the Docusaurus `slug`, and the `linkTo` that resolves a creature to its tier
+ * page. A second script would have to re-import all three, and could then be
+ * run without the first — leaving an index that disagrees with the pages it
+ * links into. One generator, one --check, nothing to drift.
+ */
+const INDEX_FILE = path.join(
+	REPO,
+	'src/utils/data/generated/creature-index.json',
+)
 
 const BANNER =
 	'{/* GENERATED from src/utils/data/json/creatures.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate. */}'
@@ -115,6 +136,11 @@ interface CreatureRecord {
 	subtype: string[]
 	tier: number
 	category: string
+	/**
+	 * Tactical role, one of `creature-archetypes.json`. Filter metadata for the
+	 * bestiary browser, never printed on a card.
+	 */
+	role?: string
 	armor: string
 	hp: string
 	av: string
@@ -243,62 +269,38 @@ const TREASURE_KINDS = new Set([
 ])
 
 /**
- * Environment vocabulary, ranked from broadest to narrowest:
- *   1 region — the biome or land you travel through
- *   2 site   — the built or natural place you arrive at
- *   3 feature— the specific chamber or lair you enter
+ * Environment vocabulary, in two ranks:
+ *   1 region — the land you travel through
+ *   2 site   — the kind of place you arrive at, built or natural
  *
- * A creature's `environment` list must be ordered by this rank, so
- * `["Desert", "Ruins", "Tomb"]` reads outside-in. That ordering is the
- * groundwork for an encounter builder: "a desert tomb" is a rank-1 plus a rank-3
- * filter, and a tool can intersect creature lists at each level only if every
- * entry agrees on what is broad and what is narrow. Adding a term is a deliberate
- * act — an unknown one fails the build rather than silently creating a synonym
- * that no filter will ever match.
+ * A creature's `environment` list must be ordered by rank, so
+ * `["Desert", "Ruins", "Tomb"]` reads outside-in, and every creature must carry
+ * at least one region. Those two rules are what let a bestiary filter ask a GM
+ * the only two questions they can actually answer about where their party is
+ * standing: what land, and what kind of place.
+ *
+ * There used to be a third rank, "feature", holding Tomb, Lair, Well and Sewer
+ * as chambers INSIDE a site. It was dropped (owner ruling): the rank is a sort
+ * key, not a containment tree, so a third level bought no query a GM would ask.
+ * Nobody describes their location as "a necropolis, specifically its tomb" —
+ * they say "a tomb", which makes a tomb a peer of ruins, not a child of it.
+ *
+ * The table itself lives in `creature-environments.json` rather than here, for
+ * the same reason `creature-trait-sigils` was extracted: the bestiary browser is
+ * a React component and cannot import a bun script, so a vocabulary that lives
+ * only in this file can be validated but never rendered as a filter. Each term
+ * is the most generic word for its kind of place and absorbs its near-synonyms
+ * (owner ruling): Tomb covers necropolis, crypt, barrow and burial vault, Lair
+ * covers den and nest, Settlement covers city and village, Temple covers shrine,
+ * Grassland covers steppe. Splitting a synonym back out splits every query that
+ * should have matched both. Adding a term is a deliberate act — an unknown one
+ * fails the build rather than silently creating a synonym no filter will match.
  */
-const ENVIRONMENT_RANKS: Record<string, number> = {
-	// 1 — region
-	Desert: 1,
-	Grassland: 1,
-	Steppe: 1,
-	Forest: 1,
-	Jungle: 1,
-	Mountains: 1,
-	Hills: 1,
-	Marsh: 1,
-	Coast: 1,
-	Sea: 1,
-	River: 1,
-	Wastes: 1,
-	Arctic: 1,
-	Underground: 1,
-	Sky: 1,
-	Otherworld: 1,
-	// 2 — site
-	Ruins: 2,
-	Settlement: 2,
-	City: 2,
-	Temple: 2,
-	Fortress: 2,
-	Caves: 2,
-	Mine: 2,
-	Road: 2,
-	Farmland: 2,
-	Battlefield: 2,
-	Necropolis: 2,
-	Ship: 2,
-	// 3 — feature
-	Tomb: 3,
-	Crypt: 3,
-	Vault: 3,
-	Shrine: 3,
-	Lair: 3,
-	Nest: 3,
-	Den: 3,
-	Well: 3,
-	Sewer: 3,
-	Barrow: 3,
-}
+const ENVIRONMENT_RANKS: Record<string, number> = Object.fromEntries(
+	(creatureEnvironments.environments as { name: string; rank: number }[]).map(
+		(e) => [e.name, e.rank],
+	),
+)
 
 const LORE_KEYS = new Set([
 	'narrative',
@@ -377,6 +379,17 @@ const TRAITS = new Map<string, string>(
 		t.name,
 		t.text,
 	]),
+)
+
+/**
+ * Tactical roles, shared with the Creature Builder's archetypes so the two
+ * vocabularies cannot drift. `role` answers the question the bestiary browser
+ * exists for and the stat block cannot: "I have a frontline, I need something
+ * that shoots." It is filter metadata rather than a printed stat, so no page
+ * renders it.
+ */
+const VALID_ROLES = new Set(
+	(creatureArchetypes as { name: string }[]).map((a) => a.name),
 )
 
 const ADDITIVES = new Set(
@@ -497,6 +510,12 @@ function validateCreature(entry: unknown, context: string): CreatureRecord {
 		fail(
 			context,
 			`unknown category "${e.category}" (expected ${[...CATEGORIES].join(', ')})`,
+		)
+	if (e.role !== undefined && !VALID_ROLES.has(e.role as string))
+		fail(
+			context,
+			`unknown role "${e.role}" (expected one of ${[...VALID_ROLES].join(', ')}, ` +
+				'from creature-archetypes.json)',
 		)
 	validateTaxonomy(e, context)
 	validateResistancePairing(e, context)
@@ -1101,13 +1120,14 @@ function validateLore(raw: unknown, context: string): void {
 				fail(
 					context,
 					`lore.environment term "${term}" is not in the environment vocabulary; ` +
-						'add it to ENVIRONMENT_RANKS with its rank rather than inventing a synonym',
+						'add it to creature-environments.json with its rank rather than ' +
+						'inventing a synonym',
 				)
 			// Broadest first, so an encounter filter can read the list outside-in.
 			if (rank < previous)
 				fail(
 					context,
-					`lore.environment must run generic to specific; "${term}" (rank ${rank}) ` +
+					`lore.environment must run region before site; "${term}" (rank ${rank}) ` +
 						`follows a narrower term (rank ${previous})`,
 				)
 			previous = rank
@@ -1119,8 +1139,8 @@ function validateLore(raw: unknown, context: string): void {
 			fail(
 				context,
 				'lore.environment must include at least one rank-1 region ' +
-					'(Desert, Grassland, River, Coast, …) — sites and features alone cannot ' +
-					'be found by a habitat filter',
+					'(Desert, Grassland, River, Coast, …) — sites alone cannot be found ' +
+					'by a habitat filter',
 			)
 	}
 	if (lore.physiology !== undefined) {
@@ -1626,6 +1646,82 @@ function renderPage(
 	return blocks.join('\n\n') + '\n'
 }
 
+/**
+ * Project one validated record down to its index entry.
+ *
+ * Explicit field by field rather than a spread-and-delete: a new lore field
+ * added to the roster must not silently start shipping to the browser, and the
+ * only way to guarantee that is for every field in the payload to be one
+ * somebody wrote down here on purpose.
+ */
+function toIndexEntry(
+	c: CreatureRecord,
+	i: number,
+	linkTo: (name: string) => string,
+): CreatureIndexEntry {
+	return {
+		id: `catalogue:${i}:${c.name}`,
+		name: c.name,
+		href: linkTo(c.name),
+		tier: c.tier,
+		category: c.category,
+		...(c.role ? { role: c.role } : {}),
+		size: c.size,
+		type: c.type,
+		subtype: c.subtype ?? [],
+		armor: c.armor,
+		hp: c.hp,
+		av: c.av,
+		str: c.str,
+		agi: c.agi,
+		spi: c.spi,
+		mnd: c.mnd,
+		parry: c.parry,
+		dodge: c.dodge,
+		resist: c.resist,
+		skills: c.skills,
+		immunities: c.immunities,
+		resistances: c.resistances,
+		weaknesses: c.weaknesses,
+		traits: c.traits ?? [],
+		attacks: c.attacks.map((a) => ({
+			name: a.name,
+			...(a.qualifier ? { qualifier: a.qualifier } : {}),
+			...(a.properties?.length ? { properties: a.properties } : {}),
+			text: a.text,
+			...(a.details?.length ? { details: a.details } : {}),
+		})),
+		abilities: c.abilities.map((a) => ({
+			name: a.name,
+			...(a.qualifier ? { qualifier: a.qualifier } : {}),
+			text: a.text,
+			...(a.details?.length ? { details: a.details } : {}),
+		})),
+		environment: c.lore?.environment ?? [],
+		organization: c.lore?.organization ?? [],
+	}
+}
+
+/**
+ * The index is written sorted by tier then name, not in roster order, so the
+ * diff of a regenerated file shows what actually changed about a creature
+ * rather than where it was inserted. `id` keeps the roster position, so the
+ * ordering here is presentation only.
+ */
+function renderIndex(
+	creatures: CreatureRecord[],
+	linkTo: (name: string) => string,
+): string {
+	const index: CreatureIndex = {
+		$generated:
+			'GENERATED from src/utils/data/json/creatures.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate.',
+		creatures: creatures
+			.map((c, i) => toIndexEntry(c, i, linkTo))
+			.sort((a, b) => a.tier - b.tier || a.name.localeCompare(b.name)),
+	}
+	return `${JSON.stringify(index, null, '\t')}\n`
+}
+
 function main() {
 	const check = process.argv.slice(2).includes('--check')
 	const entries: unknown[] = JSON.parse(fs.readFileSync(JSON_FILE, 'utf-8'))
@@ -1645,6 +1741,26 @@ function main() {
 	}
 
 	let stale = 0
+
+	// The browser payload. Written before the pages so that a roster change which
+	// fails the page render never leaves a half-updated pair behind.
+	const indexContent = renderIndex(creatures, linkTo)
+	if (check) {
+		const current = fs.existsSync(INDEX_FILE)
+			? fs.readFileSync(INDEX_FILE, 'utf-8')
+			: null
+		if (current !== indexContent) {
+			stale++
+			console.error(`STALE: ${path.relative(REPO, INDEX_FILE)}`)
+		}
+	} else {
+		fs.mkdirSync(path.dirname(INDEX_FILE), { recursive: true })
+		fs.writeFileSync(INDEX_FILE, indexContent)
+		console.log(
+			`wrote ${path.relative(REPO, INDEX_FILE)} (${creatures.length} creatures)`,
+		)
+	}
+
 	for (const tier of TIERS) {
 		const outFile = path.join(DOC_DIR, `tier-${tier}.mdx`)
 		const legacy = path.join(DOC_DIR, `tier-${tier}.md`)
@@ -1680,11 +1796,11 @@ function main() {
 	if (check) {
 		if (stale > 0) {
 			console.error(
-				`\ncontent:gen --check found ${stale} stale creature page(s). Run \`bun run content:gen\` and commit.`,
+				`\ncontent:gen --check found ${stale} stale creature file(s). Run \`bun run content:gen\` and commit.`,
 			)
 			process.exit(1)
 		}
-		console.log('content:gen --check: creature pages up to date.')
+		console.log('content:gen --check: creature pages and index up to date.')
 	}
 }
 

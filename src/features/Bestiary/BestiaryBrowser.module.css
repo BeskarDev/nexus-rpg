@@ -1,0 +1,1206 @@
+/* BestiaryBrowser — a lookup surface, not a card. Flat throughout, tokens only,
+   no rule used as a grouping device: the toolbar and the table are separated by
+   a wash and by spacing, never by a bar. See the codex-theme skill. */
+
+/* A query container, because the thing that decides how many columns fit is the
+   SHEET, not the viewport. Measured: a 1700px window gives this table 943px to
+   work with once the sidebar and the table of contents have taken theirs, so a
+   viewport breakpoint would have been answering a different question than the
+   one being asked. Named, since only a named `@container` at-rule is guaranteed
+   to walk past an intervening container. */
+.browser {
+	container-type: inline-size;
+	container-name: bestiary;
+	margin: 1.4rem 0;
+	font-size: var(--nexus-text-dense);
+}
+
+/* One bar over the table: the search, then a filter button per facet. It sits
+   on a faint wash so it reads as the table's header furniture rather than as a
+   separate panel, and needs no rule under it to say where it ends. */
+.toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.4rem 0.6rem;
+	padding: 0.5rem 0.6rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	border-radius: 3px;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 4%,
+		var(--ifm-background-surface-color)
+	);
+}
+
+/* The search is bounded: a field that grows to the full sheet reads as the page
+   header rather than as one control among several, and nobody types a creature
+   name 900px long. */
+.searchField {
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex: 1 1 14rem;
+	min-width: 0;
+	max-width: 22rem;
+}
+
+.searchGlyph {
+	position: absolute;
+	left: 0.4rem;
+	color: color-mix(in srgb, var(--ifm-color-primary) 75%, transparent);
+	pointer-events: none;
+}
+
+.search {
+	width: 100%;
+	min-width: 0;
+	padding: 0.25rem 0.5rem 0.25rem 1.5rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+	border-radius: 2px;
+	background-color: var(--ifm-background-surface-color);
+	color: var(--ifm-font-color-base);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+}
+
+.search:focus-visible,
+.menuButton:focus-visible,
+.option:focus-visible,
+.sortButton:focus-visible,
+.nameButton:focus-visible,
+.pager button:focus-visible,
+.clear:focus-visible {
+	outline: 2px solid var(--ifm-color-primary);
+	outline-offset: 1px;
+}
+
+.filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.3rem;
+}
+
+/* The anchor for the panel, which is positioned against it. */
+.menu {
+	position: relative;
+}
+
+/* A filter chip: keyline around the card surface, colour in the ink, no radius —
+   the construction the plugin chips use. An active facet fills to a wash and
+   carries its count, so a collapsed bar still says what is narrowing the list. */
+.menuButton {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0.15rem 0.45rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	border-radius: 0;
+	background-color: transparent;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 80%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	line-height: 1.5;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.menuButton:hover {
+	border-color: color-mix(in srgb, var(--ifm-color-primary) 60%, transparent);
+	color: var(--ifm-font-color-base);
+}
+
+.menuButton[data-active='true'],
+.menuButton[aria-expanded='true'] {
+	border-color: var(--ifm-color-primary);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 14%,
+		transparent
+	);
+	color: var(--ifm-color-primary);
+}
+
+.menuGlyph {
+	color: color-mix(in srgb, var(--ifm-color-primary) 80%, transparent);
+}
+
+.menuButton[data-active='true'] .menuGlyph,
+.menuButton[aria-expanded='true'] .menuGlyph {
+	color: var(--ifm-color-primary);
+}
+
+/* A stat's own mark beside its column name, the same one the stat block uses. */
+.headGlyph {
+	color: color-mix(in srgb, var(--ifm-color-primary) 70%, transparent);
+}
+
+.menuCount {
+	font-variant-numeric: tabular-nums;
+	font-weight: 600;
+}
+
+.menuCaret {
+	font-size: var(--nexus-text-3xs);
+}
+
+.menuPanel {
+	position: absolute;
+	z-index: 5;
+	top: calc(100% + 0.25rem);
+	left: 0;
+	min-width: 9rem;
+	max-height: 17rem;
+	overflow-y: auto;
+	padding: 0.3rem;
+	border: 1.5px solid var(--ifm-color-primary);
+	border-radius: 2px;
+	/* Opaque, not a wash: it sits over the table's own rows. */
+	background-color: var(--ifm-background-surface-color);
+}
+
+.options {
+	display: flex;
+	flex-direction: column;
+}
+
+.option {
+	display: flex;
+	align-items: baseline;
+	gap: 0.35rem;
+	width: 100%;
+	padding: 0.2rem 0.35rem;
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+	color: var(--ifm-font-color-base);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	text-align: left;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.option:hover {
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 10%,
+		transparent
+	);
+}
+
+.option[aria-pressed='true'] {
+	color: var(--ifm-color-primary);
+}
+
+/* Fixed width so the labels line up whether or not a tick is drawn. */
+.optionMark {
+	flex: 0 0 0.7rem;
+	color: var(--ifm-color-primary);
+	font-size: var(--nexus-text-2xs);
+}
+
+.tierRange {
+	display: flex;
+	gap: 0.6rem;
+	padding: 0.15rem;
+}
+
+.tierRange label {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.04em;
+}
+
+.tierRange select,
+.pageSize select {
+	padding: 0.15rem 0.25rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+	border-radius: 2px;
+	background-color: var(--ifm-background-surface-color);
+	color: var(--ifm-font-color-base);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+}
+
+.pageSize {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.04em;
+	white-space: nowrap;
+}
+
+.resultBar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	margin: 0.45rem 0 0;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	color: color-mix(in srgb, var(--ifm-font-color-base) 75%, transparent);
+}
+
+.resultActions {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+}
+
+.clear {
+	padding: 0;
+	border: none;
+	background: none;
+	color: var(--ifm-color-primary);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+	cursor: pointer;
+}
+
+.tableScroll {
+	overflow-x: auto;
+}
+
+/* `display: table` is not redundant. Infima sets every table to
+   `display: block; overflow: auto`, which turns the box into a block whose rows
+   shrink to their content: the table then sits in the left half of a sheet it
+   was given all of. The scroll container is this component's own `.tableScroll`,
+   so the table itself goes back to being a table (the same move `DocTable`
+   makes for markdown tables). */
+.table {
+	display: table;
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--nexus-text-dense);
+}
+
+/* Auto layout distributes the sheet across the columns in proportion to what
+   they hold, which is what fifteen mostly-numeric columns want: the name takes
+   the slack and the figures stay in even, narrow bands. Nothing wraps, so a
+   row is always one line. */
+.table th,
+.table td {
+	padding: 0.3rem 0.35rem;
+	border: none;
+	text-align: left;
+	vertical-align: baseline;
+	white-space: nowrap;
+}
+
+/* The add button is the row's last thing, hard against the table's right edge,
+   so it sits in the same place on every row whatever the columns above it do. */
+.table th.addColumn,
+.table td.addColumn {
+	width: 1%;
+	text-align: right;
+}
+
+/* The header band is a wash, so the table needs no rule under it. */
+.table thead th {
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 10%,
+		transparent
+	);
+	font-family: var(--nexus-font-display);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	font-size: var(--nexus-text-xs);
+	font-weight: 600;
+}
+
+.sortButton {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0;
+	border: none;
+	background: none;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+}
+
+.sortMark {
+	font-size: var(--nexus-text-3xs);
+	color: var(--ifm-color-primary);
+}
+
+/* Zebra banding instead of row rules: same separation, no bars. */
+.table tbody tr:nth-child(4n + 3) {
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-font-color-base) 4%,
+		transparent
+	);
+}
+
+.table tbody tr:hover {
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 7%,
+		transparent
+	);
+}
+
+.rowOpen,
+.table tbody tr.rowOpen:hover {
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 12%,
+		transparent
+	);
+}
+
+.nameCell {
+	font-weight: normal;
+}
+
+.nameButton {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 0.3rem;
+	padding: 0;
+	border: none;
+	background: none;
+	color: var(--ifm-font-color-base);
+	font-family: var(--nexus-font-display);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.02em;
+	font-size: var(--nexus-text-dense);
+	text-align: left;
+	cursor: pointer;
+}
+
+.nameButton:hover {
+	color: var(--ifm-color-primary);
+}
+
+.caret {
+	color: var(--ifm-color-primary);
+	font-size: var(--nexus-text-3xs);
+}
+
+.numeric {
+	font-variant-numeric: tabular-nums;
+}
+
+.pools {
+	color: color-mix(in srgb, var(--ifm-font-color-base) 65%, transparent);
+	font-size: var(--nexus-text-xs);
+}
+
+/* Size and type, shown under the name only where the columns are dropped. */
+.mobileMeta {
+	display: none;
+	font-size: var(--nexus-text-2xs);
+	font-style: italic;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 65%, transparent);
+}
+
+.table td.empty {
+	width: auto;
+	white-space: normal;
+	padding: 1.2rem 0.5rem;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 70%, transparent);
+	font-style: italic;
+}
+
+/* Qualified with `.table td` deliberately: the shrink-to-fit rule above is
+   (0,1,1) and a bare `.detailCell` is (0,1,0), so it LOST and the stat block
+   inherited `nowrap` — every ability ran off the right edge of the sheet and
+   was clipped rather than wrapped. The scan columns stay tight; a stat block is
+   prose and wraps. */
+.table td.detailCell {
+	width: auto;
+	/* The card brings its own frame and padding. */
+	padding: 0 0.3rem;
+	white-space: normal;
+}
+
+.detail {
+	padding: 0.15rem 0 0.2rem;
+}
+
+.detailTraits {
+	margin-bottom: 0.4rem;
+}
+
+.detail ul {
+	margin: 0;
+	padding-left: 1.1rem;
+}
+
+.detail li {
+	margin: 0 0 0.25rem;
+}
+
+/* Markdown wraps multi-line list items in <p>; without this every gap the
+   density pass just closed re-inflates. */
+.detail li > p {
+	margin: 0;
+}
+
+.entryDetail {
+	margin: 0.15rem 0 0 0.6rem;
+}
+
+.detailFooter {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.4rem 0.9rem;
+	margin-top: 0.5rem;
+}
+
+.detailTags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem;
+}
+
+.detailLink {
+	margin-left: auto;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	white-space: nowrap;
+}
+
+.pager {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4rem;
+	margin-top: 0.4rem;
+}
+
+.pagerPages {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.2rem;
+}
+
+.pager button {
+	min-width: 1.9rem;
+	padding: 0.15rem 0.5rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	border-radius: 0;
+	background-color: transparent;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 80%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	cursor: pointer;
+}
+
+.pager button:hover:not(:disabled) {
+	border-color: color-mix(in srgb, var(--ifm-color-primary) 60%, transparent);
+	color: var(--ifm-font-color-base);
+}
+
+.pager button:disabled {
+	opacity: 0.45;
+	cursor: default;
+}
+
+.pagerPage[aria-current='page'] {
+	border-color: var(--ifm-color-primary);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 14%,
+		transparent
+	);
+	color: var(--ifm-color-primary);
+}
+
+/* A phone drops the columns whose values the detail panel repeats, rather than
+   scrolling a seven-column table sideways. Role and type move under the name so
+   nothing is actually lost from the scan. */
+/* The four attribute dice are the widest block and the least often scanned, so
+   they are the first columns to go when the table runs out of room. */
+@container bestiary (max-width: 900px) {
+	.tertiary {
+		display: none;
+	}
+}
+
+/* Then the role, type, armor and the three defenses, leaving the name, tier,
+   rank and hit points. Role and type reappear under the name, so the scan keeps
+   everything a GM picks a creature by. */
+@container bestiary (max-width: 620px) {
+	.secondary {
+		display: none;
+	}
+
+	.mobileMeta {
+		display: block;
+	}
+
+	/* The panel is anchored to a button that may sit anywhere along a wrapped
+	   bar, so in a narrow container it is pinned to the bar's right edge instead
+	   of hanging off the side. */
+	.menuPanel {
+		left: auto;
+		right: 0;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+   The encounter panel: three zones, so the eye knows where to land.
+
+   HEAD   — what the fight is being measured against (the party), and the title.
+   BODY   — the roster on the left, the verdict on the right. The verdict is the
+            answer and carries its own keyline and stronger wash; the roster is
+            the working and sits on the panel's own ground.
+   FOOT   — the scene and what to do with the result, quieter than both.
+
+   Separated by wash, space and cartouche labels. No rule is used as a grouping
+   device anywhere in here (see the codex-theme skill).
+   --------------------------------------------------------------------------- */
+
+.encounter {
+	margin: 0.6rem 0 0.2rem;
+	padding: 0.7rem 0.9rem 0.75rem;
+	border: 1.5px solid var(--ifm-color-primary);
+	border-radius: 3px;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 6%,
+		var(--ifm-background-surface-color)
+	);
+}
+
+.encounterHead {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.4rem 0.9rem;
+}
+
+/* The whole title is the disclosure control, so the target is the words a GM
+   would reach for rather than a separate chevron beside them. */
+.encounterToggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0;
+	border: none;
+	background: none;
+	color: var(--ifm-font-color-base);
+	cursor: pointer;
+}
+
+.encounterToggle:hover .encounterTitle {
+	color: var(--ifm-color-primary);
+}
+
+.encounterToggle:focus-visible {
+	outline: 2px solid var(--ifm-color-primary);
+	outline-offset: 2px;
+}
+
+.encounterTitle {
+	font-family: var(--nexus-font-display);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	font-size: var(--nexus-text-md);
+	line-height: 1.2;
+}
+
+.headCaret {
+	color: var(--ifm-color-primary);
+	font-size: var(--nexus-text-2xs);
+}
+
+/* The verdict, kept on the header line while the panel is minimised. */
+.encounterSummary {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	color: color-mix(in srgb, var(--ifm-font-color-base) 75%, transparent);
+}
+
+.summaryBand {
+	font-variant-caps: small-caps;
+	letter-spacing: 0.04em;
+	color: var(--ifm-color-primary);
+}
+
+.summaryBand[data-band='Hard'] {
+	color: color-mix(
+		in srgb,
+		var(--nexus-jewel-carnelian) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.summaryBand[data-band='Deadly'] {
+	color: var(--nexus-jewel-carnelian);
+}
+
+.titleGlyph {
+	color: var(--ifm-color-primary);
+}
+
+.partyBlock {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.3rem 0.5rem;
+}
+
+.partyControl {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.04em;
+}
+
+.partyControl select {
+	padding: 0.15rem 0.25rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+	border-radius: 2px;
+	background-color: var(--ifm-background-surface-color);
+	color: var(--ifm-font-color-base);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+}
+
+.encounterHead .clear {
+	margin-left: auto;
+}
+
+/* ONE grid for all four zones — roster and threat, then circumstances and keep
+   it — so every column edge and every gap in the panel is the same. Two grids
+   stacked (which is what this was) put the foot's column edges somewhere other
+   than the body's, and that misalignment is what made the panel read as
+   crowded rather than as a spread. A container query, because this panel sits
+   inside a sheet whose width has nothing to do with the viewport's. */
+.encounterGrid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+	/* Named areas rather than source order, because the THREAT panel spans the
+	   party and roster beside it: the left column reads party, then roster, then
+	   the scene, while the answer stands as one block down the right. */
+	grid-template-areas:
+		'party threat'
+		'roster threat'
+		'circumstances keep';
+	gap: 0.85rem;
+	margin-top: 0.35rem;
+	align-items: start;
+}
+
+/* `hidden` is a UA `display: none`, and ANY `display` in a class beats it — so a
+   grid that declares `display: grid` stays on screen while telling assistive
+   tech it is gone. The attribute has to be honoured explicitly. */
+.encounterGrid[hidden] {
+	display: none;
+}
+
+@container bestiary (max-width: 720px) {
+	.encounterGrid {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-areas:
+			'party'
+			'roster'
+			'threat'
+			'circumstances'
+			'keep';
+	}
+}
+
+.partyZone {
+	grid-area: party;
+}
+
+.rosterZone {
+	grid-area: roster;
+}
+
+.circumstanceZone {
+	grid-area: circumstances;
+}
+
+.keepZone {
+	grid-area: keep;
+}
+
+/* Every zone opens with a cartouche and gives what follows the same clearance,
+   so the four read as one family. */
+.zone {
+	min-width: 0;
+}
+
+.zone > *:not(:first-child) {
+	margin-top: 0.3rem;
+}
+
+/* The answer. A stronger wash and its own keyline lift it off the panel, which
+   is what makes the roster beside it read as working rather than as a peer. */
+.verdict {
+	grid-area: threat;
+	/* Pulled out by its own padding so the CONTENT still lines up with the zones
+	   that have no panel. Its keyline then reads as emphasis rather than as a
+	   column that starts somewhere else. */
+	margin: -0.45rem -0.6rem;
+	padding: 0.45rem 0.6rem 0.55rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+	border-radius: 3px;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 7%,
+		var(--ifm-background-surface-color)
+	);
+}
+
+/* `display: table` for the same reason the bestiary table needs it: Infima makes
+   every table `display: block`, and the rows then shrink to their content
+   instead of filling the track the roster was given. */
+.encounterTable {
+	display: table;
+	width: 100%;
+	margin: 0;
+	border-collapse: collapse;
+	font-size: var(--nexus-text-dense);
+}
+
+.encounterTable th,
+.encounterTable td {
+	padding: 0.2rem 0.4rem;
+	border: none;
+	text-align: left;
+	vertical-align: middle;
+}
+
+/* The creature's name absorbs the track's slack, so the three controls stay
+   together on the right instead of drifting apart across it. */
+.encounterTable th:first-child,
+.encounterTable td:first-child {
+	width: 100%;
+}
+
+.encounterTable th:not(:first-child),
+.encounterTable td:not(:first-child) {
+	white-space: nowrap;
+}
+
+/* The cost column is a column of figures, so it aligns on its digits. */
+.encounterTable th.numeric,
+.encounterTable td.numeric {
+	text-align: right;
+}
+
+.encounterTable thead th {
+	font-family: var(--nexus-font-display);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	font-size: var(--nexus-text-2xs);
+	font-weight: 600;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 70%, transparent);
+}
+
+.encounterTable tbody tr:nth-child(odd) {
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-font-color-base) 4%,
+		transparent
+	);
+}
+
+.encounterName {
+	font-weight: normal;
+}
+
+.encounterMeta {
+	font-size: var(--nexus-text-2xs);
+	font-style: italic;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 65%, transparent);
+}
+
+/* A line's own cost, in the same ink as the total it adds up to. */
+.lineThreat {
+	color: var(--ifm-color-primary);
+	font-weight: 600;
+}
+
+.stepper {
+	display: inline-flex;
+	align-items: stretch;
+}
+
+.stepper button {
+	width: 1.4rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+	border-radius: 0;
+	background-color: transparent;
+	color: var(--ifm-color-primary);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	line-height: 1;
+	cursor: pointer;
+}
+
+.stepper input {
+	width: 2.4rem;
+	margin: 0 -1.5px;
+	padding: 0.1rem 0.2rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+	border-radius: 0;
+	background-color: var(--ifm-background-surface-color);
+	color: var(--ifm-font-color-base);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-numeric: tabular-nums;
+	text-align: center;
+}
+
+.troopToggle,
+.toggleChip {
+	padding: 0.1rem 0.4rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	border-radius: 0;
+	background-color: transparent;
+	color: color-mix(in srgb, var(--ifm-font-color-base) 75%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	cursor: pointer;
+}
+
+.troopToggle[aria-pressed='true'],
+.toggleChip[aria-pressed='true'] {
+	border-color: var(--ifm-color-primary);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 14%,
+		transparent
+	);
+	color: var(--ifm-color-primary);
+}
+
+.troopNone {
+	color: color-mix(in srgb, var(--ifm-font-color-base) 45%, transparent);
+}
+
+/* The one loud thing in the panel, and loud in the INK: a saturated fill behind
+   a word is the sticker-on-stone clash the theme exists to avoid. */
+/* A label with weight, not a headline: at 28px it was the loudest thing on the
+   page, louder than the page's own h2. */
+.verdictBand {
+	display: block;
+	font-family: var(--nexus-font-display);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.06em;
+	font-size: var(--nexus-text-lg);
+	line-height: 1.2;
+	color: var(--ifm-color-primary);
+}
+
+.verdictBand[data-band='Hard'] {
+	color: color-mix(
+		in srgb,
+		var(--nexus-jewel-carnelian) 70%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.verdictBand[data-band='Deadly'] {
+	color: var(--nexus-jewel-carnelian);
+}
+
+.budgetBar {
+	position: relative;
+	height: 0.45rem;
+	margin: 0.25rem 0 0.3rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+	background-color: transparent;
+	overflow: hidden;
+}
+
+/* Threshold marks, so the bar says where in the budget the fight sits. Painted
+   ABOVE the fill: underneath it they vanish exactly when the bar is full, which
+   is the moment a GM most wants to see which line was crossed. */
+.budgetTick {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	bottom: 0;
+	width: 1px;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-background-surface-color) 70%,
+		transparent
+	);
+}
+
+.budgetFill {
+	position: relative;
+	display: block;
+	height: 100%;
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 55%,
+		transparent
+	);
+}
+
+.budgetFill[data-band='Deadly'] {
+	background-color: color-mix(
+		in srgb,
+		var(--nexus-jewel-carnelian) 55%,
+		transparent
+	);
+}
+
+/* Three figures in the stat block's own construction: mark, numeral, label. */
+.figures {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.3rem 1rem;
+}
+
+.figure {
+	display: flex;
+	flex-direction: column;
+	gap: 0.05rem;
+}
+
+.figureValue {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	font-family: var(--nexus-font-display);
+	font-size: var(--nexus-text-md);
+	line-height: 1.1;
+	font-variant-numeric: tabular-nums;
+}
+
+.figureGlyph {
+	color: color-mix(in srgb, var(--ifm-color-primary) 80%, transparent);
+}
+
+.figureLabel {
+	font-family: var(--nexus-font-ui);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	font-size: var(--nexus-text-3xs);
+	color: color-mix(in srgb, var(--ifm-font-color-base) 65%, transparent);
+}
+
+.verdictLine,
+.verdictNote,
+.encounterNote,
+.encounterWarning,
+.saveNote {
+	margin: 0.2rem 0 0;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	line-height: 1.4;
+}
+
+.verdictLine {
+	color: color-mix(in srgb, var(--ifm-font-color-base) 75%, transparent);
+}
+
+.verdictNote {
+	color: color-mix(in srgb, var(--ifm-font-color-base) 85%, transparent);
+}
+
+.encounterNote,
+.encounterWarning {
+	margin-top: 0.35rem;
+	color: color-mix(
+		in srgb,
+		var(--nexus-jewel-carnelian) 55%,
+		var(--ifm-font-color-base)
+	);
+}
+
+.saveNote {
+	color: color-mix(in srgb, var(--ifm-font-color-base) 60%, transparent);
+}
+
+.circumstances {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem;
+}
+
+.stepMark {
+	margin-left: 0.2rem;
+	font-size: var(--nexus-text-3xs);
+}
+
+.saveRow {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.3rem;
+}
+
+.saveName {
+	flex: 0 1 10rem;
+	min-width: 0;
+	padding: 0.2rem 0.4rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+	border-radius: 2px;
+	background-color: var(--ifm-background-surface-color);
+	color: var(--ifm-font-color-base);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+}
+
+.footButton {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0.15rem 0.45rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	border-radius: 0;
+	background-color: transparent;
+	color: var(--ifm-color-primary);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.footButton:hover {
+	border-color: var(--ifm-color-primary);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 12%,
+		transparent
+	);
+	text-decoration: none;
+}
+
+.footButton:disabled {
+	opacity: 0.45;
+	cursor: default;
+}
+
+.footGlyph {
+	color: inherit;
+}
+
+.savedList {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem;
+}
+
+.savedItem {
+	display: inline-flex;
+	align-items: stretch;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+}
+
+.savedLoad,
+.savedDelete {
+	padding: 0.1rem 0.4rem;
+	border: none;
+	background: none;
+	color: var(--ifm-color-primary);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	cursor: pointer;
+}
+
+.savedDelete {
+	color: color-mix(in srgb, var(--ifm-font-color-base) 55%, transparent);
+}
+
+.savedLoad:hover,
+.savedDelete:hover {
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 12%,
+		transparent
+	);
+}
+
+/* The add button rides at the row's right edge. */
+.addColumn {
+	text-align: right;
+}
+
+.addButton {
+	width: 1.4rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	border-radius: 0;
+	background-color: transparent;
+	color: var(--ifm-color-primary);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	line-height: 1.4;
+	cursor: pointer;
+}
+
+.addButton:hover {
+	border-color: var(--ifm-color-primary);
+	background-color: color-mix(
+		in srgb,
+		var(--ifm-color-primary) 14%,
+		transparent
+	);
+}
+
+/* A designed group ("a pack of four to six") is one click from the fight. The
+   button wraps the existing tag, so the tag keeps its own look. */
+.presetButton {
+	padding: 0;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.addToEncounter {
+	padding: 0.1rem 0.45rem;
+	border: 1.5px solid
+		color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+	border-radius: 0;
+	background-color: transparent;
+	color: var(--ifm-color-primary);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	cursor: pointer;
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}

@@ -4,7 +4,7 @@ sidebar_position: 10
 
 # 🐲 Building Creatures
 
-What a creature is made of, and in what order to decide it. For how creatures work at the table, see [Creature Rules](../../08-creatures/02-creature-rules.md). To have most of this done for you, use the [Creature Builder](./11-creature-builder.mdx).
+What a creature is made of, and in what order to decide it. For how creatures work at the table, see [Creature Rules](../../08-creatures/02-creature-rules.md). To have most of this done for you, use the [Creature Builder](./11-creature-builder.mdx). For how many of them to put in a fight, see [Building Encounters](./12-building-encounters.md).
 
 ## 1. Pick a tier
 

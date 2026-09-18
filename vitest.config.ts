@@ -58,6 +58,14 @@ export default defineConfig({
 			// unresolvable import under vitest. This makes the specifier resolve;
 			// tests still `vi.mock` the module itself, because theme-classic ships
 			// JSX inside `.js` files that Vite's loader cannot parse.
+			// `@docusaurus/Link` is a build-time alias too, and needs the same
+			// treatment for the same reason: this makes the specifier RESOLVE, and
+			// a test rendering a component that links must still `vi.mock` it,
+			// because the real export also ships JSX inside a `.js` file.
+			'@docusaurus/Link': path.resolve(
+				__dirname,
+				'./node_modules/@docusaurus/core/lib/client/exports/Link.js',
+			),
 			'@theme': path.resolve(
 				__dirname,
 				'./node_modules/@docusaurus/theme-classic/lib/theme',

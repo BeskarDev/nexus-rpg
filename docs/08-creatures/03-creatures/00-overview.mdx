@@ -1,0 +1,62 @@
+---
+sidebar_position: 0
+---
+
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import { BestiaryBrowser } from '@site/src/features/Bestiary';
+
+# 🐻 Creatures
+
+![banner-img](/img/banner/creatures-banner.png)
+
+Every creature in the game is below, searchable and sortable. Filter by where the party is standing, what tier they can handle, and what kind of opponent the scene needs, then open a creature to read their stat block without leaving the page.
+
+For how creatures work at the table, see [Creature Rules](../02-creature-rules.md). For how to create your own, see [Building Creatures](../../10-gm-tools/02-builder-tools/10-building-creatures.md).
+
+<BrowserOnly fallback={<p>Loading the bestiary…</p>}>
+	{() => <BestiaryBrowser />}
+</BrowserOnly>
+
+## Creature Tiers
+
+Creatures are organized by tier (0-10), representing their power level and appropriate challenge for adventurers. Each tier corresponds to a character level, making encounter balance straightforward. A single creature of a given tier should provide a decent challenge for one adventurer of the same level.
+
+| Tier | Challenge | Examples |
+|---|---|---|
+| [0](./tier-0) | Level 0, novice | Small animals, vermin, harmless wildlife |
+| [1](./tier-1) | Level 1, beginning | Wolves, giant rats, basic skeletons, goblins |
+| [2](./tier-2) | Level 2, novice | Zombies, small elementals, orcs, wild boars |
+| [3](./tier-3) | Level 3, trained | Ghouls, dire wolves, ogres, veterans |
+| [4](./tier-4) | Level 4, experienced | Large elementals, trolls, gladiators, wyverns |
+| [5](./tier-5) | Level 5, skilled | Mummies, manticores, sorcerers, young dragons |
+| [6](./tier-6) | Level 6, veteran | Vampires, chimeras, warlords, adult dragons |
+| [7](./tier-7) | Level 7, expert | Giants, hydras, archmages, greater daimons |
+| [8](./tier-8) | Level 8, master | Liches, elder dragons, demon lords, titan spawn |
+| [9](./tier-9) | Level 9, legendary | Ancient wyrms, primordial spirits, archliches |
+| [10](./tier-10) | Level 10, epic | Tarrasque, primordial titans, godlike entities |
+
+## Using Creatures
+
+{/* An explicit segment, which is also what widens the SHEET: the two-column
+    layout is triggered by `:has(.codex-columns)`, and a wide sheet is what gives
+    the bestiary table above its full width. The auto-columns pass does not fire
+    here on its own because every run on this page is short. */}
+
+<Columns layout="grid">
+
+### Basic vs. Elite vs. Lord
+
+- **Basic**: Standard creatures with one life pool, suitable for individual encounters or minions
+- **Elite**: Tougher creatures with two life pools (2×HP), providing mid-boss challenges
+- **Lord**: Major threats with three life pools (3×HP), designed as climactic encounters
+
+### Encounter Building
+
+[Building Encounters](../../10-gm-tools/02-builder-tools/12-building-encounters.md) measures a fight in **Threat Points**, counting for:
+
+- **Party size**: More adventurers need more creatures
+- **Tier difference**: A creature above the party's level is worth several at it
+- **Creature category**: Elite and Lord creatures are worth multiple basic creatures
+- **Terrain and tactics**: Environmental factors can shift difficulty a whole step
+
+</Columns>

@@ -248,3 +248,37 @@ export function companionEntries(
 		creature,
 	}))
 }
+
+/**
+ * Resolve the bestiary's `?print=` hand-off into entry IDs to preselect.
+ *
+ * The keys are `<name>~<tier>`, the same identity the encounter builder saves
+ * and shares by, rather than this tool's own `catalogue:<index>:<name>`. The
+ * index in that ID is the creature's POSITION in `creatures.json`, which moves
+ * every time a creature is written above them, so a link built today would
+ * print different creatures next month. Name and tier survive that, and still
+ * separate the repeated names in the corpus (two Manticores, two Harpies),
+ * which differ by tier.
+ *
+ * Unknown keys are skipped rather than reported: the tool opens on whatever the
+ * link could still resolve, which is more useful than an error page in front of
+ * a GM who wants to print four cards.
+ */
+export function entryIdsForKeys(
+	entries: readonly CreatureEntry[],
+	keys: string,
+): string[] {
+	const byKey = new Map<string, string>()
+	for (const entry of entries) {
+		const key = `${entry.creature.name}~${entry.creature.tier}`
+		// First wins: a genuine duplicate record would otherwise shadow the entry
+		// every other surface links to.
+		if (!byKey.has(key)) byKey.set(key, entry.id)
+	}
+	const ids: string[] = []
+	for (const raw of keys.split(',')) {
+		const id = byKey.get(raw.trim())
+		if (id && !ids.includes(id)) ids.push(id)
+	}
+	return ids
+}

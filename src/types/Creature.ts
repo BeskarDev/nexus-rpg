@@ -3,6 +3,16 @@ export interface Creature {
 	tier: number
 	category: string // Basic, Elite, Lord
 	/**
+	 * Tactical role, one of the Creature Builder's archetypes in
+	 * `creature-archetypes.json` (Bruiser, Ranged, Controller, Defender, …).
+	 *
+	 * Filter metadata for the bestiary browser rather than a printed stat: it
+	 * answers "what does this creature DO in a fight", which no combination of
+	 * HP, AV and defences answers on its own. Optional because markdown-parsed
+	 * cards (companions, pasted stat blocks) have nowhere to carry it.
+	 */
+	role?: string
+	/**
 	 * Size, one of `creature-sizes.json`. Split out of `type` so the three axes
 	 * a creature is sorted on — size, type, subtype — are each their own field
 	 * and each independently checkable.

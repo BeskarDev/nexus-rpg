@@ -1,0 +1,2700 @@
+{
+	"$generated": "GENERATED from src/utils/data/json/creatures.json by `bun run content:gen` — do not edit. Edit the JSON and regenerate.",
+	"creatures": [
+		{
+			"id": "catalogue:0:Jackal",
+			"name": "Jackal",
+			"href": "/docs/creatures/creatures/tier-0#jackal",
+			"tier": 0,
+			"category": "Basic",
+			"role": "Skirmisher",
+			"size": "Small",
+			"type": "Beast",
+			"subtype": [
+				"Mammal"
+			],
+			"armor": "None",
+			"hp": "5",
+			"av": "0 (none)",
+			"str": "d4",
+			"agi": "d6",
+			"spi": "d4",
+			"mnd": "d4",
+			"parry": 5,
+			"dodge": 8,
+			"resist": 6,
+			"skills": [
+				"Fighting (0)",
+				"Perception (1)",
+				"Stealth (1)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [
+				"Keen Scent",
+				"Pack Tactics"
+			],
+			"attacks": [
+				{
+					"name": "Bite",
+					"properties": [
+						"pierce",
+						"agile"
+					],
+					"text": "5/7/9 damage. On a strong or critical hit against a creature of equal or smaller size, the target falls prone."
+				}
+			],
+			"abilities": [],
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Road",
+				"Tomb"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Pack",
+					"count": "4-6"
+				},
+				{
+					"name": "Burial-road pack",
+					"count": "7-9"
+				}
+			]
+		},
+		{
+			"id": "catalogue:1:Leatherwing",
+			"name": "Leatherwing",
+			"href": "/docs/creatures/creatures/tier-0#leatherwing",
+			"tier": 0,
+			"category": "Basic",
+			"role": "Skirmisher",
+			"size": "Tiny",
+			"type": "Beast",
+			"subtype": [
+				"Saurian"
+			],
+			"armor": "None",
+			"hp": "5",
+			"av": "0 (none)",
+			"str": "d4",
+			"agi": "d6",
+			"spi": "d4",
+			"mnd": "d4",
+			"parry": 4,
+			"dodge": 8,
+			"resist": 6,
+			"skills": [
+				"Fighting (0)",
+				"Perception (1)",
+				"Insight (1)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [
+				"Flying (Wings)",
+				"Keen Eyes"
+			],
+			"attacks": [
+				{
+					"name": "Peck",
+					"properties": [
+						"pierce",
+						"agile"
+					],
+					"text": "5/7/9 damage."
+				},
+				{
+					"name": "Snatching Beak",
+					"text": "Roll Agility + Perception vs. Dodge. No damage. On a success, this creature takes one loose item of 0 or 1 load from the target's hands, belt, or an open container and immediately uses their Movement to fly away with it."
+				}
+			],
+			"abilities": [],
+			"environment": [
+				"Coast",
+				"Sea",
+				"Settlement"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Flock",
+					"count": "4-8"
+				},
+				{
+					"name": "Roost",
+					"count": "10-20"
+				}
+			]
+		},
+		{
+			"id": "catalogue:2:Reed Viper",
+			"name": "Reed Viper",
+			"href": "/docs/creatures/creatures/tier-0#reed-viper",
+			"tier": 0,
+			"category": "Basic",
+			"role": "Ambusher",
+			"size": "Tiny",
+			"type": "Beast",
+			"subtype": [
+				"Reptile"
+			],
+			"armor": "None",
+			"hp": "5",
+			"av": "0 (none)",
+			"str": "d4",
+			"agi": "d6",
+			"spi": "d4",
+			"mnd": "d4",
+			"parry": 4,
+			"dodge": 8,
+			"resist": 6,
+			"skills": [
+				"Fighting (0)",
+				"Stealth (1)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [
+				"Blindsight (close)"
+			],
+			"attacks": [
+				{
+					"name": "Venomous Bite",
+					"properties": [
+						"pierce",
+						"agile"
+					],
+					"text": "4/5/6 damage. On a strong or critical hit, the target is briefly poisoned."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Strike from Cover",
+					"qualifier": "Passive",
+					"text": "While hidden, this creature's first attack in a scene increases the SL by one step (max. critical)."
+				}
+			],
+			"environment": [
+				"River",
+				"Marsh",
+				"Farmland"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Nest",
+					"count": "2-3"
+				},
+				{
+					"name": "Brood",
+					"count": "6-10"
+				}
+			]
+		},
+		{
+			"id": "catalogue:3:Tomb Beetles",
+			"name": "Tomb Beetles",
+			"href": "/docs/creatures/creatures/tier-0#tomb-beetles",
+			"tier": 0,
+			"category": "Basic",
+			"role": "Horde",
+			"size": "Medium",
+			"type": "Beast",
+			"subtype": [
+				"Insect",
+				"Swarm"
+			],
+			"armor": "None",
+			"hp": "5",
+			"av": "0 (none)",
+			"str": "d4",
+			"agi": "d6",
+			"spi": "d4",
+			"mnd": "d4",
+			"parry": 6,
+			"dodge": 5,
+			"resist": 7,
+			"skills": [
+				"Fighting (0)",
+				"Perception (1)"
+			],
+			"immunities": [
+				"grappled",
+				"conditions from single-target effects"
+			],
+			"resistances": [
+				"damage from single-target effects"
+			],
+			"weaknesses": [],
+			"traits": [
+				"Natural Climber"
+			],
+			"attacks": [
+				{
+					"name": "Devouring Bites",
+					"properties": [
+						"pierce",
+						"agile"
+					],
+					"text": "4/5/6 damage against every creature in this creature's area. On a strong or critical hit, the target is distracted until they spend an Action to brush the beetles off. While this creature is at half HP or lower, this attack deals half damage, rounded up."
+				}
+			],
+			"abilities": [],
+			"environment": [
+				"Desert",
+				"Ruins",
+				"Tomb"
+			],
+			"organization": [
+				{
+					"name": "Swarm",
+					"count": "1"
+				},
+				{
+					"name": "Colony",
+					"count": "2-3"
+				}
+			]
+		},
+		{
+			"id": "catalogue:6:Goblin Archer",
+			"name": "Goblin Archer",
+			"href": "/docs/creatures/creatures/tier-1#goblin-archer",
+			"tier": 1,
+			"category": "Basic",
+			"role": "Ranged",
+			"size": "Small",
+			"type": "Humanoid",
+			"subtype": [
+				"Goblin"
+			],
+			"armor": "Light",
+			"hp": "10",
+			"av": "1 (light armor)",
+			"str": "d4",
+			"agi": "d6",
+			"spi": "d4",
+			"mnd": "d4",
+			"parry": 5,
+			"dodge": 9,
+			"resist": 7,
+			"skills": [
+				"Fighting (1)",
+				"Archery (1)",
+				"Stealth (1)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [
+				"Night Vision",
+				"Small Stature"
+			],
+			"attacks": [
+				{
+					"name": "Shortbow",
+					"properties": [
+						"ammo",
+						"range (short/long)",
+						"two-handed"
+					],
+					"text": "6/9/12 damage."
+				},
+				{
+					"name": "Knife",
+					"properties": [
+						"agile",
+						"light",
+						"pierce"
+					],
+					"text": "5/7/9 damage."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Pin Them Down",
+					"qualifier": "Passive",
+					"text": "On a strong or critical hit with their Shortbow, the target is briefly slowed."
+				},
+				{
+					"name": "Quick Escape",
+					"qualifier": "Quick Action",
+					"text": "When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked."
+				}
+			],
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Hills",
+				"Road",
+				"Ruins",
+				"Caves",
+				"Lair"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Gang",
+					"count": "3-6"
+				},
+				{
+					"name": "Road ambush",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Goblin Chief"
+						},
+						{
+							"count": "4-6",
+							"creature": "Goblin Skulker"
+						},
+						{
+							"count": "2-3",
+							"creature": "Goblin Archer"
+						}
+					]
+				},
+				{
+					"name": "Warren",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Goblin Chief"
+						},
+						{
+							"count": "8-12",
+							"creature": "Goblin Skulker"
+						},
+						{
+							"count": "4-6",
+							"creature": "Goblin Archer"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:5:Goblin Skulker",
+			"name": "Goblin Skulker",
+			"href": "/docs/creatures/creatures/tier-1#goblin-skulker",
+			"tier": 1,
+			"category": "Basic",
+			"role": "Skirmisher",
+			"size": "Small",
+			"type": "Humanoid",
+			"subtype": [
+				"Goblin"
+			],
+			"armor": "Light",
+			"hp": "10",
+			"av": "1 (light armor)",
+			"str": "d4",
+			"agi": "d6",
+			"spi": "d4",
+			"mnd": "d4",
+			"parry": 5,
+			"dodge": 9,
+			"resist": 7,
+			"skills": [
+				"Fighting (1)",
+				"Stealth (1)",
+				"Athletics (1)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [
+				"Night Vision",
+				"Pack Tactics",
+				"Small Stature"
+			],
+			"attacks": [
+				{
+					"name": "Knife",
+					"properties": [
+						"agile",
+						"light",
+						"pierce"
+					],
+					"text": "5/7/9 damage."
+				},
+				{
+					"name": "Snatch",
+					"text": "Roll Agility + Stealth vs. Dodge. No damage. On a success, this creature takes one loose item of 0 or 1 load from the target's hands, belt, or an open container, and immediately uses their Movement to move away with it."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Quick Escape",
+					"qualifier": "Quick Action",
+					"text": "When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked."
+				}
+			],
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Hills",
+				"Road",
+				"Ruins",
+				"Caves",
+				"Lair"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Gang",
+					"count": "3-6"
+				},
+				{
+					"name": "Road ambush",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Goblin Chief"
+						},
+						{
+							"count": "4-6",
+							"creature": "Goblin Skulker"
+						},
+						{
+							"count": "2-3",
+							"creature": "Goblin Archer"
+						}
+					]
+				},
+				{
+					"name": "Warren",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Goblin Chief"
+						},
+						{
+							"count": "8-12",
+							"creature": "Goblin Skulker"
+						},
+						{
+							"count": "4-6",
+							"creature": "Goblin Archer"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:4:Grave Husk",
+			"name": "Grave Husk",
+			"href": "/docs/creatures/creatures/tier-1#grave-husk",
+			"tier": 1,
+			"category": "Basic",
+			"role": "Controller",
+			"size": "Medium",
+			"type": "Undead",
+			"subtype": [
+				"Corporeal",
+				"Mindless"
+			],
+			"armor": "Light",
+			"hp": "20",
+			"av": "1 (natural light)",
+			"str": "d6",
+			"agi": "d4",
+			"spi": "d4",
+			"mnd": "d4",
+			"parry": 7,
+			"dodge": 5,
+			"resist": 8,
+			"skills": [
+				"Fighting (1)",
+				"Athletics (1)"
+			],
+			"immunities": [
+				"bleeding",
+				"charmed",
+				"confused",
+				"frightened",
+				"poisoned",
+				"unconscious"
+			],
+			"resistances": [
+				"poison"
+			],
+			"weaknesses": [
+				"radiant"
+			],
+			"traits": [
+				"Undead Nature"
+			],
+			"attacks": [
+				{
+					"name": "Grasping Hands",
+					"properties": [
+						"crush"
+					],
+					"text": "6/9/12 damage. On a strong or critical hit, the target is grappled."
+				},
+				{
+					"name": "Bearing Down",
+					"properties": [
+						"crush"
+					],
+					"text": "6/9/12 damage. Only against a target this creature has grappled. On a hit, the target falls prone."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Grave-Bound",
+					"qualifier": "Passive",
+					"text": "This creature cannot willingly move further than a medium distance from the ground they were left on. When they are destroyed, they rise again at the next sunset unless their body is buried or burned."
+				}
+			],
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Battlefield",
+				"Tomb"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Gang",
+					"count": "2-4"
+				},
+				{
+					"name": "Mob",
+					"count": "5-8"
+				},
+				{
+					"name": "Unburied field",
+					"composition": [
+						{
+							"count": "2-3",
+							"creature": "Edimmu Shade"
+						},
+						{
+							"count": "4-8",
+							"creature": "Grave Husk"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:8:Young Crocodile",
+			"name": "Young Crocodile",
+			"href": "/docs/creatures/creatures/tier-1#young-crocodile",
+			"tier": 1,
+			"category": "Basic",
+			"role": "Ambusher",
+			"size": "Medium",
+			"type": "Beast",
+			"subtype": [
+				"Reptile"
+			],
+			"armor": "Heavy",
+			"hp": "10",
+			"av": "2 (natural heavy)",
+			"str": "d8",
+			"agi": "d4",
+			"spi": "d4",
+			"mnd": "d4",
+			"parry": 8,
+			"dodge": 5,
+			"resist": 7,
+			"skills": [
+				"Fighting (1)",
+				"Stealth (1)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [
+				"Amphibious",
+				"Ambush Predator"
+			],
+			"attacks": [
+				{
+					"name": "Bite",
+					"properties": [
+						"crush"
+					],
+					"text": "7/10/13 damage. On a strong or critical hit against a creature of equal or smaller size, the target is grappled. While grappling, this attack cannot be used against any other target."
+				},
+				{
+					"name": "Death Roll",
+					"properties": [
+						"crush"
+					],
+					"text": "Only against a target this creature has grappled. 7/10/13 damage, and the target falls prone."
+				}
+			],
+			"abilities": [],
+			"environment": [
+				"River",
+				"Marsh",
+				"Settlement"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Colony",
+					"count": "2-3"
+				}
+			]
+		},
+		{
+			"id": "catalogue:9:Clay Servant",
+			"name": "Clay Servant",
+			"href": "/docs/creatures/creatures/tier-2#clay-servant",
+			"tier": 2,
+			"category": "Basic",
+			"role": "Ambusher",
+			"size": "Small",
+			"type": "Automaton",
+			"subtype": [
+				"Golem",
+				"Mindless"
+			],
+			"armor": "Heavy",
+			"hp": "10",
+			"av": "5 (natural heavy)",
+			"str": "d8",
+			"agi": "d6",
+			"spi": "d4",
+			"mnd": "d4",
+			"parry": 7,
+			"dodge": 9,
+			"resist": 8,
+			"skills": [
+				"Fighting (1)",
+				"Stealth (2)"
+			],
+			"immunities": [
+				"bleeding",
+				"charmed",
+				"confused",
+				"frightened",
+				"poisoned",
+				"unconscious"
+			],
+			"resistances": [
+				"poison"
+			],
+			"weaknesses": [
+				"blast"
+			],
+			"traits": [
+				"Ambush Predator"
+			],
+			"attacks": [
+				{
+					"name": "Fist",
+					"properties": [
+						"crush"
+					],
+					"text": "8/12/16 damage."
+				},
+				{
+					"name": "Pull Down",
+					"properties": [
+						"crush"
+					],
+					"text": "6/8/10 damage. On a strong or critical hit, the target falls prone."
+				}
+			],
+			"abilities": [
+				{
+					"name": "False Appearance",
+					"qualifier": "Passive",
+					"text": "While this creature does not move, they are indistinguishable from ordinary grave goods. A creature searching the room can tell the difference with a successful Mind + Perception roll vs. TN 8."
+				}
+			],
+			"environment": [
+				"Desert",
+				"Hills",
+				"Ruins",
+				"Tomb"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Work gang",
+					"count": "3-6"
+				},
+				{
+					"name": "Buried host",
+					"count": "8-20"
+				},
+				{
+					"name": "Burial chamber",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Mummy"
+						},
+						{
+							"count": "4-6",
+							"creature": "Clay Servant"
+						}
+					]
+				},
+				{
+					"name": "Sealed tomb",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Mummy"
+						},
+						{
+							"count": "2",
+							"creature": "Kusarikku"
+						},
+						{
+							"count": "6-10",
+							"creature": "Clay Servant"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:10:Ghoul",
+			"name": "Ghoul",
+			"href": "/docs/creatures/creatures/tier-2#ghoul",
+			"tier": 2,
+			"category": "Basic",
+			"role": "Skirmisher",
+			"size": "Medium",
+			"type": "Undead",
+			"subtype": [
+				"Corporeal",
+				"Intelligent"
+			],
+			"armor": "Light",
+			"hp": "20",
+			"av": "2 (natural light)",
+			"str": "d6",
+			"agi": "d8",
+			"spi": "d6",
+			"mnd": "d4",
+			"parry": 8,
+			"dodge": 9,
+			"resist": 7,
+			"skills": [
+				"Fighting (1)",
+				"Perception (2)",
+				"Stealth (2)"
+			],
+			"immunities": [
+				"bleeding",
+				"poisoned",
+				"unconscious"
+			],
+			"resistances": [
+				"poison"
+			],
+			"weaknesses": [
+				"radiant"
+			],
+			"traits": [
+				"Undead Nature",
+				"Keen Scent"
+			],
+			"attacks": [
+				{
+					"name": "Claws",
+					"properties": [
+						"agile",
+						"light",
+						"slash"
+					],
+					"text": "6/8/10 damage. On a strong or critical hit, the target is briefly dazed, or stunned for a short duration instead if they are already dazed. A stunned target can roll Strength + Fortitude vs. TN 8 at the end of each of their turns to end the condition early."
+				},
+				{
+					"name": "Bite",
+					"properties": [
+						"agile",
+						"pierce"
+					],
+					"text": "8/12/16 damage."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Feeding Frenzy",
+					"qualifier": "Passive",
+					"text": "When this creature hits a stunned creature with their Bite, they regain 4 HP."
+				}
+			],
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Ruins",
+				"Tomb"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Pack",
+					"count": "3-5"
+				},
+				{
+					"name": "Colony",
+					"count": "6-12"
+				},
+				{
+					"name": "Grave vigil",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Cult Priest"
+						},
+						{
+							"count": "3-5",
+							"creature": "Ghoul"
+						}
+					]
+				},
+				{
+					"name": "Feeding pair",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Elder Ghoul"
+						},
+						{
+							"count": "2",
+							"creature": "Ghoul"
+						}
+					]
+				},
+				{
+					"name": "Elder's colony",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Elder Ghoul"
+						},
+						{
+							"count": "6-12",
+							"creature": "Ghoul"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:15:Goblin Chief",
+			"name": "Goblin Chief",
+			"href": "/docs/creatures/creatures/tier-2#goblin-chief",
+			"tier": 2,
+			"category": "Elite",
+			"role": "Controller",
+			"size": "Small",
+			"type": "Humanoid",
+			"subtype": [
+				"Goblin"
+			],
+			"armor": "Light",
+			"hp": "2x20",
+			"av": "1 (light armor)",
+			"str": "d6",
+			"agi": "d10",
+			"spi": "d6",
+			"mnd": "d6",
+			"parry": 6,
+			"dodge": 10,
+			"resist": 8,
+			"skills": [
+				"Fighting (1)",
+				"Stealth (2)",
+				"Insight (2)",
+				"Influence (2)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [
+				"Night Vision",
+				"Small Stature"
+			],
+			"attacks": [
+				{
+					"name": "Knotted Lash",
+					"properties": [
+						"agile",
+						"entangle (medium)",
+						"light",
+						"reach",
+						"slash"
+					],
+					"text": "7/9/11 damage."
+				},
+				{
+					"name": "Javelin",
+					"properties": [
+						"bundle (d4)",
+						"light",
+						"pierce",
+						"thrown (short/long)"
+					],
+					"text": "7/9/11 damage."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Quick Escape",
+					"qualifier": "Quick Action",
+					"text": "When an enemy misses this creature with a melee attack, this creature moves up to a close distance unprovoked."
+				},
+				{
+					"name": "Get In Front",
+					"qualifier": "Quick Action",
+					"text": "When an enemy attacks this creature while an ally is within melee range of this creature, that attack targets that ally instead."
+				},
+				{
+					"name": "Spring the Trap",
+					"qualifier": "Elite Trigger",
+					"text": "When this creature suffers a Wound, they whistle, and the goblins who were waiting for the signal come down. Two Goblin Skulkers arrive within short range of this creature, from cover or higher ground if there is any. Every ally within short range of this creature immediately moves up to a short distance unprovoked."
+				}
+			],
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Hills",
+				"Road",
+				"Ruins",
+				"Caves",
+				"Lair"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Road ambush",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Goblin Chief"
+						},
+						{
+							"count": "4-6",
+							"creature": "Goblin Skulker"
+						},
+						{
+							"count": "2-3",
+							"creature": "Goblin Archer"
+						}
+					]
+				},
+				{
+					"name": "Warren",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Goblin Chief"
+						},
+						{
+							"count": "8-12",
+							"creature": "Goblin Skulker"
+						},
+						{
+							"count": "4-6",
+							"creature": "Goblin Archer"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:7:Orc Raider",
+			"name": "Orc Raider",
+			"href": "/docs/creatures/creatures/tier-2#orc-raider",
+			"tier": 2,
+			"category": "Basic",
+			"role": "Bruiser",
+			"size": "Medium",
+			"type": "Humanoid",
+			"subtype": [
+				"Orc"
+			],
+			"armor": "Light",
+			"hp": "20",
+			"av": "2 (light armor)",
+			"str": "d8",
+			"agi": "d6",
+			"spi": "d6",
+			"mnd": "d4",
+			"parry": 9,
+			"dodge": 8,
+			"resist": 7,
+			"skills": [
+				"Fighting (1)",
+				"Athletics (2)",
+				"Survival (2)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [],
+			"attacks": [
+				{
+					"name": "Battleaxe",
+					"properties": [
+						"slash",
+						"versatile (+1)"
+					],
+					"text": "7/10/16 damage."
+				},
+				{
+					"name": "Javelin",
+					"properties": [
+						"bundle (d4)",
+						"light",
+						"pierce",
+						"thrown (short/long)"
+					],
+					"text": "6/8/10 damage."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Orcish Fury",
+					"qualifier": "Passive",
+					"text": "When this creature hits with a melee weapon and rolls a critical success, they add their weapon damage an additional time to the total damage. The critical damage listed for their melee attacks already includes it."
+				},
+				{
+					"name": "Charge In",
+					"qualifier": "Quick Action",
+					"text": "This creature gains 1 additional Movement this turn. They must use it to move closer to an enemy they can see."
+				}
+			],
+			"environment": [
+				"Wastes",
+				"Desert",
+				"Grassland",
+				"River",
+				"Farmland",
+				"Settlement"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Raiding file",
+					"count": "3-6"
+				},
+				{
+					"name": "Harvest raid",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Orc Band-Leader"
+						},
+						{
+							"count": "6-10",
+							"creature": "Orc Raider"
+						}
+					]
+				},
+				{
+					"name": "Full band",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Orc Band-Leader"
+						},
+						{
+							"count": "20-40",
+							"creature": "Orc Raider"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:11:Polearm Soldier",
+			"name": "Polearm Soldier",
+			"href": "/docs/creatures/creatures/tier-2#polearm-soldier",
+			"tier": 2,
+			"category": "Basic",
+			"role": "Controller",
+			"size": "Medium",
+			"type": "Humanoid",
+			"subtype": [
+				"Any"
+			],
+			"armor": "Light",
+			"hp": "20",
+			"av": "2 (light armor)",
+			"str": "d8",
+			"agi": "d6",
+			"spi": "d6",
+			"mnd": "d4",
+			"parry": 9,
+			"dodge": 6,
+			"resist": 9,
+			"skills": [
+				"Fighting (1)",
+				"Athletics (2)",
+				"Insight (2)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [],
+			"attacks": [
+				{
+					"name": "Glaive",
+					"properties": [
+						"reach",
+						"slash",
+						"two-handed"
+					],
+					"text": "8/12/16 damage."
+				},
+				{
+					"name": "Sweeping Blow",
+					"properties": [
+						"reach",
+						"slash",
+						"two-handed"
+					],
+					"text": "This creature can only use this attack if they skip all Movement this turn, before and after the attack. 6/8/10 damage against every creature within close range."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Close the Ranks",
+					"qualifier": "Passive",
+					"text": "While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane."
+				},
+				{
+					"name": "Over the Shields",
+					"qualifier": "Passive",
+					"text": "While another creature with `Close the Ranks` is within melee range of this creature, this creature's attacks do not suffer the reach bane."
+				}
+			],
+			"environment": [
+				"Grassland",
+				"River",
+				"Desert",
+				"Settlement",
+				"Fortress",
+				"Road"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Patrol",
+					"composition": [
+						{
+							"count": "3-4",
+							"creature": "Spearman"
+						},
+						{
+							"count": "1-2",
+							"creature": "Slinger"
+						}
+					]
+				},
+				{
+					"name": "Line",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Veteran"
+						},
+						{
+							"count": "4-6",
+							"creature": "Spearman"
+						},
+						{
+							"count": "2",
+							"creature": "Slinger"
+						},
+						{
+							"count": "2-3",
+							"creature": "Polearm Soldier"
+						}
+					]
+				},
+				{
+					"name": "Company",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "6-8",
+							"creature": "Spearman"
+						},
+						{
+							"count": "3-4",
+							"creature": "Slinger"
+						},
+						{
+							"count": "3-4",
+							"creature": "Polearm Soldier"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:12:Slinger",
+			"name": "Slinger",
+			"href": "/docs/creatures/creatures/tier-2#slinger",
+			"tier": 2,
+			"category": "Basic",
+			"role": "Ranged",
+			"size": "Medium",
+			"type": "Humanoid",
+			"subtype": [
+				"Any"
+			],
+			"armor": "Light",
+			"hp": "20",
+			"av": "2 (light armor)",
+			"str": "d8",
+			"agi": "d6",
+			"spi": "d6",
+			"mnd": "d4",
+			"parry": 7,
+			"dodge": 9,
+			"resist": 8,
+			"skills": [
+				"Fighting (1)",
+				"Athletics (2)",
+				"Perception (2)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [],
+			"attacks": [
+				{
+					"name": "Sling",
+					"properties": [
+						"ammo",
+						"crush",
+						"simple",
+						"thrown (short/long)",
+						"two-handed"
+					],
+					"text": "7/10/13 damage."
+				},
+				{
+					"name": "Shortsword",
+					"properties": [
+						"agile",
+						"light",
+						"pierce"
+					],
+					"text": "5/7/9 damage."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Close the Ranks",
+					"qualifier": "Passive",
+					"text": "While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane."
+				},
+				{
+					"name": "Ranging Shot",
+					"qualifier": "Passive",
+					"text": "On a strong or critical hit with a ranged weapon, the target suffers marked (2)."
+				}
+			],
+			"environment": [
+				"Grassland",
+				"River",
+				"Desert",
+				"Settlement",
+				"Fortress",
+				"Road"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Patrol",
+					"composition": [
+						{
+							"count": "3-4",
+							"creature": "Spearman"
+						},
+						{
+							"count": "1-2",
+							"creature": "Slinger"
+						}
+					]
+				},
+				{
+					"name": "Line",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Veteran"
+						},
+						{
+							"count": "4-6",
+							"creature": "Spearman"
+						},
+						{
+							"count": "2",
+							"creature": "Slinger"
+						},
+						{
+							"count": "2-3",
+							"creature": "Polearm Soldier"
+						}
+					]
+				},
+				{
+					"name": "Company",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "6-8",
+							"creature": "Spearman"
+						},
+						{
+							"count": "3-4",
+							"creature": "Slinger"
+						},
+						{
+							"count": "3-4",
+							"creature": "Polearm Soldier"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:13:Spearman",
+			"name": "Spearman",
+			"href": "/docs/creatures/creatures/tier-2#spearman",
+			"tier": 2,
+			"category": "Basic",
+			"role": "Defender",
+			"size": "Medium",
+			"type": "Humanoid",
+			"subtype": [
+				"Any"
+			],
+			"armor": "Light",
+			"hp": "20",
+			"av": "3 (light armor and shield)",
+			"str": "d8",
+			"agi": "d6",
+			"spi": "d6",
+			"mnd": "d4",
+			"parry": 9,
+			"dodge": 7,
+			"resist": 8,
+			"skills": [
+				"Fighting (1)",
+				"Athletics (2)",
+				"Perception (2)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [],
+			"attacks": [
+				{
+					"name": "Spear",
+					"properties": [
+						"pierce",
+						"reach",
+						"versatile (+1)"
+					],
+					"text": "7/10/13 damage."
+				},
+				{
+					"name": "Shield Bash",
+					"properties": [
+						"crush"
+					],
+					"text": "6/8/10 damage. On a strong or critical hit, the target falls prone."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Close the Ranks",
+					"qualifier": "Passive",
+					"text": "While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane."
+				},
+				{
+					"name": "Braced Spear",
+					"qualifier": "Passive",
+					"text": "When using Opportunity Attack with their Spear, this creature deals +2 damage and the target's Movement ends."
+				}
+			],
+			"environment": [
+				"Grassland",
+				"River",
+				"Desert",
+				"Settlement",
+				"Fortress",
+				"Road"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Patrol",
+					"composition": [
+						{
+							"count": "3-4",
+							"creature": "Spearman"
+						},
+						{
+							"count": "1-2",
+							"creature": "Slinger"
+						}
+					]
+				},
+				{
+					"name": "Line",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Veteran"
+						},
+						{
+							"count": "4-6",
+							"creature": "Spearman"
+						},
+						{
+							"count": "2",
+							"creature": "Slinger"
+						},
+						{
+							"count": "2-3",
+							"creature": "Polearm Soldier"
+						}
+					]
+				},
+				{
+					"name": "Company",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "6-8",
+							"creature": "Spearman"
+						},
+						{
+							"count": "3-4",
+							"creature": "Slinger"
+						},
+						{
+							"count": "3-4",
+							"creature": "Polearm Soldier"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:19:Captain",
+			"name": "Captain",
+			"href": "/docs/creatures/creatures/tier-3#captain",
+			"tier": 3,
+			"category": "Elite",
+			"role": "Defender",
+			"size": "Medium",
+			"type": "Humanoid",
+			"subtype": [
+				"Any"
+			],
+			"armor": "Light",
+			"hp": "2x30",
+			"av": "4 (light armor and shield)",
+			"str": "d8",
+			"agi": "d6",
+			"spi": "d6",
+			"mnd": "d6",
+			"parry": 10,
+			"dodge": 8,
+			"resist": 9,
+			"skills": [
+				"Fighting (2)",
+				"Athletics (2)",
+				"Insight (2)",
+				"Influence (2)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [],
+			"attacks": [
+				{
+					"name": "Longsword",
+					"properties": [
+						"pierce",
+						"versatile (+1)"
+					],
+					"text": "8/12/16 damage."
+				},
+				{
+					"name": "Shield Bash",
+					"properties": [
+						"crush"
+					],
+					"text": "7/10/13 damage. On a strong or critical hit, the target is pushed close and this creature moves into melee range of them."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Close the Ranks",
+					"qualifier": "Passive",
+					"text": "While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane."
+				},
+				{
+					"name": "Dress the Line",
+					"qualifier": "Quick Action",
+					"text": "When an enemy attacks an ally within short range of this creature, that attack suffers +1 bane. If the attack fails, that ally immediately moves up to a close distance toward this creature unprovoked."
+				},
+				{
+					"name": "Set the Shield",
+					"qualifier": "Quick Action",
+					"text": "This creature gains +2 Parry and cannot use Movement until the start of their next turn."
+				},
+				{
+					"name": "Hold the Line",
+					"qualifier": "Elite Trigger",
+					"text": "When this creature suffers a Wound, the file closes up and stops giving ground. For the rest of the scene, every ally within short range of this creature gains +1 boon on their attacks, and this creature can use one Action to attack with both their Longsword and their Shield Bash, each against a different target."
+				}
+			],
+			"environment": [
+				"Grassland",
+				"River",
+				"Desert",
+				"Settlement",
+				"Fortress",
+				"Road"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Retinue",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "2-3",
+							"creature": "Veteran"
+						}
+					]
+				},
+				{
+					"name": "Company",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "1-2",
+							"creature": "Veteran"
+						},
+						{
+							"count": "6-8",
+							"creature": "Spearman"
+						},
+						{
+							"count": "3-4",
+							"creature": "Slinger"
+						},
+						{
+							"count": "3-4",
+							"creature": "Polearm Soldier"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:18:Cult Priest",
+			"name": "Cult Priest",
+			"href": "/docs/creatures/creatures/tier-3#cult-priest",
+			"tier": 3,
+			"category": "Basic",
+			"role": "Controller",
+			"size": "Medium",
+			"type": "Humanoid",
+			"subtype": [
+				"Any"
+			],
+			"armor": "Light",
+			"hp": "20",
+			"av": "3 (light armor)",
+			"str": "d6",
+			"agi": "d6",
+			"spi": "d10",
+			"mnd": "d6",
+			"parry": 8,
+			"dodge": 8,
+			"resist": 10,
+			"skills": [
+				"Mysticism (2)",
+				"Insight (2)",
+				"Influence (2)",
+				"Lore (2)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [],
+			"attacks": [
+				{
+					"name": "Ritual Knife",
+					"properties": [
+						"agile",
+						"light",
+						"pierce"
+					],
+					"text": "5/7/9 damage."
+				},
+				{
+					"name": "Censer",
+					"properties": [
+						"crush",
+						"versatile (+1)"
+					],
+					"text": "6/9/12 damage."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Spellcasting",
+					"qualifier": "Action",
+					"text": "This creature can cast the following spells, rolling Spirit + Mysticism: *Cloud of Sickness*, *Curse of Death*, *Rotting Grasp*. This creature can cast each of these spells once per scene."
+				},
+				{
+					"name": "Grave-Smoke",
+					"qualifier": "Quick Action",
+					"text": "On a strong or critical hit with their Censer, this creature swings the chain so the smoke breaks across the target's face. The target is briefly blinded."
+				}
+			],
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Ruins",
+				"Temple",
+				"Tomb"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Grave vigil",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Cult Priest"
+						},
+						{
+							"count": "3-5",
+							"creature": "Ghoul"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:17:Ogre",
+			"name": "Ogre",
+			"href": "/docs/creatures/creatures/tier-3#ogre",
+			"tier": 3,
+			"category": "Basic",
+			"role": "Bruiser",
+			"size": "Large",
+			"type": "Giant",
+			"subtype": [
+				"Feral"
+			],
+			"armor": "Light",
+			"hp": "30",
+			"av": "3 (natural light)",
+			"str": "d10",
+			"agi": "d6",
+			"spi": "d6",
+			"mnd": "d4",
+			"parry": 10,
+			"dodge": 8,
+			"resist": 8,
+			"skills": [
+				"Fighting (1)",
+				"Athletics (2)",
+				"Survival (2)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [],
+			"attacks": [
+				{
+					"name": "Great Club",
+					"properties": [
+						"crush",
+						"reach",
+						"two-handed"
+					],
+					"text": "10/15/20 damage."
+				},
+				{
+					"name": "Fist",
+					"properties": [
+						"crush"
+					],
+					"text": "8/11/14 damage. On a strong or critical hit against a creature of Medium size or smaller, the target is grappled."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Hurl",
+					"qualifier": "Quick Action",
+					"text": "Only against a creature this creature is grappling. This creature throws the target a short distance in any direction (counts as pushed). Roll Strength + Athletics vs. Dodge against each creature in the space they are thrown into, and on a failure that creature gets clear instead. As an Action, this creature can throw a Small or Medium object within their reach the same way, and only the creature struck takes the damage."
+				}
+			],
+			"environment": [
+				"Hills",
+				"Grassland",
+				"Marsh",
+				"Farmland",
+				"Road",
+				"Caves",
+				"Lair"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Family",
+					"count": "3-5"
+				}
+			]
+		},
+		{
+			"id": "catalogue:14:Orc Band-Leader",
+			"name": "Orc Band-Leader",
+			"href": "/docs/creatures/creatures/tier-3#orc-band-leader",
+			"tier": 3,
+			"category": "Elite",
+			"role": "Bruiser",
+			"size": "Medium",
+			"type": "Humanoid",
+			"subtype": [
+				"Orc"
+			],
+			"armor": "Light",
+			"hp": "2x30",
+			"av": "3 (light armor)",
+			"str": "d8",
+			"agi": "d6",
+			"spi": "d6",
+			"mnd": "d6",
+			"parry": 10,
+			"dodge": 9,
+			"resist": 8,
+			"skills": [
+				"Fighting (2)",
+				"Athletics (2)",
+				"Insight (2)",
+				"Survival (2)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [],
+			"attacks": [
+				{
+					"name": "Maul",
+					"properties": [
+						"crush",
+						"heavy (d8)",
+						"two-handed"
+					],
+					"text": "9/14/24 damage."
+				},
+				{
+					"name": "Javelin",
+					"properties": [
+						"bundle (d4)",
+						"light",
+						"pierce",
+						"thrown (short/long)"
+					],
+					"text": "7/10/13 damage."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Orcish Fury",
+					"qualifier": "Passive",
+					"text": "When this creature hits with a melee weapon and rolls a critical success, they add their weapon damage an additional time to the total damage. The critical damage listed for their melee attacks already includes it."
+				},
+				{
+					"name": "Fight Where I Point",
+					"qualifier": "Quick Action",
+					"text": "One ally within short range gains +1 boon on their next attack, and on a hit the target is briefly slowed."
+				},
+				{
+					"name": "Batter Aside",
+					"qualifier": "Quick Action",
+					"text": "When an enemy within melee range attacks this creature, that attack suffers +1 bane. If the attack fails, this creature makes one Maul attack against them."
+				},
+				{
+					"name": "Blood Up",
+					"qualifier": "Elite Trigger",
+					"text": "When this creature suffers a Wound, the rage takes them and they stop caring whether they live. For the rest of the scene their melee attacks gain +1 boon and deal +2 damage, and melee attacks against them gain +1 boon."
+				}
+			],
+			"environment": [
+				"Wastes",
+				"Desert",
+				"Grassland",
+				"River",
+				"Farmland",
+				"Settlement"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Harvest raid",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Orc Band-Leader"
+						},
+						{
+							"count": "6-10",
+							"creature": "Orc Raider"
+						}
+					]
+				},
+				{
+					"name": "Full band",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Orc Band-Leader"
+						},
+						{
+							"count": "20-40",
+							"creature": "Orc Raider"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:16:Veteran",
+			"name": "Veteran",
+			"href": "/docs/creatures/creatures/tier-3#veteran",
+			"tier": 3,
+			"category": "Basic",
+			"role": "Defender",
+			"size": "Medium",
+			"type": "Humanoid",
+			"subtype": [
+				"Any"
+			],
+			"armor": "Light",
+			"hp": "30",
+			"av": "4 (light armor and shield)",
+			"str": "d8",
+			"agi": "d6",
+			"spi": "d6",
+			"mnd": "d6",
+			"parry": 10,
+			"dodge": 8,
+			"resist": 9,
+			"skills": [
+				"Fighting (2)",
+				"Athletics (2)",
+				"Insight (2)",
+				"Perception (2)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [],
+			"attacks": [
+				{
+					"name": "Spear",
+					"properties": [
+						"pierce",
+						"reach",
+						"versatile (+1)"
+					],
+					"text": "7/10/13 damage."
+				},
+				{
+					"name": "Shield Bash",
+					"properties": [
+						"crush"
+					],
+					"text": "6/8/10 damage. On a strong or critical hit, the target falls prone."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Close the Ranks",
+					"qualifier": "Passive",
+					"text": "While another creature with this ability is within melee range of this creature, attacks against this creature suffer +1 bane."
+				},
+				{
+					"name": "Step Into the Gap",
+					"qualifier": "Quick Action",
+					"text": "When an enemy attacks an ally within short range of this creature, this creature moves into melee range of that ally and makes one attack against the attacker."
+				},
+				{
+					"name": "Nothing New",
+					"qualifier": "Quick Action",
+					"text": "This creature briefly ignores the effects of the frightened condition."
+				}
+			],
+			"environment": [
+				"Grassland",
+				"River",
+				"Desert",
+				"Settlement",
+				"Fortress",
+				"Road"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Retinue",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "2-3",
+							"creature": "Veteran"
+						}
+					]
+				},
+				{
+					"name": "Line",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Veteran"
+						},
+						{
+							"count": "4-6",
+							"creature": "Spearman"
+						},
+						{
+							"count": "2",
+							"creature": "Slinger"
+						},
+						{
+							"count": "2-3",
+							"creature": "Polearm Soldier"
+						}
+					]
+				},
+				{
+					"name": "Company",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Captain"
+						},
+						{
+							"count": "1-2",
+							"creature": "Veteran"
+						},
+						{
+							"count": "6-8",
+							"creature": "Spearman"
+						},
+						{
+							"count": "3-4",
+							"creature": "Slinger"
+						},
+						{
+							"count": "3-4",
+							"creature": "Polearm Soldier"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:21:Edimmu Shade",
+			"name": "Edimmu Shade",
+			"href": "/docs/creatures/creatures/tier-4#edimmu-shade",
+			"tier": 4,
+			"category": "Basic",
+			"role": "Controller",
+			"size": "Medium",
+			"type": "Undead",
+			"subtype": [
+				"Incorporeal",
+				"Intelligent"
+			],
+			"armor": "None",
+			"hp": "30",
+			"av": "0 (none)",
+			"str": "d6",
+			"agi": "d8",
+			"spi": "d10",
+			"mnd": "d8",
+			"parry": 9,
+			"dodge": 11,
+			"resist": 10,
+			"skills": [
+				"Fighting (2)",
+				"Perception (3)",
+				"Stealth (3)",
+				"Insight (3)"
+			],
+			"immunities": [
+				"bleeding",
+				"grappled",
+				"poisoned",
+				"restrained",
+				"unconscious"
+			],
+			"resistances": [
+				"physical",
+				"poison"
+			],
+			"weaknesses": [
+				"radiant"
+			],
+			"traits": [
+				"Undead Nature",
+				"Incorporeal Movement"
+			],
+			"attacks": [
+				{
+					"name": "Grave-Cold Touch",
+					"text": "Roll Spirit + Fighting vs. Resist. 11/17/23 necrotic damage. On a strong or critical hit, the target is suffocating for a short duration. This condition ends early if this creature is destroyed."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Take the Warmth",
+					"qualifier": "Passive",
+					"text": "When this creature hits a creature suffering suffocating, this creature regains 6 HP."
+				},
+				{
+					"name": "Never Left Alone",
+					"qualifier": "Quick Action",
+					"text": "When a creature suffering suffocating from this creature attempts to move out of this creature's melee range, this creature stays in melee range of them by moving with them up to a short distance, unprovoked."
+				}
+			],
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Wastes",
+				"Battlefield",
+				"Ruins",
+				"Road"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Haunt",
+					"count": "3-5"
+				},
+				{
+					"name": "Unburied field",
+					"composition": [
+						{
+							"count": "2-3",
+							"creature": "Edimmu Shade"
+						},
+						{
+							"count": "4-8",
+							"creature": "Grave Husk"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:24:Elder Ghoul",
+			"name": "Elder Ghoul",
+			"href": "/docs/creatures/creatures/tier-4#elder-ghoul",
+			"tier": 4,
+			"category": "Lord",
+			"role": "Bruiser",
+			"size": "Medium",
+			"type": "Undead",
+			"subtype": [
+				"Corporeal",
+				"Intelligent"
+			],
+			"armor": "Light",
+			"hp": "3x40",
+			"av": "4 (natural light)",
+			"str": "d8",
+			"agi": "d10",
+			"spi": "d8",
+			"mnd": "d8",
+			"parry": 10,
+			"dodge": 11,
+			"resist": 9,
+			"skills": [
+				"Fighting (2)",
+				"Perception (3)",
+				"Stealth (3)",
+				"Insight (3)",
+				"Lore (3)"
+			],
+			"immunities": [
+				"bleeding",
+				"poisoned",
+				"unconscious"
+			],
+			"resistances": [
+				"poison"
+			],
+			"weaknesses": [
+				"radiant"
+			],
+			"traits": [
+				"Undead Nature",
+				"Keen Scent"
+			],
+			"attacks": [
+				{
+					"name": "Claws",
+					"properties": [
+						"agile",
+						"light",
+						"slash"
+					],
+					"text": "8/11/14 damage. On a strong or critical hit, the target is briefly stunned, or briefly paralyzed instead if they are already stunned."
+				},
+				{
+					"name": "Bite",
+					"properties": [
+						"agile",
+						"pierce"
+					],
+					"text": "11/17/23 damage. On a strong or critical hit, the target cannot regain HP for a short duration. Against a creature that is stunned or paralyzed, that happens on any hit."
+				},
+				{
+					"name": "Grave Spit",
+					"properties": [
+						"range (short/medium)"
+					],
+					"text": "10/15/20 necrotic damage."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Corpse-Eater",
+					"qualifier": "Action",
+					"text": "This creature feeds on a dead body within melee range and regains 20 HP. A body fed on this way cannot restore HP again."
+				},
+				{
+					"name": "Run It Down",
+					"qualifier": "Quick Action",
+					"text": "When an enemy within short range of this creature becomes stunned, paralyzed or prone, this creature moves into melee range of them unprovoked."
+				},
+				{
+					"name": "Bare the Teeth",
+					"qualifier": "Quick Action",
+					"text": "One enemy within short range of this creature rolls Spirit + Fortitude vs. TN 10. On a failure, they are briefly frightened."
+				},
+				{
+					"name": "Lash Out",
+					"qualifier": "Action",
+					"text": "By spending 1 Resolve, this creature makes a Claws attack against each enemy in their melee range."
+				},
+				{
+					"name": "The Hunger Wakes",
+					"qualifier": "Lord Trigger",
+					"text": "When this creature suffers their first Wound, the hunger takes them and the words stop coming. For the rest of the scene, the stunned and paralyzed conditions from their Claws last for a short duration instead of briefly. A creature stunned or paralyzed this way can roll Strength + Fortitude vs. TN 10 at the end of each of their turns to end the effect early."
+				},
+				{
+					"name": "The Colony Answers",
+					"qualifier": "Lord Trigger",
+					"text": "When this creature suffers their second Wound, they call, and the floor of the tomb answers. Three Ghouls climb out within short range and act on this creature's Initiative. This creature can use Corpse-Eater on a living Ghoul within melee range, killing it."
+				}
+			],
+			"environment": [
+				"Desert",
+				"Grassland",
+				"Ruins",
+				"Tomb"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Feeding pair",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Elder Ghoul"
+						},
+						{
+							"count": "2",
+							"creature": "Ghoul"
+						}
+					]
+				},
+				{
+					"name": "Colony",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Elder Ghoul"
+						},
+						{
+							"count": "6-12",
+							"creature": "Ghoul"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:22:Furnace Effigy",
+			"name": "Furnace Effigy",
+			"href": "/docs/creatures/creatures/tier-4#furnace-effigy",
+			"tier": 4,
+			"category": "Basic",
+			"role": "Defender",
+			"size": "Medium",
+			"type": "Automaton",
+			"subtype": [
+				"Vessel",
+				"Intelligent"
+			],
+			"armor": "Heavy",
+			"hp": "40",
+			"av": "6 (natural heavy)",
+			"str": "d10",
+			"agi": "d6",
+			"spi": "d8",
+			"mnd": "d6",
+			"parry": 9,
+			"dodge": 8,
+			"resist": 10,
+			"skills": [
+				"Fighting (2)",
+				"Fortitude (3)",
+				"Perception (3)"
+			],
+			"immunities": [
+				"bleeding",
+				"burning",
+				"poisoned",
+				"unconscious"
+			],
+			"resistances": [
+				"fire"
+			],
+			"weaknesses": [
+				"frost"
+			],
+			"traits": [],
+			"attacks": [
+				{
+					"name": "Stone Fist",
+					"properties": [
+						"crush"
+					],
+					"text": "11/17/23 damage."
+				},
+				{
+					"name": "Ember Breath",
+					"properties": [
+						"blast (cone)",
+						"recharge (d6)"
+					],
+					"text": "Roll Strength + Fortitude vs. Dodge, targeting each creature in the cone at close range. 7/9/11 fire damage. Each target also suffers burning (2) for a short duration."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Bound in Iron",
+					"qualifier": "Passive",
+					"text": "Creatures within close range of this creature suffer +1 bane on Mysticism rolls to cast spells."
+				},
+				{
+					"name": "The Fetters Give",
+					"qualifier": "Passive",
+					"text": "While this creature is at half HP or lower, every creature that ends their turn within melee range of this creature takes 3 fire damage (ignore AV)."
+				}
+			],
+			"environment": [
+				"Desert",
+				"Mountains",
+				"Wastes",
+				"Ruins",
+				"Temple",
+				"Fortress"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Gate watch",
+					"count": "3-4"
+				}
+			]
+		},
+		{
+			"id": "catalogue:23:Kusarikku",
+			"name": "Kusarikku",
+			"href": "/docs/creatures/creatures/tier-4#kusarikku",
+			"tier": 4,
+			"category": "Elite",
+			"role": "Defender",
+			"size": "Large",
+			"type": "Divine Beast",
+			"subtype": [
+				"Guardian"
+			],
+			"armor": "Light",
+			"hp": "2x40",
+			"av": "5 (natural light)",
+			"str": "d10",
+			"agi": "d6",
+			"spi": "d8",
+			"mnd": "d6",
+			"parry": 10,
+			"dodge": 8,
+			"resist": 11,
+			"skills": [
+				"Fighting (2)",
+				"Athletics (3)",
+				"Insight (3)",
+				"Perception (3)"
+			],
+			"immunities": [],
+			"resistances": [],
+			"weaknesses": [],
+			"traits": [],
+			"attacks": [
+				{
+					"name": "Grip",
+					"properties": [
+						"crush"
+					],
+					"text": "9/13/17 damage. On a hit, the target is grappled."
+				},
+				{
+					"name": "Gore",
+					"properties": [
+						"pierce"
+					],
+					"text": "9/13/17 damage. On a hit, the target's Movement becomes 0 for the rest of the turn and they are briefly slowed."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Bound to the Threshold",
+					"qualifier": "Passive",
+					"text": "Every Kusarikku is summoned to keep one place and bound to it: a gate, a passage, a stair or a bridge, no wider than a close distance. While they stand in it, their Grip gains +1 boon and can grapple a creature of any size, they gain +1 boon on any roll to resist being moved or knocked prone, and they never roll Morale. They leave it only to put back a creature that has got beyond it. While they are not standing in it they are dazed, and further than a medium distance from it they are dazed and staggered."
+				},
+				{
+					"name": "Cast Out",
+					"qualifier": "Quick Action",
+					"text": "Only against a creature this creature is grappling. Roll Strength + Athletics vs. Dodge. On a success, this creature throws the target a short distance away from themselves (counts as pushed). On a strong or critical success, they throw them a medium distance instead. On a failure, the grapple ends and the target is left in this creature's melee range."
+				},
+				{
+					"name": "Horns Lowered",
+					"qualifier": "Quick Action",
+					"text": "When a creature moves into or through this creature's melee range, this creature makes one Gore attack against them."
+				},
+				{
+					"name": "Not Past Me",
+					"qualifier": "Elite Trigger",
+					"text": "When this creature suffers a Wound, whatever they were set here to keep is nearer to being lost than it has ever been. For the rest of the scene Cast Out no longer costs a Quick Action and can be used even while this creature is dazed, and every Cast Out pushes the target one distance step further."
+				}
+			],
+			"environment": [
+				"Desert",
+				"Hills",
+				"Ruins",
+				"Temple",
+				"Settlement",
+				"Tomb"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Gatepost",
+					"count": "2"
+				},
+				{
+					"name": "Sealed tomb",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Mummy"
+						},
+						{
+							"count": "2",
+							"creature": "Kusarikku"
+						},
+						{
+							"count": "6-10",
+							"creature": "Clay Servant"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "catalogue:20:Mummy",
+			"name": "Mummy",
+			"href": "/docs/creatures/creatures/tier-4#mummy",
+			"tier": 4,
+			"category": "Basic",
+			"role": "Bruiser",
+			"size": "Medium",
+			"type": "Undead",
+			"subtype": [
+				"Corporeal",
+				"Intelligent"
+			],
+			"armor": "Light",
+			"hp": "50",
+			"av": "4 (natural light)",
+			"str": "d10",
+			"agi": "d6",
+			"spi": "d8",
+			"mnd": "d8",
+			"parry": 9,
+			"dodge": 8,
+			"resist": 10,
+			"skills": [
+				"Fighting (2)",
+				"Fortitude (3)",
+				"Lore (3)",
+				"Influence (3)"
+			],
+			"immunities": [
+				"bleeding",
+				"poisoned",
+				"unconscious"
+			],
+			"resistances": [
+				"poison"
+			],
+			"weaknesses": [
+				"fire"
+			],
+			"traits": [
+				"Undead Nature",
+				"Slow Movement"
+			],
+			"attacks": [
+				{
+					"name": "Rotting Fist",
+					"properties": [
+						"crush"
+					],
+					"text": "11/17/23 damage. On a strong or critical hit, the target contracts mummy rot."
+				}
+			],
+			"abilities": [
+				{
+					"name": "Dread Gaze",
+					"qualifier": "Quick Action",
+					"text": "Roll Spirit + Influence vs. Resist against one creature within short range that can see this creature. On a success, the target is briefly frightened, and on a strong or critical success they are also briefly paralyzed. If this creature fails, that creature is immune to Dread Gaze for the rest of the scene."
+				},
+				{
+					"name": "Mummy Rot",
+					"qualifier": "Passive",
+					"text": "Mummy rot is a magical disease with a TN of 10. A creature suffering from mummy rot gains 1 Fatigue at the start of each day, and their Wounds can't be healed."
+				},
+				{
+					"name": "Resin and Linen",
+					"qualifier": "Passive",
+					"text": "Fire damage from any source sets this creature alight, and they suffer burning (2), or the attacking effect's own burning value instead if it is higher. While this creature is burning, their Rotting Fist also deals 3 fire damage (ignore AV) on a hit."
+				}
+			],
+			"environment": [
+				"Desert",
+				"Ruins",
+				"Tomb"
+			],
+			"organization": [
+				{
+					"name": "Solitary",
+					"count": "1"
+				},
+				{
+					"name": "Pair",
+					"count": "2"
+				},
+				{
+					"name": "Burial chamber",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Mummy"
+						},
+						{
+							"count": "4-6",
+							"creature": "Clay Servant"
+						}
+					]
+				},
+				{
+					"name": "Sealed tomb",
+					"composition": [
+						{
+							"count": "1",
+							"creature": "Mummy"
+						},
+						{
+							"count": "2",
+							"creature": "Kusarikku"
+						},
+						{
+							"count": "6-10",
+							"creature": "Clay Servant"
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -9,7 +9,7 @@ import {
 	SelectChangeEvent,
 } from '@mui/material'
 import { Character, CharacterDocument } from '@site/src/types/Character'
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import {
 	useAutofitPending,
@@ -33,6 +33,7 @@ import { parseCreatureMarkdown } from './parseCreatureMarkdown'
 import {
 	companionEntries,
 	creatureEntries,
+	entryIdsForKeys,
 	pastedId,
 	type CreatureEntry,
 } from './creatureSources'
@@ -168,6 +169,26 @@ export const CreatureCards: React.FC = () => {
 		() => [...imported, ...catalogue.entries],
 		[imported, catalogue.entries],
 	)
+
+	/**
+	 * An encounter handed over from the bestiary's encounter builder, as
+	 * `?print=<name>~<tier>,…`.
+	 *
+	 * Read in an effect rather than in the initial state because this tool is
+	 * server-rendered: a selection that exists on the client and not on the
+	 * server is a hydration mismatch. One frame later is soon enough.
+	 *
+	 * The hand-off carries each creature ONCE, however many of them are in the
+	 * fight. A card is a reference for how the creature works, so five goblins
+	 * want one card between them and not five copies of it.
+	 */
+	useEffect(() => {
+		const keys = new URLSearchParams(window.location.search).get('print')
+		if (!keys) return
+		const ids = entryIdsForKeys(catalogue.entries, keys)
+		if (ids.length === 0) return
+		setSelectedIds((current) => Array.from(new Set([...current, ...ids])))
+	}, [catalogue.entries])
 
 	const categories = useMemo(
 		() =>

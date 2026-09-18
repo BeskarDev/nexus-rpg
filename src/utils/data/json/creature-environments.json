@@ -1,0 +1,132 @@
+{
+	"ranks": [
+		{
+			"rank": 1,
+			"name": "Region",
+			"description": "The land a creature belongs to. Every creature carries at least one, because a GM knows what country they are in before they know what building they are standing in."
+		},
+		{
+			"rank": 2,
+			"name": "Site",
+			"description": "The kind of place an encounter happens in, built or natural. A tomb, a stretch of road, a lair, a fortress."
+		}
+	],
+	"environments": [
+		{
+			"name": "Desert",
+			"rank": 1
+		},
+		{
+			"name": "Grassland",
+			"rank": 1
+		},
+		{
+			"name": "Forest",
+			"rank": 1
+		},
+		{
+			"name": "Jungle",
+			"rank": 1
+		},
+		{
+			"name": "Mountains",
+			"rank": 1
+		},
+		{
+			"name": "Hills",
+			"rank": 1
+		},
+		{
+			"name": "Marsh",
+			"rank": 1
+		},
+		{
+			"name": "River",
+			"rank": 1
+		},
+		{
+			"name": "Coast",
+			"rank": 1
+		},
+		{
+			"name": "Sea",
+			"rank": 1
+		},
+		{
+			"name": "Wastes",
+			"rank": 1
+		},
+		{
+			"name": "Arctic",
+			"rank": 1
+		},
+		{
+			"name": "Underground",
+			"rank": 1
+		},
+		{
+			"name": "Sky",
+			"rank": 1
+		},
+		{
+			"name": "Otherworld",
+			"rank": 1
+		},
+		{
+			"name": "Settlement",
+			"rank": 2
+		},
+		{
+			"name": "Farmland",
+			"rank": 2
+		},
+		{
+			"name": "Road",
+			"rank": 2
+		},
+		{
+			"name": "Ruins",
+			"rank": 2
+		},
+		{
+			"name": "Temple",
+			"rank": 2
+		},
+		{
+			"name": "Fortress",
+			"rank": 2
+		},
+		{
+			"name": "Battlefield",
+			"rank": 2
+		},
+		{
+			"name": "Caves",
+			"rank": 2
+		},
+		{
+			"name": "Mine",
+			"rank": 2
+		},
+		{
+			"name": "Ship",
+			"rank": 2
+		},
+		{
+			"name": "Tomb",
+			"rank": 2
+		},
+		{
+			"name": "Lair",
+			"rank": 2
+		},
+		{
+			"name": "Well",
+			"rank": 2
+		},
+		{
+			"name": "Sewer",
+			"rank": 2
+		}
+	]
+}
