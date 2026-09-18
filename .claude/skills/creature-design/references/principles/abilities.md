@@ -30,6 +30,7 @@ Read before **workflow step 4** (abilities), and again before any Elite or Lord 
 | **59** | The identity effect fires on ANY success. The success level sets its degree, never whether it happens. |
 | **60** | The category buys turn density. Count live options, not card entries, and the second effect is never a second attack roll. |
 | **61** | Resolve is a second currency, and a **LORD ONLY** one. One signature ability may be priced in it. |
+| **63** | Creature Fatigue is a knockout track, not a max-HP tax. A gradient spends at most half the category's track. |
 | **43** | A trait must act in the encounter, or it is lore wearing a slot. |
 | **45** | The qualifier is one word. The limiter is the last sentence. This keeps being got wrong. |
 | **49** | Never cancel a universal player option. Add pressure instead of removing a choice. |
@@ -395,7 +396,7 @@ makes the ladder affordable. *(Owner ruling, 2026-09-14, D-164.)*
 ---
 
 **60. The category buys TURN DENSITY, and the currency is verbs, not attack rolls.**
-`02-creature-rules.md` grants the width — Basic 1-2 attacks and 0-3 abilities, Elite 2-3 and 2-4, Lord 3-5
+`10-gm-tools/02-builder-tools/10-building-creatures.md` grants the width — Basic 1-2 attacks and 0-3 abilities, Elite 2-3 and 2-4, Lord 3-5
 and 3-6 — and those counts are **published and not restated here**. What a count cannot do is tell a good
 kit from a padded one, because **it counts card entries and the creature spends slots**. All three
 published Elites are legal and thin: two attacks differing only in a damage figure, two reactive Quick
@@ -466,6 +467,29 @@ twice. The qualifier stays a single closed-list word and the text opens on the R
   never spends it.
 - **Rare even among Lords.** A Lord without one is a normal Lord.
 
-**Owed to the published rules.** `03-statistics/04-resolve.md` describes one use, so the second is
-currently the skill's invention. It belongs in the creature-rules overhaul. *(Owner ruling, 2026-09-14,
-D-166.)*
+**Published.** `03-statistics/04-resolve.md` carries the general rule (*"Some abilities charge Resolve
+instead, stating the cost at the start of their text"*) and the Lord block in `02-creature-rules.md`
+carries the creature half. The wording is deliberately generic because talents are expected to use the
+same currency later. **The Lords-only limit stays a design rule** and is not published — the rules do not
+need to forbid what no card does. *(Owner ruling, 2026-09-14, D-166; published 2026-09-15, D-184.)*
+
+---
+
+**63. A creature's Fatigue is a KNOCKOUT TRACK, and a gradient spends at most half of it.** Creatures do
+**not** take the adventurer's max-HP reduction — the bookkeeping across two and three life pools was never
+worth it. Instead `02-creature-rules.md` caps Fatigue by category, **Basic 2, Elite 4, Lord 6**, and a
+creature that reaches their cap **falls unconscious for the rest of the scene**. The caps mirror the
+Wounds each category takes, so Fatigue is a second, parallel route to taking a creature out of a fight,
+and it deliberately gives a party that invested in Fatigue infliction something to spend it on.
+
+Two consequences a designer has to hold:
+
+- **A Wound does not clear Fatigue** (published). That is what makes a gradient survive the escalation
+  moment, which is the whole reason the debt was worth paying.
+- **A self-cost or binding gradient spends at most half the category's track** — 1 on a Basic, 2 on an
+  Elite, 3 on a Lord. Half is a cost the GM can feel and still leaves the creature the fight. A gradient
+  that could reach the cap on its own is a creature that knocks itself out, which is not a design.
+
+Use it for **what the creature pays** — the Kusarikku leaving its threshold, a bound thing straining its
+fetters — and let party-facing Fatigue come from the party's own abilities, where the caps already price
+it. *(Owner ruling, 2026-09-15, D-184, superseding the per-pool max-HP proposal in D-172.)*

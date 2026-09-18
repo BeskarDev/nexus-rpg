@@ -37,7 +37,8 @@ reference files below are large on purpose, and loading them "to be safe" is the
 |------|-------|
 | **Canonical creature data** | `src/utils/data/json/creatures.json` — **edit here, never in the docs** |
 | Published creatures by tier | `docs/08-creatures/03-creatures/tier-{0..10}.mdx` — **generated, do not hand-edit** |
-| Creature rules (categories, Morale, troops, triggers) | `docs/08-creatures/02-creature-rules.md` |
+| Creature rules (categories, Morale, troops, Fatigue caps, triggers) | `docs/08-creatures/02-creature-rules.md` |
+| Chassis tables, category budgets, archetypes (the **published** build guide) | `docs/10-gm-tools/02-builder-tools/10-building-creatures.md` |
 | **Conditions** | `docs/05-combat/04-conditions.mdx` |
 | **Effect durations** | `docs/06-scenes/02-effect-durations.md` |
 | **Weapon/armor properties** | `docs/04-equipment/05-armor-weapon-properties.md` |

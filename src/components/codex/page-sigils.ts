@@ -125,6 +125,7 @@ export const PAGE_SIGIL: Record<string, SigilName> = {
 	'gm-tools/random-tables/social-intrigue': 'two-faces',
 	'gm-tools/random-tables/random-settlement': 'temple',
 	'gm-tools/random-tables/random-terrain': 'mountains',
+	'gm-tools/builder-tools/building-creatures': 'tablet',
 	'gm-tools/builder-tools/creature-builder': 'serpent',
 }
 

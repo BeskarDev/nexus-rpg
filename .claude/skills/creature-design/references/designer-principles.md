@@ -113,6 +113,7 @@ any stat block, these spell-design files apply as-is (read "spell" as "creature 
 - **60.** The category buys TURN DENSITY. Count live options, not card entries. Elite and Lord produce two effects a turn, and the second is never a second attack roll. *(abilities)*
 - **61.** Resolve is a second currency, and a **Lord-only** one. One signature ability per Lord may be priced in it. *(abilities)*
 - **62.** Size is a design tool, not a default. Ask it out loud at step 1; on heavy armor Large is +2 AV, and Large fights an agile chassis. *(chassis)*
+- **63.** Creature Fatigue is a knockout track (Basic 2 / Elite 4 / Lord 6), not a max-HP tax. A self-cost gradient spends at most half of it. *(abilities)*
 
 ## Appending a new principle
 
@@ -122,7 +123,7 @@ When the owner corrects or refines a creature design decision in session:
 one-line title each. Open the phase file rather than this index when you are designing: this list says
 *which* principle applies and never what it says.
 
-1. Take the next free number (currently next: **63**).
+1. Take the next free number (currently next: **64**).
 2. **Write the full principle into the phase file it belongs to** — `principles/chassis.md`,
    `identity.md`, `abilities.md` or `writing.md` (numbered, bolded one-line rule, then reasoning,
    then owner-ruling provenance).

@@ -16,6 +16,8 @@ You can spend 1 Resolve to re-roll the result of one test and take the new resul
 
 > Example: Arzhag spends 1 Resolve to re-roll a failed Strength test when attempting to move a fallen pillar blocking the party's escape route.
 
+Some abilities charge Resolve instead, stating the cost at the start of their text. You can only use such an ability by paying that cost, and every point you spend on one is a re-roll you no longer have.
+
 ## Regaining Resolve
 
 **You regain Resolve through certain actions and decisions:**

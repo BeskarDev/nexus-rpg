@@ -38,7 +38,7 @@ only.
 | A trait's **name** | the above, plus every `traits` array that references it — unknown names fail the build |
 | A creature's **name** | every `lore.organization` `composition` row that names it, across all records |
 | A **type, subtype or additive** | `creature-types.json` / `creature-subtypes.json` / `creature-additives.json`, plus `docs/08-creatures/02-creature-rules.md`'s type table |
-| The **tier tables** | `references/stat-tables.md` **and** `creature-tiers.json` (the Builder's copy) **and** `02-creature-rules.md`'s derivation notes |
+| The **tier tables** | `references/stat-tables.md` **and** `creature-tiers.json` (the Builder's copy) **and** `docs/10-gm-tools/02-builder-tools/10-building-creatures.md`'s derivation notes |
 | A **condition or damage type** | it is published rules, not ours — change `conditions.json` / the attacking page, and the generator's guard lists follow |
 | A **design ruling** | its one home above, the index in `references/designer-principles.md`, and the decision record |
 

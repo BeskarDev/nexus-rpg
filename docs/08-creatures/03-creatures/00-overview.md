@@ -8,7 +8,7 @@ sidebar_position: 0
 
 The following sections contain creature stat blocks for use by the GM. A creature stat block contains all the information necessary to run a creature as a character.
 
-For how to create your own creatures, see [Creature Rules](../02-creature-rules.md).
+For how creatures work at the table, see [Creature Rules](../02-creature-rules.md). For how to create your own, see [Building Creatures](../../10-gm-tools/02-builder-tools/10-building-creatures.md).
 
 ## Creature Tiers
 
