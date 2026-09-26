@@ -71,9 +71,25 @@ export function inlineEmphasis(text: string): string {
 		.replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>')
 }
 
+/**
+ * An item's properties as a list. The type says `string[]`, but sheets saved
+ * before items moved to arrays still hold one comma-separated string, and a
+ * print of that character must not crash on it.
+ */
+const propertyList = (item: Item): string[] => {
+	const raw: unknown = item.properties
+	if (Array.isArray(raw)) return raw.filter(Boolean)
+	if (typeof raw === 'string')
+		return raw
+			.split(',')
+			.map((p) => p.trim())
+			.filter(Boolean)
+	return []
+}
+
 /** Lower-cased haystack of everything a character's item says about itself. */
 const describe = (item: Item) =>
-	[item.name, ...(item.tags ?? []), ...(item.properties ?? [])]
+	[item.name, ...(item.tags ?? []), ...propertyList(item)]
 		.join(' ')
 		.toLowerCase()
 
@@ -133,9 +149,7 @@ function fromItem(item: Item): MagicItem {
 		type: item.name,
 		cost: item.cost ?? 0,
 		load: item.load ?? item.weight ?? 0,
-		properties: item.properties?.length
-			? item.properties.join(', ')
-			: undefined,
+		properties: propertyList(item).join(', ') || undefined,
 		description: inlineEmphasis(itemDescription(item)),
 	}
 }
