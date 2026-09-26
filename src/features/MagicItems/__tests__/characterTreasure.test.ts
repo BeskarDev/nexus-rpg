@@ -119,6 +119,25 @@ describe('characterTreasure', () => {
 		expect(entry.item.properties).toBe('worn, fragile')
 	})
 
+	it('accepts a legacy sheet whose item properties are one string', () => {
+		const legacy = (properties: unknown) =>
+			item({ properties } as unknown as Partial<Item>)
+		const [helmet, kit, empty] = characterTreasure(
+			character(
+				[],
+				[
+					{ ...legacy('+1 AV'), id: 'a', name: 'Open Helmet' },
+					{ ...legacy('3/5 Uses, fragile'), id: 'b' },
+					{ ...legacy(''), id: 'c' },
+				],
+			),
+		)
+		expect(helmet.item.properties).toBe('+1 AV')
+		expect(helmet.item.category).toBe('Armor')
+		expect(kit.item.properties).toBe('3/5 Uses, fragile')
+		expect(empty.item.properties).toBeUndefined()
+	})
+
 	it('survives a character with nothing at all', () => {
 		expect(characterTreasure(character())).toEqual([])
 		expect(
