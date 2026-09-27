@@ -48,10 +48,10 @@ import './printEverythingStyles.css'
 /**
  * Two paper sizes in ONE print job (M22 S4, spiked before it was built).
  *
- * Cards print on 192 x 267mm portrait and character sheets on A4 landscape, and
+ * Cards print on A4 portrait and character sheets on A4 landscape, and
  * a single `@page` rule cannot say both. CSS named pages can, and Chrome
  * honours them: measured with `page.pdf({ preferCSSPageSize: true })` over this
- * exact markup, the card pages came out 191.9 x 267.0mm and the sheet pages
+ * exact markup, the card pages came out at their declared size and the sheet pages
  * 297.0 x 209.9mm, with no blank page and no bleed where a part-filled card
  * page meets the first sheet.
  *
@@ -59,7 +59,7 @@ import './printEverythingStyles.css'
  * it, which is why `PrintPages` takes a `pageName` and stamps the figure.
  */
 const PAGE_CSS = `
-	@page cards  { size: 192mm 267mm; margin: 0; }
+	@page cards  { size: A4 portrait; margin: 0; }
 	@page sheets { size: A4 landscape; margin: 0; }
 	.pt-page--cards  { page: cards; }
 	.pt-page--sheets { page: sheets; }

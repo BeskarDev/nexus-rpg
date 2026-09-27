@@ -15,8 +15,15 @@ const PX_PER_MM = 96 / 25.4
  * These are the numbers the `@page` rules and `playingCardStyles.css` already
  * carry; the page count was previously a hand-written `9` in each tool, with no
  * link to either. `itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN)` is 9.
+ *
+ * **A4 portrait, printed at 100%** (owner-reported, 2026-09-27). The page was a
+ * nonstandard 192 × 267mm, which no printer tray holds, so the PDF went onto A4
+ * through "fit to page" and every card came out ~9% oversize (≈69 × 96mm) and
+ * would not go into a standard 63 × 88mm sleeve. On A4 there is nothing to fit,
+ * and the 3 × 3 grid (189 × 264mm) is centred, leaving 10.5mm at the sides and
+ * 16.5mm top and bottom. That band is where the crop marks now live.
  */
-export const CARD_PAGE: Millimetres = { width: 192, height: 267 }
+export const CARD_PAGE: Millimetres = { width: 210, height: 297 }
 export const CARD_SIZE: Millimetres = { width: 63, height: 88 }
 export const CARD_PAGE_MARGIN = 1
 
@@ -111,47 +118,73 @@ function usePaperScale(paperWidthMm: number) {
 }
 
 /**
+ * Where the grid starts on the page: the leftover paper split evenly.
+ *
+ * A card page centres its 3 × 3 grid on A4, which is what gives the crop marks
+ * a margin to live in. A sheet page tiles exactly, so its origin is 0.
+ */
+function gridOrigin(
+	page: Millimetres,
+	item: Millimetres,
+	perRow: number,
+	perColumn: number,
+) {
+	return {
+		x: Math.max(0, (page.width - perRow * item.width) / 2),
+		y: Math.max(0, (page.height - perColumn * item.height) / 2),
+	}
+}
+
+/**
  * Where to cut, drawn on the paper itself.
  *
- * The cards tile the page edge to edge with NO gutter — nine 63 × 88mm cells at
- * a 1mm margin — so every cut line is a cell boundary and there is nowhere
- * outside the grid to put a conventional crop mark. The page used to be readable
- * anyway because each card sat on a grey field, and dropping that field to save
- * ink (rightly) took the only guide with it (owner, 2026-08-07).
+ * The cards tile edge to edge with NO gutter between them, so every cut line is
+ * a cell boundary. Deliberately not a full grid: a continuous rule along a cut
+ * line prints on the trimmed edge of two cards whenever the blade wanders, and
+ * a blade always wanders (owner, 2026-08-07).
  *
- * So the marks go WHERE THE INK IS ALLOWED TO BE: short ticks at the page edges
- * and small crosses at the interior corners, both hairline. Deliberately not a
- * full grid — a continuous rule along a cut line prints on the trimmed edge of
- * two cards whenever the blade wanders, and a blade always wanders. A tick at
- * each end of the line is enough to lay a ruler on, and leaves the 2.3mm cut
- * allowance inside each cell clean.
+ * **Crop marks run the full width of the page margin** (owner-reported,
+ * 2026-09-27). On a slide trimmer the cutting head sits over one end of the
+ * line, so a 3mm tick at each end left one tick hidden and the other too short
+ * to sight along. A mark now runs from the paper edge to 1.5mm short of the
+ * grid, 9 to 15mm of line, so the part the head does not cover is still long
+ * enough to lay the rail on. The crosses at the interior corners are larger
+ * too, so a cut can be checked halfway down the sheet.
+ *
+ * Where there is no margin (a sheet page tiles exactly) the old edge tick is
+ * kept.
  */
 function TrimMarks({
 	page,
 	item,
-	margin,
 	perRow,
 	perColumn,
 }: {
 	page: Millimetres
 	item: Millimetres
-	margin: number
 	perRow: number
 	perColumn: number
 }) {
+	const origin = gridOrigin(page, item, perRow, perColumn)
 	// Every cut line, in millimetres from the page's own corner.
 	const columns = Array.from(
 		{ length: perRow + 1 },
-		(_, index) => margin + index * item.width,
+		(_, index) => origin.x + index * item.width,
 	)
 	const rows = Array.from(
 		{ length: perColumn + 1 },
-		(_, index) => margin + index * item.height,
+		(_, index) => origin.y + index * item.height,
 	)
-	// Long enough to see and to align a ruler against, short enough to stay in
-	// the margin and the corners.
+	// The mark stops short of the grid so a slightly wandering cut along the
+	// OTHER axis does not leave a stub of ink on a finished card's corner.
+	const GAP = 1.5
+	// Below this the margin is too thin to hold a mark, so fall back to a tick.
+	const MIN_MARGIN = 5
 	const TICK = 3
-	const CROSS = 1.6
+	// Held inside the 2.3mm cut allowance each card keeps clear of ink.
+	const CROSS = 2.2
+	const vertical = origin.y >= MIN_MARGIN ? origin.y - GAP : TICK
+	const horizontal = origin.x >= MIN_MARGIN ? origin.x - GAP : TICK
 
 	return (
 		<svg
@@ -160,25 +193,21 @@ function TrimMarks({
 			preserveAspectRatio="none"
 			aria-hidden="true"
 		>
-			{/* 0.25mm: a hairline still, but a printer's dot is ~0.08mm and a 0.2mm
-			    line came back from the laser as an interrupted grey. A cut guide
-			    that is faint on paper is not a guide. */}
-			<g stroke="currentColor" strokeWidth={0.25} shapeRendering="crispEdges">
+			{/* 0.35mm and solid black: a 0.25mm hairline came back from the laser
+			    too faint to align a trimmer against at a glance. */}
+			<g stroke="currentColor" strokeWidth={0.35} shapeRendering="crispEdges">
 				{columns.map((x) => (
 					<React.Fragment key={`c${x}`}>
-						<path d={`M${x} 0 V${TICK}`} />
-						<path d={`M${x} ${page.height - TICK} V${page.height}`} />
+						<path d={`M${x} 0 V${vertical}`} />
+						<path d={`M${x} ${page.height - vertical} V${page.height}`} />
 					</React.Fragment>
 				))}
 				{rows.map((y) => (
 					<React.Fragment key={`r${y}`}>
-						<path d={`M0 ${y} H${TICK}`} />
-						<path d={`M${page.width - TICK} ${y} H${page.width}`} />
+						<path d={`M0 ${y} H${horizontal}`} />
+						<path d={`M${page.width - horizontal} ${y} H${page.width}`} />
 					</React.Fragment>
 				))}
-				{/* The interior corners: a cross a blade can be centred on, so a cut
-				    can be checked halfway down the sheet rather than only at its
-				    edges. */}
 				{rows.slice(1, -1).map((y) =>
 					columns.slice(1, -1).map((x) => (
 						<React.Fragment key={`x${x}:${y}`}>
@@ -197,7 +226,10 @@ export interface PrintPagesProps {
 	page: Millimetres
 	/** One printed item — a 63 × 88mm card, a 148.5 × 210mm sheet section. */
 	item: Millimetres
-	/** The `@page` margin in mm, which the items do not get to use. */
+	/**
+	 * The least paper in mm the items keep off the page edge. It only bounds
+	 * how many fit; the grid is then centred in whatever is left over.
+	 */
 	margin?: number
 	/** Shown in place of the pages when there is nothing selected. */
 	empty?: React.ReactNode
@@ -212,7 +244,7 @@ export interface PrintPagesProps {
 	 * The CSS named page these pages print on (M22 S4).
 	 *
 	 * A tool printing ONE paper size declares `@page { size: ... }` and needs
-	 * nothing here. Print Everything puts cards (192 x 267mm portrait) and
+	 * nothing here. Print Everything puts cards (A4 portrait) and
 	 * character sheets (A4 landscape) in a single job, which only works with
 	 * named pages — `@page cards { ... }` plus a `page: cards` on the box that
 	 * generates the page. Measured rather than assumed: the name has to sit on
@@ -258,10 +290,19 @@ export const PrintPages: React.FC<PrintPagesProps> = ({
 	const { perRow, perColumn, perPage } = pageGrid(page, item, margin)
 	const pages = paginate(children, perPage)
 	const { ref, scale } = usePaperScale(page.width)
+	const origin = gridOrigin(page, item, perRow, perColumn)
 
 	return (
 		<div className="pt-pages" ref={ref}>
 			{pages.length === 0 && empty}
+			{/* Any scaling in the print dialog moves every cut off its mark, and on
+			    a card page it is what makes a card too big for its sleeve. */}
+			{/* Once per document: Print Everything runs a second `PrintPages`. */}
+			{pages.length > 0 && (pageNumbering?.offset ?? 0) === 0 && (
+				<p className="pt-pages__note">
+					Print on A4 at 100% scale (Actual size), margins none.
+				</p>
+			)}
 			{pages.map((contents, index) => (
 				<figure
 					className={`pt-page${pageName ? ` pt-page--${pageName}` : ''}`}
@@ -292,7 +333,6 @@ export const PrintPages: React.FC<PrintPagesProps> = ({
 							<TrimMarks
 								page={page}
 								item={item}
-								margin={margin}
 								perRow={perRow}
 								perColumn={perColumn}
 							/>
@@ -300,7 +340,7 @@ export const PrintPages: React.FC<PrintPagesProps> = ({
 						<div
 							className="pt-page__bed"
 							style={{
-								padding: `${margin}mm`,
+								padding: `${origin.y}mm ${origin.x}mm`,
 								gridTemplateColumns: `repeat(${perRow}, 1fr)`,
 							}}
 						>

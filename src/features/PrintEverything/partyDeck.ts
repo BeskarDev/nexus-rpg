@@ -45,7 +45,7 @@ export type PrintCategory =
 /**
  * Print order, and the order the toggles are listed in.
  *
- * Cards first, sheets last: the two live on different paper (192 x 267mm
+ * Cards first, sheets last: the two print in different orientations (A4
  * portrait against A4 landscape), and a job that alternates between them is a
  * job whose output cannot be guillotined in one pass.
  */

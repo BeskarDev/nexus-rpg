@@ -573,6 +573,12 @@
 	flex: 0 0 auto;
 	box-sizing: border-box;
 }
+.pt-pages__note {
+	margin: 0;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	color: var(--pt-ink-quiet);
+}
 .pt-page__label {
 	margin-top: 0.35rem;
 	font-family: var(--nexus-font-ui);
@@ -600,7 +606,8 @@
 	.pt-page:last-child .pt-page__paper {
 		break-after: auto;
 	}
-	.pt-page__label {
+	.pt-page__label,
+	.pt-pages__note {
 		display: none;
 	}
 }

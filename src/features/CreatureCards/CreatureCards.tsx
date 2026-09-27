@@ -304,7 +304,7 @@ export const CreatureCards: React.FC = () => {
 
 	// A document-level rule, so it goes in the document head — never in the
 	// flow, where a `<style>` printed itself on the page as text (M19).
-	usePagePrintStyle('@page { size: 192mm 267mm; }')
+	usePagePrintStyle('@page { size: A4 portrait; margin: 0; }')
 
 	return (
 		<PrintToolShell

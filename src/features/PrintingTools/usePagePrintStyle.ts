@@ -7,7 +7,7 @@ import { useEffect } from 'react'
  * **Why not a `<style>` in the JSX**: the tools rendered one inline, and the
  * auto-columns plugin later began wrapping doc pages in a grid whose
  * `.grid > *` rule sets `display: block`. That beats the user agent's
- * `display: none` for a style element, so `@page { size: 192mm 267mm; }`
+ * `display: none` for a style element, so `@page { size: A4 portrait; margin: 0; }`
  * printed itself on the page as literal text. The columns rule now excludes
  * non-rendered elements, but an `@page` rule is document-level and has no
  * business being in the flow in the first place.

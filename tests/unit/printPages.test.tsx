@@ -33,7 +33,7 @@ beforeAll(() => {
 })
 
 describe('itemsPerPage', () => {
-	it('fits nine 63×88mm cards on a 192×267mm page', () => {
+	it('fits nine 63×88mm cards on an A4 portrait page', () => {
 		// 3 across (190/63) × 3 down (265/88) — the 9 that was hardcoded.
 		expect(itemsPerPage(CARD_PAGE, CARD_SIZE, CARD_PAGE_MARGIN)).toBe(9)
 	})
@@ -109,8 +109,50 @@ describe('PrintPages', () => {
 			</PrintPages>,
 		)
 		const paper = container.querySelector('.pt-page__paper') as HTMLElement
-		expect(paper.style.width).toBe('192mm')
-		expect(paper.style.height).toBe('267mm')
+		expect(paper.style.width).toBe('210mm')
+		expect(paper.style.height).toBe('297mm')
+	})
+
+	it('centres the card grid on A4 so the crop marks have a margin', () => {
+		// 3 × 63 = 189 of 210mm and 3 × 88 = 264 of 297mm: the cells stay exactly
+		// 63 × 88mm, which is what a standard sleeve takes.
+		const { container } = render(
+			<PrintPages page={CARD_PAGE} item={CARD_SIZE} margin={CARD_PAGE_MARGIN}>
+				{cards(9)}
+			</PrintPages>,
+		)
+		const bed = container.querySelector('.pt-page__bed') as HTMLElement
+		expect(bed.style.padding).toBe('16.5mm 10.5mm')
+	})
+
+	it('runs each crop mark across the margin, not as a short tick', () => {
+		const { container } = render(
+			<PrintPages page={CARD_PAGE} item={CARD_SIZE} margin={CARD_PAGE_MARGIN}>
+				{cards(9)}
+			</PrintPages>,
+		)
+		const marks = Array.from(
+			container.querySelectorAll('.pt-page__trim path'),
+		).map((path) => path.getAttribute('d'))
+		// The first column line, top and bottom: paper edge to 1.5mm off the grid.
+		expect(marks).toContain('M10.5 0 V15')
+		expect(marks).toContain('M10.5 282 V297')
+		// The first row line, left edge.
+		expect(marks).toContain('M0 16.5 H9')
+	})
+
+	it('keeps a sheet page flush, with no margin to centre in', () => {
+		const { container } = render(
+			<PrintPages
+				page={SHEET_PAGE}
+				item={SHEET_SECTION}
+				margin={SHEET_PAGE_MARGIN}
+			>
+				{cards(2)}
+			</PrintPages>,
+		)
+		const bed = container.querySelector('.pt-page__bed') as HTMLElement
+		expect(bed.style.padding).toBe('0mm')
 	})
 
 	it('lays the bed out as an explicit grid, never leaving it to flow', () => {
