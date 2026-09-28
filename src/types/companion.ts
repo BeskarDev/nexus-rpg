@@ -70,12 +70,32 @@ export interface CompanionBuilderProps {
 	 * a second switch for the same fact, and every call site set the two
 	 * consistently anyway.
 	 */
-	onImportCompanion?: (name: string, markdown: string) => void
+	onImportCompanion?: (
+		name: string,
+		markdown: string,
+		build: CompanionBuild,
+	) => void
 	/**
 	 * The owner, when the builder runs inside a character sheet. Prefills the Bond
 	 * register once per owner and stays editable. Omitted on the docs page.
 	 */
 	owner?: CompanionOwner
+	/**
+	 * A saved companion to rebuild. Opens the builder loaded with its build and the
+	 * current owner values, and the primary verb becomes "Update companion".
+	 */
+	rebuild?: {
+		companionId: string
+		companionName: string
+		build: CompanionBuild
+	} | null
+	/** The rebuilt stat block, handed back for the caller to confirm and apply. */
+	onUpdateCompanion?: (
+		companionId: string,
+		result: CompanionBuildResult,
+	) => void
+	/** The rebuild ended (updated or closed). The caller clears `rebuild`. */
+	onRebuildClose?: () => void
 }
 
 /** Which option the owner took at Animal Companion rank 2. */
@@ -111,4 +131,34 @@ export interface CompanionOwner {
 	talentRank: 0 | 1 | 2 | 3
 	nature: number | null
 	knowsWildCompanion: boolean
+}
+
+/**
+ * How a companion was built in the Companion Builder, saved on the companion so it
+ * can be rebuilt or refreshed from the current rules instead of recreated.
+ *
+ * Holds only what the builder CHOSE. The owner's talent rank, Nature and whether
+ * they know Wild Companion are read from the current character at rebuild time;
+ * `builtWith` records the values used at build time for display only.
+ */
+export interface CompanionBuild {
+	/** A `companion-traits.json` name. */
+	trait: string
+	tier: number
+	size: string
+	rank2Choice: BondRank2Choice | null
+	rank3Choice: BondRank3Choice | null
+	/** Combat Art names (not their text). */
+	combatArts: string[]
+	/** Whether the companion was summoned with the Wild Companion spell. */
+	wildCompanion: boolean
+	wildCompanionRank: 1 | 2 | 3
+	/** The owner values used at build time. Display only, never read back. */
+	builtWith?: CompanionOwner
+}
+
+/** What a rebuild or import hands back: the stat block and the build behind it. */
+export interface CompanionBuildResult {
+	markdown: string
+	build: CompanionBuild
 }

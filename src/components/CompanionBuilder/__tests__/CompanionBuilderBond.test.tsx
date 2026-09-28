@@ -70,4 +70,48 @@ describe('Companion Builder bond', () => {
 		expect(screen.getAllByText('Combat Arts').length).toBeGreaterThan(0)
 		expect(screen.getAllByText(/Psychic Connection/).length).toBeGreaterThan(0)
 	})
+
+	it('rebuilds a saved companion with the owner’s current values', () => {
+		const store = setupCompanionBuilderStore()
+		const updates: { id: string; markdown: string; trait: string }[] = []
+		const build = {
+			trait: 'Bear',
+			tier: 2,
+			size: 'Medium',
+			rank2Choice: 'combat-arts' as const,
+			rank3Choice: null,
+			combatArts: ['Feint'],
+			wildCompanion: false,
+			wildCompanionRank: 1 as const,
+		}
+		render(
+			<Provider store={store}>
+				<CompanionBuilder
+					owner={{ talentRank: 2, nature: 4, knowsWildCompanion: false }}
+					onImportCompanion={() => undefined}
+					rebuild={{ companionId: 'c1', companionName: 'Bruno', build }}
+					onUpdateCompanion={(id, result) =>
+						updates.push({
+							id,
+							markdown: result.markdown,
+							trait: result.build.trait,
+						})
+					}
+				/>
+			</Provider>,
+		)
+		expect(screen.getByText('Rebuild Bruno')).toBeTruthy()
+		expect(store.getState().companionBuilder).toMatchObject({
+			tier: 2,
+			size: 'Medium',
+			bond: { talentRank: 2, nature: 4, combatArts: ['Feint'] },
+		})
+		expect(screen.queryByText('Import to character')).toBeNull()
+		fireEvent.click(screen.getByText('Update companion'))
+		expect(updates).toHaveLength(1)
+		expect(updates[0].id).toBe('c1')
+		expect(updates[0].trait).toBe('Bear')
+		expect(updates[0].markdown).toContain('**Combat Arts:**')
+		expect(updates[0].markdown).toContain('Nature (4)')
+	})
 })

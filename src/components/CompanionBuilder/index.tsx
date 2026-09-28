@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import {
 	BuilderRegister,
@@ -22,7 +22,11 @@ import {
 	SIZE_MODIFIERS,
 	getAvailableSizes,
 } from '../../utils/typescript/companion/companionCalculations'
-import { generateMarkdown } from '../../utils/typescript/companion/companionFormatting'
+import {
+	bondFromBuild,
+	buildFromBuilder,
+	findCompanionTrait,
+} from '../../utils/typescript/companion/companionBuild'
 import companionTraits from '../../utils/data/json/companion-traits.json'
 import StatSigil from '../codex/StatSigil'
 import SigilIcon from '../codex/SigilIcon'
@@ -84,12 +88,15 @@ const signed = (value: number) => (value >= 0 ? `+${value}` : String(value))
 export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 	onImportCompanion,
 	owner,
+	rebuild,
+	onUpdateCompanion,
+	onRebuildClose,
 }) => {
 	const [open, setOpen] = useState(false)
 	const [showSource, setShowSource] = useState(false)
 	const [copied, setCopied] = useState(false)
 	const dispatch = useDispatch()
-	const { state, builtCompanion } = useCompanionBuilderState()
+	const { state, builtCompanion, markdown } = useCompanionBuilderState()
 	const { tier, size, trait, bond } = state
 	// Open while the owner has the talent, so its effects are visible at a glance.
 	const [bondOpen, setBondOpen] = useState(() =>
@@ -116,6 +123,49 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 		)
 		// Keyed on the owner's facts, not the object: `owner` is fresh per render.
 	}, [dispatch, ownerKey])
+
+	/*
+		A row's Rebuild: load the saved build with the owner's CURRENT talent rank,
+		Nature and Wild Companion, and open. Declared after the prefill so a load in
+		the same commit wins, and it sets the prefill key so the prefill stands down.
+	*/
+	const rebuildId = rebuild?.companionId ?? null
+	const activeRebuild = useRef<string | null>(null)
+	useEffect(() => {
+		if (!rebuild) {
+			// The caller ended the rebuild (the update was applied): close with it.
+			if (activeRebuild.current) {
+				activeRebuild.current = null
+				setOpen(false)
+				dispatch(companionBuilderActions.endRebuild())
+			}
+			return
+		}
+		activeRebuild.current = rebuild.companionId
+		const savedTrait = findCompanionTrait(rebuild.build.trait)
+		if (!savedTrait) return
+		dispatch(
+			companionBuilderActions.loadBuild({
+				tier: rebuild.build.tier,
+				size: rebuild.build.size,
+				trait: savedTrait,
+				bond: bondFromBuild(rebuild.build, owner),
+				prefillKey: ownerKey,
+			}),
+		)
+		setBondOpen(Boolean(owner && owner.talentRank > 0))
+		setOpen(true)
+		// Keyed on which companion is being rebuilt.
+	}, [dispatch, rebuildId])
+
+	const close = () => {
+		setOpen(false)
+		if (rebuild) {
+			activeRebuild.current = null
+			dispatch(companionBuilderActions.endRebuild())
+			onRebuildClose?.()
+		}
+	}
 
 	const tierLimit = bondTierLimit(bond)
 
@@ -213,8 +263,6 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 		}
 	}
 
-	const markdown = builtCompanion ? generateMarkdown(builtCompanion) : ''
-
 	const copySource = () => {
 		navigator.clipboard.writeText(markdown).then(() => {
 			setCopied(true)
@@ -222,10 +270,23 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 		})
 	}
 
+	const currentBuild = () =>
+		builtCompanion && trait
+			? buildFromBuilder(tier, size, trait, bond, owner)
+			: null
+
 	const importToCharacter = () => {
-		if (!builtCompanion || !onImportCompanion) return
-		onImportCompanion(builtCompanion.trait.name, markdown)
+		const build = currentBuild()
+		if (!builtCompanion || !build || !onImportCompanion) return
+		onImportCompanion(builtCompanion.trait.name, markdown, build)
 		setOpen(false)
+	}
+
+	/** Hands the result to the tab, which confirms before replacing anything. */
+	const updateCompanion = () => {
+		const build = currentBuild()
+		if (!build || !rebuild || !onUpdateCompanion) return
+		onUpdateCompanion(rebuild.companionId, { markdown, build })
 	}
 
 	/** The commission as a sentence, or the one thing still missing. */
@@ -248,8 +309,12 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 
 			<BuilderShell
 				open={open}
-				onClose={() => setOpen(false)}
-				title="Companion Builder"
+				onClose={close}
+				title={
+					rebuild
+						? `Rebuild ${rebuild.companionName || 'companion'}`
+						: 'Companion Builder'
+				}
 				commission={commission}
 				result={
 					<>
@@ -293,16 +358,26 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 						<BuilderVerb disabled={!builtCompanion} onClick={copySource}>
 							Copy markdown
 						</BuilderVerb>
-						{onImportCompanion && (
+						{rebuild && onUpdateCompanion ? (
 							<BuilderVerb
 								tone="primary"
 								disabled={!builtCompanion}
-								onClick={importToCharacter}
+								onClick={updateCompanion}
 							>
-								Import to character
+								Update companion
 							</BuilderVerb>
+						) : (
+							onImportCompanion && (
+								<BuilderVerb
+									tone="primary"
+									disabled={!builtCompanion}
+									onClick={importToCharacter}
+								>
+									Import to character
+								</BuilderVerb>
+							)
 						)}
-						<BuilderVerb onClick={() => setOpen(false)}>Close</BuilderVerb>
+						<BuilderVerb onClick={close}>Close</BuilderVerb>
 					</>
 				}
 			>

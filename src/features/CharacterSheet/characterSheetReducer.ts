@@ -18,6 +18,7 @@ import {
 import { AbilityTag } from '@site/src/types/AbilityTag'
 import { ActionType } from '@site/src/types/ActionType'
 import { ItemLocation } from '@site/src/types/ItemLocation'
+import type { CompanionBuild } from '@site/src/types/companion'
 import { Character } from './../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
 import { getDurabilityForItem } from './CharacterSheetTabs/02_Items/utils/durabilityUtils'
@@ -678,6 +679,31 @@ export const {
 				currentHP: 0,
 				maxHP: 0,
 				wounded: false,
+			})
+		},
+		/**
+		 * A companion from the Companion Builder, with the build behind it so the
+		 * sheet can rebuild or refresh it later. Arrives at full HP.
+		 */
+		importCompanion: (
+			state,
+			action: PayloadAction<{
+				name: string
+				markdown: string
+				maxHP: number
+				build?: CompanionBuild
+			}>,
+		) => {
+			const { name, markdown, maxHP, build } = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.companions.unshift({
+				id: crypto.randomUUID(),
+				name,
+				markdown,
+				currentHP: maxHP,
+				maxHP,
+				wounds: 0,
+				...(build ? { build } : {}),
 			})
 		},
 		updateCompanion: (

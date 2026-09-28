@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Box, LinearProgress, Menu, Typography } from '@mui/material'
+import {
+	Box,
+	IconButton,
+	LinearProgress,
+	Menu,
+	Tooltip,
+	Typography,
+} from '@mui/material'
+import { Build } from '@mui/icons-material'
 import { UnifiedListItem } from '@site/src/features/CharacterSheet/components/DynamicList'
 import {
 	AdjustStepper,
@@ -24,6 +32,11 @@ export type CompanionRowProps = {
 	/** Re-reads HP out of the markdown when the stat block itself changes. */
 	updateWithAutoHP: (update: Partial<Companion>) => void
 	deleteCompanion: () => void
+	/**
+	 * Open the Companion Builder on this companion's saved build. Given only when the
+	 * companion has one (it came from the builder, or migration recognised its block).
+	 */
+	onRebuild?: () => void
 }
 
 /** The pool's ink, by how much of it is left — the sheet's own alert register. */
@@ -72,6 +85,7 @@ export const CompanionRow: React.FC<CompanionRowProps> = ({
 	updateCompanion,
 	updateWithAutoHP,
 	deleteCompanion,
+	onRebuild,
 }) => {
 	const [draft, setDraft] = useState(companion)
 	const [editing, setEditing] = useState(!companion.markdown)
@@ -170,11 +184,24 @@ export const CompanionRow: React.FC<CompanionRowProps> = ({
 							<RecordPlate
 								label="Record"
 								actions={
-									<DeleteButton
-										onDelete={deleteCompanion}
-										entityKind="companion"
-										entityName={companion.name}
-									/>
+									<>
+										{onRebuild && (
+											<Tooltip title="Rebuild in the Companion Builder">
+												<IconButton
+													size="small"
+													onClick={onRebuild}
+													aria-label={`Rebuild ${companion.name || 'companion'}`}
+												>
+													<Build fontSize="small" />
+												</IconButton>
+											</Tooltip>
+										)}
+										<DeleteButton
+											onDelete={deleteCompanion}
+											entityKind="companion"
+											entityName={companion.name}
+										/>
+									</>
 								}
 							>
 								{/* The name is a PLATE ROW, not its own group (S7, owner review). It was

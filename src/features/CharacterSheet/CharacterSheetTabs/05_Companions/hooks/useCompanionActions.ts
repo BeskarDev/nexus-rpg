@@ -3,6 +3,11 @@ import { useAppDispatch } from '../../../hooks/useAppDispatch'
 import { characterSheetActions } from '../../../characterSheetReducer'
 import { Companion } from '../../../../../types/Character'
 import { extractHPFromMarkdown } from '../utils/hpExtractor'
+import { applyCompanionBuild } from '../utils/companionUpdates'
+import type {
+	CompanionBuild,
+	CompanionBuildResult,
+} from '../../../../../types/companion'
 
 export const useCompanionActions = () => {
 	const dispatch = useAppDispatch()
@@ -64,6 +69,38 @@ export const useCompanionActions = () => {
 		[updateCompanion],
 	)
 
+	/** A companion from the Companion Builder, with its build, at full HP. */
+	const importCompanion = useCallback(
+		(name: string, markdown: string, build: CompanionBuild) => {
+			dispatch(
+				characterSheetActions.importCompanion({
+					name,
+					markdown,
+					maxHP: extractHPFromMarkdown(markdown) ?? 0,
+					build,
+				}),
+			)
+		},
+		[dispatch],
+	)
+
+	/**
+	 * Replace a companion's stat block with a rebuilt one (Rebuild or Refresh).
+	 * Keeps the id, the player's name and the wounds, clamps current HP.
+	 */
+	const applyCompanionRebuild = useCallback(
+		(companion: Companion, result: CompanionBuildResult) => {
+			const next = applyCompanionBuild(companion, result)
+			updateCompanion(companion.id, {
+				markdown: next.markdown,
+				build: next.build,
+				maxHP: next.maxHP,
+				currentHP: next.currentHP,
+			})
+		},
+		[updateCompanion],
+	)
+
 	const reorderCompanions = useCallback(
 		(source: number, destination: number) => {
 			dispatch(
@@ -81,6 +118,8 @@ export const useCompanionActions = () => {
 		deleteCompanion,
 		updateCompanion,
 		updateCompanionWithAutoHP,
+		importCompanion,
+		applyCompanionRebuild,
 		reorderCompanions,
 	}
 }

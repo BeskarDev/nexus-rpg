@@ -3,6 +3,7 @@ import { normalizeSkillName } from '../../../constants/skills'
 import { calculateSkillRank } from './skillUtils'
 import { migrateCharacterDefenses } from './calculateDefenses'
 import { migrateItemLoad } from './migrateItemLoad'
+import { parseCompanionBuild } from '../../../utils/typescript/companion/companionBuild'
 
 /**
  * Migrates character data to ensure compatibility with current schema.
@@ -24,12 +25,23 @@ export function migrateCharacterData(
 		and the second is the one that decides whether it lives. An existing `true` becomes one
 		wound, which is the only reading of that flag that does not invent information.
 	*/
-	character.companions = character.companions.map((companion) => ({
-		currentHP: 0,
-		maxHP: 0,
-		...companion,
-		wounds: companion.wounds ?? (companion.wounded ? 1 : 0),
-	}))
+	/*
+		Companions gained a saved `build` with the builder's Rebuild and Refresh. One
+		made before that is recognised from its own block (header, Tier, optional
+		Bond line) when the creature, tier and size are ones the builder could have
+		produced. Anything else is left without a build. Markdown and HP are never
+		touched here: replacing the block is the player's call, through Refresh.
+	*/
+	character.companions = character.companions.map((companion) => {
+		const build = companion.build ?? parseCompanionBuild(companion.markdown)
+		return {
+			currentHP: 0,
+			maxHP: 0,
+			...companion,
+			wounds: companion.wounds ?? (companion.wounded ? 1 : 0),
+			...(build ? { build } : {}),
+		}
+	})
 
 	// Migrate older characters that don't have statusEffects array
 	if (!character.statistics?.statusEffects) {

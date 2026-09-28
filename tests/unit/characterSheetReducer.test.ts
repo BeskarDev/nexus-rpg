@@ -1027,6 +1027,44 @@ describe('Character Sheet Reducer', () => {
 			})
 		})
 
+		describe('importCompanion', () => {
+			it('adds a builder companion first, at full HP, with its build', () => {
+				const initialState = createStateWithCharacter(characterWithCompanions)
+				const build = {
+					trait: 'Bear',
+					tier: 2,
+					size: 'Medium',
+					rank2Choice: null,
+					rank3Choice: null,
+					combatArts: [],
+					wildCompanion: false,
+					wildCompanionRank: 1 as const,
+				}
+
+				const state = characterSheetReducer(
+					initialState,
+					characterSheetActions.importCompanion({
+						name: 'Bear',
+						markdown: '#### **Bear** (Medium Animal)',
+						maxHP: 30,
+						build,
+					}),
+				)
+
+				expectArrayLength(state.activeCharacter!.companions, 3, 'Companions')
+				const imported = state.activeCharacter!.companions[0]
+				expect(imported).toMatchObject({
+					name: 'Bear',
+					currentHP: 30,
+					maxHP: 30,
+					wounds: 0,
+					build,
+				})
+				expect(imported.id).toBeDefined()
+				expectUnsavedChanges(state)
+			})
+		})
+
 		describe('updateCompanion', () => {
 			it('should update companion by ID', () => {
 				const initialState = createStateWithCharacter(characterWithCompanions)

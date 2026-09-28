@@ -60,6 +60,34 @@ const companionBuilderSlice = createSlice({
 			state.bond = action.payload.bond
 			state.bondPrefillKey = action.payload.key
 		},
+		/**
+		 * Load a saved companion for a rebuild: its commission, and the bond its build
+		 * implies for the owner as they are now. The prefill key is set so the owner
+		 * prefill does not overwrite the loaded bond.
+		 */
+		loadBuild: (
+			state,
+			action: PayloadAction<{
+				tier: number
+				size: string
+				trait: CompanionTrait
+				bond: CompanionBond
+				prefillKey: string | null
+			}>,
+		) => {
+			const { tier, size, trait, bond, prefillKey } = action.payload
+			state.tier = tier
+			state.size = size
+			state.trait = trait
+			state.bond = bond
+			state.bondPrefillKey = prefillKey
+		},
+		/**
+		 * Leave a rebuild: clear the commission and forget the prefill, so the next
+		 * plain open prefills from the owner again instead of keeping the rebuilt
+		 * companion's bond.
+		 */
+		endRebuild: () => initialState,
 		/** Clears the commission. The bond belongs to the owner and is kept. */
 		resetBuilder: (state) => ({
 			...initialState,

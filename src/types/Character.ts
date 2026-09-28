@@ -1,3 +1,4 @@
+import type { CompanionBuild } from './companion'
 import { DocumentData, DocumentReference } from 'firebase/firestore'
 import { AbilityTag } from './AbilityTag'
 import { ActionType } from './ActionType'
@@ -95,6 +96,12 @@ export type Companion = {
 	 * that decides whether the companion survives — could not be recorded.
 	 */
 	wounds?: number
+	/**
+	 * The Companion Builder choices behind `markdown`, when it came from the builder.
+	 * Lets the sheet rebuild or refresh the stat block from the current rules. Absent
+	 * on hand-written companions, which are never regenerated.
+	 */
+	build?: CompanionBuild
 }
 
 export type Statistics = {
