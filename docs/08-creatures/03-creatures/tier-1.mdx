@@ -207,7 +207,7 @@ A river crocodile not yet at full size, small enough to lie up under a landing s
 
 <LoreSection label="Physiology"><LoreTag>2.2 m long</LoreTag><LoreTag>70 kg</LoreTag><LoreTag>60 years or more, and one this size is 4 to 6 years old</LoreTag> The female buries forty eggs in the warm sand of a bank and guards the nest until they hatch. Almost none of them reach this size, and the ones that do have already been driven off the best water by something larger.</LoreSection>
 
-<LoreSection label="Tactics">They lie submerged and wait for somebody to come to the bank rather than swimming into view. Open with the **Bite** against a target who does not know they are there, since **Ambush Predator** raises that first strike one success level. The bite grapples, and the grapple is the point, because a grappled person is going into the river. They cannot hold and bite at once, so a crocodile with someone in their jaws spends the turn dragging and attacks nobody else. If the fight turns they release, submerge, and do not come back while anyone is standing on their bank.</LoreSection>
+<LoreSection label="Tactics">They lie submerged and wait for somebody to come to the bank rather than swimming into view. Open with the **Bite** against a target who does not know they are there, since **Ambush Predator** raises that first strike one success level. The bite grapples, and the grapple is the point, because a grappled person is going into the river. They cannot hold one person and bite another, so a crocodile with someone in their jaws rolls them with **Death Roll** in the same turn the bite lands and attacks nobody else. If the fight turns they release, submerge, and do not come back while anyone is standing on their bank.</LoreSection>
 
 <LoreSection label="Treasure"><TreasureTable scale="Incidental"><TreasureRow kind="Trophy" value="4 coins">**Crocodile hide** Taken whole, then part ruined by careless skinning.</TreasureRow><TreasureRow kind="Material" value="25 coins">**Belly hide** Primitive materials, Quality 1. Enough leather for one set of light armor once worked.</TreasureRow><TreasureRow kind="Material" value="8 coins">**Crocodile teeth** Primitive materials, Quality 1, a full jaw of them.</TreasureRow><TreasureRow kind="Supplies" value="4 coins">**Crocodile meat** Raw meat equal to 1 x simple rations (d4) with 2 uses left. At the start of each day, remove 1 use as the meat spoils.</TreasureRow><TreasureRow kind="Valuables" value="20 coins">**Stomach stones** And what came up with them: a belt buckle, two rings, a bronze fitting.</TreasureRow><TreasureRow kind="Relic">**Tax-farmer's signet** Still on the finger. Shown at any river village it opens a headman's door, and closes every other one.</TreasureRow></TreasureTable></LoreSection>
 
@@ -220,7 +220,12 @@ A river crocodile not yet at full size, small enough to lie up under a landing s
 <StatBlockSection label="Actions">
 
 - <EntryName>Bite</EntryName> <StatBadge>crush</StatBadge> <DamageLadder values="7/10/13" /> On a strong or critical hit against a creature of equal or smaller size, the target is grappled. While grappling, this attack cannot be used against any other target.
-- <EntryName>Death Roll</EntryName> <StatBadge>crush</StatBadge> Only against a target this creature has grappled. 7/10/13 damage, and the target falls prone.
+
+</StatBlockSection>
+
+<StatBlockSection label="Quick Actions">
+
+- <EntryName>Death Roll</EntryName>. This creature makes a Bite attack against a target they are grappling. On a hit, the target also falls prone.
 
 </StatBlockSection>
 

@@ -21,7 +21,12 @@ import {
 	ContainerType,
 	EquipmentSlotType,
 } from '../../../../../types/Character'
-import { QualityTier } from '../utils/magicItemsConfig'
+import {
+	ArmorData,
+	EquipmentData,
+	ItemSource,
+	buildItemFromSource,
+} from '../../../utils/itemFactory'
 
 /**
  * `getCategoryColor` is gone (M13 S8).
@@ -46,25 +51,6 @@ export type EquipmentSearchDialogProps = {
 	targetLocation?: 'worn' | 'carried' | 'mount' | 'storage'
 }
 
-type EquipmentData = {
-	name: string
-	quality: string
-	category: string
-	load: string
-	cost: string
-	description: string
-}
-
-type ArmorData = {
-	name: string
-	quality: string
-	type: string
-	av: string
-	properties: string
-	load: string
-	cost: string
-}
-
 type CombinedItemData = {
 	name: string
 	quality: string
@@ -75,6 +61,8 @@ type CombinedItemData = {
 	av?: string
 	properties?: string
 	type: 'equipment' | 'armor'
+	/** The raw table entry, which `buildItemFromSource` turns into the item. */
+	source: ItemSource
 }
 
 export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
@@ -99,6 +87,7 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 		).map((item) => ({
 			...item,
 			type: 'equipment' as const,
+			source: { kind: 'equipment' as const, data: item },
 		}))
 
 		const armor: CombinedItemData[] = (armorData as ArmorData[]).map((item) => {
@@ -118,6 +107,7 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 				av: item.av,
 				properties,
 				type: 'armor' as const,
+				source: { kind: 'armor' as const, data: item },
 			}
 		})
 
@@ -291,18 +281,13 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 			.filter((item) => selectedEquipment.has(item.name))
 			.map((item) => ({
 				id: crypto.randomUUID(),
-				name: item.name,
-				description: item.description,
-				properties: item.properties
-					? item.properties.split(',').map((p) => p.trim())
-					: [],
-				cost: parseCostValue(item.cost) || 0,
-				weight: item.load === '-' ? 0 : parseInt(item.load) || 0,
+				// The same builder the refresh flow compares against, so an item
+				// imported here is up to date by construction.
+				...buildItemFromSource(item.source),
 				container: (targetLocation === 'worn'
 					? 'worn'
 					: 'backpack') as ContainerType,
 				amount: 1,
-				quality: parseInt(item.quality) as QualityTier,
 				// Add slot assignment for armor pieces when worn
 				...(targetLocation === 'worn' && item.type === 'armor'
 					? {

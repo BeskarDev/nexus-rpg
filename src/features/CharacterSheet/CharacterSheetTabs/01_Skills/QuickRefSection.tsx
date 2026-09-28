@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react'
+import { calculateDamageDisplay as sharedDamageDisplay } from '../../utils/calculateDamageDisplay'
 import { Box, Typography, IconButton, Tooltip } from '@mui/material'
 import { Clear } from '@mui/icons-material'
 import {
@@ -79,51 +80,16 @@ export const QuickRefSection: React.FC = () => {
 	const statistics = activeCharacter.statistics
 	const spellCatalystDamage = activeCharacter.spells.spellCatalystDamage
 
-	// Helper function to calculate actual damage values
+	// The shared damage util, not a local copy of the formula: the print sheets and
+	// the weapon rows read the same function, so the three cannot drift.
 	const calculateDamageDisplay = (
 		damage: Damage,
 		type: 'weapon' | 'spell',
-	): string => {
-		const baseDamage = (() => {
-			switch (damage.base) {
-				case 'STR':
-					return statistics.strength.value / 2
-				case 'AGI':
-					return statistics.agility.value / 2
-				case 'SPI':
-					return statistics.spirit.value / 2
-				case 'MND':
-					return statistics.mind.value / 2
-				case '':
-					return 0
-				default:
-					return damage.base as number
-			}
-		})()
-
-		const catalyst = type === 'spell' ? spellCatalystDamage : 0
-
-		if (damage.staticDamage) {
-			const staticValue = baseDamage + damage.weapon + catalyst + damage.other
-			return `${staticValue} ${damage.type}`
-		} else {
-			const weakDamage =
-				baseDamage + damage.weapon + catalyst + damage.other + damage.otherWeak
-			const strongDamage =
-				baseDamage +
-				damage.weapon * 2 +
-				catalyst * 2 +
-				damage.other +
-				damage.otherStrong
-			const criticalDamage =
-				baseDamage +
-				damage.weapon * 3 +
-				catalyst * 3 +
-				damage.other +
-				damage.otherCritical
-			return `${weakDamage}/${strongDamage}/${criticalDamage} ${damage.type}`
-		}
-	}
+	): string =>
+		sharedDamageDisplay(damage, type, {
+			statistics,
+			spells: { ...activeCharacter.spells, spellCatalystDamage },
+		})
 
 	// Helper function to get category color, ensuring no duplicates
 	/*

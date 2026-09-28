@@ -623,6 +623,39 @@
 	flex: none;
 }
 
+/* The name gives way before the rank does: a long talent name wraps as it always
+   has, and the numeral after it is never pushed off the column. */
+.pc-marked__label {
+	min-width: 0;
+}
+
+/*
+ * A talent's rank, after its name (owner request).
+ *
+ * The same device as the rank absorbed into a skill chip on the cards
+ * (`.pc-chip__rank`): a bold tabular numeral, set off by a hairline. Here it is a
+ * hairline BOX rather than a divider, because the name beside it is bare text
+ * with no tag of its own to divide. Ink only, no wash, so it reads identically on
+ * any printer. Set in the label size with a leading of 1, so it sits inside the
+ * row's own line box and adds no height to the list.
+ */
+.pc-marked__rank {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 2.6mm;
+	padding: 0 0.5mm;
+	border: var(--pc-rule-hair) solid var(--pc-ink);
+	border-radius: 0.4mm;
+	font-size: var(--pc-text-fine);
+	font-weight: 700;
+	line-height: 1.1;
+	font-variant-caps: normal;
+	font-variant-numeric: tabular-nums;
+	color: var(--pc-ink);
+}
+
 /*
  * The action legend (owner review).
  *

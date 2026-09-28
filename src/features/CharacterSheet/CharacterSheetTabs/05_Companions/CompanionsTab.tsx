@@ -5,6 +5,7 @@ import { DropResult } from '@hello-pangea/dnd'
 import { Provider } from 'react-redux'
 import { setupCompanionBuilderStore } from '@site/src/features/CompanionBuilder/store'
 import { CompanionBuilder } from '@site/src/components/CompanionBuilder'
+import { ownerFromCharacter } from '@site/src/utils/typescript/companion/companionBond'
 import { DynamicList } from '@site/src/features/CharacterSheet/components/DynamicList/DynamicList'
 import { DynamicListItem } from '@site/src/features/CharacterSheet/components/DynamicList/DynamicListItem'
 import { ListSection, MarkButton, RuleInfo } from '../../components'
@@ -46,6 +47,13 @@ export const CompanionsTab: React.FC = () => {
 		[activeCharacter],
 	)
 	const [reorderMode, setReorderMode] = useState(false)
+	// The owner's Animal Companion rank, Nature and Wild Companion, to prefill the
+	// builder's Bond register. Editable there, since the talent's rank 2 and rank 3
+	// choices are not stored on the character.
+	const owner = useMemo(
+		() => ownerFromCharacter(activeCharacter),
+		[activeCharacter],
+	)
 
 	const {
 		addCompanion,
@@ -103,7 +111,10 @@ export const CompanionsTab: React.FC = () => {
 						{/* A real command, like the Magic Item Builder on the Items tab: it opens
 							a separate tool rather than changing something here. */}
 						<Provider store={companionBuilderStore}>
-							<CompanionBuilder onImportCompanion={importFromBuilder} />
+							<CompanionBuilder
+								onImportCompanion={importFromBuilder}
+								owner={owner}
+							/>
 						</Provider>
 					</>
 				}

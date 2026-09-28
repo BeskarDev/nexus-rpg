@@ -14,7 +14,12 @@ export const useCompanionBuilderState = () => {
 			return null
 		}
 
-		const calculatedStats = calculateStats(state.tier, state.size, state.trait)
+		const calculatedStats = calculateStats(
+			state.tier,
+			state.size,
+			state.trait,
+			state.bond,
+		)
 
 		return {
 			tier: state.tier,
@@ -22,7 +27,7 @@ export const useCompanionBuilderState = () => {
 			trait: state.trait,
 			calculatedStats,
 		}
-	}, [state.tier, state.size, state.trait])
+	}, [state.tier, state.size, state.trait, state.bond])
 
 	return { state, builtCompanion }
 }

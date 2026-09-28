@@ -1,6 +1,5 @@
-import { useMemo } from 'react'
 import { SectionHeader } from '../../CharacterSheet'
-import { useAppSelector } from '../../hooks/useAppSelector'
+import { useActiveDerivedCharacter } from '../../hooks/useActiveDerivedCharacter'
 import { Typography, Box } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -12,22 +11,18 @@ import { UI_COLORS } from '../../../../utils/colors'
 
 export const AvCard = () => {
 	const dispatch = useAppDispatch()
-	const { av } = useAppSelector(
-		(state) => state.characterSheet.activeCharacter.statistics,
-	)
-
-	const totalAV: number = useMemo(
-		() => av.armor + av.helmet + av.shield + (av.auto || 0) + av.other,
-		[av.armor, av.helmet, av.shield, av.auto, av.other],
-	)
+	// Armor, helmet and shield are read from the worn kit and the folk bonus from
+	// abilities (`deriveCharacter`), the same as the printed sheet. Only `other`
+	// is an input.
+	const { av } = useActiveDerivedCharacter()
+	const totalAV = av.total
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
-	const setPart =
-		(part: 'armor' | 'helmet' | 'shield' | 'other') => (value: number) =>
-			updateCharacter({ statistics: { av: { [part]: value } } })
+	const setOther = (value: number) =>
+		updateCharacter({ statistics: { av: { other: value } } })
 
 	return (
 		<SheetField
@@ -46,32 +41,17 @@ export const AvCard = () => {
 				<>
 					<SectionHeader>AV Calculator</SectionHeader>
 					<Typography variant="subtitle2">
-						Set the individual sources of AV.
+						Armor, helmet and shield come from your worn kit. Add anything else
+						under Other.
 					</Typography>
 					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-						<DerivedPart
-							value={av.armor}
-							label="Armor"
-							onChange={setPart('armor')}
-						/>
-						<DerivedPart
-							value={av.helmet}
-							label="Helmet"
-							onChange={setPart('helmet')}
-						/>
-						<DerivedPart
-							value={av.shield}
-							label="Shield"
-							onChange={setPart('shield')}
-						/>
-						<DerivedPart
-							value={av.other}
-							label="Other"
-							onChange={setPart('other')}
-						/>
+						<DerivedPart auto value={av.armor} label="Armor" />
+						<DerivedPart auto value={av.helmet} label="Helmet" />
+						<DerivedPart auto value={av.shield} label="Shield" />
+						<DerivedPart value={av.other} label="Other" onChange={setOther} />
 						<DerivedPart
 							auto
-							value={av.auto || 0}
+							value={av.auto}
 							label="Auto"
 							sx={{ width: '4rem' }}
 						/>

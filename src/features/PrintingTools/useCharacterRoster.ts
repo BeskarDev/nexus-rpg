@@ -7,7 +7,7 @@
  * list, because it prints for a party — and a second copy of the fetch is a
  * second place for the migration to be forgotten.
  *
- * `migrateStoredCharacter` is the load-bearing part: the sheet app migrates on
+ * `prepareStoredCharacter` is the load-bearing part: the sheet app migrates on
  * fetch and this path did not, so a character saved before items gained
  * `location` printed with an empty inventory (M19, owner-reported).
  */
@@ -16,6 +16,33 @@ import { firebaseService } from '@site/src/dev/firebaseService'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import type { CharacterDocument } from '@site/src/types/Character'
 import { migrateStoredCharacter } from '../CharacterSheet/utils/migrateDoc'
+import { migrateCharacterData } from '../CharacterSheet/utils/characterMigration'
+
+/**
+ * A stored character, brought to the shape the sheet app holds it in.
+ *
+ * Both migration layers, in the order the app runs them: `migrateStoredCharacter`
+ * (what `migrateDoc` does on fetch, minus the URL-bound `personal` step) and then
+ * `migrateCharacterData` (what the `setCharacter` action does). The print path ran
+ * only the first, so it printed stored skill ranks and item loads the app had
+ * already corrected.
+ *
+ * The input is not mutated: `migrateStoredCharacter` returns fresh
+ * `statistics`, `skills`, `items` and `spells` objects, and `personal` (the
+ * one part `migrateCharacterData` edits that it does not rebuild) is copied here.
+ * No deep clone, because a stored document can hold a `DocumentReference` and
+ * Firestore timestamps that must survive for the card tools.
+ */
+export const prepareStoredCharacter = <T extends object>(data: T): T => {
+	const migrated: Record<string, unknown> = migrateStoredCharacter(
+		data as Record<string, unknown>,
+	)
+	if (migrated.personal)
+		migrated.personal = { ...(migrated.personal as object) }
+	return migrateCharacterData(
+		migrated as unknown as CharacterDocument,
+	) as unknown as T
+}
 
 export interface CharacterRoster {
 	/** Filtered by the admin "view as" toggle, ready to list. */
@@ -42,7 +69,7 @@ export function useCharacterRoster(): CharacterRoster {
 		try {
 			const userUid = currentUser?.uid || 'dev-user'
 			const userChars = (await firebaseService.getCollection(userUid)).map(
-				migrateStoredCharacter,
+				prepareStoredCharacter,
 			)
 			const userInfo = await firebaseService.getUserInfo(userUid)
 
@@ -51,7 +78,7 @@ export function useCharacterRoster(): CharacterRoster {
 				for (const adminCollectionId of userInfo.allowedCollections) {
 					const adminChars = (
 						await firebaseService.getCollection(adminCollectionId)
-					).map(migrateStoredCharacter)
+					).map(prepareStoredCharacter)
 					allChars.push(...adminChars)
 				}
 				setAllCharacters(allChars)

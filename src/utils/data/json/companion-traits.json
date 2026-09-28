@@ -270,7 +270,7 @@
 		"resistances": "-",
 		"weaknesses": "-",
 		"attack 1": "<strong>Bite</strong> (<em>crush</em>). Deals normal weapon damage. On a strong or critical hit against a creature of equal or smaller Size, the target is grappled. While grappled, this attack can't be used against any other target.",
-		"attack 2": "<strong>Death Roll.</strong> Can only be used against a target grappled by this creature. This creature makes a bite attack and gains +1 boon on the roll. On a hit, the target is knocked prone.",
+		"attack 2": "<strong>Death Roll.</strong> While grappling a target, this creature can use their Quick Action on their turn to make a bite attack with +1 boon against the target. On a hit, the target is knocked prone.",
 		"ability 1": "<strong>Ambush Predator.</strong> When this creature hits an enemy that is unaware of them with an attack for the first time during a scene, increase the SL of their attack by one step (max. critical success).",
 		"ability 2": "<strong>Amphibious.</strong> This creature can hold their breath underwater for a medium duration and can swim with normal Movement.",
 		"ability 3": "-"

@@ -1,5 +1,6 @@
 import { AttributeType, Character } from '@site/src/types/Character'
 import { calculateCharacterLevel } from './calculateCharacterLevel'
+import { calculateSkillRank, calculateSpentXp } from './skillUtils'
 import { extractShieldParryBonus } from '../CharacterSheetTabs/02_Items/utils/itemUtils'
 import { organizeItemsByLocation } from '../CharacterSheetTabs/02_Items/utils/itemUtils'
 
@@ -28,14 +29,18 @@ export const getSkillRank = (
 	const skill = character.skills.skills.find(
 		(s) => s.name.toLowerCase() === skillName.toLowerCase(),
 	)
-	return skill?.rank || 0
+	// The rank the XP buys, not the stored copy: a document written before ranks
+	// were recalculated on load can carry a stale `rank`.
+	return skill ? calculateSkillRank(skill.xp) : 0
 }
 
 /**
  * Calculate level bonus for defenses: +1 at levels 3, 5, 7, 9
+ *
+ * Takes SPENT XP: level comes from spent XP everywhere (owner ruling).
  */
-export const calculateDefenseLevelBonus = (totalXp: number): number => {
-	const level = calculateCharacterLevel(totalXp)
+export const calculateDefenseLevelBonus = (spentXp: number): number => {
+	const level = calculateCharacterLevel(spentXp)
 
 	// +1 to all defenses for each odd level starting at level 3
 	let bonus = 0
@@ -83,7 +88,9 @@ export const migrateCharacterDefenses = (character: Character) => {
 	const autoParryBase = calculateParryBase(character)
 	const autoDodgeBase = calculateDodgeBase(character)
 	const autoResistBase = calculateResistBase(character)
-	const autoLevelBonus = calculateDefenseLevelBonus(character.skills.xp.total)
+	const autoLevelBonus = calculateDefenseLevelBonus(
+		calculateSpentXp(character.skills.skills),
+	)
 
 	// Get shield bonus for parry
 	const itemsByLocation = organizeItemsByLocation(
@@ -97,11 +104,16 @@ export const migrateCharacterDefenses = (character: Character) => {
 	const oldDodge = character.statistics.dodge
 	const oldResist = character.statistics.resist
 
-	// Calculate discrepancies (what was manually adjusted beyond auto-calculation)
-	const parryOther =
-		oldParry - (autoParryBase + autoLevelBonus + autoShieldBonus)
-	const dodgeOther = oldDodge - (autoDodgeBase + autoLevelBonus)
-	const resistOther = oldResist - (autoResistBase + autoLevelBonus)
+	// Calculate discrepancies (what was manually adjusted beyond auto-calculation).
+	// A document with no stored total at all has nothing manual to preserve.
+	const discrepancy = (old: unknown, auto: number) =>
+		typeof old === 'number' && Number.isFinite(old) ? old - auto : 0
+	const parryOther = discrepancy(
+		oldParry,
+		autoParryBase + autoLevelBonus + autoShieldBonus,
+	)
+	const dodgeOther = discrepancy(oldDodge, autoDodgeBase + autoLevelBonus)
+	const resistOther = discrepancy(oldResist, autoResistBase + autoLevelBonus)
 
 	return {
 		parryDetails: {

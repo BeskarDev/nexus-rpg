@@ -1,6 +1,8 @@
 import { CharacterDocument } from '@site/src/types/Character'
 import { normalizeSkillName } from '../../../constants/skills'
 import { calculateSkillRank } from './skillUtils'
+import { migrateCharacterDefenses } from './calculateDefenses'
+import { migrateItemLoad } from './migrateItemLoad'
 
 /**
  * Migrates character data to ensure compatibility with current schema.
@@ -110,6 +112,9 @@ export function migrateCharacterData(
 		...item,
 	}))
 
+	// `load` is the item's only load field. Older documents stored it as `weight`.
+	character.items.items = character.items.items.map(migrateItemLoad)
+
 	// Migrate ring slots from individual slots to collective 'ring' slot
 	if (character.items.items) {
 		character.items.items = character.items.items.map((item) => {
@@ -150,6 +155,31 @@ export function migrateCharacterData(
 		if (character.items.encumbrance.storageMaxLoad === undefined) {
 			character.items.encumbrance.storageMaxLoad = 0
 		}
+	}
+
+	/*
+		Legacy defences: a document from before the detailed defence structures holds
+		only a manually typed total. The details are created from it once, with the
+		part the auto values do not explain kept in `other`, so the total reads the
+		same and from here on follows the character's skills, level and shield. This
+		used to happen only when the player opened a defence's calculator, so the
+		printed sheet and the digital one could read different totals.
+	*/
+	if (
+		character.statistics &&
+		character.skills?.skills &&
+		(!character.statistics.parryDetails ||
+			!character.statistics.dodgeDetails ||
+			!character.statistics.resistDetails) &&
+		character.statistics.strength &&
+		character.statistics.agility &&
+		character.statistics.spirit &&
+		character.statistics.mind
+	) {
+		const migrated = migrateCharacterDefenses(character)
+		character.statistics.parryDetails ??= migrated.parryDetails
+		character.statistics.dodgeDetails ??= migrated.dodgeDetails
+		character.statistics.resistDetails ??= migrated.resistDetails
 	}
 
 	// Ensure npcRelationships array exists for new unified NPC system

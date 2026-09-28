@@ -14,8 +14,7 @@ import {
 	PipStat,
 	Stat,
 } from './SheetPrimitives'
-import { calculateCharacterLevel } from '../../CharacterSheet/utils/calculateCharacterLevel'
-import { calculateMaxHp } from '../../CharacterSheet/utils/calculateHp'
+import { useDerivedCharacter } from '../../CharacterSheet/utils/deriveCharacter'
 
 /**
  * The Statistics sheet — the page that is open on the table (M16 S3, M17 S2).
@@ -63,19 +62,19 @@ import { calculateMaxHp } from '../../CharacterSheet/utils/calculateHp'
  * Fatigue as `2 / 6` asked the player to erase a digit inside a 4mm box.
  */
 export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
-	const maxHp = calculateMaxHp(
-		char.statistics.strength.value,
-		char.skills.xp.total,
-		char.statistics.health.maxHpModifier || 0,
-		char.statistics.health.auto || 0,
-	)
+	/*
+	 * Every computed number on this page comes from `deriveCharacter`, the same
+	 * derivation the digital sheet reads, and a parity test holds the two together.
+	 * The page used to read stored copies (Parry, Dodge, Resist, skill ranks) and
+	 * `health.auto`, which only the digital Skills tab wrote, so a character whose
+	 * talents had changed since printed a different HP than the app showed.
+	 */
+	const derived = useDerivedCharacter(char)
 
-	const av =
-		char.statistics.av.armor +
-		char.statistics.av.helmet +
-		char.statistics.av.shield +
-		(char.statistics.av.auto || 0) +
-		char.statistics.av.other
+	// Max HP as the digital HP card shows it: the effective ceiling, after the
+	// Fatigue penalty.
+	const maxHp = derived.hp.effectiveMax
+	const av = derived.av.total
 
 	/*
 	 * The attribute die, as the polygon whose side count IS the die size — the
@@ -156,6 +155,8 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 				key: ability.id,
 				label: ability.title,
 				action: ability.actionType,
+				// A talent is bought in ranks, and which rank decides what it does.
+				rank: category === 'Talent' ? (ability.rank ?? 1) : undefined,
 			})),
 		}))
 
@@ -217,22 +218,14 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 					width="16mm"
 					wrap
 				/>
-				<Stat
-					label="Level"
-					value={
-						typeof char.skills.xp.spend === 'number'
-							? calculateCharacterLevel(char.skills.xp.spend)
-							: ' '
-					}
-					width="14mm"
-				/>
+				<Stat label="Level" value={derived.level} width="14mm" />
 				{/* Spent and total were two cells whose labels both wrapped. They are one
 					value in practice — what is spent OF what is earned — and reading them as
 					a pair is the only reason either is on the page. */}
 				<Stat
 					label="XP"
 					sigil="xp"
-					value={`${char.skills.xp.spend} / ${char.skills.xp.total}`}
+					value={`${derived.spentXp} / ${char.skills.xp.total}`}
 					width="22mm"
 				/>
 			</Band>
@@ -253,19 +246,19 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 					<Stat
 						label="Parry"
 						sigil="parry"
-						value={char.statistics.parry}
+						value={derived.parry.total}
 						width="13mm"
 					/>
 					<Stat
 						label="Dodge"
 						sigil="dodge"
-						value={char.statistics.dodge}
+						value={derived.dodge.total}
 						width="13mm"
 					/>
 					<Stat
 						label="Resist"
 						sigil="resist"
-						value={char.statistics.resist}
+						value={derived.resist.total}
 						width="13mm"
 					/>
 				</Band>
@@ -298,7 +291,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 							 */
 							rows={char.skills.skills
 								.filter((s) => s.name)
-								.map((s) => [s.rank, s.name, s.xp])}
+								.map((s) => [derived.skillRanks[s.name] ?? 0, s.name, s.xp])}
 						/>
 					</Group>
 				</div>

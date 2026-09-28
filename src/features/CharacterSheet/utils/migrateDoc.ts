@@ -18,6 +18,9 @@ import { ABILITY_TAGS } from '../../../types/AbilityTag'
 import { normalizeSkillName } from '../../../constants/skills'
 import { db } from '@site/src/config/firebase'
 import { calculateMaxHp } from './calculateHp'
+import { calculateSkillRank, calculateSpentXp } from './skillUtils'
+import { calculateTalentHpBonus } from './calculateTalentHpBonus'
+import { migrateItemLoad } from './migrateItemLoad'
 import { calculateCharacterLevel } from './calculateCharacterLevel'
 
 /**
@@ -41,7 +44,8 @@ export const migrateStoredCharacter = <T extends Record<string, any>>(
 ): T => {
 	const migrated: Record<string, any> = { ...data }
 
-	if (data.statistics) migrated.statistics = migrateStatistics(data.statistics)
+	if (data.statistics)
+		migrated.statistics = migrateStatistics(data.statistics, data.skills)
 	if (data.skills) migrated.skills = migrateSkills(data.skills)
 	if (data.items) migrated.items = migrateItems(data.items)
 	if (data.spells) migrated.spells = migrateSpells(data.spells)
@@ -99,7 +103,7 @@ export const migrateDoc = async (
 	return migratedDoc
 }
 
-const migrateStatistics = (data: any): Statistics => {
+const migrateStatistics = (data: any, skillsData?: any): Statistics => {
 	// Migrate old wound structure to new format
 	let migratedData = { ...data }
 
@@ -172,12 +176,23 @@ const migrateStatistics = (data: any): Statistics => {
 		// Use calculation functions from local utils
 		// calculateMaxHp and calculateCharacterLevel imported at module top
 
-		// We need XP total to calculate level, so we'll need to handle this case where we might not have it
-		// For migration, we'll assume level 1 if we can't determine the level
-		const xpTotal = data.skills?.xp?.total || 0
+		// The old total was typed by hand and already held the level bonus and any
+		// talent bonus, so both are taken out before the rest becomes the modifier.
+		// Level comes from SPENT XP everywhere (owner ruling), which needs the skills
+		// block. Reading level 1 here counted the level bonus twice: a level 4
+		// character with a correct 24 HP came out at 30.
+		const skillsList = skillsData?.skills ?? []
+		const xpSpent = calculateSpentXp(skillsList)
+		const mysticism = skillsList.find(
+			(skill: any) => normalizeSkillName(skill?.name ?? '') === 'Mysticism',
+		)
+		const autoHp = calculateTalentHpBonus(
+			skillsData?.abilities ?? [],
+			calculateSkillRank(Number(mysticism?.xp) || 0),
+		)
 		const strength = migratedData.strength?.value || 4
 
-		const newAutoMaxHp = calculateMaxHp(strength, xpTotal, 0, 0)
+		const newAutoMaxHp = calculateMaxHp(strength, xpSpent, 0, autoHp)
 		const maxHpModifier = oldMaxHp - newAutoMaxHp
 
 		// Migrate health structure
@@ -362,7 +377,7 @@ const migrateItems = (data: any): Items => {
 			location: weapon.location || 'worn',
 		})),
 		items: (data.items || []).map((item) => ({
-			...item,
+			...migrateItemLoad(item),
 			id: item.id || crypto.randomUUID(),
 			container: item.container || 'backpack',
 			location: determineItemLocation(item) || 'carried',

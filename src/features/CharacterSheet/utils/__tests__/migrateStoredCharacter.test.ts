@@ -72,4 +72,48 @@ describe('migrateStoredCharacter', () => {
 
 		expect(migrated.personal).toBe(personal)
 	})
+
+	// A document from before HP was derived (owner-reported): `health.total` was typed
+	// by hand and already held the level bonus. The migration read level 1, so the
+	// level bonus landed in the modifier as well and a level 4 character with a
+	// correct 24 HP printed and played at 30.
+	it('keeps a hand-typed legacy HP total instead of adding the level bonus twice', () => {
+		const migrated = migrateStoredCharacter({
+			statistics: {
+				strength: { value: 6, wounded: false },
+				agility: { value: 8, wounded: false },
+				spirit: { value: 10, wounded: false },
+				mind: { value: 4, wounded: false },
+				health: { total: 24, current: 24, temp: 0 },
+			},
+			skills: {
+				xp: { total: 30, spend: 30 },
+				skills: [
+					{ id: 's1', name: 'Nature', xp: 20 },
+					{ id: 's2', name: 'Survival', xp: 10 },
+				],
+				abilities: [],
+			},
+		} as any)
+
+		expect(migrated.statistics.health.maxHpModifier).toBe(0)
+	})
+
+	it('keeps the part of a legacy total above the derived HP as the modifier', () => {
+		const migrated = migrateStoredCharacter({
+			statistics: {
+				strength: { value: 6, wounded: false },
+				agility: { value: 8, wounded: false },
+				spirit: { value: 10, wounded: false },
+				mind: { value: 4, wounded: false },
+				health: { total: 27, current: 27, temp: 0 },
+			},
+			skills: {
+				skills: [{ id: 's1', name: 'Nature', xp: 30 }],
+				abilities: [],
+			},
+		} as any)
+
+		expect(migrated.statistics.health.maxHpModifier).toBe(3)
+	})
 })

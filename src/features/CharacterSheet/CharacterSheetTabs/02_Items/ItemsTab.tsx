@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { Box } from '@mui/material'
 
 import { Item, Weapon } from '../../../../types/Character'
@@ -12,6 +12,11 @@ import {
 } from './SearchDialog'
 import { ItemsHeader, ItemsSettingsMenu, InventorySection } from './components'
 import { useItemManagement } from './hooks'
+import { RefreshUpdatesDialog } from '../../components/RefreshUpdatesDialog'
+import {
+	computeItemUpdates,
+	computeWeaponUpdates,
+} from '../../utils/computeContentUpdates'
 
 export const ItemsTab: React.FC = () => {
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
@@ -88,6 +93,40 @@ export const ItemsTab: React.FC = () => {
 		getLocationLoad,
 	} = useItemManagement(activeCharacter)
 
+	// Items and weapons that drifted from the rulebook tables, as one list: the
+	// tab is one inventory to the player, so it is one refresh.
+	const [isRefreshDialogOpen, setIsRefreshDialogOpen] = useState(false)
+	const itemUpdates = useMemo(() => computeItemUpdates(items), [items])
+	const weaponUpdates = useMemo(() => computeWeaponUpdates(weapons), [weapons])
+	const refreshEntries = useMemo(
+		() => [
+			...weaponUpdates.map((u) => ({
+				id: `weapon:${u.id}`,
+				name: u.name,
+				meta: ['Weapon'],
+				changes: u.changes,
+			})),
+			...itemUpdates.map((u) => ({
+				id: `item:${u.id}`,
+				name: u.name,
+				meta: [u.kind === 'armor' ? 'Armor' : 'Equipment'],
+				changes: u.changes,
+			})),
+		],
+		[itemUpdates, weaponUpdates],
+	)
+
+	const applyItemUpdates = (selectedIds: string[]) => {
+		const idSet = new Set(selectedIds)
+		weaponUpdates
+			.filter((u) => idSet.has(`weapon:${u.id}`))
+			.forEach((u) => updateWeapon(u.next, u.index))
+		itemUpdates
+			.filter((u) => idSet.has(`item:${u.id}`))
+			.forEach((u) => updateItem(u.next, u.index))
+		setIsRefreshDialogOpen(false)
+	}
+
 	const handleSettingsMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
 		setSettingsMenuAnchor(event.currentTarget)
 	}
@@ -114,6 +153,8 @@ export const ItemsTab: React.FC = () => {
 				onSettingsMenuClose={handleSettingsMenuClose}
 				onToggleLocationVisibility={toggleLocationVisibility}
 				onOpenMagicItemBuilder={() => setMagicItemBuilderOpen(true)}
+				refreshCount={refreshEntries.length}
+				onOpenRefresh={() => setIsRefreshDialogOpen(true)}
 				header={
 					<ItemsHeader
 						coins={coins}
@@ -319,6 +360,16 @@ export const ItemsTab: React.FC = () => {
 				onImportEquipment={handleImportEquipmentToLocation}
 				character={activeCharacter}
 				targetLocation={equipmentSearchLocation}
+			/>
+
+			<RefreshUpdatesDialog
+				open={isRefreshDialogOpen}
+				onClose={() => setIsRefreshDialogOpen(false)}
+				title="Refresh items from rulebook"
+				itemNoun="item"
+				metaColumns={[{ label: 'Type', width: '7rem' }]}
+				entries={refreshEntries}
+				onConfirm={applyItemUpdates}
 			/>
 
 			<MagicItemBuilderDialog

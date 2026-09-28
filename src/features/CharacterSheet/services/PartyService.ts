@@ -15,6 +15,7 @@ import { db } from '@site/src/config/firebase'
 import { Party, PartyMember, PartyInfo } from '@site/src/types/Party'
 import { CharacterDocument } from '@site/src/types/Character'
 import { calculateCharacterLevel } from '../utils/calculateCharacterLevel'
+import { calculateSpentXp } from '../utils/skillUtils'
 import { logger } from '../utils'
 
 export class PartyService {
@@ -109,7 +110,9 @@ export class PartyService {
 						playerName: charData.personal.playerName,
 						folk: charData.personal.folk,
 						background: charData.personal.background,
-						level: calculateCharacterLevel(charData.skills.xp.spend || 0),
+						level: calculateCharacterLevel(
+							calculateSpentXp(charData.skills?.skills),
+						),
 						profilePicture: charData.personal.profilePicture,
 					})
 				}

@@ -1,0 +1,168 @@
+/* The Companion Builder's Bond register (the owner's Animal Companion talent and
+   Wild Companion spell).
+   ==========================================================================
+
+   Built from the shared builder vocabulary in `components/builder/codexBuilder.css`
+   and scoped under `.codex-builder` like it, because the dialog portals out of the
+   sheet and also mounts bare on a docs page. Only what the register adds is here. */
+
+/* A rail of any length whose plates share the width evenly: the talent's four
+   ranks, the two options of a "choose one", the three cast ranks, Nature's seven. */
+.codex-builder .cb-rail--even {
+	grid-auto-flow: column;
+	grid-auto-columns: minmax(0, 1fr);
+}
+
+.codex-builder .cb-bond {
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+}
+.codex-builder .cb-bond__field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+.codex-builder .cb-bond__label {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.1rem 0.4rem;
+	margin: 0;
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-2xs);
+	font-weight: 700;
+	font-variant-caps: small-caps;
+	letter-spacing: 0.08em;
+	color: var(--cb-ink);
+}
+.codex-builder .cb-bond__label-note {
+	font-weight: 400;
+	font-variant-caps: normal;
+	letter-spacing: 0;
+	font-size: var(--nexus-text-3xs);
+	color: var(--cb-ink-quiet);
+}
+.codex-builder .cb-bond__figure-pair {
+	display: inline-flex;
+	gap: 1px;
+}
+
+/* A readout under a choice: what it does. The grant line's treatment, a flat wash
+   and no keyline, because nothing in it can be pressed. */
+.codex-builder .cb-bond__hint {
+	margin: 0.2rem 0 0;
+	padding: 0.3rem 0.5rem;
+	background: color-mix(in srgb, var(--nexus-bronze) 7%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	line-height: 1.35;
+	color: var(--cb-ink-quiet);
+}
+.codex-builder .cb-bond__hint b {
+	color: var(--cb-ink);
+}
+
+/* The Combat Arts ledger holds twenty-nine rows and sits OUTSIDE the growing
+   register, so it carries its own cap and scrolls inside it. */
+.codex-builder .cb-bond__arts {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+}
+.codex-builder .cb-bond__arts .cb-ledger__filters {
+	margin: 0;
+}
+.codex-builder .cb-bond__arts .cb-ledger__rows {
+	flex: none;
+	max-height: 11rem;
+	min-height: 0;
+	overflow-y: auto;
+}
+
+/* The Tier the owner cannot control. A readout (no keyline), in the danger ink the
+   sheet uses for an over-limit value, so it reads as a warning rather than as
+   another grant. */
+.codex-builder .cb-bond-warning {
+	margin: 0.4rem 0 0;
+	padding: 0.35rem 0.5rem;
+	background: color-mix(in srgb, var(--cs-danger, #a33) 9%, transparent);
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	line-height: 1.35;
+	color: color-mix(
+		in srgb,
+		var(--cs-danger, #a33) 75%,
+		var(--ifm-font-color-base)
+	);
+}
+
+/* ── The toggle ──────────────────────────────────────────────────────────────
+   `.pt-toggle` from the print tools, restated on the builder's tokens (that
+   stylesheet is loaded by the print shell only). Not MUI's `Switch`: a sliding pill
+   with a filled knob is the radius, the colour mass and the motion `CheckMark` was
+   drawn to take out of this site. The input is visually hidden rather than
+   `display: none`, so it keeps focus, and the socket carries the focus ring. */
+.codex-builder .cb-toggle {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	margin-top: 0.2rem;
+	cursor: pointer;
+}
+.codex-builder .cb-toggle--disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+.codex-builder .cb-toggle__input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+.codex-builder .cb-toggle__mark {
+	flex: none;
+	margin-top: 0.05rem;
+	color: var(--cb-ink-quiet);
+	line-height: 0;
+}
+.codex-builder .cb-toggle__input:checked + .cb-toggle__mark {
+	color: var(--nexus-bronze);
+}
+.codex-builder .cb-toggle__input:focus-visible + .cb-toggle__mark {
+	outline: 2px solid var(--nexus-bronze);
+	outline-offset: 2px;
+}
+.codex-builder .cb-toggle__text {
+	font-family: var(--nexus-font-ui);
+	font-size: var(--nexus-text-xs);
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+	color: var(--cb-ink);
+}
+.codex-builder .cb-toggle__note {
+	display: block;
+	margin-top: 0.1rem;
+	font-variant-caps: normal;
+	letter-spacing: 0;
+	color: var(--cb-ink-quiet);
+}
+
+/* Seven Nature plates on a phone-width pane: two rows rather than seven slivers. */
+@media (max-width: 559.98px) {
+	.codex-builder .cb-bond .cb-rail--even:has(> :nth-child(5)) {
+		grid-auto-flow: row;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+/* Closing the register is optional (its summary is what shows once closed), so the
+   verb takes the quiet disclosure treatment the markdown source uses. */
+.codex-builder .cb-bond__close {
+	margin-top: 0.4rem;
+}

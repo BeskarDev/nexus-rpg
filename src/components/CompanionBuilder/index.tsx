@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import {
 	BuilderRegister,
@@ -29,6 +29,11 @@ import SigilIcon from '../codex/SigilIcon'
 import { MOVEMENT_SIGIL } from './companionMarks'
 import { CreatureLedger } from './CreatureLedger'
 import { CompanionPlate } from './CompanionPlate'
+import { BondRegisterBody, bondRegisterSummary } from './BondRegister'
+import {
+	bondFromOwner,
+	bondTierLimit,
+} from '../../utils/typescript/companion/companionBond'
 
 const TRAITS = companionTraits as CompanionTrait[]
 const ALL_SIZES = ['Tiny', 'Small', 'Medium', 'Large', 'Huge']
@@ -78,13 +83,41 @@ const signed = (value: number) => (value >= 0 ? `+${value}` : String(value))
  */
 export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 	onImportCompanion,
+	owner,
 }) => {
 	const [open, setOpen] = useState(false)
 	const [showSource, setShowSource] = useState(false)
 	const [copied, setCopied] = useState(false)
 	const dispatch = useDispatch()
 	const { state, builtCompanion } = useCompanionBuilderState()
-	const { tier, size, trait } = state
+	const { tier, size, trait, bond } = state
+	// Open while the owner has the talent, so its effects are visible at a glance.
+	const [bondOpen, setBondOpen] = useState(() =>
+		Boolean(owner && owner.talentRank > 0),
+	)
+
+	/*
+		Prefill the bond from the character, once per owner state.
+
+		The key is the owner's facts, so a player who levels the talent or learns the
+		spell gets a fresh prefill, while one who only reopens the builder keeps what
+		they edited. The docs page passes no owner and starts with no bond.
+	*/
+	const ownerKey = owner
+		? `${owner.talentRank}:${owner.nature ?? '-'}:${owner.knowsWildCompanion}`
+		: null
+	useEffect(() => {
+		if (!owner || !ownerKey) return
+		dispatch(
+			companionBuilderActions.prefillBond({
+				key: ownerKey,
+				bond: bondFromOwner(owner),
+			}),
+		)
+		// Keyed on the owner's facts, not the object: `owner` is fresh per render.
+	}, [dispatch, ownerKey])
+
+	const tierLimit = bondTierLimit(bond)
 
 	const base = BASE_STATS[tier]
 	const availableSizes = getAvailableSizes(tier)
@@ -198,8 +231,8 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 	/** The commission as a sentence, or the one thing still missing. */
 	const commission = builtCompanion ? (
 		<>
-			<b>{trait!.name}</b> — {size} {trait!.type}, tier {tier}{' '}
-			{TIER_NAMES[tier]}
+			<b>{trait!.name}</b> — {size} {builtCompanion.calculatedStats.type}, tier{' '}
+			{tier} {TIER_NAMES[tier]}
 		</>
 	) : !size ? (
 		<>Choose a size</>
@@ -220,7 +253,7 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 				commission={commission}
 				result={
 					<>
-						<CompanionPlate tier={tier} size={size} trait={trait} />
+						<CompanionPlate tier={tier} size={size} trait={trait} bond={bond} />
 
 						<div className="cb-source">
 							<button
@@ -285,6 +318,20 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 						value={tier}
 						onChange={setTier}
 					/>
+					{/* A warning, not a lock: the rule caps what the OWNER can control,
+						and a companion built here may be meant for someone else. */}
+					{tierLimit !== null && tier > tierLimit && (
+						<p className="cb-bond-warning" role="status">
+							{tierLimit < 0
+								? `With two companions and Nature ${bond.nature}, the owner cannot control a companion of any Tier.`
+								: `Tier ${tier} is above what the owner can control. Animal Companion allows Tier ${tierLimit} or lower (Nature ${bond.nature}${
+										bond.talentRank >= 2 &&
+										bond.rank2Choice === 'two-companions'
+											? ' - 1 for two companions'
+											: ''
+									}).`}
+						</p>
+					)}
 					<GrantLine
 						pairs={[
 							['HP', base.hp],
@@ -333,6 +380,32 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 						selected={trait}
 						onSelect={setTrait}
 					/>
+				</BuilderRegister>
+
+				<BuilderRegister
+					step="IV"
+					label="Bond"
+					note="the owner’s Animal Companion talent and Wild Companion"
+					open={bondOpen}
+					onOpen={() => setBondOpen(true)}
+					summary={bondRegisterSummary(bond)}
+				>
+					<BondRegisterBody
+						bond={bond}
+						onChange={(update) =>
+							dispatch(companionBuilderActions.updateBond(update))
+						}
+						onToggleCombatArt={(name) =>
+							dispatch(companionBuilderActions.toggleBondCombatArt(name))
+						}
+					/>
+					<button
+						type="button"
+						className="cb-source__toggle cb-bond__close"
+						onClick={() => setBondOpen(false)}
+					>
+						▴ Done
+					</button>
 				</BuilderRegister>
 			</BuilderShell>
 		</>

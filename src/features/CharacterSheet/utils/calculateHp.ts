@@ -26,17 +26,18 @@ export const calculateBaseHpFromStrength = (
  * where STR_VALUE comes from the table (16, 18, 20, 22, 24)
  *
  * @param strength - The character's strength attribute die
- * @param totalXp - Total XP for calculating level bonus
+ * @param spentXp - SPENT XP (the sum of every skill's XP). Level comes from spent XP
+ *   everywhere (owner ruling), so unspent XP never raises max HP.
  * @param maxHpModifier - User-defined modifier (custom override)
  * @param auto - Auto-calculated bonus from talents and other sources (optional, defaults to 0)
  */
 export const calculateMaxHp = (
 	strength: AttributeType,
-	totalXp: number,
+	spentXp: number,
 	maxHpModifier: number = 0,
 	auto: number = 0,
 ): number => {
-	const level = calculateCharacterLevel(totalXp)
+	const level = calculateCharacterLevel(spentXp)
 	const baseHp = calculateBaseHpFromStrength(strength)
 	const levelBonus = (level - 1) * 2 // Level 1 = no bonus, Level 2 = +2, etc.
 

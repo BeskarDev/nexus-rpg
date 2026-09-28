@@ -18,7 +18,7 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 import { Character } from '../../../../types/Character'
-import { calculateMaxHp } from '../../utils/calculateHp'
+import { useDerivedCharacter } from '../../utils/deriveCharacter'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { useDeviceSize } from '../../utils/useDeviceSize'
 
@@ -114,13 +114,13 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 	const [dialogType, setDialogType] = useState<RestingType>('shortBreak')
 	const { isMobile } = useDeviceSize()
 
-	// Calculate current max HP using the new formula (includes talent bonus)
-	const currentMaxHp = calculateMaxHp(
-		character.statistics.strength.value,
-		character.skills.xp.total,
-		character.statistics.health.maxHpModifier || 0,
-		character.statistics.health.auto || 0,
-	)
+	// Rest restores to the DERIVED ceilings, the same numbers the HP card and the
+	// Focus field show. Focus used to restore to the stored `focus.total`, a copy
+	// written only at character creation, so a character who had since ranked up
+	// their magic skill rested back to their level-1 pool.
+	const derived = useDerivedCharacter(character)
+	const currentMaxHp = derived.hp.effectiveMax
+	const maxFocus = derived.focus.max
 
 	const handleOpen = (type: RestingType) => {
 		setDialogType(type)
@@ -179,7 +179,7 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 					},
 					spells: {
 						focus: {
-							current: character.spells.focus.total,
+							current: maxFocus,
 						},
 					},
 				})
@@ -193,9 +193,8 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 					spells: {
 						focus: {
 							current: Math.min(
-								character.spells.focus.total,
-								character.spells.focus.current +
-									Math.floor(character.spells.focus.total / 2),
+								maxFocus,
+								character.spells.focus.current + Math.floor(maxFocus / 2),
 							),
 						},
 					},

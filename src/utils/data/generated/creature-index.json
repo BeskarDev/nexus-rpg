@@ -658,16 +658,15 @@
 						"crush"
 					],
 					"text": "7/10/13 damage. On a strong or critical hit against a creature of equal or smaller size, the target is grappled. While grappling, this attack cannot be used against any other target."
-				},
-				{
-					"name": "Death Roll",
-					"properties": [
-						"crush"
-					],
-					"text": "Only against a target this creature has grappled. 7/10/13 damage, and the target falls prone."
 				}
 			],
-			"abilities": [],
+			"abilities": [
+				{
+					"name": "Death Roll",
+					"qualifier": "Quick Action",
+					"text": "This creature makes a Bite attack against a target they are grappling. On a hit, the target also falls prone."
+				}
+			],
 			"environment": [
 				"River",
 				"Marsh",

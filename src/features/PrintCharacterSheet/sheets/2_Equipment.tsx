@@ -10,12 +10,14 @@ import {
 } from './SheetPrimitives'
 import type { SigilSlot, WornSlot } from './SheetPrimitives'
 import {
-	BaseDamageType,
 	Character,
 	Damage,
 	EquipmentSlotType,
 	Item,
 } from '@site/src/types/Character'
+import { useDerivedCharacter } from '../../CharacterSheet/utils/deriveCharacter'
+import { calculateDamageValue } from '../../CharacterSheet/utils/calculateDamageDisplay'
+import { getItemLoad } from '../../CharacterSheet/CharacterSheetTabs/02_Items/utils/itemUtils'
 
 /**
  * The Equipment sheet, and the printed register's first proof (M16 S1, M17 S3).
@@ -83,36 +85,16 @@ const WORN_SLOTS: {
 ]
 
 export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
-	const calculateBaseDamage = (base: BaseDamageType) => {
-		switch (base) {
-			case 'STR':
-				return char.statistics.strength.value / 2
-			case 'AGI':
-				return char.statistics.agility.value / 2
-			case 'SPI':
-				return char.statistics.spirit.value / 2
-			case 'MND':
-				return char.statistics.mind.value / 2
-			default:
-				return 0
-		}
-	}
-
-	const printDamageField = ({
-		base,
-		weapon,
-		other,
-		otherWeak,
-		otherStrong,
-		otherCritical,
-	}: Damage) => {
-		const baseDamage = calculateBaseDamage(base)
-		return [
-			baseDamage + weapon + other + otherWeak,
-			baseDamage + weapon * 2 + other + otherStrong,
-			baseDamage + weapon * 3 + other + otherCritical,
-		].join('/')
-	}
+	/*
+	 * Every computed number on this page comes from `deriveCharacter` and the shared
+	 * damage util, the same code the digital Items tab reads. The page used to print
+	 * `encumberedAt` and `overencumberedAt`, which nothing ever wrote (so both were
+	 * always 0), a stored `currentLoad`, and its own copy of the damage formula
+	 * that ignored static damage.
+	 */
+	const derived = useDerivedCharacter(char)
+	const printDamageField = (damage: Damage) =>
+		calculateDamageValue(damage, 'weapon', char)
 
 	const label = (item: { name: string; amount: number }) =>
 		`${item.name}${item.amount > 1 ? ` ×${item.amount}` : ''}`
@@ -142,7 +124,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 				sigil,
 				item: inSlot.map(label).join(', '),
 				properties: inSlot.map(properties).filter(Boolean).join(', '),
-				load: inSlot.reduce((sum, i) => sum + (i.load ?? 0), 0),
+				load: inSlot.reduce((sum, i) => sum + getItemLoad(i), 0),
 				cost: inSlot.reduce((sum, i) => sum + (i.cost ?? 0), 0),
 			}
 		}),
@@ -154,7 +136,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 				sigil: 'location-worn' as SigilSlot,
 				item: label(i),
 				properties: properties(i),
-				load: i.load,
+				load: getItemLoad(i),
 				cost: i.cost,
 			})),
 	]
@@ -189,19 +171,15 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 				<Stat
 					label="Load"
 					sigil="load"
-					value={char.items.encumbrance.currentLoad}
+					value={derived.load.current}
 					width="18mm"
 				/>
 				<Stat
 					label="Encumbered At"
-					value={char.items.encumbrance.encumberedAt}
+					value={derived.load.carryCapacity}
 					width="24mm"
 				/>
-				<Stat
-					label="Max Load"
-					value={char.items.encumbrance.overencumberedAt}
-					width="20mm"
-				/>
+				<Stat label="Max Load" value={derived.load.maxCapacity} width="20mm" />
 			</Band>
 
 			<Group name="Weapons" sigil="sword">
@@ -222,7 +200,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 						w.name,
 						w.damage ? printDamageField({ ...w.damage }) : '',
 						w.properties,
-						w.load,
+						getItemLoad(w),
 					])}
 				/>
 			</Group>
@@ -260,7 +238,9 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 							emptySigil="hp"
 							size="2.6mm"
 						/>,
-						i.load,
+						/* The row's whole load (per-unit load times amount), so the column
+						   adds up to the Load figure above. */
+						getItemLoad(i),
 						i.cost ? `${i.cost}c` : '',
 					])}
 				/>

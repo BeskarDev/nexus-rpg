@@ -1,4 +1,11 @@
-import { Ability, Damage, Spell } from '../../../types/Character'
+import { Ability, Damage, Item, Spell, Weapon } from '../../../types/Character'
+import {
+	buildItemFromSource,
+	buildWeaponFromData,
+	findItemSource,
+	findWeaponSource,
+	splitProperties,
+} from './itemFactory'
 import { buildSpellFromData, findSpellSource, MagicType } from './spellFactory'
 import { buildTalentFields, findTalentSource } from './talentFactory'
 
@@ -156,6 +163,177 @@ export const computeTalentUpdates = (abilities: Ability[]): TalentUpdate[] => {
 				rank: ability.rank,
 				changes,
 				next,
+			})
+		}
+	})
+
+	return updates
+}
+
+export type ItemUpdate = {
+	id: string
+	index: number
+	name: string
+	/** Which table the item came from. */
+	kind: 'equipment' | 'armor'
+	changes: FieldChange[]
+	next: Pick<
+		Item,
+		'description' | 'properties' | 'cost' | 'load' | 'sourceName'
+	>
+}
+
+export type WeaponUpdate = {
+	id: string
+	index: number
+	name: string
+	changes: FieldChange[]
+	next: Pick<Weapon, 'properties' | 'damage' | 'cost' | 'load' | 'sourceName'>
+}
+
+/**
+ * Prose as it compares. The tables write line breaks as `<br/>`, a sheet may
+ * hold `\n` from an older import or an edit, and the apostrophes have been both
+ * curly and straight over the book's life. None of that is a content change.
+ */
+const normalizeProse = (text: unknown): string =>
+	String(text ?? '')
+		.replace(/<br\s*\/?>/gi, '\n')
+		.replace(/[\u2018\u2019\u02BC]/g, "'")
+		.replace(/[\u201C\u201D]/g, '"')
+		.replace(/[ \t\u00A0]+/g, ' ')
+		.split('\n')
+		.map((line) => line.trim())
+		.join('\n')
+		.replace(/\n{2,}/g, '\n')
+		.trim()
+
+const pushProseChange = (
+	changes: FieldChange[],
+	field: string,
+	before: unknown,
+	after: unknown,
+) => {
+	if (normalizeProse(before) !== normalizeProse(after)) {
+		changes.push({
+			field,
+			before: String(before ?? ''),
+			after: String(after ?? ''),
+		})
+	}
+}
+
+const joinProperties = (properties: unknown): string =>
+	splitProperties(properties).join(', ')
+
+/**
+ * Compares every item against the equipment and armor tables (matched by the
+ * recorded `sourceName`, then by normalised name) and returns one entry per item
+ * whose rulebook fields drifted. Magic items and homebrew are skipped.
+ *
+ * Only the rulebook's fields go into `next`. The player's name (with any tag they
+ * added), amount, location, container, slot, uses, durability, quality and notes
+ * about mount or storage are never touched.
+ */
+export const computeItemUpdates = (items: Item[]): ItemUpdate[] => {
+	const updates: ItemUpdate[] = []
+
+	items.forEach((item, index) => {
+		const source = findItemSource(item)
+		if (!source) return
+
+		const canonical = buildItemFromSource(source)
+		const changes: FieldChange[] = []
+
+		// Armor has no description in the table, so a player's own note on it is
+		// theirs and not a drift.
+		const takesDescription = !!canonical.description
+		if (takesDescription) {
+			pushProseChange(
+				changes,
+				'Description',
+				item.description,
+				canonical.description,
+			)
+		}
+		pushChange(
+			changes,
+			'Properties',
+			joinProperties(item.properties),
+			joinProperties(canonical.properties),
+		)
+		pushChange(changes, 'Load', item.load ?? 0, canonical.load)
+		pushChange(changes, 'Cost', item.cost ?? 0, canonical.cost)
+
+		if (changes.length) {
+			updates.push({
+				id: item.id,
+				index,
+				name: item.name,
+				kind: source.kind,
+				changes,
+				next: {
+					...(takesDescription ? { description: canonical.description } : {}),
+					properties: canonical.properties,
+					cost: canonical.cost,
+					load: canonical.load,
+					sourceName: canonical.sourceName,
+				},
+			})
+		}
+	})
+
+	return updates
+}
+
+/**
+ * Compares every weapon against the weapons table. Diffs properties, weapon
+ * damage, load and cost. The description is not compared: the table has none,
+ * the importer writes a synthetic one, and players keep notes there. The damage
+ * base attribute, the extra damage figures and the damage type stay the player's.
+ */
+export const computeWeaponUpdates = (weapons: Weapon[]): WeaponUpdate[] => {
+	const updates: WeaponUpdate[] = []
+
+	weapons.forEach((weapon, index) => {
+		const source = findWeaponSource(weapon)
+		if (!source) return
+
+		const canonical = buildWeaponFromData(source)
+		const changes: FieldChange[] = []
+
+		pushChange(
+			changes,
+			'Properties',
+			joinProperties(weapon.properties),
+			joinProperties(canonical.properties),
+		)
+		pushChange(
+			changes,
+			'Damage',
+			weapon.damage?.weapon ?? 0,
+			canonical.damage.weapon,
+		)
+		pushChange(changes, 'Load', weapon.load ?? 0, canonical.load)
+		pushChange(changes, 'Cost', weapon.cost ?? 0, canonical.cost)
+
+		if (changes.length) {
+			updates.push({
+				id: weapon.id,
+				index,
+				name: weapon.name,
+				changes,
+				next: {
+					properties: canonical.properties,
+					damage: {
+						...canonical.damage,
+						...weapon.damage,
+						weapon: canonical.damage.weapon,
+					},
+					cost: canonical.cost,
+					load: canonical.load,
+					sourceName: canonical.sourceName,
+				},
 			})
 		}
 	})

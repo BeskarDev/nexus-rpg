@@ -15,10 +15,8 @@ import {
 } from '@mui/material'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useForm, Controller, UseFormReturn } from 'react-hook-form'
-import { CharacterDocument } from '../../../../types/Character'
 import { ListSectionHeader, RuleInfo, UnifiedListItem } from '../../components'
 
-import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
@@ -35,9 +33,6 @@ import {
 	DEFAULT_LANGUAGE,
 } from '../../../../constants/languages'
 import { calculateSkillRank } from '../../utils'
-import { calculateTalentHpBonus } from '../../utils/calculateTalentHpBonus'
-import { calculateTalentFocusBonus } from '../../utils/calculateTalentFocusBonus'
-import { calculateFolkAvBonus } from '../../utils/calculateFolkAvBonus'
 import {
 	createSkillXpSchema,
 	calculateMaxXpPerSkill,
@@ -246,22 +241,13 @@ export const SkillsTab: React.FC = () => {
 		return () => clearTimeout(timeoutId)
 	}, [skillsFormData])
 
-	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
-		dispatch(characterSheetActions.updateCharacter(update))
-	}
-
 	const spendXP = useMemo(
 		() => skills.map((s) => s.xp).reduce((partialSum, a) => partialSum + a, 0),
 		[skills],
 	)
 
-	// Sync the derived spend total back into the character. Done in an effect (not
-	// during render) so we never dispatch while another component is rendering.
-	useEffect(() => {
-		if (spendXP != xp.spend) {
-			updateCharacter({ skills: { xp: { spend: spendXP } } })
-		}
-	}, [spendXP, xp.spend])
+	// `skills.xp.spend` is mirrored from the same sum by `useSyncDerivedCharacter`
+	// at the sheet's root, so it is current whichever tab is open.
 
 	// Get currently selected skill names
 	const selectedSkillNames = useMemo(
@@ -269,63 +255,9 @@ export const SkillsTab: React.FC = () => {
 		[skills],
 	)
 
-	// Auto-calculate HP, AV, and Focus bonuses from talents/folk abilities (stored separately from user modifiers)
-	useEffect(() => {
-		const mysticismSkill = skills.find((s) => s.name === 'Mysticism')
-		const mysticismRank = mysticismSkill?.rank || 0
-
-		// Calculate HP bonus from talents
-		const calculatedHpBonus = calculateTalentHpBonus(
-			activeCharacter.skills.abilities,
-			mysticismRank,
-		)
-
-		const currentAutoHpBonus = activeCharacter.statistics.health.auto || 0
-
-		// Calculate AV bonus from folk abilities
-		// Check if armor is equipped based on current AV values
-		const hasArmorEquipped = activeCharacter.statistics.av.armor > 0
-		const calculatedAvBonus = calculateFolkAvBonus(
-			activeCharacter.skills.abilities,
-			hasArmorEquipped,
-		)
-
-		const currentAutoAvBonus = activeCharacter.statistics.av.auto || 0
-
-		// Calculate Focus bonus from talents
-		const calculatedFocusBonus = calculateTalentFocusBonus(
-			activeCharacter.skills.abilities,
-		)
-
-		const currentAutoFocusBonus = activeCharacter.spells?.focus?.auto ?? 0
-
-		// Update if any value changed
-		if (
-			calculatedHpBonus !== currentAutoHpBonus ||
-			calculatedAvBonus !== currentAutoAvBonus ||
-			calculatedFocusBonus !== currentAutoFocusBonus
-		) {
-			updateCharacter({
-				statistics: {
-					health: {
-						auto: calculatedHpBonus,
-					},
-					av: {
-						auto: calculatedAvBonus,
-					},
-				},
-				spells: {
-					focus: {
-						auto: calculatedFocusBonus,
-					},
-				},
-			})
-		}
-	}, [
-		activeCharacter.skills.abilities,
-		activeCharacter.statistics.av.armor,
-		skills,
-	])
+	// The talent and folk bonuses to HP, AV and Focus are derived, not written back
+	// from here (`deriveCharacter`). This tab used to own that effect, so they were
+	// only current while the Skills tab had been mounted.
 
 	// Get available skills (not yet selected)
 	const availableSkills = useMemo(() => {

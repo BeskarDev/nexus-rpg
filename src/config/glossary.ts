@@ -294,7 +294,7 @@ export const glossary: GlossaryEntry[] = [
 	{
 		term: 'Load',
 		summary:
-			'An abstracted weight measure for items; exceeding your Carrying Capacity incurs movement penalties.',
+			'An abstract measure of how much an item burdens you, combining its weight and bulk. Exceeding your Carrying Capacity incurs movement penalties.',
 		origin: 'Equipment',
 		link: '/docs/equipment/items#load',
 	},

@@ -10,11 +10,7 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useValueAnimation } from '../../hooks/useValueAnimation'
-import {
-	calculateMaxHp,
-	calculateBaseHpFromStrength,
-} from '../../utils/calculateHp'
-import { calculateCharacterLevel } from '../../utils/calculateCharacterLevel'
+import { useDerivedCharacter } from '../../utils/deriveCharacter'
 import { createHpFieldSchema } from '../../utils/validation'
 import {
 	SheetField,
@@ -31,25 +27,16 @@ export const HpCard = () => {
 	const animation = useValueAnimation()
 
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { health, fatigue, strength } = activeCharacter.statistics
-	const totalXp = activeCharacter.skills.xp.total
-	const characterLevel = calculateCharacterLevel(totalXp)
-	const baseHp = calculateBaseHpFromStrength(strength.value)
-	const autoHpBonus = useMemo(() => health.auto || 0, [health.auto])
+	const { health } = activeCharacter.statistics
 
-	// Calculate max HP using the new formula (includes both user modifier and auto bonus)
-	const maxHp = useMemo(() => {
-		return calculateMaxHp(
-			strength.value,
-			totalXp,
-			health.maxHpModifier || 0,
-			autoHpBonus,
-		)
-	}, [strength.value, totalXp, health.maxHpModifier, autoHpBonus])
-
-	// Calculate effective max HP (minus fatigue penalty)
-	const fatigueHpPenalty = (fatigue?.current || 0) * 2
-	const effectiveMaxHp = maxHp - fatigueHpPenalty
+	// Every part of max HP from `deriveCharacter`, which the print sheet reads too.
+	// `health.auto` is DERIVED from talents and folk abilities rather than read back,
+	// because only the Skills tab used to write it.
+	const { hp, level: characterLevel } = useDerivedCharacter(activeCharacter)
+	const baseHp = hp.base
+	const autoHpBonus = hp.auto
+	const fatigueHpPenalty = hp.fatiguePenalty
+	const effectiveMaxHp = hp.effectiveMax
 
 	// Initialize react-hook-form with Yup schema validation
 	const hpSchema = useMemo(

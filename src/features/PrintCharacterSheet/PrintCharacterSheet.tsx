@@ -7,6 +7,7 @@ import {
 	itemsPerPage,
 	PrintPages,
 	PrintToolShell,
+	prepareStoredCharacter,
 	usePagePrintStyle,
 	sheetDocumentTitle,
 	SHEET_PAGE,
@@ -56,9 +57,10 @@ export const PrintCharacterSheet: React.FC = () => {
 			if (selectedCharacter) {
 				return selectedCharacter as Character
 			}
-			// Fall back to JSON string
+			// Fall back to JSON string. A pasted export is a raw stored document, so
+			// it takes the same migrations as one read from the account.
 			return characterJsonString
-				? (JSON.parse(characterJsonString) as Character)
+				? prepareStoredCharacter(JSON.parse(characterJsonString) as Character)
 				: undefined
 		} catch (e) {
 			console.error(e)

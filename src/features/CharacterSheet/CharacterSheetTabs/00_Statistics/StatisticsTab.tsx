@@ -7,7 +7,7 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { calculateMaxHp } from '../../utils/calculateHp'
+import { useDerivedCharacter } from '../../utils/deriveCharacter'
 import { AttributeCard } from './AttributeCard'
 import { AvCard } from './AvCard'
 import { ParryCard } from './ParryCard'
@@ -95,23 +95,9 @@ export const StatisticsTab: React.FC = () => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
-	// Calculate max HP using new formula and effective max HP (minus fatigue penalty)
-	const maxHP = React.useMemo(() => {
-		return calculateMaxHp(
-			strength.value,
-			activeCharacter.skills.xp.total,
-			health.maxHpModifier || 0,
-			health.auto || 0,
-		)
-	}, [
-		strength.value,
-		activeCharacter.skills.xp.total,
-		health.maxHpModifier,
-		health.auto,
-	])
-
-	const fatigueHpPenalty = (fatigue?.current || 0) * 2
-	const effectiveMaxHP = maxHP - fatigueHpPenalty
+	// Effective max HP (max minus the fatigue penalty) from `deriveCharacter`, the
+	// same value the HP card and the printed sheet show.
+	const effectiveMaxHP = useDerivedCharacter(activeCharacter).hp.effectiveMax
 
 	// Count total wounds across all attributes
 	const totalWounds = [strength, agility, spirit, mind].filter(

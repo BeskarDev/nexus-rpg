@@ -46,60 +46,39 @@ export const organizeItemsByLocation = (
 	return organized
 }
 
+const isWeapon = (entry: Item | Weapon): entry is Weapon => 'damage' in entry
+
+/**
+ * The load one ledger row contributes: its `load` times its amount.
+ *
+ * The totals used to read a second field, `weight`, that some imports wrote instead
+ * of `load`, so a pack full of load-1 items summed to 0 (owner-reported "1/11" on a
+ * full pack). `load` is now the only name (see `migrateItemLoad`), and every total
+ * reads it through here.
+ *
+ * A weapon's `amount` counts ammunition, not copies of the weapon, so a weapon row
+ * contributes its `load` once.
+ */
+export const getItemLoad = (entry: Item | Weapon): number => {
+	if (isWeapon(entry)) return Number(entry.load ?? 0) || 0
+	const unit = Number(entry.load ?? 0) || 0
+	const amount = Number(entry.amount ?? 1)
+	return unit * (Number.isFinite(amount) ? amount : 1)
+}
+
 /**
  * Calculates the total load for a specific location
  */
 export const calculateLocationLoad = (
 	locationItems: (Item | Weapon)[],
-): number => {
-	const weaponLoad = locationItems
-		.filter((item) => 'damage' in item)
-		.map((w) => (w as Weapon).load)
-		.reduce((sum, load) => sum + load, 0)
-
-	const itemLoad = locationItems
-		.filter((item) => !('damage' in item))
-		.map((i) => {
-			const item = i as Item
-			// Use weight if available, fallback to 0
-			const weight = (item as any).weight || 0
-			return weight * item.amount
-		})
-		.reduce((sum, load) => sum + load, 0)
-
-	return weaponLoad + itemLoad
-}
+): number => locationItems.reduce((sum, entry) => sum + getItemLoad(entry), 0)
 
 /**
  * Calculates the current carried load (worn + carried items only)
  */
-export const calculateCurrentLoad = (
-	itemsByLocation: OrganizedItems,
-): number => {
-	const carriedWeapons = [
-		...itemsByLocation.worn.filter((item) => 'damage' in item),
-		...itemsByLocation.carried.filter((item) => 'damage' in item),
-	] as Weapon[]
-
-	const weaponLoad = carriedWeapons
-		.map((w) => w.load)
-		.reduce((sum, load) => sum + load, 0)
-
-	const carriedItems = [
-		...itemsByLocation.worn.filter((item) => !('damage' in item)),
-		...itemsByLocation.carried.filter((item) => !('damage' in item)),
-	] as Item[]
-
-	const itemLoad = carriedItems
-		.map((i) => {
-			// Use weight if available, fallback to 0
-			const weight = (i as any).weight || 0
-			return weight * i.amount
-		})
-		.reduce((sum, load) => sum + load, 0)
-
-	return weaponLoad + itemLoad
-}
+export const calculateCurrentLoad = (itemsByLocation: OrganizedItems): number =>
+	calculateLocationLoad(itemsByLocation.worn) +
+	calculateLocationLoad(itemsByLocation.carried)
 
 /**
  * Extracts AV values from equipped items and weapons

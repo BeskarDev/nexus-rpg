@@ -1100,7 +1100,7 @@
 ---|---|---|---|---
  1 | 2 | Medium (8) | Short | enchant (body),  singular
 
-**Effect** <br/> You weave a protective coat of elemental energies around a creature.<br/>On a success, the creature gains the following effects:<br/>- You gain resistance against blast, frost, and lightning damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +0 lightning damage (ignore AV). 
+**Effect** <br/> You weave a protective coat of elemental energies around a creature.<br/>On a success, the creature gains the following effects for a short duration:<br/>- They gain resistance against blast, frost, and lightning damage.<br/>- Whenever they are hit by a melee attack, the attacker takes +0 lightning damage (ignore AV). 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The attacker takes +2 lightning damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>The attacker takes +4 lightning damage (ignore AV) instead.
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { IconButton, Tooltip, Button } from '@mui/material'
-import { Build, AutoFixHigh } from '@mui/icons-material'
+import { Autorenew, Build, AutoFixHigh } from '@mui/icons-material'
 import { SheetMenu, TabHeader, ToggleMenuItem } from '../../../components'
 import { ItemLocation } from '../../../../../types/ItemLocation'
 
@@ -28,6 +28,10 @@ interface ItemsSettingsMenuProps {
 	onSettingsMenuClose: () => void
 	onToggleLocationVisibility: (location: ItemLocation) => void
 	onOpenMagicItemBuilder?: () => void
+	/** How many items and weapons have drifted from the rulebook tables. */
+	refreshCount?: number
+	/** Opens the refresh dialog. The button is only drawn when this is given. */
+	onOpenRefresh?: () => void
 }
 
 export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
@@ -38,6 +42,8 @@ export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
 	onSettingsMenuClose,
 	onToggleLocationVisibility,
 	onOpenMagicItemBuilder,
+	refreshCount = 0,
+	onOpenRefresh,
 }) => {
 	return (
 		<>
@@ -49,6 +55,31 @@ export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
 			<TabHeader
 				actions={
 					<>
+						{onOpenRefresh && (
+							<Tooltip
+								title={
+									refreshCount
+										? `Update ${refreshCount} item${refreshCount === 1 ? '' : 's'} to their latest versions`
+										: 'Items are up to date'
+								}
+							>
+								{/* `pending`, so it pulses, the same as the Spells and Skills
+									tabs' twins: items that drifted from the rulebook tables are
+									an outstanding action of yours. */}
+								<IconButton
+									size="small"
+									onClick={onOpenRefresh}
+									data-state={refreshCount ? 'pending' : undefined}
+									aria-label={
+										refreshCount
+											? `Refresh items — ${refreshCount} out of date`
+											: 'Refresh items'
+									}
+								>
+									<Autorenew fontSize="inherit" />
+								</IconButton>
+							</Tooltip>
+						)}
 						<Tooltip title="toggle inventory categories">
 							<IconButton size="small" onClick={onSettingsMenuOpen}>
 								<Build fontSize="inherit" />

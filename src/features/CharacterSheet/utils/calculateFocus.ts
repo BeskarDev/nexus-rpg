@@ -1,11 +1,11 @@
-import { CharacterDocument } from '@site/src/types/Character'
+import { Character } from '@site/src/types/Character'
 
 /**
  * Calculate the base max Focus based on attributes and magic skill
  * Formula: (Mind/Spirit - 2) + (2 × Arcana/Mysticism rank) + modifier + auto
  */
 export const calculateMaxFocus = (
-	character: CharacterDocument,
+	character: Character,
 	modifier: number = 0,
 	autoBonus: number = 0,
 ): number => {
@@ -40,7 +40,7 @@ export const calculateMaxFocus = (
 /**
  * Get the magic skill rank for a character
  */
-export const getMagicSkillRank = (character: CharacterDocument): number => {
+export const getMagicSkillRank = (character: Character): number => {
 	const { magicSkill } = character.spells
 	const { skills } = character.skills
 
@@ -55,7 +55,7 @@ export const getMagicSkillRank = (character: CharacterDocument): number => {
 /**
  * Get the relevant attribute value for the magic school
  */
-export const getMagicAttribute = (character: CharacterDocument): number => {
+export const getMagicAttribute = (character: Character): number => {
 	const { magicSkill } = character.spells
 	const { mind, spirit } = character.statistics
 

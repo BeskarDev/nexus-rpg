@@ -1,5 +1,7 @@
 import { SheetLayout } from './SheetLayout'
-import { BaseDamageType, Character, Damage } from '@site/src/types/Character'
+import { Character, Damage } from '@site/src/types/Character'
+import { useDerivedCharacter } from '../../CharacterSheet/utils/deriveCharacter'
+import { calculateDamageValue } from '../../CharacterSheet/utils/calculateDamageDisplay'
 import { Band, Field, Group, Rows, Stat } from './SheetPrimitives'
 
 /**
@@ -33,37 +35,11 @@ import { Band, Field, Group, Rows, Stat } from './SheetPrimitives'
  * requires the owner to confirm it first. Until then the table stands.
  */
 export const SpellsSheet: React.FC<{ char: Character }> = ({ char }) => {
-	const calculateBaseDamage = (base: BaseDamageType) => {
-		switch (base) {
-			case 'STR':
-				return char.statistics.strength.value / 2
-			case 'AGI':
-				return char.statistics.agility.value / 2
-			case 'SPI':
-				return char.statistics.spirit.value / 2
-			case 'MND':
-				return char.statistics.mind.value / 2
-			default:
-				return 0
-		}
-	}
-
-	const printDamageField = ({
-		base,
-		weapon,
-		other,
-		otherWeak,
-		otherStrong,
-		otherCritical,
-	}: Damage) => {
-		const baseDamage = calculateBaseDamage(base)
-		const catalyst = char.spells.spellCatalystDamage
-		return [
-			baseDamage + weapon + catalyst + other + otherWeak,
-			baseDamage + weapon * 2 + catalyst * 2 + other + otherStrong,
-			baseDamage + weapon * 3 + catalyst * 3 + other + otherCritical,
-		].join('/')
-	}
+	// Max Focus and spell damage from the same code the digital Spells tab reads.
+	// Max Focus used to print the stored total, a copy written only at creation.
+	const derived = useDerivedCharacter(char)
+	const printDamageField = (damage: Damage) =>
+		calculateDamageValue(damage, 'spell', char)
 
 	return (
 		<SheetLayout crest="magic">
@@ -89,7 +65,7 @@ export const SpellsSheet: React.FC<{ char: Character }> = ({ char }) => {
 					value={char.spells.focus.current}
 					width="20mm"
 				/>
-				<Stat label="Max Focus" value={char.spells.focus.total} width="20mm" />
+				<Stat label="Max Focus" value={derived.focus.max} width="20mm" />
 			</Band>
 
 			<Group name="Learned Spells" sigil="scroll">

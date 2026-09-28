@@ -3,6 +3,9 @@ import React, { useEffect } from 'react'
 import { useDeviceSize } from './utils/useDeviceSize'
 import { mobileTabsConfig, desktopTabsConfig, getTabComponent } from './utils'
 import { SheetTabBar } from './components'
+import { useAppSelector } from './hooks/useAppSelector'
+import { useSyncDerivedCharacter } from './hooks/useSyncDerivedCharacter'
+import { useDerivedCharacter } from './utils/deriveCharacter'
 
 export const SectionHeader = styled(Typography)(({ theme }) => ({
 	marginBottom: `${theme.spacing(0.75)} `,
@@ -20,6 +23,14 @@ export const CharacterSheet: React.FC = () => {
 	)
 
 	const { isMobile, viewChanged } = useDeviceSize()
+
+	// The one write-back of derived values, at the root so it runs whichever tab is
+	// open. Every tab READS `deriveCharacter` directly; this only keeps the stored
+	// copies current for readers outside the sheet (party view, exports).
+	const activeCharacter = useAppSelector(
+		(state) => state.characterSheet.activeCharacter,
+	)
+	useSyncDerivedCharacter(activeCharacter, useDerivedCharacter(activeCharacter))
 
 	useEffect(() => {
 		urlParams.set('tab', '' + activeTab)

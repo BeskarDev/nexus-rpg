@@ -268,6 +268,8 @@ export type Weapon = {
 	durability: DurabilityDie
 	quality?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
 	amount?: number // Optional quantity for ammo tracking
+	/** The weapons.json name this weapon was imported from, for the refresh flow. */
+	sourceName?: string
 }
 
 export type Damage = {
@@ -315,7 +317,7 @@ export type Equipment = {
 	tags?: string[]
 	properties?: string[]
 	special?: string
-	weight?: number
+	load?: number
 	cost?: number
 	quality?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
 }
@@ -344,8 +346,9 @@ export type Item = Equipment & {
 	durability: DurabilityDie
 	// Optional properties for legacy/future features
 	slot?: EquipmentSlotType
-	load?: number
 	description?: string
+	/** The equipment.json / armor.json name this item was imported from, for the refresh flow. */
+	sourceName?: string
 }
 
 export const containerTypeArray = ['', 'worn', 'quick', 'backpack'] as const

@@ -257,8 +257,30 @@ export function creatureBlocks(creature: Creature): CreatureBlock[] {
 		})
 	}
 
+	/**
+	 * A companion's Combat Arts (Animal Companion rank 2), last and under their own
+	 * heading.
+	 *
+	 * Not folded into the qualifier sections: a Combat Art is none of Action, Quick
+	 * Action, Trigger or Passive. It rides on an attack, which is exactly why a
+	 * reader needs it named as what it is. One block per art, like one per
+	 * ability, so a continuation card can cut between two arts and redraws the
+	 * heading when it does.
+	 */
+	const combatArts = creature.combatArts ?? []
+	combatArts.forEach((art, index) => {
+		push(
+			`combat-art-${index}`,
+			<AbilityEntry ability={art} />,
+			COMBAT_ARTS_SECTION,
+		)
+	})
+
 	return blocks
 }
+
+/** The card heading for a companion's Combat Arts. */
+export const COMBAT_ARTS_SECTION = 'Combat Arts'
 
 /**
  * Render a slice of a creature's blocks, redrawing the heading of any section

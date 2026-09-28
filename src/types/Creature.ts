@@ -66,6 +66,12 @@ export interface Creature {
 	 */
 	quickActions?: Ability[]
 	/**
+	 * **Markdown cards only.** Combat Arts a companion learned through the Animal
+	 * Companion talent's rank 2 option, read from the Companion Builder's
+	 * `**Combat Arts:**` section and printed as their own section on the card.
+	 */
+	combatArts?: Ability[]
+	/**
 	 * Non-mechanical flavour, carried through from `creatures.json` for whatever
 	 * reads it next. One creature in the corpus has it, and a printed card does
 	 * not show it: a card is for play, and the lore block runs to paragraphs.

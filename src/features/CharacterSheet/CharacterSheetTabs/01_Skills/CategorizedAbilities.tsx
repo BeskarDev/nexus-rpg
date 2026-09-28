@@ -36,7 +36,7 @@ import {
 	abilityHeadingsFor,
 	abilityHeaderTemplate,
 } from './components/abilityColumns'
-import { calculateCharacterLevel } from '../../utils/calculateCharacterLevel'
+import { useActiveDerivedCharacter } from '../../hooks/useActiveDerivedCharacter'
 import { calculateMaxXpPerSkill } from '../../utils/validation'
 import { RefreshUpdatesDialog } from '../../components/RefreshUpdatesDialog'
 import { computeTalentUpdates } from '../../utils/computeContentUpdates'
@@ -47,7 +47,6 @@ export const CategorizedAbilities: React.FC = () => {
 	const {
 		abilities,
 		skills: trainedSkills = [],
-		xp,
 		abilityCategoryVisibility,
 		quickRefSelections = { abilities: [], weapons: [], items: [] },
 	} = useMemo(() => activeCharacter.skills, [activeCharacter.skills])
@@ -73,9 +72,9 @@ export const CategorizedAbilities: React.FC = () => {
 		}))
 	}
 
-	const totalSpentXp =
-		xp?.spend ?? trainedSkills.reduce((sum, skill) => sum + (skill.xp || 0), 0)
-	const characterLevel = calculateCharacterLevel(totalSpentXp)
+	// Spent XP and level from the one derivation, not the stored `xp.spend` copy.
+	const { spentXp: totalSpentXp, level: characterLevel } =
+		useActiveDerivedCharacter()
 	const maxXpPerSkill = calculateMaxXpPerSkill(totalSpentXp)
 
 	const { summaries: talentSummaries, unassignedSpent } = useMemo(

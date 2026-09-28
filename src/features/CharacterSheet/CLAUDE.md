@@ -57,6 +57,11 @@ Forms use react-hook-form + Yup via helper functions (no wrapper components) —
 
 Pure calculation functions in `utils/` (`calculateHp`, `calculateDefenses`, `calculateFocus`, `calculateCharacterLevel`, `calculateTalentPoints`, …) with Vitest tests in `utils/__tests__/`. Add tests there when touching derivation logic (`bun run test`).
 
+- **`utils/deriveCharacter.ts` is the one entry point** for every computed number (level, max/effective HP, AV parts, Parry/Dodge/Resist, max Focus, load and capacity, skill ranks). The digital tabs (`useDerivedCharacter` / `useActiveDerivedCharacter`) and all print sheets read it; `printDigitalParity.test.tsx` pins the two surfaces together. Never read a stored derived copy (`health.auto`, `av.armor`, `statistics.parry`, `focus.total`, `encumbrance.currentLoad`, `xp.spend`, `skill.rank`) for display.
+- Those stored copies are mirrored by ONE effect, `useSyncDerivedCharacter`, at the sheet root (`CharacterSheet.tsx`), for readers outside the sheet (party view, exports). Don't add per-tab write-back effects.
+- Level comes from **spent XP** (sum of skill XP) everywhere (owner ruling). Item load is `getItemLoad` (`load ?? weight`, times amount; weapons count once).
+- Print tools load characters through `prepareStoredCharacter` (both migration layers), so they see the same document the app does.
+
 ## Conventions
 
 - MUI styling via `sx` prop; theme in `/src/hooks/createTheme.ts` (dark/light).

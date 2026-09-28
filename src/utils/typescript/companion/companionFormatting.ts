@@ -67,9 +67,27 @@ export const generateMarkdown = (companion: CompanionStats): string => {
 	const markdownAttacks = calculatedStats.attacks.map(listItem).join('\n')
 	const markdownAbilities = calculatedStats.abilities.map(listItem).join('\n')
 
-	return `#### **${trait.name}** (${companion.size} ${trait.type})
+	/*
+		The owner's bond (Animal Companion, Wild Companion), both optional so a
+		companion built without an owner keeps the exact shape it always had.
 
-**Tier:** ${companion.tier} (${tierName})
+		`**Bond:**` carries text on its own line, so neither reader mistakes it for a
+		section header. `**Combat Arts:**` IS a section and comes last, after the
+		abilities, where `parseCreatureMarkdown` stops the Abilities run.
+	*/
+	const type = calculatedStats.type ?? trait.type
+	const bondLine = calculatedStats.bond
+		? `\n**Bond:** ${calculatedStats.bond}`
+		: ''
+	const combatArts = calculatedStats.combatArts ?? []
+	const combatArtsSection =
+		combatArts.length > 0
+			? `\n\n**Combat Arts:**\n${combatArts.map(listItem).join('\n')}`
+			: ''
+
+	return `#### **${trait.name}** (${companion.size} ${type})
+
+**Tier:** ${companion.tier} (${tierName})${bondLine}
 
 | HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -87,14 +105,14 @@ export const generateMarkdown = (companion: CompanionStats): string => {
 ${markdownAttacks}
 
 **Abilities:**
-${markdownAbilities}`
+${markdownAbilities}${combatArtsSection}`
 }
 
 export const generateJSON = (companion: CompanionStats): string => {
 	return JSON.stringify(
 		{
 			name: companion.trait.name,
-			type: companion.trait.type,
+			type: companion.calculatedStats.type ?? companion.trait.type,
 			tier: companion.tier,
 			tierName: TIER_NAMES[companion.tier],
 			size: companion.size,
@@ -109,6 +127,8 @@ export const generateJSON = (companion: CompanionStats): string => {
 			weaknesses: companion.calculatedStats.weaknesses,
 			attacks: companion.calculatedStats.attacks,
 			abilities: companion.calculatedStats.abilities,
+			combatArts: companion.calculatedStats.combatArts,
+			bond: companion.calculatedStats.bond,
 			attackDamage: companion.calculatedStats.attackDamage,
 		},
 		null,

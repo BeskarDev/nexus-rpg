@@ -24,6 +24,7 @@ import {
 	deckDocumentTitle,
 	itemsPerPage,
 	PrintPages,
+	prepareStoredCharacter,
 	PrintToolShell,
 	usePagePrintStyle,
 } from '../PrintingTools'
@@ -121,7 +122,10 @@ export const CreatureCards: React.FC = () => {
 		setCharacterJsonString(jsonString)
 		if (!jsonString.trim()) return
 		try {
-			const character: Character = JSON.parse(jsonString)
+			// A pasted export gets the same migrations as a character picked from the roster.
+			const character: Character = prepareStoredCharacter(
+				JSON.parse(jsonString),
+			)
 			addEntries(
 				companionEntries(
 					character.personal?.name ?? 'imported',

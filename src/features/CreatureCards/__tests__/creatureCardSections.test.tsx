@@ -116,6 +116,27 @@ describe('creature card sections (D-147)', () => {
 		expect(sectionForQualifier('hover')).toBeNull()
 	})
 
+	it('prints a companion’s Combat Arts last, under their own heading', () => {
+		// Animal Companion rank 2 lets a companion learn two Combat Arts. They are
+		// none of the four qualifier sections, so they get a heading of their own.
+		const companion: Creature = {
+			...CREATURE,
+			combatArts: [
+				{ name: 'Feint', description: 'If you don’t move, +1 boon.' },
+			],
+		}
+		expect(sectionsOf(companion).at(-1)).toBe('Combat Arts')
+		expect(sectionOf(companion, 'combat-art-0')).toBe('Combat Arts')
+		const { container } = render(
+			<CreatureBlocks blocks={creatureBlocks(companion)} />,
+		)
+		const headings = [...container.querySelectorAll('.pc-card__section')].map(
+			(node) => node.textContent,
+		)
+		expect(headings.at(-1)).toBe('Combat Arts')
+		expect(container.textContent).toContain('Feint')
+	})
+
 	it('drops the qualifier badge the heading already says, and keeps the limiter', () => {
 		const blocks = creatureBlocks(CREATURE)
 		const { container } = render(<CreatureBlocks blocks={blocks} />)

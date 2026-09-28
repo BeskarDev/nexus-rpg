@@ -43,7 +43,7 @@ export interface ChoiceRailProps {
 	 * five do not). `quality` is the Magic Item Builder's six-step ladder and shares
 	 * the tier grid.
 	 */
-	variant: 'tier' | 'size' | 'quality'
+	variant: 'tier' | 'size' | 'quality' | 'even'
 }
 
 /**

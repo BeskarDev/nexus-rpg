@@ -77,23 +77,25 @@ Additionally, when taking damage:
 
 ### Treating Wounds
 
-During a night's rest, you may attempt to treat your Wounds. Roll Spirit/Mind + Nature once per Wound. On a success, the Wound is treated, and its negative effects cease. The Wound reopens if you drop to 0 HP again, reinstating its effects.
+During a night's rest, you may attempt to treat your Wounds or those of another creature. For each Wound, spend 1 use of a **Healer's Kit** and roll Spirit/Mind + Nature vs. TN 8. On a success, the Wound is treated, and its negative effects cease. The Wound reopens if you drop to 0 HP again, reinstating its effects.
+
+The *Field Medic* talent lets you treat Wounds during a short break instead. It also lets you improvise without a kit by spending 1 use of Materials and rolling vs. TN 10.
 
 ### Healing Wounds
 
 To permanently remove a treated Wound, succeed on a hard Strength + Fortitude roll during a night's rest or during downtime.
 
-> Example: After a fierce battle in an ancient tomb, Sephi the Seer has suffered two Wounds. During a night's rest, they make a successful Spirit + Nature roll with their healer's kit to treat one Wound. They circle one of the | marks on their character sheet to show the treated Wound, but still suffer the penalty from their untreated Wound.
+> Example: After a fierce battle in an ancient tomb, Sephi the Seer has suffered two Wounds. During a night's rest, they spend 1 use of their Healer's Kit and make a successful Spirit + Nature roll to treat one Wound. They circle one of the | marks on their character sheet to show the treated Wound, but still suffer the penalty from their untreated Wound.
 
 ### Dying
 
-When you suffer your third Wound, you begin dying. Roll a d4. The result indicates both how many turns remain before death and the difficulty of stabilization attempts. Reduce this count by 1 on each of your subsequent turns. While dying, you remain unconscious and helpless. Any successful attack against you causes immediate death.
+When you suffer your third Wound, you begin dying. Roll a d4. The result indicates how many turns remain before death. Reduce this count by 1 on each of your subsequent turns. While dying, you remain unconscious and helpless. Any successful attack against you causes immediate death.
 
-Allies may attempt to save you on their turns. With appropriate medical supplies, another creature can make a Spirit + Nature roll vs hard Difficulty (TN 10) to stabilize you.
+Allies may attempt to save you on their turns. Another creature within melee range can use their Action to make a Spirit + Nature roll to stabilize you. With a **Healer's Kit**, they spend 1 use and roll vs. TN 10. Without one, they can still try, but roll vs. TN 12 instead.
 
 Any successful stabilization roll immediately stops you from dying, though you remain unconscious with your current Wounds. A critical success also restores 1 HP, bringing you back to consciousness.
 
-> Example: Arzhag the Warrior is struck down in battle against a temple guardian, suffering their third Wound. They begin dying and roll a 3 on their d4. On Arzhag's next turn, this count reduces to 2. Sansar rushes to their side and makes a Spirit + Nature roll with their healer's kit vs. hard Difficulty (TN 10). Despite the difficulty, Sansar succeeds! Arzhag is stabilized, no longer dying but still unconscious with three Wounds. Had Sansar achieved a critical success, Arzhag would have regained 1 HP and consciousness.
+> Example: Arzhag the Warrior is struck down in battle against a temple guardian, suffering their third Wound. They begin dying and roll a 3 on their d4. On Arzhag's next turn, this count reduces to 2. Sansar rushes to their side, spends 1 use of their Healer's Kit, and makes a Spirit + Nature roll vs. TN 10. Despite the difficulty, Sansar succeeds! Arzhag is stabilized, no longer dying but still unconscious with three Wounds. Had Sansar achieved a critical success, Arzhag would have regained 1 HP and consciousness.
 
 Regaining HP while dying has no effect on your dying condition. Proper medical attention is required.
 

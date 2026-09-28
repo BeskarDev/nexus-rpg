@@ -1,19 +1,11 @@
-import { useMemo, useEffect } from 'react'
+import { useMemo } from 'react'
 import { DropResult } from '@hello-pangea/dnd'
 import { CharacterDocument, Item, Weapon } from '../../../../../types/Character'
 import { ItemLocation } from '../../../../../types/ItemLocation'
 import { DeepPartial } from '../../../CharacterSheetContainer'
 import { characterSheetActions } from '../../../characterSheetReducer'
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
-import {
-	organizeItemsByLocation,
-	calculateCurrentLoad,
-	extractArmorValues,
-	OrganizedItems,
-	calculateLocationLoad,
-} from '../utils/itemUtils'
-import { logger } from '../../../utils'
-import { calculateFolkAvBonus } from '../../../utils/calculateFolkAvBonus'
+import { useDerivedCharacter } from '../../../utils/deriveCharacter'
 
 export const useItemManagement = (activeCharacter: CharacterDocument) => {
 	const dispatch = useAppDispatch()
@@ -26,79 +18,24 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 		itemLocationVisibility,
 	} = useMemo(() => activeCharacter.items, [activeCharacter.items])
 
-	// Organize items and weapons by location
-	const itemsByLocation = useMemo(
-		() => organizeItemsByLocation(weapons, items),
-		[weapons, items],
-	)
-
-	// Auto-update AV values when armor, helmet, or shield items change
-	// Folk AV bonus is calculated in SkillsTab when abilities change
-	useEffect(() => {
-		const { armorAV, helmetAV, shieldAV } = extractArmorValues(itemsByLocation)
-
-		// Calculate folk AV bonus (Stoneskin, Thick Scales)
-		// Thick Scales gives +3 AV if no armor, or +1 if wearing armor
-		const hasArmorEquipped = armorAV > 0
-		const folkAvBonus = calculateFolkAvBonus(
-			activeCharacter.skills.abilities,
-			hasArmorEquipped,
-		)
-
-		// Update AV values if they changed (auto is stored separately, other remains user-editable)
-		const currentAV = activeCharacter.statistics.av
-		if (
-			currentAV.armor !== armorAV ||
-			currentAV.helmet !== helmetAV ||
-			currentAV.shield !== shieldAV ||
-			currentAV.auto !== folkAvBonus
-		) {
-			dispatch(
-				characterSheetActions.updateCharacter({
-					statistics: {
-						av: {
-							armor: armorAV ?? currentAV.armor,
-							helmet: helmetAV ?? currentAV.helmet,
-							shield: shieldAV ?? currentAV.shield,
-							auto: folkAvBonus,
-						},
-					},
-				}),
-			)
-		}
-	}, [itemsByLocation, activeCharacter.skills.abilities])
+	/*
+		Every number here comes from `deriveCharacter`, the same derivation the print
+		sheets read. This hook used to own two write-back effects (AV from worn armor,
+		and `encumbrance.currentLoad`) and its own capacity formula; the stored copies
+		are now mirrored once at the sheet's root by `useSyncDerivedCharacter`.
+	*/
+	const derived = useDerivedCharacter(activeCharacter)
+	const { itemsByLocation } = derived
+	const {
+		current: currentLoad,
+		carryCapacity,
+		maxCapacity,
+		byLocation,
+	} = derived.load
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
-
-	const currentLoad: number = useMemo(() => {
-		return calculateCurrentLoad(itemsByLocation)
-	}, [itemsByLocation])
-
-	// Update currentLoad in store when it changes
-	useEffect(() => {
-		if (currentLoad !== encumbrance.currentLoad) {
-			updateCharacter({
-				items: { encumbrance: { currentLoad: currentLoad } },
-			})
-		}
-	}, [currentLoad, encumbrance.currentLoad])
-
-	const carryCapacity = useMemo(() => {
-		logger.debug('Calculating carry capacity:', {
-			strength: activeCharacter.statistics.strength.value,
-			carryModifier: encumbrance.carryModifier,
-		})
-		const result =
-			Number(activeCharacter.statistics.strength.value) / 2 +
-			8 +
-			Number(encumbrance.carryModifier || 0)
-		logger.debug('Carry capacity:', result)
-		return result
-	}, [activeCharacter.statistics.strength, encumbrance.carryModifier])
-
-	const maxCapacity = useMemo(() => carryCapacity * 2, [carryCapacity])
 
 	// Action handlers
 	const addNewWeapon = () => {
@@ -188,9 +125,8 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 		dispatch(characterSheetActions.addNewItemToLocation(location))
 	}
 
-	const getLocationLoad = (location: ItemLocation): number => {
-		return calculateLocationLoad(itemsByLocation[location])
-	}
+	const getLocationLoad = (location: ItemLocation): number =>
+		byLocation[location]
 
 	return {
 		// State

@@ -15,7 +15,11 @@ export const parseCreatureMarkdown = (markdown: string): Creature[] => {
 	for (const block of creatureBlocks) {
 		if (!block.trim()) continue
 
-		const headerMatch = block.match(/### \*\*([^*]+)\*\* \(([^)]+)\)/)
+		// One level of nesting inside the type: Wild Companion writes a companion's
+		// type as `Spirit (primal)`, so its header reads `(Medium Spirit (primal))`.
+		const headerMatch = block.match(
+			/### \*\*([^*]+)\*\* \(((?:[^()]|\([^()]*\))+)\)/,
+		)
 		if (!headerMatch) continue
 
 		const name = headerMatch[1]
@@ -108,22 +112,34 @@ const parseCreatureContent = (
 
 	// Parse attacks
 	const attacksSection = content.match(
-		/\*\*Attacks:\*\*([\s\S]*?)(?=\*\*Abilities:\*\*|\*\*Quick Actions:\*\*|$)/,
+		/\*\*Attacks:\*\*([\s\S]*?)(?=\*\*Abilities:\*\*|\*\*Quick Actions:\*\*|\*\*Combat Arts:\*\*|$)/,
 	)
 	const attacks = attacksSection ? parseAttacks(attacksSection[1]) : []
 
 	// Parse abilities. Must stop at Quick Actions: this section used to run to the
 	// end of the block, so every quick action was parsed as an ability and printed
 	// unlabeled among the passives.
+	// And at Combat Arts, which the Companion Builder writes after the abilities.
 	const abilitiesSection = content.match(
-		/\*\*Abilities:\*\*([\s\S]*?)(?=\*\*Quick Actions:\*\*|$)/,
+		/\*\*Abilities:\*\*([\s\S]*?)(?=\*\*Quick Actions:\*\*|\*\*Combat Arts:\*\*|$)/,
 	)
 	const abilities = abilitiesSection ? parseAbilities(abilitiesSection[1]) : []
 
 	// Parse quick actions — same line format as abilities, its own block.
-	const quickActionsSection = content.match(/\*\*Quick Actions:\*\*([\s\S]*)/)
+	const quickActionsSection = content.match(
+		/\*\*Quick Actions:\*\*([\s\S]*?)(?=\*\*Combat Arts:\*\*|$)/,
+	)
 	const quickActions = quickActionsSection
 		? parseAbilities(quickActionsSection[1])
+		: []
+
+	// Combat Arts a companion learned through Animal Companion rank 2. Same entry
+	// shape as an ability (`- **Feint.** effect`), printed as its own section.
+	const combatArtsSection = content.match(
+		/\*\*Combat Arts:\*\*([\s\S]*?)(?=\*\*Quick Actions:\*\*|$)/,
+	)
+	const combatArts = combatArtsSection
+		? parseAbilities(combatArtsSection[1])
 		: []
 
 	return {
@@ -148,6 +164,7 @@ const parseCreatureContent = (
 		attacks,
 		abilities,
 		quickActions,
+		...(combatArts.length > 0 ? { combatArts } : {}),
 	}
 }
 

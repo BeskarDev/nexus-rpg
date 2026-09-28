@@ -1,94 +1,30 @@
-import { useMemo } from 'react'
 import { SectionHeader } from '../../CharacterSheet'
-import { useAppSelector } from '../../hooks/useAppSelector'
 import { Typography } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
-import {
-	calculateParryBase,
-	calculateDefenseLevelBonus,
-	migrateCharacterDefenses,
-} from '../../utils/calculateDefenses'
-import { extractShieldParryBonus } from '../02_Items/utils/itemUtils'
-import { organizeItemsByLocation } from '../02_Items/utils/itemUtils'
+import { useActiveDerivedCharacter } from '../../hooks/useActiveDerivedCharacter'
 import { SheetField, DerivedPart } from '../../components'
 import { ATTRIBUTE_COLORS } from '../../../../utils/colors'
 
 export const ParryCard = () => {
 	const dispatch = useAppDispatch()
-	const activeCharacter = useAppSelector(
-		(state) => state.characterSheet.activeCharacter,
-	)
-	const { parryDetails, parry } = activeCharacter.statistics
 
-	// Calculate auto values
-	const autoBase = calculateParryBase(activeCharacter)
-	const autoLevelBonus = calculateDefenseLevelBonus(
-		activeCharacter.skills.xp.total,
-	)
-
-	// Get shield bonus from equipped items
-	const itemsByLocation = useMemo(() => {
-		return organizeItemsByLocation(
-			activeCharacter.items.weapons,
-			activeCharacter.items.items,
-		)
-	}, [activeCharacter.items.weapons, activeCharacter.items.items])
-
-	const autoShieldBonus = extractShieldParryBonus(itemsByLocation)
-
-	// Use detailed structure if available, otherwise create default values
-	const details = parryDetails || {
-		base: autoBase,
-		levelBonus: autoLevelBonus,
-		shieldBonus: autoShieldBonus,
-		other: 0,
-	}
-
-	const totalParry: number = useMemo(
-		() =>
-			details.base + details.levelBonus + details.shieldBonus + details.other,
-		[details.base, details.levelBonus, details.shieldBonus, details.other],
-	)
+	/*
+		Every part of Parry comes from `deriveCharacter`, which the printed sheet
+		reads too. Base and level bonus are recomputed from the character, and
+		`other` is the one input. This card used to hold its own write-back effect
+		and fell back to a stored total until its calculator was first opened.
+	*/
+	const { parry: derived } = useActiveDerivedCharacter()
+	const autoBase = derived.base
+	const autoLevelBonus = derived.levelBonus
+	const totalParry: number = derived.total
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
-	}
-
-	// Sync auto-calculated values when they change
-	React.useEffect(() => {
-		if (parryDetails) {
-			// Only auto-update shield bonus if it's currently 0 or matches the previous auto value
-			const shouldUpdateShieldBonus =
-				details.shieldBonus === 0 || details.shieldBonus === autoShieldBonus
-
-			updateCharacter({
-				statistics: {
-					parryDetails: {
-						base: autoBase,
-						levelBonus: autoLevelBonus,
-						...(shouldUpdateShieldBonus
-							? { shieldBonus: autoShieldBonus }
-							: {}),
-					},
-					parry: totalParry,
-				},
-			})
-		}
-	}, [autoBase, autoLevelBonus, autoShieldBonus, totalParry, parryDetails])
-
-	// Initialize detailed structure if it doesn't exist
-	const initializeDetails = () => {
-		const migratedDefenses = migrateCharacterDefenses(activeCharacter)
-		updateCharacter({
-			statistics: {
-				parryDetails: migratedDefenses.parryDetails,
-				parry: activeCharacter.statistics.parry, // Preserve the old manual value
-			},
-		})
 	}
 
 	return (
@@ -101,8 +37,7 @@ export const ParryCard = () => {
 			weight="band"
 			size="sm"
 			info="Parry: Defense against melee attacks (7 + Fighting + level bonus + shield)"
-			value={parryDetails ? totalParry : parry}
-			onEditOpen={parryDetails ? undefined : initializeDetails}
+			value={totalParry}
 			editor={
 				<>
 					<SectionHeader>Parry Calculator</SectionHeader>
@@ -117,30 +52,17 @@ export const ParryCard = () => {
 					/>
 					<DerivedPart auto value={autoLevelBonus} label="Level Bonus" />
 					<DerivedPart
-						value={details.shieldBonus}
+						auto
+						value={derived.shieldBonus}
 						label="Shield Bonus"
-						helperText={
-							autoShieldBonus > 0 ? `Auto: ${autoShieldBonus}` : undefined
-						}
-						onChange={(shieldBonus) =>
-							updateCharacter({
-								statistics: {
-									parryDetails: { shieldBonus },
-									parry:
-										autoBase + autoLevelBonus + shieldBonus + details.other,
-								},
-							})
-						}
+						helperText="From your equipped shield"
 					/>
 					<DerivedPart
-						value={details.other}
+						value={derived.other}
 						label="Other"
 						onChange={(other) =>
 							updateCharacter({
-								statistics: {
-									parryDetails: { other },
-									parry: autoBase + autoLevelBonus + autoShieldBonus + other,
-								},
+								statistics: { parryDetails: { other } },
 							})
 						}
 					/>

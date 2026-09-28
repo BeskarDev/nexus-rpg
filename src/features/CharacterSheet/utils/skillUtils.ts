@@ -17,3 +17,13 @@ export function calculateSkillRank(xp: number): number {
 			return 5
 	}
 }
+
+/**
+ * Spent XP: the sum of every skill's XP. This is what `skills.xp.spend` stores, and
+ * the only XP figure level is read from (owner ruling).
+ */
+export function calculateSpentXp(
+	skills: ReadonlyArray<{ xp?: number }> | undefined,
+): number {
+	return (skills ?? []).reduce((sum, skill) => sum + (Number(skill.xp) || 0), 0)
+}

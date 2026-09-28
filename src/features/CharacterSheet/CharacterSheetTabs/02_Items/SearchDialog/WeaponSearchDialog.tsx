@@ -14,12 +14,8 @@ import {
 	MetaBandValue,
 } from '../../../components'
 import weaponsData from '../../../../../utils/data/json/weapons.json'
-import {
-	Weapon,
-	CharacterDocument,
-	DamageType,
-} from '../../../../../types/Character'
-import { QualityTier } from '../utils/magicItemsConfig'
+import { Weapon, CharacterDocument } from '../../../../../types/Character'
+import { WeaponData, buildWeaponFromData } from '../../../utils/itemFactory'
 import { getBaseDamageType } from '../utils/weaponDamage'
 
 /**
@@ -34,16 +30,6 @@ export type WeaponSearchDialogProps = {
 	onClose: () => void
 	onImportWeapons: (weapons: Partial<Weapon>[]) => void
 	character: CharacterDocument
-}
-
-type WeaponData = {
-	name: string
-	quality: string
-	type: string
-	damage: string
-	properties: string
-	load: string
-	cost: string
 }
 
 export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
@@ -209,21 +195,8 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 			.filter((weapon) => selectedWeapons.has(weapon.name))
 			.map((weapon) => ({
 				id: crypto.randomUUID(),
-				name: weapon.name,
-				damage: {
-					base: getBaseDamageType(weapon.type),
-					weapon: parseInt(weapon.damage) || 0,
-					other: 0,
-					otherWeak: 0,
-					otherStrong: 0,
-					otherCritical: 0,
-					type: 'physical' as DamageType,
-				},
-				properties: weapon.properties,
-				description: `${weapon.type} weapon (Quality ${weapon.quality})`,
-				cost: parseCostValue(weapon.cost) || 0,
-				load: parseInt(weapon.load) || 0,
-				quality: parseInt(weapon.quality) as QualityTier,
+				// The same builder the refresh flow compares against.
+				...buildWeaponFromData(weapon),
 			}))
 
 		onImportWeapons(weaponsToImport)

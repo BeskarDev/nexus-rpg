@@ -107,8 +107,8 @@ describe('characterTreasure', () => {
 		expect(mine.id).toBe(theirs.id)
 	})
 
-	it('falls back to weight when an item has no load', () => {
-		const [entry] = characterTreasure(character([], [item({ weight: 3 })]))
+	it('reads the item load', () => {
+		const [entry] = characterTreasure(character([], [item({ load: 3 })]))
 		expect(entry.item.load).toBe(3)
 	})
 

@@ -148,7 +148,7 @@ function fromItem(item: Item): MagicItem {
 		quality: item.quality ?? 0,
 		type: item.name,
 		cost: item.cost ?? 0,
-		load: item.load ?? item.weight ?? 0,
+		load: item.load ?? 0,
 		properties: propertyList(item).join(', ') || undefined,
 		description: inlineEmphasis(itemDescription(item)),
 	}

@@ -210,7 +210,7 @@ Natural animals that can serve as companions or mounts.
 
 **Attacks:**
 - <strong>Bite</strong> (<em>crush</em>). Deals normal weapon damage. On a strong or critical hit against a creature of equal or smaller Size, the target is grappled. While grappled, this attack can't be used against any other target.
-- <strong>Death Roll.</strong> Can only be used against a target grappled by this creature. This creature makes a bite attack and gains +1 boon on the roll. On a hit, the target is knocked prone.
+- <strong>Death Roll.</strong> While grappling a target, this creature can use their Quick Action on their turn to make a bite attack with +1 boon against the target. On a hit, the target is knocked prone.
 
 **Abilities:**
 - <strong>Ambush Predator.</strong> When this creature hits an enemy that is unaware of them with an attack for the first time during a scene, increase the SL of their attack by one step (max. critical success).

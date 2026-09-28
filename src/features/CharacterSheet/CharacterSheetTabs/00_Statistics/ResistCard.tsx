@@ -1,73 +1,30 @@
-import { useMemo } from 'react'
 import { SectionHeader } from '../../CharacterSheet'
-import { useAppSelector } from '../../hooks/useAppSelector'
 import { Typography } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
-import {
-	calculateResistBase,
-	calculateDefenseLevelBonus,
-	migrateCharacterDefenses,
-} from '../../utils/calculateDefenses'
+import { useActiveDerivedCharacter } from '../../hooks/useActiveDerivedCharacter'
 import { SheetField, DerivedPart } from '../../components'
 import { ATTRIBUTE_COLORS } from '../../../../utils/colors'
 
 export const ResistCard = () => {
 	const dispatch = useAppDispatch()
-	const activeCharacter = useAppSelector(
-		(state) => state.characterSheet.activeCharacter,
-	)
-	const { resistDetails, resist } = activeCharacter.statistics
 
-	// Calculate auto values
-	const autoBase = calculateResistBase(activeCharacter)
-	const autoLevelBonus = calculateDefenseLevelBonus(
-		activeCharacter.skills.xp.total,
-	)
-
-	// Use detailed structure if available, otherwise create default values
-	const details = resistDetails || {
-		base: autoBase,
-		levelBonus: autoLevelBonus,
-		other: 0,
-	}
-
-	const totalResist: number = useMemo(
-		() => details.base + details.levelBonus + details.other,
-		[details.base, details.levelBonus, details.other],
-	)
+	/*
+		Every part of Resist comes from `deriveCharacter`, which the printed sheet
+		reads too. Base and level bonus are recomputed from the character, and
+		`other` is the one input. This card used to hold its own write-back effect
+		and fell back to a stored total until its calculator was first opened.
+	*/
+	const { resist: derived } = useActiveDerivedCharacter()
+	const autoBase = derived.base
+	const autoLevelBonus = derived.levelBonus
+	const totalResist: number = derived.total
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
-	}
-
-	// Sync auto-calculated values when they change
-	React.useEffect(() => {
-		if (resistDetails) {
-			updateCharacter({
-				statistics: {
-					resistDetails: {
-						base: autoBase,
-						levelBonus: autoLevelBonus,
-					},
-					resist: totalResist,
-				},
-			})
-		}
-	}, [autoBase, autoLevelBonus, totalResist])
-
-	// Initialize detailed structure if it doesn't exist
-	const initializeDetails = () => {
-		const migratedDefenses = migrateCharacterDefenses(activeCharacter)
-		updateCharacter({
-			statistics: {
-				resistDetails: migratedDefenses.resistDetails,
-				resist: activeCharacter.statistics.resist, // Preserve the old manual value
-			},
-		})
 	}
 
 	return (
@@ -80,8 +37,7 @@ export const ResistCard = () => {
 			weight="band"
 			size="sm"
 			info="Resist: Defense against mental and magical effects (5 + 1/2 Spirit/Mind + level bonus)"
-			value={resistDetails ? totalResist : resist}
-			onEditOpen={resistDetails ? undefined : initializeDetails}
+			value={totalResist}
 			editor={
 				<>
 					<SectionHeader>Resist Calculator</SectionHeader>
@@ -96,14 +52,11 @@ export const ResistCard = () => {
 					/>
 					<DerivedPart auto value={autoLevelBonus} label="Level Bonus" />
 					<DerivedPart
-						value={details.other}
+						value={derived.other}
 						label="Other"
 						onChange={(other) =>
 							updateCharacter({
-								statistics: {
-									resistDetails: { other },
-									resist: autoBase + autoLevelBonus + other,
-								},
+								statistics: { resistDetails: { other } },
 							})
 						}
 					/>

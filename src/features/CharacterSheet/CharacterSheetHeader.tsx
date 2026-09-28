@@ -36,6 +36,7 @@ import { useAppSelector } from './hooks/useAppSelector'
 import { UserAvatar } from './UserAvatar'
 import { Chevron } from './components/Chevron'
 import { calculateCharacterLevel } from './utils/calculateCharacterLevel'
+import { calculateSpentXp } from './utils/skillUtils'
 import {
 	createInitialCharacter,
 	CharacterCreationOptions,
@@ -336,7 +337,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					</Typography>
 					{activeCharacterId && activeCharacter && (
 						<Cartouche compact>
-							{`Level ${calculateCharacterLevel(activeCharacter.skills.xp.spend)}`}
+							{`Level ${calculateCharacterLevel(calculateSpentXp(activeCharacter.skills.skills))}`}
 						</Cartouche>
 					)}
 				</Box>

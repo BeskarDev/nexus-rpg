@@ -4,6 +4,7 @@ import StatSigil from '@site/src/components/codex/StatSigil'
 import { CharacterDocument } from '@site/src/types/Character'
 import { ReadCell } from '../components'
 import { calculateCharacterLevel } from '../utils/calculateCharacterLevel'
+import { calculateSpentXp } from '../utils/skillUtils'
 import { DeleteButton } from './DeleteButton'
 import { CHARACTER_TEMPLATE } from './characterColumns'
 
@@ -40,7 +41,10 @@ export const CharacterRow: React.FC<CharacterRowProps> = ({
 	character,
 	onDelete,
 }) => {
-	const level = calculateCharacterLevel(character.skills.xp.spend)
+	// Spent XP from the skills themselves, not the stored `xp.spend` copy.
+	const level = calculateCharacterLevel(
+		calculateSpentXp(character.skills?.skills),
+	)
 	const href = `${window.location.href.split('?')[0]}?id=${character.collectionId}-${character.docId}`
 
 	return (

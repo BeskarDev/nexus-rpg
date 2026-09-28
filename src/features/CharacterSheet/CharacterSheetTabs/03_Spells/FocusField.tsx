@@ -9,7 +9,7 @@ import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useValueAnimation } from '../../hooks/useValueAnimation'
-import { calculateMaxFocus } from '../../utils/calculateFocus'
+import { useDerivedCharacter } from '../../utils/deriveCharacter'
 import { createFocusFieldSchema } from '../../utils/validation'
 import {
 	AdjustStepper,
@@ -87,23 +87,12 @@ export const FocusField = () => {
 
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 	const { focus, focusDetails } = activeCharacter.spells
-	const autoFocusBonus = useMemo(() => focus?.auto ?? 0, [focus?.auto])
-
-	// Calculate max Focus using the new formula (includes both user modifier and auto bonus)
-	const maxFocus = useMemo(() => {
-		return calculateMaxFocus(
-			activeCharacter,
-			focusDetails?.maxFocusModifier || 0,
-			autoFocusBonus,
-		)
-	}, [
-		activeCharacter.statistics.mind.value,
-		activeCharacter.statistics.spirit.value,
-		activeCharacter.spells.magicSkill,
-		activeCharacter.skills.skills,
-		focusDetails?.maxFocusModifier,
-		autoFocusBonus,
-	])
+	// Max Focus from `deriveCharacter`, the same number the printed sheet and the
+	// resting buttons use. The talent bonus is derived rather than read back from
+	// `focus.auto`, which only the Skills tab used to write.
+	const { focus: derivedFocus } = useDerivedCharacter(activeCharacter)
+	const autoFocusBonus = derivedFocus.auto
+	const maxFocus = derivedFocus.max
 
 	// Initialize react-hook-form with Yup schema validation
 	const focusSchema = useMemo(

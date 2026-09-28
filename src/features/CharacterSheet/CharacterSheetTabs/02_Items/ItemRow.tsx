@@ -60,7 +60,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 					onPropertiesChange={(properties) => updateItem({ properties })}
 					onDescriptionChange={(description) => updateItem({ description })}
 					onCostChange={(cost) => updateItem({ cost })}
-					onLoadChange={(load) => updateItem({ load, weight: load })}
+					onLoadChange={(load) => updateItem({ load })}
 					onAmountChange={(amount) => updateItem({ amount })}
 					onQualityChange={(quality) => updateItem({ quality })}
 					onLocationChange={handleLocationChange}

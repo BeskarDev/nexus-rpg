@@ -150,7 +150,7 @@ export const ItemDetails: React.FC<ItemDetailsProps> = ({
 						<DetailField
 							type="number"
 							align="center"
-							value={item.load ?? item.weight ?? 0}
+							value={item.load ?? 0}
 							onChange={(event) => onLoadChange(Number(event.target.value))}
 							inputProps={{ 'aria-label': 'Load' }}
 						/>

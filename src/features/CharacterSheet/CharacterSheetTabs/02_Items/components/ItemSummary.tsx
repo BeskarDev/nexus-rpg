@@ -61,7 +61,7 @@ export const ItemSummary: React.FC<ItemSummaryProps> = ({
 				{item.cost ?? 0}
 			</ReadCell>
 			<ReadCell label="Load" align="center">
-				{item.load ?? item.weight ?? 0}
+				{item.load ?? 0}
 			</ReadCell>
 			<ReadCell label="Amount" align="center">
 				{item.amount ?? 0}

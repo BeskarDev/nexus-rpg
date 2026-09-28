@@ -4,7 +4,11 @@ export { CharacterMultiSelector } from './CharacterMultiSelector'
 export type { CharacterMultiSelectorProps } from './CharacterMultiSelector'
 export { PrintToggle } from './PrintToggle'
 export type { PrintToggleProps } from './PrintToggle'
-export { useCharacterRoster, characterKey } from './useCharacterRoster'
+export {
+	useCharacterRoster,
+	characterKey,
+	prepareStoredCharacter,
+} from './useCharacterRoster'
 export type { CharacterRoster } from './useCharacterRoster'
 export { CharacterSelectorWrapper as CharacterSelector } from './CharacterSelectorWrapper'
 export { PrintToolShell } from './PrintToolShell'

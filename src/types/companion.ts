@@ -27,6 +27,8 @@ export interface CompanionStats {
 	size: string
 	trait: CompanionTrait
 	calculatedStats: {
+		/** The creature type as printed, which Wild Companion replaces. */
+		type: string
 		hp: number
 		av: string
 		attributes: {
@@ -52,6 +54,10 @@ export interface CompanionStats {
 		weaknesses: string
 		attacks: string[]
 		abilities: string[]
+		/** Combat Arts learned through Animal Companion rank 2, as HTML entries. */
+		combatArts: string[]
+		/** The applied bond as one line of prose, or empty when there is none. */
+		bond: string
 	}
 }
 
@@ -65,4 +71,44 @@ export interface CompanionBuilderProps {
 	 * consistently anyway.
 	 */
 	onImportCompanion?: (name: string, markdown: string) => void
+	/**
+	 * The owner, when the builder runs inside a character sheet. Prefills the Bond
+	 * register once per owner and stays editable. Omitted on the docs page.
+	 */
+	owner?: CompanionOwner
+}
+
+/** Which option the owner took at Animal Companion rank 2. */
+export type BondRank2Choice = 'two-companions' | 'combat-arts'
+
+/** Which option the owner took at Animal Companion rank 3. */
+export type BondRank3Choice = 'pack-coordination' | 'damage'
+
+/**
+ * The owner's side of a companion: their Animal Companion talent, their Nature and
+ * whether the companion was summoned with the Wild Companion spell.
+ *
+ * None of it is stored on the character (the talent's rank 2 and rank 3 choices
+ * exist nowhere else), so the builder holds it and writes the result into the
+ * companion's own stat block. A saved companion is therefore self-describing.
+ */
+export interface CompanionBond {
+	/** Animal Companion talent rank, 0 when the owner does not have it. */
+	talentRank: 0 | 1 | 2 | 3
+	/** The owner's Nature rank, or null when it is not known (the docs page). */
+	nature: number | null
+	rank2Choice: BondRank2Choice | null
+	rank3Choice: BondRank3Choice | null
+	/** Names of the Combat Arts learned through the rank 2 option, two at most. */
+	combatArts: string[]
+	wildCompanion: boolean
+	/** The rank the Wild Companion spell was cast at. */
+	wildCompanionRank: 1 | 2 | 3
+}
+
+/** What the character sheet knows about the companion's owner, for prefilling. */
+export interface CompanionOwner {
+	talentRank: 0 | 1 | 2 | 3
+	nature: number | null
+	knowsWildCompanion: boolean
 }

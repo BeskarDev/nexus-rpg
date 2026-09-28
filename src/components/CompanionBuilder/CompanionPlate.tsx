@@ -7,7 +7,7 @@ import CreatureStatBlock, {
 	StatBlockTrait,
 	TraitItem,
 } from '../codex/CreatureStatBlock'
-import type { CompanionTrait } from '../../types/companion'
+import type { CompanionBond, CompanionTrait } from '../../types/companion'
 import {
 	BASE_STATS,
 	SIZE_MODIFIERS,
@@ -17,6 +17,10 @@ import {
 } from '../../utils/typescript/companion/companionCalculations'
 import { convertHtmlToMarkdown } from '../../utils/typescript/companion/companionFormatting'
 import {
+	NO_BOND,
+	hasWildCompanion,
+} from '../../utils/typescript/companion/companionBond'
+import {
 	renderCompanionEntry,
 	renderCompanionInline,
 } from '../../utils/typescript/companion/companionInline'
@@ -25,6 +29,8 @@ export interface CompanionPlateProps {
 	tier: number
 	size: string
 	trait: CompanionTrait | null
+	/** The owner's bond. Changes the stats, adds abilities and Combat Arts. */
+	bond?: CompanionBond
 }
 
 const signed = (value: number) => (value >= 0 ? `+${value}` : String(value))
@@ -74,10 +80,12 @@ export const CompanionPlate: React.FC<CompanionPlateProps> = ({
 	tier,
 	size,
 	trait,
+	bond = NO_BOND,
 }) => {
 	const base = BASE_STATS[tier]
 	const sizeMod = size ? SIZE_MODIFIERS[size] : null
-	const built = trait && size ? calculateStats(tier, size, trait) : null
+	const built = trait && size ? calculateStats(tier, size, trait, bond) : null
+	const wildResist = hasWildCompanion(bond) ? 1 : 0
 
 	const hp = built ? built.hp : base.hp
 	const av = built ? built.av : `${base.av} (natural light)`
@@ -87,7 +95,7 @@ export const CompanionPlate: React.FC<CompanionPlateProps> = ({
 		: {
 				parry: base.defenses.parry + (sizeMod?.parry ?? 0),
 				dodge: base.defenses.dodge + (sizeMod?.dodge ?? 0),
-				resist: base.defenses.resist,
+				resist: base.defenses.resist + wildResist,
 			}
 
 	/**
@@ -98,6 +106,7 @@ export const CompanionPlate: React.FC<CompanionPlateProps> = ({
 	 */
 	const traitRows: { label: string; value: string }[] = built
 		? [
+				{ label: 'Bond', value: built.bond },
 				{ label: 'Skills', value: built.skills },
 				{ label: 'Movement', value: String(built.movement) },
 				{ label: 'Immunities', value: built.immunities },
@@ -110,6 +119,7 @@ export const CompanionPlate: React.FC<CompanionPlateProps> = ({
 		? [
 				{ label: 'Attacks', items: built.attacks },
 				{ label: 'Abilities', items: built.abilities },
+				{ label: 'Combat Arts', items: built.combatArts },
 			].filter(({ items }) => items.length > 0)
 		: []
 
@@ -118,7 +128,11 @@ export const CompanionPlate: React.FC<CompanionPlateProps> = ({
 			<div className="cs-companion-card">
 				<CreatureStatBlock
 					type={
-						trait ? `${size} ${trait.type}` : `${size || 'Unsized'} companion`
+						built && trait
+							? `${size} ${built.type}`
+							: trait
+								? `${size} ${trait.type}`
+								: `${size || 'Unsized'} companion`
 					}
 					tier={tier}
 					category={TIER_NAMES[tier]}
@@ -187,6 +201,9 @@ export const CompanionPlate: React.FC<CompanionPlateProps> = ({
 				{' · '}
 				<span className="cb-equation__name">Resist</span> {base.defenses.resist}{' '}
 				{signed(0)} {signed(trait ? applyModifier(0, trait.resist) : 0)}
+				{/* Wild Companion's +1 Resist, as a named fourth term: the key below
+					describes the three the other groups share. */}
+				{wildResist > 0 && <> {signed(wildResist)} wild</>}
 				<span className="cb-equation__key">tier base + size + creature</span>
 			</p>
 		</>

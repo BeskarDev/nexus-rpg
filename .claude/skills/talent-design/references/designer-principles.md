@@ -25,7 +25,7 @@ Both share **one local number sequence**, stable and never renumbered. The talen
 
 ### Cross-system interfaces → [principles/cross-system-interfaces.md](principles/cross-system-interfaces.md)
 
-17 cross-system interactions gate in the talent, never by disclaimers elsewhere · 18 validate against spells, items, and subsystems, not just other talents · 27 system vocabulary is a payoff, not a gate · 28 Challenges are a resolution overlay, not a dependency · 35 a talent must earn its slot across multiple game systems, not one low-screen-time system · 43 a challenge info-reveal pairs a vague description with a terse bracketed effect · 45 check the Combat Arts too, synergize rather than duplicate *(home: pool-composition.md)*
+17 cross-system interactions gate in the talent, never by disclaimers elsewhere · 18 validate against spells, items, and subsystems, not just other talents · 27 system vocabulary is a payoff, not a gate · 28 Challenges are a resolution overlay, not a dependency · 35 a talent must earn its slot across multiple game systems, not one low-screen-time system · 43 a challenge info-reveal pairs a vague description with a terse bracketed effect · 45 check the Combat Arts too, synergize rather than duplicate *(home: pool-composition.md)* · 48 a talent upgrading an item procedure keeps the item path and adds to it, both texts say so
 
 ### Pool composition & overlap audit → [principles/pool-composition.md](principles/pool-composition.md)
 
@@ -59,7 +59,7 @@ The most load-bearing of these are also ported with talent framing (principles 1
 
 When the owner corrects or refines a talent design decision in session:
 
-1. Take the next free number (currently next: **48**).
+1. Take the next free number (currently next: **49**).
 2. Append the full principle (numbered, bolded one-line rule, then the reasoning, then the owner-ruling provenance) to the **one** `principles/` file matching its primary concern.
 3. Add its one-line hook to that concern's line list in the Index by Concern above (and to any secondary concern's list with a `*(home: <file>.md)*` note).
 4. If it is frequently load-bearing, add its one-line hook to the short list in the Design Principles section of [../SKILL.md](../SKILL.md).

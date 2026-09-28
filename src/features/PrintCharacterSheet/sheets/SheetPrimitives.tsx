@@ -750,7 +750,13 @@ export const SlotPanel: React.FC<{ slots: WornSlot[] }> = ({ slots }) => (
 export const MarkedList: React.FC<{
 	groups: {
 		name: string
-		entries: { key: string; label: string; action?: ActionType }[]
+		entries: {
+			key: string
+			label: string
+			action?: ActionType
+			/** A talent's rank, printed as a small numeral box after the name. */
+			rank?: number
+		}[]
 	}[]
 }> = ({ groups }) => (
 	<div className="pc-marked">
@@ -766,7 +772,15 @@ export const MarkedList: React.FC<{
 								<ActionGlyph actionType={entry.action} size={11} />
 							) : null}
 						</span>
-						{entry.label}
+						<span className="pc-marked__label">{entry.label}</span>
+						{entry.rank !== undefined ? (
+							<span
+								className="pc-marked__rank"
+								aria-label={`Rank ${entry.rank}`}
+							>
+								{entry.rank}
+							</span>
+						) : null}
 					</div>
 				))}
 			</div>

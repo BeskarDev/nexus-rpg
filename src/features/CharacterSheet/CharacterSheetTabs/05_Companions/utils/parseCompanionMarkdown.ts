@@ -47,6 +47,9 @@ export type CompanionStatBlock = {
 
 /** The trait lines the builder emits, in the order a stat block should read them. */
 const TRAIT_LABELS = [
+	// The owner's Animal Companion and Wild Companion options, when the builder
+	// applied any. Older blocks have no such line and skip it.
+	'Bond',
 	'Diet',
 	'Skills',
 	'Movement',

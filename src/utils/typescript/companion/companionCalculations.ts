@@ -1,4 +1,13 @@
-import { CompanionTrait } from '../../../types/companion'
+import { CompanionBond, CompanionTrait } from '../../../types/companion'
+import {
+	NO_BOND,
+	WILD_COMPANION_TYPE,
+	bondAbilities,
+	bondDamageBonus,
+	bondSummary,
+	combatArtEntries,
+	hasWildCompanion,
+} from './companionBond'
 
 // Base companion statistics by tier
 export const BASE_STATS: Record<number, any> = {
@@ -261,6 +270,7 @@ const parseMultiOptionAttack = (
 	attackText: string,
 	baseAttackDamage: { weak: number; normal: number; strong: number },
 	tier: number,
+	damageBonus: number,
 ): string => {
 	let processedText = attackText
 
@@ -271,10 +281,12 @@ const parseMultiOptionAttack = (
 	// Process Frost Ray option (Deals +1 weapon damage as frost damage)
 	if (processedText.includes('Frost Ray')) {
 		const weaponDamage = Math.max(1, weaponDamageBase + 1)
-		const weakDamage = Math.max(1, baseDamage + weaponDamage)
-		const strongDamage = Math.max(1, baseDamage + 2 * weaponDamage)
-		const criticalDamage = Math.max(1, baseDamage + 3 * weaponDamage)
-		const damageText = `Treat the roll as a range attack vs. Dodge. ${weakDamage}/${strongDamage}/${criticalDamage} frost damage (${baseDamage} base + ${weaponDamage} weapon).`
+		const weakDamage = Math.max(1, baseDamage + weaponDamage) + damageBonus
+		const strongDamage =
+			Math.max(1, baseDamage + 2 * weaponDamage) + damageBonus
+		const criticalDamage =
+			Math.max(1, baseDamage + 3 * weaponDamage) + damageBonus
+		const damageText = `Treat the roll as a range attack vs. Dodge. ${weakDamage}/${strongDamage}/${criticalDamage} frost damage (${baseDamage} base + ${weaponDamage} weapon${bonusText(damageBonus)}).`
 
 		// Replace the Frost Ray option's damage sentence
 		// Pattern matches: <strong>3. Frost Ray. </strong>Treat the roll as a range attack vs. Dodge. Deals +1 weapon damage as frost damage.
@@ -290,10 +302,19 @@ const parseMultiOptionAttack = (
 	return processedText
 }
 
+/** The damage breakdown's third term, when an ability bonus applies. */
+const bonusText = (damageBonus: number) =>
+	damageBonus ? ` + ${damageBonus} bonus` : ''
+
+/**
+ * @param damageBonus Added to the total damage at every success level, as an
+ *   ability bonus. Animal Companion rank 3's +4 damage option is the one source.
+ */
 export const parseAttackDamage = (
 	attackText: string,
 	baseAttackDamage: { weak: number; normal: number; strong: number },
 	tier: number,
+	damageBonus = 0,
 ): string => {
 	if (!attackText || attackText === '-') return ''
 
@@ -302,7 +323,12 @@ export const parseAttackDamage = (
 	const hasNumberedOptions = /\d+\.\s+\w+\s+Ray\./i.test(attackText)
 
 	if (hasNumberedOptions) {
-		return parseMultiOptionAttack(attackText, baseAttackDamage, tier)
+		return parseMultiOptionAttack(
+			attackText,
+			baseAttackDamage,
+			tier,
+			damageBonus,
+		)
 	}
 
 	// Parse damage modifiers
@@ -338,9 +364,12 @@ export const parseAttackDamage = (
 			weaponDamage + weaponDamageModifier,
 		)
 
-		const weakDamage = Math.max(1, baseDamage + modifiedWeaponDamage)
-		const strongDamage = Math.max(1, baseDamage + 2 * modifiedWeaponDamage)
-		const criticalDamage = Math.max(1, baseDamage + 3 * modifiedWeaponDamage)
+		const weakDamage =
+			Math.max(1, baseDamage + modifiedWeaponDamage) + damageBonus
+		const strongDamage =
+			Math.max(1, baseDamage + 2 * modifiedWeaponDamage) + damageBonus
+		const criticalDamage =
+			Math.max(1, baseDamage + 3 * modifiedWeaponDamage) + damageBonus
 
 		// Extract damage type and additional info from the original text
 		let damageType = ''
@@ -380,7 +409,7 @@ export const parseAttackDamage = (
 			.trim()
 
 		// Construct the new damage text (without leading period since we'll handle that separately)
-		const damageText = `${weakDamage}/${strongDamage}/${criticalDamage}${damageType} damage (${baseDamage} base + ${modifiedWeaponDamage} weapon)${additionalInfo}.`
+		const damageText = `${weakDamage}/${strongDamage}/${criticalDamage}${damageType} damage (${baseDamage} base + ${modifiedWeaponDamage} weapon${bonusText(damageBonus)})${additionalInfo}.`
 
 		// Insert damage text after the attack name and properties
 		const propertiesMatch = processedText.match(
@@ -448,13 +477,21 @@ export const formatSkillsWithRanks = (
 	return skills.join(', ')
 }
 
+/**
+ * @param bond The owner's Animal Companion talent and Wild Companion spell. Omit
+ *   for a companion built without an owner (the docs page, a plain creature).
+ */
 export const calculateStats = (
 	tier: number,
 	size: string,
 	trait: CompanionTrait,
+	bond: CompanionBond = NO_BOND,
 ) => {
 	const baseStats = BASE_STATS[tier]
 	const sizeModifier = SIZE_MODIFIERS[size]
+	// Wild Companion: +1d Spirit, +1d Mind, +1 Resist, type becomes spirit (primal).
+	const wild = hasWildCompanion(bond)
+	const damageBonus = bondDamageBonus(bond)
 
 	// Calculate HP
 	let hp = baseStats.hp
@@ -478,6 +515,10 @@ export const calculateStats = (
 		spi: modifyDie(baseStats.attributes.spi, trait.spirit),
 		mnd: modifyDie(baseStats.attributes.mnd, trait.mind),
 	}
+	if (wild) {
+		attributes.spi = modifyDie(attributes.spi, '+1')
+		attributes.mnd = modifyDie(attributes.mnd, '+1')
+	}
 
 	// Calculate Defenses
 	const defenses = {
@@ -489,10 +530,14 @@ export const calculateStats = (
 			baseStats.defenses.dodge +
 			sizeModifier.dodge +
 			applyModifier(0, trait.dodge),
-		resist: baseStats.defenses.resist + applyModifier(0, trait.resist),
+		resist:
+			baseStats.defenses.resist +
+			applyModifier(0, trait.resist) +
+			(wild ? 1 : 0),
 	}
 
 	return {
+		type: wild ? WILD_COMPANION_TYPE : trait.type,
 		hp,
 		av: `${av} (${avType})`,
 		attributes,
@@ -505,9 +550,16 @@ export const calculateStats = (
 		weaknesses: trait.weaknesses,
 		attacks: [trait['attack 1'], trait['attack 2']]
 			.filter((attack) => attack && attack !== '-')
-			.map((attack) => parseAttackDamage(attack, baseStats.attackDamage, tier)),
-		abilities: [trait['ability 1'], trait['ability 2'], trait['ability 3']]
-			.filter((ability) => ability && ability !== '-')
-			.map((ability) => processTierCalculations(ability, tier)),
+			.map((attack) =>
+				parseAttackDamage(attack, baseStats.attackDamage, tier, damageBonus),
+			),
+		abilities: [
+			...[trait['ability 1'], trait['ability 2'], trait['ability 3']]
+				.filter((ability) => ability && ability !== '-')
+				.map((ability) => processTierCalculations(ability, tier)),
+			...bondAbilities(bond),
+		],
+		combatArts: combatArtEntries(bond),
+		bond: bondSummary(bond),
 	}
 }

@@ -461,7 +461,7 @@
 		"category": "Gear",
 		"load": "1",
 		"cost": "50",
-		"description": "Contains powders, bandages, a mortar and pestle, and clippers to collect plants.<br/>Spend 1 use to roll Spirit/Mind + Nature to attempt to treat a Wound.<br/>"
+		"description": "Contains powders, bandages, a mortar and pestle, and clippers to collect plants.<br/>During a night's rest, spend 1 use to roll Spirit/Mind + Nature to attempt to treat a Wound. With the Field Medic talent, you can also do so during a short break. You can also spend 1 use when you try to stabilize a dying creature, rolling vs. TN 10 instead of TN 12."
 	},
 	{
 		"name": "Lantern",

@@ -26,7 +26,11 @@ import { normalizeSkillName } from '../../../constants/skills'
 import { calculateTalentHpBonus } from './calculateTalentHpBonus'
 import { calculateFolkAvBonus } from './calculateFolkAvBonus'
 import { createNaturalWeapons } from './createNaturalWeapons'
-import { getBaseDamageType } from '../CharacterSheetTabs/02_Items/utils/weaponDamage'
+import {
+	buildItemFromArmor,
+	buildItemFromEquipment,
+	buildWeaponFromData,
+} from './itemFactory'
 
 /**
  * Capitalizes starting item names to match the item naming convention
@@ -199,31 +203,18 @@ const createWeaponFromName = (weaponName: string) => {
 	const weaponData = findWeapon(actualWeaponName)
 	if (!weaponData) return null
 
+	// The same builder the weapon search dialog imports with, so a starting
+	// weapon and a searched one are the same shape (and the damage base is the
+	// rules default for the weapon's own type).
+	const content = buildWeaponFromData(weaponData)
 	return {
 		id: uuidv4(),
-		name: weaponData.name,
-		damage: {
-			// The rules default for the weapon's own type. Hardcoded `STR` before,
-			// which handed every archetype starting with a bow a Strength bow.
-			base: getBaseDamageType(weaponData.type),
-			weapon: parseInt(weaponData.damage) || 0,
-			other: 0,
-			otherWeak: 0,
-			otherStrong: 0,
-			otherCritical: 0,
-			type: 'physical' as const,
-			staticDamage: false,
-		},
-		properties: weaponData.properties,
-		description: '',
-		cost: parseInt(weaponData.cost) || 0,
-		load: parseInt(weaponData.load) || 0,
+		...content,
 		location: 'worn' as const,
 		amount: amount,
 		uses: 0,
 		durability: '' as const,
-		quality:
-			(parseInt(weaponData.quality) as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8) || 2,
+		quality: content.quality || 2,
 	}
 }
 
@@ -243,52 +234,35 @@ const createItemFromName = (itemName: string) => {
 	// Check if it's armor first
 	const armorData = findArmor(actualItemName)
 	if (armorData) {
-		// Build properties array including AV bonus
-		const properties: string[] = []
-
-		// Add AV bonus if present
-		if (armorData.av && armorData.av !== '-' && armorData.av !== '0') {
-			properties.push(`AV +${armorData.av}`)
-		}
-
-		// Add special properties if present
-		if (armorData.properties && armorData.properties !== '-') {
-			properties.push(armorData.properties)
-		}
-
+		const content = buildItemFromArmor(armorData)
 		return {
 			id: uuidv4(),
+			...content,
 			name: actualItemName,
-			properties,
-			cost: parseInt(armorData.cost) || 0,
-			weight: parseInt(armorData.load) || 0,
 			container: 'worn' as const,
 			amount: amount,
 			location: 'worn' as const,
 			uses: 0,
 			durability: '' as const,
-			quality:
-				(parseInt(armorData.quality) as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8) || 2,
+			quality: content.quality || 2,
 		}
 	}
 
 	// Check equipment database
 	const equipData = findEquipment(actualItemName)
 	if (equipData) {
-		const load = equipData.load === '-' ? 0 : parseInt(equipData.load) || 0
+		// The search dialog's builder: starting gear now carries its description.
+		const content = buildItemFromEquipment(equipData)
+		const load = content.load ?? 0
 		return {
 			id: uuidv4(),
-			name: equipData.name,
-			properties: [] as string[],
-			cost: parseInt(equipData.cost) || 0,
-			weight: load,
+			...content,
 			container: load > 0 ? ('backpack' as const) : ('worn' as const),
 			amount: amount,
 			location: load > 0 ? ('carried' as const) : ('worn' as const),
 			uses: 0,
 			durability: '' as const,
-			quality:
-				(parseInt(equipData.quality) as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8) || 2,
+			quality: content.quality || 2,
 		}
 	}
 
@@ -298,7 +272,7 @@ const createItemFromName = (itemName: string) => {
 		name: actualItemName,
 		properties: [] as string[],
 		cost: 0,
-		weight: 1,
+		load: 1,
 		container: 'backpack' as const,
 		amount: amount,
 		location: 'carried' as const,
@@ -797,7 +771,7 @@ export const createInitialCharacter = (
 							name: 'Backpack',
 							properties: [] as string[],
 							cost: 15,
-							weight: 0,
+							load: 0,
 							container: 'worn' as const,
 							amount: 1,
 							location: 'worn' as const,
@@ -809,7 +783,7 @@ export const createInitialCharacter = (
 							name: 'Pouch',
 							properties: [] as string[],
 							cost: 5,
-							weight: 0,
+							load: 0,
 							container: 'worn' as const,
 							amount: 2,
 							location: 'worn' as const,
@@ -821,7 +795,7 @@ export const createInitialCharacter = (
 							name: "Traveler's Clothes",
 							properties: [] as string[],
 							cost: 25,
-							weight: 0,
+							load: 0,
 							container: 'worn' as const,
 							amount: 1,
 							location: 'worn' as const,
@@ -833,7 +807,7 @@ export const createInitialCharacter = (
 							name: 'Rope (Hemp)',
 							properties: [] as string[],
 							cost: 10,
-							weight: 1,
+							load: 1,
 							container: 'backpack' as const,
 							amount: 1,
 							location: 'carried' as const,
@@ -845,7 +819,7 @@ export const createInitialCharacter = (
 							name: 'Camping Kit',
 							properties: [] as string[],
 							cost: 50,
-							weight: 1,
+							load: 1,
 							container: 'backpack' as const,
 							amount: 1,
 							location: 'carried' as const,
@@ -857,7 +831,7 @@ export const createInitialCharacter = (
 							name: 'Adventuring Gear (Tool)',
 							properties: [] as string[],
 							cost: 50,
-							weight: 1,
+							load: 1,
 							container: 'backpack' as const,
 							amount: 1,
 							location: 'carried' as const,
@@ -869,7 +843,7 @@ export const createInitialCharacter = (
 							name: 'Simple Rations',
 							properties: ['d4 Supply die'] as string[],
 							cost: 15,
-							weight: 1,
+							load: 1,
 							container: 'backpack' as const,
 							amount: 1,
 							location: 'carried' as const,
@@ -881,7 +855,7 @@ export const createInitialCharacter = (
 							name: 'Torch',
 							properties: ['d4 Supply die'] as string[],
 							cost: 15,
-							weight: 1,
+							load: 1,
 							container: 'backpack' as const,
 							amount: 1,
 							location: 'carried' as const,
@@ -896,7 +870,7 @@ export const createInitialCharacter = (
 										name: capitalizeStartingItem(background['starting item']),
 										properties: [] as string[],
 										cost: 0,
-										weight: 0,
+										load: 0,
 										container: 'worn' as const,
 										amount: 1,
 										location: 'worn' as const,
